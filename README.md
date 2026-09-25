@@ -79,4 +79,4 @@ Every product and tool folder follows the same pattern:
 - Legal summaries are there to help you understand the policies; the official pages on auricartisan.com are authoritative.
 - Questions or corrections: https://auricartisan.com/company/contact/
 
-© 2026 Auric Artisan. All rights reserved. Private repository.
+© 2026 Auric Artisan. All rights reserved.
