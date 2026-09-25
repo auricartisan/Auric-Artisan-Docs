@@ -1,0 +1,148 @@
+==============================================================================
+COPY AND EXPORT
+==============================================================================
+Copy one colour in six formats, download it as JSON, SVG or PNG, and download
+every matching colour in seven formats.
+Area: Website › Library › Colour libraries › Color Library   Updated: 2026-09-25
+
+The Export tab has two parts: Selection, for the one colour you have open, and
+Visible set, for every colour that currently matches your chips, searches and
+filters. You can reach the tab directly, or select Export visible on the
+Library tab.
+
+COPY OR DOWNLOAD ONE COLOUR
+===========================
+
+  1. Open a colour (select its tile). See Read a colour [read-a-colour.txt].
+  2. Select the Export tab. The first card is headed Selection · and the
+     colour's hex code.
+  3. Under Copy formats, select a format. The text goes to your clipboard and
+     a short message confirms it, such as HEX copied.
+  4. Under Download, select a file type. Your browser saves the file.
+
+If no colour is open, the card reads No color selected. Click any tile in the
+Library tab to enable selection exports.
+
+Copy formats
+------------
+
+Examples are for the atlas colour `#76CDF6`.
+
+  Button        | What is copied                               | Example
+  --------------+----------------------------------------------+-----------------------------
+  HEX           | The hex code in capitals.                    | `#76CDF6`
+  RGB           | A CSS `rgb()` value with commas.             | `rgb(118, 205, 246)`
+  HSL           | A CSS `hsl()` value, whole numbers.          | `hsl(199 88% 71%)`
+  Lab           | A CSS `lab()` value, two decimals.           | `lab(78.56% -15.21 -28.22)`
+  OKLCH         | A CSS `oklch()` value.                       | `oklch(80.89% 0.102 230.17)`
+  CSS variables | A `:root` block with four custom properties. | See below
+
+The CSS variables button copies:
+
+    :root {
+      --color-hex: #76cdf6;
+      --color-rgb: 118, 205, 246;
+      --color-hsl: 199 88% 71%;
+      --color-oklch: 80.89% 0.102 230.17;
+    }
+
+Downloads for one colour
+------------------------
+
+  Button:   JSON (full metadata)
+  File:     The hex code without `#`, for example `76cdf6.json`
+  Contents: The colour's complete record: every notation, metric, label and
+            colour-blindness value.
+
+  Button:   SVG
+  File:     For example `76cdf6.svg`
+  Contents: A 480 × 280 rectangle of the colour with its hex code written near
+            the bottom in black or white, whichever reads better.
+
+  Button:   PNG
+  File:     For example `76cdf6.png`
+  Contents: An 800 × 480 image of the same design.
+
+DOWNLOAD EVERY MATCHING COLOUR
+==============================
+
+  1. On the Library tab, narrow the grid with the chips, searches and filters.
+  2. Select Export visible, or the Export tab.
+  3. Read the Visible set card's badge. It shows how many colours will be
+     exported, for example 2,998 colors.
+  4. Select a format under Bulk download or Style formats. Your browser saves
+     the file.
+
+Files are named `color-library-` followed by the number of colours and the
+date, for example `color-library-2998-2026-09-24.css`. The message Downloaded
+and the file name confirms each download. If nothing matches, the page says
+Nothing to export.
+
+Bulk formats
+------------
+
+  Button:    JSON (all metadata)
+  File type: `.json`
+  Contents:  The export time, a source note, the count, and a list of the
+             colours with the fields the browser holds for them: id, hex, RGB,
+             hue, lightness, chroma, luminance, contrast on white and black,
+             and the five labels.
+
+  Button:    JSON (compact: id + hex)
+  File type: `.json`
+  Contents:  The count and a list of id and hex pairs.
+
+  Button:    CSV (flat)
+  File type: `.csv`
+  Contents:  Meant to hold one row per colour with a header row: id, hex, RGB,
+             HSL, Lab, OKLCH, luminance, chroma and four labels. If no file
+             arrives, see Troubleshooting [troubleshooting.txt].
+
+  Button:    .txt (one hex per line)
+  File type: `.txt`
+  Contents:  Hex codes in capitals, one per line.
+
+Style formats
+-------------
+
+  Button:    CSS variables
+  File type: `.css`
+  Contents:  A `:root` block with one custom property per colour, named by
+             atlas id.
+
+  Button:    SCSS variables
+  File type: `.scss`
+  Contents:  One Sass variable per colour, named by atlas id.
+
+  Button:    tailwind.config.js fragment
+  File type: `.js`
+  Contents:  A Tailwind CSS configuration that adds each colour to
+             `theme.extend.colors`, named `c` plus the atlas id.
+
+Examples, for a set containing colour 0:
+
+    :root {
+      --color-0: #76CDF6;
+    }
+
+    $color-0: #76CDF6;
+
+    module.exports = {
+      theme: { extend: { colors: {
+          "c0": "#76CDF6"
+        } } }
+    };
+
+  | Tip: Variable names use the atlas id, not a descriptive name. After exporting,
+  | rename the variables you keep to names that mean something in your project,
+  | such as `--brand-accent`.
+
+  | Note: Exports are built in your browser from the data already loaded, so they
+  | work without a further download. A large set can take a moment.
+
+RESULT
+======
+
+You have the colour value on your clipboard, or a file on your computer that
+you can paste into a stylesheet, a Tailwind configuration, a spreadsheet or a
+design tool.

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Query syntax — Auric Artisan Docs</title>
+<meta name="description" content="The operators the Auric Artisan search page understands — phrases, exclusions and field filters — for site search and for web search.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Search and the Search Console</a>
+<h2>Search documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with search</a></li>
+<li><a href="console-reports.html">Read the console reports</a></li>
+<li><a href="instant-answers.html">Instant answers</a></li>
+<li><a href="manage-your-sites.html">Manage your sites</a></li>
+<li><a href="query-syntax.html" aria-current="page">Query syntax</a></li>
+<li><a href="request-a-crawl.html">Request a crawl</a></li>
+<li><a href="search-console.html">Set up the Search Console</a></li>
+<li><a href="search-the-web.html">Search the web</a></li>
+<li><a href="search-this-site.html">Search this site</a></li>
+<li><a href="understand-the-ranking.html">Understand the ranking</a></li>
+<li><a href="reference.html">Search reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Search FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Search and the Search Console</a> &rsaquo; <a href="README.html">Search documentation</a></nav>
+<p class="kicker">Website › Search</p>
+<h1>Query syntax</h1>
+<p class="lede">The operators the Auric Artisan search page understands — phrases, exclusions and field filters — for site search and for web search.</p>
+<p>Plain words are enough for most searches. The operators below narrow a search when you need to. The line under the search field shows how your query was read, with a chip for each filter, phrase, word and exclusion, so you can check that an operator was understood.</p>
+<h2 id="site-search-operators">Site search operators</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Operator</th><th>Example</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Words</td><td><code>oklch gradient</code></td><td>Finds pages that contain the words; pages with more of them, and with the words close together, rank higher.</td></tr>
+<tr><td><code>&quot;…&quot;</code></td><td><code>&quot;colour blindness&quot;</code></td><td>Only pages where the words appear together, in that order.</td></tr>
+<tr><td><code>-word</code></td><td><code>palette -tailwind</code></td><td>Leaves out pages that contain the word. The word must be at least two characters.</td></tr>
+<tr><td><code>type:</code></td><td><code>type:learn contrast</code></td><td>Only one kind of page. See the list below.</td></tr>
+<tr><td><code>tag:</code></td><td><code>tag:oklch</code></td><td>Only pages with a tag containing the value.</td></tr>
+<tr><td><code>title:</code></td><td><code>title:gamut</code></td><td>Only pages whose title contains the value.</td></tr>
+<tr><td><code>desc:</code> or <code>description:</code></td><td><code>desc:printing</code></td><td>Only pages whose description or text contains the value.</td></tr>
+<tr><td><code>path:</code></td><td><code>path:/library/learn/</code></td><td>Only pages whose address contains the value.</td></tr>
+<tr><td><code>category:</code></td><td><code>category:legal</code></td><td>Only pages whose category contains the value. Categories mostly match the <code>type:</code> values below.</td></tr>
+<tr><td>A hex code</td><td><code>#d3af37</code></td><td>Shows the colour answer card. See <a href="instant-answers.html">Instant answers</a>.</td></tr>
+<tr><td>Two hex codes</td><td><code>#d3af37 #0d0d0d</code></td><td>Shows the contrast-pair card.</td></tr>
+</tbody></table></div>
+<p>You can combine operators, for example <code>type:learn &quot;colour blindness&quot; -quiz</code>.</p>
+<h3 id="filter-values-with-spaces">Filter values with spaces</h3>
+<p>Put the value in quotes after the colon: <code>title:&quot;contrast ratio&quot;</code>.</p>
+<h3 id="a-filter-on-its-own">A filter on its own</h3>
+<p>A filter works without any words. <code>type:changelog</code> lists changelog pages, and <code>tag:oklch</code> lists everything tagged OKLCH.</p>
+<h3 id="values-for-type">Values for type:</h3>
+<p><code>type:</code> must match exactly. The main values are:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Pages</th></tr></thead>
+<tbody>
+<tr><td><code>learn</code></td><td>Learn articles</td></tr>
+<tr><td><code>documentation</code></td><td>Documentation guides</td></tr>
+<tr><td><code>tool</code></td><td>Tool pages</td></tr>
+<tr><td><code>library</code></td><td>Library pages</td></tr>
+<tr><td><code>blog</code></td><td>Blog posts</td></tr>
+<tr><td><code>changelog</code></td><td>Changelog pages</td></tr>
+<tr><td><code>company</code></td><td>Company pages</td></tr>
+<tr><td><code>legal</code></td><td>Legal pages</td></tr>
+<tr><td><code>portfolio</code></td><td>Portfolios in the Portfolio Index</td></tr>
+</tbody></table></div>
+<p>The section tabs are often quicker than <code>type:</code>. See <a href="search-this-site.html">Search this site</a>.</p>
+<h2 id="web-search-operators">Web search operators</h2>
+<p>When the globe is on, the web index understands:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Operator</th><th>Example</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Words</td><td><code>color contrast</code></td><td>Finds pages with the words. Pages with every word are shown before pages missing one.</td></tr>
+<tr><td><code>&quot;…&quot;</code></td><td><code>&quot;design tokens&quot;</code></td><td>The words together, in that order.</td></tr>
+<tr><td><code>-word</code></td><td><code>gradient -css</code></td><td>Leaves out pages with the word.</td></tr>
+<tr><td><code>site:</code></td><td><code>site:w3.org contrast</code></td><td>Only pages on that site and its subdomains. <code>host:</code> does the same.</td></tr>
+<tr><td><code>intitle:</code></td><td><code>intitle:palette</code></td><td>Only pages whose title contains the value.</td></tr>
+</tbody></table></div>
+<p>The site-search operators <code>type:</code>, <code>tag:</code>, <code>title:</code>, <code>desc:</code>, <code>path:</code> and <code>category:</code> do not apply to web search, and the answer cards appear only in site search.</p>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>If a query with operators finds nothing, the <strong>Worth trying</strong> list names the operator most likely to be the cause.</li>
+<li>Hex codes work with or without <code>#</code>, in three-digit or six-digit form: <code>#abc</code>, <code>abc</code>, <code>#aabbcc</code> or <code>aabbcc</code>.</li>
+<li>A word of three or six letters made only from the letters a to f, such as <code>bad</code> or <code>facade</code>, is read as a hex code too. Put it in quotes to search for the word itself.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="manage-your-sites.html"><span>Previous</span>Manage your sites</a><a href="request-a-crawl.html"><span>Next</span>Request a crawl</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#site-search-operators">Site search operators</a></li><li><a href="#web-search-operators">Web search operators</a></li><li><a href="#tips">Tips</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

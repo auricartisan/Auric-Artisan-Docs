@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scan a whole site — Auric Artisan Docs</title>
+<meta name="description" content="Audit several pages of one site in a single run, follow the live progress, and page through the per-page results.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html" aria-current="page">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Scan a whole site</h1>
+<p class="lede">Audit several pages of one site in a single run, follow the live progress, and page through the per-page results.</p>
+<p>A site scan finds the pages of a site from its links and sitemap, audits each one in a real browser on Auric Artisan&#39;s servers, and combines the results into one report with a page-by-page breakdown. Use it to find the shared components that fail on every page, or to check a set of pages before a release.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li>You need to be <strong>signed in</strong>. Without an account the scan stops with &quot;Sign in to scan a site. Analyzing this page still works without an account.&quot;</li>
+<li>Whole-site scanning is part of the <strong>Artisan plan and above</strong>. On other plans the scanner answers &quot;Whole-site crawling is part of the Artisan plan and above.&quot;</li>
+<li>A site scan costs tokens. The pricing page describes it as one token per page analysed, so a 24-page crawl costs 24. The token sheet shows the exact quote, with a line for finding the pages and a line for the pages themselves. Tokens are held when the scan starts; you are charged for the pages that come back and refunded the rest.</li>
+<li>One run audits <strong>up to 24 pages</strong>.</li>
+</ul>
+<h2 id="the-site-scan-settings">The site scan settings</h2>
+<p>Switch to <strong>Advanced</strong> and open <strong>Site scan settings</strong> under the strip.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Scan Site</strong></td><td>Starts the site scan for the address in the URL field</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Robots</strong></td><td>Follow robots.txt rules while scanning</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Subdomains</strong></td><td>Include subdomains in the scan</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Pages</strong></td><td>How many pages to audit, with a time estimate beside it</td><td>1 to 24</td><td>10</td></tr>
+<tr><td><strong>Show</strong></td><td>How many detailed results to show per page of the results list</td><td>25 or 50</td><td>25</td></tr>
+<tr><td><strong>Workers</strong></td><td>Concurrent scan workers: higher is faster, lower is gentler on the site</td><td>1 to 20</td><td>3</td></tr>
+<tr><td><strong>Public proxy</strong></td><td>Fetch cross-origin pages through third-party public CORS proxies</td><td>On or off</td><td>Off</td></tr>
+</tbody></table></div>
+<p><strong>Pages</strong> limits only how many pages are audited. It does not limit the site map: discovery still reads robots.txt and the whole sitemap tree, so the <strong>Site Map</strong> section covers the entire site however few pages you audit. The estimate beside the field, for example &quot;≈ 23s&quot;, updates as you type.</p>
+<p>With <strong>Public proxy</strong> on, the address being analysed is shared with those third-party services. It is off unless you turn it on.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> On auricartisan.com the crawl runs on Auric Artisan&#39;s servers, and the scanner receives the address and the <strong>Pages</strong> number. In the current version the <strong>Robots</strong>, <strong>Subdomains</strong> and <strong>Workers</strong> settings do not change a site scan on the live site. <strong>Public proxy</strong> only affects single-page runs that fall back to reading a page&#39;s HTML in your browser.</p>
+</blockquote>
+<h2 id="run-a-site-scan">Run a site scan</h2>
+<ol>
+<li>Type the site&#39;s address in the URL field, for example <code>https://example.com/</code>.</li>
+<li>Select <strong>Advanced</strong>, then open <strong>Site scan settings</strong>.</li>
+<li>Set <strong>Pages</strong> to the number of pages you want audited, up to 24.</li>
+<li>Check the token meter, or open the token sheet to see the quote.</li>
+<li>Select <strong>Scan Site</strong>.</li>
+<li>Follow the live console in the Overview panel (below).</li>
+<li>When it ends, the live line reads &quot;Scan complete: N pages scanned&quot; and the report opens.</li>
+</ol>
+<p>To stop part-way, select <strong>Cancel</strong> in the strip.</p>
+<h2 id="the-live-console">The live console</h2>
+<p>While a site scan runs, the Overview panel shows a console headed <strong>Live site audit</strong>. The large title names the current phase, starting with &quot;Discovering pages&quot;, then &quot;Found N pages — auditing…&quot;. Below it, five folding groups count pages as they move:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>What it lists</th></tr></thead>
+<tbody>
+<tr><td><strong>In flight</strong></td><td>Pages being audited right now</td></tr>
+<tr><td><strong>Completed pages</strong></td><td>Pages audited, with their score, title and issue count</td></tr>
+<tr><td><strong>Failed pages</strong></td><td>Pages that could not be audited, and why</td></tr>
+<tr><td><strong>Skipped</strong></td><td>Pages that were found but not audited</td></tr>
+<tr><td><strong>Discovery &amp; budget</strong></td><td>How pages were found and how the page budget was spent</td></tr>
+</tbody></table></div>
+<p>The progress rail&#39;s bar tracks the share of pages finished.</p>
+<h2 id="read-the-results">Read the results</h2>
+<p>A site scan produces one combined report. Every section reads the combined result, and the Overview adds two cards:</p>
+<ul>
+<li><strong>Full-Site Scan</strong> — counts of <strong>Completed</strong>, <strong>Failed</strong>, <strong>Skipped</strong> and <strong>Found</strong> pages (shown as &quot;Found (sitemap)&quot; when a sitemap was used).</li>
+<li><strong>Page-By-Page Breakdown</strong> — one row per audited page, each with its overall score, accessibility, SEO, performance and security scores, issue count and its findings.</li>
+</ul>
+<p>The breakdown list has its own controls:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Sort menu</td><td><strong>Lowest score</strong> (default), <strong>Highest score</strong>, <strong>Most issues</strong>, <strong>Title A-Z</strong>, <strong>URL A-Z</strong>, <strong>Scan order</strong></td></tr>
+<tr><td><strong>25 / page</strong>, <strong>50 / page</strong></td><td>Rows per page of the list</td></tr>
+<tr><td><strong>First</strong>, <strong>Prev</strong>, <strong>Next</strong>, <strong>Last</strong></td><td>Move through the list</td></tr>
+<tr><td><strong>Expand visible</strong>, <strong>Collapse visible</strong></td><td>Open or close every row on screen</td></tr>
+</tbody></table></div>
+<p>A line above the list says which rows are showing, for example &quot;Showing 1-25 of 24 pages&quot;. If full details for a page of rows are still loading, compact rows are shown meanwhile.</p>
+<p>The <strong>A11y+</strong> panel adds an <strong>A11y+ · Page-by-Page</strong> card for the same pages, and the <strong>Site Map</strong> panel merges findings across pages under <strong>Site-wide Findings (merged)</strong>.</p>
+<h2 id="how-the-combined-score-is-worked-out">How the combined score is worked out</h2>
+<ul>
+<li>Each page is scored on its own, then the scores are combined into the site&#39;s result.</li>
+<li>For accessibility, each page&#39;s score leans on the in-depth audit of that page&#39;s rendered markup, and the combined accessibility score can only be lowered by it, never raised.</li>
+<li>A page the scanner could not reach is listed under <strong>Failed pages</strong> rather than scored.</li>
+</ul>
+<h2 id="pages-the-scanner-cannot-audit">Pages the scanner cannot audit</h2>
+<p>The scanner runs in a real browser on Auric Artisan&#39;s servers. It cannot audit:</p>
+<ul>
+<li>pages behind a login, a bot challenge or a strict firewall. The page is reported as refused, with the HTTP status, and the advice to run the audit from a browser that is already on the page;</li>
+<li>private and local addresses such as <code>localhost</code>, <code>127.0.0.1</code>, <code>10.x.x.x</code>, <code>192.168.x.x</code>, <code>172.16.x.x</code> to <code>172.31.x.x</code> and <code>169.254.x.x</code>. These are refused with &quot;That address is not reachable from the scanner.&quot;;</li>
+<li>anything other than <code>http</code> and <code>https</code> addresses (&quot;Only http and https URLs can be scanned.&quot;).</li>
+</ul>
+<h2 id="after-the-scan">After the scan</h2>
+<p>The site scan is filed in your library as its own project, named &quot;Audit · &quot; followed by the host, separate from single-page audits of the same site. Re-scanning the same site adds a new version you can compare with the last one. See <a href="save-reopen-and-compare.html">Save, reopen and compare</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="save-reopen-and-compare.html"><span>Previous</span>Save, reopen and compare</a><a href="reference.html"><span>Next</span>Analyzer reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-you-start">Before you start</a></li><li><a href="#the-site-scan-settings">The site scan settings</a></li><li><a href="#run-a-site-scan">Run a site scan</a></li><li><a href="#the-live-console">The live console</a></li><li><a href="#read-the-results">Read the results</a></li><li><a href="#how-the-combined-score-is-worked-out">How the combined score is worked out</a></li><li><a href="#pages-the-scanner-cannot-audit">Pages the scanner cannot audit</a></li><li><a href="#after-the-scan">After the scan</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

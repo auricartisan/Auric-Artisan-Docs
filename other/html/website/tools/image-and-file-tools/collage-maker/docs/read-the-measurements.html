@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read the measurements — Auric Artisan Docs</title>
+<meta name="description" content="What the canvas covered, overlapping, outside the canvas and history cards measure, and how to use the Measure and Data tabs.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Collage Maker</a>
+<h2>Collage Maker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Collage Maker</a></li>
+<li><a href="arrange-in-a-grid.html">Arrange pictures in a grid</a></li>
+<li><a href="build-a-collage.html">Build and edit a collage</a></li>
+<li><a href="export-and-sessions.html">Export, copy and save sessions</a></li>
+<li><a href="read-the-measurements.html" aria-current="page">Read the measurements</a></li>
+<li><a href="reference.html">Collage Maker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Collage Maker</a></li>
+<li><a href="faq.html">Collage Maker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Collage Maker</a> &rsaquo; <a href="README.html">Collage Maker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Collage Maker</p>
+<h1>Read the measurements</h1>
+<p class="lede">What the canvas covered, overlapping, outside the canvas and history cards measure, and how to use the Measure and Data tabs.</p>
+<p>Under the canvas on the <strong>Studio</strong> tab, a row of cards headed <strong>What is on the canvas</strong> describes the collage. The figures update after every change.</p>
+<h2 id="the-five-cards">The five cards</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>What it reports</th><th>How it is found</th></tr></thead>
+<tbody>
+<tr><td><strong>canvas covered</strong></td><td>The share of the canvas that pictures paint</td><td>Measured from the pixels</td></tr>
+<tr><td><strong>overlapping</strong></td><td>The share of the canvas painted by two or more pictures</td><td>Measured from the pixels</td></tr>
+<tr><td><strong>outside the canvas</strong></td><td>The share of total picture area that lies beyond the edges and will not be exported</td><td>Computed exactly from positions</td></tr>
+<tr><td><strong>history</strong></td><td>How many steps you can undo, back to the start</td><td>Counted</td></tr>
+<tr><td><strong>the old readout said</strong></td><td>The sum of every picture&#39;s area divided by the canvas area</td><td>Computed, for comparison only</td></tr>
+</tbody></table></div>
+<p>The <strong>outside the canvas</strong> card changes colour as a warning when more than 0.1% of picture area is off the canvas.</p>
+<h3 id="canvas-covered">canvas covered</h3>
+<p>The tool draws the canvas twice, once without the pictures and once with them, exactly as the export would. Every pixel that differs between the two drawings is a pixel a picture has put something on. The figure is that count divided by the number of pixels on the canvas.</p>
+<p>Because it reads pixels, this figure notices transparency. A PNG cut-out with a transparent background covers only its visible part. A picture at 0% opacity covers nothing.</p>
+<h3 id="overlapping">overlapping</h3>
+<p>Each visible picture is drawn on its own, and the tool counts the pixels where two or more pictures have painted. The figure is that count divided by the pixels on the canvas.</p>
+<h3 id="outside-the-canvas">outside the canvas</h3>
+<p>The tool works out the four corners of each picture after its scale and rotation, clips that shape to the canvas rectangle, and compares what is left with the whole picture. The figure is the share of total picture area that falls outside. It needs no pixels, so it is exact. Hidden pictures are not counted.</p>
+<p>A picture hanging off the edge may be exactly what you intended, for example a bleed. The figure is shown on its own so you can decide.</p>
+<h3 id="the-old-readout-said">the old readout said</h3>
+<p>This card keeps the figure an earlier version of the tool reported: the sum of all picture areas divided by the canvas area. It does not look at where the pictures are, so stacked pictures are counted twice and pictures dragged off the canvas are still counted in full. It is shown beside the measured figures so you can see the difference; do not rely on it.</p>
+<h2 id="measurement-resolution">Measurement resolution</h2>
+<p>The measurement is made at the canvas size. For canvases larger than 1,440,000 pixels (for example <strong>9 : 16 — 1200 × 2133</strong>), it is made on a proportionally smaller copy to keep dragging smooth. The label above the canvas says which: <strong>measured at full size</strong>, or <strong>measured at</strong> followed by the size used. At the reduced size the figures agree with a full-size measurement to well under a tenth of a percentage point.</p>
+<h2 id="the-measure-tab">The Measure tab</h2>
+<p>The <strong>Measure</strong> tab explains the method with worked examples that are laid out and measured live by the same code the <strong>Studio</strong> uses.</p>
+<ul>
+<li><strong>One number for three different collages</strong> draws four pictures three ways, <strong>Stacked</strong>, <strong>Spread out</strong> and <strong>Dragged off the canvas</strong>, and shows what the old sum-of-areas figure says (<strong>it said</strong>) beside the measured coverage (<strong>really</strong>) for each. The sum gives the same answer for all three; only the spread-out arrangement is actually covered to that extent.</li>
+<li>Further panels describe how the undo history works, what is and is not written into an export, and two features that were withdrawn because they did not measure the collage.</li>
+<li>The left-hand panel lists <strong>What is measured</strong> (covered and overlapping by pixels, off-canvas by geometry, arrangements by laying them out) and has two buttons, <strong>Bootstrap CI</strong> and <strong>Batch coverage</strong>, that scroll to the notes on the withdrawn features.</li>
+</ul>
+<h2 id="the-data-tab">The Data tab</h2>
+<p>The <strong>Data</strong> tab lists every figure on the page and where it comes from. Each entry has a status:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Measured</strong></td><td>Read from the canvas the export will use</td></tr>
+<tr><td><strong>Computed</strong></td><td>Worked out from the layout by arithmetic the entry states</td></tr>
+<tr><td><strong>This tool&#39;s choice</strong></td><td>A default this tool picked, where someone else might reasonably choose differently</td></tr>
+<tr><td><strong>Absent</strong></td><td>Named on the page but not held, with what it would take to hold it</td></tr>
+</tbody></table></div>
+<p>Use the <strong>Status</strong> buttons on the left to filter the list; each shows how many entries it holds. Select an entry to expand its explanation. The twelve entries cover canvas coverage, overlap, the off-canvas area, the arrangement comparison, the transform arithmetic, the grid cell size, the fitted scale, the export file size, the choice not to enlarge past 100%, the 10 px snap step, the 0.92 JPEG quality default, and physical print size, which the tool does not hold.</p>
+<p>Below the list, <strong>Two entries that are gone rather than reclassified</strong> names the two withdrawn features.</p>
+<h2 id="the-reference-tab">The Reference tab</h2>
+<p>The <strong>Reference</strong> tab lists the sources behind the tool: the HTML Canvas 2D standard, PNG (ISO/IEC 15948), JPEG (ISO/IEC 10918-1), affine transforms in the plane, and WCAG 2.2 target size and keyboard operation, each marked <strong>Runs</strong>, and one withdrawn citation. Under <strong>The arithmetic</strong>, a table gives the formulas for a picture&#39;s corners, the grid cell size, the fitted scale, and each of the three measurements.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-and-sessions.html"><span>Previous</span>Export, copy and save sessions</a><a href="reference.html"><span>Next</span>Collage Maker reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-five-cards">The five cards</a></li><li><a href="#measurement-resolution">Measurement resolution</a></li><li><a href="#the-measure-tab">The Measure tab</a></li><li><a href="#the-data-tab">The Data tab</a></li><li><a href="#the-reference-tab">The Reference tab</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What Dye in Solution takes from published sources, what is its own, how precise it is, what it does not hold, and what it cannot tell you about safety.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Industrial Dye Chemistry (Dye in Solution)</a>
+<h2>Dye in Solution background</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Dye in Solution shortcuts</a></li>
+<li><a href="glossary.html">Dye in Solution glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and articles</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Industrial Dye Chemistry (Dye in Solution)</a> &rsaquo; <a href="README.html">Dye in Solution background</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Industrial Dye Chemistry</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What Dye in Solution takes from published sources, what is its own, how precise it is, what it does not hold, and what it cannot tell you about safety.</p>
+<h2 id="what-the-tool-is">What the tool is</h2>
+<p>A spectral model of a dye bath for learning and exploration. The physics and colorimetry follow published standards; the dyes are the tool&#39;s own inventions unless you load measured spectra. It is not a formulation system, a spectrophotometer, a fastness tester or a safety tool.</p>
+<h2 id="the-data-register-in-plain-terms">The data register, in plain terms</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entry</th><th>Status</th><th>What it means for you</th></tr></thead>
+<tbody>
+<tr><td>CIE 1931 2° standard observer</td><td>Verbatim</td><td>Colours use the published 5 nm observer table, with no interpolated samples</td></tr>
+<tr><td>CIE D-series eigenvector basis</td><td>Verbatim</td><td>D65 and D50 are reconstructed from the published daylight basis and land within 0.0003 of their published chromaticities</td></tr>
+<tr><td>sRGB primaries and transfer curve</td><td>Verbatim</td><td>The swatch and gamut flag use the published sRGB definition</td></tr>
+<tr><td>CIEDE2000 colour difference</td><td>Verbatim</td><td>Every ΔE₀₀ uses the full CIE 142-2001 formula</td></tr>
+<tr><td>The Beer–Lambert law</td><td>Verbatim</td><td>Absorbance is ε × c × l, additive over dyes and forms, flagged above A = 1</td></tr>
+<tr><td>Henderson–Hasselbalch</td><td>Verbatim</td><td>The base fraction follows the standard relation</td></tr>
+<tr><td>The two-species absorbance</td><td>Computed</td><td>Each dye is two forms weighted by pH, which is what produces an isosbestic point</td></tr>
+<tr><td>The isosbestic point</td><td>Computed</td><td>Located precisely between samples, with a strength</td></tr>
+<tr><td>Dominant wavelength and excitation purity</td><td>Computed</td><td>A proper chromaticity construction from the light&#39;s white point, with purples flagged</td></tr>
+<tr><td>Colour inconstancy index</td><td>Computed</td><td>ΔE₀₀ for one bath between two lights; not a metamerism index</td></tr>
+<tr><td>Special metamerism index</td><td>Computed</td><td>Described in the register; no control uses it in the current interface</td></tr>
+<tr><td>The absorption band shape</td><td>Stand-in</td><td>Preset bands are Gaussians; real bands are asymmetric; loading a measured spectrum makes this Verbatim</td></tr>
+<tr><td>The six dye presets</td><td>Stand-in</td><td>Plausible constants for classes of dye, never a named substance</td></tr>
+<tr><td>The default sweep tolerances</td><td>Stand-in</td><td>±2% concentration, ±0.1 mm path, ±5% ε are the tool&#39;s guess; replace them with yours</td></tr>
+<tr><td>Kubelka–Munk on an opaque substrate</td><td>Stand-in</td><td>Described in the register; no cloth mode is offered in the current interface</td></tr>
+<tr><td>The CIE fluorescent illuminants</td><td>Absent</td><td>F11 and the other F-series lights are not held and not imitated</td></tr>
+<tr><td>Colourfastness and content testing</td><td>Absent</td><td>ISO 105-B02, ISO 105-C06, AATCC TM 61 and ISO 14184-1 are physical laboratory tests</td></tr>
+<tr><td>GHS classification and PPE compliance</td><td>Absent</td><td>The page holds no hazard data; see Safety below</td></tr>
+</tbody></table></div>
+<h2 id="precision">Precision</h2>
+<ul>
+<li>The spectrum has 81 samples, 380–780 nm at 5 nm. Features narrower than about 10 nm are not resolved, and light below 380 nm or above 780 nm is ignored.</li>
+<li>Beer–Lambert is flagged, not corrected: above A = 1 the numbers are the law&#39;s, and a real solution would absorb less.</li>
+<li>Gaussian bands put the peak position and height about right and the wings wrong. Mixtures, whose colour depends on where bands overlap, are affected most.</li>
+<li>The swatch is limited to what sRGB can show; <strong>Inside sRGB</strong> says when it is clipped. L*a*b* values are not clipped.</li>
+<li>Your own screen is assumed to be sRGB.</li>
+</ul>
+<h2 id="what-the-tool-does-not-do">What the tool does not do</h2>
+<ul>
+<li>It models dye in solution, not on cloth, paper or other substrates.</li>
+<li>It does not compare two baths for metamerism in the current interface.</li>
+<li>It offers no fluorescent illuminants.</li>
+<li>It performs no fastness, wash or formaldehyde testing.</li>
+<li>It does not account for temperature, ionic strength, solvent, dye aggregation or fluorescence.</li>
+</ul>
+<h2 id="safety">Safety</h2>
+<p>This page models what a dye does to light. It holds no toxicological data, and a λmax and a molar absorptivity say nothing about toxicity. GHS hazard classification belongs to each substance, from its own data, and is published on the supplier&#39;s safety data sheet (section 2 for the classification, section 8 for exposure controls and personal protective equipment). The page&#39;s <strong>Safety</strong> tab also lists what always applies: gloves, eye protection and a lab coat for any dye work; reading the SDS before opening a container; and disposing of dye liquor through the waste stream your institution specifies. An earlier version of the page assigned hazard levels by chemical class and blocked exports until boxes were ticked; that gate was withdrawn.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Dye in Solution glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-tool-is">What the tool is</a></li><li><a href="#the-data-register-in-plain-terms">The data register, in plain terms</a></li><li><a href="#precision">Precision</a></li><li><a href="#what-the-tool-does-not-do">What the tool does not do</a></li><li><a href="#safety">Safety</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

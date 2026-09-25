@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use the Workbench — Auric Artisan Docs</title>
+<meta name="description" content="Take one condition apart in the Workbench: choose a specimen, set the base colour, severity and model, and read what collapses.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Vision Lab</a>
+<h2>Vision Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Vision Lab</a></li>
+<li><a href="audit-a-palette.html">Audit a palette</a></li>
+<li><a href="browse-the-catalogue-and-panels.html">Browse the Catalogue and panels</a></li>
+<li><a href="compare-conditions.html">Compare conditions</a></li>
+<li><a href="explore-analytics.html">Explore Analytics</a></li>
+<li><a href="links-saving-and-exports.html">Links, saving and exports</a></li>
+<li><a href="the-78-conditions.html">The 78 conditions</a></li>
+<li><a href="use-the-workbench.html" aria-current="page">Use the Workbench</a></li>
+<li><a href="reference.html">Vision Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Vision Lab</a></li>
+<li><a href="faq.html">Vision Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Vision Lab</a> &rsaquo; <a href="README.html">Vision Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Use the Workbench</h1>
+<p class="lede">Take one condition apart in the Workbench: choose a specimen, set the base colour, severity and model, and read what collapses.</p>
+<p>The Workbench shows one condition at a time, in three columns: the source on the left, the stage in the middle, and the list of conditions on the right. It opens with <strong>Deuteranopia</strong> selected, or with the condition named in the page address.</p>
+<h2 id="the-source-column">The source column</h2>
+<h3 id="specimen">Specimen</h3>
+<p>What the stage shows:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Specimen</th><th>What you see</th></tr></thead>
+<tbody>
+<tr><td><strong>Interface</strong></td><td>A small interface mock-up: a header with a <strong>Get started</strong> button, and a &quot;Palette health&quot; card</td></tr>
+<tr><td><strong>Palette</strong></td><td>The ten reference swatches as a strip</td></tr>
+<tr><td><strong>Image</strong></td><td>Your own image: drop it on the stage, or select <strong>Choose an image</strong></td></tr>
+</tbody></table></div>
+<p>With the <strong>Image</strong> specimen, the stage says &quot;Drop an image on the stage&quot; and &quot;Whatever you drop stays on your machine — the pipeline runs in this tab and nothing is uploaded.&quot; To open a condition&#39;s floating panel, see <a href="browse-the-catalogue-and-panels.html">Browse the Catalogue and panels</a>.</p>
+<h3 id="base-colour">Base colour</h3>
+<p>Type a hex colour into the field (up to seven characters, such as <code>#E53E3E</code>). Next to it, &quot;under condition →&quot; shows the colour it becomes. Under the field, ten swatches (the reference strip) each have a <strong>Use</strong> button that makes that swatch the base colour.</p>
+<h3 id="severity">Severity</h3>
+<p>A slider from 0 to 100%, with marks for <strong>Normal</strong>, the condition&#39;s clinical default (for example <strong>Clinical default 100%</strong>) and <strong>Full</strong>. The figure above it says how strongly the condition is expressed, for example &quot;100% · full expression&quot;.</p>
+<p>Selecting a condition resets the slider to that condition&#39;s clinical default. As the page puts it: &quot;Severity is a dial on the model, not a milder diagnosis.&quot;</p>
+<h3 id="model">Model</h3>
+<p>For the colour-vision conditions, choose how the simulation is calculated: <strong>Brettel</strong>, <strong>Viénot</strong> or <strong>Machado</strong>. The note beside the heading describes the method, for example &quot;projection in LMS&quot; (LMS being the three cone types). See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a> for how the models differ.</p>
+<h3 id="stage">Stage</h3>
+<ul>
+<li><strong>Split</strong> shows the reference and the simulation side by side.</li>
+<li><strong>Simulated only</strong> shows just the simulation.</li>
+</ul>
+<h2 id="the-stage">The stage</h2>
+<p>The heading names what you are looking at, for example &quot;COLOUR TRANSFORM · Deuteranopia · 100%&quot;. Under the stage are two readouts.</p>
+<h3 id="what-collapses">What collapses</h3>
+<p>Pairs of reference colours that were comfortably apart (CIEDE2000 of 12 or more) and land within 8 under this condition, ranked by how far they fell. The heading says how many, for example &quot;2 of 45 reference pairs fall under ΔE2000 8&quot;, and each pair shows its distance before and after, such as &quot;24 → 1.5&quot;.</p>
+<p>The ten reference swatches make 45 pairs. A pair that collapses is two colours that a person with this condition can no longer tell apart.</p>
+<h3 id="measured-base-colour">Measured · base colour</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Measure</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>ΔE76</strong></td><td>How far the base colour moved, as a simple distance in Lab colour space</td></tr>
+<tr><td><strong>ΔE2000</strong></td><td>How far it moved, with the CIEDE2000 formula, which follows perceived difference more closely</td></tr>
+<tr><td><strong>pairs lost / 45</strong></td><td>How many reference pairs collapsed</td></tr>
+<tr><td><strong>button label / fill</strong></td><td>The contrast ratio of the mock-up&#39;s button label against its fill, under the condition</td></tr>
+</tbody></table></div>
+<p>ΔE (delta E) is a measure of colour difference: around 1 is barely noticeable, and larger numbers mean more obvious differences.</p>
+<h2 id="the-conditions-column">The conditions column</h2>
+<ul>
+<li><strong>Search 78 conditions</strong> filters the list by name.</li>
+<li>Filter buttons: <strong>All 78</strong>, <strong>Colour</strong> (the 17 per-colour transforms), <strong>Field</strong> (the 61 field effects) and <strong>Basic only</strong>.</li>
+<li>The selected condition is described at the top: its severity score in a ring, its name and category, a one-line description (for example &quot;Green-cone absent. A per-colour transform: every pixel has an answer.&quot;), and chips for its kind, its prevalence and its level.</li>
+<li>Below, every condition is listed by category, with its severity score. Field conditions are marked <strong>FIELD</strong>.</li>
+</ul>
+<p>Select a condition to put it on the stage.</p>
+<h2 id="the-action-rail">The action rail</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Open the full panel</strong></td><td>Opens this condition as a floating panel with every advanced control</td></tr>
+<tr><td><strong>Compare this</strong></td><td>Sends the condition to the <strong>Compare</strong> sheet</td></tr>
+<tr><td><strong>Copy link to this view</strong></td><td>Copies a link that reopens the Workbench on this condition, severity and model</td></tr>
+</tbody></table></div>
+<p>The rail also notes &quot;78 conditions · 11 categories&quot; and &quot;Brettel 1997 · Viénot 1999 · Machado 2009, in linear light&quot;.</p>
+<h2 id="what-is-remembered">What is remembered</h2>
+<p>The Workbench remembers your condition, severity, model, specimen and base colour in this browser, and a link with <code>?vw=</code> restores a condition directly. See <a href="links-saving-and-exports.html">Links, saving and exports</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="the-78-conditions.html"><span>Previous</span>The 78 conditions</a><a href="reference.html"><span>Next</span>Vision Lab reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-source-column">The source column</a></li><li><a href="#the-stage">The stage</a></li><li><a href="#the-conditions-column">The conditions column</a></li><li><a href="#the-action-rail">The action rail</a></li><li><a href="#what-is-remembered">What is remembered</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

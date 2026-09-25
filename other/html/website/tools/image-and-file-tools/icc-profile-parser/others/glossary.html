@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICC Profile Parser glossary — Auric Artisan Docs</title>
+<meta name="description" content="Definitions of the terms used in the ICC Profile Parser.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ICC Profile Parser</a>
+<h2>ICC Profile Parser background material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="glossary.html" aria-current="page">ICC Profile Parser glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">ICC Profile Parser</a> &rsaquo; <a href="README.html">ICC Profile Parser background material</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › ICC Profile Parser</p>
+<h1>ICC Profile Parser glossary</h1>
+<p class="lede">Definitions of the terms used in the ICC Profile Parser.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>A2B / B2A table</td><td>Tables converting device values to the PCS (A2B) or back (B2A); 0, 1, 2 are perceptual, colorimetric, saturation</td></tr>
+<tr><td>Area ratio</td><td>The area of one gamut triangle divided by another&#39;s; can exceed 100%</td></tr>
+<tr><td>Bradford transform</td><td>The standard chromatic adaptation method, from Lam (1985), carried by the <code>chad</code> tag</td></tr>
+<tr><td><code>chad</code> tag</td><td>A 3×3 matrix recording how the colorants were adapted to D50</td></tr>
+<tr><td>Chromatic adaptation</td><td>Converting colour values from one white point to another</td></tr>
+<tr><td>Chromaticity diagram</td><td>A plot of colour without brightness; the tool uses CIE 1931 xy for drawing</td></tr>
+<tr><td>CIE 1976 u′v′</td><td>A chromaticity diagram in which equal distances look more nearly equal than in xy</td></tr>
+<tr><td>CIELAB</td><td>A colour space with lightness L* and two colour axes, a* (green to red) and b* (blue to yellow)</td></tr>
+<tr><td>Clause</td><td>A numbered section of ICC.1:2010 that a conformance rule enforces</td></tr>
+<tr><td>CLUT</td><td>Colour lookup table: a grid of output values sampled at points across the input</td></tr>
+<tr><td>CMM</td><td>Colour management module, the software that performs conversions; named in the header</td></tr>
+<tr><td>Colorant</td><td>The stored XYZ value of a primary, already adapted to D50</td></tr>
+<tr><td>Conformant</td><td>Breaking no rule graded as an error</td></tr>
+<tr><td>Coverage</td><td>The share of a reference gamut that lies inside the profile&#39;s gamut; at most 100%</td></tr>
+<tr><td>D50 / D65</td><td>Standard daylight whites at about 5000 K and 6500 K; D50 is the ICC connection-space white</td></tr>
+<tr><td>Data colour space</td><td>The colour space of the device values, such as RGB or CMYK</td></tr>
+<tr><td>Device class</td><td>What the profile describes: Input, Display, Output, DeviceLink, ColorSpace, Abstract or NamedColor</td></tr>
+<tr><td>Finding</td><td>A rule that did not hold for the loaded profile, with severity, clause and detail</td></tr>
+<tr><td>Gamut</td><td>The range of colours a device or colour space can reproduce</td></tr>
+<tr><td>Header</td><td>The first 128 bytes of a profile, describing its kind</td></tr>
+<tr><td>House preference</td><td>A rule the tool applies that no clause requires</td></tr>
+<tr><td>ICC profile</td><td>A file, defined by the International Color Consortium, describing how a device or space reproduces colour</td></tr>
+<tr><td>Matrix/TRC</td><td>A profile built from three colorants and three tone response curves</td></tr>
+<tr><td>Media white point</td><td>The white of the display or paper, in the <code>wtpt</code> tag</td></tr>
+<tr><td>MD5</td><td>A checksum algorithm (RFC 1321) used for the profile ID</td></tr>
+<tr><td>PCS</td><td>Profile connection space: CIE XYZ or CIELAB at D50, through which profiles are joined</td></tr>
+<tr><td>Primaries</td><td>The red, green and blue chromaticities that define an RGB colour space</td></tr>
+<tr><td>Profile ID</td><td>An MD5 checksum of the profile, stored in bytes 84 to 99 of the header</td></tr>
+<tr><td>Rendering intent</td><td>The strategy for out-of-gamut colours: perceptual, media-relative, saturation or absolute</td></tr>
+<tr><td>Spectral locus</td><td>The horseshoe outline of pure spectral colours on a chromaticity diagram</td></tr>
+<tr><td>Tag</td><td>A four-character signature pointing to a block of data in the profile</td></tr>
+<tr><td>Tag type</td><td>The four-character code at the start of a tag&#39;s data that says how to read it</td></tr>
+<tr><td>TRC</td><td>Tone response curve: how a channel&#39;s values map to linear light</td></tr>
+<tr><td>Transfer function</td><td>The published curve relating encoded values to light for a colour space</td></tr>
+<tr><td>XYZ</td><td>The CIE 1931 tristimulus values, the basis of colorimetry</td></tr>
+<tr><td>XYZ scaling</td><td>A simple adaptation that scales X, Y and Z directly; used by some older profiles</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>ICC Profile Parser background material</a><a href="limits-and-accuracy.html"><span>Next</span>Limits and accuracy</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

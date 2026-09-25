@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scale — Auric Artisan Docs</title>
+<meta name="description" content="Generate Tailwind and Material colour scales, tints, shades and tones from one colour, inspect each step, and export the scale.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Colour tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="convert.html">Convert</a></li>
+<li><a href="gradient.html">Gradient</a></li>
+<li><a href="harmony.html">Harmony</a></li>
+<li><a href="image.html">Image</a></li>
+<li><a href="mix.html">Mix</a></li>
+<li><a href="page-palette.html">Page palette</a></li>
+<li><a href="picker.html">Picker</a></li>
+<li><a href="scale.html" aria-current="page">Scale</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Colour tools</a></nav>
+<p class="kicker">Browser extension › Colour</p>
+<h1>Scale</h1>
+<p class="lede">Generate Tailwind and Material colour scales, tints, shades and tones from one colour, inspect each step, and export the scale.</p>
+<p>Scale (the Scale generator) turns one colour into a full set of steps you can use as a design system&#39;s colour scale. Open it from the Picker&#39;s Scale pane (<strong>Open the scale generator →</strong>) or search for &quot;Scale&quot;.</p>
+<h2 id="build-a-scale">Build a scale</h2>
+<ol>
+<li><p>Set the base colour with its swatch or type a HEX value.</p>
+</li>
+<li><p>Choose the scale type:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Type</th><th>Steps</th><th>Built in</th></tr></thead>
+<tbody>
+<tr><td><strong>Tailwind 50–950</strong> (the default)</td><td>11 steps, labelled 50 to 950</td><td>OKLCH, fitted to the sRGB gamut</td></tr>
+<tr><td><strong>Material 50–900</strong></td><td>10 steps, labelled 50 to 900</td><td>OKLCH, fitted to the sRGB gamut</td></tr>
+<tr><td><strong>Tints</strong></td><td>11 steps toward white</td><td>HSL</td></tr>
+<tr><td><strong>Shades</strong></td><td>11 steps toward black</td><td>HSL</td></tr>
+<tr><td><strong>Tones</strong></td><td>11 steps of saturation at the same lightness</td><td>HSL</td></tr>
+</tbody></table></div>
+<p>A chip beside the name shows <strong>OKLCH · perceptual</strong> or <strong>HSL</strong>. The Tailwind and Material scales use even steps of perceived lightness with the hue held constant, so neighbouring steps look evenly spaced.</p>
+</li>
+<li><p>Type a <strong>Scale name</strong> (up to 32 characters; <code>brand</code> by default). Every export uses it.</p>
+</li>
+</ol>
+<p>Each step shows its label in black or white, whichever is more readable on it. The step nearest your base colour is marked, and its tooltip says &quot;your color&quot;.</p>
+<h2 id="look-at-one-step">Look at one step</h2>
+<p>Choose a step for its detail card: HEX, RGB, HSL and <code>oklch()</code> values with copy buttons, and:</p>
+<ul>
+<li><strong>Make base</strong>: rebuild the scale around this step;</li>
+<li><strong>Pick</strong>, <strong>Contrast</strong> and <strong>Harmony</strong>: open the step in that tool.</li>
+</ul>
+<h2 id="export">Export</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Button</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy</strong></td><td><strong>CSS</strong></td><td>CSS variables named after the scale, copied</td></tr>
+<tr><td></td><td><strong>SCSS</strong></td><td>SCSS variables, copied</td></tr>
+<tr><td></td><td><strong>oklch()</strong></td><td>CSS variables with <code>oklch()</code> values, copied</td></tr>
+<tr><td></td><td><strong>JSON</strong></td><td>JSON, copied</td></tr>
+<tr><td><strong>Framework</strong></td><td><strong>Tailwind</strong></td><td>A Tailwind colour object, copied</td></tr>
+<tr><td></td><td><strong>@theme</strong></td><td>A Tailwind v4 <code>@theme</code> block, copied</td></tr>
+<tr><td></td><td><strong>Tokens</strong></td><td>W3C design tokens, copied</td></tr>
+<tr><td><strong>Export</strong></td><td><strong>SVG</strong></td><td>An SVG of the scale with its labels, copied</td></tr>
+<tr><td></td><td><strong>PNG</strong></td><td>A PNG of the scale with its labels</td></tr>
+<tr><td></td><td><strong>Save</strong></td><td>Saves the scale&#39;s CSS to Code › Snippets</td></tr>
+</tbody></table></div>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="picker.html">Picker</a></li>
+<li><a href="../code/snippets.html">Snippets</a></li>
+<li><a href="../code/code-export.html">Code export formats</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="picker.html"><span>Previous</span>Picker</a><a href="../install/README.html"><span>Next</span>Install the extension</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#build-a-scale">Build a scale</a></li><li><a href="#look-at-one-step">Look at one step</a></li><li><a href="#export">Export</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

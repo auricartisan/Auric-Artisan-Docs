@@ -1,0 +1,17 @@
+---
+title: Shade Library — Limits and accuracy
+description: What the Shade Library's figures measure, and what they do not.
+product: Website › Library › Colour libraries › Shade Library
+updated: 2026-09-25
+---
+
+# Limits and accuracy
+
+- **Contrast** uses the WCAG 2 formula. "Auto AA" tests each token against near-black or white, whichever the page picks from the token's luminance (the split is at 0.5). The other text colour can sometimes do slightly better; check **WCAG vs white** and **WCAG vs black** on the token cards.
+- **Averages** (lightness and chroma) are across all tokens, so a scale with a very light start and a very dark end can average **Mid**.
+- **Base hue** is the hue of the base colour only. Scales from the **Temperature Shift** and **Duotone Shift** methods deliberately change hue along the ramp; their **Hue span** shows how much.
+- **Score** is recorded with each scale when it was generated. It is a ranking aid, not a judgement of fitness for your project.
+- **Evenness**: the 8.2% figure is reported by the page; there is no per-scale evenness figure or filter in the current page.
+- The three-word colour names on **Inspect** come from fixed OKLCH bands and are descriptions, not standard names.
+- Swatches look different on different screens; the values do not.
+- The library is not an accessibility audit of your design. Where a token sits (text, border, background) and at what size still decides whether it passes.

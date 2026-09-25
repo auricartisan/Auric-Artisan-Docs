@@ -1,0 +1,45 @@
+==============================================================================
+RELEASE NOTES
+==============================================================================
+User-facing history of LUT Lab.
+Area: Website › Tools › Image and file tools › LUT Lab   Updated: 2026-09-25
+
+3 JUNE 2026 — THE MEASURED WORKBENCH
+====================================
+
+The earlier engine was replaced by the current workbench, with six tabs: Lab,
+Method, Looks, Data, Export and Reference. The site's earlier user guide
+carries a notice that it describes the engine replaced on this date.
+
+What changed for you:
+
+  - Exported .cube files use the standard sample order. Files written by the
+    earlier version had their red and blue axes swapped, so they looked right
+    when read back by the same tool and wrong everywhere else. Re-export any
+    `.cube` you made with the earlier version.
+  - The overlay shows what the transform crushed. The earlier out-of-gamut
+    overlay flagged pure colours, black and white even when nothing had
+    changed them. The new overlay marks only pixels the transform drove to
+    white or black, in two colours.
+  - "Cine Log to Rec.709" is now "Log-ish lift". The arithmetic is unchanged;
+    the old name claimed a log encoding and a conversion that were never
+    applied.
+  - The Reinhard tone-map runs in linear light, with an exposure control. Mid
+    grey now comes out where the operator puts it.
+  - Two features were withdrawn: the ACEScct to ACEScg look, which turned 114
+    of 256 input codes pure white, and a 32-bit float export that could not
+    produce anything but 8-bit values.
+  - New readouts: CIEDE2000 mean, 95th percentile and largest difference;
+    clipped share; and a hue circle in CIELAB with hue, lightness and chroma
+    shifts.
+  - Your own picture can be the test scene.
+  - The export header states the sample order and the 8-bit precision, and the
+    Export tab says whether a size's grid lands on 8-bit values.
+  - New exports: the hue sweep as CSV and a full report as JSON, and a link
+    that restores your settings.
+
+25 MAY 2026 — EARLIER VERSION
+=============================
+
+The LUT Lab user guide was published in the site's documentation library. It
+describes the earlier engine and is now marked as superseded.

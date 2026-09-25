@@ -1,0 +1,37 @@
+---
+title: Material Lighting (Material Under Light) — Release notes
+description: User-facing history of the Material Under Light tool.
+product: Website › Tools › Perception and spectral › Material Lighting
+updated: 2026-09-25
+---
+
+# Release notes
+
+The site-wide history is at https://auricartisan.com/library/changelog/. The entries below cover what changed for users of this tool.
+
+## September 2026 — rebuilt as Material Under Light
+
+The page was rebuilt with six tabs (**Lab**, **Method**, **Metrics**, **Data**, **Export**, **Reference**).
+
+Changed:
+
+- The D-series daylights (D50, D55, D65, D75 and chosen daylights) are now true CIE daylights. Earlier they were blackbodies at the same temperature, which shifted colours slightly (for example about 1.2 ΔE₀₀ for skin under D65).
+- The twenty material curves are unchanged in shape but now labelled synthesised everywhere, including exports.
+- The earlier "bootstrap" is now a sensitivity sweep with a stated, correlated perturbation you control.
+
+Added:
+
+- **Measured temperature** with its error band, **Reference for it**, and the comparison of the material under its source and under the CIE reference light.
+- The two-white-point treatment: an un-adapted swatch, and L\*a\*b\* against the light's own white.
+- Loading a measured reflectance file.
+- The **Data** register and header lines stating the method in every export.
+
+Removed:
+
+- The CIE colour rendering index and the TM-30 Rf and Rg figures. The **Metrics** tab shows why and what they would need.
+
+What stayed the same: the spectral pipeline, the observer, sRGB, CIEDE2000, JzAzBz, all five lobes and every control.
+
+## Earlier
+
+- A Material & Lighting Lab user guide for the previous version was published in the site documentation in April 2026; it is now marked as superseded.

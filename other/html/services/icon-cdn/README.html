@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Icon CDN — Auric Artisan Docs</title>
+<meta name="description" content="What the Auric Artisan Icon CDN at icons.auricartisan.com serves, who it is for, and how to put an icon on your page in a few steps.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Services</a>
+<h2>Icon CDN</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Icon CDN documentation &rsaquo;</a></li>
+<li><a href="others/README.html">Other material &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">Services</a> &rsaquo; <a href="README.html">Icon CDN</a></nav>
+<p class="kicker">Services › Icon CDN</p>
+<h1>Icon CDN</h1>
+<p class="lede">What the Auric Artisan Icon CDN at icons.auricartisan.com serves, who it is for, and how to put an icon on your page in a few steps.</p>
+<p>The Auric Artisan Icon CDN, at <a href="https://icons.auricartisan.com" rel="noopener">https://icons.auricartisan.com</a>, serves 12,896 icons from seven open-source sets, in 32,803 variants: Lucide, Phosphor, Tabler, Remix, Heroicons, Feather and Material. A small loader script turns placeholders such as <code>&lt;i data-icon=&quot;lucide:house&quot;&gt;</code> into inline SVG you can colour and size with CSS, and a JavaScript API returns any icon&#39;s markup or searches the catalogue. The SVG files are also served directly, for use in <code>&lt;img&gt;</code> tags or your own build.</p>
+<p>Every set keeps its own open-source licence (MIT, ISC, Apache 2.0 or the Remix Icon License), all of which allow commercial use. The icons are drawn with <code>currentColor</code>, so they take the colour of the surrounding text unless you set one.</p>
+<p>You browse, recolour and resize icons, copy their code, and export selections as a ZIP or an SVG sprite in the Icon Library at <a href="https://auricartisan.com/tool/icon/" rel="noopener">https://auricartisan.com/tool/icon/</a>. That page is documented with the website tools; these pages cover the CDN itself: the collections, the loader, embedding and licences.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li><strong>Web developers</strong> who want icons in plain HTML without a build step or an npm package.</li>
+<li><strong>Designers and prototypers</strong> who want to try icons from several sets under one name scheme.</li>
+<li><strong>React developers</strong> who want a quick JSX component for a single icon.</li>
+<li><strong>Teams that self-host</strong> and want to download SVGs or sprites.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>What</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>CDN host</td><td><a href="https://icons.auricartisan.com" rel="noopener">https://icons.auricartisan.com</a></td></tr>
+<tr><td>Loader script</td><td><a href="https://icons.auricartisan.com/icon-cdn.js" rel="noopener">https://icons.auricartisan.com/icon-cdn.js</a></td></tr>
+<tr><td>SVG files</td><td><code>https://icons.auricartisan.com/icon/&lt;set&gt;/…</code></td></tr>
+<tr><td>Browse and copy code</td><td><a href="https://auricartisan.com/tool/icon/" rel="noopener">https://auricartisan.com/tool/icon/</a></td></tr>
+<tr><td>Licence reference</td><td><a href="https://icons.auricartisan.com/LICENSE.md" rel="noopener">https://icons.auricartisan.com/LICENSE.md</a></td></tr>
+</tbody></table></div>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li><p>Add the loader to your page:</p>
+<pre class="code" data-lang="html"><code>&lt;script src=&quot;https://icons.auricartisan.com/icon-cdn.js&quot;&gt;&lt;/script&gt;</code></pre>
+</li>
+<li><p>Place an icon where you want it:</p>
+<pre class="code" data-lang="html"><code>&lt;i data-icon=&quot;lucide:house&quot;&gt;&lt;/i&gt;</code></pre>
+</li>
+<li><p>Load the page. The placeholder is replaced by the inline SVG.</p>
+</li>
+<li><p>Size and colour it with attributes, or with CSS on the element:</p>
+<pre class="code" data-lang="html"><code>&lt;i data-icon=&quot;phosphor:heart&quot; data-style=&quot;fill&quot; data-size=&quot;32&quot; data-color=&quot;#e11&quot;&gt;&lt;/i&gt;</code></pre>
+</li>
+<li><p>To find icon names, search the Icon Library at <a href="https://auricartisan.com/tool/icon/" rel="noopener">https://auricartisan.com/tool/icon/</a>, open an icon and use <strong>Copy CDN tag</strong>.</p>
+</li>
+<li><p>Keep the set&#39;s licence notice where its licence asks for it; see <a href="others/licences.html">Licences</a>.</p>
+</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Turn <code>&lt;i data-icon=&quot;set:name&quot;&gt;</code> placeholders into inline, themeable SVG.</li>
+<li>Choose a style (such as Phosphor&#39;s thin to duotone weights, or Tabler&#39;s outline and filled), a size, a colour and a stroke width.</li>
+<li>Get an icon&#39;s markup from JavaScript with <code>AuricIcons.svg()</code>, or search the catalogue with <code>AuricIcons.search()</code>.</li>
+<li>Link SVG files directly, or use the Material and Remix webfonts.</li>
+<li>Copy SVG, JSX, a data-URI <code>&lt;img&gt;</code> or a CDN tag from the Icon Library, and export selections as a ZIP or a <code>&lt;symbol&gt;</code> sprite.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a><ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/collections.html">Collections</a></li>
+<li><a href="docs/embed-an-icon.html">Embed an icon</a></li>
+<li><a href="docs/use-the-loader.html">Use the loader</a></li>
+<li><a href="docs/style-size-and-colour.html">Style, size and colour</a></li>
+<li><a href="docs/export-and-self-host.html">Export and self-host</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a><ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/licences.html">Licences</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../font-cdn/others/related.html"><span>Previous</span>Related</a><a href="docs/README.html"><span>Next</span>Icon CDN documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

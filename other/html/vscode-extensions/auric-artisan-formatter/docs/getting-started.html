@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Auric Artisan Formatter — Auric Artisan Docs</title>
+<meta name="description" content="Install Auric Artisan Formatter, make it your formatter, learn where its controls are, and preview a first format.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Getting started with Auric Artisan Formatter</h1>
+<p class="lede">Install Auric Artisan Formatter, make it your formatter, learn where its controls are, and preview a first format.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li><p>Check that VS Code is version 1.74 or newer (<strong>Help</strong> › <strong>About</strong>).</p>
+</li>
+<li><p>In the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>), search for <code>@id:auric-artisan.auric-artisan-formatter</code> and select <strong>Install</strong>. Or run:</p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-formatter</code></pre>
+</li>
+</ol>
+<p>The extension starts when VS Code opens and offers formatting for every language it supports.</p>
+<h2 id="make-it-your-formatter">Make it your formatter</h2>
+<p>VS Code uses one formatter per language. If you have several installed, it asks which to use every time. Tell it to use Auric:</p>
+<ul>
+<li><p>Run <strong>Auric Formatter: Toggle Format on Save</strong>. It sets <code>editor.defaultFormatter</code> to <code>auric-artisan.auric-artisan-formatter</code> and turns on <code>editor.formatOnSave</code>, in the workspace settings when a folder is open (otherwise in user settings). Run it again to turn format on save off.</p>
+</li>
+<li><p>Or add the settings yourself:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;editor.defaultFormatter&quot;: &quot;auric-artisan.auric-artisan-formatter&quot;,
+  &quot;editor.formatOnSave&quot;: true
+}</code></pre>
+</li>
+</ul>
+<p>To use it only for some languages, scope the settings:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;[typescript]&quot;: {
+    &quot;editor.defaultFormatter&quot;: &quot;auric-artisan.auric-artisan-formatter&quot;,
+    &quot;editor.formatOnSave&quot;: true
+  }
+}</code></pre>
+<h2 id="the-setup-walkthrough">The setup walkthrough</h2>
+<p>VS Code&#39;s <strong>Welcome</strong> page (<strong>Help</strong> › <strong>Welcome</strong>) includes <strong>Set up Auric Artisan Formatter</strong>, five steps with buttons:</p>
+<ol>
+<li><strong>Choose a preset</strong> — <strong>Switch preset</strong>.</li>
+<li><strong>Try the Playground</strong> — <strong>Open Playground</strong> (Formatter Studio).</li>
+<li><strong>See what the whole repository would do</strong> — <strong>Show what needs formatting</strong>.</li>
+<li><strong>Turn on format on save</strong> — <strong>Toggle format on save</strong>.</li>
+<li><strong>Understand the safety gate</strong> — <strong>Explain this file</strong>.</li>
+</ol>
+<h2 id="the-screen-tour">The screen tour</h2>
+<h3 id="status-bar">Status bar</h3>
+<p>Two items on the right:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Meaning</th><th>Select it to</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric</strong> with a tick</td><td>The last format ran; the tooltip names the tier (native or universal) and the time taken, or says the file was already formatted</td><td>Open the log</td></tr>
+<tr><td><strong>Auric</strong> with a shield, warning background</td><td>The safety gate reverted a change; your original text was kept</td><td>Open the log</td></tr>
+<tr><td><strong>Auric</strong> with a slash</td><td>The file was skipped (for example, it looks minified)</td><td>Open the log</td></tr>
+<tr><td><strong>Auric</strong> with an error, error background</td><td>Formatting failed</td><td>Open the log</td></tr>
+<tr><td><strong><em>N</em> unformatted</strong>, warning background</td><td>The workspace scan found <em>N</em> files that would change; nothing has been written</td><td>Review them in Formatter Studio</td></tr>
+<tr><td><strong>Auric</strong> with a double tick</td><td>Every scanned file is already formatted</td><td>Open the list</td></tr>
+<tr><td><strong>Auric <em>scanned</em>/<em>total</em></strong>, spinning</td><td>The scan is running in memory</td><td>—</td></tr>
+</tbody></table></div>
+<p>The first item appears for languages Auric supports. Hide it with <code>auricFormatter.showStatusBar</code>.</p>
+<h3 id="formatter-studio-and-the-explorer-sidebar">Formatter Studio and the Explorer sidebar</h3>
+<ul>
+<li><strong>Auric Formatter: Open Formatter Studio</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>P</code>) opens the full studio as an editor tab.</li>
+<li>The <strong>Auric Formatter</strong> section in the Explorer is a compact version, with <strong>Open full Studio</strong>.</li>
+</ul>
+<p>Both have two tabs: <strong>01 Studio</strong> (try options on your code) and <strong>02 Workspace</strong> (the scan results). See <a href="formatter-studio.html">Formatter Studio</a>.</p>
+<h3 id="editor-menus">Editor menus</h3>
+<ul>
+<li><strong>Editor title bar:</strong> <strong>Preview Formatting as a Diff</strong> for supported files. While a preview is open: <strong>Apply Formatting Preview</strong>, <strong>Compare Formatting Changes</strong>, <strong>Refresh Formatting Preview</strong> and <strong>Discard Formatting Preview</strong>.</li>
+<li><strong>Editor context menu:</strong> <strong>Format Selection</strong> when text is selected, otherwise <strong>Preview Formatting as a Diff</strong>.</li>
+<li><strong>Explorer context menu on a folder:</strong> <strong>Format Every File in the Workspace</strong>.</li>
+</ul>
+<h2 id="a-first-format-with-a-preview">A first format with a preview</h2>
+<ol>
+<li>Open a JavaScript, TypeScript, CSS or JSON file.</li>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>F</code> (<strong>Preview Formatting as a Diff</strong>).</li>
+<li>A read-only tab, <strong>Preview — <em>file name</em></strong>, opens beside your source with the formatted result.</li>
+<li>Use the CodeLens at the top: <strong>Apply formatting</strong>, <strong>Compare changes</strong>, <strong>Discard preview</strong> or <strong>Full file · refresh preview</strong>.</li>
+<li>Choose <strong>Apply formatting</strong>, then confirm. Your source is updated and left unsaved; <code>Ctrl</code> + <code>Z</code> undoes it.</li>
+</ol>
+<p>You now have a formatted file and have seen exactly what changed before it happened.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Auric Artisan Formatter guides</a><a href="command-line.html"><span>Next</span>Command line and CI</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#install">Install</a></li><li><a href="#make-it-your-formatter">Make it your formatter</a></li><li><a href="#the-setup-walkthrough">The setup walkthrough</a></li><li><a href="#the-screen-tour">The screen tour</a></li><li><a href="#a-first-format-with-a-preview">A first format with a preview</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

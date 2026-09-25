@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serve a folder with live reload — Auric Artisan Docs</title>
+<meta name="description" content="Start the Auric Live server, choose what it serves and where, and control how and when connected pages update.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html" aria-current="page">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Serve a folder with live reload</h1>
+<p class="lede">Start the Auric Live server, choose what it serves and where, and control how and when connected pages update.</p>
+<p><em>Live reload</em> means the pages you have open in a browser update by themselves when you change a file. Auric Live adds a small script to every HTML page it serves; the script listens to the server and refreshes the page, or swaps just the changed stylesheet or image, when you save.</p>
+<h2 id="start-the-server">Start the server</h2>
+<p>Use whichever is closest:</p>
+<ul>
+<li><strong>Auric Live: Go Live</strong> — <code>Ctrl</code> + <code>Alt</code> + <code>L</code> (<code>Cmd</code> + <code>Alt</code> + <code>L</code> on macOS), the <strong>Go Live</strong> status-bar item, the <strong>Go Live</strong> button in the <strong>Servers</strong> view, or the editor&#39;s <strong>Run</strong> menu › <strong>Auric Live</strong>.</li>
+<li><strong>Serve This Folder</strong> — right-click a folder in the Explorer. That folder becomes the served root for this session.</li>
+<li><strong>Open with Auric Live</strong> — right-click an HTML, XHTML, PHP or Markdown file. The server starts if needed and opens that file&#39;s address. A file outside the served root cannot be opened this way.</li>
+</ul>
+<p>With several workspace folders, <strong>Go Live</strong> asks <strong>Which folder should Auric Live serve?</strong>. Each workspace folder gets its own server and port. <strong>Auric Live: Select Active Server</strong> chooses which one the panel and commands act on; <strong>Auric Live: Stop All Servers</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>L</code>) stops every one.</p>
+<p>When the server starts:</p>
+<ol>
+<li>What opens depends on <code>auricLive.open</code>: <code>default</code> opens your default browser, <code>preview</code> opens the preview beside the editor, <code>none</code> opens nothing. <code>auricLive.openPath</code> adds a path, such as <code>/docs/index.html</code>, for sites whose entry page is not the root.</li>
+<li>A notification says what is being served and where, with <strong>Open</strong>, <strong>Preview</strong> and (when a network address exists) <strong>Phone QR</strong>.</li>
+<li>If the project looks like a framework with its own dev server, or a PHP site, Auric Live offers the matching setup once per folder. Turn this off with <code>auricLive.suggestFrameworkSetup</code>.</li>
+</ol>
+<p>To start automatically whenever you open the folder, set <code>auricLive.startOnOpen</code> to <code>true</code>.</p>
+<p>If the server cannot start, an error offers <strong>Change Port</strong> and <strong>Show Log</strong>.</p>
+<h2 id="choose-what-is-served">Choose what is served</h2>
+<ul>
+<li><strong>Served folder.</strong> By default, the workspace folder itself. Set <code>auricLive.root</code> to a subfolder such as <code>dist</code> or <code>public</code> for a build output, or run <strong>Auric Live: Change Served Folder…</strong> and pick one for this session.</li>
+<li><strong>Index files.</strong> A request for a folder tries <code>auricLive.index</code> in order (<code>index.html</code>, then <code>index.htm</code>). A folder without one shows a browsable listing unless you turn off <code>auricLive.directoryListing</code>.</li>
+<li><strong>Clean URLs.</strong> With <code>auricLive.cleanUrls</code> on, <code>/about</code> serves <code>about.html</code>.</li>
+<li><strong>Single-page apps.</strong> Turn on <code>auricLive.spa.enabled</code> so unknown paths return the fallback document (<code>auricLive.spa.fallback</code>, default <code>/index.html</code>), keeping client-side routes working on a deep link or hard refresh. Paths in <code>auricLive.spa.ignore</code> (by default <code>/api/**</code> and anything with a file extension) still return a real 404, so a missing script is not answered with HTML.</li>
+<li><strong>Custom 404.</strong> Point <code>auricLive.notFoundPage</code> at a page in the served folder.</li>
+<li><strong>Dot-files.</strong> <code>auricLive.dotfiles</code> is <code>ignore</code> by default, which hides paths such as <code>.env</code> and <code>.git</code>. <code>allow</code> serves them; <code>deny</code> refuses them.</li>
+<li><strong>Exclusions.</strong> Paths listed in <code>.auricignore-live</code> are never served, listed, watched, hot-swapped, reloaded or recorded. See <a href="project-configuration.html">Project configuration</a>.</li>
+</ul>
+<p>Links that leave the served folder through a symbolic link or junction are blocked.</p>
+<h2 id="choose-the-address">Choose the address</h2>
+<ul>
+<li><strong>Port.</strong> <code>auricLive.port</code> is <code>5500</code> by default. <code>0</code> lets the operating system choose a free port, useful for several projects at once. Change it for this session with <strong>Auric Live: Change Port…</strong>; ports below 1024 usually need administrator rights.</li>
+<li><strong>When the port is taken.</strong> <code>auricLive.portStrategy</code>: <code>increment</code> walks upward to the next free port (default), <code>fail</code> reports the conflict (for a port your OAuth callback or code depends on), <code>random</code> picks a free port between 20000 and 40000.</li>
+<li><strong>Host.</strong> <code>auricLive.host</code> is <code>0.0.0.0</code> in a trusted workspace, which also answers other devices on your network so you can test on a phone; your firewall may ask the first time. Set <code>127.0.0.1</code> to keep the server on this machine only. In an untrusted workspace the server stays on this machine.</li>
+<li><strong>Password.</strong> <code>auricLive.auth.enabled</code> with <code>auricLive.auth.username</code> and <code>auricLive.auth.password</code> requires a login before anything is served. The password is kept in plain settings; it is a convenience for shared networks, not a secret store.</li>
+</ul>
+<p>Copy addresses with <strong>Auric Live: Copy Local URL</strong> and <strong>Auric Live: Copy Network URL</strong>. If your computer has several network adapters, you choose one; virtual adapters are marked as probably unreachable from a phone.</p>
+<h2 id="control-how-pages-update">Control how pages update</h2>
+<h3 id="the-reload-trigger">The reload trigger</h3>
+<p><code>auricLive.liveReload.reloadOnSave</code> decides what may refresh the page:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Behaviour</th><th>Use it when</th></tr></thead>
+<tbody>
+<tr><td><code>save</code> (default)</td><td>Only an explicit save in VS Code updates pages, once per save</td><td>Normal editing. Generated files, sync tools, formatters and caches cannot keep refreshing the page</td></tr>
+<tr><td><code>change</code></td><td>Any change in the served folder triggers an update</td><td>An external compiler or build tool writes the files the browser shows</td></tr>
+<tr><td><code>off</code></td><td>Nothing reloads automatically</td><td>You want the page completely still; use <strong>Reload Connected Pages</strong> when ready</td></tr>
+</tbody></table></div>
+<p>In the control panel&#39;s <strong>Overview</strong>, the same choice appears as <strong>VS Code saves</strong>, <strong>Filesystem changes</strong> and <strong>Manual only</strong>.</p>
+<h3 id="what-an-update-does">What an update does</h3>
+<ul>
+<li><strong>Stylesheets</strong> swap in place without a reload (<code>auricLive.liveReload.cssHotSwap</code>), so the page keeps its scroll position, open dialogs and filled-in forms.</li>
+<li><strong>Images</strong> refresh in place (<code>auricLive.liveReload.imageHotSwap</code>).</li>
+<li><strong>Everything else</strong> reloads the page. After a full reload, the scroll position and open disclosure elements are restored (<code>auricLive.liveReload.preserveScroll</code>).</li>
+<li><strong>Failures</strong> in a proxied request or CGI handler show as an overlay on the page (<code>auricLive.liveReload.overlay</code>) instead of only in the log.</li>
+</ul>
+<p>The reload script goes at the end of <code>body</code> by default. Set <code>auricLive.liveReload.injectTo</code> to <code>head</code> if a page fails while loading and you need the script attached earlier.</p>
+<h3 id="manual-controls">Manual controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Live: Reload Connected Pages</strong></td><td><code>Ctrl</code> + <code>Alt</code> + <code>U</code></td><td>Reload every connected page now</td></tr>
+<tr><td><strong>Auric Live: Toggle Live Reload</strong></td><td>—</td><td>Turn live reload on or off for this session</td></tr>
+<tr><td><strong>Auric Live: Resume Live Reload</strong></td><td>—</td><td>Resume after reload-storm protection paused it</td></tr>
+</tbody></table></div>
+<h3 id="reload-storm-protection">Reload-storm protection</h3>
+<p>If files keep changing, for example while a package installs or a sync tool rewrites files, reloading every time would make the page unusable. Auric Live allows <code>auricLive.liveReload.stormLimit</code> updates (default 3) within <code>auricLive.liveReload.stormWindowMs</code> (default 10 seconds). Beyond that it pauses live reload and shows <strong>Auric Live paused live reload — files kept changing</strong> with the files responsible. The page stays live. Choose:</p>
+<ul>
+<li><strong>Ignore <em>folder</em>/</strong> — adds that folder to <code>.auricignore-live</code> and resumes;</li>
+<li><strong>Resume</strong> — resumes as it was;</li>
+<li><strong>Show log</strong> — opens the output channel.</li>
+</ul>
+<h3 id="what-never-triggers-a-reload">What never triggers a reload</h3>
+<p><code>auricLive.liveReload.ignore</code> lists paths that never trigger an update. The default covers <code>node_modules</code>, <code>dist</code>, <code>out</code>, <code>build</code>, <code>coverage</code>, <code>target</code>, <code>vendor</code>, <code>bin</code>, <code>obj</code>, <code>__pycache__</code>, <code>venv</code>, <code>tmp</code>, <code>temp</code>, log, temporary, swap, compiled and database files, and the lock and thumbnail files left by Office, OneDrive, Dropbox, Windows and macOS. Dot-folders such as <code>.next/</code>, <code>.vite/</code> and <code>.git/</code> are always excluded in addition.</p>
+<p>In <code>change</code> mode, <code>auricLive.liveReload.debounceMs</code> (default 350 ms) waits for a quiet moment so a build writing many files produces one update.</p>
+<h3 id="watching-on-network-shares-and-virtual-machines">Watching on network shares and virtual machines</h3>
+<p>Some file systems never report changes. Set <code>auricLive.watch.pollIntervalMs</code> to a number of milliseconds to poll instead. <code>auricLive.watch.enabled</code> set to <code>false</code> stops watching entirely and leaves updates to <strong>Reload Connected Pages</strong>.</p>
+<h2 id="responses-and-caching">Responses and caching</h2>
+<ul>
+<li><p><strong>Compression</strong> (<code>auricLive.compression</code>): <code>auto</code>, <code>gzip</code>, <code>brotli</code> or <code>off</code>, for text responses over one kilobyte. Turn it off to measure uncompressed sizes.</p>
+</li>
+<li><p><strong>Caching</strong> (<code>auricLive.cache</code>): <code>no-store</code> (default; a stale file never survives a reload), <code>no-cache</code> (keep but revalidate), <code>short</code> (a short freshness window, for measuring repeat visits), <code>immutable-assets</code> (fonts and images cached for a year, everything else uncached).</p>
+</li>
+<li><p><strong>Validators</strong> (<code>auricLive.etag</code>): unchanged files answer <code>304 Not Modified</code>.</p>
+</li>
+<li><p><strong>Range requests</strong> are supported, so audio and video can seek.</p>
+</li>
+<li><p><strong>Content types</strong>: add or override types with <code>auricLive.mimeTypes</code>, for example <code>{ &quot;.data&quot;: &quot;application/json&quot; }</code>.</p>
+</li>
+<li><p><strong>Extra headers</strong>: <code>auricLive.headers</code> is a list of rules, each with <code>match</code> globs and the <code>headers</code> to add:</p>
+<pre class="code" data-lang="json"><code>[
+  { &quot;match&quot;: [&quot;**/*.html&quot;], &quot;headers&quot;: { &quot;X-Frame-Options&quot;: &quot;SAMEORIGIN&quot; } }
+]</code></pre>
+</li>
+<li><p><strong>Cross-origin requests</strong> are answered by default (<code>auricLive.cors.enabled</code>, origin <code>*</code>). Set a specific <code>auricLive.cors.origin</code> and turn on <code>auricLive.cors.credentials</code> if the calling page sends cookies.</p>
+</li>
+<li><p><strong>Cross-origin isolation</strong> (<code>auricLive.crossOriginIsolation</code>) sends the headers that <code>SharedArrayBuffer</code>, WebAssembly threads and precise timers need. It also blocks cross-origin resources that do not opt in.</p>
+</li>
+</ul>
+<h2 id="changes-while-running">Changes while running</h2>
+<p>With <code>auricLive.autoRestart.onConfigChange</code> on (the default), changes to settings or the project file apply to the running server straight away. Only a change of port, host, served root, mount point or HTTPS settings restarts the listener; other changes apply without dropping connections. Connected pages reload afterwards unless you turn off <code>auricLive.autoRestart.reloadBrowsers</code>.</p>
+<h2 id="stop">Stop</h2>
+<ul>
+<li><strong>Auric Live: Stop Server</strong> stops the active server.</li>
+<li><strong>Auric Live: Stop All Servers</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>L</code>) stops every one.</li>
+<li><strong>Auric Live: Restart Server</strong> restarts the active one.</li>
+</ul>
+<p>When you save a file with the server running, connected pages update within a moment, and the <strong>Servers</strong> view shows how many pages are connected.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="run-targets-and-backends.html"><span>Previous</span>Run a backend or framework dev server</a><a href="reference.html"><span>Next</span>Reference: commands, keys and settings</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#start-the-server">Start the server</a></li><li><a href="#choose-what-is-served">Choose what is served</a></li><li><a href="#choose-the-address">Choose the address</a></li><li><a href="#control-how-pages-update">Control how pages update</a></li><li><a href="#responses-and-caching">Responses and caching</a></li><li><a href="#changes-while-running">Changes while running</a></li><li><a href="#stop">Stop</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

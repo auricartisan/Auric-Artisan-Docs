@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDKs and tooling — Auric Artisan Docs</title>
+<meta name="description" content="The official clients and integrations for the Auric Artisan API — JavaScript, Python, the CLI, an MCP server, a Postman collection and GraphQL.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html" aria-current="page">SDKs and tooling</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>SDKs and tooling</h1>
+<p class="lede">The official clients and integrations for the Auric Artisan API — JavaScript, Python, the CLI, an MCP server, a Postman collection and GraphQL.</p>
+<p>The API documentation lists these official clients and integrations. All of them use the same <code>/v1</code> endpoints.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Client</th><th>Package or location</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>JavaScript</td><td><code>@auric-artisan/api</code></td><td>Node 18 and later, browsers and Workers. Typed methods for every endpoint.</td></tr>
+<tr><td>Python</td><td><code>auric-artisan</code></td><td>Python 3.8 and later, standard library only, no dependencies</td></tr>
+<tr><td>CLI</td><td><code>@auric-artisan/cli</code></td><td>For example <code>auric contrast &#39;#222&#39; &#39;#fff&#39;</code> in your terminal</td></tr>
+<tr><td>MCP server</td><td>Listed on the API page</td><td>Gives Claude, Cursor or any MCP host direct access to the colour tools</td></tr>
+<tr><td>Postman</td><td>Listed on the API page</td><td>A ready-made collection covering the whole API</td></tr>
+<tr><td>GraphQL</td><td><code>POST /v1/graphql</code></td><td>A single-endpoint alternative, with a playground at <code>GET /v1/graphql</code></td></tr>
+</tbody></table></div>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> The documentation names these packages; check your package registry for their availability and current versions before depending on them.</p>
+</blockquote>
+<h2 id="the-cli-and-oauth">The CLI and OAuth</h2>
+<p>The <code>auric</code> CLI signs in with a device flow and sends an OAuth bearer token (<code>Authorization: Bearer &lt;token&gt;</code>) instead of an API key. See <a href="authentication.html">Authentication</a>.</p>
+<h2 id="generating-your-own-client">Generating your own client</h2>
+<p><code>GET /v1/openapi.yaml</code> returns the OpenAPI 3.1 document, which most API tools can import or use to generate a client. <code>GET /v1/catalog</code> returns the same information as JSON, with parameters and examples.</p>
+<h2 id="retries">Retries</h2>
+<p>The official SDKs retry automatically on <code>429</code> responses. If you write your own client, honour <code>retry-after</code>; see <a href="errors.html">Errors</a>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="examples.html">Request examples</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="plans-credits-and-quotas.html"><span>Previous</span>Plans, credits and quotas</a><a href="reference.html"><span>Next</span>Reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-cli-and-oauth">The CLI and OAuth</a></li><li><a href="#generating-your-own-client">Generating your own client</a></li><li><a href="#retries">Retries</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

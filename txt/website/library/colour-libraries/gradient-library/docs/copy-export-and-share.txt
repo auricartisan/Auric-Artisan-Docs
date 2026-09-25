@@ -1,0 +1,141 @@
+==============================================================================
+COPY, EXPORT AND SHARE
+==============================================================================
+Copy a gradient's CSS, download it as a CSS class, JSON, SVG, PNG or Tailwind
+token, export design tokens, share a link, and export whole filtered sets.
+Area: Website › Library › Colour libraries › Gradient Library   Updated: 2026-09-25
+
+ONE GRADIENT
+============
+
+You can export the open gradient from three places: the Inspect tab, its Quick
+Export card, and the Active Gradient card on the Export tab. If no gradient is
+open, the Export tab says Select a gradient to enable active exports. and its
+buttons reply Select a gradient first.
+
+The examples use the first gradient in the collection, Aurora Simple #00001.
+File names are made from the gradient's name in lower case with dashes, for
+example `aurora-simple-00001`.
+
+  Button: Copy CSS / Copy CSS gradient
+  Where:  Inspect, CSS card, Export
+  Output: Copies the CSS value (CSS copied).
+
+  Button: Download CSS / Download CSS class
+  Where:  CSS card, Export
+  Output: `aurora-simple-00001.css`, a ready-made class.
+
+  Button: Download JSON
+  Where:  Quick Export, Export
+  Output: `aurora-simple-00001.json`: angle, type, stops (position, hex,
+          OKLCH), name and all metadata.
+
+  Button: Download SVG
+  Where:  CSS card, Export
+  Output: `aurora-simple-00001.svg`, a 1440 × 900 image using an SVG linear
+          gradient at the same angle.
+
+  Button: Download Tailwind / Download Tailwind token
+  Where:  Quick Export, Export
+  Output: `aurora-simple-00001.tailwind.txt`, one `"name": "css"` line for a
+          Tailwind configuration (for example under `backgroundImage`).
+
+  Button: Download PNG / Download PNG preview
+  Where:  Quick Export, Export
+  Output: `aurora-simple-00001.png`, 1600 × 1000 pixels.
+
+  Button: Copy share link
+  Where:  Quick Export, Export
+  Output: Opens the Share link dialog.
+
+  Button: Design tokens…
+  Where:  Quick Export, Export
+  Output: Opens the design tokens dialog.
+
+The Current CSS card on the Export tab shows the open gradient's CSS.
+
+Examples
+--------
+
+The CSS value:
+
+    linear-gradient(0deg, #723c2d 0%, #7b3600 100%)
+
+The CSS class:
+
+    .aa-gradient-aurora-simple-00001 {
+      background: linear-gradient(0deg, #723c2d 0%, #7b3600 100%);
+    }
+
+The Tailwind token:
+
+    "aurora-simple-00001": "linear-gradient(0deg, #723c2d 0%, #7b3600 100%)"
+
+DESIGN TOKENS
+=============
+
+  1. Select Design tokens…. A dialog opens with the gradient's name as its
+     title.
+  2. Set Token prefix (default `brand`).
+  3. Choose a format tab: W3C Design Tokens, CSS Variables, SCSS, Tailwind
+     Config, Style Dictionary, Material UI Theme, iOS (SwiftUI) or Android
+     colors.xml.
+  4. Select Copy, Download, or Download all for a ZIP of every format.
+
+File names are `tokens.json`, `tokens.css`, `tokens.scss`,
+`tailwind.config.js`, `style-dictionary.tokens.json`, `theme.ts`,
+`Colors.swift` and `colors.xml`. Close with ✕, `Escape` or by selecting
+outside the dialog.
+
+SHARE A LINK
+============
+
+  1. Select Copy share link. The Share link dialog opens, titled with the
+     gradient's name.
+  2. Select Copy (it shows Copied!), Share via… where your device offers it,
+     or Open in new tab.
+  3. Select Close.
+
+Anyone opening the link sees the Gradient Library with that gradient open on
+Inspect. The link itself carries the gradient; nothing is uploaded. If the
+gradient cannot be found, the page says Shared gradient not in current
+library.
+
+MANY GRADIENTS
+==============
+
+The Visible Set card on the Export tab exports every gradient that matches
+your search and filters. Its badge shows how many.
+
+  Button:   JSON with metadata
+  File:     `gradient-library-<count>-<date>.json`
+  Contents: Export time, source, count and every gradient in full.
+
+  Button:   Minified JSON
+  File:     `gradient-library-<count>-<date>.json`
+  Contents: Each gradient's name, CSS and stop hex codes, on one line.
+
+  Button:   CSS classes
+  File:     `gradient-library-<count>-<date>.css`
+  Contents: One `.aa-gradient-…` class per gradient.
+
+  Button:   CSV index
+  File:     `gradient-library-<count>-<date>.csv`
+  Contents: One row per gradient: id, name, type, angle, stops, scheme,
+            method, complexity, interpolation, easing, score,
+            complexity_score, banding and CSS.
+
+  Button:   Tailwind tokens
+  File:     `gradient-library-<count>-<date>.txt`
+  Contents: An object of `"name": "css"` pairs.
+
+If nothing matches, the page says Nothing to export.
+
+  | Tip: Filter first. With no filter, a bulk export includes all 8,192 gradients.
+
+RESULT
+======
+
+The gradient is on your clipboard, in a file for your code, design tool or
+presentation, in design tokens for your platform, or in a link someone else
+can open.

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read the system — Auric Artisan Docs</title>
+<meta name="description" content="What the Overview, Colour, Type, Icons and Scales tabs show, and how to copy any value from them.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Design System Generator</a>
+<h2>Design System Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Design System Generator</a></li>
+<li><a href="compare.html">Compare styles and industries</a></li>
+<li><a href="component-playground.html">Use the component playground</a></li>
+<li><a href="contrast-audit.html">Check contrast with the audit</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="read-the-system.html" aria-current="page">Read the system</a></li>
+<li><a href="set-the-brief.html">Set the brief</a></li>
+<li><a href="share-save-and-connect.html">Share, save and connect</a></li>
+<li><a href="reference.html">Design System Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Design System Generator</a></li>
+<li><a href="faq.html">Design System Generator FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Design System Generator</a> &rsaquo; <a href="README.html">Design System Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Read the system</h1>
+<p class="lede">What the Overview, Colour, Type, Icons and Scales tabs show, and how to copy any value from them.</p>
+<p>The first five tabs show the generated system from different angles. Every tab is made of cards; select a card&#39;s heading to fold or unfold it. Some cards start folded. Almost every colour, gradient and token can be selected to copy its value, and a short message confirms the copy.</p>
+<h2 id="overview">Overview</h2>
+<p>Four cards:</p>
+<ul>
+<li><strong>System summary</strong>: a score ring (green at 85 and above, amber from 65, red below), the industry and style, the mood and target, the harmony, and badges for the seed, <strong>All pairings pass</strong> or <strong>N to review</strong>, the font pairing and the icon family. Under it, eight headline swatches: primary, secondary, accent, success, warning, danger, info and text. The primary swatch also shows its contrast against white.</li>
+<li><strong>At a glance</strong>: <strong>Color ramps</strong> (4 × 11), <strong>Type sizes</strong>, <strong>Base size</strong>, <strong>Scale ratio</strong>, <strong>Spacing unit</strong>, <strong>Radius</strong>, <strong>Shadows</strong> (6 levels) and <strong>Total tokens</strong>.</li>
+<li><strong>Generation recipe</strong>: every input written out, including the resolved primary hue and the secondary and accent hue angles, the colour mode, the font pairing and the icon family with its stroke width. Use it to explain how a system was made.</li>
+<li><strong>Jump to</strong>: shortcuts to <strong>Color</strong>, <strong>Type</strong>, <strong>Components</strong> and <strong>Export</strong>.</li>
+</ul>
+<h2 id="colour">Colour</h2>
+<ul>
+<li><strong>Color ramps</strong>: primary, secondary and accent at eleven steps (50, 100, 200 … 900, 950), and a neutral ramp at thirteen steps (0, 50, 100 … 950, 1000). The card&#39;s note lists the three hues. Steps sit on even perceptual lightness in OKLCH, with chroma highest in the middle steps and lower at the ends. Neutral step 0 is pure white; the other neutral steps carry a trace of the brand hue.</li>
+<li><strong>Semantic colors</strong>: success, warning, danger and info at fixed hues (green, amber, red and blue), each shown as a solid with a label and four small chips for the background wash, border, text and solid colours. Select a chip to copy it.</li>
+<li><strong>Surfaces &amp; roles</strong>: <strong>Light surfaces &amp; roles</strong> and, unless the colour mode is Light, <strong>Dark surfaces &amp; roles</strong>. These are the tokens you build with: <code>bg</code>, <code>bg-subtle</code>, <code>bg-muted</code>, <code>surface</code>, <code>elevated</code>, <code>border</code>, <code>border-strong</code>, <code>text</code>, <code>text-muted</code>, <code>text-subtle</code>, <code>primary</code>, <code>primary-hover</code>, <code>primary-active</code>, <code>primary-subtle</code>, <code>on-primary</code> and <code>ring</code>.</li>
+<li><strong>Gradients</strong> (folded): five gradients named <strong>brand</strong>, <strong>brand-soft</strong>, <strong>sunrise</strong>, <strong>mesh</strong> and <strong>subtle</strong>. Select one to copy its CSS.</li>
+</ul>
+<p>How roles are chosen:</p>
+<ul>
+<li>Light text tiers are the lightest neutral steps that still meet their requirement: your target for <code>text</code>, 4.5:1 for <code>text-muted</code> and 3:1 for <code>text-subtle</code>. This gives three visibly different tiers rather than three near-blacks.</li>
+<li>The primary fill is the first of steps 600, 700, 500, 800, 400, 900, 300, 950 and 200 that reaches 3:1 against the background and takes a black or white label at your target (at least 4.5:1).</li>
+<li>The dark set is built on neutral step 950, a tinted near-black. Its text colour is chosen against the lightest dark surface, so it passes on cards as well as on the page. Dark borders are translucent white.</li>
+</ul>
+<p>Colours that would fall outside sRGB have their chroma reduced until they fit, so a very vivid seed can come back calmer: what you see is what a screen can show.</p>
+<h2 id="type">Type</h2>
+<ul>
+<li><strong>Font pairing</strong>: specimens of the heading, body and mono families, the pairing&#39;s note, <em>Served from fonts.auricartisan.com</em>, and <strong>Browse in Font Library ↗</strong>, which opens the Font Library searching for the heading family.</li>
+<li><strong>Type scale</strong>: thirteen sizes named <code>2xs</code>, <code>xs</code>, <code>sm</code>, <code>base</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>3xl</code>, <code>4xl</code>, <code>5xl</code>, <code>6xl</code> and <code>7xl</code>, largest first, each with pixels, rem and a specimen. The note shows the ratio and base size.</li>
+<li><strong>Roles</strong>: twelve text styles (<strong>display</strong>, <strong>h1</strong> to <strong>h5</strong>, <strong>body-lg</strong>, <strong>body</strong>, <strong>small</strong>, <strong>caption</strong>, <strong>overline</strong> and <strong>code</strong>), each drawn at its size, weight, line height and letter spacing, with the family it uses.</li>
+<li><strong>Available weights</strong> (folded): the weights of the heading family.</li>
+</ul>
+<p>The pairing is chosen from sixteen curated pairings by how many tags it shares with your industry and style. The families include Inter, Space Grotesk, Sora, Manrope, Plus Jakarta Sans, Outfit, DM Serif Display, Fraunces, Playfair Display with Source Sans 3, Cormorant Garamond with Jost, Bricolage Grotesque, Lexend, Epilogue, Archivo Expanded with Archivo, Spline Sans, and IBM Plex Sans with IBM Plex Mono; the mono family is JetBrains Mono unless the pairing has its own.</p>
+<p>Each size also has its own line height, tighter for large sizes; the Tailwind v3 export carries it with each font size.</p>
+<h2 id="icons">Icons</h2>
+<ul>
+<li><strong>Recommended icon family</strong>: <strong>Recommended set</strong>, <strong>Why</strong>, <strong>Stroke width</strong>, <strong>Grid size</strong> (24 px), <strong>Corner join</strong>, <strong>Suggested sizes</strong> (16 · 20 · 24 · 32 px), <strong>Source</strong> (icons.auricartisan.com) and a button to browse the set in the Icon Library.</li>
+<li><strong>Preview set</strong>: twenty common icons at the recommended stroke.</li>
+<li><strong>On brand color</strong> (folded): eight icons in the primary colour.</li>
+<li><strong>Size ramp</strong> (folded): one icon at 16, 20, 24, 32 and 40 pixels.</li>
+</ul>
+<p>The family is one of seven: <strong>Feather</strong>, <strong>Lucide</strong>, <strong>Heroicons</strong>, <strong>Phosphor</strong>, <strong>Tabler</strong>, <strong>Remix Icon</strong> and <strong>Material Symbols</strong>, chosen by tag overlap. The stroke is made slightly thinner for Minimal and Elegant and slightly thicker for Bold and Brutalist. When the Auric icon CDN is reachable, the previews show the real family; otherwise they show built-in line icons of the same weight.</p>
+<h2 id="scales">Scales</h2>
+<p>Four columns in one tab:</p>
+<ul>
+<li><strong>Spacing scale</strong>: nineteen steps (<code>0</code>, <code>px</code>, <code>0.5</code>, <code>1</code>, <code>1.5</code>, <code>2</code>, <code>2.5</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>8</code>, <code>10</code>, <code>12</code>, <code>16</code>, <code>20</code>, <code>24</code>, <code>32</code>, <code>40</code>), each drawn as a bar. <code>0</code> is 0 px and <code>px</code> is 1 px; every other step is its number × the base unit × the density multiplier.</li>
+<li><strong>Border radius scale</strong>: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>3xl</code> and <code>pill</code>, each drawn as a box, with the corner style named.</li>
+<li><strong>Elevation / shadow scale</strong>: six levels (<code>xs</code> to <code>2xl</code>) plus <code>primary</code> and <code>inner</code>, drawn on a surface, with the brand-tinted shadow colour. <strong>Shadow values</strong> (folded) lists the CSS for each. The <strong>Hard</strong> preset (Brutalist) gives offset shadows with no blur; the <strong>Glow</strong> preset (Futuristic) adds a brand-coloured glow to the two largest levels.</li>
+<li><strong>Durations</strong> (fast, base, slow) and <strong>Easing curves</strong> (standard, spring, linear): hover a row to replay the movement.</li>
+</ul>
+<p>Z-index (<code>base</code> 0, <code>dropdown</code> 1000, <code>sticky</code> 1100, <code>banner</code> 1200, <code>overlay</code> 1300, <code>modal</code> 1400, <code>popover</code> 1500, <code>toast</code> 1600, <code>tooltip</code> 1700) and breakpoints (<code>sm</code> 640, <code>md</code> 768, <code>lg</code> 1024, <code>xl</code> 1280, <code>2xl</code> 1536 px) have no tab; they are in the Tokens list and the exports.</p>
+<h2 id="copying-values">Copying values</h2>
+<ul>
+<li>Select a ramp cell, swatch, gradient or token to copy its value. The item flashes and a message such as <strong>Copied #1f6feb</strong> appears.</li>
+<li>Changing any input rebuilds every tab, so folded or unfolded cards return to their starting state.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="set-the-brief.html">Set the brief</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-tokens.html"><span>Previous</span>Export tokens</a><a href="set-the-brief.html"><span>Next</span>Set the brief</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#overview">Overview</a></li><li><a href="#colour">Colour</a></li><li><a href="#type">Type</a></li><li><a href="#icons">Icons</a></li><li><a href="#scales">Scales</a></li><li><a href="#copying-values">Copying values</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+==============================================================================
+FAQ
+==============================================================================
+Short answers to common questions about the Auric Artisan Icon CDN.
+Area: Services › Icon CDN   Updated: 2026-09-25
+
+Do I need an account or a key?
+------------------------------
+
+No. The loader, data and files are served publicly, and the Icon Library needs
+no sign-in.
+
+Can I use the icons commercially?
+---------------------------------
+
+Yes. All seven sets use licences that allow commercial use, redistribution and
+modification: MIT, ISC, Apache 2.0 and the Remix Icon License. Keep the
+licence notices as each licence asks. See Licences [../others/licences.txt].
+
+Who made the icons?
+-------------------
+
+Their original authors: Lucide Contributors, Phosphor Icons, Paweł Kuna
+(Tabler), Remix Design, Tailwind Labs (Heroicons), Cole Bemis (Feather) and
+Google (Material). Auric Artisan does not claim ownership of any icon.
+
+Why use this instead of each set's own package?
+-----------------------------------------------
+
+One loader and one naming scheme cover all seven sets, with no build step. If
+you use a single set heavily in a built app, that set's own package may suit
+you better.
+
+Does the loader work with React, Vue or other frameworks?
+---------------------------------------------------------
+
+The loader fills placeholders in the page. With a framework that renders after
+page load, call `AuricIcons.inject()` after rendering, or use Copy JSX for
+React components, or a sprite.
+
+How do I make icons follow my text colour?
+------------------------------------------
+
+Do nothing: icons use `currentColor`. Avoid `data-color` and linked image
+files, which fix the colour.
+
+Can I use icons offline?
+------------------------
+
+Yes: export a ZIP or a sprite from the Icon Library, or host the loader and
+its data yourself. See Export and self-host [export-and-self-host.txt].
+
+Why is my icon so big?
+----------------------
+
+Served SVGs have no size of their own. Set `data-size` or a CSS width and
+height.
+
+Is Material Icons SVG?
+----------------------
+
+No. The CDN serves Material as webfonts, and the loader renders Material icons
+as font characters.

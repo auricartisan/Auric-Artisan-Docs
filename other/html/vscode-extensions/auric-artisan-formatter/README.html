@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Artisan Formatter — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Artisan Formatter does, who it is for, how to install it and where to find every guide.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; VS Code extensions</a>
+<h2>Auric Artisan Formatter</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Auric Artisan Formatter guides &rsaquo;</a></li>
+<li><a href="others/README.html">Supporting material &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">VS Code extensions</a> &rsaquo; <a href="README.html">Auric Artisan Formatter</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Auric Artisan Formatter</h1>
+<p class="lede">What Auric Artisan Formatter does, who it is for, how to install it and where to find every guide.</p>
+<p>Auric Artisan Formatter formats your code in VS Code. It rebuilds JavaScript, TypeScript, JSON, CSS, HTML, Markdown, YAML and more from a real parse, and tidies the indentation and spacing of hundreds of other languages with a conservative structural engine. Every result passes a <em>safety gate</em> before it reaches your file: the output is re-read and compared with the input, and if the formatter cannot prove the change keeps your code&#39;s meaning, it keeps your original text.</p>
+<p>It is built for adopting a formatter without surprises. <strong>Preview Formatting as a Diff</strong> shows the result beside your source before anything changes. A <strong>workspace scan</strong> formats every file in memory when the window opens and tells you how many would change, without writing anything. <strong>Formatter Studio</strong> lets you try the 391 options against your own code, find the few that matter for a file, and copy only the ones you changed into a configuration file. The same engine runs from a command line for CI checks.</p>
+<p>It reads existing Prettier configuration and <code>.editorconfig</code>, offers 13 presets (including one byte-compatible with Prettier 3), and has no runtime dependencies.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Developers who want consistent formatting with a preview before changes land.</li>
+<li>Teams adopting a formatter on an existing codebase who want to see the impact first and keep <code>git blame</code> useful.</li>
+<li>Teams moving from Prettier who want the same output on day one.</li>
+<li>Anyone working in less common languages that other formatters do not cover.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li><p>Marketplace ID: <code>auric-artisan.auric-artisan-formatter</code></p>
+</li>
+<li><p>Marketplace page: <a href="https://marketplace.visualstudio.com/items?itemName=auric-artisan.auric-artisan-formatter" rel="noopener">https://marketplace.visualstudio.com/items?itemName=auric-artisan.auric-artisan-formatter</a></p>
+</li>
+<li><p>Install from a terminal:</p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-formatter</code></pre>
+</li>
+<li><p>Requires VS Code 1.74 or newer. Version 0.1.0 at the time of writing. The interface is in English.</p>
+</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Install the extension.</li>
+<li>Run <strong>Auric Formatter: Toggle Format on Save</strong>. It makes Auric the default formatter and turns on format on save.</li>
+<li>Open a file and run <strong>Auric Formatter: Preview Formatting as a Diff</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>F</code>). Review the read-only result beside your source.</li>
+<li>Select <strong>Apply formatting</strong> in the editor title or the CodeLens, or <strong>Discard preview</strong>.</li>
+<li>Open <strong>Auric Formatter: Open Formatter Studio</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>P</code>) to tune options against your own file, then <strong>Copy config</strong>.</li>
+<li>Paste the configuration into a <code>.auricformatrc</code> file at the root of your project.</li>
+<li>Before formatting a whole existing repository, check the status bar count from the workspace scan, or run <strong>Auric Formatter: Scan the Workspace Without Writing</strong>.</li>
+<li>Use <strong>Show Files That Need Formatting</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>U</code>) to review and format files a folder at a time.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Format a document, a selection or every file that needs it; format on save, or only the lines you changed.</li>
+<li>Preview formatting as a read-only document beside your source, with Apply, Discard, Refresh and Compare.</li>
+<li>Tune 391 options live in Formatter Studio, see the diff and an explanation of each decision, and copy only what you changed.</li>
+<li>Scan the workspace in memory, see which files would change and by how much, and format selected files explicitly.</li>
+<li>Check formatting without writing, reporting into the Problems panel, and run the same check in CI from the command line.</li>
+<li>Start from one of 13 presets, import Prettier settings, generate a configuration file.</li>
+<li>Configure per language and per file pattern, with <code>.editorconfig</code> and inline directives.</li>
+<li>See why a file was formatted as it was with <strong>Explain Formatting Decisions</strong>.</li>
+<li>Format 253 languages: 31 natively, the rest with the structural engine.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — task guides and the full reference.<ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="docs/preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="docs/formatter-studio.html">Formatter Studio</a></li>
+<li><a href="docs/workspace-scan.html">Scan the workspace</a></li>
+<li><a href="docs/configuration.html">Configuration</a></li>
+<li><a href="docs/presets.html">Presets</a></li>
+<li><a href="docs/safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="docs/supported-languages.html">Supported languages</a></li>
+<li><a href="docs/command-line.html">Command line and CI</a></li>
+<li><a href="docs/reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="docs/options-reference.html">Options reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — supporting material.<ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/shortcuts.html">Shortcuts</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+<li><a href="others/related.html">Related</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../auric-artisan-font-hub/others/related.html"><span>Previous</span>Related</a><a href="docs/README.html"><span>Next</span>Auric Artisan Formatter guides</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

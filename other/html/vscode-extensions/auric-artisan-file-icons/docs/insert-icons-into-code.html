@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert icons into code — Auric Artisan Docs</title>
+<meta name="description" content="Insert or copy File Icons artwork as inline SVG, JSX, an HTML image or a CSS background from the Studio, a native picker or a code hover.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File Icons</a>
+<h2>Auric Artisan File Icons guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File Icons</a></li>
+<li><a href="assign-icons.html">Assign icons to files and folders</a></li>
+<li><a href="choose-a-style.html">Choose a style</a></li>
+<li><a href="customise-the-explorer.html">Customise the Explorer</a></li>
+<li><a href="insert-icons-into-code.html" aria-current="page">Insert icons into code</a></li>
+<li><a href="modern-and-legacy.html">Modern and older Playful settings</a></li>
+<li><a href="profiles.html">Profiles</a></li>
+<li><a href="smart-detection.html">Smart detection</a></li>
+<li><a href="reference.html">Auric Artisan File Icons reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File Icons</a> &rsaquo; <a href="README.html">Auric Artisan File Icons guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File Icons</p>
+<h1>Insert icons into code</h1>
+<p class="lede">Insert or copy File Icons artwork as inline SVG, JSX, an HTML image or a CSS background from the Studio, a native picker or a code hover.</p>
+<p>File Icon Studio lets you reuse the shipped file and folder artwork in your own code.</p>
+<h2 id="output-formats">Output formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Setting value</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td>Inline SVG</td><td><code>svg</code></td><td>A self-contained <code>&lt;svg&gt;</code> element, 24 × 24 by default.</td></tr>
+<tr><td>JSX</td><td><code>jsx</code></td><td>The SVG with JSX-compatible attribute names.</td></tr>
+<tr><td>HTML image</td><td><code>img</code></td><td>A 24 × 24 <code>&lt;img&gt;</code> with the SVG embedded as a data URI.</td></tr>
+<tr><td>CSS background</td><td><code>css</code></td><td>A <code>background-image</code> declaration with the SVG embedded as a data URI.</td></tr>
+</tbody></table></div>
+<p><code>auricFileIcons.insertFormat</code> sets the default format (<code>svg</code>) for the native picker and the Studio.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Code output always uses the shipped artwork of the chosen style. Your Explorer colour, saturation, brightness and opacity settings do not change exported code. Add meaningful alternative text when an icon conveys information.</p>
+</blockquote>
+<h2 id="from-the-library-tab">From the Library tab</h2>
+<ol>
+<li>Open a writable text file and place the cursor. The Studio&#39;s target line shows &quot;Insert target · {file}&quot;.</li>
+<li>In File Icon Studio, open <strong>Library</strong>.</li>
+<li>Set <strong>Artwork style</strong> (<strong>Facet</strong>, <strong>Playful</strong> or <strong>Modern</strong>) and <strong>Show</strong> (<strong>Files &amp; folders</strong>, <strong>Files</strong> or <strong>Folders</strong>).</li>
+<li>Type in <strong>Search icons</strong> (placeholder &quot;TypeScript, React, src…&quot;, up to 150 characters). Press <code>/</code> to jump to the search box.</li>
+<li>Choose a <strong>Code format</strong>: <strong>Inline SVG</strong>, <strong>JSX</strong>, <strong>HTML image</strong> or <strong>CSS background</strong>.</li>
+<li>Tick <strong>Open folder artwork</strong> to show folders in their open state.</li>
+<li>Hover over or focus a card, then choose <strong>Insert</strong>. Choose <strong>Copy</strong> to use the clipboard instead.</li>
+</ol>
+<p>Insertion replaces selected text, works at multiple cursors and is a single undo step. It does not save the file and adds no surrounding quotes. <strong>Copy</strong> works without an open editor.</p>
+<p>The grid loads more cards as you scroll; use <strong>Load more icons</strong> if it appears.</p>
+<h3 id="the-inspector">The inspector</h3>
+<p>Open a card&#39;s inspector to see the exact output before using it. The <strong>Icon inspector</strong> dialog shows a large preview, the card&#39;s hover token, the style, format and kind (for example &quot;Facet · SVG · File icon&quot;), and the generated code.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><strong>Insert into code</strong></td><td>Inserts the code at your selections.</td></tr>
+<tr><td><strong>Copy code</strong></td><td>Copies the code.</td></tr>
+<tr><td><strong>Copy hover token</strong></td><td>Copies a token such as <code>:icon-file-typescript:</code> for use with code hovers.</td></tr>
+</tbody></table></div>
+<h2 id="from-the-command-palette-or-editor-menu">From the Command Palette or editor menu</h2>
+<ol>
+<li>In a writable editor, run <strong>Auric Artisan File Icons: Insert Icon into Code…</strong>, or right-click in the editor and choose it.</li>
+<li>A picker titled <strong>Insert a file or folder icon</strong> lists icons of the active Auric style (Facet if another theme is active), with their tokens.</li>
+<li>Choose one. It is inserted in your <code>insertFormat</code>.</li>
+</ol>
+<h2 id="from-a-code-hover">From a code hover</h2>
+<ol>
+<li>Type a complete token such as <code>:icon-file-typescript:</code> or <code>:icon-folder-src:</code>. Copy valid tokens from the inspector.</li>
+<li>Hover over the token.</li>
+<li>Choose <strong>Insert SVG</strong>, <strong>Insert JSX</strong> or <strong>Insert IMG</strong>.</li>
+</ol>
+<p>Only that token is replaced, in one undo step. Hovering alone never changes your file.</p>
+<ul>
+<li>Hovers prefer the active Auric Explorer style, and use Facet when another theme is active. If the icon is not in that style, an available style is used.</li>
+<li>If the document changes, closes or becomes hidden before you choose, hover again for a fresh action.</li>
+<li>Turn hovers on or off with <strong>Enable code hovers</strong> on the Workspace tab or <code>auricFileIcons.hover.enabled</code>. VS Code&#39;s own editor hovers must also be enabled.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>The artwork is in your code, in the format you chose, taken from the shipped style you selected.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="customise-the-explorer.html"><span>Previous</span>Customise the Explorer</a><a href="modern-and-legacy.html"><span>Next</span>Modern and older Playful settings</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#output-formats">Output formats</a></li><li><a href="#from-the-library-tab">From the Library tab</a></li><li><a href="#from-the-command-palette-or-editor-menu">From the Command Palette or editor menu</a></li><li><a href="#from-a-code-hover">From a code hover</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the M-Gradient Palette — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms you may meet in the M-Gradient Palette, why they happen, and what to do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; M-Gradient Palette</a>
+<h2>M-Gradient Palette documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the M-Gradient Palette</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="compare-routes.html">Compare routes and easings</a></li>
+<li><a href="export-a-ramp.html">Export a ramp</a></li>
+<li><a href="interpolation-and-gamut.html">Interpolation and gamut</a></li>
+<li><a href="reference.html">M-Gradient Palette reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the M-Gradient Palette</a></li>
+<li><a href="faq.html">M-Gradient Palette FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">M-Gradient Palette</a> &rsaquo; <a href="README.html">M-Gradient Palette documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › M-Gradient Palette</p>
+<h1>Troubleshooting the M-Gradient Palette</h1>
+<p class="lede">Symptoms you may meet in the M-Gradient Palette, why they happen, and what to do.</p>
+<h2 id="building-the-ramp">Building the ramp</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>That is not a colour.</strong> and the hex box reverts</td><td>The value is not three or six hex digits</td><td>Type a value such as <code>F2B134</code> or <code>#abc</code>; eight-digit hex with alpha is not accepted</td></tr>
+<tr><td>Some steps have a gold underline</td><td>Their chroma was reduced to fit sRGB</td><td>Expected with saturated ends in OKLCH. Choose less saturated ends, or accept the boundary colours</td></tr>
+<tr><td>Neighbouring steps are identical</td><td>The <strong>step</strong> easing has only five positions</td><td>Choose another easing, or five steps</td></tr>
+<tr><td>The middle of the ramp is grey or muddy</td><td>sRGB and linear RGB pass near grey between very different hues</td><td>Use <strong>OKLCH, short hue</strong>; see the <strong>Spaces</strong> tab</td></tr>
+<tr><td>The ramp passes through unexpected hues</td><td>A long hue route, or HSL, goes round the colour wheel</td><td>Use a short hue route</td></tr>
+<tr><td>One bar is much taller than the rest</td><td>A visible jump at that step</td><td>Try another route or easing; check <strong>largest jump</strong></td></tr>
+<tr><td>A preset gave a poor ramp</td><td>Presets make no claim to be good ramps</td><td>Adjust the ends, route or easing</td></tr>
+</tbody></table></div>
+<h2 id="the-spaces-tab">The Spaces tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>No row is marked the evenest</td><td>Two or more rows tie</td><td>Choose any of the tied rows</td></tr>
+<tr><td>Choosing a row does nothing</td><td>The table is a comparison, not a control</td><td>Select that route and easing on the <strong>Ramp</strong> tab</td></tr>
+</tbody></table></div>
+<h2 id="contrast">Contrast</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>APCA Lc is negative</td><td>The text is lighter than the step</td><td>Expected: the sign shows polarity; the <strong>Good for</strong> column uses the size</td></tr>
+<tr><td>WCAG passes but APCA says <strong>not for text</strong>, or the reverse</td><td>The two measure different things</td><td>Treat both as evidence; choose steps that satisfy the standard you work to</td></tr>
+<tr><td>The simulation changed the colours but not the contrast figures</td><td>Figures always use the true colours</td><td>Expected</td></tr>
+</tbody></table></div>
+<h2 id="exports">Exports</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The CSS gradient looks different from the ramp</td><td>It carries only the two ends and the space, not steps or easing</td><td>Use the custom properties for exact steps</td></tr>
+<tr><td>The CSS gradient looks like an sRGB blend in one browser</td><td>That browser does not support interpolation in a named space</td><td>Use the custom properties, or an SVG</td></tr>
+<tr><td>The SVG&#39;s middle differs from the ramp</td><td>Between stops, the program showing the SVG blends in its own space</td><td>Add more steps so the stops are closer</td></tr>
+<tr><td><strong>The browser refused the clipboard.</strong></td><td>Clipboard access was blocked</td><td>Allow clipboard access for the site, or use <strong>Save the SVG</strong> and <strong>Save the reading</strong></td></tr>
+<tr><td><strong>This browser will not take text from the clipboard.</strong></td><td>The browser cannot copy text</td><td>Use a current browser, or the save buttons</td></tr>
+<tr><td>Pasted custom properties have no effect</td><td>They were pasted outside a CSS rule</td><td>Put them inside a rule such as <code>:root { … }</code></td></tr>
+</tbody></table></div>
+<p>For help with the site in general, see <a href="../../../../../help/README.html">Help</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>M-Gradient Palette reference</a><a href="faq.html"><span>Next</span>M-Gradient Palette FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#building-the-ramp">Building the ramp</a></li><li><a href="#the-spaces-tab">The Spaces tab</a></li><li><a href="#contrast">Contrast</a></li><li><a href="#exports">Exports</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

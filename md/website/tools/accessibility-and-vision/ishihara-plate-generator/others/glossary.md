@@ -1,0 +1,40 @@
+---
+title: Ishihara Plate Generator — Glossary
+description: Plain-language definitions of the terms used by the Ishihara Plate Generator.
+product: Website › Tools › Accessibility and vision
+updated: 2026-09-25
+---
+
+# Ishihara Plate Generator glossary
+
+**Concealment** — How well a figure hides under a simulated deficiency: its distance from the background there, compared with its distance for typical vision. Lower distance means better concealment.
+
+**CVD (colour-vision deficiency)** — Reduced ability to tell some colours apart, often called colour blindness.
+
+**Deuteranopia, protanopia, tritanopia** — Colour-vision deficiencies in which the green-, red- or blue-sensitive cones do not work. The generator simulates all three.
+
+**Dot density** — The share of the plate's area covered by dots.
+
+**ΔE (delta E)** — A measure of colour difference. The generator measures it in OKLab, where 0 is identical and a few hundredths is a visible difference.
+
+**Difficulty** — How similar the figure's colours are to the background's: Easy, Medium, Hard or Extreme.
+
+**Figure** — What the plate shows: a number, letter, symbol, shape or path.
+
+**Figure ratio** — The share of dots that belong to the figure.
+
+**Ishihara plate** — A circle of coloured dots containing a figure, used in colour-vision screening. The originals were published by Shinobu Ishihara.
+
+**OKLab** — A colour space designed so that equal distances look roughly equally different.
+
+**P3 HDR / sRGB** — Colour spaces. sRGB is the standard web colour space; Display P3 is a wider gamut some screens can show.
+
+**Placement engine** — The method used to scatter and pack dots: Balanced, Organic, Precision or Dense.
+
+**Quality score (QA)** — A 0–100 score combining dot density, figure ratio, separation and concealment.
+
+**Seed** — A number that fixes every random choice in a plate, so the same seed and settings rebuild it exactly.
+
+**Separation** — The colour distance between the average figure colour and the average background colour, for typical vision.
+
+**Standard 38** — A fixed set of 38 plates in the composition a printed plate book uses.

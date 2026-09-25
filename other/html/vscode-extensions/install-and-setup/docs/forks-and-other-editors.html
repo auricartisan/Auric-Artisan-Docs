@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursor, Windsurf, VSCodium and other editors — Auric Artisan Docs</title>
+<meta name="description" content="Install the Auric Artisan VS Code extensions in editors built on VS Code that use a different extension gallery.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html" aria-current="page">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html">Install from the command line</a></li>
+<li><a href="install-from-vsix.html">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Cursor, Windsurf, VSCodium and other editors</h1>
+<p class="lede">Install the Auric Artisan VS Code extensions in editors built on VS Code that use a different extension gallery.</p>
+<p>Several editors are built from the VS Code source code. People call them <em>forks</em>. Cursor, Windsurf and VSCodium are common examples. They run most VS Code extensions, but many of them search a different extension gallery, usually Open VSX, instead of the Visual Studio Marketplace.</p>
+<p>The Auric Artisan extensions are published only on the Visual Studio Marketplace. They are not on Open VSX, so a search inside one of these editors may find nothing. The extensions still work in forks that keep VS Code&#39;s extension, colour theme and icon theme interfaces; you install them from a VSIX file.</p>
+<h2 id="install-in-a-fork">Install in a fork</h2>
+<ol>
+<li><strong>Find the VS Code version your editor is based on.</strong> Open the editor&#39;s <strong>About</strong> dialog. Most forks show a VS Code version there. Compare it with the extension&#39;s minimum in the <a href="reference.html">reference</a>.</li>
+<li><strong>Download the VSIX</strong> of the extension you want from the Marketplace, as described in <a href="install-from-vsix.html">Install from a VSIX file</a>. If you want a pack, download each member instead; see <a href="extension-packs.html">The two extension packs</a>.</li>
+<li><strong>Install it</strong> in the editor:<ul>
+<li>Command Palette › <strong>Extensions: Install from VSIX…</strong>, or</li>
+<li>the Extensions view&#39;s <strong>…</strong> menu › <strong>Install from VSIX…</strong>, or</li>
+<li>the editor&#39;s own command-line launcher, if it has one, with <code>--install-extension &lt;file&gt;.vsix</code>. Cursor installs a <code>cursor</code> launcher, Windsurf a <code>windsurf</code> launcher and VSCodium a <code>codium</code> launcher; the flags are the same as VS Code&#39;s.</li>
+</ul>
+</li>
+<li><strong>Reload</strong> the window if asked, then check the Command Palette for the extension&#39;s commands.</li>
+</ol>
+<h2 id="keeping-extensions-up-to-date-in-a-fork">Keeping extensions up to date in a fork</h2>
+<p>An editor that cannot reach the Visual Studio Marketplace cannot tell when a new version is published. To update:</p>
+<ol>
+<li>Check the extension&#39;s page on the Marketplace or its release notes (each extension&#39;s folder in these docs has release notes).</li>
+<li>Download the new version&#39;s VSIX.</li>
+<li>Install it over the old one. The new version replaces the old one.</li>
+</ol>
+<h2 id="what-to-expect">What to expect</h2>
+<ul>
+<li><strong>Themes and icon themes</strong> work in forks that keep VS Code&#39;s colour theme and file icon theme support.</li>
+<li><strong>Webview panels</strong> (for example Formatter Studio, the Font Hub studio or the Auric Live control panel) depend on the fork supporting VS Code webviews. Most do.</li>
+<li><strong>Minimum version.</strong> If the fork&#39;s VS Code base is older than the extension&#39;s minimum, installation fails with a compatibility message. Use an older version of the extension, if one exists for your base version, or update the editor.</li>
+<li><strong>Keyboard shortcuts.</strong> A fork may already use a shortcut that an Auric extension declares, for example <code>Ctrl</code> + <code>K</code> combinations or <code>Ctrl</code> + <code>Alt</code> combinations. Check <strong>Preferences: Open Keyboard Shortcuts</strong> for conflicts and rebind as needed.</li>
+</ul>
+<h2 id="support">Support</h2>
+<p>Auric Artisan describes the extensions as working in forks that preserve the VS Code interfaces they use; each fork is not separately certified. If something behaves differently in a fork than in VS Code, report it with the editor&#39;s name and version. See <a href="get-support.html">Get support</a>.</p>
+<p>When the install succeeds, the extension is listed as installed in the editor&#39;s Extensions view and its commands appear in the Command Palette.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="extension-packs.html"><span>Previous</span>The two extension packs</a><a href="get-support.html"><span>Next</span>Get support</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#install-in-a-fork">Install in a fork</a></li><li><a href="#keeping-extensions-up-to-date-in-a-fork">Keeping extensions up to date in a fork</a></li><li><a href="#what-to-expect">What to expect</a></li><li><a href="#support">Support</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

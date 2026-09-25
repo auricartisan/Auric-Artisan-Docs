@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copy, export and share — Auric Artisan Docs</title>
+<meta name="description" content="Copy a harmony as hex, CSS, SCSS or Tailwind with role-named variables, download JSON, ASE, SVG or PNG, export design tokens, share a link, and export many harmonies.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Harmony Library</a>
+<h2>Harmony Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="analyse-the-collection.html">Analyse the collection</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="copy-export-and-share.html" aria-current="page">Copy, export and share</a></li>
+<li><a href="identify-your-colours.html">Identify your colours' harmony</a></li>
+<li><a href="inspect-a-harmony.html">Inspect a harmony</a></li>
+<li><a href="save-harmonies.html">Save harmonies</a></li>
+<li><a href="reference.html">Harmony Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Harmony Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Harmony Library</a> &rsaquo; <a href="README.html">Harmony Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Harmony Library</p>
+<h1>Copy, export and share</h1>
+<p class="lede">Copy a harmony as hex, CSS, SCSS or Tailwind with role-named variables, download JSON, ASE, SVG or PNG, export design tokens, share a link, and export many harmonies.</p>
+<h2 id="quick-copies-from-the-grid">Quick copies from the grid</h2>
+<ul>
+<li>Select a swatch to copy its hex code.</li>
+<li>Select <strong>Copy</strong> on a card to copy all its hex codes, separated by commas.</li>
+</ul>
+<h2 id="one-harmony">One harmony</h2>
+<p>Open the harmony on <strong>Inspect</strong>. Use its <strong>Quick export</strong> row, or the <strong>Selection</strong> card on the <strong>Export</strong> tab (headed <strong>Selection ·</strong> with the id and scheme). With nothing open, the <strong>Export</strong> tab says <strong>No harmony selected. Click Inspect on any card in the Library tab to enable selection exports.</strong></p>
+<h3 id="copy-formats">Copy formats</h3>
+<p>Variables are named after the harmony&#39;s id and each colour&#39;s role, which makes them easy to read. The examples use <code>har_0</code>, a complementary harmony.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick export</th><th>Export tab</th><th>What is copied</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy HEX</strong></td><td><strong>HEX list</strong></td><td>Hex codes, one per line.</td></tr>
+<tr><td><strong>Copy CSS vars</strong></td><td><strong>CSS variables</strong></td><td>A <code>:root</code> block.</td></tr>
+<tr><td><strong>Copy SCSS</strong></td><td><strong>SCSS variables</strong></td><td>Sass variables.</td></tr>
+<tr><td><strong>Copy Tailwind</strong></td><td><strong>Tailwind config</strong></td><td>A colour object keyed by role.</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="css"><code>:root {
+  --har_0-base: #D17671;
+  --har_0-complement: #71CCD1;
+}</code></pre>
+<pre class="code" data-lang="text"><code>$har_0-base: #D17671;
+$har_0-complement: #71CCD1;</code></pre>
+<pre class="code" data-lang="json"><code>{
+  &quot;har_0&quot;: {
+    &quot;base&quot;: &quot;#D17671&quot;,
+    &quot;complement&quot;: &quot;#71CCD1&quot;
+  }
+}</code></pre>
+<h3 id="downloads">Downloads</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick export</th><th>Export tab</th><th>File</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Download JSON</strong></td><td><strong>JSON</strong></td><td><code>har_0.json</code></td><td>Id, method, family, base (hue, saturation, lightness, hex), every colour (role, hex, RGB, HSL, OKLCH, Lab) and metadata including canonical angles, description, adherence and the contrast table.</td></tr>
+<tr><td><strong>Download ASE</strong></td><td><strong>Adobe ASE</strong></td><td><code>har_0.ase</code></td><td>An Adobe Swatch Exchange file with one RGB swatch per colour.</td></tr>
+<tr><td><strong>Download SVG</strong></td><td><strong>SVG strip</strong></td><td><code>har_0.svg</code></td><td>A strip of the colours with hex labels.</td></tr>
+<tr><td><strong>Download PNG</strong></td><td><strong>PNG strip</strong></td><td><code>har_0.png</code></td><td>The same strip as an image.</td></tr>
+</tbody></table></div>
+<p><strong>Open in Coolors</strong> (on <strong>Inspect</strong>, and under <strong>External</strong> on the <strong>Export</strong> tab) opens the harmony&#39;s colours on coolors.co in a new tab.</p>
+<h2 id="design-tokens">Design tokens</h2>
+<p>Select <strong>Design tokens…</strong>. The dialog is titled with the harmony&#39;s id, and <strong>Token prefix</strong> starts as the harmony&#39;s method name in lower case with dashes (for example <code>split-complementary</code>). Choose a format — <strong>W3C Design Tokens</strong>, <strong>CSS Variables</strong>, <strong>SCSS</strong>, <strong>Tailwind Config</strong>, <strong>Style Dictionary</strong>, <strong>Material UI Theme</strong>, <strong>iOS (SwiftUI)</strong> or <strong>Android colors.xml</strong> — then <strong>Copy</strong>, <strong>Download</strong>, or <strong>Download all</strong> for a ZIP named, for example, <code>harmony-har-0.zip</code>.</p>
+<h2 id="share-a-link">Share a link</h2>
+<p>Select <strong>Copy share link</strong>. The <strong>Share link</strong> dialog (titled <strong>Harmony</strong> and the id) offers <strong>Copy</strong>, <strong>Share via…</strong> where available, <strong>Open in new tab</strong> and <strong>Close</strong>. The link opens the Harmony Library with the harmony on <strong>Inspect</strong>. If it cannot be found, the page says <strong>Shared harmony not found in current dataset</strong>.</p>
+<h2 id="many-harmonies">Many harmonies</h2>
+<p>The <strong>Visible page</strong> card on the <strong>Export</strong> tab exports every harmony that matches your search and filters — all 8,192 with no filter. Its badge shows the number.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Button</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Bulk download</strong></td><td><strong>Download JSON (visible page)</strong></td><td>Every harmony in full.</td></tr>
+<tr><td></td><td><strong>Download CSV (visible page)</strong></td><td><code>harmony_id,method,family,color_count,base_hex,colors</code> with colours separated by spaces.</td></tr>
+<tr><td></td><td><strong>Download CSS variables</strong></td><td>One <code>:root</code> block, role-named variables per harmony.</td></tr>
+<tr><td></td><td><strong>Download SCSS variables</strong></td><td>Role-named Sass variables.</td></tr>
+<tr><td></td><td><strong>Download compact JSON</strong></td><td>Id, method and hex codes per harmony.</td></tr>
+<tr><td><strong>Sample formats</strong></td><td><strong>Download .txt hex list</strong></td><td>Every hex code, one per line.</td></tr>
+<tr><td></td><td><strong>Download tailwind.config.js fragment</strong></td><td>A Tailwind configuration with one colour group per harmony.</td></tr>
+</tbody></table></div>
+<p>Files are named <code>harmony-page-&lt;count&gt;-&lt;date&gt;.&lt;ext&gt;</code>. With nothing matching, the page says <strong>Nothing to export</strong>.</p>
+<h2 id="result">Result</h2>
+<p>The harmony is on your clipboard, in a file, in design tokens for your platform, or in a link — with variable names that say what each colour does.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="browse-search-and-filter.html"><span>Previous</span>Browse, search and filter</a><a href="identify-your-colours.html"><span>Next</span>Identify your colours' harmony</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#quick-copies-from-the-grid">Quick copies from the grid</a></li><li><a href="#one-harmony">One harmony</a></li><li><a href="#design-tokens">Design tokens</a></li><li><a href="#share-a-link">Share a link</a></li><li><a href="#many-harmonies">Many harmonies</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

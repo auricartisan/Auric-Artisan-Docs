@@ -1,0 +1,72 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for problems in the Shade Library.
+Area: Website › Library › Colour libraries › Shade Library   Updated: 2026-09-25
+
+"COULD NOT LOAD SHADE LIBRARY"
+==============================
+
+Why: The collection (about 2 MB) could not be downloaded.
+
+What to do: Check your connection and any content blocker, and reload.
+
+I CANNOT FIND AN EVENNESS FILTER
+================================
+
+Why: The page's introduction recommends filtering by evenness, but the current
+filter row has only Base hue, Chroma, Lightness and Method.
+
+What to do: Narrow the list with the other filters, then compare Min adjacent
+contrast and the Token contrast ladder on Inspect: uneven scales show one or
+two big jumps between neighbouring steps.
+
+"NO SHADE SYSTEMS MATCH"
+========================
+
+Why: The filters together exclude everything, for example Light lightness with
+Ink Paper.
+
+What to do: Select Reset and add filters back one at a time.
+
+PASTED CSS VARIABLES DO NOTHING
+===============================
+
+Why: Copy CSS vars declares the variables on a class such as
+`.aa-shade-material-like-00001`, not on `:root`.
+
+What to do: Change the selector to `:root`, or add the class to the element
+where you use the variables.
+
+THE MIDDLE STEPS FAIL CONTRAST
+==============================
+
+Why: In almost every scale, the middle steps (around `300`–`700`) are too
+close in lightness to both black and white to carry body text. That is
+expected: they are fills, borders and accents.
+
+What to do: Use light steps for surfaces with dark text, dark steps for text
+or dark surfaces with light text, and check the Token contrast ladder.
+
+BULK EXPORT BUTTONS DO NOTHING
+==============================
+
+Why: No scales match the current filters.
+
+What to do: Widen the filters, then export again.
+
+A SHARE LINK DOES NOT OPEN THE SCALE
+====================================
+
+Why: The link was cut short or edited; the page may say Shared shade not in
+current library.
+
+What to do: Ask for the scale's id (for example `shade_000000`) and search for
+it.
+
+SAVED SCALES HAVE GONE
+======================
+
+Why: Saves live in this browser only (up to 500).
+
+What to do: Save them again, or export them.

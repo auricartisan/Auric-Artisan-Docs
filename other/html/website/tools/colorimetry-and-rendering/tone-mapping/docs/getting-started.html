@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Tone Mapping — Auric Artisan Docs</title>
+<meta name="description" content="Open the Tone Mapping lab, learn its tabs and the eleven-step pipeline, and read your first mapped frame.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tone Mapping</a>
+<h2>Tone Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Tone Mapping</a></li>
+<li><a href="compare-operators.html">Compare operators</a></li>
+<li><a href="export-a-lut.html">Export a LUT</a></li>
+<li><a href="map-a-frame.html">Map a frame</a></li>
+<li><a href="read-the-scopes.html">Read the scopes</a></li>
+<li><a href="reference.html">Tone Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tone Mapping</a></li>
+<li><a href="faq.html">Tone Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tone Mapping</a> &rsaquo; <a href="README.html">Tone Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Getting started with Tone Mapping</h1>
+<p class="lede">Open the Tone Mapping lab, learn its tabs and the eleven-step pipeline, and read your first mapped frame.</p>
+<h2 id="open-the-lab">Open the lab</h2>
+<p>Go to <a href="https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/</a>. The heading is <strong>Tone Mapping</strong>. All processing happens in your browser.</p>
+<h2 id="key-ideas">Key ideas</h2>
+<ul>
+<li><strong>Scene-referred</strong> values describe light in the scene. They start at 0 and can go far above 1; 0.18 is the conventional <strong>mid-grey</strong>, and 1.0 is often treated as diffuse white.</li>
+<li><strong>Display-referred</strong> values run from 0 to 1, where 1 is the brightest the display shows.</li>
+<li>A <strong>tone curve</strong> (tone-mapping operator) maps scene values to display values. A good curve keeps mid-grey where you expect it and rolls highlights off gently instead of clipping them.</li>
+<li><strong>Exposure</strong> is measured in <strong>stops (EV)</strong>. One stop doubles or halves the light, and it is applied before the curve, so it changes which part of the curve the scene lands on.</li>
+</ul>
+<h2 id="a-tour-of-the-screen">A tour of the screen</h2>
+<p>A note at the top warns that two of the nine operators the page once offered were one-line stand-ins; see the Data tab.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>The pipeline controls, the mapped frame and the curve</td></tr>
+<tr><td><strong>Operators</strong></td><td>All nine operators on one table and one chart</td></tr>
+<tr><td><strong>Scopes</strong></td><td>Histogram, waveform, vectorscope, false colour, A/B split and timing</td></tr>
+<tr><td><strong>Data</strong></td><td>The eight datasets and transforms the lab rests on, with their status</td></tr>
+<tr><td><strong>Export</strong></td><td>Curve and pipeline LUTs, CSV, a link, and HEX list mapping</td></tr>
+<tr><td><strong>Reference</strong></td><td>Standards, formulas, citations and research notes with a filter</td></tr>
+</tbody></table></div>
+<h3 id="the-pipeline">The pipeline</h3>
+<p>Every pixel goes through these steps in order:</p>
+<ol>
+<li>Linearise (decode the source encoding)</li>
+<li>Source → working, with white-point adaptation</li>
+<li>Exposure</li>
+<li>Low-level operator</li>
+<li>Tone curve</li>
+<li>Contrast, saturation, lift / gamma / gain</li>
+<li>Temperature and tint</li>
+<li>Hue and vibrance</li>
+<li>Working → target, gamut mapping</li>
+<li>Output OETF (encode for the display)</li>
+<li>Dither</li>
+</ol>
+<p>The Export tab refers to these step numbers.</p>
+<h3 id="the-lab-tab">The Lab tab</h3>
+<p>The left panel groups the controls: source (<strong>Source</strong>, encoding, primaries, white), <strong>Exposure</strong>, <strong>Tone curve</strong> (with a custom curve option), <strong>Low-level operator</strong>, <strong>Grade</strong>, <strong>Working → target</strong> (working space, target primaries and white, gamut mapping, output OETF, out-of-gamut mark, dither), <strong>Display peak</strong>, <strong>Source peak</strong> and <strong>Presets</strong>.</p>
+<p>The right side shows <strong>The mapped frame</strong> with its resolution and status chips, then <strong>The curve, and where the scene sits on it</strong> (the tone curve drawn over a histogram of the scene), statistics and a note.</p>
+<h2 id="read-your-first-frame">Read your first frame</h2>
+<ol>
+<li>The lab opens on <strong>HDR test scene</strong>, <strong>Linear (scene)</strong> encoding, Rec.709 primaries, D65, the <strong>Hable filmic</strong> curve and the <strong>ACEScg AP1 (D60)</strong> working space.</li>
+<li>Look at the chips over the frame: the working and target spaces, the curve and the processing time; <strong>Scene-referred</strong> (because the source is linear) and <strong>Photographic</strong>; and <strong>out of gamut</strong> if any pixel left the target gamut.</li>
+<li>Read the statistics:<ul>
+<li><strong>Mid-grey, curve</strong> — what 0.18 becomes;</li>
+<li><strong>Scene white at</strong> — the input at which the curve reaches display white (&quot;never&quot; if it only approaches it);</li>
+<li><strong>Working luma</strong> — the working space&#39;s luminance weights;</li>
+<li><strong>Display peak</strong> — in nits.</li>
+</ul>
+</li>
+<li>Move <strong>Exposure</strong> to +2.0 EV. The frame brightens, and the histogram behind the curve shifts to the right.</li>
+<li>Choose <strong>None (clip)</strong> under <strong>Tone curve</strong>. Highlights now clip hard at white.</li>
+</ol>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="map-a-frame.html">Map a frame</a></li>
+<li><a href="compare-operators.html">Compare operators</a></li>
+<li><a href="read-the-scopes.html">Read the scopes</a></li>
+<li><a href="export-a-lut.html">Export a LUT</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Tone Mapping documentation</a><a href="compare-operators.html"><span>Next</span>Compare operators</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-lab">Open the lab</a></li><li><a href="#key-ideas">Key ideas</a></li><li><a href="#a-tour-of-the-screen">A tour of the screen</a></li><li><a href="#read-your-first-frame">Read your first frame</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

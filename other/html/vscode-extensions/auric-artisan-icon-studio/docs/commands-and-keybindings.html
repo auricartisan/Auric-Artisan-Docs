@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commands and keybindings — Auric Artisan Docs</title>
+<meta name="description" content="Use Icon Studio from the Command Palette and keyboard, including Quick Pick insertion and a fixed icon bound to a key.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Icon Studio</a>
+<h2>Icon Studio guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Icon Studio</a></li>
+<li><a href="auric-collections.html">Work with the Auric collection extensions</a></li>
+<li><a href="commands-and-keybindings.html" aria-current="page">Commands and keybindings</a></li>
+<li><a href="insert-copy-and-save.html">Insert, copy and save</a></li>
+<li><a href="search-and-browse.html">Search and browse</a></li>
+<li><a href="reference.html">Icon Studio reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Icon Studio</a> &rsaquo; <a href="README.html">Icon Studio guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Icon Studio</p>
+<h1>Commands and keybindings</h1>
+<p class="lede">Use Icon Studio from the Command Palette and keyboard, including Quick Pick insertion and a fixed icon bound to a key.</p>
+<p>You can use Icon Studio without opening its panel. Open the Command Palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code>) and type &quot;Auric Icon Studio&quot;.</p>
+<h2 id="search-everything-and-choose-an-action">Search everything and choose an action</h2>
+<ol>
+<li>Run <strong>Auric Icon Studio: Search All Icons…</strong> (also the search icon in the sidebar title bar).</li>
+<li>A Quick Pick opens. With an empty search and recommendations on, it starts with <strong>Recommended for this file</strong>, then <strong>All icons</strong>. Each row shows the icon, its collection, category and tags.</li>
+<li>Type to search. Up to 200 results are listed.</li>
+<li>Choose an icon, then choose an action:<ul>
+<li><strong>Smart Insert (matches this file)</strong></li>
+<li><strong>Insert</strong></li>
+<li><strong>Copy</strong></li>
+<li><strong>Copy As…</strong></li>
+<li><strong>Save as SVG…</strong> (SVG artwork only)</li>
+<li><strong>Toggle Like</strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="smart-insert-with-one-shortcut">Smart insert with one shortcut</h2>
+<ol>
+<li>Place the cursor in a text editor.</li>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>I</code> (<code>Cmd</code> + <code>Alt</code> + <code>I</code> on macOS), or run <strong>Auric Icon Studio: Smart Insert Icon (matches active language)</strong>. It is also on the editor&#39;s right-click menu.</li>
+<li>Choose an icon. It is inserted in the format that suits the file.</li>
+</ol>
+<h2 id="insert-from-recent-or-likes">Insert from Recent or Likes</h2>
+<ul>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>R</code> (<code>Cmd</code> + <code>Alt</code> + <code>R</code> on macOS) or run <strong>Insert from Recent</strong>.</li>
+<li>Run <strong>Insert from Likes</strong> (also the heart icon in the sidebar title bar).</li>
+</ul>
+<p>Both run the action set in <code>auricIconStudio.clickAction</code>: <strong>insert</strong> (default), <strong>copy</strong>, or <strong>insert and copy</strong>. If the list is empty, you see &quot;Icon Studio: no recent icons yet.&quot; or a prompt to like an icon first.</p>
+<h2 id="other-commands">Other commands</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Open Icon Studio</strong></td><td>Opens the editor-tab Studio beside your editor.</td></tr>
+<tr><td><strong>Copy Icon As…</strong></td><td>Choose an icon, then a format, and copy.</td></tr>
+<tr><td><strong>Save Icon as SVG…</strong></td><td>Choose an SVG icon and save it through a dialog.</td></tr>
+<tr><td><strong>Clear Likes, Recents and Learned Recommendations</strong></td><td>After confirmation (<strong>Clear</strong>), resets Icon Studio&#39;s personalisation.</td></tr>
+</tbody></table></div>
+<p>Keyboard shortcuts need editor focus. When you have chosen to keep the separate Auric collection libraries, Icon Studio&#39;s shortcuts step aside for theirs (see <a href="auric-collections.html">Work with the Auric collection extensions</a>).</p>
+<h2 id="insert-a-specific-icon-from-a-keybinding">Insert a specific icon from a keybinding</h2>
+<p>The command <code>auricIconStudio.insertIcon</code> inserts one icon by its catalog ID. It is hidden from the Command Palette and meant for keybindings and macros.</p>
+<ol>
+<li>Open <strong>Preferences: Open Keyboard Shortcuts (JSON)</strong>.</li>
+<li>Add an entry such as:</li>
+</ol>
+<pre class="code" data-lang="json"><code>{
+  &quot;key&quot;: &quot;ctrl+alt+shift+r&quot;,
+  &quot;command&quot;: &quot;auricIconStudio.insertIcon&quot;,
+  &quot;args&quot;: {
+    &quot;id&quot;: &quot;tabler-rocket&quot;,
+    &quot;format&quot;: &quot;jsx&quot;
+  }
+}</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Argument</th><th>Required</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>Yes</td><td>The catalog ID. You can also pass the ID as a plain string instead of an object.</td></tr>
+<tr><td><code>variant</code></td><td>No</td><td>A style ID for that collection, such as <code>outline</code>.</td></tr>
+<tr><td><code>format</code></td><td>No</td><td>An output format ID. If omitted, smart insert rules apply.</td></tr>
+</tbody></table></div>
+<p>Format IDs: <code>raw</code>, <code>jsx</code>, <code>jsxComponent</code>, <code>js</code>, <code>img</code>, <code>markdown</code>, <code>css</code>, <code>dataUri</code>, <code>name</code> (SVG artwork); <code>html</code>, <code>jsx</code>, <code>jsxComponent</code>, <code>js</code>, <code>css</code>, <code>name</code> (Material); <code>emoji</code>, <code>shortcode</code>, <code>unicode</code>, <code>html</code> (emoji).</p>
+<p>To find an icon&#39;s ID, copy it with <strong>As…</strong> › <strong>Icon ID</strong> rather than guessing. An unknown ID shows &quot;Icon Studio: unknown icon id …&quot;.</p>
+<h2 id="result">Result</h2>
+<p>You can search, insert, copy and save icons entirely from the keyboard, and bind a favourite icon to its own shortcut.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="auric-collections.html"><span>Previous</span>Work with the Auric collection extensions</a><a href="insert-copy-and-save.html"><span>Next</span>Insert, copy and save</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#search-everything-and-choose-an-action">Search everything and choose an action</a></li><li><a href="#smart-insert-with-one-shortcut">Smart insert with one shortcut</a></li><li><a href="#insert-from-recent-or-likes">Insert from Recent or Likes</a></li><li><a href="#other-commands">Other commands</a></li><li><a href="#insert-a-specific-icon-from-a-keybinding">Insert a specific icon from a keybinding</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appearance — Auric Artisan Docs</title>
+<meta name="description" content="Change the Studio's accent colour and understand how the Studio follows your VS Code light, dark and high-contrast themes.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html" aria-current="page">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Appearance</h1>
+<p class="lede">Change the Studio's accent colour and understand how the Studio follows your VS Code light, dark and high-contrast themes.</p>
+<p>The Studio&#39;s own screens (the Overview, the Studio tab and the colour pickers) share one visual style that follows your VS Code theme. You can change one thing about it: the <strong>accent colour</strong> used for primary buttons, selected tabs and highlights.</p>
+<h2 id="how-the-studio-follows-your-theme">How the Studio follows your theme</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Your VS Code theme</th><th>What the Studio looks like</th></tr></thead>
+<tbody>
+<tr><td>Dark</td><td>Warm near-black surfaces, light text, gold primary actions</td></tr>
+<tr><td>Light</td><td>Paper-coloured surfaces, dark text, gold primary actions</td></tr>
+<tr><td>High contrast (dark or light)</td><td>VS Code&#39;s own high-contrast colours and borders; the Studio does not repaint them</td></tr>
+</tbody></table></div>
+<p>Headings and scores use the Fraunces typeface and other text uses Manrope. Both are bundled with the extensions as small Latin subsets, so nothing is downloaded.</p>
+<p>What VS Code draws itself stays native and follows your theme: hovers, the Command Center list, the status bar, the Problems panel and the Project Issues tree. The gold <strong>Apply fix</strong> button in hovers always uses Auric gold.</p>
+<h2 id="change-the-accent-colour">Change the accent colour</h2>
+<p>The accent colour recolours the Studio, the pickers, buttons, tabs and highlights, in the same way as the accent setting on <a href="https://auricartisan.com" rel="noopener">https://auricartisan.com</a>.</p>
+<h3 id="in-the-studio">In the Studio</h3>
+<ol>
+<li>Open the Studio and select <strong>Settings</strong> at the foot of the rail.</li>
+<li>In the <strong>Appearance</strong> card, select one of the 13 swatches, or the <strong>+</strong> swatch to pick any colour with the full picker.</li>
+<li>The whole Studio changes immediately, and the choice is saved; there is no Save button for this card. A toast confirms, for example <strong>Accent → Sapphire</strong>.</li>
+<li><strong>Reset to Gold</strong> returns to the default.</li>
+</ol>
+<p>The card shows the current accent and a small live preview of tabs, buttons, a badge and a bar. Arrow keys move between the swatches.</p>
+<h3 id="with-a-command">With a command</h3>
+<ol>
+<li>Run <strong>Auric Artisan: Change Accent Color (Theme the Studio)</strong> (Auric Color only).</li>
+<li>Pick a preset (the current one is marked <strong>current</strong>), <strong>Custom color…</strong> to type a hex value such as <code>#2563EB</code> (three or six digits), or <strong>Open Studio Appearance settings</strong>.</li>
+<li>The status bar confirms, for example <code>Auric Artisan accent → Sapphire #2F5EAA</code>. Open Studio and picker views update straight away.</li>
+</ol>
+<h3 id="in-settingsjson">In settings.json</h3>
+<p>Set the <code>appearance.accent</code> key of the extension that hosts your Studio (<code>auricA11y</code>, <code>auricColor</code> or <code>auricCodeHealth</code>) to a preset ID or a hex colour:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;auricA11y.appearance.accent&quot;: &quot;sapphire&quot;,
+  &quot;auricColor.appearance.accent&quot;: &quot;#2563EB&quot;
+}</code></pre>
+<p>Anything that is not a preset ID or a <code>#rgb</code> or <code>#rrggbb</code> value falls back to <code>gold</code>.</p>
+<h2 id="the-presets">The presets</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Swatch name</th><th>Setting value</th><th>Colour</th></tr></thead>
+<tbody>
+<tr><td>Gold (default)</td><td><code>gold</code></td><td><code>#D3AF37</code></td></tr>
+<tr><td>Champagne</td><td><code>champagne</code></td><td><code>#DEC68A</code></td></tr>
+<tr><td>Rose Gold</td><td><code>rose-gold</code></td><td><code>#B76E79</code></td></tr>
+<tr><td>Silver</td><td><code>silver</code></td><td><code>#C4C7CE</code></td></tr>
+<tr><td>Platinum Grey</td><td><code>platinum</code></td><td><code>#8A8F99</code></td></tr>
+<tr><td>Bronze</td><td><code>bronze</code></td><td><code>#B08D57</code></td></tr>
+<tr><td>Copper</td><td><code>copper</code></td><td><code>#B87333</code></td></tr>
+<tr><td>Brown</td><td><code>espresso</code></td><td><code>#8B5A2B</code></td></tr>
+<tr><td>Maroon</td><td><code>maroon</code></td><td><code>#800020</code></td></tr>
+<tr><td>Pink</td><td><code>rose</code></td><td><code>#E75480</code></td></tr>
+<tr><td>Emerald</td><td><code>emerald</code></td><td><code>#3EA882</code></td></tr>
+<tr><td>Sapphire</td><td><code>sapphire</code></td><td><code>#2F5EAA</code></td></tr>
+<tr><td>Amethyst</td><td><code>amethyst</code></td><td><code>#9966CC</code></td></tr>
+</tbody></table></div>
+<h2 id="where-the-accent-is-stored">Where the accent is stored</h2>
+<p>The accent is a personal preference, so the Studio always saves it to your <strong>user</strong> settings, not the workspace. It follows you to every workspace on that machine (and to others if you use Settings Sync).</p>
+<p>Each Studio extension has its own <code>appearance.accent</code> key. The Studio you see reads the key of the extension that hosts it (see <a href="workstation.html">The Workstation</a>), and the Appearance card and the command write to that key.</p>
+<h2 id="readability-of-the-accent">Readability of the accent</h2>
+<p>A light accent such as Champagne or Silver would be hard to read as text on the paper theme. The Studio adjusts the accent&#39;s text colour, darkening or lightening it only as much as needed, until it reaches at least 4.5:1 on every surface it is used on, including its own tinted highlight. Button labels on the accent use black or white, whichever reads better.</p>
+<h2 id="branding-colours">Branding colours</h2>
+<p>The pink colours used for the Branding group can be changed through VS Code&#39;s <code>workbench.colorCustomizations</code>. See <a href="reference.html#theme-colours">Theme colours</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started</a><a href="choosing-an-install.html"><span>Next</span>Choose what to install</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-the-studio-follows-your-theme">How the Studio follows your theme</a></li><li><a href="#change-the-accent-colour">Change the accent colour</a></li><li><a href="#the-presets">The presets</a></li><li><a href="#where-the-accent-is-stored">Where the accent is stored</a></li><li><a href="#readability-of-the-accent">Readability of the accent</a></li><li><a href="#branding-colours">Branding colours</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

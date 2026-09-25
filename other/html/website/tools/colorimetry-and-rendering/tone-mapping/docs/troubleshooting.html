@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting Tone Mapping — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for common problems in the Tone Mapping lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tone Mapping</a>
+<h2>Tone Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tone Mapping</a></li>
+<li><a href="compare-operators.html">Compare operators</a></li>
+<li><a href="export-a-lut.html">Export a LUT</a></li>
+<li><a href="map-a-frame.html">Map a frame</a></li>
+<li><a href="read-the-scopes.html">Read the scopes</a></li>
+<li><a href="reference.html">Tone Mapping reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting Tone Mapping</a></li>
+<li><a href="faq.html">Tone Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tone Mapping</a> &rsaquo; <a href="README.html">Tone Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Troubleshooting Tone Mapping</h1>
+<p class="lede">Fixes for common problems in the Tone Mapping lab.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>My photo looks flat or unchanged by the curve</td><td>An 8-bit PNG or JPEG stops at 1.0, so there are no highlights above white for the curve to compress</td><td>Raise <strong>Exposure</strong>, or use the built-in HDR test scene to compare curves</td></tr>
+<tr><td>My photo looks too dark or washed out</td><td>The source encoding does not match the file</td><td>For ordinary images choose <strong>sRGB</strong> encoding and <strong>Rec.709</strong> primaries</td></tr>
+<tr><td>Changing <strong>Display peak</strong> or <strong>Source peak</strong> changes nothing</td><td>The seven working curves do not use the peaks</td><td>Expected. The peaks affect the retired operators and the false-colour map</td></tr>
+<tr><td><strong>Soft compress</strong> looks exactly like <strong>Clip</strong></td><td>In the current version the two give the same result</td><td>Use <strong>Preserve hue</strong> to keep channel ratios in out-of-gamut colours</td></tr>
+<tr><td>The HDR 1000 preset looks pale and washed out on my screen</td><td>PQ output is an HDR encoding (a display value of 1.0 is encoded as 10,000 nits), and an ordinary screen shows PQ code values as if they were sRGB</td><td>Use sRGB output for viewing on a standard display; use PQ only when exporting for HDR</td></tr>
+<tr><td><strong>Linear axis</strong>, <strong>Log axis</strong> or <strong>Film stops</strong> does not change the chart</td><td>They set the custom curve&#39;s knee, mid and shoulder</td><td>Tick <strong>Use the custom curve instead</strong> to see their effect</td></tr>
+<tr><td>The custom curve fields do nothing</td><td>The custom curve is used only when its box is ticked or <strong>Custom 1D curve</strong> is selected</td><td>Tick <strong>Use the custom curve instead</strong></td></tr>
+<tr><td>The low-level operator does nothing</td><td>Parameters a and b start at 0</td><td>Enter a positive <strong>a</strong></td></tr>
+<tr><td>Gamma-domain scale or Scaled Reinhard are not in the list</td><td>They are not tone curves and are no longer offered</td><td>See them on the <strong>Operators</strong> tab</td></tr>
+<tr><td>The false-colour note and the map disagree</td><td>The note uses the Source peak; the map uses the Display peak</td><td>Set both peaks to the same value when reading the map</td></tr>
+<tr><td>The split view shows only one version</td><td>Both A and B must be stored</td><td>Select <strong>Store A</strong> and <strong>Store B</strong>, then tick <strong>Split the viewport</strong></td></tr>
+<tr><td><strong>Analyse</strong> says &quot;No valid hex colours found.&quot;</td><td>Only six-digit HEX colours are read, although the box&#39;s example shows numbers</td><td>Enter values such as <code>#FF8800</code></td></tr>
+<tr><td><strong>Download the result</strong> says &quot;Run batch first&quot;</td><td>No analysis has been run</td><td>Select <strong>Analyse</strong> first</td></tr>
+<tr><td>The link does not restore my grade</td><td>The link records operator, exposure, source encoding, display peak, output and target primaries only</td><td>Re-enter the grade, or export the pipeline <code>.cube</code></td></tr>
+<tr><td>A LUT looks different from the preview in another program</td><td>A curve export carries only step 5</td><td>Export <strong>The whole pipeline</strong> as <code>.cube</code></td></tr>
+<tr><td>Copy fails</td><td>The browser blocked clipboard access</td><td>The text is in the preview; select and copy it</td></tr>
+<tr><td><strong>Reset</strong> cleared everything</td><td>It reloads the lab with defaults</td><td>Use a stored link to return to a setup</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Tone Mapping reference</a><a href="faq.html"><span>Next</span>Tone Mapping FAQ</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

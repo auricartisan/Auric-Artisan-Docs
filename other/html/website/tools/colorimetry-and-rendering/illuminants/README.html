@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Illuminants — Auric Artisan Docs</title>
+<meta name="description" content="What the Standard Illuminants lab does, who it is for, where to find it and how to take your first reading.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Colorimetry and rendering tools</a>
+<h2>Illuminants</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Illuminants documentation &rsaquo;</a></li>
+<li><a href="others/README.html">Illuminants: supporting pages &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="README.html">Illuminants</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Illuminants</h1>
+<p class="lede">What the Standard Illuminants lab does, who it is for, where to find it and how to take your first reading.</p>
+<p>The Standard Illuminants lab shows you what a light source is made of and what that does to colour. You pick one of 18 CIE standard illuminants (A, D50, D55, D65, D75, equal-energy E and the fluorescent series F1 to F12) or a blackbody radiator at any colour temperature from 1,500 K to 25,000 K. The lab draws its spectral power distribution, integrates it against the CIE 1931 2° standard observer, and reports its white point, correlated colour temperature (CCT), Duv, colour rendering, how surfaces look under it, and how a set of colours adapts from one white point to another.</p>
+<p>Around that core it adds views for the chromaticity diagram (in three planes), a Monte Carlo estimate of how measurement error propagates into x, y, CCT and Duv, a comparison of calculation methods, a small query console for comparing many illuminants at once, and a data register that says where every table comes from. Every reading carries a line naming the dataset, observer and interval behind it.</p>
+<p>The lab is honest about its limits. The CIE fluorescent tables and the CIE 13.3 test colour samples are not held, so fluorescent spectra and colour rendering figures are built from stand-ins and labelled as such. IES TM-30 is not computed at all. See <a href="others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Designers and photographers who want to know why a colour looks different under office, shop or home lighting.</li>
+<li>Developers and colour-management practitioners working with D50 and D65 white points (ICC workflows, sRGB, print).</li>
+<li>Students learning how illuminants, CCT, Duv and chromatic adaptation fit together.</li>
+<li>Lighting and measurement people who want a quick, traceable reference calculation — not a certified one.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li>Address: <a href="https://auricartisan.com/tool/general/colorimetry/illuminants/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/illuminants/</a></li>
+<li>In the tool collection (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) under <strong>Colorimetry</strong>, as <strong>Illuminants</strong>.</li>
+<li>It works in any current desktop or mobile browser. No account is needed.</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open <a href="https://auricartisan.com/tool/general/colorimetry/illuminants/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/illuminants/</a>. The <strong>Lab</strong> tab opens with CIE D65 selected.</li>
+<li>Read the <strong>Illuminant Summary</strong> at the top of the results: CCT, Duv, CIE x and y, CRI Ra and XYZ.</li>
+<li>Open the <strong>Illuminant</strong> list and choose <strong>CIE A (2856 K) — Incandescent</strong>. Watch the spectrum tilt towards red.</li>
+<li>Tick <strong>Enable comparison</strong> and leave the comparison illuminant on D65 (choose <strong>CIE D65 (6504 K)</strong> in the list). The chart overlays both curves and a comparison table appears at the bottom.</li>
+<li>Look at <strong>Surface appearance</strong> to see how skin, paint and ink samples shift under the new light.</li>
+<li>Open the <strong>Chromaticity</strong> tab to see where the light sits against the Planckian locus.</li>
+<li>Open <strong>Export</strong> and select <strong>Export SPD CSV</strong> to download the spectrum.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Plot the spectrum of any of 18 standard illuminants or a blackbody at a custom CCT.</li>
+<li>Read white point (x, y, XYZ), CCT and Duv computed by Ohno&#39;s method, with a validity check.</li>
+<li>Compare two illuminants and get a metamerism index.</li>
+<li>See how eight sample surfaces render under the light, with CIEDE2000 differences.</li>
+<li>Adapt a 24-colour chart between white points with six chromatic adaptation transforms (or none) and inspect the matrix.</li>
+<li>View chromaticity in CIE 1931 xy, CIE 1976 u′v′ or CIE 1960 uv, with the Planckian locus, isotemperature lines, the daylight locus and RGB primaries.</li>
+<li>Read the dominant wavelength and purity.</li>
+<li>Propagate an instrument uncertainty budget into x, y, CCT and Duv by Monte Carlo simulation.</li>
+<li>Compare interval and interpolation choices, and the Ohno and McCamy CCT methods.</li>
+<li>Query many illuminants at once and export the results as CSV or JSON.</li>
+<li>Export the spectrum as CSV, JSON or PNG, copy the white as HEX, and share a link to your settings.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the lab<ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/compare-light-sources.html">Compare two light sources</a></li>
+<li><a href="docs/adapt-between-white-points.html">Adapt colours between white points</a></li>
+<li><a href="docs/estimate-uncertainty.html">Estimate measurement uncertainty</a></li>
+<li><a href="docs/query-console.html">Query many illuminants at once</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background and supporting pages<ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/shortcuts.html">Shortcuts</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related tools</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../hdr-gamut-plot/others/related.html"><span>Previous</span>Related to the HDR Gamut Plot</a><a href="docs/README.html"><span>Next</span>Illuminants documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

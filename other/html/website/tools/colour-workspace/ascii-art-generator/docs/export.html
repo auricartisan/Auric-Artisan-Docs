@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copy, export and batch — Auric Artisan Docs</title>
+<meta name="description" content="Copy the art, download it as TXT, PNG, SVG, HTML, JSON, CSV or ANSI, export several files at once, and render a list of words in one go.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ASCII Art Generator</a>
+<h2>ASCII Art Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ASCII Art Generator</a></li>
+<li><a href="charts-and-compare.html">Charts, benchmark and Compare</a></li>
+<li><a href="export.html" aria-current="page">Copy, export and batch</a></li>
+<li><a href="fine-tuning.html">Fine tuning</a></li>
+<li><a href="looks-colour-and-detail.html">Looks, colour and detail</a></li>
+<li><a href="render-modes.html">Render modes and full screen</a></li>
+<li><a href="sources.html">Choose a source</a></li>
+<li><a href="reference.html">ASCII Art Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">ASCII Art Generator</a> &rsaquo; <a href="README.html">ASCII Art Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Copy, export and batch</h1>
+<p class="lede">Copy the art, download it as TXT, PNG, SVG, HTML, JSON, CSV or ANSI, export several files at once, and render a list of words in one go.</p>
+<p>Every file is built in your browser and handed straight to your downloads. Nothing is uploaded.</p>
+<h2 id="copy">Copy</h2>
+<ul>
+<li><strong>Copy</strong> under the art copies the plain characters. The message reads <strong>Copied!</strong></li>
+<li><strong>Copy for terminal</strong> in the <strong>ANSI</strong> card copies the art with colour codes, for pasting into a terminal. The message reads <strong>Copied with colour — paste into a terminal</strong>, or just <strong>Copied</strong> if colour is off.</li>
+</ul>
+<p>Paste plain text into a place that uses a monospaced font (a code block, a terminal, a text editor), or the columns will not line up.</p>
+<h2 id="download-one-format">Download one format</h2>
+<p>Open the <strong>Export</strong> tab. Each card has a download button.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>Button</th><th>File</th><th>What it contains</th></tr></thead>
+<tbody>
+<tr><td><strong>TXT</strong></td><td><strong>Download .txt</strong></td><td>ascii-art.txt</td><td>The characters, one line per row, with filters applied.</td></tr>
+<tr><td><strong>PNG</strong></td><td><strong>Download .png</strong></td><td>ascii-art.png</td><td>A picture of the art.</td></tr>
+<tr><td><strong>SVG</strong></td><td><strong>Download .svg</strong></td><td>ascii-art.svg</td><td>Vector art with selectable characters.</td></tr>
+<tr><td><strong>HTML</strong></td><td><strong>Download .html</strong></td><td>ascii-art.html</td><td>A standalone web page. The only download that keeps colour as coloured text.</td></tr>
+<tr><td><strong>JSON</strong></td><td><strong>Download .json</strong></td><td>ascii-research.json</td><td>The characters and every setting that produced them.</td></tr>
+<tr><td><strong>CSV</strong></td><td><strong>Download .csv</strong></td><td>ascii-analysis.csv</td><td>How often each character appears.</td></tr>
+<tr><td><strong>ANSI</strong></td><td><strong>Download .ans</strong></td><td>ascii-art.ans</td><td>The characters with 24-bit colour codes for terminals.</td></tr>
+</tbody></table></div>
+<p>A message confirms each download, for example <strong>TXT exported</strong>. If nothing has been converted yet, it reads <strong>Nothing to export</strong>.</p>
+<h3 id="match-the-download-to-the-render">Match the download to the render</h3>
+<p>The PNG, SVG and HTML downloads are built from a render, so choose the matching <strong>Render</strong> chip on the <strong>Lab</strong> tab first:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>For</th><th>Show this render first</th><th>Otherwise</th></tr></thead>
+<tbody>
+<tr><td>PNG</td><td><strong>Canvas</strong></td><td>The PNG is drawn from the last HTML render if there has been one, or from the text using the output font, <strong>Ink</strong> and <strong>Paper</strong>.</td></tr>
+<tr><td>SVG</td><td><strong>SVG</strong></td><td>The SVG reuses the last SVG render or SVG download if there has been one, or wraps the last HTML render, or draws the text in black on white.</td></tr>
+<tr><td>HTML</td><td><strong>HTML</strong></td><td>The page contains the last HTML render if there has been one, or the plain text in black on white.</td></tr>
+</tbody></table></div>
+<p>Without that step, a PNG, SVG or HTML download can show an earlier version of the art. See <a href="troubleshooting.html">Troubleshooting</a>.</p>
+<h3 id="the-html-file">The HTML file</h3>
+<p>With an HTML render, the file is a page on a black background holding the coloured characters on your paper colour. It opens in any browser.</p>
+<h3 id="the-json-file">The JSON file</h3>
+<p>It records the time, the source (image, text or webcam), the render mode, the characters in the ramp, every option, the text of the art, the timings of the last twenty conversions and the glyph densities. It does not include the source picture. The generator cannot load a JSON file back in; keep it as a record of the settings, or use it in your own code.</p>
+<h3 id="the-csv-file">The CSV file</h3>
+<p>Three columns, <strong>Character</strong>, <strong>Count</strong> and <strong>Frequency</strong> (per cent), sorted from the most common character down. Line breaks are not counted. The card on the page also mentions density per glyph, but the file holds frequencies only; the densities are in the JSON file.</p>
+<h3 id="the-ansi-file">The ANSI file</h3>
+<p>A text file whose colour runs are 24-bit terminal colour codes, with a reset at the end of every line. Print it in a terminal that supports true colour (for example with <code>cat ascii-art.ans</code> on macOS or Linux) and the picture appears in colour.</p>
+<p>It needs <strong>From image</strong> colour. With <strong>Mono</strong>, <strong>Download .ans</strong> shows <strong>Turn colour on first — ANSI carries the image&#39;s colours</strong> and saves nothing. After a successful download the message reads <strong>Saved ascii-art.ans — cat it in a terminal</strong>.</p>
+<h2 id="export-several-files-at-once">Export several files at once</h2>
+<p><strong>Export all six</strong>, in the left column of <strong>Export</strong>, downloads five files one after another: the TXT, PNG, SVG, JSON and CSV files. It does not include the HTML or ANSI files; download those from their cards. Your browser may ask whether to allow several downloads from the page.</p>
+<h2 id="batch-render-a-list-of-words">Batch: render a list of words</h2>
+<p>The <strong>Batch</strong> box takes one line of text per row, for example:</p>
+<pre class="code"><code>AURIC
+ARTISAN
+ASCII</code></pre>
+<p><strong>Render each line</strong> converts each line as <strong>Text</strong> source, with the current text font and conversion settings, and fills <strong>Batch results</strong> with a table of <strong>Input</strong> (the first 30 characters), <strong>Cols</strong>, <strong>Rows</strong>, <strong>Chars</strong> and <strong>Time (ms)</strong>. With nothing in the box it reads <strong>No inputs</strong>.</p>
+<p>Batch measures; it does not produce files or change the art on the stage. It does leave the last line of the list in the <strong>Text</strong> box on the <strong>Lab</strong> tab.</p>
+<h2 id="save-to-your-library">Save to your Library</h2>
+<p>On this page, the Library&#39;s <strong>Save to Library</strong> stores the current art and your settings in your Auric Artisan Library, and opening the item later puts them back. See the <a href="../../../../kits/library-kit/README.html">Library Kit</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="render-modes.html">Render modes and full screen</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="../others/privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="charts-and-compare.html"><span>Previous</span>Charts, benchmark and Compare</a><a href="fine-tuning.html"><span>Next</span>Fine tuning</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#copy">Copy</a></li><li><a href="#download-one-format">Download one format</a></li><li><a href="#export-several-files-at-once">Export several files at once</a></li><li><a href="#batch-render-a-list-of-words">Batch: render a list of words</a></li><li><a href="#save-to-your-library">Save to your Library</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

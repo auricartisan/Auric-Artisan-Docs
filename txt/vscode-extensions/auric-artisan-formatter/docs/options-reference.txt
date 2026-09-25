@@ -1,0 +1,2747 @@
+==============================================================================
+OPTIONS REFERENCE
+==============================================================================
+All 391 Auric Artisan Formatter formatting options in 17 categories, with
+type, default, allowed values and effect.
+Area: VS Code extensions › Auric Artisan Formatter   Updated: 2026-09-25
+
+Auric Artisan Formatter has 391 formatting options in 17 categories. This page
+lists every one. The eleven settings that control how the extension works in
+VS Code (preset, format on save, the workspace scan and so on) are in the
+reference [reference.txt].
+
+HOW TO USE THIS PAGE
+====================
+
+Each option can be set in four places. The same name works in all of them:
+
+  Where:             VS Code settings
+  How it is written: `"auricFormatter.printWidth": 100`
+
+  Where:             A configuration file such as `.auricformatrc`
+  How it is written: `"printWidth": 100` (no prefix)
+
+  Where:             The command line
+  How it is written: `--print-width 100` (the name in kebab case; booleans
+                     also take a `--no-` form)
+
+  Where:             An inline directive in a file
+  How it is written: `// @auric printWidth=100`
+
+The defaults shown are the extension's own defaults. A preset changes many of
+them; `"preset": "prettier"`, for example, switches every Auric-only
+enhancement off. Anything you set yourself wins over the preset. See
+Configuration [configuration.txt] and Presets [presets.txt].
+
+Options that only apply to some languages only affect files in those
+languages. Formatter Studio's Affects this file filter shows which options
+change the file you are looking at.
+
+Options marked "Experimental" are still settling; Formatter Studio hides them
+unless you tick Experimental.
+
+GLOBAL
+======
+
+21 options.
+
+  Setting:         `auricFormatter.byteOrderMark`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `add`, `remove`
+  What it does:    Decide what happens to a UTF-8 byte order mark at the start
+                   of the file.
+
+  Setting:         `auricFormatter.cursorOffset`
+  Type:            integer
+  Default:         `-1`
+  Values or range: -1–no maximum
+  What it does:    Track this character offset through the reformat and report
+                   where it lands.
+
+  Setting:         `auricFormatter.editorconfig`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Read .editorconfig and translate indent_style, indent_size,
+                   end_of_line, max_line_length and the final-newline keys.
+
+  Setting:         `auricFormatter.embeddedLanguageFormatting`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `off`
+  What it does:    Decide whether code embedded inside another language is
+                   formatted.
+
+  Setting:         `auricFormatter.endOfLine`
+  Type:            string
+  Default:         `lf`
+  Values or range: `lf`, `crlf`, `cr`, `auto`, `preserve`
+  What it does:    Choose the line ending written to disk.
+
+  Setting:         `auricFormatter.filepath`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Supply the path the text came from so language inference
+                   and glob overrides can work on stdin.
+
+  Setting:         `auricFormatter.formatEmbeddedUnknown`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Attempt the universal engine on embedded fragments whose
+                   language has no native printer.
+
+  Setting:         `auricFormatter.insertFinalNewline`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Guarantee the file ends with exactly one line ending.
+
+  Setting:         `auricFormatter.insertPragma`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Insert an @format pragma into the leading comment of files
+                   that were formatted.
+
+  Setting:         `auricFormatter.parser`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Force a specific parser instead of inferring one from the
+                   file path or language id.
+
+  Setting:         `auricFormatter.plugins`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    List additional printer plugins to load, by module path or
+                   by registered plugin name.
+
+  Setting:         `auricFormatter.pragmaKeyword`
+  Type:            string
+  Default:         `format`
+  Values or range: -
+  What it does:    Set the bare word an opt-in pragma comment must contain,
+                   without the leading at sign.
+
+  Setting:         `auricFormatter.printWidth`
+  Type:            integer
+  Default:         `80`
+  Values or range: 0–1000
+  What it does:    Wrap lines that would otherwise exceed this many columns
+                   wherever the syntax allows a break.
+
+  Setting:         `auricFormatter.rangeEnd`
+  Type:            integer
+  Default:         end of file
+  Values or range: 0–no maximum
+  What it does:    Format only the text before this character offset.
+
+  Setting:         `auricFormatter.rangeStart`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–no maximum
+  What it does:    Format only the text at or after this character offset.
+
+  Setting:         `auricFormatter.requirePragma`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Format only files whose leading comment carries an @format
+                   or @auric-format pragma.
+
+  Setting:         `auricFormatter.respectIgnoreComments`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Honour auric-ignore, auric-ignore-start and
+                   auric-ignore-end comments and leave those regions
+                   untouched.
+
+  Setting:         `auricFormatter.tabWidth`
+  Type:            integer
+  Default:         `2`
+  Values or range: 0–24
+  What it does:    Set how many columns one level of indentation occupies.
+
+  Setting:         `auricFormatter.tabWidthByLanguage`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Override `tabWidth` for individual languages with
+                   `languageId=width` entries such as `python=4`.
+
+  Setting:         `auricFormatter.trimTrailingWhitespace`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Strip whitespace at the end of every line outside of
+                   strings and preserved blocks.
+
+  Setting:         `auricFormatter.useTabs`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Indent with hard tab characters instead of spaces.
+
+Notes and language-specific defaults:
+
+  - `auricFormatter.printWidth`: `120` for java, kotlin, scala, csharp, swift.
+  - `auricFormatter.tabWidth`: `4` for python, php, java, kotlin, csharp, c,
+    cpp, objective-c, objective-cpp, rust, swift, groovy, solidity, apex; `4`
+    for go, gomod, gowork, makefile, gotmpl.
+  - `auricFormatter.useTabs`: `true` for go, gomod, gowork, makefile, gotmpl.
+
+COMMON
+======
+
+15 options.
+
+  Setting:         `auricFormatter.arrowParens`
+  Type:            string
+  Default:         `always`
+  Values or range: `always`, `avoid`
+  What it does:    Choose whether a single arrow function parameter is
+                   parenthesised.
+
+  Setting:         `auricFormatter.bracketSameLine`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Put the closing angle bracket of a multi-line opening tag
+                   on the last attribute line.
+
+  Setting:         `auricFormatter.bracketSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print spaces just inside object literal braces, as in `{
+                   foo: 1 }`.
+
+  Setting:         `auricFormatter.curlyBraces`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `all`, `multi-line`
+  What it does:    Decide whether single-statement control-flow bodies get
+                   braces.
+
+  Setting:         `auricFormatter.hexCase`
+  Type:            string
+  Default:         `lower`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of hexadecimal digits in numeric
+                   literals and colour values.
+
+  Setting:         `auricFormatter.htmlWhitespaceSensitivity`
+  Type:            string
+  Default:         `css`
+  Values or range: `css`, `strict`, `ignore`
+  What it does:    Choose how strictly whitespace around HTML elements is
+                   preserved.
+
+  Setting:         `auricFormatter.jsxSingleQuote`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Prefer single quotes over double quotes inside JSX
+                   attributes.
+
+  Setting:         `auricFormatter.objectWrap`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `collapse`
+  What it does:    Decide whether the author's first newline inside an object
+                   forces it to stay expanded.
+
+  Setting:         `auricFormatter.proseWrap`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose how prose paragraphs are wrapped.
+
+  Setting:         `auricFormatter.quoteProps`
+  Type:            string
+  Default:         `as-needed`
+  Values or range: `as-needed`, `consistent`, `preserve`,
+                   `consistent-as-needed`
+  What it does:    Choose when object property keys are quoted.
+
+  Setting:         `auricFormatter.semi`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a semicolon at the end of every statement.
+
+  Setting:         `auricFormatter.singleAttributePerLine`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Put every attribute on its own line as soon as a tag has to
+                   break.
+
+  Setting:         `auricFormatter.singleQuote`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Prefer single quotes over double quotes for strings.
+
+  Setting:         `auricFormatter.trailingComma`
+  Type:            string
+  Default:         `all`
+  Values or range: `all`, `es5`, `none`
+  What it does:    Choose where trailing commas are added in multi-line
+                   constructs.
+
+  Setting:         `auricFormatter.vueIndentScriptAndStyle`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Indent the contents of the top-level `<script>` and
+                   `<style>` blocks in a single file component.
+
+JAVASCRIPT
+==========
+
+60 options.
+
+  Setting:         `auricFormatter.arrayBracketSpacing`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print spaces just inside array brackets, as in `[ 1, 2 ]`.
+
+  Setting:         `auricFormatter.arrayElementsPerLine`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–100
+  What it does:    Print at most this many array elements per line, or 0 to
+                   fit as many as the print width allows.
+
+  Setting:         `auricFormatter.arrowBodyStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `as-needed`, `always`
+  What it does:    Choose whether arrow functions keep braced bodies or
+                   collapse to expressions.
+
+  Setting:         `auricFormatter.arrowChainBreak`
+  Type:            string
+  Default:         `as-needed`
+  Values or range: `as-needed`, `always`, `never`
+  What it does:    Choose how chains of curried arrow functions are broken.
+
+  Setting:         `auricFormatter.assignmentLayout`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `break-after-operator`, `break-lhs`, `chain`,
+                   `never-break-after-operator`
+  What it does:    Choose how the two sides of an assignment are split when
+                   the line is too long.
+
+  Setting:         `auricFormatter.awaitParens`
+  Type:            string
+  Default:         `as-needed`
+  Values or range: `as-needed`, `always`
+  What it does:    Choose when the operand of `await` is wrapped in
+                   parentheses.
+
+  Setting:         `auricFormatter.breakBeforeBinaryOperators`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Start the new line with the operator when a binary
+                   expression breaks.
+
+  Setting:         `auricFormatter.breakLongStrings`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Split a string literal that overflows the print width into
+                   concatenated parts.
+
+  Setting:         `auricFormatter.catchPosition`
+  Type:            string
+  Default:         `same-line`
+  Values or range: `same-line`, `new-line`
+  What it does:    Choose where `catch` and `finally` sit relative to the
+                   preceding closing brace.
+
+  Setting:         `auricFormatter.chainedCallIndent`
+  Type:            string
+  Default:         `indent`
+  Values or range: `indent`, `align`, `preserve`
+  What it does:    Choose how a broken member chain is indented.
+
+  Setting:         `auricFormatter.chainedCallKeepFirstCall`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep the first call of a member chain attached to its
+                   receiver, as in `expect(x)\n .toBe(y)`.
+
+  Setting:         `auricFormatter.directivePrologueQuotes`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `follow`, `double`, `single`
+  What it does:    Choose how the quotes around directive prologues are
+                   printed.
+
+  Setting:         `auricFormatter.doWhilePosition`
+  Type:            string
+  Default:         `same-line`
+  Values or range: `same-line`, `new-line`
+  What it does:    Choose where the trailing `while` of a do-while loop sits.
+
+  Setting:         `auricFormatter.elsePosition`
+  Type:            string
+  Default:         `same-line`
+  Values or range: `same-line`, `new-line`
+  What it does:    Choose where the `else` keyword sits relative to the
+                   preceding closing brace.
+
+  Setting:         `auricFormatter.emptyBlockStyle`
+  Type:            string
+  Default:         `collapse`
+  Values or range: `collapse`, `preserve`, `expand`
+  What it does:    Choose how blocks with no statements are printed.
+
+  Setting:         `auricFormatter.firstArgumentHugging`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Let a leading function argument expand in place for call
+                   shapes like `describe(function () {}, opts)`.
+
+  Setting:         `auricFormatter.functionParameterNewline`
+  Type:            string
+  Default:         `multiline`
+  Values or range: `preserve`, `always`, `never`, `multiline`
+  What it does:    Choose how function parameter lists are broken across
+                   lines.
+
+  Setting:         `auricFormatter.generatorStarPosition`
+  Type:            string
+  Default:         `after-function`
+  Values or range: `after-function`, `before-name`, `spaced`
+  What it does:    Choose where the star of a generator function sits.
+
+  Setting:         `auricFormatter.jsxBracketSameLine`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Put the closing angle bracket of a multi-line JSX opening
+                   tag on the last attribute line.
+
+  Setting:         `auricFormatter.jsxEmptyExpressionComment`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep a comment that is the sole contents of a JSX
+                   expression container on its own line.
+
+  Setting:         `auricFormatter.jsxSelfCloseSpace`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a space before the slash of a self-closing JSX
+                   element.
+
+  Setting:         `auricFormatter.jsxSingleAttributeSameLine`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep an element with exactly one short attribute on a
+                   single line.
+
+  Setting:         `auricFormatter.jsxSortProps`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort JSX attributes, keeping `key` and `ref` first and
+                   spreads pinned in place.
+
+  Setting:         `auricFormatter.jsxSpaceBraces`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print spaces just inside JSX expression braces, as in `{
+                   value }`.
+
+  Setting:         `auricFormatter.jsxWrapMultiline`
+  Type:            string
+  Default:         `parens`
+  Values or range: `parens`, `preserve`, `never`
+  What it does:    Choose whether multi-line JSX expressions are wrapped in
+                   parentheses.
+
+  Setting:         `auricFormatter.labelIndent`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `dedent`, `flush`
+  What it does:    Choose how statement labels are indented.
+
+  Setting:         `auricFormatter.lastArgumentHugging`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Let a trailing function or object argument expand in place
+                   instead of breaking the whole call.
+
+  Setting:         `auricFormatter.memberChainBreakThreshold`
+  Type:            integer
+  Default:         `3`
+  Values or range: 0–32
+  What it does:    Break a member chain across lines once it contains at least
+                   this many member accesses.
+
+  Setting:         `auricFormatter.methodChainCallThreshold`
+  Type:            integer
+  Default:         `3`
+  Values or range: 0–32
+  What it does:    Break a member chain across lines once it contains at least
+                   this many call expressions.
+
+  Setting:         `auricFormatter.newExpressionParens`
+  Type:            string
+  Default:         `always`
+  Values or range: `always`, `preserve`
+  What it does:    Choose whether a `new` expression with no arguments keeps
+                   its parentheses.
+
+  Setting:         `auricFormatter.normalizeNumericLiterals`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Normalise numeric literals by trimming a trailing dot,
+                   adding a leading zero and dropping a redundant exponent
+                   sign.
+
+  Setting:         `auricFormatter.numericLiteralCase`
+  Type:            string
+  Default:         `lower`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of the non-digit parts of numeric
+                   literals.
+
+  Setting:         `auricFormatter.numericSeparators`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `remove`, `thousands`
+  What it does:    Choose how underscore separators inside numeric literals
+                   are handled.
+
+  Setting:         `auricFormatter.objectDestructuringNewline`
+  Type:            string
+  Default:         `multiline`
+  Values or range: `preserve`, `always`, `never`, `multiline`
+  What it does:    Choose how object destructuring patterns are broken across
+                   lines.
+
+  Setting:         `auricFormatter.objectExpandThreshold`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–100
+  What it does:    Force an object with at least this many properties onto
+                   multiple lines, or 0 to decide by width alone.
+
+  Setting:         `auricFormatter.objectPropertyNewline`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether every object property gets its own line.
+
+  Setting:         `auricFormatter.preserveArrayFormatting`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Keep the author's line breaks in arrays of numbers and
+                   short literals so hand-laid tables survive.
+
+  Setting:         `auricFormatter.preserveObjectShape`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep an object expanded when the author already broke it
+                   after the opening brace.
+
+  Setting:         `auricFormatter.preserveParens`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Keep every parenthesis the author wrote, even where
+                   precedence makes it redundant.
+
+  Setting:         `auricFormatter.quoteStyleForJSXText`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `entities`, `curly`
+  What it does:    Choose how quotation marks inside JSX text are printed.
+
+  Setting:         `auricFormatter.removeRedundantParens`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Drop parentheses that precedence and readability rules make
+                   unnecessary.
+
+  Setting:         `auricFormatter.semiColonBeforeIIFE`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Start a line with a defensive semicolon when omitting
+                   semicolons would let it join the statement above.
+
+  Setting:         `auricFormatter.shortArrayThreshold`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–100
+  What it does:    Collapse an array onto one line when it holds at most this
+                   many short elements, or 0 to decide by width alone.
+
+  Setting:         `auricFormatter.singleLineArrowBody`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep a short arrow function body on the same line as the
+                   arrow.
+
+  Setting:         `auricFormatter.singleLineIfStatement`
+  Type:            string
+  Default:         `fit`
+  Values or range: `fit`, `preserve`, `never`
+  What it does:    Decide whether a braceless `if` may share a line with its
+                   body.
+
+  Setting:         `auricFormatter.spaceAfterKeyword`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a space between a control-flow keyword and its
+                   opening parenthesis, as in `if (x)`.
+
+  Setting:         `auricFormatter.spaceAroundOperators`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a single space on each side of binary and assignment
+                   operators.
+
+  Setting:         `auricFormatter.spaceBeforeBlocks`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a space between a closing parenthesis or keyword and
+                   an opening block brace.
+
+  Setting:         `auricFormatter.spaceBeforeColon`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a space before the colon in object properties and
+                   labels.
+
+  Setting:         `auricFormatter.spaceBeforeFunctionParen`
+  Type:            string
+  Default:         `anonymous`
+  Values or range: `never`, `always`, `named`, `anonymous`, `asyncArrow`
+  What it does:    Choose which functions get a space between the name and the
+                   parameter list.
+
+  Setting:         `auricFormatter.spaceInParens`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print spaces just inside parentheses, as in `foo( a, b )`.
+
+  Setting:         `auricFormatter.spreadSpacing`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a space between a spread or rest operator and its
+                   argument, as in `... rest`.
+
+  Setting:         `auricFormatter.switchCaseBlankLine`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether consecutive switch cases are separated by a
+                   blank line.
+
+  Setting:         `auricFormatter.switchCaseBraceSameLine`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep the opening brace of a braced case body on the case
+                   line.
+
+  Setting:         `auricFormatter.switchCaseIndent`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Indent `case` clauses one level inside the switch block.
+
+  Setting:         `auricFormatter.taggedTemplateFormat`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `preserve`, `always`
+  What it does:    Choose whether the contents of tagged template literals are
+                   formatted.
+
+  Setting:         `auricFormatter.templateExpressionSpacing`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print spaces just inside template literal interpolations,
+                   as in `${ value }`.
+
+  Setting:         `auricFormatter.templateLiteralIndent`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `indent`, `dedent`
+  What it does:    Choose whether the interior of a template literal is
+                   re-indented.
+
+  Setting:         `auricFormatter.ternaryFormat`
+  Type:            string
+  Default:         `indented`
+  Values or range: `inline`, `indented`, `aligned`, `nested-flat`
+  What it does:    Choose how conditional expressions are laid out when they
+                   break.
+
+  Setting:         `auricFormatter.yieldParens`
+  Type:            string
+  Default:         `as-needed`
+  Values or range: `as-needed`, `always`
+  What it does:    Choose when the operand of `yield` is wrapped in
+                   parentheses.
+
+TYPESCRIPT
+==========
+
+23 options.
+
+  Setting:         `auricFormatter.abstractMemberBlankLine`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Separate abstract members from concrete ones with a blank
+                   line.
+
+  Setting:         `auricFormatter.arrowReturnTypeSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a space after the colon that introduces a function
+                   return type.
+
+  Setting:         `auricFormatter.conditionalTypeFormat`
+  Type:            string
+  Default:         `indented`
+  Values or range: `indented`, `aligned`, `chain`, `inline`
+  What it does:    Choose how conditional types are laid out when they break.
+
+  Setting:         `auricFormatter.decoratorPosition`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `above`, `inline`
+  What it does:    Choose where decorators sit relative to the declaration
+                   they decorate.
+
+  Setting:         `auricFormatter.decoratorsBeforeExport`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `before`, `after`
+  What it does:    Choose where decorators sit relative to the `export`
+                   keyword.
+
+  Setting:         `auricFormatter.enumMemberTrailing`
+  Type:            string
+  Default:         `follow`
+  Values or range: `follow`, `all`, `none`
+  What it does:    Choose whether a trailing comma follows the last member of
+                   an enum.
+
+  Setting:         `auricFormatter.genericSpacing`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print spaces just inside type argument angle brackets, as
+                   in `Array< string >`.
+
+  Setting:         `auricFormatter.importTypeStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `separate`, `inline`
+  What it does:    Choose how type-only import specifiers are grouped.
+
+  Setting:         `auricFormatter.indexSignatureSpacing`
+  Type:            string
+  Default:         `none`
+  Values or range: `none`, `inside`
+  What it does:    Choose the spacing inside index signature brackets.
+
+  Setting:         `auricFormatter.intersectionFormat`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `inline`, `expanded`
+  What it does:    Choose how intersection types are laid out.
+
+  Setting:         `auricFormatter.mappedTypeFormat`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `expanded`, `inline`
+  What it does:    Choose how mapped types are laid out.
+
+  Setting:         `auricFormatter.parameterDecoratorInline`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep parameter decorators on the same line as the parameter
+                   they decorate.
+
+  Setting:         `auricFormatter.preserveEnumOneLine`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Keep a short enum on a single line when the author wrote it
+                   that way.
+
+  Setting:         `auricFormatter.preserveTypeParens`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Keep redundant parentheses inside type expressions where
+                   the author wrote them.
+
+  Setting:         `auricFormatter.readonlyArrayShorthand`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print `readonly T[]` in place of `ReadonlyArray<T>` where
+                   the two are interchangeable.
+
+  Setting:         `auricFormatter.satisfiesOperatorBreak`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `never`, `always`
+  What it does:    Choose how a `satisfies` expression breaks when the line is
+                   too long.
+
+  Setting:         `auricFormatter.typeAnnotationSpacing`
+  Type:            string
+  Default:         `after`
+  Values or range: `after`, `before`, `both`, `none`
+  What it does:    Choose the spacing around the colon of a type annotation.
+
+  Setting:         `auricFormatter.typeCastParens`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Parenthesise an `as` expression whose position would
+                   otherwise make the cast ambiguous to a reader.
+
+  Setting:         `auricFormatter.typeLiteralTrailingSeparator`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a trailing separator after the last member of a
+                   multi-line object type.
+
+  Setting:         `auricFormatter.typeMemberSeparator`
+  Type:            string
+  Default:         `semi`
+  Values or range: `semi`, `comma`, `none`, `preserve`
+  What it does:    Choose the separator printed between members of an object
+                   type.
+
+  Setting:         `auricFormatter.typeParameterNewline`
+  Type:            string
+  Default:         `multiline`
+  Values or range: `multiline`, `preserve`, `always`, `never`
+  What it does:    Choose how type parameter lists are broken across lines.
+
+  Setting:         `auricFormatter.unionFormat`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `inline`, `expanded`, `leading-pipe`
+  What it does:    Choose how union types are laid out.
+
+  Setting:         `auricFormatter.unionLeadingPipeWhenBroken`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a leading pipe on the first member of a union that
+                   has been broken across lines.
+
+CSS
+===
+
+39 options.
+
+  Setting:         `auricFormatter.atRuleBlankLine`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a blank line before a block at-rule such as @media or
+                   @supports.
+
+  Setting:         `auricFormatter.atRuleCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of at-rule names.
+
+  Setting:         `auricFormatter.blankLineBetweenRules`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–4
+  What it does:    Print exactly this many blank lines between sibling rules,
+                   or 0 to leave the author's spacing.
+
+  Setting:         `auricFormatter.colorNotation`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `hex`, `rgb`, `hsl`, `oklch`
+  What it does:    Choose the notation colour values are rewritten into.
+
+  Setting:         `auricFormatter.cssTrailingSemicolon`
+  Type:            string
+  Default:         `always`
+  Values or range: `always`, `never`, `preserve`
+  What it does:    Choose whether the last declaration in a block ends with a
+                   semicolon.
+
+  Setting:         `auricFormatter.declarationColonSpace`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a space after the colon that separates a property
+                   from its value.
+
+  Setting:         `auricFormatter.declarationOrder`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `alphabetical`, `concentric`, `smacss`,
+                   `idiomatic`, `grouped`
+  What it does:    Choose the order declarations are printed in inside a rule.
+
+  Setting:         `auricFormatter.emptyLineBeforeNested`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a blank line before the first nested rule inside a
+                   block.
+
+  Setting:         `auricFormatter.emptyRuleStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `collapse`, `remove`
+  What it does:    Choose what happens to rules with no declarations.
+
+  Setting:         `auricFormatter.functionArgSpacing`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print spaces just inside the parentheses of CSS functions,
+                   as in `rgb( 1, 2, 3 )`.
+
+  Setting:         `auricFormatter.gridTemplateAlign`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep each row of a multi-line grid-template-areas value on
+                   its own line and align the columns.
+
+  Setting:         `auricFormatter.hexShorthand`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `short`, `long`
+  What it does:    Choose whether hex colours are written in their short or
+                   long form.
+
+  Setting:         `auricFormatter.importantSpacing`
+  Type:            string
+  Default:         `before`
+  Values or range: `before`, `none`, `both`
+  What it does:    Choose the spacing around an !important flag.
+
+  Setting:         `auricFormatter.keyframeSelectorCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of keyframe selectors.
+
+  Setting:         `auricFormatter.leadingZero`
+  Type:            string
+  Default:         `always`
+  Values or range: `always`, `never`, `preserve`
+  What it does:    Choose whether decimals below one carry a leading zero.
+
+  Setting:         `auricFormatter.lessGuardFormat`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `expanded`, `compact`
+  What it does:    Choose how Less mixin guard clauses are laid out.
+
+  Setting:         `auricFormatter.lessMixinSeparator`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `semicolon`, `comma`
+  What it does:    Choose the separator printed between Less mixin arguments.
+
+  Setting:         `auricFormatter.mathOperatorSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print spaces around the operators inside calc() and
+                   preprocessor arithmetic.
+
+  Setting:         `auricFormatter.mediaQueryFormat`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `compact`, `expanded`
+  What it does:    Choose how media query feature lists are laid out.
+
+  Setting:         `auricFormatter.nestedRuleBlankLine`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a blank line before a nested rule that follows a
+                   declaration.
+
+  Setting:         `auricFormatter.preserveCustomPropertyValues`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print the value of a custom property exactly as written,
+                   since it may be an arbitrary token stream.
+
+  Setting:         `auricFormatter.propertyCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of property names.
+
+  Setting:         `auricFormatter.propertyValueAlign`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the values of consecutive declarations into a column.
+
+  Setting:         `auricFormatter.quotesInUrl`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether url() arguments are quoted.
+
+  Setting:         `auricFormatter.scssIncludeParens`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether an argument-free @include keeps its
+                   parentheses.
+
+  Setting:         `auricFormatter.scssMapFormat`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `expanded`, `compact`
+  What it does:    Choose how SCSS maps are laid out.
+
+  Setting:         `auricFormatter.scssOperatorSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print spaces around SCSS comparison and arithmetic
+                   operators inside @if and @while.
+
+  Setting:         `auricFormatter.selectorAttributeQuotes`
+  Type:            string
+  Default:         `always`
+  Values or range: `always`, `preserve`, `never`
+  What it does:    Choose whether attribute selector values are quoted.
+
+  Setting:         `auricFormatter.selectorCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of type selectors and pseudo-class
+                   names.
+
+  Setting:         `auricFormatter.selectorCombinatorSpacing`
+  Type:            string
+  Default:         `spaced`
+  Values or range: `spaced`, `tight`, `preserve`
+  What it does:    Choose the spacing around child, sibling and descendant
+                   combinators.
+
+  Setting:         `auricFormatter.selectorSeparator`
+  Type:            string
+  Default:         `newline`
+  Values or range: `newline`, `space`, `preserve`
+  What it does:    Choose how the selectors of a selector list are separated.
+
+  Setting:         `auricFormatter.shorthandExpansion`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `collapse`, `expand`
+  What it does:    Choose whether shorthand properties are expanded or
+                   collapsed.
+
+  Setting:         `auricFormatter.singleLineRuleThreshold`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–32
+  What it does:    Print a rule on one line when it holds at most this many
+                   declarations, or 0 to always break.
+
+  Setting:         `auricFormatter.singleQuoteCss`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Prefer single quotes over double quotes in stylesheets.
+
+  Setting:         `auricFormatter.trailingZero`
+  Type:            string
+  Default:         `never`
+  Values or range: `never`, `preserve`
+  What it does:    Choose whether trailing zeros in numbers are trimmed.
+
+  Setting:         `auricFormatter.unitCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of units.
+
+  Setting:         `auricFormatter.valueKeywordCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of keyword values.
+
+  Setting:         `auricFormatter.vendorPrefixAlign`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align a run of vendor-prefixed variants of the same
+                   property into a column.
+
+  Setting:         `auricFormatter.zeroUnits`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `strip`, `keep`
+  What it does:    Choose whether zero values keep their unit.
+
+HTML
+====
+
+29 options.
+
+  Setting:         `auricFormatter.htmlAttributeCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of attribute names.
+
+  Setting:         `auricFormatter.htmlAttributeOrder`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    List attribute names or glob patterns in the order they
+                   should be printed when sorting is on.
+
+  Setting:         `auricFormatter.htmlAttributeWrap`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `preserve`, `always`, `never`
+  What it does:    Choose when a tag's attribute list is broken across lines.
+
+  Setting:         `auricFormatter.htmlBlankLineBetweenBlocks`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–4
+  What it does:    Print exactly this many blank lines between sibling block
+                   elements, or 0 to leave the author's spacing.
+
+  Setting:         `auricFormatter.htmlBooleanAttributeStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `bare`, `explicit`
+  What it does:    Choose how boolean attributes are printed.
+
+  Setting:         `auricFormatter.htmlClassAttributeWrap`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Break a long class attribute into one class name per line.
+
+  Setting:         `auricFormatter.htmlDoctypeCase`
+  Type:            string
+  Default:         `lower`
+  Values or range: `lower`, `upper`, `preserve`
+  What it does:    Choose the letter case of the doctype declaration.
+
+  Setting:         `auricFormatter.htmlEntityStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `named`, `numeric`, `minimal`
+  What it does:    Choose how character entities are printed.
+
+  Setting:         `auricFormatter.htmlIndentInlineElements`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Indent the children of inline elements the way block
+                   elements are indented.
+
+  Setting:         `auricFormatter.htmlMinifyWhitespace`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Collapse every run of insignificant whitespace between
+                   elements to nothing.
+
+  Setting:         `auricFormatter.htmlPreserveTags`
+  Type:            array
+  Default:         `["pre","textarea","listing","plaintext"]`
+  Values or range: -
+  What it does:    List tags whose contents are copied through untouched
+                   because their whitespace is significant.
+
+  Setting:         `auricFormatter.htmlQuoteAttributes`
+  Type:            string
+  Default:         `double`
+  Values or range: `double`, `single`, `preserve`, `as-needed`
+  What it does:    Choose how attribute values are quoted.
+
+  Setting:         `auricFormatter.htmlScriptIndent`
+  Type:            string
+  Default:         `indent`
+  Values or range: `indent`, `flush`, `preserve`
+  What it does:    Choose how the contents of a `<script>` block are indented.
+
+  Setting:         `auricFormatter.htmlSelfClosing`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether childless elements are printed self-closed.
+
+  Setting:         `auricFormatter.htmlSortAttributes`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort attributes using htmlAttributeOrder, then
+                   alphabetically for anything left over.
+
+  Setting:         `auricFormatter.htmlSrcsetWrap`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Break a long srcset or sizes attribute after each comma.
+
+  Setting:         `auricFormatter.htmlStyleIndent`
+  Type:            string
+  Default:         `indent`
+  Values or range: `indent`, `flush`, `preserve`
+  What it does:    Choose how the contents of a `<style>` block are indented.
+
+  Setting:         `auricFormatter.htmlTagCase`
+  Type:            string
+  Default:         `lower`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of tag names.
+
+  Setting:         `auricFormatter.htmlVoidElementSlash`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print the trailing slash on void elements, as in `<br />`.
+
+  Setting:         `auricFormatter.htmlWrapText`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Reflow text nodes so that they fit within the print width.
+
+  Setting:         `auricFormatter.svgAttributeOrder`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    List SVG attribute names in the order they should be
+                   printed when attribute sorting is on.
+
+  Setting:         `auricFormatter.svgPathPrecision`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–12
+  What it does:    Round the numbers inside an SVG path to this many decimal
+                   places, or 0 to leave them untouched.
+
+  Setting:         `auricFormatter.svgPathWrap`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `command`, `never`
+  What it does:    Choose how SVG path data is wrapped.
+
+  Setting:         `auricFormatter.xmlDeclarationQuotes`
+  Type:            string
+  Default:         `double`
+  Values or range: `double`, `single`, `preserve`
+  What it does:    Choose how the values in the XML declaration are quoted.
+
+  Setting:         `auricFormatter.xmlIndentAttributes`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Indent a broken attribute list one level under its tag
+                   name.
+
+  Setting:         `auricFormatter.xmlPreserveCdata`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Copy CDATA sections through byte for byte.
+
+  Setting:         `auricFormatter.xmlSelfClosingSpace`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a space before the slash of a self-closing XML tag.
+
+  Setting:         `auricFormatter.xmlSortAttributes`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort XML attributes alphabetically, leaving namespace
+                   declarations first.
+
+  Setting:         `auricFormatter.xmlWhitespaceSensitivity`
+  Type:            string
+  Default:         `strict`
+  Values or range: `strict`, `ignore`, `preserve-mixed`
+  What it does:    Choose how strictly whitespace inside XML elements is
+                   preserved.
+
+MARKDOWN
+========
+
+32 options.
+
+  Setting:         `auricFormatter.mdBlockquoteBlankLineMarker`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a lone marker on the blank lines inside a blockquote
+                   so the quote stays visually joined.
+
+  Setting:         `auricFormatter.mdBlockquoteMarker`
+  Type:            string
+  Default:         `spaced`
+  Values or range: `spaced`, `tight`, `preserve`
+  What it does:    Choose the spacing after a blockquote marker.
+
+  Setting:         `auricFormatter.mdBulletAlternate`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Alternate the bullet character at each nesting level so
+                   that levels are visually distinct.
+
+  Setting:         `auricFormatter.mdBulletMarker`
+  Type:            string
+  Default:         `dash`
+  Values or range: `dash`, `asterisk`, `plus`, `preserve`
+  What it does:    Choose the character used for unordered list bullets.
+
+  Setting:         `auricFormatter.mdCodeFence`
+  Type:            string
+  Default:         `backtick`
+  Values or range: `backtick`, `tilde`, `preserve`
+  What it does:    Choose the character used to fence code blocks.
+
+  Setting:         `auricFormatter.mdCodeFenceLength`
+  Type:            integer
+  Default:         `3`
+  Values or range: 3–10
+  What it does:    Print code fences with at least this many characters,
+                   lengthening them further when the content demands it.
+
+  Setting:         `auricFormatter.mdEmphasisMarker`
+  Type:            string
+  Default:         `underscore`
+  Values or range: `asterisk`, `underscore`, `preserve`
+  What it does:    Choose the character used for emphasis.
+
+  Setting:         `auricFormatter.mdEscapeSpecial`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Escape characters in text that would otherwise be read as
+                   markup.
+
+  Setting:         `auricFormatter.mdFormatCodeBlocks`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Format the contents of fenced code blocks whose info string
+                   names a language Auric supports.
+
+  Setting:         `auricFormatter.mdFrontmatterFormat`
+  Type:            string
+  Default:         `format`
+  Values or range: `format`, `preserve`
+  What it does:    Choose whether document frontmatter is formatted.
+
+  Setting:         `auricFormatter.mdHeadingBlankLines`
+  Type:            integer
+  Default:         `1`
+  Values or range: 0–3
+  What it does:    Print exactly this many blank lines before a heading that
+                   follows other content.
+
+  Setting:         `auricFormatter.mdHeadingClosingHashes`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a matching run of hashes at the end of an ATX
+                   heading.
+
+  Setting:         `auricFormatter.mdHeadingStyle`
+  Type:            string
+  Default:         `atx`
+  Values or range: `atx`, `setext`, `preserve`
+  What it does:    Choose the heading style.
+
+  Setting:         `auricFormatter.mdHtmlBlockFormat`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `format`
+  What it does:    Choose whether raw HTML blocks inside Markdown are
+                   formatted.
+
+  Setting:         `auricFormatter.mdLineBreakStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `backslash`, `spaces`
+  What it does:    Choose how hard line breaks inside a paragraph are written.
+
+  Setting:         `auricFormatter.mdLinkStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `inline`, `reference`
+  What it does:    Choose whether links are printed inline or as references.
+
+  Setting:         `auricFormatter.mdListIndent`
+  Type:            string
+  Default:         `aligned`
+  Values or range: `aligned`, `one`, `tab`, `preserve`
+  What it does:    Choose how the continuation lines of a list item are
+                   indented.
+
+  Setting:         `auricFormatter.mdListItemBlankLine`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `loose`, `tight`
+  What it does:    Choose whether list items are separated by blank lines.
+
+  Setting:         `auricFormatter.mdMaxHeadingLevel`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–6
+  What it does:    Warn when a heading is nested deeper than this level, or 0
+                   to allow any depth.
+
+  Setting:         `auricFormatter.mdNumberedListAlign`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Right-align the numbers of an ordered list that reaches
+                   double digits.
+
+  Setting:         `auricFormatter.mdOrderedMarker`
+  Type:            string
+  Default:         `period`
+  Values or range: `period`, `paren`, `preserve`
+  What it does:    Choose the delimiter that follows an ordered list number.
+
+  Setting:         `auricFormatter.mdOrderedNumbering`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `one`, `ordinal`
+  What it does:    Choose how ordered list items are numbered.
+
+  Setting:         `auricFormatter.mdReferencePlacement`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `end`, `section`
+  What it does:    Choose where link reference definitions are placed.
+
+  Setting:         `auricFormatter.mdSetextUnderlineFull`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Extend a setext heading underline to the full width of the
+                   heading text.
+
+  Setting:         `auricFormatter.mdStrongMarker`
+  Type:            string
+  Default:         `asterisk`
+  Values or range: `asterisk`, `underscore`, `preserve`
+  What it does:    Choose the character used for strong emphasis.
+
+  Setting:         `auricFormatter.mdTableAlign`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Pad table cells so that every pipe lines up into a column.
+
+  Setting:         `auricFormatter.mdTableCompact`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Collapse table alignment when the table would otherwise
+                   exceed the print width.
+
+  Setting:         `auricFormatter.mdTableMinCellWidth`
+  Type:            integer
+  Default:         `3`
+  Values or range: 1–40
+  What it does:    Pad every aligned table cell to at least this many
+                   characters.
+
+  Setting:         `auricFormatter.mdTablePadding`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print one space of padding inside each table cell's pipes.
+
+  Setting:         `auricFormatter.mdThematicBreak`
+  Type:            string
+  Default:         `dashes`
+  Values or range: `dashes`, `asterisks`, `underscores`, `preserve`
+  What it does:    Choose how thematic breaks are printed.
+
+  Setting:         `auricFormatter.mdTocGenerate`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Rebuild the table of contents between the auric-toc markers
+                   from the document's headings.
+
+  Setting:         `auricFormatter.mdTocMaxDepth`
+  Type:            integer
+  Default:         `3`
+  Values or range: 1–6
+  What it does:    Include headings down to this level when rebuilding a table
+                   of contents.
+
+YAML
+====
+
+15 options.
+
+  Setting:         `auricFormatter.yamlAlignValues`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the values of consecutive mapping entries into a
+                   column.
+
+  Setting:         `auricFormatter.yamlAnchorFormat`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `inline`, `above`
+  What it does:    Choose where anchors are printed relative to the value they
+                   name.
+
+  Setting:         `auricFormatter.yamlBlankLineBetweenTopLevelKeys`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–4
+  What it does:    Print exactly this many blank lines between top-level keys,
+                   or 0 to leave the author's spacing.
+
+  Setting:         `auricFormatter.yamlBooleanStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `true-false`, `yes-no`, `on-off`
+  What it does:    Choose how boolean values are written.
+
+  Setting:         `auricFormatter.yamlBracketSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print spaces just inside the braces of flow mappings, as in
+                   `{ a: 1 }`.
+
+  Setting:         `auricFormatter.yamlCommentIndent`
+  Type:            string
+  Default:         `align`
+  Values or range: `align`, `preserve`, `flush`
+  What it does:    Choose how standalone comments are indented.
+
+  Setting:         `auricFormatter.yamlDocumentSeparator`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether documents are introduced by a triple-dash
+                   separator.
+
+  Setting:         `auricFormatter.yamlExplicitKeys`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Write complex mapping keys with the explicit question-mark
+                   form.
+
+  Setting:         `auricFormatter.yamlFlowCollectionWidth`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–1000
+  What it does:    Break a flow collection into block form once it would
+                   exceed this many columns, or 0 to follow the print width.
+
+  Setting:         `auricFormatter.yamlIndent`
+  Type:            integer
+  Default:         `2`
+  Values or range: 1–12
+  What it does:    Indent each nested mapping level by this many spaces.
+
+  Setting:         `auricFormatter.yamlKeySort`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort mapping keys alphabetically, which is safe because
+                   YAML mappings are unordered.
+
+  Setting:         `auricFormatter.yamlNullStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `empty`, `tilde`, `null`
+  What it does:    Choose how null values are written.
+
+  Setting:         `auricFormatter.yamlPreserveBlockScalars`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Copy the body of a literal or folded block scalar through
+                   byte for byte.
+
+  Setting:         `auricFormatter.yamlQuoteStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `single`, `double`, `minimal`
+  What it does:    Choose how scalar values are quoted.
+
+  Setting:         `auricFormatter.yamlSequenceIndent`
+  Type:            string
+  Default:         `indented`
+  Values or range: `indented`, `flush`, `preserve`
+  What it does:    Choose how sequence items are indented under their parent
+                   key.
+
+JSON
+====
+
+22 options.
+
+  Setting:         `auricFormatter.iniAlignValues`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the values of consecutive properties into a column.
+
+  Setting:         `auricFormatter.iniKeyCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of property names.
+
+  Setting:         `auricFormatter.iniSectionBlankLine`
+  Type:            integer
+  Default:         `1`
+  Values or range: 0–4
+  What it does:    Print exactly this many blank lines before a section
+                   header, or 0 to leave the author's spacing.
+
+  Setting:         `auricFormatter.iniSpaceAroundEquals`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print a space on each side of the equals sign.
+
+  Setting:         `auricFormatter.jsonBracketSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print spaces just inside the braces of a single-line
+                   object.
+
+  Setting:         `auricFormatter.jsonEmptyCollectionStyle`
+  Type:            string
+  Default:         `collapse`
+  Values or range: `collapse`, `preserve`
+  What it does:    Choose how empty objects and arrays are printed.
+
+  Setting:         `auricFormatter.jsonEscapeUnicode`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Escape every non-ASCII character in strings as a \u
+                   sequence.
+
+  Setting:         `auricFormatter.jsonExpandArrayThreshold`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–100
+  What it does:    Break an array onto multiple lines once it holds at least
+                   this many elements, or 0 to decide by width alone.
+
+  Setting:         `auricFormatter.jsonNormalizeNumbers`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Rewrite numbers into their shortest round-trip form.
+
+  Setting:         `auricFormatter.jsonPackageJsonOrder`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print the well-known top-level keys of a package.json in
+                   their conventional order.
+
+  Setting:         `auricFormatter.jsonPreserveComments`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep comments in JSON dialects that permit them and refuse
+                   to format the file if they cannot be placed.
+
+  Setting:         `auricFormatter.jsonQuoteKeys`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `as-needed`
+  What it does:    Choose whether object keys are quoted.
+
+  Setting:         `auricFormatter.jsonSingleLineArrays`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Keep arrays of primitives on one line whenever they fit.
+
+  Setting:         `auricFormatter.jsonSortKeys`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort object keys alphabetically throughout the document.
+
+  Setting:         `auricFormatter.jsonTrailingComma`
+  Type:            string
+  Default:         `none`
+  Values or range: `none`, `all`, `preserve`
+  What it does:    Choose whether broken arrays and objects end with a
+                   trailing comma.
+
+  Setting:         `auricFormatter.tomlAlignValues`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the values of consecutive key-value pairs into a
+                   column.
+
+  Setting:         `auricFormatter.tomlArrayWrap`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `always`, `never`, `preserve`
+  What it does:    Choose how TOML arrays are wrapped.
+
+  Setting:         `auricFormatter.tomlIndentTables`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Indent the body of a table one level under its header.
+
+  Setting:         `auricFormatter.tomlInlineTableSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print spaces just inside the braces of an inline table.
+
+  Setting:         `auricFormatter.tomlKeyQuoting`
+  Type:            string
+  Default:         `as-needed`
+  Values or range: `as-needed`, `always`, `preserve`
+  What it does:    Choose whether TOML keys are quoted.
+
+  Setting:         `auricFormatter.tomlSortKeys`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort the keys inside each table alphabetically.
+
+  Setting:         `auricFormatter.tomlTableBlankLine`
+  Type:            integer
+  Default:         `1`
+  Values or range: 0–4
+  What it does:    Print exactly this many blank lines before a table header,
+                   or 0 to leave the author's spacing.
+
+GRAPHQL
+=======
+
+8 options.
+
+  Setting:         `auricFormatter.graphqlArgumentWrap`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `always`, `never`
+  What it does:    Choose how field and directive argument lists are wrapped.
+
+  Setting:         `auricFormatter.graphqlBracketSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print spaces just inside the braces of an inline object
+                   value.
+
+  Setting:         `auricFormatter.graphqlCommaSeparators`
+  Type:            string
+  Default:         `remove`
+  Values or range: `remove`, `preserve`
+  What it does:    Choose whether GraphQL's optional commas are printed.
+
+  Setting:         `auricFormatter.graphqlDescriptionStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `block`, `inline`
+  What it does:    Choose how schema descriptions are quoted.
+
+  Setting:         `auricFormatter.graphqlFieldAlign`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the types of consecutive field definitions into a
+                   column.
+
+  Setting:         `auricFormatter.graphqlSeparateOperations`
+  Type:            integer
+  Default:         `1`
+  Values or range: 0–4
+  What it does:    Print exactly this many blank lines between top-level
+                   definitions.
+
+  Setting:         `auricFormatter.graphqlSortDefinitions`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort top-level definitions by kind and then by name.
+
+  Setting:         `auricFormatter.graphqlSortFields`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort the fields of a type definition alphabetically.
+
+UNIVERSAL
+=========
+
+39 options.
+
+  Setting:         `auricFormatter.cPointerAlignment`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `left`, `right`, `middle`
+  What it does:    Choose where the star of a pointer declaration sits.
+
+  Setting:         `auricFormatter.dockerfileInstructionCase`
+  Type:            string
+  Default:         `upper`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of Dockerfile instructions.
+
+  Setting:         `auricFormatter.goAlignComments`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Align the trailing comments of a const or var block into a
+                   column, the way gofmt does.
+
+  Setting:         `auricFormatter.goAlignStructTags`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Align the field names, types and struct tags of a struct
+                   definition into columns.
+
+  Setting:         `auricFormatter.javaAnnotationPosition`
+  Type:            string
+  Default:         `above`
+  Values or range: `above`, `inline`, `preserve`
+  What it does:    Choose where Java-family annotations are printed.
+
+  Setting:         `auricFormatter.makefileTabGuard`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Refuse to convert the leading tab of a recipe line to
+                   spaces, because make requires it.
+
+  Setting:         `auricFormatter.pythonAlignDictValues`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the values of a multi-line dictionary literal into a
+                   column.
+
+  Setting:         `auricFormatter.pythonBlankLinesNested`
+  Type:            integer
+  Default:         `1`
+  Values or range: 0–4
+  What it does:    Separate methods and nested functions with exactly this
+                   many blank lines.
+
+  Setting:         `auricFormatter.pythonBlankLinesTopLevel`
+  Type:            integer
+  Default:         `2`
+  Values or range: 0–4
+  What it does:    Separate top-level classes and functions with exactly this
+                   many blank lines.
+
+  Setting:         `auricFormatter.rustAlignMatchArms`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the fat arrows of a match block into a column.
+
+  Setting:         `auricFormatter.rustAlignStructFields`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the types of consecutive struct fields into a column.
+
+  Setting:         `auricFormatter.shellFunctionKeyword`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print the optional `function` keyword before shell function
+                   definitions.
+
+  Setting:         `auricFormatter.shellIndentCase`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Indent the patterns of a case statement one level inside
+                   the case block.
+
+  Setting:         `auricFormatter.shellRedirectSpacing`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a space between a redirection operator and its
+                   target.
+
+  Setting:         `auricFormatter.sqlAlignSelectColumns`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the aliases of a select list into a column.
+
+  Setting:         `auricFormatter.sqlCommaPosition`
+  Type:            string
+  Default:         `trailing`
+  Values or range: `trailing`, `leading`, `preserve`
+  What it does:    Choose whether the commas of a broken list lead or trail.
+
+  Setting:         `auricFormatter.sqlIdentifierCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of unquoted identifiers.
+
+  Setting:         `auricFormatter.sqlIndentJoins`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Indent join clauses one level under the FROM clause they
+                   belong to.
+
+  Setting:         `auricFormatter.sqlIndentSubqueries`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Indent the body of a subquery one level inside its
+                   parentheses.
+
+  Setting:         `auricFormatter.sqlKeywordCase`
+  Type:            string
+  Default:         `upper`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of SQL keywords.
+
+  Setting:         `auricFormatter.universalAlignAssignments`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the equals signs of a consecutive run of assignments
+                   into a column.
+
+  Setting:         `auricFormatter.universalAlignConsecutive`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align consecutive declarations, struct fields and case arms
+                   that share a shape.
+
+  Setting:         `auricFormatter.universalAlignTrailingComments`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the trailing comments of a consecutive run of lines
+                   into a column.
+
+  Setting:         `auricFormatter.universalAttributeIndent`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `above`, `inline`
+  What it does:    Choose where attributes and annotations are printed
+                   relative to their target.
+
+  Setting:         `auricFormatter.universalBraceStyle`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `same-line`, `next-line`, `next-line-indented`
+  What it does:    Choose where the opening brace of a block is placed.
+
+  Setting:         `auricFormatter.universalCaseIndent`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Indent case labels one level inside the switch or match
+                   block that owns them.
+
+  Setting:         `auricFormatter.universalContinuationIndent`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–24
+  What it does:    Indent the continuation lines of a wrapped statement by
+                   this many columns, or 0 to use one full level.
+
+  Setting:         `auricFormatter.universalHangingIndent`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Align a wrapped argument list under the opening bracket
+                   that introduced it.
+
+  Setting:         `auricFormatter.universalIndentSize`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–24
+  What it does:    Indent universal-engine languages by this many columns, or
+                   0 to follow tabWidth.
+
+  Setting:         `auricFormatter.universalKeywordCase`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `lower`, `upper`
+  What it does:    Choose the letter case of language keywords.
+
+  Setting:         `auricFormatter.universalLabelIndent`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `dedent`, `flush`
+  What it does:    Choose how goto labels and their equivalents are indented.
+
+  Setting:         `auricFormatter.universalMaxBlankLines`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–8
+  What it does:    Collapse runs of blank lines to this many, or 0 to follow
+                   maxBlankLines.
+
+  Setting:         `auricFormatter.universalNormalizeCommaSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print no space before a comma and exactly one after it.
+
+  Setting:         `auricFormatter.universalNormalizeOperatorSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print exactly one space on each side of a binary operator.
+
+  Setting:         `auricFormatter.universalNormalizeParenSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Remove the padding just inside parentheses and brackets.
+
+  Setting:         `auricFormatter.universalNormalizeSemicolonSpacing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Print no space before a semicolon and exactly one after it
+                   when it separates rather than terminates.
+
+  Setting:         `auricFormatter.universalPreserveAlignmentBlocks`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep a hand-aligned run of lines intact when its columns
+                   already line up.
+
+  Setting:         `auricFormatter.universalPreserveShebang`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep a shebang line flush with the left margin and free of
+                   reformatting.
+
+  Setting:         `auricFormatter.universalTrimBlockEdges`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Remove blank lines immediately inside an opening or closing
+                   brace.
+
+ALIGNMENT
+=========
+
+15 options.
+
+  Setting:         `auricFormatter.alignAssignments`
+  Type:            string
+  Default:         `off`
+  Values or range: `off`, `consecutive`, `block`
+  What it does:    Choose how the equals signs of neighbouring assignments are
+                   aligned.
+
+  Setting:         `auricFormatter.alignConsecutiveDeclarations`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the names of consecutive variable declarations into a
+                   column.
+
+  Setting:         `auricFormatter.alignEnumValues`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the initialisers of consecutive enum members into a
+                   column.
+
+  Setting:         `auricFormatter.alignImportSpecifiers`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the `from` keyword of consecutive import statements
+                   into a column.
+
+  Setting:         `auricFormatter.alignObjectValues`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the values of consecutive object properties into a
+                   column.
+
+  Setting:         `auricFormatter.alignTernaryBranches`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the question mark and colon of a broken conditional
+                   expression into a column.
+
+  Setting:         `auricFormatter.alignTrailingComments`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the trailing comments of consecutive lines into a
+                   column.
+
+  Setting:         `auricFormatter.alignTrailingCommentsMaxColumn`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–1000
+  What it does:    Give up aligning a trailing comment that would start past
+                   this column, or 0 to use the print width.
+
+  Setting:         `auricFormatter.alignTrailingCommentsMinSpaces`
+  Type:            integer
+  Default:         `1`
+  Values or range: 1–8
+  What it does:    Leave at least this many spaces between code and an aligned
+                   trailing comment.
+
+  Setting:         `auricFormatter.alignTypeMembers`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the types of consecutive members of an object type
+                   into a column.
+
+  Setting:         `auricFormatter.alignmentBreakOnBlankLine`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    End an alignment group at a blank line, so that separate
+                   paragraphs align separately.
+
+  Setting:         `auricFormatter.alignmentBreakOnComment`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    End an alignment group at a standalone comment.
+
+  Setting:         `auricFormatter.alignmentMaxPadding`
+  Type:            integer
+  Default:         `24`
+  Values or range: 1–200
+  What it does:    Abandon an alignment that would need more than this many
+                   spaces of padding on any line.
+
+  Setting:         `auricFormatter.alignmentMinGroupSize`
+  Type:            integer
+  Default:         `2`
+  Values or range: 2–20
+  What it does:    Align a group only once it contains at least this many
+                   lines.
+
+  Setting:         `auricFormatter.alignmentUseSpacesOnly`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Pad alignment with spaces even when the file is indented
+                   with tabs, so columns survive any tab width.
+
+SORTING
+=======
+
+19 options.
+
+  Setting:         `auricFormatter.classMemberOrder`
+  Type:            array
+  Default:         see note
+  Values or range: -
+  What it does:    List the class member kinds in the order they should be
+                   printed when class sorting is on.
+
+  Setting:         `auricFormatter.exportOrder`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `alphabetical`, `grouped`
+  What it does:    Choose the order of export declarations.
+
+  Setting:         `auricFormatter.importOrder`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    List regular expressions describing the import groups, in
+                   the order those groups should appear.
+
+  Setting:         `auricFormatter.importOrderCaseInsensitive`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Ignore letter case when sorting import paths.
+
+  Setting:         `auricFormatter.importOrderGroupNamespaceSpecifiers`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Put namespace imports at the top of their group.
+
+  Setting:         `auricFormatter.importOrderSeparation`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Separate the import groups with a blank line.
+
+  Setting:         `auricFormatter.importOrderSideEffectsFirst`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep side-effect-only imports at the top and never move
+                   them past another import.
+
+  Setting:         `auricFormatter.importOrderSortSpecifiers`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort the named specifiers inside each import statement.
+
+  Setting:         `auricFormatter.importOrderTypeImports`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `first`, `last`, `separate`
+  What it does:    Choose where type-only imports are sorted.
+
+  Setting:         `auricFormatter.sortCaseSensitivity`
+  Type:            string
+  Default:         `insensitive`
+  Values or range: `insensitive`, `sensitive`
+  What it does:    Choose how letter case is treated when sorting names.
+
+  Setting:         `auricFormatter.sortClassMembers`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort class members into the groups named by
+                   classMemberOrder.
+
+  Setting:         `auricFormatter.sortIgnorePrefix`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Strip this leading prefix from a name before comparing it,
+                   so decorated names sort with their plain neighbours.
+
+  Setting:         `auricFormatter.sortImports`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort import declarations into the groups named by
+                   importOrder.
+
+  Setting:         `auricFormatter.sortInterfaceMembers`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort the members of an interface or object type
+                   alphabetically.
+
+  Setting:         `auricFormatter.sortNaturalNumeric`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Compare digit runs inside names numerically so that item2
+                   sorts before item10.
+
+  Setting:         `auricFormatter.sortObjectKeys`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort the keys of object literals that carry a sort-keys
+                   comment directive.
+
+  Setting:         `auricFormatter.sortPreserveComments`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Carry each entry's leading and trailing comments with it
+                   when it moves.
+
+  Setting:         `auricFormatter.sortRespectBlankLineGroups`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Treat a blank line as a group boundary and sort only inside
+                   each group.
+
+  Setting:         `auricFormatter.sortUnionMembers`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Sort the members of a union type, keeping null and
+                   undefined last.
+
+Notes and language-specific defaults:
+
+  - `auricFormatter.classMemberOrder` default:
+    `["static-field","field","constructor","static-method","method","getter","setter"]`
+
+COMMENTS
+========
+
+18 options.
+
+  Setting:         `auricFormatter.bannerComment`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Ensure the file starts with this comment text, inserting it
+                   when it is missing.
+
+  Setting:         `auricFormatter.blankLineAfterComment`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether standalone comment blocks are followed by a
+                   blank line.
+
+  Setting:         `auricFormatter.blankLineBeforeComment`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether standalone comments are preceded by a blank
+                   line.
+
+  Setting:         `auricFormatter.blockCommentStarAlign`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Align the leading stars of a block comment one column in
+                   from the opening slash.
+
+  Setting:         `auricFormatter.blockCommentStarPad`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a space after each leading star of a block comment.
+
+  Setting:         `auricFormatter.commentAttachment`
+  Type:            string
+  Default:         `smart`
+  Values or range: `smart`, `preserve`
+  What it does:    Choose how comments are attached to the syntax around them.
+
+  Setting:         `auricFormatter.commentIgnorePattern`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Copy through untouched any comment whose text matches this
+                   regular expression.
+
+  Setting:         `auricFormatter.commentSpacing`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose the spacing between a line comment marker and its
+                   text.
+
+  Setting:         `auricFormatter.commentWrap`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether comment text is reflowed.
+
+  Setting:         `auricFormatter.commentWrapWidth`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–1000
+  What it does:    Wrap comment text at this column, or 0 to use the print
+                   width.
+
+  Setting:         `auricFormatter.footerComment`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Ensure the file ends with this comment text, inserting it
+                   when it is missing.
+
+  Setting:         `auricFormatter.jsdocAlign`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Align the type, name and description columns of a
+                   documentation block's tags.
+
+  Setting:         `auricFormatter.jsdocBlankLineAfterDescription`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Separate a documentation block's description from its first
+                   tag with a blank line.
+
+  Setting:         `auricFormatter.jsdocDescriptionIndent`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–24
+  What it does:    Indent the wrapped continuation of a tag description by
+                   this many extra columns.
+
+  Setting:         `auricFormatter.jsdocNormalizeTags`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Rewrite documentation tag aliases to their canonical
+                   spelling, turning @return into @returns.
+
+  Setting:         `auricFormatter.jsdocTagOrder`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    List documentation tags in the order they should be
+                   printed, with unlisted tags keeping their relative order at
+                   the end.
+
+  Setting:         `auricFormatter.jsdocWrap`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether documentation block descriptions are
+                   reflowed.
+
+  Setting:         `auricFormatter.preserveBannerComment`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep the leading comment block of a file flush with the top
+                   and free of reflowing, so licence headers survive.
+
+BLANK LINES
+===========
+
+15 options.
+
+  Setting:         `auricFormatter.blankLineAfterDirectives`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a blank line after the directive prologue of a file
+                   or function.
+
+  Setting:         `auricFormatter.blankLineAfterImports`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether a blank line follows the import block.
+
+  Setting:         `auricFormatter.blankLineBeforeControlFlow`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether if, for, while and switch statements are
+                   preceded by a blank line.
+
+  Setting:         `auricFormatter.blankLineBeforeExport`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether an export declaration is preceded by a blank
+                   line.
+
+  Setting:         `auricFormatter.blankLineBeforeReturn`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether a return statement is preceded by a blank
+                   line.
+
+  Setting:         `auricFormatter.blankLineBetweenMethods`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether class members are separated by a blank line.
+
+  Setting:         `auricFormatter.blankLineBetweenTopLevel`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `always`, `never`
+  What it does:    Choose whether top-level declarations are separated by a
+                   blank line.
+
+  Setting:         `auricFormatter.collapseEmptyBlockBlankLines`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Remove the blank lines from a block that contains nothing
+                   else.
+
+  Setting:         `auricFormatter.maxBlankLines`
+  Type:            integer
+  Default:         `1`
+  Values or range: 0–8
+  What it does:    Collapse any run of blank lines to at most this many.
+
+  Setting:         `auricFormatter.maxBlankLinesAtEnd`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–8
+  What it does:    Allow at most this many blank lines at the very end of a
+                   file.
+
+  Setting:         `auricFormatter.maxBlankLinesAtStart`
+  Type:            integer
+  Default:         `0`
+  Values or range: 0–8
+  What it does:    Allow at most this many blank lines at the very top of a
+                   file.
+
+  Setting:         `auricFormatter.maxBlankLinesInsideBlocks`
+  Type:            integer
+  Default:         `1`
+  Values or range: 0–8
+  What it does:    Collapse any run of blank lines inside a block or function
+                   body to at most this many.
+
+  Setting:         `auricFormatter.padBlocks`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a blank line just inside the braces of every block.
+
+  Setting:         `auricFormatter.padClassBody`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a blank line just inside the opening and closing
+                   braces of a class body.
+
+  Setting:         `auricFormatter.padFunctionBody`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Print a blank line just inside the opening and closing
+                   braces of a function body.
+
+Notes and language-specific defaults:
+
+  - `auricFormatter.maxBlankLines`: `2` for python.
+
+SAFETY
+======
+
+12 options.
+
+  Setting:         `auricFormatter.formatMinified`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Format files that look minified, instead of leaving them
+                   alone.
+
+  Setting:         `auricFormatter.maxFileSizeKb`
+  Type:            integer
+  Default:         `4096`
+  Values or range: 0–1048576
+  What it does:    Refuse to format a file larger than this many kilobytes, or
+                   0 to lift the limit.
+
+  Setting:         `auricFormatter.parseTimeoutMs`
+  Type:            integer
+  Default:         `5000`
+  Values or range: 0–600000
+  What it does:    Abandon a parse that has run for this many milliseconds, or
+                   0 to wait indefinitely.
+
+  Setting:         `auricFormatter.safetyCommentPreservation`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Require every comment body in the input to appear in the
+                   output.
+
+  Setting:         `auricFormatter.safetyIdempotency`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Format the output a second time and require the two results
+                   to be identical.
+
+  Setting:         `auricFormatter.safetyIdempotencyPasses`
+  Type:            integer
+  Default:         `1`
+  Values or range: 1–8
+  What it does:    Run this many extra formatting passes when the idempotency
+                   check is on.
+
+  Setting:         `auricFormatter.safetyNumericLiterals`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Require every numeric literal to keep its value through any
+                   rewriting of its spelling.
+
+  Setting:         `auricFormatter.safetyOnFailure`
+  Type:            string
+  Default:         `preserve`
+  Values or range: `preserve`, `warn`, `throw`
+  What it does:    Choose what happens when a safety check fails.
+
+  Setting:         `auricFormatter.safetyReparse`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Re-parse the output with the same parser and require it to
+                   succeed.
+
+  Setting:         `auricFormatter.safetyStringLiterals`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Require the multiset of string and template literal
+                   contents to be identical before and after.
+
+  Setting:         `auricFormatter.safetyTokenCheck`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Re-lex the output and require the significant token stream
+                   to match the input exactly.
+
+  Setting:         `auricFormatter.safetyTokenCheckComments`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Include comment tokens in the token comparison.
+
+EXPERIMENTAL
+============
+
+9 options.
+
+  Setting:         `auricFormatter.experimentalCommentReflow`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Experimental. Reflow comment prose with the Markdown
+                   paragraph engine, preserving lists and code spans.
+
+  Setting:         `auricFormatter.experimentalDiffMinimization`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Experimental. Prefer the layout closest to the input
+                   whenever two layouts are equally valid.
+
+  Setting:         `auricFormatter.experimentalIncrementalCache`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Experimental. Reuse printed fragments for subtrees whose
+                   text has not changed since the previous run.
+
+  Setting:         `auricFormatter.experimentalJsxTextFill`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Experimental. Fill JSX text as prose so that words repack
+                   rather than each child taking a line.
+
+  Setting:         `auricFormatter.experimentalMarkdownTableWrap`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Experimental. Wrap the contents of an over-wide Markdown
+                   table cell instead of letting the row overflow.
+
+  Setting:         `auricFormatter.experimentalOperatorPosition`
+  Type:            string
+  Default:         `end`
+  Values or range: `end`, `start`
+  What it does:    Experimental. Choose which side of a line break a binary
+                   operator lands on.
+
+  Setting:         `auricFormatter.experimentalPreserveSemanticBlocks`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Experimental. Treat a blank-line separated run of
+                   statements as a paragraph and keep it intact when breaking.
+
+  Setting:         `auricFormatter.experimentalTernaries`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Experimental. Use the indented case-and-result layout for
+                   nested conditional expressions.
+
+  Setting:         `auricFormatter.experimentalWidthAwareChains`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Experimental. Choose member chain layout by measuring every
+                   candidate rather than by counting links.

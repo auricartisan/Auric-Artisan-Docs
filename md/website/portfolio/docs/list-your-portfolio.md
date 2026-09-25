@@ -1,0 +1,73 @@
+---
+title: Portfolio Index — List your portfolio
+description: Put a builder portfolio or a portfolio on your own site into the Portfolio Index, check its status, change it or take it out.
+product: Website › Portfolio
+updated: 2026-09-25
+---
+
+# List your portfolio
+
+There are two ways into the [Portfolio Index](portfolio-index.md): publish with the Portfolio Builder, or add a portfolio you keep on your own site through the Search Console.
+
+## A portfolio made with the builder
+
+1. Publish your portfolio at an address (see [Publish and share](publish-and-share.md)).
+2. In the publish dialog's settings, keep **Let search engines list it** and **List it in the Portfolio Index** switched on (both are on by default).
+3. Wait a little: builder portfolios are copied into the index within fifteen minutes of publishing.
+
+It joins as **Made here**, with its palette, crafts and headline. Changes you publish later are copied in the same way.
+
+To leave the index, switch off **List it in the Portfolio Index** (or **Let search engines list it**) and select **Publish these changes**. Unpublishing also removes it.
+
+## A portfolio on your own site
+
+You add these in the Search Console's **Portfolios** tab at https://auricartisan.com/search/console/#portfolios (the **Add one you host** button on the index goes there). You need to be signed in.
+
+1. Open the **Portfolios** tab. It lists **Made with the Portfolio Builder** and **Kept on your own sites**.
+2. Under **Add a portfolio you keep elsewhere**, fill in:
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| **Address** | Yes | For example `https://yourname.com/work/`. |
+| **Name** | Yes | Yours, or the studio's. Up to 120 characters. |
+| **Where you work** | No | City, country. Up to 80 characters. |
+| **One line about the work** | No | Up to 200 characters. |
+| **Craft** | No | Comma between, up to 8. |
+| **Colours you work in** | No | Hex codes, up to 8. Swatches preview them. |
+| **What people will find it by** | No | A few sentences, up to 600 characters. |
+
+3. Select **Add it**.
+
+What happens next depends on the address:
+
+- **On a site you have verified** in the Search Console's **Your sites** tab: "Verified: … is proved to be yours, so it goes into the index straight away." It appears with a **Verified** mark.
+- **On any other site**: "Not a site you have verified here, so a person reviews it before it appears." It shows as **Waiting for review** until a reviewer approves it, and then appears as **Reviewed**.
+
+To get the Verified mark, verify your site first. See the [Search documentation](../../search/README.md) for how to prove you own a site.
+
+There is a limit to how many portfolios one account can add: "That is as many as one account can add. Take one out to add another."
+
+## Check your entries
+
+The **Portfolios** tab shows each entry with its status:
+
+| Status | Meaning |
+| --- | --- |
+| **In the index** | Listed and searchable. |
+| **Verified** | On a site you have proved is yours. |
+| **Waiting for review** | Someone will check it before it appears. |
+| **Featured** | Chosen to be shown first. |
+| **Hidden by a moderator** | Removed from view by a reviewer; a "Reviewer's reason" may be shown. |
+| **Not in the index** / **Not listed** | Not currently listed. |
+| **Joining on the next copy** | A builder portfolio that will appear at the next copy. |
+
+For your builder portfolio, the tab also explains why it might not be listed — for example that you switched off **List it in the Portfolio Index**, or that it asks search engines not to list it — with **Change it in the builder**.
+
+## Change or remove an external entry
+
+- Select **Change** on the entry, edit the fields, and select **Save changes** (or **Cancel**). Edits to an entry that is not on a verified site go back for review.
+- Select **Take it out** to remove it: "It leaves the index now." You can keep it instead with **Keep it**.
+
+## Result
+
+Your portfolio is in the index, marked Verified if you proved the site is yours, and you can see its status and change or remove it at any time.

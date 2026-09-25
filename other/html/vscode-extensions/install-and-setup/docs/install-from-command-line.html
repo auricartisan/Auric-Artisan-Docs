@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install from the command line — Auric Artisan Docs</title>
+<meta name="description" content="Use the VS Code command-line launcher to install, list, update and remove Auric Artisan extensions, including all seventeen at once.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html" aria-current="page">Install from the command line</a></li>
+<li><a href="install-from-vsix.html">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Install from the command line</h1>
+<p class="lede">Use the VS Code command-line launcher to install, list, update and remove Auric Artisan extensions, including all seventeen at once.</p>
+<p>VS Code ships a command-line launcher called <code>code</code>. It can install and remove extensions without opening the Extensions view, which is useful for setting up a new machine, scripting a team&#39;s setup, or installing all seventeen Auric Artisan extensions in one go. It downloads from the Visual Studio Marketplace, so it needs a network connection.</p>
+<h2 id="make-sure-code-is-available">Make sure <code>code</code> is available</h2>
+<ul>
+<li><strong>Windows and Linux.</strong> The installer normally adds <code>code</code> to your <code>PATH</code>. Open a new terminal and run <code>code --version</code>.</li>
+<li><strong>macOS.</strong> In VS Code, open the Command Palette (<code>Cmd</code> + <code>Shift</code> + <code>P</code>) and run <strong>Shell Command: Install &#39;code&#39; command in PATH</strong>, then open a new terminal.</li>
+<li><strong>VS Code Insiders</strong> uses <code>code-insiders</code> instead of <code>code</code>.</li>
+</ul>
+<p>If <code>code --version</code> prints a version number, you are ready.</p>
+<h2 id="install-one-extension">Install one extension</h2>
+<ol>
+<li><p>Open a terminal.</p>
+</li>
+<li><p>Run <code>code --install-extension</code> followed by the extension ID:</p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-formatter</code></pre>
+</li>
+<li><p>Wait for the message that the extension was successfully installed.</p>
+</li>
+<li><p>If VS Code is already open, the extension appears under <strong>Installed</strong> in the Extensions view. Reload the window (<strong>Developer: Reload Window</strong>) if it does not show at once.</p>
+</li>
+</ol>
+<h2 id="install-the-two-packs">Install the two packs</h2>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-icon-pack
+code --install-extension auric-artisan.auric-artisan</code></pre>
+<p>The first installs Auric Icons: Modern, Drawn and Playful and Auric Artisan Emoji. The second installs Auric Color, Auric Accessibility and Auric Code Health. See <a href="extension-packs.html">The two extension packs</a>.</p>
+<h2 id="install-all-seventeen">Install all seventeen</h2>
+<p>This is the same grouped list the Auric Artisan VS Code page offers. You can paste the lines into a terminal one group at a time, or all at once.</p>
+<pre class="code" data-lang="text"><code># Themes and file icons
+code --install-extension auric-artisan.auric-artisan-theme
+code --install-extension auric-artisan.auric-artisan-file-icon
+
+# Icons and emoji. The Icon Pack alone installs Modern, Drawn, Playful and Emoji.
+code --install-extension auric-artisan.auric-artisan-icon-pack
+code --install-extension auric-artisan.auric-artisan-modern-icon
+code --install-extension auric-artisan.auric-icons-drawn
+code --install-extension auric-artisan.auric-icons-playful
+code --install-extension auric-artisan.auric-artisan-emoji
+code --install-extension auric-artisan.auric-artisan-icon-studio
+code --install-extension auric-artisan.auric-artisan-icon-lib
+
+# Colour, accessibility and code health. The Full Pack alone installs all three.
+code --install-extension auric-artisan.auric-artisan
+code --install-extension auric-artisan.auric-color
+code --install-extension auric-artisan.auric-a11y
+code --install-extension auric-artisan.auric-codehealth
+
+# Workspace tools
+code --install-extension auric-artisan.auric-artisan-live
+code --install-extension auric-artisan.auric-artisan-file-system
+code --install-extension auric-artisan.auric-artisan-font-hub
+code --install-extension auric-artisan.auric-artisan-formatter</code></pre>
+<p>Lines that begin with <code>#</code> are comments; most shells ignore them. In Windows Command Prompt, remove the comment lines before pasting.</p>
+<p>Installing an extension that a pack has already installed does nothing harmful: <code>code</code> reports that it is already installed.</p>
+<h2 id="other-useful-flags">Other useful flags</h2>
+<p>These are standard VS Code launcher flags. They work the same for every extension.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>code --install-extension &lt;id&gt;</code></td><td>Install the latest version of an extension</td></tr>
+<tr><td><code>code --install-extension &lt;id&gt;@&lt;version&gt;</code></td><td>Install a specific published version, for example <code>auric-artisan.auric-artisan-live@0.2.0</code></td></tr>
+<tr><td><code>code --install-extension &lt;id&gt; --force</code></td><td>Update an installed extension to the latest version without a prompt</td></tr>
+<tr><td><code>code --install-extension &lt;path-to-file&gt;.vsix</code></td><td>Install from a downloaded VSIX file</td></tr>
+<tr><td><code>code --list-extensions</code></td><td>List the IDs of every installed extension</td></tr>
+<tr><td><code>code --list-extensions --show-versions</code></td><td>List installed extensions with their versions</td></tr>
+<tr><td><code>code --uninstall-extension &lt;id&gt;</code></td><td>Remove an extension</td></tr>
+</tbody></table></div>
+<p>To see only the Auric Artisan extensions you have installed, filter the list. In PowerShell:</p>
+<pre class="code" data-lang="text"><code>code --list-extensions --show-versions | Select-String auric-artisan</code></pre>
+<p>In a POSIX shell such as bash or zsh:</p>
+<pre class="code" data-lang="text"><code>code --list-extensions --show-versions | grep auric-artisan</code></pre>
+<h2 id="profiles">Profiles</h2>
+<p>VS Code profiles keep separate sets of extensions and settings. The launcher installs into the default profile unless you name one with <code>--profile &quot;&lt;profile name&gt;&quot;</code>. If an extension seems missing after a command-line install, check which profile the VS Code window is using (the gear menu at the bottom of the Activity Bar shows it).</p>
+<p>The IDs are listed with their minimum VS Code versions in the <a href="reference.html">reference</a>. When a command succeeds you see a line saying the extension was successfully installed, and the extension appears in the Extensions view.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="get-support.html"><span>Previous</span>Get support</a><a href="install-from-vsix.html"><span>Next</span>Install from a VSIX file</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#make-sure-code-is-available">Make sure code is available</a></li><li><a href="#install-one-extension">Install one extension</a></li><li><a href="#install-the-two-packs">Install the two packs</a></li><li><a href="#install-all-seventeen">Install all seventeen</a></li><li><a href="#other-useful-flags">Other useful flags</a></li><li><a href="#profiles">Profiles</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

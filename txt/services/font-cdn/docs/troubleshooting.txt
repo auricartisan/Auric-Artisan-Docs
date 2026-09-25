@@ -1,0 +1,80 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Why a Font CDN family might not appear or look right, and what to do.
+Area: Services › Font CDN   Updated: 2026-09-25
+
+  Symptom:    The text stays in the fallback font
+  Why:        The stylesheet URL is wrong, so it returns a "not found" page
+  What to do: Open the stylesheet URL: it should start with a comment naming
+              the family. Copy it from Use & Embed.
+
+  Symptom:    The text stays in the fallback font, and the URL is right
+  Why:        The CSS names the family differently
+  What to do: Use the exact name in the stylesheet's `font-family`, in quotes,
+              for example `'Roboto Slab'`
+
+  Symptom:    The fallback shows briefly, then the font
+  Why:        Normal: stylesheets use `font-display: swap`
+  What to do: Preload or use `AuricFonts.load()` and wait for it before
+              showing text that must not change
+
+  Symptom:    Bold looks smeared or too heavy
+  Why:        The family has no bold file, so the browser synthesises one
+  What to do: Pick a weight the family has; the Styles tab lists them
+
+  Symptom:    A weight has no effect on a static family
+  Why:        Only the weights the family has can be shown
+  What to do: Choose another weight or a variable family
+
+  Symptom:    Italic looks slanted rather than true italic
+  Why:        The family has no italic style
+  What to do: Check the Styles tab, or choose a family with italics
+
+  Symptom:    `data-families` loads nothing
+  Why:        A family name is misspelt, or the names are not separated by a
+              vertical bar
+  What to do: Use the exact family names; check the browser's network panel
+              for a failed `/css/` request
+
+  Symptom:    `AuricFonts` is undefined
+  Why:        Your code ran before the script loaded
+  What to do: Put your code after the script tag, or wait for the page's
+              `load` event
+
+  Symptom:    `get()` returns `null`
+  Why:        No family has that id or name
+  What to do: Check the spelling, or use `search()`
+
+  Symptom:    `list()` or `search()` is slow the first time
+  Why:        The catalogue index is downloaded on first use
+  What to do: Call it once and reuse the result
+
+  Symptom:    Download kit reads Installed only
+  Why:        The family is a system font the library does not serve
+  What to do: Choose another family, or license the font from its maker
+
+  Symptom:    The kit has `DOWNLOAD_NOTES.txt`
+  Why:        One or more files could not be fetched
+  What to do: Try again later; the note lists what is missing
+
+  Symptom:    A licence shows as Unspecified
+  Why:        The library found no licence text for the family
+  What to do: Check with the foundry before using it; the License tab says "No
+              bundled license text was found for this family"
+
+  Symptom:    Characters show as boxes or in another font
+  Why:        The family does not cover that script
+  What to do: Check the Charset tab and add a fallback font that covers it
+
+  Symptom:    A strict Content-Security-Policy blocks the font
+  Why:        Your policy does not allow the CDN
+  What to do: Allow the CDN in `style-src` and `font-src` (and `script-src`
+              for the loader), or self-host
+
+RELATED PAGES
+=============
+
+  - Embed a family [embed-a-family.txt]
+  - Self-host a family [self-host-a-family.txt]
+  - FAQ [faq.txt]

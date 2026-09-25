@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read contrast pairs, tone bands and harmony — Auric Artisan Docs</title>
+<meta name="description" content="What the swatches, tone bands, contrast pairs and harmony readouts tell you about a palette taken from a picture.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="extract-a-palette.html">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html" aria-current="page">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html">Image Picker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Read contrast pairs, tone bands and harmony</h1>
+<p class="lede">What the swatches, tone bands, contrast pairs and harmony readouts tell you about a palette taken from a picture.</p>
+<p>Once a palette is extracted, the <strong>Workbench</strong> tab describes it in four ways. All four use the extracted palette only; pinned colours are not included.</p>
+<h2 id="the-swatches">The swatches</h2>
+<p>Each swatch under <strong>Extracted palette</strong> shows:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Line</th><th>Example</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Inside the swatch</td><td><code>24%</code></td><td>Share of the sampled pixels in this cluster</td></tr>
+<tr><td>First line</td><td><code>#2E4A5C</code></td><td>Hex value</td></tr>
+<tr><td>Second line</td><td><code>203° 33% 27%</code></td><td>HSL: hue, saturation, lightness</td></tr>
+<tr><td>Third line</td><td><code>L=0.063</code></td><td>Relative luminance, 0 (black) to 1 (white)</td></tr>
+</tbody></table></div>
+<p>The heading reads, for example, <strong>6 clusters · 41750 samples</strong>: how many colours the palette has and how many pixels were sampled.</p>
+<h2 id="tone-bands">Tone bands</h2>
+<p><strong>Tone bands</strong> sorts the palette by relative luminance, the brightness measure used by WCAG:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Band</th><th>Relative luminance</th></tr></thead>
+<tbody>
+<tr><td><strong>Shadows</strong></td><td>Below 0.18</td></tr>
+<tr><td><strong>Midtones</strong></td><td>0.18 to below 0.65</td></tr>
+<tr><td><strong>Highlights</strong></td><td>0.65 and above</td></tr>
+</tbody></table></div>
+<p>A band with no colours reads <strong>None</strong>. The bands show where the weight of the palette sits: a moody photograph piles up in <strong>Shadows</strong>, a high-key one in <strong>Highlights</strong>.</p>
+<h2 id="pairs-that-carry-text">Pairs that carry text</h2>
+<p><strong>Pairs that carry text</strong>, marked <strong>WCAG 2.1</strong>, lists the eight pairs of palette colours with the highest contrast ratio. The contrast ratio is the WCAG measure of how different two colours are in brightness, from 1:1 (identical) to 21:1 (black on white).</p>
+<p>Each row shows the two swatches, the ratio, a rating, and the two hex values:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rating</th><th>Ratio</th><th>Suitable for</th></tr></thead>
+<tbody>
+<tr><td><strong>AAA</strong></td><td>7:1 or more</td><td>Body text at the enhanced level</td></tr>
+<tr><td><strong>AA</strong></td><td>4.5:1 or more</td><td>Body text at the minimum level</td></tr>
+<tr><td><strong>AA-lg</strong></td><td>3:1 or more</td><td>Large text only (at least 18 pt, or 14 pt bold)</td></tr>
+<tr><td><strong>Fail</strong></td><td>Below 3:1</td><td>Not suitable for text</td></tr>
+</tbody></table></div>
+<p>With fewer than two colours, the panel reads <strong>Need 2+ colors</strong>.</p>
+<p>This is a first pass. Colours taken from a picture are often beautiful as accents and weak as text on background. Check the exact pair you intend to use in a dedicated contrast tool such as the <a href="../../../accessibility-and-vision/contrast-checker/README.html">Contrast Checker</a>.</p>
+<h2 id="harmony">Harmony</h2>
+<p><strong>Harmony</strong> looks at the hue of every pair of palette colours and reports pairs whose hues sit at a classic colour-wheel angle. Hue here is the HSL hue, 0° to 360° around the colour wheel.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Relationship</th><th>Hue difference</th></tr></thead>
+<tbody>
+<tr><td><strong>Analogous</strong></td><td>25° to 45°</td></tr>
+<tr><td><strong>Tetradic</strong></td><td>80° to 100°</td></tr>
+<tr><td><strong>Triadic</strong></td><td>110° to 130°</td></tr>
+<tr><td><strong>Split-Complementary</strong></td><td>140° to 165°</td></tr>
+<tr><td><strong>Complementary</strong></td><td>165° to 180° (the largest possible difference)</td></tr>
+</tbody></table></div>
+<p>Each row shows the relationship, the two colours and the measured difference, for example <strong>Δh=172.4°</strong>. Up to 12 rows are listed, grouped by relationship name. When no pair matches, the panel reads <strong>No strong harmonic relationships detected</strong>.</p>
+<p>These angles are a convention from colour-wheel teaching, not a measurement of how pleasing a palette is. Greys have no real hue, so a palette with grey clusters can show relationships that mean little.</p>
+<h2 id="what-you-should-see">What you should see</h2>
+<p>Reading the four panels together tells you what the picture is made of: which colours dominate, how light or dark it is, which pairs could carry text, and whether the hues follow a familiar scheme.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="pick-exact-colours.html"><span>Previous</span>Pick exact colours</a><a href="reference.html"><span>Next</span>Image Picker reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-swatches">The swatches</a></li><li><a href="#tone-bands">Tone bands</a></li><li><a href="#pairs-that-carry-text">Pairs that carry text</a></li><li><a href="#harmony">Harmony</a></li><li><a href="#what-you-should-see">What you should see</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

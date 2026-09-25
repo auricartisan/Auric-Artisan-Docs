@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUT Lab — Auric Artisan Docs</title>
+<meta name="description" content="What LUT Lab does, who it is for, where to find it and how to try a first look and write a .cube file.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image and file tools</a>
+<h2>LUT Lab</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">LUT Lab documentation &rsaquo;</a></li>
+<li><a href="others/README.html">LUT Lab background material &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Image and file tools</a> &rsaquo; <a href="README.html">LUT Lab</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>LUT Lab</h1>
+<p class="lede">What LUT Lab does, who it is for, where to find it and how to try a first look and write a .cube file.</p>
+<p>LUT Lab reads, applies and writes colour lookup tables. A lookup table, or LUT, is a file that says what colour each input colour should become; colourists use LUTs to carry a grade or a conversion from one program to another. LUT Lab works with the <code>.cube</code> format, in its one-dimensional (1D) and three-dimensional (3D) forms.</p>
+<p>The <strong>Lab</strong> tab shows a scene before and after a transform, side by side. The transform is either one of six built-in looks, such as <strong>Teal and orange</strong> or a <strong>Reinhard tone-map</strong>, or a <code>.cube</code> file you load. Under the pair, the tool measures what the transform moved: the average and largest colour difference in CIEDE2000, the share of pixels it clipped to pure white or black, and, on a ring of test colours, how far it turned hue and changed lightness and chroma. You can test on four drawn scenes or on your own picture.</p>
+<p>The <strong>Export</strong> tab writes the transform in force as a <code>.cube</code>, at any size from 2 to 65, as a 3D cube or a 1D curve. The file&#39;s header states plainly that the tool works in 8 bits and that the sample order is red fastest, as the format requires. Everything runs in your browser; nothing is uploaded.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Colourists and editors checking what a <code>.cube</code> does before using it in a grading or editing program.</li>
+<li>Designers and developers who want a simple look as a <code>.cube</code> file.</li>
+<li>Anyone who needs to resample a <code>.cube</code> to a different size, or turn it into a 1D curve.</li>
+<li>Students learning how LUTs, interpolation and clipping work.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<p>Open <a href="https://auricartisan.com/tool/general/tools/lut-lab/" rel="noopener">https://auricartisan.com/tool/general/tools/lut-lab/</a> in a current browser. It is listed as <strong>LUT Lab</strong> on the Collections page at <a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>. Nothing needs installing.</p>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open the tool. The <strong>Lab</strong> tab shows the <strong>Neutral wedge</strong> scene with the <strong>Teal and orange</strong> look applied.</li>
+<li>Select another scene, for example <strong>Colour patches</strong>, or drop your own picture on <strong>Drop an image</strong>.</li>
+<li>Choose a look from the menu under <strong>The look</strong>, and move <strong>Strength</strong> to set how much of it to apply.</li>
+<li>Read the cards under <strong>What it moved</strong> and the hue circle under <strong>Where it moved things to</strong>.</li>
+<li>To test a file instead, drop a <code>.cube</code> on <strong>Drop a .cube</strong>.</li>
+<li>Open the <strong>Export</strong> tab, choose <strong>Kind</strong> and <strong>Size</strong>, and select <strong>Save the .cube</strong>.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Apply six built-in looks: Teal and orange, Bleach bypass, Film soft, Mono contrast, Log-ish lift and Reinhard tone-map, with a strength control and, for the tone-map, an exposure control.</li>
+<li>Load any 1D or 3D <code>.cube</code> file, see its size, domain and any problems with it, and apply it.</li>
+<li>Test on four drawn scenes or on your own picture, scaled to fit 480 × 270.</li>
+<li>See the pixels a transform drove to white or black, highlighted on the result.</li>
+<li>Measure mean, 95th-percentile and largest CIEDE2000 difference, and the share of clipped pixels.</li>
+<li>See hue, lightness and chroma shifts on a 72-point ring of constant lightness in CIELAB.</li>
+<li>Write a 3D <code>.cube</code> (2³ to 65³) or a 1D <code>.cube</code> (2 to 65 entries) of the transform in force, and copy it to the clipboard.</li>
+<li>Save the hue sweep as CSV and a full report as JSON, and copy a link that restores your settings.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the tool.<ul>
+<li><a href="docs/getting-started.html">Getting started</a> — open it, the screen tour, a first look.</li>
+<li><a href="docs/lut-concepts.html">LUT concepts</a> — 1D and 3D LUTs, sizes, domains, interpolation, clipping and bit depth.</li>
+<li><a href="docs/apply-a-look.html">Apply a look</a> — scenes, your own picture, the six looks, strength and exposure.</li>
+<li><a href="docs/load-a-cube-file.html">Load a .cube file</a> — what the reader accepts and what it reports.</li>
+<li><a href="docs/read-what-it-moved.html">Read what a transform moved</a> — the clip overlay, the difference cards and the hue circle.</li>
+<li><a href="docs/write-a-cube-file.html">Write a .cube file</a> — kinds, sizes, the header, round trips and the other exports.</li>
+<li><a href="docs/reference.html">Reference</a> — every control, readout, format and message.</li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a> — symptoms, causes and fixes.</li>
+<li><a href="docs/faq.html">FAQ</a> — short answers to common questions.</li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background material.<ul>
+<li><a href="others/glossary.html">Glossary</a> — terms used in this tool.</li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a> — the 8-bit path, what is measured and what is not held.</li>
+<li><a href="others/related.html">Related</a> — related tools and Learn articles.</li>
+<li><a href="others/release-notes.html">Release notes</a> — user-facing history.</li>
+<li><a href="others/privacy.html">Privacy</a> — what stays in your browser.</li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../image-picker/others/related.html"><span>Previous</span>Related tools and reading</a><a href="docs/README.html"><span>Next</span>LUT Lab documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

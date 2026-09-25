@@ -1,0 +1,49 @@
+---
+title: Auric Artisan Theme — Release notes
+description: User-facing history of Auric Artisan Theme, from 0.1.0 to 0.2.0.
+product: VS Code extensions › Auric Artisan Theme
+updated: 2026-09-25
+---
+
+# Release notes
+
+## 0.2.0 — 8 September 2026
+
+The current Marketplace version.
+
+### Added
+
+- 54 built-in variants, up from 24. All existing theme IDs still work.
+- Two new dark families, **Dusk** and **Forest**, with six accents each.
+- Ten accent variants each for Obsidian, Midnight, Parchment and Porcelain.
+- Compact collapsible family galleries in the sidebar, with small accent tiles, counts and keyboard navigation; the sidebar remembers which families are open.
+- A searchable variant dropdown.
+- The **Preview** tab: side-by-side palette comparison and **Copy palette as CSS**.
+- Dial search and a **Modified only** filter.
+- A direct custom accent picker in the sidebar.
+- Numeric RGB and opacity channels in the colour picker, and up to eight recent colours per session.
+
+### Improved
+
+- Theme Studio and the sidebar share a new workspace layout: introduction, active theme card, live counts and numbered tabs.
+- Matching Hindi theme names in VS Code's pickers and in both panels.
+- Devanagari-friendly fonts and line height.
+
+### Fixed
+
+- Dropdowns no longer jump to the top or scroll the page behind them while you scroll; background updates keep the list position.
+- Presets with distinct Hindi or punctuation-only names no longer overwrite each other. Presets already overwritten in earlier versions cannot be recovered.
+- Popups no longer exceed the available height in very short windows.
+- The sidebar **Reset** button now needs a second click to confirm.
+
+## 0.1.1 — 10 August 2026
+
+- **Auto**, **English** and **हिन्दी** interface selection for Theme Studio and the sidebar, saved in settings.
+- Localised commands, settings, notifications and walkthroughs.
+- Theme Studio keeps its state when you change language.
+
+## 0.1.0 — 23 July 2026
+
+- Initial collection of 24 themes, including dark and light high-contrast builds.
+- Theme Studio and sidebar with dials, colour slot overrides, contrast audits and presets.
+- Portable customisation JSON and standalone theme file export.

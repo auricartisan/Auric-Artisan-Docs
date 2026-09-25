@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work with the Auric collection extensions — Auric Artisan Docs</title>
+<meta name="description" content="How Icon Studio, Auric Icons: Modern, Drawn and Playful share one library interface, and how to keep their separate views if you prefer.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Icon Studio</a>
+<h2>Icon Studio guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Icon Studio</a></li>
+<li><a href="auric-collections.html" aria-current="page">Work with the Auric collection extensions</a></li>
+<li><a href="commands-and-keybindings.html">Commands and keybindings</a></li>
+<li><a href="insert-copy-and-save.html">Insert, copy and save</a></li>
+<li><a href="search-and-browse.html">Search and browse</a></li>
+<li><a href="reference.html">Icon Studio reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Icon Studio</a> &rsaquo; <a href="README.html">Icon Studio guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Icon Studio</p>
+<h1>Work with the Auric collection extensions</h1>
+<p class="lede">How Icon Studio, Auric Icons: Modern, Drawn and Playful share one library interface, and how to keep their separate views if you prefer.</p>
+<p>The Auric artwork is also published as three separate extensions: <strong>Auric Icons: Modern</strong>, <strong>Auric Icons: Drawn</strong> and <strong>Auric Icons: Playful</strong>. Each has its own Icon Library view. Icon Studio already contains all three collections, so it is designed to avoid showing the same icons twice.</p>
+<h2 id="default-icon-studio-hosts-the-collections">Default: Icon Studio hosts the collections</h2>
+<p>With <code>auricIconStudio.hostFamilyLibraries</code> set to <code>true</code> (the default):</p>
+<ul>
+<li>The separate Icon Library views of Modern, Drawn and Playful are hidden, together with their Command Palette entries and their <code>Ctrl</code> + <code>Alt</code> + <code>I</code> and <code>Ctrl</code> + <code>Alt</code> + <code>R</code> shortcuts.</li>
+<li>Icon Studio&#39;s own view, commands and shortcuts are active.</li>
+<li>Modern&#39;s Explorer file icon theme is not affected. It keeps working.</li>
+<li>Hovering over an Auric icon ID is still answered by the collection extension that owns it, so you see one preview, not two.</li>
+</ul>
+<h2 id="keep-the-separate-collection-views">Keep the separate collection views</h2>
+<ol>
+<li>Open Settings and search for <code>auricIconStudio.hostFamilyLibraries</code>.</li>
+<li>Turn it off (<code>false</code>).</li>
+</ol>
+<p>The collection extensions show their own Icon Library views, commands and shortcuts again. Icon Studio&#39;s view and commands stay available, but its <code>Ctrl</code> + <code>Alt</code> + <code>I</code> and <code>Ctrl</code> + <code>Alt</code> + <code>R</code> shortcuts step aside so the shortcuts are not claimed twice. If none of the collection extensions are installed, Icon Studio&#39;s shortcuts stay active either way.</p>
+<p>The change takes effect immediately. If Icon Studio is disabled or uninstalled, the collection views come back.</p>
+<h2 id="when-the-collections-are-installed-without-icon-studio">When the collections are installed without Icon Studio</h2>
+<p>If two or three of Modern, Drawn and Playful are installed (and Icon Studio is not hosting them), they cooperate on their own: one of them automatically becomes the host and shows a single merged Icon Library. The others hide their views and forward their commands to it. See <a href="../../auric-icons-modern/docs/merged-icon-studio.html">Auric Icons: Modern</a> for details.</p>
+<h2 id="likes-and-recent-icons">Likes and recent icons</h2>
+<ul>
+<li>Icon Studio keeps its own likes, recent icons and learned recommendations.</li>
+<li>Each collection extension keeps its own likes and recents for its own icons.</li>
+<li>These are separate stores. Liking an icon in Icon Studio does not add it to the Modern extension&#39;s likes, and clearing one does not clear the other.</li>
+</ul>
+<h2 id="other-auric-icon-extensions">Other Auric icon extensions</h2>
+<ul>
+<li><strong>Auric Artisan Emoji</strong> keeps its own Emoji Studio view and commands.</li>
+<li><strong>Auric Artisan Icon Hub</strong> keeps its own view and settings.</li>
+<li><strong>Auric Artisan File Icons</strong> remains the extension for Explorer file and folder themes. Installing Icon Studio does not replace it.</li>
+</ul>
+<p>See the <a href="../others/related.html">comparison</a> for which extension does what.</p>
+<h2 id="result">Result</h2>
+<p>You see each Auric icon once, in the interface you prefer, and your shortcuts do not clash.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Icon Studio</a><a href="commands-and-keybindings.html"><span>Next</span>Commands and keybindings</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#default-icon-studio-hosts-the-collections">Default: Icon Studio hosts the collections</a></li><li><a href="#keep-the-separate-collection-views">Keep the separate collection views</a></li><li><a href="#when-the-collections-are-installed-without-icon-studio">When the collections are installed without Icon Studio</a></li><li><a href="#likes-and-recent-icons">Likes and recent icons</a></li><li><a href="#other-auric-icon-extensions">Other Auric icon extensions</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

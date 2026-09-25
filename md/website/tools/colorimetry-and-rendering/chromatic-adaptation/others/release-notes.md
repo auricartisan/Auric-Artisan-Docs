@@ -1,0 +1,22 @@
+---
+title: Chromatic Adaptation — Release notes
+description: User-facing changes to the Chromatic Adaptation lab.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Chromatic Adaptation release notes
+
+## September 2026 — the workbench rebuild
+
+- The tabs are now **Lab**, **Dynamics**, **Matrix**, **Data**, **Export** and **Reference**. Standards, Formulas, References and Research became one Reference view with a search filter.
+- The adaptation timeline now follows the two-phase time course measured by Fairchild and Reniff (1995). The former single exponential (0.6 s with a 0.4 s delay) is drawn on the new **Dynamics** tab for comparison. The delay and τ sliders were removed from the Lab.
+- The Lab gained a **Degree of adaptation D** control, and every figure states the D it used.
+- Illuminant spectra now come from the same checked tables as the Illuminants lab. Where a spectrum is not held (B, C, F2, F7, F11), the plot says so instead of drawing a daylight curve under that name.
+- The new **Matrix** tab shows M, diag(d) and the full matrix, with a round-trip check, copy-as-code buttons and a comparison of all eight transforms against Bradford.
+- The new **Data** tab lists the 11 datasets and their status.
+- Three citations were corrected (Sharp, CAM16 and CMCCAT2000); corrected entries are marked in the Reference view.
+
+## May 2026
+
+The Chromatic Adaptation Dynamic User Guide was published in the site's Documentation library, describing the earlier version.

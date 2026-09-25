@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common problems with Auric Artisan Theme and Theme Studio.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Theme</a>
+<h2>Auric Artisan Theme guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Theme</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="choose-a-theme.html">Choose a theme</a></li>
+<li><a href="compare-and-preview.html">Compare and preview</a></li>
+<li><a href="edit-colours.html">Edit individual colours</a></li>
+<li><a href="interface-language.html">Interface language (English and हिन्दी)</a></li>
+<li><a href="looks-and-dials.html">Looks and dials</a></li>
+<li><a href="save-share-and-export.html">Save, share and export</a></li>
+<li><a href="theme-sidebar.html">The Theme sidebar</a></li>
+<li><a href="reference.html">Auric Artisan Theme reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Theme</a> &rsaquo; <a href="README.html">Auric Artisan Theme guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Theme</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common problems with Auric Artisan Theme and Theme Studio.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Dials and colour changes have no effect.</td><td>A non-Auric colour theme is active. Customisations are scoped to the Auric theme names.</td><td>Run <strong>Auric Theme: Switch Variant…</strong> and pick an Auric theme.</td></tr>
+<tr><td>A message says &quot;customisations apply to the Auric Artisan themes. Pick one first.&quot;</td><td>Same as above.</td><td>Select <strong>Choose theme</strong> in the message.</td></tr>
+<tr><td>The status bar item is missing.</td><td>It only shows while an Auric theme is active.</td><td>Switch to an Auric theme.</td></tr>
+<tr><td>My colour override is not exactly the colour I typed.</td><td>The contrast guard adjusted it to meet your minimum contrast.</td><td>Lower <strong>Minimum contrast</strong> or turn off <strong>Enforce contrast</strong> in the Accessibility dials. Check the Audit tab afterwards.</td></tr>
+<tr><td>Overrides disappeared after switching theme.</td><td>Colour overrides are stored per variant.</td><td>Switch back to the variant where you made them, or save a preset and load it on the new variant.</td></tr>
+<tr><td>A warning keeps saying colour pairs no longer meet the minimum.</td><td><strong>Audit on apply</strong> reports failures after each change.</td><td>Fix the failing pairs (see the Audit tab), or turn off <strong>Audit on apply</strong>.</td></tr>
+<tr><td>&quot;Auric Theme: could not save auricTheme.…&quot;</td><td>VS Code could not write your user settings, often because <code>settings.json</code> has a syntax error or is read-only.</td><td>Open <strong>Preferences: Open User Settings (JSON)</strong>, fix any error, then try again.</td></tr>
+<tr><td>Import fails with &quot;That is not valid JSON&quot;.</td><td>The pasted text is incomplete or not JSON.</td><td>Copy the whole block again, including the braces.</td></tr>
+<tr><td>Import says the customisation &quot;came from&quot; another tool.</td><td>The JSON was not produced by Auric Artisan Theme.</td><td>Only import files exported by this extension.</td></tr>
+<tr><td>Import says a newer version is needed.</td><td>The JSON uses a newer format.</td><td>Update the extension.</td></tr>
+<tr><td>The sidebar&#39;s <strong>Export</strong> button seems to do nothing.</td><td>It prepares customisation JSON for the Studio&#39;s Share tab; it does not open a save dialog.</td><td>Use <strong>Export as Theme File…</strong> from the sidebar&#39;s <strong>…</strong> menu, or <strong>Copy Customisation to Clipboard</strong>.</td></tr>
+<tr><td>Italics look slanted and blurry.</td><td>Your editor font has no true italic, so it is synthesised.</td><td>Set <strong>Italics</strong> to <strong>Off</strong>, or run <strong>Auric Theme: Toggle Italics</strong>.</td></tr>
+<tr><td>Whitespace marks setting has no visible effect.</td><td>Marks only show when VS Code draws whitespace.</td><td>Turn on <code>editor.renderWhitespace</code>.</td></tr>
+<tr><td>Title bar dial has no visible effect.</td><td>The title bar colour only applies with VS Code&#39;s custom title bar style.</td><td>Set <code>window.titleBarStyle</code> to <code>custom</code>.</td></tr>
+<tr><td>A preset I saved in an older version is missing.</td><td>In versions before 0.2.0, presets with distinct Hindi or punctuation-only names could overwrite each other.</td><td>This was fixed in 0.2.0, but presets already overwritten cannot be recovered.</td></tr>
+<tr><td>Recent colours in the picker are gone.</td><td>Recent colours last only for the current panel session.</td><td>Note important colours as presets or overrides.</td></tr>
+<tr><td>The Preview tab does not look like my editor.</td><td>Preview is an illustrative specimen of the palette, not a full editor.</td><td>Look at a real file to judge the result; edits are already live.</td></tr>
+<tr><td>The Studio shows a banner listing problems.</td><td>The theme engine reported something it could not apply.</td><td>Read the listed problem; resetting the affected dial or slot usually clears it.</td></tr>
+<tr><td>Hindi labels do not appear in the Command Palette.</td><td>Command titles follow VS Code&#39;s display language, not the Studio switch.</td><td>Run <strong>Configure Display Language</strong> and choose Hindi, or keep the Studio switch for the panels only.</td></tr>
+</tbody></table></div>
+<h2 id="start-again-from-the-shipped-theme">Start again from the shipped theme</h2>
+<ol>
+<li>Run <strong>Auric Theme: Reset Everything</strong> and confirm with <strong>Reset</strong>, or</li>
+<li>In Theme Studio, select <strong>Reset all</strong>, then <strong>Reset everything?</strong> within four seconds.</li>
+</ol>
+<p>This clears every dial and the active variant&#39;s colour overrides. Presets are not deleted.</p>
+<h2 id="still-stuck">Still stuck</h2>
+<p>Collect your VS Code version, the extension version (0.2.0), the active theme and the steps that reproduce the problem, then contact support at <a href="https://auricartisan.com/company/contact/" rel="noopener">https://auricartisan.com/company/contact/</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Auric Artisan Theme reference</a><a href="faq.html"><span>Next</span>Frequently asked questions</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#start-again-from-the-shipped-theme">Start again from the shipped theme</a></li><li><a href="#still-stuck">Still stuck</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

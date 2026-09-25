@@ -1,0 +1,245 @@
+==============================================================================
+SUPPORTED LANGUAGES
+==============================================================================
+Every language Auric Artisan Formatter formats, grouped by how much it can
+change.
+Area: VS Code extensions › Auric Artisan Formatter   Updated: 2026-09-25
+
+The formatter recognises 253 languages by file extension, exact file name,
+shebang line and VS Code language id. What it does with each depends on its
+tier; see The safety gate and formatting tiers [safety-gate-and-tiers.txt].
+
+  Tier:         Native
+  Languages:    33 registry entries; 31 verified native modes
+  What changes: Anything layout-related: the file is rebuilt from a real parse
+
+  Tier:         Universal: reindent and spacing
+  Languages:    104
+  What changes: Indentation and spacing
+
+  Tier:         Universal: spacing only
+  Languages:    60
+  What changes: Spacing between tokens; indentation untouched
+
+  Tier:         Universal: whitespace only
+  Languages:    60
+  What changes: Trailing whitespace, blank lines, line endings, final newline
+
+The two native entries that are not yet verified are JavaScript React (`jsx`)
+and TypeScript React (`tsx`): a file containing JSX elements falls back to the
+universal tier in version 0.1.0.
+
+To see the list yourself, run `auric-format --list-languages` (see Command
+line and CI [command-line.txt]). Formatter Studio's Lang drop-down groups
+languages into Native printers and Universal engine.
+
+NATIVE TIER
+===========
+
+The "Formatter id" is the name used in the formatter's `languages`
+configuration.
+
+  Language:                JavaScript
+  Formatter id:            `javascript`
+  File extensions or names:`.js` `.cjs` `.mjs` `.es` `.es6` `.pac` and more
+
+  Language:                JavaScript React
+  Formatter id:            `jsx`
+  File extensions or names:`.jsx`
+
+  Language:                TypeScript
+  Formatter id:            `typescript`
+  File extensions or names:`.ts` `.mts` `.cts` `.d.ts` `.d.mts` `.d.cts`
+
+  Language:                TypeScript React
+  Formatter id:            `tsx`
+  File extensions or names:`.tsx` `.mtsx`
+
+  Language:                JSON
+  Formatter id:            `json`
+  File extensions or names:`.json` `.geojson` `.topojson` `.jsonld`
+                           `.importmap` `.har` and more
+
+  Language:                JSON5
+  Formatter id:            `json5`
+  File extensions or names:`.json5`
+
+  Language:                JSON with Comments
+  Formatter id:            `jsonc`
+  File extensions or names:`.jsonc`
+
+  Language:                JSON.stringify
+  Formatter id:            `json-stringify`
+  File extensions or names:`package.json` `package-lock.json` `bower.json`
+                           `.babelrc.json`
+
+  Language:                CSS
+  Formatter id:            `css`
+  File extensions or names:`.css` `.wxss`
+
+  Language:                SCSS
+  Formatter id:            `scss`
+  File extensions or names:`.scss`
+
+  Language:                Less
+  Formatter id:            `less`
+  File extensions or names:`.less`
+
+  Language:                PostCSS
+  Formatter id:            `postcss`
+  File extensions or names:`.pcss` `.postcss` `.sss`
+
+  Language:                HTML
+  Formatter id:            `html`
+  File extensions or names:`.html` `.htm` `.xhtml` `.xht` `.shtml` `.html.hl`
+                           and more
+
+  Language:                Vue
+  Formatter id:            `vue`
+  File extensions or names:`.vue`
+
+  Language:                Svelte
+  Formatter id:            `svelte`
+  File extensions or names:`.svelte`
+
+  Language:                Astro
+  Formatter id:            `astro`
+  File extensions or names:`.astro`
+
+  Language:                XML
+  Formatter id:            `xml`
+  File extensions or names:`.xml` `.xsd` `.xsl` `.xslt` `.rss` `.atom` and
+                           more
+
+  Language:                SVG
+  Formatter id:            `svg`
+  File extensions or names:`.svg` `.svgz`
+
+  Language:                Markdown
+  Formatter id:            `markdown`
+  File extensions or names:`.md` `.markdown` `.mdown` `.mkd` `.mkdn` `.mdwn`
+                           and more
+
+  Language:                MDX
+  Formatter id:            `mdx`
+  File extensions or names:`.mdx`
+
+  Language:                Handlebars
+  Formatter id:            `handlebars`
+  File extensions or names:`.handlebars` `.hbs` `.hbs.html`
+
+  Language:                YAML
+  Formatter id:            `yaml`
+  File extensions or names:`.yaml` `.yml` `.yaml.tmpl` `.mir` `.reek` `.rviz`
+                           and more
+
+  Language:                TOML
+  Formatter id:            `toml`
+  File extensions or names:`.toml` `.tml`
+
+  Language:                GraphQL
+  Formatter id:            `graphql`
+  File extensions or names:`.graphql` `.gql`
+
+  Language:                GraphQL SDL
+  Formatter id:            `graphql-schema`
+  File extensions or names:`.graphqls` `.gqls` `.sdl`
+
+  Language:                OpenAPI
+  Formatter id:            `openapi`
+  File extensions or names:`openapi.yaml` `openapi.yml` `openapi.json`
+                           `api.yaml`
+
+  Language:                AsyncAPI
+  Formatter id:            `asyncapi`
+  File extensions or names:`asyncapi.yaml` `asyncapi.yml` `asyncapi.json`
+
+  Language:                Swagger 2.0
+  Formatter id:            `swagger`
+  File extensions or names:`swagger.yaml` `swagger.yml` `swagger.json`
+
+  Language:                RAML
+  Formatter id:            `raml`
+  File extensions or names:`.raml`
+
+  Language:                Docker Compose
+  Formatter id:            `docker-compose`
+  File extensions or names:`docker-compose.yml` `docker-compose.yaml`
+                           `docker-compose.override.yml`
+                           `docker-compose.override.yaml`
+
+  Language:                Pulumi
+  Formatter id:            `pulumi`
+  File extensions or names:`Pulumi.yaml` `Pulumi.yml`
+
+  Language:                Ansible
+  Formatter id:            `ansible`
+  File extensions or names:`playbook.yml` `playbook.yaml` `site.yml`
+                           `site.yaml`
+
+  Language:                Kubernetes manifest
+  Formatter id:            `kubernetes`
+  File extensions or names:`kustomization.yaml` `kustomization.yml`
+                           `kubeconfig`
+
+Files identified by name
+------------------------
+
+Some formats share an extension with another, and a few files are recognised
+by name. For example, `docker-compose.yml`, `compose.yaml`, `openapi.yaml`,
+`swagger.json`, `asyncapi.yaml`, `Pulumi.yaml`, `playbook.yml` and
+`kustomization.yaml` get their own native handling. Ambiguous extensions are
+resolved to one language by default: `.h` is C, `.m` is Objective-C, `.pl` is
+Perl, `.sql` is SQL and `.ts` is TypeScript. Set `auricFormatter.parser` or a
+`languages` entry if you need a different interpretation.
+
+UNIVERSAL TIER: REINDENT AND SPACING (104)
+==========================================
+
+Indentation and spacing are normalised. JavaScript, TypeScript and their React
+variants appear here because this is where they fall back when a native parse
+is not possible.
+
+ABAP, Ada, Alloy, ANTLR, Apache Avro IDL, Apache config, Apache Thrift, Apex,
+AppleScript, ASN.1, AWK, Bash, BASIC, Bicep, C, C#, C++, Caddyfile, Cairo,
+Cap'n Proto, CMake, Crystal, CUDA, CUE, D, Dart, Delphi, Elixir, Fish,
+FlatBuffers, Fortran, Gleam, GLSL, GNU Octave, gnuplot, Go, Gradle, Graphviz
+DOT, Groovy, Hack, Haxe, HCL, Hjson, HLSL, Java, JavaScript, JavaScript React,
+jq, Jsonnet, Julia, KDL, Kotlin, Lex / Flex, Lua, M4, MATLAB, Metal Shading
+Language, Move, nginx, Nix, Nushell, Objective-C, Objective-C++, Odin, OpenCL,
+Pascal, Perl, PHP, PowerShell, Protocol Buffers, Puppet, R, Raku, Reason,
+ReScript, REXX, Ruby, Rust, Rusty Object Notation, Scala, Shell script,
+Smalltalk, Solidity, Stan, Stata, Swift, SystemVerilog, Tcl, Terraform,
+TypeScript, TypeScript React, TypoScript, V, Vala, Verilog, VHDL, Vim script,
+Visual Basic, Web IDL, WGSL, XQuery, Yacc / Bison, Zig, Zsh.
+
+UNIVERSAL TIER: SPACING ONLY (60)
+=================================
+
+Indentation is left exactly as written, because it carries meaning or the
+layout is sensitive; spacing between tokens is normalised.
+
+Agda, AutoHotkey, Batch file, Bazel, Clojure, ClojureScript, CoffeeScript,
+Common Lisp, Coq / Rocq, Cypher, Cython, Dhall, EDN, Elm, Emacs Lisp, Erlang,
+F#, Fennel, GDScript, Haml, Haskell, HiveQL, Idris, Isabelle, Jade, Janet,
+Lean, LiveScript, Mercury, Meson, Michelson, MySQL, Nim, OCaml, PL/SQL,
+PostgreSQL, Prolog, Pug, PureScript, Python, Racket, SAS, Sass (indented),
+Scheme, Slim, SMT-LIB, Spark SQL, SPARQL, SPSS, SQL, SQLite SQL, Standard ML,
+Starlark, Stylus, T-SQL, TLA+, Vyper, WebAssembly, WebAssembly Text, Wolfram
+Mathematica.
+
+UNIVERSAL TIER: WHITESPACE ONLY (60)
+====================================
+
+Only trailing whitespace, blank-line runs, line endings and the final newline
+change, because leading whitespace is data in these formats.
+
+Apache Ant, AsciiDoc, ASP.NET Web Forms, Assembly, BibTeX, Blade, COBOL,
+ColdFusion Markup, Containerfile, Creole, CSV, Diff / patch, Dockerfile,
+Document Type Definition, Dotenv, EditorConfig, EJS, ERB, Forth, FreeMarker,
+Gherkin, Git attributes, Git commit message, Git config, Git ignore, Git
+rebase todo, Go module, Helm chart, INI, Java Properties, JavaServer Pages,
+Jinja, JSON Lines, Just, LaTeX, Liquid, LLVM IR, Makefile, MediaWiki, Mermaid,
+Mustache, Ninja, Nunjucks, Org Mode, PlantUML, Razor, reStructuredText, Robot
+Framework, RPG (IBM i), sed, Smarty, systemd unit, Texinfo, Textile,
+Thymeleaf, TSV, Turtle / RDF, Twig, Velocity, XAML.

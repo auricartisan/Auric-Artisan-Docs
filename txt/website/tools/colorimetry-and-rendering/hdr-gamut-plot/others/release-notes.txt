@@ -1,0 +1,31 @@
+==============================================================================
+HDR GAMUT PLOT RELEASE NOTES
+==============================================================================
+User-facing changes to the HDR Gamut Plot.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+CURRENT VERSION (2026 WORKBENCH REBUILD)
+========================================
+
+  - Tabs are now Lab, Curves, Planes, Data, Export and Reference.
+  - Gamut shares are quoted against the spectral locus in the plane on screen
+    (33.6%, 45.6% and 63.6% in xy). They were previously divided by Rec.2020's
+    area, so Rec.2020 always read 100%.
+  - The image readout no longer prints a "peak luminance" or 100% coverage for
+    every image. It measures the image's occupancy of each gamut instead.
+  - The tone-curve axis now covers whatever is drawn, so PQ is shown in full
+    to 10,000 cd/m². Peak brightness is documented as not scaling PQ.
+  - Jzazbz now runs its own quantiser (p = 134.034375) instead of ICtCp's.
+  - HLG surround adjustments are marked as this tool's own, and readings using
+    them are labelled Adjusted.
+  - The boundary rings are now drawn automatically with a key to their eight
+    luminance levels.
+  - Export previews the exact payload and names the file; the CSV column
+    formerly headed "Coverage%" is now "Locus share %".
+  - The "ACES" operator is identified as Narkowicz's 2016 approximation.
+
+MAY 2026
+========
+
+The HDR Gamut Plot User Guide was published in the site's Documentation
+library, describing the earlier version.

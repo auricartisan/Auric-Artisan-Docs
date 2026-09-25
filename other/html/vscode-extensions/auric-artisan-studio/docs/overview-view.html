@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Overview view — Auric Artisan Docs</title>
+<meta name="description" content="Every card, row and button in the Overview sidebar view, in its accessibility, colour and code-health layouts.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html" aria-current="page">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>The Overview view</h1>
+<p class="lede">Every card, row and button in the Overview sidebar view, in its accessibility, colour and code-health layouts.</p>
+<p>The <strong>Overview</strong> is the first view in the Studio&#39;s Activity Bar container. It is a compact home that shows how the workspace is doing, what is wrong in the file you are editing, and what to do next. Its layout depends on which extension hosts it:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Layout</th><th>Used when the host is</th><th>What it centres on</th></tr></thead>
+<tbody>
+<tr><td>Accessibility dashboard</td><td>Auric Accessibility (alone or in a Workstation)</td><td>The workspace score and one row per installed capability</td></tr>
+<tr><td>Colour workbench</td><td>Auric Color (alone, or hosting Code Health)</td><td>The file you are editing, swatches and colour tools</td></tr>
+<tr><td>Code-health report</td><td>Auric Code Health (alone)</td><td>The code-health score and its seven categories</td></tr>
+</tbody></table></div>
+<p>Every layout opens with the <strong>Auric Studio</strong> heading (a link to <a href="https://auricartisan.com" rel="noopener">https://auricartisan.com</a>) and an <strong>Open the Studio</strong> button at the top right, and ends with a footer that shows <code>Ctrl Alt .</code> <strong>Command Center</strong> (<code>⌘ ⌥ .</code> on macOS).</p>
+<p>The Overview follows <strong>one gold action per view</strong>: the most useful action is drawn in gold, everything else in the theme&#39;s plain button style. When the open file has contrast pairs that can be fixed automatically, <strong>Fix N in this file</strong> is gold; otherwise the workspace card&#39;s main button is.</p>
+<h2 id="the-accessibility-dashboard">The accessibility dashboard</h2>
+<h3 id="workspace-card">Workspace card</h3>
+<ul>
+<li><strong>Workspace</strong> heading with your workspace&#39;s name, and how long ago it was scanned, for example <code>scanned 3 days ago</code> or <code>not scanned yet</code>. The age refreshes every minute.</li>
+<li><strong>Score ring.</strong> The overall score out of 100 and its grade, for example <code>82</code> and <code>grade B</code>. Before the first scan it reads <code>—</code> and <code>no scan</code>.</li>
+<li><strong>Accessibility</strong> row: the overall score, its grade and the number of WCAG issues, or <code>Run a scan to grade</code> before the first scan.</li>
+<li><strong>Contrast issues</strong> row: the number of text pairs below target, followed by colour-vision and branding counts when there are any.</li>
+<li><strong>Code health</strong> row (only when Auric Code Health is installed): the code-health score and number of findings.</li>
+<li><strong>Scan project</strong> button. After the first scan it reads <strong>Rescan</strong> and forces a fresh read of the workspace.</li>
+<li><strong>Report</strong> (only with Auric Code Health): runs <strong>Generate Project Health Report</strong>.</li>
+<li><strong>SARIF</strong> (only with Auric Code Health): runs <strong>Write Health Record (health.json + SARIF)</strong>.</li>
+</ul>
+<p>All rows update as you type, from the live re-grade described in <a href="scanning.html">Scanning</a>. You do not need to press a button to see the effect of an edit.</p>
+<h3 id="this-file">This file</h3>
+<p>The <strong>This file</strong> card shows the file in the active editor:</p>
+<ul>
+<li>Its workspace-relative name and a count, for example <code>3 issues</code>, or <code>clean</code>.</li>
+<li>Up to four findings, worst first. Contrast rows lead with the ratio, for example <code>2.32:1 #999999 on #FFFFFF</code>; other rows name their kind (<code>WCAG</code>, <code>APCA</code>, <code>code health</code>, <code>color vision</code>). Each row shows its line number; select a row to jump to that line.</li>
+<li><strong>Fix N in this file</strong>: recolours every automatically fixable contrast pair in the file (needs Auric Color). It runs <strong>Fix All Contrast Issues in File</strong>, which previews the changes and asks first.</li>
+<li><strong>Contrast Studio</strong>: opens the file&#39;s first failing pair in the <a href="contrast-studio.html">Contrast Studio</a>, linked to its location.</li>
+</ul>
+<p>A file with no findings shows <strong>No findings in this file.</strong> When no editor is open, the card is hidden.</p>
+<h3 id="suggested">Suggested</h3>
+<p>Up to three cards from the deterministic suggestion engine, each with a priority pill (<strong>Critical</strong>, <strong>High</strong>, <strong>Workflow</strong> or <strong>Tip</strong>), a title that states what was detected, a one-line reason, and one or two buttons. Select <strong>✕</strong> to dismiss a suggestion for good. The six rules are listed in <a href="command-center.html#the-suggestion-rules">The Command Center</a>. The strip is hidden when there is nothing to suggest.</p>
+<h3 id="recent-colors">Recent colors</h3>
+<p>Shown when Auric Color is installed and you have applied at least one colour. It lists up to 12 recently applied colours; select a swatch to copy its value. <strong>Picker</strong> opens the colour picker.</p>
+<h3 id="navigation">Navigation</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it opens</th></tr></thead>
+<tbody>
+<tr><td><strong>Studio</strong></td><td>The Studio tab.</td></tr>
+<tr><td><strong>Rulebook</strong></td><td>The rulebook and knowledge database search.</td></tr>
+<tr><td><strong>Icon Studio</strong></td><td>The combined Auric icon library, if an icon provider is installed.</td></tr>
+<tr><td><strong>Fix plan</strong></td><td>Generates the agent-ready remediation plan.</td></tr>
+</tbody></table></div>
+<p>The footer reads <strong>Runs on this machine</strong>.</p>
+<h2 id="the-colour-workbench">The colour workbench</h2>
+<p>Used when Auric Color is the host: on its own, or with Auric Code Health but without Auric Accessibility. It has no project score. (With that pair, open the Studio&#39;s <strong>Health</strong> space for the code-health score.)</p>
+<ul>
+<li><strong>This file</strong> card, as above. <strong>Fix N in this file</strong> is the gold action when the file has fixable pairs.</li>
+<li><strong>Suggested</strong>: only the file-level suggestion <strong>N fixable contrast pairs in this file</strong>, when it applies.</li>
+<li><strong>Brand palette</strong>: a fixed row of nine swatches. Select one to copy it (<strong>click to copy</strong>).</li>
+<li><strong>Recent colors</strong>: up to 12 recently applied colours, with a <strong>Picker</strong> link. Before you pick anything it says <strong>Pick a color and it lands here.</strong></li>
+<li><strong>Open the color picker</strong> (gold unless the file has fixable pairs): runs <strong>Pick / edit color</strong>.</li>
+<li>Navigation: <strong>Contrast</strong>, <strong>Palette</strong>, <strong>Shades</strong>, <strong>Vision</strong> (each opens that Studio tool), <strong>Rulebook</strong> and <strong>Icon Studio</strong>.</li>
+<li>Footer: <strong>Hover a color literal to edit it in place</strong>, or <strong>Native decorator mode — VS Code&#39;s picker owns the hover</strong> when you have switched to VS Code&#39;s own picker.</li>
+</ul>
+<h2 id="the-code-health-report">The code-health report</h2>
+<p>Used by Auric Code Health on its own.</p>
+<ul>
+<li>Workspace card with a <strong>Code health</strong> ring and row. Before the first report the row reads <strong>Run a health report to grade this repo</strong>.</li>
+<li>Seven category chips with counts: <strong>Secrets</strong>, <strong>Security</strong>, <strong>Risky APIs</strong>, <strong>Debug</strong>, <strong>TODOs</strong>, <strong>Conflicts</strong> and <strong>Large files</strong>. Chips with a count of zero are shown in a muted style.</li>
+<li><strong>Report</strong> (gold): runs <strong>Generate Project Health Report</strong>, which scans (or reuses a fresh cache) and writes the report.</li>
+<li><strong>health.json + SARIF</strong>: runs <strong>Write Health Record</strong>.</li>
+<li><strong>This file</strong> and <strong>Suggested</strong>, as above.</li>
+<li>Navigation: <strong>Studio</strong>, <strong>Rulebook</strong>, <strong>Icon Studio</strong> and <strong>Fix plan</strong>.</li>
+</ul>
+<h2 id="keyboard-and-screen-readers">Keyboard and screen readers</h2>
+<p>Every control is a real button. Score changes and new suggestions are announced through a polite live region, for example <code>Score 82 of 100, 42 findings</code>. See <a href="studio-accessibility.html">Accessibility of the Studio</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="icon-studio-bridge.html"><span>Previous</span>The Icon Studio bridge</a><a href="remediation-plan.html"><span>Next</span>The remediation plan</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-accessibility-dashboard">The accessibility dashboard</a></li><li><a href="#the-colour-workbench">The colour workbench</a></li><li><a href="#the-code-health-report">The code-health report</a></li><li><a href="#keyboard-and-screen-readers">Keyboard and screen readers</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

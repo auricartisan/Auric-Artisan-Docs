@@ -1,0 +1,61 @@
+==============================================================================
+INSPECT AND DEBUG AN ELEMENT
+==============================================================================
+Find why an element looks the way it does, check its accessibility, try a CSS
+fix live on the page, and copy the result.
+Area: Browser extension › Workflows   Updated: 2026-09-25
+
+This workflow is for the question "why does this look like that, and what
+would fix it?", without opening the browser's developer tools.
+
+1. FIND THE ELEMENT
+===================
+
+  1. Open the extension's side panel and go to Code › Inspect.
+  2. Choose Select element.
+  3. Hover the page. The hover card shows the element's name, size, contrast,
+     font and colours as you move.
+  4. Use the arrow keys to move to the parent, child or siblings if the
+     pointer lands on the wrong element.
+  5. Click to pin it. The side panel shows its full snapshot.
+
+2. READ WHAT APPLIES
+====================
+
+  1. In Overview, read the box model, layout, colours, typography and effects.
+  2. In Styles, type a property into Filter properties or values…, for example
+     `margin`, and read Matched rules to see which rule sets it and which
+     rules it overrides.
+  3. In A11y, check its role, accessible name and contrast.
+  4. In DOM, read its attributes and markup, and copy a locator for your
+     tests: CSS, JavaScript or Playwright.
+
+On the page, the pinned card shows the same element with contrast first. If
+the text fails AA, the card suggests the nearest text colour that passes AA.
+
+3. TRY A FIX LIVE
+=================
+
+  1. Open Live CSS. It starts with the element's current CSS.
+  2. Change a declaration, for example the colour to the suggested passing
+     colour, or the padding.
+  3. Choose Apply to page. The change shows on the page, on this element only.
+  4. Keep adjusting and applying until it looks right.
+  5. Choose Reset to go back to the page's own styles at any time.
+
+4. KEEP THE FIX
+===============
+
+  1. Choose Copy CSS to copy the editor's contents, or Save snippet to keep
+     them in Snippets.
+  2. Choose Stop in the header to end inspecting and remove every preview from
+     the page.
+  3. Apply the change in your own source code.
+
+The result: a tested CSS change, copied or saved, and the page back as it was.
+
+RELATED PAGES
+=============
+
+  - Element inspector [../surfaces/inspector.txt]
+  - Inspect [../code/inspect.txt]

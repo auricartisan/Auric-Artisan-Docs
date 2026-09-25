@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Code Health Studio — Auric Artisan Docs</title>
+<meta name="description" content="Use the Studio's Health space and the Overview to see the code-health score, filter findings by category and confidence, and act on them.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Code Health</a></li>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="code-health-studio.html" aria-current="page">The Code Health Studio</a></li>
+<li><a href="health-records.html">Health records</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="reference.html">Auric Code Health reference</a></li>
+<li><a href="troubleshooting.html">Auric Code Health troubleshooting</a></li>
+<li><a href="faq.html">Auric Code Health FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>The Code Health Studio</h1>
+<p class="lede">Use the Studio's Health space and the Overview to see the code-health score, filter findings by category and confidence, and act on them.</p>
+<p>The Studio&#39;s <strong>Health</strong> space is Auric Code Health&#39;s full view of the repository: its score and grade, the seven categories, and every finding with filters. When Auric Code Health is installed alone, the Studio opens on it; in a Workstation, it is the <strong>Health</strong> space of the host&#39;s Studio.</p>
+<h2 id="open-it">Open it</h2>
+<ul>
+<li><strong>Auric Artisan: Open Code Health Studio</strong>, or <strong>Studio</strong> on the Overview, or the status-bar item.</li>
+<li><strong>Open Studio: Code Health</strong> in the Command Center.</li>
+</ul>
+<p>The tab is titled <strong>Auric Artisan — Code Health Studio</strong> (or <strong>Workstation Studio</strong> in a Workstation). The space header reads <strong>Repository intelligence</strong> with the summary <strong>Find secrets, security footguns, debug leftovers, risky APIs, task debt, and oversized code.</strong>, and a chip showing how long ago the workspace was scanned.</p>
+<h2 id="before-the-first-scan">Before the first scan</h2>
+<p>A <strong>Code Health Studio</strong> card explains what will be checked and offers <strong>Scan Code Health</strong> (a fresh scan) and <strong>Open data folder</strong>.</p>
+<h2 id="after-a-scan">After a scan</h2>
+<h3 id="header-actions">Header actions</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>health.json + SARIF</strong></td><td>Writes the health record. See <a href="health-records.html">Health records</a>.</td></tr>
+<tr><td><strong>Report</strong></td><td>Generates the project health report (Markdown, JSON and HTML).</td></tr>
+<tr><td><strong>Rescan</strong> (gold)</td><td>Scans the workspace again and refreshes the cache.</td></tr>
+</tbody></table></div>
+<h3 id="repository-hygiene-and-security">Repository hygiene and security</h3>
+<ul>
+<li><strong>Data folder</strong>: shows <code>.auric-artisan</code> in your file manager.</li>
+<li><strong>Fix plan for an agent</strong>: generates the <a href="../../docs/remediation-plan.html">remediation plan</a>, with a task for each secret, security and risky-API finding.</li>
+<li>A score ring with the code-health score and grade (A+ to F).</li>
+<li>Four figures: <strong>files</strong>, <strong>findings</strong>, <strong>high confidence</strong> and <strong>secret + security</strong>.</li>
+</ul>
+<h3 id="seven-health-categories">Seven health categories</h3>
+<p>A button for each category with its count and description, in this order:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Category</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Possible secrets</strong></td><td>Hardcoded API keys, tokens or passwords.</td></tr>
+<tr><td><strong>Security risks</strong></td><td>Weak crypto, TLS bypass, unsafe deserialization, XSS sinks.</td></tr>
+<tr><td><strong>Merge markers</strong></td><td>Unresolved merge-conflict markers.</td></tr>
+<tr><td><strong>Risky APIs</strong></td><td>eval, innerHTML and other footguns.</td></tr>
+<tr><td><strong>Debug leftovers</strong></td><td>Forgotten debug / print statements.</td></tr>
+<tr><td><strong>Task markers</strong></td><td>TODO / FIXME / HACK left in the code.</td></tr>
+<tr><td><strong>Oversized</strong></td><td>Very long lines or large files.</td></tr>
+</tbody></table></div>
+<p>Secrets, security and merge markers are shown in the fail colour; risky APIs and debug in the warning colour. Select a category to show only its findings; select <strong>All</strong> in the filter bar to show every category again.</p>
+<h3 id="findings">Findings</h3>
+<ul>
+<li>Filter chips: <strong>All</strong> (with the total), <strong>Any confidence</strong>, <strong>High</strong>, <strong>Medium</strong> and <strong>Low</strong> (each with its count).</li>
+<li>A search box, <strong>Filter rule, message, file…</strong>, matching the signature ID, category, message, fix, evidence, file, confidence and severity. Secret evidence is never searchable.</li>
+<li>A count such as <code>42 of 118 shown</code>. Up to 300 findings are listed at a time.</li>
+<li>Each row shows the category, the confidence, the signature ID, the message, <strong>Fix:</strong> with the fix, the evidence (or <strong>Secret evidence redacted</strong>), and the file and line. Select a row, or press <code>Enter</code>, to open the file at that line.</li>
+</ul>
+<p>When nothing matches, the list says <strong>No Code Health findings match the current filters.</strong> A clean project shows <strong>No Code Health findings. All seven enabled categories are clean in the current scan.</strong></p>
+<p>Press <code>/</code> to jump to the search box and <code>Escape</code> to clear it.</p>
+<h2 id="the-overview">The Overview</h2>
+<p>When Auric Code Health is alone, its Overview is the code-health layout: a <strong>Code health</strong> ring and row, seven chips (<strong>Secrets</strong>, <strong>Security</strong>, <strong>Risky APIs</strong>, <strong>Debug</strong>, <strong>TODOs</strong>, <strong>Conflicts</strong>, <strong>Large files</strong>), <strong>Report</strong> and <strong>health.json + SARIF</strong>, the <strong>This file</strong> card, suggestions and navigation to <strong>Studio</strong>, <strong>Rulebook</strong>, <strong>Icon Studio</strong> and <strong>Fix plan</strong>. See <a href="../../docs/overview-view.html#the-code-health-report">The Overview view</a>.</p>
+<p>With Auric Accessibility as host, the Overview gains a <strong>Code health</strong> row, <strong>Report</strong> and <strong>SARIF</strong>, and the Studio&#39;s Home gains a <strong>Code health</strong> tile and the <strong>CI gate</strong> card.</p>
+<h2 id="settings-space">Settings space</h2>
+<p>With Auric Code Health alone, Studio › Settings shows <strong>Appearance</strong>, <strong>Project data</strong>, <strong>Scan engine</strong> and <strong>Scope</strong>. The category switches are in VS Code&#39;s settings (search <code>auricCodeHealth.codeHealth</code>). See <a href="reference.html">Reference</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="../../docs/studio.html">The Studio</a></li>
+<li><a href="../../docs/exports-and-records.html">Exports and health records</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="categories-and-signatures.html"><span>Previous</span>Categories and signatures</a><a href="health-records.html"><span>Next</span>Health records</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#before-the-first-scan">Before the first scan</a></li><li><a href="#after-a-scan">After a scan</a></li><li><a href="#the-overview">The Overview</a></li><li><a href="#settings-space">Settings space</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

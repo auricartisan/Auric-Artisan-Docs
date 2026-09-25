@@ -1,0 +1,71 @@
+==============================================================================
+MANAGE YOUR SITES
+==============================================================================
+How to see every site on your Search Console account, switch between them,
+read how the crawler treats a site, and remove one.
+Area: Website › Search   Updated: 2026-09-25
+
+Your sites in the Search Console's side rail lists every site on your account.
+It stays available even while a site is waiting to be verified, because it is
+where you add, prove and remove sites.
+
+THE LIST
+========
+
+The heading says how many sites the account has, for example 2 sites on this
+account. Removing one takes it off this console, not out of the index.
+
+Each row shows:
+
+  - The site's name and its status, such as verified or pending. The site the
+    console is showing is marked open.
+  - For a verified site: how many pages are indexed, how many are excluded,
+    and when it was last crawled, for example 120 indexed · 8 excluded ·
+    crawled 3 hours ago.
+  - For an unverified site: not proved yet — nothing is crawled until it is.
+  - Open, to make it the site the console shows.
+  - Remove, to take it off your console.
+
+You can also switch sites from the switcher in the console header, which
+appears when the account has more than one site.
+
+HOW THE CRAWLER TREATS THE OPEN SITE
+====================================
+
+Below the list, a card named after the open site shows:
+
+  - The ownership line, for example Ownership proven by file on the site,
+    2026-09-20.
+  - Last crawl — when, and the HTTP status the site answered with.
+  - Pace — how long the crawler waits between requests to the site.
+  - robots.txt — Found, with when it was read, or None.
+  - Could not be fetched — how many addresses failed, with See which, and why,
+    which opens Coverage. This appears only when there are failures.
+  - The crawler is being turned away. — shown when the crawler cannot get in
+    at all, with the reason.
+
+REMOVE A SITE
+=============
+
+  1. Select Remove on the site's row.
+  2. A dialog asks Remove this property? and explains what happens:
+     - Its pages stay in the index. They were crawled from the open web, they
+       keep being crawled, and searching still finds them.
+     - You stop seeing them in the console.
+     - Your search history for the site is deleted: impressions, clicks and
+       positions. It does not come back.
+     - You can add the site again later, but you must prove you own it again,
+       and the history starts from then.
+  3. Select Remove from my console to go ahead, or Keep it to cancel. `Escape`
+     or selecting outside the dialog also cancels.
+
+The page then says the site is no longer in your console. Its pages are still
+in the index.
+
+KEEP PAGES OUT OF THE INDEX
+===========================
+
+Removing a site from the console does not remove its pages from the index. To
+keep pages out, tell the crawler on the site itself: disallow them in
+robots.txt, or add a noindex robots meta tag or `X-Robots-Tag` header. See
+Request a crawl [request-a-crawl.txt].

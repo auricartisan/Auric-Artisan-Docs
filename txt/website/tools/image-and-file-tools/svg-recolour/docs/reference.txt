@@ -1,0 +1,338 @@
+==============================================================================
+SVG RECOLOUR REFERENCE
+==============================================================================
+Every tab, control, paint property, colour form, readout, export format and
+message in SVG Recolour.
+Area: Website › Tools › Image and file tools › SVG Recolour   Updated: 2026-09-25
+
+Address: https://auricartisan.com/tool/general/tools/svg-recolor/
+
+TABS
+====
+
+  Tab:      Recolour
+  Contents: Loading, write style, vision preview, harmonies; before and after
+            previews, the colour list and figures
+
+  Tab:      Mapping
+  Contents: Every colour's use, target and written count; worked examples of
+            swaps and counts
+
+  Tab:      Check
+  Contents: Text colour; WCAG 2.2 and APCA per colour; closest pairs; the
+            artwork under three dichromacies
+
+  Tab:      Data
+  Contents: The 15 entries every figure rests on, filterable by status; six
+            corrections
+
+  Tab:      Export
+  Contents: Four save and copy buttons, the size table, custom properties and
+            the report
+
+  Tab:      Reference
+  Contents: Nine sources and a six-step description of how the tool works
+
+RECOLOUR TAB — THE FILE
+=======================
+
+  Control:      Drop an SVG
+  What it does: Loads a dropped file, or opens a chooser when selected or when
+                `Enter` or `Space` is pressed
+  Accepts:      `.svg`, `image/svg+xml`
+
+  Control:      Load the sample
+  What it does: Loads a built-in sample and puts its markup in the paste box
+  Accepts:      —
+
+  Control:      Paste box
+  What it does: SVG markup
+  Accepts:      Text
+
+  Control:      Read the markup
+  What it does: Loads the markup in the paste box
+  Accepts:      Well-formed SVG
+
+The sample loads automatically when the page opens.
+
+RECOLOUR TAB — OPTIONS
+======================
+
+  Control: Write colours as
+  Values:  Write hex, Keep the source form
+  Default: Write hex
+
+  Control: Show it as seen by
+  Values:  Normal vision, Protan, Deutan, Tritan
+  Default: Normal vision
+
+  Control: Recolour from a harmony
+  Values:  complementary, analogous, triadic, tetradic, split complementary
+  Default: —
+
+  Control: Put every colour back
+  Values:  Resets every target to its original
+  Default: —
+
+PAINT PROPERTIES SEARCHED
+=========================
+
+`fill`, `stroke`, `stop-color`, `flood-color`, `lighting-color`, `color`,
+`solid-color`, `text-decoration-color`, in presentation attributes, style
+attributes and `<style>` elements.
+
+COLOUR FORMS
+============
+
+  Form:                    `#RRGGBB`
+  Read:                    Yes
+  Written with Keep the source form:Hex, keeping capitals if the original used
+                           them
+
+  Form:                    `#RGB`
+  Read:                    Yes
+  Written with Keep the source form:Six-digit hex
+
+  Form:                    `#RRGGBBAA`, `#RGBA`
+  Read:                    Yes
+  Written with Keep the source form:Six-digit hex; the alpha is lost
+
+  Form:                    `rgb()`, `rgba()`
+  Read:                    Yes, comma or space separated
+  Written with Keep the source form:`rgb(r, g, b)`, or `rgba(r, g, b, a)`
+                           keeping the alpha
+
+  Form:                    `hsl()`, `hsla()`
+  Read:                    Yes
+  Written with Keep the source form:`hsl(h, s%, l%)`, or `hsla(…)` keeping the
+                           alpha
+
+  Form:                    148 CSS names
+  Read:                    Yes
+  Written with Keep the source form:The CSS name if the new colour has one,
+                           otherwise hex
+
+  Form:                    `none`, `transparent`
+  Read:                    Listed, left alone
+  Written with Keep the source form:—
+
+  Form:                    `currentColor`, `inherit`, `initial`, `unset`,
+                           `revert`, `context-fill`, `context-stroke`
+  Read:                    Listed, left alone
+  Written with Keep the source form:—
+
+  Form:                    `url(…)`
+  Read:                    Listed, left alone
+  Written with Keep the source form:—
+
+  Form:                    Other functions, `var()`
+  Read:                    Not recognised
+  Written with Keep the source form:—
+
+With Write hex, every changed colour is written as lower-case six-digit hex.
+
+ACTIVE CONTENT REMOVED FROM THE PREVIEWS
+========================================
+
+`script`, `foreignObject` and `handler` elements; attributes whose names begin
+with `on`; `href` and `xlink:href` values beginning with `javascript:`,
+including when whitespace or control characters are hidden inside the word.
+The exported file is not stripped.
+
+RECOLOUR TAB — READOUTS
+=======================
+
+  Readout: Stripped notice
+  Meaning: What active content was removed from the previews
+
+  Readout: Note above the previews
+  Meaning: Elements, occurrences and colours, or nothing loaded
+
+  Readout: As it came
+  Meaning: The original, on a chequerboard
+
+  Readout: After heading
+  Meaning: Occurrences written out of those that can be written
+
+  Readout: Colour list row
+  Meaning: Current swatch, hex, name, places; target swatch, hex, unchanged or
+           written in N places; written count
+
+  Readout: Greyed row
+  Meaning: Keyword, left alone, reason, not held
+
+  Readout: elements
+  Meaning: Elements in the document, root included
+
+  Readout: occurrences
+  Meaning: Places a colour value is written
+
+  Readout: colours
+  Meaning: Distinct changeable colours
+
+  Readout: left alone
+  Meaning: Values with no colour to change
+
+  Readout: written
+  Meaning: Occurrences the export carries as changed
+
+  Readout: closest pair
+  Meaning: Smallest CIEDE2000 difference under the three simulations;
+           highlighted below 8
+
+Reasons for greyed rows: resolves from outside this file (`currentColor`), no
+paint (`none`), a reference, not a colour (others).
+
+HARMONIES
+=========
+
+  Harmony             | Angles from the base colour's OKLCH hue
+  --------------------+----------------------------------------
+  complementary       | 0°, 180°
+  analogous           | 0°, −30°, +30°
+  triadic             | 0°, 120°, 240°
+  tetradic            | 0°, 90°, 180°, 270°
+  split complementary | 0°, 150°, 210°
+
+The base is the first colour in the list. Lightness and chroma are kept; the
+pattern repeats with a further 12° turn when there are more colours than
+angles.
+
+MAPPING TAB
+===========
+
+  Element:  Note
+  Contents: Number of occurrences
+
+  Element:  Table
+  Contents: Swatch, In the file, Used, Becomes, Written, Where, and what
+            happened
+
+  Element:  Footnote
+  Contents: Written, unchanged and skipped counts, which add up to the total
+
+  Element:  Two colours trading places
+  Contents: Three measured cases: a swap, a named colour, a shorthand
+
+  Element:  What the count used to mean
+  Contents: Six measured cases of the earlier count against the real one
+
+CHECK TAB
+=========
+
+  Element:  Text laid over the artwork
+  Contents: The text colour; default `#FFFFFF`
+
+  Element:  What can be read on it
+  Contents: Colour, WCAG, Rating, APCA Lc, Good for, It used to say
+
+  Element:  The Lc that was always zero
+  Contents: Four pairs: It printed against APCA gives
+
+  Element:  The two colours hardest to tell apart
+  Contents: Seen as, The two closest colours, ΔE₀₀ between them, What that
+            means
+
+  Element:  The artwork under three dichromacies
+  Contents: Four previews with closest two
+
+WCAG ratings: AAA 7:1, AA 4.5:1, AA large 3:1, fail below. APCA bands by
+absolute Lc: any text 90, body text 75, large text 60, headlines only 45,
+non-text only 30, not for text below. Closeness: close to indistinguishable
+below 5, tells apart with effort below 12, clearly different otherwise.
+
+DATA TAB
+========
+
+Status buttons: All (15), Measured (3), Computed (7), This tool's choice (3),
+Absent (2). Select an entry to expand it.
+
+  Status:  Measured
+  Entries: Where each colour is used, occurrences written back, colours that
+           cannot be written
+
+  Status:  Computed
+  Entries: Reading a colour value, ΔE₀₀, WCAG ratio, APCA Lc, OKLab and OKLCH,
+           the sRGB transfer function, colour-vision simulation
+
+  Status:  This tool's choice
+  Entries: When two colours count as the same, the harmony angles, the colour
+           names
+
+  Status:  Absent
+  Entries: What `currentColor` resolves to; colour inside embedded raster
+           images
+
+What was corrected, and what it printed lists six corrections with was and
+now. Colours are grouped only when they are exactly the same colour; there is
+no control for merging near-identical colours.
+
+EXPORT TAB
+==========
+
+  Button                     | Output
+  ---------------------------+------------------------------------------
+  Save the recoloured SVG    | `recoloured.svg`
+  Copy the markup            | The recoloured SVG markup
+  Copy the custom properties | `--colour-01: #RRGGBB;  /* name */` lines
+  Save the report            | `recolour-report.json`
+
+REFERENCE TAB
+=============
+
+  Source                                                   | Status
+  ---------------------------------------------------------+----------
+  W3C SVG 1.1 and SVG 2, paint and presentation attributes | Runs
+  W3C CSS Color 4, colour syntax and named colours         | Runs
+  ISO/CIE 11664-6:2014, CIEDE2000                          | Runs
+  IEC 61966-2-1:1999, sRGB                                 | Runs
+  W3C WCAG 2.2, contrast minimum                           | Runs
+  APCA-W3 0.1.9                                            | Rebuilt
+  Ottosson (2020), OKLab                                   | Runs
+  Machado, Oliveira and Fernandes (2009)                   | Runs
+  Brettel, Viénot and Mollon (1997)                        | Withdrawn
+
+How it works lists six steps: Parse, Strip, Walk, Resolve, Plan and Write.
+
+MESSAGES
+========
+
+  Message: Loaded file name / Loaded the pasted markup.
+  When:    A file or markup was loaded
+
+  Message: A sample with a hex, an rgb(), a name, a shorthand, a stylesheet
+           and a currentColor.
+  When:    The sample was loaded
+
+  Message: That file will not parse as SVG, so nothing was changed.
+  When:    The markup is not well-formed
+
+  Message: Paste some SVG markup first.
+  When:    Read the markup with an empty box
+
+  Message: Load an SVG first.
+  When:    A harmony with nothing loaded
+
+  Message: A harmony palette from hex.
+  When:    A harmony was applied
+
+  Message: Every colour back to what it was.
+  When:    Put every colour back
+
+  Message: Saved · N occurrences written
+  When:    The SVG was saved
+
+  Message: Nothing loaded.
+  When:    Save or copy with nothing loaded
+
+  Message: Markup copied / Custom properties copied
+  When:    A copy succeeded
+
+  Message: Report saved.
+  When:    The report was saved
+
+  Message: The browser refused the clipboard.
+  When:    Clipboard access was blocked
+
+  Message: This browser will not take text from the clipboard.
+  When:    The browser cannot copy text

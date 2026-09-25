@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Errors — Auric Artisan Docs</title>
+<meta name="description" content="The Auric Artisan API's error format, every error code with its HTTP status, what each means, and how to respond.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="errors.html" aria-current="page">Errors</a></li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Errors</h1>
+<p class="lede">The Auric Artisan API's error format, every error code with its HTTP status, what each means, and how to respond.</p>
+<p>Errors are JSON with a stable <code>code</code> and a human-readable <code>message</code>. Most include a <code>request_id</code>; quote it when you contact support about a specific call.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;INVALID_INPUT&quot;,
+    &quot;message&quot;: &quot;seed: not a number&quot;
+  },
+  &quot;request_id&quot;: &quot;daebcbed-508b-4d4d-91ef-87ee99d32f03&quot;
+}</code></pre>
+<h2 id="error-codes">Error codes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Status</th><th>Code</th><th>Meaning and what to do</th></tr></thead>
+<tbody>
+<tr><td>400</td><td><code>INVALID_INPUT</code></td><td>A parameter is missing or malformed; the message names the field</td></tr>
+<tr><td>400</td><td><code>INVALID_JSON</code></td><td>The body is not valid JSON</td></tr>
+<tr><td>401</td><td><code>UNAUTHORIZED</code> or <code>UNAUTHENTICATED</code></td><td>No key, or a missing, invalid or revoked key</td></tr>
+<tr><td>402</td><td><code>PLAN_UPGRADE_REQUIRED</code></td><td>A valid key on a plan without API access; included from Specialist upward</td></tr>
+<tr><td>402</td><td><code>INSUFFICIENT_CREDITS</code></td><td>Overage is on but the prepaid balance will not cover the call. Top up.</td></tr>
+<tr><td>402</td><td><code>SPEND_CAP_REACHED</code></td><td>Your monthly overage spend cap was reached. Raise it in the dashboard.</td></tr>
+<tr><td>402</td><td><code>CREDIT_DEBIT_FAILED</code></td><td>The balance could not be debited, so the request was not served and nothing was charged. Retry.</td></tr>
+<tr><td>403</td><td><code>FORBIDDEN</code></td><td>A valid key without rights for this route</td></tr>
+<tr><td>404</td><td><code>NOT_FOUND</code></td><td>Unknown endpoint or resource id. <code>GET /v1</code> lists every endpoint.</td></tr>
+<tr><td>405</td><td><code>METHOD_NOT_ALLOWED</code></td><td>Right path, wrong method; the <code>Allow</code> header lists what is accepted</td></tr>
+<tr><td>413</td><td><code>PAYLOAD_TOO_LARGE</code></td><td>The body is over the limit (4 MB for image endpoints)</td></tr>
+<tr><td>429</td><td><code>RATE_LIMITED</code></td><td>Per-minute rate exceeded. Wait for <code>Retry-After</code>.</td></tr>
+<tr><td>429</td><td><code>IP_RATE_LIMITED</code></td><td>Too many requests from one address, whatever the key</td></tr>
+<tr><td>429</td><td><code>QUOTA_EXCEEDED</code></td><td>Included monthly credits used up and overage off. Enable it, or wait for the reset.</td></tr>
+<tr><td>429</td><td><code>HARD_CEILING_REACHED</code></td><td>Ten times the included allowance was reached this month; contact support</td></tr>
+<tr><td>500</td><td><code>INTERNAL</code></td><td>An unexpected server error. Quote the <code>request_id</code>.</td></tr>
+<tr><td>503</td><td><code>NOT_CONFIGURED</code></td><td>An optional part of the service is not enabled</td></tr>
+<tr><td>503</td><td><code>ENFORCEMENT_UNAVAILABLE</code></td><td>Limits could not be checked, so nothing was executed. Retry later.</td></tr>
+</tbody></table></div>
+<p>The API reference lists the 401 code as both <code>UNAUTHENTICATED</code> (in the endpoint tables) and <code>UNAUTHORIZED</code> (in the errors section); handle 401 by status rather than by code.</p>
+<p>Some endpoints have their own codes, such as <code>UNKNOWN_SPACE</code> (404) for <code>/v1/science/spaces/:key</code>, <code>UNKNOWN_CONDITION</code> for <code>/v1/vision/conditions/:slug</code>, <code>VALIDATION_ERROR</code> for an unknown collection id, and the analyzer&#39;s codes on <a href="endpoints/analyzer.html">Analyzer</a>.</p>
+<h2 id="429-or-402-which-is-which">429 or 402: which is which</h2>
+<p>The split is by what you should do:</p>
+<ul>
+<li><strong>429</strong> means back off and retry. The condition resets on its own, at the time in <code>retry-after</code> and <code>details.resets_at</code>. Official SDKs already retry on it.</li>
+<li><strong>402</strong> means only a money decision unblocks it: a top-up, a raised spend cap or a plan upgrade. Retrying without one is pointless.</li>
+</ul>
+<p>Every refusal names its remedy in <code>details.remedy</code>: <code>enable_overage</code>, <code>buy_credits</code>, <code>raise_spend_cap</code> or <code>contact_support</code>, alongside <code>credits_used</code>, <code>credits_included</code>, <code>credits_this_request</code> and <code>resets_at</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;INSUFFICIENT_CREDITS&quot;,
+    &quot;message&quot;: &quot;Pay-as-you-go is on, but the prepaid credit balance is empty. Top up to continue — nothing is billed after the fact.&quot;,
+    &quot;details&quot;: {
+      &quot;tier&quot;: &quot;pro&quot;,
+      &quot;credits_used&quot;: 1000010,
+      &quot;credits_included&quot;: 1000000,
+      &quot;credits_this_request&quot;: 10,
+      &quot;resets_at&quot;: &quot;2026-09-01T00:00:00.000Z&quot;,
+      &quot;remedy&quot;: &quot;buy_credits&quot;,
+      &quot;credits_needed&quot;: 10
+    }
+  },
+  &quot;request_id&quot;: &quot;daebcbed-508b-4d4d-91ef-87ee99d32f03&quot;
+}</code></pre>
+<h2 id="handling-errors-well">Handling errors well</h2>
+<ul>
+<li>Branch on <code>error.code</code>, not on <code>message</code>, which may change.</li>
+<li>On 429, wait for <code>retry-after</code> before retrying; do not retry in a tight loop.</li>
+<li>On 402, log <code>details.remedy</code> so someone can act on it.</li>
+<li>Watch <code>x-quota-remaining</code> to slow down before you run out.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="authentication.html"><span>Previous</span>Authentication</a><a href="examples.html"><span>Next</span>Request examples</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#error-codes">Error codes</a></li><li><a href="#429-or-402-which-is-which">429 or 402: which is which</a></li><li><a href="#handling-errors-well">Handling errors well</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+---
+title: Accessibility Checklist — Attach evidence
+description: Add screenshots to a check and annotate them with the pen, highlighter, arrows, boxes, redaction and numbered callouts.
+product: Website › Tools › Accessibility and vision
+updated: 2026-09-25
+---
+
+# Attach evidence
+
+A finding is easier to fix, and harder to dispute, when it carries a screenshot. Every check can hold any number of screenshots, each with its own annotations.
+
+## Add a screenshot
+
+1. Select the check in the index.
+2. Select **Attach screenshot** in the pane. On narrow phones this is an icon-only button with the same name. The **Screenshot evidence** dialog opens.
+3. Add one or more images in any of three ways:
+   - drag and drop image files anywhere on the dialog;
+   - paste an image with `Ctrl` + `V`;
+   - select **Choose a file** and pick one or more images.
+4. The dialog announces how many screenshots were attached.
+
+Only image files are accepted; other files are ignored. Screenshots are saved in your browser as soon as they are added.
+
+## Annotate it
+
+The toolbar on the left of the dialog ("Annotation tools") holds six tools. Each has a key while the dialog is open.
+
+| Tool | Key | What it draws |
+| --- | --- | --- |
+| Pen | `P` | A freehand line |
+| Highlighter | `H` | A wide, translucent freehand stroke |
+| Arrow | `A` | A straight arrow. This is the default tool. |
+| Box | `B` | A rectangle outline |
+| Redact | `R` | A solid filled rectangle in the chosen colour |
+| Callout | `C` | A numbered circle (1, 2, 3 and so on) with one click |
+
+- **Colours:** Red (default), Blue, Green and Black.
+- **Line widths:** Fine, Medium (default) and Broad.
+
+Drag across the screenshot to draw. Every mark is saved as you make it.
+
+The **Marks** panel lists the marks on the current screenshot, newest first, each with a remove button ("Remove this mark"). Before you draw anything it says "Nothing marked yet. Pick a tool and drag across the screenshot."
+
+## Manage screenshots
+
+The footer of the dialog has:
+
+- a strip of thumbnails for this check's screenshots, each showing its mark count, with a tile to add another;
+- a status line such as "2 screenshots · 5 marks · no limit";
+- **Undo**, which removes the last mark;
+- **Clear marks**, which removes every mark on the current screenshot at once, without asking;
+- **Remove**, which deletes the current screenshot. The first press changes the label to **Remove this one?** for four seconds; press again to confirm. The dialog announces "Screenshot removed."
+
+Select **Done**, or press `Esc`, to close the dialog. Focus returns to **Attach screenshot**.
+
+## In the pane
+
+Once a check has screenshots, the pane shows an **Evidence** block with the number pinned and numbered thumbnails ("Screenshot 1" and so on). Select a thumbnail to reopen it in the dialog, or the **Add** tile to add another. The caption reads: "No cap on images or on marks, and the pen never touches the picture underneath."
+
+## What the marks do to the image
+
+Marks are stored separately from the original image, which is never changed. When you close the dialog, a copy of each screenshot is made with the marks baked in; that copy is what the thumbnails and the printed report show.
+
+> **Important:** **Redact** covers an area only in that marked-up copy. The original, unredacted screenshot stays stored in your browser. Do not rely on Redact to remove sensitive information from what is stored on your device.
+
+## Limits
+
+- The page sets no limit on screenshots or marks; your browser's own storage limits still apply.
+- Screenshots need your browser's database storage. In some private windows it is unavailable; marks on checks still work, but screenshots cannot be attached.
+- Screenshots are not included in the Markdown export, which only says how many are attached. The printed report shows up to four small thumbnails per check.
+- The checklist's single-key shortcuts are switched off while the dialog is open, and the site's own right-click menu gives way to your browser's.

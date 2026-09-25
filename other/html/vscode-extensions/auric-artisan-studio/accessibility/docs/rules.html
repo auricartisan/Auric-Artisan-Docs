@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rules — Auric Artisan Docs</title>
+<meta name="description" content="Every WCAG rule Auric Accessibility checks, grouped by success criterion, with its impact, what it catches and how to fix it.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html">Manual evidence</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html" aria-current="page">Rules</a></li>
+<li><a href="reference.html">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>Rules</h1>
+<p class="lede">Every WCAG rule Auric Accessibility checks, grouped by success criterion, with its impact, what it catches and how to fix it.</p>
+<p>Auric Accessibility runs 70+ static rules (72 in the current package) mapped to 29 WCAG success criteria, on top of the contrast checks. This page lists every rule by success criterion, in the order of WCAG&#39;s four principles: perceivable, operable, understandable and robust.</p>
+<h2 id="how-to-read-this-page">How to read this page</h2>
+<ul>
+<li><strong>Rule ID</strong> is what the editor, the Project Issues view, <code>health.json</code> and SARIF show, and what you can put in a suppression comment, for example <code>auric-disable-next-line img-alt</code>.</li>
+<li><strong>Impact</strong> is how much the problem affects users: <strong>critical</strong>, <strong>serious</strong>, <strong>moderate</strong> or <strong>minor</strong>. It sets the Problems severity (critical and serious are warnings, moderate is information, minor is a hint) and the weight in the score.</li>
+<li><strong>hint</strong> marks a <strong>best-practice</strong> rule: a pattern worth fixing that does not by itself fail the criterion. Best-practice findings are shown as hints (<code>Best practice (related to WCAG …)</code>), have low confidence, and weigh half in the score.</li>
+<li><strong>Checks</strong> says whether the rule reads markup (HTML, JSX, TSX, Vue, Svelte, Astro, PHP, XML and template dialects) or CSS (every CSS dialect).</li>
+<li><strong>Confidence</strong> and <strong>automation</strong> are given where a rule reports them. Other rules are high-confidence and fully automated. <strong>Assisted</strong> means a person should confirm the finding.</li>
+<li>The level and WCAG version are those of the success criterion. The audit profile decides which criteria run; see <a href="audit-profiles-and-contrast.html">Audit profiles and contrast</a>.</li>
+</ul>
+<p>Each finding links to the W3C&#39;s <em>Understanding</em> page for its criterion, and <strong>Rule details</strong> in the hover opens the rule&#39;s entry in the <a href="../../docs/rulebook-and-knowledge.html">knowledge database</a>.</p>
+<h2 id="contrast-criteria">Contrast criteria</h2>
+<p>Contrast is graded by the contrast checks rather than by a markup rule. See <a href="../../color/docs/contrast-diagnostics.html">Contrast diagnostics</a>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Criterion</th><th>Level</th><th>What is checked</th></tr></thead>
+<tbody>
+<tr><td>1.4.3 Contrast (Minimum)</td><td>AA</td><td>Text and background pairs against your threshold (4.5:1, large text 3:1)</td></tr>
+<tr><td>1.4.6 Contrast (Enhanced)</td><td>AAA</td><td>The same, when your threshold is 7 or more</td></tr>
+<tr><td>1.4.1 Use of Color</td><td>A</td><td>Pairs that pass normally but lose contrast under colour-vision deficiency (hint)</td></tr>
+<tr><td>1.4.11 Non-text Contrast</td><td>AA</td><td>Use a 3:1 threshold for UI parts and large text</td></tr>
+</tbody></table></div>
+<p>APCA is offered as an experimental alternative model. An APCA result means &quot;meets the configured Lc target&quot;, not WCAG 3 conformance.</p>
+<h2 id="perceivable">Perceivable</h2>
+<h3 id="111-non-text-content">1.1.1 Non-text Content</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>img-alt</code></td><td>critical</td><td>Markup</td><td>Image has no alt attribute.</td></tr>
+<tr><td><code>area-alt</code></td><td>serious</td><td>Markup</td><td>Image-map <code>&lt;area&gt;</code> has no alt text.</td></tr>
+<tr><td><code>input-image-alt</code></td><td>critical</td><td>Markup</td><td>Image button (<code>&lt;input type=&quot;image&quot;&gt;</code>) has no alt text.</td></tr>
+<tr><td><code>svg-img-name</code></td><td>moderate</td><td>Markup</td><td><code>&lt;svg role=&quot;img&quot;&gt;</code> has no accessible name.</td></tr>
+<tr><td><code>object-name</code></td><td>moderate</td><td>Markup</td><td><code>&lt;object&gt;</code>/<code>&lt;embed&gt;</code> has no accessible name.</td></tr>
+<tr><td><code>redundant-alt</code></td><td>minor</td><td>Markup</td><td>Alt text starts with “image of / photo of …” — screen readers already announce it as an image.</td></tr>
+<tr><td><code>alt-filename</code></td><td>moderate</td><td>Markup</td><td>Alt text looks like a file name, not a description.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>img-alt</code>: Add alt=&quot;description&quot; (or alt=&quot;&quot; for purely decorative images). Apply fix adds alt=&quot;&quot;.</li>
+<li><code>area-alt</code>: Add alt=&quot;link destination&quot; to every <code>&lt;area&gt;</code> that has an href.</li>
+<li><code>input-image-alt</code>: Add alt=&quot;action name&quot; so the button has an accessible name.</li>
+<li><code>svg-img-name</code>: Add aria-label / aria-labelledby, or a <code>&lt;title&gt;</code> as the first child of the <code>&lt;svg&gt;</code>.</li>
+<li><code>object-name</code>: Add title=&quot;what it shows&quot; (or aria-label) to the <code>&lt;object&gt;</code>/<code>&lt;embed&gt;</code>.</li>
+<li><code>redundant-alt</code>: Describe the content directly; drop the “image of” prefix.</li>
+<li><code>alt-filename</code>: Replace the file name with a real description of the image.</li>
+</ul>
+<h3 id="122-captions-prerecorded">1.2.2 Captions (Prerecorded)</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>media-captions</code></td><td>serious</td><td>Markup</td><td><code>&lt;video&gt;</code>/<code>&lt;audio&gt;</code> has no captions or subtitles track.</td></tr>
+<tr><td><code>video-captions</code></td><td>moderate</td><td>Markup</td><td>Playable <code>&lt;video&gt;</code> has no captions track.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>media-captions</code>: Add a <code>&lt;track kind=&quot;captions&quot;&gt;</code> (or provide a transcript) for the audio content. Muted video is skipped.</li>
+<li><code>video-captions</code>: Add <code>&lt;track kind=&quot;captions&quot; src=&quot;…&quot; srclang=&quot;…&quot;&gt;</code> inside the <code>&lt;video&gt;</code> (not needed for silent/decorative video).</li>
+</ul>
+<h3 id="131-info-and-relationships">1.3.1 Info and Relationships</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>fieldset-legend</code></td><td>moderate</td><td>Markup</td><td><code>&lt;fieldset&gt;</code> has no <code>&lt;legend&gt;</code> to name the group.</td></tr>
+<tr><td><code>duplicate-main</code></td><td>moderate</td><td>Markup</td><td>More than one main landmark — a page should have exactly one.</td></tr>
+<tr><td><code>heading-skip</code></td><td>minor, hint</td><td>Markup</td><td>Heading level skipped — breaks the document outline.</td></tr>
+<tr><td><code>aria-required-owned</code></td><td>serious</td><td>Markup</td><td>Composite ARIA role is missing a required owned role.</td></tr>
+<tr><td><code>aria-required-context</code></td><td>serious</td><td>Markup</td><td>ARIA role appears outside the context role it requires.</td></tr>
+<tr><td><code>table-headers</code></td><td>moderate</td><td>Markup</td><td>Data table has no header cells (<code>&lt;th&gt;</code>).</td></tr>
+<tr><td><code>details-summary</code></td><td>moderate</td><td>Markup</td><td><code>&lt;details&gt;</code> has no <code>&lt;summary&gt;</code> label.</td></tr>
+<tr><td><code>landmark-unique-name</code></td><td>moderate</td><td>Markup</td><td>Repeated landmarks of the same type need unique accessible names.</td></tr>
+<tr><td><code>content-text</code></td><td>minor</td><td>CSS</td><td>Meaningful text inserted via CSS content is unreliable for assistive tech and can&#39;t be translated or selected.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>fieldset-legend</code>: Add a <code>&lt;legend&gt;</code> as the first child describing the grouped controls.</li>
+<li><code>duplicate-main</code>: Keep a single <code>&lt;main&gt;</code> / role=&quot;main&quot;; remove or relabel the extras.</li>
+<li><code>heading-skip</code>: Don&#39;t jump heading levels (e.g. h2 → h4); step one at a time. Best-practice hint.</li>
+<li><code>aria-required-owned</code>: Add the required child role, or use the equivalent native HTML control. Uses the WAI-ARIA 1.2 role matrix. In a component or partial, reported only when the wrong parent is visible in the same file. Confidence high, automated.</li>
+<li><code>aria-required-context</code>: Nest it in the required composite/container role, or use native HTML with equivalent semantics. Uses the WAI-ARIA 1.2 role matrix. In a component or partial, reported only when the wrong parent is visible in the same file. Confidence high, automated.</li>
+<li><code>table-headers</code>: Mark header cells with <code>&lt;th scope=&quot;col/row&quot;&gt;</code> (or role=&quot;presentation&quot; for layout tables).</li>
+<li><code>details-summary</code>: Add a direct <code>&lt;summary&gt;</code> child that names the disclosure. Confidence high, automated.</li>
+<li><code>landmark-unique-name</code>: Give each repeated landmark a short, unique aria-label or aria-labelledby reference. Needs review. Confidence medium, assisted.</li>
+<li><code>content-text</code>: Move real words into the markup; keep CSS content for decoration only.</li>
+</ul>
+<h3 id="135-identify-input-purpose">1.3.5 Identify Input Purpose</h3>
+<p>Level AA, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>input-autocomplete</code></td><td>minor</td><td>Markup</td><td>Identity input has no autocomplete token.</td></tr>
+<tr><td><code>autocomplete-invalid</code></td><td>serious</td><td>Markup</td><td>autocomplete value is not a valid autofill field name.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>input-autocomplete</code>: Add an autocomplete token (e.g. email, tel, name, current-password) to help users autofill.</li>
+<li><code>autocomplete-invalid</code>: Use a token from the HTML autofill vocabulary — an unrecognised value turns autofill off entirely. Checked against the HTML autofill vocabulary.</li>
+</ul>
+<h3 id="142-audio-control">1.4.2 Audio Control</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>media-autoplay</code></td><td>moderate</td><td>Markup</td><td>Media autoplays — provide a way to pause/stop or mute.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>media-autoplay</code>: Avoid autoplay, or add muted (video) and visible media controls.</li>
+</ul>
+<h3 id="144-resize-text">1.4.4 Resize Text</h3>
+<p>Level AA, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>viewport-zoom</code></td><td>serious</td><td>Markup</td><td>Viewport meta disables zoom (user-scalable=no / maximum-scale below 2).</td></tr>
+<tr><td><code>tiny-font</code></td><td>minor, hint</td><td>CSS</td><td>Font size below 10px is illegible for many readers even after zooming.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>viewport-zoom</code>: Remove user-scalable=no and let maximum-scale be ≥ 2 so users can zoom. Flags user-scalable=no, or maximum-scale below 2. Apply fix rewrites the viewport.</li>
+<li><code>tiny-font</code>: Use at least 12px (0.75rem) for any text users must read. Best-practice hint.</li>
+</ul>
+<h3 id="148-visual-presentation">1.4.8 Visual Presentation</h3>
+<p>Level AAA, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>justify-text</code></td><td>minor</td><td>CSS</td><td>Justified text creates uneven “rivers” of space that hurt dyslexic readers.</td></tr>
+<tr><td><code>line-height-tight</code></td><td>minor</td><td>CSS</td><td>Line height under 1.2 squeezes lines together and clips ascenders/descenders.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>justify-text</code>: Use text-align: left (or start) for body copy.</li>
+<li><code>line-height-tight</code>: Use a line-height of at least 1.2 for text (1.5 for body copy). Unitless or em values only; a px line-height is not judged.</li>
+</ul>
+<h3 id="1410-reflow">1.4.10 Reflow</h3>
+<p>Level AA, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>viewport-fixed-width</code></td><td>moderate</td><td>Markup</td><td>Viewport meta locks a fixed pixel width — content can&#39;t reflow on small screens.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>viewport-fixed-width</code>: Use content=&quot;width=device-width, initial-scale=1&quot;. Apply fix rewrites the viewport.</li>
+</ul>
+<h3 id="1412-text-spacing">1.4.12 Text Spacing</h3>
+<p>Level AA, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>text-spacing-important</code></td><td>minor, hint</td><td>CSS</td><td>!important text spacing blocks user style-sheet overrides (WCAG text-spacing test).</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>text-spacing-important</code>: Drop !important from line-height / letter-spacing / word-spacing so users can adapt spacing. Best-practice hint. Apply fix removes !important.</li>
+</ul>
+<h2 id="operable">Operable</h2>
+<h3 id="211-keyboard">2.1.1 Keyboard</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>interactive-keyboard</code></td><td>serious</td><td>Markup</td><td>Click handler on a non-interactive element is not keyboard accessible.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>interactive-keyboard</code>: Use a <code>&lt;button&gt;</code>/<code>&lt;a&gt;</code>, or add role + tabindex=&quot;0&quot; and a key handler. Understands tabIndex={0}; catches Vue, Angular and Svelte click handlers.</li>
+</ul>
+<h3 id="214-character-key-shortcuts">2.1.4 Character Key Shortcuts</h3>
+<p>Level A, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>accesskey</code></td><td>minor, hint</td><td>Markup</td><td>accesskey creates a single-character shortcut users can&#39;t remap or turn off.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>accesskey</code>: Remove accesskey, or provide a way to disable/remap the shortcut. Best-practice hint. Apply fix removes the attribute.</li>
+</ul>
+<h3 id="221-timing-adjustable">2.2.1 Timing Adjustable</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>meta-refresh</code></td><td>serious</td><td>Markup</td><td>Timed <code>&lt;meta refresh&gt;</code> reloads/redirects the page without user control.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>meta-refresh</code>: Remove the timed refresh (an instant 0-second server redirect is exempt).</li>
+</ul>
+<h3 id="222-pause-stop-hide">2.2.2 Pause, Stop, Hide</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>blink-marquee</code></td><td>serious</td><td>Markup</td><td><code>&lt;blink&gt;</code>/<code>&lt;marquee&gt;</code> auto-moves content and can&#39;t be paused.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>blink-marquee</code>: Remove it; use CSS animation gated behind prefers-reduced-motion if needed.</li>
+</ul>
+<h3 id="233-animation-from-interactions">2.3.3 Animation from Interactions</h3>
+<p>Level AAA, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>smooth-scroll-motion</code></td><td>minor</td><td>CSS</td><td>scroll-behavior: smooth without a prefers-reduced-motion fallback.</td></tr>
+<tr><td><code>reduced-motion</code></td><td>minor</td><td>CSS</td><td>Infinite animation without a prefers-reduced-motion fallback.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>smooth-scroll-motion</code>: Wrap it in @media (prefers-reduced-motion: no-preference) { … }.</li>
+<li><code>reduced-motion</code>: Wrap or disable it inside @media (prefers-reduced-motion: reduce).</li>
+</ul>
+<h3 id="241-bypass-blocks">2.4.1 Bypass Blocks</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>bypass-blocks</code></td><td>moderate</td><td>Markup</td><td>Page has navigation but no skip link, <code>&lt;main&gt;</code> landmark or headings to bypass it.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>bypass-blocks</code>: Add <code>&lt;main&gt;</code> (or role=&quot;main&quot;), headings, or a “skip to content” link as the first focusable element.</li>
+</ul>
+<h3 id="242-page-titled">2.4.2 Page Titled</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>doc-title</code></td><td>serious</td><td>Markup</td><td>Document has no non-empty <code>&lt;title&gt;</code>.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>doc-title</code>: Add a descriptive <code>&lt;title&gt;</code> in <code>&lt;head&gt;</code>.</li>
+</ul>
+<h3 id="243-focus-order">2.4.3 Focus Order</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>positive-tabindex</code></td><td>minor, hint</td><td>Markup</td><td>Positive tabindex disturbs the natural focus order.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>positive-tabindex</code>: Use tabindex=&quot;0&quot; (focusable, natural order) or &quot;-1&quot; (programmatic) — never &gt; 0. Best-practice hint. Apply fix sets tabindex=&quot;0&quot;.</li>
+</ul>
+<h3 id="244-link-purpose-in-context">2.4.4 Link Purpose (In Context)</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>link-name</code></td><td>serious</td><td>Markup</td><td>Link has no discernible text.</td></tr>
+<tr><td><code>link-generic</code></td><td>minor</td><td>Markup</td><td>Link text is not descriptive out of context.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>link-name</code>: Give the link meaningful text, or an aria-label for icon links. Apply fix adds an aria-label placeholder to replace.</li>
+<li><code>link-generic</code>: Replace generic text like “click here” / “read more” with the link&#39;s destination.</li>
+</ul>
+<h3 id="246-headings-and-labels">2.4.6 Headings and Labels</h3>
+<p>Level AA, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>empty-heading</code></td><td>moderate</td><td>Markup</td><td>Heading is empty — it labels nothing.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>empty-heading</code>: Give the heading text (or remove it; don&#39;t use headings for spacing).</li>
+</ul>
+<h3 id="247-focus-visible">2.4.7 Focus Visible</h3>
+<p>Level AA, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>focus-outline-none</code></td><td>serious</td><td>CSS</td><td>Focus outline removed without a visible replacement.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>focus-outline-none</code>: Keep a visible focus indicator — add box-shadow / border, or use :focus-visible. One :focus-visible rule elsewhere in the file does not exempt every rule.</li>
+</ul>
+<h3 id="253-label-in-name">2.5.3 Label in Name</h3>
+<p>Level A, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>label-in-name</code></td><td>moderate</td><td>Markup</td><td>aria-label doesn&#39;t contain the visible text — speech-input users can&#39;t activate it by name.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>label-in-name</code>: Start the aria-label with the visible text (or drop the aria-label).</li>
+</ul>
+<h3 id="258-target-size-minimum">2.5.8 Target Size (Minimum)</h3>
+<p>Level AA, introduced in WCAG 2.2. Runs in the 2.2 and 3.0-draft profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>target-size</code></td><td>minor</td><td>CSS</td><td>Interactive target may be smaller than 24×24 CSS px.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>target-size</code>: Give buttons/links/icons a min target of 24×24px (padding or min-width/height). Flags a CSS rule for a button, link, form control, <code>summary</code>, a <code>.btn</code> or <code>.button</code> class, <code>[role=button]</code> or <code>.chip</code> whose width and height are both set in pixels below 24.</li>
+</ul>
+<h2 id="understandable">Understandable</h2>
+<h3 id="311-language-of-page">3.1.1 Language of Page</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>html-lang</code></td><td>serious</td><td>Markup</td><td><code>&lt;html&gt;</code> element is missing a lang attribute.</td></tr>
+<tr><td><code>lang-invalid</code></td><td>moderate</td><td>Markup</td><td><code>&lt;html lang&gt;</code> value is not a valid language tag.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>html-lang</code>: Add lang=&quot;en&quot; (or the page&#39;s language) to <code>&lt;html&gt;</code>. Apply fix adds lang=&quot;en&quot;.</li>
+<li><code>lang-invalid</code>: Use a BCP-47 tag like lang=&quot;en&quot;, &quot;en-US&quot;, &quot;hi&quot;, &quot;pt-BR&quot;.</li>
+</ul>
+<h3 id="312-language-of-parts">3.1.2 Language of Parts</h3>
+<p>Level AA, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>lang-part-invalid</code></td><td>moderate</td><td>Markup</td><td>lang on an element is not a valid language tag.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>lang-part-invalid</code>: Use a BCP-47 tag like lang=&quot;fr&quot;, &quot;es-MX&quot;, &quot;hi&quot; — or drop the attribute. The html element is left to 3.1.1, so one problem is never reported twice; templated values are skipped. Confidence high, automated.</li>
+</ul>
+<h3 id="321-on-focus">3.2.1 On Focus</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>autofocus</code></td><td>minor, hint</td><td>Markup</td><td>autofocus moves focus on load — disorienting for screen-reader and zoom users.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>autofocus</code>: Avoid autofocus, or reserve it for single-purpose pages (like a lone search box). Best-practice hint.</li>
+</ul>
+<h3 id="322-on-input">3.2.2 On Input</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>select-onchange-nav</code></td><td>moderate</td><td>Markup</td><td>Changing this control submits or navigates automatically — a context change on input.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>select-onchange-nav</code>: Trigger submit/navigation from an explicit button instead of onchange.</li>
+</ul>
+<h3 id="332-labels-or-instructions">3.3.2 Labels or Instructions</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>input-placeholder-label</code></td><td>minor</td><td>Markup</td><td>Field is labelled only by its placeholder, which disappears as soon as the user types.</td></tr>
+<tr><td><code>select-textarea-label</code></td><td>serious</td><td>Markup</td><td><code>&lt;select&gt;</code>/<code>&lt;textarea&gt;</code> has no label or accessible name.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>input-placeholder-label</code>: Add a visible <code>&lt;label&gt;</code> (keep the placeholder as an example or hint, not the label). Advisory: the placeholder does give the field a name, but it disappears as soon as someone types. Confidence medium, assisted.</li>
+<li><code>select-textarea-label</code>: Associate a <code>&lt;label for&gt;</code>, or add aria-label / title. Apply fix adds an aria-label placeholder to replace.</li>
+</ul>
+<h3 id="338-accessible-authentication-minimum">3.3.8 Accessible Authentication (Minimum)</h3>
+<p>Level AA, introduced in WCAG 2.2. Runs in the 2.2 and 3.0-draft profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>no-paste-auth</code></td><td>serious</td><td>Markup</td><td>Blocking paste / autocomplete on a password field fails accessible authentication.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>no-paste-auth</code>: Allow paste and autocomplete=&quot;current-password&quot; so password managers work.</li>
+</ul>
+<h2 id="robust">Robust</h2>
+<h3 id="412-name-role-value">4.1.2 Name, Role, Value</h3>
+<p>Level A, introduced in WCAG 2.0. Runs in all profiles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule ID</th><th>Impact</th><th>Checks</th><th>What it catches</th></tr></thead>
+<tbody>
+<tr><td><code>aria-attr-unknown</code></td><td>minor</td><td>Markup</td><td>Unknown ARIA attribute — likely a typo.</td></tr>
+<tr><td><code>input-label</code></td><td>serious</td><td>Markup</td><td>Form field has no associated label or accessible name.</td></tr>
+<tr><td><code>button-name</code></td><td>serious</td><td>Markup</td><td>Button has no discernible text.</td></tr>
+<tr><td><code>duplicate-id</code></td><td>moderate</td><td>Markup</td><td>Duplicate id — breaks label/aria references and scripting.</td></tr>
+<tr><td><code>aria-role-invalid</code></td><td>moderate</td><td>Markup</td><td>Unknown ARIA role.</td></tr>
+<tr><td><code>aria-abstract-role</code></td><td>moderate</td><td>Markup</td><td>Abstract ARIA role must not be used by authors.</td></tr>
+<tr><td><code>redundant-role</code></td><td>minor</td><td>Markup</td><td>Redundant ARIA role duplicates the element&#39;s native semantics.</td></tr>
+<tr><td><code>aria-reference-missing</code></td><td>moderate</td><td>Markup</td><td>ARIA reference points to a missing id.</td></tr>
+<tr><td><code>aria-attr-unsupported</code></td><td>serious</td><td>Markup</td><td>ARIA attribute is not supported on this element&#39;s role.</td></tr>
+<tr><td><code>aria-attr-invalid-value</code></td><td>serious</td><td>Markup</td><td>ARIA attribute has a value outside its allowed set.</td></tr>
+<tr><td><code>aria-required-attr</code></td><td>critical</td><td>Markup</td><td>Role is missing an attribute it requires.</td></tr>
+<tr><td><code>aria-required-name</code></td><td>serious</td><td>Markup</td><td>ARIA role requires an accessible name.</td></tr>
+<tr><td><code>aria-roledescription-name</code></td><td>moderate</td><td>Markup</td><td>aria-roledescription is present on an unnamed element.</td></tr>
+<tr><td><code>aria-attr-deprecated</code></td><td>minor</td><td>Markup</td><td>Deprecated ARIA attribute has no effect.</td></tr>
+<tr><td><code>aria-prohibited-name</code></td><td>minor</td><td>Markup</td><td>This role does not support an accessible name.</td></tr>
+<tr><td><code>iframe-title</code></td><td>serious</td><td>Markup</td><td><code>&lt;iframe&gt;</code> has no accessible title.</td></tr>
+<tr><td><code>aria-hidden-focusable</code></td><td>serious</td><td>Markup</td><td>aria-hidden=&quot;true&quot; on a focusable element hides it from assistive tech but not the keyboard.</td></tr>
+<tr><td><code>role-presentation-interactive</code></td><td>serious</td><td>Markup</td><td>role=&quot;presentation&quot;/&quot;none&quot; on an interactive element strips its semantics but keeps it focusable.</td></tr>
+<tr><td><code>nested-interactive</code></td><td>serious</td><td>Markup</td><td>Interactive element nested inside another interactive element.</td></tr>
+<tr><td><code>dialog-name</code></td><td>serious</td><td>Markup</td><td>Dialog has no accessible name.</td></tr>
+<tr><td><code>summary-name</code></td><td>serious</td><td>Markup</td><td><code>&lt;summary&gt;</code> has no accessible name.</td></tr>
+<tr><td><code>aria-hidden-body</code></td><td>critical</td><td>Markup</td><td>The document body is hidden from the accessibility tree.</td></tr>
+</tbody></table></div>
+<p>How to fix:</p>
+<ul>
+<li><code>aria-attr-unknown</code>: Use a valid WAI-ARIA attribute (e.g. aria-label, aria-describedby, aria-expanded). Checked against the WAI-ARIA 1.2 attribute list.</li>
+<li><code>input-label</code>: Add a <code>&lt;label for&gt;</code> tied to the field&#39;s id, or an aria-label / title. Apply fix adds an aria-label placeholder to replace.</li>
+<li><code>button-name</code>: Add visible text, or an aria-label / title for icon-only buttons. Apply fix adds an aria-label placeholder to replace.</li>
+<li><code>duplicate-id</code>: Make every id unique within the document. An id nothing refers to is a best-practice hint (minor); one a label or ARIA attribute points at stays moderate.</li>
+<li><code>aria-role-invalid</code>: Use a valid WAI-ARIA role (or remove it).</li>
+<li><code>aria-abstract-role</code>: Replace it with a concrete role (e.g. button, navigation, region) or remove it.</li>
+<li><code>redundant-role</code>: Remove the role — the native element already exposes it. Deliberately narrow: never flags a list or list item given its role again (the fix for lists that lose their semantics when styled), a header or footer inside article, aside, main, nav or section, or an unnamed section or form given a role.</li>
+<li><code>aria-reference-missing</code>: Make the referenced id exist, or remove the broken ARIA reference. Templated and framework-bound references are skipped.</li>
+<li><code>aria-attr-unsupported</code>: Remove the attribute, or change the role to one that supports it.</li>
+<li><code>aria-attr-invalid-value</code>: Use one of the values the specification defines — anything else is treated as absent.</li>
+<li><code>aria-required-attr</code>: Add the required state — without it the role is announced but its value is not.</li>
+<li><code>aria-required-name</code>: Provide visible text, aria-label, or aria-labelledby as appropriate for the role. Confidence high, automated.</li>
+<li><code>aria-roledescription-name</code>: Give the element an accessible name, or remove aria-roledescription. Confidence high, automated.</li>
+<li><code>aria-attr-deprecated</code>: Remove it — no current browser or screen reader implements it.</li>
+<li><code>aria-prohibited-name</code>: Move the label to an element with a naming role, or give this one a role that accepts a name.</li>
+<li><code>iframe-title</code>: Add title=&quot;what the frame contains&quot; to the <code>&lt;iframe&gt;</code>. Apply fix adds a title placeholder to replace.</li>
+<li><code>aria-hidden-focusable</code>: Remove aria-hidden, or also remove it from the tab order (tabindex=&quot;-1&quot; / disabled). Apply fix adds tabindex=&quot;-1&quot;.</li>
+<li><code>role-presentation-interactive</code>: Remove the role — interactive elements must expose their role to assistive tech. Applies to native controls and to any element with both a tab stop and a handler; purely decorative markup is not flagged.</li>
+<li><code>nested-interactive</code>: Un-nest them — a link/button must not contain another link, button, or form control.</li>
+<li><code>dialog-name</code>: Add aria-label or aria-labelledby pointing at the dialog&#39;s heading.</li>
+<li><code>summary-name</code>: Put concise visible text in <code>&lt;summary&gt;</code>, or provide an accessible name. Confidence high, automated.</li>
+<li><code>aria-hidden-body</code>: Remove aria-hidden=&quot;true&quot; from <code>&lt;body&gt;</code>; hide only the specific inactive subtree. Confidence high, automated.</li>
+</ul>
+<h2 id="rules-that-offer-apply-fix">Rules that offer Apply fix</h2>
+<p><code>img-alt</code>, <code>iframe-title</code>, <code>input-label</code>, <code>select-textarea-label</code>, <code>button-name</code>, <code>link-name</code>, <code>html-lang</code>, <code>aria-hidden-focusable</code>, <code>positive-tabindex</code>, <code>accesskey</code>, <code>text-spacing-important</code>, <code>viewport-zoom</code> and <code>viewport-fixed-width</code>. See <a href="editor-linting.html#apply-fix">Apply fix</a> for what each rewrite does. Every other rule suggests a fix for you to make.</p>
+<h2 id="what-the-rules-cannot-judge">What the rules cannot judge</h2>
+<p>These rules read source text. They do not run your code, compute the final CSS cascade, expand component state or see markup that JavaScript generates. Several rules flag things that need human judgement, such as alt-text quality, link purpose, dialog naming, field labels and authentication; for those, the fix is a suggestion to review, never an automatic repair. Automated checks cover only part of WCAG; use the <a href="manual-evidence.html">manual checks</a> for the rest. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="../../docs/suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="../../docs/scores-and-grades.html">Scores and grades</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="project-scans.html"><span>Previous</span>Project scans</a><a href="reference.html"><span>Next</span>Auric Accessibility reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-to-read-this-page">How to read this page</a></li><li><a href="#contrast-criteria">Contrast criteria</a></li><li><a href="#perceivable">Perceivable</a></li><li><a href="#operable">Operable</a></li><li><a href="#understandable">Understandable</a></li><li><a href="#robust">Robust</a></li><li><a href="#rules-that-offer-apply-fix">Rules that offer Apply fix</a></li><li><a href="#what-the-rules-cannot-judge">What the rules cannot judge</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

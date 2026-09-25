@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tonal Steps limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Tonal Steps figures rest on, how precise they are, and what the tool does not claim.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tonal Steps</a>
+<h2>Tonal Steps: supporting pages</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Tonal Steps shortcuts</a></li>
+<li><a href="glossary.html">Tonal Steps glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Tonal Steps limits and accuracy</a></li>
+<li><a href="privacy.html">Tonal Steps privacy</a></li>
+<li><a href="release-notes.html">Tonal Steps release notes</a></li>
+<li><a href="related.html">Related to Tonal Steps</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tonal Steps</a> &rsaquo; <a href="README.html">Tonal Steps: supporting pages</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Tonal Steps limits and accuracy</h1>
+<p class="lede">What the Tonal Steps figures rest on, how precise they are, and what the tool does not claim.</p>
+<h2 id="standard-values">Standard values</h2>
+<ul>
+<li><strong>WCAG 2.2 ratios and ratings</strong> use relative luminance from linear sRGB with the BT.709 weights, exactly as WCAG defines.</li>
+<li><strong>APCA Lc</strong> runs APCA-W3 0.1.9 as published: a plain 2.4 power, separate exponent pairs for each polarity, the soft clamp below Y 0.022 and the ±0.027 low-clip offset. APCA itself is a working draft, not a ratified requirement.</li>
+<li><strong>OKLab</strong> uses Ottosson&#39;s matrices on linear sRGB.</li>
+<li><strong>CIELAB</strong> follows CIE 015:2018 against D65.</li>
+</ul>
+<h2 id="this-tools-own">This tool&#39;s own</h2>
+<ul>
+<li><strong>The ramp engines</strong> are the tool&#39;s own constructions. Equal luminance searches HSL lightness at the base&#39;s hue and saturation for each target luminance; the first and last steps are exactly white and black.</li>
+<li><strong>The key sets</strong> borrow Tailwind and Material key names only. Nothing here is a Tailwind or Material colour.</li>
+<li><strong>Evenness</strong> is the tool&#39;s own measure: the largest deviation of a step size from the mean step size, as a percentage.</li>
+</ul>
+<h2 id="precision">Precision</h2>
+<ul>
+<li>All colours are 8-bit sRGB; HEX values are rounded to the nearest code value, so luminance and contrast figures reflect the rounded colour.</li>
+<li>OKLab L is shown to three or four decimals, WCAG ratios to two, APCA Lc to one.</li>
+</ul>
+<h2 id="current-version-caveats">Current-version caveats</h2>
+<ul>
+<li><strong>sRGB linear</strong> mixing produces the same result as OKLab.</li>
+<li>The <strong>Metric</strong> choice on the Contrast tab does not change the table.</li>
+<li>The contrast table export lists contrast against white and black only, not the base.</li>
+<li><strong>Install a table</strong> on the Data tab does not load files.</li>
+</ul>
+<h2 id="not-a-substitute-for">Not a substitute for</h2>
+<p>Testing real text at real sizes on real screens. Contrast figures describe colour pairs, not legibility of a particular font, weight or size.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Tonal Steps glossary</a><a href="privacy.html"><span>Next</span>Tonal Steps privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#standard-values">Standard values</a></li><li><a href="#this-tools-own">This tool's own</a></li><li><a href="#precision">Precision</a></li><li><a href="#current-version-caveats">Current-version caveats</a></li><li><a href="#not-a-substitute-for">Not a substitute for</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

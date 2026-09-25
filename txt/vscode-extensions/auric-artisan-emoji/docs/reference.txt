@@ -1,0 +1,253 @@
+==============================================================================
+AURIC ARTISAN EMOJI REFERENCE
+==============================================================================
+Every command, keybinding, setting, key, view, category, format and message in
+Auric Artisan Emoji 0.2.0.
+Area: VS Code extensions › Auric Artisan Emoji   Updated: 2026-09-25
+
+This reference describes version 0.2.0 as published on the Visual Studio
+Marketplace.
+
+COMMANDS
+========
+
+Category in the Command Palette: Auric Artisan Emoji.
+
+  Command:      Open Emoji Studio
+  ID:           `auricEmoji.openStudio`
+  What it does: Opens the full Studio in an editor tab.
+
+  Command:      Quick Insert Emoji
+  ID:           `auricEmoji.quickPick`
+  What it does: Searchable Quick Pick; inserts the chosen emoji.
+
+  Command:      Insert Recent Emoji
+  ID:           `auricEmoji.insertRecent`
+  What it does: Quick Pick of recent emoji.
+
+  Command:      Insert Favorite Emoji
+  ID:           `auricEmoji.insertFavorite`
+  What it does: Quick Pick of favorites.
+
+  Command:      Copy Last Emoji Again
+  ID:           `auricEmoji.copyLast`
+  What it does: Copies the last emoji used.
+
+  Command:      Replace Emoji Shortcodes in Selection
+  ID:           `auricEmoji.replaceShortcodes`
+  What it does: Replaces known `:shortcodes:` in the selection or current
+                line.
+
+  Command:      Clear Emoji History
+  ID:           `auricEmoji.clearHistory`
+  What it does: Clears recents and last-emoji recall; keeps favorites.
+
+  Command:      Focus Emoji Search
+  ID:           `auricEmoji.focusSearch`
+  What it does: Focuses the Studio search box.
+
+  Command:      Choose Interface Language…
+  ID:           `auricEmoji.chooseInterfaceLanguage`
+  What it does: Auto, English or Hindi for the Studio.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows and Linux) | Keys (macOS)        | Command
+  -------------------------+---------------------+-------------------
+  `Ctrl` + `Alt` + `E`     | `Cmd` + `Alt` + `E` | Open Emoji Studio
+  `Ctrl` + `Alt` + `J`     | `Cmd` + `Alt` + `J` | Quick Insert Emoji
+
+Both work anywhere in VS Code.
+
+Keys inside Emoji Studio
+------------------------
+
+  Key                               | Action
+  ----------------------------------+--------------------------------------------
+  `/` or `Ctrl` + `K` (`Cmd` + `K`) | Focus search
+  Arrow keys on a preview           | Move through the grid
+  `Enter` on a preview              | Click action
+  `Shift` + `Enter` on a preview    | Copy
+  `Space` on a preview              | Add to the sequence
+  `Backspace` outside text boxes    | Remove the last sequence item
+  `F` on a preview                  | Toggle favorite
+  `I` on a preview                  | Open or close the inspector
+  `Escape`                          | Close the open panel, or clear the sequence
+  `?`                               | Open the keyboard map
+
+SETTINGS
+========
+
+  Setting:         `auricEmoji.interfaceLanguage`
+  Type:            string
+  Values or range: `auto`, `en`, `hi`
+  Default:         `auto`
+  What it does:    Emoji Studio language.
+
+  Setting:         `auricEmoji.clickAction`
+  Type:            string
+  Values or range: `insert`, `copy`, `insertAndCopy`
+  Default:         `insert`
+  What it does:    Primary action when an emoji is chosen.
+
+  Setting:         `auricEmoji.insertSpacing`
+  Type:            string
+  Values or range: `none`, `space`, `auto`
+  Default:         `auto`
+  What it does:    Spacing added on editor insertion.
+
+  Setting:         `auricEmoji.copyFormat`
+  Type:            string
+  Values or range: `emoji`, `shortcode`, `unicode`, `html`, `javascript`,
+                   `css`
+  Default:         `emoji`
+  What it does:    Format used by copy actions.
+
+  Setting:         `auricEmoji.preferredSkinTone`
+  Type:            string
+  Values or range: `none`, `medium`, `light`, `mediumLight`, `mediumDark`,
+                   `dark`
+  Default:         `none`
+  What it does:    Default tone; `none` is standard yellow.
+
+  Setting:         `auricEmoji.gridDensity`
+  Type:            string
+  Values or range: `compact`, `comfortable`, `showcase`
+  Default:         `comfortable`
+  What it does:    Card density.
+
+  Setting:         `auricEmoji.showNames`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Show names on cards when space allows.
+
+  Setting:         `auricEmoji.closeStudioAfterInsert`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `false`
+  What it does:    Close the full Studio after inserting.
+
+  Setting:         `auricEmoji.maxRecents`
+  Type:            integer
+  Values or range: 8 to 200
+  Default:         48
+  What it does:    Recent emoji kept.
+
+  Setting:         `auricEmoji.hover.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Preview and insert actions on `:shortcode:` hovers.
+
+  Setting:         `auricEmoji.completions.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Completions after typing `:`.
+
+  Setting:         `auricEmoji.statusBar.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    The Emoji status bar button.
+
+VIEWS AND MENUS
+===============
+
+  Place:    Activity Bar
+  Contents: Auric Emoji container with the Emoji Studio view.
+
+  Place:    View title bar
+  Contents: Open Emoji Studio, Focus Emoji Search; … menu: Choose Interface
+            Language….
+
+  Place:    Editor right-click
+  Contents: Quick Insert Emoji; Replace Emoji Shortcodes in Selection (with a
+            selection).
+
+  Place:    Status bar
+  Contents: Emoji (smiley icon), tooltip "Open Auric Emoji Studio".
+
+  Place:    Editor tab
+  Contents: Emoji Studio, beside the active editor.
+
+STUDIO CONTROLS
+===============
+
+  Control: Tabs
+  Options: 01 Library, 02 For you, 03 Favorites, 04 Recent
+
+  Control: Category
+  Options: All, Smileys & Emotion, People & Body, Animals & Nature, Food &
+           Drink, Travel & Places, Activities, Objects, Symbols, Flags
+
+  Control: Skin tone
+  Options: Yellow, Light, Medium light, Medium, Medium dark, Dark
+
+  Control: Quick filter
+  Options: All, Curated, Skin tone, Newest
+
+  Control: Density
+  Options: Compact, Comfortable, Showcase
+
+  Control: Layout
+  Options: Grid, List
+
+  Control: Compose
+  Options: On or off
+
+  Control: Card
+  Options: Insert, Copy, … (inspector), heart
+
+  Control: Sequence tray
+  Options: Copy sequence, Insert sequence, Clear
+
+  Control: Inspector
+  Options: Tones, Make {tone} my default, Copy as ledger, Make {format} my
+           copy format, Insert, Copy, Favorite, Also try
+
+  Control: Workspace overview
+  Options: Quick insert, Replace shortcodes, Keyboard map →, Insert {emoji}
+           again, Clear history
+
+  Control: Footer
+  Options: Keyboard map, Settings
+
+CATALOG
+=======
+
+  Item                 | Value
+  ---------------------+---------
+  Emoji                | 1,914
+  Categories           | 9
+  Tone-capable entries | 330
+  Sequence length      | Up to 50
+
+MESSAGES YOU MAY SEE
+====================
+
+  Message: No editor was active, so … was copied.
+  Meaning: Studio insertion fell back to the clipboard.
+
+  Message: … copied because no writable editor was active.
+  Meaning: A command's insertion fell back to the clipboard.
+
+  Message: …: no saved emoji yet.
+  Meaning: The recent or favorite list is empty.
+
+  Message: Use an emoji first, then Copy Last Emoji Again.
+  Meaning: Nothing to copy yet.
+
+  Message: Open a text editor before replacing emoji shortcodes.
+  Meaning: No editor for shortcode replacement.
+
+  Message: No recognized :emoji_shortcodes: were found.
+  Meaning: Nothing to replace.
+
+  Message: A sequence holds up to 50 emoji.
+  Meaning: The sequence is full.
+
+  Message: Recent emoji cleared.
+  Meaning: History was cleared.

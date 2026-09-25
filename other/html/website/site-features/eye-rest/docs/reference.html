@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eye rest reference — Auric Artisan Docs</title>
+<meta name="description" content="Every eye-rest control, value, default and message.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Eye rest</a>
+<h2>Eye rest guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Get started with eye rest</a></li>
+<li><a href="the-reminder-and-the-rest.html">The reminder and the rest</a></li>
+<li><a href="reference.html" aria-current="page">Eye rest reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting eye rest</a></li>
+<li><a href="faq.html">Eye rest FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Site features</a> &rsaquo; <a href="../README.html">Eye rest</a> &rsaquo; <a href="README.html">Eye rest guides</a></nav>
+<p class="kicker">Website › Site features › Eye rest</p>
+<h1>Eye rest reference</h1>
+<p class="lede">Every eye-rest control, value, default and message.</p>
+<h2 id="settings-panel-comfort">Settings panel (Comfort)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Eye-rest reminders</strong></td><td>On, off</td><td>Off</td></tr>
+<tr><td><strong>Reminder interval</strong></td><td><strong>20m</strong>, <strong>35m</strong>, <strong>45m</strong>, <strong>60m</strong></td><td>20m</td></tr>
+</tbody></table></div>
+<h2 id="reminder-card">Reminder card</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Text or values</th></tr></thead>
+<tbody>
+<tr><td>Title</td><td><strong>Time to look away</strong></td></tr>
+<tr><td>Sentence</td><td>&quot;You have been at this for N minutes. S seconds looking into the distance is enough.&quot;</td></tr>
+<tr><td>Main actions</td><td><strong>Rest now</strong>, <strong>Later</strong></td></tr>
+<tr><td>Quiet actions</td><td><strong>Change</strong>, <strong>Not this session</strong>, <strong>Turn these off</strong></td></tr>
+<tr><td>Auto-dismiss</td><td>60 seconds, shown by an emptying bar</td></tr>
+</tbody></table></div>
+<h2 id="timing-view-after-change">Timing view (after Change)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Title</td><td><strong>How often, and how long</strong></td><td>—</td></tr>
+<tr><td><strong>Remind me every</strong></td><td><strong>20m</strong>, <strong>35m</strong>, <strong>45m</strong>, <strong>60m</strong></td><td>Your Reminder interval</td></tr>
+<tr><td><strong>Rest for</strong></td><td><strong>5s</strong>, <strong>10s</strong>, <strong>15s</strong>, <strong>20s</strong>, <strong>25s</strong>, <strong>30s</strong></td><td>30s (resets on each page load)</td></tr>
+<tr><td>Actions</td><td><strong>Rest now</strong>; quiet <strong>Later</strong>, <strong>Turn these off</strong></td><td>—</td></tr>
+<tr><td>Auto-dismiss</td><td>60 seconds</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="rest-screen">Rest screen</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Text</th></tr></thead>
+<tbody>
+<tr><td>Heading</td><td><strong>Look past the screen</strong></td></tr>
+<tr><td>Instruction</td><td>&quot;Something about twenty feet away — a doorway, a window, the far wall. The screen will brighten when the rest is over.&quot;</td></tr>
+<tr><td>Countdown</td><td>Seconds remaining</td></tr>
+<tr><td>Progress</td><td>Horizon line shrinking to the centre (still with reduced motion)</td></tr>
+<tr><td>Button</td><td><strong>End early</strong></td></tr>
+</tbody></table></div>
+<h2 id="end-screen">End screen</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Text</th></tr></thead>
+<tbody>
+<tr><td>Kicker</td><td><strong>Rest complete</strong></td></tr>
+<tr><td>Heading</td><td><strong>Welcome back</strong></td></tr>
+<tr><td>Line</td><td>&quot;Next reminder in N minutes.&quot;</td></tr>
+<tr><td>Duration</td><td>About 2.6 seconds, then the page returns</td></tr>
+</tbody></table></div>
+<h2 id="what-each-way-of-stopping-does">What each way of stopping does</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Effect</th><th>Lasts</th></tr></thead>
+<tbody>
+<tr><td><strong>Later</strong></td><td>Closes the card; next reminder after a full interval</td><td>Until the next reminder</td></tr>
+<tr><td><strong>End early</strong></td><td>Stops the rest; next countdown starts</td><td>Until the next reminder</td></tr>
+<tr><td><strong>Not this session</strong></td><td>No reminders</td><td>Until this browser tab is closed</td></tr>
+<tr><td><strong>Turn these off</strong></td><td>No reminders</td><td>Until a setting change while the Settings switch is on</td></tr>
+<tr><td>Settings switch off</td><td>No reminders</td><td>Until you switch it on</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="the-reminder-and-the-rest.html"><span>Previous</span>The reminder and the rest</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting eye rest</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#settings-panel-comfort">Settings panel (Comfort)</a></li><li><a href="#reminder-card">Reminder card</a></li><li><a href="#timing-view-after-change">Timing view (after Change)</a></li><li><a href="#rest-screen">Rest screen</a></li><li><a href="#end-screen">End screen</a></li><li><a href="#what-each-way-of-stopping-does">What each way of stopping does</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

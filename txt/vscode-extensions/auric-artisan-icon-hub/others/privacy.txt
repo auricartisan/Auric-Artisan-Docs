@@ -1,0 +1,60 @@
+==============================================================================
+PRIVACY
+==============================================================================
+What Icon Hub stores, exactly what uses the network, and what is never sent.
+Area: VS Code extensions › Auric Artisan Icon Hub   Updated: 2026-09-25
+
+No account, telemetry or search upload is required.
+
+WHAT USES THE NETWORK
+=====================
+
+  Feature:           Metadata checks
+  What is contacted: Five public JSON files under
+                     https://icons.auricartisan.com/data/
+  When:              On activation (at most once per interval) and when you
+                     select Refresh. Can be turned off.
+
+  Feature:           Open Auric Icon Tool and Website ↗
+  What is contacted: https://icons.auricartisan.com in your browser
+  When:              Only when you select them.
+
+  Feature:           Pages using CDN output
+  What is contacted: The CDN script, catalog and fonts
+  When:              When a visitor loads your page, not from VS Code.
+
+Metadata requests send no credentials and include none of your source code,
+search terms, favorites or usage history. Like any web request, they reveal
+ordinary connection information such as your IP address to the host.
+
+To stop all catalog network checks, set `auricIconLib.remoteRefresh.enabled`
+to `false`.
+
+WHAT IS STORED
+==============
+
+  Data:  Favorites and recent icons
+  Where: VS Code's extension storage on this machine.
+
+  Data:  Downloaded metadata
+  Where: The extension's private storage folder; cleared by Clear Downloaded
+         Icon Catalog.
+
+  Data:  Search, filters, selection and colour history
+  Where: The Hub's saved view state.
+
+  Data:  Settings
+  Where: Your VS Code settings under `auricIconLib.*`.
+
+WHAT IS WRITTEN TO YOUR PROJECT
+===============================
+
+Only the CDN bridge file, and only on an explicit Insert into a supported file
+in a trusted workspace. Copy, Save and browsing never create project files.
+
+SECURITY
+========
+
+The Hub's webview uses a content security policy with per-session nonces,
+validates every message, sanitises SVG before preview and export, and never
+runs the CDN loader inside VS Code.

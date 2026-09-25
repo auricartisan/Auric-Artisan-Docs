@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut Mapping — Auric Artisan Docs</title>
+<meta name="description" content="What the Gamut Mapping lab does, who it is for, where to find it and how to map your first colour.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Colorimetry and rendering tools</a>
+<h2>Gamut Mapping</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Gamut Mapping documentation &rsaquo;</a></li>
+<li><a href="others/README.html">Gamut Mapping: supporting pages &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="README.html">Gamut Mapping</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Gamut Mapping</h1>
+<p class="lede">What the Gamut Mapping lab does, who it is for, where to find it and how to map your first colour.</p>
+<p>A <strong>gamut</strong> is the set of colours a colour space or device can hold. When a colour moves from a wide space (such as Display P3 or ProPhoto RGB) into a narrower one (such as sRGB), some colours will not fit. <strong>Gamut mapping</strong> decides what they become.</p>
+<p>The Gamut Mapping lab shows this as a horizontal slice through CIELAB at a lightness you choose: the source gamut on one side, the colours mapped into the target on the other, with each space&#39;s boundary outlined. It supports five RGB spaces (sRGB, Display P3, Rec. 2020, Adobe RGB and ProPhoto RGB), each decoded with its own transfer curve and white point, and four mapping methods named for what they do: chroma compression, clipping in the target RGB, uniform RGB scaling, and adapting the white point before clipping.</p>
+<p>Around the slice you can probe any point, map a base colour or a list of colours, measure every space&#39;s volume in CIELAB with a stated standard error, compare the four methods on a fixed set of probe colours, and compare colour differences with three ΔE formulas. The lab is explicit that none of its methods is an ICC rendering intent: ICC perceptual and saturation intents are lookup tables built into profiles, not algorithms.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Designers and brand teams checking what a wide-gamut colour becomes on standard screens or in sRGB files.</li>
+<li>Developers working with CSS Color 4 (Display P3, Rec. 2020) who want to see what clipping does.</li>
+<li>Photographers comparing ProPhoto, Adobe RGB and sRGB.</li>
+<li>Students learning how gamut boundaries change shape with lightness.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li>Address: <a href="https://auricartisan.com/tool/general/colorimetry/gamut-map/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/gamut-map/</a></li>
+<li>In the tool collection (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) under <strong>Colorimetry</strong>, as <strong>Gamut Mapping</strong>.</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open <a href="https://auricartisan.com/tool/general/colorimetry/gamut-map/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/gamut-map/</a>.</li>
+<li>Under <strong>Colour Spaces</strong>, set <strong>Source</strong> to <strong>Display P3</strong> and <strong>Target</strong> to <strong>sRGB / Rec.709</strong> (or select <strong>Swap Source &amp; Target</strong> from the defaults).</li>
+<li>Type a vivid P3 colour such as <code>#00FF00</code> in the base colour HEX field. The <strong>Base Colour Info</strong> panel says whether it is inside each space.</li>
+<li>Move <strong>Lightness Slice L*</strong> to find the lightness where the source and target boundaries differ most.</li>
+<li>Under <strong>Method</strong>, try each of the four options and watch the <strong>Before / After (12 Test Colours)</strong> strip change.</li>
+<li>Click inside the <strong>Source Slice</strong> to probe a point.</li>
+<li>Open <strong>Export</strong> and paste a list of HEX colours into <strong>Map a list of colours at once</strong>, then select <strong>Run the list</strong>.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Draw CIELAB a<em>b</em> slices of five RGB spaces at any L* from 5 to 95.</li>
+<li>Map colours with four methods and a compression strength.</li>
+<li>Probe any slice point for L<em>a</em>b*, C*h°, sRGB, HEX and gamut membership.</li>
+<li>Compare ΔE₀₀, ΔE<em>94 and ΔE</em>76 between two colours.</li>
+<li>See the boundary of up to five spaces at five lightness levels on one scale.</li>
+<li>Measure each space&#39;s CIELAB volume by Monte Carlo sampling, with a standard error.</li>
+<li>Compare the four methods on the base colour or on 12 fixed probe colours.</li>
+<li>Export the slices as PNG, the settings as JSON, a link to the exact state, and a mapped colour list.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the lab<ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/map-a-colour.html">Map a colour into a smaller gamut</a></li>
+<li><a href="docs/compare-spaces-and-methods.html">Compare spaces and methods</a></li>
+<li><a href="docs/map-a-colour-list.html">Map a list of colours</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background and supporting pages<ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/shortcuts.html">Shortcuts</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related tools</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../gamut-lab/others/related.html"><span>Previous</span>Related to the Gamut Lab</a><a href="docs/README.html"><span>Next</span>Gamut Mapping documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

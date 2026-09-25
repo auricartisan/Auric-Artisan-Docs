@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Color reference — Auric Artisan Docs</title>
+<meta name="description" content="Every command, keybinding, setting, view, menu entry and theme colour Auric Color contributes.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="reference.html" aria-current="page">Auric Color reference</a></li>
+<li><a href="troubleshooting.html">Auric Color troubleshooting</a></li>
+<li><a href="faq.html">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Auric Color reference</h1>
+<p class="lede">Every command, keybinding, setting, view, menu entry and theme colour Auric Color contributes.</p>
+<p>Facts for Auric Color 0.1.0 (<code>auric-artisan.auric-color</code>). It needs VS Code 1.74 or newer and starts when VS Code finishes loading. Categories: Visualization, Programming Languages, Other.</p>
+<h2 id="keybindings">Keybindings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys (Windows, Linux)</th><th>Keys (macOS)</th><th>Command</th><th>Active when</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>.</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>.</code></td><td>Workstation: Command Center</td><td>Auric Color is not suppressed by a Workstation host</td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>C</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>C</code></td><td>Pick / edit color</td><td>The editor has focus</td></tr>
+</tbody></table></div>
+<h2 id="commands">Commands</h2>
+<p>All titles appear in the Command Palette after <code>Auric Artisan:</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Title</th><th>Command ID</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Open Color Studio</td><td><code>auricColor.openStudio</code></td><td>Opens the Studio on Color › Palette, or the Workstation host&#39;s Studio</td></tr>
+<tr><td>Workstation: Command Center</td><td><code>auricColor.commandCenter</code></td><td>Opens the Command Center list</td></tr>
+<tr><td>Open Rulebook &amp; Knowledge Database</td><td><code>auricColor.openKnowledgeBase</code></td><td>Searches the brand rulebook, policies, articles, glossary and sources</td></tr>
+<tr><td>Build Workspace Knowledge Database (JSON + Markdown)</td><td><code>auricColor.writeKnowledgeDatabase</code></td><td>Writes <code>knowledge.json</code>, <code>rulebook.md</code> and an overrides template</td></tr>
+<tr><td>Open Unified Icon Studio</td><td><code>auricColor.openIconStudio</code></td><td>Opens the combined Auric icon library</td></tr>
+<tr><td>Generate Accessible Palette</td><td><code>auricColor.generatePalette</code></td><td>Opens the Palette tool seeded with the selected colour (or <code>#2563EB</code>)</td></tr>
+<tr><td>Check Contrast of Selection</td><td><code>auricColor.checkContrast</code></td><td>Opens the Contrast Studio with the selected colour as text (or <code>#1A1A1A</code>)</td></tr>
+<tr><td>Fix All Contrast Issues in File</td><td><code>auricColor.fixAllContrast</code></td><td>Previews and applies fixes for every fixable failing pair, as one edit</td></tr>
+<tr><td>Pick / edit color</td><td><code>auricColor.pickColor</code></td><td>Opens the picker on the colour at the cursor, or to insert a new one</td></tr>
+<tr><td>Choose Color Picker Mode</td><td><code>auricColor.chooseColorPickerMode</code></td><td>Chooses Auric picker or VS Code native picker</td></tr>
+<tr><td>Disable native color picker (use Auric Artisan)</td><td><code>auricColor.disableNativeColorPicker</code></td><td>Auric picker on, VS Code&#39;s decorators and hover sliders off</td></tr>
+<tr><td>Restore native color picker (use VS Code&#39;s)</td><td><code>auricColor.restoreNativeColorPicker</code></td><td>VS Code&#39;s picker and decorators back on</td></tr>
+<tr><td>Refresh Contrast Diagnostics</td><td><code>auricColor.refreshDiagnostics</code></td><td>Re-checks every open file</td></tr>
+<tr><td>Change Accent Color (Theme the Studio)</td><td><code>auricColor.chooseAccent</code></td><td>Chooses the Studio&#39;s accent colour</td></tr>
+<tr><td>Mark Line as Intentional Branding (Toggle)</td><td><code>auricColor.markBranding</code></td><td>Adds or removes <code>auric-brand-line</code> on the current lines</td></tr>
+</tbody></table></div>
+<p>See <a href="picker-modes.html">Picker modes</a>, <a href="contrast-diagnostics.html">Contrast diagnostics</a> and <a href="../../docs/appearance.html">Appearance</a> for details.</p>
+<h2 id="views">Views</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>View</th><th>ID</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Overview</td><td><code>auricColorHome</code></td><td>In the <strong>Auric Color</strong> Activity Bar container; the colour workbench layout</td></tr>
+<tr><td>Color Picker</td><td><code>auricColorPickerView</code></td><td>Collapsed by default; the docked picker</td></tr>
+</tbody></table></div>
+<p>Both are hidden while another Studio extension hosts the Workstation.</p>
+<h2 id="editor-right-click-menu">Editor right-click menu</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entry</th><th>Shown when</th></tr></thead>
+<tbody>
+<tr><td>Pick / edit color</td><td>Always</td></tr>
+<tr><td>Generate Accessible Palette</td><td>Text is selected</td></tr>
+<tr><td>Check Contrast of Selection</td><td>Text is selected</td></tr>
+<tr><td>Choose Color Picker Mode</td><td>Always</td></tr>
+<tr><td>Mark Line as Intentional Branding (Toggle)</td><td>HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript, TypeScript, JSX, TSX, CSS, SCSS, Less, Sass, PostCSS, Stylus and Markdown files</td></tr>
+</tbody></table></div>
+<h2 id="settings">Settings</h2>
+<p>Auric Color has 16 settings. Change them in <strong>File › Preferences › Settings</strong> (search <code>auricColor</code>), in <code>settings.json</code>, or for some of them in Studio › Settings.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricColor.appearance.accent</code></td><td>string</td><td><code>gold</code></td><td>The Studio&#39;s accent: a preset ID or a hex such as <code>#2563EB</code> (see below). Stored in user settings.</td></tr>
+<tr><td><code>auricColor.hover.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Shows the colour hover (values, contrast, colour-vision preview, inline picker).</td></tr>
+<tr><td><code>auricColor.colorPicker.mode</code></td><td><code>auric</code> or <code>decorators</code></td><td><code>auric</code></td><td>Auric&#39;s hover-first picker, or VS Code&#39;s native picker with Auric&#39;s tools on top.</td></tr>
+<tr><td><code>auricColor.colorPicker.nativeHoverPicker</code></td><td>boolean</td><td><code>false</code></td><td>In Auric mode, shows VS Code&#39;s draggable picker inside the hover, with Auric&#39;s content beneath. VS Code&#39;s decorators stay on.</td></tr>
+<tr><td><code>auricColor.colorPicker.swatches</code></td><td>boolean</td><td><code>true</code></td><td>Draws Auric&#39;s swatch before every colour literal (when VS Code&#39;s decorators are off).</td></tr>
+<tr><td><code>auricColor.colorPicker.clickAction</code></td><td><code>inlinePicker</code>, <code>fullEditor</code>, <code>off</code></td><td><code>inlinePicker</code></td><td>What clicking a colour literal does in Auric mode.</td></tr>
+<tr><td><code>auricColor.colorPicker.autoOpen</code></td><td>boolean</td><td><code>false</code></td><td>Legacy: when <code>true</code> and <code>clickAction</code> has never been set, clicking opens the picker panel.</td></tr>
+<tr><td><code>auricColor.colorPicker.inlineSwatches</code></td><td>boolean</td><td><code>false</code></td><td>Contributes VS Code&#39;s native inline swatches and picker for colour literals. Set together with <code>mode</code> by <strong>Choose Color Picker Mode</strong>.</td></tr>
+<tr><td><code>auricColor.contrast.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Flags text and background pairs below the target.</td></tr>
+<tr><td><code>auricColor.contrast.standard</code></td><td><code>wcag2</code>, <code>apca</code>, <code>both</code></td><td><code>wcag2</code></td><td>The contrast model for diagnostics.</td></tr>
+<tr><td><code>auricColor.contrast.apcaThreshold</code></td><td>number, 15–106</td><td><code>60</code></td><td>Minimum APCA Lc when APCA is used (90 ≈ AAA, 75 body, 60 large or medium, 45 large bold, 30 non-text UI).</td></tr>
+<tr><td><code>auricColor.contrast.threshold</code></td><td>number, 1–21</td><td><code>4.5</code></td><td>Minimum WCAG 2.x ratio (4.5 AA body, 7 AAA, 3 AA large and UI).</td></tr>
+<tr><td><code>auricColor.contrast.severity</code></td><td><code>error</code>, <code>warning</code>, <code>information</code>, <code>hint</code></td><td><code>warning</code></td><td>Problems severity for failing contrast.</td></tr>
+<tr><td><code>auricColor.contrast.flagCvdRisk</code></td><td>boolean</td><td><code>true</code></td><td>Adds a hint when a passing pair relies on hue and weakens under colour-vision deficiency.</td></tr>
+<tr><td><code>auricColor.contrast.checkPageBackground</code></td><td>boolean</td><td><code>true</code></td><td>Grades colour-only rules against the page background, as softer &quot;verify the real background&quot; hints.</td></tr>
+<tr><td><code>auricColor.branding.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Honours <code>auric-brand-…</code> marks in the editor, moving marked colour findings to the Branding group.</td></tr>
+</tbody></table></div>
+<p>Accent presets: <code>gold</code>, <code>champagne</code>, <code>rose-gold</code>, <code>silver</code>, <code>platinum</code>, <code>bronze</code>, <code>copper</code>, <code>espresso</code>, <code>maroon</code>, <code>rose</code>, <code>emerald</code>, <code>sapphire</code>, <code>amethyst</code>. See <a href="../../docs/appearance.html">Appearance</a>. The page background for <code>contrast.checkPageBackground</code> is the one declared on <code>body</code>, <code>html</code> or <code>:root</code> in the same file.</p>
+<p>When Auric Accessibility is installed, it owns contrast diagnostics and the Studio&#39;s contrast settings, and reads its own <code>auricA11y.contrast.*</code> keys instead of these.</p>
+<h2 id="theme-colours">Theme colours</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Colour ID</th><th>Dark</th><th>Light</th><th>High contrast</th><th>High contrast light</th></tr></thead>
+<tbody>
+<tr><td><code>auricColor.branding.foreground</code></td><td><code>#F06595</code></td><td><code>#C2255C</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+<tr><td><code>auricColor.branding.background</code></td><td><code>#F0659522</code></td><td><code>#C2255C1A</code></td><td>transparent</td><td>transparent</td></tr>
+<tr><td><code>auricColor.branding.border</code></td><td><code>#F0659580</code></td><td><code>#C2255C80</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+<tr><td><code>auricColor.branding.icon</code></td><td><code>#F06595</code></td><td><code>#C2255C</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+</tbody></table></div>
+<h2 id="studio-spaces">Studio spaces</h2>
+<p>When Auric Color is the host or runs alone: <strong>Color</strong> (Palette, Shades, Vision), <strong>Check</strong> (Contrast), <strong>Brand</strong> and <strong>Settings</strong> (Appearance, Contrast, Color picker).</p>
+<h2 id="diagnostics">Diagnostics</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>low-contrast</code></td><td>WCAG 2.x contrast below target</td></tr>
+<tr><td><code>apca-low</code></td><td>APCA below target</td></tr>
+<tr><td><code>cvd-risk</code></td><td>Colour-vision risk</td></tr>
+<tr><td><code>branding:contrast</code>, <code>branding:apca</code>, <code>branding:cvd</code></td><td>Classified as intentional branding</td></tr>
+</tbody></table></div>
+<h2 id="export-files">Export files</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>From</th></tr></thead>
+<tbody>
+<tr><td><code>palette.css</code>, <code>palette.json</code>, <code>palette.tailwind.js</code></td><td>Palette tool</td></tr>
+<tr><td><code>shades.css</code>, <code>shades.tailwind.js</code></td><td>Shades tool</td></tr>
+<tr><td><code>brand-tokens.css</code>, <code>brand-tokens.json</code></td><td>Brand tool</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../../docs/reference.html">Studio reference</a>, including shared settings.</li>
+<li><a href="../others/shortcuts.html">Shortcuts</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="picker-modes.html"><span>Previous</span>Picker modes</a><a href="troubleshooting.html"><span>Next</span>Auric Color troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#keybindings">Keybindings</a></li><li><a href="#commands">Commands</a></li><li><a href="#views">Views</a></li><li><a href="#editor-right-click-menu">Editor right-click menu</a></li><li><a href="#settings">Settings</a></li><li><a href="#theme-colours">Theme colours</a></li><li><a href="#studio-spaces">Studio spaces</a></li><li><a href="#diagnostics">Diagnostics</a></li><li><a href="#export-files">Export files</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

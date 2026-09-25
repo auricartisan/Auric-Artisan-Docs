@@ -1,0 +1,859 @@
+==============================================================================
+AURIC ARTISAN THEME REFERENCE
+==============================================================================
+Every command, keybinding, setting, theme, look, accent, palette, colour slot
+and Theme Studio control in Auric Artisan Theme 0.2.0.
+Area: VS Code extensions › Auric Artisan Theme   Updated: 2026-09-25
+
+This reference describes version 0.2.0 as published on the Visual Studio
+Marketplace.
+
+COMMANDS
+========
+
+All commands appear in the Command Palette under the category Auric Theme.
+
+  Command:      Open Theme Studio
+  ID:           `auricTheme.openStudio`
+  What it does: Opens (or reveals) the Auric Theme Studio editor tab.
+
+  Command:      Switch Variant…
+  ID:           `auricTheme.selectTheme`
+  What it does: Quick Pick of all 54 themes with polarity and canvas colour;
+                sets VS Code's colour theme.
+
+  Command:      Cycle Variant
+  ID:           `auricTheme.cycleVariant`
+  What it does: Switches to the next of the 54 variants.
+
+  Command:      Choose Accent Colour…
+  ID:           `auricTheme.pickAccent`
+  What it does: Quick Pick of the 17 named accents; sets
+                `auricTheme.accent.preset`.
+
+  Command:      Choose Look…
+  ID:           `auricTheme.pickLook`
+  What it does: Quick Pick of the 11 looks; applies the look.
+
+  Command:      Choose Syntax Palette…
+  ID:           `auricTheme.pickPalette`
+  What it does: Quick Pick of the 9 syntax palettes; sets
+                `auricTheme.syntax.palette`.
+
+  Command:      Choose Interface Language…
+  ID:           `auricTheme.chooseInterfaceLanguage`
+  What it does: Auto (VS Code), English or Hindi for the Studio and sidebar.
+
+  Command:      Toggle Italics
+  ID:           `auricTheme.toggleItalics`
+  What it does: Switches `auricTheme.syntax.italics` between `off` and
+                `standard`.
+
+  Command:      Surprise Me
+  ID:           `auricTheme.randomize`
+  What it does: Clears your dials and applies a random curated accent,
+                palette, warmth, separation, bracket and tab style.
+
+  Command:      Reset Everything
+  ID:           `auricTheme.resetAll`
+  What it does: After a confirmation dialog, clears every dial and the active
+                variant's colour overrides.
+
+  Command:      Show Contrast Report
+  ID:           `auricTheme.showAudit`
+  What it does: Opens the read-only "Auric contrast report" text document.
+
+  Command:      Copy Customisation to Clipboard
+  ID:           `auricTheme.copyCustomization`
+  What it does: Copies the customisation JSON.
+
+  Command:      Apply Customisation from Clipboard
+  ID:           `auricTheme.pasteCustomization`
+  What it does: Imports customisation JSON from the clipboard.
+
+  Command:      Export as Theme File…
+  ID:           `auricTheme.exportThemeFile`
+  What it does: Saves a standalone colour theme JSON file. Needs an Auric
+                theme active.
+
+  Command:      Save Current as Preset…
+  ID:           `auricTheme.savePreset`
+  What it does: Asks for a name and saves a preset.
+
+  Command:      Load Preset…
+  ID:           `auricTheme.loadPreset`
+  What it does: Quick Pick of saved presets; loads the chosen one.
+
+  Command:      Apply Now
+  ID:           `auricTheme.applyNow`
+  What it does: Re-applies the customisation immediately. Hidden from the
+                Command Palette; you can bind it to a key.
+
+Commands that change the theme only work while an Auric theme is active.
+Otherwise VS Code shows "Auric Theme customisations apply to the Auric Artisan
+themes. Pick one first." with a Choose theme button.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows and Linux) | Keys (macOS)        | Command
+  -------------------------+---------------------+------------------
+  `Ctrl` + `Alt` + `;`     | `Cmd` + `Alt` + `;` | Open Theme Studio
+  `Ctrl` + `Alt` + `'`     | `Cmd` + `Alt` + `'` | Cycle Variant
+
+Both work anywhere in VS Code. Change them in Keyboard Shortcuts (`Ctrl` +
+`K`, `Ctrl` + `S`).
+
+Keys inside Theme Studio
+------------------------
+
+  Key:    `1` to `6`
+  Action: Select Looks, Dials, Colours, Audit, Share or Preview.
+
+  Key:    Arrow keys, `Home`, `End`
+  Action: Move between tabs when a tab has focus.
+
+  Key:    `/`
+  Action: Go to the Colours tab and focus the colour filter.
+
+  Key:    `Escape`
+  Action: Close an open dropdown or picker; in the colour filter, clear the
+          filter.
+
+  Key:    `Enter`
+  Action: In the preset name box, save the preset.
+
+Number keys and `/` are ignored while you type in a field or while a dropdown
+or picker is open.
+
+Keys in controls
+----------------
+
+  Control: Dropdowns
+  Keys:    Arrow keys, typeahead, `Enter` to choose, `Escape` or a click
+           outside to close. Long lists have a search box.
+
+  Control: Sliders
+  Keys:    Arrow keys; `Shift` for larger steps; `Page Up`, `Page Down`,
+           `Home`, `End`; double-click resets.
+
+  Control: Colour picker plane
+  Keys:    Arrow keys adjust saturation and brightness; `Shift` for larger
+           steps.
+
+  Control: Swatch grids
+  Keys:    Arrow keys move between swatches.
+
+SETTINGS
+========
+
+All settings are application-wide (they apply to every window). Dials are
+written to your user settings.
+
+General
+-------
+
+  Setting:      `auricTheme.interfaceLanguage`
+  Type:         string
+  Values:       `auto`, `en`, `hi`
+  Default:      `auto`
+  What it does: Language of Theme Studio and the sidebar.
+
+Theme dials
+-----------
+
+  Setting:         `auricTheme.look`
+  Type:            string
+  Values or range: `signature`, `gallery`, `atelier`, `foundry`, `bullion`,
+                   `nocturne`, `vitrine`, `clarity`, `patina`, `ember`,
+                   `sapphire`
+  Default:         `signature`
+  What it does:    Named starting point; other dials layer on top.
+
+  Setting:         `auricTheme.accent.preset`
+  Type:            string
+  Values or range: `inherit`, 17 accents (see below), `custom`
+  Default:         `inherit`
+  What it does:    Accent colour the theme is re-keyed onto.
+
+  Setting:         `auricTheme.accent.custom`
+  Type:            string
+  Values or range: Hex colour
+  Default:         empty
+  What it does:    Used only when the accent is `custom`.
+
+  Setting:         `auricTheme.accent.intensity`
+  Type:            number
+  Values or range: 0 to 200, step 5
+  Default:         100
+  What it does:    Scales accent-tinted washes, borders and selections.
+
+  Setting:         `auricTheme.accent.applyToChrome`
+  Type:            string
+  Values or range: `off`, `statusBar`, `activityBar`, `both`, `full`
+  Default:         `off`
+  What it does:    Fills workbench bars with the accent. `full` adds the title
+                   bar.
+
+  Setting:         `auricTheme.surface.depth`
+  Type:            number
+  Values or range: −4 to 4, step 1
+  Default:         0
+  What it does:    Sinks or lifts every surface.
+
+  Setting:         `auricTheme.surface.warmth`
+  Type:            number
+  Values or range: −100 to 100, step 5
+  Default:         0
+  What it does:    Tints neutral surfaces towards amber or slate.
+
+  Setting:         `auricTheme.surface.separation`
+  Type:            string
+  Values or range: `flat`, `subtle`, `standard`, `layered`
+  Default:         `standard`
+  What it does:    Tonal distance between editor, sidebar, panel and bars.
+
+  Setting:         `auricTheme.surface.borders`
+  Type:            string
+  Values or range: `none`, `hairline`, `visible`, `strong`, `gold`
+  Default:         `hairline`
+  What it does:    Divider strength; `gold` uses accent-tinted dividers.
+
+  Setting:         `auricTheme.text.contrast`
+  Type:            string
+  Values or range: `soft`, `standard`, `high`, `maximum`
+  Default:         `standard`
+  What it does:    Moves the whole foreground ramp.
+
+  Setting:         `auricTheme.text.comments`
+  Type:            string
+  Values or range: `whisper`, `muted`, `standard`, `prominent`
+  Default:         `standard`
+  What it does:    Comment emphasis.
+
+  Setting:         `auricTheme.syntax.palette`
+  Type:            string
+  Values or range: `jewel`, `vivid`, `pastel`, `mono`, `bullion`, `classic`,
+                   `warm`, `cool`, `duotone`
+  Default:         `jewel`
+  What it does:    Token hue assignment.
+
+  Setting:         `auricTheme.syntax.saturation`
+  Type:            number
+  Values or range: 0 to 200, step 5
+  Default:         100
+  What it does:    Token saturation; 0 is greyscale.
+
+  Setting:         `auricTheme.syntax.italics`
+  Type:            string
+  Values or range: `off`, `comments`, `standard`, `expressive`
+  Default:         `standard`
+  What it does:    How much code is italic.
+
+  Setting:         `auricTheme.syntax.bold`
+  Type:            string
+  Values or range: `off`, `declarations`, `standard`, `expressive`
+  Default:         `standard`
+  What it does:    How much code is bold.
+
+  Setting:         `auricTheme.editor.cursor`
+  Type:            string
+  Values or range: `accent`, `contrast`, `syntax`, `custom`
+  Default:         `accent`
+  What it does:    Caret, multi-cursor and terminal cursor colour.
+
+  Setting:         `auricTheme.editor.cursorColor`
+  Type:            string
+  Values or range: Hex colour
+  Default:         empty
+  What it does:    Used only when Cursor is `custom`.
+
+  Setting:         `auricTheme.editor.selection`
+  Type:            number
+  Values or range: 20 to 200, step 5
+  Default:         100
+  What it does:    Scales selection, occurrence, word and find highlights
+                   together.
+
+  Setting:         `auricTheme.editor.currentLine`
+  Type:            string
+  Values or range: `off`, `subtle`, `standard`, `bordered`, `accent`
+  Default:         `standard`
+  What it does:    How the caret's line is marked.
+
+  Setting:         `auricTheme.editor.bracketPairs`
+  Type:            string
+  Values or range: `off`, `subtle`, `accent`, `rainbow`, `vivid`
+  Default:         `rainbow`
+  What it does:    Six bracket colour levels and their guides.
+
+  Setting:         `auricTheme.editor.indentGuides`
+  Type:            string
+  Values or range: `off`, `subtle`, `standard`, `rainbow`
+  Default:         `rainbow`
+  What it does:    Indent guide colours.
+
+  Setting:         `auricTheme.editor.whitespace`
+  Type:            string
+  Values or range: `faint`, `subtle`, `visible`
+  Default:         `subtle`
+  What it does:    Whitespace marks (when `editor.renderWhitespace` is on).
+
+  Setting:         `auricTheme.editor.inlayHints`
+  Type:            string
+  Values or range: `ghost`, `subtle`, `chip`
+  Default:         `chip`
+  What it does:    Inlay hint backdrop.
+
+  Setting:         `auricTheme.editor.stickyScroll`
+  Type:            string
+  Values or range: `flush`, `raised`, `bordered`
+  Default:         `raised`
+  What it does:    Sticky headers in editor, panel, sidebar and terminal.
+
+  Setting:         `auricTheme.chrome.tabStyle`
+  Type:            string
+  Values or range: `underline`, `overline`, `block`, `accent-block`, `minimal`
+  Default:         `overline`
+  What it does:    How the active editor tab is marked.
+
+  Setting:         `auricTheme.chrome.statusBar`
+  Type:            string
+  Values or range: `chrome`, `deep`, `accent`, `transparent`
+  Default:         `chrome`
+  What it does:    Status bar fill.
+
+  Setting:         `auricTheme.chrome.activityBar`
+  Type:            string
+  Values or range: `deep`, `chrome`, `accent`, `transparent`
+  Default:         `deep`
+  What it does:    Activity bar fill.
+
+  Setting:         `auricTheme.chrome.titleBar`
+  Type:            string
+  Values or range: `deep`, `chrome`, `accent`
+  Default:         `deep`
+  What it does:    Title bar fill (custom title bar style only).
+
+  Setting:         `auricTheme.chrome.sidebar`
+  Type:            string
+  Values or range: `raised`, `flush`, `deep`
+  Default:         `raised`
+  What it does:    Side bar fill.
+
+  Setting:         `auricTheme.chrome.dimInactive`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `false`
+  What it does:    Pushes unfocused tabs, editors and selections back.
+
+  Setting:         `auricTheme.terminal.palette`
+  Type:            string
+  Values or range: `auric`, `classic`, `vivid`, `muted`, `monochrome`
+  Default:         `auric`
+  What it does:    ANSI terminal palette.
+
+  Setting:         `auricTheme.terminal.background`
+  Type:            string
+  Values or range: `editor`, `panel`, `deep`
+  Default:         `editor`
+  What it does:    Terminal backdrop.
+
+  Setting:         `auricTheme.effects.shadows`
+  Type:            string
+  Values or range: `off`, `subtle`, `standard`, `deep`
+  Default:         `standard`
+  What it does:    Shadows under widgets and overlays.
+
+  Setting:         `auricTheme.effects.focusRing`
+  Type:            string
+  Values or range: `subtle`, `standard`, `strong`
+  Default:         `standard`
+  What it does:    Keyboard focus ring strength.
+
+  Setting:         `auricTheme.a11y.enforceContrast`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Contrast guard on or off.
+
+  Setting:         `auricTheme.a11y.minContrast`
+  Type:            number
+  Values or range: 3 to 7, step 0.5
+  Default:         4.5
+  What it does:    Minimum ratio for text and syntax.
+
+  Setting:         `auricTheme.a11y.auditOnApply`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Audit and warn on every apply.
+
+Option meanings
+---------------
+
+  Setting: Separation
+  Option:  `flat` / `subtle` / `standard` / `layered`
+  Meaning: One value for all panes / barely-there steps / shipped hierarchy /
+           exaggerated steps.
+
+  Setting: Borders
+  Option:  `none` / `hairline` / `visible` / `strong` / `gold`
+  Meaning: No dividers / shipped 8% divider / clearly drawn / hard edges /
+           accent-tinted.
+
+  Setting: Text contrast
+  Option:  `soft` / `standard` / `high` / `maximum`
+  Meaning: Lower (still AA) / shipped / pushes body and muted apart / every
+           foreground to the edge.
+
+  Setting: Comment emphasis
+  Option:  `whisper` / `muted` / `standard` / `prominent`
+  Meaning: As quiet as the floor permits / quieter / shipped / first-class
+           text.
+
+  Setting: Italics
+  Option:  `off` / `comments` / `standard` / `expressive`
+  Meaning: None / comments and doc comments / plus parameters, interfaces,
+           decorators, attributes and `this` / plus keywords, storage
+           modifiers and types.
+
+  Setting: Bold
+  Option:  `off` / `declarations` / `standard` / `expressive`
+  Meaning: None / definition sites only / declarations, headings and invalid
+           tokens / plus keywords and types.
+
+  Setting: Cursor
+  Option:  `accent` / `contrast` / `syntax` / `custom`
+  Meaning: Accent colour / white or black, whichever reads harder / the
+           function-name colour / Cursor colour.
+
+  Setting: Current line
+  Option:  `off` / `subtle` / `standard` / `bordered` / `accent`
+  Meaning: None / faint fill / shipped fill and edge / edge only /
+           accent-tinted fill.
+
+  Setting: Bracket pairs
+  Option:  `off` / `subtle` / `accent` / `rainbow` / `vivid`
+  Meaning: Punctuation colour / low chroma / stepped along the accent /
+           shipped six colours / maximum separation.
+
+  Setting: Indent guides
+  Option:  `off` / `subtle` / `standard` / `rainbow`
+  Meaning: None / one neutral / neutral with accent active guide / shipped six
+           levels.
+
+  Setting: Whitespace marks
+  Option:  `faint` / `subtle` / `visible`
+  Meaning: Barely visible / shipped / clearly readable.
+
+  Setting: Inlay hints
+  Option:  `ghost` / `subtle` / `chip`
+  Meaning: Text only / faint backdrop / shipped tinted chip.
+
+  Setting: Sticky scroll
+  Option:  `flush` / `raised` / `bordered`
+  Meaning: Canvas colour / slightly lifted / lifted with a hard bottom edge.
+
+  Setting: Active tab
+  Option:  `underline` / `overline` / `block` / `accent-block` / `minimal`
+  Meaning: Accent rule at bottom / at top (shipped) / tone only / accent fill
+           / foreground only.
+
+  Setting: Status bar
+  Option:  `chrome` / `deep` / `accent` / `transparent`
+  Meaning: Shipped neutral / matches activity bar / accent fill / canvas
+           colour.
+
+  Setting: Activity bar
+  Option:  `deep` / `chrome` / `accent` / `transparent`
+  Meaning: Shipped darkest / matches status bar / accent fill / merges into
+           sidebar.
+
+  Setting: Title bar
+  Option:  `deep` / `chrome` / `accent`
+  Meaning: Shipped darkest / matches status bar / accent fill.
+
+  Setting: Side bar
+  Option:  `raised` / `flush` / `deep`
+  Meaning: Shipped, lifted / same as editor / matches activity bar.
+
+  Setting: Terminal background
+  Option:  `editor` / `panel` / `deep`
+  Meaning: Shipped / merges into panel / darker than editor.
+
+  Setting: Shadows
+  Option:  `off` / `subtle` / `standard` / `deep`
+  Meaning: None / barely there / shipped / heavy.
+
+  Setting: Focus ring
+  Option:  `subtle` / `standard` / `strong`
+  Meaning: Quieter but visible / accent at full strength / maximum contrast.
+
+LOOKS
+=====
+
+`signature` Signature, `gallery` Gallery, `atelier` Atelier, `foundry`
+Foundry, `bullion` Bullion, `nocturne` Nocturne, `vitrine` Vitrine, `clarity`
+Clarity, `patina` Patina, `ember` Ember, `sapphire` Sapphire. See Looks and
+dials [looks-and-dials.txt] for descriptions.
+
+ACCENTS
+=======
+
+  ID          | Name       | Hex       | Hint
+  ------------+------------+-----------+----------------------------------------
+  `gold`      | Auric Gold | `#D3AF37` | The brand. Warm, metallic, the default.
+  `champagne` | Champagne  | `#E4CE8F` | Gold, lifted and softened.
+  `brass`     | Brass      | `#C9A227` | Deeper and greener than the brand gold.
+  `bronze`    | Bronze     | `#C08A4A` | Warm metal, less yellow.
+  `copper`    | Copper     | `#CA7A4E` | Orange-forward metal.
+  `ember`     | Ember      | `#E0764A` | Hot orange.
+  `rose`      | Rose       | `#E08AA0` | Soft pink-red.
+  `crimson`   | Crimson    | `#E06A6A` | Red without the alarm.
+  `amethyst`  | Amethyst   | `#B48AE6` | Violet jewel tone.
+  `iris`      | Iris       | `#8E9BF0` | Blue-violet.
+  `sapphire`  | Sapphire   | `#6BA3E8` | Classic editor blue.
+  `azure`     | Azure      | `#4FB6E0` | Bright cyan-blue.
+  `patina`    | Patina     | `#5CC9B4` | Aged copper. Cool and calm.
+  `emerald`   | Emerald    | `#5CC489` | Green jewel tone.
+  `moss`      | Moss       | `#A3C46A` | Yellow-green.
+  `platinum`  | Platinum   | `#C5C8CE` | Cool neutral metal.
+  `graphite`  | Graphite   | `#9A9A9A` | No hue at all. Fully monochrome UI.
+
+The listed hex values are the accent keys. On light themes the accent is
+darkened automatically until it clears your minimum contrast.
+
+SYNTAX PALETTES
+===============
+
+  ID:          `jewel`
+  Name:        Jewel
+  Description: The shipped palette: gold and champagne callables, amber
+               constants, orchid keywords, patina types, sage strings.
+
+  ID:          `vivid`
+  Name:        Vivid
+  Description: The same hues pushed to the edge of the gamut.
+
+  ID:          `pastel`
+  Name:        Pastel
+  Description: Low chroma, lifted lightness.
+
+  ID:          `mono`
+  Name:        Monochrome
+  Description: Almost no hue; lightness carries meaning.
+
+  ID:          `bullion`
+  Name:        Bullion
+  Description: Every token on the accent hue, separated by lightness and
+               chroma.
+
+  ID:          `classic`
+  Name:        Classic
+  Description: Blue keywords, green strings, teal types.
+
+  ID:          `warm`
+  Name:        Warm
+  Description: Gold, amber, copper and rose; no cool tokens.
+
+  ID:          `cool`
+  Name:        Cool
+  Description: Patina, sapphire and amethyst; gold only in the chrome.
+
+  ID:          `duotone`
+  Name:        Duotone
+  Description: The accent and its complement only.
+
+TERMINAL PALETTES
+=================
+
+  ID           | Name       | Description
+  -------------+------------+--------------------------------------------------
+  `auric`      | Auric      | Matches the syntax palette; yellow is the accent.
+  `classic`    | Classic    | Conventional ANSI hues, tuned for the canvas.
+  `vivid`      | Vivid      | Higher chroma across all sixteen.
+  `muted`      | Muted      | Lower chroma.
+  `monochrome` | Monochrome | Greyscale, separated by lightness only.
+
+ALL 54 THEMES
+=============
+
+The theme ID is what VS Code stores in `workbench.colorTheme`.
+
+  Family:                  Obsidian
+  Theme IDs (display name: Auric Artisan — Family Accent):`obsidian-gold`,
+                           `obsidian-sapphire`, `obsidian-rose`,
+                           `obsidian-amethyst`, `obsidian-patina`
+
+  Family:                  Obsidian (cont.)
+  Theme IDs (display name: Auric Artisan — Family Accent):`obsidian-emerald`,
+                           `obsidian-ember`, `obsidian-crimson`,
+                           `obsidian-iris`, `obsidian-graphite`
+
+  Family:                  Midnight
+  Theme IDs (display name: Auric Artisan — Family Accent):`midnight-gold`,
+                           `midnight-sapphire`, `midnight-rose`,
+                           `midnight-iris`, `midnight-amethyst`
+
+  Family:                  Midnight (cont.)
+  Theme IDs (display name: Auric Artisan — Family Accent):`midnight-patina`,
+                           `midnight-emerald`, `midnight-ember`,
+                           `midnight-crimson`, `midnight-graphite`
+
+  Family:                  Parchment
+  Theme IDs (display name: Auric Artisan — Family Accent):`parchment-gold`,
+                           `parchment-rose`, `parchment-ember`,
+                           `parchment-emerald`, `parchment-sapphire`
+
+  Family:                  Parchment (cont.)
+  Theme IDs (display name: Auric Artisan — Family Accent):`parchment-amethyst`,
+                           `parchment-patina`, `parchment-crimson`,
+                           `parchment-iris`, `parchment-graphite`
+
+  Family:                  Porcelain
+  Theme IDs (display name: Auric Artisan — Family Accent):`porcelain-sapphire`,
+                           `porcelain-amethyst`, `porcelain-patina`,
+                           `porcelain-rose`, `porcelain-iris`
+
+  Family:                  Porcelain (cont.)
+  Theme IDs (display name: Auric Artisan — Family Accent):`porcelain-graphite`,
+                           `porcelain-gold`, `porcelain-emerald`,
+                           `porcelain-ember`, `porcelain-crimson`
+
+  Family:                  Dusk
+  Theme IDs (display name: Auric Artisan — Family Accent):`dusk-gold`,
+                           `dusk-sapphire`, `dusk-rose`, `dusk-amethyst`,
+                           `dusk-iris`, `dusk-graphite`
+
+  Family:                  Forest
+  Theme IDs (display name: Auric Artisan — Family Accent):`forest-gold`,
+                           `forest-patina`, `forest-emerald`, `forest-ember`,
+                           `forest-rose`, `forest-graphite`
+
+  Family:                  High contrast
+  Theme IDs (display name: Auric Artisan — Family Accent):`obsidian-gold-high-contrast`
+                           (dark), `porcelain-gold-high-contrast` (light)
+
+The order in this table is the order used by Cycle Variant. Obsidian,
+Midnight, Dusk and Forest are dark; Parchment and Porcelain are light.
+
+COLOUR SLOTS
+============
+
+107 slots in 12 groups. Kind: solid (no transparency), alpha (transparency
+allowed) or either.
+
+  Group:                Surfaces (solid)
+  Slots (path — label): `bg.deepest` Deepest, `bg.base` Canvas, `bg.raised`
+                        Raised, `bg.chrome` Chrome
+
+  Group:                Surfaces (cont.)
+  Slots (path — label): `bg.overlay` Overlay, `bg.overlayRaised` Overlay
+                        raised, `bg.inset` Inset, `bg.tint` Warm tint
+
+  Group:                Text (solid)
+  Slots (path — label): `fg.default` Body, `fg.muted` Muted, `fg.subtle`
+                        Subtle, `fg.faint` Faint, `fg.onAccent` On accent
+
+  Group:                Text (cont.)
+  Slots (path — label): `fg.inverse` Inverse
+
+  Group:                Lines
+  Slots (path — label): `line.subtle` Hairline, `line.default` Divider,
+                        `line.strong` Strong, `line.control` Control edge
+                        (either)
+
+  Group:                Lines (cont.)
+  Slots (path — label): `line.gold` Gold hairline, `line.goldStrong` Gold edge
+                        (alpha); `line.focus` Focus ring (solid)
+
+  Group:                Accent
+  Slots (path — label): `accent.base` Accent, `accent.bright` Emphasis,
+                        `accent.deep` Deep, `accent.onAccent` On accent
+                        (solid)
+
+  Group:                Accent (cont.)
+  Slots (path — label): `accent.soft` Soft wash, `accent.softer` Softer wash,
+                        `accent.wash` Faintest wash (alpha)
+
+  Group:                States (alpha)
+  Slots (path — label): `state.hover` Hover, `state.active` Active,
+                        `state.selected` Selected
+
+  Group:                States (cont.)
+  Slots (path — label): `state.selectedInactive` Selected (blurred),
+                        `state.drop` Drop target
+
+  Group:                Selection (alpha)
+  Slots (path — label): `sel.text` Selection, `sel.textInactive` Selection
+                        (blurred), `sel.highlight` Occurrences
+
+  Group:                Selection (cont.)
+  Slots (path — label): `sel.word` Word (read), `sel.wordWrite` Word (write),
+                        `sel.find` Find match, `sel.findOther` Find others
+
+  Group:                Selection (cont.)
+  Slots (path — label): `sel.range` Range, `sel.line` Current line,
+                        `sel.lineBorder` Current line edge
+
+  Group:                Semantics (solid)
+  Slots (path — label): `sem.error` Error, `sem.errorStrong` Error (loud),
+                        `sem.warn` Warning, `sem.warnStrong` Warning (loud)
+
+  Group:                Semantics (cont.)
+  Slots (path — label): `sem.info` Info, `sem.infoStrong` Info (loud),
+                        `sem.ok` Success, `sem.okStrong` Success (loud)
+
+  Group:                Semantic washes (alpha)
+  Slots (path — label): `soft.error` Error wash, `soft.warn` Warning wash,
+                        `soft.info` Info wash, `soft.ok` Success wash
+
+  Group:                Terminal (solid)
+  Slots (path — label): `ansi.black`, `ansi.red`, `ansi.green`, `ansi.yellow`,
+                        `ansi.blue`, `ansi.magenta`, `ansi.cyan`, `ansi.white`
+
+  Group:                Terminal (cont.)
+  Slots (path — label): `ansi.brightBlack` to `ansi.brightWhite`: the eight
+                        bright versions of the colours above
+
+  Group:                Source control (solid)
+  Slots (path — label): `git.added` Added, `git.modified` Modified,
+                        `git.deleted` Deleted, `git.untracked` Untracked
+
+  Group:                Source control (cont.)
+  Slots (path — label): `git.ignored` Ignored, `git.conflict` Conflicting,
+                        `git.submodule` Submodule
+
+  Group:                Source control (cont.)
+  Slots (path — label): `git.stageDeleted` Staged delete, `git.stageModified`
+                        Staged modify
+
+  Group:                Syntax (solid)
+  Slots (path — label): `syntax.comment` Comment, `syntax.punctuation`
+                        Punctuation, `syntax.operator` Operator
+
+  Group:                Syntax (cont.)
+  Slots (path — label): `syntax.variable` Variable, `syntax.property`
+                        Property, `syntax.parameter` Parameter
+
+  Group:                Syntax (cont.)
+  Slots (path — label): `syntax.string` String, `syntax.stringAlt` String
+                        (alt), `syntax.escape` Escape, `syntax.number` Number
+
+  Group:                Syntax (cont.)
+  Slots (path — label): `syntax.constant` Constant, `syntax.keyword` Keyword,
+                        `syntax.control` Control flow, `syntax.storage`
+                        Storage
+
+  Group:                Syntax (cont.)
+  Slots (path — label): `syntax.fn` Function, `syntax.method` Method,
+                        `syntax.type` Type, `syntax.interface` Interface
+
+  Group:                Syntax (cont.)
+  Slots (path — label): `syntax.tag` Tag, `syntax.attribute` Attribute,
+                        `syntax.regexp` Regexp, `syntax.invalid` Invalid
+
+  Group:                Syntax (cont.)
+  Slots (path — label): `syntax.deprecated` Deprecated, `syntax.heading`
+                        Heading, `syntax.link` Link, `syntax.quote` Quote
+
+  Group:                Effects (alpha)
+  Slots (path — label): `shadow` Shadow
+
+Lines `line.subtle`, `line.default`, `line.strong` and `line.control` accept
+either kind.
+
+THEME STUDIO CONTROLS BY TAB
+============================
+
+  Tab:      Looks
+  Controls: The set: 11 look swatches with a count. Selecting a look applies
+            it; selecting the active look again restarts from it.
+
+  Tab:      Dials
+  Controls: Search dials by name or setting…, Dial visibility (All dials,
+            Modified only), match count, ten group cards with group reset,
+            per-dial modified dot and reset.
+
+  Tab:      Colours
+  Controls: Filter by name or path, 12 collapsible groups with counts, a
+            colour field per slot, Shipped comparison and revert per
+            overridden slot.
+
+  Tab:      Audit
+  Controls: Worst-pair card with All clear or "{n} failing", Measured pairs
+            table (Pair, Ratio, APCA, Minimum, Result), How to read this.
+
+  Tab:      Share
+  Controls: Export (JSON, Copy, Refresh), Import (paste box, Import, Clear),
+            Presets (name box, Save, Saved list with Load and delete).
+
+  Tab:      Preview
+  Controls: Comparison view (Side by side, As shipped, Your palette), Copy
+            palette as CSS, specimens and changed-slot count.
+
+Studio-wide: language switch, Explore colours →, metrics, Reset all (asks
+Reset everything?, confirm within four seconds), Randomize, Settings.
+
+OTHER SURFACES
+==============
+
+  Surface: Status bar item
+  Details: Right side. Paint-can icon and short theme name; `*` when
+           customised. Tooltip shows dials and colours changed. Opens Theme
+           Studio. Hidden when a non-Auric theme is active.
+
+  Surface: Activity Bar view
+  Details: Auric Theme container with the Theme view. See The Theme sidebar
+           [theme-sidebar.txt].
+
+  Surface: Contrast report
+  Details: Read-only text document "Auric contrast report".
+
+  Surface: Walkthrough
+  Details: Make it yours: Pick a variant, Change the gold, Open the Studio,
+           Keep it readable.
+
+MESSAGES YOU MAY SEE
+====================
+
+  Message: Auric Theme customisations apply to the Auric Artisan themes. Pick
+           one first.
+  Meaning: A non-Auric theme is active. Select Choose theme.
+
+  Message: Auric Theme: {n} colour pairs no longer meet your contrast minimum.
+  Meaning: Audit on apply found failures. Select Show report.
+
+  Message: Reset every Auric Theme dial and colour override?
+  Meaning: Confirmation for Reset Everything. Select Reset.
+
+  Message: Auric Theme: could not save auricTheme.… — …
+  Meaning: VS Code refused to write a setting, for example because
+           `settings.json` has a syntax error.
+
+  Message: VS Code rejected a settings key: …
+  Meaning: VS Code refused a colour customisation key.
+
+  Message: Bad hex colour: …
+  Meaning: A colour value is not valid hex.
+
+  Message: Auric Theme: no saved presets yet.
+  Meaning: Load Preset… found no presets.
+
+  Message: Auric Theme: switch to an Auric Artisan theme first.
+  Meaning: Export as Theme File… needs an Auric theme active.
+
+FILES AND FORMATS
+=================
+
+  Item:   Customisation
+  Format: JSON with `$schema`, `version`, `generator`, `name`, `theme`,
+          `knobs` and `overrides`.
+
+  Item:   Theme file
+  Format: VS Code colour theme JSON; default name
+          `<theme-id>-custom-color-theme.json`.
+
+  Item:   CSS palette
+  Format: A `:root` block of `--auric-<slot-path>` custom properties.

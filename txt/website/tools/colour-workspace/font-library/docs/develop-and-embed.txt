@@ -1,0 +1,109 @@
+==============================================================================
+DEVELOP AND EMBED
+==============================================================================
+Copy a font stack, CSS variables, Tailwind, SCSS, design tokens or a modular
+type scale from the Develop tab, and embed code from the Use & Embed tab.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+Two tabs in the family panel give you code. Develop is for your stylesheets
+and design system; Use & Embed is for loading the font on a page. For how the
+Font CDN serves these files, and for self-hosting, see the Font CDN
+[../../../../../services/font-cdn/README.txt] documentation.
+
+DEVELOP
+=======
+
+Font-family stack
+-----------------
+
+A `font-family` line with the family first and safe fallbacks for its
+category, for example for a serif:
+
+    font-family: 'Lora', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+
+Copy copies it; the message reads Copied stack.
+
+Export
+------
+
+Five formats, each with Copy:
+
+  Format        | What you get
+  --------------+---------------------------------------------------------------------
+  CSS variables | A `:root` variable such as `--font-serif` and a `body` rule using it
+  Tailwind      | A `tailwind.config.js` fragment that adds the stack to `fontFamily`
+  SCSS          | A `$font-…` variable and a `body` rule
+  Design tokens | A JSON token such as `font.family.serif` with type `fontFamily`
+  CSS @import   | An `@import` of the family's CDN stylesheet and the variable
+
+The variable and token names use mono for monospace families, serif for serif
+families and sans for everything else.
+
+Modular type scale
+------------------
+
+A scale of nine sizes, xs, sm, base, md, lg, xl, 2xl, 3xl and 4xl, each shown
+in the family with its size in pixels and rem.
+
+  Control: Base
+  Options: 10 to 24 px
+  Default: 16
+
+  Control: Ratio
+  Options: 1.125 Major Second, 1.200 Minor Third, 1.250 Major Third, 1.333
+           Perfect Fourth, 1.414 Augmented Fourth, 1.500 Perfect Fifth, 1.618
+           Golden Ratio
+  Default: 1.200 Minor Third
+
+base is the base size; each step up multiplies by the ratio and each step down
+divides by it. Copy CSS copies a `:root` block of `--text-xs` to `--text-4xl`
+in rem (16 pixels = 1 rem). The preview caps very large steps at 60 pixels so
+they fit.
+
+USE & EMBED
+===========
+
+Snippets
+--------
+
+Six tabs of code for this family, with Copy:
+
+  Tab        | What it is
+  -----------+------------------------------------------------------------------------------
+  Link       | A `<link>` to the family's stylesheet on the Font CDN
+  Import     | The same stylesheet as a CSS `@import`
+  Script     | The Font CDN loader script with a `data-families` attribute naming the family
+  JS         | A call that loads the family from JavaScript and then applies it
+  @font-face | `@font-face` rules for up to the first four font files
+  Usage      | A CSS rule applying the family, with its weight range for variable fonts
+
+A note under the code says the files are self-hosted, with no third-party
+request, and names the family's licence.
+
+The Selected weights chips above the tabs can be switched on and off, but they
+do not change the code: every snippet always covers the whole family. To load
+fewer weights, edit the `@font-face` rules or self-host only the files you
+need.
+
+Families that are listed but not served
+---------------------------------------
+
+Families marked Installed exist only as fonts installed on a computer. Their
+code refers to the font by its local name, so it works only on devices where
+that font is installed. See Limits and accuracy
+[../others/limits-and-accuracy.txt].
+
+EMBED SEVERAL FAMILIES AT ONCE
+==============================
+
+To get one block of code for several families, select them and use Embed in
+Your kit. See Your kit, compare and download [kit-compare-and-download.txt].
+
+RELATED
+=======
+
+  - Font CDN: embed a family
+    [../../../../../services/font-cdn/docs/embed-a-family.txt]
+  - Font CDN: use the loader
+    [../../../../../services/font-cdn/docs/use-the-loader.txt]
+  - Family details [family-details.txt]

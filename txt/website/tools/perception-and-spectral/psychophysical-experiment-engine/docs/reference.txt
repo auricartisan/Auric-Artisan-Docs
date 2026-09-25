@@ -1,0 +1,253 @@
+==============================================================================
+PSYCHOPHYSICS BENCH REFERENCE
+==============================================================================
+Every tab, control, readout, message, file format and link parameter in the
+Psychophysics Bench, with ranges and defaults.
+Area: Website › Tools › Perception and spectral › Psychophysical Experiment Engine   Updated: 2026-09-25
+
+Address:
+https://auricartisan.com/tool/general/perception-and-neuroscience/psychophysical-experiment-engine/
+
+TABS
+====
+
+  Tab:                     Lab
+  Contents:                All experiment controls, the trial stage, response
+                           buttons, the staircase trace, readouts and warnings
+  Opens at the time of writing:Yes
+
+  Tab:                     Method
+  Contents:                The contrast chain, the frequency axis, what each
+                           ladder estimates
+  Opens at the time of writing:No
+
+  Tab:                     Paradigms
+  Contents:                Two scoring tasks and three withdrawn ones
+  Opens at the time of writing:No
+
+  Tab:                     Data
+  Contents:                The register of 13 methods and constants; the tab
+                           label shows the count
+  Opens at the time of writing:No
+
+  Tab:                     Export
+  Contents:                Trials CSV, session JSON, setup link
+  Opens at the time of writing:No
+
+  Tab:                     Reference
+  Contents:                Eleven sources and their use
+  Opens at the time of writing:No
+
+LAB TAB — TASK
+==============
+
+  Control | Values                                         | Default
+  --------+------------------------------------------------+---------------------------
+  Task    | Two-interval forced choice, Yes / no detection | Two-interval forced choice
+
+LAB TAB — STIMULUS
+==================
+
+  Control           | Range and step                     | Default
+  ------------------+------------------------------------+----------
+  Stimulus type     | Gabor, Grating in an aperture      | Gabor
+  Spatial frequency | 0.25–20 c/deg, step 0.25           | 4.0 c/deg
+  Orientation       | 0–179°, step 1                     | 45°
+  Envelope σ        | 0.10–2.00°, step 0.05 (Gabor only) | 0.50°
+  Background        | Code 40–220, step 1                | Code 128
+
+LAB TAB — GEOMETRY
+==================
+
+  Control          | Range and step          | Default
+  -----------------+-------------------------+---------
+  Viewing distance | 20–200 cm, step 1       | 57 cm
+  Pixel pitch      | 0.05–0.6 mm, step 0.001 | 0.248 mm
+
+LAB TAB — STAIRCASE
+===================
+
+  Control:         Procedure
+  Values or range: 1-up / 2-down — 70.7%, 3-down / 1-up — 79.4%, Bayesian
+                   tracker — this tool's own, Accelerated — this tool's own,
+                   Constant stimuli — no adaptation
+  Default:         1-up / 2-down
+
+  Control:         Step
+  Values or range: 0.5–12 dB, step 0.5
+  Default:         2.0 dB
+
+  Control:         Starting contrast
+  Values or range: 0.01–1, step 0.01
+  Default:         0.300
+
+  Control:         Stop after
+  Values or range: 4–24 reversals, step 2
+  Default:         12 reversals
+
+  Control:         Trial ceiling
+  Values or range: 20–400, step 10
+  Default:         120
+
+LAB TAB — TIMING
+================
+
+  Control        | Range and step       | Default
+  ---------------+----------------------+--------
+  Stimulus       | 20–1000 ms, step 10  | 200 ms
+  Between trials | 100–2000 ms, step 50 | 600 ms
+
+Fixed timings: fixation cross 240 ms before each trial; 300 ms blank between
+the two intervals.
+
+LAB TAB — BUTTONS
+=================
+
+  Button:       Run
+  What it does: Starts a measured run; disabled while a run is going
+
+  Button:       Practice
+  What it does: Starts a practice run of up to 12 trials with no reversal stop
+
+  Button:       Stop
+  What it does: Shown during a run; ends it (see Run a session
+                [run-a-session.txt])
+
+  Button:       First interval `←` / Yes, I saw it `←`
+  What it does: Answers first interval (two-interval) or yes (yes/no)
+
+  Button:       Second interval `→` / No, I did not `→`
+  What it does: Answers second interval or no
+
+LAB TAB — STAGE AND TRACE
+=========================
+
+  Element:     Run state
+  Description: not running, practice, running, stopped, done — N trials
+
+  Element:     Stimulus stage
+  Description: 256 × 256; shows the stimulus at the current contrast between
+               runs
+
+  Element:     Interval 1, Interval 2
+  Description: Light in turn during two-interval trials
+
+  Element:     The staircase
+  Description: Contrast (log axis) against trial; grey warm-up reversals, red
+               reversals used, gold dashed threshold; drawn for the up-down
+               and accelerated staircases
+
+LAB TAB — READOUTS
+==================
+
+  Readout: Threshold, Michelson
+  Format:  Four decimals, or —
+
+  Readout: At what percentage
+  Format:  70.7%, 79.4%, 80.3% or 61.9%, or not defined for this ladder
+
+  Readout: Reversals used
+  Format:  N of M, fewer than two reversals after the warm-up, N trials,
+           posterior mean, or —
+
+  Readout: Delivered / asked
+  Format:  Ratio, two decimals; highlighted when capped
+
+  Readout: Trials run
+  Format:  Count
+
+  Readout: Proportion correct
+  Format:  Three decimals
+
+  Readout: Degrees per pixel
+  Format:  Degrees, four decimals
+
+  Readout: Nyquist limit of the grid
+  Format:  c/deg, one decimal; highlighted when exceeded
+
+LAB TAB — WARNINGS
+==================
+
+  Warning: Above the pixel grid's Nyquist limit.
+  When:    Spatial frequency above the Nyquist limit
+
+  Warning: The contrast asked for does not fit about this background.
+  When:    The contrast asked for exceeds what fits around the background
+
+METHOD TAB
+==========
+
+  Control | Values
+  --------+-------------------------------------------------------------------
+  Show    | The contrast chain, The frequency axis, What each ladder estimates
+
+DATA TAB
+========
+
+  Control:      Status
+  What it does: All (13), Verbatim (3), Computed (5), Stand-in (3), Absent (2)
+
+  Control:      Register row
+  What it does: Select, or press `Enter` or `Space`, to expand its note and
+                what it would take
+
+  Control:      Drop a measured gamma table
+  What it does: Shown under Calibrate the display; not active in the current
+                version
+
+Entries: sRGB transfer and primaries, Transformed up-down rules,
+Extreme-proportion correction (Verbatim); Michelson contrast in luminance,
+Viewing geometry, Signal-detection formulae, Inverse normal CDF, Nonparametric
+bootstrap (Computed); Bayesian adaptive staircase, Psychometric function fit,
+Accelerated staircase (Stand-in); Weibull fit, ROC curve and its area
+(Absent).
+
+EXPORT TAB
+==========
+
+  Control                   | What it does
+  --------------------------+---------------------------------------------------
+  What to take              | Preview Every trial, The session or A link to this
+  Download the trials       | Saves `psychophysics-trials.csv`
+  Download the session      | Saves `psychophysics-session.json`
+  Copy a link to this setup | Copies a link with every rail setting
+
+MESSAGES
+========
+
+  Message: Practice — arrow keys respond, Esc stops
+  Meaning: A practice run started
+
+  Message: Running — arrow keys respond, Esc stops
+  Meaning: A measured run started
+
+  Message: No trials yet — run the experiment first
+  Meaning: A download was requested with no trials
+
+  Message: Link copied
+  Meaning: The setup link is on the clipboard
+
+  Message: A trial could not be scored; the run stopped rather than record it
+  Meaning: A safety stop that should not occur with the two shipped tasks
+
+FILE FORMATS
+============
+
+  File:     `psychophysics-trials.csv`
+  Format:   CSV with `#` header lines
+  Contents: `trial,contrast,delivered,response,correct,rt_ms,interval,present,cpd`
+
+  File:     `psychophysics-session.json`
+  Format:   JSON
+  Contents: Units, settings, procedure, threshold and its percentage, every
+            trial
+
+Details are in Export your data [export-your-data.txt].
+
+LINK PARAMETERS
+===============
+
+`paradigm`, `stimType`, `cpd`, `orientation`, `sigmaDeg`, `meanCode`,
+`distanceCm`, `pitchMm`, `stair`, `stepDb`, `start`, `nReversals`, `trials`,
+`duration`, `iti`. Values are listed in Export your data
+[export-your-data.txt].

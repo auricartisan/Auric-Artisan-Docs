@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common Auric Artisan File System problems.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common Auric Artisan File System problems.</p>
+<p>For anything not listed, set <code>auricFiles.logLevel</code> to <code>debug</code>, repeat the action, run <strong>Auric Files: Show Log</strong>, and see <a href="../../install-and-setup/docs/get-support.html">Get support</a>.</p>
+<h2 id="actions-do-nothing-or-are-refused">Actions do nothing or are refused</h2>
+<h3 id="create-rename-move-and-delete-are-unavailable">Create, rename, move and delete are unavailable</h3>
+<ul>
+<li><strong>Why:</strong> the workspace is not trusted. In Restricted Mode, browsing, search, filtering and related-file navigation work, but nothing that changes files.</li>
+<li><strong>Fix:</strong> run <strong>Workspaces: Manage Workspace Trust</strong> and trust the folder.</li>
+</ul>
+<h3 id="choose-a-resource-inside-the-open-workspace-first">&quot;Choose a resource inside the open workspace first.&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the action needs a file or folder as its target, and none is selected, or the selected item is outside the workspace.</li>
+<li><strong>Fix:</strong> select an item in the Explorer or open a file, or use <strong>Choose…</strong> in the panel.</li>
+</ul>
+<h3 id="choose-a-file-or-subfolder-for-this-action-use-the-native-explorer-to-create-directly-in-the-workspace-root">&quot;Choose a file or subfolder for this action. Use the native Explorer to create directly in the workspace root.&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the panel&#39;s target actions need a file or subfolder; the workspace root itself is not a valid target for them.</li>
+<li><strong>Fix:</strong> use VS Code&#39;s own <strong>New File</strong> or <strong>New Folder</strong> for the root, or choose a subfolder.</li>
+</ul>
+<h3 id="this-resource-is-outside-the-workspace">&quot;This resource is outside the workspace.&quot;</h3>
+<ul>
+<li><strong>Why:</strong> you are inspecting a file that is not in any open workspace folder.</li>
+<li><strong>Fix:</strong> Properties still work. Open the file&#39;s folder as a workspace to use file actions on it.</li>
+</ul>
+<h3 id="an-operation-is-blocked">An operation is blocked</h3>
+<ul>
+<li><strong>Why:</strong> it touches a path in <code>auricFiles.safety.protectedPaths</code> (for example <code>.env</code>, lockfiles or <code>node_modules</code>).</li>
+<li><strong>Fix:</strong> do it with VS Code&#39;s own Explorer if you really mean it, or remove the pattern from the setting.</li>
+</ul>
+<h3 id="properties-opens-a-picker-instead-of-the-file">Properties opens a picker instead of the file</h3>
+<ul>
+<li><strong>Why:</strong> some keyboard routes do not tell the extension which Explorer item is focused.</li>
+<li><strong>Fix:</strong> pick the file in the list, or right-click the file and choose <strong>File Properties</strong>.</li>
+</ul>
+<h2 id="shortcuts">Shortcuts</h2>
+<h3 id="most-shortcuts-do-nothing">Most shortcuts do nothing</h3>
+<ul>
+<li><strong>Why:</strong> the full shortcut deck is off by default, so it does not take over <code>Ctrl</code> + <code>Alt</code> combinations.</li>
+<li><strong>Fix:</strong> turn on <code>auricFiles.keyboard.enableDefaultShortcuts</code>.</li>
+</ul>
+<h3 id="ctrl-n-in-the-explorer-opens-aurics-new-file"><code>Ctrl</code> + <code>N</code> in the Explorer opens Auric&#39;s New File</h3>
+<ul>
+<li><strong>Why:</strong> with the Explorer focused, <code>Ctrl</code> + <code>N</code>, <code>Ctrl</code> + <code>Shift</code> + <code>N</code>, <code>Alt</code> + <code>Enter</code>, <code>Ctrl</code> + <code>Shift</code> + <code>M</code>, <code>Alt</code> + <code>S</code> and <code>Ctrl</code> + <code>Alt</code> + <code>B</code> run Auric commands.</li>
+<li><strong>Fix:</strong> remove those bindings in <strong>Preferences: Open Keyboard Shortcuts</strong> (search for <code>auricFiles</code>) if you prefer VS Code&#39;s defaults.</li>
+</ul>
+<h3 id="a-deck-shortcut-conflicts-with-another-extension">A deck shortcut conflicts with another extension</h3>
+<ul>
+<li><strong>Fix:</strong> open <strong>Preferences: Open Keyboard Shortcuts</strong>, search for the keys, and rebind one of them.</li>
+</ul>
+<h2 id="creation">Creation</h2>
+<h3 id="expands-to-more-than-1000-paths-or-stopped-after-2000-paths">&quot;expands to more than 1000 paths&quot; or &quot;Stopped after 2000 paths&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the brace or range expression produces too many paths.</li>
+<li><strong>Fix:</strong> split it into smaller batches.</li>
+</ul>
+<h3 id="braces-were-created-literally">Braces were created literally</h3>
+<ul>
+<li><strong>Why:</strong> <code>auricFiles.create.expandBraces</code> is off, a brace was escaped with a backslash, or the braces are neither a list nor a range (such as <code>{png}</code>).</li>
+<li><strong>Fix:</strong> turn the setting on and write a list (<code>{a,b}</code>) or a range (<code>{1..3}</code>).</li>
+</ul>
+<h3 id="a-template-does-not-appear-in-the-list">A template does not appear in the list</h3>
+<ul>
+<li><strong>Why:</strong> the template file is not in a template folder, its id is invalid, it uses an unknown filter, a block is not closed, or the workspace is untrusted.</li>
+<li><strong>Fix:</strong> check <code>auricFiles.templates.directories</code>, trust the workspace, and look in the log for <strong>Ignored template</strong> with the reason.</li>
+</ul>
+<h3 id="generated-files-use-the-wrong-framework">Generated files use the wrong framework</h3>
+<ul>
+<li><strong>Why:</strong> automatic preset detection picked a different framework.</li>
+<li><strong>Fix:</strong> set <code>auricFiles.create.preset</code> explicitly.</li>
+</ul>
+<h2 id="related-files-search-and-properties">Related files, search and Properties</h2>
+<h3 id="not-indexed-yet-in-properties-or-related-files-are-missing">&quot;Not indexed yet&quot; in Properties, or related files are missing</h3>
+<ul>
+<li><strong>Why:</strong> the workspace index has not been built, or the file is excluded from it.</li>
+<li><strong>Fix:</strong> run <strong>Auric Files: Refresh</strong>. Check <code>auricFiles.explorer.excludePatterns</code> and whether <code>.gitignore</code> excludes the file (<code>auricFiles.explorer.respectGitignore</code>).</li>
+</ul>
+<h3 id="search-results-stop-early">Search results stop early</h3>
+<ul>
+<li><strong>Why:</strong> a search keeps at most <code>auricFiles.search.maxResults</code> matches, and the index holds at most <code>auricFiles.explorer.maxNodes</code> entries.</li>
+<li><strong>Fix:</strong> raise the limits, or narrow the search with a filter.</li>
+</ul>
+<h3 id="git-status-looks-out-of-date">Git status looks out of date</h3>
+<ul>
+<li><strong>Why:</strong> Properties shows Git state from the last index and labels it so.</li>
+<li><strong>Fix:</strong> run <strong>Auric Files: Refresh</strong>.</li>
+</ul>
+<h3 id="owner-or-creation-date-says-unavailable">Owner or creation date says Unavailable</h3>
+<ul>
+<li><strong>Why:</strong> the file system does not report them through VS Code. Auric Files never invents a value.</li>
+<li><strong>Fix:</strong> none; check in your operating system if you need them.</li>
+</ul>
+<h3 id="the-index-is-slow-on-a-network-drive">The index is slow on a network drive</h3>
+<ul>
+<li><strong>Fix:</strong> lower <code>auricFiles.performance.scanConcurrency</code>, turn off <code>auricFiles.performance.watchWorkspace</code>, and refresh by hand.</li>
+</ul>
+<h2 id="duplicates-trash-and-history">Duplicates, trash and history</h2>
+<h3 id="duplicate-review-compares-by-size">Duplicate review compares by size</h3>
+<ul>
+<li><strong>Why:</strong> content hashing is not available in this environment (for example a virtual workspace).</li>
+<li><strong>Fix:</strong> none needed; review the groups carefully before trashing.</li>
+</ul>
+<h3 id="a-deleted-file-is-not-in-the-workspace-trash">A deleted file is not in the workspace trash</h3>
+<ul>
+<li><strong>Why:</strong> it was deleted with <strong>Delete Permanently</strong>, with VS Code&#39;s own Explorer, or while <code>auricFiles.safety.useWorkspaceTrash</code> was off; or it expired after <code>auricFiles.safety.trashRetentionDays</code>, or was purged to stay under <code>auricFiles.safety.trashMaxBytes</code>.</li>
+<li><strong>Fix:</strong> restore from version control or a backup.</li>
+</ul>
+<h3 id="undo-did-not-reverse-my-change">Undo did not reverse my change</h3>
+<ul>
+<li><strong>Why:</strong> the history only records Auric operations, not editor edits or native Explorer actions.</li>
+<li><strong>Fix:</strong> use the editor&#39;s undo or VS Code&#39;s Explorer undo for those changes.</li>
+</ul>
+<h3 id="the-merge-editor-does-not-open">The merge editor does not open</h3>
+<ul>
+<li><strong>Why:</strong> your VS Code-based editor does not provide the merge editor, or you selected fewer than two or more than three files.</li>
+<li><strong>Fix:</strong> select two files, or a base and two inputs, in VS Code itself.</li>
+</ul>
+<h2 id="icon-tools">Icon tools</h2>
+<h3 id="no-compatible-theme-active">&quot;No compatible theme active&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the icon tools need the Auric Artisan File Icons <strong>Facet</strong> or <strong>Playful</strong> icon theme to be active.</li>
+<li><strong>Fix:</strong> install Auric Artisan File Icons and choose one of those themes with <strong>Preferences: File Icon Theme</strong>, or ignore the section.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Reference: commands, keys and settings</a><a href="faq.html"><span>Next</span>FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#actions-do-nothing-or-are-refused">Actions do nothing or are refused</a></li><li><a href="#shortcuts">Shortcuts</a></li><li><a href="#creation">Creation</a></li><li><a href="#related-files-search-and-properties">Related files, search and Properties</a></li><li><a href="#duplicates-trash-and-history">Duplicates, trash and history</a></li><li><a href="#icon-tools">Icon tools</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Picker modes — Auric Artisan Docs</title>
+<meta name="description" content="Choose between the Auric picker and VS Code's native colour picker, and learn exactly which VS Code settings each mode changes.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="picker-modes.html" aria-current="page">Picker modes</a></li>
+<li><a href="reference.html">Auric Color reference</a></li>
+<li><a href="troubleshooting.html">Auric Color troubleshooting</a></li>
+<li><a href="faq.html">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Picker modes</h1>
+<p class="lede">Choose between the Auric picker and VS Code's native colour picker, and learn exactly which VS Code settings each mode changes.</p>
+<p>VS Code has its own colour picker: in CSS (and in other languages when an extension provides colours) it draws small <strong>colour decorators</strong> before colour values and opens a draggable picker when you hover or click them. VS Code offers no way for an extension to replace that picker, so two pickers would stack on top of each other. Auric Color solves this with a <strong>picker mode</strong>.</p>
+<h2 id="the-three-set-ups">The three set-ups</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Set-up</th><th>How to get it</th><th>Swatches</th><th>Clicking a colour</th><th>Hover</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric picker</strong> (default)</td><td><code>colorPicker.mode</code> = <code>auric</code>, <code>colorPicker.nativeHoverPicker</code> = <code>false</code></td><td>Auric&#39;s swatches</td><td>Auric&#39;s inline picker in the hover (or per <code>colorPicker.clickAction</code>)</td><td>Full Auric hover with Spectrum, Hue and Alpha rows</td></tr>
+<tr><td><strong>Auric with VS Code&#39;s sliders</strong></td><td><code>colorPicker.mode</code> = <code>auric</code>, <code>colorPicker.nativeHoverPicker</code> = <code>true</code></td><td>VS Code&#39;s decorators</td><td>The hover, per <code>colorPicker.clickAction</code></td><td>VS Code&#39;s draggable picker above Auric&#39;s readouts (no Spectrum, Hue or Alpha rows)</td></tr>
+<tr><td><strong>VS Code native picker</strong></td><td><code>colorPicker.mode</code> = <code>decorators</code></td><td>VS Code&#39;s decorators</td><td>VS Code&#39;s picker</td><td>Auric&#39;s readouts with only <strong>Shades</strong> and <strong>Brand</strong> rows</td></tr>
+</tbody></table></div>
+<p>In the last two set-ups Auric Color supplies the colours it detects to VS Code&#39;s picker in non-CSS languages too, so VS Code&#39;s picker also works in JavaScript, TypeScript, HTML, Vue, Svelte, JSON, Markdown and the other supported languages. VS Code&#39;s picker then offers the colour in hex, <code>rgb()</code>, <code>hsl()</code>, <code>hwb()</code>, <code>oklch()</code>, <code>oklab()</code>, <code>lch()</code>, <code>lab()</code> and <code>color(display-p3 …)</code>, starting with the token&#39;s own format.</p>
+<h2 id="what-auric-mode-changes-in-your-settings">What Auric mode changes in your settings</h2>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> In the default <strong>Auric picker</strong> set-up, Auric Color sets VS Code&#39;s <code>editor.colorDecorators</code> setting to <code>false</code> in your <strong>user</strong> settings, and also overrides a workspace or folder value that says otherwise. It does this when it starts, and again whenever the setting is switched back on while Auric mode is active (for example by Settings Sync or another extension), when you switch editors, and when the VS Code window regains focus.</p>
+</blockquote>
+<p>This turns off VS Code&#39;s decorators in every language, for every workspace, while Auric Color is installed in this mode. Only Auric Color touches this setting; the other Studio extensions never do.</p>
+<p>If you uninstall Auric Color, <code>editor.colorDecorators</code> stays <code>false</code>. Before uninstalling, run <strong>Restore native color picker (use VS Code&#39;s)</strong>, or afterwards set <code>&quot;editor.colorDecorators&quot;: true</code> in your settings.</p>
+<h2 id="switch-mode">Switch mode</h2>
+<h3 id="choose-color-picker-mode">Choose Color Picker Mode</h3>
+<ol>
+<li>Run <strong>Auric Artisan: Choose Color Picker Mode</strong> (also on the editor&#39;s right-click menu, and <strong>Picker mode</strong> in the colour hover).</li>
+<li>The list <strong>Auric Artisan color picker mode</strong> offers:<ul>
+<li><strong>Auric picker (default)</strong>: Auric&#39;s own inline picker in the hover plus accessibility tools; VS Code&#39;s colour decorators turn off.</li>
+<li><strong>VS Code native picker</strong>: keeps <code>editor.colorDecorators</code> on so clicking a colour opens VS Code&#39;s draggable picker, with Auric&#39;s hover, scan, contrast and accessibility tools on top.</li>
+</ul>
+</li>
+<li>Your choice is saved to your user settings: <code>colorPicker.mode</code>, <code>colorPicker.swatches</code> and <code>colorPicker.inlineSwatches</code> are set to match, and <code>editor.colorDecorators</code> is switched off or on.</li>
+</ol>
+<p>A message confirms the result:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Result</th><th>Message</th></tr></thead>
+<tbody>
+<tr><td>Auric picker</td><td><strong>Auric Artisan: using the Auric spectrum picker. VS Code Color Decorators are off.</strong></td></tr>
+<tr><td>Auric with VS Code&#39;s sliders</td><td><strong>Auric Artisan: hover any color for the draggable picker plus Auric&#39;s accessibility tools.</strong></td></tr>
+<tr><td>VS Code native picker</td><td><strong>Auric Artisan: using VS Code Color Decorators with Auric hover, scan, and contrast tools.</strong></td></tr>
+</tbody></table></div>
+<h3 id="one-step-commands">One-step commands</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it sets</th></tr></thead>
+<tbody>
+<tr><td><strong>Disable native color picker (use Auric Artisan)</strong></td><td><code>nativeHoverPicker</code> off, Auric mode, VS Code&#39;s decorators off</td></tr>
+<tr><td><strong>Restore native color picker (use VS Code&#39;s)</strong></td><td><code>nativeHoverPicker</code> on, native mode, VS Code&#39;s decorators on; also stops the first-pick question below</td></tr>
+</tbody></table></div>
+<h3 id="the-first-pick-question">The first-pick question</h3>
+<p>If VS Code&#39;s decorators are on when you first run <strong>Pick / edit color</strong> in Auric mode, Auric Color asks <strong>Auric Artisan can replace VS Code&#39;s native color picker with its own. Turn off the native color decorators?</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Answer</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Use Auric Artisan picker</strong></td><td>Switches to the Auric picker set-up</td></tr>
+<tr><td><strong>Keep native</strong></td><td>Switches to the VS Code native picker set-up</td></tr>
+<tr><td><strong>Don&#39;t ask again</strong></td><td>Changes nothing and does not ask again</td></tr>
+</tbody></table></div>
+<p>The question is asked only once.</p>
+<h2 id="click-behaviour-in-auric-mode">Click behaviour in Auric mode</h2>
+<p><code>auricColor.colorPicker.clickAction</code> controls what a mouse click on a colour literal does (keyboard cursor moves never trigger it):</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Studio label</th><th>Click does</th></tr></thead>
+<tbody>
+<tr><td><code>inlinePicker</code> (default)</td><td>Inline hover picker</td><td>Shows the hover with the inline picker</td></tr>
+<tr><td><code>fullEditor</code></td><td>Spectrum picker panel</td><td>Opens the picker panel beside the editor (or updates the docked picker when it is open)</td></tr>
+<tr><td><code>off</code></td><td>Click disabled</td><td>Only moves the cursor</td></tr>
+</tbody></table></div>
+<p>You can also set this in Studio › Settings › <strong>Color picker</strong>. The older setting <code>colorPicker.autoOpen</code> still works: when it is <code>true</code> and <code>clickAction</code> has never been set, clicks open the picker panel. Prefer <code>clickAction</code>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="palettes-and-shades.html"><span>Previous</span>Palettes and shades</a><a href="reference.html"><span>Next</span>Auric Color reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-three-set-ups">The three set-ups</a></li><li><a href="#what-auric-mode-changes-in-your-settings">What Auric mode changes in your settings</a></li><li><a href="#switch-mode">Switch mode</a></li><li><a href="#click-behaviour-in-auric-mode">Click behaviour in Auric mode</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

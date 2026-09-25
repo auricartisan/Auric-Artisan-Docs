@@ -1,0 +1,48 @@
+---
+title: Auric Artisan Formatter — glossary
+description: Plain-language definitions of the terms used in the Auric Artisan Formatter documentation.
+product: VS Code extensions › Auric Artisan Formatter
+updated: 2026-09-25
+---
+
+# Glossary
+
+**CI (continuous integration)** — automated checks that run on every change, where `auric-format --check` can fail a build if files are unformatted.
+
+**CodeLens** — clickable links VS Code shows above code; the preview uses them for Apply, Compare, Discard and Refresh.
+
+**Configuration file** — a file such as `.auricformatrc` that holds formatting options for a project.
+
+**Default formatter** — the formatter VS Code uses for a language, set with `editor.defaultFormatter`.
+
+**Directive** — a comment in a file that talks to the formatter, such as `auric-format-ignore` or `@auric printWidth=120`.
+
+**Format on save** — formatting a file automatically each time you save it.
+
+**Formatter Studio** — the panel for trying options on your own code (called the Playground in the walkthrough).
+
+**Idempotent** — formatting the output again changes nothing.
+
+**Native tier** — languages with a real parser and printer, rebuilt from their syntax tree.
+
+**Option** — one formatting choice, such as `printWidth` or `singleQuote`. There are 391.
+
+**Parser** — the part that reads source code into a structure the formatter can print.
+
+**Passthrough** — the lightest treatment, for unrecognised files: only whitespace at line ends, blank lines, line endings and the final newline.
+
+**Pragma** — a marker such as `@format` in a file's leading comment that opts the file in.
+
+**Preset** — a named starting set of option values, such as `auric` or `prettier`.
+
+**Print width** — the line length the formatter tries to stay within.
+
+**Safety gate** — the checks every result passes before it is written; on failure, the original text is kept.
+
+**Tier** — how much the formatter is allowed to change for a language: native, universal or passthrough.
+
+**Token** — a meaningful piece of code, such as a keyword, name, operator or string.
+
+**Universal tier** — a structural engine for languages without a native printer; it changes only whitespace, one line in, one line out.
+
+**Workspace scan** — formatting every supported file in memory to see what would change, without writing.

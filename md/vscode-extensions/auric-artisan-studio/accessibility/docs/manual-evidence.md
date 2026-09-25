@@ -1,0 +1,119 @@
+---
+title: Auric Accessibility — Manual evidence
+description: The eight manual test procedures in Auric Accessibility's knowledge database, what each asks you to do, and how to record evidence for what automation cannot decide.
+product: VS Code extensions › Auric Artisan Studio › Auric Accessibility
+updated: 2026-09-25
+---
+
+# Manual evidence
+
+Static checks can find a missing `alt` attribute, but not whether the alt text is accurate; they can find a click handler without a key handler, but not whether a whole task works from the keyboard. Auric Accessibility's knowledge database includes eight **manual checks**: step-by-step procedures for the parts of WCAG a person has to test. Each one says what to do, what counts as a pass or a fail, and what evidence to record.
+
+## Open a manual check
+
+1. Run **Auric Artisan: Open Rulebook & Knowledge Database** (or **Rulebook** on the Overview or the Studio rail).
+2. Manual checks are listed near the top, after the rulebooks, marked **Manual check**. Type part of a title, or a criterion such as `2.4.3`, to find one.
+3. Select it. It opens as a Markdown document with its **Procedure**, **Pass**, **Fail**, **Evidence to record** and **Official sources**.
+
+The **Accessibility engineering rulebook** brings the rules and procedures together. **Build Workspace Knowledge Database** writes all of them to `.auric-artisan/rulebook.md` and `knowledge.json` for your team. See [Rulebook and knowledge database](../../docs/rulebook-and-knowledge.md).
+
+## The eight procedures
+
+### Operate every workflow with a keyboard
+
+WCAG 2.1.1 and 2.1.2. Static analysis can find suspicious handlers, but only interaction testing proves complete keyboard operation.
+
+1. Start at the browser chrome and use only `Tab`, `Shift` + `Tab`, arrow keys, `Enter`, `Space`, `Escape` and documented shortcuts.
+2. Complete each primary task, and open and close every transient surface.
+3. Confirm focus never becomes trapped, except inside a modal that provides an escape action.
+4. Confirm pointer-only operations have an equivalent single-pointer or keyboard path.
+
+**Pass:** every task is operable, focus stays discoverable and you can always move away or dismiss. **Evidence:** workflow name, keystroke sequence, observed focus order, failure recording.
+
+### Verify focus order preserves meaning and operation
+
+WCAG 2.4.3.
+
+1. Traverse the page forward and backward at each supported responsive breakpoint.
+2. Compare focus movement with reading order, visual grouping and task dependencies.
+3. Open dynamic content and confirm focus moves to and returns from it predictably.
+4. Record any jump that changes meaning or forces the user to rediscover context.
+
+**Evidence:** viewport, ordered focus trace, DOM and visual comparison, dynamic-state notes.
+
+### Confirm text alternatives communicate the same purpose
+
+WCAG 1.1.1. Presence checks cannot decide whether alternative text is accurate, concise, contextual or intentionally empty.
+
+1. Identify the purpose the non-text content serves in its context.
+2. Inspect the computed accessible name and any adjacent equivalent text.
+3. Confirm informative content is equivalent and decorative content is ignored.
+4. Repeat for each distinct use; the same asset can need different alternatives in different places.
+
+**Evidence:** element locator, accessible name, visible context, reviewer rationale.
+
+### Review media alternatives for accuracy and synchronization
+
+WCAG 1.2.2, 1.2.3 and 1.2.5. A `<track>` element proves only presence.
+
+1. Play the complete media with captions on, and separately with the audio muted.
+2. Confirm speech, speakers, meaningful sounds and timing are accurate.
+3. Confirm important visual information is available in narration, audio description or an equivalent.
+4. Check the controls and alternatives remain keyboard and screen-reader operable.
+
+**Evidence:** media identifier, timecode, caption or transcript excerpt, reviewer notes.
+
+### Confirm name, role, value, and state in an accessibility tree
+
+WCAG 4.1.2.
+
+1. Inspect the element in the browser's accessibility tree.
+2. Confirm its computed name, role, value, states and relationships match the visible control.
+3. Operate it with at least one supported screen reader and browser combination.
+4. Confirm state changes are exposed when they happen, without duplicate or stale announcements.
+
+**Evidence:** browser and assistive technology, accessibility-tree snapshot, announcement transcript.
+
+### Test zoom, reflow, and text spacing without loss
+
+WCAG 1.4.4, 1.4.10 and 1.4.12.
+
+1. Test at 200% browser zoom and at a 320 CSS-pixel viewport where applicable.
+2. Apply the WCAG text-spacing overrides for line, paragraph, letter and word spacing.
+3. Exercise controls and reveal hidden, expanded, validation and error states.
+4. Confirm content does not clip, overlap, disappear or require two-dimensional scrolling, except for essential layouts.
+
+**Evidence:** viewport and zoom, spacing preset, screenshots, exception rationale.
+
+### Verify important status changes are announced without moving focus
+
+WCAG 4.1.3. Live-region markup alone does not prove that a meaningful, timely announcement reaches users.
+
+1. Trigger each asynchronous success, progress, warning and error state.
+2. Listen with a supported screen reader while focus stays on the control that started it.
+3. Confirm the announcement is timely, concise, unique and includes what is needed for the next action.
+4. Confirm rapid updates do not flood or overwrite critical messages.
+
+**Evidence:** trigger, announcement transcript, timing, focus location.
+
+### Complete error recovery and authentication flows
+
+WCAG 3.3.1, 3.3.3, 3.3.7 and 3.3.8.
+
+1. Trigger each validation and service-error state with realistic invalid input.
+2. Confirm errors identify the field and explain how to recover, in text.
+3. Confirm entered data remains available and repeated entry is not unnecessarily required.
+4. Verify authentication offers a path that does not depend solely on memory, transcription or puzzle solving.
+
+**Evidence:** scenario, input, error text, recovery path, authentication alternative.
+
+## Record your evidence
+
+The procedures list what to record so that another reviewer can repeat the test. Keep it wherever your team tracks accessibility work. To make your own procedures part of the database, add them as `manual-check` entries in `.auric-artisan/knowledge-overrides.json`; accessibility manual checks you add are marked as ACT-aligned manual assessments automatically. See [Add team guidance](../../docs/rulebook-and-knowledge.md#add-team-guidance-with-knowledge-overridesjson).
+
+The manual checks follow the structure of the W3C's ACT rules format, but make no claim of ACT conformance.
+
+## Related
+
+- [Rules](rules.md)
+- [Limits and accuracy](../others/limits-and-accuracy.md)

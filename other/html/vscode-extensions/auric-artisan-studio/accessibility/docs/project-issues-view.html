@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Project Issues view — Auric Artisan Docs</title>
+<meta name="description" content="Browse, group, search and act on every finding from the last scan in the Project Issues tree view.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html">Manual evidence</a></li>
+<li><a href="project-issues-view.html" aria-current="page">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="reference.html">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>The Project Issues view</h1>
+<p class="lede">Browse, group, search and act on every finding from the last scan in the Project Issues tree view.</p>
+<p><strong>Project Issues</strong> is a tree view in the <strong>Auric Accessibility</strong> sidebar. It lists every finding from the last scan (or the live re-grade), so you can work through a project without opening files one by one.</p>
+<h2 id="before-a-scan">Before a scan</h2>
+<p>The view shows two rows: <strong>Run a project scan</strong> (<em>WCAG, contrast, CVD</em>) and <strong>Open Auric Artisan Studio</strong>. Select either.</p>
+<h2 id="the-title-bar">The title bar</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Command</th></tr></thead>
+<tbody>
+<tr><td>Search</td><td><strong>Search Accessibility Issues</strong>: filter the tree</td></tr>
+<tr><td>Tree</td><td><strong>Group Accessibility Issues (Type / File / Severity)</strong></td></tr>
+<tr><td>Play</td><td><strong>Scan Project for Accessibility (Use Cache)</strong></td></tr>
+<tr><td>Studio</td><td><strong>Open Accessibility Studio</strong></td></tr>
+<tr><td>Collapse All</td><td>Collapses every group</td></tr>
+<tr><td><strong>…</strong> menu</td><td><strong>Generate Agent-Ready Remediation Plan</strong></td></tr>
+</tbody></table></div>
+<p>The Activity Bar icon shows a <strong>badge</strong> with the total number of issues (WCAG, contrast, colour-vision risk and code health), and the view&#39;s description reads, for example, <code>WCAG 2.2 · score 82</code>.</p>
+<h2 id="the-summary-row">The summary row</h2>
+<p>The first row reads <strong>Project accessibility: 82/100 B</strong> with the number of files scanned and a small score ring. Select it to open the Studio&#39;s Home. Hover it for a table of the score, audit profile, files scanned, WCAG issues, contrast failures, colour-vision risks, branding (when any), counts by level (A, AA, AAA) and by WCAG version, and links to <strong>Open full scan report</strong>, <strong>Group by…</strong> and <strong>Search issues</strong>.</p>
+<h2 id="group-the-tree">Group the tree</h2>
+<p>Run <strong>Group Accessibility Issues</strong> (or the tree button) and choose:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Groups</th></tr></thead>
+<tbody>
+<tr><td><strong>By type</strong> (default)</td><td><strong>WCAG issues</strong>, <strong>Contrast failures</strong>, <strong>CVD risk</strong>, <strong>Branding</strong> (only when present, marked <strong>excluded from score</strong>), <strong>Code health</strong>, <strong>Confusable colors</strong></td></tr>
+<tr><td><strong>By file</strong></td><td>One group per file, busiest first, described as <code>N issues - worst serious</code>; rows sorted by line</td></tr>
+<tr><td><strong>By severity</strong></td><td><strong>Critical</strong>, <strong>Serious</strong>, <strong>Moderate</strong>, <strong>Minor</strong>, and <strong>Branding (N) — excluded from score</strong></td></tr>
+</tbody></table></div>
+<p>Your choice is remembered. In type mode each group shows its count; groups list up to 500 rows (800 for code health). File groups show up to 200 rows, and severity groups up to 300.</p>
+<h2 id="rows">Rows</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Row type</th><th>Label</th><th>Description</th><th>Icon</th></tr></thead>
+<tbody>
+<tr><td>WCAG</td><td><code>1.1.1 Non-text Content</code></td><td><code>critical - src/index.html:12</code></td><td>Impact icon: error, warning, info or circle</td></tr>
+<tr><td>Contrast failure</td><td><code>#999999 on #FFFFFF</code></td><td><code>2.85:1 - src/app.css:40</code></td><td>A small sample of the pair</td></tr>
+<tr><td>Colour-vision risk</td><td><code>#hex on #hex</code></td><td>Ratio <code>-&gt;</code> CVD ratio, and location</td><td>A sample of the pair</td></tr>
+<tr><td>Code health</td><td>The message</td><td>Category and location</td><td>Category icon</td></tr>
+<tr><td>Branding</td><td><code>#D3AF37 on #FFFFFF</code></td><td>Kind, ratio and location</td><td>A sample of the pair</td></tr>
+<tr><td>Confusable colors</td><td><code>#hex &lt;-&gt; #hex</code></td><td><code>DeltaE 24 -&gt; 6 (deuteranopia)</code></td><td>A sample of the pair</td></tr>
+</tbody></table></div>
+<p>Select a row to open the file at that line. Hover a row for the full issue card: the problem, priority, before-and-after and fix, as in the editor. Code-health rows show the category, message, evidence (redacted for secrets), location and fix.</p>
+<h3 id="row-actions">Row actions</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Shown on</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Open WCAG Documentation</strong></td><td>WCAG rows</td><td>Opens the W3C <em>Understanding</em> page for the criterion</td></tr>
+<tr><td><strong>Open Issue in Contrast Studio</strong></td><td>Contrast and colour-vision rows</td><td>Opens the pair in the Contrast Studio, linked to its line</td></tr>
+</tbody></table></div>
+<p>These two commands are not in the Command Palette; use them from the row.</p>
+<h2 id="search">Search</h2>
+<ol>
+<li>Run <strong>Search Accessibility Issues</strong> (or the search button).</li>
+<li>Type any text: part of a message, a criterion number, an impact, a file path or a colour, for example <code>label</code>, <code>auth/settings</code>, <code>#777777</code> or <code>serious</code>.</li>
+<li>The tree shows only matching rows, with counts such as <code>WCAG issues (3/40)</code>, and every group opens. A <strong>Filtered by &quot;label&quot;</strong> row appears at the top; select it (or run <strong>Clear Accessibility Issue Search</strong>) to clear the filter.</li>
+</ol>
+<p>The search is a case-insensitive text match on each row&#39;s details.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="manual-evidence.html"><span>Previous</span>Manual evidence</a><a href="project-scans.html"><span>Next</span>Project scans</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-a-scan">Before a scan</a></li><li><a href="#the-title-bar">The title bar</a></li><li><a href="#the-summary-row">The summary row</a></li><li><a href="#group-the-tree">Group the tree</a></li><li><a href="#rows">Rows</a></li><li><a href="#search">Search</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

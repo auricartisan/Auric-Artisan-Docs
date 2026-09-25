@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check a colour pair — Auric Artisan Docs</title>
+<meta name="description" content="Enter a text and background colour, read the WCAG 2.1 ratio, and work out which of the five grades applies to what you are colouring.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Contrast Checker</a>
+<h2>Contrast Checker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Contrast Checker</a></li>
+<li><a href="check-a-colour-pair.html" aria-current="page">Check a colour pair</a></li>
+<li><a href="make-a-pair-pass.html">Make a pair pass</a></li>
+<li><a href="share-a-pair.html">Share a pair</a></li>
+<li><a href="reference.html">Contrast Checker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Contrast Checker</a></li>
+<li><a href="faq.html">Contrast Checker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Contrast Checker</a> &rsaquo; <a href="README.html">Contrast Checker documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Check a colour pair</h1>
+<p class="lede">Enter a text and background colour, read the WCAG 2.1 ratio, and work out which of the five grades applies to what you are colouring.</p>
+<h2 id="enter-the-colours">Enter the colours</h2>
+<p>Each colour has two controls that stay in step: a colour swatch and a hex field. Use the swatch to explore and the field to paste a value from a stylesheet or a design file.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Starts at</th></tr></thead>
+<tbody>
+<tr><td><strong>Text colour</strong> swatch</td><td>Opens your system&#39;s colour picker. Moving it writes the hex into the field and re-grades as you go.</td><td><code>#1a1400</code></td></tr>
+<tr><td><strong>Text colour</strong> hex field</td><td>Accepts a typed or pasted hex value and re-grades on every keystroke</td><td><code>#1A1400</code></td></tr>
+<tr><td>Swap button</td><td>Exchanges the two colours and re-grades</td><td>—</td></tr>
+<tr><td><strong>Background colour</strong> swatch</td><td>The same picker for the background</td><td><code>#f7f3e6</code></td></tr>
+<tr><td><strong>Background colour</strong> hex field</td><td>The same typed entry for the background</td><td><code>#F7F3E6</code></td></tr>
+</tbody></table></div>
+<h3 id="what-the-hex-fields-accept">What the hex fields accept</h3>
+<p>Hex only, in three or six digits, with or without a leading <code>#</code>. These are all the same colour to the checker: <code>#1A1400</code>, <code>1A1400</code>. Three digits are expanded, so <code>#f00</code> and <code>f00</code> both mean <code>#FF0000</code>.</p>
+<p>When you leave a field, a value it understood is rewritten in full: uppercase, six digits, with a <code>#</code>. Anything else is not accepted: <code>rgb()</code>, <code>hsl()</code>, colour names such as <code>rebeccapurple</code>, and eight-digit hex with an alpha channel.</p>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> While a field holds something it cannot read, such as a half-typed <code>#1A</code>, the checker grades pure black in its place (for the text) or pure white (for the background). The ratio you see then is not yours. Finish typing, or press <code>Tab</code> to leave the field, before you trust the number.</p>
+</blockquote>
+<h2 id="read-the-ratio">Read the ratio</h2>
+<p>The large number under <strong>Contrast ratio</strong> is the WCAG 2.1 contrast ratio, to two decimal places, for example <strong>4.53:1</strong> or <strong>21.00:1</strong>.</p>
+<ul>
+<li><strong>Range:</strong> from 1:1 (two identical colours) to 21:1 (black on white).</li>
+<li><strong>Updates:</strong> on every keystroke and every movement of a swatch. There is no Calculate button.</li>
+<li><strong>Direction:</strong> none. Dark on light and light on dark give the same number, so swapping never changes it.</li>
+</ul>
+<h3 id="how-the-ratio-is-worked-out">How the ratio is worked out</h3>
+<p>WCAG measures each colour&#39;s <strong>relative luminance</strong>, which is how much light it gives off on a scale from 0 (black) to 1 (white), with green counting most and blue least, as in human vision. The ratio is the lighter luminance plus 0.05, divided by the darker luminance plus 0.05. This is the sRGB formula in WCAG 2.1, and it is the number an auditor will quote.</p>
+<h3 id="rounding-at-the-threshold">Rounding at the threshold</h3>
+<p>The badges compare the exact, unrounded ratio with each threshold, but the number on screen is rounded to two decimals. A pair measuring 4.4996 prints <strong>4.50:1</strong> beside a <strong>Fail</strong> badge for body text AA. The badge is right. If a pair lands that close, treat it as failing and give yourself some margin.</p>
+<p>A ratio exactly equal to a threshold passes: a true 4.5 reads <strong>Pass</strong>.</p>
+<h2 id="read-the-five-grades">Read the five grades</h2>
+<p>Every pair is graded against five thresholds at once, so you never have to choose a mode first.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Threshold</th><th>Covers</th></tr></thead>
+<tbody>
+<tr><td><strong>Body text · AA</strong></td><td>4.5:1</td><td>Ordinary running text at Level AA, the level most laws and contracts point at</td></tr>
+<tr><td><strong>Body text · AAA</strong></td><td>7:1</td><td>Body text at Level AAA, worth aiming for on long-form reading</td></tr>
+<tr><td><strong>Large text · AA</strong></td><td>3:1</td><td>Text at or above the large-text size, at Level AA</td></tr>
+<tr><td><strong>Large text · AAA</strong></td><td>4.5:1</td><td>Large text at Level AAA</td></tr>
+<tr><td><strong>UI &amp; graphics</strong></td><td>3:1</td><td>Interface components, focus indicators and meaningful graphics, against what sits next to them</td></tr>
+</tbody></table></div>
+<h3 id="which-row-applies-to-you">Which row applies to you</h3>
+<p>Choose the row by what you are colouring, not by which badge is greenest.</p>
+<ul>
+<li><strong>Paragraphs, labels, table cells, help text:</strong> body text. Use the 4.5:1 row, with 7:1 as a stretch goal.</li>
+<li><strong>Headings and display type:</strong> large text, but only if the size qualifies (below).</li>
+<li><strong>Input borders, toggle states, icon buttons, focus rings, the meaningful parts of a chart:</strong> the <strong>UI &amp; graphics</strong> row at 3:1. Measure against the colour actually next to the component, which may not be the page background.</li>
+</ul>
+<h3 id="what-counts-as-large-text">What counts as large text</h3>
+<p>At least 18.66 pixels in bold, or at least 24 pixels otherwise. It is a size threshold, not a heading rule: a 20-pixel heading in a light weight is body text as far as WCAG is concerned, and must reach 4.5:1.</p>
+<h3 id="what-is-out-of-scope">What is out of scope</h3>
+<p>WCAG 2.1 exempts inactive (disabled) controls, pure decoration, text that is part of a logo, and text inside a picture of something else. The checker grades whatever pair you give it, so a <strong>Fail</strong> on a disabled button&#39;s label is not automatically a defect. Everything a person has to read or operate is in scope.</p>
+<h2 id="use-the-preview">Use the preview</h2>
+<p>The panel under the controls is painted in your pair and holds:</p>
+<ul>
+<li>a large line, &quot;Large text looks like this&quot;, at the large-text size;</li>
+<li>a body-text paragraph at a realistic line length, so you can judge the pair over several lines;</li>
+<li>an &quot;Interface element&quot; chip with a border in the text colour, so you can see the pair as a control outline.</li>
+</ul>
+<p>Look at it. The ratio is a floor, not a verdict. The WCAG 2.1 formula ignores font weight, ignores size beyond the large-text threshold, and does not model the way light text on a dark background appears to spread. A thin weight at 4.6:1 can be tiring to read; a heavy weight at 4.3:1 can look crisp and still fail an audit.</p>
+<p>The preview always shows your two colours, in both light and dark site themes.</p>
+<h2 id="a-check-in-five-steps">A check in five steps</h2>
+<ol>
+<li>Enter the text colour.</li>
+<li>Enter the background colour.</li>
+<li>Read the ratio.</li>
+<li>Find the row that matches what you are colouring, and read its badge.</li>
+<li>If it fails, see <a href="make-a-pair-pass.html">Make a pair pass</a>. Either way, <a href="share-a-pair.html">share the pair</a> if someone else needs to see it.</li>
+</ol>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Contrast Checker</a><a href="make-a-pair-pass.html"><span>Next</span>Make a pair pass</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#enter-the-colours">Enter the colours</a></li><li><a href="#read-the-ratio">Read the ratio</a></li><li><a href="#read-the-five-grades">Read the five grades</a></li><li><a href="#use-the-preview">Use the preview</a></li><li><a href="#a-check-in-five-steps">A check in five steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

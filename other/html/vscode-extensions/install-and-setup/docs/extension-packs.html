@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The two extension packs — Auric Artisan Docs</title>
+<meta name="description" content="What the Icon Pack and the Studio Full Pack install, how to install them, and how to keep only the parts you want.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html" aria-current="page">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html">Install from the command line</a></li>
+<li><a href="install-from-vsix.html">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>The two extension packs</h1>
+<p class="lede">What the Icon Pack and the Studio Full Pack install, how to install them, and how to keep only the parts you want.</p>
+<p>An <em>extension pack</em> is an extension that contains no features of its own. It lists other extensions, and installing it installs all of them. Auric Artisan publishes two.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Pack</th><th>Extension ID</th><th>Installs</th><th>Minimum VS Code</th></tr></thead>
+<tbody>
+<tr><td>Auric Artisan Icon Pack</td><td><code>auric-artisan.auric-artisan-icon-pack</code></td><td>Auric Icons: Modern, Auric Icons: Playful, Auric Artisan Emoji, Auric Icons: Drawn</td><td>1.85</td></tr>
+<tr><td>Auric Artisan Studio — Full Pack</td><td><code>auric-artisan.auric-artisan</code></td><td>Auric Color, Auric Accessibility, Auric Code Health</td><td>1.74</td></tr>
+</tbody></table></div>
+<p>Note the Full Pack&#39;s ID: it is the bare <code>auric-artisan.auric-artisan</code>, not <code>auric-artisan.auric-artisan-studio</code>.</p>
+<h2 id="icon-pack">Icon Pack</h2>
+<p>The Icon Pack installs the four creative libraries together:</p>
+<ul>
+<li>Auric Icons: Modern — <code>auric-artisan.auric-artisan-modern-icon</code></li>
+<li>Auric Icons: Drawn — <code>auric-artisan.auric-icons-drawn</code></li>
+<li>Auric Icons: Playful — <code>auric-artisan.auric-icons-playful</code></li>
+<li>Auric Artisan Emoji — <code>auric-artisan.auric-artisan-emoji</code></li>
+</ul>
+<p>The pack adds nothing of its own. Each library keeps its own commands and settings. When more than one icon collection is installed, they merge into one Icon Studio instead of adding separate sidebars.</p>
+<h2 id="studio-full-pack">Studio Full Pack</h2>
+<p>The Full Pack installs the three focused Studio extensions:</p>
+<ul>
+<li>Auric Color — <code>auric-artisan.auric-color</code></li>
+<li>Auric Accessibility — <code>auric-artisan.auric-a11y</code></li>
+<li>Auric Code Health — <code>auric-artisan.auric-codehealth</code></li>
+</ul>
+<p>You can enable or disable each of the three independently.</p>
+<h2 id="install-a-pack">Install a pack</h2>
+<ol>
+<li>Open the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>).</li>
+<li>Search for the pack&#39;s ID with the <code>@id:</code> prefix, for example <code>@id:auric-artisan.auric-artisan-icon-pack</code>.</li>
+<li>Select <strong>Install</strong>. VS Code installs the pack and every extension it lists.</li>
+</ol>
+<p>Or, in a terminal:</p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-icon-pack
+code --install-extension auric-artisan.auric-artisan</code></pre>
+<p>The pack&#39;s page in the Extensions view has an <strong>Extension Pack</strong> tab that lists its members.</p>
+<h2 id="keep-only-some-members">Keep only some members</h2>
+<ul>
+<li><strong>Disable a member you do not want.</strong> Find it in the Extensions view and select <strong>Disable</strong>. The rest of the pack keeps working.</li>
+<li><strong>Uninstall a member.</strong> You can uninstall an individual member. VS Code may reinstall it if you later reinstall or update the pack.</li>
+<li><strong>Remove the whole set.</strong> Uninstalling a pack offers to uninstall the extensions it installed as well. Read the prompt and choose accordingly.</li>
+<li><strong>Install members individually instead.</strong> If you only want one or two, skip the pack and install those IDs directly.</li>
+</ul>
+<h2 id="packs-and-vsix-files">Packs and VSIX files</h2>
+<p>A pack installed from a VSIX file only fetches its members if the editor can reach the Visual Studio Marketplace. In Cursor, Windsurf, VSCodium or an offline machine, install each member&#39;s VSIX. See <a href="install-from-vsix.html">Install from a VSIX file</a>.</p>
+<p>After installing a pack, the Extensions view lists the pack and each of its members under <strong>Installed</strong>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="display-language-hindi.html"><span>Previous</span>Use an extension in Hindi</a><a href="forks-and-other-editors.html"><span>Next</span>Cursor, Windsurf, VSCodium and other editors</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#icon-pack">Icon Pack</a></li><li><a href="#studio-full-pack">Studio Full Pack</a></li><li><a href="#install-a-pack">Install a pack</a></li><li><a href="#keep-only-some-members">Keep only some members</a></li><li><a href="#packs-and-vsix-files">Packs and VSIX files</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extract a site's design system — Auric Artisan Docs</title>
+<meta name="description" content="Read a website's colours, CSS variables, fonts and type scale, and export them as W3C design tokens, Tailwind or CSS.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Workflows</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="audit-a-page-and-fix-contrast.html">Audit a page and fix contrast</a></li>
+<li><a href="back-up-and-move-your-data.html">Back up and move your data</a></li>
+<li><a href="build-a-colour-scale-for-tailwind.html">Build a colour scale for Tailwind</a></li>
+<li><a href="check-and-fix-a-brand-colour.html">Check and fix a brand colour</a></li>
+<li><a href="extract-a-sites-design-system.html" aria-current="page">Extract a site's design system</a></li>
+<li><a href="inspect-and-debug-an-element.html">Inspect and debug an element</a></li>
+<li><a href="review-a-page-for-colour-blindness.html">Review a page for colour blindness</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Workflows</a></nav>
+<p class="kicker">Browser extension › Workflows</p>
+<h1>Extract a site&#39;s design system</h1>
+<p class="lede">Read a website's colours, CSS variables, fonts and type scale, and export them as W3C design tokens, Tailwind or CSS.</p>
+<p>Use this workflow to study how a site is built, to start a theme from an existing product, or to audit whether a site uses its tokens consistently. Respect the site&#39;s rights: reading its CSS for study is one thing, copying its brand is another.</p>
+<h2 id="1-read-its-tokens">1. Read its tokens</h2>
+<ol>
+<li>Open the site and go to a representative page.</li>
+<li>Open Code › <strong>Tokens</strong> and choose <strong>Read the tokens</strong>.</li>
+<li>Read the summary: how many CSS variables, font families and sizes it found.</li>
+<li>Scan <strong>CSS variables</strong>. Colour variables have swatches. Click one to copy <code>var(--name)</code>, or Shift-click to copy its value.</li>
+<li>Look at <strong>Fonts</strong> (most used first) and <strong>Type scale</strong> (smallest first).</li>
+</ol>
+<h2 id="2-export-the-tokens">2. Export the tokens</h2>
+<p>Choose the format your project uses:</p>
+<ul>
+<li><strong>W3C tokens</strong> for design-token tools. Colours, dimensions and other values are grouped.</li>
+<li><strong>Tailwind @theme</strong> for a Tailwind v4 project.</li>
+<li><strong>CSS vars</strong> for a plain <code>:root</code> block.</li>
+<li><strong>JSON</strong> for everything, including fonts and sizes.</li>
+</ul>
+<p>Each copies to the clipboard. Choose <strong>Save snippet</strong> to keep the CSS variables in Snippets.</p>
+<h2 id="3-read-the-colours-actually-used">3. Read the colours actually used</h2>
+<p>Variables show what a site declares; computed colours show what it uses.</p>
+<ol>
+<li>Open Colour › <strong>Page palette</strong> and choose <strong>Read the page&#39;s colours</strong>.</li>
+<li>Switch the mode to <strong>Dominant (k-means)</strong> to see eight representative colours, or <strong>Sort by hue</strong> to see families.</li>
+<li>Compare the palette with the variables. Colours that appear in the palette but not among the variables may be hard-coded.</li>
+</ol>
+<h2 id="4-export-the-palette">4. Export the palette</h2>
+<p>In Page palette, choose <strong>@theme</strong>, <strong>Tailwind</strong>, <strong>SCSS</strong>, <strong>Tokens</strong>, <strong>CSS</strong> or <strong>oklch()</strong>, or download <strong>ASE</strong> for design tools that read Adobe swatch files. <strong>Save</strong> keeps it in your library.</p>
+<h2 id="5-check-a-few-components">5. Check a few components</h2>
+<ol>
+<li>On Home, choose <strong>Inspect</strong> and click a button, a card and a heading.</li>
+<li>For each, press <code>C</code> to copy its CSS, and read its typography and effects.</li>
+</ol>
+<p><strong>The result:</strong> the site&#39;s tokens, palette and key component styles, in the formats your project uses.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../code/tokens.html">Tokens</a></li>
+<li><a href="../colour/page-palette.html">Page palette</a></li>
+<li><a href="../code/code-export.html">Code export formats</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="check-and-fix-a-brand-colour.html"><span>Previous</span>Check and fix a brand colour</a><a href="inspect-and-debug-an-element.html"><span>Next</span>Inspect and debug an element</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#1-read-its-tokens">1. Read its tokens</a></li><li><a href="#2-export-the-tokens">2. Export the tokens</a></li><li><a href="#3-read-the-colours-actually-used">3. Read the colours actually used</a></li><li><a href="#4-export-the-palette">4. Export the palette</a></li><li><a href="#5-check-a-few-components">5. Check a few components</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

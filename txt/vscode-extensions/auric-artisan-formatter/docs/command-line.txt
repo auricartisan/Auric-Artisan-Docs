@@ -1,0 +1,152 @@
+==============================================================================
+COMMAND LINE AND CI
+==============================================================================
+Run the same Auric formatting engine from a terminal with auric-format, check
+formatting in CI, and use its flags and exit codes.
+Area: VS Code extensions › Auric Artisan Formatter   Updated: 2026-09-25
+
+`auric-format` runs the same engine, options, configuration files and safety
+gate as the extension, from a terminal. Use it to check formatting in
+continuous integration (CI) or to format many files in a script.
+
+WHERE IT IS
+===========
+
+The command line ships inside the installed extension as the script
+`bin/auric-format.js`. It needs Node.js 16 or newer. It is not published as a
+separate npm package at the time of writing.
+
+VS Code installs extensions in a folder named after the extension and version,
+for example:
+
+    ~/.vscode/extensions/auric-artisan.auric-artisan-formatter-0.1.0/bin/auric-format.js
+
+On Windows, `~` is your user folder (`%USERPROFILE%`). Run it with Node:
+
+    node ~/.vscode/extensions/auric-artisan.auric-artisan-formatter-0.1.0/bin/auric-format.js --check .
+
+The examples below write `auric-format` for short. To use the bare name,
+create a shell alias or a small wrapper script that runs the command above. A
+CI machine needs the extension's files available in the same way; the engine
+itself has no runtime dependencies beyond Node.js.
+
+COMMON TASKS
+============
+
+    auric-format --write src              # rewrite files in place
+    auric-format --check .                # exit 1 if anything is unformatted
+    auric-format --preset prettier -w .   # start from a preset
+    cat a.css | auric-format --stdin-filepath a.css
+    auric-format --explain src/weird.scss # why did it do that?
+
+FLAGS
+=====
+
+  Flag:         `-w`, `--write`
+  What it does: Rewrite each file in place
+
+  Flag:         `-c`, `--check`
+  What it does: Report which files need formatting, change nothing, exit
+                non-zero if any do
+
+  Flag:         `-l`, `--list-different`
+  What it does: Print the names of files that differ from the formatted output
+
+  Flag:         `--stdin-filepath <path>`
+  What it does: Treat standard input as this path, to pick a language and find
+                configuration
+
+  Flag:         `--config <path>`
+  What it does: Use this configuration file instead of searching
+
+  Flag:         `--no-config`
+  What it does: Do not look for a configuration file
+
+  Flag:         `--ignore-path <path>`
+  What it does: Use this ignore file instead of `.auricformatignore`
+
+  Flag:         `--no-ignore`
+  What it does: Do not read any ignore file
+
+  Flag:         `--no-editorconfig`
+  What it does: Do not read `.editorconfig`
+
+  Flag:         `--preset <name>`
+  What it does: Start from a named preset
+
+  Flag:         `--parser <name>`
+  What it does: Force a parser instead of inferring one
+
+  Flag:         `--explain`
+  What it does: Explain the formatting decisions for each file instead of
+                formatting
+
+  Flag:         `--support-info`
+  What it does: Print the languages, parsers and options this build supports,
+                as JSON
+
+  Flag:         `--list-languages`
+  What it does: Print every supported language with its tier and extensions
+
+  Flag:         `--list-presets`
+  What it does: Print every preset with its description
+
+  Flag:         `--find-config`
+  What it does: Print the configuration file that would be used for the given
+                path
+
+  Flag:         `--loglevel <level>`
+  What it does: `silent`, `error`, `warn`, `log` or `debug` (default `log`)
+
+  Flag:         `--concurrency <n>`
+  What it does: How many files to format at once (default: the number of
+                processors)
+
+  Flag:         `-v`, `--version`
+  What it does: Print the version
+
+  Flag:         `-h`, `--help`
+  What it does: Print help
+
+`--check`, `--write`, `--list-different`, `--stdin-filepath`, `--config`,
+`--ignore-path` and `--no-config` behave as they do in Prettier's command
+line.
+
+Formatting options as flags
+---------------------------
+
+Every one of the 391 options is also a flag, written in kebab case:
+`printWidth` is `--print-width`. Booleans take a `--no-` form to switch them
+off. For example:
+
+    auric-format --print-width 100 --single-quote --trailing-comma es5 --no-semi -w src
+
+A mistyped flag suggests the one you probably meant. See the options reference
+[options-reference.txt] for every option.
+
+EXIT CODES
+==========
+
+  Code | Meaning
+  -----+--------------------------------------------------------
+  `0`  | Every file is formatted (or was formatted successfully)
+  `1`  | Files need formatting, or one failed
+  `2`  | A usage error, such as an unknown flag
+
+USE IT IN CI
+============
+
+Add a step that runs the check and fails the build when anything is
+unformatted:
+
+    node path/to/auric-format.js --check .
+
+Output is deterministic: no clock, no randomness and no locale-dependent
+ordering, so the same input and configuration always give the same result on
+every machine.
+
+Inside VS Code, Auric Formatter: Check Formatting Without Writing (CI Mode)
+runs the same check and lists the results in the Problems panel.
+
+When the check passes, the command exits with code `0` and reports nothing to
+fix.

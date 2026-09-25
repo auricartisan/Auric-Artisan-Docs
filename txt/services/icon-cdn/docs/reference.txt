@@ -1,0 +1,212 @@
+==============================================================================
+REFERENCE
+==============================================================================
+Every URL pattern, set, style, loader attribute, method and export of the
+Auric Artisan Icon CDN.
+Area: Services › Icon CDN   Updated: 2026-09-25
+
+CATALOGUE
+=========
+
+  Fact             | Value
+  -----------------+---------------------------------------------------------
+  Host             | https://icons.auricartisan.com
+  Sets             | 7
+  Icons            | 12,896
+  Variants         | 32,803
+  Catalogue built  | 3 June 2026
+  Icons by licence | MIT 7,216; ISC 1,714; Remix v1.0 1,690; Apache 2.0 2,276
+
+URL PATTERNS
+============
+
+  Pattern:        `/icon-cdn.js`
+  What it serves: The loader
+
+  Pattern:        `/icon/<set>/…`
+  What it serves: SVG files, and the Material and Remix webfonts
+
+  Pattern:        `/icon/remix/fonts/remixicon.css`
+  What it serves: Remix Icon's own webfont stylesheet
+
+  Pattern:        `/data/sets.json`
+  What it serves: Set metadata: label, licence, styles, default style, grid,
+                  counts, home, credit
+
+  Pattern:        `/data/index.json`
+  What it serves: One record per icon: id, name, set, styles, category, search
+                  terms
+
+  Pattern:        `/data/bodies/<set>.<style>.json`
+  What it serves: SVG markup for one set and style (a `/` in a style becomes
+                  `-`)
+
+  Pattern:        `/data/material.json`
+  What it serves: Material code points by style
+
+  Pattern:        `/data/stats.json`, `/data/meta.json`
+  What it serves: Catalogue statistics and build information
+
+  Pattern:        `/LICENSE.md`
+  What it serves: The licence reference
+
+SETS AND STYLES
+===============
+
+  Set:                    `lucide`
+  Styles (default first): `regular`
+  Grid:                   24
+  Stroke width applies:   Yes
+
+  Set:                    `phosphor`
+  Styles (default first): `regular`, `thin`, `light`, `bold`, `fill`,
+                          `duotone`
+  Grid:                   256
+  Stroke width applies:   No
+
+  Set:                    `tabler`
+  Styles (default first): `outline`, `filled`
+  Grid:                   24
+  Stroke width applies:   Yes
+
+  Set:                    `remix`
+  Styles (default first): `line`, `fill`
+  Grid:                   24
+  Stroke width applies:   No
+
+  Set:                    `heroicons`
+  Styles (default first): `24/outline`, `24/solid`, `20/solid`, `16/solid`
+  Grid:                   24, 20, 16
+  Stroke width applies:   Outline only
+
+  Set:                    `feather`
+  Styles (default first): `regular`
+  Grid:                   24
+  Stroke width applies:   Yes
+
+  Set:                    `material`
+  Styles (default first): `outlined`, `round`, `sharp`, `regular`, `twotone`
+  Grid:                   Webfont
+  Stroke width applies:   No
+
+Name resolution order when no set is given: Lucide, Phosphor, Tabler, Remix,
+Heroicons, Feather, Material.
+
+PLACEHOLDER ATTRIBUTES
+======================
+
+  Attribute     | Values                            | Default
+  --------------+-----------------------------------+-----------------------
+  `data-icon`   | `set:name`, `set-name` or `name`  | Required
+  `data-style`  | A style of the set                | The set's default
+  `data-size`   | A number (pixels) or a CSS length | None: size it with CSS
+  `data-color`  | Any CSS colour                    | `currentColor`
+  `data-stroke` | A number                          | The set's own width
+
+Filled placeholders get a `data-icon-done` attribute and are not processed
+again.
+
+SCRIPT CONFIGURATION
+====================
+
+  Setting: `data-base` on the script
+  Meaning: The address to load data from
+
+  Setting: `window.AURIC_ICON_BASE` / `window.AURIC_ICON_ASSET_BASE`
+  Meaning: The same, set before the script loads
+
+  Setting: `<meta name="auric-icon-base">`
+  Meaning: The same, in the page
+
+AURICICONS API
+==============
+
+The global `AuricIcons` (alias `AuricIconLoader`).
+
+  Member:     `svg(name, options)`
+  Parameters: `style`, `size`, `color`, `stroke`
+  Returns:    Promise of the markup string, or `''` if not found
+
+  Member:     `inject(root)`
+  Parameters: An element; default the document
+  Returns:    Promise of the number of placeholders found
+
+  Member:     `get(name)` / `resolve(name)`
+  Parameters: A name
+  Returns:    Promise of the icon record, or `null`
+
+  Member:     `search(query, options)`
+  Parameters: Text; `set`, `limit`
+  Returns:    Promise of matching records
+
+  Member:     `list()`
+  Parameters: —
+  Returns:    Promise of every record
+
+  Member:     `sets()`
+  Parameters: —
+  Returns:    Promise of the set metadata
+
+  Member:     `slug(text)`
+  Parameters: Text
+  Returns:    Lower-case, hyphenated text
+
+  Member:     `base`
+  Parameters: —
+  Returns:    The data address (can be set)
+
+  Member:     `index`
+  Parameters: —
+  Returns:    The loaded index, or `null` before first use
+
+ICON LIBRARY OUTPUTS
+====================
+
+  Control: Copy SVG
+  Output:  The SVG markup, with the chosen colour and stroke
+
+  Control: Copy JSX
+  Output:  A React component that spreads its props onto the `<svg>`
+
+  Control: Copy data-URI
+  Output:  An `<img>` with the SVG as a data URI, the chosen size and the icon
+           name as `alt`
+
+  Control: Copy CDN tag
+  Output:  A placeholder with `data-icon` (and `data-style` if not the
+           default) and the loader script
+
+  Control: Download .svg
+  Output:  `<id>-<style>.svg`
+
+  Control: Copy glyph (Material)
+  Output:  The character entity for the webfont
+
+  Control: Code panel (SVG sets)
+  Output:  SVG, JSX / React, `<img>` data-URI, CDN (auto-inject)
+
+  Control: Code panel (Material)
+  Output:  HTML (CDN), Webfont @font-face
+
+  Control: Download ZIP (tray)
+  Output:  `auric-icons.zip`: SVGs by set, a README, and text files for
+           Material icons
+
+  Control: Copy sprite (tray)
+  Output:  A hidden `<svg>` with one `<symbol>` per selected icon
+
+ICON LIBRARY CONTROLS
+=====================
+
+  Control | Range
+  --------+--------------------------------
+  Size    | 16–160 px
+  Stroke  | 0.5–3 in steps of 0.25, or auto
+  Colour  | Any colour, or currentColor
+  Style   | The icon's styles
+
+RELATED PAGES
+=============
+
+  - Use the loader [use-the-loader.txt]
+  - Collections [collections.txt]

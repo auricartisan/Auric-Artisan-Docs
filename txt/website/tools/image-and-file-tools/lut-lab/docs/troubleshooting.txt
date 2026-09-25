@@ -1,0 +1,123 @@
+==============================================================================
+TROUBLESHOOTING LUT LAB
+==============================================================================
+Symptoms you may meet in LUT Lab, why they happen, and what to do.
+Area: Website › Tools › Image and file tools › LUT Lab   Updated: 2026-09-25
+
+LOADING A .CUBE
+===============
+
+  Symptom:    LUT_3D_SIZE N needs M rows; the file has K
+  Why:        The file is shorter than its header says, often from a failed
+              download
+  What to do: Download the file again
+
+  Symptom:    no LUT_1D_SIZE or LUT_3D_SIZE keyword and no usable sample rows
+  Why:        The file is not a `.cube`, or is empty of data
+  What to do: Check the file; convert other LUT formats to `.cube` first
+
+  Symptom:    empty file
+  Why:        The file has no content
+  What to do: Choose the right file
+
+  Symptom:    My `.3dl` or other LUT file is greyed out or will not load
+  Why:        Only `.cube` is supported
+  What to do: Convert it to `.cube` in another program
+
+  Symptom:    A note says rows beyond the declared number were ignored
+  Why:        The file has extra data rows
+  What to do: Check the file at its source; the declared table is used
+
+  Symptom:    A note says the file was read as a 1D or 3D table because no
+              size keyword was found
+  Why:        The size keyword is missing
+  What to do: The guess is stated; fix the file at its source if it is wrong
+
+  Symptom:    reachable is below 100%
+  Why:        The file's domain is wider than 0 to 1, for example for HDR or
+              log footage
+  What to do: Only part of the table affects 8-bit sRGB pictures; the file was
+              made for different input
+
+  Symptom:    The result looks badly wrong, with red and blue swapped
+  Why:        The file was written by a program that orders rows blue fastest
+  What to do: Re-export it from its source with the standard order; LUT Lab
+              reads red fastest, as the format requires
+
+  Symptom:    The result is far too flat or too contrasty
+  Why:        The LUT was made for a different input, such as log camera
+              footage
+  What to do: Apply it only to the kind of input it was made for
+
+LOOKS AND CONTROLS
+==================
+
+  Symptom:    The look menu and Strength are greyed out
+  Why:        A loaded file is being shown
+  What to do: Select Back to the looks or Clear the file
+
+  Symptom:    Tone-map exposure is greyed out
+  Why:        It applies only to Reinhard tone-map
+  What to do: Choose that look
+
+  Symptom:    Strength has no effect on my file
+  Why:        Loaded files are always applied at full strength
+  What to do: Blend in the program where you use the LUT
+
+  Symptom:    I went back to the looks and cannot show my file again
+  Why:        Back to the looks keeps the file but offers no way back
+  What to do: Drop the file again
+
+YOUR PICTURE
+============
+
+  Symptom:    That image could not be read
+  Why:        The browser could not decode the picture
+  What to do: Save it as PNG or JPEG and try again
+
+  Symptom:    My picture looks small
+  Why:        Pictures are scaled to fit 480 × 270 for the analysis
+  What to do: This is expected; the figures cover the whole picture
+
+  Symptom:    My picture disappeared
+  Why:        Selecting a drawn scene removes your picture
+  What to do: Drop it again
+
+EXPORTS
+=======
+
+  Symptom:    A 1D export has lost the look's colour
+  Why:        A 1D curve keeps only what the transform does to greys
+  What to do: Export as 3D cube
+
+  Symptom:    A resampled file differs slightly from the original
+  Why:        Resampling looks up each new grid point with interpolation and
+              rounds to 8 bits
+  What to do: Keep the original; resample only when you need a different size
+
+  Symptom:    Another program reports banding or small errors
+  Why:        LUT Lab works in 8 bits, and the values in the file are one of
+              256 levels
+  What to do: Use the file for 8-bit work, or make high-precision LUTs in a
+              tool with a floating-point pipeline
+
+  Symptom:    The clipboard refused
+  Why:        Clipboard access was blocked
+  What to do: Allow clipboard access for the site, or use Save the .cube
+
+SHARE LINKS
+===========
+
+  Symptom:    The link opened without my `.cube` or picture
+  Why:        Links carry only the scene, look, strength, exposure, size and
+              kind
+  What to do: Send the files separately
+
+  Symptom:    After opening a link, the Kind menu or Size slider looks
+              different from the file preview
+  Why:        The export uses the linked kind and size; the controls may not
+              move to match
+  What to do: Trust the size label and the file preview, or set Kind and Size
+              again
+
+For help with the site in general, see Help [../../../../../help/README.txt].

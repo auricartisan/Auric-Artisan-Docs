@@ -1,0 +1,80 @@
+==============================================================================
+TROUBLESHOOTING GAMUT MAPPING
+==============================================================================
+Fixes for common problems in the Gamut Mapping lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+  Symptom:        The Mapped to Target slice does not change when I change
+                  method or strength
+  Why it happens: In the current version that slice is always drawn with
+                  chroma compression to the boundary
+  What to do:     Judge methods with Before / After, the Methods tab or the
+                  batch list, which use your method and strength
+
+  Symptom:        Changing Compression Strength has no effect
+  Why it happens: Strength only applies to Chroma compression, and never
+                  changes a colour that is already in gamut
+  What to do:     Choose Chroma compression and use an out-of-gamut colour
+
+  Symptom:        Adapt white, then clip gives the same result as Clip in
+                  target RGB
+  Why it happens: Both spaces share the D65 white, so there is nothing to
+                  adapt
+  What to do:     Use ProPhoto RGB (D50) as one of the spaces to see a
+                  difference
+
+  Symptom:        The slice looks dull or clipped at the edges
+  Why it happens: Slices are painted in sRGB so your screen can show them;
+                  wider colours are displayed clipped
+  What to do:     Expected. Use the probe and figures, not the painted colour,
+                  for wide-gamut values
+
+  Symptom:        The slice looks grainy or speckled
+  Why it happens: A low Resolution, or the Stratified sampler, which places
+                  points at random
+  What to do:     Raise Resolution, or choose Uniform grid or Halton
+
+  Symptom:        The page is slow after raising Resolution
+  Why it happens: 512 × 512 samples per slice is a lot of work
+  What to do:     Lower Resolution
+
+  Symptom:        My base colour's ring is not on the coloured area
+  Why it happens: The slice is at a different lightness from the colour
+  What to do:     Set L* to the colour's L* shown in Base Colour Info
+
+  Symptom:        Adaptive edge refinement or Axes & labels does nothing
+  Why it happens: These controls are not applied in the current version
+  What to do:     No workaround needed
+
+  Symptom:        The ΔE formula menu does not change the result
+  Why it happens: All three formulas are always shown
+  What to do:     Read the one you need from the result line
+
+  Symptom:        A HEX typed into the ΔE Playground is ignored
+  Why it happens: The field needs a full `#RRGGBB` value, applied when you
+                  press Enter or leave the field
+  What to do:     Type a six-digit value with `#`
+
+  Symptom:        Volume figures change each time
+  Why it happens: They are Monte Carlo estimates
+  What to do:     Raise Volume samples to shrink the standard error
+
+  Symptom:        The batch says "No valid hex values found."
+  Why it happens: No line was a 3- or 6-digit HEX
+  What to do:     Put one colour per line, for example `#FF00AA`
+
+  Symptom:        Batch Output for Rec. 2020 looks the same as for P3
+  Why it happens: Output HEX is converted to sRGB for display
+  What to do:     Use OOG and ΔE₀₀ to compare; the HEX is a screen preview
+
+  Symptom:        The JSON file has no numbers from the screen
+  Why it happens: Everything as JSON saves the settings only
+  What to do:     Use the batch table or PNG images for figures
+
+  Symptom:        The link field stays empty
+  Why it happens: The link is built only when you select Link
+  What to do:     Select Link, then Copy
+
+  Symptom:        Dropping a file on Install a table does nothing
+  Why it happens: The area is not active in the current version
+  What to do:     No workaround

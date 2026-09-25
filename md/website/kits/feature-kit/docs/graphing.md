@@ -1,0 +1,62 @@
+---
+title: Feature Kit — Graphing
+description: Plot a function in the Feature Kit calculator, then pan, zoom and reset the view.
+product: Website › Kits › Feature Kit
+updated: 2026-09-25
+---
+
+# Plot a function
+
+The calculator can draw the graph of any expression in `x`. The graph redraws as you type, uses the same functions and constants as the calculator, and can use the variables and functions you have defined.
+
+## Show the graph
+
+1. Open **Scientific Calculator** in the Feature Kit.
+2. Select **Graph** (the wave icon) in the title bar. The button turns gold and a graph area opens under the expression bar.
+3. The **y =** box already holds `sin(x)`, and its curve is drawn.
+
+The graph shows a grid with numbered axes, the curve in gold, and a label in its top-left corner such as `y = sin(x)`.
+
+## Plot your own expression
+
+1. Select the **y =** box.
+2. Replace the text with your expression, for example `x^3 - 3*x`.
+3. The graph redraws as you type.
+
+Rules:
+
+- Use `x` as the variable. Inside the graph, `x` always means the horizontal position, even if you have a variable called `x`.
+- Write every multiplication: `3*x`, not `3x`.
+- You can use your own functions and variables: after `f(x) = x^2 - 2` in the expression bar, type `f(x)` in the **y =** box.
+- Trigonometric functions follow the **RAD** or **DEG** setting.
+- Where the expression is undefined or infinite (for example `1/x` at `x = 0`, or `sqrt(x)` for negative `x`), the curve simply has a gap. Very steep jumps, such as those of `tan(x)`, are drawn as separate pieces rather than joined by a vertical line.
+- If the expression has a mistake, nothing is drawn. Fix it and the curve appears.
+
+The graph shows one expression at a time.
+
+## Move around the graph
+
+| Action | How |
+|---|---|
+| Pan | Drag on the graph with a mouse, pen or one finger |
+| Zoom in or out | Scroll with a mouse wheel or trackpad over the graph |
+| Zoom with touch | Pinch with two fingers |
+| Zoom in one step | Select the magnifier with a plus sign in the graph's corner |
+| Zoom out one step | Select the magnifier with a minus sign |
+| Reset | Select the circular-arrow button to return to the starting view |
+
+The starting view is centred on the origin at 50 pixels per unit. Zooming stops at 5 pixels per unit at the widest and 5,000 pixels per unit at the closest. The grid spacing adjusts as you zoom so labels stay readable.
+
+## Make the graph bigger
+
+Select **Resize** in the title bar. The expanded Feature Kit gives the graph more height.
+
+## Hide the graph
+
+Select **Graph** again. The graph also closes when you close the Feature Kit. Your **y =** expression is kept while the page stays open.
+
+## Related
+
+- [Calculator](calculator.md)
+- [Calculator functions](calculator-functions.md)
+- [Limits and accuracy](../others/limits-and-accuracy.md)

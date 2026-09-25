@@ -1,0 +1,72 @@
+---
+title: Image Picker — Read contrast pairs, tone bands and harmony
+description: What the swatches, tone bands, contrast pairs and harmony readouts tell you about a palette taken from a picture.
+product: Website › Tools › Image and file tools › Image Picker
+updated: 2026-09-25
+---
+
+# Read contrast pairs, tone bands and harmony
+
+Once a palette is extracted, the **Workbench** tab describes it in four ways. All four use the extracted palette only; pinned colours are not included.
+
+## The swatches
+
+Each swatch under **Extracted palette** shows:
+
+| Line | Example | Meaning |
+|---|---|---|
+| Inside the swatch | `24%` | Share of the sampled pixels in this cluster |
+| First line | `#2E4A5C` | Hex value |
+| Second line | `203° 33% 27%` | HSL: hue, saturation, lightness |
+| Third line | `L=0.063` | Relative luminance, 0 (black) to 1 (white) |
+
+The heading reads, for example, **6 clusters · 41750 samples**: how many colours the palette has and how many pixels were sampled.
+
+## Tone bands
+
+**Tone bands** sorts the palette by relative luminance, the brightness measure used by WCAG:
+
+| Band | Relative luminance |
+|---|---|
+| **Shadows** | Below 0.18 |
+| **Midtones** | 0.18 to below 0.65 |
+| **Highlights** | 0.65 and above |
+
+A band with no colours reads **None**. The bands show where the weight of the palette sits: a moody photograph piles up in **Shadows**, a high-key one in **Highlights**.
+
+## Pairs that carry text
+
+**Pairs that carry text**, marked **WCAG 2.1**, lists the eight pairs of palette colours with the highest contrast ratio. The contrast ratio is the WCAG measure of how different two colours are in brightness, from 1:1 (identical) to 21:1 (black on white).
+
+Each row shows the two swatches, the ratio, a rating, and the two hex values:
+
+| Rating | Ratio | Suitable for |
+|---|---|---|
+| **AAA** | 7:1 or more | Body text at the enhanced level |
+| **AA** | 4.5:1 or more | Body text at the minimum level |
+| **AA-lg** | 3:1 or more | Large text only (at least 18 pt, or 14 pt bold) |
+| **Fail** | Below 3:1 | Not suitable for text |
+
+With fewer than two colours, the panel reads **Need 2+ colors**.
+
+This is a first pass. Colours taken from a picture are often beautiful as accents and weak as text on background. Check the exact pair you intend to use in a dedicated contrast tool such as the [Contrast Checker](../../../accessibility-and-vision/contrast-checker/README.md).
+
+## Harmony
+
+**Harmony** looks at the hue of every pair of palette colours and reports pairs whose hues sit at a classic colour-wheel angle. Hue here is the HSL hue, 0° to 360° around the colour wheel.
+
+| Relationship | Hue difference |
+|---|---|
+| **Analogous** | 25° to 45° |
+| **Tetradic** | 80° to 100° |
+| **Triadic** | 110° to 130° |
+| **Split-Complementary** | 140° to 165° |
+| **Complementary** | 165° to 180° (the largest possible difference) |
+
+Each row shows the relationship, the two colours and the measured difference, for example **Δh=172.4°**. Up to 12 rows are listed, grouped by relationship name. When no pair matches, the panel reads **No strong harmonic relationships detected**.
+
+These angles are a convention from colour-wheel teaching, not a measurement of how pleasing a palette is. Greys have no real hue, so a palette with grey clusters can show relationships that mean little.
+
+## What you should see
+
+Reading the four panels together tells you what the picture is made of: which colours dominate, how light or dark it is, which pairs could carry text, and whether the hues follow a familiar scheme.

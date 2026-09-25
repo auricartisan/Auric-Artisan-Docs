@@ -1,0 +1,58 @@
+---
+title: Gamut Mapping — Compare spaces and methods
+description: Use the Boundary and Methods tabs and the ΔE Playground to compare colour spaces, gamut volumes, mapping methods and colour differences.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Compare spaces and methods
+
+## Compare boundaries up the lightness axis
+
+1. Open the **Boundary** tab.
+2. Under **Spaces on the plot**, select the spaces to draw. Each chip toggles one space; sRGB and Display P3 are on at first.
+3. Read **The boundary up the lightness axis**: five tiles at L* 20, 40, 65, 80 and 90. All tiles share one scale (shown in the note, for example "one scale, ±150"), so sizes can be compared directly. The source space from the Lab tab is drawn with a thicker line.
+
+What to look for: at low and high lightness all gamuts shrink towards the grey axis; the biggest differences are in the middle; yellows keep chroma at high lightness and blues at low lightness.
+
+## Measure gamut volumes
+
+1. On the **Boundary** tab, set **Volume samples** (**n**) from 5,000 to 200,000 in steps of 5,000. The default is 20k.
+2. Select **Measure the five**. The button reads "Measuring…" while it works.
+3. Read **The five spaces, measured**, sorted from smallest to largest:
+
+| Column | Meaning |
+| --- | --- |
+| Space | The space and its colour swatch |
+| White | The white point the space is defined against (D65, or D50 for ProPhoto) |
+| Lab volume ± 1 SE | The volume in CIELAB units cubed, and its standard error |
+| vs sRGB | The volume as a multiple of sRGB's |
+| Sample box | The a*, b* half-width of the sampling box, fitted to each space |
+
+The volume is estimated by random (Monte Carlo) sampling in a box fitted to each space. Raising the sample count shrinks the standard error. The results change slightly on each run.
+
+Volume in CIELAB is a more meaningful size than the area of a triangle on the xy chromaticity diagram, which ignores lightness and overstates green. The lab no longer shows the xy area percentage.
+
+## Compare the four methods
+
+1. Open the **Methods** tab.
+2. Under **Compare on**, choose **The base colour** or **12 probe colours**. The probe set is fixed (#FF0000, #00FF00, #0000FF, #FFFF00, #FF00FF, #00FFFF, #FF7F00, #7F00FF, #00FF7F, #BF4040, #4080BF and #808080), so the comparison means the same thing whatever base colour you pick.
+3. Open each method's row to read its description and three figures:
+   - **mean ΔE₀₀** — average colour change caused by mapping;
+   - **max ΔE₀₀** — the largest change;
+   - **out of gamut** — how many of the colours were outside the target.
+4. **Provenance** in the rail counts published intents (0) and this tool's methods (4).
+
+The figures use the source, target and strength set on the Lab tab. The method selected on the Lab tab opens by default.
+
+## Compare two colours with the ΔE Playground
+
+1. On the **Lab** tab, find **ΔE Playground**.
+2. Set colour **A** and colour **B** with the pickers, or type a six-digit HEX in each field and press `Enter` or move focus away.
+3. Read the result line: **ΔE₀₀** with a verbal band (Imperceptible, Barely perceptible, Noticeable, Significant or Very different), **ΔE\*₉₄** and **ΔE\*₇₆**.
+
+The formula menu beside the result does not change the readout in the current version; all three figures are always shown.
+
+## Result
+
+You can see how the five spaces differ in shape and size, and how differently the four methods treat the same colours.

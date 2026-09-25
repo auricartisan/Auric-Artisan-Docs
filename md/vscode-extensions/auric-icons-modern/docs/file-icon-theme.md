@@ -1,0 +1,120 @@
+---
+title: Auric Icons: Modern — Use the file icon theme
+description: Activate the Modern Explorer icon theme and set folder colour, framework packs, saturation, opacity, arrows, custom associations and workspace detection.
+product: VS Code extensions › Auric Icons: Modern
+updated: 2026-09-25
+---
+
+# Use the file icon theme
+
+A **file icon theme** decides which icon VS Code shows beside each file and folder in the Explorer, tabs and other lists. The Modern theme has 408 icons designed for the 16-pixel Explorer size. It maps 265 file extensions, 462 exact filenames and 265 folder names, with separate open and closed artwork for folders and light-theme alternatives for monochrome marks.
+
+## Activate the theme
+
+- Run **Preferences: File Icon Theme** and choose **Auric Icons: Modern**, or
+- Run **Auric Icons: Modern: Activate Icon Theme**.
+
+## How changes are applied
+
+VS Code reads an icon theme once and caches it. When you change a Modern setting, the extension rebuilds its theme files. If the theme is active, you see "Auric Icons: Modern updated — {summary}. Reload to apply?". Select **Reload Window** to see the change, or **Later** to keep working. The original artwork is never modified, so any change can be undone by restoring defaults.
+
+A default install writes nothing and asks for no reload. Settings changed while VS Code was closed, or synced from another machine, are applied at start-up.
+
+## The Configure menu
+
+Run **Auric Icons: Modern: Configure…**. The menu shows the current value of each item.
+
+| Item | What it does |
+| --- | --- |
+| **Folder colour** | Opens the folder colour list (below). |
+| **Icon pack** | Opens the framework pack list (below). |
+| **Explorer arrows** | Toggles between **visible** and **hidden**. |
+| **Saturation** | Choose 0, 0.25, 0.5, 0.75, 1, 1.25 or 1.5. |
+| **Opacity** | Choose 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 or 1. |
+| **Detect Auric Artisan workspace** | Reports whether this workspace is an Auric Artisan workspace. |
+| **Restore defaults** | Resets every Modern theme setting. |
+
+## Folder colour
+
+Run **Auric Icons: Modern: Select Folder Colour** (or choose **Folder colour** in Configure).
+
+| Option | Value |
+| --- | --- |
+| Auric gold | `default` (the house accent) |
+| Blue | `#3178C6` |
+| Teal | `#2E9E8F` |
+| Green | `#4C9A55` |
+| Violet | `#7B62D4` |
+| Magenta | `#B45FC4` |
+| Crimson | `#B8405A` |
+| Slate | `#6B7684` (neutral) |
+| Custom hex… | Enter your own, such as `#D8A33C`. Three- or six-digit hex. |
+
+Folder colour re-tints **folders only**. File icons keep the semantic colours that identify them.
+
+## Framework packs
+
+Run **Auric Icons: Modern: Select Icon Pack**. Only one pack can be active at a time; it layers over the base set.
+
+| Pack | Adds icons for | Icons |
+| --- | --- | --- |
+| None | Base icon set only | 0 |
+| Angular | component, module, service, pipe, directive, guard, resolver, interceptor | 8 |
+| NestJS | controller, service, module, guard, middleware, decorator, DTO, entity, filter | 9 |
+| React / Redux | hook, context, provider, reducer, slice, store | 6 |
+| Vue / Pinia | composable, store, plugin | 3 |
+
+The setting is `auricIcons.activeIconPack` (`none`, `angular`, `nest`, `react`, `vue`).
+
+## Saturation, opacity and arrows
+
+| Setting | Range | Default | Effect |
+| --- | --- | --- | --- |
+| `auricIcons.saturation` | 0 to 2 | 1 | 0 is greyscale; 1 is unmodified. Hue and lightness are kept, so icons stay distinguishable by shape. |
+| `auricIcons.opacity` | 0.1 to 1 | 1 | Lower values let icons recede behind filenames. |
+| `auricIcons.hidesExplorerArrows` | true or false | false | Hides the expand and collapse chevrons. Also toggled by **Toggle Explorer Arrows**. |
+
+The Configure menu offers preset steps; type any value in the range into Settings for finer control.
+
+## Custom associations
+
+Map your own names to Modern icons in `settings.json`.
+
+```json
+{
+  "auricIcons.files.associations": {
+    "*.myext": "typescript",
+    "config.local": "ini",
+    "*.log": "none"
+  },
+  "auricIcons.folders.associations": {
+    "internal": "src",
+    "shared": "lib"
+  }
+}
+```
+
+- File keys are either `*.ext` (an extension) or an exact filename.
+- Folder keys are folder names. The open and closed icons are applied together.
+- Values are icon IDs. The value `none` removes an association the theme would otherwise apply.
+- Your associations take precedence over the theme and any pack.
+
+The full lists of file and folder icon IDs are in the [reference](reference.md#icon-ids-for-associations).
+
+## Auric Artisan workspace icons
+
+Files and folders used by Auric Artisan tools, such as `.auric-artisan/`, `swatches/`, `.auricignore`, `scan-cache.json`, `health.json`, `health-history.json`, `*.sarif`, `ai-remediation-plan.*` and `project-health.*`, have dedicated icons. They are matched by name and need no set-up. `.auric-artisan/settings.json` deliberately gets no special icon, so `.vscode/settings.json` is not affected.
+
+### Workspace detection
+
+With `auricIcons.autoDetect` on (the default), opening a local workspace that contains `.auric-artisan/` or `.auricignore` while another icon theme is active shows a one-time offer: **Use Auric Icons: Modern**, **Not now** or **Don't ask again**. It asks at most once per workspace and never when Modern is already active.
+
+Run **Auric Icons: Modern: Detect Auric Artisan Workspace** to check manually. It reports where it found the marker, or that none was found.
+
+## Restore defaults
+
+Run **Auric Icons: Modern: Restore Default Settings**. It clears folder colour, saturation, opacity, arrows, icon pack, workspace detection and both association settings. VS Code confirms "settings restored to defaults".
+
+## Result
+
+Your Explorer shows Modern icons with your folder colour, pack and associations after a window reload.

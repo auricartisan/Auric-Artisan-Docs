@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG Recolour reference — Auric Artisan Docs</title>
+<meta name="description" content="Every tab, control, paint property, colour form, readout, export format and message in SVG Recolour.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; SVG Recolour</a>
+<h2>SVG Recolour documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with SVG Recolour</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="export-the-result.html">Export the result</a></li>
+<li><a href="recolour-an-svg.html">Recolour an SVG</a></li>
+<li><a href="use-a-harmony.html">Recolour from a harmony</a></li>
+<li><a href="reference.html" aria-current="page">SVG Recolour reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting SVG Recolour</a></li>
+<li><a href="faq.html">SVG Recolour FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">SVG Recolour</a> &rsaquo; <a href="README.html">SVG Recolour documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › SVG Recolour</p>
+<h1>SVG Recolour reference</h1>
+<p class="lede">Every tab, control, paint property, colour form, readout, export format and message in SVG Recolour.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/tools/svg-recolor/" rel="noopener">https://auricartisan.com/tool/general/tools/svg-recolor/</a></p>
+<h2 id="tabs">Tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Recolour</strong></td><td>Loading, write style, vision preview, harmonies; before and after previews, the colour list and figures</td></tr>
+<tr><td><strong>Mapping</strong></td><td>Every colour&#39;s use, target and written count; worked examples of swaps and counts</td></tr>
+<tr><td><strong>Check</strong></td><td>Text colour; WCAG 2.2 and APCA per colour; closest pairs; the artwork under three dichromacies</td></tr>
+<tr><td><strong>Data</strong></td><td>The 15 entries every figure rests on, filterable by status; six corrections</td></tr>
+<tr><td><strong>Export</strong></td><td>Four save and copy buttons, the size table, custom properties and the report</td></tr>
+<tr><td><strong>Reference</strong></td><td>Nine sources and a six-step description of how the tool works</td></tr>
+</tbody></table></div>
+<h2 id="recolour-tab-the-file">Recolour tab — The file</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Accepts</th></tr></thead>
+<tbody>
+<tr><td><strong>Drop an SVG</strong></td><td>Loads a dropped file, or opens a chooser when selected or when <code>Enter</code> or <code>Space</code> is pressed</td><td><code>.svg</code>, <code>image/svg+xml</code></td></tr>
+<tr><td><strong>Load the sample</strong></td><td>Loads a built-in sample and puts its markup in the paste box</td><td>—</td></tr>
+<tr><td>Paste box</td><td>SVG markup</td><td>Text</td></tr>
+<tr><td><strong>Read the markup</strong></td><td>Loads the markup in the paste box</td><td>Well-formed SVG</td></tr>
+</tbody></table></div>
+<p>The sample loads automatically when the page opens.</p>
+<h2 id="recolour-tab-options">Recolour tab — Options</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Write colours as</strong></td><td><strong>Write hex</strong>, <strong>Keep the source form</strong></td><td>Write hex</td></tr>
+<tr><td><strong>Show it as seen by</strong></td><td><strong>Normal vision</strong>, <strong>Protan</strong>, <strong>Deutan</strong>, <strong>Tritan</strong></td><td>Normal vision</td></tr>
+<tr><td><strong>Recolour from a harmony</strong></td><td>complementary, analogous, triadic, tetradic, split complementary</td><td>—</td></tr>
+<tr><td><strong>Put every colour back</strong></td><td>Resets every target to its original</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="paint-properties-searched">Paint properties searched</h2>
+<p><code>fill</code>, <code>stroke</code>, <code>stop-color</code>, <code>flood-color</code>, <code>lighting-color</code>, <code>color</code>, <code>solid-color</code>, <code>text-decoration-color</code>, in presentation attributes, style attributes and <code>&lt;style&gt;</code> elements.</p>
+<h2 id="colour-forms">Colour forms</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Form</th><th>Read</th><th>Written with <strong>Keep the source form</strong></th></tr></thead>
+<tbody>
+<tr><td><code>#RRGGBB</code></td><td>Yes</td><td>Hex, keeping capitals if the original used them</td></tr>
+<tr><td><code>#RGB</code></td><td>Yes</td><td>Six-digit hex</td></tr>
+<tr><td><code>#RRGGBBAA</code>, <code>#RGBA</code></td><td>Yes</td><td>Six-digit hex; the alpha is lost</td></tr>
+<tr><td><code>rgb()</code>, <code>rgba()</code></td><td>Yes, comma or space separated</td><td><code>rgb(r, g, b)</code>, or <code>rgba(r, g, b, a)</code> keeping the alpha</td></tr>
+<tr><td><code>hsl()</code>, <code>hsla()</code></td><td>Yes</td><td><code>hsl(h, s%, l%)</code>, or <code>hsla(…)</code> keeping the alpha</td></tr>
+<tr><td>148 CSS names</td><td>Yes</td><td>The CSS name if the new colour has one, otherwise hex</td></tr>
+<tr><td><code>none</code>, <code>transparent</code></td><td>Listed, left alone</td><td>—</td></tr>
+<tr><td><code>currentColor</code>, <code>inherit</code>, <code>initial</code>, <code>unset</code>, <code>revert</code>, <code>context-fill</code>, <code>context-stroke</code></td><td>Listed, left alone</td><td>—</td></tr>
+<tr><td><code>url(…)</code></td><td>Listed, left alone</td><td>—</td></tr>
+<tr><td>Other functions, <code>var()</code></td><td>Not recognised</td><td>—</td></tr>
+</tbody></table></div>
+<p>With <strong>Write hex</strong>, every changed colour is written as lower-case six-digit hex.</p>
+<h2 id="active-content-removed-from-the-previews">Active content removed from the previews</h2>
+<p><code>script</code>, <code>foreignObject</code> and <code>handler</code> elements; attributes whose names begin with <code>on</code>; <code>href</code> and <code>xlink:href</code> values beginning with <code>javascript:</code>, including when whitespace or control characters are hidden inside the word. The exported file is not stripped.</p>
+<h2 id="recolour-tab-readouts">Recolour tab — Readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Stripped notice</td><td>What active content was removed from the previews</td></tr>
+<tr><td>Note above the previews</td><td>Elements, occurrences and colours, or <strong>nothing loaded</strong></td></tr>
+<tr><td><strong>As it came</strong></td><td>The original, on a chequerboard</td></tr>
+<tr><td><strong>After</strong> heading</td><td>Occurrences written out of those that can be written</td></tr>
+<tr><td>Colour list row</td><td>Current swatch, hex, name, places; target swatch, hex, <strong>unchanged</strong> or <strong>written in</strong> N <strong>places</strong>; written count</td></tr>
+<tr><td>Greyed row</td><td>Keyword, <strong>left alone</strong>, reason, <strong>not held</strong></td></tr>
+<tr><td><strong>elements</strong></td><td>Elements in the document, root included</td></tr>
+<tr><td><strong>occurrences</strong></td><td>Places a colour value is written</td></tr>
+<tr><td><strong>colours</strong></td><td>Distinct changeable colours</td></tr>
+<tr><td><strong>left alone</strong></td><td>Values with no colour to change</td></tr>
+<tr><td><strong>written</strong></td><td>Occurrences the export carries as changed</td></tr>
+<tr><td><strong>closest pair</strong></td><td>Smallest CIEDE2000 difference under the three simulations; highlighted below 8</td></tr>
+</tbody></table></div>
+<p>Reasons for greyed rows: <strong>resolves from outside this file</strong> (<code>currentColor</code>), <strong>no paint</strong> (<code>none</code>), <strong>a reference, not a colour</strong> (others).</p>
+<h2 id="harmonies">Harmonies</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Harmony</th><th>Angles from the base colour&#39;s OKLCH hue</th></tr></thead>
+<tbody>
+<tr><td>complementary</td><td>0°, 180°</td></tr>
+<tr><td>analogous</td><td>0°, −30°, +30°</td></tr>
+<tr><td>triadic</td><td>0°, 120°, 240°</td></tr>
+<tr><td>tetradic</td><td>0°, 90°, 180°, 270°</td></tr>
+<tr><td>split complementary</td><td>0°, 150°, 210°</td></tr>
+</tbody></table></div>
+<p>The base is the first colour in the list. Lightness and chroma are kept; the pattern repeats with a further 12° turn when there are more colours than angles.</p>
+<h2 id="mapping-tab">Mapping tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Note</td><td>Number of occurrences</td></tr>
+<tr><td>Table</td><td>Swatch, <strong>In the file</strong>, <strong>Used</strong>, <strong>Becomes</strong>, <strong>Written</strong>, <strong>Where, and what happened</strong></td></tr>
+<tr><td>Footnote</td><td>Written, unchanged and skipped counts, which add up to the total</td></tr>
+<tr><td><strong>Two colours trading places</strong></td><td>Three measured cases: a swap, a named colour, a shorthand</td></tr>
+<tr><td><strong>What the count used to mean</strong></td><td>Six measured cases of the earlier count against the real one</td></tr>
+</tbody></table></div>
+<h2 id="check-tab">Check tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Text laid over the artwork</strong></td><td>The text colour; default <code>#FFFFFF</code></td></tr>
+<tr><td><strong>What can be read on it</strong></td><td><strong>Colour</strong>, <strong>WCAG</strong>, <strong>Rating</strong>, <strong>APCA Lc</strong>, <strong>Good for</strong>, <strong>It used to say</strong></td></tr>
+<tr><td><strong>The Lc that was always zero</strong></td><td>Four pairs: <strong>It printed</strong> against <strong>APCA gives</strong></td></tr>
+<tr><td><strong>The two colours hardest to tell apart</strong></td><td><strong>Seen as</strong>, <strong>The two closest colours</strong>, <strong>ΔE₀₀ between them</strong>, <strong>What that means</strong></td></tr>
+<tr><td><strong>The artwork under three dichromacies</strong></td><td>Four previews with <strong>closest two</strong></td></tr>
+</tbody></table></div>
+<p>WCAG ratings: <strong>AAA</strong> 7:1, <strong>AA</strong> 4.5:1, <strong>AA large</strong> 3:1, <strong>fail</strong> below. APCA bands by absolute Lc: <strong>any text</strong> 90, <strong>body text</strong> 75, <strong>large text</strong> 60, <strong>headlines only</strong> 45, <strong>non-text only</strong> 30, <strong>not for text</strong> below. Closeness: <strong>close to indistinguishable</strong> below 5, <strong>tells apart with effort</strong> below 12, <strong>clearly different</strong> otherwise.</p>
+<h2 id="data-tab">Data tab</h2>
+<p>Status buttons: <strong>All</strong> (15), <strong>Measured</strong> (3), <strong>Computed</strong> (7), <strong>This tool&#39;s choice</strong> (3), <strong>Absent</strong> (2). Select an entry to expand it.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Status</th><th>Entries</th></tr></thead>
+<tbody>
+<tr><td><strong>Measured</strong></td><td>Where each colour is used, occurrences written back, colours that cannot be written</td></tr>
+<tr><td><strong>Computed</strong></td><td>Reading a colour value, ΔE₀₀, WCAG ratio, APCA Lc, OKLab and OKLCH, the sRGB transfer function, colour-vision simulation</td></tr>
+<tr><td><strong>This tool&#39;s choice</strong></td><td>When two colours count as the same, the harmony angles, the colour names</td></tr>
+<tr><td><strong>Absent</strong></td><td>What <code>currentColor</code> resolves to; colour inside embedded raster images</td></tr>
+</tbody></table></div>
+<p><strong>What was corrected, and what it printed</strong> lists six corrections with <strong>was</strong> and <strong>now</strong>. Colours are grouped only when they are exactly the same colour; there is no control for merging near-identical colours.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Save the recoloured SVG</strong></td><td><code>recoloured.svg</code></td></tr>
+<tr><td><strong>Copy the markup</strong></td><td>The recoloured SVG markup</td></tr>
+<tr><td><strong>Copy the custom properties</strong></td><td><code>--colour-01: #RRGGBB;  /* name */</code> lines</td></tr>
+<tr><td><strong>Save the report</strong></td><td><code>recolour-report.json</code></td></tr>
+</tbody></table></div>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Source</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>W3C SVG 1.1 and SVG 2, paint and presentation attributes</td><td>Runs</td></tr>
+<tr><td>W3C CSS Color 4, colour syntax and named colours</td><td>Runs</td></tr>
+<tr><td>ISO/CIE 11664-6:2014, CIEDE2000</td><td>Runs</td></tr>
+<tr><td>IEC 61966-2-1:1999, sRGB</td><td>Runs</td></tr>
+<tr><td>W3C WCAG 2.2, contrast minimum</td><td>Runs</td></tr>
+<tr><td>APCA-W3 0.1.9</td><td>Rebuilt</td></tr>
+<tr><td>Ottosson (2020), OKLab</td><td>Runs</td></tr>
+<tr><td>Machado, Oliveira and Fernandes (2009)</td><td>Runs</td></tr>
+<tr><td>Brettel, Viénot and Mollon (1997)</td><td>Withdrawn</td></tr>
+</tbody></table></div>
+<p><strong>How it works</strong> lists six steps: Parse, Strip, Walk, Resolve, Plan and Write.</p>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Loaded</strong> file name / <strong>Loaded the pasted markup.</strong></td><td>A file or markup was loaded</td></tr>
+<tr><td><strong>A sample with a hex, an rgb(), a name, a shorthand, a stylesheet and a currentColor.</strong></td><td>The sample was loaded</td></tr>
+<tr><td><strong>That file will not parse as SVG, so nothing was changed.</strong></td><td>The markup is not well-formed</td></tr>
+<tr><td><strong>Paste some SVG markup first.</strong></td><td><strong>Read the markup</strong> with an empty box</td></tr>
+<tr><td><strong>Load an SVG first.</strong></td><td>A harmony with nothing loaded</td></tr>
+<tr><td><strong>A</strong> harmony <strong>palette from</strong> hex.</td><td>A harmony was applied</td></tr>
+<tr><td><strong>Every colour back to what it was.</strong></td><td><strong>Put every colour back</strong></td></tr>
+<tr><td><strong>Saved ·</strong> N <strong>occurrences written</strong></td><td>The SVG was saved</td></tr>
+<tr><td><strong>Nothing loaded.</strong></td><td>Save or copy with nothing loaded</td></tr>
+<tr><td><strong>Markup copied</strong> / <strong>Custom properties copied</strong></td><td>A copy succeeded</td></tr>
+<tr><td><strong>Report saved.</strong></td><td>The report was saved</td></tr>
+<tr><td><strong>The browser refused the clipboard.</strong></td><td>Clipboard access was blocked</td></tr>
+<tr><td><strong>This browser will not take text from the clipboard.</strong></td><td>The browser cannot copy text</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="use-a-harmony.html"><span>Previous</span>Recolour from a harmony</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting SVG Recolour</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#tabs">Tabs</a></li><li><a href="#recolour-tab-the-file">Recolour tab — The file</a></li><li><a href="#recolour-tab-options">Recolour tab — Options</a></li><li><a href="#paint-properties-searched">Paint properties searched</a></li><li><a href="#colour-forms">Colour forms</a></li><li><a href="#active-content-removed-from-the-previews">Active content removed from the previews</a></li><li><a href="#recolour-tab-readouts">Recolour tab — Readouts</a></li><li><a href="#harmonies">Harmonies</a></li><li><a href="#mapping-tab">Mapping tab</a></li><li><a href="#check-tab">Check tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#messages">Messages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

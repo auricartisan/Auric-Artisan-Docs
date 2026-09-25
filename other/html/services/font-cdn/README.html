@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font CDN — Auric Artisan Docs</title>
+<meta name="description" content="What the Auric Artisan Font CDN at fonts.auricartisan.com serves, who it is for, and how to put a font on your page in a few steps.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Services</a>
+<h2>Font CDN</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Font CDN documentation &rsaquo;</a></li>
+<li><a href="others/README.html">Other material &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">Services</a> &rsaquo; <a href="README.html">Font CDN</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Font CDN</h1>
+<p class="lede">What the Auric Artisan Font CDN at fonts.auricartisan.com serves, who it is for, and how to put a font on your page in a few steps.</p>
+<p>The Auric Artisan Font CDN, at <a href="https://fonts.auricartisan.com" rel="noopener">https://fonts.auricartisan.com</a>, serves open-licence font families to your web pages. Each family has its own stylesheet of <code>@font-face</code> rules that you link like a Google Fonts stylesheet, and a small loader script can load families declaratively or from JavaScript. The font files themselves are served from the same host, so a page that uses the CDN makes no request to any third party.</p>
+<p>The catalogue holds 2,213 families and 4,883 font files, of which 550 families are variable fonts. Most are under the SIL Open Font License; others use Apache 2.0, public-domain dedications, MIT or other open licences, and every family&#39;s own licence text is available. A small part of the catalogue is tagged <strong>Installed</strong>: system fonts that are listed for reference but not served, because their licences do not allow redistribution.</p>
+<p>You browse the catalogue, preview families in your own words, and copy embed code in the Font Library at <a href="https://auricartisan.com/tool/font/" rel="noopener">https://auricartisan.com/tool/font/</a>. That page is documented with the website tools; these pages cover the CDN itself: what it serves, how to embed a family, the loader, self-hosting and licences.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li><strong>Web designers and developers</strong> who want open-licence fonts without a third-party font service.</li>
+<li><strong>Teams with privacy or offline requirements</strong> who prefer to self-host, using the downloadable kits.</li>
+<li><strong>Prototypers</strong> who need to try many families quickly from JavaScript.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>What</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>CDN host</td><td><a href="https://fonts.auricartisan.com" rel="noopener">https://fonts.auricartisan.com</a></td></tr>
+<tr><td>Loader script</td><td><a href="https://fonts.auricartisan.com/font-cdn.js" rel="noopener">https://fonts.auricartisan.com/font-cdn.js</a></td></tr>
+<tr><td>Family stylesheets</td><td><code>https://fonts.auricartisan.com/css/&lt;family-id&gt;.css</code></td></tr>
+<tr><td>Browse and copy embed code</td><td><a href="https://auricartisan.com/tool/font/" rel="noopener">https://auricartisan.com/tool/font/</a></td></tr>
+<tr><td>Licence reference</td><td><a href="https://fonts.auricartisan.com/LICENSE.md" rel="noopener">https://fonts.auricartisan.com/LICENSE.md</a></td></tr>
+</tbody></table></div>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li><p>Open <a href="https://auricartisan.com/tool/font/" rel="noopener">https://auricartisan.com/tool/font/</a> and find a family, for example Alegreya.</p>
+</li>
+<li><p>Open the family and go to its <strong>Use &amp; Embed</strong> tab.</p>
+</li>
+<li><p>Copy the <strong>Link</strong> snippet:</p>
+<pre class="code" data-lang="html"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.auricartisan.com/css/alegreya.css&quot;&gt;</code></pre>
+</li>
+<li><p>Paste it into the <code>&lt;head&gt;</code> of your page.</p>
+</li>
+<li><p>Apply the family in your CSS:</p>
+<pre class="code" data-lang="css"><code>.headline { font-family: 'Alegreya', serif; }</code></pre>
+</li>
+<li><p>Check the family&#39;s <strong>License</strong> tab, and keep its terms.</p>
+</li>
+<li><p>To host the files yourself instead, choose <strong>Download kit</strong> and follow <a href="docs/self-host-a-family.html">Self-host a family</a>.</p>
+</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Link a family&#39;s stylesheet, or <code>@import</code> it from your CSS.</li>
+<li>Load one or many families with a single script tag, or from JavaScript with <code>AuricFonts.load()</code>.</li>
+<li>Use variable fonts across their full weight range.</li>
+<li>Register a single font face from any URL with <code>AuricFonts.face()</code>.</li>
+<li>Search the catalogue and read a family&#39;s full metadata from JavaScript.</li>
+<li>Download a self-hosting kit with the font files, a stylesheet, a demo page and the licence.</li>
+<li>Copy a font stack with fallbacks, CSS variables, Tailwind, SCSS or design-token snippets from the Font Library.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a><ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/embed-a-family.html">Embed a family</a></li>
+<li><a href="docs/use-the-loader.html">Use the loader</a></li>
+<li><a href="docs/self-host-a-family.html">Self-host a family</a></li>
+<li><a href="docs/find-a-family.html">Find a family</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a><ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/licences.html">Licences</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../README.html"><span>Previous</span>Services</a><a href="docs/README.html"><span>Next</span>Font CDN documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

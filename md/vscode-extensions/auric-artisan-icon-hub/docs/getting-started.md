@@ -1,0 +1,57 @@
+---
+title: Auric Artisan Icon Hub — Getting started
+description: Install Icon Hub, open it in the sidebar or a full panel, tour the screen and insert your first icon.
+product: VS Code extensions › Auric Artisan Icon Hub
+updated: 2026-09-25
+---
+
+# Getting started with Icon Hub
+
+## Before you begin
+
+- You need Visual Studio Code 1.85 or later.
+- Browsing, copying and self-contained SVG insertion work in untrusted workspaces. Connecting the CDN on Insert needs a trusted workspace.
+
+## 1. Install
+
+Open the Extensions view (`Ctrl` + `Shift` + `X`), search for **Auric Artisan Icon Hub** and select **Install**, or run:
+
+```text
+code --install-extension auric-artisan.auric-artisan-icon-lib
+```
+
+You can also install an official VSIX with **Extensions: Install from VSIX…**.
+
+## 2. Open the Hub
+
+- **Sidebar:** select **Auric Icon Hub** in the Activity Bar (view name **Icon Hub**). Refinement controls start collapsed to leave room for artwork.
+- **Full panel:** run **Auric Icon Hub: Open Icon Hub**, select the Hub's expand button (**Open Icon Hub in an editor tab**), or select the **Icons** item in the status bar.
+
+## 3. Tour the screen
+
+| Area | Contents |
+| --- | --- |
+| Header | "Auric Artisan / ICON HUB / CREATIVE WORKSPACE", **Refresh** (check for metadata updates), **Website ↗** and the expand button. |
+| Views | **Library**, **Favorites**, **Recent**, **Selected**. |
+| Introduction | "Find your symbol. Make it your own." and a catalog status badge such as "Bundled catalog · offline ready". |
+| Search | **Search your library** (`Ctrl` / `Cmd` `K`), placeholder "Try arrow, rocket or navigation…". |
+| Refine library | Collection, style, category, licence and sort. |
+| Shape the output | Size, colour and stroke. |
+| Finder footer | "Insert adapts to your active file. Inspect for every format." and **Reset filters**. |
+| Smart Finder | "Recently used & suggested", with **Shuffle**. |
+| Results | **Explore the collection** and the icon grid, with **Load more**. |
+| Selection tray | "{n} selected", **Copy sprite**, **Export ZIP**, **Clear**. |
+
+## 4. Insert your first icon
+
+1. Open a writable file and place the cursor. The Hub remembers the last text editor you used, even after you click into the Hub.
+2. Search for `rocket`.
+3. Select **Insert** on a card.
+
+What you get depends on the file: see [Insert, copy and save](insert-copy-and-save.md). In an HTML or web-framework file, the first Insert also creates a small loader file next to your source; see [Connect the icon CDN](cdn-insertion.md).
+
+If no editor is available, the output is copied instead and VS Code says "No writable editor selected; icon copied to the clipboard."
+
+## Result
+
+You have inserted an icon from one of seven open-source collections, shaped to your settings.

@@ -1,0 +1,236 @@
+==============================================================================
+HARMONY LIBRARY REFERENCE
+==============================================================================
+Every control, filter, sort order, tab, output and message in the Harmony
+Library.
+Area: Website › Library › Colour libraries › Harmony Library   Updated: 2026-09-25
+
+Everything on https://auricartisan.com/library/harmony/.
+
+HEADING
+=======
+
+  Item                 | Content
+  ---------------------+--------------------------------------------------------------------------
+  Kicker               | Auric Artisan · Harmony
+  Headline             | Eight thousand schemes, and none of them stored.
+  Facts                | Collection 8,192, 23 methods, Derived, not stored
+  Read the API guide → | The Harmony Library API guide.
+  Automate this note   | 3 API credits per call to GET /v1/harmony/library; API docs; × dismisses.
+
+WHAT HARMONY IS THIS?
+=====================
+
+  Control:      Colour swatch
+  What it does: Opens a colour picker.
+  Default:      —
+
+  Control:      Colour field
+  What it does: Any CSS colour.
+  Default:      `#E4572E`, `#2EE457`, `#572EE4`
+
+  Control:      ×
+  What it does: Removes a colour; hidden at two.
+  Default:      —
+
+  Control:      Add a colour
+  What it does: Adds the opposite of the first colour; up to 12.
+  Default:      —
+
+  Control:      Identify it
+  What it does: Runs the match again.
+  Default:      —
+
+  Output:  Verdict
+  Meaning: Scheme name (fit ≥ 0.85), Close to … (0.65 to 0.85), Not one of the
+           23 (below 0.65).
+
+  Output:  fit
+  Meaning: 0 to 1, three decimals.
+
+  Output:  Note
+  Meaning: Angle error, or schemes indistinguishable by hue.
+
+  Output:  Family, Base colour, Worst pair, Best pair
+  Meaning: Family, best base, lowest and highest pair contrast ((AA) at
+           4.5:1).
+
+  Output:  Also considered
+  Meaning: Up to four runners-up with fit.
+
+BROWSE CONTROLS
+===============
+
+  Control:      Search by id, hex or method…
+  What it does: An id (`har_…`) or number shows that harmony; other words must
+                match id, method, family or a hex.
+
+  Control:      Shuffle
+  What it does: Sort Random.
+
+  Control:      Open a random harmony
+  What it does: Opens any harmony on Inspect.
+
+  Control:      Filter inside results (id, hex, method…)
+  What it does: Second search.
+
+  Control:      Clear
+  What it does: Empties the second search.
+
+TABS
+====
+
+Library (badge: matches), Inspect, Theory, Accessibility, Stats, Export, Saved
+(badge: saved).
+
+FILTERS
+=======
+
+  Filter:  Base hue
+  Options: All hues, Red (340° to under 20°), Orange (20–50°), Yellow
+           (50–80°), Green (80–160°), Cyan (160–200°), Blue (200–260°), Purple
+           (260–300°), Pink (300–340°)
+
+  Filter:  Chroma
+  Options: Any chroma, Muted (< 0.07)**, **Balanced**, **Vivid (> 0.15)
+
+  Filter:  Lightness
+  Options: Any lightness, Dark (< 0.40), **Mid** (0.40–0.70), **Light** (>
+           0.70)
+
+  Filter:  Method
+  Options: All methods and 23 methods (does not currently narrow the grid;
+           search the method name instead)
+
+  Filter:  Family
+  Options: All families, Complementary, Polyadic, Analogous, Monochromatic,
+           Compound
+
+SORT BY
+=======
+
+Sort: original (default), Lightness ↑, Lightness ↓, Chroma ↑, Chroma ↓, Hue
+(rainbow), Color count ↑, Color count ↓, Random.
+
+LIBRARY TAB BUTTONS
+===================
+
+Reset (clears searches, filters and sort), Export visible (opens Export), Back
+to top.
+
+CARD
+====
+
+Swatches (select to copy), id, scheme, Inspect, Copy (all hexes), Save /
+Saved. Select the card to inspect.
+
+INSPECT TAB
+===========
+
+  Block:    Colour strip
+  Contents: Role, descriptive name, hex; select to copy.
+
+  Block:    Harmony summary
+  Contents: Harmony ID, Global index, Scheme, Family, Colors, Base hue, Avg L*
+            (OKLCH), Avg chroma, Hue span, DeltaE avg, Adherence, Entropy, Min
+            pair contrast, Max pair contrast
+
+  Block:    Color-theory scheme
+  Contents: Description, Canonical angles, Color roles, Base HSL
+
+  Block:    Pair-by-pair WCAG contrast
+  Contents: Every pair by role.
+
+  Block:    Quick export
+  Contents: Copy HEX, Copy CSS vars, Copy SCSS, Copy Tailwind, Download JSON,
+            Download ASE, Download SVG, Download PNG, Open in Coolors, Save to
+            library / Unsave, Copy share link, Design tokens…
+
+  Block:    Colour cards
+  Contents: Role, HEX, RGB, HSL, OKLCH, CIE L*a*b*, WCAG vs white, WCAG vs
+            black
+
+ANALYSIS TABS
+=============
+
+  Tab:   Theory
+  Cards: Color-theory scheme, Family, Dominant hue bucket, Color count,
+         Adherence to canonical scheme, Lightness & chroma profile
+
+  Tab:   Accessibility
+  Cards: Harmony-level WCAG summary, Pair-level WCAG breakdown, Visible
+         harmonies where every pair passes AA
+
+  Tab:   Stats
+  Cards: Avg lightness (OKLCH L), Avg chroma (OKLCH C), Hue spread, Min pair
+         contrast, Adherence, Colors per harmony
+
+EXPORT TAB
+==========
+
+  Card:    Selection · id
+  Buttons: HEX list, CSS variables, SCSS variables, Tailwind config; JSON,
+           Adobe ASE, SVG strip, PNG strip; Open in Coolors
+
+  Card:    Visible page
+  Buttons: Download JSON (visible page), Download CSV (visible page), Download
+           CSS variables, Download SCSS variables, Download compact JSON;
+           Download .txt hex list, Download tailwind.config.js fragment
+
+FILES
+=====
+
+  Output            | Name
+  ------------------+------------------------------------------------
+  One harmony       | `<id>.json`, `<id>.ase`, `<id>.svg`, `<id>.png`
+  Bulk              | `harmony-page-<count>-<date>.<ext>`
+  Design tokens ZIP | `harmony-<id>.zip`
+
+MESSAGES
+========
+
+  Message: Loading harmony database…
+  When:    While loading.
+
+  Message: Could not load harmony database
+  When:    Loading failed.
+
+  Message: No harmonies match
+  When:    Nothing matches.
+
+  Message: No harmony selected
+  When:    Inspect before opening one.
+
+  Message: No harmonies
+  When:    An analysis tab with nothing matching.
+
+  Message: No saved harmonies yet
+  When:    Nothing saved.
+
+  Message: No scheme uses N colours
+  When:    The identifier has a colour count no scheme uses.
+
+  Message: Colour N is not a colour yet
+  When:    An identifier field is not a colour.
+
+  Message: #HEX copied, Harmony hexes copied, HEX list copied, CSS variables
+           copied, SCSS variables copied, Tailwind config copied, Copied
+  When:    After copying.
+
+  Message: Downloaded and a file name
+  When:    After a download.
+
+  Message: Saved, Removed
+  When:    After saving or unsaving on Inspect.
+
+  Message: Nothing to export
+  When:    Bulk export with no matches.
+
+  Message: Shared harmony not found in current dataset
+  When:    A share link could not be matched.
+
+KEYBOARD
+========
+
+`/` focuses search; `Enter` or `Space` on a focused swatch opens its harmony;
+`Escape` closes the share and design tokens dialogs.

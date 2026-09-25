@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about Auric Artisan Live.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html" aria-current="page">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>FAQ</h1>
+<p class="lede">Short answers to common questions about Auric Artisan Live.</p>
+<h2 id="is-auric-live-a-production-web-server">Is Auric Live a production web server?</h2>
+<p>No. It is a development server for your own machine. Do not use it to host a public site.</p>
+<h2 id="does-it-need-nodejs-or-other-software">Does it need Node.js or other software?</h2>
+<p>Serving static files needs nothing extra. Running a backend needs that backend&#39;s runtime (PHP, Python, Node.js and so on) and the project&#39;s dependencies, installed by you. The extension itself has no runtime npm dependencies.</p>
+<h2 id="what-is-the-default-address">What is the default address?</h2>
+<p><code>http://localhost:5500</code>, or the next free port. Change it with <code>auricLive.port</code>.</p>
+<h2 id="can-other-people-on-my-network-see-my-site">Can other people on my network see my site?</h2>
+<p>In a trusted workspace the default host <code>0.0.0.0</code> lets devices on your local network reach the server, subject to your firewall. Set <code>auricLive.host</code> to <code>127.0.0.1</code> to keep it on your machine, or turn on <code>auricLive.auth.enabled</code> to require a password.</p>
+<h2 id="why-does-the-page-not-reload-for-files-my-build-tool-writes">Why does the page not reload for files my build tool writes?</h2>
+<p>The default trigger reacts only to saves in VS Code, so generated and synchronised files cannot keep refreshing the page. Set <code>auricLive.liveReload.reloadOnSave</code> to <code>change</code> for build tools.</p>
+<h2 id="can-i-use-it-with-vite-nextjs-angular-or-another-framework">Can I use it with Vite, Next.js, Angular or another framework?</h2>
+<p>Yes. Choose the framework&#39;s dev server as the run target. Auric Live starts it, forwards to it and keeps the framework&#39;s own hot reload in charge, while still adding its dashboard.</p>
+<h2 id="can-i-run-php">Can I run PHP?</h2>
+<p>Yes, through <code>php-cgi</code> or the PHP built-in server, with PHP installed. See <a href="php-and-cgi.html">Run PHP sites</a>.</p>
+<h2 id="can-i-serve-several-projects-at-once">Can I serve several projects at once?</h2>
+<p>Yes. Each folder of a multi-root workspace gets its own server and port. Use <strong>Select Active Server</strong> to choose which one the panel shows.</p>
+<h2 id="does-it-work-in-an-untrusted-folder">Does it work in an untrusted folder?</h2>
+<p>Partly. Static serving, live reload and request inspection work on this machine only. Running commands, PHP, proxying, file-backed mocks, custom certificates and network access need trust.</p>
+<h2 id="does-it-work-over-remote-ssh-in-containers-or-in-virtual-workspaces">Does it work over Remote SSH, in containers or in virtual workspaces?</h2>
+<p>It needs a real file system and a port. Virtual workspaces are not supported. In remote setups it runs next to the files; forward the port to reach it from your computer.</p>
+<h2 id="does-https-remove-the-browser-warning">Does HTTPS remove the browser warning?</h2>
+<p>Only if the browser trusts the certificate. The generated certificate is self-signed, so each browser or device warns until you trust it. A certificate your devices already trust removes the warning.</p>
+<h2 id="is-my-request-data-sent-anywhere">Is my request data sent anywhere?</h2>
+<p>No. Requests are recorded locally, credentials are masked, and HAR exports leave out bodies by default. There is no telemetry.</p>
+<h2 id="can-i-use-it-in-hindi">Can I use it in Hindi?</h2>
+<p>Yes. Choose <strong>हिन्दी</strong> in the control panel header, or set <code>auricLive.interfaceLanguage</code> to <code>hi</code>. The browser dashboard and your website are not translated.</p>
+<h2 id="how-is-it-different-from-other-live-servers">How is it different from other live servers?</h2>
+<p>Besides live reload, it runs and waits for backends, proxies and mocks APIs, serves a REST API from a JSON file, inspects and replays requests, simulates slow networks for every client, and adds an in-page dashboard.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting</a><a href="../others/README.html"><span>Next</span>Supporting material</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#is-auric-live-a-production-web-server">Is Auric Live a production web server?</a></li><li><a href="#does-it-need-nodejs-or-other-software">Does it need Node.js or other software?</a></li><li><a href="#what-is-the-default-address">What is the default address?</a></li><li><a href="#can-other-people-on-my-network-see-my-site">Can other people on my network see my site?</a></li><li><a href="#why-does-the-page-not-reload-for-files-my-build-tool-writes">Why does the page not reload for files my build tool writes?</a></li><li><a href="#can-i-use-it-with-vite-nextjs-angular-or-another-framework">Can I use it with Vite, Next.js, Angular or another framework?</a></li><li><a href="#can-i-run-php">Can I run PHP?</a></li><li><a href="#can-i-serve-several-projects-at-once">Can I serve several projects at once?</a></li><li><a href="#does-it-work-in-an-untrusted-folder">Does it work in an untrusted folder?</a></li><li><a href="#does-it-work-over-remote-ssh-in-containers-or-in-virtual-workspaces">Does it work over Remote SSH, in containers or in virtual workspaces?</a></li><li><a href="#does-https-remove-the-browser-warning">Does HTTPS remove the browser warning?</a></li><li><a href="#is-my-request-data-sent-anywhere">Is my request data sent anywhere?</a></li><li><a href="#can-i-use-it-in-hindi">Can I use it in Hindi?</a></li><li><a href="#how-is-it-different-from-other-live-servers">How is it different from other live servers?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use a measured reflectance — Auric Artisan Docs</title>
+<meta name="description" content="Load a spectrophotometer reflectance file in place of the synthesised presets, and go back to the presets.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Material Lighting (Material Under Light)</a>
+<h2>Using Material Under Light</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Material Under Light</a></li>
+<li><a href="compare-with-the-reference.html">Compare with the reference light</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="run-a-sensitivity-sweep.html">Run a sensitivity sweep</a></li>
+<li><a href="set-up-a-scene.html">Set up a scene</a></li>
+<li><a href="use-a-measured-reflectance.html" aria-current="page">Use a measured reflectance</a></li>
+<li><a href="reference.html">Material Under Light reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Material Under Light</a></li>
+<li><a href="faq.html">Material Under Light FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Material Lighting (Material Under Light)</a> &rsaquo; <a href="README.html">Using Material Under Light</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Material Lighting</p>
+<h1>Use a measured reflectance</h1>
+<p class="lede">Load a spectrophotometer reflectance file in place of the synthesised presets, and go back to the presets.</p>
+<p>The twenty presets are invented curves. If you have a measured reflectance spectrum, from a spectrophotometer or a published dataset, you can render it instead.</p>
+<h2 id="prepare-the-file">Prepare the file</h2>
+<ul>
+<li>A plain-text file: <code>.csv</code>, <code>.tsv</code> or <code>.txt</code>.</li>
+<li>Two columns per line: <strong>wavelength in nm</strong> and <strong>reflectance</strong>. Columns may be separated by commas, semicolons, tabs or spaces. Lines that are not two numbers are skipped.</li>
+<li>Reflectance from 0 to 1. A file in percent is detected automatically: if any value is above 1, every value is divided by 100. Values outside 0–1 after that are clipped.</li>
+<li>At least eight rows, covering at least <strong>420 to 680 nm</strong>.</li>
+</ul>
+<h2 id="load-it">Load it</h2>
+<ol>
+<li>Drop the file on the spectrum plot on the <strong>Lab</strong> tab, or on <strong>Drop a reflectance file</strong> under <strong>Measure the material</strong> on the <strong>Data</strong> tab. You can also click either area (or press <code>Enter</code> or <code>Space</code> on the Data tab&#39;s area) to choose the file.</li>
+<li>Read the message: for example <strong>41 rows accepted, read as percent — the register now says verbatim</strong>, or <strong>Not installed:</strong> with a reason.</li>
+</ol>
+<h2 id="what-changes">What changes</h2>
+<ul>
+<li>The file is resampled onto the 5 nm grid from 380 to 780 nm by straight-line interpolation between your rows; beyond the ends of your file, the first and last values are held flat.</li>
+<li>The material menu now holds a single entry, named after your file with <strong>— measured</strong>, and it is selected. The twenty presets are hidden.</li>
+<li><strong>Reflectance</strong> on the Lab tab reads <strong>measured —</strong> and your file name, and the plot legend names your file.</li>
+<li>On the <strong>Data</strong> tab, <strong>The twenty pigment reflectances</strong> entry becomes <strong>Verbatim</strong>, with your file name, the number of rows and the wavelength span.</li>
+<li>Exports mark the reflectance as <strong>MEASURED, from</strong> your file.</li>
+<li><strong>Go back to the presets</strong> appears on the Data tab.</li>
+</ul>
+<p>Every other control, including dielectric or conductor, roughness, lobe and geometry, applies as before.</p>
+<h2 id="go-back">Go back</h2>
+<p>Select <strong>Go back to the presets</strong> on the Data tab. The message <strong>Back to the twenty synthesised presets</strong> confirms it. The loaded curve is also lost when you reload the page; links do not carry it.</p>
+<p>You should now see your own material rendered under any light and lobe.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="set-up-a-scene.html"><span>Previous</span>Set up a scene</a><a href="reference.html"><span>Next</span>Material Under Light reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#prepare-the-file">Prepare the file</a></li><li><a href="#load-it">Load it</a></li><li><a href="#what-changes">What changes</a></li><li><a href="#go-back">Go back</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

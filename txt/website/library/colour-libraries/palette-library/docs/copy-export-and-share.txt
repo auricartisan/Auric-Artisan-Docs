@@ -1,0 +1,197 @@
+==============================================================================
+COPY, EXPORT AND SHARE
+==============================================================================
+Copy a palette as hex, CSS, SCSS or Tailwind, download it as JSON, ASE, SVG or
+PNG, export design tokens, share a link, and download many palettes at once.
+Area: Website › Library › Colour libraries › Palette Library   Updated: 2026-09-25
+
+QUICK COPIES FROM THE GRID
+==========================
+
+  - Select one swatch to copy that colour's hex code.
+  - Select Copy on a card to copy all five hex codes separated by commas, for
+    example `#28ACE4, #715ED2, #F84461, #6F30E7, #BBC8BA`.
+
+EXPORT ONE PALETTE
+==================
+
+Open the palette on the Inspect tab (see Inspect a palette
+[inspect-a-palette.txt]). You can then use either the Quick export row on
+Inspect, or the Selection card on the Export tab. They produce the same
+results.
+
+If no palette is open, the Export tab says No palette selected. Click Inspect
+on any card in the Library tab to enable selection exports.
+
+Copy formats
+------------
+
+The examples use palette `pal_0`. Variable names are built from the palette id
+and the colour's position, 1 to 5.
+
+  Quick export  | Export tab      | What is copied
+  --------------+-----------------+----------------------------------------------------------
+  Copy HEX      | HEX list        | The five hex codes, one per line.
+  Copy CSS vars | CSS variables   | A `:root` block with one custom property per colour.
+  Copy SCSS     | SCSS variables  | Five Sass variables.
+  Copy Tailwind | Tailwind config | A colour object you can paste into `theme.extend.colors`.
+
+    :root {
+      --pal_0-1: #28ACE4;
+      --pal_0-2: #715ED2;
+      --pal_0-3: #F84461;
+      --pal_0-4: #6F30E7;
+      --pal_0-5: #BBC8BA;
+    }
+
+    $pal_0-1: #28ACE4;
+    $pal_0-2: #715ED2;
+    $pal_0-3: #F84461;
+    $pal_0-4: #6F30E7;
+    $pal_0-5: #BBC8BA;
+
+    {
+      "pal_0": {
+        "c1": "#28ACE4",
+        "c2": "#715ED2",
+        "c3": "#F84461",
+        "c4": "#6F30E7",
+        "c5": "#BBC8BA"
+      }
+    }
+
+These are the real colours of `pal_0`, which is labelled `complementary`.
+
+Downloads
+---------
+
+  Quick export: Download JSON
+  Export tab:   JSON
+  File:         `pal_0.json`
+  Contents:     The id, each colour's hex, RGB, OKLCH and Lab, and the
+                metadata: method, colour count, average ΔE, entropy and the
+                full 5 × 5 contrast table.
+
+  Quick export: Download ASE
+  Export tab:   Adobe ASE
+  File:         `pal_0.ase`
+  Contents:     An Adobe Swatch Exchange file with five RGB swatches named
+                `pal_0_1` to `pal_0_5`. Opens in Adobe Illustrator, Photoshop,
+                InDesign and other apps that read ASE.
+
+  Quick export: Download SVG
+  Export tab:   SVG strip
+  File:         `pal_0.svg`
+  Contents:     A 600 × 220 strip of the five colours, each labelled with its
+                hex code.
+
+  Quick export: Download PNG
+  Export tab:   PNG strip
+  File:         `pal_0.png`
+  Contents:     An 800 × 320 image of the same strip.
+
+The page confirms each download with Downloaded and the file name.
+
+Open in Coolors
+---------------
+
+Open in Coolors (on Inspect, and under External on the Export tab) opens the
+palette on coolors.co in a new tab, with the five colours already loaded.
+Coolors is a separate website; what you do there is governed by its own terms.
+
+EXPORT DESIGN TOKENS
+====================
+
+Design tokens are named colour values in a format a design system or app
+platform understands.
+
+  1. On Inspect, select Design tokens…. A dialog opens, titled with the
+     palette id.
+  2. In Token prefix, type the name your tokens should start with. The default
+     is `brand`.
+  3. Select a format tab. The preview shows the file, with a line above it
+     giving the number of tokens, the file name and the file's length, for
+     example 5 tokens · tokens.css and a character count.
+  4. Select Copy to copy the preview, Download to save that format, or
+     Download all to save every format in one ZIP file.
+
+  Format tab         | File name
+  -------------------+-------------------------------
+  W3C Design Tokens  | `tokens.json`
+  CSS Variables      | `tokens.css`
+  SCSS               | `tokens.scss`
+  Tailwind Config    | `tailwind.config.js`
+  Style Dictionary   | `style-dictionary.tokens.json`
+  Material UI Theme  | `theme.ts`
+  iOS (SwiftUI)      | `Colors.swift`
+  Android colors.xml | `colors.xml`
+
+Download all names the ZIP after the palette, for example `palette-pal-0.zip`.
+Close the dialog with ✕ or by selecting outside it.
+
+SHARE A LINK
+============
+
+  1. On Inspect, select Copy share link. The Share link dialog opens, titled
+     with the palette id.
+  2. The dialog explains: "Anyone with this link can open a copy. State is
+     encoded in the URL — no account needed."
+  3. Select Copy (it changes to Copied!), Share via… (on devices that offer a
+     system share sheet), or Open in new tab.
+  4. Select Close when you are done.
+
+Anyone who opens the link lands on the Palette Library with the palette open
+on Inspect. The link carries the palette's id and colours; nothing is stored
+on a server. If the palette cannot be found, the page says Shared palette not
+found in current dataset.
+
+EXPORT MANY PALETTES
+====================
+
+The Export tab's second card is headed Visible page and carries a badge with a
+number of palettes. It exports the same sample the analysis tabs measure (see
+Analyse the collection [analyse-the-collection.txt]): with no filter, the
+first 2,000 palettes of the collection; with a filter, up to 2,000 matching
+palettes from the first 40,000 looked at.
+
+  Group:    Bulk download
+  Button:   Download JSON (visible page)
+  Contents: Every palette in full, with export time, source and count.
+
+  Group:    -
+  Button:   Download CSV (visible page)
+  Contents: One row per palette: `palette_id,method,c1,c2,c3,c4,c5`.
+
+  Group:    -
+  Button:   Download CSS variables
+  Contents: One `:root` block with five variables per palette.
+
+  Group:    -
+  Button:   Download SCSS variables
+  Contents: Five Sass variables per palette.
+
+  Group:    -
+  Button:   Download compact JSON
+  Contents: The count and each palette's id and five hex codes.
+
+  Group:    Sample formats
+  Button:   Download .txt hex list
+  Contents: Every hex code, one per line.
+
+  Group:    -
+  Button:   Download tailwind.config.js fragment
+  Contents: A Tailwind configuration with one colour group per palette.
+
+Files are named `palette-page-` plus the number of palettes and the date, for
+example `palette-page-2000-2026-09-24.csv`. If the sample is empty, the page
+says Nothing to export.
+
+  | Note: "Visible page" means the measured sample, not only the cards on your
+  | screen. To export exactly one palette, use the Selection card instead.
+
+RESULT
+======
+
+The palette is on your clipboard, in a file your design tool or code can read,
+in a design-token format for your platform, or in a link someone else can
+open.

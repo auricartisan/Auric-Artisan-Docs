@@ -1,0 +1,45 @@
+---
+title: Auric Artisan File Icons — Modern and older Playful settings
+description: Use File Icons alongside Auric Icons: Modern, import Modern's file settings, and move from the old standalone Playful file icon extension.
+product: VS Code extensions › Auric Artisan File Icons
+updated: 2026-09-25
+---
+
+# Modern and older Playful settings
+
+File Icons brings together Explorer styles that used to live in separate extensions. This page explains how to move your settings and avoid duplicates.
+
+## Using File Icons with Auric Icons: Modern
+
+File Icons includes Modern's Explorer artwork (464 assets) and keeps its theme ID, `auric-artisan-modern-icon`. The Auric Icons: Modern extension also has a general-purpose 720-icon library, which File Icons does not include.
+
+- Keep **Auric Icons: Modern** installed if you use its icon library.
+- The Modern version currently on the Marketplace (0.12.1) still includes its own **Auric Icons: Modern** file icon theme under the same theme ID. With both installed, the **File Icon Theme** picker can show two Modern entries, and the two extensions use different settings (`auricIcons.*` for Modern, `auricFileIcons.*` for File Icons).
+- The File Icons documentation states that an updated Modern release no longer registers a file theme. Until you have that release, choose one extension to manage Modern's Explorer icons and use its settings.
+
+### Import Modern's file settings
+
+1. Open File Icon Studio › **Workspace** › **Import existing file settings**.
+2. Select **Import Modern file settings**, or run **Auric Artisan File Icons: Import Modern File Icon Settings…**.
+3. Confirm the import.
+
+Only missing file-theme settings are copied, at their original user, workspace or folder scope. Your existing File Icons settings, Modern's library preferences, likes, recent items and emoji are not changed.
+
+## Moving from the standalone Playful extension
+
+Facet and Playful now live in File Icons. Their theme IDs (`auric-artisan-file-icons-facet` and `auric-artisan-file-icons-playful`) and all 500 original Playful SVGs are kept.
+
+1. Before uninstalling the old Playful extension, export any saved profiles from it.
+2. Install File Icons and run **Auric Artisan File Icons: Import Legacy Playful Settings…** (or **Import legacy settings…** on the Workspace tab). Missing `auricPlayfulIcons` settings are copied into `auricFileIcons` at their original scope. Existing values are not overwritten.
+3. Import exported profiles through **Workspace** › **Profiles** › **Import…**.
+4. Disable or uninstall the old Playful extension to avoid duplicate themes and decorations.
+
+File Icons cannot read another extension's private profile storage, so step 1 matters.
+
+## Not the same Playful
+
+The Playful Explorer style in File Icons is a different set of artwork from the **Auric Icons: Playful** extension, which is a 1,225-icon library for inserting into code and has no Explorer theme.
+
+## Result
+
+Your earlier settings are in File Icons, and you see each Explorer theme once.

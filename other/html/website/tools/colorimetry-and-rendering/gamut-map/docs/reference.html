@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut Mapping reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, readout, option and export in the Gamut Mapping lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Mapping</a>
+<h2>Gamut Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Gamut Mapping</a></li>
+<li><a href="compare-spaces-and-methods.html">Compare spaces and methods</a></li>
+<li><a href="map-a-colour-list.html">Map a list of colours</a></li>
+<li><a href="map-a-colour.html">Map a colour into a smaller gamut</a></li>
+<li><a href="reference.html" aria-current="page">Gamut Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Gamut Mapping</a></li>
+<li><a href="faq.html">Gamut Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Mapping</a> &rsaquo; <a href="README.html">Gamut Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Gamut Mapping reference</h1>
+<p class="lede">Every control, readout, option and export in the Gamut Mapping lab.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/colorimetry/gamut-map/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/gamut-map/</a></p>
+<h2 id="the-five-colour-spaces">The five colour spaces</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Space</th><th>White</th><th>Transfer curve used to decode HEX</th></tr></thead>
+<tbody>
+<tr><td>sRGB / Rec.709</td><td>D65</td><td>sRGB piecewise curve (IEC 61966-2-1)</td></tr>
+<tr><td>Display P3</td><td>D65</td><td>sRGB piecewise curve</td></tr>
+<tr><td>Rec. 2020</td><td>D65</td><td>BT.2020 curve</td></tr>
+<tr><td>Adobe RGB</td><td>D65</td><td>Power law 563/256 (about 2.2)</td></tr>
+<tr><td>ProPhoto RGB</td><td>D50</td><td>ROMM: power 1.8 with a linear toe</td></tr>
+</tbody></table></div>
+<p>The slice is drawn on the source space&#39;s white. A space with a different white is adapted onto it with the Bradford transform before its boundary is tested.</p>
+<h2 id="lab-tab">Lab tab</h2>
+<h3 id="controls">Controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Base colour picker and HEX field</td><td>The colour to analyse, interpreted in the source space</td><td>Any six-digit HEX</td><td>#247DEB</td></tr>
+<tr><td><strong>Random</strong></td><td>Picks a random base colour</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Lightness Slice L*</strong></td><td>The lightness of the a<em>b</em> slice</td><td>5 to 95, step 1</td><td>65</td></tr>
+<tr><td><strong>Source</strong></td><td>The space colours come from</td><td>The five spaces</td><td>sRGB / Rec.709</td></tr>
+<tr><td><strong>Target</strong></td><td>The space colours go to</td><td>The five spaces</td><td>Display P3</td></tr>
+<tr><td><strong>Swap Source &amp; Target</strong></td><td>Exchanges the two</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Method</strong></td><td>The mapping method</td><td>Chroma compression, Clip in target RGB, Uniform RGB scale, Adapt white, then clip</td><td>Chroma compression</td></tr>
+<tr><td><strong>Compression Strength</strong></td><td>How far chroma compression goes (used by chroma compression only)</td><td>0 to 1, step 0.01</td><td>0.90</td></tr>
+<tr><td><strong>Resolution</strong></td><td>Sample grid for the slices</td><td>60 to 512, step 20</td><td>120 × 120</td></tr>
+<tr><td><strong>Sampler</strong></td><td>How sample points are placed</td><td>Uniform grid; Stratified (2×2), randomly jittered; Halton (base 2/3), a low-discrepancy sequence</td><td>Uniform grid</td></tr>
+<tr><td><strong>Adaptive edge refinement</strong></td><td>Shown but not applied in the current version</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Mark out-of-gamut in source</strong></td><td>Draws the target&#39;s boundary on the source slice</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Show base colour on slice</strong></td><td>Rings the base colour on the source slice</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Hue tick lines</strong></td><td>Draws radial lines every 30° of hue</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Gamut boundary outlines</strong></td><td>Outlines the source boundary on the source slice and the target boundary on the mapped slice</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Axes &amp; labels</strong></td><td>Shown but not applied; axes are always drawn</td><td>On or off</td><td>On</td></tr>
+<tr><td>ΔE Playground <strong>A</strong></td><td>First colour (picker and HEX field)</td><td>Six-digit HEX</td><td>#735244</td></tr>
+<tr><td>ΔE Playground <strong>B</strong></td><td>Second colour</td><td>Six-digit HEX</td><td>#3BB273</td></tr>
+<tr><td>ΔE formula menu</td><td>Shown but does not change the readout; all three formulas are always listed</td><td>ΔE₀₀, ΔE<em>₉₄, ΔE</em>₇₆</td><td>ΔE₀₀</td></tr>
+</tbody></table></div>
+<h3 id="readouts">Readouts</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Base Colour Info</strong></td><td>L*, a*, b*, C*, h°, and whether the colour is in the source and in the target (Yes or OOG)</td></tr>
+<tr><td><strong>Source Slice</strong></td><td>Colours inside the source gamut at the chosen L*, painted in sRGB, a* and b* from −128 to +128. Click to probe</td></tr>
+<tr><td><strong>Mapped to Target</strong></td><td>The source-gamut colours mapped into the target. In the current version this slice always uses chroma compression to the boundary, whatever the method and strength</td></tr>
+<tr><td>Statistics line</td><td>L*, the source and target slice areas (in a<em>b</em> units), their ratio as a percentage, the method and the sampler with its resolution</td></tr>
+<tr><td>Provenance line</td><td>The transfer curve, the white the Lab values are referenced to, and the method</td></tr>
+<tr><td><strong>Probe Point</strong></td><td>L*, a*, b*, C*, h°, sRGB, HEX, and whether the point is in the source and the target</td></tr>
+<tr><td><strong>Before / After (12 Test Colours)</strong></td><td>#FF0000, #00FF00, #0000FF, #FFFF00, #FF00FF, #00FFFF, #FF8800, #88FF00, #0088FF, #FF0088, #8800FF and #00FF88, before (left) and after (right) mapping with your method and strength</td></tr>
+<tr><td>ΔE Playground result</td><td>ΔE₀₀ with its verbal band, ΔE<em>94 and ΔE</em>76</td></tr>
+</tbody></table></div>
+<p>ΔE₀₀ verbal bands: below 1 Imperceptible; below 2 Barely perceptible; below 3.5 Noticeable; below 5 Significant; 5 and above Very different.</p>
+<h2 id="boundary-tab">Boundary tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control or readout</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Spaces on the plot</strong></td><td>Toggles each space on the boundary tiles</td><td>Five chips</td><td>sRGB and Display P3 on</td></tr>
+<tr><td>Boundary tiles</td><td>a<em>b</em> boundaries at L* 20, 40, 65, 80 and 90 on one shared scale</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Volume samples</strong> (n)</td><td>Monte Carlo samples per space</td><td>5,000 to 200,000, step 5,000</td><td>20k</td></tr>
+<tr><td><strong>Measure the five</strong></td><td>Estimates every space&#39;s CIELAB volume</td><td>Button</td><td>—</td></tr>
+<tr><td>Volume table</td><td>Space, White, Lab volume ± 1 SE, vs sRGB, Sample box</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="methods-tab">Methods tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control or readout</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Compare on</strong></td><td>The colours the figures are computed on</td><td>The base colour; 12 probe colours</td><td>The base colour</td></tr>
+<tr><td>Method rows</td><td>Name, what it does, tag &quot;this tool&quot;, explanation, and mean ΔE₀₀, max ΔE₀₀ and out-of-gamut count</td><td>—</td><td>The Lab&#39;s method open</td></tr>
+<tr><td><strong>Provenance</strong></td><td>Count of published intents (0) and this tool&#39;s methods (4)</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Dataset</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Primaries, 5 RGB spaces</td><td>Verbatim</td></tr>
+<tr><td>White points D65 and D50</td><td>Verbatim</td></tr>
+<tr><td>Transfer functions, 5 spaces</td><td>Computed</td></tr>
+<tr><td>Bradford adaptation matrix</td><td>Verbatim</td></tr>
+<tr><td>Gamut boundary, a<em>b</em> slice</td><td>Computed (360 hues per L*, 24 bisection steps)</td></tr>
+<tr><td>ΔE₀₀, ΔE94, ΔE76</td><td>Computed</td></tr>
+<tr><td>Gamut volume in CIELAB</td><td>Computed (uniform Monte Carlo in a fitted box)</td></tr>
+<tr><td>ICC perceptual and saturation tables</td><td>Absent</td></tr>
+<tr><td>Reference gamut-mapping results</td><td>Absent</td></tr>
+</tbody></table></div>
+<p><strong>Status</strong> chips filter the list (<strong>All</strong>, <strong>Verbatim</strong>, <strong>Computed</strong>, <strong>Absent</strong>). The <strong>Install a table</strong> area (&quot;Drop a CSV, JSON or ICC profile&quot;) does not load files in the current version.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Source slice, PNG</strong></td><td><code>gamut-map-gm-canvas-src.png</code></td></tr>
+<tr><td><strong>Mapped slice, PNG</strong></td><td><code>gamut-map-gm-canvas-dst.png</code></td></tr>
+<tr><td><strong>Everything as JSON</strong></td><td><code>gamut-map-config.json</code> with <code>sourceSpace</code>, <code>targetSpace</code>, <code>intent</code>, <code>strength</code>, <code>lStar</code>, <code>resolution</code>, <code>sampler</code>, <code>timestamp</code></td></tr>
+<tr><td>Link field, <strong>Link</strong>, <strong>Copy</strong></td><td>A URL with <code>src</code>, <code>dst</code>, <code>int</code> (method), <code>l</code> (L*), <code>res</code>, <code>sam</code>, <code>str</code> and <code>hex</code></td></tr>
+<tr><td><strong>Map a list of colours at once</strong>, <strong>Run the list</strong></td><td>Table of Input, Output, OOG, ΔE₀₀ and Lab for up to 50 colours, with a summary</td></tr>
+</tbody></table></div>
+<p>Method values in the link: <code>compress</code>, <code>clip</code>, <code>scale</code>, <code>adapt-clip</code>. Sampler values: <code>grid</code>, <code>stratified</code>, <code>halton</code>. Space values: <code>sRGB</code>, <code>P3</code>, <code>Rec2020</code>, <code>AdobeRGB</code>, <code>ProPhoto</code>.</p>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Standards</strong>, <strong>Formulas</strong>, <strong>Citations</strong>, <strong>Research notes</strong></td><td>Switch sections; each shows a count</td></tr>
+<tr><td><strong>Filter</strong></td><td>Searches all four; <code>Esc</code> clears it</td></tr>
+</tbody></table></div>
+<p>Standards: IEC 61966-2-1 (sRGB), SMPTE ST 432-1 (Display P3), ITU-R BT.2020-2, Adobe RGB (1998), ProPhoto RGB (ROMM), ICC.1:2022 rendering intents, ISO 11664-6 (CIEDE2000) and CIE 15:2018, each with a badge read from the data register. Formulas: hard clip, chroma compression, uniform scaling, Bradford adaptation plus clip, boundary bisection, RGB–XYZ matrix derivation, ΔE formulas, and the Halton and stratified samplers. Some research notes use the older intent names and mention area comparisons that have moved to the Boundary tab; the Methods tab reflects the current methods.</p>
+<h2 id="save-to-library">Save to Library</h2>
+<p>The floating <strong>Save to Library</strong> button stores a snapshot of the first slice image in your Library.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="map-a-colour.html"><span>Previous</span>Map a colour into a smaller gamut</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting Gamut Mapping</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-five-colour-spaces">The five colour spaces</a></li><li><a href="#lab-tab">Lab tab</a></li><li><a href="#boundary-tab">Boundary tab</a></li><li><a href="#methods-tab">Methods tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#save-to-library">Save to Library</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

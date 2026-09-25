@@ -1,0 +1,155 @@
+---
+title: Color Formulation — See how a colour is built and how to mix it
+description: Read one colour as channels, follow it through the conversion pipeline, see a reflectance sketch, and get a two-pigment paint mix that comes close to it.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Color Formulation
+
+Color Formulation takes one colour apart. It shows the numbers a screen stores for the colour, how those numbers are converted into the perceptual spaces designers use, a sketch of how a painted surface of that colour might reflect light, and which two artist pigments, mixed in which ratio, come closest to it.
+
+Use it when you want to understand a colour rather than only copy its code: to teach or learn how sRGB, linear light and OKLab relate, to judge whether a colour is a light tint or a deep shade, or to get a starting point for mixing a physical paint that matches a screen colour.
+
+Everything is calculated in your browser from the colour you enter. The paint recipe and the reflectance chart are simplified models, not measurements; see [Accuracy and limits](#accuracy-and-limits).
+
+## How to open it
+
+Open Color Formulation from the **Deep dive** group of the Colour Tools launcher (tag **FORM**) or from the Color Inspector's **Open in** list, which passes the inspected colour in; see [Open the Colour Tools and manage their panels](launcher-and-panels.md).
+
+If you open it with a colour, it starts with that colour. Otherwise it starts with `#D3AF37`.
+
+## Screen tour
+
+The panel has a sidebar on the left and a tabbed main area on the right. When the panel is narrow, the sidebar moves above the main area.
+
+### Sidebar
+
+- **Target color** — the colour field: a swatch that opens your browser's colour picker, a text box for a hex code, and a dice button (**Random color** tooltip) that sets a random colour.
+- **The large chip** — a 100-pixel block filled with the colour and labelled with its hex code. The label switches between dark and light text so it stays readable.
+- **Properties** — seven quick readings:
+
+| Reading | What it tells you |
+|---|---|
+| **Lightness (OKL)** | OKLCh lightness as a percentage (0% is black, 100% is white). |
+| **Chroma** | OKLCh chroma, to three decimals. 0 is a neutral grey; screen colours rarely pass about 0.37. |
+| **Hue angle** | OKLCh hue in degrees. |
+| **Saturation (HSL)** | HSL saturation as a whole percentage. |
+| **Rel. luminance** | WCAG relative luminance, from 0 (black) to 1 (white), to four decimals. |
+| **Tone character** | **Light tint** above 72% OKLCh lightness, **Deep shade** below 35%, otherwise **Mid tone**. |
+| **Chroma character** | **Vivid / saturated** above chroma 0.20, **Moderate chroma** above 0.09, otherwise **Muted / neutral**. |
+
+### Channels tab
+
+The tab that opens first. It draws a labelled bar for every channel in five groups, with the value at the end of each bar:
+
+| Group | Channels and values |
+|---|---|
+| **sRGB (gamma-encoded, 0–255)** | **R**, **G**, **B** as whole numbers from 0 to 255: the values in the hex code. |
+| **Linear-light sRGB (gamma decoded)** | **R-lin**, **G-lin**, **B-lin** from 0 to 1, to four decimals. |
+| **HSL (hue–saturation–lightness)** | **Hue** in degrees, **Sat** and **Lit** as percentages. |
+| **OKLab (perceptually uniform, Björn Ottosson)** | **L**, **a** (marked "red–green") and **b** (marked "blue–yellow"), to four decimals. |
+| **OKLCh (cylindrical OKLab)** | **L**, **C** (chroma) and **h°** (hue in degrees). |
+
+The OKLab **a** and **b** bars run from −0.4 on the left to +0.4 on the right, so a bar that stops half-way means zero. The OKLCh **C** bar runs from 0 to 0.4. The two hue bars are tinted with the hue they show.
+
+### Pipeline tab
+
+Six numbered steps show how the colour travels between spaces, with this colour's own numbers filled in:
+
+1. **Encoded sRGB** — the three whole numbers stored in the hex code, gamma-compressed for display.
+2. **Linear-light sRGB** — the same colour after gamma decoding, proportional to the amount of light.
+3. **CIE XYZ (D65)** — tristimulus values under the D65 daylight white; Y is the relative luminance.
+4. **OKLab** — L, a and b; equal distances here look like roughly equal colour differences.
+5. **OKLCh** — the cylindrical form of OKLab, where you can change chroma or turn the hue without changing lightness.
+6. **Back to sRGB** — each step reversed, gamma-encoded again and clamped to 0–255.
+
+### Reflectance tab
+
+- **Approximate reflectance** ("380–780 nm visible spectrum") — a chart of 36 bars across the visible spectrum, labelled every 50 nm from 380 nm to 780 nm. Taller bars mean more light reflected at that wavelength. A rainbow strip along the bottom marks the spectrum, and the whole chart is tinted with your colour. The note under the chart explains that this is a heuristic and that a spectroradiometer gives the real curve.
+- **Peak reflectance data** — a table of the five wavelengths with the highest bars, with columns **Wavelength**, **Reflectance** (a percentage) and **Bar**.
+
+### Paint recipe tab
+
+- **Best two-pigment mix** — a chip of the best mix the model found, labelled with its hex code and "Recreated — ΔE" and the difference from your colour. Beside it: "Mix *pigment A* and *pigment B* at *x*% / *y*% ratio", a swatch and hex code for each pigment, and a bar split in the two proportions.
+- **Top 6 alternatives** — the next six pairs, each with the mixed colour, the two pigment names, the ratio (for example `45/55`) and the ΔE.
+- A note under the cards: "Subtractive OKLab heuristic — best ΔE2000 match across 13 artist primaries × 21 ratios. Actual yield depends on pigment opacity, binder, and substrate."
+
+The 13 pigments the model can combine, with the colours it uses for them:
+
+| Pigment | Colour used | Pigment | Colour used |
+|---|---|---|---|
+| Cadmium Red Light | `#E63A2E` | Phthalo Blue | `#0B3D7A` |
+| Alizarin Crimson | `#A0182E` | Phthalo Green | `#0E7A4A` |
+| Cadmium Yellow | `#FFD500` | Sap Green | `#3F6E2A` |
+| Yellow Ochre | `#C5A050` | Dioxazine Purple | `#3B1B5C` |
+| Burnt Sienna | `#8B3A1F` | Titanium White | `#FAF8F2` |
+| Raw Umber | `#7B4F2E` | Mars Black | `#1A1A1A` |
+| Ultramarine Blue | `#1E3A8A` | | |
+
+The model tries every pair of these pigments, including a pigment with itself (91 pairs), at 21 ratios from 100/0 to 0/100 in steps of 5%.
+
+## Walkthroughs
+
+### Read how a colour is encoded
+
+1. Open Color Formulation.
+2. In the sidebar's hex box, type `D3AF37`.
+3. Look at **Properties**. You see **Lightness (OKL)** 76.6%, **Chroma** 0.138, **Hue angle** 91.6°, **Saturation (HSL)** 64%, **Rel. luminance** 0.4478, **Tone character** Light tint and **Chroma character** Moderate chroma.
+4. On the **Channels** tab, compare the **sRGB** bars (211, 175, 55) with the **Linear-light sRGB** bars. The blue channel drops from about a fifth of its range to under 4%, because gamma decoding makes dark values much smaller.
+5. Select the **Pipeline** tab and read the six steps.
+
+Result: you can see the same gold as stored numbers, as linear light, and as OKLab and OKLCh coordinates.
+
+### Find a two-pigment paint mix
+
+1. Enter the colour you want to mix, for example `#D3AF37`.
+2. Select the **Paint recipe** tab.
+3. Read the **Best two-pigment mix** card. For `#D3AF37` it says "Mix **Cadmium Yellow** and **Yellow Ochre** at **45% / 55%** ratio", and the chip shows `#D1AA2E`, "Recreated — ΔE 1.52".
+4. Look through **Top 6 alternatives** for pairs you already own. The ΔE under each card tells you how far that mix lands from your colour; lower is closer.
+
+Result: a starting recipe and six fallbacks, each with the colour the model expects the mix to produce.
+
+> **Tip:** Treat the recipe as a direction to start mixing in, then adjust by eye under the light where the work will be seen.
+
+### Look at the reflectance sketch
+
+1. Enter a colour.
+2. Select the **Reflectance** tab. The chart draws for the current colour.
+3. To fill the **Peak reflectance data** table, change the colour while the tab is open (for example, pick a new colour, or change one digit of the hex code and change it back).
+
+Result: a chart and a table of the five strongest wavelengths in the sketch. Read [Accuracy and limits](#accuracy-and-limits) before drawing conclusions from them.
+
+## Controls
+
+| Control | What it does | Values or range | Default |
+|---|---|---|---|
+| Colour swatch (**Color picker**) | Opens your browser's colour picker and updates every reading as you pick. | Any sRGB colour. | The colour the tool was opened with, or `#D3AF37`. |
+| Hex box (**Color hex**) | Type a hex code. The tool updates as soon as the text is a valid code; invalid text is ignored. | 3, 4, 6 or 8 hex digits, with or without `#`. Transparency digits are ignored. | As above. |
+| Dice button (**Random color**) | Sets a random colour. | Any sRGB colour. | — |
+| **Channels** tab | Shows the channel bars. | — | Selected when the tool opens. |
+| **Pipeline** tab | Shows the six conversion steps. | — | — |
+| **Reflectance** tab | Shows the reflectance chart and the peak table. | — | — |
+| **Paint recipe** tab | Shows the best mix and six alternatives. | — | — |
+
+## Outputs and exports
+
+Color Formulation has no copy or download buttons. Everything it shows is on screen: the readings, the channel values, the pipeline numbers, the reflectance sketch and the recipes. To copy the colour in a particular format, open it in [Color Space Converter](colour-space-converter.md) or the [Color Inspector](colour-inspector.md).
+
+## Accuracy and limits
+
+- **The conversions are standard.** sRGB to linear light uses the sRGB transfer function, XYZ uses the D65 white, and OKLab and OKLCh follow Björn Ottosson's published definition. The numbers match what other colour tools give, within rounding.
+- **The paint recipe is a rough model, not a pigment database.** It stands each pigment in as one sRGB colour and mixes pairs in OKLab with a small darkening step. It does not model pigment strength, opacity, the binder or the surface, which is why the tool's own note says actual yield varies.
+- **In this model the ratio moves the hue and chroma but not the lightness.** The lightness of a mix is always the average of the two pigments' lightness, a little darker. A recipe that reads 100% / 0% therefore still depends on the second pigment: in the model, "Yellow Ochre + Titanium White at 100% / 0%" is lighter than Yellow Ochre alone. Read such a result as "this pigment, lightened (or darkened) towards the second one".
+- **ΔE is the CIEDE2000 difference** between your colour and the modelled mix. Below about 2 most people see no difference side by side; above 5 the difference is clear.
+- **The reflectance chart is a teaching sketch, not a spectrum.** It is drawn from the colour's HSL hue, saturation and lightness. The height of the chart follows the lightness, and the peak's position follows the hue angle, not the wavelengths a real surface of that colour reflects most. For example, a pure blue peaks near 643 nm in this chart, although a real blue surface reflects least there. Do not use the chart or the peak table as spectral data; measure the surface with a spectrophotometer instead.
+- **Different surfaces can match on screen and differ in light.** Two paints that look the same under one light can separate under another (metamerism). No screen tool can predict that without real spectral data.
+
+## Related
+
+- [Colour Tools documentation](README.md) — all fourteen tools
+- [Color Space Converter](colour-space-converter.md) — the same colour in 34 notations, with gamut diagrams
+- [Color Inspector](colour-inspector.md) — every reading for one colour, and the **Open in** list
+- [CMYK Soft-Proof](cmyk-soft-proof.md) — how the colour might print on a press
+- [Perception and spectral tools](../../../../perception-and-spectral/README.md) — tools that work with real spectra, dyes and materials
+- [Basic Color Tools](../../README.md)

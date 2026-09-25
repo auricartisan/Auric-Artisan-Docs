@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The safety gate and formatting tiers — Auric Artisan Docs</title>
+<meta name="description" content="How Auric Artisan Formatter checks every result before it reaches your file, what the native and universal tiers can change, and how to see why a file was formatted as it was.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html" aria-current="page">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>The safety gate and formatting tiers</h1>
+<p class="lede">How Auric Artisan Formatter checks every result before it reaches your file, what the native and universal tiers can change, and how to see why a file was formatted as it was.</p>
+<p>A formatter rewrites your source. That is only acceptable if it can show it did not change what the source means. Auric Artisan Formatter checks every file before you see the result.</p>
+<h2 id="the-five-checks">The five checks</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Check</th><th>What it proves</th><th>Option</th></tr></thead>
+<tbody>
+<tr><td><strong>Token stream</strong></td><td>The output re-reads to the same significant tokens as the input: no dropped argument, swallowed operator or mangled string</td><td><code>safetyTokenCheck</code> (and <code>safetyTokenCheckComments</code> to include comments)</td></tr>
+<tr><td><strong>Comments</strong></td><td>Every comment in the input appears in the output</td><td><code>safetyCommentPreservation</code></td></tr>
+<tr><td><strong>String literals</strong></td><td>Every string and template keeps the same content</td><td><code>safetyStringLiterals</code></td></tr>
+<tr><td><strong>Reparse</strong></td><td>The output parses again with the same parser</td><td><code>safetyReparse</code></td></tr>
+<tr><td><strong>Idempotency</strong></td><td>Formatting the output again gives identical bytes</td><td><code>safetyIdempotency</code> (off by default; <code>safetyIdempotencyPasses</code> sets the extra passes)</td></tr>
+</tbody></table></div>
+<p><code>safetyNumericLiterals</code> also requires every number to keep its value when its spelling changes.</p>
+<p>The gate knows which changes your options allow. With <code>singleQuote</code> on, it expects quotes to change; with <code>cssTrailingSemicolon</code> on, it knows the last <code>;</code> before <code>}</code> is optional in CSS. A change your options do not allow is treated as corruption and reverted.</p>
+<h2 id="when-a-check-fails">When a check fails</h2>
+<p><strong>Your original text is kept</strong> — not partly applied, not a best effort. The status bar shows <strong>Auric</strong> with a shield and a warning background (<strong>your original text was kept</strong>), and the log records which check failed and where. Run <strong>Auric Formatter: Show the Formatter Log</strong> to read it.</p>
+<p><code>auricFormatter.safetyOnFailure</code> decides what happens:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Behaviour</th></tr></thead>
+<tbody>
+<tr><td><code>preserve</code> (default)</td><td>Return the original text unchanged, with a warning</td></tr>
+<tr><td><code>warn</code></td><td>Return the formatted text, with a warning describing the check that failed</td></tr>
+<tr><td><code>throw</code></td><td>Fail the whole run with a safety error, which is what CI wants (used by the <code>verified</code> preset)</td></tr>
+</tbody></table></div>
+<p>Because <code>warn</code> lets unverified output through, keep <code>preserve</code> unless you have a specific reason.</p>
+<p>You can switch individual checks off with the <code>safety*</code> options, for example to save time on very large files, but they are the reason the formatter can safely be aggressive about layout. The <code>verified</code> preset turns every check on.</p>
+<h2 id="the-tiers">The tiers</h2>
+<p>Not every language has a full parser, and pretending otherwise would be unsafe. Each language sits in one tier:</p>
+<h3 id="native">Native</h3>
+<p>A real parser and pretty-printer. The file is rebuilt from its syntax tree, so any layout decision is available: line breaks are chosen, quotes, semicolons, trailing commas and property quotes are normalised, and comments are re-attached. 31 native modes are verified: JavaScript, TypeScript, JSON, JSONC, JSON5, JSON.stringify, YAML, TOML, CSS, SCSS, Less, PostCSS, HTML, XML, SVG, Vue, Svelte, Astro, Markdown, MDX, GraphQL queries and schema, Handlebars, and the YAML- and JSON-based OpenAPI, AsyncAPI, Swagger, RAML, Docker Compose, Pulumi, Ansible and Kubernetes formats.</p>
+<h3 id="universal">Universal</h3>
+<p>A structural engine for 220 other languages, guided by a grammar profile for each. It follows one rule: <strong>one source line in, one source line out</strong>. It only rewrites a line&#39;s leading whitespace and the gaps between tokens already on that line, so it cannot reorder, insert or delete a token. How much it does depends on the language:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Depth</th><th>Languages</th><th>What it changes</th></tr></thead>
+<tbody>
+<tr><td>Reindent and spacing</td><td>104</td><td>Indentation and spacing, for languages whose blocks are in the syntax: C, C#, C++, Go, Java, Kotlin, Rust, Swift, Ruby, Lua, shell, PowerShell, Terraform and more</td></tr>
+<tr><td>Spacing only</td><td>60</td><td>Spacing only, where indentation is meaning or layout is sensitive: Python, Haskell, OCaml, SQL, Sass, Pug, Lisp, Erlang and more</td></tr>
+<tr><td>Whitespace only</td><td>60</td><td>Trailing whitespace, blank lines, line endings and the final newline, where leading whitespace is data: Makefiles, CSV, INI, COBOL, templates, prose markup</td></tr>
+</tbody></table></div>
+<p>Some things are deliberately left alone: <code>&lt;</code> and <code>&gt;</code> are never spaced (only a parser can tell <code>a &gt; b</code> from <code>Vec&lt;T&gt;</code>), arithmetic spacing is enabled per language (in shell, <code>--flag</code> must not become <code>-- flag</code>), and brace padding (<code>{ a: 1 }</code> versus <code>{a: 1}</code>) is left to the author.</p>
+<p>The engine declines rather than guesses: a file whose brackets do not balance keeps its indentation and says so, and a file the engine cannot fully read is returned untouched.</p>
+<p>The full lists are in <a href="supported-languages.html">Supported languages</a>.</p>
+<h3 id="passthrough">Passthrough</h3>
+<p>For anything unrecognised, only the changes that cannot alter any language&#39;s meaning: trailing whitespace, runs of blank lines, line endings and the final newline.</p>
+<h3 id="falling-back">Falling back</h3>
+<p>A file whose native parse fails falls back a tier rather than going unformatted.</p>
+<p><strong>JSX and TSX.</strong> In version 0.1.0, a <code>.jsx</code> or <code>.tsx</code> file that contains JSX elements falls back to the universal tier: correctly indented and spaced, but not pretty-printed. Plain TypeScript in a <code>.tsx</code> file is formatted natively. The parser refuses JSX rather than guess, because a confidently wrong syntax tree is how a formatter corrupts a file.</p>
+<h2 id="see-why-a-file-was-formatted-as-it-was">See why a file was formatted as it was</h2>
+<p><strong>Auric Formatter: Explain Formatting Decisions for This File</strong> opens a Markdown report for the active file with:</p>
+<ul>
+<li>the language and parser chosen;</li>
+<li>the tier used and the time taken;</li>
+<li>which configuration layer (preset, configuration file, <code>.editorconfig</code>, VS Code setting or directive) set each option;</li>
+<li>the options changed from their defaults;</li>
+<li>any safety warnings.</li>
+</ul>
+<p>Formatter Studio&#39;s <strong>Explain</strong> view shows the same for the code in Studio, and the command line has <code>--explain</code>.</p>
+<p>When the gate passes, the status bar shows <strong>Auric</strong> with a tick and names the tier; when it reverts, your file is exactly as you wrote it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="preview-diff.html"><span>Previous</span>Preview formatting as a diff</a><a href="supported-languages.html"><span>Next</span>Supported languages</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-five-checks">The five checks</a></li><li><a href="#when-a-check-fails">When a check fails</a></li><li><a href="#the-tiers">The tiers</a></li><li><a href="#see-why-a-file-was-formatted-as-it-was">See why a file was formatted as it was</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The remediation plan — Auric Artisan Docs</title>
+<meta name="description" content="Generate the agent-ready remediation plan, understand every part of it, and use it with a coding agent you already have.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html" aria-current="page">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>The remediation plan</h1>
+<p class="lede">Generate the agent-ready remediation plan, understand every part of it, and use it with a coding agent you already have.</p>
+<p><strong>Generate Agent-Ready Remediation Plan</strong> turns your last scan into a structured backlog of fixes: exact contrast repairs with computed colours, WCAG tasks, security and secret tasks, repeated patterns worth fixing once, a draft design-token system, a validation checklist and a prompt you can hand to a coding agent.</p>
+<p>It is <strong>100% deterministic and local</strong>. The plan is computed from your scan by fixed rules. No AI model is called, nothing is sent over the network, and the same scan always produces the same plan. The only part intended for AI is the prompt text in the plan, a fixed template written for an external coding agent that you choose to use (for example Claude Code, Copilot or Cursor).</p>
+<p>The command is provided by Auric Accessibility and Auric Code Health.</p>
+<h2 id="generate-the-plan">Generate the plan</h2>
+<ol>
+<li>Open a workspace folder.</li>
+<li>Start the command in any of these ways:<ul>
+<li><strong>Auric Artisan: Generate Agent-Ready Remediation Plan</strong> in the Command Palette;</li>
+<li><strong>Fix plan</strong> in the Overview&#39;s navigation;</li>
+<li><strong>Fix plan for an agent</strong> in the Studio&#39;s Home, Findings or Health space;</li>
+<li>the <strong>…</strong> menu of the Project Issues view;</li>
+<li><strong>Generate AI remediation plan</strong> in the Command Center;</li>
+<li><strong>Draft tokens</strong> on the suggestion <strong>N color values repeat 4+ times</strong>.</li>
+</ul>
+</li>
+<li>The Studio uses a fresh scan cache if there is one, or scans first.</li>
+<li>It writes <code>.auric-artisan/ai-remediation-plan.md</code> and <code>.auric-artisan/ai-remediation-plan.json</code>, and opens the Markdown file.</li>
+<li>A message confirms, for example <strong>Auric Artisan: agent-ready remediation plan created with 37 task(s) — generated locally from the scan, nothing sent to any external service.</strong>, with <strong>Open JSON</strong>, <strong>Open Data Folder</strong> and <strong>Open Studio</strong>.</li>
+</ol>
+<p>Generating again overwrites both files. They are excluded from source control by the folder&#39;s <code>.gitignore</code>.</p>
+<h2 id="what-the-markdown-plan-contains">What the Markdown plan contains</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Artisan AI Remediation Plan</strong></td><td>The heading and the time it was generated</td></tr>
+<tr><td><strong>Scan Summary</strong></td><td>Score and grade, files scanned, failing contrast pairs, WCAG findings, code-health findings, colour-vision risk pairs, unique colours</td></tr>
+<tr><td><strong>AI Prompt</strong></td><td>The prompt text for an external coding agent</td></tr>
+<tr><td><strong>Phases</strong></td><td>Five phases, each with a goal and actions</td></tr>
+<tr><td><strong>Backlog</strong></td><td>A table of tasks: ID, priority, type, task, location and suggested fix</td></tr>
+<tr><td><strong>Design Token Draft</strong></td><td>A summary and a CSS block of suggested tokens</td></tr>
+<tr><td><strong>Validation Checklist</strong></td><td>Checks to tick off before calling the work done</td></tr>
+<tr><td><strong>Automation Notes</strong></td><td>Which task IDs are low-risk to attempt automatically, which need review, and a warning</td></tr>
+</tbody></table></div>
+<h3 id="the-phases">The phases</h3>
+<ol>
+<li><strong>Baseline and guardrails</strong>: freeze the current report as the baseline before edits; work in small commits grouped by contrast, WCAG semantics and token migration.</li>
+<li><strong>Automated contrast pass</strong>: resolve the failing contrast pairs with the computed candidates, preferring component or token fixes when a colour repeats.</li>
+<li><strong>Semantic WCAG pass</strong>: fix labels, accessible names, keyboard handlers and ARIA relationships with product context, without inventing misleading alt text or labels.</li>
+<li><strong>Design-system extraction</strong>: turn repeated colours into accessible roles and shade scales.</li>
+<li><strong>Verification loop</strong>: rescan after each batch, run your tests, visual checks and manual keyboard and zoom checks, and stop if the score regresses.</li>
+</ol>
+<h3 id="the-backlog">The backlog</h3>
+<p>The backlog holds up to 80 tasks, at most 40 of each kind, sorted by priority (critical, high, medium, low).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Task ID</th><th>Type</th><th>Created from</th><th>Priority</th><th>Suggested fix</th></tr></thead>
+<tbody>
+<tr><td><code>AA-CONTRAST-001</code>…</td><td>contrast</td><td>Each failing contrast pair</td><td>critical below 3:1, otherwise high</td><td>Replace the colour with a computed candidate of the same hue, with its expected ratio and APCA value</td></tr>
+<tr><td><code>AA-WCAG-001</code>…</td><td>wcag</td><td>Each WCAG finding</td><td>From the finding&#39;s impact</td><td>A source edit following the rule&#39;s fix</td></tr>
+<tr><td><code>AA-CODEHEALTH-001</code>…</td><td>codehealth</td><td>Each secret, security or risky-API finding</td><td>Secrets critical (high if low confidence); security high; risky APIs high or medium</td><td>Secret remediation or a security review</td></tr>
+<tr><td><code>AA-PATTERN-001</code>…</td><td>pattern</td><td>A WCAG rule that fires three or more times (up to eight patterns)</td><td>high when any instance is critical or serious, otherwise medium</td><td>Fix once at the component or template level</td></tr>
+</tbody></table></div>
+<p>Task markers, debug leftovers and oversized-code findings are not turned into tasks; they stay in the health record and the project health report.</p>
+<p>Each task in the JSON file also carries evidence, acceptance criteria and an automation assessment. For example, a contrast task is marked safe to attempt with low risk (&quot;The scanner has the exact foreground token location and a deterministic contrast repair candidate.&quot;), while tasks for labels, names, alt text, language, titles, keyboard handlers and accessible authentication are marked medium risk because the meaning needs review. Secret tasks are never marked safe to automate.</p>
+<h3 id="the-design-token-draft">The design-token draft</h3>
+<p>The draft picks roles from your project&#39;s most used colours and makes sure the text roles pass your contrast target:</p>
+<pre class="code" data-lang="css"><code>:root {
+  --aa-color-bg: …;
+  --aa-color-surface: …;
+  --aa-color-text: …;
+  --aa-color-text-muted: …;
+  --aa-color-primary: …;
+  --aa-color-on-primary: …;
+  --aa-color-link: …;
+  --aa-color-border: …;
+  --aa-color-focus: …;
+  --aa-primary-50: …;
+  /* … through --aa-primary-950 */
+}</code></pre>
+<p>The primary shade stops run from 50 to 950. The plan advises using these as a starting point, reviewing names against your own vocabulary, introducing tokens in one global place, replacing repeated raw colours with role tokens before tuning components, and rescanning after each batch.</p>
+<h3 id="the-validation-checklist">The validation checklist</h3>
+<ul>
+<li>Auric Artisan force rescan shows fewer failing contrast pairs.</li>
+<li>WCAG finding count drops or every remaining finding is documented.</li>
+<li>Secret, security and risky-API findings are resolved or explicitly reviewed; exposed credentials are rotated.</li>
+<li>Project tests and build still pass.</li>
+<li>Keyboard navigation, visible focus, 200% zoom and screen-reader names are manually spot checked.</li>
+<li>No broad token migration changed brand meaning without design review.</li>
+</ul>
+<h2 id="the-prompt-for-your-agent">The prompt for your agent</h2>
+<p>The <strong>AI Prompt</strong> section is a fixed template. It tells an agent to treat the scan and plan as its source of truth, and sets rules such as: start with critical and high tasks; prefer shared component or token fixes; use a contrast candidate only if it still fits the visual role; never add generic alt text, labels or ARIA just to silence the scanner; never print or invent credentials; add a regression test around security fixes; rescan after each batch; and keep edits scoped. It ends with the current score, the number of files and the backlog size.</p>
+<p>To use it, open the plan in your agent&#39;s workspace and ask the agent to follow the <strong>AI Prompt</strong> section, or paste that section into your agent&#39;s chat. The Studio does not connect to any agent itself.</p>
+<h2 id="the-json-plan">The JSON plan</h2>
+<p><code>ai-remediation-plan.json</code> holds the same plan in machine-readable form, with <code>&quot;schema&quot;: &quot;auric-artisan.ai-remediation-plan&quot;</code> and <code>&quot;version&quot;: 1</code>, and the fields <code>generatedAt</code>, <code>scan</code>, <code>goals</code>, <code>phases</code>, <code>backlog</code>, <code>automation</code>, <code>designSystem</code>, <code>validationChecklist</code> and <code>prompt</code>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="overview-view.html"><span>Previous</span>The Overview view</a><a href="rulebook-and-knowledge.html"><span>Next</span>Rulebook and knowledge database</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#generate-the-plan">Generate the plan</a></li><li><a href="#what-the-markdown-plan-contains">What the Markdown plan contains</a></li><li><a href="#the-prompt-for-your-agent">The prompt for your agent</a></li><li><a href="#the-json-plan">The JSON plan</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

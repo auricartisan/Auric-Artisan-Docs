@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HDR Gamut Plot FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the HDR Gamut Plot.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; HDR Gamut Plot</a>
+<h2>HDR Gamut Plot documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the HDR Gamut Plot</a></li>
+<li><a href="compare-broadcast-gamuts.html">Compare broadcast gamuts</a></li>
+<li><a href="explore-perceptual-planes.html">Explore ICtCp and Jzazbz planes</a></li>
+<li><a href="read-hdr-curves.html">Read HDR transfer curves</a></li>
+<li><a href="reference.html">HDR Gamut Plot reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the HDR Gamut Plot</a></li>
+<li><a href="faq.html" aria-current="page">HDR Gamut Plot FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">HDR Gamut Plot</a> &rsaquo; <a href="README.html">HDR Gamut Plot documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>HDR Gamut Plot FAQ</h1>
+<p class="lede">Short answers to common questions about the HDR Gamut Plot.</p>
+<h2 id="what-is-the-difference-between-pq-and-hlg">What is the difference between PQ and HLG?</h2>
+<p>PQ (SMPTE ST 2084) is absolute: each signal value means a specific luminance, up to 10,000 nits, and displays that cannot reach it must tone-map. HLG (ARIB STD-B67 / BT.2100) is relative: the display applies a system gamma based on its own peak, which makes HLG backward-compatible with standard displays.</p>
+<h2 id="what-does-a-pq-signal-of-05-mean">What does a PQ signal of 0.5 mean?</h2>
+<p>About 92 cd/m², on any display that can show it.</p>
+<h2 id="why-is-hlgs-system-gamma-12">Why is HLG&#39;s system gamma 1.2?</h2>
+<p>That is its value for a 1,000-nit display under BT.2100: γ = 1.2 + 0.42 × log10(L_W ÷ 1000). It rises for brighter displays and falls for dimmer ones.</p>
+<h2 id="are-the-dim-and-bright-surround-settings-standard">Are the dim and bright surround settings standard?</h2>
+<p>No. The multipliers 0.95 and 0.90 are this tool&#39;s own. Readings made with them are marked Adjusted.</p>
+<h2 id="why-cant-the-tool-tell-me-the-peak-brightness-of-my-image">Why can&#39;t the tool tell me the peak brightness of my image?</h2>
+<p>An ordinary 8-bit PNG or JPEG stores code values with no record of the light they stood for. Absolute luminance needs an HDR format with PQ or HLG and mastering metadata, or a format such as OpenEXR, which the tool does not read.</p>
+<h2 id="why-do-ictcp-and-jzazbz-use-different-quantisers">Why do ICtCp and Jzazbz use different quantisers?</h2>
+<p>ICtCp uses ST 2084 as written. Jzazbz&#39;s authors raised the curve&#39;s exponent by a factor of 1.7 (p = 134.034375). The tool runs each with its own.</p>
+<h2 id="is-the-aces-filmic-operator-the-academys-transform">Is the &quot;ACES Filmic&quot; operator the Academy&#39;s transform?</h2>
+<p>No. It is Krzysztof Narkowicz&#39;s 2016 curve fit that approximates the look of the ACES output transforms. The Reference section says so.</p>
+<h2 id="why-336-456-and-636-rather-than-the-usual-figures">Why 33.6%, 45.6% and 63.6% rather than the usual figures?</h2>
+<p>They are shares of the spectral locus the tool draws (the CIE 1931 2° locus, 65 points from 380 to 700 nm). Commonly quoted figures use a smaller locus area.</p>
+<h2 id="does-it-work-with-hdr-displays">Does it work with HDR displays?</h2>
+<p>The tool draws its charts in standard sRGB, so it does not need an HDR display. It explains HDR numerically rather than showing HDR images.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting the HDR Gamut Plot</a><a href="../others/README.html"><span>Next</span>HDR Gamut Plot: supporting pages</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-the-difference-between-pq-and-hlg">What is the difference between PQ and HLG?</a></li><li><a href="#what-does-a-pq-signal-of-05-mean">What does a PQ signal of 0.5 mean?</a></li><li><a href="#why-is-hlgs-system-gamma-12">Why is HLG's system gamma 1.2?</a></li><li><a href="#are-the-dim-and-bright-surround-settings-standard">Are the dim and bright surround settings standard?</a></li><li><a href="#why-cant-the-tool-tell-me-the-peak-brightness-of-my-image">Why can't the tool tell me the peak brightness of my image?</a></li><li><a href="#why-do-ictcp-and-jzazbz-use-different-quantisers">Why do ICtCp and Jzazbz use different quantisers?</a></li><li><a href="#is-the-aces-filmic-operator-the-academys-transform">Is the &quot;ACES Filmic&quot; operator the Academy's transform?</a></li><li><a href="#why-336-456-and-636-rather-than-the-usual-figures">Why 33.6%, 45.6% and 63.6% rather than the usual figures?</a></li><li><a href="#does-it-work-with-hdr-displays">Does it work with HDR displays?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

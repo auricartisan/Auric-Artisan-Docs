@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Format files and format on save — Auric Artisan Docs</title>
+<meta name="description" content="Format a document or selection, format on save (including only changed lines), format as you type, and choose which languages Auric formats.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html" aria-current="page">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Format files and format on save</h1>
+<p class="lede">Format a document or selection, format on save (including only changed lines), format as you type, and choose which languages Auric formats.</p>
+<h2 id="format-a-document">Format a document</h2>
+<ul>
+<li>Run <strong>Auric Formatter: Format Document</strong>. It uses Auric for this format even if another formatter is your default.</li>
+<li>Or use VS Code&#39;s own <strong>Format Document</strong> (<code>Shift</code> + <code>Alt</code> + <code>F</code> on Windows) once Auric is your default formatter.</li>
+</ul>
+<p>The status bar reports the result: the tier used, whether the file was already formatted, whether the safety gate kept your original text, or whether the file was skipped.</p>
+<h2 id="format-a-selection">Format a selection</h2>
+<ol>
+<li>Select the code.</li>
+<li>Run <strong>Auric Formatter: Format Selection</strong>, or right-click and choose <strong>Format Selection</strong>. With nothing selected: <strong>Select some code first.</strong></li>
+</ol>
+<p>A selection may grow to a complete syntax unit (for example a whole statement or block) so the result stays valid.</p>
+<h2 id="format-on-save">Format on save</h2>
+<ol>
+<li>Run <strong>Auric Formatter: Toggle Format on Save</strong>. The message says <strong>Auric Formatter is now your default formatter and runs on save.</strong></li>
+<li>Save a file. It is formatted first.</li>
+</ol>
+<p>Running the command again turns format on save off (<strong>Format on save is off.</strong>).</p>
+<h3 id="only-the-lines-you-changed">Only the lines you changed</h3>
+<p>Reformatting a whole file on its first save in a large codebase makes one huge diff and clutters <code>git blame</code>. Set:</p>
+<pre class="code" data-lang="json"><code>{ &quot;auricFormatter.formatOnSaveMode&quot;: &quot;modifications&quot; }</code></pre>
+<p>Format on save then formats only the lines changed since the last commit, using Git. The default, <code>file</code>, formats the whole file. The <code>minimal-diff</code> preset is another way to keep changes small; see <a href="presets.html">Presets</a>.</p>
+<h3 id="if-another-formatter-is-installed">If another formatter is installed</h3>
+<p>VS Code does not guess between formatters; it asks on every save. Setting <code>editor.defaultFormatter</code> stops that. <strong>Toggle Format on Save</strong> sets it for you.</p>
+<h2 id="format-as-you-type">Format as you type</h2>
+<p>Set <code>auricFormatter.formatOnType</code> to <code>true</code> and VS Code&#39;s <code>editor.formatOnType</code> to <code>true</code>. Typing a closing character (<code>;</code>, <code>}</code>, <code>)</code>, <code>]</code>) or a new line then reformats the current line and its enclosing block.</p>
+<h2 id="choose-languages">Choose languages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.enabledLanguages</code></td><td><code>[]</code></td><td>Format only these VS Code language ids; empty means every supported language</td></tr>
+<tr><td><code>auricFormatter.disabledLanguages</code></td><td><code>[]</code></td><td>Never format these language ids, even when Auric is the default formatter</td></tr>
+</tbody></table></div>
+<p>For example, to leave Markdown alone:</p>
+<pre class="code" data-lang="json"><code>{ &quot;auricFormatter.disabledLanguages&quot;: [&quot;markdown&quot;] }</code></pre>
+<h2 id="format-many-files">Format many files</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Format Every File That Needs It</strong></td><td>Writes every file the workspace scan found would change</td></tr>
+<tr><td><strong>Format Every File in the Workspace</strong></td><td>The same; also on a folder&#39;s context menu in the Explorer. In this version it formats every pending file in the workspace, not only that folder</td></tr>
+</tbody></table></div>
+<p>Both ask <strong>Format <em>N</em> files?</strong> first (while <code>auricFormatter.confirmBeforeFormattingAll</code> is on): <strong>This rewrites files on disk. Commit or stash your work first.</strong> Each file is re-read and re-formatted at the moment it is written, so a file you edited since the scan is never overwritten with a stale result, and open files with unsaved changes are written through the editor. These commands have no default shortcut on purpose. See <a href="workspace-scan.html">Scan the workspace</a> to review first and format a folder at a time.</p>
+<h2 id="files-that-are-skipped">Files that are skipped</h2>
+<p>A file is left alone when:</p>
+<ul>
+<li>it is larger than <code>auricFormatter.maxFileSizeKb</code> (4096 KB by default; <code>0</code> removes the limit);</li>
+<li>it looks minified, unless <code>auricFormatter.formatMinified</code> is on;</li>
+<li>it is listed in <code>.auricformatignore</code> or <code>.prettierignore</code>;</li>
+<li>it contains an ignore-file directive, or <code>auricFormatter.requirePragma</code> is on and it has no <code>@format</code> pragma.</li>
+</ul>
+<p>The status bar shows <strong>Skipped</strong> with the reason, such as <strong>Skipped — looks minified</strong> or <strong>Skipped — larger than maxFileSizeKb</strong>.</p>
+<p>A parse that runs longer than <code>auricFormatter.parseTimeoutMs</code> (5000 ms by default) is abandoned.</p>
+<p>When formatting works, the status bar shows <strong>Auric</strong> with a tick, and its tooltip names the tier that formatted the file.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="configuration.html"><span>Previous</span>Configuration</a><a href="formatter-studio.html"><span>Next</span>Formatter Studio</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#format-a-document">Format a document</a></li><li><a href="#format-a-selection">Format a selection</a></li><li><a href="#format-on-save">Format on save</a></li><li><a href="#format-as-you-type">Format as you type</a></li><li><a href="#choose-languages">Choose languages</a></li><li><a href="#format-many-files">Format many files</a></li><li><a href="#files-that-are-skipped">Files that are skipped</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut Lab FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the Gamut Lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Lab</a>
+<h2>Gamut Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Gamut Lab</a></li>
+<li><a href="compare-colour-spaces.html">Compare colour spaces</a></li>
+<li><a href="define-a-custom-space.html">Define a custom colour space</a></li>
+<li><a href="inspect-transfer-functions.html">Inspect transfer functions</a></li>
+<li><a href="reference.html">Gamut Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Gamut Lab</a></li>
+<li><a href="faq.html" aria-current="page">Gamut Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Lab</a> &rsaquo; <a href="README.html">Gamut Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Gamut Lab FAQ</h1>
+<p class="lede">Short answers to common questions about the Gamut Lab.</p>
+<h2 id="what-is-the-difference-between-display-p3-and-dci-p3">What is the difference between Display P3 and DCI-P3?</h2>
+<p>They share primaries. Display P3 uses the D65 white and the sRGB transfer curve; DCI-P3 (the cinema reference projector) uses a greener white at x 0.314, y 0.351 and a pure 2.6 gamma.</p>
+<h2 id="why-do-rec-2020-and-rec-2100-have-the-same-triangle">Why do Rec. 2020 and Rec. 2100 have the same triangle?</h2>
+<p>Rec. 2100 (HDR television) uses the Rec. 2020 primaries and white. It differs in the transfer curve: PQ or HLG instead of the BT.2020 curve.</p>
+<h2 id="why-does-the-aces-ap0-blue-primary-sit-outside-the-diagram">Why does the ACES AP0 blue primary sit outside the diagram?</h2>
+<p>AP0 uses an imaginary blue primary so its triangle contains every visible colour. That makes it suitable for archiving, and it is why its share of the locus reads &quot;&gt; 100%&quot;.</p>
+<h2 id="why-is-the-uv-share-quoted-rather-than-xy">Why is the u′v′ share quoted rather than xy?</h2>
+<p>Equal distances on the xy diagram are not equal visual differences; it exaggerates greens. u′v′ is more uniform, so areas there compare more fairly.</p>
+<h2 id="is-a-bigger-triangle-always-a-bigger-gamut">Is a bigger triangle always a bigger gamut?</h2>
+<p>Not exactly. The triangle ignores lightness. CIELAB volume counts how much colour a space holds at every lightness, which is why the lab measures it separately.</p>
+<h2 id="why-does-the-spectral-locus-stop-at-715-nm">Why does the spectral locus stop at 715 nm?</h2>
+<p>The lab builds the locus from the published colour matching functions at four decimals. Beyond about 715 nm the values are too small to give a reliable chromaticity, so those points are left out rather than distorting the areas.</p>
+<h2 id="are-the-macadam-ellipses-real-data">Are the MacAdam ellipses real data?</h2>
+<p>No. The overlay is an illustrative approximation of MacAdam&#39;s (1942) figure, useful for showing that ellipses vary in size and orientation. It is not a basis for reading discrimination thresholds.</p>
+<h2 id="can-the-lab-convert-or-map-colours-between-spaces">Can the lab convert or map colours between spaces?</h2>
+<p>No. It defines and measures spaces. Use <a href="../../gamut-map/README.html">Gamut Mapping</a> to map colours.</p>
+<h2 id="where-are-my-imported-spaces-stored">Where are my imported spaces stored?</h2>
+<p>In your browser&#39;s local storage for this site. They stay on this device and browser until you delete them with <strong>Del</strong> or clear site data.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting the Gamut Lab</a><a href="../others/README.html"><span>Next</span>Gamut Lab: supporting pages</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-the-difference-between-display-p3-and-dci-p3">What is the difference between Display P3 and DCI-P3?</a></li><li><a href="#why-do-rec-2020-and-rec-2100-have-the-same-triangle">Why do Rec. 2020 and Rec. 2100 have the same triangle?</a></li><li><a href="#why-does-the-aces-ap0-blue-primary-sit-outside-the-diagram">Why does the ACES AP0 blue primary sit outside the diagram?</a></li><li><a href="#why-is-the-uv-share-quoted-rather-than-xy">Why is the u′v′ share quoted rather than xy?</a></li><li><a href="#is-a-bigger-triangle-always-a-bigger-gamut">Is a bigger triangle always a bigger gamut?</a></li><li><a href="#why-does-the-spectral-locus-stop-at-715-nm">Why does the spectral locus stop at 715 nm?</a></li><li><a href="#are-the-macadam-ellipses-real-data">Are the MacAdam ellipses real data?</a></li><li><a href="#can-the-lab-convert-or-map-colours-between-spaces">Can the lab convert or map colours between spaces?</a></li><li><a href="#where-are-my-imported-spaces-stored">Where are my imported spaces stored?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

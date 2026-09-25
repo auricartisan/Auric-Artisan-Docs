@@ -1,0 +1,201 @@
+==============================================================================
+SHADE LIBRARY REFERENCE
+==============================================================================
+Every control, filter, sort order, tab, output and message in the Shade
+Library.
+Area: Website › Library › Colour libraries › Shade Library   Updated: 2026-09-25
+
+Everything on https://auricartisan.com/library/shades/.
+
+HEADING
+=======
+
+  Item                 | Content
+  ---------------------+------------------------------------------------------------------------
+  Kicker               | Auric Artisan · Shades
+  Headline             | Eight thousand ramps, and 8% of them even.
+  Facts                | Collection 8,192, 10 methods, Measured in OKLab
+  Read the API guide → | The Shade Library API guide.
+  Automate this note   | 3 API credits per call to GET /v1/shade/library; API docs; × dismisses.
+
+BROWSE CONTROLS
+===============
+
+  Control:      Search by id, hex, token or method…
+  What it does: Every word must match id, name, base, method, base hue name, a
+                token name or a hex.
+
+  Control:      Shuffle
+  What it does: Sort Random.
+
+  Control:      Open a random scale
+  What it does: Opens any scale on Inspect.
+
+  Control:      Filter inside results (id, hex, method…)
+  What it does: Second search, combined.
+
+  Control:      Clear
+  What it does: Empties the second search.
+
+TABS
+====
+
+Library (badge: matches), Inspect, Harmony, Accessibility, Stats, Export,
+Saved (badge: saved).
+
+FILTERS
+=======
+
+  Filter:  Base hue
+  Options: All hues, Red (340° to under 20°), Orange (20–50°), Yellow
+           (50–80°), Green (80–160°), Cyan (160–200°), Blue (200–260°), Purple
+           (260–300°), Pink (300–340°)
+
+  Filter:  Chroma
+  Options: Any chroma, Muted (< 0.07)**, **Balanced** (0.07–0.15), **Vivid (>
+           0.15)
+
+  Filter:  Lightness
+  Options: Any lightness, Dark (< 0.40), **Mid** (0.40–0.70), **Light** (>
+           0.70)
+
+  Filter:  Method
+  Options: All methods, Accessible Ui, Brand System, Duotone Shift, Ink Paper,
+           Material Like, Neutral System, Oklch Ramp, Tailwind Like,
+           Temperature Shift, Vivid Product
+
+SORT BY
+=======
+
+Sort: original (default), Lightness up, Lightness down, Chroma up, Chroma
+down, Hue (rainbow), Score high to low, Tokens high to low, Random.
+
+LIBRARY TAB BUTTONS
+===================
+
+Reset, Export visible, Back to top. Counter: `first–last of total scales`, or
+Nothing to show.
+
+CARD
+====
+
+  Part                   | Action
+  -----------------------+----------------------------------------------------------------
+  Swatch (token and hex) | Copies the hex. `Enter` / `Space` when focused opens the scale.
+  Id and method          | For example `shade_000000`, Material Like.
+  Inspect                | Opens the scale.
+  Copy                   | Copies all hexes (Shade hexes copied).
+  Save / Saved           | Saves or unsaves (Shade saved / Shade removed).
+
+INSPECT TAB
+===========
+
+  Block:    Token strip
+  Contents: Token, descriptive name, hex; select to copy.
+
+  Block:    Shade summary
+  Contents: Badge (Neutral, Hue Shift, Light, Deep, Balanced); Shade ID,
+            Global index, Method, Base, Tokens, Avg L (OKLCH), Avg chroma, Hue
+            span, Score, Auto AA tokens, Min adjacent contrast
+
+  Block:    Token contrast ladder
+  Contents: Each token's contrast with automatic text.
+
+  Block:    Quick export
+  Contents: Copy HEX, Copy CSS vars, Copy SCSS, Copy Tailwind, Download JSON,
+            Download SVG, Download PNG, Save to library / Unsave, Copy share
+            link, Design tokens…
+
+  Block:    Token cards
+  Contents: HEX, RGB, OKLCH, CIE L*a*b*, WCAG vs white, WCAG vs black
+
+ANALYSIS TABS
+=============
+
+  Tab:   Harmony
+  Cards: Generation method, Dominant hue bucket, Shade profile, Token count,
+         Lightness & chroma profile
+
+  Tab:   Accessibility
+  Cards: Shade-level WCAG summary (All tokens auto-AA, 75%+ tokens auto-AA,
+         White text coverage, Black text coverage), Active shade checks,
+         Visible shade systems where every token gets AA auto text
+
+  Tab:   Stats
+  Cards: Avg lightness (OKLCH L), Avg chroma (OKLCH C), Hue spread, Token
+         count, Score
+
+EXPORT TAB
+==========
+
+  Card:    Selection - id
+  Buttons: HEX list, CSS variables, SCSS variables, Tailwind config; JSON, SVG
+           strip, PNG strip
+
+  Card:    Visible page
+  Buttons: Download JSON (visible page), Download CSV (visible page), Download
+           CSS variables, Download SCSS variables, Download compact JSON;
+           Download .txt hex list, Download tailwind.config.js fragment
+
+FILES
+=====
+
+  Output: JSON
+  Name:   `<id>.json` (for example `shade-000000.json`)
+  Detail: Scale with token contrast and metrics.
+
+  Output: SVG
+  Name:   `<id>.svg`
+  Detail: 1200 × 260.
+
+  Output: PNG
+  Name:   `<id>.png`
+  Detail: 1600 × 420.
+
+  Output: Bulk
+  Name:   `shade-library-<count>-<date>.<ext>`
+  Detail: `json`, `csv`, `css`, `scss`, `txt`.
+
+  Output: Design tokens ZIP
+  Name:   `shade-<id>.zip`
+  Detail: Eight formats.
+
+MESSAGES
+========
+
+  Message: Loading shade library...
+  When:    While loading.
+
+  Message: Could not load shade library
+  When:    Loading failed.
+
+  Message: No shade systems match
+  When:    Nothing matches.
+
+  Message: No shade system selected
+  When:    Inspect or Export before opening a scale.
+
+  Message: No shade systems
+  When:    An analysis tab with nothing matching.
+
+  Message: No saved shade systems yet
+  When:    Nothing saved.
+
+  Message: #HEX copied, Shade hexes copied, HEX list copied, CSS variables
+           copied, SCSS copied, Tailwind copied, Copied
+  When:    After copying.
+
+  Message: Shade saved, Shade removed
+  When:    After saving or unsaving.
+
+  Message: PNG export failed
+  When:    The browser could not make the PNG.
+
+  Message: Shared shade not in current library
+  When:    A share link could not be matched.
+
+KEYBOARD
+========
+
+`/` focuses search; `Enter` or `Space` on a focused swatch opens its scale;
+`Escape` closes the share and design tokens dialogs.

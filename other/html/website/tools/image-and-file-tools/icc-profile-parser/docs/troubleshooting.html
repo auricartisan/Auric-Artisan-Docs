@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the ICC Profile Parser — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms you may meet in the ICC Profile Parser, why they happen, and what to do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ICC Profile Parser</a>
+<h2>ICC Profile Parser documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ICC Profile Parser</a></li>
+<li><a href="check-conformance.html">Check conformance</a></li>
+<li><a href="export-a-reading.html">Export a reading</a></li>
+<li><a href="identify-and-gamut.html">Identify a profile and read its gamut</a></li>
+<li><a href="understand-icc-profiles.html">Understand ICC profiles</a></li>
+<li><a href="reference.html">ICC Profile Parser reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the ICC Profile Parser</a></li>
+<li><a href="faq.html">ICC Profile Parser FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">ICC Profile Parser</a> &rsaquo; <a href="README.html">ICC Profile Parser documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › ICC Profile Parser</p>
+<h1>Troubleshooting the ICC Profile Parser</h1>
+<p class="lede">Symptoms you may meet in the ICC Profile Parser, why they happen, and what to do.</p>
+<h2 id="the-file-will-not-read">The file will not read</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>A profile is at least 132 bytes; this file is</strong> N.</td><td>The file is too short to hold a header and tag count</td><td>Check you chose the right file; it may be empty or cut short by a failed download</td></tr>
+<tr><td><strong>Bytes 36-39 are</strong> … <strong>not &#39;acsp&#39; — this is not an ICC profile.</strong></td><td>The file does not carry the ICC signature</td><td>You may have dropped an image, a PDF or another format. Save the embedded profile out as a standalone <code>.icc</code> file first</td></tr>
+<tr><td>My <code>.icc</code> file is greyed out in the file chooser</td><td>The chooser filters for <code>.icc</code> and <code>.icm</code></td><td>Drag the file onto the <strong>Drop a profile</strong> box instead, or rename it with the right ending</td></tr>
+<tr><td><strong>The reader could not get through this file:</strong> …</td><td>Reading stopped part-way, usually because the file is damaged</td><td>Try the original source of the profile. The reason after the colon says where it failed</td></tr>
+<tr><td><strong>That file could not be read</strong></td><td>The browser could not open the file</td><td>Check the file is not locked or still downloading, then try again</td></tr>
+</tbody></table></div>
+<h2 id="a-panel-is-empty-or-missing">A panel is empty or missing</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>No ranking table, diagram or tone curves</td><td>The profile has no RGB colorants (for example a CMYK, greyscale or LUT-only RGB profile)</td><td>This is expected. A CMYK profile with an A2B table shows a CIELAB hull instead</td></tr>
+<tr><td>No gamut hull for a CMYK profile</td><td>Its A2B table is in a version 4 format, is incomplete, has more than 200,000 grid points, or is missing</td><td>The header, tags and findings are still read; the gamut cannot be drawn</td></tr>
+<tr><td>The area cards show a dash</td><td>Area and coverage apply only to profiles with RGB colorants</td><td>—</td></tr>
+<tr><td>I cannot see the profile&#39;s name</td><td>The page does not print the text of the description tag</td><td>The tag table shows whether <code>desc</code> is present; open the profile in another viewer to read the name</td></tr>
+<tr><td>A tag&#39;s row says <strong>could not be decoded</strong></td><td>Its data is damaged or shorter than its type needs</td><td>See the <strong>Every tag payload could be decoded</strong> finding for the reason</td></tr>
+</tbody></table></div>
+<h2 id="the-figures-look-wrong">The figures look wrong</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The area figures seem to refer to another space</td><td>After loading, the comparison moves to the closest space, but the menu label may still show your earlier choice</td><td>Choose the space you want from <strong>Compare against</strong></td></tr>
+<tr><td>sRGB and Rec. 709 tie in the ranking</td><td>They share primaries and white; only the tone curve separates them</td><td>Read the aside under the verdict; a profile with no tone curve cannot be told apart</td></tr>
+<tr><td><strong>area, u′v′</strong> is over 100%</td><td>It is an area ratio; a larger gamut gives more than 100%</td><td>Use <strong>covers of it</strong> to see how much of the reference space is covered</td></tr>
+<tr><td><strong>area, xy</strong> differs from <strong>area, u′v′</strong></td><td>The xy diagram is uneven; the u′v′ figure is the more meaningful</td><td>Quote the u′v′ figure, and name it</td></tr>
+<tr><td>The verdict names a space that seems wrong</td><td>Closest means closest among six</td><td>Compare the first and second rows of the ranking; a large distance means none of the six is a good match</td></tr>
+<tr><td>The caption says the primaries were recovered with an assumed white</td><td>The profile carries no <code>chad</code> tag, so the white it was adapted from is not recorded</td><td>Treat the gold triangle as a best estimate</td></tr>
+</tbody></table></div>
+<h2 id="findings">Findings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>The profile ID matches the bytes</strong> raised as a warning</td><td>The file was changed after its ID was written, or the ID was written incorrectly</td><td>Get a fresh copy from the source of the profile</td></tr>
+<tr><td><strong>A v4 profile carries a profile ID</strong> raised</td><td>A version 4 profile has an all-zero ID</td><td>It is graded a warning, not an error; regenerate the profile if your workflow needs the ID</td></tr>
+<tr><td><strong>Media white point is the PCS white</strong> raised on a display profile</td><td>The white point tag holds the display&#39;s measured white instead of D50</td><td>Common in older version 2 profiles; version 4 requires D50 here</td></tr>
+<tr><td><strong>Declared size matches the file</strong> raised as an error</td><td>The file was cut short or padded after writing</td><td>Get an undamaged copy</td></tr>
+<tr><td><strong>A LUT tag holds the grid its header declares</strong></td><td>A table is shorter than its header says, often from a truncated download</td><td>Download the profile again</td></tr>
+</tbody></table></div>
+<h2 id="clipboard-and-downloads">Clipboard and downloads</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>The clipboard refused</strong></td><td>Your browser blocked clipboard access</td><td>Allow clipboard access for the site, or use <strong>Save the reading</strong></td></tr>
+<tr><td><strong>Load a profile first</strong></td><td>Nothing is loaded</td><td>Drop a profile on the <strong>Lab</strong> tab first</td></tr>
+</tbody></table></div>
+<p>For help with the site in general, see <a href="../../../../../help/README.html">Help</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>ICC Profile Parser reference</a><a href="faq.html"><span>Next</span>ICC Profile Parser FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-file-will-not-read">The file will not read</a></li><li><a href="#a-panel-is-empty-or-missing">A panel is empty or missing</a></li><li><a href="#the-figures-look-wrong">The figures look wrong</a></li><li><a href="#findings">Findings</a></li><li><a href="#clipboard-and-downloads">Clipboard and downloads</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,74 @@
+==============================================================================
+FINDINGS
+==============================================================================
+One list of everything the tools found — accessibility, contrast and
+inspection problems — ordered by severity, with actions for each.
+Area: Browser extension › Check   Updated: 2026-09-25
+
+Findings (All Findings) pools the problems the extension found in this session
+into one list, most serious first. It fills from three sources:
+
+  Source:       The accessibility audit
+  Label:        `a11y`
+  What it adds: Every rule failure and warning from the last audit
+
+  Source:       The contrast scan
+  Label:        `color`
+  What it adds: Every failing or borderline piece of text from the last audit
+
+  Source:       The element inspector
+  Label:        `inspect`
+  What it adds: The inspected element's text contrast, when it fails
+
+Until you run an audit, the list reads "No findings yet. Run a page audit to
+fill this in."
+
+READ THE LIST
+=============
+
+Three counts sit at the top: Failing, Warnings and Total. The Findings chip in
+the Check space shows the number of open failures and warnings.
+
+Findings are ordered with failures before warnings, then by impact: critical,
+serious, moderate and minor. Each finding shows:
+
+  - its source label;
+  - its title, such as "Form field has no label" or "Contrast 3.12:1";
+  - a message naming the element and the problem, such as `"Sign up" needs
+    4.5:1`;
+  - the element's CSS selector;
+  - action buttons.
+
+ACTIONS
+=======
+
+  Button:       Show on page
+  Appears on:   All
+  What it does: Outlines the page's contrast problems for 15 seconds (for an
+                inspected element, highlights that element)
+
+  Button:       Copy selector
+  Appears on:   All
+  What it does: Copies the element's CSS selector
+
+  Button:       Inspect
+  Appears on:   Accessibility findings
+  What it does: Opens Code › Inspect
+
+  Button:       Check contrast
+  Appears on:   Contrast and inspection findings
+  What it does: Loads the colour pair into Contrast
+
+KEEPING FINDINGS
+================
+
+Findings live only while the popup or side panel stays open. Closing the popup
+clears them. To keep a record, use Export JSON in Audit [audit.txt] before you
+close it.
+
+RELATED PAGES
+=============
+
+  - Audit [audit.txt]
+  - Audit rules [audit-rules.txt]
+  - Element inspector [../surfaces/inspector.txt]

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perception and Vision FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about Perception Vision.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and Vision</a>
+<h2>Using Perception and Vision</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Perception and Vision</a></li>
+<li><a href="check-a-palette-and-export.html">Check a palette and export</a></li>
+<li><a href="read-the-checks.html">Read the checks</a></li>
+<li><a href="simulate-a-design.html">Simulate a design or image</a></li>
+<li><a href="reference.html">Perception and Vision reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Perception and Vision</a></li>
+<li><a href="faq.html" aria-current="page">Perception and Vision FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Perception and Vision</a> &rsaquo; <a href="README.html">Using Perception and Vision</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Perception and Vision</p>
+<h1>Perception and Vision FAQ</h1>
+<p class="lede">Short answers to common questions about Perception Vision.</p>
+<h2 id="can-i-use-this-to-diagnose-colour-blindness">Can I use this to diagnose colour blindness?</h2>
+<p>No. It simulates how an image might appear to someone with a condition; it does not test anyone&#39;s vision. The settings file and CSV carry <code>clinical: false</code> and &quot;not a clinical measurement&quot;.</p>
+<h2 id="which-colour-vision-simulation-does-it-use">Which colour vision simulation does it use?</h2>
+<p>The Viénot, Brettel and Mollon (1999) projection, applied in cone space: sRGB is decoded, converted to CIE XYZ and then to cone signals with the Hunt-Pointer-Estévez matrix, projected, and converted back. The <strong>Simulation</strong> tab shows every matrix.</p>
+<h2 id="does-a-severity-of-05-simulate-anomalous-trichromacy">Does a severity of 0.5 simulate anomalous trichromacy?</h2>
+<p>Not as a physiological model. Between 0 and 1 the page blends linearly between normal vision and full dichromacy. The Machado, Oliveira and Fernandes (2009) model would be needed for anomalous trichromacy, and the page does not implement it. The <strong>Mild deuteranomaly</strong> preset uses this blend at 0.40.</p>
+<h2 id="why-does-white-stay-white-under-protanopia">Why does white stay white under protanopia?</h2>
+<p>Because it should: people with a colour vision deficiency see neutrals as neutral. The grey ramp under the frame checks this for every change.</p>
+<h2 id="what-is-daltonising">What is daltonising?</h2>
+<p>A recolouring that moves information from a colour axis a dichromat cannot see into one they can. Tick <strong>Daltonise instead of simulate</strong> to preview it. It changes colours for everyone, so it is a preview of a correction filter, not a design fix.</p>
+<h2 id="how-accurate-are-the-night-vision-lens-cataract-and-acuity-simulations">How accurate are the night-vision, lens, cataract and acuity simulations?</h2>
+<p>They show that an effect exists and its direction, not its size for any person. Their constants are the tool&#39;s own; see <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="why-is-there-no-contrast-sensitivity-mode">Why is there no contrast sensitivity mode?</h2>
+<p>An earlier &quot;CSF overlay&quot; mode applied a contrast sensitivity curve to the distance from the image centre instead of to spatial frequency, and at its own defaults produced a black frame. It was withdrawn. The <strong>Modes</strong> tab shows what it did and what a real one would need.</p>
+<h2 id="can-i-check-a-whole-palette-at-once">Can I check a whole palette at once?</h2>
+<p>Yes. Paste the hex colours into the <strong>Export</strong> tab. Rows whose <strong>Simulated</strong> hex values match or nearly match are colours the simulated viewer cannot tell apart. See <a href="check-a-palette-and-export.html">Check a palette and export</a>.</p>
+<h2 id="does-my-image-get-uploaded">Does my image get uploaded?</h2>
+<p>No. The image is read and processed in your browser. See <a href="../others/privacy.html">Privacy</a>.</p>
+<h2 id="why-does-the-camera-option-not-work">Why does the camera option not work?</h2>
+<p>The site does not currently allow its pages to use the camera. Use a screenshot or photo instead.</p>
+<h2 id="gpu-or-cpu-which-should-i-use">GPU or CPU: which should I use?</h2>
+<p>Either. The colour calculation is the same, and the page checks the two against each other. The GPU is faster; the CPU is used automatically without WebGL2.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting Perception and Vision</a><a href="../others/README.html"><span>Next</span>Perception and Vision background</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#can-i-use-this-to-diagnose-colour-blindness">Can I use this to diagnose colour blindness?</a></li><li><a href="#which-colour-vision-simulation-does-it-use">Which colour vision simulation does it use?</a></li><li><a href="#does-a-severity-of-05-simulate-anomalous-trichromacy">Does a severity of 0.5 simulate anomalous trichromacy?</a></li><li><a href="#why-does-white-stay-white-under-protanopia">Why does white stay white under protanopia?</a></li><li><a href="#what-is-daltonising">What is daltonising?</a></li><li><a href="#how-accurate-are-the-night-vision-lens-cataract-and-acuity-simulations">How accurate are the night-vision, lens, cataract and acuity simulations?</a></li><li><a href="#why-is-there-no-contrast-sensitivity-mode">Why is there no contrast sensitivity mode?</a></li><li><a href="#can-i-check-a-whole-palette-at-once">Can I check a whole palette at once?</a></li><li><a href="#does-my-image-get-uploaded">Does my image get uploaded?</a></li><li><a href="#why-does-the-camera-option-not-work">Why does the camera option not work?</a></li><li><a href="#gpu-or-cpu-which-should-i-use">GPU or CPU: which should I use?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

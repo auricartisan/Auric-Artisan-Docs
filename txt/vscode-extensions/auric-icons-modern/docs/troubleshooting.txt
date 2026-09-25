@@ -1,0 +1,106 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for common problems with the Modern file icon theme
+and Icon Library.
+Area: VS Code extensions › Auric Icons: Modern   Updated: 2026-09-25
+
+FILE ICON THEME
+===============
+
+  Symptom:        A setting change does not show in the Explorer.
+  Why it happens: VS Code caches icon themes until the window reloads.
+  What to do:     Select Reload Window in the prompt, or run Developer: Reload
+                  Window.
+
+  Symptom:        No reload prompt appears.
+  Why it happens: The prompt only appears when Modern is the active file icon
+                  theme.
+  What to do:     Activate the theme first with Activate Icon Theme.
+
+  Symptom:        "could not apply customisation — … The default icons remain
+                  active."
+  Why it happens: A value could not be applied, for example an invalid colour.
+  What to do:     Check the value in Settings; folder colour must be `default`
+                  or a three- or six-digit hex colour.
+
+  Symptom:        A custom association shows a blank icon.
+  Why it happens: The value is not one of the theme's icon IDs.
+  What to do:     Use an ID from the reference [reference.txt].
+
+  Symptom:        A workspace setting does not seem to apply.
+  Why it happens: The extension's own commands write user-level settings; a
+                  workspace value may override them.
+  What to do:     Check the workspace `settings.json` for `auricIcons.*`
+                  values.
+
+  Symptom:        The file icon theme picker lists two Modern entries.
+  Why it happens: Auric Artisan File Icons also contributes a Modern style
+                  (Auric Artisan File Icons: Modern) with the same theme ID.
+  What to do:     Choose one extension to manage Modern and use its settings.
+                  See the note below.
+
+  Symptom:        The workspace detection offer never appears.
+  Why it happens: It only checks local folders, asks once per workspace, and
+                  does not ask when Modern is already active or
+                  `auricIcons.autoDetect` is off.
+  What to do:     Run Detect Auric Artisan Workspace, or activate the theme
+                  directly.
+
+  | Note: With both Auric Icons: Modern and Auric Artisan File Icons installed,
+  | use either `auricIcons.*` settings (this extension) or File Icon Studio
+  | (`auricFileIcons.*`) consistently. If icons look inconsistent, disable one of
+  | the two sources of the Modern theme. See Modern and older Playful settings
+  | [../../auric-artisan-file-icons/docs/modern-and-legacy.txt].
+
+ICON LIBRARY
+============
+
+  Symptom:        The Auric Icons: Modern Activity Bar view is missing.
+  Why it happens: Another extension hosts the shared library: Auric Artisan
+                  Icon Studio, or a sibling collection.
+  What to do:     Use the host's view, or set
+                  `auricIconStudio.hostFamilyLibraries` to `false` if Icon
+                  Studio is the host. See The merged Icon Studio
+                  [merged-icon-studio.txt].
+
+  Symptom:        Modern commands are missing from the Command Palette.
+  Why it happens: Same as above: they hide while another extension hosts.
+  What to do:     Use the host's commands; keybindings still work.
+
+  Symptom:        `Ctrl` + `Alt` + `I` does nothing.
+  Why it happens: The editor is not focused, another extension hosts the
+                  library, or the keys are bound elsewhere.
+  What to do:     Focus a text editor and check Keyboard Shortcuts.
+
+  Symptom:        "Open a text editor before inserting an SVG."
+  Why it happens: No text editor was available.
+  What to do:     Open a file, click into it, then insert again.
+
+  Symptom:        The inserted format is not what I expected.
+  Why it happens: Smart insert chose a format for the file's language.
+  What to do:     Use Copy Icon As… for an explicit format, or turn off
+                  `auricIcons.library.smartInsert`.
+
+  Symptom:        Likes from the retired "Auric Artisan Drawing Icon"
+                  extension are missing.
+  Why it happens: Each extension keeps its own storage; history does not move
+                  between different extensions.
+  What to do:     Like the icons again in Modern.
+
+  Symptom:        A command error mentions that another extension owns the
+                  same command.
+  Why it happens: The retired "Auric Artisan Drawing Icon" or "Auric Artisan
+                  Icons" extension is still installed.
+  What to do:     Uninstall the retired extensions; Modern supersedes them.
+
+  Symptom:        The library says the icon catalog is not bundled.
+  Why it happens: The installed files are incomplete.
+  What to do:     Reinstall the extension from the Marketplace.
+
+STILL STUCK
+===========
+
+Note your VS Code version, the extension version (0.12.1), which Auric icon
+extensions are installed, and the steps that reproduce the problem, then
+contact support at https://auricartisan.com/company/contact/.

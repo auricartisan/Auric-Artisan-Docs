@@ -1,0 +1,103 @@
+==============================================================================
+EXPORT PLATES
+==============================================================================
+Download plates as PNG or SVG, export every plate as a ZIP, save a seeds file,
+and rebuild a plate from its seed.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+Every file is built in your browser and handed straight to the download.
+Nothing leaves your device.
+
+ONE PLATE, FROM ITS CARD
+========================
+
+  Button:       Download PNG
+  What you get: A raster image, 4,096 pixels square, on the chosen card
+                material
+  File name:    `ishihara-plate-<number>-<content>.png`
+
+  Button:       Download SVG
+  What you get: A vector image with one circle per dot, which scales to any
+                print size
+  File name:    `ishihara-plate-<number>-<content>.svg`
+
+  Button:       Copy seed
+  What you get: The plate's seed, on your clipboard
+  File name:    —
+
+The page says "Rendering high-res PNG…" while it builds the PNG. For example,
+plate 1 showing 93 downloads as `ishihara-plate-1-93.png`.
+
+EVERY PLATE, FROM THE EXPORT TAB
+================================
+
+The Export tab has four actions. They cover every plate currently in the Lab.
+
+  Action:       Everything at once › Export every plate
+  What you get: One ZIP, `ishihara-plates.zip`, with a PNG (2,048 pixels), an
+                SVG and a JSON description for each plate
+
+  Action:       PNG (Raster) › Download every .png
+  What you get: The same ZIP of every plate
+
+  Action:       SVG (Vector) › Download every .svg
+  What you get: One SVG file per plate, downloaded one after another
+
+  Action:       Seeds (Reproducible) › Download the seeds
+  What you get: A text file, `ishihara-seeds.txt`, with the seed, palette and
+                settings of every plate
+
+↓ Export All in the Lab does the same as Export every plate.
+
+Inside the ZIP, files are named by plate number, type and content, for example
+`plate-001-number-93.png`, `plate-001-number-93.svg` and
+`plate-001-number-93.json`. The JSON records the plate's ID, seed, type,
+content, palette, difficulty, plate shape, dot count, fine-tuning settings and
+its quality report.
+
+The seeds file is a table with the columns content, seed, type, palette,
+difficulty, dots and quality, one row per plate.
+
+  | Note: Your browser may ask permission before it saves several files in a row,
+  | as Download every .svg does. Allow it for auricartisan.com.
+
+REPRODUCE A PLATE
+=================
+
+"A seed rebuilds a plate exactly. Keep it with the file and the same settings
+will produce the same dots on any machine."
+
+  1. Copy the plate's seed with Copy seed, or read it from the seeds file.
+  2. Select Custom in the Lab.
+  3. Choose the same type, content, palette and difficulty, and use the same
+     fine-tuning settings.
+  4. Paste the seed into Seed (optional) and select Generate.
+
+The result: the same plate, dot for dot.
+
+OVER THE REST API
+=================
+
+The Export tab ends with "Or ask for one over HTTP": "Three API credits a
+call. A separate balance from the tool's tokens." It shows an example request
+to `POST /v1/ishihara/plate` with a type, content, palette, difficulty and
+seed. See the public API documentation at
+https://auricartisan.com/library/documentation/api/.
+
+MESSAGES
+========
+
+  Message: "PNG downloaded" / "SVG downloaded"
+  Meaning: The file was saved
+
+  Message: "Loading ZIP library…"
+  Meaning: The ZIP builder is loading, the first time you export
+
+  Message: "Exporting all plates…" then "N plates exported as ZIP"
+  Meaning: The ZIP is ready
+
+  Message: "No plates to export"
+  Meaning: The bench is empty
+
+  Message: "ZIP library unavailable — downloading first plate as PNG"
+  Meaning: The ZIP builder could not load, so only the first plate was saved

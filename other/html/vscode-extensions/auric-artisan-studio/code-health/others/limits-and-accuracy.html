@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Code Health limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Code Health's checks can and cannot find, and how their accuracy was measured.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health: other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Auric Code Health shortcuts</a></li>
+<li><a href="glossary.html">Auric Code Health glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Auric Code Health limits and accuracy</a></li>
+<li><a href="privacy.html">Auric Code Health privacy</a></li>
+<li><a href="release-notes.html">Auric Code Health release notes</a></li>
+<li><a href="related.html">Related to Auric Code Health</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health: other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Auric Code Health limits and accuracy</h1>
+<p class="lede">What Auric Code Health's checks can and cannot find, and how their accuracy was measured.</p>
+<h2 id="what-it-is">What it is</h2>
+<p>A high-signal heuristic linter that reads the text of the files in your workspace. It favours precision: it reports the common, high-confidence cases and tells a constant from a dynamic value.</p>
+<h2 id="measured-accuracy">Measured accuracy</h2>
+<p>On a labelled set of examples used in development, including a held-out set, precision is 1.00 in every category (no false positives), and recall is 1.00 in every category except secrets, where 96% of the planted secrets were found.</p>
+<h2 id="what-it-does-not-do">What it does not do</h2>
+<ul>
+<li>It does not build a syntax tree or trace data flow between functions, so it cannot tell whether a dynamic value is actually user-controlled.</li>
+<li>It does not scan Git history, so a secret removed from the current files but still in history is not found.</li>
+<li>It does not check whether a credential is live.</li>
+<li>It is not a full static application security testing tool or a dedicated secret scanner.</li>
+</ul>
+<h2 id="behaviour-to-know">Behaviour to know</h2>
+<ul>
+<li>Secrets are found everywhere, including comments; other categories ignore comments and, where it matters, strings.</li>
+<li>Signatures run only in the languages where they apply; see <a href="../docs/categories-and-signatures.html">Categories and signatures</a>.</li>
+<li>A file reports at most 300 findings.</li>
+<li>Lines over 240 characters are reported, except lines that start with a URL. Files over 800 lines are reported by project scans and the command-line scanner only.</li>
+<li>Files over 1 MB are skipped in the editor and in project scans (1.5 MB for the command-line scanner).</li>
+<li>Worst-case inputs, such as a 200 KB minified line or a 5,000-line file, are checked in milliseconds.</li>
+</ul>
+<p>For scanning and scoring limits shared with the other extensions, see the <a href="../../others/limits-and-accuracy.html">Studio limits and accuracy page</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Auric Code Health glossary</a><a href="privacy.html"><span>Next</span>Auric Code Health privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-it-is">What it is</a></li><li><a href="#measured-accuracy">Measured accuracy</a></li><li><a href="#what-it-does-not-do">What it does not do</a></li><li><a href="#behaviour-to-know">Behaviour to know</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

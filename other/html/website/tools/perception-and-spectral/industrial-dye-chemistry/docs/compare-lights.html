@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare lights — Auric Artisan Docs</title>
+<meta name="description" content="Choose the illuminant, read the colour readouts, compare the bath under every light, and understand colour inconstancy, metamerism, dominant wavelength and purity.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Industrial Dye Chemistry (Dye in Solution)</a>
+<h2>Using Dye in Solution</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Dye in Solution</a></li>
+<li><a href="build-a-bath.html">Build a bath</a></li>
+<li><a href="compare-lights.html" aria-current="page">Compare lights</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="run-a-titration.html">Run a titration</a></li>
+<li><a href="run-a-tolerance-sweep.html">Run a tolerance sweep</a></li>
+<li><a href="use-a-measured-spectrum.html">Use a measured spectrum</a></li>
+<li><a href="reference.html">Dye in Solution reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Dye in Solution</a></li>
+<li><a href="faq.html">Dye in Solution FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Industrial Dye Chemistry (Dye in Solution)</a> &rsaquo; <a href="README.html">Using Dye in Solution</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Industrial Dye Chemistry</p>
+<h1>Compare lights</h1>
+<p class="lede">Choose the illuminant, read the colour readouts, compare the bath under every light, and understand colour inconstancy, metamerism, dominant wavelength and purity.</p>
+<h2 id="why-the-light-matters">Why the light matters</h2>
+<p>A dye does not have a colour on its own. The colour you see is the light that the bath lets through, and that depends on what light went in. The page computes it wavelength by wavelength: the illuminant&#39;s power × the bath&#39;s transmittance × the CIE 1931 2° standard observer&#39;s colour-matching functions, summed over 81 samples from 380 to 780 nm at 5 nm. The observer is used at the 5 nm spacing it is published at, so no sample is interpolated.</p>
+<h2 id="choose-the-illuminant">Choose the illuminant</h2>
+<p>Under <strong>The light</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td><strong>D65 — daylight, 6504 K</strong> (default)</td><td>CIE standard average daylight, reconstructed from the published CIE daylight basis</td></tr>
+<tr><td><strong>D50 — daylight, 5003 K</strong></td><td>Warmer daylight, the usual reference in graphic arts</td></tr>
+<tr><td><strong>A — a blackbody at 2856 K</strong></td><td>Incandescent (tungsten) light, from Planck&#39;s law</td></tr>
+<tr><td><strong>E — equal energy</strong></td><td>Equal power at every wavelength; a theoretical reference</td></tr>
+</tbody></table></div>
+<p><strong>F11 is not offered.</strong> Fluorescent lamps such as F11, the light most often used in shops and the one a dyer most wants, have narrow mercury emission lines. The CIE publishes them as measured tables that cannot be computed from a formula, and the page does not hold them. It shows F11 as a card marked <strong>not held</strong> rather than offering a smooth imitation under that name.</p>
+<h2 id="read-the-colour-readouts">Read the colour readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>sRGB</strong></td><td>The hex colour of the light leaving the bath under the chosen illuminant, not adapted to it, so a bath under A looks warmer</td></tr>
+<tr><td><strong>CIE L*</strong></td><td>Lightness from 0 to 100</td></tr>
+<tr><td><strong>a*, b*</strong></td><td>Red–green and yellow–blue coordinates</td></tr>
+<tr><td><strong>Inside sRGB</strong></td><td>Whether the colour fits the sRGB range; <strong>no</strong> (highlighted) means the swatch is the nearest colour a screen can show</td></tr>
+<tr><td><strong>Observer</strong></td><td>CIE 1931 2°</td></tr>
+</tbody></table></div>
+<p>L*, a* and b* are CIE L*a*b* taken against the white of the <strong>chosen illuminant itself</strong>, not against D65. That way, when you switch lights, a change in L*a*b* measures the dye&#39;s colour moving relative to the light, not simply the fact that the lamp is a different colour.</p>
+<p>The swatch is un-adapted on purpose: it shows how the bath would look if the light changed while your eyes stayed adapted to the screen. The two answer different questions, and the page labels both.</p>
+<h2 id="compare-the-bath-under-every-light">Compare the bath under every light</h2>
+<p><strong>The same bath under every light this tool holds</strong> shows one swatch per illuminant. The current light is labelled <strong>— this bath</strong> with its hex; the others show <strong>ΔE₀₀</strong>, the colour difference from the current light.</p>
+<p><strong>ΔE₀₀</strong> (CIEDE2000, CIE 142-2001) is the CIE&#39;s recommended measure of how different two colours look; the page uses the full formula including its rotation term for blues. A difference around 1 is at the edge of what most people notice side by side under good conditions; several units is plainly visible.</p>
+<p>With the default bath under D65, the differences are about 1.60 to D50, 6.57 to A and 0.74 to E.</p>
+<h2 id="colour-inconstancy-is-not-metamerism">Colour inconstancy is not metamerism</h2>
+<p>What the lights row measures is <strong>colour inconstancy</strong>: how far one bath&#39;s colour moves between two lights.</p>
+<p><strong>Metamerism</strong> is a property of a <strong>pair</strong>: two samples with different spectra that match under one light and stop matching under another. It is the everyday failure in industrial dyeing, where a dyed batch matches the standard in the dyehouse and not in the shop. It needs two baths. The <strong>Method</strong> tab&#39;s <strong>The light</strong> view explains the difference. The current interface compares one bath across lights and has no control for comparing two baths, so it does not report a metamerism index.</p>
+<h2 id="dominant-wavelength-and-excitation-purity">Dominant wavelength and excitation purity</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Dominant λ</strong></td><td>The wavelength of the spectral colour that, mixed with the illuminant&#39;s white, would match the bath; found by drawing a line on the chromaticity diagram from the white point through the bath&#39;s colour to the edge of the diagram</td></tr>
+<tr><td><strong>Excitation purity</strong></td><td>How far the bath&#39;s colour lies along that line, from 0% at the white point to 100% at the spectral edge</td></tr>
+</tbody></table></div>
+<p>For purples, the line meets the straight &quot;purple line&quot; at the bottom of the diagram instead, where there is no spectral colour. The page then gives the <strong>complementary</strong> wavelength with a <code>c</code> prefix (for example <code>c540 nm</code>), shows purity as <strong>—</strong>, and explains in a note under the readouts. A bath whose colour sits exactly on the white point has no dominant wavelength, and a note says so.</p>
+<p>The default bath reads <strong>Dominant λ</strong> about 592 nm and <strong>Excitation purity</strong> about 36.7%.</p>
+<h2 id="try-it">Try it</h2>
+<ol>
+<li>With the default bath, switch <strong>The light</strong> to <strong>A — a blackbody at 2856 K</strong>.</li>
+<li>The swatch and <strong>sRGB</strong> turn a strong orange (<code>#FFB535</code>). <strong>CIE L*</strong> and <strong>a*, b*</strong> move less, to about 89.3 and 27.3, 39.7, because they are taken against illuminant A&#39;s own white; what remains is the dye&#39;s own colour inconstancy.</li>
+<li>In the lights row, the D65 swatch now shows about 6.57 ΔE₀₀: the same size of shift, seen from the other side.</li>
+<li>Add the <strong>Anthraquinone blue, pH-stable</strong> and compare the differences again: mixtures can be more or less constant than their components.</li>
+</ol>
+<p>You should now be able to say how far a bath&#39;s colour moves between lights, and why that number is not a metamerism index.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="build-a-bath.html"><span>Previous</span>Build a bath</a><a href="export-and-share.html"><span>Next</span>Export and share</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#why-the-light-matters">Why the light matters</a></li><li><a href="#choose-the-illuminant">Choose the illuminant</a></li><li><a href="#read-the-colour-readouts">Read the colour readouts</a></li><li><a href="#compare-the-bath-under-every-light">Compare the bath under every light</a></li><li><a href="#colour-inconstancy-is-not-metamerism">Colour inconstancy is not metamerism</a></li><li><a href="#dominant-wavelength-and-excitation-purity">Dominant wavelength and excitation purity</a></li><li><a href="#try-it">Try it</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

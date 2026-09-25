@@ -1,0 +1,217 @@
+---
+title: Palette Studio — Generate, check and export a palette
+description: Generate palettes from harmony, WCAG and accessibility modes, lock and edit colours, extract colours from an image, check contrast and colour-vision behaviour, and export.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Palette Studio
+
+Palette Studio is a live palette generator. It shows your palette as tall colour strips that you can regenerate, lock, reorder, edit and remove. Around the strips are analysis tabs for contrast, lightness and chroma curves, colour-vision previews and colour details, and a set of export buttons.
+
+It has thirteen generation modes. Ten are colour-harmony shapes. Three build **role palettes** designed for accessible interfaces: each colour has a job (page canvas, body ink, primary surface, text on the primary surface, focus ring and so on) and the tool picks lightness so the pairs meet a contrast target.
+
+Palette Studio is in the **Generate** category at the **Basic** level.
+
+## Open it
+
+In the Workspace view, select **Palette Studio** in **Open a tool**. In the Catalogue, select its card. It opens with five colours generated in **Random** mode.
+
+## Screen tour
+
+### Sidebar
+
+- **Harmony**: the generation mode. Changing it regenerates the palette straight away.
+- **Generate**, **+ Add** and **From Image**.
+- **Accessibility Generate**: three shortcut buttons, **WCAG AA**, **WCAG AAA** and **Accessibility**, that switch the mode and generate in one step.
+- **CVD Preview**: shows the strips as they may appear with a colour-vision deficiency.
+- **Export**: **Share**, **CSS**, **SCSS**, **TW**, **JSON**, **SVG**, **PNG** and **ASE**.
+
+### Main area tabs
+
+| Tab | What it shows |
+| --- | --- |
+| **Palette** | The colour strips, and a hint line: *Space generate · Click options · Click hex edit · Drag reorder*. |
+| **Contrast Matrix** | The WCAG contrast ratio of every pair of colours. |
+| **WCAG Pairs** | Text-and-background pairs with their ratio, level and pass or fail. |
+| **Curves** | OKLCH lightness and chroma across the palette, a hue wheel, and a CIE 1931 chromaticity diagram. |
+| **CVD Comparison** | The palette under normal vision and four colour-vision deficiencies, one row each. |
+| **Color Info** | Every colour's values in several colour spaces. |
+
+### A colour strip
+
+Each strip shows its HEX code near the bottom and, under it, a small detail: the colour's role in a role palette, the simulation name while a CVD preview is on, or **OKLCh** otherwise. Hover over a strip (or tap it on a touch screen) to show its buttons, stacked at the top:
+
+| Button | Tooltip | What it does |
+| --- | --- | --- |
+| Padlock | **Lock** / **Unlock** | Keeps the colour when you generate again. Locked strips always show their buttons. |
+| Copy | **Copy hex** | Copies the HEX code. |
+| Gear | **Adjust** | Opens the **Adjust OKLCh** sliders for this colour. |
+| **✕** | **Remove** | Removes the colour. Only shown while the palette has more than two colours. |
+
+The strip under your pointer widens slightly so you can see it better.
+
+## Generation modes
+
+All modes pick colours in OKLCH, a colour space where equal steps look roughly equally different, and add a little random variation so each press of **Generate** gives a fresh result. Each press starts from a new random base hue.
+
+| Mode | What you get |
+| --- | --- |
+| **Random** | Unrelated colours of medium lightness and moderate chroma. |
+| **Analogous** | Neighbouring hues about 30 degrees apart, getting lighter across the palette. |
+| **Complementary** | Colours alternating between a base hue and its opposite. |
+| **Triadic** | Colours from three hues 120 degrees apart. |
+| **Monochromatic** | One hue, from dark to light. |
+| **Split complementary** | A base hue and the two hues either side of its opposite (150 and 210 degrees away). |
+| **Tetradic** | Four hues 90 degrees apart. |
+| **Compound** | A base hue, a neighbour 30 degrees away, and the opposites of both. |
+| **Shades** | One hue, lightness rising from very dark, low chroma. |
+| **Tints** | One hue, from medium to very light, with chroma fading as the colours get lighter. |
+| **WCAG AA palette** | A role palette whose text pairs reach 4.5:1. |
+| **WCAG AAA palette** | A stricter role palette whose text pairs reach 7:1. |
+| **Accessibility palette** | A low-chroma canvas, near-black ink, and blue, orange, green and purple surfaces spread apart for colour-vision differences, each with a readable ink. |
+
+### Role palettes
+
+The two WCAG modes produce these roles, in this order: **Canvas**, **Ink**, **Primary**, **Primary ink**, **Focus**, **Secondary**, **Secondary ink**, **Success**, **Success ink**. The **Accessibility** mode produces **Canvas**, **Ink**, then **CVD blue**, **CVD blue ink**, **CVD orange**, **CVD orange ink**, **CVD green** and **CVD green ink**.
+
+The palette keeps its current number of colours, so a five-colour palette gets the first five roles. To get every role, add colours with **+ Add** (up to nine) and generate again.
+
+The targets the generator aims for:
+
+- Text roles (the *ink* colours) aim for 4.5:1 against their surface in **WCAG AA** and **Accessibility** mode, and 7:1 in **WCAG AAA** mode.
+- Coloured surfaces aim for at least 3:1 against the canvas (4.5:1 in **Accessibility** mode) so they stand out as UI shapes.
+- **Focus** aims for 3:1, the WCAG 2.2 contrast for non-text focus indicators.
+
+The generator searches for a lightness that meets the targets. The **WCAG Pairs** tab shows whether each pair actually passes, so check it rather than assuming.
+
+## Tasks
+
+### Generate a palette you like
+
+1. Choose a mode in **Harmony**.
+2. Select **Generate**, or press `Space` while the panel is focused and the cursor is not in a text box or list.
+3. Lock the colours you want to keep. Generate again until the rest fit.
+4. Drag a strip onto another strip's position to reorder the palette.
+
+Result: a palette of two to nine colours in the order you want, with the locked colours unchanged.
+
+### Fine-tune one colour
+
+1. Hover over the strip and select **Adjust**. The **Adjust OKLCh** box opens over the strip with three sliders: **L** (lightness, 0 to 1), **C** (chroma, 0 to 0.4) and **H** (hue, 0 to 360 degrees).
+2. Move the sliders. The strip previews the change as you go.
+3. Select **Apply** to keep it, or **Cancel** (or select anywhere outside the box) to discard it.
+
+Alternatively, select the HEX code on the strip to open the site's colour picker, choose a colour, and confirm it. The strip updates as you pick.
+
+Result: the colour changes to exactly the value you set; other colours are untouched.
+
+### Build an accessible role palette
+
+1. Select **+ Add** until the palette has nine colours.
+2. Select **WCAG AA** under **Accessibility Generate**. The strips show role names such as **Canvas** and **Primary ink**.
+3. Open the **WCAG Pairs** tab. Read the four figures at the top: **Min pair** (the lowest ratio among the pairs), **AA normal** and **AAA normal** (how many pairs reach 4.5:1 and 7:1), and **CVD min dE** (the smallest colour difference between any two colours under simulated colour-vision deficiency).
+4. Check the table: each row names a pair (for example **Primary ink on Primary**), shows both colours, the ratio, the WCAG level for normal text (**AAA**, **AA** or **Fail**) and whether the pair meets its own target (**Pass** or **Fail**).
+5. If a pair fails, select **WCAG AA** again for a new attempt, or lock the colours that pass and regenerate.
+
+Result: a nine-role palette with a table proving which text and surface pairs pass.
+
+### Extract a palette from an image
+
+1. Select **From Image** and choose an image file from your device.
+2. Wait a moment. The palette is replaced by the image's dominant colours, most common first, and a message such as **Extracted 5 colors** appears.
+
+The tool extracts as many colours as the palette currently has (five if it is empty). To extract more, add colours first. The image is scaled down to at most 400 pixels on its longest side for analysis, transparent pixels are ignored, and the colours are found by clustering similar pixels (k-means). The result can differ slightly between runs. Extracted colours are unlocked.
+
+Result: a palette taken from your picture, ready to lock, edit and export.
+
+## Analysis tabs in detail
+
+### Contrast Matrix
+
+A table with your colours as both rows and columns. Each cell is the WCAG 2.x contrast ratio between the two colours; the diagonal shows a dash. Cells are tinted green for 4.5:1 and above, amber for 3:1 to 4.5:1, and red below 3:1. The note under the table lists the thresholds: 7.0 AAA, 4.5 AA, 3.0 AA Large, below 3.0 Fail.
+
+### WCAG Pairs
+
+For role palettes the tool pairs each colour with the colour it is meant to sit on. Ink pairs use a 4.5:1 target (7:1 for AAA roles); surface and focus pairs use 3:1. For palettes without roles, each row is **Best text on Color N**: the tool picks whichever of four near-black and near-white inks (#111111, #000000, #FFFFFF, #F8FAFC) gives the highest contrast on that colour, with a 4.5:1 target. The footnote reads: *WCAG normal text targets use 4.5:1 for AA and 7:1 for AAA. Focus and non-text UI pairs use 3:1.*
+
+### Curves
+
+- **Lightness (OKLCh L) across palette**: a line from the first colour to the last, scale 0 to 1.
+- **Chroma (OKLCh C) across palette**: scale 0 to 0.4.
+- **Hue distribution — Hue wheel**: each colour marked on a hue ring.
+- **CIE 1931 chromaticity positions**: each colour on the chromaticity diagram, with the sRGB triangle drawn as a dashed gold line.
+
+A smooth lightness line usually means an even ramp; a jagged one means some colours may be hard to tell apart in greyscale.
+
+### CVD Comparison
+
+Five rows: **Normal vision**, then **deuteranopia**, **protanopia**, **tritanopia** and **achromatopsia**, each showing the whole palette as simulated with HEX labels. Use it to spot colours that merge for some viewers.
+
+### Color Info
+
+One card per colour with **HEX**, **RGB**, **HSL**, **OKLCh** (lightness as 0 to 100, chroma, hue), **Lab**, **Luminance** (WCAG relative luminance, 0 to 1), and for role palettes **Role** and **Target**.
+
+## CVD Preview
+
+The **CVD Preview** list recolours the strips to simulate **Deuteranopia**, **Protanopia**, **Tritanopia** or **Achromatopsia**. It changes only what you see: the HEX codes, the exports and the analysis tabs keep the real colours. Choose **Normal vision** to turn it off.
+
+## Export
+
+| Button | Tooltip | Result |
+| --- | --- | --- |
+| **Share** | Copy share URL | Copies a link to Basic Color Tools that records the palette's HEX codes, for example `https://auricartisan.com/tool/basic-tools/#palette=D3AF37-1A1A2E-F5DEB3`. |
+| **CSS** | Copy CSS vars | Copies `:root { --color-1: #…; … }`. |
+| **SCSS** | Copy SCSS | Copies one `$color-1: #…;` line per colour. |
+| **TW** | Copy Tailwind | Copies a Tailwind `extend` snippet with `palette-1`, `palette-2` … keys. |
+| **JSON** | Copy JSON | Copies an array with each colour's HEX, role details, RGB, OKLCH, Lab, luminance, best text colour and lock state. |
+| **SVG** | Download SVG | Downloads `palette.svg`, 1200 by 240 pixels, equal stripes with HEX labels. |
+| **PNG** | Download PNG | Downloads `palette.png`, 1200 by 240 pixels, equal stripes with HEX labels. |
+| **ASE** | Copy ASE-style txt | Copies plain text, one line per colour: `Color 1`, the HEX code and `RGB(r, g, b)`, separated by tabs. |
+
+The **ASE** button copies text in a tab-separated layout, not a binary Adobe Swatch Exchange file. Paste it into a text file or spreadsheet.
+
+The share link stores the codes in the part of the address after `#`. Opening the link opens Basic Color Tools; the palette is not rebuilt from the link automatically, so treat it as a record of the codes you can copy back into a tool such as Palette Remix.
+
+Examples of the copied code are in [Import, export and the Library](../import-export-and-library.md).
+
+## Save to and restore from the Library
+
+With Palette Studio focused, select **Save to Library** to save the palette with its harmony mode and CVD preview setting. When you open a saved palette in Basic Color Tools later, it reopens in Palette Studio and a message such as **Loaded 5 colors from library** appears.
+
+## Controls
+
+| Control | What it does | Values or range | Default |
+| --- | --- | --- | --- |
+| **Harmony** | Sets the generation mode and regenerates. | 13 modes (see above) | **Random** |
+| **Generate** | Replaces every unlocked colour. | — | — |
+| `Space` | Same as **Generate** when the panel is focused. | — | — |
+| **+ Add** | Adds a random colour at the end. | Up to 9 colours; message **Max 9** | — |
+| **From Image** | Extracts the palette from an image file. | Any image type the browser can open | — |
+| **WCAG AA** | Switches to **WCAG AA palette** and generates. | — | — |
+| **WCAG AAA** | Switches to **WCAG AAA palette** and generates. | — | — |
+| **Accessibility** | Switches to **Accessibility palette** and generates. | — | — |
+| **CVD Preview** | Simulates colour-vision deficiency on the strips. | Normal vision, Deuteranopia, Protanopia, Tritanopia, Achromatopsia | Normal vision |
+| Lock | Keeps a colour when generating. | On or off | Off |
+| Copy hex | Copies one colour's HEX code. | — | — |
+| Adjust | Opens OKLCH sliders for one colour. | L 0–1 (step 0.005), C 0–0.4 (step 0.005), H 0–360 (step 1) | The colour's current values |
+| Remove | Removes one colour. | At least 2 colours remain; message **Min 2 swatches** | — |
+| HEX label | Opens the site colour picker for that colour. | Any colour | — |
+| Drag a strip | Reorders the palette. | — | — |
+| Export buttons | Copy or download the palette. | See the Export table | — |
+
+## Accuracy and limits
+
+- Contrast ratios use the WCAG 2.x relative-luminance formula on sRGB values.
+- Colour-vision previews use simple simulation matrices. They show the general effect, not exactly what any individual sees.
+- The WCAG and accessibility modes aim for their targets but are not guaranteed to reach every one; the **WCAG Pairs** tab is the check.
+- OKLCH values outside the sRGB range are clipped to the nearest displayable colour, so a requested chroma may not be reached.
+- Image extraction samples a scaled-down copy of the image and uses random starting points, so results can vary slightly.
+
+## Related
+
+- [Panel tools](README.md)
+- [Palette Remix](palette-remix.md) for variations of a palette you already have
+- [Color Battle](colour-battle.md) to compare two palettes
+- [Harmony Studio](../colour-tools/harmony-studio.md) in the Colour Tools workbench
+- [Import, export and the Library](../import-export-and-library.md)

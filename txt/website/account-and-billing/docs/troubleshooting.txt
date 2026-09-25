@@ -1,0 +1,300 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Fixes for problems with signing in, verification emails, passwords, two-step
+codes, payments, invoices, API keys and the Auric Artisan dashboard.
+Area: Website › Account and billing   Updated: 2026-09-25
+
+Each entry gives the symptom, the likely cause and what to do. For problems
+with the website in general — browser support, cookies, offline use — see
+Help: troubleshooting [../../../help/troubleshooting.txt].
+
+I CANNOT SIGN IN
+================
+
+  Symptom:    "Enter a valid email address." although you typed a username
+  Why:        The field contains an @, so it is checked as an email address
+  What to do: Type the username without @, or your full email address
+
+  Symptom:    The sign-in is refused with a credentials message
+  Why:        Wrong email, username or password
+  What to do: Check for typing errors, then use Forgot password?
+
+  Symptom:    Refused after several attempts
+  Why:        Sign-in attempts are rate-limited; repeated failures can lock
+              sign-in for a while
+  What to do: Wait, then try again, or reset your password
+
+  Symptom:    "Complete the Auric human check before continuing."
+  Why:        A human check is on screen and not finished
+  What to do: Repeat the three marks and select Verify sequence, then Sign In
+
+  Symptom:    The human check keeps expiring
+  Why:        Each check lasts a few minutes and is used once
+  What to do: Select New sequence, answer, and sign in straight away
+
+  Symptom:    "Enter your email or username before verifying the sequence."
+  Why:        The check is tied to the identifier in the form
+  What to do: Fill in Email or username first
+
+  Symptom:    You signed up with Google or GitHub and have no password
+  Why:        Provider accounts have no Auric Artisan password
+  What to do: Use the same provider button, or set a password with Forgot
+              password?
+
+  Symptom:    "That sign-in request expired. Start again."
+  Why:        The 10-minute second-factor window ran out
+  What to do: Sign in again and enter the code promptly
+
+  Symptom:    You are signed in but keep being sent to the sign-in page
+  Why:        Your session ended (password change, revoked device, or it
+              expired)
+  What to do: Sign in again
+
+GOOGLE OR GITHUB SIGN-IN ERRORS
+===============================
+
+After returning from the provider, one of these may appear at the top of the
+sign-in page:
+
+  Message:    "OAuth response was incomplete."
+  What to do: Try again from the Auric Artisan sign-in page.
+
+  Message:    "OAuth session expired. Try signing in again."
+  What to do: You took too long, or opened the provider page in another tab.
+              Start again.
+
+  Message:    "Could not complete sign-in with that provider."
+  What to do: Try again; if it persists, use email and password.
+
+  Message:    "Your provider account has no verified email address."
+  What to do: Verify your email with Google or GitHub, or sign up with email
+              and password.
+
+  Message:    "This email already has an account. Sign in with the method
+              already connected to it."
+  What to do: Sign in with email and password (or the other provider) you used
+              first.
+
+  Message:    "Could not link that account. Try signing in again."
+  What to do: Try again.
+
+  Message:    "Signed in, but the session could not be started."
+  What to do: Check that your browser allows cookies for auricartisan.com,
+              then try again.
+
+  Message:    "OAuth sign-in failed."
+  What to do: Try again, or use email and password.
+
+THE VERIFICATION EMAIL DID NOT ARRIVE
+=====================================
+
+  1. Wait a minute and check your spam or junk folder.
+  2. Check the address shown (partly masked) on the Confirm your inbox.
+     screen.
+  3. Select Resend verification email once the wait timer ends. Each new link
+     replaces the old one; use the newest.
+  4. From the dashboard, use Send it again in the Your account is nearly there
+     panel.
+  5. If the address is wrong, it cannot be changed from the dashboard; contact
+     support.
+
+If the link says Verification link unavailable., it has expired (after 24
+hours), been used, or been replaced. Request a fresh one.
+
+THE RESET EMAIL DID NOT ARRIVE
+==============================
+
+  - The reset form never says whether an address has an account. If nothing
+    arrives, check that you typed the email address on the account (not your
+    username) and look in spam.
+  - Reset requests are rate-limited; wait a few minutes before asking again.
+  - Links last one hour and work once. Request a new one if yours has expired.
+  - Accounts created with Google or GitHub receive a reset link too; that is
+    how you add a password.
+
+MY AUTHENTICATOR CODE IS REFUSED
+================================
+
+  Symptom:    "Code is invalid. Try again." during setup
+  What to do: Enter the code currently on screen. Make sure your phone's date
+              and time are set automatically.
+
+  Symptom:    "2FA setup expired — start again."
+  What to do: Select Enable 2FA again and scan the new QR code.
+
+  Symptom:    Codes are refused at sign-in
+  What to do: Check the device clock, and that you are using the Auric Artisan
+              entry in your app. Use a backup code if needed.
+
+  Symptom:    No app and no backup codes
+  What to do: Contact support through the contact page (topic Security) from
+              the account's email address.
+
+THE DASHBOARD
+=============
+
+  Symptom:    "Could not load subscription details."
+  Why:        The plan could not be read
+  What to do: Refresh. If it persists, sign out and in again.
+
+  Symptom:    Panels stay empty or show "—"
+  Why:        Figures appear only when there is something true to show
+  What to do: This is expected for a new account; see Overview section
+              [dashboard-overview.txt]
+
+  Symptom:    Usage meters differ between browsers
+  Why:        Meters include counts recorded in each browser
+  What to do: Expected; they converge as the account's own figures update
+
+  Symptom:    Your work shows nothing although you saved work
+  Why:        The library lives in the browser where you saved it
+  What to do: Open the dashboard in that browser
+
+  Symptom:    The Change plan cards show rupees
+  Why:        These cards show prices in rupees
+  What to do: Use the pricing page to see US dollars
+
+  Symptom:    "Changed here, but not saved to your account" on Usage data
+  Why:        The choice could not be saved
+  What to do: Try the switch again later
+
+  Symptom:    "This list does not say which device you are reading on…"
+  Why:        The device list could not mark your device
+  What to do: Be careful: every row, including yours, can be revoked
+
+  Symptom:    Sign out everywhere did nothing
+  Why:        It needs a second press within about six seconds
+  What to do: Press Sign out every other device? to confirm
+
+THE DANGER ZONE WILL NOT UNLOCK
+===============================
+
+  Message:    "Not yet — it has to match word for word."
+  What to do: Retype the sentence exactly as displayed.
+
+  Message:    "That password is not right."
+  What to do: Retype your password.
+
+  Message:    "Set an account password before using these actions."
+  What to do: Add a password first: Passwords [passwords.txt].
+
+  Message:    "This page has lost its session token, so it cannot send this
+              safely. Reload the page and try again — your password is fine."
+  What to do: Reload. This happens if you signed out in another tab, or opened
+              the site over an insecure address.
+
+  Message:    "This page could not prove it is still your session…"
+  What to do: Reload the page.
+
+  Message:    "The danger zone is not available on this server yet. Nothing is
+              wrong with what you typed."
+  What to do: The zone shows Unavailable. Contact support to delete the
+              account.
+
+  Message:    "Too many attempts. Try again in a few minutes."
+  What to do: Wait before trying again.
+
+PAYMENTS AND CHECKOUT
+=====================
+
+  Symptom:    Selecting Get Artisan shows "Sign in first…"
+  Why:        An account is required before payment
+  What to do: Select Sign in or create a free account; you return to the
+              pricing page
+
+  Symptom:    The payment is refused because the email is unverified
+  Why:        Billing is locked until you verify
+  What to do: Verify your email, then try again
+
+  Symptom:    A foreign card is declined at the last step
+  Why:        Non-Indian cards and American Express depend on permissions on
+              Auric Artisan's payment account
+  What to do: Nothing is charged. Try UPI or another card, or tell Auric
+              Artisan through the contact page so they can arrange it
+
+  Symptom:    "Checkout is briefly unavailable, so nothing was charged."
+  Why:        The checkout could not start
+  What to do: Try again in a moment, or contact support
+
+  Symptom:    "Checkout cancelled."
+  Why:        The checkout window was closed
+  What to do: Nothing was charged; start again if you meant to pay
+
+  Symptom:    The confirmation page stays on Confirming your payment
+  Why:        Razorpay's confirmation is delayed
+  What to do: Wait; do not pay again. Check Billing history; contact support
+              with the order reference if it does not update
+
+  Symptom:    Payment not completed but money left your account
+  Why:        A bank hold or a delayed confirmation
+  What to do: Holds are released automatically. If the money does not return,
+              contact support with the order reference
+
+  Symptom:    The plan does not show after paying
+  Why:        The page loaded before the update
+  What to do: Refresh the dashboard. Quote the order reference if it still
+              does not show
+
+  Symptom:    You were charged twice
+  Why:        —
+  What to do: Contact support with both order references
+
+  Symptom:    Current Plan on the pricing page does not match
+  Why:        You are signed in to another account
+  What to do: Check the email in the header account menu
+
+INVOICES
+========
+
+  Symptom:    Invoice not found
+  What to do: Sign in to the account that made the payment and open the
+              invoice from Invoices & Payment History.
+
+  Symptom:    You need a GST tax invoice
+  What to do: Auric Artisan is not currently registered for GST; receipts are
+              payment receipts. See Invoices and receipts
+              [invoices-and-receipts.txt].
+
+API KEYS AND CREDITS
+====================
+
+  Symptom:    No create button in Your API Keys
+  Why:        Your plan does not include the API
+  What to do: API access starts at Specialist
+
+  Symptom:    "You can hold at most 10 active keys."
+  Why:        The account limit
+  What to do: Revoke a key you do not need
+
+  Symptom:    You lost a key
+  Why:        Keys are shown once
+  What to do: Create a new key and revoke the old one
+
+  Symptom:    Calls return 402 with `PLAN_UPGRADE_REQUIRED`
+  Why:        The account's plan does not include the API
+  What to do: Move to a plan with API access
+
+  Symptom:    Calls return 429
+  Why:        The monthly allowance is used up, the rate limit was hit, or
+              overage cannot continue (no prepaid balance, spend cap or
+              ceiling reached)
+  What to do: Wait for the reset, slow down, add credits, or raise your cap
+
+  Symptom:    Usage & cost says "That key was refused."
+  Why:        The pasted key was revoked or mistyped
+  What to do: Paste another key
+
+  Symptom:    The pack picker has nothing to buy
+  Why:        Credits belong to plans with API access
+  What to do: See API credits and spend controls [api-credits-and-spend.txt]
+
+  Symptom:    "Enter a cap between $0 and $10,000."
+  Why:        The cap is out of range
+  What to do: Enter a value in range, or 0 for no cap of your own
+
+RELATED
+=======
+
+  - FAQ [faq.txt]
+  - Contact and support [../../../help/contact-and-support.txt]

@@ -1,0 +1,132 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Fixes for common problems in the ASCII Art Generator, from files that will not
+load to downloads that do not match the art.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+NOTHING HAPPENS WHEN I OPEN THE PAGE
+====================================
+
+That is expected: the stage waits for a source. Choose a file, drop or paste a
+picture, select Try an example, or switch to Text. There is no Render button;
+conversion starts by itself.
+
+MY FILE WILL NOT LOAD
+=====================
+
+  - Unsupported file type: use PNG, JPEG, GIF, WebP, BMP, SVG or TIFF. Convert
+    other formats, such as HEIC, first.
+  - File too large: the limit is 20 MB. Save a smaller copy or a JPEG.
+  - Failed to load image: the file may be damaged, or your browser cannot read
+    that format. TIFF in particular opens only in some browsers.
+
+PASTING A PICTURE DOES NOTHING
+==============================
+
+Click on an empty part of the page first, so you are not typing in a field,
+then press `Ctrl` + `V` (`Cmd` + `V` on a Mac). The clipboard must hold an
+image, not a link to one.
+
+THE WEBCAM WILL NOT START
+=========================
+
+At the time of writing, auricartisan.com tells browsers not to allow camera
+access on any of its pages. Start then shows a message that camera permission
+was denied. Changing permissions in your browser does not help. Take a photo
+with your camera app and load it with Image instead.
+
+THE ART LOOKS STRETCHED OR SQUASHED
+===================================
+
+  - Leave Match the output font on in Fine tuning › Shape, so the cell shape
+    matches the font.
+  - If you pasted the art somewhere else, use a monospaced font there too; a
+    proportional font breaks the columns.
+  - If Lock row count is on, the row count no longer follows the picture. Turn
+    it off.
+
+THE ART LOOKS LIKE A NEGATIVE
+=============================
+
+The characters with the most ink should stand for the dark parts on light
+paper, and the light parts on dark paper. Check Invert for dark paper. Once
+you have changed it yourself, it no longer follows the paper colour
+automatically.
+
+THE ART IS TOO DARK, TOO LIGHT OR FLAT
+======================================
+
+  - Try Gamma: above 1 lightens the mid-tones, below 1 darkens them.
+  - Raise Contrast.
+  - Look at Character frequency in Analysis: a spike at one end means the
+    tones are crushed.
+  - Try the Line art or Bold look for strong shapes, or Fine for subtle tones.
+
+SMOOTH AREAS SHOW BANDS
+=======================
+
+Turn on Floyd-Steinberg or Ordered (Bayer) dithering, or choose a longer set
+such as Detailed. The Compare tab shows which sets are not ordered light to
+dark.
+
+COLOUR DOES NOT SHOW
+====================
+
+  - Under Colour, choose From image. Colour shows in the HTML, Canvas and SVG
+    renders, not in Text.
+  - With Rotate 90°, Border, Frame or Thin out on, the Canvas and SVG renders
+    fall back to one colour. Turn those off for colour art.
+
+FILTERS DO NOTHING
+==================
+
+The HTML render shows the art before filters. Switch to Text, Canvas or SVG.
+Brighten, Darken and Noise work on Standard-set characters, so with other sets
+they change little or mix Standard characters in.
+
+THE PNG, SVG OR HTML DOWNLOAD DOES NOT MATCH THE ART
+====================================================
+
+Those downloads can reuse an earlier render. Before downloading, select the
+matching render on the Lab tab: Canvas for PNG, SVG for SVG, HTML for HTML.
+Then download again.
+
+THE ANSI DOWNLOAD SAYS TO TURN COLOUR ON
+========================================
+
+The ANSI file carries the picture's colours, so it needs From image. For plain
+characters, use the TXT download or Copy.
+
+EXPORT ALL GAVE ME FIVE FILES, NOT SIX
+======================================
+
+That is how it works at present: Export all six downloads TXT, PNG, SVG, JSON
+and CSV. Download the HTML and ANSI files from their own cards. If only one
+file arrived, allow the page to download several files when your browser asks.
+
+FULL SCREEN SHOWS NO COLOUR
+===========================
+
+Full screen shows the plain characters for every render except Canvas. Switch
+to Canvas first to see the colour art full screen. Close full screen with ×.
+
+THE ANALYSIS CHARTS ARE EMPTY
+=============================
+
+Convert something first; the charts describe the last conversion. If they are
+still blank, switch to another tab and back.
+
+CONVERSION IS SLOW OR LAGS BEHIND THE SLIDERS
+=============================================
+
+Lower Detail, switch Sampling to Bilinear or Point / Nearest, turn off
+dithering, or use the Text render. The Render timeline chart and Run benchmark
+show the effect.
+
+RELATED
+=======
+
+  - FAQ [faq.txt]
+  - Limits and accuracy [../others/limits-and-accuracy.txt]
+  - Help centre [../../../../../help/README.txt]

@@ -1,0 +1,65 @@
+---
+title: Harmony Library — Browse, search and filter
+description: Jump to a harmony by id, search, filter by hue, chroma, lightness and family, and sort the collection.
+product: Website › Library › Colour libraries › Harmony Library
+updated: 2026-09-25
+---
+
+# Browse, search and filter
+
+## Ids
+
+Every harmony has a number from 0 to 8,191 and an id: `har_` followed by that number in base 36. `har_0` is the first; `har_5k` is number 200. The id always gives the same colours.
+
+The schemes take turns: harmony 0 is complementary, 1 is split complementary, 2 is triadic, and so on through all 23 before starting again. The collection therefore holds 356 or 357 harmonies of each scheme.
+
+## Jump to a harmony
+
+Type an id (`har_5k`) or a number (`200`) into **Search by id, hex or method…**. The grid shows that harmony alone. Filters are ignored while an id is in the box.
+
+## Search
+
+Type anything else. Every word must appear in the harmony's id, its method (for example `split_complementary`), its family, or the hex code of one of its colours. The **Filter inside results** box (**id, hex, method…**) adds more words; **Clear** empties it.
+
+> **Tip:** Method names use underscores, as in `analogous_5` or `golden_ratio`. Searching `analogous` finds all three analogous schemes and the accented analogous one.
+
+Press `/` outside a text field to jump to the search box.
+
+## Filters
+
+| Filter | Options | Meaning |
+| --- | --- | --- |
+| **Base hue** | **All hues**, **Red**, **Orange**, **Yellow**, **Green**, **Cyan**, **Blue**, **Purple**, **Pink** | The harmony's overall hue: the average of its colours' OKLCH hues, weighted towards the more colourful ones. |
+| **Chroma** | **Any chroma**, **Muted (< 0.07)**, **Balanced** (0.07 to 0.15), **Vivid (> 0.15)** | Average OKLCH chroma. |
+| **Lightness** | **Any lightness**, **Dark** (below 0.40), **Mid** (0.40 to 0.70), **Light** (above 0.70) | Average OKLCH lightness. |
+| **Method** | **All methods** and the 23 method names | Intended to filter by scheme. See the note below. |
+| **Family** | **All families**, **Complementary**, **Polyadic**, **Analogous**, **Monochromatic**, **Compound** | The scheme family. |
+
+> **Note:** On the current page, choosing a **Method** does not narrow the grid. To see one scheme, type its method name into the search box instead, for example `triadic`.
+
+Filters and searches all combine: a harmony must pass every one. Because the page holds all 8,192 harmonies at once, filters look at the whole collection, not a sample.
+
+## Sort by
+
+| Option | Order |
+| --- | --- |
+| **Sort: original** | By number (default). |
+| **Lightness ↑** / **Lightness ↓** | Average OKLCH lightness. |
+| **Chroma ↑** / **Chroma ↓** | Average OKLCH chroma. |
+| **Hue (rainbow)** | Overall hue from 0°. |
+| **Color count ↑** / **Color count ↓** | Number of colours, 2 to 7. |
+| **Random** | Shuffled. |
+
+## Buttons
+
+- **Shuffle** — sort **Random**.
+- **Open a random harmony** — opens any harmony on **Inspect**.
+- **Reset** — clears searches and filters, and sets **Sort: original**.
+- **Export visible** — opens **Export**.
+- **Back to top** — scrolls to the first card.
+
+## The grid
+
+The grid scrolls continuously; the counter reads, for example, **1–48 of 1,424 harmonies**. With no matches it reads **Nothing to show** and the grid says **No harmonies match** — **Try clearing a filter, or searching a broader method or family.**
+
+Each card: the swatch strip (select a swatch to copy its hex), the id, the scheme name, and **Inspect**, **Copy** (all hex codes, comma-separated: **Harmony hexes copied**) and **Save**. Select the card elsewhere, or press `Enter` or `Space` on a focused swatch, to open it on **Inspect**.

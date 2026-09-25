@@ -1,0 +1,65 @@
+---
+title: Auric Artisan Font Hub — export a self-hosting kit
+description: Download fonts from Font Hub as a ZIP kit with CSS, a demo page and licence notices, for hosting on your own server.
+product: VS Code extensions › Auric Artisan Font Hub
+updated: 2026-09-25
+---
+
+# Export a self-hosting kit
+
+*Self-hosting* means serving font files from your own website instead of the CDN. Font Hub can package families into a ZIP *kit* ready to copy into a project.
+
+## Download a kit
+
+Use any of these:
+
+- **Download kit** in a family's **Styles** or **Use & Embed** tab;
+- **Download** in the **Selected** tray, for every selected family;
+- **Download self-hosting kit** in **Quick Pick Font**;
+- **Auric Artisan Font Hub: Download Self-hosting Font Kit**, which lets you tick families in a list (**Choose font families**).
+
+Then:
+
+1. Font Hub checks each family's licence (see below).
+2. Choose where to save the ZIP. The default name is `<family>-font-kit.zip` for one family or `auric-font-selection-kit.zip` for several.
+3. A progress notification, **Preparing Auric font kit**, shows each family as its files are fetched.
+4. **Saved self-hosting kit for *N* families.**
+
+Saving is always an explicit action; nothing is written into your project unless you save it there.
+
+## What the kit contains
+
+| Path | Contents |
+| --- | --- |
+| `fonts/<family>/` | The font files for every style |
+| `css/<family-id>.css` | `@font-face` rules pointing at those files, with `font-display: swap` and variable weight ranges kept |
+| `licenses/<family>.txt` | The family's licence text, when there is one |
+| `README-<family>.md` | Notes for each family |
+| `index.html` | A demo page showing the families |
+| `README.md` | Instructions: review every licence before redistribution, load the CSS and keep the relative font paths intact |
+
+Load a family by linking its CSS file from your page, keeping the `css/` and `fonts/` folders in the same relative positions.
+
+## Licence checks
+
+A kit is only created when every family can be redistributed:
+
+- Families whose licence does not allow redistribution, or where permission cannot be established, are refused.
+- Families whose licence requires a notice are refused if the notice cannot be loaded.
+- System fonts are never exported.
+
+When a family is refused, the whole kit is blocked with **Self-hosting kit blocked.** and the reason for each family. Remove those families and try again.
+
+Each font keeps its own licence. The extension's own licence does not grant rights to any font. Review the files in `licenses/` before you redistribute anything.
+
+## Limits
+
+| Limit | Value |
+| --- | --- |
+| Families per kit | `auricFontLib.download.maxFamilies`, 6 by default (1–12) |
+| One font file | 40 MB |
+| Whole kit | 250 MB; larger selections stop with **Selected font files exceed the 250 MB kit limit.** |
+
+Downloading needs the network and `auricFontLib.network.enabled`. Files already in the cache are reused.
+
+When the kit is saved, opening its `index.html` in a browser shows each family rendered from the local files.

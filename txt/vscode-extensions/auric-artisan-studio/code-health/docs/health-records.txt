@@ -1,0 +1,128 @@
+==============================================================================
+HEALTH RECORDS
+==============================================================================
+Write health.json, SARIF 2.1.0 and a trend history for CI, understand how
+code-health findings are recorded and fingerprinted, and gate on new issues
+with a baseline.
+Area: VS Code extensions › Auric Artisan Studio › Auric Code Health   Updated: 2026-09-25
+
+Auric Code Health writes the project's findings to machine-readable files, so
+CI systems, dashboards and code-scanning tools can use them. The records cover
+every source the Studio scans: accessibility, contrast, colour vision,
+branding and code health.
+
+THE THREE FILES
+===============
+
+  File:    `health.json`
+  Format:  JSON
+  Purpose: A versioned record of scores, a summary and every issue, each with
+           a stable fingerprint
+
+  File:    `health.sarif`
+  Format:  SARIF 2.1.0
+  Purpose: The same issues for GitHub code scanning and other SARIF tools
+
+  File:    `health-history.json`
+  Format:  JSON
+  Purpose: One entry per recorded scan, for tracking scores over time
+
+They are written to `.auric-artisan/` in your workspace. The full formats are
+described in Exports and health records [../../docs/exports-and-records.txt].
+
+WHEN THEY ARE WRITTEN
+=====================
+
+  - Auric Artisan: Write Health Record (health.json + SARIF), SARIF or
+    health.json + SARIF on the Overview, the button of the same name in the
+    Health space, and Write health.json + SARIF in the Home space's CI gate
+    card. The record opens when it is written, and a message offers Open SARIF
+    and Open Data Folder.
+  - Automatically after every project scan, when `health.writeOnScan` is on
+    (the default).
+  - Never during live re-grades while you type.
+
+SETTINGS
+========
+
+  Setting: `auricCodeHealth.health.enabled`
+  Default: `true`
+  Effect:  Maintain the record at all
+
+  Setting: `auricCodeHealth.health.writeOnScan`
+  Default: `true`
+  Effect:  Rewrite it after each project scan
+
+  Setting: `auricCodeHealth.health.formats`
+  Default: `["json","sarif","history"]`
+  Effect:  Which files to write
+
+  Setting: `auricCodeHealth.health.fileName`
+  Default: `health.json`
+  Effect:  Name of the JSON file; SARIF and history names follow it
+
+  Setting: `auricCodeHealth.health.maxIssues`
+  Default: `5000`
+  Effect:  Most issues recorded, worst first (100–100000)
+
+  Setting: `auricCodeHealth.health.historyLimit`
+  Default: `200`
+  Effect:  Most history entries kept (10–5000)
+
+HOW CODE-HEALTH FINDINGS ARE RECORDED
+=====================================
+
+Each code-health issue in `health.json` has:
+
+  - `source`: `code-health`;
+  - `ruleId`: the signature, for example `ch-sec-tls-python`, and `category`:
+    `security`;
+  - `severity`: merge markers `high`; secrets, security and risky APIs
+    `medium`; debug `low`; task markers and oversized `info`;
+  - `confidence`, `detectorVersion` (1.2.0) and `knowledgeRuleId` (the rule's
+    entry in the knowledge database);
+  - `file`, `line`, `col`, `message` and `fix`;
+  - `match`: the evidence, which for secrets is only the redaction note;
+    `evidenceType` (the kind of secret) and `redacted: true` for secrets.
+
+In SARIF, each signature is a rule with its category, detector version and
+confidence as properties; results for secrets carry `evidenceRedacted`. Levels
+are `error` for high, `warning` for medium and `note` for low and info.
+
+The `summary.codeHealthByCategory` object counts findings per category, and
+`scores.codeHealth` holds the code-health score.
+
+FINGERPRINTS AND BASELINES
+==========================
+
+Every issue has an 8-character `id` fingerprint built from its source,
+signature, file, line and a key detail. For secrets, the key detail is the
+signature and column, never the secret. Fingerprints let a CI gate compare two
+runs:
+
+  1. Save the current state as a baseline once.
+  2. On each pull request, compare with it and fail only if there are new
+     fingerprints.
+
+Use the command-line scanner for this; see The CI gate
+[../../docs/ci-gate.txt]. A finding that moves to another line gets a new
+fingerprint.
+
+  | Note: Code-health findings are fingerprinted with the detector version that
+  | produced them. A baseline written by an earlier detector (1.1.0) may list some
+  | existing findings as new once. Regenerate the baseline after updating.
+
+GIT INFORMATION
+===============
+
+When the workspace has a `.git` folder, the record includes the current branch
+and commit, read directly from the folder (no Git command is run). SARIF
+includes them as version-control provenance, so code scanning can link results
+to the commit.
+
+RELATED
+=======
+
+  - Exports and health records [../../docs/exports-and-records.txt]
+  - The CI gate [../../docs/ci-gate.txt]
+  - Secrets and redaction [secrets-and-redaction.txt]

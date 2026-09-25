@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the Psychophysics Bench — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes, fixes and workarounds for the Psychophysics Bench, including tabs that do not open.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Psychophysical Experiment Engine</a>
+<h2>Using the Psychophysics Bench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Psychophysics Bench</a></li>
+<li><a href="design-an-experiment.html">Design an experiment</a></li>
+<li><a href="export-your-data.html">Export your data</a></li>
+<li><a href="read-the-results.html">Read the results</a></li>
+<li><a href="run-a-session.html">Run a session</a></li>
+<li><a href="reference.html">Psychophysics Bench reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the Psychophysics Bench</a></li>
+<li><a href="faq.html">Psychophysics Bench FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Psychophysical Experiment Engine</a> &rsaquo; <a href="README.html">Using the Psychophysics Bench</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Psychophysical Experiment Engine</p>
+<h1>Troubleshooting the Psychophysics Bench</h1>
+<p class="lede">Symptoms, causes, fixes and workarounds for the Psychophysics Bench, including tabs that do not open.</p>
+<h2 id="only-the-lab-tab-opens-method-paradigms-data-export-and-reference-do-nothing">Only the Lab tab opens; Method, Paradigms, Data, Export and Reference do nothing</h2>
+<p><strong>Why:</strong> at the time of writing (checked on the live site in September 2026), the page&#39;s tab buttons do not switch the view. Links in the page text that point to another tab (for example <strong>Data</strong> in the note strip, or <strong>Paradigms</strong> under <strong>Task</strong>) do nothing for the same reason.</p>
+<p><strong>What this affects:</strong> everything on the Lab tab works: designing, running and reading results. The explanation tabs and the <strong>Export</strong> tab&#39;s downloads and link button cannot be reached.</p>
+<p><strong>What to do:</strong></p>
+<ul>
+<li>Read the content of those tabs in these docs: <a href="read-the-results.html">Read the results</a> summarises Method, Paradigms, Data and Reference, and <a href="export-your-data.html">Export your data</a> describes the files.</li>
+<li>Record results from the Lab readouts, or take a screenshot, before starting another run.</li>
+<li>Share a setup by building a link by hand, as shown in <a href="export-your-data.html">Export your data</a>.</li>
+</ul>
+<h2 id="the-arrow-keys-do-nothing">The arrow keys do nothing</h2>
+<p><strong>Why:</strong> answers are accepted only after the intervals of the current trial have finished and the page is waiting; between runs they do nothing. The keys also do nothing when focus is in another window or the browser&#39;s address bar.</p>
+<p><strong>What to do:</strong> click an empty part of the page, then use the keys, or use the on-screen response buttons.</p>
+<h2 id="stop-does-not-end-the-run-immediately">Stop does not end the run immediately</h2>
+<p><strong>Why:</strong> <strong>Stop</strong> takes effect at the end of the current interval. If the page is already waiting for your answer, it ends the run at your next key or button press, without recording that answer.</p>
+<p><strong>What to do:</strong> press <code>Esc</code> while the page is waiting for an answer; it stops at once.</p>
+<h2 id="the-staircase-climbs-to-the-top-and-stays-there">The staircase climbs to the top and stays there</h2>
+<p><strong>Why:</strong> you could not see the patch at any contrast offered. Common causes: a spatial frequency above the Nyquist limit, a very small <strong>Envelope σ</strong>, a background that caps the contrast, or looking away from the centre.</p>
+<p><strong>What to do:</strong> check the <strong>Nyquist limit of the grid</strong> readout and warning, check <strong>Delivered / asked</strong>, try a lower frequency or larger envelope, and run <strong>Practice</strong> first.</p>
+<h2 id="the-contrast-asked-for-does-not-fit-about-this-background-appears">&quot;The contrast asked for does not fit about this background&quot; appears</h2>
+<p><strong>Why:</strong> the procedure asked for more contrast than a symmetric swing around the background can hold. Bright backgrounds leave little room: around code 220 the maximum is about 0.40.</p>
+<p><strong>What to do:</strong> lower <strong>Background</strong> (code 128 allows up to 1.0), or lower <strong>Starting contrast</strong>. A threshold measured while the warning shows is for a capped stimulus.</p>
+<h2 id="above-the-pixel-grids-nyquist-limit-appears">&quot;Above the pixel grid&#39;s Nyquist limit&quot; appears</h2>
+<p><strong>Why:</strong> at your viewing distance and pixel pitch, the screen cannot draw the frequency you asked for.</p>
+<p><strong>What to do:</strong> lower <strong>Spatial frequency</strong>, and check the geometry. The limit rises as the viewing distance grows and as the pixel pitch shrinks. The warning&#39;s own text suggests moving closer or raising the pitch; both in fact lower the limit.</p>
+<h2 id="the-threshold-reads">The threshold reads &quot;—&quot;</h2>
+<p><strong>Why:</strong> for the up-down and accelerated staircases, there are not yet two reversals after the two warm-up reversals (<strong>Reversals used</strong> says so). For <strong>Constant stimuli</strong> there is no threshold estimate at all.</p>
+<p><strong>What to do:</strong> run longer (raise <strong>Trial ceiling</strong> or <strong>Stop after</strong>), or read <strong>Proportion correct</strong> for constant stimuli.</p>
+<h2 id="at-what-percentage-says-not-defined-for-this-ladder">&quot;At what percentage&quot; says &quot;not defined for this ladder&quot;</h2>
+<p><strong>Why:</strong> the <strong>Accelerated</strong> staircase and <strong>Constant stimuli</strong> do not converge on a stated proportion correct.</p>
+<p><strong>What to do:</strong> use <strong>1-up / 2-down</strong> or <strong>3-down / 1-up</strong> for a threshold at a stated percentage.</p>
+<h2 id="the-trace-stays-empty-during-a-run">The trace stays empty during a run</h2>
+<p><strong>Why:</strong> the trace is drawn only for procedures with reversals. The <strong>Bayesian tracker</strong> and <strong>Constant stimuli</strong> show <strong>The trace appears here once the run starts</strong> throughout.</p>
+<p><strong>What to do:</strong> read the numeric readouts for those procedures.</p>
+<h2 id="practice-results-disappeared">Practice results disappeared</h2>
+<p><strong>Why:</strong> starting a measured run clears the trials of the previous run, practice included.</p>
+<p><strong>What to do:</strong> this is expected; practice is not meant to be kept.</p>
+<h2 id="intervals-look-uneven-or-flicker">Intervals look uneven or flicker</h2>
+<p><strong>Why:</strong> the timing runs in your browser. A busy computer, a background tab or power saving can delay drawing.</p>
+<p><strong>What to do:</strong> close other applications and tabs, keep the page in the foreground, plug in a laptop, and avoid very short <strong>Stimulus</strong> durations.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Psychophysics Bench reference</a><a href="faq.html"><span>Next</span>Psychophysics Bench FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#only-the-lab-tab-opens-method-paradigms-data-export-and-reference-do-nothing">Only the Lab tab opens; Method, Paradigms, Data, Export and Reference do nothing</a></li><li><a href="#the-arrow-keys-do-nothing">The arrow keys do nothing</a></li><li><a href="#stop-does-not-end-the-run-immediately">Stop does not end the run immediately</a></li><li><a href="#the-staircase-climbs-to-the-top-and-stays-there">The staircase climbs to the top and stays there</a></li><li><a href="#the-contrast-asked-for-does-not-fit-about-this-background-appears">&quot;The contrast asked for does not fit about this background&quot; appears</a></li><li><a href="#above-the-pixel-grids-nyquist-limit-appears">&quot;Above the pixel grid's Nyquist limit&quot; appears</a></li><li><a href="#the-threshold-reads">The threshold reads &quot;—&quot;</a></li><li><a href="#at-what-percentage-says-not-defined-for-this-ladder">&quot;At what percentage&quot; says &quot;not defined for this ladder&quot;</a></li><li><a href="#the-trace-stays-empty-during-a-run">The trace stays empty during a run</a></li><li><a href="#practice-results-disappeared">Practice results disappeared</a></li><li><a href="#intervals-look-uneven-or-flicker">Intervals look uneven or flicker</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

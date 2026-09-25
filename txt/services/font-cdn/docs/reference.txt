@@ -1,0 +1,250 @@
+==============================================================================
+REFERENCE
+==============================================================================
+Every URL pattern, file, loader attribute, method and snippet of the Auric
+Artisan Font CDN.
+Area: Services › Font CDN   Updated: 2026-09-25
+
+CATALOGUE
+=========
+
+  Fact:  Host
+  Value: https://fonts.auricartisan.com
+
+  Fact:  Families catalogued
+  Value: 2,213
+
+  Fact:  Font files
+  Value: 4,883
+
+  Fact:  Variable families
+  Value: 550
+
+  Fact:  Families with italics
+  Value: 401
+
+  Fact:  Served from the library
+  Value: 2,023 families
+
+  Fact:  Listed as Installed (not served)
+  Value: 190 families
+
+  Fact:  Categories
+  Value: Sans-serif 780, serif 1,172, display 81, handwriting 97, monospace 83
+
+  Fact:  Groups
+  Value: `A-F`, `G-L`, `M-R`, `S-Z`
+
+  Fact:  Catalogue built
+  Value: 2 June 2026
+
+These figures come from the catalogue's own statistics, served at
+`/data/stats.json` and `/data/meta.json`.
+
+URL PATTERNS
+============
+
+  Pattern:        `/css/<family-id>.css`
+  What it serves: The family's stylesheet: a header comment and one
+                  `@font-face` rule per file
+
+  Pattern:        `/font/<group>/<FOLDER>/<file>`
+  What it serves: Font files, referenced by the stylesheets
+
+  Pattern:        `/font-cdn.js`
+  What it serves: The loader script
+
+  Pattern:        `/data/index.json`
+  What it serves: One record per family
+
+  Pattern:        `/data/detail/<group>.json`
+  What it serves: Full metadata for the families in a group
+
+  Pattern:        `/data/stats.json`, `/data/meta.json`
+  What it serves: Catalogue statistics and build information
+
+  Pattern:        `/LICENSE.md`
+  What it serves: The collection's licence reference
+
+The family id is the name in lower case, with quotation marks and apostrophes
+removed and other characters replaced by hyphens (`Roboto Slab` becomes
+`roboto-slab`).
+
+STYLESHEET RULES
+================
+
+  Property       | Value
+  ---------------+------------------------------------------------------------------
+  `font-family`  | The family name
+  `font-style`   | `normal` or `italic`
+  `font-weight`  | One weight, or a range for variable fonts (for example `400 900`)
+  `font-stretch` | A percentage range, for variable fonts with a width axis
+  `font-display` | `swap`
+  `src`          | The file URL with its format (for example `truetype-variations`)
+
+LOADER: SCRIPT ATTRIBUTES
+=========================
+
+  Attribute       | Meaning                                       | Default
+  ----------------+-----------------------------------------------+-------------------------
+  `data-families` | Families to load, separated by a vertical bar | —
+  `data-fonts`    | Alias for `data-families`                     | —
+  `data-display`  | `font-display` for faces added with `face()`  | `swap`
+  `data-base`     | The address to load stylesheets and data from | The script's own address
+
+Other ways to set the base address: `window.AURIC_FONT_BASE`,
+`window.AURIC_FONT_ASSET_BASE`, or `<meta name="auric-font-base">`.
+
+LOADER: AURICFONTS API
+======================
+
+The global `AuricFonts` (alias `AuricFontLoader`).
+
+  Member:     `load(spec)`
+  Parameters: A spec or an array of specs
+  Returns:    Promise of `{ id, family }` (or an array) when ready
+
+  Member:     `face(options)`
+  Parameters: `family`, `url`, `local`, `weight`, `style`, `display`,
+              `stretch`
+  Returns:    Promise of the family name
+
+  Member:     `injectCss(cssText, id)`
+  Parameters: CSS text, optional id
+  Returns:    The added `<style>` element
+
+  Member:     `cssUrl(spec)` / `css(spec)`
+  Parameters: A spec
+  Returns:    The stylesheet URL
+
+  Member:     `whenReady(family, weights)`
+  Parameters: Family name, optional weights
+  Returns:    Promise that resolves when the fonts are usable
+
+  Member:     `list()`
+  Parameters: —
+  Returns:    Promise of every family record
+
+  Member:     `search(query)`
+  Parameters: Text
+  Returns:    Promise of records whose name, designer or category matches
+
+  Member:     `get(idOrName)`
+  Parameters: Id or name
+  Returns:    Promise of the full metadata, or `null`
+
+  Member:     `slugify(name)`
+  Parameters: Name
+  Returns:    The family id
+
+  Member:     `base`
+  Parameters: —
+  Returns:    The base address (can be set)
+
+  Member:     `index`
+  Parameters: —
+  Returns:    The loaded catalogue, or `null` before `list()`, `search()` or
+              `get()`
+
+Spec forms
+----------
+
+  Form                                | Example
+  ------------------------------------+-------------------------------------------
+  Name                                | `'Alegreya'`
+  Name with axis weights              | `'Open Sans:wght@400;700'`
+  Name with weights and italic marker | `'Roboto:400,700i'`
+  Object                              | `{ family: 'Inter', weights: [400, 700] }`
+
+FONT LIBRARY SNIPPETS
+=====================
+
+Use & Embed tab
+---------------
+
+  Snippet    | Output
+  -----------+--------------------------------------------------------------
+  Link       | `<link rel="stylesheet" href="…/css/<id>.css">`
+  Import     | `@import url('…/css/<id>.css');`
+  Script     | The loader script tag with `data-families`
+  JS         | `AuricFonts.load('<Family>')` with a `font-family` assignment
+  @font-face | Rules for up to four styles, with absolute file URLs
+  Usage      | A `.headline` rule with the family, a fallback and a weight
+
+Develop tab
+-----------
+
+  Item:   Font-family stack (with safe fallbacks)
+  Output: `font-family: '<Family>', <category fallbacks>;`
+
+  Item:   CSS variables
+  Output: `:root { --font-<role>: <stack>; }` and a `body` rule
+
+  Item:   Tailwind
+  Output: A `tailwind.config.js` `fontFamily` extension
+
+  Item:   SCSS
+  Output: `$font-<role>: <stack>;` and a `body` rule
+
+  Item:   Design tokens
+  Output: JSON: `font.family.<role>` with type `fontFamily`
+
+  Item:   CSS @import
+  Output: The `@import` line and a `--font-<role>` variable
+
+  Item:   Modular type scale
+  Output: Base 10–24 px (16 default) and a ratio from 1.125 to 1.618; Copy CSS
+
+`<role>` is `sans`, `serif` or `mono`, from the family's category. The
+fallback stacks are:
+
+  Category:       Sans-serif
+  Fallback stack: `ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+                  Roboto, Helvetica, Arial, sans-serif`
+
+  Category:       Serif
+  Fallback stack: `ui-serif, Georgia, Cambria, 'Times New Roman', Times,
+                  serif`
+
+  Category:       Monospace
+  Fallback stack: `ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation
+                  Mono', monospace`
+
+  Category:       Display
+  Fallback stack: `ui-sans-serif, system-ui, sans-serif`
+
+  Category:       Handwriting
+  Fallback stack: `'Segoe Script', cursive`
+
+The type-scale ratios are 1.125 (Major Second), 1.200 (Minor Third, the
+default), 1.250 (Major Third), 1.333 (Perfect Fourth), 1.414 (Augmented
+Fourth), 1.500 (Perfect Fifth) and 1.618 (Golden Ratio). The steps are named
+`xs`, `sm`, `base`, `md`, `lg`, `xl`, `2xl`, `3xl` and `4xl`.
+
+DOWNLOADS
+=========
+
+  File:     `<Family>-font-kit.zip`
+  Contents: One family: `fonts/`, `css/<id>.css`, `demo.html`, `README.txt`,
+            `LICENSE.txt`
+
+  File:     `auric-font-selection-kit.zip`
+  Contents: The same for each family in your selection
+
+  File:     `DOWNLOAD_NOTES.txt`
+  Contents: Added when a file could not be fetched
+
+LICENCE PERMISSIONS SHOWN PER FAMILY
+====================================
+
+The License tab marks each of these as allowed, not allowed or unknown:
+Commercial use, Modification, Redistribution, Private / personal use, Web
+embedding and Sell font on its own. It also shows the licence name, a License
+URL where known, the original licence file, the copyright, and the Full
+license text.
+
+RELATED PAGES
+=============
+
+  - Use the loader [use-the-loader.txt]
+  - Licences [../others/licences.txt]

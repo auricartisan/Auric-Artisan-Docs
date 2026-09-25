@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-host a family — Auric Artisan Docs</title>
+<meta name="description" content="Download a font kit from the Font Library, understand what it contains, and serve the family from your own site.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font CDN</a>
+<h2>Font CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="embed-a-family.html">Embed a family</a></li>
+<li><a href="find-a-family.html">Find a family</a></li>
+<li><a href="self-host-a-family.html" aria-current="page">Self-host a family</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Font CDN</a> &rsaquo; <a href="README.html">Font CDN documentation</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Self-host a family</h1>
+<p class="lede">Download a font kit from the Font Library, understand what it contains, and serve the family from your own site.</p>
+<p>Instead of loading fonts from fonts.auricartisan.com, you can download a family and serve it from your own site. The Font Library builds a ready-to-use kit in your browser.</p>
+<h2 id="download-a-kit">Download a kit</h2>
+<p>For one family:</p>
+<ol>
+<li>Open the family in the Font Library at <a href="https://auricartisan.com/tool/font/" rel="noopener">https://auricartisan.com/tool/font/</a>.</li>
+<li>Choose <strong>Download kit</strong> (&quot;Download N bundled font files with CSS and license notes&quot;). The same button is in the <strong>Styles</strong> tab under <strong>Download self-hosting kit</strong>.</li>
+<li>Your browser saves <code>&lt;Family&gt;-font-kit.zip</code>.</li>
+</ol>
+<p>For several families:</p>
+<ol>
+<li>Add them to your selection. They collect in the <strong>Your kit</strong> tray.</li>
+<li>Choose <strong>Download</strong> in the tray (it reads <strong>Download selected (N)</strong>). The file is named <code>auric-font-selection-kit.zip</code> (or after the family when there is one).</li>
+</ol>
+<p>The Font Library shows &quot;Preparing download kit...&quot; while it gathers the files, then &quot;Downloaded&quot; and the file name.</p>
+<h2 id="what-a-kit-contains">What a kit contains</h2>
+<p>For each family, a folder with:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td><code>fonts/…</code></td><td>Every font file the CDN serves for the family</td></tr>
+<tr><td><code>css/&lt;family-id&gt;.css</code></td><td><code>@font-face</code> rules pointing at <code>../fonts/</code>, and a <code>--font-&lt;family-id&gt;</code> variable with a fallback</td></tr>
+<tr><td><code>demo.html</code></td><td>A page that shows the family, using the stylesheet</td></tr>
+<tr><td><code>README.txt</code></td><td>The family, category, designer, licence, file list and three steps to use it</td></tr>
+<tr><td><code>LICENSE.txt</code></td><td>The family&#39;s licence text, when the library has it</td></tr>
+</tbody></table></div>
+<p>If a file could not be fetched, the kit adds <code>DOWNLOAD_NOTES.txt</code> listing what is missing.</p>
+<h2 id="install-it-on-your-site">Install it on your site</h2>
+<ol>
+<li><p>Unzip the kit and copy the family&#39;s folder into your site, for example to <code>/fonts/alegreya/</code>.</p>
+</li>
+<li><p>Keep the <code>fonts</code>, <code>css</code> and licence files together.</p>
+</li>
+<li><p>Link the stylesheet from your pages:</p>
+<pre class="code" data-lang="html"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/fonts/alegreya/css/alegreya.css&quot;&gt;</code></pre>
+</li>
+<li><p>Apply the family:</p>
+<pre class="code" data-lang="css"><code>body { font-family: 'Alegreya', serif; }</code></pre>
+<p>or use the variable the stylesheet defines, such as <code>var(--font-alegreya)</code>.</p>
+</li>
+<li><p>Open <code>demo.html</code> from the kit to check the files work.</p>
+</li>
+</ol>
+<h2 id="point-the-loader-at-your-copy">Point the loader at your copy</h2>
+<p>If you use <code>font-cdn.js</code>, you can host it with your own stylesheets and data and set its base address; see <a href="use-the-loader.html#where-it-loads-from">Use the loader</a>.</p>
+<h2 id="families-that-cannot-be-downloaded">Families that cannot be downloaded</h2>
+<p>Families tagged <strong>Installed</strong> are system fonts: the library lists them but does not serve their files, because their licences do not allow redistribution. For these, the download button reads <strong>Installed only</strong>, and the Font Library says &quot;Only bundled library fonts can be downloaded&quot;.</p>
+<h2 id="keep-the-licence">Keep the licence</h2>
+<p>Every kit includes the licence information for a reason: most open font licences require the licence to travel with the files. See <a href="../others/licences.html">Licences</a>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="embed-a-family.html">Embed a family</a></li>
+<li><a href="../others/licences.html">Licences</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="find-a-family.html"><span>Previous</span>Find a family</a><a href="use-the-loader.html"><span>Next</span>Use the loader</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#download-a-kit">Download a kit</a></li><li><a href="#what-a-kit-contains">What a kit contains</a></li><li><a href="#install-it-on-your-site">Install it on your site</a></li><li><a href="#point-the-loader-at-your-copy">Point the loader at your copy</a></li><li><a href="#families-that-cannot-be-downloaded">Families that cannot be downloaded</a></li><li><a href="#keep-the-licence">Keep the licence</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

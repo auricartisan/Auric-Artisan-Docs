@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page palette — Auric Artisan Docs</title>
+<meta name="description" content="Read every colour a web page uses, switch between views and sorting modes, inspect a colour, and copy or export the palette.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Colour tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="convert.html">Convert</a></li>
+<li><a href="gradient.html">Gradient</a></li>
+<li><a href="harmony.html">Harmony</a></li>
+<li><a href="image.html">Image</a></li>
+<li><a href="mix.html">Mix</a></li>
+<li><a href="page-palette.html" aria-current="page">Page palette</a></li>
+<li><a href="picker.html">Picker</a></li>
+<li><a href="scale.html">Scale</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Colour tools</a></nav>
+<p class="kicker">Browser extension › Colour</p>
+<h1>Page palette</h1>
+<p class="lede">Read every colour a web page uses, switch between views and sorting modes, inspect a colour, and copy or export the palette.</p>
+<p>Page palette reads the colours a web page actually uses, from its computed styles and its CSS variables, and turns them into a palette you can copy, export or save. It is also the way to sample page colours in Firefox, which has no screen eyedropper.</p>
+<h2 id="read-a-pages-colours">Read a page&#39;s colours</h2>
+<ol>
+<li>Open the page, then open Colour › <strong>Page palette</strong>. (Home › <strong>Palette</strong>, or <code>Alt</code> + <code>Shift</code> + <code>E</code>, opens it and starts reading straight away.)</li>
+<li>Choose <strong>Read the page&#39;s colours</strong>.</li>
+</ol>
+<p>A line above the palette summarises the scan, for example &quot;18 distinct · 42 unique · 1830 elements · 6 CSS vars&quot;: how many distinct colours remain after merging near-duplicates, how many unique values were found, how many elements were read, and how many colours came from CSS variables.</p>
+<h2 id="what-it-reads">What it reads</h2>
+<ul>
+<li>Up to 6 000 elements on the page.</li>
+<li>Twelve colour properties of each: text colour, background colour, the four border colours, outline colour, SVG fill and stroke, box shadow, caret colour and text-decoration colour.</li>
+<li>CSS custom properties (variables) in the page&#39;s stylesheets whose value is a hex or <code>rgb()</code> colour. These count three times, so brand and theme colours rise to the top.</li>
+<li>Nearly invisible colours (under 5% opacity) are skipped, and near-duplicate colours are merged.</li>
+<li>Up to 48 colours are kept.</li>
+</ul>
+<p>Stylesheets from another site that the browser does not let the page read are skipped.</p>
+<h2 id="view-and-sort">View and sort</h2>
+<ul>
+<li><strong>Switch between strip and grid</strong>: Strip (one scrolling row) or grid</li>
+<li><strong>Palette mode</strong>: <strong>Most used</strong> (the default), <strong>Dominant (k-means)</strong> (eight representative colours), <strong>Sort by hue</strong>, <strong>Sort by lightness</strong></li>
+</ul>
+<h2 id="look-at-one-colour">Look at one colour</h2>
+<p>Choose a colour to open its detail card:</p>
+<ul>
+<li>its nearest colour name;</li>
+<li>HEX, RGB, HSL and <code>oklch()</code> values, each with a copy button;</li>
+<li>its contrast on white and on black, with the WCAG level (AAA, AA, AA large or Fail);</li>
+<li><strong>Pick</strong> (open in the Picker), <strong>Contrast</strong> (use as text colour), <strong>Shades</strong> (open in Scale) and <strong>Harmony</strong>.</li>
+</ul>
+<p>Close the card with its close button.</p>
+<h2 id="copy-and-export">Copy and export</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Button</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy</strong></td><td><strong>HEX</strong></td><td>One HEX value per line, copied</td></tr>
+<tr><td></td><td><strong>CSS</strong></td><td>A <code>:root</code> block of <code>--color-1</code>, <code>--color-2</code> … variables, copied</td></tr>
+<tr><td></td><td><strong>oklch()</strong></td><td>The same <code>:root</code> block with <code>oklch()</code> values, copied</td></tr>
+<tr><td></td><td><strong>JSON</strong></td><td>A JSON array of the colours, copied</td></tr>
+<tr><td></td><td><strong>ASE</strong></td><td>An Adobe Swatch Exchange file (<code>auric-palette-</code> and the date <code>.ase</code>), downloaded</td></tr>
+<tr><td><strong>Framework</strong></td><td><strong>Tailwind</strong></td><td>A <code>module.exports</code> Tailwind config that extends <code>colors</code>, copied</td></tr>
+<tr><td></td><td><strong>@theme</strong></td><td>A Tailwind v4 <code>@theme</code> block, copied</td></tr>
+<tr><td></td><td><strong>SCSS</strong></td><td><code>$color-1: …;</code> variables, copied</td></tr>
+<tr><td></td><td><strong>Tokens</strong></td><td>W3C design tokens JSON, copied</td></tr>
+<tr><td><strong>Export</strong></td><td><strong>SVG</strong></td><td>An SVG strip of swatches, copied as text</td></tr>
+<tr><td></td><td><strong>PNG</strong></td><td>A PNG strip of swatches, downloaded</td></tr>
+<tr><td></td><td><strong>Save</strong></td><td>Saves the palette to Saved › Library (the newest 30 palettes are kept)</td></tr>
+<tr><td></td><td><strong>Open</strong></td><td>Opens the palette on auricartisan.com&#39;s palette library, with the colours in the address</td></tr>
+</tbody></table></div>
+<p><strong>Open</strong> sends the palette&#39;s hex colours to auricartisan.com in the page address; nothing else about the page is sent.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="image.html">Image</a> for palettes from pictures</li>
+<li><a href="../saved/library.html">Library</a></li>
+<li><a href="../code/code-export.html">Code export formats</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="mix.html"><span>Previous</span>Mix</a><a href="picker.html"><span>Next</span>Picker</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#read-a-pages-colours">Read a page's colours</a></li><li><a href="#what-it-reads">What it reads</a></li><li><a href="#view-and-sort">View and sort</a></li><li><a href="#look-at-one-colour">Look at one colour</a></li><li><a href="#copy-and-export">Copy and export</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Code Health FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers about Auric Code Health.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Code Health</a></li>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="code-health-studio.html">The Code Health Studio</a></li>
+<li><a href="health-records.html">Health records</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="reference.html">Auric Code Health reference</a></li>
+<li><a href="troubleshooting.html">Auric Code Health troubleshooting</a></li>
+<li><a href="faq.html" aria-current="page">Auric Code Health FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Auric Code Health FAQ</h1>
+<p class="lede">Short answers about Auric Code Health.</p>
+<h3 id="which-languages-does-it-check">Which languages does it check?</h3>
+<p>More than 40: JavaScript, TypeScript, Python, Go, Rust, Java, C#, C and C++, Kotlin, Swift, Ruby, PHP, shell, SQL, YAML, TOML, JSON, Markdown, HTML, CSS and many more. Some signatures apply only where they make sense; see <a href="categories-and-signatures.html">Categories and signatures</a>.</p>
+<h3 id="is-it-a-replacement-for-a-secret-scanner-or-sast-tool">Is it a replacement for a secret scanner or SAST tool?</h3>
+<p>No. It is a fast, high-signal heuristic linter for the files in your workspace. It does not scan Git history, verify credentials or trace data flow. Use dedicated tools where compliance requires them.</p>
+<h3 id="will-it-ever-show-or-store-my-secrets">Will it ever show or store my secrets?</h3>
+<p>No. Every secret is replaced by <code>[redacted secret; N characters]</code> everywhere it could appear. See <a href="secrets-and-redaction.html">Secrets and redaction</a>.</p>
+<h3 id="how-is-the-code-health-score-calculated">How is the code-health score calculated?</h3>
+<p>Each finding costs points by category (secrets 14, security 12, merge markers 10, risky APIs 4, debug 2, oversized 0.5, task markers 0.25), scaled by confidence and divided by the number of files. See <a href="../../docs/scores-and-grades.html#the-code-health-score">Scores and grades</a>.</p>
+<h3 id="does-the-code-health-score-affect-the-accessibility-score">Does the code-health score affect the accessibility score?</h3>
+<p>No. They are separate. The overall score in the status bar and Overview combines contrast and accessibility only.</p>
+<h3 id="can-i-turn-off-todo-findings">Can I turn off TODO findings?</h3>
+<p>Yes: set <code>auricCodeHealth.codeHealth.todo</code> to <code>false</code>. Every category has its own switch.</p>
+<h3 id="can-i-silence-one-finding">Can I silence one finding?</h3>
+<p>Yes: <strong>Ignore here</strong> in the hover, the <strong>Ignore this … finding here</strong> quick fix, or an <code>auric-disable-next-line &lt;category&gt;</code> comment. The comment must be a real comment; mentioning it in a string does nothing.</p>
+<h3 id="why-does-the-project-health-report-mention-accessibility-and-colour">Why does the project health report mention accessibility and colour?</h3>
+<p>The report covers everything the Studio scans. Its command is provided by Auric Code Health, but the scan always includes contrast and WCAG checks.</p>
+<h3 id="how-do-i-use-it-in-ci">How do I use it in CI?</h3>
+<p>Run the bundled <code>auric-artisan</code> command-line scanner with a baseline and upload the SARIF. See <a href="../../docs/ci-gate.html">The CI gate</a>.</p>
+<h3 id="does-it-need-the-internet">Does it need the internet?</h3>
+<p>No. See <a href="../others/privacy.html">Privacy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Auric Code Health troubleshooting</a><a href="../others/README.html"><span>Next</span>Auric Code Health: other resources</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

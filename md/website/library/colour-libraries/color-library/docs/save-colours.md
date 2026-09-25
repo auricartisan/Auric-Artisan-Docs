@@ -1,0 +1,45 @@
+---
+title: Color Library — Save colours
+description: Save colours with the star, find them on the Saved tab, and reach them again from your Library.
+product: Website › Library › Colour libraries › Color Library
+updated: 2026-09-25
+---
+
+# Save colours
+
+You can keep a shortlist of atlas colours. Saved colours are listed on the **Saved** tab and are also copied into your Library, the site-wide collection of things you save from any tool.
+
+## Save a colour
+
+1. Find the colour's tile in the grid.
+2. Select the empty star (☆) in the tile's footer. It becomes a filled star (★), and the **Saved** tab's badge goes up by one.
+
+Selecting the star does not open the colour, so you can save several colours in a row while you scan the grid.
+
+## See your saved colours
+
+1. Select the **Saved** tab.
+2. Your saved colours appear as tiles, in the atlas's own order.
+3. Select a tile to open it on **The colour** tab, or select its star to unsave it.
+
+A note above the tiles says they are **Also saved to your Library workspace with image previews**, with a link.
+
+When you have saved nothing, the tab says **No saved colors yet** and explains how to save one.
+
+## Remove a colour
+
+Select the filled star (★) on the colour's tile, in the grid or on the **Saved** tab. The star empties, the tile leaves the **Saved** tab, and the copy in your Library is removed too.
+
+## Your saved colours in your Library
+
+Each saved colour is also added to your Library as a colour item named by its hex code, with its emotion and art movement as the description and a picture of the colour as the preview. In the Library you can browse it alongside palettes, gradients and other items you have saved from the rest of the site.
+
+Open your Library from any page with `Ctrl` + `Shift` + `L`, or through the link on the **Saved** tab. See the [Library Kit docs](../../../../kits/library-kit/README.md).
+
+## Where saves are kept
+
+Saved colours are kept in this browser. They stay after you close the tab, but they are not tied to your account and do not appear in another browser or on another device. Clearing this site's data in your browser removes them. See [Privacy](../others/privacy.md).
+
+## Result
+
+The colours you care about are one tab away on the Color Library, and also in your Library next to everything else you have saved.

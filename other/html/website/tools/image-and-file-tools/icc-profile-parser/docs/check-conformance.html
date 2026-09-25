@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check conformance — Auric Artisan Docs</title>
+<meta name="description" content="Read the conformance verdict and findings, understand error, warning and note, and use the Conformance tab to see every rule and the clause it enforces.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ICC Profile Parser</a>
+<h2>ICC Profile Parser documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ICC Profile Parser</a></li>
+<li><a href="check-conformance.html" aria-current="page">Check conformance</a></li>
+<li><a href="export-a-reading.html">Export a reading</a></li>
+<li><a href="identify-and-gamut.html">Identify a profile and read its gamut</a></li>
+<li><a href="understand-icc-profiles.html">Understand ICC profiles</a></li>
+<li><a href="reference.html">ICC Profile Parser reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the ICC Profile Parser</a></li>
+<li><a href="faq.html">ICC Profile Parser FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">ICC Profile Parser</a> &rsaquo; <a href="README.html">ICC Profile Parser documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › ICC Profile Parser</p>
+<h1>Check conformance</h1>
+<p class="lede">Read the conformance verdict and findings, understand error, warning and note, and use the Conformance tab to see every rule and the clause it enforces.</p>
+<p>Every profile you load is checked against 23 rules. Each rule either holds or raises a finding. Every rule cites the clause of ICC.1:2010 it enforces, except two that are marked as house preferences because the specification does not require them.</p>
+<h2 id="read-the-result">Read the result</h2>
+<ol>
+<li>Load a profile on the <strong>Lab</strong> tab.</li>
+<li>Look at the <strong>conformance</strong> card under the diagrams:<ul>
+<li><strong>clean</strong> — no rule raised anything;</li>
+<li><strong>no errors</strong> — only warnings or notes were raised; the profile is still conformant;</li>
+<li><strong>1 error</strong>, <strong>2 errors</strong> and so on — the profile breaks that many rules graded as errors. The card turns red.</li>
+</ul>
+</li>
+<li>Read the last sentence of the verdict. It says either &quot;It is conformant: N of 23 rules pass&quot;, adding how many findings are below the level of an error, or how many rules the profile should satisfy do not hold.</li>
+<li>Scroll to <strong>Findings</strong>. When every rule holds you see a single <strong>Pass</strong> line, <strong>All 23 rules hold</strong>. Otherwise there is one row per finding.</li>
+</ol>
+<p>A profile is <strong>conformant</strong> when no rule graded as an error is broken. There is no score out of 100: a profile is conformant or it is not, and where it is not the clause says why.</p>
+<h2 id="read-a-finding">Read a finding</h2>
+<p>Each finding row shows:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>Example</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Severity</td><td><strong>warning</strong></td><td><strong>error</strong>, <strong>warning</strong> or <strong>note</strong></td></tr>
+<tr><td>Title</td><td><strong>The profile ID matches the bytes</strong></td><td>The rule that did not hold</td></tr>
+<tr><td>Clause</td><td><strong>§ 7.2.18</strong></td><td>The clause of ICC.1:2010 it enforces, or <strong>house preference</strong></td></tr>
+<tr><td>Detail</td><td>&quot;stored 0f3e…, recomputed 8a21…&quot;</td><td>What the tool found in your file</td></tr>
+</tbody></table></div>
+<h3 id="what-the-severities-mean">What the severities mean</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Severity</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>error</strong></td><td>The specification says this shall not happen. Software may refuse the profile or misread it</td></tr>
+<tr><td><strong>warning</strong></td><td>Something the specification requires or expects is missing or wrong, but the profile can usually still be used</td></tr>
+<tr><td><strong>note</strong></td><td>A detail worth knowing, such as a creation date that is not a real date</td></tr>
+</tbody></table></div>
+<p>The grade given to each rule is the tool&#39;s own judgement; the specification says what shall be true but does not grade consequences. Because every finding names its clause, you can check it and disagree with the grade without disagreeing with the finding.</p>
+<h2 id="the-rules">The rules</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>Severity</th><th>Clause</th></tr></thead>
+<tbody>
+<tr><td>Profile file signature (bytes 36 to 39 read <code>acsp</code>)</td><td>error</td><td>7.2.5</td></tr>
+<tr><td>Declared size matches the file</td><td>error</td><td>7.2.2</td></tr>
+<tr><td>Major version is one this reader knows (2 or 4)</td><td>warning</td><td>7.2.4</td></tr>
+<tr><td>Version reserved bytes are zero</td><td>note</td><td>7.2.4</td></tr>
+<tr><td>Device class is one the specification defines</td><td>error</td><td>7.2.5</td></tr>
+<tr><td>PCS is XYZ or Lab (DeviceLink profiles are exempt)</td><td>error</td><td>7.2.7</td></tr>
+<tr><td>PCS illuminant is D50</td><td>warning</td><td>7.2.16</td></tr>
+<tr><td>Rendering intent is 0-3</td><td>error</td><td>7.2.15</td></tr>
+<tr><td>Creation date is a real date</td><td>note</td><td>7.2.8</td></tr>
+<tr><td>Every tag payload lies inside the file</td><td>error</td><td>7.3.1</td></tr>
+<tr><td>Tag payloads begin on a 4-byte boundary</td><td>warning</td><td>7.3.1</td></tr>
+<tr><td>No tag payload partly overlaps another</td><td>error</td><td>7.3.4</td></tr>
+<tr><td>Tag table fits in the file</td><td>error</td><td>7.3.1</td></tr>
+<tr><td>No tag signature appears twice</td><td>error</td><td>7.3.1</td></tr>
+<tr><td>Required tags for this device class are present</td><td>error</td><td>8.2</td></tr>
+<tr><td>A v4 profile carries a profile ID</td><td>warning</td><td>7.2.18</td></tr>
+<tr><td>The profile ID matches the bytes</td><td>warning</td><td>7.2.18</td></tr>
+<tr><td>An RGB matrix profile carries all three colorants and curves</td><td>warning</td><td>8.3</td></tr>
+<tr><td>Media white point is the PCS white (display profiles)</td><td>warning</td><td>9.2.36</td></tr>
+<tr><td>Colorants sum to the media white point</td><td>note</td><td>house preference</td></tr>
+<tr><td>Every tag payload could be decoded</td><td>warning</td><td>7.3.1</td></tr>
+<tr><td>A LUT tag holds the grid its header declares</td><td>error</td><td>10.11</td></tr>
+<tr><td>Padding between elements is zero</td><td>note</td><td>house preference</td></tr>
+</tbody></table></div>
+<p>In total: 11 errors, 8 warnings and 4 notes.</p>
+<h3 id="the-required-tags">The required tags</h3>
+<p>The <strong>Required tags for this device class are present</strong> rule checks these tags:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Profile class</th><th>Required tags</th></tr></thead>
+<tbody>
+<tr><td>Display or ColorSpace, Grayscale data</td><td><code>desc</code>, <code>cprt</code>, <code>wtpt</code>, <code>kTRC</code></td></tr>
+<tr><td>Display or ColorSpace, any other data space</td><td><code>desc</code>, <code>cprt</code>, <code>wtpt</code></td></tr>
+<tr><td>Output or Input</td><td><code>desc</code>, <code>cprt</code>, <code>wtpt</code></td></tr>
+<tr><td>DeviceLink</td><td><code>desc</code>, <code>cprt</code>, <code>pseq</code>, <code>A2B0</code></td></tr>
+<tr><td>NamedColor</td><td><code>desc</code>, <code>cprt</code>, <code>ncl2</code>, and <code>wtpt</code> in version 4</td></tr>
+<tr><td>Abstract</td><td><code>desc</code>, <code>cprt</code>, and <code>wtpt</code> in version 4</td></tr>
+</tbody></table></div>
+<h3 id="shared-tags-are-not-an-error">Shared tags are not an error</h3>
+<p>Two tags pointing at the same offset with the same size are sharing one data element, which clause 7.3.4 allows. The tag table marks them <strong>shares this element with</strong> followed by the other tag. Only a block that partly overlaps another, without being the same block, is an error.</p>
+<h3 id="tables-that-are-too-short">Tables that are too short</h3>
+<p>A truncated file can leave a lookup table with fewer values than its header promises. Rather than failing, the tool reads what is there, raises <strong>A LUT tag holds the grid its header declares</strong> with how many values are missing, and reads the rest of the profile as normal. A tag it cannot decode at all raises <strong>Every tag payload could be decoded</strong>.</p>
+<h2 id="the-conformance-tab">The Conformance tab</h2>
+<p>The <strong>Conformance</strong> tab lists the rules independently of any loaded profile.</p>
+<ul>
+<li>The <strong>Rules</strong> buttons filter by severity: <strong>All</strong>, <strong>Errors</strong>, <strong>Warnings</strong> and <strong>Notes</strong>, each with its count. The note under them says how many rules are shown and how many cite no clause.</li>
+<li><strong>What counts as a defect</strong> explains two checks that are no longer made, because they fired on correct files: one that reported every profile&#39;s version as unusual, and one that treated shared tag data as corrupt.</li>
+<li><strong>The rules that stayed, and what each cites</strong> lists every rule with its severity and clause.</li>
+<li><strong>What the old validator got right</strong> lists the checks kept unchanged: the tag table walk, alignment and bounds; the required-tag table; the declared size against the file; and the classification as matrix/TRC, LUT or both.</li>
+</ul>
+<h2 id="what-a-pass-means">What a pass means</h2>
+<p>A clean result means the file is well formed and says what the specification requires. It does not mean the device the profile describes still behaves that way. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the ICC Profile Parser</a><a href="export-a-reading.html"><span>Next</span>Export a reading</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#read-the-result">Read the result</a></li><li><a href="#read-a-finding">Read a finding</a></li><li><a href="#the-rules">The rules</a></li><li><a href="#the-conformance-tab">The Conformance tab</a></li><li><a href="#what-a-pass-means">What a pass means</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

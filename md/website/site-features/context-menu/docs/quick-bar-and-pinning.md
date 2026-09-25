@@ -1,0 +1,44 @@
+---
+title: Right-click menu — Quick bar and pinning
+description: Pin your most-used actions to the quick bar at the top of the right-click menu, unpin them, and reset the bar.
+product: Website › Site features › Right-click menu
+updated: 2026-09-25
+---
+
+# Quick bar and pinning
+
+The **quick bar** is the row of one-click buttons across the top of the right-click menu. Each button shows an icon and a short label; hover it to see the full action name and its shortcut.
+
+By default it holds five actions: **Back**, **Forward**, **Reload**, **Home** and **Copy URL**.
+
+## Pin an action
+
+1. Right-click the page and find the action you use most, for example **Split view** under **View**, or **Copy HEX** on a colour.
+2. Select the star at the right-hand end of its row (**Pin to the quick bar**).
+3. The star fills, the footer confirms "Pinned to the quick bar", and the action appears at the end of the quick bar.
+
+With the keyboard: move to the action's row, press the `Right` arrow to move onto its star, and press `Enter` or `Space`.
+
+## Unpin an action
+
+- Select the filled star on the action's row (**Unpin from the quick bar**). The footer confirms "Unpinned from the quick bar".
+- Or open the gear (**Customise this menu**) and select the X on the action's chip under **Quick bar**.
+
+## Limits
+
+- The quick bar holds **six** actions. With six pinned, selecting another star shows "The quick bar holds 6: unpin one first".
+- Group rows (Page, Colour tools, View, Site), greyed-out actions and **Browser’s own menu** have no star and cannot be pinned.
+
+## Why a pinned action is sometimes missing
+
+The quick bar shows only pinned actions that make sense for what you clicked. **Copy HEX** appears only when you right-click a colour, **Open in new tab** only on a link, **Copy** only on a selection, and so on. The pin is kept; the button returns the next time the action applies. Actions that belong to every page, such as **Copy URL**, **Split view** or **Settings**, always appear.
+
+## Reset the quick bar
+
+1. Right-click the page and select the gear (**Customise this menu**) at the bottom right.
+2. Under **Quick bar**, select **Reset**.
+3. The bar returns to **Back**, **Forward**, **Reload**, **Home** and **Copy URL**, and the footer confirms "Quick bar reset".
+
+When nothing is pinned, the **Quick bar** area of the preferences reads "Empty: pin actions with the star", and the bar itself is hidden from the menu.
+
+Your pins are kept in this browser and apply on every page.

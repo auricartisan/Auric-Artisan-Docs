@@ -1,0 +1,88 @@
+---
+title: Auric Artisan Live — preview, device sizes and phone testing
+description: Preview your served site beside the editor at device sizes, and open it on a real phone with a locally generated QR code.
+product: VS Code extensions › Auric Artisan Live
+updated: 2026-09-25
+---
+
+# Preview, devices and phone testing
+
+## The preview beside the editor
+
+The preview is a browser frame inside VS Code, opened next to your code. It shows the served site and follows live reload exactly as a browser does.
+
+### Open it
+
+- **Auric Live: Open Preview Beside** — `Ctrl` + `Alt` + `K` (`Cmd` + `Alt` + `K` on macOS).
+- **Preview** in the notification that appears when the server starts.
+- **Preview beside** in the control panel's **Overview**.
+- Set `auricLive.open` to `preview` to open it every time the server starts.
+
+If no server is running, opening the preview starts one first. There is one preview tab; opening it again moves it to the new address.
+
+### The toolbar
+
+| Control | What it does |
+| --- | --- |
+| **Reload** | Reload this frame |
+| Address box | Type an address and press `Enter`, or select **Go** |
+| Device size | Choose a size from the list below |
+| **Rotate** | Swap width and height |
+| **Reload all pages** | Reload every connected browser, not only this frame |
+| **Open in browser** | Open the current address in your default browser |
+| Size readout | The frame's width × height, and the scale when it is shrunk to fit |
+| **Auric Artisan ↗** | Open auricartisan.com in your browser |
+
+### Device sizes
+
+| Device | Width × height (CSS pixels) |
+| --- | --- |
+| **Responsive** | Fills the panel |
+| **iPhone SE** | 375 × 667 |
+| **iPhone 15** | 393 × 852 |
+| **Pixel 8** | 412 × 915 |
+| **iPad** | 820 × 1180 |
+| **Laptop** | 1280 × 800 |
+| **Desktop** | 1600 × 900 |
+
+When a size is larger than the panel, the frame is scaled down to fit and the readout shows the percentage.
+
+### What the preview is and is not
+
+- It simulates a viewport size. It does not emulate a device's browser, touch input, pixel density or performance. Use a real device for those (see below).
+- Page state lives inside the frame. Developer tools and the network tab belong in a real browser.
+- The page cannot reach VS Code itself: the frame is isolated from the editor.
+- The preview toolbar uses the language chosen in the Auric Live panel. Reopen an existing preview to change its language.
+
+## Test on a real phone
+
+### What you need
+
+- The phone and the computer on the **same network**.
+- The server bound to your network. This is the default in a trusted workspace (`auricLive.host` is `0.0.0.0`). If you set `127.0.0.1`, a phone cannot reach it.
+- Your firewall allowing VS Code to accept connections. It may ask the first time.
+
+### Show the QR code
+
+1. Start the server.
+2. Run **Auric Live: Show Phone QR Code**, choose **Phone QR** in the start notification, select a **Network** row in the **Servers** view, or open **Phone QR** in the control panel's **Overview**.
+3. The QR code appears inside the Auric Live panel, with the address and connection guidance.
+4. Scan it with the phone's camera, or use **Copy phone address** and send the address to the phone.
+
+If the server is bound to this machine only, Auric Live says a phone cannot reach it and offers **Bind to the network** (switches the host for this session) or **Show anyway**.
+
+The QR code is generated on your computer; no address is sent to a QR service. It clears itself when the server stops or its address changes, so a stale code cannot point at the wrong place.
+
+### Several network adapters
+
+**Auric Live: Copy Network URL** lists every address when there is more than one. Addresses from virtual adapters (such as virtual machines or VPNs) are marked as probably unreachable from a phone. The **Servers** view shows up to three network addresses.
+
+### HTTPS on a phone
+
+Features such as service workers, the clipboard, camera, microphone and geolocation need a secure connection on any address other than `localhost`. Turn on HTTPS to test them on a phone, and make the phone trust the certificate. See [Serve over HTTPS](https-and-certificates.md).
+
+### Slow connections on a phone
+
+Network simulation applies to every client, including a phone, where browser developer tools are not available. See [Simulate a slow network](network-simulation.md).
+
+With the phone on the same network, scanning the code opens the same served site, and it updates when you save, just like the desktop browser.

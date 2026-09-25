@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspector, skin tones and output formats — Auric Artisan Docs</title>
+<meta name="description" content="Inspect an emoji, preview and set skin tones, and choose among the six output formats.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Emoji</a>
+<h2>Auric Artisan Emoji guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Emoji</a></li>
+<li><a href="emoji-studio.html">Use Emoji Studio</a></li>
+<li><a href="insert-from-the-editor.html">Insert from the editor</a></li>
+<li><a href="inspector-tones-and-formats.html" aria-current="page">Inspector, skin tones and output formats</a></li>
+<li><a href="interface-language.html">Interface language (English and हिन्दी)</a></li>
+<li><a href="sequences.html">Compose a sequence</a></li>
+<li><a href="reference.html">Auric Artisan Emoji reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Emoji</a> &rsaquo; <a href="README.html">Auric Artisan Emoji guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Emoji</p>
+<h1>Inspector, skin tones and output formats</h1>
+<p class="lede">Inspect an emoji, preview and set skin tones, and choose among the six output formats.</p>
+<h2 id="open-the-inspector">Open the inspector</h2>
+<p>Select a card&#39;s <strong>…</strong> button, or focus an emoji and press <code>I</code>. In the narrow sidebar it opens as a sheet. Press <code>I</code> or <code>Escape</code>, or select <strong>Close inspector</strong>, to close it.</p>
+<p>The inspector shows:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Stage</td><td>A large preview.</td></tr>
+<tr><td>Name and shortcode</td><td>With <strong>Copy shortcode</strong>.</td></tr>
+<tr><td>Pills</td><td>Emoji version (for example &quot;Emoji 13.0&quot;), <strong>Skin tone</strong> if tone-capable, <strong>Favorite</strong> if starred.</td></tr>
+<tr><td><strong>Skin tone</strong></td><td>Previews of each tone.</td></tr>
+<tr><td><strong>Copy as</strong></td><td>The six formats with their exact output.</td></tr>
+<tr><td><strong>Keywords</strong></td><td>Search keywords.</td></tr>
+<tr><td>Actions</td><td><strong>Insert</strong>, <strong>Copy</strong>, <strong>Favorite</strong> / <strong>Remove favorite</strong>.</td></tr>
+<tr><td><strong>Also try</strong></td><td>Related emoji.</td></tr>
+</tbody></table></div>
+<h2 id="skin-tones">Skin tones</h2>
+<p>Choose between <strong>Yellow</strong> (the standard appearance) and five tones: <strong>Light</strong>, <strong>Medium light</strong>, <strong>Medium</strong>, <strong>Medium dark</strong> and <strong>Dark</strong>. 330 catalog entries support tone changes.</p>
+<ul>
+<li>Set the default with the <strong>Skin tone</strong> filter, or <code>auricEmoji.preferredSkinTone</code> (<code>none</code>, <code>medium</code>, <code>light</code>, <code>mediumLight</code>, <code>mediumDark</code>, <code>dark</code>).</li>
+<li>In the inspector, select a tone to preview it (&quot;Previewing {tone}. Your default is {default}.&quot;), then <strong>Make {tone} my default</strong>.</li>
+<li>Emoji that do not change with tone say &quot;This emoji does not change with skin tone.&quot;</li>
+</ul>
+<p>Your tone applies to card previews, insertion, Quick Insert, completions and shortcode replacement. Favorites and recents store the emoji, not the tone, so changing tone does not create duplicates.</p>
+<h2 id="the-six-output-formats">The six output formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Setting value</th><th>Rocket example</th><th>Intended use</th></tr></thead>
+<tbody>
+<tr><td>Emoji</td><td><code>emoji</code></td><td>The rocket character itself</td><td>Text and string contents</td></tr>
+<tr><td>Shortcode</td><td><code>shortcode</code></td><td><code>:rocket:</code></td><td>Systems that understand emoji shortcodes</td></tr>
+<tr><td>Unicode</td><td><code>unicode</code></td><td><code>U+1F680</code></td><td>Code-point references and documentation</td></tr>
+<tr><td>HTML entities</td><td><code>html</code></td><td><code>&amp;#x1F680;</code></td><td>HTML source</td></tr>
+<tr><td>JavaScript escape</td><td><code>javascript</code></td><td><code>\u{1F680}</code></td><td>JavaScript and TypeScript string contents</td></tr>
+<tr><td>CSS escape</td><td><code>css</code></td><td><code>\1F680</code></td><td>CSS strings, such as <code>content</code></td></tr>
+</tbody></table></div>
+<p>In the <strong>Copy as</strong> list you can:</p>
+<ul>
+<li>copy a single format (<strong>Copy as {format}</strong>);</li>
+<li>use a format for this inspector&#39;s <strong>Insert</strong> and <strong>Copy</strong> (<strong>Use {format} for Insert and Copy</strong>);</li>
+<li>make a format your default copy format (<strong>Make {format} my copy format</strong>), which sets <code>auricEmoji.copyFormat</code>.</li>
+</ul>
+<p>These are text representations, not complete snippets. Add the surrounding syntax your language needs; JavaScript code-point escapes, for example, are not valid JSON escapes.</p>
+<p>The ledger also explains your insert spacing, for example &quot;Insert spacing is Auto — a space is added only when text would touch the emoji.&quot;</p>
+<h2 id="result">Result</h2>
+<p>You know exactly what text will be inserted or copied, in the tone and format you want.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="insert-from-the-editor.html"><span>Previous</span>Insert from the editor</a><a href="interface-language.html"><span>Next</span>Interface language (English and हिन्दी)</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-inspector">Open the inspector</a></li><li><a href="#skin-tones">Skin tones</a></li><li><a href="#the-six-output-formats">The six output formats</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

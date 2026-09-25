@@ -1,0 +1,118 @@
+==============================================================================
+TROUBLESHOOTING SVG RECOLOUR
+==============================================================================
+Symptoms you may meet in SVG Recolour, why they happen, and what to do.
+Area: Website › Tools › Image and file tools › SVG Recolour   Updated: 2026-09-25
+
+LOADING
+=======
+
+  Symptom:    That file will not parse as SVG, so nothing was changed.
+  Why:        The markup is not well-formed XML
+  What to do: Read the parser's message under the paste box; fix the markup
+              (often an unclosed tag or a stray `&`) and try again
+
+  Symptom:    Paste some SVG markup first.
+  Why:        The paste box is empty
+  What to do: Paste the markup, then select Read the markup
+
+  Symptom:    My file is greyed out in the file chooser
+  Why:        The chooser offers `.svg` files
+  What to do: Drag the file onto Drop an SVG, or rename it with the `.svg`
+              ending
+
+  Symptom:    A notice says active content was removed
+  Why:        The file contains scripts, event handlers or `javascript:` links
+  What to do: The previews are safe; remember the exported file still contains
+              them
+
+  Symptom:    My mappings disappeared
+  Why:        Loading a file, markup or the sample resets every mapping
+  What to do: Set the targets again, or apply a harmony
+
+COLOURS NOT FOUND OR NOT CHANGED
+================================
+
+  Symptom:    A colour I can see is not in the list
+  Why:        It is written in a form the tool does not read, such as
+              `oklch()` or `var(--brand)`
+  What to do: Rewrite it as hex, `rgb()`, `hsl()` or a CSS name before loading
+
+  Symptom:    A colour inside a picture did not change
+  Why:        It is part of an embedded raster image, not markup
+  What to do: Recolour the raster image in an image editor
+
+  Symptom:    A row reads left alone
+  Why:        The value is `currentColor`, `none`, `transparent`, a keyword
+              such as `inherit`, or a `url()` reference
+  What to do: Expected. `currentColor` takes its colour from the page the SVG
+              is placed in
+
+  Symptom:    A gradient did not change
+  Why:        Its colours are in `stop-color` on the gradient's stops, listed
+              as their own rows; the shape's `fill` is a `url()` reference
+  What to do: Change the rows for the stop colours
+
+  Symptom:    Few colours for a large file
+  Why:        The file is mostly embedded images, or uses `currentColor`
+  What to do: Check left alone and occurrences under What the file holds
+
+  Symptom:    A semi-transparent colour became solid
+  Why:        It was written as hex with an alpha part, which is rewritten as
+              six-digit hex
+  What to do: Re-add the alpha afterwards, or write the original colour as
+              `rgba()` and use Keep the source form
+
+  Symptom:    Colours I wrote as names came back as hex
+  Why:        Write hex is selected, or the new colour has no exact CSS name
+  What to do: Choose Keep the source form; names are kept only when the new
+              colour has one
+
+PREVIEWS AND CHECKS
+===================
+
+  Symptom:    The previews are tinted
+  Why:        A colour-vision view is selected under Show it as seen by
+  What to do: Select Normal vision
+
+  Symptom:    The Check tab says two colours or more are needed
+  Why:        The file has fewer than two changeable colours
+  What to do: Nothing to compare
+
+  Symptom:    APCA Lc is negative
+  Why:        The text colour is lighter than the background colour
+  What to do: Expected: the sign shows polarity; Good for uses the size
+
+  Symptom:    WCAG and APCA disagree
+  Why:        They measure different things
+  What to do: Treat both as evidence
+
+EXPORTS
+=======
+
+  Symptom:    Nothing loaded.
+  Why:        No file is loaded
+  What to do: Load a file first
+
+  Symptom:    The exported file still contains a script
+  Why:        Only the previews are stripped
+  What to do: Remove active content in an editor if you do not trust the file
+
+  Symptom:    The XML declaration or DOCTYPE is missing
+  Why:        Only the `<svg>` element and its contents are written
+  What to do: Add them back if your workflow needs them
+
+  Symptom:    Attribute quotes changed
+  Why:        The browser writes the markup back out
+  What to do: This does not change the drawing
+
+  Symptom:    The browser refused the clipboard.
+  Why:        Clipboard access was blocked
+  What to do: Allow clipboard access for the site, or use Save the recoloured
+              SVG
+
+  Symptom:    This browser will not take text from the clipboard.
+  Why:        The browser cannot copy text
+  What to do: Use the save buttons
+
+For help with the site in general, see Help [../../../../../help/README.txt].

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Psychophysics Bench takes from published sources, what is its own, the limits of an uncalibrated screen, and what it does not show.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Psychophysical Experiment Engine</a>
+<h2>Psychophysics Bench background</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Psychophysics Bench shortcuts</a></li>
+<li><a href="glossary.html">Psychophysics Bench glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and articles</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Psychophysical Experiment Engine</a> &rsaquo; <a href="README.html">Psychophysics Bench background</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Psychophysical Experiment Engine</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Psychophysics Bench takes from published sources, what is its own, the limits of an uncalibrated screen, and what it does not show.</p>
+<h2 id="what-the-bench-is">What the bench is</h2>
+<p>An educational instrument for measuring a contrast detection threshold in a browser. It is not a calibrated laboratory system and not a clinical test. Results depend on your screen, your room and your attention as much as on your vision.</p>
+<h2 id="the-data-register-in-plain-terms">The data register, in plain terms</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entry</th><th>Status</th><th>What it means for you</th></tr></thead>
+<tbody>
+<tr><td>sRGB transfer and primaries</td><td>Verbatim</td><td>Contrast is converted to screen values with the standard sRGB curve, which is a standard, not a measurement of your screen</td></tr>
+<tr><td>Transformed up-down rules</td><td>Verbatim</td><td>1-up / 2-down and 3-down / 1-up follow Levitt (1971), including averaging an even number of reversals</td></tr>
+<tr><td>Extreme-proportion correction</td><td>Verbatim</td><td>The 1/2N rule of Macmillan and Kaplan (1985) for hit rates of 1 or false-alarm rates of 0</td></tr>
+<tr><td>Michelson contrast in luminance</td><td>Computed</td><td>Every contrast is placed symmetrically around the background&#39;s luminance, so the contrast asked for is the contrast drawn, unless capped</td></tr>
+<tr><td>Viewing geometry</td><td>Computed</td><td>Degrees per pixel and the Nyquist limit follow exactly from the distance and pitch you enter</td></tr>
+<tr><td>Signal-detection formulae</td><td>Computed</td><td>d′, criterion and β as in Macmillan and Creelman (2005), for yes/no only</td></tr>
+<tr><td>Inverse normal CDF</td><td>Computed</td><td>An approximation accurate to 4.5 × 10⁻⁴; it caps any d′ at about 6.18</td></tr>
+<tr><td>Nonparametric bootstrap</td><td>Computed</td><td>A trial bootstrap; it gives intervals that are too narrow for adaptively sampled data</td></tr>
+<tr><td>Bayesian adaptive staircase</td><td>Stand-in</td><td>The tool&#39;s own tracker, not QUEST; its slope and lapse rate are assumed</td></tr>
+<tr><td>Psychometric function fit</td><td>Stand-in</td><td>A logistic with the task&#39;s guess rate and a fitted lapse rate; search and binning are the tool&#39;s own</td></tr>
+<tr><td>Accelerated staircase</td><td>Stand-in</td><td>The tool&#39;s own; not PEST, and no stated target percentage</td></tr>
+<tr><td>Weibull fit</td><td>Absent</td><td>No Weibull function is ever fitted to data</td></tr>
+<tr><td>ROC curve and its area</td><td>Absent</td><td>A single yes/no criterion gives one point, not a curve</td></tr>
+</tbody></table></div>
+<p>Because the fit is a stand-in, exports carry <code>reportable: false</code>.</p>
+<h2 id="limits-of-a-screen">Limits of a screen</h2>
+<ul>
+<li><strong>No calibration.</strong> The page assumes the sRGB curve. Real screens differ, and brightness, contrast and colour settings change the light that reaches you. A measured display calibration cannot be loaded in the current version.</li>
+<li><strong>8-bit steps.</strong> Near threshold, a stripe pattern may differ from the background by only one or two screen code values, so the smallest contrasts the page can draw are coarse. The page does not dither.</li>
+<li><strong>Capped contrast.</strong> A bright background cannot hold high contrast; the page caps it and says so.</li>
+<li><strong>Geometry you enter.</strong> The frequency and envelope in degrees are only as accurate as the distance and pixel pitch you give, and assume you stay put.</li>
+<li><strong>Timing.</strong> Durations are timed by the browser and shown on the screen&#39;s refresh; background load can delay them.</li>
+</ul>
+<h2 id="what-the-bench-does-not-show">What the bench does not show</h2>
+<p>In the current version no readout displays the psychometric fit, d′, criterion, β or bootstrap interval, although the register describes them. The threshold shown comes from the staircase itself: the reversal average or the Bayesian tracker&#39;s estimate.</p>
+<h2 id="what-it-does-not-do">What it does not do</h2>
+<ul>
+<li>Only two tasks run: two-interval forced choice and yes/no. m-alternative, same/different and odd-one-out are withdrawn.</li>
+<li>Constant stimuli tests only the starting contrast.</li>
+<li>At the time of writing, only the Lab tab opens, so exports cannot be made.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Psychophysics Bench glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-bench-is">What the bench is</a></li><li><a href="#the-data-register-in-plain-terms">The data register, in plain terms</a></li><li><a href="#limits-of-a-screen">Limits of a screen</a></li><li><a href="#what-the-bench-does-not-show">What the bench does not show</a></li><li><a href="#what-it-does-not-do">What it does not do</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

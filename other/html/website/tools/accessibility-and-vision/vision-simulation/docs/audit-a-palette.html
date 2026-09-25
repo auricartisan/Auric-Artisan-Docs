@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit a palette — Auric Artisan Docs</title>
+<meta name="description" content="Check every pair of colours in your palette under all 17 colour conditions, see which pairs merge, and get a lightness fix for each.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Vision Lab</a>
+<h2>Vision Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Vision Lab</a></li>
+<li><a href="audit-a-palette.html" aria-current="page">Audit a palette</a></li>
+<li><a href="browse-the-catalogue-and-panels.html">Browse the Catalogue and panels</a></li>
+<li><a href="compare-conditions.html">Compare conditions</a></li>
+<li><a href="explore-analytics.html">Explore Analytics</a></li>
+<li><a href="links-saving-and-exports.html">Links, saving and exports</a></li>
+<li><a href="the-78-conditions.html">The 78 conditions</a></li>
+<li><a href="use-the-workbench.html">Use the Workbench</a></li>
+<li><a href="reference.html">Vision Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Vision Lab</a></li>
+<li><a href="faq.html">Vision Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Vision Lab</a> &rsaquo; <a href="README.html">Vision Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Audit a palette</h1>
+<p class="lede">Check every pair of colours in your palette under all 17 colour conditions, see which pairs merge, and get a lightness fix for each.</p>
+<p>Simulating one colour tells you what it becomes. It does not tell you that two of your colours became the same thing, which is what breaks a chart legend, a status badge or a map. <strong>Palette audit</strong> checks every pair in your palette, under all 17 colour conditions, on the same engine the panels use.</p>
+<h2 id="enter-your-palette">Enter your palette</h2>
+<ol>
+<li>Select <strong>Palette audit</strong> in the view bar. It opens with a five-colour sample palette.</li>
+<li>For each colour, use its swatch (&quot;Change colour N&quot;) or type into its hex field.</li>
+<li>Select <strong>Add colour</strong> to add another, up to 24 colours.</li>
+<li>Select <strong>Remove</strong> beside a colour to take it out.</li>
+</ol>
+<p>Each colour shows how many collapses it is involved in, for example &quot;15 collapses&quot;. Select a swatch to see only where that colour collapses. The palette is remembered in this browser.</p>
+<h2 id="set-the-threshold">Set the threshold</h2>
+<p><strong>Merge below</strong>, measured in CIEDE2000, is how close two simulated colours must be to count as merged.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>ΔE</strong> threshold</td><td>1 (&quot;identical&quot;) to 15 (&quot;loose&quot;), in steps of 0.5</td><td>5</td></tr>
+</tbody></table></div>
+<p>A lower threshold only flags pairs that become almost identical; a higher one also flags pairs that become merely similar.</p>
+<h2 id="read-the-result">Read the result</h2>
+<p>The middle column shows one condition at a time:</p>
+<ul>
+<li>a verdict, for example &quot;4 of 10 pairs merge under Achromatopsia&quot;;</li>
+<li><strong>Your palette</strong> above the same colours <strong>Under</strong> that condition, with the ΔE of each merged pair now and what it was (&quot;ΔE 3.0 was 67&quot;);</li>
+<li><strong>What collapses</strong>, naming the condition, its severity score and prevalence, and listing each merged pair with its distance before and after (for example &quot;16.6 → 1.59&quot;);</li>
+<li><strong>Measured · this condition</strong>: pairs merged, the closest ΔE after simulation, how many of the 17 conditions fail, and how many of your colours are safe in every condition.</li>
+</ul>
+<p>If nothing merges, the verdict says &quot;Every pair survives all 17 colour conditions.&quot;</p>
+<h2 id="choose-the-condition">Choose the condition</h2>
+<p>The right column lists the 17 colour conditions, worst first. Each shows how many pairs merge (or &quot;clean&quot;), its severity score and prevalence.</p>
+<ul>
+<li><strong>Search 17 conditions</strong> filters the list.</li>
+<li><strong>All 17</strong> and <strong>Only failing</strong> switch between every condition and those with merges.</li>
+</ul>
+<p>Select a condition to show it in the middle column.</p>
+<h2 id="fix-a-merged-pair">Fix a merged pair</h2>
+<p>Select <strong>Suggest a fix</strong> beside a merged pair. The audit finds the smallest change in <strong>lightness</strong> to one of the two colours that pulls the pair back apart under that condition, and shows the new colour, whether it is lighter or darker, and the distance it clears at. Lightness is used rather than hue because hue is exactly what these conditions remove.</p>
+<p>If no change of lightness under 80% separates the pair, it says &quot;No lightness change under 80% separates these.&quot; Consider adding a pattern, label or shape instead of relying on colour.</p>
+<h2 id="take-it-further">Take it further</h2>
+<ul>
+<li><strong>Open this condition in the workbench</strong> opens the selected condition in the Workbench.</li>
+<li><strong>Copy the palette</strong> copies your palette&#39;s colours.</li>
+</ul>
+<p>The footer notes that the audit uses CIEDE2000 on the simulated colours, in your browser, and names the REST API endpoint that does the same audit (<code>POST /v1/vision/audit</code>).</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Vision Lab</a><a href="browse-the-catalogue-and-panels.html"><span>Next</span>Browse the Catalogue and panels</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#enter-your-palette">Enter your palette</a></li><li><a href="#set-the-threshold">Set the threshold</a></li><li><a href="#read-the-result">Read the result</a></li><li><a href="#choose-the-condition">Choose the condition</a></li><li><a href="#fix-a-merged-pair">Fix a merged pair</a></li><li><a href="#take-it-further">Take it further</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

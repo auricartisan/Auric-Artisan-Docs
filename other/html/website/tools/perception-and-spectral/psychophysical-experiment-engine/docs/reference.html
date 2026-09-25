@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Psychophysics Bench reference — Auric Artisan Docs</title>
+<meta name="description" content="Every tab, control, readout, message, file format and link parameter in the Psychophysics Bench, with ranges and defaults.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Psychophysical Experiment Engine</a>
+<h2>Using the Psychophysics Bench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Psychophysics Bench</a></li>
+<li><a href="design-an-experiment.html">Design an experiment</a></li>
+<li><a href="export-your-data.html">Export your data</a></li>
+<li><a href="read-the-results.html">Read the results</a></li>
+<li><a href="run-a-session.html">Run a session</a></li>
+<li><a href="reference.html" aria-current="page">Psychophysics Bench reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Psychophysics Bench</a></li>
+<li><a href="faq.html">Psychophysics Bench FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Psychophysical Experiment Engine</a> &rsaquo; <a href="README.html">Using the Psychophysics Bench</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Psychophysical Experiment Engine</p>
+<h1>Psychophysics Bench reference</h1>
+<p class="lede">Every tab, control, readout, message, file format and link parameter in the Psychophysics Bench, with ranges and defaults.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/perception-and-neuroscience/psychophysical-experiment-engine/" rel="noopener">https://auricartisan.com/tool/general/perception-and-neuroscience/psychophysical-experiment-engine/</a></p>
+<h2 id="tabs">Tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Contents</th><th>Opens at the time of writing</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>All experiment controls, the trial stage, response buttons, the staircase trace, readouts and warnings</td><td>Yes</td></tr>
+<tr><td><strong>Method</strong></td><td>The contrast chain, the frequency axis, what each ladder estimates</td><td>No</td></tr>
+<tr><td><strong>Paradigms</strong></td><td>Two scoring tasks and three withdrawn ones</td><td>No</td></tr>
+<tr><td><strong>Data</strong></td><td>The register of 13 methods and constants; the tab label shows the count</td><td>No</td></tr>
+<tr><td><strong>Export</strong></td><td>Trials CSV, session JSON, setup link</td><td>No</td></tr>
+<tr><td><strong>Reference</strong></td><td>Eleven sources and their use</td><td>No</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-task">Lab tab — Task</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Task</strong></td><td><strong>Two-interval forced choice</strong>, <strong>Yes / no detection</strong></td><td>Two-interval forced choice</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-stimulus">Lab tab — Stimulus</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range and step</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Stimulus type</td><td><strong>Gabor</strong>, <strong>Grating in an aperture</strong></td><td>Gabor</td></tr>
+<tr><td><strong>Spatial frequency</strong></td><td>0.25–20 c/deg, step 0.25</td><td>4.0 c/deg</td></tr>
+<tr><td><strong>Orientation</strong></td><td>0–179°, step 1</td><td>45°</td></tr>
+<tr><td><strong>Envelope σ</strong></td><td>0.10–2.00°, step 0.05 (Gabor only)</td><td>0.50°</td></tr>
+<tr><td><strong>Background</strong></td><td>Code 40–220, step 1</td><td>Code 128</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-geometry">Lab tab — Geometry</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range and step</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Viewing distance</strong></td><td>20–200 cm, step 1</td><td>57 cm</td></tr>
+<tr><td><strong>Pixel pitch</strong></td><td>0.05–0.6 mm, step 0.001</td><td>0.248 mm</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-staircase">Lab tab — Staircase</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Procedure</td><td><strong>1-up / 2-down — 70.7%</strong>, <strong>3-down / 1-up — 79.4%</strong>, <strong>Bayesian tracker — this tool&#39;s own</strong>, <strong>Accelerated — this tool&#39;s own</strong>, <strong>Constant stimuli — no adaptation</strong></td><td>1-up / 2-down</td></tr>
+<tr><td><strong>Step</strong></td><td>0.5–12 dB, step 0.5</td><td>2.0 dB</td></tr>
+<tr><td><strong>Starting contrast</strong></td><td>0.01–1, step 0.01</td><td>0.300</td></tr>
+<tr><td><strong>Stop after</strong></td><td>4–24 reversals, step 2</td><td>12 reversals</td></tr>
+<tr><td><strong>Trial ceiling</strong></td><td>20–400, step 10</td><td>120</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-timing">Lab tab — Timing</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range and step</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Stimulus</strong></td><td>20–1000 ms, step 10</td><td>200 ms</td></tr>
+<tr><td><strong>Between trials</strong></td><td>100–2000 ms, step 50</td><td>600 ms</td></tr>
+</tbody></table></div>
+<p>Fixed timings: fixation cross 240 ms before each trial; 300 ms blank between the two intervals.</p>
+<h2 id="lab-tab-buttons">Lab tab — Buttons</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Run</strong></td><td>Starts a measured run; disabled while a run is going</td></tr>
+<tr><td><strong>Practice</strong></td><td>Starts a practice run of up to 12 trials with no reversal stop</td></tr>
+<tr><td><strong>Stop</strong></td><td>Shown during a run; ends it (see <a href="run-a-session.html">Run a session</a>)</td></tr>
+<tr><td><strong>First interval</strong> <code>←</code> / <strong>Yes, I saw it</strong> <code>←</code></td><td>Answers first interval (two-interval) or yes (yes/no)</td></tr>
+<tr><td><strong>Second interval</strong> <code>→</code> / <strong>No, I did not</strong> <code>→</code></td><td>Answers second interval or no</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-stage-and-trace">Lab tab — Stage and trace</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Run state</td><td><strong>not running</strong>, <strong>practice</strong>, <strong>running</strong>, <strong>stopped</strong>, <strong>done — N trials</strong></td></tr>
+<tr><td>Stimulus stage</td><td>256 × 256; shows the stimulus at the current contrast between runs</td></tr>
+<tr><td><strong>Interval 1</strong>, <strong>Interval 2</strong></td><td>Light in turn during two-interval trials</td></tr>
+<tr><td><strong>The staircase</strong></td><td>Contrast (log axis) against trial; grey warm-up reversals, red reversals used, gold dashed threshold; drawn for the up-down and accelerated staircases</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-readouts">Lab tab — Readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td><strong>Threshold, Michelson</strong></td><td>Four decimals, or <strong>—</strong></td></tr>
+<tr><td><strong>At what percentage</strong></td><td>70.7%, 79.4%, 80.3% or 61.9%, or <strong>not defined for this ladder</strong></td></tr>
+<tr><td><strong>Reversals used</strong></td><td><strong>N of M</strong>, <strong>fewer than two reversals after the warm-up</strong>, <strong>N trials, posterior mean</strong>, or <strong>—</strong></td></tr>
+<tr><td><strong>Delivered / asked</strong></td><td>Ratio, two decimals; highlighted when capped</td></tr>
+<tr><td><strong>Trials run</strong></td><td>Count</td></tr>
+<tr><td><strong>Proportion correct</strong></td><td>Three decimals</td></tr>
+<tr><td><strong>Degrees per pixel</strong></td><td>Degrees, four decimals</td></tr>
+<tr><td><strong>Nyquist limit of the grid</strong></td><td>c/deg, one decimal; highlighted when exceeded</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-warnings">Lab tab — Warnings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Warning</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Above the pixel grid&#39;s Nyquist limit.</strong></td><td>Spatial frequency above the Nyquist limit</td></tr>
+<tr><td><strong>The contrast asked for does not fit about this background.</strong></td><td>The contrast asked for exceeds what fits around the background</td></tr>
+</tbody></table></div>
+<h2 id="method-tab">Method tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><strong>Show</strong></td><td><strong>The contrast chain</strong>, <strong>The frequency axis</strong>, <strong>What each ladder estimates</strong></td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Status</strong></td><td><strong>All</strong> (13), <strong>Verbatim</strong> (3), <strong>Computed</strong> (5), <strong>Stand-in</strong> (3), <strong>Absent</strong> (2)</td></tr>
+<tr><td>Register row</td><td>Select, or press <code>Enter</code> or <code>Space</code>, to expand its note and <strong>what it would take</strong></td></tr>
+<tr><td><strong>Drop a measured gamma table</strong></td><td>Shown under <strong>Calibrate the display</strong>; not active in the current version</td></tr>
+</tbody></table></div>
+<p>Entries: <strong>sRGB transfer and primaries</strong>, <strong>Transformed up-down rules</strong>, <strong>Extreme-proportion correction</strong> (Verbatim); <strong>Michelson contrast in luminance</strong>, <strong>Viewing geometry</strong>, <strong>Signal-detection formulae</strong>, <strong>Inverse normal CDF</strong>, <strong>Nonparametric bootstrap</strong> (Computed); <strong>Bayesian adaptive staircase</strong>, <strong>Psychometric function fit</strong>, <strong>Accelerated staircase</strong> (Stand-in); <strong>Weibull fit</strong>, <strong>ROC curve and its area</strong> (Absent).</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>What to take</strong></td><td>Preview <strong>Every trial</strong>, <strong>The session</strong> or <strong>A link to this</strong></td></tr>
+<tr><td><strong>Download the trials</strong></td><td>Saves <code>psychophysics-trials.csv</code></td></tr>
+<tr><td><strong>Download the session</strong></td><td>Saves <code>psychophysics-session.json</code></td></tr>
+<tr><td><strong>Copy a link to this setup</strong></td><td>Copies a link with every rail setting</td></tr>
+</tbody></table></div>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Practice — arrow keys respond, Esc stops</strong></td><td>A practice run started</td></tr>
+<tr><td><strong>Running — arrow keys respond, Esc stops</strong></td><td>A measured run started</td></tr>
+<tr><td><strong>No trials yet — run the experiment first</strong></td><td>A download was requested with no trials</td></tr>
+<tr><td><strong>Link copied</strong></td><td>The setup link is on the clipboard</td></tr>
+<tr><td><strong>A trial could not be scored; the run stopped rather than record it</strong></td><td>A safety stop that should not occur with the two shipped tasks</td></tr>
+</tbody></table></div>
+<h2 id="file-formats">File formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Format</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>psychophysics-trials.csv</code></td><td>CSV with <code>#</code> header lines</td><td><code>trial,contrast,delivered,response,correct,rt_ms,interval,present,cpd</code></td></tr>
+<tr><td><code>psychophysics-session.json</code></td><td>JSON</td><td>Units, settings, procedure, threshold and its percentage, every trial</td></tr>
+</tbody></table></div>
+<p>Details are in <a href="export-your-data.html">Export your data</a>.</p>
+<h2 id="link-parameters">Link parameters</h2>
+<p><code>paradigm</code>, <code>stimType</code>, <code>cpd</code>, <code>orientation</code>, <code>sigmaDeg</code>, <code>meanCode</code>, <code>distanceCm</code>, <code>pitchMm</code>, <code>stair</code>, <code>stepDb</code>, <code>start</code>, <code>nReversals</code>, <code>trials</code>, <code>duration</code>, <code>iti</code>. Values are listed in <a href="export-your-data.html">Export your data</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="run-a-session.html"><span>Previous</span>Run a session</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting the Psychophysics Bench</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#tabs">Tabs</a></li><li><a href="#lab-tab-task">Lab tab — Task</a></li><li><a href="#lab-tab-stimulus">Lab tab — Stimulus</a></li><li><a href="#lab-tab-geometry">Lab tab — Geometry</a></li><li><a href="#lab-tab-staircase">Lab tab — Staircase</a></li><li><a href="#lab-tab-timing">Lab tab — Timing</a></li><li><a href="#lab-tab-buttons">Lab tab — Buttons</a></li><li><a href="#lab-tab-stage-and-trace">Lab tab — Stage and trace</a></li><li><a href="#lab-tab-readouts">Lab tab — Readouts</a></li><li><a href="#lab-tab-warnings">Lab tab — Warnings</a></li><li><a href="#method-tab">Method tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#messages">Messages</a></li><li><a href="#file-formats">File formats</a></li><li><a href="#link-parameters">Link parameters</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

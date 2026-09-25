@@ -1,0 +1,184 @@
+==============================================================================
+SCREEN RECORDER REFERENCE
+==============================================================================
+Every recorder option, default, output format, limit and message.
+Area: Website › Site features › Screen recorder   Updated: 2026-09-25
+
+SETUP DIALOG (YOUR RECORDER)
+============================
+
+  Control: Recording source
+  Options: Screen or window, This tab, Region of this page, Tool canvas
+  Default: Screen or window
+
+  Control: Frame rate
+  Options: 15, 24, 30, 60 fps
+  Default: 30 fps
+
+  Control: Quality
+  Options: Low — smallest file, Balanced, High — sharpest text
+  Default: Balanced
+
+  Control: Resolution cap
+  Options: Native, 1080p, 720p, 480p
+  Default: Native
+
+  Control: Countdown
+  Options: None, 3 seconds, 5 seconds
+  Default: 3 seconds
+
+  Control: Microphone
+  Options: On, off
+  Default: Off
+
+  Control: Tab audio
+  Options: On, off
+  Default: On
+
+  Control: Highlight the cursor
+  Options: On, off
+  Default: Off
+
+  Control: My recordings
+  Options: Opens the recordings list
+  Default: —
+
+  Control: Reset setup / Confirm reset
+  Options: Two-step reset of all the above
+  Default: —
+
+  Control: Start recording
+  Options: Starts with the chosen source
+  Default: —
+
+  Control: Reset dialog position
+  Options: Centres the dialog
+  Default: —
+
+  Control: Close
+  Options: Closes the dialog
+  Default: —
+
+All choices are remembered in this browser, as is whether the recording bar is
+collapsed.
+
+RECORDING BAR
+=============
+
+  Control                             | Action
+  ------------------------------------+---------------------------
+  Grip                                | Move the bar
+  Timer and size                      | Elapsed time and file size
+  Pause recording / Resume recording  | Pause or resume
+  Stop and save                       | Stop and keep
+  Discard recording                   | Stop and throw away
+  Collapse to a dot / Expand controls | Shrink or restore the bar
+
+RECORDINGS LIST
+===============
+
+  Action           | Output
+  -----------------+-----------------------------------------------------------------
+  Thumbnail (Play) | Opens the player
+  Title            | Editable name
+  Download video   | MP4 or WebM file
+  GIF              | Animated GIF: 10 fps, up to 640 px wide, up to 300 frames, loops
+  Frames           | ZIP of PNGs: 5 per second, up to 1,280 px wide, up to 120 frames
+  Still            | One PNG at 1 second (or half the length), up to 1,280 px wide
+  Trim             | New MP4 or WebM of the chosen span, re-encoded in real time
+  Delete           | Removes the recording (select twice within 4 seconds)
+
+FORMATS
+=======
+
+  Output: Video
+  Format: MP4 (H.264 video, AAC audio) where the browser can record it;
+          otherwise WebM (VP9 or VP8 video, Opus audio)
+
+  Output: Animated image
+  Format: GIF, up to 255 colours
+
+  Output: Frames
+  Format: ZIP containing `frame-0001.png` and onward
+
+  Output: Still
+  Format: PNG
+
+LIMITS
+======
+
+  Limit                 | Value
+  ----------------------+---------------------------------------------------
+  Longest recording     | 30 minutes
+  Storage warning       | Below about 50 MB of free browser storage
+  Region pick threshold | A drag under 12 pixels selects the element instead
+
+KEYBOARD
+========
+
+  Keys:   `Alt` + `Shift` + `R`
+  Action: Open the setup dialog; while recording, stop and save
+
+  Keys:   `Alt` + `Shift` + `P`
+  Action: Pause or resume while recording
+
+  Keys:   `Esc`
+  Action: Close the dialog, the list, the player or the region picker; cancel
+          Confirm reset
+
+  Keys:   Arrow keys on the dialog grip
+  Action: Move the dialog (`Shift` for finer steps)
+
+MESSAGES
+========
+
+  Message: A recording is already running.
+  Meaning: You opened the setup during a recording
+
+  Message: No recordable canvas on this page.
+  Meaning: Tool canvas cannot be used here
+
+  Message: This browser cannot capture the screen.
+  Meaning: Screen sources are unavailable
+
+  Message: Microphone unavailable — recording without it.
+  Meaning: The microphone was refused or missing
+
+  Message: Storage is nearly full — this recording may not save. Delete some
+           clips first.
+  Meaning: Less than about 50 MB free
+
+  Message: Time limit reached — recording stopped.
+  Meaning: 30 minutes reached
+
+  Message: Recording discarded.
+  Meaning: Discard recording was selected
+
+  Message: Recording saved — time, size.
+  Meaning: The recording was kept
+
+  Message: Saved to your downloads (browser storage was unavailable).
+  Meaning: Storage refused; file downloaded instead
+
+  Message: Nothing was recorded.
+  Meaning: The recording was empty
+
+  Message: Recording failed. / Could not start recording. / Recording
+           cancelled.
+  Meaning: Starting failed or was cancelled
+
+  Message: Recorder returned to the center.
+  Meaning: The dialog position was reset
+
+  Message: Recorder setup reset to defaults.
+  Meaning: Confirm reset was selected
+
+  Message: GIF exported — size.
+  Meaning: A GIF was downloaded
+
+  Message: Trimmed clip exported. / End must be after start. / Trimming
+           failed.
+  Meaning: Trim results
+
+  Message: That recording could not be read.
+  Meaning: The stored recording is unreadable

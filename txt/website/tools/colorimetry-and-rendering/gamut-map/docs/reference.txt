@@ -1,0 +1,284 @@
+==============================================================================
+GAMUT MAPPING REFERENCE
+==============================================================================
+Every control, readout, option and export in the Gamut Mapping lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+Address: https://auricartisan.com/tool/general/colorimetry/gamut-map/
+
+THE FIVE COLOUR SPACES
+======================
+
+  Space          | White | Transfer curve used to decode HEX
+  ---------------+-------+-------------------------------------
+  sRGB / Rec.709 | D65   | sRGB piecewise curve (IEC 61966-2-1)
+  Display P3     | D65   | sRGB piecewise curve
+  Rec. 2020      | D65   | BT.2020 curve
+  Adobe RGB      | D65   | Power law 563/256 (about 2.2)
+  ProPhoto RGB   | D50   | ROMM: power 1.8 with a linear toe
+
+The slice is drawn on the source space's white. A space with a different white
+is adapted onto it with the Bradford transform before its boundary is tested.
+
+LAB TAB
+=======
+
+Controls
+--------
+
+  Control:         Base colour picker and HEX field
+  What it does:    The colour to analyse, interpreted in the source space
+  Values or range: Any six-digit HEX
+  Default:         #247DEB
+
+  Control:         Random
+  What it does:    Picks a random base colour
+  Values or range: Button
+  Default:         —
+
+  Control:         Lightness Slice L*
+  What it does:    The lightness of the ab slice
+  Values or range: 5 to 95, step 1
+  Default:         65
+
+  Control:         Source
+  What it does:    The space colours come from
+  Values or range: The five spaces
+  Default:         sRGB / Rec.709
+
+  Control:         Target
+  What it does:    The space colours go to
+  Values or range: The five spaces
+  Default:         Display P3
+
+  Control:         Swap Source & Target
+  What it does:    Exchanges the two
+  Values or range: Button
+  Default:         —
+
+  Control:         Method
+  What it does:    The mapping method
+  Values or range: Chroma compression, Clip in target RGB, Uniform RGB scale,
+                   Adapt white, then clip
+  Default:         Chroma compression
+
+  Control:         Compression Strength
+  What it does:    How far chroma compression goes (used by chroma compression
+                   only)
+  Values or range: 0 to 1, step 0.01
+  Default:         0.90
+
+  Control:         Resolution
+  What it does:    Sample grid for the slices
+  Values or range: 60 to 512, step 20
+  Default:         120 × 120
+
+  Control:         Sampler
+  What it does:    How sample points are placed
+  Values or range: Uniform grid; Stratified (2×2), randomly jittered; Halton
+                   (base 2/3), a low-discrepancy sequence
+  Default:         Uniform grid
+
+  Control:         Adaptive edge refinement
+  What it does:    Shown but not applied in the current version
+  Values or range: On or off
+  Default:         Off
+
+  Control:         Mark out-of-gamut in source
+  What it does:    Draws the target's boundary on the source slice
+  Values or range: On or off
+  Default:         On
+
+  Control:         Show base colour on slice
+  What it does:    Rings the base colour on the source slice
+  Values or range: On or off
+  Default:         On
+
+  Control:         Hue tick lines
+  What it does:    Draws radial lines every 30° of hue
+  Values or range: On or off
+  Default:         Off
+
+  Control:         Gamut boundary outlines
+  What it does:    Outlines the source boundary on the source slice and the
+                   target boundary on the mapped slice
+  Values or range: On or off
+  Default:         On
+
+  Control:         Axes & labels
+  What it does:    Shown but not applied; axes are always drawn
+  Values or range: On or off
+  Default:         On
+
+  Control:         ΔE Playground A
+  What it does:    First colour (picker and HEX field)
+  Values or range: Six-digit HEX
+  Default:         #735244
+
+  Control:         ΔE Playground B
+  What it does:    Second colour
+  Values or range: Six-digit HEX
+  Default:         #3BB273
+
+  Control:         ΔE formula menu
+  What it does:    Shown but does not change the readout; all three formulas
+                   are always listed
+  Values or range: ΔE₀₀, ΔE₉₄, ΔE₇₆
+  Default:         ΔE₀₀
+
+Readouts
+--------
+
+  Readout:       Base Colour Info
+  What it shows: L*, a*, b*, C*, h°, and whether the colour is in the source
+                 and in the target (Yes or OOG)
+
+  Readout:       Source Slice
+  What it shows: Colours inside the source gamut at the chosen L*, painted in
+                 sRGB, a* and b* from −128 to +128. Click to probe
+
+  Readout:       Mapped to Target
+  What it shows: The source-gamut colours mapped into the target. In the
+                 current version this slice always uses chroma compression to
+                 the boundary, whatever the method and strength
+
+  Readout:       Statistics line
+  What it shows: L*, the source and target slice areas (in ab units), their
+                 ratio as a percentage, the method and the sampler with its
+                 resolution
+
+  Readout:       Provenance line
+  What it shows: The transfer curve, the white the Lab values are referenced
+                 to, and the method
+
+  Readout:       Probe Point
+  What it shows: L*, a*, b*, C*, h°, sRGB, HEX, and whether the point is in
+                 the source and the target
+
+  Readout:       Before / After (12 Test Colours)
+  What it shows: #FF0000, #00FF00, #0000FF, #FFFF00, #FF00FF, #00FFFF,
+                 #FF8800, #88FF00, #0088FF, #FF0088, #8800FF and #00FF88,
+                 before (left) and after (right) mapping with your method and
+                 strength
+
+  Readout:       ΔE Playground result
+  What it shows: ΔE₀₀ with its verbal band, ΔE94 and ΔE76
+
+ΔE₀₀ verbal bands: below 1 Imperceptible; below 2 Barely perceptible; below
+3.5 Noticeable; below 5 Significant; 5 and above Very different.
+
+BOUNDARY TAB
+============
+
+  Control or readout: Spaces on the plot
+  What it does:       Toggles each space on the boundary tiles
+  Values:             Five chips
+  Default:            sRGB and Display P3 on
+
+  Control or readout: Boundary tiles
+  What it does:       ab boundaries at L* 20, 40, 65, 80 and 90 on one shared
+                      scale
+  Values:             —
+  Default:            —
+
+  Control or readout: Volume samples (n)
+  What it does:       Monte Carlo samples per space
+  Values:             5,000 to 200,000, step 5,000
+  Default:            20k
+
+  Control or readout: Measure the five
+  What it does:       Estimates every space's CIELAB volume
+  Values:             Button
+  Default:            —
+
+  Control or readout: Volume table
+  What it does:       Space, White, Lab volume ± 1 SE, vs sRGB, Sample box
+  Values:             —
+  Default:            —
+
+METHODS TAB
+===========
+
+  Control or readout: Compare on
+  What it does:       The colours the figures are computed on
+  Values:             The base colour; 12 probe colours
+  Default:            The base colour
+
+  Control or readout: Method rows
+  What it does:       Name, what it does, tag "this tool", explanation, and
+                      mean ΔE₀₀, max ΔE₀₀ and out-of-gamut count
+  Values:             —
+  Default:            The Lab's method open
+
+  Control or readout: Provenance
+  What it does:       Count of published intents (0) and this tool's methods
+                      (4)
+  Values:             —
+  Default:            —
+
+DATA TAB
+========
+
+  Dataset                              | Status
+  -------------------------------------+-----------------------------------------------
+  Primaries, 5 RGB spaces              | Verbatim
+  White points D65 and D50             | Verbatim
+  Transfer functions, 5 spaces         | Computed
+  Bradford adaptation matrix           | Verbatim
+  Gamut boundary, ab slice             | Computed (360 hues per L*, 24 bisection steps)
+  ΔE₀₀, ΔE94, ΔE76                     | Computed
+  Gamut volume in CIELAB               | Computed (uniform Monte Carlo in a fitted box)
+  ICC perceptual and saturation tables | Absent
+  Reference gamut-mapping results      | Absent
+
+Status chips filter the list (All, Verbatim, Computed, Absent). The Install a
+table area ("Drop a CSV, JSON or ICC profile") does not load files in the
+current version.
+
+EXPORT TAB
+==========
+
+  Control: Source slice, PNG
+  Output:  `gamut-map-gm-canvas-src.png`
+
+  Control: Mapped slice, PNG
+  Output:  `gamut-map-gm-canvas-dst.png`
+
+  Control: Everything as JSON
+  Output:  `gamut-map-config.json` with `sourceSpace`, `targetSpace`,
+           `intent`, `strength`, `lStar`, `resolution`, `sampler`, `timestamp`
+
+  Control: Link field, Link, Copy
+  Output:  A URL with `src`, `dst`, `int` (method), `l` (L*), `res`, `sam`,
+           `str` and `hex`
+
+  Control: Map a list of colours at once, Run the list
+  Output:  Table of Input, Output, OOG, ΔE₀₀ and Lab for up to 50 colours,
+           with a summary
+
+Method values in the link: `compress`, `clip`, `scale`, `adapt-clip`. Sampler
+values: `grid`, `stratified`, `halton`. Space values: `sRGB`, `P3`, `Rec2020`,
+`AdobeRGB`, `ProPhoto`.
+
+REFERENCE TAB
+=============
+
+  Control                                        | What it does
+  -----------------------------------------------+------------------------------------
+  Standards, Formulas, Citations, Research notes | Switch sections; each shows a count
+  Filter                                         | Searches all four; `Esc` clears it
+
+Standards: IEC 61966-2-1 (sRGB), SMPTE ST 432-1 (Display P3), ITU-R BT.2020-2,
+Adobe RGB (1998), ProPhoto RGB (ROMM), ICC.1:2022 rendering intents, ISO
+11664-6 (CIEDE2000) and CIE 15:2018, each with a badge read from the data
+register. Formulas: hard clip, chroma compression, uniform scaling, Bradford
+adaptation plus clip, boundary bisection, RGB–XYZ matrix derivation, ΔE
+formulas, and the Halton and stratified samplers. Some research notes use the
+older intent names and mention area comparisons that have moved to the
+Boundary tab; the Methods tab reflects the current methods.
+
+SAVE TO LIBRARY
+===============
+
+The floating Save to Library button stores a snapshot of the first slice image
+in your Library.

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary — Auric Artisan Docs</title>
+<meta name="description" content="Plain-language definitions of every term used in the Auric Artisan Studio documentation.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html" aria-current="page">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Glossary</h1>
+<p class="lede">Plain-language definitions of every term used in the Auric Artisan Studio documentation.</p>
+<p><strong>Accessible name.</strong> The text assistive technology announces for an element, such as a button&#39;s label or an image&#39;s alt text. It can come from visible text, <code>aria-label</code>, <code>aria-labelledby</code>, <code>alt</code>, <code>title</code> or a <code>&lt;label&gt;</code>.</p>
+<p><strong>ACT (Accessibility Conformance Testing).</strong> A W3C format for writing accessibility test rules consistently. The Studio&#39;s knowledge entries are <strong>ACT-aligned</strong>: they follow the format&#39;s structure but make no claim of ACT conformance.</p>
+<p><strong>Activity Bar.</strong> The vertical bar of icons at the far left of VS Code. The Studio adds an Auric icon there.</p>
+<p><strong>Alt text.</strong> The text alternative for an image, given with the <code>alt</code> attribute.</p>
+<p><strong>APCA (Accessible Perceptual Contrast Algorithm).</strong> A contrast model proposed for the WCAG 3 working draft. It reports lightness contrast as <strong>Lc</strong>, roughly 0 to 106 in either polarity, and takes into account which colour is the text. The Studio offers it as an experimental option; an APCA result is not a WCAG 3 conformance claim.</p>
+<p><strong>ARIA (Accessible Rich Internet Applications).</strong> W3C attributes such as <code>role</code> and <code>aria-label</code> that describe elements to assistive technology. The Studio checks them against WAI-ARIA 1.2.</p>
+<p><strong>Assisted (automation).</strong> A finding the engine detects but a person should confirm, such as a placeholder used as a label. Assisted findings weigh less in the score.</p>
+<p><strong>Assumed background.</strong> When a CSS rule sets only a text colour, the Studio can grade it against the page background declared on <code>body</code>, <code>html</code> or <code>:root</code>. Such pairs are marked as possible findings and weigh half in the score.</p>
+<p><strong>Audit profile.</strong> The WCAG version the accessibility checks target: 2.0, 2.1, 2.2 or the 3.0 draft.</p>
+<p><strong>Baseline.</strong> A saved health record of the findings a project already has, used by the CI gate to fail only on new findings.</p>
+<p><strong>Best-practice hint.</strong> A rule that flags a pattern worth fixing that does not by itself fail a WCAG success criterion, such as a positive <code>tabindex</code>. Shown as a hint and weighted at half.</p>
+<p><strong>Branding classification.</strong> Marking a colour finding as intentional brand identity with an <code>auric-brand-…</code> comment. The finding stays visible but leaves the score. Structural findings can never be classified as branding.</p>
+<p><strong>Capability.</strong> One extension&#39;s area of work: colour, accessibility or code health.</p>
+<p><strong>CI (continuous integration).</strong> The automated build and tests run for every change or pull request.</p>
+<p><strong>CIEDE2000 (ΔE00).</strong> A standard formula for how different two colours look. Around 1 is barely noticeable; larger numbers are bigger differences. The Studio uses it to rank colour suggestions and to name colours.</p>
+<p><strong>Code health.</strong> Hygiene and security checks on source code: secrets, security footguns, risky APIs, debug leftovers, task markers, merge markers and oversized code.</p>
+<p><strong>Colour-vision deficiency (CVD).</strong> Reduced ability to tell some colours apart, often called colour blindness. The Studio simulates protanopia and protanomaly (red), deuteranopia and deuteranomaly (green), tritanopia and tritanomaly (blue), and achromatopsia and achromatomaly (little or no colour).</p>
+<p><strong>Command Center.</strong> The Studio&#39;s searchable list of suggestions, actions, recent colours, findings and files, opened with <code>Ctrl</code> + <code>Alt</code> + <code>.</code>.</p>
+<p><strong>Confidence.</strong> How sure a detector is that a finding is real: high, medium or low (and contextual for some risky-API rules). Reported separately from severity.</p>
+<p><strong>Confusable hues.</strong> Two project colours that look clearly different to typical vision but become hard to tell apart under colour-vision deficiency.</p>
+<p><strong>Contrast ratio.</strong> WCAG 2.x&#39;s measure of the brightness difference between two colours, from 1:1 to 21:1. WCAG asks for 4.5:1 for normal text, 3:1 for large text and UI parts, and 7:1 for level AAA.</p>
+<p><strong>Contrast Studio.</strong> The Studio tool for tuning one text and background pair and writing the fix back to your code.</p>
+<p><strong>Custom property.</strong> A CSS variable such as <code>--brand-ink</code>, used with <code>var(--brand-ink)</code>. Often called a design token.</p>
+<p><strong>Design token.</strong> A named value in a design system, such as a colour role. In CSS, usually a custom property.</p>
+<p><strong>Detector version.</strong> The version of the checking engine that produced a finding. Findings are fingerprinted with it.</p>
+<p><strong>Diagnostic.</strong> A problem VS Code shows as an underline in the editor and a row in the Problems panel.</p>
+<p><strong>Directive.</strong> A special comment the Studio reads, such as <code>auric-disable-next-line</code> or <code>auric-brand-line</code>.</p>
+<p><strong>Display-P3.</strong> A colour space with a wider range of colours than standard sRGB, used by many modern screens.</p>
+<p><strong>Extension pack.</strong> A VS Code extension that only installs other extensions. The Full Pack is one.</p>
+<p><strong>Fingerprint.</strong> A short identifier calculated from a finding&#39;s source, rule, file, line and key detail, used to match findings between runs.</p>
+<p><strong>Gamut mapping.</strong> Bringing a colour that a screen cannot show (outside its gamut) to the nearest colour it can show. The Studio uses the CSS Color 4 method.</p>
+<p><strong>Grade.</strong> The letter for a score: A+ (95+), A (90+), B (80+), C (70+), D (55+), F (below 55).</p>
+<p><strong>Health record.</strong> The <code>health.json</code> file: a versioned, fingerprinted list of every issue with scores and a summary.</p>
+<p><strong>Host.</strong> In a Workstation, the one installed extension that presents the shared sidebar, Command Center and Studio.</p>
+<p><strong>Hue-preserving fix.</strong> A contrast fix that changes only a colour&#39;s lightness, keeping its hue and chroma, so it still looks like the same colour family.</p>
+<p><strong>Impact.</strong> How much a WCAG finding affects users: critical, serious, moderate or minor.</p>
+<p><strong>Inspect.</strong> The Auric Accessibility hover card that shows an element&#39;s or CSS rule&#39;s name, role, colours, contrast and WCAG findings.</p>
+<p><strong>Knowledge database.</strong> The local, searchable collection of rules, requirements, manual checks, policies, articles, glossary entries and sources.</p>
+<p><strong>Large text.</strong> Text of at least 24 CSS pixels, or at least 18.66 pixels and bold. WCAG lets it use a lower contrast target.</p>
+<p><strong>Lc.</strong> APCA&#39;s lightness contrast value. The Studio&#39;s default APCA target is Lc 60.</p>
+<p><strong>Live re-grade.</strong> Updating the project score as you type, from files held in memory, without a scan.</p>
+<p><strong>Manual check.</strong> A step-by-step test a person carries out, for what automation cannot decide.</p>
+<p><strong>OKLCH.</strong> A colour model with lightness (L), chroma (C, colourfulness) and hue (H) designed so equal steps look equally different. The Studio uses it for shade scales.</p>
+<p><strong>Overview.</strong> The Studio&#39;s home view in the sidebar.</p>
+<p><strong>Priority.</strong> A 0–100 number in issue hovers that ranks how soon to act on a finding, from <strong>fix now</strong> to <strong>low urgency</strong>.</p>
+<p><strong>Project scan.</strong> Reading and grading every matching file in the workspace.</p>
+<p><strong>Quick fix.</strong> A VS Code code action offered with <code>Ctrl</code> + <code>.</code> on an underline, such as <strong>Fix contrast</strong>.</p>
+<p><strong>Redaction.</strong> Replacing a detected secret with a placeholder such as <code>[redacted secret; 40 characters]</code> so the secret itself is never stored.</p>
+<p><strong>Remediation plan.</strong> The agent-ready backlog of fixes written by <strong>Generate Agent-Ready Remediation Plan</strong>.</p>
+<p><strong>Rulebook.</strong> A structured collection of rules and guidance in the knowledge database, such as the Accessibility engineering rulebook.</p>
+<p><strong>SARIF (Static Analysis Results Interchange Format).</strong> A standard JSON format for analysis results, read by GitHub code scanning and other tools.</p>
+<p><strong>Scan cache.</strong> The saved result of the last project scan, <code>scan-cache.json</code>.</p>
+<p><strong>Score.</strong> A 0–100 number where 100 means nothing was found.</p>
+<p><strong>Severity.</strong> How serious a finding is in a record or report: critical, high, medium, low or info.</p>
+<p><strong>Signature.</strong> One specific code-health detector, such as <code>ch-secret-github-token</code>.</p>
+<p><strong>Space.</strong> A section of the Studio tab listed on its rail, such as Home, Color or Check.</p>
+<p><strong>sRGB.</strong> The standard colour space of the web and most screens.</p>
+<p><strong>Static analysis.</strong> Checking code by reading its text, without running it.</p>
+<p><strong>Studio.</strong> The editor tab with the Studio&#39;s larger tools, organised in spaces.</p>
+<p><strong>Success criterion.</strong> A single testable requirement in WCAG, such as 1.4.3 Contrast (Minimum). Each has a level: A, AA or AAA.</p>
+<p><strong>Suppression.</strong> Removing a finding with an <code>auric-disable-…</code> comment.</p>
+<p><strong>Suppressed extension.</strong> In a Workstation, an installed extension that is not the host and hides its own views.</p>
+<p><strong>Swatch.</strong> A small square of colour. The Studio draws one before each colour literal and shows rows of them in pickers.</p>
+<p><strong>WCAG (Web Content Accessibility Guidelines).</strong> The W3C&#39;s accessibility standard. Versions 2.0, 2.1 and 2.2 are recommendations; WCAG 3 is a working draft.</p>
+<p><strong>Workstation.</strong> Two or three Studio extensions installed together and presented as one product.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="shortcuts.html"><span>Previous</span>Shortcuts</a><a href="limits-and-accuracy.html"><span>Next</span>Limits and accuracy</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

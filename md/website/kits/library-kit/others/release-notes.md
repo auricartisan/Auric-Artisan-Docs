@@ -1,0 +1,28 @@
+---
+title: Library Kit — Release notes
+description: What the public changelog records about the library, and what the Library Kit contains as of September 2026.
+product: Website › Kits › Library Kit
+updated: 2026-09-25
+---
+
+# Library Kit release notes
+
+The website's public release history is at https://auricartisan.com/library/changelog/ and https://auricartisan.com/company/timeline/. It does not list the Library Kit by name.
+
+## Recorded releases
+
+| Release | Date | What the public history says |
+|---|---|---|
+| v0.9.9 | 5 June 2026 | Improved consistency across "reusable library surfaces" and fixed library behaviour bugs, alongside new public library areas |
+
+## The Library Kit as of 24 September 2026
+
+- The library opens as a floating kit panel on every page, from the **Library** launcher, the header **Library** button, `Ctrl` + `Shift` + `L`, `#library` links, or https://auricartisan.com/library/workspace/, which now opens the panel rather than a separate workspace page.
+- Tabs for All, Recent, Favorites, Projects, Collections, Archive, Compare, Settings and each saved type.
+- Search, a `>` command palette, sorting, grouping by project or type, grid and list views, density and filters.
+- Right-click menus for items and for the panel, multi-select with bulk actions, and drag-and-drop import.
+- Compare and Settings work inside the panel rather than in separate windows.
+- Share links, per-item downloads in nine formats, library backups, reports in seven formats and optional sync to your own endpoints.
+- Shared kit controls in a **Panel options** menu, with **Reset position** and keyboard moving.
+
+Changes not recorded in the public history are not listed here.

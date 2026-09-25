@@ -1,0 +1,307 @@
+==============================================================================
+DESIGN TOKENS AND PERSONALISATION
+==============================================================================
+Generate a contrast-checked design-token system from one colour, export it for
+ten platforms, and run the brief-driven palette search and design-system
+generator.
+Area: Services › Public API   Updated: 2026-09-25
+
+DESIGN TOKENS
+=============
+
+POST /v1/tokens/generate
+------------------------
+
+Turn one seed colour into a complete, contrast-checked token system. 2–4
+credits. Ramps are stepped in OKLCH so every hue is perceptually even, chroma
+follows a gamut-aware envelope so the light and dark ends stay distinct, and
+foreground roles are measured: `--color-on-primary` is whichever of white or
+ink actually clears 4.5:1.
+
+  Field:       `seed`
+  Type:        colour
+  Required:    Yes
+  Description: The seed colour
+
+  Field:       `name`
+  Type:        string
+  Required:    No
+  Description: System name used in file headers
+
+  Field:       `harmony`
+  Type:        string
+  Required:    No
+  Description: `analogous` (default), `complementary`, `triadic` or `mono`
+
+  Field:       `include`
+  Type:        string array
+  Required:    No
+  Description: Any of `color`, `space`, `radius`, `type`. Default all.
+
+  Field:       `dark`
+  Type:        boolean
+  Required:    No
+  Description: Include dark-mode roles. Default `true`.
+
+Returns `meta`, `contrast`, `out_of_gamut` and `tokens`.
+
+    curl -X POST "https://api.auricartisan.com/v1/tokens/generate" \
+      -H "x-api-key: $AURIC_API_KEY" \
+      -H "content-type: application/json" \
+      -d '{"seed":"#c9a227","name":"Auric","harmony":"analogous"}'
+
+POST /v1/tokens/export
+----------------------
+
+Render a token deck for a platform. There are ten targets, from CSS custom
+properties to Jetpack Compose.
+
+  Field:       `tokens`
+  Type:        array
+  Required:    Yes
+  Description: Objects of `{ name, value, group? }`: the `tokens` array from
+               generate, or your own
+
+  Field:       `format`
+  Type:        string
+  Required:    Yes
+  Description: See `/v1/tokens/formats`
+
+  Field:       `name`
+  Type:        string
+  Required:    No
+  Description: System name for the file header
+
+  Field:       `raw`
+  Type:        boolean
+  Required:    No
+  Description: `true` returns the file itself, as a download, instead of a
+               JSON envelope
+
+    curl -X POST "https://api.auricartisan.com/v1/tokens/export" \
+      -H "x-api-key: $AURIC_API_KEY" \
+      -H "content-type: application/json" \
+      -d '{"format":"css","tokens":[{"name":"--color-primary","value":"#c9a227"}]}'
+
+GET /v1/tokens/formats
+----------------------
+
+The ten token export targets.
+
+PERSONALISATION
+===============
+
+These endpoints drive the palette search behind the website's personalisation
+generator. A brief combines seed colours, style keys, an intent and weights.
+
+GET /v1/personalize/vocabulary
+------------------------------
+
+Everything a brief may name, with the ranges the engine really applies: the 18
+style profiles with their chroma, lightness and saturation windows, the five
+intents, the 19 hue relationships and their offsets, the 17 type systems, and
+the gradient and poster catalogues. Read it before writing a brief. Returns
+`styles`, `intents`, `relationships`, `type_systems` and `limits`.
+
+GET /v1/personalize/presets
+---------------------------
+
+The 17 briefs the tool ships, in request shape; each can be posted straight to
+the endpoints below. Returns `count` and `presets`.
+
+POST /v1/personalize/pool
+-------------------------
+
+Grow a working set of colours from seeds and a brief. The search works within
+this pool. The response also returns the brief resolved to numbers.
+
+  Field:       `colors`
+  Type:        string array
+  Required:    No
+  Description: Seed colours, up to 64. Defaults to the tool's own eight.
+
+  Field:       `styles`
+  Type:        string array
+  Required:    No
+  Description: Style keys from the vocabulary
+
+  Field:       `intent`
+  Type:        string
+  Required:    No
+  Description: `ui` (default), `brand`, `poster`, `editorial` or `dashboard`
+
+  Field:       `target`
+  Type:        integer
+  Required:    No
+  Description: Pool size, 1–240. Default 64.
+
+  Field:       `warmth`
+  Type:        number
+  Required:    No
+  Description: 0–100. Default 52.
+
+  Field:       `seed`
+  Type:        integer
+  Required:    No
+  Description: Omit for a random one; it is always returned
+
+Returns `brief`, `pool` and `profile`.
+
+    curl -X POST "https://api.auricartisan.com/v1/personalize/pool" \
+      -H "x-api-key: $AURIC_API_KEY" \
+      -H "content-type: application/json" \
+      -d '{"colors":["#0F172A","#D3AF37"],"styles":["luxe","editorial"],"target":24}'
+
+POST /v1/personalize/score
+--------------------------
+
+Rank a palette you already have on the search's six scores: preference,
+harmony, diversity, contrast, style fit and accessibility. Omit `relationship`
+and every hue geometry is tried, with the best fit reported.
+
+  Field:       `palette`
+  Type:        string array
+  Required:    Yes
+  Description: 2–12 colours
+
+  Field:       `relationship`
+  Type:        string
+  Required:    No
+  Description: A relationship id to measure against
+
+  Field:       `styles`
+  Type:        string array
+  Required:    No
+  Description: The brief it is judged for
+
+  Field:       `intent`
+  Type:        string
+  Required:    No
+  Description: One of the five intents
+
+  Field:       `accessibility`
+  Type:        number
+  Required:    No
+  Description: 0–100, how hard accessibility is weighted. Default 72.
+
+Returns `score`, `measured_as`, `best_pair` and `alternatives`.
+
+POST /v1/personalize/palettes
+-----------------------------
+
+Search: N candidates in, the best K out, each with its breakdown. The response
+reports what the sweep did: how many candidates were sampled, how many
+survived de-duplication and where the cut fell. Contrast and colour vision are
+weights in the score, not filters, so a candidate that reads badly is ranked
+down rather than removed.
+
+  Field:       `colors`, `styles`, `intent`
+  Type:        —
+  Required:    No
+  Description: The brief
+
+  Field:       `note`
+  Type:        string
+  Required:    No
+  Description: Free text, matched against curated colour memories
+
+  Field:       `depth`
+  Type:        integer
+  Required:    No
+  Description: Candidates to sample, 8–1200. Default 320.
+
+  Field:       `keep`
+  Type:        integer
+  Required:    No
+  Description: How many to return, 1–120. Default 24.
+
+  Field:       `palette_size`
+  Type:        integer
+  Required:    No
+  Description: Colours per palette, 5–12. Default 6.
+
+  Field:       `diversity`
+  Type:        number
+  Required:    No
+  Description: 0–100. Default 68.
+
+  Field:       `accessibility`
+  Type:        number
+  Required:    No
+  Description: 0–100. Default 72.
+
+  Field:       `cvd_safe`
+  Type:        boolean
+  Required:    No
+  Description: Weight colour-vision separation. Default `true`.
+
+  Field:       `unique`
+  Type:        boolean
+  Required:    No
+  Description: Drop repeated signatures. Default `true`.
+
+  Field:       `seed`
+  Type:        integer
+  Required:    No
+  Description: The same seed and brief always give the same result
+
+Returns `brief`, `sweep` and `palettes`.
+
+    curl -X POST "https://api.auricartisan.com/v1/personalize/palettes" \
+      -H "x-api-key: $AURIC_API_KEY" \
+      -H "content-type: application/json" \
+      -d '{"colors":["#0F172A","#D3AF37"],"styles":["luxe","editorial"],"intent":"brand","depth":400,"keep":12}'
+
+POST /v1/personalize/system
+---------------------------
+
+One brief in, a design system out: the sweep, then from its leading palette,
+gradients, type pairings, UI colour pairs with WCAG and APCA measured, poster
+compositions, and a token deck with tonal ramps, light, dark and high-contrast
+themes and a contrast matrix. `include` trims both the response and the work.
+
+  Field:       `colors`, `styles`, `intent`
+  Type:        —
+  Required:    No
+  Description: The brief
+
+  Field:       `include`
+  Type:        string array
+  Required:    No
+  Description: Any of `palettes`, `gradients`, `typography`, `ui_pairs`,
+               `posters`, `tokens`. Default all.
+
+  Field:       `derived`
+  Type:        integer
+  Required:    No
+  Description: Palettes each derived section covers, 1–24. Default 8.
+
+  Field:       `depth`
+  Type:        integer
+  Required:    No
+  Description: Candidates to sample, 8–1200. Default 320.
+
+  Field:       `keep`
+  Type:        integer
+  Required:    No
+  Description: Palettes to keep, 1–120. Default 24.
+
+  Field:       `seed`
+  Type:        integer
+  Required:    No
+  Description: Omit for a random one; it is always returned
+
+Returns `leader`, `palettes`, `gradients`, `typography`, `ui_pairs`, `posters`
+and `tokens`.
+
+    curl -X POST "https://api.auricartisan.com/v1/personalize/system" \
+      -H "x-api-key: $AURIC_API_KEY" \
+      -H "content-type: application/json" \
+      -d '{"colors":["#0F172A","#D3AF37"],"styles":["tech","minimal"],"intent":"ui","include":["tokens","ui_pairs"]}'
+
+RELATED PAGES
+=============
+
+  - Palettes, harmonies, gradients and shades
+    [palettes-harmonies-gradients-shades.txt]
+  - Accessibility [accessibility.txt]

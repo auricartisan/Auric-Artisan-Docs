@@ -1,0 +1,60 @@
+---
+title: Chromatic Adaptation — Glossary
+description: Plain-language definitions of the terms used in the Chromatic Adaptation lab.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Chromatic Adaptation glossary
+
+**Adaptation time course** — how the degree of adaptation grows after the light changes. The lab uses a fast and a slow exponential phase.
+
+**Bradford transform** — a CAT whose cone-like matrix comes from Lam (1985). The usual choice in ICC colour management.
+
+**CAT02** — the CAT inside the CIECAM02 colour appearance model (CIE 159:2004).
+
+**CAT16** — the CAT inside the CAM16 colour appearance model (Li et al., 2017).
+
+**Chromatic adaptation** — the visual system's adjustment to the colour of the light, keeping surface colours roughly stable.
+
+**Chromatic adaptation transform (CAT)** — a formula that converts a colour under one white point into the corresponding colour under another: X′ = M⁻¹ · diag(d) · M · X.
+
+**CIEDE2000 (ΔE₀₀)** — the CIE colour-difference formula (CIE 142:2001). Around 1 is a just-noticeable difference for many viewers.
+
+**CIELAB (L\*a\*b\*) and L\*C\*h°** — a colour space with lightness L*, and either a*, b* or chroma C* and hue angle h°. Values depend on the reference white.
+
+**CMCCAT2000** — a CAT published by Li, Luo, Rigg and Hunt (2002).
+
+**Condition number, cond(M)** — how much a matrix can stretch a small difference. The lab shows it as a description, not a quality score.
+
+**Cone-like space (LMS)** — the space a CAT matrix M maps XYZ into, roughly representing the long-, medium- and short-wavelength cone responses.
+
+**Corresponding colours** — pairs of colours that look the same under two different lights, measured in experiments. They are needed to rank CATs for accuracy; the lab does not hold them.
+
+**Degree of adaptation (D)** — how complete adaptation is, from 0 (none) to 1 (complete).
+
+**Destination illuminant** — the light you adapt to.
+
+**Determinant, det(M)** — a single number describing how a matrix scales volume. Shown in the comparison as a diagnostic.
+
+**diag(d)** — the three cone gains, d = 1 + D × (destination ÷ source − 1) for each channel.
+
+**Frobenius norm, ‖M‖F** — the overall size of a matrix's entries. Shown as a diagnostic.
+
+**HPE (Hunt–Pointer–Estévez)** — a classic cone-response matrix. The lab's Von Kries option is HPE normalised to D65.
+
+**Reinhard tone mapping** — the curve c ÷ (1 + c), which compresses values above 1 smoothly. Used by the **HDR Tonemap** option.
+
+**Round trip** — multiplying a matrix by its inverse should give the identity; the largest error shows how exact the inverse is.
+
+**Sharp transform** — a CAT with a spectrally sharpened matrix (Finlayson and Süsstrunk, 2000).
+
+**Source illuminant** — the light the colours are originally expressed under.
+
+**Spectral power distribution (SPD)** — the relative power of a light at each wavelength.
+
+**von Kries adaptation** — the principle that each cone type adjusts its gain independently. All eight transforms use it.
+
+**White point** — the chromaticity of the reference white, such as D65 (x 0.3127, y 0.3290).
+
+**XYZ scaling** — the simplest adaptation, scaling X, Y and Z directly. A baseline, not a model of the eye.

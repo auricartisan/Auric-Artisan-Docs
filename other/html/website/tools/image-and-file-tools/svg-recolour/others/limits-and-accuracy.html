@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What SVG Recolour finds and writes, how precise its figures are, and what it does not hold.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; SVG Recolour</a>
+<h2>SVG Recolour background material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="glossary.html">SVG Recolour glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">SVG Recolour</a> &rsaquo; <a href="README.html">SVG Recolour background material</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › SVG Recolour</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What SVG Recolour finds and writes, how precise its figures are, and what it does not hold.</p>
+<h2 id="what-is-found-and-written">What is found and written</h2>
+<ul>
+<li>Eight paint properties: <code>fill</code>, <code>stroke</code>, <code>stop-color</code>, <code>flood-color</code>, <code>lighting-color</code>, <code>color</code>, <code>solid-color</code> and <code>text-decoration-color</code>.</li>
+<li>In presentation attributes, style attributes and <code>&lt;style&gt;</code> elements.</li>
+<li>Colours written as hex (with or without alpha), shorthand hex, <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, <code>hsla()</code> and all 148 CSS names.</li>
+<li>The count beside each colour is the number of occurrences, and the written count is the number actually rewritten. The colour list, the <strong>Mapping</strong> tab, the report and the exported file all use the same list, so they always agree.</li>
+<li>Every change is planned from the original file before anything is written, so no change can be caught by another.</li>
+</ul>
+<h2 id="what-is-not-found-or-not-changed">What is not found or not changed</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td><code>currentColor</code> and other inherited keywords</td><td>Counted and left alone; the colour comes from outside the file</td></tr>
+<tr><td><code>none</code>, <code>transparent</code>, <code>url()</code> references</td><td>Counted and left alone</td></tr>
+<tr><td>Colours in other CSS functions or variables (<code>oklch()</code>, <code>lab()</code>, <code>var()</code>)</td><td>Not recognised, not counted, not changed</td></tr>
+<tr><td>Embedded raster images</td><td>Not read; their pixels are not changed</td></tr>
+<tr><td>Colours set by CSS outside the file</td><td>Not visible to the tool</td></tr>
+</tbody></table></div>
+<h2 id="precision-and-choices">Precision and choices</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Colour values</td><td>Parsed to 8-bit sRGB; an unrecognised value is never guessed as black</td></tr>
+<tr><td>Alpha</td><td>Kept for <code>rgba()</code> and <code>hsla()</code> with <strong>Keep the source form</strong>; lost for hex with alpha when changed</td></tr>
+<tr><td>Three-digit hex</td><td>Written back as six digits</td></tr>
+<tr><td>Grouping</td><td>Only identical colours share a row; near-identical colours are kept apart</td></tr>
+<tr><td>Colour names</td><td>The nearest CSS name by CIEDE2000, prefixed &quot;near&quot;; a label, not a classification</td></tr>
+<tr><td>Harmony angles</td><td>A colour-wheel convention, applied in OKLCH with lightness and chroma kept</td></tr>
+<tr><td>Contrast</td><td>WCAG 2.2 ratio, exact; APCA-W3 0.1.9 with all its constants</td></tr>
+<tr><td>CIEDE2000</td><td>ISO/CIE 11664-6:2014, agreeing with published test data to within 0.00004</td></tr>
+<tr><td>Colour-vision simulation</td><td>Machado, Oliveira and Fernandes (2009), full severity, in linear light; no milder forms</td></tr>
+</tbody></table></div>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>One file at a time; there is no batch mode.</li>
+<li>The previews have active content removed; the exported file does not.</li>
+<li>Only the <code>&lt;svg&gt;</code> element is exported: anything before it, such as an XML declaration or DOCTYPE, is not carried across, and the browser may normalise small formatting details.</li>
+<li>Nothing is stored between visits.</li>
+</ul>
+<h2 id="what-it-is-not">What it is not</h2>
+<p>SVG Recolour changes colour values in the markup. It does not edit shapes, text or structure, does not sanitise files for publishing, and does not judge whether a palette is attractive.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>SVG Recolour glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-found-and-written">What is found and written</a></li><li><a href="#what-is-not-found-or-not-changed">What is not found or not changed</a></li><li><a href="#precision-and-choices">Precision and choices</a></li><li><a href="#limits">Limits</a></li><li><a href="#what-it-is-not">What it is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

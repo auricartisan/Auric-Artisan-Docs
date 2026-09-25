@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour answers and filters — Auric Artisan Docs</title>
+<meta name="description" content="Get instant colour and contrast answers in Spotlight, and use field filters, quoted phrases and exclusions.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Search and Spotlight</a>
+<h2>Search and Spotlight guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Get started with Spotlight</a></li>
+<li><a href="colour-answers-and-filters.html" aria-current="page">Colour answers and filters</a></li>
+<li><a href="scopes-and-results.html">Scopes and results</a></li>
+<li><a href="reference.html">Spotlight reference</a></li>
+<li><a href="commands.html">Commands</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Spotlight</a></li>
+<li><a href="faq.html">Spotlight FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Site features</a> &rsaquo; <a href="../README.html">Search and Spotlight</a> &rsaquo; <a href="README.html">Search and Spotlight guides</a></nav>
+<p class="kicker">Website › Site features › Search and Spotlight</p>
+<h1>Colour answers and filters</h1>
+<p class="lede">Get instant colour and contrast answers in Spotlight, and use field filters, quoted phrases and exclusions.</p>
+<p>Spotlight reads what you type and, for some kinds of query, answers directly. A small <strong>mode chip</strong> at the start of the search box says how it read your query.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>You type</th><th>Chip</th><th>What Spotlight does</th></tr></thead>
+<tbody>
+<tr><td>Ordinary words</td><td>none</td><td>Searches the site</td></tr>
+<tr><td>One hex colour, such as <code>#2f5eaa</code></td><td><strong>Colour</strong></td><td>Shows the colour&#39;s values in the preview</td></tr>
+<tr><td>Two hex colours, such as <code>#ffffff #2f5eaa</code></td><td><strong>Contrast pair</strong></td><td>Judges the pair against WCAG in the preview</td></tr>
+<tr><td><code>&gt;</code> followed by anything</td><td><strong>Command</strong></td><td>Lists commands (see <a href="commands.html">Commands</a>)</td></tr>
+<tr><td>A field filter such as <code>title:gamut</code></td><td><strong>title:gamut</strong></td><td>Searches only that field</td></tr>
+</tbody></table></div>
+<h2 id="read-a-colour">Read a colour</h2>
+<ol>
+<li>Open Spotlight and type a colour as <code>#</code> and six hex digits, for example <code>#2f5eaa</code>, with nothing else.</li>
+<li>The chip reads <strong>Colour</strong>. The preview pane shows:<ul>
+<li>a swatch of the colour with its OKLCH value;</li>
+<li><strong>Hex</strong>, <strong>RGB</strong>, <strong>On black</strong> and <strong>On white</strong> (the WCAG contrast ratio of the colour against black and against white);</li>
+<li>a link, <strong>Check it against a background</strong>, which opens the Contrast Checker with this colour.</li>
+</ul>
+</li>
+<li>The list shows <strong>Pages that mention it</strong> (up to three pages whose text contains that hex code), or the note &quot;Nothing in the index mentions this colour by name — the answer is on the right.&quot;</li>
+</ol>
+<h2 id="check-a-colour-pair">Check a colour pair</h2>
+<ol>
+<li>Type two hex colours, for example <code>#ffffff #2f5eaa</code>. The first is treated as the text colour and the second as the background.</li>
+<li>The chip reads <strong>Contrast pair</strong>. The preview pane shows:<ul>
+<li>two swatches with &quot;Aa&quot; drawn in each colour on the other;</li>
+<li>the contrast ratio;</li>
+<li>three verdicts: <strong>AA body</strong> (pass or fail at 4.5), <strong>AAA body</strong> (7.0) and <strong>AA large</strong> (3.0);</li>
+<li><strong>Open in the checker</strong>, which opens the Contrast Checker with both colours.</li>
+</ul>
+</li>
+</ol>
+<p>Only six-digit hex codes with a <code>#</code> are recognised. Three-digit codes, colour names and other formats are searched as text.</p>
+<h2 id="field-filters">Field filters</h2>
+<p>Start the query with a field name and a colon to search one part of each page:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Filter</th><th>Searches</th></tr></thead>
+<tbody>
+<tr><td><code>title:</code></td><td>Page titles</td></tr>
+<tr><td><code>desc:</code></td><td>Page descriptions</td></tr>
+<tr><td><code>tag:</code></td><td>Page tags</td></tr>
+<tr><td><code>path:</code></td><td>Page addresses, for example <code>path:/tool/</code></td></tr>
+<tr><td><code>type:</code></td><td>The kind of content</td></tr>
+<tr><td><code>category:</code></td><td>The page category</td></tr>
+</tbody></table></div>
+<p>Put a phrase in quotes after the colon to match it exactly, for example <code>title:&quot;colour vision&quot;</code>. The chip shows the filter you used.</p>
+<h2 id="phrases-and-exclusions">Phrases and exclusions</h2>
+<ul>
+<li>Put words in double quotes to require that exact phrase: <code>&quot;contrast ratio&quot;</code>.</li>
+<li>Put a minus sign before a word to leave out pages that contain it: <code>palette -gradient</code>.</li>
+</ul>
+<p>These work in the full search page too.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Get started with Spotlight</a><a href="scopes-and-results.html"><span>Next</span>Scopes and results</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#read-a-colour">Read a colour</a></li><li><a href="#check-a-colour-pair">Check a colour pair</a></li><li><a href="#field-filters">Field filters</a></li><li><a href="#phrases-and-exclusions">Phrases and exclusions</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

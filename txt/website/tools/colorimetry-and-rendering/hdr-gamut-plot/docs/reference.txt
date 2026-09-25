@@ -1,0 +1,243 @@
+==============================================================================
+HDR GAMUT PLOT REFERENCE
+==============================================================================
+Every control, readout, option and export in the HDR Gamut Plot.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+Address:
+https://auricartisan.com/tool/general/gamut-and-rendering/hdr-gamut-plot/
+
+LAB TAB
+=======
+
+  Control:      Working colour space
+  What it does: Shown on the page, but in the current version it does not
+                change the diagram or figures
+  Values:       sRGB / Rec.709 (BT.709); Display-P3 (D65); Rec.2020 (BT.2020)
+  Default:      Rec.2020
+
+  Control:      Overlay gamuts
+  What it does: Shows or hides each triangle (also used by the Planes tab)
+  Values:       Rec.709 / sRGB, Display-P3, Rec.2020
+  Default:      All on
+
+  Control:      Spectral locus
+  What it does: Draws the locus
+  Values:       On or off
+  Default:      On
+
+  Control:      Line of purples
+  What it does: Draws the straight edge of the locus
+  Values:       On or off
+  Default:      On
+
+  Control:      ICtCp marker
+  What it does: Shown, but draws nothing in the current version
+  Values:       On or off
+  Default:      Off
+
+  Control:      Chromaticity axes
+  What it does: The diagram's plane
+  Values:       CIE 1931 xy; CIE 1976 u′v′
+  Default:      CIE 1931 xy
+
+  Control:      Standard observer
+  What it does: Shown, but the locus is always the CIE 1931 2° observer's
+  Values:       CIE 1931 2° (Standard); CIE 2015 10° (Revised)
+  Default:      CIE 1931 2°
+
+  Control:      Drop a PNG or JPEG
+  What it does: Opens a file picker and measures the image's gamut occupancy
+  Values:       Image files; reduced to at most 1,024 pixels a side
+  Default:      —
+
+  Readout:       Gamut chromaticity diagram
+  What it shows: The triangles, locus, purples line and D65 marker; the axis
+                 name is shown over it
+
+  Readout:       Hover line
+  What it shows: Coordinates, XYZ at Y = 0.35, L*, and I, Ct, Cp at the PQ
+                 luminance of the Signal level
+
+  Readout:       Gamut metrics
+  What it shows: Space, Primaries, White, Share of locus, Area, in the plane
+                 on screen
+
+  Readout:       Image results
+  What it shows: Size analysed, pixels sampled, distinct chromaticities,
+                 occupancy of each gamut, and a note
+
+CURVES TAB
+==========
+
+  Control:      Peak brightness
+  What it does: The display peak L_W: scales display-referred curves and sets
+                HLG's system gamma; does not scale PQ
+  Values:       100 to 10,000 nits, step 50
+  Default:      1000
+
+  Control:      Tone curve
+  What it does: The curve drawn and used for the Signal level
+  Values:       Gamma 2.2 (SDR); Gamma 2.4 (BT.1886, zero black); PQ
+                (ST.2084); HLG (BT.2100)
+  Default:      PQ
+
+  Control:      HLG environment
+  What it does: Surround factor for HLG's system gamma
+  Values:       Reference dark (×1); Dim surround (×0.95); Bright surround
+                (×0.90)
+  Default:      Reference dark
+
+  Control:      Signal level
+  What it does: A signal value to convert to absolute luminance
+  Values:       0 to 1, step 0.01
+  Default:      0.5
+
+  Readout:       γsys
+  What it shows: HLG system gamma at the current peak and surround
+
+  Readout:       Surround note
+  What it shows: Whether the HLG reading is BT.2100's own or adjusted
+
+  Readout:       I =
+  What it shows: The ICtCp intensity of the signal's absolute luminance
+
+  Readout:       Tone curve output
+  What it shows: Signal against cd/m² (log), with a peak label
+
+  Readout:       Curve rows
+  What it shows: One per curve, tagged Absolute, Display-referred or Adjusted,
+                 with its defining document and details
+
+  Readout:       EOTF Comparison — PQ vs HLG vs sRGB
+  What it shows: All three on one log-nits axis, drawn at page load
+
+PLANES TAB
+==========
+
+  Control:      Perceptual plane
+  What it does: The space for the plane and rings
+  Values:       ICtCp (Ct–Cp); JzAzBz (Az–Bz)
+  Default:      ICtCp
+
+  Control:      Tone mapping operator
+  What it does: Shown, but does not change any plot in the current version
+  Values:       Reinhard; Hable (Filmic); ACES Filmic; Uchimura (Gran Turismo)
+  Default:      Reinhard
+
+  Control:      Boundary rings
+  What it does: Key to the eight ring levels
+  Values:       0.1, 1, 10, 100, 500, 1k, 4k, 10k nits
+  Default:      —
+
+  Readout:       Plane
+  What it shows: Gamut boundaries at the Signal level's absolute luminance
+
+  Readout:       Boundary rings by luminance
+  What it shows: Boundaries at the eight levels for each gamut switched on in
+                 the Lab
+
+DATA TAB
+========
+
+  Dataset                                      | Status
+  ---------------------------------------------+--------------------------------------
+  Primaries and white, 3 spaces                | Verbatim
+  Spectral locus (65 xy pairs, 380–700 nm)     | Verbatim
+  PQ transfer (ST 2084 constants as rationals) | Verbatim
+  ICtCp matrices (BT.2100)                     | Verbatim
+  HLG transfer (with the OOTF)                 | Computed
+  JzAzBz (Safdar et al. 2017, own quantiser)   | Computed
+  Gamut area and share                         | Computed
+  Tone-mapping operators (four curves)         | Computed
+  HLG surround factor                          | Synthesised (this tool's own)
+  Image luminance                              | Absent: 8-bit PNG and JPEG carry none
+
+Status chips filter the list. Install a table ("Drop a CSV or JSON") does not
+load files in the current version.
+
+EXPORT TAB
+==========
+
+  Control:      What to take
+  What it does: The measurements, The curve, The diagram, The curve plot, The
+                plane, A link to this view
+
+  Control:      As
+  What it does: Only the formats that fit (below)
+
+  Control:      Download (names the file)
+  What it does: Saves it; for the link, copies it
+
+  Control:      Copy to clipboard
+  What it does: Copies text payloads
+
+  Control:      Exactly what you will get
+  What it does: Preview of the payload and its size
+
+  Control:      Convert a list, Convert to ICtCp, Download the result
+  What it does: HEX conversion; the last button copies the result as CSV
+
+  Control:      The three spaces, side by side
+  What it does: Bar chart and table of Area, Share of locus and White
+
+  Choice: The measurements
+  Format: CSV
+  File:   `hdr-gamut.csv`: Space, Plane, Red x, Red y, Green x, Green y, Blue
+          x, Blue y, White x, White y, Area, Locus share %, plus a footer
+          naming the locus area, plane and observer
+
+  Choice: The measurements
+  Format: JSON
+  File:   `hdr-gamut.json`: per space label, primaries, white point, plane,
+          area and locus share, and a `_meta` block (axes, peak, curve, locus
+          area, observer, locus points)
+
+  Choice: The measurements
+  Format: CSS
+  File:   `hdr-gamut.css`: custom properties such as
+          `--gamut-rec2020-locus-share`, `--gamut-rec2020-area`, the R, G and
+          B primaries, `--gamut-plane`, `--gamut-locus-area`,
+          `--hdr-peak-nits` and `--hdr-curve-type`
+
+  Choice: The curve
+  Format: CSV
+  File:   `hdr-curve-<curve>.csv`: 257 rows of signal and nits, with a footer
+
+  Choice: The diagram
+  Format: PNG
+  File:   `hdr-gamut-diagram.png`
+
+  Choice: The curve plot
+  Format: PNG
+  File:   `hdr-tone-curve.png`
+
+  Choice: The plane
+  Format: PNG
+  File:   `hdr-perceptual-plane.png`
+
+  Choice: A link to this view
+  Format: Link
+  File:   A URL with `axes`, `peak`, `curve` and `mode` (the perceptual plane)
+
+REFERENCE TAB
+=============
+
+  Control                                        | What it does
+  -----------------------------------------------+-----------------------------------
+  Standards, Formulas, Citations, Research notes | Switch sections
+  Filter                                         | Searches all four; `Esc` clears it
+
+Standards: ITU-R BT.2020, BT.2100, SMPTE ST 2084, ARIB STD-B67, ICtCp, Jzazbz,
+BT.709 and sRGB, and Display P3. Formulas: PQ, HLG OETF and OOTF, ICtCp,
+Jzazbz, gamut area and locus share, four tone-mapping operators, and xy/u′v′
+conversion. Citations: 17 references. Research notes explain why a file has no
+nits, occupancy against coverage, the single locus denominator, absolute
+against display-referred curves, the surround factor, the two quantisers, and
+what "ACES" means here.
+
+SAVE TO LIBRARY
+===============
+
+The floating Save to Library button stores a snapshot of the diagram in your
+Auric Artisan Library.

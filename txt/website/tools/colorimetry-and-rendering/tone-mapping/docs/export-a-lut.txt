@@ -1,0 +1,89 @@
+==============================================================================
+EXPORT A LUT
+==============================================================================
+Export the tone curve as a 1D .cube or CSV, the whole pipeline as a 3D .cube,
+a link to the view, and map a list of colours.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+A LUT (lookup table) stores a colour transform as a table so another program —
+a grading application, a game engine, a video tool — can apply it. A 1D LUT
+maps each channel on its own; a 3D LUT maps every RGB combination and can
+carry cross-channel steps such as saturation, hue and gamut conversion. The
+`.cube` format is the Adobe Cube LUT specification.
+
+STEPS
+=====
+
+  1. Set up the frame on the Lab tab.
+  2. Open Export.
+  3. Under What to take, choose:
+     - The tone curve — step 5 of the pipeline only;
+     - The whole pipeline — all eleven steps;
+     - A link to this view.
+  4. Under As, choose a format: .cube or CSV for the curve; .cube for the
+     pipeline; URL for the link.
+  5. For the tone curve, choose the Input domain: 0 – 1 (default) or 0 – 12.
+     It is written into the file as DOMAIN_MIN and DOMAIN_MAX (or, in the CSV,
+     as the input range).
+  6. Check Exactly what you will get: a preview (long files show the start and
+     end), the size in bytes and the number of lines.
+  7. Read What this file carries, of the eleven steps the viewport ran: a tick
+     or cross for each step. A curve export carries only step 5.
+  8. Select the download button (it names the file) or Copy to clipboard. For
+     a link, the button reads Copy the link.
+
+THE FILES
+=========
+
+  Choice:   Tone curve, .cube
+  File:     `tone-<operator>-curve.cube`
+  Contents: `TITLE "Auric Artisan tone curve"`, comments naming the operator,
+            spaces and exposure and listing the steps not included,
+            `LUT_1D_SIZE 33`, `DOMAIN_MIN 0.0 0.0 0.0`, `DOMAIN_MAX` 1.0 or
+            12.0
+
+  Choice:   Tone curve, CSV
+  File:     `tone-<operator>-curve.csv`
+  Contents: A comment line, `input,output`, then 1,024 rows across the domain
+
+  Choice:   Whole pipeline, .cube
+  File:     `tone-<operator>-pipeline.cube`
+  Contents: `TITLE "Auric Artisan tone map"`, comments, `LUT_3D_SIZE 17`,
+            domain 0 to 1, then 4,913 entries each run through all eleven
+            steps
+
+`<operator>` is the operator's short name, for example `hable`, `reinhard`,
+`aces` (the Narkowicz fit), `uchimura`, `log`, `none` or `custom`.
+
+Use the pipeline cube when you want the file to reproduce the preview: it
+includes the colour-space conversion, white-point adaptation, gamut mapping
+and grade. Use the curve when you only want the tone shape.
+
+THE LINK
+========
+
+The page keeps its address up to date as you work. A link to this view copies
+that address, which records the operator, exposure, source encoding, display
+peak, output encoding and target primaries. Other settings (the grade, working
+space, custom curve and source peak) are not in the link.
+
+MAP A LIST OF COLOURS
+=====================
+
+  1. Under Analyse a list, enter six-digit HEX colours, one per line or
+     separated by commas. (The box's example shows numbers, but only HEX
+     colours are read.)
+  2. Select Analyse. Each colour is treated as a source pixel, decoded with
+     the source encoding you set, and run through the whole pipeline. The
+     table lists #, Source, Mapped and OOG (a warning sign if the colour left
+     the target gamut, a tick if not).
+  3. Select Download the result to save `tone-map-batch.csv` with Index,
+     Source, Mapped and OOG. Run the analysis first, or a message asks you to.
+
+If no HEX values are found, the panel says "No valid hex colours found."
+
+RESULT
+======
+
+You have a `.cube` or CSV file that another application can load, clearly
+labelled with which pipeline steps it contains.

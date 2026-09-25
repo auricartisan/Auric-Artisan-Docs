@@ -1,0 +1,54 @@
+==============================================================================
+RELEASE NOTES
+==============================================================================
+User-facing history of the Visual Pathway tool.
+Area: Website › Tools › Perception and spectral › Neuroscience   Updated: 2026-09-25
+
+The site-wide history is at https://auricartisan.com/library/changelog/. The
+entries below cover what changed for users of this tool.
+
+SEPTEMBER 2026 — REBUILT AS THE VISUAL PATHWAY
+==============================================
+
+The page was rebuilt with six tabs (Lab, Pipeline, Cells, Data, Export,
+Reference). The Pipeline and Cells tabs can show values from the earlier
+version beside the current ones.
+
+Added:
+
+  - Viewing distance and Pixel pitch controls; every frequency is now in
+    cycles per degree, including the V1 Gabor frequency (previously cycles per
+    image).
+  - The Nyquist limit of the grid readout and a warning when the grating is
+    finer than the screen can draw.
+  - Contrast achieved and a note when the requested contrast does not fit in
+    sRGB.
+  - A working scale bar under every map, including a hue wheel for the
+    orientation map and a "flat" label for maps with no variation.
+  - The Test card as a stimulus source.
+  - The cone figure with the published peak wavelengths marked, the L − M peak
+    gap, Published gap and Neutral off-axis readouts, and a cone-table
+    installer on the Data tab.
+  - The Data register with a status for every dataset and model.
+
+Changed:
+
+  - Cone signals are now computed from CIE XYZ, so greys sit at zero on both
+    chromatic channels. This changes all LGN and V4 values and the Export
+    table.
+  - The colour-vision simulation is now applied in cone space and credited to
+    Viénot, Brettel and Mollon (1999).
+  - The opponent axes are no longer called DKL, and the sensitivity curve is
+    no longer credited to Watson and Ahumada; it now peaks at 4 c/deg
+    regardless of pupil size.
+  - Maps are computed in the background, so sliders respond faster.
+
+Removed:
+
+  - The Detection percentage, the spike raster panel and its Poisson option,
+    the dominant-wavelength readout, and two checkboxes that switched nothing.
+
+MAY 2026
+========
+
+  - The Neuroscience User Guide was published in the site documentation.

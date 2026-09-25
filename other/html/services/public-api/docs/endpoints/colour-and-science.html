@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour and colour science — Auric Artisan Docs</title>
+<meta name="description" content="Convert colours, check a contrast ratio, and use the 63-space colour registry, dossiers, Delta E, colour temperature, illuminants and difference metrics.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html" aria-current="page">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Colour and colour science</h1>
+<p class="lede">Convert colours, check a contrast ratio, and use the 63-space colour registry, dossiers, Delta E, colour temperature, illuminants and difference metrics.</p>
+<h2 id="post-v1colorconvert">POST /v1/color/convert</h2>
+<p>Convert one colour between the common spaces. 1 credit. For the full 63-space registry with white-point control, use <code>/v1/science/convert</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>colour</td><td>Yes</td><td><code>#rrggbb</code>, <code>#rgb</code>, <code>rgb(r,g,b)</code>, <code>[r,g,b]</code> or <code>{r,g,b}</code></td></tr>
+<tr><td><code>to</code></td><td>string</td><td>No</td><td>One target space. Omit it to get every common space at once.</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/color/convert&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;color&quot;:&quot;#c9a227&quot;,&quot;to&quot;:&quot;lab&quot;}'</code></pre>
+<h2 id="post-v1colorcontrast">POST /v1/color/contrast</h2>
+<p>The WCAG contrast ratio between two colours, with pass or fail at each level. 1 credit.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>fg</code></td><td>colour</td><td>Yes</td><td>Foreground colour</td></tr>
+<tr><td><code>bg</code></td><td>colour</td><td>Yes</td><td>Background colour</td></tr>
+<tr><td><code>deltaE</code></td><td>number</td><td>No</td><td>Difference formula: 76, 94 or 2000 (the default)</td></tr>
+</tbody></table></div>
+<p>Returns <code>ratio</code> (number), <code>aa</code>, <code>aaa</code> and <code>aa_large</code> (booleans).</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/color/contrast&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;fg&quot;:&quot;#767676&quot;,&quot;bg&quot;:&quot;#ffffff&quot;}'</code></pre>
+<p>For WCAG 2.2 and APCA together, use <a href="accessibility.html"><code>/v1/accessibility/check</code></a>.</p>
+<h2 id="get-v1sciencespaces">GET /v1/science/spaces</h2>
+<p>Every colour space the platform knows, with provenance: sixty-three spaces across RGB working spaces, CIE spaces, perceptual and appearance models, HDR containers, print and video.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>In</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>category</code></td><td>query</td><td>No</td><td><code>rgb</code>, <code>cie</code>, <code>perceptual</code>, <code>cylindrical</code>, <code>appearance</code>, <code>hdr</code>, <code>print</code>, <code>video</code>, <code>order</code> or <code>opponent</code></td></tr>
+<tr><td><code>full</code></td><td>query</td><td>No</td><td><code>true</code> to include matrices, primaries and transfer functions</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/science/spaces?category=perceptual&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="get-v1sciencespaceskey">GET /v1/science/spaces/:key</h2>
+<p>One colour space in full, including its conversion matrices.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>In</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>key</code></td><td>path</td><td>Yes</td><td>For example <code>oklch</code>, <code>display-p3</code> or <code>acescct</code></td></tr>
+</tbody></table></div>
+<p>An unknown key returns <code>404 UNKNOWN_SPACE</code>, and the response suggests near matches.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/science/spaces/oklch&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="post-v1scienceconvert">POST /v1/science/convert</h2>
+<p>Convert a colour into any registry space, or several at once. 1 credit.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>colour</td><td>Yes</td><td>The colour to convert</td></tr>
+<tr><td><code>to</code></td><td>string or string array</td><td>Yes</td><td>One space key, or an array of them</td></tr>
+<tr><td><code>white_point</code></td><td>string</td><td>No</td><td>Reference white; default D65</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/science/convert&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;color&quot;:&quot;#c9a227&quot;,&quot;to&quot;:[&quot;lab&quot;,&quot;oklch&quot;,&quot;display-p3&quot;]}'</code></pre>
+<h2 id="post-v1sciencedossier">POST /v1/science/dossier</h2>
+<p>One colour in every space at once, plus its colour temperature. 5 credits. It is expensive compared with convert: use it when you want everything, not three spaces.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>colour</td><td>Yes</td><td>The colour</td></tr>
+<tr><td><code>white_point</code></td><td>string</td><td>No</td><td>Reference white; default D65</td></tr>
+<tr><td><code>category</code></td><td>string</td><td>No</td><td>Restrict to one category</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/science/dossier&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;color&quot;:&quot;#c9a227&quot;}'</code></pre>
+<h2 id="post-v1sciencedelta-e">POST /v1/science/delta-e</h2>
+<p>The perceptual difference between two colours, 2–4 credits. It returns CIE76, CIE94, CIEDE2000 and CMC together, with a plain-language band. CIEDE2000 is the headline figure and is verified against the Sharma reference set.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>from</code></td><td>colour</td><td>Yes</td><td>First colour</td></tr>
+<tr><td><code>to</code></td><td>colour</td><td>Yes</td><td>Second colour</td></tr>
+<tr><td><code>metric</code></td><td>string</td><td>No</td><td><code>ciede2000</code> (the default headline), <code>cie94</code>, <code>cie76</code>, <code>cmc</code> or <code>all</code></td></tr>
+<tr><td><code>application</code></td><td>string</td><td>No</td><td>CIE94 only: <code>graphic</code> (default) or <code>textile</code></td></tr>
+<tr><td><code>l</code></td><td>number</td><td>No</td><td>CMC lightness weight; default 2</td></tr>
+<tr><td><code>c</code></td><td>number</td><td>No</td><td>CMC chroma weight; default 1</td></tr>
+</tbody></table></div>
+<p>Returns <code>delta_e</code> (number), <code>band</code> (string) and <code>metrics</code> (object).</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/science/delta-e&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;from&quot;:&quot;#c9a227&quot;,&quot;to&quot;:&quot;#d3af37&quot;}'</code></pre>
+<h2 id="post-v1sciencetemperature">POST /v1/science/temperature</h2>
+<p>The correlated colour temperature (CCT) of a colour, or the colour of a temperature. 2–4 credits. Send <code>color</code> to measure or <code>kelvin</code> to render. It always returns Duv alongside the CCT: beyond about ±0.05 the colour is too far from the Planckian locus for a temperature to describe it, and <code>meaningful</code> says so.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>colour</td><td>No</td><td>Measure this colour; not with <code>kelvin</code></td></tr>
+<tr><td><code>kelvin</code></td><td>number</td><td>No</td><td>Render this temperature, 1667–25000 K</td></tr>
+</tbody></table></div>
+<p>Returns <code>cct_kelvin</code> (number), <code>duv</code> (number), <code>meaningful</code> (boolean) and <code>tint</code> (string).</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/science/temperature&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;color&quot;:&quot;#fff5e1&quot;}'</code></pre>
+<h2 id="get-v1scienceilluminants">GET /v1/science/illuminants</h2>
+<p>Standard reference illuminants with their chromaticities.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/science/illuminants&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="get-v1sciencemetrics">GET /v1/science/metrics</h2>
+<p>The difference formulae, their options, and when to use each.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/science/metrics&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="collections.html">Collections</a>, including the colour atlas and nearest-colour search</li>
+<li><a href="../../others/glossary.html">Glossary</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="collections.html"><span>Previous</span>Collections</a><a href="discovery.html"><span>Next</span>Discovery endpoints</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#post-v1colorconvert">POST /v1/color/convert</a></li><li><a href="#post-v1colorcontrast">POST /v1/color/contrast</a></li><li><a href="#get-v1sciencespaces">GET /v1/science/spaces</a></li><li><a href="#get-v1sciencespaceskey">GET /v1/science/spaces/:key</a></li><li><a href="#post-v1scienceconvert">POST /v1/science/convert</a></li><li><a href="#post-v1sciencedossier">POST /v1/science/dossier</a></li><li><a href="#post-v1sciencedelta-e">POST /v1/science/delta-e</a></li><li><a href="#post-v1sciencetemperature">POST /v1/science/temperature</a></li><li><a href="#get-v1scienceilluminants">GET /v1/science/illuminants</a></li><li><a href="#get-v1sciencemetrics">GET /v1/science/metrics</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

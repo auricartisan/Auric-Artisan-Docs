@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Design System Generator calculates, how reliable the audit and score are, and where the output stops.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Design System Generator</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Design System Generator</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Design System Generator calculates, how reliable the audit and score are, and where the output stops.</p>
+<h2 id="what-is-calculated">What is calculated</h2>
+<ul>
+<li>Colours are built in OKLCH and converted to sRGB HEX codes. Steps outside sRGB have their chroma reduced by search until they fit, so no channel is clipped.</li>
+<li>Contrast ratios use the WCAG 2.x relative-luminance formula. Translucent tokens are blended over the surface beneath them before measuring.</li>
+<li>APCA values come from a compact implementation of the APCA formula. APCA is still a draft for WCAG 3, and its values are shown as context, not as a gate.</li>
+<li>Colour-vision previews use simple matrix simulations of deuteranopia, protanopia and tritanopia.</li>
+</ul>
+<h2 id="what-the-audit-covers">What the audit covers</h2>
+<ul>
+<li>Twelve pairings per theme: eight role pairings and the four semantic solids with their labels, each against the requirement for its content.</li>
+<li>A matrix of every foreground role against every surface role.</li>
+</ul>
+<p>It does not cover your layout, font sizes and weights in use, text over images, focus rings on coloured backgrounds, hover and disabled states, or any accessibility requirement beyond colour contrast.</p>
+<h2 id="what-the-score-means">What the score means</h2>
+<p>The score (40 to 100) blends accessibility (55), vibrancy (18), headroom (15) and hierarchy (12), from the light roles only. It is a heuristic for comparing systems, not a quality grade or a compliance result.</p>
+<h2 id="what-the-generator-does-not-do">What the generator does not do</h2>
+<ul>
+<li>It does not know your brand, your audience or your competitors. The page&#39;s own note: <em>Generated, not designed.</em></li>
+<li>Font pairings and icon families are chosen from fixed lists by tag matching.</li>
+<li>Token names are structural (for example <code>primary-600</code>, <code>space-4</code>). Rename them to your product&#39;s vocabulary if you prefer.</li>
+<li>Preview settings in the component playground are never saved, shared or exported.</li>
+<li>Export formats differ in coverage; see <a href="../docs/export-tokens.html">Export tokens</a>.</li>
+<li>Shared links, saved systems and your last visit do not restore the ramp shape or token naming.</li>
+</ul>
+<h2 id="previews-depend-on-the-network">Previews depend on the network</h2>
+<p>Font specimens need the Auric font CDN or Google Fonts, and the real icon families need the Auric icon CDN. Without them the previews use system fonts and built-in icons. The tokens are unaffected.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../docs/contrast-audit.html">Check contrast with the audit</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-calculated">What is calculated</a></li><li><a href="#what-the-audit-covers">What the audit covers</a></li><li><a href="#what-the-score-means">What the score means</a></li><li><a href="#what-the-generator-does-not-do">What the generator does not do</a></li><li><a href="#previews-depend-on-the-network">Previews depend on the network</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Color FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers about Auric Color.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="reference.html">Auric Color reference</a></li>
+<li><a href="troubleshooting.html">Auric Color troubleshooting</a></li>
+<li><a href="faq.html" aria-current="page">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Auric Color FAQ</h1>
+<p class="lede">Short answers about Auric Color.</p>
+<h3 id="which-languages-does-it-work-in">Which languages does it work in?</h3>
+<p>More than 40: CSS and its dialects, HTML, Vue, Svelte, Astro, PHP, JavaScript, TypeScript, JSX, TSX, JSON, YAML, TOML, Markdown, Python, Go, Rust, Java, C#, C and C++, Swift, Kotlin, Dart, Ruby and many more. See <a href="hover-and-swatches.html#supported-languages">Supported languages</a>. Contrast checks run in stylesheets, markup, JavaScript, TypeScript and Markdown.</p>
+<h3 id="why-did-vs-codes-colour-squares-disappear">Why did VS Code&#39;s colour squares disappear?</h3>
+<p>Auric Color&#39;s default mode replaces them with its own swatches and picker, and turns <code>editor.colorDecorators</code> off. Run <strong>Restore native color picker (use VS Code&#39;s)</strong> to go back. See <a href="picker-modes.html">Picker modes</a>.</p>
+<h3 id="does-editing-keep-my-colour-format">Does editing keep my colour format?</h3>
+<p>Yes. Hover tiles and <strong>Type exact…</strong> write in the token&#39;s own syntax, using the fewest decimals that keep exactly the same colour. The picker panel writes the format tab you choose.</p>
+<h3 id="can-i-change-every-use-of-a-colour-at-once">Can I change every use of a colour at once?</h3>
+<p>Within one file, tick <strong>Apply to all N matches in file</strong> in the picker. For a colour that comes from a CSS custom property, use <strong>Apply to --token</strong> in the contrast hover or the Contrast Studio, which changes the definition so every use follows.</p>
+<h3 id="what-does-nearest-passing-same-hue-mean">What does &quot;nearest passing, same hue&quot; mean?</h3>
+<p>The colour with the same hue and chroma whose lightness has been moved just far enough to reach the contrast target. It is the smallest visible change that passes.</p>
+<h3 id="is-apca-the-same-as-wcag-3">Is APCA the same as WCAG 3?</h3>
+<p>No. APCA is the contrast model proposed in the WCAG 3 working draft, which is not finished. Auric Color offers it as an experimental option; meeting its target is not a conformance claim.</p>
+<h3 id="does-it-work-with-tailwind">Does it work with Tailwind?</h3>
+<p>It detects colour literals in Tailwind config files and exports palettes and shade scales as Tailwind config snippets. It does not resolve Tailwind utility classes such as <code>text-gray-500</code> to colours.</p>
+<h3 id="does-it-support-wide-gamut-colours">Does it support wide-gamut colours?</h3>
+<p>It reads <code>oklch()</code>, <code>lab()</code>, <code>lch()</code> and <code>color(display-p3 …)</code> and other <code>color()</code> spaces. Colours outside sRGB are measured as a standard screen shows them, and the hover says so.</p>
+<h3 id="why-does-the-status-bar-say-a11y-when-i-only-installed-auric-color">Why does the status bar say &quot;A11y&quot; when I only installed Auric Color?</h3>
+<p>The score item shows the project&#39;s accessibility score (contrast and, where markup is present, WCAG). With Auric Color alone it appears once the Studio has graded the workspace in the background as you edit.</p>
+<h3 id="do-i-need-auric-accessibility-for-contrast-checks">Do I need Auric Accessibility for contrast checks?</h3>
+<p>No. Auric Color publishes contrast diagnostics on its own. When Auric Accessibility is installed, it takes over contrast diagnostics, with the same behaviour.</p>
+<h3 id="is-anything-sent-to-a-server">Is anything sent to a server?</h3>
+<p>No. See <a href="../others/privacy.html">Privacy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Auric Color troubleshooting</a><a href="../others/README.html"><span>Next</span>Auric Color: other resources</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

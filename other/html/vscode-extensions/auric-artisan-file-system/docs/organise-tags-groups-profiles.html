@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tags, groups and profiles — Auric Artisan Docs</title>
+<meta name="description" content="Organise files without moving them, with tags, groups, virtual folders, favourites, pins, highlights, Explorer exclusions, focus mode and workspace profiles.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html" aria-current="page">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Tags, groups and profiles</h1>
+<p class="lede">Organise files without moving them, with tags, groups, virtual folders, favourites, pins, highlights, Explorer exclusions, focus mode and workspace profiles.</p>
+<p>Auric Files lets you organise files by meaning rather than by folder. None of these tools moves or changes a file: they store labels about files. The labels follow a file when you rename or move it with Auric Files.</p>
+<p>The commands are in the <strong>Organise</strong> group of the workspace panel and the <strong>Auric Files</strong> › <strong>Organize</strong> submenu.</p>
+<h2 id="where-the-organisation-is-stored">Where the organisation is stored</h2>
+<p>Tags, groups, virtual folders, flags, saved filters and profiles are kept in VS Code&#39;s storage for this workspace, on your machine. They are not written into your project, are not committed with it, and are not copied by Settings Sync. The one exception is <strong>Toggle Native Explorer Exclusion</strong>, which writes to the workspace&#39;s <code>files.exclude</code> setting.</p>
+<h2 id="tags">Tags</h2>
+<p>A <em>tag</em> is a named, coloured label you can put on any number of files.</p>
+<h3 id="create-tags">Create tags</h3>
+<ol>
+<li>Run <strong>Auric Files: Manage Tags…</strong>.</li>
+<li>Choose <strong>New tag…</strong>.</li>
+<li>Type the <strong>Tag name</strong>.</li>
+<li><strong>Choose a colour</strong>: gold, amber, orange, red, pink, purple, blue, teal, green or gray.</li>
+</ol>
+<p>In <strong>Manage Tags…</strong> you can also choose an existing tag to <strong>Rename</strong> or <strong>Delete</strong> it.</p>
+<h3 id="tag-files">Tag files</h3>
+<ol>
+<li>Select files in the Explorer.</li>
+<li>Run <strong>Tag Files…</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>G</code> with the deck), or choose <strong>Edit tags…</strong> in Properties.</li>
+<li>Tick the tags to apply and untick any to remove. With no tags yet, the list says <strong>No tags yet — create one from Manage Tags</strong>.</li>
+</ol>
+<p>A tagged file shows the first two letters of its first tag as a badge in the Explorer, and its hover names the tag. Filters can restrict results to tags; see <a href="search-filter-and-duplicates.html">Search, filters and duplicates</a>.</p>
+<h2 id="groups">Groups</h2>
+<p>A <em>group</em> is a named set of files and folders from anywhere in the workspace: a working set for a feature, a bug or a review.</p>
+<ul>
+<li><strong>Add to Group…</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>K</code> with the deck) — add the selection to an existing group, or choose <strong>New group…</strong> and type a <strong>Group name</strong>.</li>
+<li><strong>Create Workspace from Selection</strong> — create a group straight from the selection, named after the first item (with a number added if the name is taken). The message says <strong>Created &quot;<em>name</em>&quot; with <em>N</em> linked items. Hover a member to see the workspace association.</strong></li>
+<li><strong>Manage Groups…</strong> — choose a group, then <strong>Rename</strong>, <strong>Delete</strong> or <strong>Open a member</strong>.</li>
+</ul>
+<p>Members of a group show a <strong>W</strong> badge in the Explorer, and Properties lists their groups.</p>
+<h2 id="virtual-folders">Virtual folders</h2>
+<p>A <em>virtual folder</em> gathers items under a name, and can sit inside another virtual folder, without moving anything on disk.</p>
+<ol>
+<li>Run <strong>New Virtual Folder…</strong> from the panel&#39;s <strong>Organise</strong> group.</li>
+<li>Type the <strong>Folder name</strong>.</li>
+<li>Choose a parent: <strong>(top level)</strong> or an existing virtual folder.</li>
+</ol>
+<p>Manage them in <strong>Manage Groups…</strong>, under <strong>Virtual folders</strong>.</p>
+<h2 id="favourites-pins-highlights-and-exclusions">Favourites, pins, highlights and exclusions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Explorer badge</th><th>Deck shortcut</th></tr></thead>
+<tbody>
+<tr><td><strong>Toggle Favorite</strong></td><td><strong>★</strong></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>1</code></td></tr>
+<tr><td><strong>Toggle Pinned</strong></td><td><strong>P</strong></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>2</code></td></tr>
+<tr><td><strong>Toggle Native Explorer Exclusion</strong></td><td><strong>H</strong></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>3</code></td></tr>
+<tr><td><strong>Toggle Highlight</strong></td><td><strong>●</strong></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>4</code></td></tr>
+</tbody></table></div>
+<p>Each toggles the flag on the selected items and reports, for example, <strong>Added favorite on 3 items.</strong></p>
+<p><strong>Toggle Native Explorer Exclusion</strong> hides the item from VS Code&#39;s Explorer by adding it to the workspace&#39;s <code>files.exclude</code> setting (per folder in a multi-root workspace). Toggling again removes only the entries Auric Files added. To see hidden items again in Auric&#39;s own search and filters, turn on <code>auricFiles.explorer.showHiddenFiles</code>.</p>
+<h2 id="focus-mode">Focus mode</h2>
+<p><em>Focus mode</em> narrows Auric&#39;s indexed file lists to the paths you are working on.</p>
+<ol>
+<li>Run <strong>Auric Files: Toggle Focus Mode</strong>.</li>
+<li><strong>Focus Mode — choose paths</strong>: pick the folders or files to focus on.</li>
+<li>The indexed file list opens, limited to those paths: <strong>Focused on <em>N</em> paths.</strong></li>
+</ol>
+<p>Run the command again to switch it off (<strong>Focus mode off.</strong>). Focus mode affects Auric&#39;s lists; it does not change VS Code&#39;s own Explorer tree.</p>
+<h2 id="workspace-profiles">Workspace profiles</h2>
+<p>A <em>profile</em> is a saved way of looking at the workspace: the sort, grouping, active filter, which folders are open, focus mode and the hidden list. It stores no file contents and no absolute paths, and switching profile never changes a file.</p>
+<ul>
+<li><strong>Save Workspace Profile…</strong> — type a <strong>Profile name</strong>. <strong>Saved the &quot;<em>name</em>&quot; profile.</strong></li>
+<li><strong>Switch Workspace Profile…</strong> — choose a profile; the active one is marked <strong>active</strong>. With none saved: <strong>No workspace profiles saved yet.</strong></li>
+</ul>
+<h2 id="remove-organisation">Remove organisation</h2>
+<ul>
+<li>Remove a tag from files with <strong>Tag Files…</strong> (untick it), or delete the tag in <strong>Manage Tags…</strong>.</li>
+<li>Delete a group or virtual folder in <strong>Manage Groups…</strong>; the files themselves are untouched.</li>
+<li>Toggle a flag again to clear it.</li>
+</ul>
+<p>When you tag or flag files, the Explorer badges update straight away, and Properties shows the tags and groups.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="history-and-workspace-trash.html"><span>Previous</span>History, undo and the workspace trash</a><a href="properties-compare-export.html"><span>Next</span>Properties, compare and export</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#where-the-organisation-is-stored">Where the organisation is stored</a></li><li><a href="#tags">Tags</a></li><li><a href="#groups">Groups</a></li><li><a href="#virtual-folders">Virtual folders</a></li><li><a href="#favourites-pins-highlights-and-exclusions">Favourites, pins, highlights and exclusions</a></li><li><a href="#focus-mode">Focus mode</a></li><li><a href="#workspace-profiles">Workspace profiles</a></li><li><a href="#remove-organisation">Remove organisation</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

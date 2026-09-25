@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the Analyzer — Auric Artisan Docs</title>
+<meta name="description" content="What each Analyzer error or odd result means, why it happens, and what to do about it.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Troubleshooting the Analyzer</h1>
+<p class="lede">What each Analyzer error or odd result means, why it happens, and what to do about it.</p>
+<p>Each entry gives the symptom as you see it, the cause, and what to do.</p>
+<h2 id="starting-a-run">Starting a run</h2>
+<h3 id="that-url-doesnt-look-valid">&quot;That URL doesn&#39;t look valid&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the address could not be turned into a web address, or it uses a scheme the Analyzer cannot fetch, such as <code>mailto:</code>, <code>tel:</code>, <code>ftp:</code> or <code>javascript:</code>.</li>
+<li><strong>What to do:</strong> type a full address including <code>https://</code>, for example <code>https://example.com</code>.</li>
+</ul>
+<h3 id="sign-in-to-scan-another-site">&quot;Sign in to scan another site&quot;</h3>
+<ul>
+<li><strong>Why:</strong> auditing a website other than auricartisan.com runs on Auric Artisan&#39;s servers, which needs an account. Nothing has failed.</li>
+<li><strong>What to do:</strong> select <strong>Sign in</strong>, then run the audit again. Pages on auricartisan.com can be audited without an account.</li>
+</ul>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> The tips under this and other error panels may mention a &quot;This Page&quot; button. That button has been removed from the strip. To audit a page on auricartisan.com, type or paste its address into the URL field.</p>
+</blockquote>
+<h3 id="scanning-another-site-needs-a-plan">&quot;Scanning another site needs a plan&quot;</h3>
+<ul>
+<li><strong>Why:</strong> your account&#39;s plan does not include URL analysis, or the server refused the run for a plan reason. The message under the heading gives the exact reason. If it says &quot;This run costs N tokens and your balance is M&quot;, your token balance is too low.</li>
+<li><strong>What to do:</strong> select <strong>See plans</strong>. On a paid plan the monthly token allowance renews; the free plan&#39;s starter balance does not.</li>
+</ul>
+<h3 id="you-have-used-this-months-scans">&quot;You have used this month&#39;s scans&quot;</h3>
+<ul>
+<li><strong>Why:</strong> you have used your monthly allowance of server-side URL analyses (20 a month on the free plan).</li>
+<li><strong>What to do:</strong> wait for the next month, or select <strong>See plans</strong>. Pages on auricartisan.com can still be audited in your browser.</li>
+</ul>
+<h3 id="the-token-meter-could-not-be-read-so-this-run-cannot-be-metered">&quot;The token meter could not be read, so this run cannot be metered&quot;</h3>
+<ul>
+<li><strong>Why:</strong> a server-side run cannot start while your token balance is unavailable.</li>
+<li><strong>What to do:</strong> wait a moment and try again.</li>
+</ul>
+<h2 id="reaching-the-page">Reaching the page</h2>
+<h3 id="couldnt-reach-the-target-or-you-are-offline">&quot;Couldn&#39;t reach the target&quot; or &quot;You are offline&quot;</h3>
+<p>The panel checks three things and shows each as a row:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>What it tells you</th></tr></thead>
+<tbody>
+<tr><td><strong>Your connection</strong></td><td>Whether your browser reports it is online</td></tr>
+<tr><td><strong>Server-side scanning</strong></td><td>That scanning another site runs on Auric Artisan&#39;s servers via Scan Site, which needs an account</td></tr>
+<tr><td><strong>Target origin</strong></td><td>Whether the address is on auricartisan.com or on a site your browser cannot fetch</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Why:</strong> you are offline, the address has a typo or a private host name, the site is down, or the site is on another origin and you are not signed in.</li>
+<li><strong>What to do:</strong> check your connection and the address; sign in to scan another site; check any VPN or firewall on your network.</li>
+</ul>
+<h3 id="could-not-fetch-this-cross-origin-page-from-the-browser">&quot;Could not fetch this cross-origin page from the browser&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the page would not embed, and your browser is not allowed to read another site&#39;s HTML directly.</li>
+<li><strong>What to do:</strong> sign in, so the page is rendered on Auric Artisan&#39;s servers. Or turn on <strong>Public proxy</strong> in <strong>Site scan settings</strong> (Advanced), which routes the fetch through a third-party public proxy. Only do this if you are happy for that service to see the address.</li>
+</ul>
+<h3 id="could-not-analyze-this-page-every-method-the-analyzer-has-was-tried">&quot;Could not analyze this page. Every method the analyzer has was tried&quot;</h3>
+<ul>
+<li><strong>Why:</strong> every way of reaching the page failed. The numbered list names each method and why it failed: the frame, a rendered snapshot, a browser fetch and the server.</li>
+<li><strong>What to do:</strong> read the last line (the server) first. It is usually the one that explains the problem, such as a site that refused the scanner.</li>
+</ul>
+<h3 id="that-site-refused-the-scanner-http-403-or-401-or-429">&quot;That site refused the scanner (HTTP 403)&quot; (or 401 or 429)</h3>
+<ul>
+<li><strong>Why:</strong> the site declined to serve an automated browser. Sites behind a bot challenge, a login or a strict firewall cannot be audited remotely.</li>
+<li><strong>What to do:</strong> audit a page that is publicly reachable. If it is your own site, allow the scanner or test a staging copy that is publicly reachable.</li>
+</ul>
+<h3 id="that-address-is-not-reachable-from-the-scanner">&quot;That address is not reachable from the scanner.&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the address is private or local, such as <code>localhost</code>, <code>127.0.0.1</code>, <code>10.x.x.x</code>, <code>192.168.x.x</code> or a link-local address. The scanner never visits private networks.</li>
+<li><strong>What to do:</strong> audit a publicly reachable copy of the page.</li>
+</ul>
+<h3 id="request-timed-out">&quot;Request timed out&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the site did not respond in time. It may be slow, blocking automated visitors, or behind a captcha.</li>
+<li><strong>What to do:</strong> try again later, or audit a lighter page first.</li>
+</ul>
+<h3 id="rate-limited-by-target-http-429">&quot;Rate-limited by target (HTTP 429)&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the site you are auditing (or a proxy in front of it) asked the Analyzer to slow down. The Analyzer already waits and retries.</li>
+<li><strong>What to do:</strong> wait 30–60 seconds and select <strong>Analyze</strong> again. If you were scanning a whole site, lower <strong>Workers</strong> and <strong>Pages</strong>, or audit one URL at a time. A recent copy of the page, if this browser has one, may be used instead.</li>
+</ul>
+<h2 id="results">Results</h2>
+<h3 id="the-score-is-empty-and-the-report-says-the-page-returned-a-bot-challenge-page">The score is empty and the report says the page returned a bot-challenge page</h3>
+<ul>
+<li><strong>Why:</strong> the site answered with a challenge page (&quot;Just a moment&quot;, &quot;Verify you are human&quot; and similar) instead of its content. Scoring it would describe the challenge, not your page.</li>
+<li><strong>What to do:</strong> audit a page the site serves to automated browsers, or allow the scanner on your own site.</li>
+</ul>
+<h3 id="the-score-is-empty-and-the-report-says-the-page-returned-almost-no-content">The score is empty and the report says the page returned almost no content</h3>
+<ul>
+<li><strong>Why:</strong> the page had under 40 characters of text and under 10 elements. It is probably an error page, a redirect stub or a challenge.</li>
+<li><strong>What to do:</strong> check the address. If the page builds its content with JavaScript, sign in so it is rendered in a real browser.</li>
+</ul>
+<h3 id="a-section-says-it-was-switched-off-for-this-run">A section says it &quot;was switched off for this run&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the check that fills that section did not run.</li>
+<li><strong>What to do:</strong> select <strong>Turn it on and run again</strong>.</li>
+</ul>
+<h3 id="accessibility-engine-did-not-run">&quot;Accessibility engine did not run&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the engine needs the page&#39;s rendered structure, and this run did not produce one.</li>
+<li><strong>What to do:</strong> sign in so the page is rendered on the server, or audit a page on auricartisan.com.</li>
+</ul>
+<h3 id="coverage-limits-for-this-run-appears-in-a11y">&quot;Coverage limits for this run&quot; appears in A11y+</h3>
+<ul>
+<li><strong>Why:</strong> computed styles or element geometry were not available, so contrast, reflow, target-size and focus-order rules could not measure.</li>
+<li><strong>What to do:</strong> those rules report <strong>needs review</strong> instead of guessing. Check them by hand, or re-run with the page rendered in a browser.</li>
+</ul>
+<h3 id="some-content-is-missing-from-the-audit">Some content is missing from the audit</h3>
+<ul>
+<li><strong>Why:</strong> the page was read from its HTML rather than rendered, so anything it builds with JavaScript is absent.</li>
+<li><strong>What to do:</strong> sign in so the page is rendered in a real browser. Compare <strong>Raw HTML Summary</strong> and <strong>Rendered DOM Analysis</strong> in <strong>Deep</strong> to see what depends on JavaScript.</li>
+</ul>
+<h3 id="my-score-dropped-and-i-did-not-change-anything">My score dropped and I did not change anything</h3>
+<ul>
+<li><strong>Why:</strong> the page changed underneath it (new content, an advert, a third-party embed or an A/B test), or a fix made hidden content visible so it was checked for the first time.</li>
+<li><strong>What to do:</strong> open <strong>Compare</strong> and read the <strong>New</strong> lists rather than the score.</li>
+</ul>
+<h3 id="performance-numbers-change-from-run-to-run">Performance numbers change from run to run</h3>
+<ul>
+<li><strong>Why:</strong> they come from a single lab load. Network, server load and caching change between runs, and estimated values depend on the <strong>Network Simulation</strong> profile.</li>
+<li><strong>What to do:</strong> compare several runs, and treat single numbers as indicative.</li>
+</ul>
+<h3 id="the-analyzers-result-differs-from-another-tool">The Analyzer&#39;s result differs from another tool</h3>
+<p>See the <a href="faq.html">FAQ</a>. Compare individual findings, not scores.</p>
+<h2 id="previews">Previews</h2>
+<h3 id="couldnt-embed-this-page-in-simulation-playground-devices-or-before-after">&quot;Couldn&#39;t embed this page&quot; in Simulation, Playground, Devices or Before / After</h3>
+<ul>
+<li><strong>Why:</strong> the site sends <code>X-Frame-Options</code> or a Content-Security-Policy <code>frame-ancestors</code> rule that stops other sites from showing it in a frame.</li>
+<li><strong>What to do:</strong> select <strong>Run in browser</strong> to open the captured page in a pop-up window with the filter applied. Allow pop-ups for auricartisan.com if nothing opens. If it is your own site, follow <strong>CSP Setup</strong>.</li>
+</ul>
+<h3 id="devices-started-capturing-screenshots-by-itself">Devices started capturing screenshots by itself</h3>
+<ul>
+<li><strong>Why:</strong> on a page that blocks embedding, the Device Lab starts server-rendered captures a few seconds after it opens. Captures are metered.</li>
+<li><strong>What to do:</strong> close the <strong>Devices</strong> panel if you do not want captures.</li>
+</ul>
+<h3 id="crawl-full-site-is-greyed-out">Crawl Full Site is greyed out</h3>
+<ul>
+<li><strong>Why:</strong> the audited page is on another site and the run did not use Auric Artisan&#39;s servers, so the crawl cannot read it. The button&#39;s hint says &quot;Cross-origin page — use Scan Site (backend) instead&quot;.</li>
+<li><strong>What to do:</strong> sign in and run the audit again, or use <strong>Scan Site</strong>.</li>
+</ul>
+<h3 id="robots-subdomains-or-workers-seem-to-have-no-effect">Robots, Subdomains or Workers seem to have no effect</h3>
+<ul>
+<li><strong>Why:</strong> in the current version, a site scan on auricartisan.com uses only the address and the <strong>Pages</strong> number.</li>
+<li><strong>What to do:</strong> nothing; set <strong>Pages</strong> to control the size of the scan.</li>
+</ul>
+<h2 id="exports-saving-and-sharing">Exports, saving and sharing</h2>
+<h3 id="export-pdf-shows-an-upgrade-prompt">Export PDF shows an upgrade prompt</h3>
+<ul>
+<li><strong>Why:</strong> PDF is a Pro export format for paid plans.</li>
+<li><strong>What to do:</strong> use <strong>Export HTML</strong> and print it to PDF from your browser. It carries the same data.</li>
+</ul>
+<h3 id="export-pdf-opens-a-print-dialog-instead-of-downloading">Export PDF opens a print dialog instead of downloading</h3>
+<ul>
+<li><strong>Why:</strong> a server PDF was not available, so the Analyzer opened the HTML report for printing.</li>
+<li><strong>What to do:</strong> choose <strong>Save as PDF</strong> in the print dialog. If the window was blocked, the HTML report was downloaded instead; open it and print it.</li>
+</ul>
+<h3 id="copy-failed-the-browser-refused-the-clipboard-write">&quot;Copy failed — the browser refused the clipboard write&quot;</h3>
+<ul>
+<li><strong>Why:</strong> your browser did not allow the page to write to the clipboard.</li>
+<li><strong>What to do:</strong> use <strong>Developer Report</strong> to download the same Markdown.</li>
+</ul>
+<h3 id="ctrl-p-opens-the-sections-picker-instead-of-printing"><code>Ctrl</code> + <code>P</code> opens the Sections picker instead of printing</h3>
+<ul>
+<li><strong>Why:</strong> the Analyzer uses <code>Ctrl</code> + <code>P</code> for its section picker while the page is open.</li>
+<li><strong>What to do:</strong> use the exports in <strong>Report</strong> to get a printable copy.</li>
+</ul>
+<h3 id="that-versions-results-are-no-longer-stored">&quot;That version&#39;s results are no longer stored.&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the stored report for that version has been removed, usually because this site&#39;s data was cleared in your browser.</li>
+<li><strong>What to do:</strong> analyse the site again. To avoid this, keep important versions in your account.</li>
+</ul>
+<h3 id="a-run-does-not-appear-in-compare-or-the-library">A run does not appear in Compare or the library</h3>
+<ul>
+<li><strong>Why:</strong> the library may be full (the free plan allows 20 saved projects), or your browser may be blocking storage, for example in some private windows.</li>
+<li><strong>What to do:</strong> remove old projects from your library, or use a normal browser window.</li>
+</ul>
+<h3 id="the-keep-in-my-account-button-is-missing">The <strong>Keep in my account</strong> button is missing</h3>
+<ul>
+<li><strong>Why:</strong> you are signed out, or report storage is not available for your account.</li>
+<li><strong>What to do:</strong> sign in. If it still does not appear, download the version with <strong>Download it</strong> instead.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Analyzer reference</a><a href="faq.html"><span>Next</span>Analyzer FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#starting-a-run">Starting a run</a></li><li><a href="#reaching-the-page">Reaching the page</a></li><li><a href="#results">Results</a></li><li><a href="#previews">Previews</a></li><li><a href="#exports-saving-and-sharing">Exports, saving and sharing</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

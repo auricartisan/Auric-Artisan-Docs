@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palettes, harmonies, gradients and shades — Auric Artisan Docs</title>
+<meta name="description" content="Generate, score, classify, analyse, export and render palettes, harmonies, gradients and shade scales.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html" aria-current="page">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Palettes, harmonies, gradients and shades</h1>
+<p class="lede">Generate, score, classify, analyse, export and render palettes, harmonies, gradients and shade scales.</p>
+<p>These endpoints build colour sets and measure the ones you already have. Valid <code>method</code> values come from <code>GET /v1/methods/:tool</code>, and valid export <code>format</code> values from <code>GET /v1/formats</code>.</p>
+<h2 id="palettes">Palettes</h2>
+<h3 id="post-v1palettegenerate">POST /v1/palette/generate</h3>
+<p>Generate a palette from a seed colour. 2–4 credits.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>method</code></td><td>string</td><td>No</td><td>See <code>/v1/methods/palette</code>. Default <code>triadic</code>.</td></tr>
+<tr><td><code>hue</code></td><td>number</td><td>No</td><td>Base hue, 0–360. Random when omitted.</td></tr>
+<tr><td><code>saturation</code></td><td>number</td><td>No</td><td>0–1. Default 0.7.</td></tr>
+<tr><td><code>lightness</code></td><td>number</td><td>No</td><td>0–1. Default 0.55.</td></tr>
+<tr><td><code>count</code></td><td>integer</td><td>No</td><td>How many colours, 1–64. Default 5.</td></tr>
+<tr><td><code>seed</code></td><td>integer</td><td>No</td><td>For a repeatable palette</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/palette/generate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;method&quot;:&quot;triadic&quot;,&quot;hue&quot;:45,&quot;saturation&quot;:0.7,&quot;lightness&quot;:0.55,&quot;count&quot;:5}'</code></pre>
+<h3 id="post-v1paletteevaluate">POST /v1/palette/evaluate</h3>
+<p>Score a palette for harmony, contrast and accessibility.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>palette</code></td><td>object</td><td>Yes</td><td><code>{ colors: [{ rgb: [r,g,b] }, ...] }</code>, the shape <code>/v1/palette/generate</code> returns</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/palette/evaluate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;palette&quot;:{&quot;colors&quot;:[{&quot;rgb&quot;:[201,162,39]},{&quot;rgb&quot;:[29,42,62]},{&quot;rgb&quot;:[255,252,247]}]}}'</code></pre>
+<h3 id="post-v1paletteexport">POST /v1/palette/export</h3>
+<p>Render a palette into a file format.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>format</code></td><td>string</td><td>Yes</td><td><code>hex</code>, <code>json</code>, <code>css</code>, <code>scss</code>, <code>tailwind</code>, <code>ase-json</code> or <code>svg</code>; see <code>/v1/formats</code></td></tr>
+<tr><td><code>data</code></td><td>object</td><td>Yes</td><td><code>{ colors: [{ rgb: [r,g,b] }, ...] }</code></td></tr>
+<tr><td><code>options</code></td><td>object</td><td>No</td><td>Format-specific options</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/palette/export&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;format&quot;:&quot;css&quot;,&quot;data&quot;:{&quot;colors&quot;:[{&quot;rgb&quot;:[201,162,39]},{&quot;rgb&quot;:[29,42,62]}]}}'</code></pre>
+<h3 id="post-v1palettefrom-image">POST /v1/palette/from-image</h3>
+<p>Extract a palette from an uploaded image. 10–12 credits.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>image</code></td><td>string</td><td>Yes</td><td>Base64 or a data URL. Image bodies are limited to 4 MB.</td></tr>
+<tr><td><code>count</code></td><td>integer</td><td>No</td><td>Colours to extract</td></tr>
+</tbody></table></div>
+<h3 id="post-v1palettepng">POST /v1/palette/png</h3>
+<p>Render a palette as a PNG swatch sheet. 10–12 credits. Returns <code>image/png</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code></td><td>colour array</td><td>Yes</td><td>The palette to draw</td></tr>
+</tbody></table></div>
+<h2 id="harmonies">Harmonies</h2>
+<h3 id="post-v1harmonygenerate">POST /v1/harmony/generate</h3>
+<p>Build a harmony set (complementary, triadic, analogous and others) from a base colour. 2–4 credits.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>method</code></td><td>string</td><td>Yes</td><td>See <code>/v1/methods/harmony</code></td></tr>
+<tr><td><code>hue</code></td><td>number</td><td>Yes</td><td>Base hue, 0–360</td></tr>
+<tr><td><code>saturation</code></td><td>number</td><td>Yes</td><td>0–1</td></tr>
+<tr><td><code>lightness</code></td><td>number</td><td>Yes</td><td>0–1</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/harmony/generate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;method&quot;:&quot;triadic&quot;,&quot;hue&quot;:45,&quot;saturation&quot;:0.7,&quot;lightness&quot;:0.55}'</code></pre>
+<h3 id="post-v1harmonyclassify">POST /v1/harmony/classify</h3>
+<p>Identify which harmony an existing set of colours follows.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code></td><td>colour array</td><td>Yes</td><td>The colours to classify</td></tr>
+</tbody></table></div>
+<h3 id="post-v1harmonyidentify">POST /v1/harmony/identify</h3>
+<p>Name the scheme your colours form. It takes 2 to 12 colours and matches their hue pattern against all 23 schemes. Each colour is tried as the anchor in turn, so the order you send them in does not matter. Schemes with the same shape on the hue circle that differ only in lightness or saturation come back together in <code>ties</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code></td><td>array</td><td>Yes</td><td>2 to 12 colours as <code>[&quot;#rrggbb&quot;, ...]</code></td></tr>
+</tbody></table></div>
+<p>Returns <code>verdict</code>, <code>best_match</code>, <code>ties</code>, <code>candidates</code>, <code>hue_offsets</code>, <code>min_pair_contrast</code> and <code>carries_body_text</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/harmony/identify&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;colors&quot;:[&quot;#FF0000&quot;,&quot;#00FF00&quot;,&quot;#0000FF&quot;]}'</code></pre>
+<h3 id="post-v1harmonyexport">POST /v1/harmony/export</h3>
+<p>Export a harmony set.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code></td><td>colour array</td><td>Yes</td><td>The harmony set</td></tr>
+<tr><td><code>format</code></td><td>string</td><td>Yes</td><td>See <code>/v1/formats</code></td></tr>
+</tbody></table></div>
+<h2 id="gradients">Gradients</h2>
+<h3 id="post-v1gradientgenerate">POST /v1/gradient/generate</h3>
+<p>Interpolate a gradient between stops, in a chosen space. 2–4 credits.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>stops</code></td><td>colour array</td><td>Yes</td><td>Two or more colours</td></tr>
+<tr><td><code>steps</code></td><td>integer</td><td>No</td><td>Samples to return</td></tr>
+<tr><td><code>space</code></td><td>string</td><td>No</td><td>Interpolation space; <code>oklab</code> avoids the grey dip that <code>srgb</code> produces</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/gradient/generate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;stops&quot;:[&quot;#c9a227&quot;,&quot;#1d2a3e&quot;],&quot;steps&quot;:7,&quot;space&quot;:&quot;oklab&quot;}'</code></pre>
+<h3 id="post-v1gradientanalyse">POST /v1/gradient/analyse</h3>
+<p>Measure a gradient you already have: will it band, and where? It samples the ramp, converts each sample to OKLab and measures the perceptual distance between neighbouring samples. The verdict compares the worst step with the average one, so it does not change when you ask for more samples. Measured across 3,000 labelled gradients, that ratio has a median of 1.55 for smooth gradients and 5.09 for step-risk ones.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>stops</code></td><td>array</td><td>Yes</td><td>2 to 64 stops, as <code>[&quot;#rrggbb&quot;, ...]</code> (evenly spaced) or <code>[{pos, hex}, ...]</code> with <code>pos</code> 0–1</td></tr>
+<tr><td><code>steps</code></td><td>number</td><td>No</td><td>Samples along the ramp, 8–1024. Default 96.</td></tr>
+</tbody></table></div>
+<p>Returns <code>banding</code>, <code>step_ratio</code>, <code>delta_e_mean</code>, <code>delta_e_max</code>, <code>worst_transition_at</code> (where the worst step is) and <code>note</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/gradient/analyse&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;stops&quot;:[&quot;#001a33&quot;,&quot;#003d66&quot;,&quot;#ffcc00&quot;]}'</code></pre>
+<h3 id="post-v1gradientexport">POST /v1/gradient/export</h3>
+<p>Export a gradient as CSS, SVG or a design-tool format.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>stops</code></td><td>colour array</td><td>Yes</td><td>The gradient stops</td></tr>
+<tr><td><code>format</code></td><td>string</td><td>Yes</td><td>See <code>/v1/formats</code></td></tr>
+</tbody></table></div>
+<h3 id="post-v1gradientpng">POST /v1/gradient/png</h3>
+<p>Render a gradient as a PNG. 10–12 credits. Returns <code>image/png</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>stops</code></td><td>colour array</td><td>Yes</td><td>The gradient stops</td></tr>
+</tbody></table></div>
+<h2 id="shades">Shades</h2>
+<h3 id="post-v1shadescale">POST /v1/shade/scale</h3>
+<p>Build a tint and shade scale from one colour. 2–4 credits.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>colour</td><td>Yes</td><td>The base colour</td></tr>
+<tr><td><code>steps</code></td><td>integer</td><td>No</td><td>Steps in the scale</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/shade/scale&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;color&quot;:&quot;#c9a227&quot;,&quot;steps&quot;:9}'</code></pre>
+<h3 id="post-v1shadeevaluate">POST /v1/shade/evaluate</h3>
+<p>Measure a scale you already have: does it work as a token ramp? A scale fails in one of three ways, each with a different fix, and the response says which: it <strong>turns round</strong> (two steps read as the same tone), its steps are <strong>lumpy</strong> (the largest is several times the average), or its extremes are <strong>too close</strong> to set text between.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>steps</code></td><td>array</td><td>Yes</td><td>3 to 64 colours as <code>[&quot;#rrggbb&quot;, ...]</code>, in scale order</td></tr>
+</tbody></table></div>
+<p>Returns <code>verdict</code>, <code>notes</code>, <code>monotonic</code>, <code>step_ratio</code>, <code>evenness</code>, <code>usable_span</code> and <code>text_pairs</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/shade/evaluate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;steps&quot;:[&quot;#FFFFFF&quot;,&quot;#E0E0E0&quot;,&quot;#A0A0A0&quot;,&quot;#606060&quot;,&quot;#202020&quot;]}'</code></pre>
+<h3 id="post-v1shadeexport">POST /v1/shade/export</h3>
+<p>Export a shade scale.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>colour</td><td>Yes</td><td>Base colour of the scale</td></tr>
+<tr><td><code>format</code></td><td>string</td><td>Yes</td><td>See <code>/v1/formats</code></td></tr>
+</tbody></table></div>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="collections.html">Collections</a>, to browse ready-made palettes, harmonies, gradients and scales</li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="discovery.html"><span>Previous</span>Discovery endpoints</a><a href="tokens-and-personalisation.html"><span>Next</span>Design tokens and personalisation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#palettes">Palettes</a></li><li><a href="#harmonies">Harmonies</a></li><li><a href="#gradients">Gradients</a></li><li><a href="#shades">Shades</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

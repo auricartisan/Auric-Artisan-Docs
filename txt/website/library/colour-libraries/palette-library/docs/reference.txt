@@ -1,0 +1,359 @@
+==============================================================================
+PALETTE LIBRARY REFERENCE
+==============================================================================
+Every control, filter, sort order, tab, output, file name and message in the
+Palette Library.
+Area: Website › Library › Colour libraries › Palette Library   Updated: 2026-09-25
+
+Everything on https://auricartisan.com/library/palette/.
+
+HEADING
+=======
+
+  Item:    Kicker
+  Content: Auric Artisan · Palette
+
+  Item:    Headline
+  Content: Five million palettes, and a 660-byte file.
+
+  Item:    Collection
+  Content: 5,000,000
+
+  Item:    Facts
+  Content: Five colours each, Derived, not stored
+
+  Item:    Read the API guide →
+  Content: Opens the Palette Library API guide in the documentation library.
+
+  Item:    Automate this note
+  Content: 3 API credits per call to GET /v1/palette/library; links to API
+           docs; × dismisses it.
+
+BROWSE CONTROLS
+===============
+
+  Control:      Search by id or hex…
+  What it does: An id (`pal_…`) or a number shows that one palette. Other
+                words must each match the id, the method or a colour's hex.
+  Default:      Empty
+
+  Control:      Shuffle
+  What it does: Sets Sort by to Random.
+  Default:      —
+
+  Control:      Open a random palette
+  What it does: Opens any of the 5,000,000 palettes on Inspect.
+  Default:      —
+
+  Control:      Filter inside results box (id, hex, method…)
+  What it does: A second search, combined with the first.
+  Default:      Empty
+
+  Control:      Clear
+  What it does: Empties the second box.
+  Default:      —
+
+TABS
+====
+
+  Tab:      Library
+  Badge:    5M
+  Contents: Filters, sort, grid, counter.
+
+  Tab:      Inspect
+  Badge:    —
+  Contents: The open palette.
+
+  Tab:      Harmony
+  Badge:    —
+  Contents: Method, hue, harmony and lightness/chroma distributions of the
+            sample.
+
+  Tab:      Accessibility
+  Badge:    —
+  Contents: Pair-contrast summaries of the sample.
+
+  Tab:      Stats
+  Badge:    —
+  Contents: Four histograms of the sample.
+
+  Tab:      Export
+  Badge:    —
+  Contents: Selection and sample exports.
+
+  Tab:      Saved
+  Badge:    Number saved
+  Contents: Saved palettes.
+
+FILTERS
+=======
+
+  Filter:  Dominant hue
+  Options: All hues, Red (340° to under 20°), Orange (20–50°), Yellow
+           (50–80°), Green (80–160°), Cyan (160–200°), Blue (200–260°), Purple
+           (260–300°), Pink (300–340°)
+  Test:    Chroma-weighted average of the five OKLCH hues.
+
+  Filter:  Chroma
+  Options: Any chroma, Muted (< 0.07)**, **Balanced** (0.07 to 0.15), **Vivid
+           (> 0.15)
+  Test:    Average OKLCH chroma.
+
+  Filter:  Lightness
+  Options: Any lightness, Dark (below 0.40), Mid (0.40 to 0.70), Light (above
+           0.70)
+  Test:    Average OKLCH lightness.
+
+  Filter:  Method
+  Options: All methods, complementary, triadic, analogous, tetradic,
+           golden_ratio, random, monochromatic
+  Test:    The palette's method label.
+
+SORT BY
+=======
+
+  Option                    | Order
+  --------------------------+----------------------------------------------------------------
+  Sort: original            | Palette number (default). Streams through the whole collection.
+  Lightness ↑ / Lightness ↓ | Average OKLCH lightness.
+  Chroma ↑ / Chroma ↓       | Average OKLCH chroma.
+  Hue (rainbow)             | Dominant hue.
+  Random                    | Shuffled.
+
+Any sort other than Sort: original orders a first stretch of 1,500 derived
+palettes (or the matches among them).
+
+LIBRARY TAB BUTTONS
+===================
+
+  Control        | What it does
+  ---------------+------------------------------------------------------------
+  Reset          | Clears both searches and every filter; sets Sort: original.
+  Export visible | Opens the Export tab.
+  Back to top    | Scrolls to the start of the grid.
+
+CARD
+====
+
+  Part:   Swatch
+  Action: Select to copy its hex. `Enter` or `Space` on a focused swatch opens
+          the palette.
+
+  Part:   Id and method
+  Action: Palette id and method label.
+
+  Part:   Inspect
+  Action: Opens the palette on Inspect.
+
+  Part:   Copy
+  Action: Copies the five hexes, comma-separated.
+
+  Part:   Save / Saved
+  Action: Saves or unsaves.
+
+  Part:   Rest of the card
+  Action: Opens the palette on Inspect.
+
+COUNTER UNDER THE GRID
+======================
+
+  Text:    1–48 of 5,000,000 palettes
+  Meaning: Unfiltered; the range currently shown.
+
+  Text:    … · scroll reaches N; search an id for the rest
+  Meaning: The scrollbar cannot go beyond palette N.
+
+  Text:    N matches from M derived
+  Meaning: Filtered; M palettes worked out so far, N match.
+
+  Text:    · all five million looked at
+  Meaning: The scan reached the end.
+
+  Text:    N matches, ordered within the first M derived
+  Meaning: Filtered and sorted.
+
+  Text:    1 palette, by id
+  Meaning: An id is in the search box.
+
+  Text:    No palette with that id
+  Meaning: The id is outside the collection.
+
+INSPECT TAB
+===========
+
+  Block:    Colour strip
+  Contents: Five columns with a three-word name and hex; select to copy.
+
+  Block:    Palette summary
+  Contents: Badge (Neutral, Triadic, Analogous, Monochrome); Palette ID,
+            Global index, Method, Colors, Avg L* (OKLCH), Avg chroma, Hue
+            span, DeltaE avg, Entropy, Min pair contrast, Max pair contrast.
+
+  Block:    Pair-by-pair WCAG contrast
+  Contents: Ten pairs with ratios.
+
+  Block:    Quick export
+  Contents: Copy HEX, Copy CSS vars, Copy SCSS, Copy Tailwind, Download JSON,
+            Download ASE, Download SVG, Download PNG, Open in Coolors, Save to
+            library / Unsave, Copy share link, Design tokens…
+
+  Block:    Color 1 to Color 5
+  Contents: HEX, RGB, OKLCH, CIE L*a*b*, WCAG vs white, WCAG vs black, copy
+            buttons.
+
+Select a card heading to fold or unfold it.
+
+ANALYSIS TABS
+=============
+
+  Tab:   Harmony
+  Cards: Generation method, Dominant hue bucket, Harmony classification,
+         Lightness & chroma profile
+
+  Tab:   Accessibility
+  Cards: Palette-level WCAG summary, Pair-level WCAG breakdown, How many of
+         the five can be used together, The most usable in this sample
+
+  Tab:   Stats
+  Cards: Avg lightness (OKLCH L) (0–1, 10 bands), Avg chroma (OKLCH C)
+         (0–0.30, 10 bands), Hue spread (0–360°, 12 bands), Best pair contrast
+         (1–15:1, 14 bands)
+
+Sample: the first 2,000 palettes, or up to 2,000 matches from the first 40,000
+when filtered.
+
+EXPORT TAB
+==========
+
+  Card:    Selection · id
+  Group:   Copy formats
+  Buttons: HEX list, CSS variables, SCSS variables, Tailwind config
+
+  Card:    -
+  Group:   Download
+  Buttons: JSON, Adobe ASE, SVG strip, PNG strip
+
+  Card:    -
+  Group:   External
+  Buttons: Open in Coolors
+
+  Card:    Visible page
+  Group:   Bulk download
+  Buttons: Download JSON (visible page), Download CSV (visible page), Download
+           CSS variables, Download SCSS variables, Download compact JSON
+
+  Card:    -
+  Group:   Sample formats
+  Buttons: Download .txt hex list, Download tailwind.config.js fragment
+
+FILES
+=====
+
+  Output:        JSON (one palette)
+  File name:     `<id>.json`
+  Size or shape: Full record with contrast table.
+
+  Output:        ASE
+  File name:     `<id>.ase`
+  Size or shape: Five RGB swatches `<id>_1` to `<id>_5`.
+
+  Output:        SVG
+  File name:     `<id>.svg`
+  Size or shape: 600 × 220.
+
+  Output:        PNG
+  File name:     `<id>.png`
+  Size or shape: 800 × 320.
+
+  Output:        Bulk
+  File name:     `palette-page-<count>-<date>.<ext>`
+  Size or shape: `json`, `csv`, `css`, `scss`, `txt`, `js`.
+
+  Output:        Design tokens
+  File name:     See Copy, export and share [copy-export-and-share.txt]
+  Size or shape: Eight formats; Download all makes `palette-<id>.zip`.
+
+DESIGN TOKENS DIALOG
+====================
+
+  Control:      Token prefix
+  What it does: The start of every token name.
+  Default:      `brand`
+
+  Control:      Format tabs
+  What it does: W3C Design Tokens, CSS Variables, SCSS, Tailwind Config, Style
+                Dictionary, Material UI Theme, iOS (SwiftUI), Android
+                colors.xml
+  Default:      W3C Design Tokens
+
+  Control:      Copy
+  What it does: Copies the preview.
+  Default:      —
+
+  Control:      Download
+  What it does: Saves the current format.
+  Default:      —
+
+  Control:      Download all
+  What it does: Saves every format in one ZIP.
+  Default:      —
+
+SHARE LINK DIALOG
+=================
+
+  Control         | What it does
+  ----------------+--------------------------------------------------
+  Link field      | The share address, selected and ready to copy.
+  Copy            | Copies the link (Copied!).
+  Share via…      | Opens your device's share sheet, where available.
+  Open in new tab | Opens the link.
+  Close / ✕       | Closes the dialog.
+
+MESSAGES
+========
+
+  Message: Loading palette database…
+  When:    While the page prepares.
+
+  Message: Could not load palette database
+  When:    The collection description failed to load.
+
+  Message: Nothing matched yet
+  When:    No match found so far in a scan.
+
+  Message: No palette selected
+  When:    Inspect or Export before a palette is opened.
+
+  Message: No palettes
+  When:    An analysis tab found no matches in its sample.
+
+  Message: No saved palettes yet
+  When:    The Saved tab is empty.
+
+  Message: #HEX copied, Palette hexes copied, HEX list copied, CSS variables
+           copied, SCSS variables copied, Tailwind config copied, Copied
+  When:    After copying.
+
+  Message: Downloaded and a file name
+  When:    After a download.
+
+  Message: Saved, Removed
+  When:    After saving or unsaving from Inspect.
+
+  Message: Nothing to export
+  When:    Bulk export of an empty sample.
+
+  Message: Could not encode PNG
+  When:    The browser could not make the PNG.
+
+  Message: Shared palette not found in current dataset
+  When:    A share link's palette could not be found.
+
+KEYBOARD
+========
+
+  Key               | Action
+  ------------------+---------------------------------------------------------
+  `/`               | Focus Search by id or hex… (when not typing in a field).
+  `Enter` / `Space` | On a focused swatch: open its palette.
+  `Escape`          | Close the share or design-tokens dialog.

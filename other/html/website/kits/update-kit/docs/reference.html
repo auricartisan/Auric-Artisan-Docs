@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Update Kit reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, state and message of the Update Kit's notice and command.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Update Kit</a>
+<h2>Update Kit guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Update Kit</a></li>
+<li><a href="update-the-website.html">Update the website</a></li>
+<li><a href="reference.html" aria-current="page">Update Kit reference</a></li>
+<li><a href="troubleshooting.html">Update Kit troubleshooting</a></li>
+<li><a href="faq.html">Update Kit FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Kits</a> &rsaquo; <a href="../README.html">Update Kit</a> &rsaquo; <a href="README.html">Update Kit guides</a></nav>
+<p class="kicker">Website › Kits › Update Kit</p>
+<h1>Update Kit reference</h1>
+<p class="lede">Every control, state and message of the Update Kit's notice and command.</p>
+<h2 id="update-notice">Update notice</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>What it shows or does</th></tr></thead>
+<tbody>
+<tr><td>Title</td><td><strong>Update available</strong> followed by the version, such as <strong>Update available v0.9.11</strong></td></tr>
+<tr><td>Message</td><td>For example <strong>New update found: 0.9.11</strong>, or <strong>Refreshing website cache...</strong> during a forced refresh</td></tr>
+<tr><td><strong>Update now</strong></td><td>Starts the update</td></tr>
+<tr><td><strong>x</strong> (<strong>Hide update notice</strong>)</td><td>Hides the notice until the next page load</td></tr>
+</tbody></table></div>
+<p>Position: centred at the top of the page; across the top on screens 520 px wide or narrower. The notice follows the site&#39;s light or dark theme and is announced politely to screen readers.</p>
+<h2 id="right-click-menu-entry">Right-click menu entry</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>State</th><th>Label</th><th>Hint on the right</th></tr></thead>
+<tbody>
+<tr><td>Up to date or unknown</td><td><strong>Update website</strong></td><td><strong>Ctrl+⇧+U</strong></td></tr>
+<tr><td>Update available</td><td><strong>Update available</strong> and the version</td><td><strong>Ready</strong></td></tr>
+<tr><td>Updating</td><td><strong>Updating website</strong></td><td><strong>…</strong></td></tr>
+<tr><td>Failed</td><td><strong>Retry update</strong></td><td><strong>Error</strong></td></tr>
+</tbody></table></div>
+<p>When an update is available or running, the entry also appears as a banner at the top of the right-click menu, in a group named <strong>Website update</strong>. The entry is not offered on shared public portfolio pages.</p>
+<h2 id="keyboard">Keyboard</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Shortcut</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>Shift</code> + <code>U</code></td><td>Runs <strong>Update website</strong> on any page</td></tr>
+</tbody></table></div>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Checking for updates…</strong></td><td>You started an update from the right-click menu or keyboard</td></tr>
+<tr><td><strong>Updating website...</strong></td><td>Caches are being cleared and files re-downloaded</td></tr>
+<tr><td><strong>Update ready. Reloading...</strong></td><td>The update finished; the page reloads</td></tr>
+<tr><td><strong>Update failed. Try again.</strong></td><td>Something went wrong</td></tr>
+</tbody></table></div>
+<h2 id="when-the-site-checks">When the site checks</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Situation</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>First visit in this browser</td><td>The current release is recorded; nothing is shown</td></tr>
+<tr><td>Same release as last recorded</td><td>Nothing is shown</td></tr>
+<tr><td>Newer release than last recorded</td><td>The notice appears</td></tr>
+<tr><td>Release information unreachable (for example offline)</td><td>Nothing is shown</td></tr>
+</tbody></table></div>
+<p>The check runs once per page load, shortly after the page becomes ready.</p>
+<h2 id="what-an-update-clears-and-keeps">What an update clears and keeps</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Clears or refreshes</th><th>Keeps</th></tr></thead>
+<tbody>
+<tr><td>The site&#39;s cached files in your browser</td><td>Library items, notes, calculator history</td></tr>
+<tr><td>The service worker&#39;s copy of itself (asked to update)</td><td>Settings, theme and kit preferences</td></tr>
+<tr><td>Up to 180 files used by the current page, re-downloaded</td><td>Your signed-in session</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="update-the-website.html"><span>Previous</span>Update the website</a><a href="troubleshooting.html"><span>Next</span>Update Kit troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#update-notice">Update notice</a></li><li><a href="#right-click-menu-entry">Right-click menu entry</a></li><li><a href="#keyboard">Keyboard</a></li><li><a href="#messages">Messages</a></li><li><a href="#when-the-site-checks">When the site checks</a></li><li><a href="#what-an-update-clears-and-keeps">What an update clears and keeps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

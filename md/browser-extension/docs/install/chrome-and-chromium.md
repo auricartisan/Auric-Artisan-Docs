@@ -1,0 +1,57 @@
+---
+title: Browser extension — Install on Chrome and Chromium browsers
+description: Install Auric Artisan from the Chrome Web Store in Chrome, Brave, Vivaldi or Arc, pin it and open it.
+product: Browser extension › Install
+updated: 2026-09-25
+---
+
+# Install on Chrome and Chromium browsers
+
+Chrome, Brave, Vivaldi and Arc all install Auric Artisan from the same Chrome Web Store listing. None of them needs a separate store, and updates arrive automatically.
+
+## Install from the Chrome Web Store
+
+1. Open the listing: https://chromewebstore.google.com/detail/auric-artisan/bpmkaljljnlmbjfbmkbbbgiinlbpcocp
+2. Choose **Add to Chrome**. Other Chromium browsers show the same button, sometimes with their own name.
+3. Read the permission prompt and confirm. It says the extension can read and change your data on all websites; see [Permissions](../permissions.md) for what that means in practice.
+4. The browser adds the extension and opens auricartisan.com once in a new tab.
+5. Open the browser's extensions menu (the puzzle-piece icon in Chrome) and pin **Auric Artisan** to the toolbar.
+6. Open any normal web page and click the icon, or press `Alt` + `Shift` + `A`.
+
+You should see the popup with **Home** selected and the first-run tour on top.
+
+## Open the side panel
+
+Chromium browsers can dock the workspace beside the page, where it stays open while you browse.
+
+1. Open the popup.
+2. Choose **Open the side panel** in the header.
+
+The popup closes and the workspace opens in the browser's side panel. You can also open it from the browser's own side panel menu, where Auric Artisan appears with the other side panels. See [Side panel](../surfaces/side-panel.md).
+
+## Keyboard shortcuts
+
+Chrome allows an extension to suggest four default shortcuts. Auric Artisan suggests:
+
+| Shortcut | Does |
+|---|---|
+| `Alt` + `Shift` + `A` | Open Auric Artisan |
+| `Alt` + `Shift` + `C` | Open the contrast checker |
+| `Alt` + `Shift` + `E` | Extract the page palette |
+| `Alt` + `Shift` + `V` | Toggle the deuteranopia simulation |
+
+**Inspect an element** and **Run a full accessibility audit** have no default key. To assign one, or to change any of them, open `chrome://extensions/shortcuts`. In the extension, Settings › Shortcuts › **Change them in the browser** opens that page for you. A shortcut another extension already uses may not take effect until you change one of them.
+
+## Allow the extension on local files
+
+Page tools cannot reach pages opened from your disk (`file://` addresses) unless you allow it.
+
+1. Open `chrome://extensions`.
+2. Choose **Details** on Auric Artisan.
+3. Turn on **Allow access to file URLs**.
+
+## If something goes wrong
+
+- **The icon does nothing on a page:** browsers block extensions on their own pages and on the store. Try a normal website.
+- **The shortcut does not work:** another extension or the browser may own it. Reassign it on `chrome://extensions/shortcuts`.
+- More in [Troubleshooting](../troubleshooting.md).

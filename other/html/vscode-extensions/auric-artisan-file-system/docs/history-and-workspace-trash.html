@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History, undo and the workspace trash — Auric Artisan Docs</title>
+<meta name="description" content="Undo and redo Auric file operations, review the history, delete safely into the workspace trash, restore items and control the safety settings.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html" aria-current="page">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>History, undo and the workspace trash</h1>
+<p class="lede">Undo and redo Auric file operations, review the history, delete safely into the workspace trash, restore items and control the safety settings.</p>
+<p>These commands are in the <strong>History &amp; recovery</strong> group of the workspace panel and the <strong>Auric Files</strong> › <strong>Safety and History</strong> submenu.</p>
+<h2 id="undo-and-redo">Undo and redo</h2>
+<p>Every operation Auric Files performs (create, rename, move, copy, duplicate, delete, convert) is recorded as one step, however many files it touched.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it does</th><th>Deck shortcut</th></tr></thead>
+<tbody>
+<tr><td><strong>Undo Last File Operation</strong></td><td>Reverse the most recent Auric operation</td><td><code>Ctrl</code> + <code>Alt</code> + <code>Z</code></td></tr>
+<tr><td><strong>Redo File Operation</strong></td><td>Redo the last undone operation</td><td><code>Ctrl</code> + <code>Alt</code> + <code>Y</code> (macOS <code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>Z</code>)</td></tr>
+<tr><td><strong>Show Operation History</strong></td><td>List recent operations; choose one to undo back to it</td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>H</code></td></tr>
+</tbody></table></div>
+<p>When it works you see <strong>Undid <em>operation</em>.</strong> or <strong>Redid <em>operation</em>.</strong> If an undo cannot be completed, both the undo and redo lists stay as they were rather than pretending.</p>
+<ul>
+<li>The history keeps the last <code>auricFiles.safety.historyLimit</code> operations (default 200, range 10–2000).</li>
+<li>It is saved in VS Code&#39;s storage for the workspace, so it survives a restart.</li>
+<li>It records <strong>Auric</strong> operations only. Edits you make in the editor, VS Code&#39;s own Explorer actions (rename with <code>F2</code>, drag-and-drop) and changes made by other tools are not in it, and it does not keep old copies of file contents. Keep using version control and backups.</li>
+</ul>
+<p>With no history yet: <strong>No file operations have been recorded yet.</strong></p>
+<h2 id="delete-into-the-workspace-trash">Delete into the workspace trash</h2>
+<p>The <em>workspace trash</em> is a folder inside your workspace, <code>.auric/trash</code>, where Auric Files moves deleted items so you can restore them.</p>
+<ol>
+<li>Select items and run <strong>Delete (Workspace Trash)</strong> from the panel, the context menu or the deck (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>Backspace</code>).</li>
+<li>Confirm <strong>Move <em>N</em> items to the workspace trash?</strong>. The dialog lists what goes and says you can <strong>Restore from the Trash surface or with Undo</strong>.</li>
+<li>The items move to <code>.auric/trash</code>.</li>
+</ol>
+<p>Each deleted item is kept in its own folder in <code>.auric/trash</code>, with a small record of where it came from, so the trash can always be rebuilt even if its index file is lost.</p>
+<h3 id="delete-permanently">Delete permanently</h3>
+<p><strong>Delete Permanently</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>Backspace</code> with the deck) asks <strong>Permanently delete <em>N</em> items?</strong> with <strong>This cannot be undone.</strong> and removes the items without using the workspace trash. If you turn off <code>auricFiles.safety.useWorkspaceTrash</code>, every delete is permanent.</p>
+<p><strong>Delete (Workspace Trash)</strong> and <strong>Delete Permanently</strong> act on the selection and are not listed in the Command Palette.</p>
+<h2 id="browse-and-restore">Browse and restore</h2>
+<ul>
+<li><strong>Open Workspace Trash</strong> lists every entry by its original name. Choose one to restore it, or choose <strong>Empty Workspace Trash…</strong> at the end of the list. If the trash is empty: <strong>The workspace trash is empty.</strong></li>
+<li><strong>Restore from Trash…</strong> restores a chosen entry to its original place. If something already exists there, it is restored under a free name instead of overwriting. The message says <strong>Restored <em>path</em>.</strong></li>
+</ul>
+<h2 id="empty-the-trash">Empty the trash</h2>
+<p><strong>Empty Workspace Trash</strong> asks <strong>Permanently delete <em>N</em> items from the workspace trash?</strong>, shows how much space will be freed and says <strong>This cannot be undone.</strong> Choose <strong>Empty Trash</strong> to confirm.</p>
+<p>The trash also cleans itself:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.safety.useWorkspaceTrash</code></td><td><code>true</code></td><td>Use the workspace trash for deletes</td></tr>
+<tr><td><code>auricFiles.safety.trashRetentionDays</code></td><td>14 (1–365)</td><td>Days an entry is kept before it is purged automatically</td></tr>
+<tr><td><code>auricFiles.safety.trashMaxBytes</code></td><td>268435456 (256 MiB)</td><td>Size limit; the oldest entries are purged when a delete would exceed it</td></tr>
+</tbody></table></div>
+<p>A single item larger than the whole trash limit is refused with an explanation rather than half-stored.</p>
+<p>The workspace trash is left out of Auric&#39;s index, search and duplicate review. You may want to add <code>.auric/</code> to your <code>.gitignore</code>. In virtual workspaces the operating system&#39;s trash is not available.</p>
+<h2 id="safety-settings">Safety settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.safety.confirmDelete</code></td><td><code>true</code></td><td>Ask before anything is deleted, listing what goes and where</td></tr>
+<tr><td><code>auricFiles.safety.confirmBulk</code></td><td>5</td><td>Ask once an operation touches this many paths; <code>0</code> asks every time</td></tr>
+<tr><td><code>auricFiles.safety.protectedPaths</code></td><td>see below</td><td>Globs no Auric operation may rename, move or delete</td></tr>
+<tr><td><code>auricFiles.safety.warnOnGitTracked</code></td><td><code>true</code></td><td>Warn when moving or deleting a file Git tracks</td></tr>
+<tr><td><code>auricFiles.safety.warnOnUncommittedChanges</code></td><td><code>true</code></td><td>Warn when moving or deleting a file with uncommitted edits</td></tr>
+<tr><td><code>auricFiles.safety.previewBeforeApply</code></td><td><code>true</code></td><td>Show and require approval of a batch rename or move preview</td></tr>
+<tr><td><code>auricFiles.safety.historyLimit</code></td><td>200</td><td>Operations kept for undo</td></tr>
+</tbody></table></div>
+<p>Default protected paths:</p>
+<pre class="code" data-lang="json"><code>[
+  &quot;**/.git/**&quot;, &quot;**/node_modules/**&quot;, &quot;**/.env&quot;, &quot;**/.env.*&quot;,
+  &quot;**/*.pem&quot;, &quot;**/*.key&quot;, &quot;**/package-lock.json&quot;, &quot;**/yarn.lock&quot;, &quot;**/pnpm-lock.yaml&quot;
+]</code></pre>
+<p>A plan that touches a protected path is blocked before any change is made. The safety settings are workspace configuration: in an untrusted workspace they come only from your user settings, and file-changing operations are disabled until you trust the folder.</p>
+<p>After deleting into the workspace trash, <strong>Open Workspace Trash</strong> lists the item, and restoring it puts it back where it was.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="create-files-and-structures.html"><span>Previous</span>Create files and structures</a><a href="organise-tags-groups-profiles.html"><span>Next</span>Tags, groups and profiles</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#undo-and-redo">Undo and redo</a></li><li><a href="#delete-into-the-workspace-trash">Delete into the workspace trash</a></li><li><a href="#browse-and-restore">Browse and restore</a></li><li><a href="#empty-the-trash">Empty the trash</a></li><li><a href="#safety-settings">Safety settings</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,459 @@
+==============================================================================
+ANALYZER REFERENCE
+==============================================================================
+Every control, option, section, input and output of the Analyzer in one place.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+A complete list of the Analyzer's controls and outputs. Each entry links to
+the guide that explains it in more depth.
+
+PAGE ELEMENTS
+=============
+
+  Element:      Masthead
+  What it does: The headline "One URL, audited seven ways.", a lede, and a
+                rail with Read the API reference
+
+  Element:      API hint
+  What it does: The REST API equivalent and its price in API credits;
+                dismissing it hides it on every tool page
+
+  Element:      Save this run
+  What it does: The site-wide library button, fixed at the bottom right
+
+THE STRIP
+=========
+
+  Control:      URL field
+  What it does: The address to audit
+  Values:       Any http or https address, a bare host name, or a path on
+                auricartisan.com
+  Default:      Empty
+
+  Control:      Analyze
+  What it does: Starts a single-page audit. `Enter` in the URL field does the
+                same.
+  Values:       Button
+  Default:      —
+
+  Control:      Cancel
+  What it does: Stops the running audit or site scan
+  Values:       Shown only while running
+  Default:      —
+
+  Control:      Share
+  What it does: Opens the share dialog with a link that re-runs the audit
+  Values:       Button
+  Default:      —
+
+  Control:      Sections
+  What it does: Opens the Sections picker. Shows `Ctrl` + `P`.
+  Values:       Advanced only
+  Default:      —
+
+  Control:      Layouts
+  What it does: Opens the layout menu
+  Values:       Advanced only
+  Default:      —
+
+  Control:      Simple / Advanced
+  What it does: Switches mode; remembered in this browser
+  Values:       Simple, Advanced
+  Default:      Simple
+
+URL field placeholder: "Enter a URL to analyze…" (Simple) or "Enter a URL for
+deep DOM, SEO, contrast & accessibility audit…" (Advanced). See Run an
+analysis [run-an-analysis.txt].
+
+WHAT TO SCAN (ADVANCED)
+=======================
+
+The row's heading reads "What to scan · N of 13 · N tokens". See Choose what
+to scan [choose-what-to-scan.txt].
+
+  Control        | What it does                                                    | Default
+  ---------------+-----------------------------------------------------------------+--------
+  13 check boxes | One per switchable check (listed below)                         | All on
+  Everything     | Turns every check on                                            | —
+  The fast three | Keeps only Page structure, Colour contrast and SEO and metadata | —
+
+The 13 checks are Project model, Colour contrast, Before / After,
+Accessibility, Palette, Vision simulation, SEO and metadata, Media,
+Performance, Responsive behaviour, Deep DOM and framework, Security and
+reliability, and Site map.
+
+Page structure always runs. Simple mode always runs Page structure, Project
+model, Colour contrast, SEO and metadata, Site map, Accessibility and
+Responsive behaviour.
+
+SITE SCAN SETTINGS (ADVANCED)
+=============================
+
+See Scan a whole site [scan-a-whole-site.txt].
+
+  Control:      Scan Site
+  What it does: Starts a whole-site scan
+  Values:       Button
+  Default:      —
+
+  Control:      Robots
+  What it does: Follow robots.txt rules
+  Values:       On, off
+  Default:      On
+
+  Control:      Subdomains
+  What it does: Include subdomains
+  Values:       On, off
+  Default:      Off
+
+  Control:      Pages
+  What it does: Pages to audit, with a time estimate
+  Values:       1–24
+  Default:      10
+
+  Control:      Show
+  What it does: Rows per page of detailed results
+  Values:       25, 50
+  Default:      25
+
+  Control:      Workers
+  What it does: Concurrent scan workers
+  Values:       1–20
+  Default:      3
+
+  Control:      Public proxy
+  What it does: Fetch cross-origin pages through third-party public CORS
+                proxies
+  Values:       On, off
+  Default:      Off
+
+THE RUN LINE
+============
+
+  Element:      1 Analyze
+  What it does: Progress step; shows the Overview
+
+  Element:      2 Issues
+  What it does: Progress step; shows the Overview
+
+  Element:      3 Fix
+  What it does: Progress step; shows Fixes
+
+  Element:      4 Preview
+  What it does: Progress step; shows Before / After
+
+  Element:      5 Export
+  What it does: Progress step; shows Report
+
+  Element:      This run
+  What it does: The quoted cost of the next run, in tokens, with "+2 more if
+                the page blocks embedding" when a render may be needed
+
+  Element:      Remaining
+  What it does: Your token balance
+
+  Element:      Sign in · 100 free tokens / Claim 100 free tokens / See plans
+  What it does: Account actions shown when they apply
+
+  Element:      Token meter (select it)
+  What it does: Opens the token sheet: Where you stand, Why, What would fit,
+                Lately
+
+SEARCH RESULTS
+==============
+
+  Control              | What it does
+  ---------------------+-------------------------------------------------------------------
+  Search results field | Filters cards and rows in open sections; shown after the first run
+  Clear                | Empties the field
+
+WORKSPACE CONTROLS
+==================
+
+See Arrange the workspace [arrange-the-workspace.txt].
+
+  Control           | What it does
+  ------------------+-----------------------------------------------------------------------------
+  Panel grip        | Drag to move; `Left` / `Right` when focused
+  Width             | Third, half or full row
+  Focus             | Show only this panel; select again to restore
+  Collapse / Expand | Fold to the title bar
+  Close             | Remove the panel
+  Sections picker   | A filter field and three groups: On screen, Ready to open, Not scanned
+  Layouts menu      | Ready-made, saved and kept layouts; Save a name; Reset to the default layout
+
+Ready-made layouts: Accessibility review, Colour and vision, Speed and weight,
+Content and search, Everything, thin.
+
+SECTIONS
+========
+
+  Section:   Overview
+  Simple:    Yes
+  Advanced:  Yes
+  Filled by: Page structure (always)
+  Contents:  Score, grade, categories, statistics, issue cards
+
+  Section:   Project
+  Simple:    Yes
+  Advanced:  Yes
+  Filled by: Project model
+  Contents:  Shared entities, discovery, findings by module
+
+  Section:   Palette
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Palette
+  Contents:  Extracted colours, CVD previews, generated palettes
+
+  Section:   Contrast
+  Simple:    Yes
+  Advanced:  Yes
+  Filled by: Colour contrast
+  Contents:  Every text pair, ratios, suggested colours
+
+  Section:   Performance
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Performance
+  Contents:  Sub-scores, budgets, assets, waterfall
+
+  Section:   SEO
+  Simple:    No
+  Advanced:  Yes
+  Filled by: SEO and metadata
+  Contents:  Meta, raw versus rendered, sitemap, schema, keywords
+
+  Section:   A11y+
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Accessibility
+  Contents:  The 126-rule engine and its views
+
+  Section:   Insights
+  Simple:    Yes
+  Advanced:  Yes
+  Filled by: Always available
+  Contents:  Summary, benchmarks, priority engine, Core Web Vitals, fix
+             simulator
+
+  Section:   Media
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Media
+  Contents:  Images, video and audio in detail
+
+  Section:   Deep
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Deep DOM and framework
+  Contents:  Raw HTML against rendered DOM
+
+  Section:   Site Map
+  Simple:    Yes
+  Advanced:  Yes
+  Filled by: Site map
+  Contents:  Crawl, project tree, dependency graph
+
+  Section:   Simulation
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Vision simulation
+  Contents:  Page under colour-vision and low-vision filters
+
+  Section:   Devices
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Responsive behaviour
+  Contents:  Device profiles, Device Lab, screenshot wall
+
+  Section:   Security
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Security and reliability
+  Contents:  Header checks, links, detected policy
+
+  Section:   Playground
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Always available
+  Contents:  Element editor, palette generator, design lab
+
+  Section:   Fixes
+  Simple:    Yes
+  Advanced:  Yes
+  Filled by: Always available
+  Contents:  Fix list, fix mode, heuristic auto-fix
+
+  Section:   Before / After
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Before / After
+  Contents:  Original and fixed previews
+
+  Section:   Rules
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Always available
+  Contents:  Custom selector rules and templates
+
+  Section:   Workspace
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Always available
+  Contents:  Saved projects, history, palettes, monitoring
+
+  Section:   Compare
+  Simple:    Yes
+  Advanced:  Yes
+  Filled by: Always available
+  Contents:  Two saved versions side by side
+
+  Section:   CSP Setup
+  Simple:    No
+  Advanced:  Yes
+  Filled by: Always available
+  Contents:  Server headers to allow embedding
+
+  Section:   Report
+  Simple:    Yes
+  Advanced:  Yes
+  Filled by: Always available
+  Contents:  Full report and exports
+
+Section badges show finding counts on Contrast, SEO, A11y+ and Fixes.
+
+A11Y+ VIEWS
+===========
+
+  Group:    Overview
+  View:     Overview
+  Contents: Grade, conformance line, severity, categories, quick wins, reading
+            level, backlog
+
+  Group:    Findings
+  View:     Issues
+  Contents: Every failing or needs-review rule, with filters Impact, Area,
+            Level and search
+
+  Group:    Findings
+  View:     Fixes
+  Contents: Fix groups, confidence, the ready-to-paste CSS patch
+
+  Group:    Inspect
+  View:     Widgets
+  Contents: Eight ARIA widget patterns checked
+
+  Group:    Inspect
+  View:     Annotations
+  Contents: Errors, Contrast errors, Alerts, Features, Structural elements,
+            ARIA
+
+  Group:    Inspect
+  View:     A11y tree
+  Contents: The accessibility tree
+
+  Group:    Inspect
+  View:     Screen reader
+  Contents: Transcript, rotor lists, speech
+
+  Group:    Inspect
+  View:     Vision
+  Contents: Pairs under four colour-vision deficiencies, with APCA Lc
+
+  Group:    Inspect
+  View:     Focus & targets
+  Contents: Tab order and target sizes
+
+  Group:    Report
+  View:     Conformance
+  Contents: WCAG 2.2 verdict, scorecard, VPAT-style table
+
+  Group:    Report
+  View:     Export
+  Contents: Five exports and run metadata
+
+See The accessibility engine [accessibility-engine.txt] and Accessibility
+rules [accessibility-rules.txt].
+
+ISSUE CARD STATUSES
+===================
+
+  Status  | Effect
+  --------+-----------------------------------------
+  Open    | Default; still to do
+  Fixed   | Marked as fixed
+  Ignore  | Marked as accepted
+  Recheck | Marked, and the audit runs again at once
+
+SCORES AND THRESHOLDS
+=====================
+
+  Item:  Overall and section grade bands
+  Value: A+ 90–100, A 80–89, B 70–79, C 55–69, D 40–54, F 0–39
+
+  Item:  A11y+ engine grade bands
+  Value: A+ 95–100, A 90–94, B 80–89, C 70–79, D 55–69, F 0–54
+
+  Item:  Category weights, first five
+  Value: Accessibility 20%, contrast 16%, performance 13%, deep analysis 10%,
+         metadata 9%
+
+  Item:  Category weights, last five
+  Value: Responsive 8%, visual quality 8%, reliability 7%, security 7%, media
+         2%
+
+  Item:  Contrast thresholds
+  Value: 4.5:1 normal text, 3:1 large text and UI, 7:1 and 4.5:1 enhanced
+
+  Item:  Large text
+  Value: 24px, or 18.66px bold
+
+  Item:  Target size
+  Value: 24 × 24 CSS px (AA), 44 × 44 CSS px (AAA)
+
+  Item:  Core Web Vitals, good
+  Value: LCP ≤ 2,500 ms, CLS ≤ 0.10, INP ≤ 200 ms, FCP ≤ 1,800 ms, TTFB ≤ 800
+         ms, TBT ≤ 200 ms
+
+LIMITS
+======
+
+  Limit                             | Value
+  ----------------------------------+--------------------------------------------
+  Pages per site scan               | 24
+  Site Map crawl pages              | 1–500 (default 60), 1–8 workers (default 4)
+  Saved copy of a page for fallback | Kept 7 days in this browser
+  History list in Workspace         | 50 entries
+  Free plan URL analyses            | 20 a month
+  Free plan saved projects          | 20
+  Layout names                      | 40 characters
+  Automatic kept layouts            | The newest 3
+
+LINKS YOU CAN BUILD
+===================
+
+  Link:   `https://auricartisan.com/tool/analyzer/?url=<address>`
+  Effect: Opens the Analyzer and audits the address
+
+  Link:   A Share or Share Link link
+  Effect: Opens the Analyzer and re-runs the audit of the shared address
+
+REMEMBERED IN THIS BROWSER
+==========================
+
+  - Simple or Advanced mode, and each mode's panel arrangement
+  - Saved layouts and the three newest automatic ones
+  - Which checks are ticked in What to scan
+  - Fix Mode (Safe or Aggressive)
+  - The Public proxy choice
+  - The Network Simulation profile
+  - Issue statuses (Open, Fixed, Ignore, Recheck)
+  - Custom rules
+  - Every run's report, versions, palettes and history (see Save, reopen and
+    compare [save-reopen-and-compare.txt])
+  - A copy of each audited page for up to 7 days, used as a last-resort
+    fallback
+  - Whether you dismissed the API hint
+
+For exports and file names, see Export and share [export-and-share.txt].

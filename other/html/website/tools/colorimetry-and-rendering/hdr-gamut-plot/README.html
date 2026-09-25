@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HDR Gamut Plot — Auric Artisan Docs</title>
+<meta name="description" content="What the HDR Gamut Plot does, who it is for, where to find it and how to take your first reading.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Colorimetry and rendering tools</a>
+<h2>HDR Gamut Plot</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">HDR Gamut Plot documentation &rsaquo;</a></li>
+<li><a href="others/README.html">HDR Gamut Plot: supporting pages &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="README.html">HDR Gamut Plot</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>HDR Gamut Plot</h1>
+<p class="lede">What the HDR Gamut Plot does, who it is for, where to find it and how to take your first reading.</p>
+<p>High dynamic range (HDR) video changes two things at once: it widens the <strong>gamut</strong> (more saturated colours, typically Rec. 2020 primaries) and extends the <strong>luminance range</strong> (from about 100 nits for standard video to as much as 10,000 nits). The HDR Gamut Plot puts both on screen.</p>
+<p>It draws the three broadcast gamuts — Rec. 709/sRGB, Display P3 and Rec. 2020 — on a CIE 1931 xy or CIE 1976 u′v′ chromaticity diagram, and measures each as a share of the spectral locus. It plots the HDR transfer curves (PQ from SMPTE ST 2084 and HLG from BT.2100, with its system gamma) against standard gamma 2.2 and 2.4, on an axis in real cd/m². It draws the gamuts in two HDR perceptual spaces, ICtCp and Jzazbz, at a luminance you choose, and stacks their boundaries at eight luminance levels from 0.1 to 10,000 nits. You can also drop in an image to measure how much of each gamut its colours occupy.</p>
+<p>The page is careful about what a nit is. A PNG or JPEG does not record absolute luminance, so the lab does not claim one from an image; where a luminance comes from the peak-brightness control rather than from a signal, it says so.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Video, streaming and games developers working with HDR10, HLG or wide-gamut content.</li>
+<li>Designers preparing assets for P3 and HDR displays.</li>
+<li>Students learning PQ, HLG, ICtCp and the difference between absolute and display-referred curves.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li>Address: <a href="https://auricartisan.com/tool/general/gamut-and-rendering/hdr-gamut-plot/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/hdr-gamut-plot/</a></li>
+<li>In the tool collection (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) under <strong>Gamut &amp; Rendering</strong>, as <strong>HDR Gamut Plot</strong>.</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open <a href="https://auricartisan.com/tool/general/gamut-and-rendering/hdr-gamut-plot/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/hdr-gamut-plot/</a>. The diagram shows the three gamuts on CIE 1931 xy.</li>
+<li>Read <strong>Gamut metrics</strong>: each space&#39;s primaries, white, share of the locus and area.</li>
+<li>Move the pointer over the diagram to read x, y, XYZ, L* and ICtCp values under it.</li>
+<li>Press <code>A</code> to switch to the u′v′ diagram, then <code>A</code> again to switch back.</li>
+<li>Open <strong>Curves</strong>, set <strong>Peak brightness</strong> to 1000 nits, and press <code>3</code> (PQ) and <code>4</code> (HLG) to compare the curves.</li>
+<li>Open <strong>Planes</strong> to see the gamuts in ICtCp at the luminance set by <strong>Signal level</strong>.</li>
+<li>Open <strong>Export</strong>, choose <strong>The measurements</strong> as <strong>CSV</strong>, and select the download button.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Compare Rec. 709/sRGB, Display P3 and Rec. 2020 on xy or u′v′, with the spectral locus and line of purples.</li>
+<li>Read each gamut&#39;s area and share of the spectral locus in the plane on screen.</li>
+<li>Plot PQ, HLG, gamma 2.4 (BT.1886) and gamma 2.2 as absolute luminance against signal.</li>
+<li>Set peak brightness (100 to 10,000 nits) and HLG surround, and read HLG&#39;s system gamma.</li>
+<li>View the gamuts in ICtCp or Jzazbz at a chosen luminance, and as boundary rings at eight luminance levels.</li>
+<li>Measure how much of each gamut an image&#39;s colours occupy.</li>
+<li>Convert a list of HEX colours to CIELAB, ICtCp and Jzazbz.</li>
+<li>Export measurements (CSV, JSON, CSS), the curve (CSV), the diagram, curve plot and plane (PNG), or a link.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the tool<ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/compare-broadcast-gamuts.html">Compare broadcast gamuts</a></li>
+<li><a href="docs/read-hdr-curves.html">Read HDR transfer curves</a></li>
+<li><a href="docs/explore-perceptual-planes.html">Explore ICtCp and Jzazbz planes</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background and supporting pages<ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/shortcuts.html">Shortcuts</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related tools</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../gamut-map/others/related.html"><span>Previous</span>Related to Gamut Mapping</a><a href="docs/README.html"><span>Next</span>HDR Gamut Plot documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

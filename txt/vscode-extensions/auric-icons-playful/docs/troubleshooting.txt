@@ -1,0 +1,53 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for common problems with Auric Icons: Playful.
+Area: VS Code extensions › Auric Icons: Playful   Updated: 2026-09-25
+
+  Symptom:        The Auric Icons: Playful view is missing.
+  Why it happens: Auric Artisan Icon Studio, Modern or Drawn hosts the shared
+                  library, which already includes Playful.
+  What to do:     Use the host's library and filter by Library › Playful, or
+                  set `auricIconStudio.hostFamilyLibraries` to `false` if Icon
+                  Studio is the host.
+
+  Symptom:        Playful commands are missing from the Command Palette.
+  Why it happens: Same reason.
+  What to do:     Use the host's commands; keybindings still work.
+
+  Symptom:        `Ctrl` + `Alt` + `I` does nothing.
+  Why it happens: The editor is not focused, another extension hosts, or the
+                  keys are bound elsewhere.
+  What to do:     Focus a text editor and check Keyboard Shortcuts.
+
+  Symptom:        "Open a text editor before inserting an SVG."
+  Why it happens: No text editor is available.
+  What to do:     Open a file, click into it, insert again.
+
+  Symptom:        I chose Mono or Duotone and Playful cards look like Color.
+  Why it happens: Playful has no Mono or Duotone; it falls back to Color in a
+                  merged library.
+  What to do:     Use Color, Outline, Filled or Small.
+
+  Symptom:        Auto shows Color in a CSS file.
+  Why it happens: Playful has no Mono variant, which Auto would use for
+                  stylesheets and data files.
+  What to do:     Choose a variant explicitly if you prefer Outline or Filled.
+
+  Symptom:        I expected Playful Explorer file icons.
+  Why it happens: Those belong to Auric Artisan File Icons (the Playful
+                  Explorer style), a different set of artwork.
+  What to do:     Install File Icons and choose Playful there.
+
+  Symptom:        The inserted format is not what I expected.
+  Why it happens: Smart insert chose a format for the file's language.
+  What to do:     Use Copy Icon As…, or turn off
+                  `auricIconsPlayful.library.smartInsert`.
+
+  Symptom:        The library says the icon catalog is not bundled.
+  Why it happens: The installed files are incomplete.
+  What to do:     Reinstall from the Marketplace.
+
+If the problem continues, note your VS Code version, the extension version
+(0.12.1), the other Auric extensions installed and the steps to reproduce,
+then contact support at https://auricartisan.com/company/contact/.

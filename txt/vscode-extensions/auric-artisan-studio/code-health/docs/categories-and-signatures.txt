@@ -1,0 +1,500 @@
+==============================================================================
+CATEGORIES AND SIGNATURES
+==============================================================================
+The seven code-health categories and every signature Auric Code Health
+detects, with the languages it checks and its confidence.
+Area: VS Code extensions › Auric Artisan Studio › Auric Code Health   Updated: 2026-09-25
+
+Auric Code Health groups its checks into seven categories. Within each, a
+signature is one specific detector with a stable ID, such as
+`ch-secret-github-token`. The ID stays the same when the wording of a message
+improves, so records, baselines and suppression comments keep working. Every
+finding also records the detector version (1.2.0 in the current package).
+
+THE SEVEN CATEGORIES
+====================
+
+  Category:          Possible secrets
+  ID:                `secret`
+  Problems severity: Warning
+  Hover severity:    Critical
+  Score weight:      14
+  Setting:           `codeHealth.secret`
+
+  Category:          Security risks
+  ID:                `security`
+  Problems severity: Warning
+  Hover severity:    Serious
+  Score weight:      12
+  Setting:           `codeHealth.security`
+
+  Category:          Merge markers
+  ID:                `conflict`
+  Problems severity: Error
+  Hover severity:    Critical
+  Score weight:      10
+  Setting:           `codeHealth.conflict`
+
+  Category:          Risky APIs
+  ID:                `risk`
+  Problems severity: Warning
+  Hover severity:    Serious
+  Score weight:      4
+  Setting:           `codeHealth.risk`
+
+  Category:          Debug leftovers
+  ID:                `debug`
+  Problems severity: Information
+  Hover severity:    Minor
+  Score weight:      2
+  Setting:           `codeHealth.debug`
+
+  Category:          Task markers
+  ID:                `todo`
+  Problems severity: Hint
+  Hover severity:    Minor
+  Score weight:      0.25
+  Setting:           `codeHealth.todo`
+
+  Category:          Oversized
+  ID:                `size`
+  Problems severity: Hint
+  Hover severity:    Minor
+  Score weight:      0.5
+  Setting:           `codeHealth.size`
+
+Each setting is `auricCodeHealth.codeHealth.<category>` and is on by default.
+`auricCodeHealth.codeHealth.enabled` turns all of them off at once.
+
+HOW THE CHECKS READ CODE
+========================
+
+  - A small per-language reader marks comments and strings. Task markers must
+    be inside comments; debug, risk and security signatures ignore
+    commented-out or quoted code. Secrets are found everywhere, including
+    comments, because a key in a comment is still leaked.
+  - Signatures run only in the languages where they mean something. In a
+    language the Studio does not know, the checks behave
+    language-agnostically.
+  - Argument-aware signatures read the call's argument or assigned value: a
+    dynamic value (a variable, concatenation or template with `${}`) gives
+    high confidence; a constant gives low confidence (or is skipped where a
+    constant is harmless); an argument that cannot be read gives medium.
+  - A file reports at most 300 code-health findings.
+
+In the tables, web languages means JavaScript, TypeScript, JSX, TSX, Vue,
+Svelte, Astro, HTML, EJS, Handlebars, Twig, Razor, PHP and CoffeeScript.
+
+POSSIBLE SECRETS
+================
+
+All secret signatures map to CWE-798 (hard-coded credentials). Every match is
+redacted; see Secrets and redaction [secrets-and-redaction.txt].
+
+  Signature: `ch-secret-aws-access`
+  Title:     AWS access key
+  Detects:   An AWS access key ID (`AKIA` followed by 16 characters)
+
+  Signature: `ch-secret-aws-temporary`
+  Title:     AWS temporary access key
+  Detects:   A temporary AWS key (`ASIA` followed by 16 characters)
+
+  Signature: `ch-secret-private-key`
+  Title:     Embedded private key
+  Detects:   A PEM private key block (RSA, EC, DSA, OpenSSH, encrypted or PGP)
+
+  Signature: `ch-secret-github-token`
+  Title:     GitHub token
+  Detects:   A GitHub token starting `ghp_`, `gho_`, `ghu_`, `ghs_` or `ghr_`
+
+  Signature: `ch-secret-github-pat`
+  Title:     GitHub fine-grained token
+  Detects:   A token starting `github_pat_`
+
+  Signature: `ch-secret-gitlab-token`
+  Title:     GitLab access token
+  Detects:   A GitLab personal access token (`glpat-`)
+
+  Signature: `ch-secret-slack-token`
+  Title:     Slack token
+  Detects:   A Slack token (`xoxb-`, `xoxp-` and similar, or `xapp-`)
+
+  Signature: `ch-secret-google-api-key`
+  Title:     Google API key
+  Detects:   A Google API key (`AIza` followed by 35 characters)
+
+  Signature: `ch-secret-google-oauth`
+  Title:     Google OAuth client secret
+  Detects:   A Google OAuth client secret (`GOCSPX-`)
+
+  Signature: `ch-secret-stripe-live`
+  Title:     Stripe live secret
+  Detects:   A live Stripe secret key (`sk_live_`)
+
+  Signature: `ch-secret-stripe-key`
+  Title:     Stripe secret or restricted key
+  Detects:   A Stripe test secret or restricted key (`sk_test_`, `rk_test_`,
+             `rk_live_`)
+
+  Signature: `ch-secret-anthropic-key`
+  Title:     Anthropic API key
+  Detects:   An Anthropic API key (`sk-ant-`)
+
+  Signature: `ch-secret-openai-key`
+  Title:     OpenAI API key
+  Detects:   An OpenAI key (`sk-proj-`, `sk-svcacct-`, `sk-admin-`, or `sk-`
+             and 32+ characters)
+
+  Signature: `ch-secret-npm-token`
+  Title:     npm access token
+  Detects:   An npm token (`npm_` and 36 characters)
+
+  Signature: `ch-secret-sendgrid-key`
+  Title:     SendGrid API key
+  Detects:   A SendGrid key (`SG.` with two dotted parts)
+
+  Signature: `ch-secret-digitalocean-token`
+  Title:     DigitalOcean token
+  Detects:   A DigitalOcean token (`dop_v1_` and 64 hex characters)
+
+  Signature: `ch-secret-slack-webhook`
+  Title:     Slack webhook secret
+  Detects:   A Slack incoming-webhook URL with its secret path
+
+  Signature: `ch-secret-discord-webhook`
+  Title:     Discord webhook secret
+  Detects:   A Discord webhook URL with its token
+
+  Signature: `ch-secret-jwt`
+  Title:     JSON Web Token
+  Detects:   A three-part token starting `eyJ` (medium confidence)
+
+  Signature: `ch-secret-credential-url`
+  Title:     Credentials embedded in URL
+  Detects:   `scheme://user:password@host` for HTTP(S), Postgres, MySQL,
+             MongoDB, Redis, AMQP, FTP, SSH, SMTP
+
+  Signature: `ch-secret-connection-string`
+  Title:     Password in a connection string
+  Detects:   `Password=`, `Pwd=`, `AccountKey=` or `SharedAccessKey=` in a
+             connection string (Azure, ADO.NET)
+
+  Signature: `ch-secret-auth-header`
+  Title:     Hard-coded Authorization header
+  Detects:   A `Bearer` or `Basic` token written into a string
+
+  Signature: `ch-secret-assignment`
+  Title:     Hardcoded credential assignment
+  Detects:   A credential-named key assigned a literal value (medium
+             confidence; see below)
+
+  Signature: `ch-secret-custom`
+  Title:     Workspace custom secret signature
+  Detects:   A match of one of your `codeHealth.customSecretPatterns` (medium
+             confidence)
+
+Credential assignments are keys whose name ends in a credential word, such as
+`password`, `passwd`, `pwd`, `passphrase`, `secret`, `token`, `bearer`,
+`api_key`, `api_secret`, `secret_key` or `private_key` (so `DB_PASSWORD` and
+`adminPassword` count, but `password_hint` does not), assigned a value of 8 to
+500 characters. Quoted and typed keys, `=`, `:`, `:=` and `=>` are all
+understood, as are unquoted values in YAML, INI, properties, `.env`, shell and
+TOML files, and XML settings such as `<add key="ApiKey" value="…"/>` and
+`<password>…</password>`.
+
+The message for each is short, for example Looks like a GitHub token., and the
+fix is Move secrets to env vars / a secret manager and rotate any that were
+committed.
+
+SECURITY RISKS
+==============
+
+All security signatures map to OWASP Top 10:2025 A05 and have high confidence
+unless noted. The fix is Harden or remove this — see the linked guidance.
+
+  Signature: `ch-sec-tls-node-option`
+  Title:     Node TLS verification disabled
+  Detects:   `rejectUnauthorized: false`
+  Languages: Any
+
+  Signature: `ch-sec-tls-node-env`
+  Title:     Process-wide Node TLS bypass
+  Detects:   `NODE_TLS_REJECT_UNAUTHORIZED` set to `0`
+  Languages: Any
+
+  Signature: `ch-sec-tls-python`
+  Title:     Python TLS verification disabled
+  Detects:   `verify=False`, `ssl._create_unverified_context()`,
+             `check_hostname=False`, `CERT_NONE`
+  Languages: Any, outside strings
+
+  Signature: `ch-sec-tls-go`
+  Title:     Go TLS verification disabled
+  Detects:   `InsecureSkipVerify: true`
+  Languages: Any, outside strings
+
+  Signature: `ch-sec-tls-php`
+  Title:     PHP cURL TLS verification disabled
+  Detects:   `CURLOPT_SSL_VERIFYPEER` or `CURLOPT_SSL_VERIFYHOST` set to false
+             or 0
+  Languages: PHP
+
+  Signature: `ch-sec-weak-crypto-node`
+  Title:     Weak Node cryptographic hash
+  Detects:   `createHash('md5')` or `createHash('sha1')`
+  Languages: Any, outside strings
+
+  Signature: `ch-sec-weak-crypto-python`
+  Title:     Weak Python cryptographic hash
+  Detects:   `hashlib.md5`, `hashlib.sha1`, `hashlib.new('md5')`; not with
+             `usedforsecurity=False`
+  Languages: Any, outside strings
+
+  Signature: `ch-sec-weak-crypto-java`
+  Title:     Weak Java / .NET cryptographic hash
+  Detects:   `MessageDigest.getInstance("MD5")` or SHA-1, `DigestUtils.md5`,
+             `MD5.Create()`
+  Languages: Java, Kotlin, Scala, Groovy, C#, F#, VB
+
+  Signature: `ch-sec-weak-crypto-php`
+  Title:     Weak PHP password hash
+  Detects:   `md5()` or `sha1()` of a `$…pass`, `$…pwd` or `$…secret` variable
+  Languages: PHP
+
+  Signature: `ch-sec-deserialize-python`
+  Title:     Unsafe Python deserialization
+  Detects:   `pickle`, `cPickle` or `marshal` `load` and `loads`
+  Languages: Any, outside strings
+
+  Signature: `ch-sec-yaml-load`
+  Title:     Unsafe YAML deserialization
+  Detects:   `yaml.load`, `load_all`, `full_load`, `unsafe_load`; not with
+             `SafeLoader`, not js-yaml
+  Languages: Any, outside strings
+
+  Signature: `ch-sec-php-unserialize`
+  Title:     Unsafe PHP deserialization
+  Detects:   `unserialize()`, unless `allowed_classes` is false
+  Languages: PHP
+
+  Signature: `ch-sec-string-timer`
+  Title:     String-evaluated timer
+  Detects:   `setTimeout` or `setInterval` given a string
+  Languages: Web languages
+
+  Signature: `ch-sec-vue-html`
+  Title:     Vue raw HTML sink
+  Detects:   The `v-html` directive
+  Languages: Any
+
+  Signature: `ch-sec-insert-html`
+  Title:     insertAdjacentHTML sink
+  Detects:   `insertAdjacentHTML` with dynamic, unsanitised markup
+  Languages: Web languages
+
+  Signature: `ch-sec-wildcard-cors`
+  Title:     Wildcard CORS policy
+  Detects:   `Access-Control-Allow-Origin` set to `*`
+  Languages: Any
+
+  Signature: `ch-sec-command-injection`
+  Title:     Dynamic shell command
+  Detects:   `child_process` `exec` with a dynamic command, or `spawn` and
+             `execFile` with `shell: true`
+  Languages: JavaScript family
+
+  Signature: `ch-sec-sql-template`
+  Title:     Interpolated SQL query
+  Detects:   SQL built by interpolation: JS templates, Python f-strings, C#
+             `$""`, PHP `"$x"`, Ruby `#{}`
+  Languages: Any
+
+  Signature: `ch-sec-sql-concat`
+  Title:     Concatenated SQL query
+  Detects:   SQL built with `+`, PHP `.`, Python `%` or `.format`, or
+             `sprintf`-style formatting
+  Languages: Any
+
+Notes:
+
+  - Command injection follows how `child_process` was imported: `require`,
+    `import`, aliases, destructuring and `promisify`. A constant command is
+    not reported; an unreadable one is reported at medium confidence.
+  - SQL signatures look for upper-case SQL shapes (`SELECT … FROM`, `INSERT
+    INTO`, `UPDATE … SET`, `DELETE FROM`, `DROP`, `CREATE` or `ALTER TABLE`,
+    `UNION SELECT`, `MERGE INTO`), so ordinary prose is ignored. Tagged
+    templates such as `sql`…`` are parameterised and not reported.
+  - insertAdjacentHTML is skipped when the markup is a constant or passes
+    through a sanitiser (a function named like `sanitize…`, `escapeHtml`,
+    `filterXSS`, `xss` or `purify`).
+
+RISKY APIS
+==========
+
+Signatures with contextual confidence are argument-aware. The fix is Review
+this call for safer alternatives.
+
+  Signature:  `ch-risk-eval`
+  Title:      Dynamic eval
+  Detects:    `eval(…)`, including `window.eval` and `globalThis.eval`
+  Languages:  Any, outside strings
+  Confidence: contextual
+
+  Signature:  `ch-risk-function-constructor`
+  Title:      Function constructor
+  Detects:    `new Function(…)`
+  Languages:  Web languages
+  Confidence: contextual
+
+  Signature:  `ch-risk-innerhtml`
+  Title:      Dynamic innerHTML assignment
+  Detects:    Assigning a dynamic value to `innerHTML` or `outerHTML`;
+              constants and sanitised values are skipped
+  Languages:  Web languages
+  Confidence: contextual
+
+  Signature:  `ch-risk-react-html`
+  Title:      React raw HTML sink
+  Detects:    `dangerouslySetInnerHTML`
+  Languages:  JSX, TSX
+  Confidence: medium
+
+  Signature:  `ch-risk-document-write`
+  Title:      document.write usage
+  Detects:    `document.write()` or `writeln()`
+  Languages:  Web languages
+  Confidence: medium
+
+  Signature:  `ch-risk-shell`
+  Title:      Shell execution
+  Detects:    `os.system`, `os.popen`, `subprocess.getoutput`, or `subprocess`
+              calls with `shell=True`
+  Languages:  Python
+  Confidence: contextual
+
+A constant argument adds (constant argument — lower risk) to the message and
+lowers the confidence.
+
+DEBUG LEFTOVERS
+===============
+
+The message is Leftover debug statement (…). and the fix Remove before
+committing, or route through a real logger. Normal output such as `print`,
+`echo` and `fmt.Println` is deliberately not reported. Commented-out and
+quoted code is ignored. Confidence is medium.
+
+  Signature: `ch-debug-console`
+  Title:     Console debug output
+  Detects:   `console.log`, `debug`, `trace`, `dir` or `table`
+  Languages: Web languages
+
+  Signature: `ch-debug-debugger`
+  Title:     Debugger statement
+  Detects:   `debugger`
+  Languages: Web languages
+
+  Signature: `ch-debug-rust-dbg`
+  Title:     Rust dbg! output
+  Detects:   `dbg!(…)`
+  Languages: Rust
+
+  Signature: `ch-debug-php-dump`
+  Title:     PHP diagnostic dump
+  Detects:   `var_dump`, `print_r`, `var_export`
+  Languages: PHP
+
+  Signature: `ch-debug-ruby`
+  Title:     Ruby debugger hook
+  Detects:   `binding.pry`, `binding.irb`, `byebug`
+  Languages: Ruby
+
+  Signature: `ch-debug-python`
+  Title:     Python debugger hook
+  Detects:   `pdb.set_trace()`, `ipdb.set_trace()`, `pudb.set_trace()`,
+             `breakpoint()`
+  Languages: Python
+
+  Signature: `ch-debug-nslog`
+  Title:     NSLog debug output
+  Detects:   `NSLog(…)`
+  Languages: Objective-C, Objective-C++, Swift
+
+  Signature: `ch-debug-java-system-out`
+  Title:     Java System.out debug output
+  Detects:   `System.out.print` and `println`
+  Languages: Java, Groovy, Scala, Kotlin
+
+  Signature: `ch-debug-go`
+  Title:     Go debug print
+  Detects:   `fmt.Print`, `Println` or `Printf` whose text starts with `DEBUG`
+  Languages: Go
+
+TASK MARKERS
+============
+
+  Signature            | Marker
+  ---------------------+-----------
+  `ch-todo-todo`       | TODO
+  `ch-todo-fixme`      | FIXME
+  `ch-todo-hack`       | HACK
+  `ch-todo-xxx`        | XXX
+  `ch-todo-bug`        | BUG
+  `ch-todo-optimize`   | OPTIMIZE
+  `ch-todo-refactor`   | REFACTOR
+  `ch-todo-deprecated` | DEPRECATED
+
+  - In languages the Studio can lex, an upper-case marker counts only inside a
+    comment. Lower-case `@todo`, `todo:` and `fixme:` count inside comments
+    too. Rust's `todo!()` and Kotlin's `TODO()` count in code.
+  - In markup files, a marker counts inside a comment, and `TODO`, `FIXME` and
+    `HACK` count anywhere.
+  - The message quotes the text after the marker, for example `TODO: remove
+    the legacy header`. The fix is Resolve or convert into a tracked issue.
+    Confidence is medium.
+
+MERGE MARKERS
+=============
+
+  Signature: `ch-conflict`
+  Title:     Unresolved merge marker
+  Detects:   A line starting with seven `<` or `>` characters, or seven equals
+             signs or vertical bars inside a conflict
+
+A lone `=======` line outside a conflict, such as a Markdown heading
+underline, is not reported. The message is Unresolved merge-conflict marker.
+and the fix Resolve the conflict and remove the marker.
+
+OVERSIZED
+=========
+
+  Signature: `ch-longline`
+  Title:     Oversized source line
+  Detects:   A line longer than 240 characters, except lines that start with a
+             URL
+  Where:     Editor and scans
+
+  Signature: `ch-bigfile`
+  Title:     Large file
+  Detects:   A file with more than 800 lines, reported on line 1
+  Where:     Project scans and the command-line scanner
+
+Messages: Very long line (312 chars) — hard to read and review. and Large file
+(1204 lines) — consider splitting.
+
+SEARCH THE RULEBOOK
+===================
+
+Every signature, the seven categories, four policies (on confidence,
+redaction, stable identities and suppression review) and two articles are in
+the knowledge database. Run Auric Artisan: Open Rulebook & Knowledge Database
+and search for a signature ID or a word such as `secret`, or select Rule
+details in a finding's hover. The Code-health balanced baseline rulebook
+brings them together. See Rulebook and knowledge database
+[../../docs/rulebook-and-knowledge.txt].
+
+RELATED
+=======
+
+  - Secrets and redaction [secrets-and-redaction.txt]
+  - Suppression and branding [../../docs/suppression-and-branding.txt]
+  - Limits and accuracy [../others/limits-and-accuracy.txt]

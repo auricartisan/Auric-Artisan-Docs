@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Auric Artisan Live — Auric Artisan Docs</title>
+<meta name="description" content="Install Auric Artisan Live, learn where each control lives, and run a first live-reload session.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Getting started with Auric Artisan Live</h1>
+<p class="lede">Install Auric Artisan Live, learn where each control lives, and run a first live-reload session.</p>
+<p>This guide installs the extension, tours every surface it adds to VS Code, and ends with a page that updates when you save.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li><p>Check that VS Code is version 1.95 or newer (<strong>Help</strong> › <strong>About</strong>).</p>
+</li>
+<li><p>In the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>), search for <code>@id:auric-artisan.auric-artisan-live</code> and select <strong>Install</strong>. Or run:</p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-live</code></pre>
+</li>
+<li><p>Open the folder that contains your website with <strong>File</strong> › <strong>Open Folder…</strong>. Auric Live serves folders; with no folder open, its view shows an <strong>Open Folder</strong> button instead.</p>
+</li>
+</ol>
+<p>Backend runtimes (PHP, Python, Node.js and so on) are not included. Install the ones your project needs separately.</p>
+<h2 id="the-screen-tour">The screen tour</h2>
+<h3 id="status-bar">Status bar</h3>
+<p>On the right of the status bar:</p>
+<ul>
+<li><strong>Go Live</strong> (broadcast icon) when nothing is running. Select it to start a server.</li>
+<li>The <strong>port number</strong> (radio-tower icon) while a server runs, with <code>+1</code>, <code>+2</code> and so on when several workspace folders are live. Hover for a summary: run target, served root, live reload and connected pages, proxy rules and upstream state, mock routes, network profile and request count. Select it to open the <strong>Auric Live</strong> menu.</li>
+<li>A <strong>spinning icon with a warning background</strong> when the server is up but a proxied backend is not answering yet.</li>
+</ul>
+<p>Hide the item with <code>auricLive.showStatusBar</code>.</p>
+<h3 id="the-auric-live-sidebar">The Auric Live sidebar</h3>
+<p>Select the <strong>Auric Live</strong> icon in the Activity Bar. It has three views.</p>
+<p><strong>Servers</strong> — one entry per workspace folder, showing its address or state. Expand a running server to see:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>What it shows</th><th>Select it to</th></tr></thead>
+<tbody>
+<tr><td><strong>Root</strong></td><td>The folder being served</td><td>—</td></tr>
+<tr><td><strong>Run target</strong></td><td><strong>Static files</strong>, a detected runtime or your own command</td><td>Change the run target</td></tr>
+<tr><td><strong>Dev server</strong></td><td>A supervised process, its state, port and restart count</td><td>Show its output</td></tr>
+<tr><td><strong>Upstream ready / not answering</strong></td><td>Each proxied backend&#39;s state</td><td>Find it (when not answering)</td></tr>
+<tr><td><strong>Local</strong></td><td>The <code>localhost</code> address</td><td>Open it in your browser</td></tr>
+<tr><td><strong>Network</strong></td><td>Up to three addresses other devices can use</td><td>Show the phone QR code</td></tr>
+<tr><td><strong>Live reload</strong></td><td>How many pages are connected, or <strong>off</strong></td><td>—</td></tr>
+<tr><td><strong>Requests</strong></td><td>Handled and failed counts</td><td>Open the request inspector</td></tr>
+<tr><td><strong>Certificate</strong></td><td><strong>generated</strong> or <strong>provided</strong> (HTTPS only)</td><td>Reveal the certificate</td></tr>
+<tr><td><strong>Config file</strong></td><td>The project configuration file, if one exists</td><td>Open it</td></tr>
+</tbody></table></div>
+<p>The view&#39;s title bar has <strong>Go Live</strong>, <strong>Select Run Target…</strong>, <strong>Stop All Servers</strong> and <strong>Open Control Panel</strong>, and its <strong>…</strong> menu has <strong>Refresh</strong>, <strong>Open Settings</strong> and <strong>Show Log</strong>. Hover a running server for inline <strong>Open in Default Browser</strong> and <strong>Stop Server</strong> buttons; right-click it for <strong>Restart Server</strong>, <strong>Open Preview Beside</strong>, <strong>Copy Local URL</strong>, <strong>Copy Network URL</strong> and <strong>Show Phone QR Code</strong>.</p>
+<p><strong>Requests</strong> — the most recent requests, each shown as method and path with status, which handler answered and the time taken. Select one for its details; right-click for <strong>Replay Request</strong>, <strong>Copy Request as curl</strong> and <strong>Copy Request as fetch</strong>. The title bar has <strong>Clear Request Log</strong> and <strong>Export Requests as HAR</strong>.</p>
+<p><strong>Routes and Mocks</strong> — every proxy rule (<code>/api →</code> target), active mock route (method, path, status and hit count), REST collection (address and record count) and CGI handler (<code>*.php</code> › <code>php-cgi</code>). The title bar has <strong>Add API Proxy Route…</strong>, <strong>Add Mock API Route…</strong> and <strong>Find a Running Backend</strong>; its <strong>…</strong> menu has <strong>Open Mock Database</strong>, <strong>Open Project Config File</strong>, <strong>Restart Framework Dev Server</strong> and <strong>Show Dev Server Output</strong>.</p>
+<h3 id="the-control-panel">The control panel</h3>
+<p>Run <strong>Auric Live: Open Control Panel</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>I</code>). It opens as an editor tab with five sections:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Use it to</th></tr></thead>
+<tbody>
+<tr><td><strong>01 / Overview</strong></td><td>Start, stop or restart; choose the active workspace; open in the browser or preview beside; copy addresses; show the phone QR code; control reload and network shaping</td></tr>
+<tr><td><strong>02 / Requests</strong></td><td>Search, filter and sort captured requests, pause the display, open details, copy curl or fetch, replay, export HAR</td></tr>
+<tr><td><strong>03 / Runtime</strong></td><td>Choose a detected or custom run target, check readiness and prerequisites, see its output, connect to an existing backend</td></tr>
+<tr><td><strong>04 / Routing</strong></td><td>See and add proxy rules, mock endpoints, REST collections and CGI handlers</td></tr>
+<tr><td><strong>05 / Settings</strong></td><td>Change session settings, open the project configuration or VS Code settings, import an HTTPS certificate</td></tr>
+</tbody></table></div>
+<p>The header has the language switch (<strong>Auto</strong>, <strong>English</strong>, <strong>हिन्दी</strong>) and a link to auricartisan.com. The panel follows your light, dark or high-contrast theme and adapts to narrow editor splits. Its drop-down menus work with the keyboard: arrow keys, type-ahead and <code>Escape</code>.</p>
+<p>Changes you make in the panel are <em>session overrides</em>: they apply until you close or reload the VS Code window, and they do not rewrite your settings or project file. To keep a choice, put it in <code>auric.live.json</code> or VS Code settings. See <a href="project-configuration.html">Project configuration</a>.</p>
+<h3 id="the-auric-live-menu">The Auric Live menu</h3>
+<p>Select the port number in the status bar, run <strong>Auric Live: Open Live Menu</strong>, or press <code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>K</code>. It lists every common action with its current state, such as the network profile, whether HTTPS and live reload are on, the port and the served folder.</p>
+<h3 id="editor-and-explorer-entry-points">Editor and Explorer entry points</h3>
+<ul>
+<li>Right-click a folder in the Explorer for <strong>Serve This Folder</strong> and the <strong>Auric Live</strong> submenu.</li>
+<li>Right-click an <code>.html</code>, <code>.htm</code>, <code>.xhtml</code>, <code>.php</code> or <code>.md</code> file in the Explorer for <strong>Open with Auric Live</strong>. For HTML, XHTML and PHP files the same entry is on the editor&#39;s context menu and the editor tab&#39;s context menu.</li>
+<li>The editor title bar&#39;s <strong>Run</strong> menu has an <strong>Auric Live</strong> submenu: <strong>Go Live</strong>, <strong>Select Run Target…</strong>, <strong>Add Custom Run Command…</strong>, <strong>Open Preview Beside</strong>, <strong>Open in Default Browser</strong>, <strong>Show Phone QR Code</strong>, <strong>Restart Framework Dev Server</strong>, <strong>Stop Server</strong> and <strong>Open Live Menu</strong>.</li>
+</ul>
+<h2 id="your-first-live-reload-session">Your first live-reload session</h2>
+<ol>
+<li>Open a folder with an <code>index.html</code> that links a stylesheet.</li>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>L</code> (or run <strong>Auric Live: Go Live</strong>). If you have several workspace folders, choose which one to serve.</li>
+<li>Your browser opens at <code>http://localhost:5500</code>. A notification says Auric Live is serving the folder and offers <strong>Open</strong>, <strong>Preview</strong> and <strong>Phone QR</strong>.</li>
+<li>If the project turns out to be a framework with its own dev server (such as Vite or Next.js) or a PHP site, Auric Live offers to set that up once. See <a href="run-targets-and-backends.html">Run a backend or framework dev server</a>.</li>
+<li>Change a colour in the stylesheet and save. The page updates without a reload, keeping its scroll position.</li>
+<li>Change the HTML and save. The page reloads and returns to the same scroll position.</li>
+<li>Press <code>Alt</code> + <code>Shift</code> + <code>D</code> in the browser to open the developer dashboard over the page.</li>
+</ol>
+<p>You now have a served page that follows your saves. Next, read <a href="serve-and-live-reload.html">Serve a folder with live reload</a> for every option, or <a href="preview-and-devices.html">Preview, devices and phone testing</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Auric Artisan Live guides</a><a href="api-proxy-and-mocks.html"><span>Next</span>Proxy an API, mock endpoints and a REST database</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#install">Install</a></li><li><a href="#the-screen-tour">The screen tour</a></li><li><a href="#your-first-live-reload-session">Your first live-reload session</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

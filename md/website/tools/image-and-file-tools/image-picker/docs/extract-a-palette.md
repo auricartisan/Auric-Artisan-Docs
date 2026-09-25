@@ -1,0 +1,89 @@
+---
+title: Image Picker — Extract a palette
+description: Load a picture from a file or a web address, and use every extraction setting to get the palette you want.
+product: Website › Tools › Image and file tools › Image Picker
+updated: 2026-09-25
+---
+
+# Extract a palette
+
+## Load a picture
+
+### From a file
+
+1. On the **Workbench** tab, drop an image onto the middle panel, or select the panel to open a file chooser.
+2. To load a different picture later, select **Replace** under **The image** and choose a file.
+
+The drop area is only there until a picture is loaded. After that, use **Replace**, or select **Reset** (or press `R`) to bring the drop area back.
+
+Accepted: any image your browser can open. The drop area names PNG, JPEG, WEBP, GIF and BMP. A file that is not an image is ignored.
+
+### From a web address
+
+1. Type or paste the image's address into the field under **The image**, for example `https://example.com/image.jpg`.
+2. Select **Load URL**, or press `Enter` in the field.
+
+This only works when the server hosting the image allows other websites to read its pixels (known as cross-origin access, or CORS). Many sites do not. If nothing appears, download the image and load it as a file instead.
+
+### What happens on loading
+
+- The picture is shrunk, if necessary, to fit a working area of 800 × 500 pixels, keeping its proportions. It is never enlarged.
+- The line under the file name shows the original size, the working size and the name, for example `4032 × 3024 → 667 × 500 | harbour.jpg`.
+- The palette is extracted straight away with the current settings.
+
+## How the palette is made
+
+1. **Sampling.** The tool reads pixels on a regular grid across the whole picture. The **Quality** setting decides how far apart the grid points are. To keep the work fast, the grid is widened when needed so no more than about 50,000 pixels are sampled; they are still spread across the whole picture.
+2. **Filtering.** Nearly transparent pixels are skipped. **Ignore dark** and **Ignore light** skip pixels at the extremes.
+3. **Exact colours or clusters.** If the sampled pixels contain no more distinct colours than the number of clusters you asked for, those exact colours are the palette. This is typical of logos, icons and flat illustrations. Otherwise the tool groups the pixels into clusters with k-means++, a method that picks well-spread starting colours and then moves each cluster to the average of the pixels nearest it.
+4. **Merging.** Clusters closer together than the **Merge threshold** are combined, weighted by how many pixels each holds.
+5. **Ordering.** The palette is sorted by share of the sampled pixels, largest first.
+
+Because k-means++ picks its starting colours at random, extracting the same picture twice can give slightly different palettes. Select **Re-extract** to try again.
+
+## The extraction settings
+
+| Setting | What it does | Range | When the page opens |
+|---|---|---|---|
+| **Clusters** | The largest number of colours to find | 2 to 12 on the slider | 16 |
+| **Quality** | How densely pixels are sampled | Fast, Quick, Balanced, Detailed, Max detail | Detailed |
+| **Merge threshold** | Combines clusters closer than this distance | 0 to 100 | 0 (off) |
+| **Ignore dark** | Skips pixels with relative luminance below 0.03 | On or off | Off |
+| **Ignore light** | Skips pixels with relative luminance above 0.97 | On or off | Off |
+
+When the page opens, the tool asks for 16 clusters: the label beside **Clusters** reads 16 and the slider sits at its right-hand end. As soon as you move the slider, it sets a value from 2 to 12.
+
+### Clusters
+
+Fewer clusters give a short summary palette; more give a detailed study. The palette can have fewer colours than you ask for when merging combines some, or when the picture has fewer distinct colours.
+
+### Quality
+
+| Level | Samples every |
+|---|---|
+| Fast | 10th pixel across and down |
+| Quick | 6th pixel |
+| Balanced | 4th pixel |
+| Detailed | 2nd pixel |
+| Max detail | Every pixel, subject to the 50,000-sample cap |
+
+Higher quality catches small areas of colour at the cost of a little time.
+
+### Merge threshold
+
+The distance is measured in RGB values from 0 to 255 per channel. At 0, nothing merges. Raise it when the palette shows several near-identical shades of the same colour. At high values, quite different colours start to merge.
+
+### Ignore dark and Ignore light
+
+Relative luminance is a measure of how bright a colour is, from 0 for black to 1 for white, as used by WCAG. **Ignore dark** leaves out near-black pixels, for example a black border or deep shadows. **Ignore light** leaves out near-white pixels, for example a white background or a blown-out sky.
+
+## Re-extract, reset and history
+
+- Every setting re-runs the extraction when you release the slider or change the switch.
+- **Re-extract** (or `E`) runs it again with the same settings.
+- **Reset** (or `R`) clears the picture, the palette and the pins, and brings back the drop area. It does not change the settings or the history count.
+- **History** counts the extractions you have run in this session.
+
+## What you should see
+
+After loading and adjusting, the **Extracted palette** shows the colours you want, each labelled with its share of the picture, and the readouts on the right describe the same palette.

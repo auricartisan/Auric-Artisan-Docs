@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Links, saving and exports — Auric Artisan Docs</title>
+<meta name="description" content="Share a Vision Lab view as a link, see what the lab remembers in your browser, and export results.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Vision Lab</a>
+<h2>Vision Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Vision Lab</a></li>
+<li><a href="audit-a-palette.html">Audit a palette</a></li>
+<li><a href="browse-the-catalogue-and-panels.html">Browse the Catalogue and panels</a></li>
+<li><a href="compare-conditions.html">Compare conditions</a></li>
+<li><a href="explore-analytics.html">Explore Analytics</a></li>
+<li><a href="links-saving-and-exports.html" aria-current="page">Links, saving and exports</a></li>
+<li><a href="the-78-conditions.html">The 78 conditions</a></li>
+<li><a href="use-the-workbench.html">Use the Workbench</a></li>
+<li><a href="reference.html">Vision Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Vision Lab</a></li>
+<li><a href="faq.html">Vision Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Vision Lab</a> &rsaquo; <a href="README.html">Vision Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Links, saving and exports</h1>
+<p class="lede">Share a Vision Lab view as a link, see what the lab remembers in your browser, and export results.</p>
+<h2 id="share-a-view-as-a-link">Share a view as a link</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>From</th><th>Button</th><th>What the link restores</th></tr></thead>
+<tbody>
+<tr><td>Workbench</td><td><strong>Copy link to this view</strong></td><td>The Workbench, on the same condition, severity and model</td></tr>
+<tr><td>Catalogue bar</td><td><strong>Copy link</strong></td><td>The level, category, open panels (linked or pinned) and source-image settings</td></tr>
+<tr><td>Compare</td><td><strong>Copy link to this sheet</strong></td><td>The Compare sheet</td></tr>
+</tbody></table></div>
+<p>The Catalogue link restores the whole workspace: the level filter, the active category, the open panels (and which are linked or pinned), and the source-image settings. The Analytics CSV has the columns slug, name, category, complexity, severity_score, description and prevalence. <strong>Export all CVD</strong> records the base colour at several severities for each colour-vision type.</p>
+<h3 id="the-workbench-link">The Workbench link</h3>
+<p>A Workbench link has the form:</p>
+<pre class="code" data-lang="text"><code>https://auricartisan.com/tool/vision-simulation/?vw=deuteranopia:60:vienot</code></pre>
+<p>The value is the condition&#39;s short name, then optionally the severity from 0 to 100, then optionally the model (<code>brettel</code>, <code>vienot</code> or <code>machado</code>). Opening such a link always opens the Workbench, whatever view you used last.</p>
+<h3 id="the-workspace-link">The workspace link</h3>
+<p>The Catalogue&#39;s link adds <code>#v=</code> and an encoded value to the address. The lab keeps that part of the address up to date as you work, without adding history entries, so the address bar always holds a link to your current workspace. Built-in samples and test charts travel with the link; an image of your own does not, because it never leaves your device.</p>
+<h2 id="what-the-lab-remembers-in-your-browser">What the lab remembers in your browser</h2>
+<ul>
+<li>the view you last used;</li>
+<li>the Workbench&#39;s condition, severity, model, specimen and base colour;</li>
+<li>the Catalogue category you last browsed, and your <strong>Favourites</strong>;</li>
+<li>the Compare sheet;</li>
+<li>the Palette audit palette;</li>
+<li>panel snapshots you saved, and the panels you had open;</li>
+<li>where you left the <strong>Vision Control</strong> dock;</li>
+<li>on the free plan, today&#39;s simulation count.</li>
+</ul>
+<p>All of it stays in this browser. Clearing the site&#39;s data resets it.</p>
+<h2 id="exports">Exports</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>Control</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td>Analytics</td><td><strong>Export JSON</strong></td><td>The catalogue of conditions, as <code>vd-catalog-&lt;date&gt;.json</code></td></tr>
+<tr><td>Analytics</td><td><strong>Export CSV</strong></td><td>Severity data, as <code>vd-severity-&lt;date&gt;.csv</code></td></tr>
+<tr><td>Vision Control › More panel actions</td><td><strong>Export a comparison PNG</strong></td><td>An image of the open panels side by side, as <code>vision-comparison-&lt;date and time&gt;.png</code></td></tr>
+<tr><td>A colour-vision panel</td><td><strong>Export all CVD</strong></td><td>A JSON file of the base colour under each colour-vision type, ending <code>-all-cvds.json</code></td></tr>
+<tr><td>A panel</td><td><strong>Copy HEX</strong> / <strong>Copy CSS</strong></td><td>The reference hex, or CSS variables for the reference and simulated colours, on your clipboard</td></tr>
+<tr><td>Palette audit</td><td><strong>Copy the palette</strong></td><td>Your palette&#39;s colours, on your clipboard</td></tr>
+</tbody></table></div>
+<p>Some condition panels have exports of their own. For example, the Metameric Failure panel can download a comparison CSV, a JSON of all conditions and a PNG grid.</p>
+<h2 id="save-to-your-library">Save to your library</h2>
+<p>The site-wide <strong>Save</strong> button at the bottom right of the page saves the current output to your Auric Artisan library. See <a href="../../../../kits/library-kit/README.html">Library Kit</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="explore-analytics.html"><span>Previous</span>Explore Analytics</a><a href="the-78-conditions.html"><span>Next</span>The 78 conditions</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#share-a-view-as-a-link">Share a view as a link</a></li><li><a href="#what-the-lab-remembers-in-your-browser">What the lab remembers in your browser</a></li><li><a href="#exports">Exports</a></li><li><a href="#save-to-your-library">Save to your library</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

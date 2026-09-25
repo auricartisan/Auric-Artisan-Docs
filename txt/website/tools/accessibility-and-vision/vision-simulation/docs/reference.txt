@@ -1,0 +1,343 @@
+==============================================================================
+VISION LAB REFERENCE
+==============================================================================
+Every control, option and output of the Vision Lab in one place.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+PAGE
+====
+
+  Item:   Address
+  Detail: https://auricartisan.com/tool/vision-simulation/
+
+  Item:   Masthead facts
+  Detail: Conditions 78, Categories 11, Brettel 1997 · Viénot 1999 · Machado
+          2009
+
+  Item:   API hint
+  Detail: 5 API credits per call to `POST /v1/vision/audit`
+
+  Item:   Views
+  Detail: Workbench, Catalogue, Compare, Palette audit, Analytics
+
+  Item:   Notice
+  Detail: Educational visualisation only; not a medical simulation or
+          diagnostic tool; screens are not calibrated
+
+WORKBENCH
+=========
+
+  Control:      Specimen
+  What it does: What the stage shows
+  Values:       Interface, Palette, Image
+  Default:      Interface
+
+  Control:      Base colour
+  What it does: The colour to simulate
+  Values:       Hex, up to 7 characters
+  Default:      `#E53E3E`
+
+  Control:      Reference strip
+  What it does: Ten swatches, each with a Use button
+  Values:       —
+  Default:      —
+
+  Control:      Severity
+  What it does: Strength of the condition
+  Values:       0–100%
+  Default:      The condition's clinical default
+
+  Control:      Model
+  What it does: Colour-vision model
+  Values:       Brettel, Viénot, Machado
+  Default:      Brettel
+
+  Control:      Stage
+  What it does: Layout of the stage
+  Values:       Split, Simulated only
+  Default:      Split
+
+  Control:      Search 78 conditions
+  What it does: Filters the condition list
+  Values:       Text
+  Default:      —
+
+  Control:      List filters
+  What it does: Narrow the list
+  Values:       All 78, Colour, Field, Basic only
+  Default:      All 78
+
+  Control:      Open the full panel
+  What it does: Opens the condition as a floating panel
+  Values:       —
+  Default:      —
+
+  Control:      Compare this
+  What it does: Adds the condition to Compare
+  Values:       —
+  Default:      —
+
+  Control:      Copy link to this view
+  What it does: Copies a `?vw=` link
+  Values:       —
+  Default:      —
+
+Readouts: What collapses (reference pairs that fall under ΔE2000 8 from 12 or
+more) and Measured · base colour (ΔE76, ΔE2000, pairs lost / 45, button label
+/ fill).
+
+CATALOGUE
+=========
+
+  Control:      Search simulations…
+  What it does: Filters cards
+  Values:       Text; `/` to focus, `Esc` to clear
+
+  Control:      Scope button
+  What it does: Chooses a category
+  Values:       All conditions, Favourites, 11 categories, Source image, Open
+                panels
+
+  Control:      Filter › Kind
+  What it does: Per-colour or field conditions
+  Values:       All, Per-colour, Field
+
+  Control:      Filter › Level
+  What it does: Basic or advanced conditions (linked to the site-wide
+                preference)
+  Values:       All, Basic, Advanced
+
+  Control:      About this catalogue
+  What it does: Explains the cards
+  Values:       —
+
+  Control:      Copy link
+  What it does: Copies a `#v=` workspace link
+  Values:       —
+
+  Control:      Daily tally
+  What it does: Simulations opened today (free plan)
+  Values:       Up to 25
+
+  Control:      Card
+  What it does: Opens a floating panel; star adds to Favourites
+  Values:       `Enter` or `Space`; `Shift` or `Ctrl` + click duplicates
+
+FLOATING PANEL
+==============
+
+  Control: Title bar
+  Values:  Link panel, Duplicate, Pin panel, Minimize, Maximize panel, Close
+           panel
+  Default: —
+
+  Control: Base color
+  Values:  Picker, hex, Random
+  Default: `#D3AF37`
+
+  Control: Severity
+  Values:  0–100%
+  Default: 100%
+
+  Control: Perceptual severity curve, Multi-pass deep
+  Values:  On, off
+  Default: Off
+
+  Control: Model
+  Values:  Brettel (1997), Viénot (1999), Machado-like
+  Default: Brettel (1997)
+
+  Control: Workflow preset
+  Values:  Custom (no preset), Default, Beginner mode, Material testing, Color
+           matching, Print proof, Photography (D65); Apply
+  Default: Custom
+
+  Control: Copy HEX, Copy CSS
+  Values:  —
+  Default: —
+
+  Control: Show advanced controls
+  Values:  Cone channel weights L, M, S (0–2); Export all CVD
+  Default: Off; weights 1
+
+  Control: Illuminant
+  Values:  Standard illuminants
+  Default: D65
+
+  Control: CAM model
+  Values:  CAT16 adaptation, CAM16-UCS perceptual, CIECAM02 surround,
+           Hunt-Stevens brightness
+  Default: CAT16 adaptation
+
+  Control: White point
+  Values:  D65, D50, A, F2, F7, F11, LED warm, neutral, cool
+  Default: D65
+
+  Control: Correlated color temperature
+  Values:  1,667–25,000 K
+  Default: 6517 K
+
+  Control: Perceived brightness
+  Values:  5–400%
+  Default: 100%
+
+  Control: Observer
+  Values:  2°, 10°
+  Default: 2°
+
+  Control: Surround
+  Values:  Average, Dim, Dark
+  Default: Average
+
+  Control: Viewing distance
+  Values:  Near, Normal, Far
+  Default: Normal
+
+  Control: Snapshots
+  Values:  Name and Save
+  Default: —
+
+  Control: Recent changes
+  Values:  Undo last, Clear
+  Default: —
+
+  Control: Readout tabs
+  Values:  Chromaticity, Metrics, Image, Mindmap, Model audit
+  Default: Chromaticity
+
+Up to 5 panels can be open. A sixth replaces the oldest unpinned panel.
+
+VISION CONTROL
+==============
+
+  Control:      Arrange
+  What it does: Tile in a grid, split left and right, split top and bottom,
+                cascade, or stack centred
+
+  Control:      Panel tabs
+  What it does: Bring a panel forward
+
+  Control:      More panel actions
+  What it does: Sync, minimise or restore all; export a comparison PNG;
+                verification panel; close all but pinned
+
+  Control:      Minimised dock
+  What it does: Restore or close a minimised panel
+
+UNIVERSAL SOURCE IMAGE
+======================
+
+  Control: Drop area
+  Values:  Drop, paste or click to upload an image
+  Default: A built-in reference chart
+
+  Control: Apply to all panels
+  Values:  —
+  Default: —
+
+  Control: Quality
+  Values:  Fast · 1024px, Balanced · 1600px, Full · 4096px
+  Default: Fast · 1024px
+
+  Control: Auto-apply to new panels
+  Values:  On, off
+  Default: On
+
+  Control: Pause auto, Clear
+  Values:  —
+  Default: —
+
+  Control: What this image loses
+  Values:  Conditions ranked by effect on the image; Open most-affected →
+  Default: —
+
+  Control: Samples
+  Values:  15 images
+  Default: —
+
+  Control: Test charts
+  Values:  Color bars, Spectrum, Red–Green, Chromatic grid
+  Default: —
+
+COMPARE
+=======
+
+  Control: Tiles
+  Values:  Normal vision control, plus one per condition; reorder by dragging
+           or with arrow keys; × removes
+  Default: —
+
+  Control: Add a condition
+  Values:  Any of the 78
+  Default: —
+
+  Control: Severity for every tile
+  Values:  0–100%
+  Default: 100%
+
+  Control: Order
+  Values:  By impact, By severity, As arranged
+  Default: —
+
+  Control: Columns
+  Values:  3, 4, 5
+  Default: —
+
+  Control: Copy link to this sheet
+  Values:  —
+  Default: —
+
+  Control: Send the worst to the workbench
+  Values:  —
+  Default: —
+
+PALETTE AUDIT
+=============
+
+  Control: Palette
+  Values:  Up to 24 colours: swatch, hex field, Remove; Add colour
+  Default: A 5-colour sample
+
+  Control: Merge below (CIEDE2000 ΔE)
+  Values:  1–15, steps of 0.5
+  Default: 5
+
+  Control: Search 17 conditions
+  Values:  Text
+  Default: —
+
+  Control: Condition filter
+  Values:  All 17, Only failing
+  Default: All 17
+
+  Control: Suggest a fix
+  Values:  Smallest lightness change that separates a merged pair
+  Default: —
+
+  Control: Open this condition in the workbench, Copy the palette
+  Values:  —
+  Default: —
+
+ANALYTICS
+=========
+
+  Control                 | Values
+  ------------------------+---------------------------------------------------
+  View                    | Matrix, Map, Statistics
+  Matrix cell             | Lists the conditions in it
+  Open a random condition | —
+  Export JSON, Export CSV | `vd-catalog-<date>.json`, `vd-severity-<date>.csv`
+  Keyboard shortcuts      | Opens the shortcuts overlay
+
+NUMBERS USED THROUGHOUT
+=======================
+
+  Item                               | Value
+  -----------------------------------+--------------------------------------------------------
+  Conditions                         | 78 (17 per-colour, 61 field)
+  Categories                         | 11
+  Reference swatches                 | 10, making 45 pairs
+  Collapse rule (Workbench, Compare) | A pair 12 or more apart (CIEDE2000) that falls within 8
+  Severity score                     | 1 to 10, an estimated visual-impact score
+  Open panels                        | Up to 5
+  Free plan                          | 25 simulations a day from the Catalogue

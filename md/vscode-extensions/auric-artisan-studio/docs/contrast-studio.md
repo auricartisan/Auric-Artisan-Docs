@@ -1,0 +1,108 @@
+---
+title: Auric Artisan Studio — The Contrast Studio
+description: Tune one text and background pair, choose a passing colour that keeps the hue, see where its token is used, and write the fix back to your code.
+product: VS Code extensions › Auric Artisan Studio
+updated: 2026-09-25
+---
+
+# The Contrast Studio
+
+The **Contrast Studio** is the Studio's **Check › Contrast** tool. It shows one text colour on one background, grades the pair against WCAG, lists the nearest passing colours that keep the same hue, and, when the pair came from your code, writes the fix back to the file or to the design token the colour comes from. It is available with Auric Accessibility or Auric Color.
+
+**Contrast ratio** is WCAG 2.x's measure of how far apart two colours are in brightness, from 1:1 (identical) to 21:1 (black on white). WCAG asks for at least 4.5:1 for normal text (level AA), 3:1 for large text and user-interface parts, and 7:1 for level AAA.
+
+## Linked and unlinked pairs
+
+A pair is **linked** when you open it from a place in your code. The Studio remembers the file and position, shows where the pair lives, and can write a fix back. A pair is **unlinked** when you type colours in yourself or open the tool from a colour selection; you can still tune it and copy the result.
+
+Ways to open a **linked** pair:
+
+- **Open in Contrast Studio** in a contrast hover.
+- The quick fix **Open in Auric Artisan Studio** (or **Open in the Contrast Studio** for values that cannot be rewritten in one click).
+- **Open Issue in Contrast Studio**, the inline action on a contrast or colour-vision row in the Project Issues view.
+- **Contrast Studio** on the Overview's **This file** card.
+- **Review** on the suggestion **N fixable contrast pairs in this file**.
+
+Ways to open an **unlinked** pair:
+
+- Select a colour in the editor and run **Auric Artisan: Check Contrast of Selection** (also in the editor's right-click menu when text is selected). The selected colour becomes the text colour; if the selection is not a colour, the Studio starts from `#1A1A1A`.
+- Open **Check › Contrast** in the Studio and edit the colours.
+- **Open in Contrast →** from the Preview tool, or **Tune the pair** in an issue hover.
+
+Linked pairs come from stylesheets and markup files: CSS, SCSS, Sass, Less, PostCSS, Stylus, HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript, TypeScript, JSX, TSX and Markdown.
+
+## The header
+
+The kicker reads **Contrast Studio**. The title is **Contrast checker** for an unlinked pair, or **Text on** followed by the rule's selector or the element, for example **Text on .card-meta**, for a linked pair. A linked pair also shows its location, for example `styles.css:42`, and a **Back to file** button that selects the colour in the editor.
+
+## The pair
+
+- **Sample.** A **Sample button** and a line of body text drawn in the text colour on the background.
+- **Ratio and APCA.** The contrast ratio, for example `3.54 : 1`, and the APCA lightness contrast, for example `APCA Lc 61 · large/medium text ≥ 18px`. See [Audit profiles and contrast standards](../accessibility/docs/audit-profiles-and-contrast.md) for what APCA means.
+- **Verdict line.** The ratio and whether it passes your target, for example `3.54 : 1 — fails WCAG AA for normal text (passes for large text)`. The Studio cannot see the font size of rendered text, so the verdict names the check rather than a pixel size.
+- **Four checks.** **AA text · 4.5**, **AA large · 3**, **UI parts · 3** and **AAA text · 7**, each marked **✓ Pass** or **✕ Fail**.
+- **Text** and **Background** fields. Each has a swatch button that opens the Studio's colour picker, a text box that accepts any CSS colour, and a copy button. **⇄** swaps the two colours.
+- **Where the colour comes from** (linked pairs): for example `The file's text color reads --muted (#8A8F99).` If the background was assumed from the page (the pair's rule sets only `color:`), a note asks you to check the real surface.
+- **Adjust the text colour:** **Fix to AA (4.5:1)**, **AAA (7:1)** and **UI (3:1)** change the text colour's lightness until it reaches that ratio, keeping its hue and chroma. **Best text → black** (or **white**) picks whichever of pure black or white reads better on the background.
+
+The target used for the verdict and the candidates is your `contrast.threshold` setting (4.5 by default). For a linked pair of large text (at least 24 px, or at least 18.66 px and bold), the target is 3:1, or 4.5:1 when your threshold is 7.
+
+## Passing colours that keep the hue
+
+The candidates panel is titled **Passing colors that keep the hue**, or **Stronger colors that keep the hue** when the pair already passes (it then says **no change is needed**). It lists up to five colours, **sorted by ΔE**, the closest first.
+
+Each candidate shows:
+
+- a swatch and its hex value;
+- its ratio on the background and its level: **AAA**, **AA** or **AA large**;
+- **ΔE**, how different it looks from the original text colour (CIEDE2000; below about 1 is hard to see, larger numbers are bigger changes);
+- **closest** and **◆ Recommended** on the first candidate when a fix is needed;
+- **reuse --token** when the candidate is exactly the value of a custom property already defined in the same file, so you can reuse your design system instead of adding a new colour.
+
+How candidates are found:
+
+1. The Studio walks the text colour's lightness up and down until it reaches each rung of a ladder of targets (3, 4.5, 5.5, 7, 9, 12, 15 and 18 to 1) at or above your threshold. Hue and chroma are preserved.
+2. It adds any opaque colour token defined in the file that passes and keeps the hue: within 20 degrees of hue in OKLCH, and greys only match greys.
+3. It sorts them by ΔE from the original.
+
+If no colour of that hue can reach the target on that background, the panel says **No color with this hue reaches 4.5 : 1 on this background. Try another background or hue.**
+
+Select a candidate to preview it. On a linked pair, the list stays computed from the file's original colour, so it does not reshuffle while you compare.
+
+## Where the token is used
+
+When the linked text colour comes from a CSS custom property, for example `color: var(--muted)`, a **Where --muted is used** panel lists its definitions and uses, up to 40, with the file name, line number, **defined** on definition lines, and the line's code. Select a row to open it. The panel searches your open files and the files from the last scan; it does not read other files from disk. A note such as **Showing 40 of 63.** appears when there are more.
+
+## Apply the fix
+
+The apply panel depends on the pair:
+
+| Situation | What you see |
+| --- | --- |
+| Unlinked pair | **Use #hex as the text color**, and the note **Open a pair from an editor hover to write a fix back to its file.** |
+| Linked, but you changed the background | **The background differs from the file's #hex, so a fix can't be written back.** and **Restore the file's colors**. |
+| Linked, colour from a token defined in the same file | **Apply #hex to --token** (changes the definition; the note says how many uses follow), and **Apply only at file:line** |
+| Linked, any other colour | **Apply #hex at file:line** |
+| Linked and failing | **Mark as intentional branding** as well |
+
+Every write is a single edit you can undo with `Ctrl` + `Z`. When you apply a reused token, the Studio writes `var(--token)` rather than a hex value. After a write, the Studio re-reads the pair from the file and shows the new verdict, and the status bar confirms the change, for example `Auric Artisan: --muted → #6B7079 (undo with Ctrl+Z)`.
+
+When a token is defined in several places, **Apply to --token** changes the light theme's root definition (in `:root`, `html`, `body`, `*` or `:host`), not a later dark-theme override.
+
+**Mark as intentional branding** adds an `auric-brand-line` comment to the pair's line, so the pair moves to the Branding group and leaves the score. Selecting it again removes the mark. See [Suppression and branding](suppression-and-branding.md).
+
+At the bottom of the panel: **Copy text #hex**, **Copy bg #hex** and **Insert text color**, which replaces the editor selection with the text colour (or copies it to the clipboard when no editor is open). The panel ends with **Computed on this machine. Nothing leaves it.**
+
+## Safety checks on write-back
+
+The Studio re-reads the file before every write, so a fix can never land on the wrong text:
+
+- If the line changed after you opened the pair: **the source line changed since the Studio opened it — open the pair from the editor again.**
+- If the token is defined in another file: **this token is not defined in the same file, so only this use can be changed.**
+- If the link was lost (for example you opened a different pair meanwhile): **this pair is no longer linked to its file — open it from the editor again.**
+
+## Related
+
+- [Contrast diagnostics](../color/docs/contrast-diagnostics.md)
+- [The Check space: Findings and Preview](../accessibility/docs/check-space.md)
+- [Limits and accuracy](../others/limits-and-accuracy.md)

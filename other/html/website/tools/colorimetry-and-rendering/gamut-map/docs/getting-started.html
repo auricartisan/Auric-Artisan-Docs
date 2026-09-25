@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Gamut Mapping — Auric Artisan Docs</title>
+<meta name="description" content="Open the Gamut Mapping lab, learn its tabs, and read a CIELAB gamut slice.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Mapping</a>
+<h2>Gamut Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Gamut Mapping</a></li>
+<li><a href="compare-spaces-and-methods.html">Compare spaces and methods</a></li>
+<li><a href="map-a-colour-list.html">Map a list of colours</a></li>
+<li><a href="map-a-colour.html">Map a colour into a smaller gamut</a></li>
+<li><a href="reference.html">Gamut Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Gamut Mapping</a></li>
+<li><a href="faq.html">Gamut Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Mapping</a> &rsaquo; <a href="README.html">Gamut Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Getting started with Gamut Mapping</h1>
+<p class="lede">Open the Gamut Mapping lab, learn its tabs, and read a CIELAB gamut slice.</p>
+<h2 id="open-the-lab">Open the lab</h2>
+<p>Go to <a href="https://auricartisan.com/tool/general/colorimetry/gamut-map/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/gamut-map/</a>. The heading is <strong>Gamut Mapping</strong>. Everything is computed in your browser.</p>
+<h2 id="key-ideas">Key ideas</h2>
+<ul>
+<li><strong>CIELAB</strong> describes a colour by lightness <strong>L*</strong> (0 black to 100 white) and two opponent axes, <strong>a*</strong> (green to red) and <strong>b*</strong> (blue to yellow). <strong>Chroma C*</strong> is the distance from the grey axis and <strong>hue h°</strong> the angle around it.</li>
+<li>A <strong>gamut slice</strong> is a cut through CIELAB at one L*. Seen from above, each RGB space&#39;s gamut at that lightness is an irregular shape around the grey centre. Colours outside the shape cannot be represented in that space.</li>
+<li>A colour is <strong>out of gamut (OOG)</strong> for a space when converting it to that space&#39;s linear RGB gives a channel below 0 or above 1.</li>
+<li>Each space has its own <strong>transfer function</strong> (the curve between stored values and light) and <strong>white point</strong>. The lab decodes a HEX value with the source space&#39;s own curve, and draws the slice on the source space&#39;s white.</li>
+</ul>
+<h2 id="a-tour-of-the-screen">A tour of the screen</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>Choose the colour, spaces, method and slice, and see the mapping</td></tr>
+<tr><td><strong>Boundary</strong></td><td>Boundaries of up to five spaces at five lightness levels, and volumes in CIELAB</td></tr>
+<tr><td><strong>Methods</strong></td><td>The four mapping methods explained, with figures on the base colour or 12 probe colours</td></tr>
+<tr><td><strong>Data</strong></td><td>The nine datasets the lab uses and their status</td></tr>
+<tr><td><strong>Export</strong></td><td>PNG, JSON, a link to the exact state, and batch mapping</td></tr>
+<tr><td><strong>Reference</strong></td><td>Standards, formulas, citations and research notes with a filter</td></tr>
+</tbody></table></div>
+<h3 id="the-lab-tab">The Lab tab</h3>
+<p>The left panel groups the controls: <strong>Base Colour</strong>, <strong>Lightness Slice L*</strong>, <strong>Colour Spaces</strong>, <strong>Method</strong>, <strong>Compression Strength</strong>, <strong>Sampling</strong>, <strong>Overlays</strong> and <strong>ΔE Playground</strong>.</p>
+<p>The right side, <strong>Gamut Mapping Results</strong>, shows:</p>
+<ul>
+<li><strong>Source Slice</strong> — every colour inside the source gamut at the chosen L*, drawn as an a<em>b</em> disc (a* across, b* up, both from −128 to +128);</li>
+<li><strong>Mapped to Target</strong> — the same colours after mapping into the target;</li>
+<li>a statistics line with the slice areas and their ratio;</li>
+<li>a line naming the transfer function, the Lab white and the method;</li>
+<li><strong>Probe Point</strong> — details of the point you last clicked;</li>
+<li><strong>Before / After (12 Test Colours)</strong> — twelve vivid colours before and after mapping.</li>
+</ul>
+<h2 id="read-your-first-slice">Read your first slice</h2>
+<ol>
+<li>Keep the defaults: base colour <code>#247DEB</code>, L* 65, source <strong>sRGB / Rec.709</strong>, target <strong>Display P3</strong>.</li>
+<li>Look at the <strong>Source Slice</strong>. The filled region is sRGB at L* 65. The thicker outline is the source boundary; the thinner outline (with <strong>Mark out-of-gamut in source</strong> on) is the target&#39;s boundary, so you can see where P3 extends beyond sRGB.</li>
+<li>Select <strong>Swap Source &amp; Target</strong>. Now the source is Display P3 and the target sRGB. The filled region grows, and the sRGB outline sits inside it.</li>
+<li>Look at <strong>Mapped to Target</strong>. Colours outside sRGB have been pulled inside its boundary.</li>
+<li>Click near the edge of the source slice. <strong>Probe Point</strong> shows L*, a*, b*, C*, h°, an sRGB value and HEX, and whether the point is in each space (&quot;Yes&quot; or &quot;OOG&quot;).</li>
+<li>Move <strong>Lightness Slice L*</strong> from 20 to 90 and watch the boundaries change shape.</li>
+</ol>
+<p>The slices are painted in sRGB so your screen can show them. Colours outside sRGB are displayed clipped, even though the geometry is correct.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="map-a-colour.html">Map a colour into a smaller gamut</a></li>
+<li><a href="compare-spaces-and-methods.html">Compare spaces and methods</a></li>
+<li><a href="map-a-colour-list.html">Map a list of colours</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Gamut Mapping documentation</a><a href="compare-spaces-and-methods.html"><span>Next</span>Compare spaces and methods</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-lab">Open the lab</a></li><li><a href="#key-ideas">Key ideas</a></li><li><a href="#a-tour-of-the-screen">A tour of the screen</a></li><li><a href="#read-your-first-slice">Read your first slice</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

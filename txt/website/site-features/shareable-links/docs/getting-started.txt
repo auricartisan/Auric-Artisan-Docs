@@ -1,0 +1,72 @@
+==============================================================================
+GET STARTED WITH SHAREABLE LINKS
+==============================================================================
+How the page keeps its state in the address, how that state is restored, and
+how to share or clear it.
+Area: Website › Site features › Shareable links   Updated: 2026-09-25
+
+WHAT HAPPENS AS YOU WORK
+========================
+
+On every page, about a third of a second after you scroll, type or change a
+control, the site updates the address in your browser's address bar. It adds
+`#p=` followed by a short code that describes the page's state. For example:
+
+    https://auricartisan.com/tool/basic-tools/#p=eyJ2IjoxLCJ5IjoxNjkwLCJ4IjowfQ
+
+The code is not secret or encrypted: it is the page's state written compactly.
+The update replaces the current address rather than adding a new entry, so it
+does not fill your Back button with steps.
+
+When you are at the top of the page and have changed nothing, the address
+stays clean, with no `#p=`.
+
+WHAT COMES BACK WHEN YOU OPEN THE ADDRESS
+=========================================
+
+When you reload the page or open the address later, the site restores the
+state in this order:
+
+  1. Panels that were open (the Settings panel and the Feature, Menu, Advanced
+     and Status Kits) open again.
+  2. Tool-specific state is applied, on tools that save their own.
+  3. Field values are put back, and the page recalculates as if you had typed
+     them.
+  4. Selected tabs and toggles are selected again.
+  5. The page scrolls back to where you were.
+
+Some parts of a page load late, such as kits and tool panels; the site keeps
+trying for a few seconds until they are ready.
+
+SHARE AN EXACT VIEW
+===================
+
+  1. Set up the page the way you want to show it.
+  2. Copy the address: select Copy link in the navigation dock, choose Copy
+     URL in the right-click menu's quick bar, or copy it from the address bar.
+  3. Send it.
+
+The person who opens it sees the same page, inputs, tabs, open panels and
+scroll position.
+
+  | Important: The link also carries your appearance settings that differ from the
+  | defaults, such as accent colour, theme mode and text size, and applies them in
+  | the other person's browser. It carries whatever you typed into the page's
+  | fields, apart from passwords and search boxes. Check the view before you share
+  | it.
+
+SHARE A CLEAN LINK
+==================
+
+To share just the page:
+
+  - scroll to the very top and undo any changes before copying; or
+  - delete everything from `#p=` onwards in the copied address.
+
+PAGES THAT USE THEIR OWN `#`
+============================
+
+Some pages keep their own information after `#`, for example a section link
+such as `#about-intro`, the Vision Simulation tool's shareable state, or a
+shared library item. On those pages the site does not add `#p=`, so it never
+overwrites them.

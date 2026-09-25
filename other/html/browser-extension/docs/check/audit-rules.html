@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit rules — Auric Artisan Docs</title>
+<meta name="description" content="Every rule in the extension's accessibility engine, grouped by category, with its impact, WCAG 2.2 success criteria and whether the audit runs it.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Check tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="all-findings.html">Findings</a></li>
+<li><a href="audit-rules.html" aria-current="page">Audit rules</a></li>
+<li><a href="audit.html">Audit</a></li>
+<li><a href="contrast.html">Contrast</a></li>
+<li><a href="vision.html">Vision</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Check tools</a></nav>
+<p class="kicker">Browser extension › Check</p>
+<h1>Audit rules</h1>
+<p class="lede">Every rule in the extension's accessibility engine, grouped by category, with its impact, WCAG 2.2 success criteria and whether the audit runs it.</p>
+<p>The accessibility engine behind Audit and Findings has <strong>80 rules</strong> in eight categories, mapped to <strong>32 WCAG 2.2 success criteria</strong>. The audit runs at level AA, so it applies the <strong>78 rules</strong> that test levels A and AA. The two AAA rules, enhanced text contrast (1.4.6) and reduced motion (2.3.3), are part of the engine but are not run by the audit.</p>
+<p>The engine uses the WCAG 2.2 success criteria, the ARIA 1.2 role and attribute definitions and the HTML accessibility mappings bundled in the extension, so questions such as &quot;is this attribute allowed on this role&quot; are answered from the specifications rather than guessed. Accessible names are computed with the standard accessible-name algorithm, following <code>aria-labelledby</code>, labels, <code>title</code> and content.</p>
+<h2 id="impact">Impact</h2>
+<p>Each finding has an impact, the same scale most accessibility tools use:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Impact</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>critical</strong></td><td>Blocks some people from using the content at all</td></tr>
+<tr><td><strong>serious</strong></td><td>A significant barrier; fix soon</td></tr>
+<tr><td><strong>moderate</strong></td><td>Makes the content harder to use</td></tr>
+<tr><td><strong>minor</strong></td><td>A nuisance or a best-practice gap</td></tr>
+</tbody></table></div>
+<p>A finding is either a <strong>failure</strong> or a <strong>warning</strong>. A warning means a person must decide, for example contrast over an image.</p>
+<h2 id="how-the-score-is-calculated">How the score is calculated</h2>
+<p>The score, from 0 to 100, counts <strong>distinct failing rules</strong>, not each failing element, so one unlabelled button repeated down a long table is one problem to fix. Each failing rule costs points by impact (critical 10, serious 6, moderate 3, minor 1), multiplied by 1 plus the base-10 logarithm of how many times it failed. For example, one critical rule failing on 10 elements costs 10 × 2 = 20 points. Warnings never lower the score. The score appears in the JSON export.</p>
+<h2 id="rules">Rules</h2>
+<p>The ID is how each rule appears in an exported JSON report. &quot;Page&quot; rules check the document once; the others check each matching element.</p>
+<h3 id="aria-17">ARIA (17)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Rule</th><th>Impact</th><th>WCAG</th></tr></thead>
+<tbody>
+<tr><td><code>aria-role-unknown</code></td><td>Role must be a valid ARIA role (typos get a &quot;did you mean&quot; suggestion)</td><td>serious</td><td>4.1.2</td></tr>
+<tr><td><code>aria-role-abstract</code></td><td>Abstract roles must not be used in markup</td><td>serious</td><td>4.1.2</td></tr>
+<tr><td><code>aria-role-deprecated</code></td><td>Deprecated ARIA role</td><td>minor</td><td>4.1.2</td></tr>
+<tr><td><code>aria-role-redundant</code></td><td>Explicit role duplicates the element&#39;s native role</td><td>minor</td><td>4.1.2</td></tr>
+<tr><td><code>aria-on-roleless-element</code></td><td>ARIA is not allowed on this element</td><td>moderate</td><td>4.1.2</td></tr>
+<tr><td><code>aria-attr-unknown</code></td><td><code>aria-*</code> attribute is not in the specification</td><td>serious</td><td>4.1.2</td></tr>
+<tr><td><code>aria-attr-unsupported</code></td><td><code>aria-*</code> attribute is not supported on this role</td><td>serious</td><td>4.1.2</td></tr>
+<tr><td><code>aria-attr-invalid-value</code></td><td><code>aria-*</code> attribute has an invalid value</td><td>serious</td><td>4.1.2</td></tr>
+<tr><td><code>aria-attr-deprecated</code></td><td>Deprecated ARIA attribute</td><td>minor</td><td>4.1.2</td></tr>
+<tr><td><code>aria-required-attr</code></td><td>Role is missing a required attribute</td><td>critical</td><td>4.1.2</td></tr>
+<tr><td><code>aria-required-children</code></td><td>Role is missing its required child roles</td><td>critical</td><td>1.3.1</td></tr>
+<tr><td><code>aria-required-parent</code></td><td>Role is missing its required parent role</td><td>critical</td><td>1.3.1</td></tr>
+<tr><td><code>aria-idref-broken</code></td><td>ARIA reference points at an element that does not exist</td><td>serious</td><td>1.3.1, 4.1.2</td></tr>
+<tr><td><code>aria-hidden-focusable</code></td><td><code>aria-hidden</code> element is still keyboard focusable</td><td>critical</td><td>1.3.1, 4.1.2</td></tr>
+<tr><td><code>aria-hidden-body</code></td><td><code>aria-hidden</code> must not be applied to <code>&lt;body&gt;</code></td><td>critical</td><td>4.1.2</td></tr>
+<tr><td><code>aria-prohibited-name</code></td><td>Role does not support an accessible name</td><td>moderate</td><td>4.1.2</td></tr>
+<tr><td><code>aria-presentation-focusable</code></td><td>Focusable element has a presentational role</td><td>serious</td><td>4.1.2</td></tr>
+</tbody></table></div>
+<h3 id="names-5">Names (5)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Rule</th><th>Impact</th><th>WCAG</th></tr></thead>
+<tbody>
+<tr><td><code>control-has-name</code></td><td>Interactive element has no accessible name</td><td>critical</td><td>4.1.2</td></tr>
+<tr><td><code>name-is-whitespace</code></td><td>Accessible name is only whitespace</td><td>serious</td><td>4.1.2</td></tr>
+<tr><td><code>label-in-name</code></td><td>Accessible name does not contain the visible label</td><td>serious</td><td>2.5.3</td></tr>
+<tr><td><code>link-name-descriptive</code></td><td>Link text is not descriptive (&quot;click here&quot;, &quot;read more&quot;)</td><td>moderate</td><td>2.4.4</td></tr>
+<tr><td><code>identical-links-differ</code> (page)</td><td>Links with the same name point to different destinations</td><td>moderate</td><td>2.4.4</td></tr>
+</tbody></table></div>
+<h3 id="structure-12">Structure (12)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Rule</th><th>Impact</th><th>WCAG</th></tr></thead>
+<tbody>
+<tr><td><code>heading-order</code> (page)</td><td>Heading levels skip a rank</td><td>moderate</td><td>1.3.1</td></tr>
+<tr><td><code>heading-empty</code></td><td>Heading has no text</td><td>serious</td><td>1.3.1, 2.4.6</td></tr>
+<tr><td><code>page-has-h1</code> (page)</td><td>Page has no level-one heading</td><td>moderate</td><td>1.3.1, 2.4.6</td></tr>
+<tr><td><code>landmark-singleton</code> (page)</td><td>Duplicate top-level landmark</td><td>moderate</td><td>1.3.1</td></tr>
+<tr><td><code>landmark-main-exists</code> (page)</td><td>Page has no main landmark</td><td>moderate</td><td>1.3.1, 2.4.1</td></tr>
+<tr><td><code>landmark-duplicates-labelled</code> (page)</td><td>Repeated landmarks need distinguishing labels</td><td>moderate</td><td>1.3.1</td></tr>
+<tr><td><code>list-structure</code></td><td>List contains elements other than list items</td><td>serious</td><td>1.3.1</td></tr>
+<tr><td><code>definition-list-structure</code></td><td>Definition list has invalid children</td><td>moderate</td><td>1.3.1</td></tr>
+<tr><td><code>table-has-headers</code></td><td>Data table has no header cells</td><td>serious</td><td>1.3.1</td></tr>
+<tr><td><code>th-has-text</code></td><td>Header cell is empty</td><td>moderate</td><td>1.3.1</td></tr>
+<tr><td><code>duplicate-id</code> (page)</td><td>Duplicate id used by an ARIA reference or label</td><td>serious</td><td>1.3.1, 4.1.2</td></tr>
+<tr><td><code>content-outside-landmarks</code> (page)</td><td>Content sits outside any landmark</td><td>minor</td><td>1.3.1</td></tr>
+</tbody></table></div>
+<h3 id="forms-10">Forms (10)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Rule</th><th>Impact</th><th>WCAG</th></tr></thead>
+<tbody>
+<tr><td><code>form-field-has-label</code></td><td>Form field has no label</td><td>critical</td><td>1.3.1, 3.3.2, 4.1.2</td></tr>
+<tr><td><code>label-for-broken</code></td><td><code>&lt;label for&gt;</code> points at no element</td><td>serious</td><td>1.3.1, 3.3.2</td></tr>
+<tr><td><code>label-orphaned</code></td><td><code>&lt;label&gt;</code> wraps or targets no form control</td><td>moderate</td><td>1.3.1</td></tr>
+<tr><td><code>placeholder-as-label</code></td><td>Placeholder used instead of a label</td><td>serious</td><td>3.3.2</td></tr>
+<tr><td><code>autocomplete-valid</code></td><td><code>autocomplete</code> value is not a valid autofill field name</td><td>serious</td><td>1.3.5 (AA)</td></tr>
+<tr><td><code>autocomplete-missing</code></td><td>Personal-data field has no <code>autocomplete</code> attribute</td><td>minor</td><td>1.3.5 (AA)</td></tr>
+<tr><td><code>radio-group-fieldset</code> (page)</td><td>Radio group has no group label</td><td>moderate</td><td>1.3.1, 3.3.2</td></tr>
+<tr><td><code>required-field-indicated</code></td><td>Required field is not programmatically marked</td><td>moderate</td><td>3.3.2</td></tr>
+<tr><td><code>error-message-associated</code></td><td>Invalid field does not reference its error message</td><td>serious</td><td>3.3.1</td></tr>
+<tr><td><code>select-has-options</code></td><td>Select element has no options</td><td>moderate</td><td>4.1.2</td></tr>
+</tbody></table></div>
+<h3 id="media-13">Media (13)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Rule</th><th>Impact</th><th>WCAG</th></tr></thead>
+<tbody>
+<tr><td><code>image-has-alt</code></td><td>Image has no alt attribute</td><td>critical</td><td>1.1.1</td></tr>
+<tr><td><code>image-alt-meaningless</code></td><td>Image alt text is not descriptive</td><td>serious</td><td>1.1.1</td></tr>
+<tr><td><code>image-alt-redundant</code></td><td>Alt text repeats that this is an image</td><td>minor</td><td>1.1.1</td></tr>
+<tr><td><code>image-alt-duplicates-link</code></td><td>Linked image alt duplicates the link text</td><td>moderate</td><td>1.1.1, 2.4.4</td></tr>
+<tr><td><code>input-image-alt</code></td><td>Image button has no alt text</td><td>critical</td><td>1.1.1, 4.1.2</td></tr>
+<tr><td><code>area-has-alt</code></td><td>Image map area has no alt text</td><td>serious</td><td>1.1.1, 2.4.4</td></tr>
+<tr><td><code>svg-has-name</code></td><td>Meaningful SVG has no accessible name</td><td>serious</td><td>1.1.1</td></tr>
+<tr><td><code>svg-decorative-unhidden</code></td><td>Decorative SVG is not hidden from assistive technology</td><td>minor</td><td>1.1.1</td></tr>
+<tr><td><code>video-has-captions</code></td><td>Video has no captions track</td><td>critical</td><td>1.2.2</td></tr>
+<tr><td><code>video-has-audio-description</code></td><td>Video has no audio description track</td><td>serious</td><td>1.2.3, 1.2.5</td></tr>
+<tr><td><code>media-autoplay-audible</code></td><td>Media autoplays with sound</td><td>serious</td><td>1.4.2</td></tr>
+<tr><td><code>object-has-alt</code></td><td>Embedded object has no text alternative</td><td>serious</td><td>1.1.1</td></tr>
+<tr><td><code>iframe-has-title</code></td><td>Frame has no title</td><td>serious</td><td>2.4.1, 4.1.2</td></tr>
+</tbody></table></div>
+<h3 id="keyboard-8">Keyboard (8)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Rule</th><th>Impact</th><th>WCAG</th></tr></thead>
+<tbody>
+<tr><td><code>tabindex-positive</code></td><td>Positive tabindex overrides the natural focus order</td><td>serious</td><td>2.4.3</td></tr>
+<tr><td><code>interactive-not-focusable</code></td><td>Element behaves as a control but cannot be focused</td><td>critical</td><td>2.1.1</td></tr>
+<tr><td><code>focus-outline-removed</code> (page)</td><td>Focus indicator is removed by a stylesheet</td><td>serious</td><td>2.4.7 (AA)</td></tr>
+<tr><td><code>target-size-minimum</code> (page)</td><td>Touch target is smaller than 24 × 24 px</td><td>serious</td><td>2.5.8 (AA)</td></tr>
+<tr><td><code>accesskey-duplicate</code> (page)</td><td><code>accesskey</code> value is used more than once</td><td>moderate</td><td>2.1.1</td></tr>
+<tr><td><code>focusable-hidden-offscreen</code></td><td>Off-screen element is still in the tab order</td><td>moderate</td><td>2.4.3, 2.4.7</td></tr>
+<tr><td><code>autofocus-used</code></td><td><code>autofocus</code> moves focus on page load</td><td>minor</td><td>2.4.3</td></tr>
+<tr><td><code>nested-interactive</code></td><td>Interactive element nested inside another</td><td>serious</td><td>4.1.2</td></tr>
+</tbody></table></div>
+<p><code>interactive-not-focusable</code> understands &quot;roving tabindex&quot;: a composite widget such as a tab list passes when one of its items holds the Tab stop. <code>target-size-minimum</code> respects WCAG&#39;s spacing exception for small targets that are well separated.</p>
+<h3 id="contrast-4">Contrast (4)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Rule</th><th>Impact</th><th>WCAG</th></tr></thead>
+<tbody>
+<tr><td><code>color-contrast</code></td><td>Text contrast is below the AA threshold</td><td>serious</td><td>1.4.3 (AA)</td></tr>
+<tr><td><code>color-contrast-enhanced</code></td><td>Text contrast is below the AAA threshold (not run by the audit)</td><td>moderate</td><td>1.4.6 (AAA)</td></tr>
+<tr><td><code>non-text-contrast</code></td><td>Control boundary has insufficient contrast</td><td>serious</td><td>1.4.11 (AA)</td></tr>
+<tr><td><code>link-distinguishable</code></td><td>Link in text is identified by colour alone</td><td>serious</td><td>1.4.1</td></tr>
+</tbody></table></div>
+<p>Text over an image or gradient is reported as a warning for manual review, not a failure. Checkboxes and radio buttons drawn by the browser are exempt from <code>non-text-contrast</code>, as WCAG allows.</p>
+<h3 id="document-11">Document (11)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Rule</th><th>Impact</th><th>WCAG</th></tr></thead>
+<tbody>
+<tr><td><code>html-has-lang</code> (page)</td><td>Page has no <code>lang</code> attribute</td><td>serious</td><td>3.1.1</td></tr>
+<tr><td><code>html-lang-valid</code> (page)</td><td><code>lang</code> attribute is not a valid language tag</td><td>serious</td><td>3.1.1</td></tr>
+<tr><td><code>lang-parts-valid</code></td><td>Inline <code>lang</code> attribute is not a valid language tag</td><td>moderate</td><td>3.1.2 (AA)</td></tr>
+<tr><td><code>page-has-title</code> (page)</td><td>Page has no title</td><td>serious</td><td>2.4.2</td></tr>
+<tr><td><code>page-title-descriptive</code> (page)</td><td>Page title is not descriptive</td><td>minor</td><td>2.4.2</td></tr>
+<tr><td><code>viewport-scalable</code> (page)</td><td>Viewport prevents zooming</td><td>critical</td><td>1.4.4, 1.4.10 (AA)</td></tr>
+<tr><td><code>skip-link-present</code> (page)</td><td>No mechanism to skip repeated content</td><td>moderate</td><td>2.4.1</td></tr>
+<tr><td><code>text-spacing-overridable</code> (page)</td><td>Text spacing is locked with <code>!important</code></td><td>moderate</td><td>1.4.12 (AA)</td></tr>
+<tr><td><code>meta-refresh</code> (page)</td><td>Page refreshes or redirects on a timer</td><td>serious</td><td>2.2.1, 2.2.4</td></tr>
+<tr><td><code>blink-marquee</code></td><td>Auto-moving or blinking content cannot be paused</td><td>serious</td><td>2.2.2</td></tr>
+<tr><td><code>reduced-motion-respected</code> (page)</td><td>Long animation ignores <code>prefers-reduced-motion</code> (not run by the audit)</td><td>minor</td><td>2.3.3 (AAA)</td></tr>
+</tbody></table></div>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="audit.html">Audit</a></li>
+<li><a href="all-findings.html">Findings</a></li>
+<li><a href="../../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="all-findings.html"><span>Previous</span>Findings</a><a href="audit.html"><span>Next</span>Audit</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#impact">Impact</a></li><li><a href="#how-the-score-is-calculated">How the score is calculated</a></li><li><a href="#rules">Rules</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

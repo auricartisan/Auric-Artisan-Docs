@@ -1,0 +1,130 @@
+---
+title: Color Battle — Score two palettes against each other
+description: Enter two palettes, score each for contrast, perceptual separation and colour-vision resilience, compare them in a cross-palette matrix, and copy the winner or a report.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Color Battle
+
+Color Battle compares two palettes, **Team A** and **Team B**, and gives each a score out of 100. The score rewards palettes whose colours contrast well with each other, look clearly different, and stay different for people with colour-vision deficiencies. It also shows a matrix of contrast between every colour in Team A and every colour in Team B, which helps when one palette will be used for text and the other for backgrounds.
+
+Use it to choose between two candidate palettes, to test a palette against a competitor's, or to see how much a change improves things.
+
+Color Battle is in the **Pick** category at the **Advanced** level.
+
+## Open it
+
+In the Workspace view, select **Color Battle** in **Open a tool**. It opens with two five-colour teams already scored.
+
+## Screen tour
+
+### Sidebar
+
+- **Team A**, with the hint *HEX/RGB/HSL/OKLCH, one per line.*, a dice button that fills the team with random colours, and a text box.
+- **Team B**, with the hint *Competing palette.*, its own dice button and text box.
+- **Battle** and **Swap**.
+- **Copy winner** and **Copy report**.
+- **Result**: **Team A wins**, **Team B wins** or **Draw**.
+
+### Main area: Score Results
+
+- Two score cards side by side (stacked on narrow panels), one per team.
+- A **Cross-palette contrast matrix** card below them.
+
+## What you can type
+
+Each team box accepts the same colour forms as Palette Remix: HEX (three or six digits, with or without `#`), `rgb()`/`rgba()`, `hsl()`/`hsla()`, `hsv()` and `oklch()`. Put one colour per line, or separate them with spaces, commas, semicolons or vertical bars. When the battle runs, each box is tidied into HEX codes, one per line, duplicates are removed, and only the first nine colours are kept. If a box has no valid colour, it falls back to its default team.
+
+## How the score works
+
+For each team the tool looks at every pair of colours inside that team. A five-colour team has 10 pairs; a nine-colour team has 36. It then combines four measures:
+
+| Measure | Shown as | Weight | Full marks at |
+| --- | --- | --- | --- |
+| Average WCAG contrast ratio of the pairs | **Avg contrast** | 35 points | an average of 7:1 or more |
+| Share of pairs at 4.5:1 or more | **AA pairs** | 30 points | 100 % of pairs |
+| Average perceptual difference (ΔE2000) of the pairs | **Avg ΔE2000** | 20 points | an average of 44 or more |
+| Average ΔE2000 after simulating deuteranopia, protanopia, tritanopia and achromatopsia | **CVD ΔE avg** | 15 points | an average of 34 or more |
+
+The total is rounded to a whole number from 0 to 100. The team with the higher total wins; equal totals are a **Draw**. A team with only one colour has no pairs and scores 0.
+
+**ΔE2000** (delta E 2000) is a standard measure of how different two colours look. Around 1 is barely noticeable; values in the tens mean clearly different colours.
+
+## Tasks
+
+### Compare two candidate palettes
+
+1. Replace the text in **Team A** with your first palette, one colour per line.
+2. Replace the text in **Team B** with your second palette.
+3. Select **Battle**. (Leaving a text box also runs the battle.)
+4. Read each score card: the large number is the **battle score**; under it are **N internal pair tests**, the swatches, the four measures and a bar showing the score.
+5. Read **Result** in the sidebar.
+
+Result: two scored palettes and a winner, with the measures that explain the difference.
+
+### Check one palette as text on the other
+
+1. Put your text colours in **Team A** and your background colours in **Team B**.
+2. Select **Battle**.
+3. Read the **Cross-palette contrast matrix**. Rows are Team A colours, columns are Team B colours (the corner reads **A ↓ / B →**). Each cell is the contrast ratio, tinted green at 4.5:1 or more, amber from 3:1, and red below 3:1.
+
+Result: you can see at a glance which text and background combinations are readable.
+
+### Stress-test with random teams
+
+1. Select the dice button beside **Team A** or **Team B**. That team is replaced by five random colours spread around the hue circle, and the battle runs.
+2. Select **Swap** to exchange the two teams and run again.
+
+Result: quick comparisons against random palettes, useful for seeing what a good score looks like.
+
+### Share the outcome
+
+- **Copy winner** copies the winning team's HEX codes, one per line. In a draw it copies Team A.
+- **Copy report** copies a short text report:
+
+```text
+Color Battle Report
+Team A wins
+
+Team A: 72/100
+#D3AF37 #0F172A #F8E7A1 #FFFFFF #1A1A2E
+
+Team B: 65/100
+#3B82F6 #111827 #93C5FD #F9FAFB #EF4444
+```
+
+The scores above are only an example.
+
+- Select any swatch on a score card to copy its HEX code.
+
+## Save to and restore from the Library
+
+With Color Battle focused, **Save to Library** saves each team as a palette, named **Team A — N colors** and **Team B — N colors**, and records both teams and the result. Opening a saved team in Basic Color Tools reopens Color Battle with both teams and runs the battle; **Loaded teams from library** appears.
+
+## Controls
+
+| Control | What it does | Values or range | Default |
+| --- | --- | --- | --- |
+| **Team A** box | First palette. | Up to 9 colours kept | #D3AF37, #0F172A, #F8E7A1, #FFFFFF, #1A1A2E |
+| **Team B** box | Second palette. | Up to 9 colours kept | #3B82F6, #111827, #93C5FD, #F9FAFB, #EF4444 |
+| Dice (per team) | Five random colours for that team, then battle. | — | — |
+| **Battle** | Scores both teams. | — | Runs once on opening |
+| **Swap** | Exchanges the teams, then battles. | — | — |
+| **Copy winner** | Copies the winning team. | — | — |
+| **Copy report** | Copies the text report. | — | — |
+| Swatch | Copies one HEX code. | — | — |
+
+## Accuracy and limits
+
+- The score is a heuristic for comparing palettes, not a pass or fail test. A palette of colours meant to sit side by side (such as a chart palette) needs different things from a text-and-background palette, so read the measures, not only the total.
+- Contrast uses the WCAG 2.x formula. The AA share counts pairs at 4.5:1, the normal-text threshold.
+- Colour-vision simulation uses simple matrices and shows likely effects, not an exact view for any individual.
+
+## Related
+
+- [Panel tools](README.md)
+- [Palette Studio](palette-studio.md)
+- [Palette Remix](palette-remix.md)
+- [Accessibility Lab](../colour-tools/accessibility-lab.md) in the Colour Tools workbench
+- [Limits and accuracy](../../others/limits-and-accuracy.md)

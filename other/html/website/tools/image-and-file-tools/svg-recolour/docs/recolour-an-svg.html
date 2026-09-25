@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recolour an SVG — Auric Artisan Docs</title>
+<meta name="description" content="Load an SVG, understand what colours the tool finds and where, remap and swap colours, choose how they are written, and read the Mapping tab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; SVG Recolour</a>
+<h2>SVG Recolour documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with SVG Recolour</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="export-the-result.html">Export the result</a></li>
+<li><a href="recolour-an-svg.html" aria-current="page">Recolour an SVG</a></li>
+<li><a href="use-a-harmony.html">Recolour from a harmony</a></li>
+<li><a href="reference.html">SVG Recolour reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting SVG Recolour</a></li>
+<li><a href="faq.html">SVG Recolour FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">SVG Recolour</a> &rsaquo; <a href="README.html">SVG Recolour documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › SVG Recolour</p>
+<h1>Recolour an SVG</h1>
+<p class="lede">Load an SVG, understand what colours the tool finds and where, remap and swap colours, choose how they are written, and read the Mapping tab.</p>
+<h2 id="load-a-file">Load a file</h2>
+<p>On the <strong>Recolour</strong> tab, under <strong>The file</strong>, use any of these:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>How</th></tr></thead>
+<tbody>
+<tr><td>Drop</td><td>Drop an <code>.svg</code> file on <strong>Drop an SVG</strong></td></tr>
+<tr><td>Choose</td><td>Select <strong>Drop an SVG</strong> (or press <code>Enter</code> or <code>Space</code> while it has focus) and choose an <code>.svg</code> file</td></tr>
+<tr><td>Paste</td><td>Paste SVG markup into the box under <strong>Or paste the markup</strong>, then select <strong>Read the markup</strong></td></tr>
+<tr><td>Sample</td><td>Select <strong>Load the sample</strong>; its markup also appears in the paste box</td></tr>
+</tbody></table></div>
+<p>A message confirms, for example <strong>Loaded logo.svg</strong> or <strong>Loaded the pasted markup.</strong> Loading a new file replaces the previous one and resets every mapping.</p>
+<h3 id="if-the-file-will-not-parse">If the file will not parse</h3>
+<p>The file must be well-formed XML. If it is not, nothing is changed, the message reads <strong>That file will not parse as SVG, so nothing was changed.</strong>, and a warning under the paste box gives the parser&#39;s own complaint. A file is never half-recoloured.</p>
+<h3 id="active-content-in-the-preview">Active content in the preview</h3>
+<p>An SVG can carry scripts, event handlers and <code>javascript:</code> links. Before drawing the previews, the tool removes <code>script</code>, <code>foreignObject</code> and <code>handler</code> elements, every attribute starting with <code>on</code>, and any <code>href</code> or <code>xlink:href</code> that starts with <code>javascript:</code>. If anything was removed, a notice above the previews lists it, for example <code>1 &lt;script&gt;, 2 onclick handlers</code>.</p>
+<p>This applies to the previews only. The exported file is rewritten from your original file and still contains whatever it contained. See <a href="../others/privacy.html">Privacy</a>.</p>
+<h2 id="what-the-tool-finds">What the tool finds</h2>
+<p>The tool looks for colours in eight paint properties:</p>
+<p><code>fill</code>, <code>stroke</code>, <code>stop-color</code>, <code>flood-color</code>, <code>lighting-color</code>, <code>color</code>, <code>solid-color</code>, <code>text-decoration-color</code></p>
+<p>It looks in three places:</p>
+<ul>
+<li><strong>presentation attributes</strong>, such as <code>fill=&quot;#E5484D&quot;</code>;</li>
+<li><strong>style attributes</strong>, one declaration at a time, such as <code>style=&quot;fill: red; stroke: #000&quot;</code>;</li>
+<li><strong>style sheets</strong> inside <code>&lt;style&gt;</code> elements, one colour-valued declaration at a time.</li>
+</ul>
+<p>Each place a colour appears is one <strong>occurrence</strong>. The tool reads these colour forms:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Form</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td>Six-digit hex</td><td><code>#E5484D</code></td></tr>
+<tr><td>Three-digit hex</td><td><code>#ABC</code></td></tr>
+<tr><td>Hex with alpha</td><td><code>#E5484D80</code>, <code>#ABC8</code></td></tr>
+<tr><td><code>rgb()</code> and <code>rgba()</code></td><td><code>rgb(62, 99, 221)</code>, <code>rgba(62 99 221 / 0.5)</code></td></tr>
+<tr><td><code>hsl()</code> and <code>hsla()</code></td><td><code>hsl(220, 70%, 55%)</code></td></tr>
+<tr><td>CSS colour names</td><td><code>red</code>, <code>rebeccapurple</code> and all 148 names</td></tr>
+</tbody></table></div>
+<p>Some values are paint but not a colour the tool can change. They are listed, counted and left alone:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Shown as</th></tr></thead>
+<tbody>
+<tr><td><code>none</code>, <code>transparent</code></td><td>No paint</td></tr>
+<tr><td><code>currentColor</code></td><td>Resolves from CSS outside this file</td></tr>
+<tr><td><code>inherit</code>, <code>initial</code>, <code>unset</code>, <code>revert</code>, <code>context-fill</code>, <code>context-stroke</code></td><td>Resolves from outside this file</td></tr>
+<tr><td><code>url(#gradient)</code></td><td>A reference, not a colour</td></tr>
+</tbody></table></div>
+<p>Colours written in other forms, such as <code>oklch()</code>, <code>lab()</code> or <code>var(--brand)</code>, are not recognised, and are neither counted nor changed.</p>
+<h2 id="the-colour-list">The colour list</h2>
+<p><strong>Every colour in the file</strong> has one row per distinct colour, however many ways it is written, most-used first. <code>#F00</code>, <code>#ff0000</code>, <code>rgb(255,0,0)</code> and <code>red</code> are the same row.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Part of the row</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Left swatch</td><td>The colour as it is now</td></tr>
+<tr><td>Hex and note</td><td>The colour, with its CSS name or the nearest name prefixed &quot;near&quot;, and how many places use it</td></tr>
+<tr><td>Right swatch</td><td>What it should become; select it to choose</td></tr>
+<tr><td>Right-hand hex and note</td><td>The target colour, and <strong>unchanged</strong> or <strong>written in</strong> N <strong>places</strong></td></tr>
+<tr><td>Count</td><td>How many places were actually written, or <strong>—</strong> when unchanged</td></tr>
+</tbody></table></div>
+<p>Rows greyed out are values with no colour to change: they read <strong>left alone</strong>, with the reason, and <strong>not held</strong>.</p>
+<h2 id="remap-a-colour">Remap a colour</h2>
+<ol>
+<li>Select the right-hand swatch in the row.</li>
+<li>Choose the new colour in the colour picker.</li>
+<li>The <strong>After</strong> preview and the row update at once. Setting a colour back to its original value marks the row <strong>unchanged</strong>.</li>
+</ol>
+<p>Every occurrence of that colour, in every form and every place, is rewritten. The heading of the <strong>After</strong> preview reads, for example, <strong>4 of 5 written</strong>: occurrences written out of those that can be written.</p>
+<h3 id="swap-two-colours">Swap two colours</h3>
+<p>Set colour A&#39;s target to colour B, and colour B&#39;s target to colour A. The tool plans every change from the original file before writing anything, so the two colours trade places cleanly.</p>
+<h3 id="undo-your-changes">Undo your changes</h3>
+<p><strong>Put every colour back</strong>, under <strong>Recolour from a harmony</strong>, returns every target to its original colour. The message reads <strong>Every colour back to what it was.</strong></p>
+<h2 id="choose-how-colours-are-written">Choose how colours are written</h2>
+<p>Under <strong>Write colours as</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>What is written</th></tr></thead>
+<tbody>
+<tr><td><strong>Write hex</strong> (default)</td><td>Every changed colour as six-digit hex in lower case, for example <code>#00aa00</code></td></tr>
+<tr><td><strong>Keep the source form</strong></td><td>Each changed colour in the form it was found in, as far as possible</td></tr>
+</tbody></table></div>
+<p>With <strong>Keep the source form</strong>:</p>
+<ul>
+<li>a colour written as a name is written as a name if the new colour has an exact CSS name, and as hex if it does not;</li>
+<li><code>rgb()</code> stays <code>rgb()</code>, and <code>rgba()</code> keeps its alpha;</li>
+<li><code>hsl()</code> stays <code>hsl()</code>, and <code>hsla()</code> keeps its alpha;</li>
+<li>hex written in capitals stays in capitals;</li>
+<li>a three-digit shorthand is written as full six-digit hex, because very few colours have a three-digit form.</li>
+</ul>
+<p>In both styles, a hex colour with an alpha part, such as <code>#E5484D80</code>, is written as six-digit hex, so its transparency is lost when you change it. Only changed occurrences are rewritten; everything else in the file is left exactly as it was.</p>
+<h2 id="what-the-file-holds">What the file holds</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>elements</strong></td><td>Elements in the parsed document, including the root</td></tr>
+<tr><td><strong>occurrences</strong></td><td>Places a colour value is written</td></tr>
+<tr><td><strong>colours</strong></td><td>Distinct colours the tool can change</td></tr>
+<tr><td><strong>left alone</strong></td><td>Values with no colour to change</td></tr>
+<tr><td><strong>written</strong></td><td>Occurrences the export will carry as changed</td></tr>
+<tr><td><strong>closest pair</strong></td><td>The smallest CIEDE2000 difference between any two colours under the three colour-vision simulations; highlighted below 8</td></tr>
+</tbody></table></div>
+<p>The note above the previews repeats elements, occurrences and colours.</p>
+<h2 id="the-mapping-tab">The Mapping tab</h2>
+<p>The <strong>Mapping</strong> tab lists every colour with what will happen to it:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Swatch</td><td>The original colour</td></tr>
+<tr><td><strong>In the file</strong></td><td>The hex value, or the keyword for a value left alone</td></tr>
+<tr><td><strong>Used</strong></td><td>Number of occurrences</td></tr>
+<tr><td><strong>Becomes</strong></td><td>The target, or <strong>unchanged</strong> or <strong>left alone</strong></td></tr>
+<tr><td><strong>Written</strong></td><td>Occurrences written; highlighted when it equals <strong>Used</strong></td></tr>
+<tr><td><strong>Where, and what happened</strong></td><td>How many are attributes, in a style attribute or in a style sheet, and the forms they were written in</td></tr>
+</tbody></table></div>
+<p>The note under the table adds up the file: how many occurrences were written, how many left because nothing was asked of them, and how many could not be written, by keyword. The three always add up to the total.</p>
+<p>Below it, <strong>Two colours trading places</strong> and <strong>What the count used to mean</strong> show, with measured examples, why an earlier version of the tool could not swap colours and miscounted them.</p>
+<h2 id="what-you-should-see">What you should see</h2>
+<p>The <strong>After</strong> preview shows your new colours, each row reports <strong>written in</strong> N <strong>places</strong>, and the <strong>written</strong> count matches the number you expect.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-the-result.html"><span>Previous</span>Export the result</a><a href="use-a-harmony.html"><span>Next</span>Recolour from a harmony</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#load-a-file">Load a file</a></li><li><a href="#what-the-tool-finds">What the tool finds</a></li><li><a href="#the-colour-list">The colour list</a></li><li><a href="#remap-a-colour">Remap a colour</a></li><li><a href="#choose-how-colours-are-written">Choose how colours are written</a></li><li><a href="#what-the-file-holds">What the file holds</a></li><li><a href="#the-mapping-tab">The Mapping tab</a></li><li><a href="#what-you-should-see">What you should see</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

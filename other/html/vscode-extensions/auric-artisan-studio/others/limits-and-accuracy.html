@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Studio's colour, contrast, accessibility and code-health checks measure, how they were checked for accuracy, and what they cannot tell you.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Studio's colour, contrast, accessibility and code-health checks measure, how they were checked for accuracy, and what they cannot tell you.</p>
+<p>The Studio is a static analyser: it reads your source text and does not run your code or render your pages. That makes it fast, private and repeatable, and it also sets clear limits. This page explains both.</p>
+<h2 id="what-the-scores-are-and-are-not">What the scores are and are not</h2>
+<ul>
+<li>Scores are a <strong>prioritisation and progress measure</strong>, not a certification. A score of 100 means the static checks found nothing, not that the product is accessible or secure.</li>
+<li>Automated testing covers only part of WCAG. Many success criteria need a person: alt-text quality, focus order in practice, screen-reader announcements, media alternatives, error recovery and more. The knowledge database&#39;s <a href="../accessibility/docs/manual-evidence.html">manual checks</a> cover these.</li>
+<li>Excluded, skipped and unscanned files neither help nor hurt a score.</li>
+</ul>
+<h2 id="colour-science">Colour science</h2>
+<p>The colour engine is shared by hovers, pickers, the Studio, scans and the command-line scanner, so every surface gives the same numbers.</p>
+<ul>
+<li><strong>Parsing.</strong> Hex (3, 4, 6 and 8 digits), <code>rgb()</code>, <code>hsl()</code> and <code>hwb()</code> with angle units and <code>none</code>, <code>lab()</code> and <code>lch()</code> (with CSS&#39;s D50 white point), <code>oklab()</code>, <code>oklch()</code>, <code>color()</code> in <code>srgb</code>, <code>srgb-linear</code>, <code>display-p3</code>, <code>a98-rgb</code>, <code>prophoto-rgb</code>, <code>rec2020</code> and <code>xyz</code>, <code>color-mix()</code>, relative colour syntax, the 148 CSS named colours and <code>transparent</code>. Invalid values such as <code>#12345g</code> are rejected.</li>
+<li><strong>Wide-gamut colours</strong> outside sRGB are brought into sRGB with CSS Color 4 gamut mapping. Their contrast is measured as a standard screen shows them, and the hover says so.</li>
+<li><strong>Writing colours back</strong> keeps the token&#39;s own syntax and uses the fewest decimals that parse back to exactly the same colour, so editing never drifts a colour.</li>
+<li><strong>Contrast</strong> uses the WCAG 2.x formula. <strong>APCA</strong> uses APCA-W3 version 0.0.98G and matches that algorithm&#39;s published test values.</li>
+<li><strong>Colour difference</strong> uses ΔE76 and CIEDE2000; CIEDE2000 matches all 34 of the published Sharma test pairs.</li>
+<li><strong>Colour-vision simulation</strong> uses the Brettel 1997 method in linear light, with partial forms (anomalous trichromacy) by severity. Achromatopsia keeps relative luminance.</li>
+<li><strong>Translucent colours</strong> are blended with 8-bit alpha, as browsers do, so a blended pixel matches what Chromium draws.</li>
+<li><strong>Verdicts</strong> use the exact ratio. A ratio just under a threshold is never displayed as the threshold: 4.497 shows as 4.49, not 4.50.</li>
+<li><strong>Fixes</strong> use the nearest passing colour of the same hue, found by adjusting lightness only. For example, <code>#888888</code> on white becomes <code>#767676</code> (4.54:1).</li>
+</ul>
+<h2 id="contrast-checks">Contrast checks</h2>
+<p>What the scanner handles:</p>
+<ul>
+<li>It reads stylesheets as a tree of rules, including nesting, <code>@media</code>, <code>@supports</code> and <code>@layer</code>. Each rule&#39;s own declarations are graded; nested rules never leak into their parent, and two different rules are never paired. Rules with the same selector in the same context are combined, with the later declaration winning. Comments are ignored.</li>
+<li>A text colour is graded against its own background, otherwise its parent rule&#39;s (CSS nesting, styled-components) or its ancestor element&#39;s (inline styles), otherwise an explicit page background on exactly <code>body</code>, <code>html</code> or <code>:root</code>.</li>
+<li>Large text (24 px, or 18.66 px and bold, from <code>font-size</code>, <code>font-weight</code>, the <code>font</code> shorthand or the default sizes of <code>h1</code> to <code>h3</code>) is graded at 3:1, or 4.5:1 at the AAA threshold.</li>
+<li>Translucent text and backgrounds and <code>opacity</code> are blended. <code>-webkit-text-fill-color</code> counts as the text colour.</li>
+<li>Custom properties resolve by scope: the rule&#39;s own definitions, then enclosing rules&#39;, then the light theme&#39;s root values, then any other scope. Fallbacks may nest. A cycle between tokens makes each invalid, so the <code>var()</code> fallback applies. A token that is not a colour is not graded.</li>
+<li>Dark themes are graded as themselves: definitions under <code>prefers-color-scheme: dark</code> or a dark marker such as <code>.dark</code> or <code>[data-theme=dark]</code> form a dark theme, and every pair they change is graded again and reported <strong>in the dark theme</strong>. <code>light-dark()</code> grades each side in its own theme.</li>
+<li>A colour value is graded when the whole value is one colour, one <code>var()</code>, <code>light-dark()</code>, <code>color-mix()</code> or a relative colour. Anything else, such as a JavaScript expression, is left alone rather than guessed.</li>
+</ul>
+<p>What it does not grade:</p>
+<ul>
+<li>text over an image or gradient, transparent (gradient-clipped) text and <code>currentColor</code> backgrounds;</li>
+<li>styles for print or forced-colours modes;</li>
+<li>disabled controls, which WCAG exempts;</li>
+<li>code samples in Markdown.</li>
+</ul>
+<p>What it cannot see:</p>
+<ul>
+<li>colours set by JavaScript at runtime, or class-driven styles applied to markup in another file;</li>
+<li>which of two different selectors wins in the cascade, inherited and computed values, component state and pseudo-elements;</li>
+<li>the real rendered font size, so a verdict names the check (&quot;fails WCAG AA for normal text&quot;) rather than a pixel size.</li>
+</ul>
+<p><strong>Measured accuracy.</strong> On the audit set used in development, the scanner&#39;s verdicts agree with Chromium&#39;s rendering in 62 of 68 cases; the remaining six are cases it deliberately skips.</p>
+<p><strong>One-click fixes</strong> rewrite a value only when the whole value is one colour or one side of <code>light-dark()</code>. Mixes, relative colours, faded text and dark-theme pairs that share their text with the light theme open the Contrast Studio instead, so a fix never corrupts source.</p>
+<h2 id="accessibility-wcag-checks">Accessibility (WCAG) checks</h2>
+<ul>
+<li>70+ static rules mapped to WCAG success criteria; see <a href="../accessibility/docs/rules.html">the rule catalogue</a>.</li>
+<li>Markup rules read every tag with one shared reader that understands quoted values and JSX braces, so an arrow function or a Vue expression cannot cut a tag short. Attribute names are matched whole (<code>data-role</code> is not <code>role</code>).</li>
+<li>In JSX, TSX, Vue, Svelte and Astro, capitalised, dotted or namespaced tags (<code>&lt;Input&gt;</code>, <code>&lt;Form.Label&gt;</code>) are components, not native elements. A file without <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code> is treated as a component or partial, not a whole page.</li>
+<li>Comments, <code>&lt;script&gt;</code> and <code>&lt;style&gt;</code> contents, PHP blocks and strings that only look like markup are not scanned.</li>
+<li>Values supplied at runtime (<code>{{id}}</code>, <code>${id}</code>, <code>:attr</code>, <code>[attr.x]</code>, <code>attr={…}</code>) are treated as absent, not wrong.</li>
+<li>Text inside <code>aria-hidden</code> does not count towards a name; template output such as <code>&lt;%= %&gt;</code>, <code>v-text</code> and <code>[innerHTML]</code> does.</li>
+<li><strong>Measured accuracy.</strong> Checked against axe-core on rendered HTML: on a regression suite of 264 cases, false positives went from 132 to 0 and false negatives from 21 to 0; 80 of 83 rendered cases agree with axe, and the three that differ are contested or best-practice cases.</li>
+<li>Rules that need judgement (alt-text quality, link purpose, dialog naming, authentication) suggest fixes rather than applying them.</li>
+</ul>
+<h2 id="code-health-checks">Code-health checks</h2>
+<ul>
+<li>A high-signal heuristic linter, not a full static application security testing (SAST) tool or a history-scanning secret scanner. Use it alongside dedicated tools where compliance requires them.</li>
+<li>It reads source text with a small per-language lexer, so task markers must be in comments and debug, risk and security rules ignore commented-out or quoted code. It does not build a syntax tree and does not read Git history.</li>
+<li>It is argument-aware: a call with a constant argument is downgraded or ignored, and a call with a dynamic value is reported with high confidence.</li>
+<li>Secrets are scanned everywhere, including comments, and are always redacted.</li>
+<li><strong>Measured accuracy.</strong> On a labelled set of examples, including a held-out set, precision is 1.00 in every category, and recall is 1.00 in every category except secrets, at 0.96.</li>
+<li><strong>Limits.</strong> At most 300 findings per file; lines over 240 characters are reported (lines that start with a URL are not); files over 800 lines are reported as large; worst-case inputs such as a 200 KB minified line scan in milliseconds.</li>
+</ul>
+<h2 id="size-and-scale-limits">Size and scale limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Limit</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Largest file analysed in the editor and in project scans</td><td>1 MB</td></tr>
+<tr><td>Largest file read by the command-line scanner</td><td>1.5 MB</td></tr>
+<tr><td>Files per project scan</td><td><code>scan.maxFiles</code>, default 4000</td></tr>
+<tr><td>Files per command-line scan</td><td><code>--max-files</code>, default 20000</td></tr>
+<tr><td>Live re-grade</td><td>Up to 1,500 files and about 12 MB of text</td></tr>
+<tr><td>Issues in <code>health.json</code> and SARIF</td><td><code>health.maxIssues</code>, default 5000</td></tr>
+<tr><td>History entries</td><td><code>health.historyLimit</code>, default 200</td></tr>
+<tr><td>Recent colours kept</td><td>12 (8 shown in the Command Center)</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../docs/scores-and-grades.html">Scores and grades</a></li>
+<li><a href="../docs/scanning.html">Scanning</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-scores-are-and-are-not">What the scores are and are not</a></li><li><a href="#colour-science">Colour science</a></li><li><a href="#contrast-checks">Contrast checks</a></li><li><a href="#accessibility-wcag-checks">Accessibility (WCAG) checks</a></li><li><a href="#code-health-checks">Code-health checks</a></li><li><a href="#size-and-scale-limits">Size and scale limits</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

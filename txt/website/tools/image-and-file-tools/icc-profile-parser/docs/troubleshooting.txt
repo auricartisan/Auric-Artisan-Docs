@@ -1,0 +1,137 @@
+==============================================================================
+TROUBLESHOOTING THE ICC PROFILE PARSER
+==============================================================================
+Symptoms you may meet in the ICC Profile Parser, why they happen, and what to
+do.
+Area: Website › Tools › Image and file tools › ICC Profile Parser   Updated: 2026-09-25
+
+THE FILE WILL NOT READ
+======================
+
+  Symptom:    A profile is at least 132 bytes; this file is N.
+  Why:        The file is too short to hold a header and tag count
+  What to do: Check you chose the right file; it may be empty or cut short by
+              a failed download
+
+  Symptom:    Bytes 36-39 are … not 'acsp' — this is not an ICC profile.
+  Why:        The file does not carry the ICC signature
+  What to do: You may have dropped an image, a PDF or another format. Save the
+              embedded profile out as a standalone `.icc` file first
+
+  Symptom:    My `.icc` file is greyed out in the file chooser
+  Why:        The chooser filters for `.icc` and `.icm`
+  What to do: Drag the file onto the Drop a profile box instead, or rename it
+              with the right ending
+
+  Symptom:    The reader could not get through this file: …
+  Why:        Reading stopped part-way, usually because the file is damaged
+  What to do: Try the original source of the profile. The reason after the
+              colon says where it failed
+
+  Symptom:    That file could not be read
+  Why:        The browser could not open the file
+  What to do: Check the file is not locked or still downloading, then try
+              again
+
+A PANEL IS EMPTY OR MISSING
+===========================
+
+  Symptom:    No ranking table, diagram or tone curves
+  Why:        The profile has no RGB colorants (for example a CMYK, greyscale
+              or LUT-only RGB profile)
+  What to do: This is expected. A CMYK profile with an A2B table shows a
+              CIELAB hull instead
+
+  Symptom:    No gamut hull for a CMYK profile
+  Why:        Its A2B table is in a version 4 format, is incomplete, has more
+              than 200,000 grid points, or is missing
+  What to do: The header, tags and findings are still read; the gamut cannot
+              be drawn
+
+  Symptom:    The area cards show a dash
+  Why:        Area and coverage apply only to profiles with RGB colorants
+  What to do: —
+
+  Symptom:    I cannot see the profile's name
+  Why:        The page does not print the text of the description tag
+  What to do: The tag table shows whether `desc` is present; open the profile
+              in another viewer to read the name
+
+  Symptom:    A tag's row says could not be decoded
+  Why:        Its data is damaged or shorter than its type needs
+  What to do: See the Every tag payload could be decoded finding for the
+              reason
+
+THE FIGURES LOOK WRONG
+======================
+
+  Symptom:    The area figures seem to refer to another space
+  Why:        After loading, the comparison moves to the closest space, but
+              the menu label may still show your earlier choice
+  What to do: Choose the space you want from Compare against
+
+  Symptom:    sRGB and Rec. 709 tie in the ranking
+  Why:        They share primaries and white; only the tone curve separates
+              them
+  What to do: Read the aside under the verdict; a profile with no tone curve
+              cannot be told apart
+
+  Symptom:    area, u′v′ is over 100%
+  Why:        It is an area ratio; a larger gamut gives more than 100%
+  What to do: Use covers of it to see how much of the reference space is
+              covered
+
+  Symptom:    area, xy differs from area, u′v′
+  Why:        The xy diagram is uneven; the u′v′ figure is the more meaningful
+  What to do: Quote the u′v′ figure, and name it
+
+  Symptom:    The verdict names a space that seems wrong
+  Why:        Closest means closest among six
+  What to do: Compare the first and second rows of the ranking; a large
+              distance means none of the six is a good match
+
+  Symptom:    The caption says the primaries were recovered with an assumed
+              white
+  Why:        The profile carries no `chad` tag, so the white it was adapted
+              from is not recorded
+  What to do: Treat the gold triangle as a best estimate
+
+FINDINGS
+========
+
+  Symptom:    The profile ID matches the bytes raised as a warning
+  Why:        The file was changed after its ID was written, or the ID was
+              written incorrectly
+  What to do: Get a fresh copy from the source of the profile
+
+  Symptom:    A v4 profile carries a profile ID raised
+  Why:        A version 4 profile has an all-zero ID
+  What to do: It is graded a warning, not an error; regenerate the profile if
+              your workflow needs the ID
+
+  Symptom:    Media white point is the PCS white raised on a display profile
+  Why:        The white point tag holds the display's measured white instead
+              of D50
+  What to do: Common in older version 2 profiles; version 4 requires D50 here
+
+  Symptom:    Declared size matches the file raised as an error
+  Why:        The file was cut short or padded after writing
+  What to do: Get an undamaged copy
+
+  Symptom:    A LUT tag holds the grid its header declares
+  Why:        A table is shorter than its header says, often from a truncated
+              download
+  What to do: Download the profile again
+
+CLIPBOARD AND DOWNLOADS
+=======================
+
+  Symptom:    The clipboard refused
+  Why:        Your browser blocked clipboard access
+  What to do: Allow clipboard access for the site, or use Save the reading
+
+  Symptom:    Load a profile first
+  Why:        Nothing is loaded
+  What to do: Drop a profile on the Lab tab first
+
+For help with the site in general, see Help [../../../../../help/README.txt].

@@ -1,0 +1,69 @@
+==============================================================================
+EXPLORE ICTCP AND JZAZBZ PLANES
+==============================================================================
+View the three gamuts in the ICtCp or Jzazbz perceptual planes, read the
+boundary rings from 0.1 to 10,000 nits, and convert HEX colours.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+KEY IDEAS
+=========
+
+  - ICtCp (ITU-R BT.2100, from Dolby) splits colour into I (intensity), Ct
+    (tritan, blue–yellow) and Cp (protan, red–green). It converts linear Rec.
+    2020 RGB to cone responses, encodes each with the PQ curve, then rotates
+    to I, Ct, Cp. It is the basis of the ΔE ITP colour difference.
+  - Jzazbz (Safdar et al., 2017) gives lightness Jz and opponent axes az and
+    bz. It starts from absolute XYZ and uses its own PQ-like quantiser with
+    the exponent raised by a factor of 1.7 (p = 134.034375).
+  - Both are built to keep equal steps roughly equal from very dark to very
+    bright, which CIELAB does not.
+
+VIEW THE PLANE
+==============
+
+  1. Set the luminance first: on the Curves tab, choose a tone curve, peak
+     brightness and Signal level. Together they define the absolute luminance
+     the plane is drawn at.
+  2. Open the Planes tab.
+  3. Under Perceptual plane, choose ICtCp (Ct–Cp) (default) or JzAzBz (Az–Bz).
+     The title and note change to name the space and its quantiser.
+  4. Read the plane: each gamut switched on in the Lab's Overlay gamuts is
+     outlined, showing how far its chroma extends at that luminance.
+  5. Read Boundary rings by luminance: the same boundaries at eight luminances
+     — 0.1, 1, 10, 100, 500, 1,000, 4,000 and 10,000 nits — listed under
+     Boundary rings in the rail with a matching key. A ring is a slice at one
+     luminance, so the stack shows the boundary changing with brightness.
+
+The Tone mapping operator menu (Reinhard, Hable (Filmic), ACES Filmic,
+Uchimura (Gran Turismo)) is shown on this tab, but in the current version it
+does not change any plot. For tone mapping, use the Tone Mapping
+[../../tone-mapping/README.txt] lab.
+
+CONVERT A LIST OF COLOURS
+=========================
+
+  1. Set the tone curve, peak and Signal level on the Curves tab; the
+     conversion uses the resulting luminance.
+  2. Open Export and find Convert a list.
+  3. Enter six-digit HEX colours, one per line or separated by commas.
+  4. Select Convert to ICtCp. The table lists Hex, L*, a*, b*, I, Ct, Cp, Jz,
+     Az and Bz for each colour.
+  5. Select Download the result to copy the table as CSV to your clipboard
+     (the button copies rather than downloads).
+
+The ICtCp and Jzazbz values depend on the luminance you set. Treat them as
+illustrations of how the spaces behave; see Limits and accuracy
+[../others/limits-and-accuracy.txt].
+
+EXPORT THE PLANE
+================
+
+On Export, choose The plane (PNG) to download the ICtCp or Jzazbz plane at the
+current luminance.
+
+RESULT
+======
+
+You can see how much chroma each broadcast gamut offers at a given HDR
+luminance, in a space designed for HDR, and how that changes from 0.1 to
+10,000 nits.

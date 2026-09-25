@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUT Lab reference — Auric Artisan Docs</title>
+<meta name="description" content="Every tab, control, readout, .cube keyword, export format, link parameter and message in LUT Lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with LUT Lab</a></li>
+<li><a href="apply-a-look.html">Apply a look</a></li>
+<li><a href="load-a-cube-file.html">Load a .cube file</a></li>
+<li><a href="lut-concepts.html">LUT concepts</a></li>
+<li><a href="read-what-it-moved.html">Read what a transform moved</a></li>
+<li><a href="write-a-cube-file.html">Write a .cube file</a></li>
+<li><a href="reference.html" aria-current="page">LUT Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting LUT Lab</a></li>
+<li><a href="faq.html">LUT Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>LUT Lab reference</h1>
+<p class="lede">Every tab, control, readout, .cube keyword, export format, link parameter and message in LUT Lab.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/tools/lut-lab/" rel="noopener">https://auricartisan.com/tool/general/tools/lut-lab/</a></p>
+<h2 id="tabs">Tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>Scene, look, .cube file, overlay switch, share link; the before and after pair and what the transform moved</td></tr>
+<tr><td><strong>Method</strong></td><td>Five explanations: <strong>Sample order</strong>, <strong>Interpolation</strong>, <strong>Clipping</strong>, <strong>Round trip</strong>, <strong>Linear light</strong></td></tr>
+<tr><td><strong>Looks</strong></td><td>A card per look with a test strip and figures; the two withdrawn features</td></tr>
+<tr><td><strong>Data</strong></td><td>The 17 entries every figure rests on, filterable by status</td></tr>
+<tr><td><strong>Export</strong></td><td>Kind, size, file details, save and copy buttons, the file preview</td></tr>
+<tr><td><strong>Reference</strong></td><td>The ten sources, filterable by whether they run</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-the-scene">Lab tab — The scene</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Neutral wedge</strong></td><td>16-step grey ramp over red, green and blue ramps, 320 × 180</td><td>Selected</td></tr>
+<tr><td><strong>Colour patches</strong></td><td>24 flat patches, six hues at four lightness levels</td><td>—</td></tr>
+<tr><td><strong>Skin tones</strong></td><td>Six skin-like tones on a mid-grey surround</td><td>—</td></tr>
+<tr><td><strong>Saturation field</strong></td><td>Hue across, chroma from none at the bottom to strong at the top</td><td>—</td></tr>
+<tr><td><strong>Drop an image</strong></td><td>Loads your picture, scaled to fit 480 × 270, as the scene</td><td>—</td></tr>
+<tr><td><strong>Back to the drawn scenes</strong></td><td>Removes your picture and returns to the drawn scenes</td><td>Shown with your picture</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-the-look">Lab tab — The look</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Look menu</td><td>None, Teal and orange, Bleach bypass, Film soft, Mono contrast, Log-ish lift, Reinhard tone-map</td><td>Teal and orange</td></tr>
+<tr><td><strong>Strength</strong></td><td>0% to 100%, step 1%</td><td>100%</td></tr>
+<tr><td><strong>Tone-map exposure</strong></td><td>0.25× to 8×, step 0.05; active only for Reinhard tone-map</td><td>2.00×</td></tr>
+<tr><td>Note</td><td><strong>The pair is showing a look this page computes.</strong> or <strong>The pair is showing the loaded file. The looks are paused.</strong></td><td>—</td></tr>
+</tbody></table></div>
+<p>The look menu and <strong>Strength</strong> are disabled while a loaded file is shown.</p>
+<h2 id="lab-tab-a-cube-file">Lab tab — A .cube file</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Drop a .cube</strong></td><td>Loads a dropped <code>.cube</code>, or opens a chooser (<code>.cube</code>, plain text) when selected or on <code>Enter</code> or <code>Space</code></td></tr>
+<tr><td>File card</td><td>Title, <strong>kind</strong>, <strong>size</strong>, <strong>domain</strong>, <strong>reachable</strong>, and notes or errors</td></tr>
+<tr><td><strong>Back to the looks</strong></td><td>Shows the look again, keeping the file loaded; visible while the file is shown</td></tr>
+<tr><td><strong>Clear the file</strong></td><td>Removes the file and shows the look</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-show">Lab tab — Show</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>What the transform crushed</strong></td><td>Hatches clipped pixels on the <strong>After</strong> image: pink for driven to white, blue for driven to black</td><td>On</td></tr>
+<tr><td><strong>Copy a link to this setting</strong></td><td>Copies an address that restores the settings</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-readouts">Lab tab — Readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Label above the pair</td><td>The transform shown</td></tr>
+<tr><td><strong>Before</strong> caption</td><td>Pixel count of the scene</td></tr>
+<tr><td><strong>After</strong> caption</td><td>Share of pixels clipped</td></tr>
+<tr><td><strong>mean ΔE₀₀</strong></td><td>Average CIEDE2000 difference, before to after</td></tr>
+<tr><td><strong>95th percentile</strong></td><td>Difference that 95% of pixels are at or below</td></tr>
+<tr><td><strong>largest</strong></td><td>Largest difference on any pixel</td></tr>
+<tr><td><strong>clipped</strong></td><td>Share of pixels with a channel driven to 0 or 255; red above 1%</td></tr>
+<tr><td><strong>the old test said</strong></td><td>Share of output pixels with any channel at 0 or 255</td></tr>
+<tr><td>Hue circle</td><td>72 test colours at L* 60, C* 40: hollow before, filled after, pink ring if clipped</td></tr>
+<tr><td><strong>largest hue shift</strong></td><td>Largest hue turn, degrees, signed</td></tr>
+<tr><td><strong>mean hue shift</strong></td><td>Average absolute hue turn, degrees</td></tr>
+<tr><td><em><em>largest L</em> shift</em>*</td><td>Largest lightness change, signed</td></tr>
+<tr><td><strong>clipped on the circle</strong></td><td>Test colours clipped, out of 72</td></tr>
+<tr><td>Caption count</td><td>Test colours pulled inside sRGB before the test: 13 of 72</td></tr>
+</tbody></table></div>
+<p>ΔE figures have two decimal places, percentages two, hue and lightness shifts one.</p>
+<h2 id="looks-tab">Looks tab</h2>
+<p>Each card: name, <strong>Stylisation</strong> or <strong>Transform</strong> badge, an 18-colour before and after strip, a description, <strong>mean ΔE₀₀</strong>, <strong>max hue</strong> and <strong>clipped</strong> on the hue ring, and <strong>Show it on the pair</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Look</th><th>Kind</th><th>mean ΔE₀₀ on the ring</th><th>max hue</th><th>clipped</th></tr></thead>
+<tbody>
+<tr><td>Teal and orange</td><td>Stylisation</td><td>1.2</td><td>+3.5°</td><td>0/72</td></tr>
+<tr><td>Bleach bypass</td><td>Stylisation</td><td>7.9</td><td>−12.9°</td><td>0/72</td></tr>
+<tr><td>Film soft</td><td>Stylisation</td><td>1.9</td><td>−7.7°</td><td>0/72</td></tr>
+<tr><td>Mono contrast</td><td>Stylisation</td><td>22.6</td><td>+177.8°</td><td>0/72</td></tr>
+<tr><td>Log-ish lift</td><td>Stylisation</td><td>16.9</td><td>−25.2°</td><td>0/72</td></tr>
+<tr><td>Reinhard tone-map</td><td>Transform</td><td>6.6</td><td>−25.1°</td><td>0/72</td></tr>
+</tbody></table></div>
+<p>These are the figures at full strength, and for the tone-map at the default exposure of 2×. <strong>Mono contrast</strong> removes colour entirely, so its hue figure has no useful meaning.</p>
+<p><strong>Withdrawn:</strong> <strong>ACEScct to ACEScg</strong> and <strong>Export 32-bit float samples</strong>, each with why and what it would take, and a table of the ACEScct decode for nine input codes.</p>
+<h2 id="method-tab">Method tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Sample order</strong></td><td>The index order, and the eight rows of a 2 × 2 × 2 identity</td></tr>
+<tr><td><strong>Interpolation</strong></td><td>The seven blends of trilinear interpolation; worst identity error at sizes 2, 5, 9, 17, 33 and 65</td></tr>
+<tr><td><strong>Clipping</strong></td><td>Seven test pixels judged by the old test and the clip test</td></tr>
+<tr><td><strong>Round trip</strong></td><td>Write-and-read-back difference at 17 and 33 of the current transform; identity accuracy at 16, 17, 18, 33, 52 and 65</td></tr>
+<tr><td><strong>Linear light</strong></td><td>The tone-map at six input codes, in linear light and in the old placement</td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<p>Status buttons: <strong>All</strong> (17), <strong>Verbatim</strong> (5), <strong>Computed</strong> (5), <strong>Stand-in</strong> (4), <strong>Absent</strong> (3). Select an entry to expand it.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Status</th><th>Entries</th></tr></thead>
+<tbody>
+<tr><td><strong>Verbatim</strong></td><td>The .cube format, sRGB, CIE 1931 observer and CIELAB, CIEDE2000, Reinhard tone reproduction</td></tr>
+<tr><td><strong>Computed</strong></td><td>Trilinear interpolation, clipping detection, the hue sweep, what a transform moves, the export round trip</td></tr>
+<tr><td><strong>Stand-in</strong></td><td>The five stylisations, the 8-bit path, the tone-map exposure, the drawn scenes</td></tr>
+<tr><td><strong>Absent</strong></td><td>ACEScct to ACEScg, 32-bit float export, PQ, BT.2020 and the ACES primaries</td></tr>
+</tbody></table></div>
+<p>Loading your own picture changes the scenes entry to <strong>Verbatim</strong>, naming your file.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Kind</strong></td><td>3D cube, 1D curve</td><td>3D cube</td></tr>
+<tr><td><strong>Size</strong></td><td>2 to 65, step 1</td><td>33</td></tr>
+<tr><td><strong>rows</strong></td><td>Size³ for 3D, size for 1D</td><td>35937</td></tr>
+<tr><td><strong>file size</strong></td><td>Size of the text, in KB</td><td>—</td></tr>
+<tr><td><strong>file name</strong></td><td><code>auric-</code>name<code>-</code>size<code>.cube</code>, with <code>-1d</code> for a curve</td><td>—</td></tr>
+<tr><td>Grid note</td><td>Whether grid points land on 8-bit values</td><td>—</td></tr>
+<tr><td><strong>Save the .cube</strong></td><td>Downloads the file</td><td>—</td></tr>
+<tr><td><strong>Copy it</strong></td><td>Copies the file text</td><td>—</td></tr>
+<tr><td><strong>Hue sweep, CSV</strong></td><td>Downloads <code>auric-lut-lab-hue-sweep.csv</code></td><td>—</td></tr>
+<tr><td><strong>Report, JSON</strong></td><td>Downloads <code>auric-lut-lab-report.json</code></td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="cube-keywords">.cube keywords</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Keyword</th><th>Read</th><th>Written</th></tr></thead>
+<tbody>
+<tr><td><code>TITLE</code></td><td>Yes</td><td><code>&quot;Auric Artisan — </code> name <code>&quot;</code></td></tr>
+<tr><td><code>LUT_3D_SIZE</code></td><td>Yes</td><td>For 3D</td></tr>
+<tr><td><code>LUT_1D_SIZE</code></td><td>Yes</td><td>For 1D</td></tr>
+<tr><td><code>DOMAIN_MIN</code></td><td>Yes; default 0 0 0</td><td><code>0.0 0.0 0.0</code></td></tr>
+<tr><td><code>DOMAIN_MAX</code></td><td>Yes; default 1 1 1</td><td><code>1.0 1.0 1.0</code></td></tr>
+<tr><td><code>#</code> comments</td><td>Ignored</td><td>Header of about 12 lines</td></tr>
+<tr><td>Other keywords</td><td>Ignored</td><td>—</td></tr>
+</tbody></table></div>
+<p>Data rows are written with six decimal places, red index changing fastest.</p>
+<h2 id="share-link-parameters">Share link parameters</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Meaning</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><code>scene</code></td><td>Drawn scene</td><td><code>wedge</code>, <code>patches</code>, <code>skin</code>, <code>sweep</code></td></tr>
+<tr><td><code>look</code></td><td>Look</td><td><code>none</code>, <code>teal-orange</code>, <code>bleach-bypass</code>, <code>film-soft</code>, <code>mono-contrast</code>, <code>log-lift</code>, <code>reinhard</code></td></tr>
+<tr><td><code>s</code></td><td>Strength</td><td>0 to 1</td></tr>
+<tr><td><code>e</code></td><td>Tone-map exposure</td><td>0.25 to 8</td></tr>
+<tr><td><code>n</code></td><td>Export size</td><td>2 to 65</td></tr>
+<tr><td><code>k</code></td><td>Export kind</td><td><code>3D</code>, <code>1D</code></td></tr>
+</tbody></table></div>
+<h2 id="reference-tab">Reference tab</h2>
+<p>Status buttons: <strong>All</strong> (10), <strong>Runs</strong> (6), <strong>Partly</strong> (1), <strong>Not held</strong> (3).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Source</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Adobe / IRIDAS Cube LUT Specification 1.0</td><td>Runs</td></tr>
+<tr><td>IEC 61966-2-1:1999 (sRGB)</td><td>Runs</td></tr>
+<tr><td>CIE 015:2018, Colorimetry</td><td>Runs</td></tr>
+<tr><td>CIE 142-2001 (CIEDE2000)</td><td>Runs</td></tr>
+<tr><td>Sharma, Wu and Dalal (2005), CIEDE2000 test data</td><td>Runs</td></tr>
+<tr><td>Reinhard et al. (2002), photographic tone reproduction</td><td>Runs</td></tr>
+<tr><td>ACES S-2016-001, ACEScct</td><td>Partly</td></tr>
+<tr><td>SMPTE ST 2084 (PQ) and ITU-R BT.2100</td><td>Not held</td></tr>
+<tr><td>ITU-R BT.2020-2</td><td>Not held</td></tr>
+<tr><td>SMPTE ST 2065-1 (ACES AP0)</td><td>Not held</td></tr>
+</tbody></table></div>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Loaded</strong> name, with a note count if any</td><td>A <code>.cube</code> was read</td></tr>
+<tr><td><strong>Loaded</strong> name <strong>at</strong> width×height</td><td>Your picture was loaded</td></tr>
+<tr><td><strong>That image could not be read</strong></td><td>The picture could not be decoded</td></tr>
+<tr><td>A reading error, such as <strong>empty file</strong></td><td>The <code>.cube</code> could not be read</td></tr>
+<tr><td><strong>Cleared the loaded file</strong></td><td><strong>Clear the file</strong> was selected</td></tr>
+<tr><td><strong>Back to the drawn scenes</strong></td><td>Your picture was removed</td></tr>
+<tr><td><strong>Saved</strong> file name</td><td>A <code>.cube</code> was saved</td></tr>
+<tr><td><strong>Copied the .cube</strong> / <strong>Link copied</strong></td><td>A copy succeeded</td></tr>
+<tr><td><strong>The clipboard refused</strong></td><td>Clipboard access was blocked</td></tr>
+<tr><td><strong>Saved the hue sweep</strong> / <strong>Saved the report</strong></td><td>A CSV or JSON was saved</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="write-a-cube-file.html"><span>Previous</span>Write a .cube file</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting LUT Lab</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#tabs">Tabs</a></li><li><a href="#lab-tab-the-scene">Lab tab — The scene</a></li><li><a href="#lab-tab-the-look">Lab tab — The look</a></li><li><a href="#lab-tab-a-cube-file">Lab tab — A .cube file</a></li><li><a href="#lab-tab-show">Lab tab — Show</a></li><li><a href="#lab-tab-readouts">Lab tab — Readouts</a></li><li><a href="#looks-tab">Looks tab</a></li><li><a href="#method-tab">Method tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#cube-keywords">.cube keywords</a></li><li><a href="#share-link-parameters">Share link parameters</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#messages">Messages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

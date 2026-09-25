@@ -1,0 +1,74 @@
+---
+title: Industrial Dye Chemistry (Dye in Solution) — Run a titration
+description: Change the pH, understand pKa, the base fraction and the two forms of a dye, animate a titration and find the isosbestic point.
+product: Website › Tools › Perception and spectral › Industrial Dye Chemistry
+updated: 2026-09-25
+---
+
+# Run a titration
+
+## How pH changes a dye's colour
+
+Many dyes, and all pH indicators, exist in two chemical forms: an **acid form**, written HA, which holds an extra hydrogen ion, and a **base form**, written A⁻, which has given it up. Each form has its own absorption band, so each has its own colour.
+
+The **pKa** is the pH at which half the dye is in each form. The **Henderson–Hasselbalch** relation gives the share in the base form, the **base fraction** f:
+
+f = 1 ÷ (1 + 10^(pKa − pH))
+
+Two pH units below the pKa, about 1% of the dye is in the base form; at the pKa, 50%; two units above, about 99%.
+
+What a spectrophotometer measures is the weighted sum of the two bands:
+
+A(λ) = c × l × [(1 − f) × ε_HA(λ) + f × ε_A(λ)]
+
+Because the total amount of dye does not change, there is one wavelength where the two forms absorb equally. At that wavelength the absorbance is the same at every pH, so every curve of a titration passes through one point: the **isosbestic point**. It is the signature of a clean two-form equilibrium.
+
+## Change the pH
+
+1. Select the dye you want to study in **The components** list.
+2. Drag **pH** (0–14, step 0.05, default 3.50).
+3. Watch **Base fraction** (for the selected dye, three decimals) and the plot. As the pH rises past the pKa, the filled curve moves from the acid band to the base band. Where the two forms absorb comparably, the peak dips at the pKa; where one form is much stronger, the peak shifts to it.
+4. Watch the swatch, **sRGB**, **CIE L\*** and **a\*, b\*** change with it.
+
+**pKa** under **The selected dye** (0–14, step 0.1) moves the midpoint of the change for that dye.
+
+## Animate a titration
+
+Select **Run the titration**. The pH steps from 0 to 14 in steps of 0.2, about 11 steps a second, and every readout, the swatch and the plot follow. The button reads **Stop** while it runs; select it to stop early. At the end a message says **Titration complete** and the pH is left at 14.
+
+With the default weak-acid indicator the bath runs from pink (`#FF96C7`) at pH 0 to yellow (`#FFF17A`) at pH 14, changing fastest around pH 3.5.
+
+## Find the isosbestic point
+
+The **Isosbestic point** readout gives the wavelength where the selected dye's two forms cross, located precisely rather than at the nearest 5 nm sample:
+
+- **480 nm** (for the default dye): a clear crossing, marked on the plot with a green circle and the label **isosbestic 480 nm**.
+- **515 nm (weak)**: the forms cross, but so deep in their tails (less than 5% of the peak) that the point is invisible on a plot. It is highlighted and not marked.
+- **none in range**: the two forms do not cross between 380 and 780 nm.
+
+| Dye | Isosbestic point |
+|---|---|
+| Weak-acid indicator | About 480 nm, clear |
+| Mid-range indicator | About 515 nm, weak |
+| High-range indicator | About 461 nm, weak |
+| Azo red, pH-stable | About 515 nm, clear |
+| Anthraquinone blue, pH-stable | About 600 nm, clear |
+| Yellow, pH-stable | About 430 nm, clear |
+
+The pH-stable dyes have clear crossings because their two forms are almost the same band; their colour barely changes with pH.
+
+## Compare with the old model on the Method tab
+
+Open **Method** and select **The titration**. It shows the chain from **pH** through **Henderson–Hasselbalch**, **Two spectra** and **Their weighted sum** to **Transmittance**, then two tables for the selected dye:
+
+- **Do the curves ever agree?** — compares a single sliding band (the model an earlier version used, labelled **One sliding band — what it did**) with the two-form model (**Two species — what it does now**): the wavelength of tightest agreement, how far apart the curves are there, and the isosbestic point.
+- **The peak across the titration** — the base fraction, the old and new peak absorbance and the peak wavelength at pKa − 3, − 1, 0, + 1 and + 3 (for a 1 cm path).
+
+## Try it
+
+1. Select **Reset the bath**.
+2. Add the **Mid-range indicator** and select **Remove** on the weak-acid indicator (select it first).
+3. Run the titration. The bath goes from pale yellow at low pH, through pale green-cyan near pH 7, to a stronger cyan.
+4. Note that **Isosbestic point** reads about 515 nm and is marked weak: this dye's two bands barely overlap.
+
+You should now be able to predict a dye's colour at any pH from its pKa and its two bands.

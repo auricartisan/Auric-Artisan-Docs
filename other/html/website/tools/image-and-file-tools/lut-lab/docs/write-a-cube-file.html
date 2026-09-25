@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write a .cube file — Auric Artisan Docs</title>
+<meta name="description" content="Export the transform in force as a 3D or 1D .cube at any size, understand the header and round-trip accuracy, and save the hue sweep, report and share link.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with LUT Lab</a></li>
+<li><a href="apply-a-look.html">Apply a look</a></li>
+<li><a href="load-a-cube-file.html">Load a .cube file</a></li>
+<li><a href="lut-concepts.html">LUT concepts</a></li>
+<li><a href="read-what-it-moved.html">Read what a transform moved</a></li>
+<li><a href="write-a-cube-file.html" aria-current="page">Write a .cube file</a></li>
+<li><a href="reference.html">LUT Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting LUT Lab</a></li>
+<li><a href="faq.html">LUT Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>Write a .cube file</h1>
+<p class="lede">Export the transform in force as a 3D or 1D .cube at any size, understand the header and round-trip accuracy, and save the hue sweep, report and share link.</p>
+<p>The <strong>Export</strong> tab writes the transform currently shown on the <strong>Lab</strong> tab: a look at its strength and exposure, or a loaded <code>.cube</code> file.</p>
+<h2 id="save-a-cube">Save a .cube</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, set up the transform you want: choose a look and its <strong>Strength</strong>, or load a <code>.cube</code>.</li>
+<li>Open the <strong>Export</strong> tab.</li>
+<li>Choose <strong>Kind</strong>: <strong>3D cube</strong> (default) or <strong>1D curve</strong>.</li>
+<li>Set <strong>Size</strong> from 2 to 65 (default 33). The label shows, for example, <strong>33³</strong> for a 3D cube.</li>
+<li>Check the lines under the slider: <strong>rows</strong>, <strong>file size</strong> and <strong>file name</strong>, and the note on whether the grid lands on 8-bit values.</li>
+<li>Select <strong>Save the .cube</strong>. Your browser downloads the file, for example <code>auric-teal-and-orange-33.cube</code>, and a message confirms it.</li>
+</ol>
+<p>To paste the table somewhere instead, select <strong>Copy it</strong>. The message reads <strong>Copied the .cube</strong>, or <strong>The clipboard refused</strong> if clipboard access is blocked.</p>
+<p>The file name is <code>auric-</code>, the transform&#39;s name in lower case with spaces and symbols turned into hyphens, the size, and <code>-1d</code> for a 1D curve.</p>
+<h2 id="3d-cube-or-1d-curve">3D cube or 1D curve</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Kind</th><th>What it captures</th><th>Rows</th></tr></thead>
+<tbody>
+<tr><td><strong>3D cube</strong></td><td>The full transform: every mix of red, green and blue</td><td>Size³</td></tr>
+<tr><td><strong>1D curve</strong></td><td>Only what the transform does to neutral greys, written as a curve per channel</td><td>Size</td></tr>
+</tbody></table></div>
+<p>A 1D curve is made by sending greys through the transform and recording each output channel. Any effect that depends on how channels mix, such as a hue shift or a change in saturation, is lost. <strong>Mono contrast</strong>, for example, cannot be expressed as a 1D curve: the curve would leave colours coloured. Use <strong>1D curve</strong> only for transforms that act on each channel separately, such as <strong>Film soft</strong> or <strong>Log-ish lift</strong>.</p>
+<h2 id="choosing-a-size">Choosing a size</h2>
+<ul>
+<li><strong>17</strong>, <strong>33</strong> and <strong>65</strong> are the sizes most programs expect.</li>
+<li>Larger sizes follow curved transforms more closely and make larger files; a 65³ cube has 274,625 rows.</li>
+<li>Sizes <strong>2</strong>, <strong>4</strong>, <strong>6</strong>, <strong>16</strong>, <strong>18</strong> and <strong>52</strong> place every grid point exactly on an 8-bit value. At other sizes, grid points are written to the nearest 8-bit value, up to half a step away. The note under the slider says which applies.</li>
+</ul>
+<h2 id="the-file-preview">The file preview</h2>
+<p><strong>The file, as it will be written</strong> shows the first 26 lines of the file, a count of the lines not shown, and the last row. Above it, <strong>What the file will say about itself</strong> explains why the header states the precision.</p>
+<p>A saved file looks like this:</p>
+<pre class="code" data-lang="text"><code># Auric Artisan — LUT lab
+# https://auricartisan.com/tool/general/tools/lut-lab/
+#
+# Transform: Teal and orange
+# Kind: stylisation
+#
+# Sample order: red varies fastest, then green, then blue.
+# Precision: this pipeline is 8-bit end to end. Every value below
+# is one of 256 levels written to six decimals;
+# the decimals are the format's, not this tool's resolution.
+# (size-1) does not divide 255, so the grid nodes fall between code values and
+# are written to the nearest one - up to half a code out. An 8-bit result is
+# unaffected; anything reading this file at higher precision is not.
+TITLE &quot;Auric Artisan — Teal and orange&quot;
+LUT_3D_SIZE 33
+DOMAIN_MIN 0.0 0.0 0.0
+DOMAIN_MAX 1.0 1.0 1.0
+
+0.000000 0.000000 0.121569
+…</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Lines starting with <code>#</code></td><td>Comments: the tool, the transform, its kind, strength and exposure when they apply, sample order and precision</td></tr>
+<tr><td><code>TITLE</code></td><td>&quot;Auric Artisan — &quot; and the transform&#39;s name</td></tr>
+<tr><td><code>LUT_3D_SIZE</code> or <code>LUT_1D_SIZE</code></td><td>The size you chose</td></tr>
+<tr><td><code>DOMAIN_MIN</code>, <code>DOMAIN_MAX</code></td><td>Always 0 to 1</td></tr>
+<tr><td>Data rows</td><td>Red, green and blue output, six decimals, red index changing fastest</td></tr>
+</tbody></table></div>
+<p>A <strong>Strength</strong> below 100% adds a <code>Strength:</code> line, and the tone-map adds an <code>Exposure:</code> line. For a loaded file, the <code>Transform:</code> line gives the file&#39;s title or name. A 1D curve, or a 3D cube at a size whose grid lands on 8-bit values, leaves out the three lines about grid nodes. The first data row shown is what <strong>Teal and orange</strong> does to black: it lifts the blue.</p>
+<h2 id="round-trips-what-survives">Round trips: what survives</h2>
+<p>Two different questions are worth separating.</p>
+<ol>
+<li><strong>Do the numbers survive the file?</strong> Yes. A table written here and read back here reproduces every value to the six decimals the format writes.</li>
+<li><strong>Does an identity come back as an identity?</strong> For an 8-bit picture, yes, at every size: an identity table written here and applied back to an 8-bit image leaves every pixel unchanged. But at sizes where the grid does not land on 8-bit values (including 17, 33 and 65), the values in the file sit up to half an 8-bit step off the exact grid. An application reading the file at higher precision sees an identity that is very nearly, but not exactly, one.</li>
+</ol>
+<p>The <strong>Round trip</strong> section of the <strong>Method</strong> tab shows both measurements.</p>
+<h3 id="resampling-a-loaded-file">Resampling a loaded file</h3>
+<p>While a loaded <code>.cube</code> is applied, the export resamples it: every grid point of the new table is an 8-bit input looked up in your file with trilinear interpolation, and the result is rounded to 8 bits. The new file follows the original closely but is not a bit-for-bit copy, and a 1D export keeps only what the file does to greys. Keep your original file.</p>
+<h2 id="other-exports">Other exports</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>File</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Hue sweep, CSV</strong></td><td><code>auric-lut-lab-hue-sweep.csv</code></td><td>The 72-colour hue ring: shift in hue, lightness and chroma, ΔE₀₀, and whether clipped</td></tr>
+<tr><td><strong>Report, JSON</strong></td><td><code>auric-lut-lab-report.json</code></td><td>The transform, the scene, the figures under the pair, the pipeline and the Data register</td></tr>
+</tbody></table></div>
+<h3 id="the-hue-sweep-csv">The hue sweep CSV</h3>
+<pre class="code" data-lang="text"><code># Auric Artisan — LUT lab, hue sweep
+# transform,Teal and orange
+# constant L*,60
+# requested C*,40
+hue_deg,hue_shift_deg,lightness_shift,chroma_shift,dE00,clipped
+0,1.9855,-0.2300,1.3764,0.9428,no</code></pre>
+<p>One row per test colour, every 5° from 0 to 355. Shifts and differences have four decimal places. The row shown is the first row for <strong>Teal and orange</strong>.</p>
+<h3 id="the-report-json">The report JSON</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>tool</code>, <code>url</code>, <code>generated</code></td><td>The tool, its address, and when the report was made</td></tr>
+<tr><td><code>transform</code></td><td>Name, whether it is a look or a file, the look, strength and exposure</td></tr>
+<tr><td><code>scene</code></td><td>A drawn scene&#39;s id, or your picture&#39;s file name</td></tr>
+<tr><td><code>image</code></td><td>Pixel count, mean, 95th-percentile and largest ΔE₀₀, clipped share, and the old test&#39;s share</td></tr>
+<tr><td><code>pipeline</code></td><td>256 levels per channel, the sample order, and a note on precision</td></tr>
+<tr><td><code>register</code></td><td>The status, source and table of every <strong>Data</strong> tab entry</td></tr>
+</tbody></table></div>
+<h2 id="share-your-settings">Share your settings</h2>
+<p><strong>Copy a link to this setting</strong> on the <strong>Lab</strong> tab copies an address that restores the scene, look, strength, exposure, and the export size and kind. For example:</p>
+<pre class="code" data-lang="text"><code>https://auricartisan.com/tool/general/tools/lut-lab/?scene=patches&amp;look=film-soft&amp;s=0.5&amp;e=2&amp;n=33&amp;k=3D</code></pre>
+<p>The link does not carry a loaded <code>.cube</code> or your own picture. Whoever opens it must load those again.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="read-what-it-moved.html"><span>Previous</span>Read what a transform moved</a><a href="reference.html"><span>Next</span>LUT Lab reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#save-a-cube">Save a .cube</a></li><li><a href="#3d-cube-or-1d-curve">3D cube or 1D curve</a></li><li><a href="#choosing-a-size">Choosing a size</a></li><li><a href="#the-file-preview">The file preview</a></li><li><a href="#round-trips-what-survives">Round trips: what survives</a></li><li><a href="#other-exports">Other exports</a></li><li><a href="#share-your-settings">Share your settings</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

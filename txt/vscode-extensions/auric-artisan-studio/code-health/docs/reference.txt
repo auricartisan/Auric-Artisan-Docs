@@ -1,0 +1,299 @@
+==============================================================================
+AURIC CODE HEALTH REFERENCE
+==============================================================================
+Every command, keybinding, setting and view Auric Code Health contributes.
+Area: VS Code extensions › Auric Artisan Studio › Auric Code Health   Updated: 2026-09-25
+
+Facts for Auric Code Health 0.1.0 (`auric-artisan.auric-codehealth`). It needs
+VS Code 1.74 or newer and starts when VS Code finishes loading. Categories:
+Linters, Other.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows, Linux): `Ctrl` + `Alt` + `.`
+  Keys (macOS):          `Cmd` + `Alt` + `.`
+  Command:               Workstation: Command Center
+  Active when:           Auric Code Health is not suppressed by a Workstation
+                         host
+
+COMMANDS
+========
+
+All titles appear in the Command Palette after `Auric Artisan:`.
+
+  Title:        Open Code Health Studio
+  Command ID:   `auricCodeHealth.openStudio`
+  What it does: Opens the Studio on Health, or the Workstation host's Studio
+
+  Title:        Workstation: Command Center
+  Command ID:   `auricCodeHealth.commandCenter`
+  What it does: Opens the Command Center list
+
+  Title:        Open Rulebook & Knowledge Database
+  Command ID:   `auricCodeHealth.openKnowledgeBase`
+  What it does: Searches signatures, categories, policies, articles and
+                sources
+
+  Title:        Build Workspace Knowledge Database (JSON + Markdown)
+  Command ID:   `auricCodeHealth.writeKnowledgeDatabase`
+  What it does: Writes `knowledge.json`, `rulebook.md` and an overrides
+                template
+
+  Title:        Open Unified Icon Studio
+  Command ID:   `auricCodeHealth.openIconStudio`
+  What it does: Opens the combined Auric icon library
+
+  Title:        Generate Agent-Ready Remediation Plan
+  Command ID:   `auricCodeHealth.generateAiPlan`
+  What it does: Writes the local remediation plan
+
+  Title:        Generate Project Health Report (Color, A11y & Code Health)
+  Command ID:   `auricCodeHealth.projectHealthReport`
+  What it does: Writes `project-health.md`, `.json` and `.html`
+
+  Title:        Write Health Record (health.json + SARIF)
+  Command ID:   `auricCodeHealth.writeHealthReport`
+  What it does: Writes `health.json`, SARIF and history
+
+  Title:        Clear Workspace Scan Cache
+  Command ID:   `auricCodeHealth.clearScanCache`
+  What it does: Deletes `scan-cache.json`
+
+  Title:        Open Workspace Data Folder
+  Command ID:   `auricCodeHealth.openDataFolder`
+  What it does: Shows `.auric-artisan` in your file manager, creating it if
+                needed
+
+VIEWS
+=====
+
+  View:  Overview
+  ID:    `auricCodeHealthHome`
+  Notes: In the Auric Code Health Activity Bar container; hidden while another
+         Studio extension hosts
+
+Auric Code Health adds no editor right-click entries.
+
+SETTINGS
+========
+
+Auric Code Health has 28 settings. Search `auricCodeHealth` in File ›
+Preferences › Settings. The data, scan, code-health and health settings are
+shared across installed Studio extensions; see Shared settings
+[../../docs/reference.txt].
+
+Appearance
+----------
+
+  Setting:      `auricCodeHealth.appearance.accent`
+  Type:         string
+  Default:      `gold`
+  What it does: The Studio's accent: a preset ID or a hex colour. See
+                Appearance [../../docs/appearance.txt].
+
+Code health
+-----------
+
+  Setting:      `auricCodeHealth.codeHealth.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Runs the code-health checks at all
+
+  Setting:      `auricCodeHealth.codeHealth.diagnostics`
+  Type:         boolean
+  Default:      `true`
+  What it does: Shows findings in the editor and Problems panel; when off,
+                only in scans, the Studio and reports
+
+  Setting:      `auricCodeHealth.codeHealth.todo`
+  Type:         boolean
+  Default:      `true`
+  What it does: Task markers: TODO, FIXME, HACK, XXX, BUG, OPTIMIZE, REFACTOR,
+                DEPRECATED
+
+  Setting:      `auricCodeHealth.codeHealth.debug`
+  Type:         boolean
+  Default:      `true`
+  What it does: Debug leftovers such as `console.log`, `debugger`, `dbg!`,
+                `var_dump`, `breakpoint()`, `NSLog`
+
+  Setting:      `auricCodeHealth.codeHealth.secret`
+  Type:         boolean
+  Default:      `true`
+  What it does: Possible hardcoded secrets
+
+  Setting:      `auricCodeHealth.codeHealth.conflict`
+  Type:         boolean
+  Default:      `true`
+  What it does: Merge-conflict markers
+
+  Setting:      `auricCodeHealth.codeHealth.risk`
+  Type:         boolean
+  Default:      `true`
+  What it does: Risky APIs such as `eval()`, `new Function()`, `innerHTML =`,
+                `document.write()`
+
+  Setting:      `auricCodeHealth.codeHealth.security`
+  Type:         boolean
+  Default:      `true`
+  What it does: Security footguns: TLS bypass, weak hashing, unsafe
+                deserialization, XSS sinks, CORS, injection
+
+  Setting:      `auricCodeHealth.codeHealth.customSecretPatterns`
+  Type:         array of strings
+  Default:      `[]`
+  What it does: Extra regular expressions reported as possible secrets (medium
+                confidence)
+
+  Setting:      `auricCodeHealth.codeHealth.size`
+  Type:         boolean
+  Default:      `true`
+  What it does: Very long lines and large files
+
+Health record
+-------------
+
+  Setting:      `auricCodeHealth.health.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Maintains `health.json`, SARIF and history
+
+  Setting:      `auricCodeHealth.health.writeOnScan`
+  Type:         boolean
+  Default:      `true`
+  What it does: Rewrites the record after each project scan
+
+  Setting:      `auricCodeHealth.health.formats`
+  Type:         array: `json`, `sarif`, `history`
+  Default:      all three
+  What it does: Which files to write
+
+  Setting:      `auricCodeHealth.health.fileName`
+  Type:         string
+  Default:      `health.json`
+  What it does: JSON file name; SARIF and history names follow it
+
+  Setting:      `auricCodeHealth.health.maxIssues`
+  Type:         number, 100–100000
+  Default:      `5000`
+  What it does: Most issues recorded, worst first
+
+  Setting:      `auricCodeHealth.health.historyLimit`
+  Type:         number, 10–5000
+  Default:      `200`
+  What it does: Most history entries kept
+
+Data folder
+-----------
+
+  Setting:      `auricCodeHealth.data.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Creates and uses the `.auric-artisan` folder
+
+  Setting:      `auricCodeHealth.data.folderName`
+  Type:         string
+  Default:      `.auric-artisan`
+  What it does: The folder's name, relative to the workspace
+
+Scanning
+--------
+
+  Setting:      `auricCodeHealth.scan.cache.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Reuses the scan cache
+
+  Setting:      `auricCodeHealth.scan.cache.maxAgeMinutes`
+  Type:         number, 0 or more
+  Default:      `1440`
+  What it does: Maximum cache age; `0` keeps it until a forced or automatic
+                scan
+
+  Setting:      `auricCodeHealth.scan.live`
+  Type:         boolean
+  Default:      `true`
+  What it does: Re-grades the project as you type, from memory
+
+  Setting:      `auricCodeHealth.scan.liveDelayMs`
+  Type:         number, 200–5000
+  Default:      `700`
+  What it does: Wait after the last keystroke before a live re-grade
+
+  Setting:      `auricCodeHealth.scan.autoScan`
+  Type:         boolean
+  Default:      `false`
+  What it does: Rescans from disk after file changes
+
+  Setting:      `auricCodeHealth.scan.autoScanOnStartup`
+  Type:         boolean
+  Default:      `false`
+  What it does: With auto scan on, also rescans soon after the workspace opens
+
+  Setting:      `auricCodeHealth.scan.autoScanDelayMs`
+  Type:         number, 250–60000
+  Default:      `1800`
+  What it does: Wait after a file change before an automatic scan
+
+  Setting:      `auricCodeHealth.scan.maxFiles`
+  Type:         number
+  Default:      `4000`
+  What it does: Most files one scan reads
+
+  Setting:      `auricCodeHealth.scan.exclude`
+  Type:         glob
+  Default:      see below
+  What it does: Paths to skip
+
+The default of `scan.exclude` is
+`**/{node_modules,dist,build,out,.git,vendor,coverage,.auric-artisan}/**`.
+
+DIAGNOSTICS CODES
+=================
+
+  Code                   | Category
+  -----------------------+-----------------
+  `code-health:secret`   | Possible secrets
+  `code-health:security` | Security risks
+  `code-health:conflict` | Merge markers
+  `code-health:risk`     | Risky APIs
+  `code-health:debug`    | Debug leftovers
+  `code-health:todo`     | Task markers
+  `code-health:size`     | Oversized
+
+QUICK FIXES
+===========
+
+  Quick fix:       Ignore this secret finding here (category varies)
+  What it inserts: `auric-disable-next-line <category>` on the line above
+
+  Quick fix:       Ignore all secret findings in this file (category varies)
+  What it inserts: `auric-disable-file <category>` at the top
+
+STUDIO SPACES
+=============
+
+On its own: Health and Settings (Appearance, Project data, Scan engine,
+Scope).
+
+FILES IT WRITES
+===============
+
+`.auric-artisan/` `scan-cache.json`, `settings.json`, `health.json`,
+`health.sarif`, `health-history.json`, `project-health.md`, `.json` and
+`.html`, `ai-remediation-plan.md` and `.json`, and the knowledge files. See
+The .auric-artisan folder [../../docs/scanning.txt].
+
+COMMAND-LINE SCANNER
+====================
+
+The `auric-artisan` scanner ships inside the extension at
+`bin/auric-artisan.js`. See The CI gate [../../docs/ci-gate.txt].
+
+RELATED
+=======
+
+  - Categories and signatures [categories-and-signatures.txt]
+  - Studio reference [../../docs/reference.txt]
+  - Shortcuts [../others/shortcuts.txt]

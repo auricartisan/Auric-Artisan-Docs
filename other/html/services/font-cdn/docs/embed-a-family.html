@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embed a family — Auric Artisan Docs</title>
+<meta name="description" content="Every way to embed a Font CDN family — link tag, CSS @import, @font-face rules and usage CSS — plus weights, italics, variable axes and several families at once.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font CDN</a>
+<h2>Font CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="embed-a-family.html" aria-current="page">Embed a family</a></li>
+<li><a href="find-a-family.html">Find a family</a></li>
+<li><a href="self-host-a-family.html">Self-host a family</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Font CDN</a> &rsaquo; <a href="README.html">Font CDN documentation</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Embed a family</h1>
+<p class="lede">Every way to embed a Font CDN family — link tag, CSS @import, @font-face rules and usage CSS — plus weights, italics, variable axes and several families at once.</p>
+<p>The Font Library&#39;s <strong>Use &amp; Embed</strong> tab gives each family six ready snippets: <strong>Link</strong>, <strong>Import</strong>, <strong>Script</strong>, <strong>JS</strong>, <strong>@font-face</strong> and <strong>Usage</strong>. Choose one, then <strong>Copy</strong>. The tab also shows the family&#39;s weights as chips under <strong>Selected weights</strong>, and a note naming the licence. This page explains each snippet.</p>
+<h2 id="link-recommended">Link (recommended)</h2>
+<p>Add the stylesheet to your page&#39;s <code>&lt;head&gt;</code>:</p>
+<pre class="code" data-lang="html"><code>&lt;!-- Self-hosted stylesheet (Google-Fonts style) --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.auricartisan.com/css/alegreya.css&quot;&gt;</code></pre>
+<p>Put it before your own stylesheets so your CSS can use the family straight away.</p>
+<h2 id="import">Import</h2>
+<p>From inside a CSS file:</p>
+<pre class="code" data-lang="css"><code>/* In your CSS file */
+@import url('https://fonts.auricartisan.com/css/alegreya.css');</code></pre>
+<p>An <code>@import</code> must come before other rules in the file. A link tag is usually faster, because the browser finds it sooner.</p>
+<h2 id="script-and-js">Script and JS</h2>
+<p>The loader script adds the stylesheet for you:</p>
+<pre class="code" data-lang="html"><code>&lt;!-- Auto-load with the CDN script --&gt;
+&lt;script src=&quot;https://fonts.auricartisan.com/font-cdn.js&quot;
+        data-families=&quot;Alegreya&quot;&gt;&lt;/script&gt;</code></pre>
+<pre class="code" data-lang="js"><code>// Programmatic load
+AuricFonts.load('Alegreya').then(() =&gt; {
+  document.body.style.fontFamily = &quot;'Alegreya', serif&quot;;
+});</code></pre>
+<p>See <a href="use-the-loader.html">Use the loader</a>.</p>
+<h2 id="font-face">@font-face</h2>
+<p>The <strong>@font-face</strong> snippet gives the rules themselves, pointing at the font files on the CDN, for up to four of the family&#39;s styles. Use it when you want to control the rules, for example to rename the family or include only some styles:</p>
+<pre class="code" data-lang="css"><code>@font-face {
+  font-family: 'Alegreya';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('https://fonts.auricartisan.com/font/A-F/ALEGREYA/Alegreya%5Bwght%5D.ttf') format('truetype-variations');
+}</code></pre>
+<p>Variable styles are written with a weight range, and with a <code>font-stretch</code> range when the font has a width axis.</p>
+<h2 id="usage">Usage</h2>
+<p>The <strong>Usage</strong> snippet applies the family with a fallback for its category:</p>
+<pre class="code" data-lang="css"><code>/* Apply the family */
+.headline {
+  font-family: 'Alegreya', serif;
+  font-weight: 400 900; /* variable range */
+}</code></pre>
+<p>For a static family the snippet uses <code>font-weight: 400;</code>. The fallbacks used by category are:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Category</th><th>Fallback in the Usage snippet</th></tr></thead>
+<tbody>
+<tr><td>Sans-serif</td><td><code>sans-serif</code></td></tr>
+<tr><td>Serif</td><td><code>serif</code></td></tr>
+<tr><td>Monospace</td><td><code>monospace</code></td></tr>
+<tr><td>Display</td><td><code>system-ui</code></td></tr>
+<tr><td>Handwriting</td><td><code>cursive</code></td></tr>
+</tbody></table></div>
+<p>The Font Library&#39;s <strong>Develop</strong> tab offers a fuller font stack with safe fallbacks; see <a href="reference.html">Reference</a>.</p>
+<h2 id="weights-and-italics">Weights and italics</h2>
+<ul>
+<li>A family&#39;s stylesheet declares <strong>every</strong> style the CDN has for it. You do not choose weights in the URL.</li>
+<li>Set the weight you want in your CSS with <code>font-weight</code>. If the family lacks that weight, the browser uses the nearest one it has, or synthesises bold.</li>
+<li>Use <code>font-style: italic</code> for italics, if the family has them. The <strong>Styles</strong> tab of the Font Library lists each weight and style.</li>
+</ul>
+<h2 id="variable-fonts">Variable fonts</h2>
+<p>A variable font holds a continuous range of a design axis in one file. On the CDN, 550 families are variable. Their stylesheets declare the range, such as <code>font-weight: 400 900</code>, so any weight in between works:</p>
+<pre class="code" data-lang="css"><code>h1 { font-family: 'Alegreya', serif; font-weight: 650; }</code></pre>
+<p>Other axes, such as width (<code>wdth</code>), slant (<code>slnt</code>) or optical size (<code>opsz</code>), can be set with standard CSS such as <code>font-stretch</code> or <code>font-variation-settings</code>, where the family has them. The Font Library&#39;s <strong>Specimen</strong> tab has sliders for each axis a family provides.</p>
+<h2 id="several-families-at-once">Several families at once</h2>
+<p>Link each stylesheet:</p>
+<pre class="code" data-lang="html"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.auricartisan.com/css/inter.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.auricartisan.com/css/lora.css&quot;&gt;</code></pre>
+<p>Or use one script tag with the family names separated by <code>|</code>:</p>
+<pre class="code" data-lang="html"><code>&lt;script src=&quot;https://fonts.auricartisan.com/font-cdn.js&quot;
+        data-families=&quot;Inter|Lora&quot;&gt;&lt;/script&gt;</code></pre>
+<p>In the Font Library, add families to your selection, then choose <strong>Embed</strong> in the <strong>Your kit</strong> tray to get <strong>Combined embed code</strong> for all of them: the link tags, the equivalent script tag, and a <code>:root</code> block of <code>--font-&lt;id&gt;</code> variables.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="self-host-a-family.html">Self-host a family</a></li>
+<li><a href="../others/licences.html">Licences</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started</a><a href="find-a-family.html"><span>Next</span>Find a family</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#link-recommended">Link (recommended)</a></li><li><a href="#import">Import</a></li><li><a href="#script-and-js">Script and JS</a></li><li><a href="#font-face">@font-face</a></li><li><a href="#usage">Usage</a></li><li><a href="#weights-and-italics">Weights and italics</a></li><li><a href="#variable-fonts">Variable fonts</a></li><li><a href="#several-families-at-once">Several families at once</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

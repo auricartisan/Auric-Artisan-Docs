@@ -1,0 +1,107 @@
+==============================================================================
+THE WORKSTATION
+==============================================================================
+How co-installed Studio extensions elect one host, hide duplicate views and
+present one Command Center and one Studio.
+Area: VS Code extensions › Auric Artisan Studio   Updated: 2026-09-25
+
+A Workstation is what you get when two or three Studio extensions are
+installed together. Instead of three sidebars, three dashboards and three
+copies of every finding, the extensions agree on one host that presents a
+single sidebar, one Command Center and one Studio covering every installed
+capability. A capability here means one extension's area: colour,
+accessibility or code health.
+
+HOW THE HOST IS CHOSEN
+======================
+
+The host is the first installed extension in this fixed order:
+
+  1. Auric Accessibility
+  2. Auric Color
+  3. Auric Code Health
+
+  Installed                     | Host                | Sidebar title
+  ------------------------------+---------------------+--------------------
+  All three (the Full Pack)     | Auric Accessibility | Auric Accessibility
+  Accessibility and Color       | Auric Accessibility | Auric Accessibility
+  Accessibility and Code Health | Auric Accessibility | Auric Accessibility
+  Color and Code Health         | Auric Color         | Auric Color
+  One extension                 | That extension      | Its own name
+
+Every extension works out the same answer from the list of installed
+extensions, so there is nothing to configure.
+
+WHAT THE HOST SHOWS
+===================
+
+  - One sidebar. The host's Activity Bar container keeps its views. When Auric
+    Color is installed and Auric Accessibility hosts, the host's sidebar also
+    shows the docked Color Picker view.
+  - One Overview. The host's Overview shows a row for every installed
+    capability: for example, an Accessibility host with Code Health installed
+    adds a Code health row and Report and SARIF buttons. See The Overview view
+    [overview-view.txt].
+  - One Studio. The host's Studio shows the union of the installed
+    capabilities' tools. Its tab title changes to Auric Artisan — Workstation
+    Studio. See The Studio [studio.txt].
+  - One Command Center. `Ctrl` + `Alt` + `.` opens the host's Command Center,
+    which lists actions for every installed capability and runs each one
+    through the extension that owns it. See The Command Center
+    [command-center.txt].
+  - One knowledge database. The Rulebook combines the rules, policies and
+    articles of every installed capability. See Rulebook and knowledge
+    database [rulebook-and-knowledge.txt].
+
+WHAT THE OTHER EXTENSIONS DO
+============================
+
+The extensions that are not the host are suppressed:
+
+  - Their Activity Bar views are hidden.
+  - Their `Ctrl` + `Alt` + `.` shortcut is switched off, so the shortcut
+    always reaches the host.
+  - Their Studio commands, such as Open Color Studio, open the host's Studio
+    instead. Commands that target one tool, such as Generate Accessible
+    Palette, open that tool in the host's Studio.
+  - They keep doing the work they own. For example, Auric Code Health still
+    publishes code-health underlines and Auric Color still draws swatches and
+    colour hovers. See Choose what to install [choosing-an-install.txt] for
+    the ownership table.
+
+CHANGES APPLY WITHOUT A RELOAD
+==============================
+
+When you install or uninstall a Studio extension, the Workstation re-elects
+its host straight away. Views appear or hide, an open Studio tab is rebuilt
+with the new set of spaces (or closed, if its extension is no longer the
+host), the Overview is redrawn, and diagnostics are handed to the new owner.
+You do not need to reload the window.
+
+ONE SHARED DATA FOLDER
+======================
+
+All installed extensions read and write one `.auric-artisan` folder in your
+workspace. To keep that folder consistent:
+
+  - Only one extension runs automatic background scans: the one that owns the
+    status-bar score.
+  - Settings that shape the shared folder are read the same way by every
+    extension. See Shared settings [reference.txt].
+  - Writes are atomic, so two extensions can never leave a half-written file.
+
+See Scanning [scanning.txt] for the folder's contents.
+
+THINGS TO KNOW
+==============
+
+  - Duplicate Command Palette titles. With several extensions installed, some
+    titles appear more than once in the Command Palette, one per extension,
+    for example three entries named Auric Artisan: Workstation: Command
+    Center. Each runs in its own extension. The keyboard shortcut always opens
+    the host's version, which lists every capability.
+  - Settings stay per extension. Each extension has its own settings namespace
+    (`auricColor.`, `auricA11y.`, `auricCodeHealth.`). The host's Studio
+    Settings space writes each value to the extension that owns it.
+  - Removing the host. If you uninstall Auric Accessibility from a Full Pack
+    install, Auric Color becomes the host and its views reappear.

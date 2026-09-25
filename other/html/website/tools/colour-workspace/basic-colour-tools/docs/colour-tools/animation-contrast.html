@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animation Contrast — Auric Artisan Docs</title>
+<meta name="description" content="Sample an animated background, from CSS keyframe colours or a video file, at 48 points, check text contrast at each one, find the worst frame and get a text colour that passes throughout.">
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../../index.html">Home</a><a href="../../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Basic Color Tools documentation</a>
+<h2>Colour Tools workbench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility-lab.html">Accessibility Lab</a></li>
+<li><a href="animation-contrast.html" aria-current="page">Animation Contrast</a></li>
+<li><a href="cmyk-soft-proof.html">CMYK Soft-Proof</a></li>
+<li><a href="colour-formulation.html">Color Formulation</a></li>
+<li><a href="colour-inspector.html">Color Inspector</a></li>
+<li><a href="colour-library.html">Color Library</a></li>
+<li><a href="colour-name-finder.html">Color Name Finder</a></li>
+<li><a href="colour-psychology.html">Color Psychology</a></li>
+<li><a href="colour-space-converter.html">Color Space Converter</a></li>
+<li><a href="contrast-system.html">Contrast System</a></li>
+<li><a href="gradient-library.html">Gradient Library</a></li>
+<li><a href="harmony-studio.html">Harmony Studio</a></li>
+<li><a href="launcher-and-panels.html">Open the Colour Tools and manage their panels</a></li>
+<li><a href="pantone-and-named-lookup.html">Pantone &amp; Named Lookup</a></li>
+<li><a href="type-readability-sim.html">Type Readability Sim</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../../README.html">The website</a> &rsaquo; <a href="../../../../README.html">Website tools</a> &rsaquo; <a href="../../../README.html">Colour workspace</a> &rsaquo; <a href="../../README.html">Basic Color Tools</a> &rsaquo; <a href="../README.html">Basic Color Tools documentation</a> &rsaquo; <a href="README.html">Colour Tools workbench</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Animation Contrast</h1>
+<p class="lede">Sample an animated background, from CSS keyframe colours or a video file, at 48 points, check text contrast at each one, find the worst frame and get a text colour that passes throughout.</p>
+<p>Most contrast checks assume the background stays still. Hero sections with animated gradients, background videos and colour transitions do not: text that is readable at the start of a loop can become unreadable for part of it. Animation Contrast checks the whole timeline.</p>
+<p>You give it a text colour and an animated background, either a list of keyframe colours or a video file. It takes 48 evenly spaced samples along the timeline, checks the text against each one with the standard you choose, shows a pass or fail strip, picks out the worst moment, and suggests a single text colour that would pass at every sample.</p>
+<p>Animation Contrast is in the launcher&#39;s <strong>Essentials</strong> group.</p>
+<h2 id="open-it">Open it</h2>
+<p>Open the launcher and select <strong>Animation Contrast</strong>. See <a href="launcher-and-panels.html">Open the Colour Tools</a>. The text colour starts as the colour you opened the tool with, or white (#FFFFFF).</p>
+<h2 id="screen-tour">Screen tour</h2>
+<ol>
+<li><strong>Setup</strong> (<em>Text + animated background</em>):<ul>
+<li><strong>Text color</strong>: a colour field.</li>
+<li><strong>Threshold</strong>: the standard to test against.</li>
+<li><strong>Source</strong>: <strong>CSS keyframes</strong> or <strong>Video frames</strong>.</li>
+</ul>
+</li>
+<li>The background section:<ul>
+<li>For <strong>CSS keyframes</strong>: <strong>Keyframe stops</strong>, with a note such as <em>4 colors · interpolated in OKLab</em>, one numbered colour row per stop, and <strong>+ Add stop</strong>, <strong>− Remove last</strong> and <strong>Reset</strong>.</li>
+<li>For <strong>Video frames</strong>: <strong>Video source</strong>, a drop area with <strong>Choose file</strong>, and once a video is loaded, a player, <strong>Sample 48 frames</strong> and <strong>Clear video</strong>.</li>
+</ul>
+</li>
+<li>The results:<ul>
+<li><strong>Timeline</strong>: 48 ticks coloured with each sample&#39;s background, marked pass or fail, an axis from 0 % to 100 %, and two pills: <em>N / 48 pass (P%)</em> and <em>N fail</em>.</li>
+<li><strong>Worst frame</strong> (<em>Lowest contrast in timeline</em>): a preview of body text and an 11-pixel caption on the worst background, with its position (<em>At t = 62%</em>), its HEX code, the measured value, and its WCAG and APCA levels.</li>
+<li><strong>Suggested safe text color</strong>: a colour chip, the worst contrast it reaches, and <strong>Use as text color</strong>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="thresholds">Thresholds</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Passes when</th></tr></thead>
+<tbody>
+<tr><td><strong>WCAG 2.x (4.5:1)</strong></td><td>The contrast ratio is at least 4.5:1 (AA, normal text).</td></tr>
+<tr><td><strong>WCAG 2.x large (3:1)</strong></td><td>The ratio is at least 3:1 (AA, large text).</td></tr>
+<tr><td><strong>WCAG 2.x AAA (7:1)</strong></td><td>The ratio is at least 7:1.</td></tr>
+<tr><td><strong>APCA Lc 75 (body)</strong></td><td>The APCA lightness contrast is at least 75 (either sign).</td></tr>
+<tr><td><strong>APCA Lc 60 (large)</strong></td><td>The APCA lightness contrast is at least 60.</td></tr>
+</tbody></table></div>
+<h2 id="tasks">Tasks</h2>
+<h3 id="check-text-over-a-css-gradient-animation">Check text over a CSS gradient animation</h3>
+<ol>
+<li>Set <strong>Text color</strong> to your heading or body text colour.</li>
+<li>Keep <strong>Source</strong> on <strong>CSS keyframes</strong>.</li>
+<li>Enter the colours your background passes through, in order, as keyframe stops. Use <strong>+ Add stop</strong> for more (up to eight) and <strong>− Remove last</strong> to remove (at least two remain). <strong>Reset</strong> restores the starting set: #0F172A, #1E3A8A, #9333EA, #F97316.</li>
+<li>Choose a <strong>Threshold</strong>.</li>
+<li>Read the <strong>Timeline</strong>. Hover over a tick to see its position, value and pass or fail.</li>
+</ol>
+<p>The tool blends between neighbouring stops in OKLab and spaces the stops evenly across the timeline, like a CSS animation with evenly spaced keyframes and linear timing.</p>
+<p>Result: you see what share of the animation keeps your text readable, and where it fails.</p>
+<h3 id="check-text-over-a-background-video">Check text over a background video</h3>
+<ol>
+<li>Set <strong>Source</strong> to <strong>Video frames</strong>.</li>
+<li>Drop a video file on the drop area, or select <strong>Choose file</strong>. The video appears with player controls, muted.</li>
+<li>Wait until it has loaded, then select <strong>Sample 48 frames</strong>. A <strong>Sampling frames…</strong> message appears, then <strong>Sampled 48 frames</strong>.</li>
+<li>Read the timeline. Select a tick to move the video to that moment.</li>
+</ol>
+<p>For each sample the tool takes the average colour of the whole frame. Short clips (the drop area suggests about 30 seconds at most) sample fastest.</p>
+<p>Result: a pass or fail reading across the whole video.</p>
+<h3 id="get-a-text-colour-that-always-passes">Get a text colour that always passes</h3>
+<ol>
+<li>After any check, read <strong>Suggested safe text color</strong>. Its note says <strong>Passes every sampled frame</strong> or <strong>Best available — still fails somewhere</strong>.</li>
+<li>Select <strong>Use as text color</strong> to apply it. <strong>Applied #HEX</strong> appears and the timeline updates.</li>
+</ol>
+<p>The suggestion keeps your text colour&#39;s hue and chroma and moves its OKLCH lightness up and down in small steps until the worst sample passes, then picks whichever direction needed the smaller change. If neither direction passes, it offers the colour that did best.</p>
+<p>Result: one static text colour you can use over the whole animation, or a clear sign that the background needs changing (for example an overlay or a darker range).</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Text color</strong></td><td>The text colour to test</td><td>HEX, colour well, dice</td><td>The colour you opened with, or #FFFFFF</td></tr>
+<tr><td><strong>Threshold</strong></td><td>The pass standard</td><td>5 options (see Thresholds)</td><td>WCAG 2.x (4.5:1)</td></tr>
+<tr><td><strong>Source</strong></td><td>Where background colours come from</td><td>CSS keyframes, Video frames</td><td>CSS keyframes</td></tr>
+<tr><td>Keyframe stop</td><td>One background colour</td><td>Colour well or HEX</td><td>4 stops</td></tr>
+<tr><td><strong>+ Add stop</strong></td><td>Adds a white stop at the end</td><td>Up to 8 stops</td><td>—</td></tr>
+<tr><td><strong>− Remove last</strong></td><td>Removes the last stop</td><td>At least 2 stops</td><td>—</td></tr>
+<tr><td><strong>Reset</strong></td><td>Restores the four default stops</td><td>—</td><td>—</td></tr>
+<tr><td>Drop area / <strong>Choose file</strong></td><td>Loads a video</td><td>Video files</td><td>—</td></tr>
+<tr><td><strong>Sample 48 frames</strong></td><td>Samples the loaded video</td><td>48 samples</td><td>—</td></tr>
+<tr><td><strong>Clear video</strong></td><td>Removes the video</td><td>—</td><td>—</td></tr>
+<tr><td>Timeline tick</td><td>Shows details; in video mode, seeks the video</td><td>48 ticks</td><td>—</td></tr>
+<tr><td><strong>Use as text color</strong></td><td>Applies the suggested colour</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="outputs-and-exports">Outputs and exports</h2>
+<p>The tool has no file export. Copy the suggested colour&#39;s HEX code from the <strong>Text color</strong> field after applying it.</p>
+<h2 id="accuracy-and-limits">Accuracy and limits</h2>
+<ul>
+<li>48 samples catch most problems in a loop, but a very brief flash between two samples can be missed.</li>
+<li>Keyframe mode assumes evenly spaced keyframes and linear timing in OKLab. Real CSS animations may use different timing, blend in sRGB, or overlap several layers.</li>
+<li>Video mode uses the average colour of each frame. Text over a small bright area in an otherwise dark frame can fail even when the average passes. Check the area behind your text separately if the video has strong local contrast.</li>
+<li>The video is read in your browser and is not uploaded. Some video formats may not play in every browser.</li>
+<li>APCA figures use a simplified form of a draft method; see <a href="contrast-system.html">Contrast System</a>.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="README.html">Colour Tools documentation</a></li>
+<li><a href="contrast-system.html">Contrast System</a></li>
+<li><a href="accessibility-lab.html">Accessibility Lab</a></li>
+<li><a href="../../README.html">Basic Color Tools</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="accessibility-lab.html"><span>Previous</span>Accessibility Lab</a><a href="cmyk-soft-proof.html"><span>Next</span>CMYK Soft-Proof</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#screen-tour">Screen tour</a></li><li><a href="#thresholds">Thresholds</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#controls">Controls</a></li><li><a href="#outputs-and-exports">Outputs and exports</a></li><li><a href="#accuracy-and-limits">Accuracy and limits</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

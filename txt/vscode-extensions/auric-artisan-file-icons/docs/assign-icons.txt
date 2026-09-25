@@ -1,0 +1,102 @@
+==============================================================================
+ASSIGN ICONS TO FILES AND FOLDERS
+==============================================================================
+Give a file, folder, extension or pattern its own icon from the Explorer or in
+settings, and clear it again.
+Area: VS Code extensions › Auric Artisan File Icons   Updated: 2026-09-25
+
+An association tells the icon theme which icon to show for a name. You can
+create associations from the Explorer or write them in settings.
+
+FROM THE EXPLORER
+=================
+
+The Explorer actions appear when one of the Auric Artisan File Icons themes is
+active.
+
+  1. Right-click a file or folder in the Explorer.
+  2. Open Auric File Icons and select Set File or Folder Icon.
+  3. Choose the scope:
+
+  Resource:      A file, for example `app.config.ts`
+  Scope options: Exact filename, All *.config.ts files, Only
+                 parent/*.config.ts, Only parent/app.config.ts
+
+  Resource:      A file with no extension
+  Scope options: Exact filename, Only parent/name
+
+  Resource:      A folder
+  Scope options: All folders named "…", Only "parent/folder"
+
+  Resource:      A workspace root folder
+  Scope options: No choice: it is set as a workspace-root association.
+
+  4. Choose an icon from the list (titled Set icon for …). Search by name or
+     ID. The list shows icons for the Modern style when Modern is active,
+     otherwise Facet's icons.
+  5. VS Code confirms, for example "TypeScript assigned to All *.config.ts
+     files." Select Reload when asked.
+
+Associations made this way are saved in the workspace settings, so they apply
+to this project only.
+
+Clear an assignment
+-------------------
+
+  1. Right-click the same file or folder.
+  2. Open Auric File Icons › Clear Custom File or Folder Icon.
+  3. Choose the same scope you used. If there is nothing to clear for that
+     scope, you see "No custom icon is assigned to …".
+
+IN SETTINGS
+===========
+
+Values are shipped icon IDs. The Explorer picker is the easiest way to find a
+valid ID.
+
+    {
+      "auricFileIcons.files.associations": {
+        "*.feature": "test",
+        "server/*.log": "log",
+        "PROJECT_NOTES": "markdown"
+      },
+      "auricFileIcons.folders.associations": {
+        "domain": "models",
+        "app/domain": "database"
+      },
+      "auricFileIcons.folders.rootAssociations": {
+        "my-monorepo": "packages"
+      }
+    }
+
+  Setting:       `auricFileIcons.files.associations`
+  Keys accepted: `*.ext`, `parent/*.ext`, an exact filename, or `parent/name`.
+
+  Setting:       `auricFileIcons.folders.associations`
+  Keys accepted: A folder name, or `parent/folder`. Closed and open icons are
+                 applied together.
+
+  Setting:       `auricFileIcons.folders.rootAssociations`
+  Keys accepted: The name of a workspace root folder.
+
+  - Use the value `none` to remove a built-in match.
+  - A parent pattern matches the direct parent only, not any folder higher up.
+
+TURN A DETECTED PROJECT TYPE INTO AN ICON
+=========================================
+
+If smart detection recognises a folder (for example a Rust project), you can
+make that permanent:
+
+  1. Right-click the folder, open Auric File Icons and select Apply Detected
+     Folder Icon.
+  2. The matching folder icon is assigned. If nothing is detected, you see "No
+     project type was detected in this folder."
+
+To do this for many folders, see Scan the workspace [smart-detection.txt].
+
+RESULT
+======
+
+After a reload, the chosen files and folders show the icons you assigned in
+the active Auric style.

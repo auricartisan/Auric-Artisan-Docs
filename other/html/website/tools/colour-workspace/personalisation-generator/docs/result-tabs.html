@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palettes, gradients, typography, UI pairs and posters — Auric Artisan Docs</title>
+<meta name="description" content="What each result tab of the Personalization Generator shows, how the cards are scored, and what every card button copies or saves.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Personalization Generator</a>
+<h2>Personalization Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Personalization Generator</a></li>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="build-the-pool.html">Build your colour pool</a></li>
+<li><a href="design-tokens.html">Design tokens</a></li>
+<li><a href="export-and-save.html">Export, save and share</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="result-tabs.html" aria-current="page">Palettes, gradients, typography, UI pairs and posters</a></li>
+<li><a href="run-a-sweep.html">Run a sweep and read the results</a></li>
+<li><a href="tune-the-sweep.html">Tune the sweep</a></li>
+<li><a href="reference.html">Personalization Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Personalization Generator</a> &rsaquo; <a href="README.html">Personalization Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Palettes, gradients, typography, UI pairs and posters</h1>
+<p class="lede">What each result tab of the Personalization Generator shows, how the cards are scored, and what every card button copies or saves.</p>
+<p>Five tabs hold the results of the last sweep. Palettes come straight from the sweep; the other four are built from the kept palettes, in rank order.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Built from</th><th>Most cards</th></tr></thead>
+<tbody>
+<tr><td><strong>Palettes</strong></td><td>the sweep</td><td>up to 96</td></tr>
+<tr><td><strong>Gradients</strong></td><td>the top 28 palettes</td><td>28</td></tr>
+<tr><td><strong>Typography</strong></td><td>the top 24 palettes</td><td>24</td></tr>
+<tr><td><strong>UI Pairs</strong></td><td>the top 28 palettes</td><td>28</td></tr>
+<tr><td><strong>Posters</strong></td><td>the top 28 palettes</td><td>28</td></tr>
+</tbody></table></div>
+<p>Every card has <strong>Save</strong>, which saves it to your Library, and <strong>Add to pool</strong>, which puts its colours at the front of your pool. See <a href="export-and-save.html">Export, save and share</a>.</p>
+<h2 id="palettes">Palettes</h2>
+<p>The heading summarises the set, for example <strong>24 kept · best 81 (Balanced Analogous) · avg 74 · most common Analogous</strong>, with <strong>Top</strong>, <strong>Average</strong>, <strong>Kept</strong> and <strong>Sweeps</strong> figures.</p>
+<p>Each card shows:</p>
+<ul>
+<li>the palette name, such as <strong>Balanced Analogous</strong>: a mood word (<strong>Vivid</strong>, <strong>Deep</strong>, <strong>Soft</strong> or <strong>Balanced</strong>, from the average saturation and lightness) and the colour relationship;</li>
+<li>a line such as <strong>Analogous · from Soft Product</strong>. The first part is the colour relationship the palette was built on (19 relationships, from <strong>Analogous</strong> to <strong>Brand trio</strong>; see the <a href="reference.html">Reference</a>). The second is the built-in reference palette it drew on;</li>
+<li>the score, from 0 to 100 (highlighted from 60 and again from 80);</li>
+<li>the swatches with their HEX values. Select a swatch to copy its HEX;</li>
+<li>tags: the number of stops, the relationship and <strong>BG/FG</strong> with the best contrast ratio in the palette;</li>
+<li>four scores: <strong>Preference</strong>, <strong>Harmony</strong>, <strong>Contrast</strong> and <strong>CVD / UI</strong>;</li>
+<li>three contrast bars, <strong>AAA text</strong>, <strong>AA UI</strong> and <strong>Large text</strong>.</li>
+</ul>
+<p>The three contrast bars all use the same number, the highest WCAG ratio between any two colours in the palette, measured against 7:1, 4.5:1 and 3:1 respectively. They tell you whether the palette has a pair that clears each bar, not how every pair performs.</p>
+<p>Buttons: <strong>Copy hex</strong> (the HEX values separated by spaces), <strong>Add to pool</strong>, <strong>Open in Studio</strong> and <strong>Save</strong>.</p>
+<h3 id="how-a-palette-is-scored">How a palette is scored</h3>
+<p>The total blends six parts. The card shows four of them.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>What it measures</th></tr></thead>
+<tbody>
+<tr><td>Preference</td><td>How close each colour is to the nearest pool colour (CIEDE2000), with a small reward for not copying the pool exactly.</td></tr>
+<tr><td>Harmony</td><td>How well the hues fit the palette&#39;s relationship, and how evenly lightness and chroma are spread.</td></tr>
+<tr><td>Style</td><td>How well the colours fall inside the ranges of your style chips. Not shown on the card.</td></tr>
+<tr><td>Diversity</td><td>How clearly the colours differ from one another. Weighted by the <strong>Diversity</strong> slider. Not shown on the card.</td></tr>
+<tr><td>Contrast</td><td>The best contrast pair and the overall light-to-dark range. Weighted by the <strong>Accessibility</strong> slider.</td></tr>
+<tr><td>CVD / UI</td><td>How distinct the colours stay under three colour-vision simulations, plus whether a pair reaches 4.5:1 (or 3:1 with <strong>Contrast</strong> off). Weighted by the <strong>Accessibility</strong> slider.</td></tr>
+</tbody></table></div>
+<p>The score ranks palettes against your settings. It is not a measure of quality in general. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="gradients">Gradients</h2>
+<p>Each kept palette in the top 28 becomes one gradient, in one of twelve styles taken in turn: <strong>linear</strong>, <strong>radial</strong>, <strong>conic</strong>, <strong>mesh</strong>, <strong>layered</strong>, <strong>sharp</strong>, <strong>soft-mesh</strong>, <strong>diagonal</strong>, <strong>spot</strong>, <strong>duotone</strong>, <strong>prism</strong> and <strong>halo</strong>. Stops are the palette&#39;s colours sorted by hue, six at most.</p>
+<p>Filter chips above the grid (<strong>All · 28</strong>, <strong>linear · 3</strong> and so on) show one style at a time. Each card has a large preview with the style and score, the stops, the CSS, and:</p>
+<ul>
+<li><strong>Copy CSS</strong>: a line such as <code>background: linear-gradient(…);</code></li>
+<li><strong>Copy stops</strong>: the stop colours separated by spaces</li>
+<li><strong>Add to pool</strong> and <strong>Save</strong></li>
+</ul>
+<p>A gradient&#39;s score is its palette&#39;s score.</p>
+<h2 id="typography">Typography</h2>
+<p>Each card pairs one palette with a type system: a display face, a body face and an accent face. The preview shows <strong>H1</strong>, <strong>H2</strong>, <strong>Body</strong> and <strong>Mono</strong> lines on the palette&#39;s most readable background and text pair, with the palette&#39;s most colourful colour as the accent, and lists the three faces. The header line gives the palette name and the <strong>BG/FG</strong> ratio.</p>
+<p>The type systems offered are the ones whose tags best match your use case and style chips; when several match equally, the cards rotate through them. There are 17 systems in all, such as <strong>Product Grotesk</strong>, <strong>Editorial Serif</strong>, <strong>Luxury Contrast</strong> and <strong>Console Stack</strong>.</p>
+<p>The fonts are named as CSS font stacks and are not downloaded by the page. If a named font is not installed on your device, the preview uses the next font in the stack. Check the faces on your own system before relying on the preview.</p>
+<p>Buttons: <strong>Copy CSS</strong> copies five custom properties, <code>--font-display</code>, <code>--font-body</code>, <code>--color-bg</code>, <code>--color-text</code> and <code>--color-accent</code>; <strong>Add to pool</strong> adds the background, text and accent; <strong>Save</strong>.</p>
+<h2 id="ui-pairs">UI Pairs</h2>
+<p>Each card is a small interface in the palette&#39;s colours: a title bar, <strong>Background</strong>, <strong>Text</strong>, <strong>Surface</strong> and <strong>Accent</strong> with their HEX values, a search field and three buttons (<strong>Primary action</strong>, <strong>Surface button</strong>, <strong>Ghost button</strong>), and a contrast meter.</p>
+<ul>
+<li>The meter and the first tag grade the text on the background: <strong>AAA</strong> (7:1 or more), <strong>AA</strong> (4.5:1), <strong>Large</strong> (3:1) or <strong>Fail</strong>.</li>
+<li>The header line gives <strong>WCAG</strong> ratio, <strong>APCA Lc</strong> and <strong>CVD</strong>, the palette&#39;s colour-vision score out of 100.</li>
+<li>The APCA tag also names the use the value supports, from <strong>Body text</strong> (Lc 75 or more) down to <strong>Insufficient</strong>.</li>
+</ul>
+<p>The heading counts how many pairs pass WCAG AA, AAA and APCA 60 or more.</p>
+<p>Buttons: <strong>Copy CSS</strong> copies <code>--ui-bg</code>, <code>--ui-text</code>, <code>--ui-surface</code>, <code>--ui-accent</code> and <code>--ui-accent-ink</code>; <strong>Add to pool</strong> adds the four colours; <strong>Save</strong>.</p>
+<h2 id="posters">Posters</h2>
+<p>Each card is a poster in one of twelve layouts, taken in turn: <strong>bauhaus</strong>, <strong>type-dominant</strong>, <strong>asymmetric</strong>, <strong>magazine</strong>, <strong>minimal-centered</strong>, <strong>brutalist</strong>, <strong>festival</strong>, <strong>swiss</strong>, <strong>collage</strong>, <strong>kinetic</strong>, <strong>archive</strong> and <strong>gradient-poster</strong>. Each uses the palette&#39;s background, text and two accent colours, and a type system.</p>
+<p>Filter chips show one layout at a time. The text on the posters is fixed sample copy.</p>
+<p>Buttons: <strong>Copy CSS</strong> copies a short <code>.poster</code> rule with background, colour and font, plus <code>.poster-accent</code> and <code>.poster-accent-2</code> colours; <strong>Add to pool</strong> adds the text and accent colours; <strong>Save</strong>. There is no image download for posters. <strong>Save</strong> stores the poster&#39;s colours, layout and fonts in your Library, with a swatch strip of its colours as the preview, not a picture of the poster.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="design-tokens.html">Design tokens</a></li>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="export-and-save.html">Export, save and share</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="presets.html"><span>Previous</span>Presets</a><a href="run-a-sweep.html"><span>Next</span>Run a sweep and read the results</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#palettes">Palettes</a></li><li><a href="#gradients">Gradients</a></li><li><a href="#typography">Typography</a></li><li><a href="#ui-pairs">UI Pairs</a></li><li><a href="#posters">Posters</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,219 @@
+==============================================================================
+PLAN & USAGE SECTION
+==============================================================================
+Your Auric Artisan plan, usage meters, the Change plan cards, invoices and
+payment history, and the API console for plans with API access.
+Area: Website › Account and billing   Updated: 2026-09-25
+
+The Plan & Usage section (https://auricartisan.com/auth/dashboard/#plan) shows
+what you pay for and what you use: your plan, your usage meters, your
+invoices, and — on plans that include the REST API — your API keys, credits
+and spend controls. The header menu items Billing & plan and API keys both
+open this section, as do the older addresses `#billing` and `#api-keys`.
+
+What you see depends on your plan:
+
+  - On Apprentice and Artisan, the section shows your plan and receipts, and
+    one card explaining that the API is not part of your plan.
+  - On Specialist and Industrial Pro, it also shows the full API console.
+  - If your account holds API keys from an earlier plan, the API console stays
+    visible whatever you pay now, so you can still see and revoke those keys.
+
+CURRENT PLAN
+============
+
+The Current Plan panel names your plan and its state in one line:
+
+  Line: "You're on the free Apprentice plan."
+  When: Free plan
+
+  Line: "Artisan — active until 12 Oct 2026. Does not renew automatically."
+        (plan and date vary)
+  When: A paid pass, which ends on that date
+
+  Line: "Your Artisan subscription has ended."
+  When: A plan that has ended
+
+  Line: "Payment for your Artisan plan failed — please update your payment
+        method."
+  When: A failed payment
+
+  Line: "Artisan — no active subscription on this account."
+  When: The plan is named but has no active purchase behind it
+
+Buttons:
+
+  Button:       Change Plan
+  What it does: Opens the pricing page
+
+  Button:       Request a refund
+  What it does: Shown on a paid pass. Its tooltip explains: "This pass does
+                not renew, so there is nothing to cancel — you will not be
+                charged again. Use this to ask for a refund instead." It opens
+                the contact page. See Refunds [refunds.txt].
+
+  | Note: A Cancel Subscription button exists for a genuine recurring
+  | subscription, which would say when it renews. Auric Artisan does not sell
+  | recurring subscriptions today, so you will normally see Request a refund
+  | instead. See Plan terms, renewal and cancelling
+  | [plan-terms-and-cancelling.txt].
+
+Usage meters
+------------
+
+Under the plan line is a list of meters. Each shows how much you have used
+against your plan's figure (`∞` means unlimited), with a bar that changes
+colour when you pass two-thirds of the figure and again when you reach it.
+
+  Meter:             Vision sims today
+  Counts:            Vision simulations run today
+  Apprentice figure: 25
+
+  Meter:             URL analyses this month
+  Counts:            Page analyses in the Analyzer this month
+  Apprentice figure: 20
+
+  Meter:             SVG recolors this month
+  Counts:            SVG downloads from SVG Recolor this month
+  Apprentice figure: 15
+
+  Meter:             Experiment runs
+  Counts:            Psychophysics Engine runs
+  Apprentice figure: 25
+
+  Meter:             Projects
+  Counts:            Saved items in your library
+  Apprentice figure: 20
+
+  Meter:             Team seats
+  Counts:            Seats on the account (every account is single-user today)
+  Apprentice figure: 1
+
+Paid plans show their own, higher or unlimited, figures. A meter with nothing
+to count on your plan is hidden. If nothing has been used yet, the list says
+"No usage to report yet — your meters will appear as you use the tools."
+
+Things to know about the meters:
+
+  - Daily meters reset each day and monthly meters each calendar month, both
+    in UTC.
+  - Counts include use recorded in this browser, so a meter can differ between
+    browsers until the account's own figure catches up.
+  - Projects is counted from the library saved in this browser.
+  - Every tool stays usable. The pricing page describes vision simulations as
+    unmetered, because they run in your browser.
+
+CHANGE PLAN
+===========
+
+Change plan is a folded panel. Its line reads "You are on Apprentice. Compare
+what each tier includes." (or "…the highest tier…" on Industrial Pro). Open it
+to see one card per plan:
+
+  Card part      | Shows
+  ---------------+-------------------------------------------------------------------------
+  Name and price | The plan and its monthly price, or Free / forever
+  Description    | What the tier adds
+  Button         | Current plan, Get this plan, Switch plan, Switch to Free, or Coming soon
+
+  - Cards marked Coming soon cannot be selected; those tiers are not on sale.
+  - Selecting a paid plan opens the pricing page, where you buy it. See Buy a
+    plan [buy-a-plan.txt].
+  - Switch to Free returns you to the dashboard. A paid pass cannot be cut
+    short from here; it ends on its own date, or you can ask for a refund.
+  - Prices on these cards are shown in Indian rupees. The pricing page lets
+    you choose US dollars or rupees.
+  - See the full comparison opens the pricing page's comparison table.
+
+INVOICES & PAYMENT HISTORY
+==========================
+
+A table of every payment on the account, newest first. The heading shows the
+total, for example "(3 total)".
+
+  Column      | Shows
+  ------------+-----------------------------------------------------------------
+  Date        | The payment date
+  Description | Payment, Refund or Chargeback, with the plan and term underneath
+  Amount      | The amount and currency
+  Status      | Paid, Failed or Refunded
+  (actions)   | View opens the invoice page
+
+The list shows 25 payments at a time. When there are more, <- Newer** and
+**Older -> move between pages, with a label such as "1–25 of 40".
+
+If you have not bought anything: "No payments yet. Receipts appear here after
+your first purchase." See Invoices and receipts [invoices-and-receipts.txt].
+
+THE API CONSOLE (SPECIALIST AND ABOVE)
+======================================
+
+On plans with API access the rest of the section is the API console. With no
+keys yet, only the parts that can have a value are shown: your credit balance,
+the place to create a key, the documentation and the rate table. Once a key
+exists, the usage panels appear as well.
+
+  Panel:      Four figures
+  What it is: Active Keys, Requests Today, Rate Limit / min and Monthly Usage
+  Guide:      API credits and spend controls [api-credits-and-spend.txt]
+
+  Panel:      Usage & cost
+  What it is: Credits used this billing period against the included credits,
+              projection, overage and a daily chart
+  Guide:      API credits and spend controls [api-credits-and-spend.txt]
+
+  Panel:      Your API Keys
+  What it is: Create, list and revoke keys
+  Guide:      API keys [api-keys.txt]
+
+  Panel:      Credits & spend
+  What it is: Prepaid credit balance, Add credits, paid overage, monthly spend
+              cap, recent credit activity
+  Guide:      API credits and spend controls [api-credits-and-spend.txt]
+
+  Panel:      Where the credits went
+  What it is: Calls and credits per endpoint this period
+  Guide:      API credits and spend controls [api-credits-and-spend.txt]
+
+  Panel:      Live usage
+  What it is: A live feed of calls as they arrive
+  Guide:      API credits and spend controls [api-credits-and-spend.txt]
+
+  Panel:      Rate Limits by Plan
+  What it is: Requests per minute, included credits and maximum keys for each
+              plan; your row is highlighted
+  Guide:      Below
+
+  Panel:      API Documentation
+  What it is: View API Docs and Endpoint Index
+  Guide:      Public API [../../../services/public-api/README.txt]
+
+Rate Limits by Plan
+-------------------
+
+  Plan              | Requests / min | Included credits / month | Max Keys
+  ------------------+----------------+--------------------------+---------
+  Apprentice (Free) | —              | Not included             | —
+  Artisan           | —              | Not included             | —
+  Specialist        | 300            | 1,000,000                | 10
+  Industrial Pro    | 3,000          | 10,000,000               | 10
+
+The note under the table reads: "One credit is one standard request. A
+63-space dossier costs 5, a rendered PNG 10, an async job 25. Past the
+included allowance, opt-in prepaid overage is $1.00 (₹85) per 100,000
+credits."
+
+On plans without the API
+------------------------
+
+Apprentice and Artisan see one card instead: Credits, keys and the live feed —
+Not part of Apprentice (or your plan's name). "They start at Specialist, which
+includes 1,000,000 API credits a billing month." with a Compare plans button.
+
+RELATED
+=======
+
+  - Plans and pricing [plans-and-pricing.txt]
+  - Tokens [tokens.txt] — your token balance is on the Overview, in the Tool
+    tokens card
+  - Reference [reference.txt]

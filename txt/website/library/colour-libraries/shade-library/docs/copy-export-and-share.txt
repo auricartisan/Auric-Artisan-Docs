@@ -1,0 +1,145 @@
+==============================================================================
+COPY, EXPORT AND SHARE
+==============================================================================
+Copy a shade scale as hex, token-named CSS, SCSS or Tailwind, download JSON,
+SVG or PNG, export design tokens, share a link, and export many scales.
+Area: Website › Library › Colour libraries › Shade Library   Updated: 2026-09-25
+
+ONE SCALE
+=========
+
+Open the scale on Inspect. Use Quick export, or the Selection card on the
+Export tab (headed Selection - and the id). With nothing open, the Export tab
+says No shade system selected. Click Inspect on any card in the Library tab to
+enable selection exports.
+
+Names in the output come from the scale's name with the hex codes removed, in
+lower case with dashes: Material Like #FF724C #00001 becomes
+`material-like-00001`. Each variable ends in the token name.
+
+Copy formats
+------------
+
+  Quick export:   Copy HEX
+  Export tab:     HEX list
+  What is copied: All hex codes, comma-separated.
+  Message:        HEX list copied
+
+  Quick export:   Copy CSS vars
+  Export tab:     CSS variables
+  What is copied: A CSS class holding one custom property per token.
+  Message:        CSS variables copied
+
+  Quick export:   Copy SCSS
+  Export tab:     SCSS variables
+  What is copied: One Sass variable per token.
+  Message:        SCSS copied
+
+  Quick export:   Copy Tailwind
+  Export tab:     Tailwind config
+  What is copied: A colour group keyed by token.
+  Message:        Tailwind copied
+
+For the first scale in the collection:
+
+    .aa-shade-material-like-00001 {
+      --material-like-00001-50: #fff0ec;
+      --material-like-00001-100: #ffdfd7;
+      --material-like-00001-300: #ff886b;
+      --material-like-00001-500: #ff724c;
+      --material-like-00001-700: #cd5531;
+      --material-like-00001-900: #4b1200;
+      --material-like-00001-950: #1e0400;
+    }
+
+    $material-like-00001-50: #fff0ec;
+    $material-like-00001-100: #ffdfd7;
+    ...
+    $material-like-00001-950: #1e0400;
+
+    "material-like-00001": {
+      "50": "#fff0ec",
+      "100": "#ffdfd7",
+      ...
+      "950": "#1e0400"
+    }
+
+  | Tip: The CSS variables are declared on a class, not on `:root`. Either add
+  | that class to an element, or change the selector to `:root` after pasting.
+  | Rename the prefix to something meaningful in your project, such as
+  | `--brand-500`.
+
+Downloads
+---------
+
+  Quick export: Download JSON
+  Export tab:   JSON
+  File:         `shade-000000.json`
+  Contents:     Id, name, base, method, token names, each token's hex and
+                contrast on white and black, and score, average lightness,
+                average chroma and auto-AA count.
+
+  Quick export: Download SVG
+  Export tab:   SVG strip
+  File:         `shade-000000.svg`
+  Contents:     A 1200 × 260 strip of the tokens; hovering a band shows its
+                token and hex.
+
+  Quick export: Download PNG
+  Export tab:   PNG strip
+  File:         `shade-000000.png`
+  Contents:     A 1600 × 420 strip.
+
+DESIGN TOKENS
+=============
+
+Select Design tokens…. The dialog is titled with the scale's name. Token
+prefix starts as `color`, and every token keeps its step name: `color-50`,
+`color-100` … `color-950`. Choose W3C Design Tokens, CSS Variables, SCSS,
+Tailwind Config, Style Dictionary, Material UI Theme, iOS (SwiftUI) or Android
+colors.xml, then Copy, Download, or Download all for a ZIP such as
+`shade-shade-000000.zip`.
+
+SHARE A LINK
+============
+
+Select Copy share link. The Share link dialog offers Copy, Share via… where
+available, Open in new tab and Close. The link opens the scale on Inspect; if
+it cannot be found, the page says Shared shade not in current library.
+
+MANY SCALES
+===========
+
+The Visible page card on the Export tab exports every scale matching your
+search and filters (all 8,192 with none set). Its badge shows the number.
+
+  Button:   Download JSON (visible page)
+  File:     `shade-library-<count>-<date>.json`
+  Contents: Every scale in full.
+
+  Button:   Download CSV (visible page)
+  File:     `…csv`
+  Contents: `id,name,base,method,tokens,score,avg_lightness,avg_chroma,auto_aa,colors`,
+            with colours separated by vertical bars.
+
+  Button:   Download CSS variables
+  File:     `…css`
+  Contents: One class per scale.
+
+  Button:   Download SCSS variables
+  File:     `…scss`
+  Contents: Sass variables per scale.
+
+  Button:   Download compact JSON
+  File:     `…json`
+  Contents: Id and hex codes per scale.
+
+  Button:   Download .txt hex list
+  File:     `…txt`
+  Contents: One line per scale: its id, a colon and its hex codes.
+
+  Button:   Download tailwind.config.js fragment
+  File:     `…txt`
+  Contents: One Tailwind colour group per scale, inside braces.
+
+If nothing matches, the bulk buttons do nothing.

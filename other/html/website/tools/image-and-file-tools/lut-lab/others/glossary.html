@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUT Lab glossary — Auric Artisan Docs</title>
+<meta name="description" content="Definitions of the terms used in LUT Lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab background material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="glossary.html" aria-current="page">LUT Lab glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab background material</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>LUT Lab glossary</h1>
+<p class="lede">Definitions of the terms used in LUT Lab.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>1D LUT</td><td>A table mapping each channel on its own, one row per input level</td></tr>
+<tr><td>3D LUT</td><td>A cube of grid points mapping every combination of red, green and blue to a new colour</td></tr>
+<tr><td>8-bit</td><td>256 levels per channel, 0 to 255; the precision LUT Lab works in</td></tr>
+<tr><td>ACEScct / ACEScg</td><td>Encodings from the Academy Color Encoding System for film work; not offered, because they need values above 1</td></tr>
+<tr><td>.cube</td><td>A plain-text LUT format defined by the Adobe / IRIDAS Cube LUT Specification 1.0</td></tr>
+<tr><td>CIEDE2000 (ΔE₀₀)</td><td>The CIE&#39;s standard formula for the size of a colour difference</td></tr>
+<tr><td>CIELAB</td><td>A colour space of lightness L* and colour axes a* and b*, used here with a D65 white</td></tr>
+<tr><td>Chroma (C*)</td><td>How colourful a colour is in CIELAB, its distance from grey</td></tr>
+<tr><td>Clipped</td><td>A pixel with a channel driven by the transform to 0 or 255 that was not there before</td></tr>
+<tr><td>Domain</td><td>The input range a <code>.cube</code> table covers, set by <code>DOMAIN_MIN</code> and <code>DOMAIN_MAX</code>; 0 to 1 by default</td></tr>
+<tr><td>Exposure</td><td>In the tone-map, the factor the linear scene light is multiplied by before compression</td></tr>
+<tr><td>Grid point</td><td>One of the sampled inputs of a LUT, at which the output is stored</td></tr>
+<tr><td>Hue sweep</td><td>The ring of 72 test colours at L* 60, C* 40 used to measure hue, lightness and chroma shifts</td></tr>
+<tr><td>Identity</td><td>A LUT that changes nothing</td></tr>
+<tr><td>Interpolation</td><td>Estimating the output between grid points by blending the neighbouring points</td></tr>
+<tr><td>Linear light</td><td>Values proportional to physical light, before the sRGB curve is applied</td></tr>
+<tr><td>Look</td><td>A built-in transform in LUT Lab: a stylisation or a defined transform</td></tr>
+<tr><td>LUT</td><td>Lookup table: a list of what each input colour should become</td></tr>
+<tr><td>Reachable</td><td>The share of a table&#39;s domain that an 8-bit sRGB input can reach</td></tr>
+<tr><td>Reinhard tone-map</td><td>A tone-mapping operator, L ÷ (1 + L), that compresses bright light smoothly</td></tr>
+<tr><td>Round trip</td><td>Writing a table to a file and reading it back, to check nothing was lost</td></tr>
+<tr><td>Sample order</td><td>The order of rows in a 3D <code>.cube</code>: red changes fastest, then green, then blue</td></tr>
+<tr><td>Size</td><td>The number of grid points along each axis of a LUT</td></tr>
+<tr><td>sRGB</td><td>The standard colour space for web and consumer images</td></tr>
+<tr><td>Strength</td><td>How much of a look is blended with the original, 0% to 100%</td></tr>
+<tr><td>Stylisation</td><td>A look designed because it looks good, with no definition to check against</td></tr>
+<tr><td>Transform</td><td>A conversion between two defined things, which can be checked against its definition</td></tr>
+<tr><td>Trilinear interpolation</td><td>Blending the eight grid points around an input along red, then green, then blue</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>LUT Lab background material</a><a href="limits-and-accuracy.html"><span>Next</span>Limits and accuracy</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

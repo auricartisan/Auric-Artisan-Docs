@@ -1,0 +1,234 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for common Auric Artisan Live problems, from pages
+that do not update to phones that cannot connect.
+Area: VS Code extensions › Auric Artisan Live   Updated: 2026-09-25
+
+For anything not listed, run Auric Live: Diagnose Project and Runtime and
+Auric Live: Show Log, then see Get support
+[../../install-and-setup/docs/get-support.txt].
+
+STARTING
+========
+
+"Auric Live needs an open folder to serve."
+-------------------------------------------
+
+  - Why: no folder is open. Auric Live serves folders, not single files.
+  - Fix: open the folder with File › Open Folder…, then go live.
+
+"Auric Live could not start"
+----------------------------
+
+  - Why: usually the port is taken and `auricLive.portStrategy` is `fail`, or
+    the address cannot be bound.
+  - Fix: choose Change Port in the message, set the port to `0` for a free
+    one, or set the strategy back to `increment`. Show Log has the exact
+    reason.
+
+The status bar has no Go Live item
+----------------------------------
+
+  - Why: `auricLive.showStatusBar` is off, or no folder is open.
+  - Fix: turn the setting on, or use Auric Live: Go Live from the Command
+    Palette.
+
+Commands for dev servers are missing from the Command Palette
+-------------------------------------------------------------
+
+  - Why: Start, Stop and Restart Framework Dev Server only appear in trusted
+    workspaces.
+  - Fix: run Workspaces: Manage Workspace Trust and trust the folder.
+
+LIVE RELOAD
+===========
+
+Saving does not update the page
+-------------------------------
+
+  - Why: live reload is off, the trigger does not match how you work, the file
+    is excluded, or the page was opened before the server started.
+  - Fix:
+    1. Check the Servers view: Live reload should show a number of connected
+       pages, not off.
+    2. If files are written by a build tool rather than saved in VS Code, set
+       `auricLive.liveReload.reloadOnSave` to `change`.
+    3. Check `auricLive.liveReload.ignore` and `.auricignore-live` for a
+       pattern matching the file.
+    4. Reload the page once by hand, or run Reload Connected Pages (`Ctrl` +
+       `Alt` + `U`).
+    5. On a network share or in a virtual machine, set
+       `auricLive.watch.pollIntervalMs`.
+
+The page reloads over and over
+------------------------------
+
+  - Why: something keeps writing files in the served folder.
+  - Fix: keep the default `save` trigger. When Auric Live paused live reload —
+    files kept changing appears, choose Ignore folder/ to exclude the folder
+    responsible.
+
+Live reload stopped and did not come back
+-----------------------------------------
+
+  - Why: reload-storm protection paused it.
+  - Fix: run Auric Live: Resume Live Reload, or choose Resume in the message.
+
+A framework project shows a blank page and module errors
+--------------------------------------------------------
+
+  - Why: the project needs its own dev server (for example Vite or Next.js)
+    but is being served as plain files.
+  - Fix: choose the framework's dev server in Select Run Target…, or run Start
+    Framework Dev Server…. See Run a backend or framework dev server
+    [run-targets-and-backends.txt].
+
+A session change reverted
+-------------------------
+
+  - Why: changes made in the panel or by commands last only until the window
+    closes or reloads.
+  - Fix: put the value in `auric.live.json` or VS Code settings.
+
+BACKENDS AND PROXIES
+====================
+
+502 or the waiting page for a proxied path
+------------------------------------------
+
+  - Why: the backend is not running, is still starting, or is on a different
+    port.
+  - Fix: check the Upstream row in the Servers view; select Find it to scan
+    for the backend; run Show Dev Server Output. If the backend has a health
+    endpoint, set `healthPath`. Readiness checks do not follow redirects, so
+    point `healthPath` at a path that answers directly.
+
+"keeps failing" after starting a run target
+-------------------------------------------
+
+  - Why: the process exits straight away, often from a missing dependency or a
+    syntax error. Auric Live stops restarting it after
+    `auricLive.devServer.maxRestarts` attempts.
+  - Fix: choose Show output, fix the error, then Try again.
+
+"command was not found on PATH or in the project"
+-------------------------------------------------
+
+  - Why: the runtime is not installed or not on your `PATH`. Auric Live never
+    installs runtimes.
+  - Fix: install it, or use the full path to the executable in the run
+    profile.
+
+Nothing was found by Find a Running Backend
+-------------------------------------------
+
+  - Why: the backend uses a port that is not in the list Auric Live scans.
+  - Fix: set `auricLive.upstream.candidatePorts` to the ports you use, or add
+    a URL-only run profile.
+
+"Trust this workspace before running CGI, commands, or proxy profiles."
+-----------------------------------------------------------------------
+
+  - Why: the folder is in Restricted Mode.
+  - Fix: trust the folder if you trust its contents.
+
+PHP
+===
+
+`.php` pages download instead of running
+----------------------------------------
+
+  - Why: CGI is off, or `php-cgi` is not found.
+  - Fix: choose Enable PHP when offered, or choose PHP through CGI as the run
+    target. Make sure `php-cgi` is on your `PATH`, or set its full path in
+    `auricLive.cgi.handlers`.
+
+A PHP page times out
+--------------------
+
+  - Why: the script ran longer than the CGI time limit (30 seconds by
+    default).
+  - Fix: set `cgi.timeoutMs` in `auric.live.json`.
+
+PHONES AND OTHER DEVICES
+========================
+
+The phone cannot connect
+------------------------
+
+  - Why: the server is bound to this machine only, the devices are on
+    different networks, the firewall blocks VS Code, or the address belongs to
+    a virtual adapter.
+  - Fix: keep `auricLive.host` at `0.0.0.0` (or choose Bind to the network),
+    put both devices on the same network, allow VS Code through the firewall,
+    and pick a physical adapter's address.
+
+The phone warns about the certificate
+-------------------------------------
+
+  - Why: HTTPS is encrypted but the phone does not trust the certificate.
+  - Fix: install and trust the certificate on the phone, or use one it already
+    trusts. See Serve over HTTPS [https-and-certificates.txt].
+
+"that URL is too long to encode"
+--------------------------------
+
+  - Why: the address is too long for a QR code.
+  - Fix: use Copy Network URL and send the address to the phone another way.
+
+REQUESTS
+========
+
+Request details are empty or expired
+------------------------------------
+
+  - Why: the request has dropped out of the inspector (500 kept by default),
+    body capture is off, or the body was larger than the capture limit.
+  - Fix: make the request again. Raise `auricLive.inspector.maxEntries` or
+    `auricLive.inspector.maxBodyBytes` if needed.
+
+Replay is refused
+-----------------
+
+  - Why: the capture was redacted, truncated, omitted or binary, so replaying
+    it would send something different.
+  - Fix: use Copy curl or Copy fetch and fill in the missing values.
+
+Uploads fail with 413 or 408
+----------------------------
+
+  - Why: the request body is larger than `auricLive.maxRequestBodyBytes` (8
+    MiB by default; `0` rejects every non-empty body), or it arrived slower
+    than `auricLive.requestBodyTimeoutMs` (30 seconds).
+  - Fix: raise the limit or the timeout for your test.
+
+PREVIEW AND DASHBOARD
+=====================
+
+The preview toolbar is in the wrong language
+--------------------------------------------
+
+  - Why: an open preview keeps the language it opened with.
+  - Fix: close and reopen the preview.
+
+The dashboard does not open
+---------------------------
+
+  - Why: the dashboard is off, the page was not served by Auric Live, or
+    another script uses the same keys.
+  - Fix: check `auricLive.dashboard.enabled`, open the page through the Auric
+    Live address, or change `auricLive.dashboard.shortcut`.
+
+The console tab is empty
+------------------------
+
+  - Why: console capture is off by default, or the page was open before you
+    turned it on.
+  - Fix: run Toggle Browser Console Capture, then reload the page.
+
+Some dashboard figures say Unavailable
+--------------------------------------
+
+  - Why: the browser does not provide that measurement.
+  - Fix: none needed; the dashboard shows only what the browser reports.

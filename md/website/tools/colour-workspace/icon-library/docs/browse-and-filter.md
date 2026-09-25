@@ -1,0 +1,81 @@
+---
+title: Icon Library — Browse, search and filter
+description: Search, sort, choose a set and style, filter by category and licence, and preview every icon at your size, stroke and colour.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Browse, search and filter
+
+Everything here happens on the **Icons** view. The grid shows 120 icons at first and loads more as you scroll. Each tile shows the icon and its name; hover it to see the name in full. Select a tile to open the icon.
+
+## Search
+
+Type in *Name, tag or set*. Results update as you type. The search looks for your text in the icon's name, in its identifier (which begins with the set's name, so *lucide* finds every Lucide icon), and in its keywords. Only Tabler and Remix icons carry keywords, so a word such as *notification* finds more in those two sets.
+
+## Sort
+
+| Option | Order |
+| --- | --- |
+| **Alphabetical** | A to Z by name (default) |
+| **Group by set** | Set by set, A to Z within each |
+| **Surprise me** | Random order |
+
+**Shuffle** switches the sort to **Surprise me** and deals a new random order.
+
+## Sets and styles
+
+The **Set** chips pick one set at a time: **All** (12,896), **Phosphor** (1,512), **Tabler** (5,093), **Lucide** (1,714), **Remix** (1,690), **Heroicons** (324), **Feather** (287) or **Material** (2,276).
+
+When the chosen set has more than one style, a style switch appears under the set chips:
+
+| Set | Styles, in the order shown (default in bold) |
+| --- | --- |
+| Phosphor | Thin, Light, **Regular**, Bold, Fill, Duotone |
+| Tabler | **Outline**, Filled |
+| Lucide | **Regular** only |
+| Remix | **Line**, Fill |
+| Heroicons | **24 · Outline**, 24 · Solid, 20 · Solid, 16 · Solid |
+| Feather | **Regular** only |
+| Material | **Outlined**, Round, Sharp, Regular, Twotone |
+
+With **All** chosen, each icon shows in its set's default style. Choosing a set clears the category filter.
+
+## Narrow it: category and licence
+
+**Filters** shows or hides the chip groups.
+
+- **Category** lists up to 40 categories for the current set, largest first, each with its count, such as **System**, **Arrows** or **Devices**. Selecting several shows icons in any of them. Only Tabler and Remix icons have categories; with Phosphor, Lucide, Heroicons, Feather or Material chosen, the group reads *No categories for this set.*
+- **License** lists the licences in the current set with counts: **MIT**, **ISC** (Lucide), **Remix v1.0** (Remix) and **Apache-2.0** (Material). Selecting several shows icons under any of them.
+
+Tips:
+
+- **Filter these options** finds a chip by name, for example *weather*. It shows **No option matches that.** if nothing fits.
+- **Category** shows ten chips at first; **+ n More** shows the rest and **Less** folds them again.
+- Select a group's heading to fold it; a number on the heading says how many of its chips are on. The page remembers which groups you folded.
+
+## See and clear what is applied
+
+When anything is switched on, **Applied** appears under the search box with a chip for the search, the set and each filter. Select **×** on a chip to remove just that one, or **Clear all** to remove everything and go back to **All**.
+
+**Reset filters** at the foot of the rail clears the category and licence chips and the search, but keeps the chosen set.
+
+If nothing matches, the grid reads *No icons match. Try another set or clear filters.*
+
+## Size, stroke and colour
+
+The controls above the grid restyle every icon at once, and the panel starts from them when you open an icon.
+
+| Control | Range | Default | Notes |
+| --- | --- | --- | --- |
+| **Size** | 16 to 128 px | 48 | All icons |
+| **Stroke** | 0.5 to 3, in steps of 0.25 | **auto** | Shows **auto** until you move it; **Reset** goes back to each icon's own stroke. Affects outline icons only, such as Tabler, Lucide, Feather and outline Heroicons. |
+| **Colour** | Any colour | the page's text colour | **currentColor** goes back to following the text colour. |
+
+These settings, the chosen set and style, and the sort are remembered in your browser.
+
+## Related
+
+- [Sets, collections and Find your icon](sets-and-finder.md)
+- [The icon panel](icon-panel.md)
+- [Shortcuts](../others/shortcuts.md)

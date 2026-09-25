@@ -1,0 +1,107 @@
+==============================================================================
+OFFLINE USE, CACHE AND NETWORK
+==============================================================================
+What Font Hub can do offline, how it refreshes and caches catalogue data and
+fonts, and how to switch its network use off.
+Area: VS Code extensions › Auric Artisan Font Hub   Updated: 2026-09-25
+
+WHAT WORKS OFFLINE
+==================
+
+The extension includes a snapshot of the catalogue: every family's details and
+the licence notices. Without a network connection you can:
+
+  - search, filter, sort and browse every family;
+  - open details, including styles, charset, about and licence information;
+  - use favourites, recents, selection and the recommender;
+  - copy and insert embeds (the page that uses them still needs the CDN when
+    it loads).
+
+Font previews and self-hosting downloads need the font files. Previews you
+have already seen stay available from the cache where possible; others need
+the network.
+
+WHAT USES THE NETWORK
+=====================
+
+Only one address is ever contacted: `https://fonts.auricartisan.com`. Font Hub
+validates every address before requesting it, and the Font Hub panels
+themselves cannot make network requests; all fetching goes through VS Code.
+
+  Activity: Catalogue refresh
+  When:     On the schedule in `auricFontLib.catalogRefresh`, or when you run
+            Refresh Font Catalog from Auric CDN
+
+  Activity: Font previews
+  When:     When a card or detail panel needs a font that is not cached
+
+  Activity: Licence text
+  When:     When you select Load full license text or build a kit
+
+  Activity: Self-hosting downloads
+  When:     When you download a kit
+
+  Activity: CDN check
+  When:     When you run Check Font CDN and Browser CORS
+
+Search queries, your source code, favourites and usage history are not sent.
+The CDN still receives the ordinary information any web request carries,
+including your IP address.
+
+SWITCH THE NETWORK OFF
+======================
+
+Set `auricFontLib.network.enabled` to `false`. Font Hub then works from the
+bundled snapshot and the cache only. Previews that are not cached are
+unavailable, the CDN check is refused, and kits cannot be downloaded.
+
+CATALOGUE REFRESH
+=================
+
+  `auricFontLib.catalogRefresh`:`manual`
+  Behaviour:               Only when you run Refresh Font Catalog from Auric
+                           CDN (or select ↻)
+
+  `auricFontLib.catalogRefresh`:`daily` (default)
+  Behaviour:               Automatically, once the last refresh is older than
+                           `auricFontLib.cache.maxAgeHours` (24 hours by
+                           default)
+
+  `auricFontLib.catalogRefresh`:`always`
+  Behaviour:               Automatically every time Font Hub checks, without
+                           waiting for the cache to age
+
+After a refresh: Auric Font Hub refreshed N families. If the refresh fails or
+is rejected, Font Hub keeps what it had: Auric Font Hub kept cached data:
+reason. The bundled snapshot always remains available. Refreshed identities
+and licence data are validated; a family the extension does not recognise may
+need an extension update.
+
+The status bar Fonts item's tooltip shows the number of families and whether
+the CDN catalog, a Cached catalog or the Bundled catalog is in use. Turn the
+item off with `auricFontLib.statusBar.enabled`.
+
+CACHE
+=====
+
+  Setting: `auricFontLib.cache.maxAgeHours`
+  Default: 24
+  Range:   1–720
+  Meaning: How long cached CDN metadata counts as fresh
+
+  Setting: `auricFontLib.cache.maxMB`
+  Default: 512
+  Range:   64–4096
+  Meaning: Disk space for previews, font files and refreshed metadata; the
+           oldest items are removed first
+
+The cache lives in VS Code's storage for the extension, not in your project.
+Auric Artisan Font Hub: Clear Downloaded Font Cache empties it: Auric Font Hub
+cache cleared. Bundled catalog data remains available offline.
+
+SYSTEM FONTS
+============
+
+With `auricFontLib.includeSystemFonts` on, metadata for common system fonts
+captured when the catalogue was built appears in the list. Their previews
+depend on the font being installed on your computer.

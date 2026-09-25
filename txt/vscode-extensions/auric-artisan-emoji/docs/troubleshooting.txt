@@ -1,0 +1,59 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for common problems with Auric Artisan Emoji.
+Area: VS Code extensions › Auric Artisan Emoji   Updated: 2026-09-25
+
+  Symptom:        No hover action on a shortcode.
+  Why it happens: The shortcode is incomplete or not in the catalog, or hovers
+                  are off.
+  What to do:     Use a complete shortcode with both colons, such as
+                  `:rocket:`. Check VS Code's editor hover setting and
+                  `auricEmoji.hover.enabled`.
+
+  Symptom:        A hover no longer inserts.
+  Why it happens: The document changed, or the action was already used.
+  What to do:     Keep the editor visible and writable, then hover again.
+
+  Symptom:        The Studio copied instead of inserting.
+  Why it happens: No writable editor was available, or your click action is
+                  Copy.
+  What to do:     Open a writable editor and place the cursor, then return to
+                  the Studio. Check Workspace overview for the target, and
+                  `auricEmoji.clickAction`.
+
+  Symptom:        No suggestions after typing `:`.
+  Why it happens: Completions are off, or VS Code's suggestions are disabled
+                  for this language.
+  What to do:     Turn on `auricEmoji.completions.enabled`.
+
+  Symptom:        Emoji look different or appear as boxes.
+  Why it happens: Emoji are drawn by your system's emoji font; older fonts
+                  lack newer emoji.
+  What to do:     Update your operating system's emoji font, or choose an
+                  older emoji.
+
+  Symptom:        Extra spaces appear around inserted emoji.
+  Why it happens: `insertSpacing` is `auto` or `space`.
+  What to do:     Set `auricEmoji.insertSpacing` to `none`.
+
+  Symptom:        A JavaScript escape breaks my JSON.
+  Why it happens: `\u{…}` code-point escapes are JavaScript syntax, not JSON.
+  What to do:     Use the emoji character or a JSON-compatible escape.
+
+  Symptom:        Command titles are English although the Studio is Hindi.
+  Why it happens: Native VS Code labels follow VS Code's display language.
+  What to do:     Run Configure Display Language if you want Hindi commands.
+
+  Symptom:        Remote or virtual file cannot be edited.
+  Why it happens: Editing depends on the file system provider and the document
+                  being writable.
+  What to do:     Check that the file is writable; use Copy instead.
+
+  Symptom:        The Emoji status bar button is missing.
+  Why it happens: It is turned off.
+  What to do:     Turn on `auricEmoji.statusBar.enabled`.
+
+If the problem continues, note your VS Code version, the extension version
+(0.2.0) and the steps to reproduce, then contact support at
+https://auricartisan.com/company/contact/.

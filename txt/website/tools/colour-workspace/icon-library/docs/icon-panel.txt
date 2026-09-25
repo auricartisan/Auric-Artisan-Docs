@@ -1,0 +1,140 @@
+==============================================================================
+THE ICON PANEL
+==============================================================================
+Preview an icon large, switch its style, size, colour and stroke, copy it as
+SVG, JSX, a data URI or a CDN tag, download it, and read its details.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+Selecting an icon opens it in a panel.
+
+WHERE THE PANEL SITS
+====================
+
+  - On a wide screen (wider than about 1,180 pixels), the panel docks to the
+    right edge as a column of the page. Nothing is covered, and selecting
+    another icon shows that one instead.
+    - Drag the grip on the panel's left edge to resize it (380 to 720 pixels;
+      460 at first). Double-click the grip to go back to 460. With the grip
+      focused, `←` and `→` resize it, faster with `Shift`. The width is
+      remembered.
+  - On a narrower screen, the panel is a sheet from the bottom at about 62% of
+    the screen. Drag the grip up to open it to 94%, or down to close it.
+    Tapping the dimmed page closes it.
+
+Close the panel with ✕ or `Esc`.
+
+THE HEADER
+==========
+
+  - The icon's name, and a line with its set, licence, category (Tabler and
+    Remix only) and number of styles.
+  - ＋ Select adds the icon to Your kit; it then reads ✓ Selected. See Your kit
+    and export [kit-and-export.txt].
+  - Download .svg downloads the icon in the style the grid is showing, as it
+    comes from the set, without your panel colour or stroke. Use Download .svg
+    among the copy buttons for a restyled file.
+
+PREVIEW CONTROLS
+================
+
+A large preview sits beside the controls. Changing these affects the preview;
+colour and stroke also change the code below.
+
+  Control: Style
+  Range:   The icon's styles
+  Notes:   Only when it has more than one. Switches the preview, code and copy
+           buttons to that style.
+
+  Control: Size
+  Range:   16 to 160 px
+  Notes:   Starts at the grid size. Changes the preview only.
+
+  Control: Color
+  Range:   Any colour
+  Notes:   The picker starts at the grid colour, or near-black; until you
+           pick, the preview follows the text colour. currentColor goes back
+           to that.
+
+  Control: Stroke
+  Range:   0.5 to 3
+  Notes:   Only for outline sets (Tabler, Lucide, Heroicons, Feather). Starts
+           at the grid stroke.
+
+COPY AND DOWNLOAD
+=================
+
+  Button:       Copy SVG
+  What you get: The SVG markup with your colour and stroke
+  Message:      SVG copied
+
+  Button:       Copy JSX
+  What you get: A React component named after the icon, passing props to the
+                SVG
+  Message:      JSX copied
+
+  Button:       Copy data-URI
+  What you get: An `<img>` tag whose source is the SVG as a data URI, sized to
+                the grid size
+  Message:      data-URI copied
+
+  Button:       Copy CDN tag
+  What you get: An `<i data-icon="set:name">` tag and the Icon CDN script that
+                fills it
+  Message:      CDN tag copied
+
+  Button:       Download .svg
+  What you get: An SVG file named after the icon and style, with your colour
+                and stroke
+  Message:      none
+
+The icons use `currentColor`, so without a chosen colour they take the colour
+of the text around them. Picking a colour replaces `currentColor` with that
+colour in the copied code.
+
+THE CODE BLOCKS
+===============
+
+Under the preview, four blocks show the code in full, each with its own Copy
+(message Copied):
+
+  - SVG;
+  - JSX / React: `export const IconName = (props) => (…);`;
+  - `<img>` data-URI;
+  - CDN (auto-inject): the tag with a `data-style` attribute when the style is
+    not the set's default, and the loader script.
+
+The blocks update when you change the colour or stroke.
+
+For how the CDN tag and loader work, see Icon CDN: embed an icon
+[../../../../../services/icon-cdn/docs/embed-an-icon.txt].
+
+DETAILS
+=======
+
+At the foot of the panel: Set (linked to the set's own website), License,
+Author, Category and Keywords when the icon has them, and Path, which says
+which set and style the icon comes from.
+
+MATERIAL ICONS
+==============
+
+Material icons are served as a webfont, so the panel works differently for
+them:
+
+  - the copy buttons are Copy glyph, which copies the icon's HTML character
+    reference such as `&#xe88a;` (message Glyph entity copied), and Copy CDN
+    tag;
+  - the code blocks are HTML (CDN), a tag and the loader script, and Webfont
+    @font-face, a rule for the Material font of that style with a class to
+    apply it;
+  - Download .svg shows Material is a webfont — use the embed code instead of
+    downloading;
+  - there is no stroke control.
+
+RELATED
+=======
+
+  - Your kit and export [kit-and-export.txt]
+  - Icon CDN: style, size and colour
+    [../../../../../services/icon-cdn/docs/style-size-and-colour.txt]
+  - Browse, search and filter [browse-and-filter.txt]

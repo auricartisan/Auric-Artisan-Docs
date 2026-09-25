@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Collage Maker measures, how precisely, and what it does not know.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Collage Maker</a>
+<h2>Collage Maker background material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Collage Maker shortcuts</a></li>
+<li><a href="glossary.html">Collage Maker glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Collage Maker</a> &rsaquo; <a href="README.html">Collage Maker background material</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Collage Maker</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Collage Maker measures, how precisely, and what it does not know.</p>
+<h2 id="what-is-measured-and-how">What is measured, and how</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Figure</th><th>Method</th><th>Precision</th></tr></thead>
+<tbody>
+<tr><td><strong>canvas covered</strong></td><td>The canvas drawn with and without the pictures; differing pixels counted</td><td>Exact at full size; see resolution below</td></tr>
+<tr><td><strong>overlapping</strong></td><td>Each picture drawn alone; pixels painted by two or more counted</td><td>As above</td></tr>
+<tr><td><strong>outside the canvas</strong></td><td>Each picture&#39;s corners after scale and rotation, clipped to the canvas</td><td>Exact geometry, no pixels involved</td></tr>
+<tr><td><strong>Covered</strong> on the <strong>Layout</strong> tab</td><td>Placed area minus pairwise overlap</td><td>Exact unless three pictures meet at one point, when it shows a dash</td></tr>
+<tr><td>Export file sizes</td><td>The encoded file, measured before it is offered</td><td>Exact for your browser</td></tr>
+</tbody></table></div>
+<p>Coverage and overlap are read from the same drawing the export uses, so they describe the file you download at 1× scale.</p>
+<h3 id="measurement-resolution">Measurement resolution</h3>
+<p>Canvases up to 1,440,000 pixels are measured at full size. Larger canvases (the <strong>9 : 16</strong> and <strong>2 : 3</strong> shapes) are measured on a proportionally smaller copy; the label above the canvas then reads <strong>measured at</strong> followed by the size used. The resulting percentages agree with a full-size measurement to well under a tenth of a percentage point.</p>
+<h3 id="what-counts-as-covered">What counts as covered</h3>
+<p>A pixel counts as covered when any picture changes it. Fully transparent pixels in a picture and pictures at 0% opacity change nothing and are not counted. A picture at low opacity still changes the pixels it sits on, so it counts as covering them.</p>
+<h2 id="choices-the-tool-makes-for-you">Choices the tool makes for you</h2>
+<p>These are defaults, not rules. Each is listed on the <strong>Data</strong> tab as <strong>This tool&#39;s choice</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>Default</th><th>How to change it</th></tr></thead>
+<tbody>
+<tr><td>Never enlarge a picture past 100% when arranging</td><td>On</td><td><strong>Enlarge a small picture to fill its cell</strong> on the <strong>Layout</strong> tab</td></tr>
+<tr><td>Snap step</td><td>10 px</td><td>The step is fixed; switch snapping off with <strong>Snap to a 10 px grid</strong></td></tr>
+<tr><td>JPEG quality</td><td>0.92</td><td><strong>JPEG quality</strong> on the <strong>Export</strong> tab</td></tr>
+</tbody></table></div>
+<p>The same JPEG quality setting produces slightly different files in different browsers, because each has its own encoder. The size shown on the <strong>Export</strong> tab is the size your browser actually produced.</p>
+<h2 id="limits">Limits</h2>
+<ul>
+<li><strong>Canvas sizes.</strong> Six shapes, all 1200 pixels wide. Export scale multiplies them from 0.25× to 4×.</li>
+<li><strong>Background.</strong> Transparent or white. There is no background colour control.</li>
+<li><strong>Formats.</strong> PNG and JPEG images, a JSON session and a JSON reading. There is no PDF, SVG or layered file export.</li>
+<li><strong>Colour.</strong> The canvas works in the browser&#39;s standard colour handling (sRGB). It is not a colour-managed publishing workflow, and exported files are 8 bits per channel.</li>
+<li><strong>Physical size.</strong> A canvas has pixels and no physical size. The tool does not convert to inches or millimetres, because that depends on an output density it does not ask for.</li>
+<li><strong>Session files</strong> hold the layout only. The pictures must be added again, in the same order, before a session is applied.</li>
+<li><strong>History</strong> keeps up to 60 steps, and is lost when you reload or leave the page.</li>
+<li><strong>Animated images</strong> are exported as a still.</li>
+<li><strong>Performance.</strong> There is no fixed limit on the number of pictures, but every change is measured from pixels, so many large pictures make the page slower.</li>
+</ul>
+<h2 id="what-the-tool-is-not">What the tool is not</h2>
+<p>The measurements say how much of the frame your pictures fill and where they overlap. They are not a judgement of composition or quality, and the tool gives no score.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Collage Maker glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-measured-and-how">What is measured, and how</a></li><li><a href="#choices-the-tool-makes-for-you">Choices the tool makes for you</a></li><li><a href="#limits">Limits</a></li><li><a href="#what-the-tool-is-not">What the tool is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

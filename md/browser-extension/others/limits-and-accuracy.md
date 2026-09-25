@@ -1,0 +1,63 @@
+---
+title: Browser extension — Limits and accuracy
+description: What each of the extension's checks measures, how precisely, where it can be wrong, and what it is not a substitute for.
+product: Browser extension
+updated: 2026-09-25
+---
+
+# Limits and accuracy
+
+The extension's tools are practical checks for everyday design and development. This page explains what they measure and where their answers need your judgement.
+
+## Contrast
+
+- **WCAG ratios** follow the WCAG 2.x formula for relative luminance and are exact for the colours given.
+- **Large text** is 24 px or more, or 18.66 px or more when bold, as WCAG defines it.
+- **APCA** uses a simplified version of the APCA calculation, accurate enough for design feedback but not a certified result. APCA is still a draft method for WCAG 3; its thresholds may change.
+- **The background behind text** is found by walking up through the element's parents to the first mostly solid background, combining translucent layers on the way. It cannot see backgrounds drawn by images, gradients, canvas or other elements positioned behind the text. Such text is flagged for review or marked as an estimate ("≈") rather than passed or failed.
+- **Text coloured with some modern colour functions** that browsers report in forms the check does not read is skipped. It is not reported as passing; it is simply absent from the results.
+- **The contrast report** copied from Contrast labels its thresholds "WCAG 2.1"; the numbers are the same in WCAG 2.2.
+
+## The accessibility audit
+
+- The audit runs 78 rules for WCAG 2.2 levels A and AA. It covers 32 success criteria; WCAG 2.2 has 86. Many criteria need human judgement that no automated tool can make.
+- Rule results are based on the page as it is at that moment. Content that appears later, on scroll or after interaction, is not checked until you run the audit again.
+- Each rule stops after 25 000 elements or 250 issues, and the whole audit after 30 seconds. The JSON export records whether a limit was reached.
+- The contrast scan checks up to 3 500 elements (1 800 without **Deep page audit**).
+- Embedded frames are not checked.
+- **A clean audit does not prove a page accessible.** Test with keyboards, screen readers and real users as well.
+
+## Vision simulations
+
+- The colour-vision filters use standard simulation matrices; the Picker's Vision pane uses the Machado 2009 model. They show the kind of confusion people may have, not exactly what any individual sees.
+- Strength blends between normal vision and the full simulation; it is not a clinical measure of severity.
+- The low-vision simulations (cataracts, low vision, glaucoma, AMD) are illustrative blur, dimming and vignette effects, not medical models.
+
+## Colour values
+
+- **The screen eyedropper** samples rendered pixels, after your screen's colour management, scaling and anti-aliasing. Read CSS values with the inspector or Page palette when you need the exact authored colour.
+- **Page palette** reads computed colours and colour variables written as hex or `rgb()`. It merges near-duplicates, so very similar shades may appear as one.
+- **Image** scales the picture down and merges similar colours, so small details may not appear.
+- **CMYK** is a simple conversion from RGB, not a print-profile conversion.
+- **Colour names** are the nearest CSS colour name, a convenience label rather than an exact match.
+- **Colour names set to XKCD** currently give the same names as CSS names.
+
+## Gradients
+
+The **OKLCH** interpolation option currently mixes in OKLab, the rectangular form of the same space. For most gradients the difference is small; between distant hues the path can differ from a true OKLCH gradient.
+
+## Tokens
+
+The token scan reads stylesheets the browser lets the page read. Stylesheets from other sites that do not allow it are skipped, so a site's full token set may not be visible from one page.
+
+## What the extension is not
+
+- It is not a certified accessibility conformance report.
+- It is not a colour-managed proofing tool for print.
+- It is not a medical or diagnostic tool for vision conditions.
+
+## Related pages
+
+- [Audit](../docs/check/audit.md)
+- [Contrast](../docs/check/contrast.md)
+- [Vision](../docs/check/vision.md)

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export a reading — Auric Artisan Docs</title>
+<meta name="description" content="Save or copy the full JSON reading of a profile, save its tag table as CSV, and see what each export contains.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ICC Profile Parser</a>
+<h2>ICC Profile Parser documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ICC Profile Parser</a></li>
+<li><a href="check-conformance.html">Check conformance</a></li>
+<li><a href="export-a-reading.html" aria-current="page">Export a reading</a></li>
+<li><a href="identify-and-gamut.html">Identify a profile and read its gamut</a></li>
+<li><a href="understand-icc-profiles.html">Understand ICC profiles</a></li>
+<li><a href="reference.html">ICC Profile Parser reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the ICC Profile Parser</a></li>
+<li><a href="faq.html">ICC Profile Parser FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">ICC Profile Parser</a> &rsaquo; <a href="README.html">ICC Profile Parser documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › ICC Profile Parser</p>
+<h1>Export a reading</h1>
+<p class="lede">Save or copy the full JSON reading of a profile, save its tag table as CSV, and see what each export contains.</p>
+<p>A reading is the tool&#39;s full account of a profile as a JSON file: the header with the clause behind each field, the tag table, the identification, the gamut figures and every conformance finding. Every derived figure carries the clause or the method it came from, so someone else can check it without opening this page.</p>
+<h2 id="save-the-reading">Save the reading</h2>
+<ol>
+<li>Load a profile on the <strong>Lab</strong> tab.</li>
+<li>Under <strong>Take it away</strong>, select <strong>Save the reading</strong>.</li>
+<li>Your browser downloads a file named after the profile, for example <code>srgb-color-space-profile-reading.json</code> for <code>sRGB Color Space Profile.icm</code>. The name is the file name in lower case, with the <code>.icc</code> or <code>.icm</code> ending removed and anything other than letters and digits turned into hyphens.</li>
+</ol>
+<p>If no profile is loaded, the message reads <strong>Load a profile first</strong> and nothing is saved.</p>
+<h2 id="copy-the-reading">Copy the reading</h2>
+<p>Select <strong>Copy it</strong> to place the same JSON on the clipboard, ready to paste into a ticket or a message. The message reads <strong>Copied the reading</strong>, or <strong>The clipboard refused</strong> if your browser blocks clipboard access.</p>
+<h2 id="save-the-tag-table-as-csv">Save the tag table as CSV</h2>
+<p>Select <strong>Tag table, CSV</strong> to download a spreadsheet-ready list of every tag, named like the reading but ending <code>-tags.csv</code>.</p>
+<pre class="code" data-lang="text"><code>signature,type,offset,size,aligned,in_bounds,shares_with
+desc,desc,240,108,yes,yes,
+A2B0,mft2,576,41094,yes,yes,A2B2</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>signature</code></td><td>The tag&#39;s four-character signature</td></tr>
+<tr><td><code>type</code></td><td>The four-character type at the start of its data</td></tr>
+<tr><td><code>offset</code></td><td>Where the data starts, in bytes from the start of the file</td></tr>
+<tr><td><code>size</code></td><td>The length of the data in bytes</td></tr>
+<tr><td><code>aligned</code></td><td><code>yes</code> if the offset is a multiple of 4</td></tr>
+<tr><td><code>in_bounds</code></td><td><code>yes</code> if the data lies inside the file</td></tr>
+<tr><td><code>shares_with</code></td><td>Other tags pointing at the same data, separated by spaces</td></tr>
+</tbody></table></div>
+<p>The rows in the example are illustrative.</p>
+<h2 id="clear">Clear</h2>
+<p><strong>Clear</strong> removes the loaded profile from the page and returns the <strong>Lab</strong> tab to <strong>Nothing loaded yet</strong>. The message reads <strong>Cleared</strong>.</p>
+<h2 id="preview-the-reading-on-the-export-tab">Preview the reading on the Export tab</h2>
+<p>The <strong>Export</strong> tab shows what the reading will contain before you save it.</p>
+<ul>
+<li>On the left, <strong>What to take</strong> lists the parts: the reading as JSON, the header with clauses, the tag table, and the conformance rules and findings, followed by the <strong>size</strong> of the reading in KB and its <strong>file name</strong>.</li>
+<li>On the right, <strong>What the reading says about itself</strong> explains the provenance, and <strong>The reading, as it will be written</strong> shows the JSON. Long readings are cut after 58 lines, with a count of the lines not shown; the saved file is always complete.</li>
+</ul>
+<h2 id="what-the-reading-contains">What the reading contains</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>tool</code>, <code>specification</code>, <code>generated</code></td><td>The tool name, the specification (ISO 15076-1:2010), and the date and time of the reading</td></tr>
+<tr><td><code>file</code></td><td>The file name and its size in bytes</td></tr>
+<tr><td><code>header</code></td><td>Version, device class, data space, PCS, rendering intent, PCS illuminant, creation date and profile ID, each with its clause</td></tr>
+<tr><td><code>tags</code></td><td>Every tag: signature, type, offset, size, alignment, whether it is in bounds, and any tags it shares data with</td></tr>
+<tr><td><code>identity</code></td><td>For RGB profiles with colorants: the closest space, primaries distance, curve fit, adaptation, and the full ranking</td></tr>
+<tr><td><code>gamut</code></td><td>For RGB profiles: the space compared against, stored colorants, recovered primaries, area ratios in u′v′ and xy, and coverage</td></tr>
+<tr><td><code>gamut</code> (no colorants)</td><td>For profiles walked from an A2B table: the table, grid points, a<em>b</em> hull area, lightness range and encoding</td></tr>
+<tr><td><code>conformance</code></td><td>Number of rules, number passed, whether conformant, and every finding with severity, clause, title and detail</td></tr>
+<tr><td><code>register</code>, <code>registerCounts</code></td><td>The status and source of every entry on the <strong>Data</strong> tab</td></tr>
+</tbody></table></div>
+<p>For a file that could not be read, the reading holds the file details and the error message.</p>
+<p>The <code>profileId</code> entry holds the stored ID, the recomputed ID, and <code>matches</code>: <code>true</code>, <code>false</code>, or <code>null</code> when the profile carries no ID. The <code>identity</code> entry records that the white point does not contribute to the comparison. The <code>gamut</code> and <code>conformance</code> entries each carry a short note explaining their figures.</p>
+<p>The reading uses the space currently chosen under <strong>Compare against</strong> for the gamut figures. Choose the space you want before saving.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="check-conformance.html"><span>Previous</span>Check conformance</a><a href="identify-and-gamut.html"><span>Next</span>Identify a profile and read its gamut</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#save-the-reading">Save the reading</a></li><li><a href="#copy-the-reading">Copy the reading</a></li><li><a href="#save-the-tag-table-as-csv">Save the tag table as CSV</a></li><li><a href="#clear">Clear</a></li><li><a href="#preview-the-reading-on-the-export-tab">Preview the reading on the Export tab</a></li><li><a href="#what-the-reading-contains">What the reading contains</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

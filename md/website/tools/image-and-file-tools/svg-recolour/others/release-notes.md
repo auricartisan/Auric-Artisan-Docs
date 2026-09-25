@@ -1,0 +1,28 @@
+---
+title: SVG Recolour — Release notes
+description: User-facing history of SVG Recolour.
+product: Website › Tools › Image and file tools › SVG Recolour
+updated: 2026-09-25
+---
+
+# Release notes
+
+## 7 June 2026 — rewrites planned from the original
+
+The earlier engine was replaced by the current workbench, titled **SVG Recolour**, with six tabs: **Recolour**, **Mapping**, **Check**, **Data**, **Export** and **Reference**. The site's earlier user guide carries a notice that it describes the engine replaced on this date.
+
+What changed for you:
+
+- **Two colours can trade places.** The earlier version replaced colours one after another as text, so swapping red and blue left both red. Every change is now planned from the original file and written once.
+- **Colours written as names are changed.** A `fill="red"` was listed and offered for remapping but never rewritten. It is now rewritten like any other form.
+- **Three-digit colours stay the colour you chose.** The earlier version could write a new colour as a three-digit shorthand that browsers read as a different colour. New colours are written as six digits.
+- **The count is the number of places.** The earlier count doubled or quadrupled depending on how the file was written. The count is now the number of occurrences, and the written count is what was actually changed.
+- **The APCA column works.** It printed zero for every pair; it now gives real APCA-W3 0.1.9 figures beside the WCAG 2.2 ratio.
+- **Grouping uses a real colour difference** (CIEDE2000) instead of a sum of hue, saturation and lightness.
+- **New:** the **Check** tab's closest-pair check under three colour-vision deficiencies, **Keep the source form**, active content stripped from the previews, and the JSON report.
+
+If you exported files with the earlier version, check swapped colours and colours written as names.
+
+## 25 May 2026 — earlier version
+
+The SVG Recolor user guide was published in the site's documentation library. It describes the earlier engine and is now marked as superseded.

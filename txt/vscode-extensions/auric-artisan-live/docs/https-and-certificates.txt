@@ -1,0 +1,106 @@
+==============================================================================
+SERVE OVER HTTPS
+==============================================================================
+Serve your site over HTTPS with a generated or imported certificate, and make
+browsers and phones trust it.
+Area: VS Code extensions › Auric Artisan Live   Updated: 2026-09-25
+
+Browsers only allow some features in a secure context: service workers,
+`navigator.clipboard`, the camera, microphone and geolocation. On `localhost`
+plain HTTP counts as secure, but on any other address, such as your computer's
+network address on a phone, it does not. Serving over HTTPS makes those
+features testable on a phone.
+
+Two things are separate:
+
+  - Encryption. Auric Live encrypts the connection as soon as HTTPS is on.
+  - Trust. Whether the browser accepts the certificate without a warning
+    depends on whether that device trusts it. Auric Live does not install
+    trust on your computer or phone.
+
+TURN HTTPS ON WITH A GENERATED CERTIFICATE
+==========================================
+
+  1. Run Auric Live: Toggle HTTPS, or use Toggle HTTPS in the Auric Live menu.
+  2. Confirm Enable HTTPS. The message explains that the server will use a
+     self-signed certificate and that the browser will warn once.
+  3. The server restarts on `https://`. Addresses you copy and the phone QR
+     code now use `https://`.
+  4. The first time you open the site, the browser warns that the certificate
+     is not trusted. Accept it for this address to continue.
+
+To make it permanent, set `auricLive.https.enabled` to `true` in settings or
+`"https": { "enabled": true }` in `auric.live.json`.
+
+The generated certificate is self-signed, is reused between sessions, and
+covers `localhost`, the IPv4 and IPv6 loopback addresses and your computer's
+current network addresses. Auric Live: Reveal Development Certificate shows
+the certificate file in your operating system's file manager, so you can
+install it as trusted on a device if you choose. If none has been generated
+yet, it says Enable HTTPS first.
+
+USE YOUR OWN CERTIFICATE
+========================
+
+For no browser warning at all, use a certificate your devices already trust,
+for example one made with a local certificate tool such as `mkcert`.
+
+Import it with the command
+--------------------------
+
+  1. Trust the workspace; certificate files need workspace trust.
+  2. Run Auric Live: Use HTTPS Certificate and Key, or Import an HTTPS
+     certificate in the Auric Live menu, or Configure HTTPS certificate in the
+     control panel's Settings section.
+  3. Choose HTTPS certificate (PEM) — pick a `.pem`, `.crt` or `.cer` file.
+  4. Choose matching private key — pick a `.pem` or `.key` file.
+  5. If the key is encrypted, enter its passphrase. It is kept for this
+     session only and never saved.
+  6. Auric Live checks that the key matches the certificate and that today
+     falls within the certificate's validity dates, then turns HTTPS on. The
+     message says HTTPS certificate configured until date, and reminds you
+     whether each browser or device still needs to trust it.
+
+Imported certificates apply for the session, like other panel changes.
+
+Set it permanently
+------------------
+
+    {
+      "https": {
+        "enabled": true,
+        "certPath": "certs/localhost.pem",
+        "keyPath": "certs/localhost-key.pem"
+      }
+    }
+
+The same keys exist as settings: `auricLive.https.enabled`,
+`auricLive.https.certPath` and `auricLive.https.keyPath`. Certificate paths
+need a trusted workspace.
+
+TRUST ON A PHONE
+================
+
+  1. Get the certificate file (Reveal Development Certificate for the
+     generated one, or your own).
+  2. Transfer it to the phone and install it following the phone's own
+     instructions for installing a certificate, then mark it as trusted where
+     the phone asks.
+  3. Open the site from the QR code. If the browser still warns, the
+     certificate is not trusted on that phone yet.
+
+The control panel's phone guidance reminds you that the phone must also trust
+the HTTPS certificate.
+
+LIMITS
+======
+
+  - Auric Live never adds a certificate authority to your operating system,
+    browser or phone.
+  - A certificate only matches the addresses it lists. If a device reaches
+    your computer at an address the certificate does not cover, the browser
+    warns.
+  - HTTPS here is for development. Auric Live is not a production server.
+
+When HTTPS is on, the Servers view shows a Certificate row (generated or
+provided) and the local address begins with `https://`.

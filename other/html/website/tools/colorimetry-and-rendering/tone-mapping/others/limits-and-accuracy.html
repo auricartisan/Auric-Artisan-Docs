@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tone Mapping limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Tone Mapping lab implements exactly, what is its own, and what it does not do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tone Mapping</a>
+<h2>Tone Mapping: supporting pages</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Tone Mapping shortcuts</a></li>
+<li><a href="glossary.html">Tone Mapping glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Tone Mapping limits and accuracy</a></li>
+<li><a href="privacy.html">Tone Mapping privacy</a></li>
+<li><a href="release-notes.html">Tone Mapping release notes</a></li>
+<li><a href="related.html">Related to Tone Mapping</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tone Mapping</a> &rsaquo; <a href="README.html">Tone Mapping: supporting pages</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Tone Mapping limits and accuracy</h1>
+<p class="lede">What the Tone Mapping lab implements exactly, what is its own, and what it does not do.</p>
+<h2 id="exact-to-the-source">Exact to the source</h2>
+<ul>
+<li><strong>Transfer functions</strong>: the sRGB curve, PQ (SMPTE ST 2084, constants as the standard gives them) and HLG (the OETF and its inverse; the OOTF is not applied).</li>
+<li><strong>Primaries and white points</strong> of Rec.709, Display P3, Rec.2020 and ACEScg.</li>
+<li><strong>Bradford</strong> adaptation between white points.</li>
+<li><strong>Operators</strong> with their published constants: Reinhard (2002), Hable (2010), Narkowicz (2016) and Uchimura (2017).</li>
+</ul>
+<h2 id="this-tools-own">This tool&#39;s own</h2>
+<ul>
+<li><strong>Log (soft)</strong> and the <strong>custom curve</strong>.</li>
+<li>The <strong>grade</strong> controls, the <strong>low-level operators</strong> and the <strong>gamut mapping</strong> options.</li>
+<li><strong>Working luminance</strong> is read from each working space&#39;s own matrix, so saturation and vibrance mix towards the right grey.</li>
+</ul>
+<h2 id="not-implemented">Not implemented</h2>
+<ul>
+<li><strong>ITU-R BT.2446</strong> Methods A and C. The two operators once named after them are kept as &quot;Gamma-domain scale&quot; and &quot;Scaled Reinhard&quot; and are not tone curves.</li>
+<li><strong>The Academy&#39;s ACES transforms</strong> (RRT and ODT). The Narkowicz fit approximates their look.</li>
+<li><strong>HDR image files</strong> such as OpenEXR. Uploaded images are 8-bit and carry no absolute luminance.</li>
+</ul>
+<h2 id="current-version-caveats">Current-version caveats</h2>
+<ul>
+<li>The operators work per channel, not on luminance, so strongly saturated highlights can shift hue.</li>
+<li><strong>Soft compress</strong> gives the same result as <strong>Clip</strong>.</li>
+<li><strong>Display peak</strong> and <strong>Source peak</strong> affect only the two retired operators and the false-colour display; they do not scale the working curves or the PQ output.</li>
+<li>With <strong>PQ</strong> output, display value 1.0 is encoded as 10,000 cd/m².</li>
+<li>The false-colour map multiplies source luma by the display peak, while its note uses the source peak.</li>
+<li>The link records only operator, exposure, source encoding, display peak, output encoding and target primaries.</li>
+<li>The <strong>Linear axis</strong>, <strong>Log axis</strong> and <strong>Film stops</strong> buttons set custom-curve presets rather than changing the chart&#39;s axis.</li>
+<li><strong>Install a table</strong> on the Data tab does not load files.</li>
+</ul>
+<h2 id="precision">Precision</h2>
+<ul>
+<li>The curve <code>.cube</code> has 33 entries; the pipeline <code>.cube</code> is 17 × 17 × 17. Programs interpolate between entries, so very steep curves lose some detail.</li>
+<li>Output is 8-bit per channel.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Tone Mapping glossary</a><a href="privacy.html"><span>Next</span>Tone Mapping privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#exact-to-the-source">Exact to the source</a></li><li><a href="#this-tools-own">This tool's own</a></li><li><a href="#not-implemented">Not implemented</a></li><li><a href="#current-version-caveats">Current-version caveats</a></li><li><a href="#precision">Precision</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

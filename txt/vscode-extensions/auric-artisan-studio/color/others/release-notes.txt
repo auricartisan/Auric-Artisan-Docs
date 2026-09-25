@@ -1,0 +1,48 @@
+==============================================================================
+AURIC COLOR RELEASE NOTES
+==============================================================================
+Auric Color's version history, taken from the Studio changelog.
+Area: VS Code extensions › Auric Artisan Studio › Auric Color   Updated: 2026-09-25
+
+Auric Color shares one version number and one changelog with the other Studio
+extensions. This page lists the entries that concern colour. The complete
+history is in the Studio release notes [../../others/release-notes.txt].
+
+UNRELEASED
+==========
+
+Listed under Unreleased in the changelog, as upcoming entries for the next
+numbered release:
+
+  - Every CSS Color 4 and 5 syntax is parsed, including `oklch()`, `lab()`,
+    `lch()`, `hwb()`, `color()`, `color-mix()`, relative colour, `none` and
+    `transparent`, with CSS gamut mapping for wide-gamut colours. Invalid hex
+    such as `#12345g` is rejected.
+  - CIEDE2000 colour difference matches all 34 Sharma test pairs; colour
+    naming uses it.
+  - Colour-vision simulation uses the Brettel 1997 method in linear light.
+  - The suggested fix is the nearest passing colour (`#888` on white becomes
+    `#767676`, 4.54:1).
+  - Ratios just under a threshold never display as the threshold; translucent
+    colours blend with 8-bit alpha.
+  - Writing colours back round-trips every CSS format exactly.
+  - The contrast scanner was rebuilt on a CSS rule tree: large text at 3:1,
+    blended translucency and `opacity`, dark themes graded as themselves,
+    `color-mix()`, relative colours and `light-dark()` graded, disabled
+    controls and Markdown code samples exempt.
+  - The Quick Fix never corrupts source; values it cannot rewrite safely open
+    the Contrast Studio.
+  - Contrast hovers lead with the ratio and verdict and offer Apply to
+    --token, Open in Contrast Studio and Intentional branding.
+  - The Studio's Contrast tool became the Contrast Studio.
+  - Every Studio screen, including the picker, uses the new Auric look.
+
+0.1.0 — INITIAL STUDIO RELEASE
+==============================
+
+  - Colour detection and editable swatches across CSS and 40+ programming,
+    template, data and markup languages.
+  - WCAG contrast, APCA, RGB, HSL, OKLCH, Display-P3, colour naming,
+    accessible alternatives, palette generation, shade scales and
+    colour-vision simulation.
+  - Colour editing inline, from the editor hover and in the docked picker.

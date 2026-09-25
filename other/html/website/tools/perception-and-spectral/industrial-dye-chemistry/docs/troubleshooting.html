@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting Dye in Solution — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for Dye in Solution: flags, refused spectra, component limits, the plot and links.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Industrial Dye Chemistry (Dye in Solution)</a>
+<h2>Using Dye in Solution</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Dye in Solution</a></li>
+<li><a href="build-a-bath.html">Build a bath</a></li>
+<li><a href="compare-lights.html">Compare lights</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="run-a-titration.html">Run a titration</a></li>
+<li><a href="run-a-tolerance-sweep.html">Run a tolerance sweep</a></li>
+<li><a href="use-a-measured-spectrum.html">Use a measured spectrum</a></li>
+<li><a href="reference.html">Dye in Solution reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting Dye in Solution</a></li>
+<li><a href="faq.html">Dye in Solution FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Industrial Dye Chemistry (Dye in Solution)</a> &rsaquo; <a href="README.html">Using Dye in Solution</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Industrial Dye Chemistry</p>
+<h1>Troubleshooting Dye in Solution</h1>
+<p class="lede">Symptoms, causes and fixes for Dye in Solution: flags, refused spectra, component limits, the plot and links.</p>
+<h2 id="beerlambert-holds-reads-no">&quot;Beer–Lambert holds&quot; reads &quot;no&quot;</h2>
+<p><strong>Why:</strong> the bath&#39;s absorbance is above 1 at some wavelength. Past that point real solutions depart from the law and spectrophotometers become unreliable, so the computed colour is less trustworthy.</p>
+<p><strong>What to do:</strong> lower <strong>Concentration</strong> or <strong>Path length</strong>. For the default dye at pH 3.5, the limit is reached at about 54 µM in a 1 cm path.</p>
+<h2 id="moving-ph-changes-almost-nothing">Moving pH changes almost nothing</h2>
+<p><strong>Why:</strong> the selected dye is one of the pH-stable presets (azo red, anthraquinone blue, yellow), whose two forms have nearly the same band, or the pH is far from the dye&#39;s pKa, where almost all of it is already in one form.</p>
+<p><strong>What to do:</strong> use an indicator preset, or move the pH to within about two units of the pKa (watch <strong>Base fraction</strong>).</p>
+<h2 id="isosbestic-point-is-highlighted-or-reads-weak-or-none-in-range">&quot;Isosbestic point&quot; is highlighted or reads &quot;(weak)&quot; or &quot;none in range&quot;</h2>
+<p><strong>Why:</strong> <strong>(weak)</strong> means the two forms cross so deep in their tails (below 5% of the peak) that the point cannot be seen on the plot. <strong>none in range</strong> means they do not cross between 380 and 780 nm.</p>
+<p><strong>What to do:</strong> nothing is wrong; it describes the dye. The mid-range and high-range indicators have weak crossings.</p>
+<h2 id="the-plot-does-not-change-when-i-change-concentration-or-path-length">The plot does not change when I change concentration or path length</h2>
+<p><strong>Why:</strong> the plot shows the selected dye&#39;s molar absorptivity (a property of the dye), not the bath&#39;s absorbance.</p>
+<p><strong>What to do:</strong> read <strong>Peak absorbance</strong> and <strong>λmax</strong> for the bath, or export the spectrum CSV, whose <code>absorbance</code> column is the whole bath.</p>
+<h2 id="the-plot-shows-a-different-dye-from-the-one-i-am-editing">The plot shows a different dye from the one I am editing</h2>
+<p><strong>Why:</strong> the plot follows the selected dye. Adding a dye selects the new one.</p>
+<p><strong>What to do:</strong> select the dye&#39;s button in <strong>The components</strong> list.</p>
+<h2 id="a-file-chooser-opens-when-i-click-the-spectrum">A file chooser opens when I click the spectrum</h2>
+<p><strong>Why:</strong> the plot is also a drop zone for measured spectra; clicking it opens the file chooser.</p>
+<p><strong>What to do:</strong> cancel the chooser if you did not mean to load a file.</p>
+<h2 id="my-spectrum-file-is-refused">My spectrum file is refused</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td><strong>No two-column numeric rows in that file</strong></td><td>Make sure each data line has two numbers: wavelength and molar absorptivity</td></tr>
+<tr><td><strong>Not installed: fewer than eight rows</strong></td><td>Supply at least eight rows</td></tr>
+<tr><td><strong>Not installed: covers X to Y nm; at least 420 to 680 is needed …</strong></td><td>Extend the scan to cover 420–680 nm</td></tr>
+</tbody></table></div>
+<p>The loader expects molar absorptivity. A file of raw absorbance loads but gives the wrong strength; convert it first (see <a href="use-a-measured-spectrum.html">Use a measured spectrum</a>).</p>
+<h2 id="i-cannot-add-a-fifth-dye-or-remove-the-last-one">I cannot add a fifth dye or remove the last one</h2>
+<p><strong>Why:</strong> a bath holds one to four components.</p>
+<p><strong>What to do:</strong> remove or mute a dye first; to empty the bath, use <strong>Reset the bath</strong> and build again.</p>
+<h2 id="inside-srgb-reads-no">&quot;Inside sRGB&quot; reads &quot;no&quot;</h2>
+<p><strong>Why:</strong> the bath&#39;s colour under this light is more saturated, or lighter, than sRGB can show. The swatch is the nearest colour a screen can display. Pale, strongly tinted baths such as the default often fall just outside.</p>
+<p><strong>What to do:</strong> nothing; the L*a*b* values are still exact for the model.</p>
+<h2 id="dominant-wavelength-starts-with-c-and-purity-reads">Dominant wavelength starts with &quot;c&quot; and purity reads &quot;—&quot;</h2>
+<p><strong>Why:</strong> the colour is a purple, for which no single spectral wavelength exists; the page gives the complementary wavelength instead.</p>
+<p><strong>What to do:</strong> nothing; the note under the readouts explains it.</p>
+<h2 id="the-sweep-result-looks-out-of-date">The sweep result looks out of date</h2>
+<p><strong>Why:</strong> the sweep is not rerun when you change the bath.</p>
+<p><strong>What to do:</strong> select <strong>Run the sweep</strong> again on the <strong>Method</strong> tab before exporting.</p>
+<h2 id="a-link-did-not-restore-a-muted-dye-or-my-measured-spectrum">A link did not restore a muted dye or my measured spectrum</h2>
+<p><strong>Why:</strong> links carry pH, path length, the light and each dye&#39;s preset, pKa and concentration only.</p>
+<p><strong>What to do:</strong> mute the dye and load the spectrum again after opening the link.</p>
+<h2 id="i-need-f11-a-fastness-result-or-hazard-information">I need F11, a fastness result or hazard information</h2>
+<p><strong>Why:</strong> the page does not hold fluorescent illuminant tables, cannot perform physical fastness tests, and holds no toxicological data.</p>
+<p><strong>What to do:</strong> see <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>. For hazards, read the supplier&#39;s safety data sheet.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Dye in Solution reference</a><a href="faq.html"><span>Next</span>Dye in Solution FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#beerlambert-holds-reads-no">&quot;Beer–Lambert holds&quot; reads &quot;no&quot;</a></li><li><a href="#moving-ph-changes-almost-nothing">Moving pH changes almost nothing</a></li><li><a href="#isosbestic-point-is-highlighted-or-reads-weak-or-none-in-range">&quot;Isosbestic point&quot; is highlighted or reads &quot;(weak)&quot; or &quot;none in range&quot;</a></li><li><a href="#the-plot-does-not-change-when-i-change-concentration-or-path-length">The plot does not change when I change concentration or path length</a></li><li><a href="#the-plot-shows-a-different-dye-from-the-one-i-am-editing">The plot shows a different dye from the one I am editing</a></li><li><a href="#a-file-chooser-opens-when-i-click-the-spectrum">A file chooser opens when I click the spectrum</a></li><li><a href="#my-spectrum-file-is-refused">My spectrum file is refused</a></li><li><a href="#i-cannot-add-a-fifth-dye-or-remove-the-last-one">I cannot add a fifth dye or remove the last one</a></li><li><a href="#inside-srgb-reads-no">&quot;Inside sRGB&quot; reads &quot;no&quot;</a></li><li><a href="#dominant-wavelength-starts-with-c-and-purity-reads">Dominant wavelength starts with &quot;c&quot; and purity reads &quot;—&quot;</a></li><li><a href="#the-sweep-result-looks-out-of-date">The sweep result looks out of date</a></li><li><a href="#a-link-did-not-restore-a-muted-dye-or-my-measured-spectrum">A link did not restore a muted dye or my measured spectrum</a></li><li><a href="#i-need-f11-a-fastness-result-or-hazard-information">I need F11, a fastness result or hazard information</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

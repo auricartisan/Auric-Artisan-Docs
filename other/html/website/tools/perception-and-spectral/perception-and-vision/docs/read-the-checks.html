@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read the checks — Auric Artisan Docs</title>
+<meta name="description" content="Understand the grey-ramp test, every readout under the frame, the renderer agreement check, and the Simulation and Modes tabs.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and Vision</a>
+<h2>Using Perception and Vision</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Perception and Vision</a></li>
+<li><a href="check-a-palette-and-export.html">Check a palette and export</a></li>
+<li><a href="read-the-checks.html" aria-current="page">Read the checks</a></li>
+<li><a href="simulate-a-design.html">Simulate a design or image</a></li>
+<li><a href="reference.html">Perception and Vision reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Perception and Vision</a></li>
+<li><a href="faq.html">Perception and Vision FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Perception and Vision</a> &rsaquo; <a href="README.html">Using Perception and Vision</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Perception and Vision</p>
+<h1>Read the checks</h1>
+<p class="lede">Understand the grey-ramp test, every readout under the frame, the renderer agreement check, and the Simulation and Modes tabs.</p>
+<p>The page does not ask you to trust its simulation. It shows checks you can read yourself. This guide explains each one.</p>
+<h2 id="the-grey-ramp-the-test-that-needs-no-reference">The grey ramp: the test that needs no reference</h2>
+<p>Under the frame, <strong>The grey ramp, which is the test that needs no reference</strong> shows nine grey steps from black to white, and under each step a number: how far apart the red, green and blue channels of that grey end up after the simulation, in 8-bit code values (0 to 255).</p>
+<ul>
+<li>For <strong>Colour vision</strong> the numbers must all be <code>0</code>. A dichromacy projection removes one colour axis and leaves the grey axis alone, so a person with a colour vision deficiency sees a grey as grey and white as white. A non-zero step is a defect and is shown in red. The note under the strip also shows what an earlier version of the page produced.</li>
+<li>For <strong>Scotopic</strong>, <strong>Mesopic</strong>, <strong>Lens yellowing</strong>, <strong>Cataract</strong> and <strong>Light adaptation</strong>, non-zero numbers are the effect itself: these simulations are meant to tint or shift neutrals. The note says so.</li>
+<li>For <strong>Central loss</strong> and <strong>Acuity</strong>, which depend on position rather than colour, the ramp measures only their colour part, which is none.</li>
+<li>For <strong>None</strong>, every number is zero.</li>
+</ul>
+<p>The ramp leaves out the illuminant, because relighting a scene with illuminant A tints greys on purpose; including it would hide the signal the ramp exists to show.</p>
+<h2 id="the-readouts">The readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it tells you</th></tr></thead>
+<tbody>
+<tr><td><strong>Neutral drift</strong></td><td>The largest of the nine grey-ramp numbers; highlighted when it is above zero under Colour vision</td></tr>
+<tr><td><strong>Colours merged</strong></td><td>The share of the frame&#39;s distinct colours that the simulation mapped onto a colour already taken by another, as a percentage</td></tr>
+<tr><td><strong>Out of sRGB</strong></td><td>The share of the frame whose simulated colour fell outside what sRGB can show and had to be clipped</td></tr>
+<tr><td><strong>GPU and CPU agree</strong></td><td>Whether the two renderers give the same answer on a grid of 216 colours: <strong>yes</strong> (within 2 code values), <strong>N off</strong>, <strong>n/a — spatial</strong> or <strong>not run</strong></td></tr>
+<tr><td><strong>Distinct colours left</strong></td><td>How many different colours remain after the simulation, out of how many before, for example <strong>812 of 1540</strong></td></tr>
+<tr><td><strong>Largest channel shift</strong></td><td>The biggest change in any channel of any pixel, in code values</td></tr>
+<tr><td><strong>Frame luminance, mean</strong></td><td>The average relative luminance of what is on screen, from 0 to 1</td></tr>
+<tr><td><strong>min and max</strong></td><td>The darkest and lightest relative luminance on screen</td></tr>
+</tbody></table></div>
+<p><strong>Colours merged</strong> is the figure a colour vision simulation is for: colours that were distinct and arrive at the same place are colours the simulated viewer cannot tell apart. The merged, out-of-sRGB, distinct and largest-shift figures are measured on a reduced copy of the source (64 × 48 pixels), so they describe the image&#39;s main colours rather than every pixel. They read <strong>n/a</strong> or <strong>spatial mode</strong> for <strong>Cataract</strong>, <strong>Central loss</strong> and <strong>Acuity</strong>, which change pixels according to their neighbours or position.</p>
+<p>The luminance figures are read from the frame actually on screen, including the split and any adjustments.</p>
+<p>The readouts refresh shortly after each change.</p>
+<h2 id="renderer-agreement">Renderer agreement</h2>
+<p>The colour part of every simulation is one calculation that both renderers use. After each change the page draws 216 colours (six levels each of red, green and blue) on the GPU, reads them back, and compares them with the processor&#39;s answer. A gap of up to 2 code values counts as agreement and reads <strong>yes</strong>. The check covers colour only, so it reads <strong>n/a — spatial</strong> for Cataract, Central loss and Acuity, and <strong>not run</strong> when the GPU is unavailable. The settings file records the result.</p>
+<h2 id="the-simulation-tab">The Simulation tab</h2>
+<p>This tab follows a colour through the colour vision simulation.</p>
+<p><strong>Show</strong></p>
+<ul>
+<li><strong>The chain</strong> — the steps: <strong>sRGB</strong> (8-bit, encoded) → <strong>linear</strong> (the transfer curve) → <strong>XYZ</strong> → <strong>LMS</strong> (Hunt-Pointer-Estévez) → <strong>project</strong> (the 3×3 for the type) → <strong>XYZ</strong> → <strong>linear</strong> (and back to sRGB). The two XYZ steps are marked as ones an earlier version skipped.</li>
+<li><strong>The matrices</strong> — four matrices to four decimals: <strong>sRGB → XYZ</strong>, <strong>XYZ → LMS</strong>, <strong>project</strong> for the type, and <strong>the whole chain, in linear sRGB</strong>, the single matrix both renderers use.</li>
+</ul>
+<p><strong>Against</strong></p>
+<ul>
+<li><strong>What it was</strong> (default) — the table adds <strong>On screen</strong> and <strong>In the file</strong> columns, the results an earlier version produced on screen and in its export, and <strong>Apart</strong>, the largest channel gap to the current result.</li>
+<li><strong>Hide</strong> — current results only.</li>
+</ul>
+<p><strong>Type</strong> — <strong>Protan</strong>, <strong>Deutan</strong>, <strong>Tritan</strong> or <strong>All three</strong>.</p>
+<p>The table runs seven colours (<code>#F59F00</code>, <code>#E03131</code>, <code>#C2255C</code>, <code>#1971C2</code>, <code>#2F9E44</code>, <code>#808080</code>, <code>#FFFFFF</code>) at severity 1.00 and shows each input and its result <strong>Through XYZ</strong> as swatches and hex. Under it, <strong>The tell: a neutral must stay neutral</strong> repeats the grey-ramp check for the chosen type.</p>
+<h2 id="the-modes-tab">The Modes tab</h2>
+<p>This tab draws every simulation over the same source, as small previews computed on the processor.</p>
+<ul>
+<li><strong>Show</strong>: <strong>Everything</strong> (all nine entries plus a card for the withdrawn <strong>CSF overlay</strong>) or <strong>The eight that simulate</strong>.</li>
+<li><strong>On</strong>: <strong>Test card</strong>, <strong>Grey ramp</strong> or <strong>Snellen chart</strong>.</li>
+<li><strong>Severity</strong>: <strong>0.50</strong> or <strong>1.00</strong> (default).</li>
+</ul>
+<p>Each card gives the simulation&#39;s name, its source, a short explanation and a tag (<strong>pass-through</strong>, <strong>space fixed</strong>, <strong>weights noted</strong> or <strong>runs</strong>). The previews use fixed settings: adaptation level 0.35, age 70, cataract 0.60, scotoma radius 0.18 and acuity 20/90; the colour vision type follows the Lab. The CSF overlay card explains why a contrast-sensitivity mode was withdrawn. Below the grid, <strong>Controls that were read and never used</strong> lists six controls from an earlier version and whether each was removed or connected.</p>
+<p>The previews are drawn when you first open the tab and when you press one of its buttons.</p>
+<h2 id="the-data-and-reference-tabs">The Data and Reference tabs</h2>
+<p>The <strong>Data</strong> tab lists nine entries with a status each: <strong>Verbatim</strong> (3), <strong>Computed</strong> (3), <strong>Stand-in</strong> (2) and <strong>Absent</strong> (1). Select a row, or press <code>Enter</code> or <code>Space</code> on it, to read its note and what it would take to hold it properly. The <strong>Install a table</strong> area on this tab (<strong>Drop a CSV or JSON</strong>) does not act on files in the current version.</p>
+<p>The <strong>Reference</strong> tab groups its entries as <strong>Standards</strong> (7), <strong>Formulas</strong> (11), <strong>Citations</strong> (13, the default) and <strong>Research notes</strong> (9). <strong>Filter</strong> searches all four. A ● marks a citation the current version corrected.</p>
+<p>You should now be able to tell, for any simulation, whether the page&#39;s own checks pass.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="check-a-palette-and-export.html"><span>Previous</span>Check a palette and export</a><a href="simulate-a-design.html"><span>Next</span>Simulate a design or image</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-grey-ramp-the-test-that-needs-no-reference">The grey ramp: the test that needs no reference</a></li><li><a href="#the-readouts">The readouts</a></li><li><a href="#renderer-agreement">Renderer agreement</a></li><li><a href="#the-simulation-tab">The Simulation tab</a></li><li><a href="#the-modes-tab">The Modes tab</a></li><li><a href="#the-data-and-reference-tabs">The Data and Reference tabs</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

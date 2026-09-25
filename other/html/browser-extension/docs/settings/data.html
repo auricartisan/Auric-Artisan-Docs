@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data settings — Auric Artisan Docs</title>
+<meta name="description" content="See how much the extension stores, back up and restore everything, move settings through the clipboard, and clear or reset data.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Settings</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="appearance.html">Appearance settings</a></li>
+<li><a href="data.html" aria-current="page">Data settings</a></li>
+<li><a href="pickers.html">Pickers settings</a></li>
+<li><a href="right-click.html">Right-click settings</a></li>
+<li><a href="tools.html">Tools settings</a></li>
+<li><a href="shortcuts.html">Shortcuts settings</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Settings</a></nav>
+<p class="kicker">Browser extension › Settings</p>
+<h1>Data settings</h1>
+<p class="lede">See how much the extension stores, back up and restore everything, move settings through the clipboard, and clear or reset data.</p>
+<p>Settings › <strong>Data</strong> shows what the extension keeps in your browser and lets you back it up, move it or clear it. Everything stays on your device.</p>
+<h2 id="stored-in-this-browser">Stored in this browser</h2>
+<ul>
+<li>A storage meter: &quot;N used of M (P%)&quot;. The bar turns to a warning colour at 80% of the browser&#39;s allowance for extension storage.</li>
+<li>Counts of <strong>History</strong>, <strong>Colors</strong>, <strong>Palettes</strong> and <strong>Snippets</strong>.</li>
+<li><strong>Refresh storage usage</strong> (the circular arrow) recounts.</li>
+</ul>
+<h2 id="backup">Backup</h2>
+<p>&quot;Settings, history, library and snippets in one file. Nothing leaves your device.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Download a backup</strong></td><td>Saves <code>auric-artisan-backup-YYYY-MM-DD.json</code></td></tr>
+<tr><td><strong>Restore from a file</strong></td><td>Opens a file chooser for a backup <code>.json</code>, then restores it</td></tr>
+</tbody></table></div>
+<h3 id="what-a-backup-contains">What a backup contains</h3>
+<pre class="code" data-lang="json"><code>{
+  &quot;app&quot;: &quot;Auric Artisan&quot;,
+  &quot;kind&quot;: &quot;aa-backup&quot;,
+  &quot;schema&quot;: 1,
+  &quot;exportedAt&quot;: &quot;2026-09-23T10:00:00.000Z&quot;,
+  &quot;settings&quot;: { &quot;themeMode&quot;: &quot;dark&quot;, &quot;accentColor&quot;: &quot;#d3af37&quot; },
+  &quot;history&quot;: [&quot;#D3AF37&quot;, &quot;#1A73E8&quot;],
+  &quot;libColors&quot;: [&quot;#D3AF37&quot;],
+  &quot;libPalettes&quot;: [{ &quot;id&quot;: 1790000000000, &quot;colors&quot;: [&quot;#D3AF37&quot;, &quot;#1A73E8&quot;], &quot;label&quot;: &quot;triadic&quot; }],
+  &quot;snippets&quot;: [{ &quot;type&quot;: &quot;css&quot;, &quot;title&quot;: &quot;…&quot;, &quot;code&quot;: &quot;…&quot;, &quot;url&quot;: &quot;…&quot;, &quot;host&quot;: &quot;…&quot; }]
+}</code></pre>
+<p>Snippets carry the address of the page they were saved from, so a backup contains those addresses. Keep it private if that matters.</p>
+<h3 id="what-restoring-does">What restoring does</h3>
+<ul>
+<li>Everything in the file replaces what is stored now: settings, history, library colours, palettes and snippets, each where present.</li>
+<li>Values are checked and cleaned first: unknown settings are ignored, colours must be valid hex values, and every list is capped at its limit (history 50, colours 500, palettes 100 of up to 64 colours, snippets 200 of up to 20 000 characters).</li>
+<li>A file of another kind, or a newer backup format, is refused with &quot;Restore failed — invalid file&quot;.</li>
+<li>A file holding only a settings object is accepted too.</li>
+</ul>
+<h2 id="settings-only">Settings only</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy settings</strong></td><td>Copies your settings as JSON</td></tr>
+<tr><td><strong>Paste settings</strong></td><td>Asks you to paste settings JSON, then applies it. Invalid text says &quot;Import failed&quot;.</td></tr>
+</tbody></table></div>
+<p>Use these to copy your theme, accent and switches to another browser without moving your colours.</p>
+<h2 id="start-over">Start over</h2>
+<ul>
+<li><strong>Clear history &amp; library</strong>: After you confirm, removes your colour history, library colours and palettes. Snippets stay.</li>
+<li><strong>Reset all settings</strong>: After you confirm, returns every setting to its default. History, library and snippets stay, and the tour does not reappear.</li>
+</ul>
+<p>To remove everything, uninstall the extension; see <a href="../install/update-and-remove.html">Update and remove</a>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../workflows/back-up-and-move-your-data.html">Back up and move your data</a></li>
+<li><a href="../../others/privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="appearance.html"><span>Previous</span>Appearance settings</a><a href="pickers.html"><span>Next</span>Pickers settings</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#stored-in-this-browser">Stored in this browser</a></li><li><a href="#backup">Backup</a></li><li><a href="#settings-only">Settings only</a></li><li><a href="#start-over">Start over</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

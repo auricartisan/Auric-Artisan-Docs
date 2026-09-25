@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspect and debug an element — Auric Artisan Docs</title>
+<meta name="description" content="Find why an element looks the way it does, check its accessibility, try a CSS fix live on the page, and copy the result.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Workflows</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="audit-a-page-and-fix-contrast.html">Audit a page and fix contrast</a></li>
+<li><a href="back-up-and-move-your-data.html">Back up and move your data</a></li>
+<li><a href="build-a-colour-scale-for-tailwind.html">Build a colour scale for Tailwind</a></li>
+<li><a href="check-and-fix-a-brand-colour.html">Check and fix a brand colour</a></li>
+<li><a href="extract-a-sites-design-system.html">Extract a site's design system</a></li>
+<li><a href="inspect-and-debug-an-element.html" aria-current="page">Inspect and debug an element</a></li>
+<li><a href="review-a-page-for-colour-blindness.html">Review a page for colour blindness</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Workflows</a></nav>
+<p class="kicker">Browser extension › Workflows</p>
+<h1>Inspect and debug an element</h1>
+<p class="lede">Find why an element looks the way it does, check its accessibility, try a CSS fix live on the page, and copy the result.</p>
+<p>This workflow is for the question &quot;why does this look like that, and what would fix it?&quot;, without opening the browser&#39;s developer tools.</p>
+<h2 id="1-find-the-element">1. Find the element</h2>
+<ol>
+<li>Open the extension&#39;s side panel and go to Code › <strong>Inspect</strong>.</li>
+<li>Choose <strong>Select element</strong>.</li>
+<li>Hover the page. The hover card shows the element&#39;s name, size, contrast, font and colours as you move.</li>
+<li>Use the arrow keys to move to the parent, child or siblings if the pointer lands on the wrong element.</li>
+<li>Click to pin it. The side panel shows its full snapshot.</li>
+</ol>
+<h2 id="2-read-what-applies">2. Read what applies</h2>
+<ol>
+<li>In <strong>Overview</strong>, read the box model, layout, colours, typography and effects.</li>
+<li>In <strong>Styles</strong>, type a property into <strong>Filter properties or values…</strong>, for example <code>margin</code>, and read <strong>Matched rules</strong> to see which rule sets it and which rules it overrides.</li>
+<li>In <strong>A11y</strong>, check its role, accessible name and contrast.</li>
+<li>In <strong>DOM</strong>, read its attributes and markup, and copy a locator for your tests: <strong>CSS</strong>, <strong>JavaScript</strong> or <strong>Playwright</strong>.</li>
+</ol>
+<p>On the page, the pinned card shows the same element with contrast first. If the text fails AA, the card suggests the <strong>nearest text colour that passes AA</strong>.</p>
+<h2 id="3-try-a-fix-live">3. Try a fix live</h2>
+<ol>
+<li>Open <strong>Live CSS</strong>. It starts with the element&#39;s current CSS.</li>
+<li>Change a declaration, for example the colour to the suggested passing colour, or the padding.</li>
+<li>Choose <strong>Apply to page</strong>. The change shows on the page, on this element only.</li>
+<li>Keep adjusting and applying until it looks right.</li>
+<li>Choose <strong>Reset</strong> to go back to the page&#39;s own styles at any time.</li>
+</ol>
+<h2 id="4-keep-the-fix">4. Keep the fix</h2>
+<ol>
+<li>Choose <strong>Copy CSS</strong> to copy the editor&#39;s contents, or <strong>Save snippet</strong> to keep them in Snippets.</li>
+<li>Choose <strong>Stop</strong> in the header to end inspecting and remove every preview from the page.</li>
+<li>Apply the change in your own source code.</li>
+</ol>
+<p><strong>The result:</strong> a tested CSS change, copied or saved, and the page back as it was.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../surfaces/inspector.html">Element inspector</a></li>
+<li><a href="../code/inspect.html">Inspect</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="extract-a-sites-design-system.html"><span>Previous</span>Extract a site's design system</a><a href="review-a-page-for-colour-blindness.html"><span>Next</span>Review a page for colour blindness</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#1-find-the-element">1. Find the element</a></li><li><a href="#2-read-what-applies">2. Read what applies</a></li><li><a href="#3-try-a-fix-live">3. Try a fix live</a></li><li><a href="#4-keep-the-fix">4. Keep the fix</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

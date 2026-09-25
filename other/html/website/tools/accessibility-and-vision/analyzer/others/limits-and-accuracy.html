@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Analyzer measures, how precisely, which pages it can reach, and what its results are not.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer: supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Analyzer keyboard shortcuts</a></li>
+<li><a href="glossary.html">Analyzer glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Analyzer privacy</a></li>
+<li><a href="release-notes.html">Analyzer release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer: supporting material</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Analyzer measures, how precisely, which pages it can reach, and what its results are not.</p>
+<p>The Analyzer gives you a short, specific, evidence-backed list of things that are wrong with a page. It does not certify a page, predict every visitor&#39;s experience, or replace a manual review. This page is honest about where the line is.</p>
+<h2 id="what-it-measures">What it measures</h2>
+<ul>
+<li><strong>One page per run</strong>, or up to 24 pages in a whole-site scan.</li>
+<li><strong>The page as it was at one moment.</strong> Content that loads later, changes with an A/B test, or appears only after a user action may not be seen. A page part-way through an animation measures differently from a page at rest.</li>
+<li><strong>Lab results, not visitor data.</strong> Performance figures come from one load in one browser, not from real visitors on real devices and networks.</li>
+</ul>
+<h2 id="which-pages-it-can-reach">Which pages it can reach</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Page</th><th>Can it be audited?</th></tr></thead>
+<tbody>
+<tr><td>Any page on auricartisan.com</td><td>Yes, in your browser, with or without an account</td></tr>
+<tr><td>A public page on another website</td><td>Yes, when you are signed in: it is rendered in a real browser on Auric Artisan&#39;s servers</td></tr>
+<tr><td>Another website, signed out</td><td>Only if that site allows cross-origin requests, or with <strong>Public proxy</strong> turned on, and then only from its HTML</td></tr>
+<tr><td>A page behind a login, a bot challenge or a strict firewall</td><td>No. The scanner is refused, or receives a challenge page and declines to score it.</td></tr>
+<tr><td><code>localhost</code>, private network and link-local addresses</td><td>No. The scanner never visits private addresses.</td></tr>
+<tr><td>Anything other than <code>http</code> and <code>https</code></td><td>No</td></tr>
+</tbody></table></div>
+<p>When a page is read from its HTML rather than rendered, its scripts are removed first (apart from JSON-LD). Anything built by JavaScript is then missing.</p>
+<h2 id="accessibility">Accessibility</h2>
+<ul>
+<li><strong>Automated coverage has a ceiling.</strong> Of the 60 WCAG criteria the engine lists, 11 can never be checked automatically and always show as untested: Meaningful Sequence, Sensory Characteristics, Images of Text, No Keyboard Trap, Three Flashes, Pointer Cancellation, Motion Actuation, On Focus, Consistent Navigation, Consistent Identification and Redundant Entry.</li>
+<li><strong>A pass is not a good experience.</strong> A link called &quot;click here&quot; has an accessible name; a heading order can be valid and meaningless.</li>
+<li><strong>Needs review is not a pass.</strong> Text over images, gradients and video, and anything else the engine could not decide, is left for a person.</li>
+<li><strong>Level AAA and best-practice rules</strong> run and are reported, but do not count in the accessibility score.</li>
+<li><strong>Hidden content is not judged</strong>, apart from rules that exist to check hidden content. A closed dialog or collapsed menu is checked only when it is open.</li>
+<li><strong>Web components</strong>: content inside open shadow roots is checked; content inside closed shadow roots cannot be seen.</li>
+<li><strong>Rules that need layout</strong> (contrast, reflow, target size, focus order) report needs review when computed styles or geometry are not available, and a note under <strong>Coverage limits for this run</strong> says so.</li>
+<li><strong>The screen-reader transcript</strong> is a model of what a screen reader announces, spoken with your browser&#39;s voice. It is not a real screen reader.</li>
+<li><strong>Suggested fixes</strong> marked medium or review confidence need a person to check the wording.</li>
+</ul>
+<h2 id="colour-and-contrast">Colour and contrast</h2>
+<ul>
+<li>Contrast is measured from the colours the page actually paints, with semi-transparent colours blended over what is behind them.</li>
+<li>Text over gradients, photographs or video has no single background colour and is reported as needs review, not given a number.</li>
+<li>The <strong>Vision</strong> view samples up to 400 text elements.</li>
+<li>The <strong>Simulation</strong> filters and the colour-vision tables are approximations of how a typical person with each condition sees colour. Real vision varies from person to person.</li>
+<li>APCA Lc is shown for reference and never affects a result.</li>
+<li>Suggested colours keep the hue and change only lightness. They meet the target ratio but may not suit your brand; any colour that meets the ratio is acceptable.</li>
+</ul>
+<h2 id="scores">Scores</h2>
+<ul>
+<li>The overall score is a weighted summary of up to ten categories. Categories with nothing to measure, or whose check was switched off, are excluded rather than counted as zero or 100.</li>
+<li>Scores are designed to be hard to max out. A page with a couple of serious issues lands in the seventies or below.</li>
+<li>A score can fall after you improve a page, when a fix exposes content that was never checked before.</li>
+<li>The <strong>Security</strong> score checks whether protective headers are present, not how good they are. Scoring is softened for local development servers.</li>
+<li><strong>Reliability</strong> reflects only the links that were checked. Read the count beside it.</li>
+<li>Benchmark, percentile and competitor-archetype figures in <strong>Insights</strong> and <strong>SEO</strong> are fixed reference values for orientation, not a live comparison with other sites.</li>
+</ul>
+<h2 id="performance">Performance</h2>
+<ul>
+<li>Core Web Vitals are measured when possible and estimated otherwise; the card says which. Estimates depend on the <strong>Network Simulation</strong> profile.</li>
+<li>The waterfall is an estimated load order, not a recorded network trace.</li>
+<li>Performance budgets are fixed general-purpose limits; your own budgets may differ.</li>
+</ul>
+<h2 id="site-scans">Site scans</h2>
+<ul>
+<li>Up to 24 pages per run, found from same-site links and the sitemap.</li>
+<li>In the current version, the <strong>Robots</strong>, <strong>Subdomains</strong> and <strong>Workers</strong> settings do not change a site scan on the live site.</li>
+</ul>
+<h2 id="what-the-analyzer-is-not">What the Analyzer is not</h2>
+<ul>
+<li>It is not a legal conformance certificate. Regulations reference WCAG conformance, which needs manual review too.</li>
+<li>It is not a replacement for testing with real assistive technology and real users.</li>
+<li>It is not a security scanner. It reads headers and links; it does not probe for vulnerabilities.</li>
+<li>It is not real-user monitoring.</li>
+</ul>
+<p>Use the Analyzer to clear the automatable problems first, so that a manual review can spend its time on what only a person can judge. The <a href="../../accessibility-checklist/README.html">Accessibility Checklist</a> covers the manual side.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Analyzer glossary</a><a href="privacy.html"><span>Next</span>Analyzer privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-it-measures">What it measures</a></li><li><a href="#which-pages-it-can-reach">Which pages it can reach</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#colour-and-contrast">Colour and contrast</a></li><li><a href="#scores">Scores</a></li><li><a href="#performance">Performance</a></li><li><a href="#site-scans">Site scans</a></li><li><a href="#what-the-analyzer-is-not">What the Analyzer is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

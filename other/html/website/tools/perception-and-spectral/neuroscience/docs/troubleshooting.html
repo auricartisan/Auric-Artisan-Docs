@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the Visual Pathway — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for flat maps, warnings, refused cone tables, links and copying in the Visual Pathway.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Neuroscience (Visual Pathway)</a>
+<h2>Using the Visual Pathway</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Visual Pathway</a></li>
+<li><a href="cones-and-opponent-channels.html">Cones, opponent channels and the cone table</a></li>
+<li><a href="explore-the-stages.html">Explore the five stages</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="reference.html">Visual Pathway reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the Visual Pathway</a></li>
+<li><a href="faq.html">Visual Pathway FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Neuroscience (Visual Pathway)</a> &rsaquo; <a href="README.html">Using the Visual Pathway</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Neuroscience</p>
+<h1>Troubleshooting the Visual Pathway</h1>
+<p class="lede">Symptoms, causes and fixes for flat maps, warnings, refused cone tables, links and copying in the Visual Pathway.</p>
+<h2 id="a-map-is-completely-black-and-its-name-ends-in-stage-off">A map is completely black and its name ends in &quot;— stage off&quot;</h2>
+<p><strong>Why:</strong> the stage that produces that map is switched off under <strong>Stages</strong>, or it is <strong>V2</strong> and <strong>V1</strong> is off.</p>
+<p><strong>What to do:</strong> tick the stage&#39;s checkbox. For <strong>V2, boundary signal</strong>, tick both <strong>V1 — Gabor bank</strong> and <strong>V2 — boundary signal</strong>.</p>
+<h2 id="the-scale-bar-says-flat-this-stage-found-no-variation-in-this-stimulus">The scale bar says &quot;flat — this stage found no variation in this stimulus&quot;</h2>
+<p><strong>Why:</strong> the stage gave the same response everywhere. This is a real result. Common cases: the off-centre retinal map with a chromatic grating (the retinal stage reads luminance, and a surround weight below 1 adds a positive constant), the chromatic LGN maps with a luminance grating (a grey pattern has no colour to oppose), or any map at <strong>Contrast</strong> 0%.</p>
+<p><strong>What to do:</strong> change the <strong>Carrier</strong>, raise <strong>Contrast</strong>, or set <strong>Surround weight</strong> closer to 1 for the off-centre map.</p>
+<h2 id="a-warning-says-above-the-pixel-grids-nyquist-limit">A warning says &quot;Above the pixel grid&#39;s Nyquist limit&quot;</h2>
+<p><strong>Why:</strong> at your viewing distance and pixel pitch, the screen cannot draw the spatial frequency you asked for. The pattern you see is an alias, a coarser false pattern.</p>
+<p><strong>What to do:</strong> lower <strong>Spatial frequency</strong> below the <strong>Nyquist limit of the grid</strong> readout. Also check that <strong>Viewing distance</strong> and <strong>Pixel pitch</strong> match your real setup. The limit rises when you sit further away and when the pixels are smaller; the warning&#39;s own text suggests moving closer, but moving closer lowers the limit.</p>
+<h2 id="a-warning-says-the-contrast-you-asked-for-does-not-fit-in-srgb">A warning says &quot;The contrast you asked for does not fit in sRGB&quot;</h2>
+<p><strong>Why:</strong> the colour opposite your base colour, at the swing you asked for, is outside what an sRGB screen can show. The page reduced the swing so both phases fit, rather than clipping one of them.</p>
+<p><strong>What to do:</strong> read <strong>Contrast achieved</strong> for the value actually used. To reach a higher contrast, choose a less saturated base colour.</p>
+<h2 id="moving-the-pupil-slider-changes-nothing">Moving the Pupil slider changes nothing</h2>
+<p><strong>Why:</strong> in the current version the pupil size is not used by any map or readout. The tool&#39;s sensitivity curve peaks at 4 c/deg whatever the pupil.</p>
+<p><strong>What to do:</strong> nothing; the <strong>Pipeline</strong> tab&#39;s <strong>The sensitivity curve</strong> view shows the reason.</p>
+<h2 id="l-m-peak-gap-reads-0-nm-and-is-highlighted">L − M peak gap reads 0 nm and is highlighted</h2>
+<p><strong>Why:</strong> the built-in cone table is the tool&#39;s own and puts the L and M peaks together at 590 nm. It affects only the cone figure.</p>
+<p><strong>What to do:</strong> install a published table on the <strong>Data</strong> tab; see <a href="cones-and-opponent-channels.html">Cones, opponent channels and the cone table</a>.</p>
+<h2 id="my-cone-table-is-refused">My cone table is refused</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td><strong>Not installed: too few rows</strong></td><td>Supply at least eight rows</td></tr>
+<tr><td><strong>Not installed: row N has fewer than 4 columns</strong></td><td>Every row needs wavelength, L, M and S</td></tr>
+<tr><td><strong>Not installed: row N is not numeric</strong></td><td>Remove text from data rows (in CSV, a header line that starts with a letter is skipped automatically)</td></tr>
+<tr><td><strong>Not installed: wavelengths must increase</strong></td><td>Sort the rows by wavelength, lowest first, with no repeats</td></tr>
+<tr><td><strong>Not installed: L and M peak N nm apart, which is not a cone table</strong></td><td>Check the column order is wavelength, L, M, S</td></tr>
+</tbody></table></div>
+<p>A JSON file must be an array of rows or an object with a <code>rows</code> array. A JSON file in any other shape is read as CSV text and usually fails.</p>
+<h2 id="my-installed-cone-table-disappeared">My installed cone table disappeared</h2>
+<p><strong>Why:</strong> an installed table lasts only for the current page visit.</p>
+<p><strong>What to do:</strong> install it again after reloading. Links do not carry it.</p>
+<h2 id="the-cells-previews-do-not-match-my-new-settings">The Cells previews do not match my new settings</h2>
+<p><strong>Why:</strong> the previews are drawn when you first open the <strong>Cells</strong> tab and when you press one of its buttons, not every time a Lab control moves.</p>
+<p><strong>What to do:</strong> press any <strong>Show</strong> or <strong>Contrast</strong> button on the Cells tab.</p>
+<h2 id="nothing-is-copied-or-the-page-says-copy-blocked">Nothing is copied, or the page says &quot;Copy blocked&quot;</h2>
+<p><strong>Why:</strong> the browser refused clipboard access, which can happen in private windows, in embedded views or when the page is not focused.</p>
+<p><strong>What to do:</strong> click inside the page and try again, or use <strong>Download the CSV</strong> instead of <strong>Copy to clipboard</strong>.</p>
+<h2 id="a-link-i-opened-does-not-restore-the-stage-checkboxes-or-pupil">A link I opened does not restore the stage checkboxes or pupil</h2>
+<p><strong>Why:</strong> links carry the stimulus, geometry, stage settings, colour vision, colourmap and map, but not the stage checkboxes, the pupil or the scale-bar setting.</p>
+<p><strong>What to do:</strong> set those by hand after opening the link. See <a href="export-and-share.html">Export and share</a> for the full list.</p>
+<h2 id="sliders-feel-slow-on-an-older-device">Sliders feel slow on an older device</h2>
+<p><strong>Why:</strong> each change recomputes all five stages over a 256 × 256 frame.</p>
+<p><strong>What to do:</strong> switch off stages you are not looking at, or lower <strong>Orientations</strong> and <strong>Kernel size</strong>, which set most of the V1 work.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Visual Pathway reference</a><a href="faq.html"><span>Next</span>Visual Pathway FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#a-map-is-completely-black-and-its-name-ends-in-stage-off">A map is completely black and its name ends in &quot;— stage off&quot;</a></li><li><a href="#the-scale-bar-says-flat-this-stage-found-no-variation-in-this-stimulus">The scale bar says &quot;flat — this stage found no variation in this stimulus&quot;</a></li><li><a href="#a-warning-says-above-the-pixel-grids-nyquist-limit">A warning says &quot;Above the pixel grid's Nyquist limit&quot;</a></li><li><a href="#a-warning-says-the-contrast-you-asked-for-does-not-fit-in-srgb">A warning says &quot;The contrast you asked for does not fit in sRGB&quot;</a></li><li><a href="#moving-the-pupil-slider-changes-nothing">Moving the Pupil slider changes nothing</a></li><li><a href="#l-m-peak-gap-reads-0-nm-and-is-highlighted">L − M peak gap reads 0 nm and is highlighted</a></li><li><a href="#my-cone-table-is-refused">My cone table is refused</a></li><li><a href="#my-installed-cone-table-disappeared">My installed cone table disappeared</a></li><li><a href="#the-cells-previews-do-not-match-my-new-settings">The Cells previews do not match my new settings</a></li><li><a href="#nothing-is-copied-or-the-page-says-copy-blocked">Nothing is copied, or the page says &quot;Copy blocked&quot;</a></li><li><a href="#a-link-i-opened-does-not-restore-the-stage-checkboxes-or-pupil">A link I opened does not restore the stage checkboxes or pupil</a></li><li><a href="#sliders-feel-slow-on-an-older-device">Sliders feel slow on an older device</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

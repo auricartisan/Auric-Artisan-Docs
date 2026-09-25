@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suppression and branding — Auric Artisan Docs</title>
+<meta name="description" content="Silence a false positive with auric-disable comments, or classify a deliberate brand colour with auric-brand comments, by hand or with quick fixes.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html" aria-current="page">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Suppression and branding</h1>
+<p class="lede">Silence a false positive with auric-disable comments, or classify a deliberate brand colour with auric-brand comments, by hand or with quick fixes.</p>
+<p>Two families of comment directives let you tell the Studio about decisions you have made:</p>
+<ul>
+<li><strong>Suppression</strong> (<code>auric-disable-…</code>) removes a WCAG or code-health finding from the results and the score. Use it for false positives or rules you have consciously decided not to follow in one place.</li>
+<li><strong>Branding</strong> (<code>auric-brand-…</code>) re-classifies a colour finding as intentional brand identity. The finding stays visible in its own <strong>Branding</strong> group but leaves the score. Use it for deliberate brand colours, such as a logo lock-up or a decorative accent.</li>
+</ul>
+<p>A <strong>directive</strong> is a special comment the Studio reads, written in the comment syntax of the file&#39;s language.</p>
+<h2 id="suppression-directives">Suppression directives</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Directive</th><th>Silences</th></tr></thead>
+<tbody>
+<tr><td><code>auric-disable-line</code></td><td>Findings on the same line</td></tr>
+<tr><td><code>auric-disable-next-line</code></td><td>Findings on the following line</td></tr>
+<tr><td><code>auric-disable-file</code></td><td>Findings anywhere in the file</td></tr>
+</tbody></table></div>
+<p>Each directive can be followed by a <strong>scope</strong>: one or more tokens separated by commas or spaces, optionally after a colon. Without a scope, a directive silences every WCAG and code-health finding it covers.</p>
+<h3 id="scopes-for-wcag-findings">Scopes for WCAG findings</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Token</th><th>Example</th><th>Silences</th></tr></thead>
+<tbody>
+<tr><td>A rule ID</td><td><code>auric-disable-line img-alt</code></td><td>That rule only</td></tr>
+<tr><td>A success criterion</td><td><code>auric-disable-line 1.1.1</code></td><td>Every rule mapped to that criterion</td></tr>
+<tr><td><code>a11y</code></td><td><code>auric-disable-file a11y</code></td><td>All WCAG findings</td></tr>
+<tr><td><code>all</code></td><td><code>auric-disable-line all</code></td><td>All WCAG and code-health findings</td></tr>
+</tbody></table></div>
+<h3 id="scopes-for-code-health-findings">Scopes for code-health findings</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Token</th><th>Example</th><th>Silences</th></tr></thead>
+<tbody>
+<tr><td>A category</td><td><code>auric-disable-line secret,security</code></td><td>Findings in those categories: <code>secret</code>, <code>security</code>, <code>risk</code>, <code>debug</code>, <code>todo</code>, <code>conflict</code>, <code>size</code></td></tr>
+<tr><td>A rule ID</td><td><code>auric-disable-line ch-risk-eval</code></td><td>That signature only (the ID shown on the diagnostic)</td></tr>
+<tr><td><code>codehealth</code></td><td><code>auric-disable-file codehealth</code></td><td>All code-health findings</td></tr>
+<tr><td><code>all</code></td><td><code>auric-disable-line all</code></td><td>All WCAG and code-health findings</td></tr>
+</tbody></table></div>
+<p>Whatever rule ID or category the editor shows on a finding can be pasted into a directive and will work.</p>
+<h3 id="examples">Examples</h3>
+<pre class="code" data-lang="html"><code>&lt;!-- auric-disable-next-line img-alt --&gt;
+&lt;img src=&quot;spacer.gif&quot;&gt;</code></pre>
+<pre class="code" data-lang="css"><code>/* auric-disable-file a11y */</code></pre>
+<pre class="code" data-lang="python"><code>cache_key = hashlib.md5(data).hexdigest()  # auric-disable-line security</code></pre>
+<pre class="code" data-lang="js"><code>// auric-disable-next-line ch-risk-eval
+const result = eval(trustedTemplate);</code></pre>
+<p>In JSX markup, put the directive in braces so it is not rendered as text: <code>{/* auric-disable-next-line img-alt */}</code>.</p>
+<h3 id="rules-the-studio-applies">Rules the Studio applies</h3>
+<ul>
+<li><strong>Code-health directives must be inside a real comment.</strong> A directive that is only mentioned in prose or a string literal never silences anything. In Markdown, directives shown inside fenced code blocks are treated as examples and ignored.</li>
+<li><strong>Suppression does not apply to contrast.</strong> Contrast, APCA and colour-vision findings are not silenced by <code>auric-disable-…</code> directives. To take a deliberate colour pair out of the score, mark it as branding (below), or change the colours.</li>
+<li><strong>Suppressed findings disappear</strong> from the Problems panel, the Project Issues view, the Studio, reports, <code>health.json</code>, SARIF and the score.</li>
+</ul>
+<h2 id="suppress-with-a-quick-fix-or-hover">Suppress with a quick fix or hover</h2>
+<p>You rarely need to type a directive. The Studio writes one for you in the right comment syntax:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>Action</th><th>What it inserts</th></tr></thead>
+<tbody>
+<tr><td>Quick fix on a WCAG finding (<code>Ctrl</code> + <code>.</code>)</td><td><strong>Ignore this WCAG 1.1.1 finding here</strong></td><td><code>auric-disable-next-line 1.1.1</code> on the line above, with the line&#39;s indentation</td></tr>
+<tr><td>Quick fix on a WCAG finding</td><td><strong>Ignore all accessibility findings in this file</strong></td><td><code>auric-disable-file a11y</code> at the top of the file</td></tr>
+<tr><td>Quick fix on a code-health finding</td><td><strong>Ignore this secret finding here</strong> (the category varies)</td><td><code>auric-disable-next-line secret</code> on the line above</td></tr>
+<tr><td>Quick fix on a code-health finding</td><td><strong>Ignore all secret findings in this file</strong></td><td><code>auric-disable-file secret</code> at the top of the file</td></tr>
+<tr><td><strong>Ignore here</strong> in an issue hover</td><td></td><td><code>auric-disable-next-line</code> followed by the rule ID, on the line above</td></tr>
+</tbody></table></div>
+<p>After <strong>Ignore here</strong>, the status bar confirms, for example <code>Auric Artisan: img-alt ignored on this line</code>.</p>
+<h3 id="comment-syntax-used">Comment syntax used</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Languages</th><th>Comment written</th></tr></thead>
+<tbody>
+<tr><td>JavaScript, TypeScript, JSX, TSX, JSON, Go, Rust, C, C++, C#, Java, Swift, Kotlin, Dart, PHP, Scala, Groovy, SCSS, Less</td><td><code>// …</code></td></tr>
+<tr><td>Python, Ruby, YAML, TOML, shell, Perl, R, Elixir, Dockerfile, Makefile</td><td><code># …</code></td></tr>
+<tr><td>SQL, Lua, Haskell</td><td><code>-- …</code></td></tr>
+<tr><td>HTML, XML, Vue, Svelte, Astro, Markdown, Handlebars</td><td><code>&lt;!-- … --&gt;</code></td></tr>
+<tr><td>CSS, PostCSS, Sass, Stylus, and any other language</td><td><code>/* … */</code></td></tr>
+</tbody></table></div>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Strict JSON does not allow comments. A directive inserted into a <code>.json</code> file makes it invalid for most JSON parsers. For JSON files, prefer <code>.auricignore</code> or leave the finding and review it.</p>
+</blockquote>
+<h2 id="branding-directives">Branding directives</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Directive</th><th>Covers</th></tr></thead>
+<tbody>
+<tr><td><code>auric-brand-line</code></td><td>Colour findings on the same line</td></tr>
+<tr><td><code>auric-brand-next-line</code></td><td>Colour findings on the following line</td></tr>
+<tr><td><code>auric-brand-file</code></td><td>Colour findings anywhere in the file</td></tr>
+</tbody></table></div>
+<p>Optional scope tokens narrow the claim: <code>contrast</code>, <code>apca</code> or <code>cvd</code> (colour-vision risk). <code>color</code> or <code>all</code>, or no scope at all, cover every colour kind. Example: <code>/* auric-brand-line: contrast,cvd */</code>.</p>
+<pre class="code" data-lang="css"><code>.logo-mark { color: #d3af37; background: #fff; }  /* auric-brand-line */
+/* auric-brand-next-line */
+.hero { color: var(--brand-gold); background: var(--brand-ink); }</code></pre>
+<h3 id="what-branding-changes">What branding changes</h3>
+<ul>
+<li>In the editor, the finding becomes an information-level diagnostic starting <strong>Branding —</strong>, and its hover is titled <strong>Intentional branding</strong>.</li>
+<li>In the Project Issues view it moves to a <strong>Branding</strong> group marked <strong>excluded from score</strong>, with a heart icon. In the Studio&#39;s Findings tool it moves to a <strong>Branding</strong> section.</li>
+<li>It is left out of the contrast sub-score, the failing-pair lists and the colour-vision penalty.</li>
+<li>In <code>health.json</code> and SARIF it is still recorded, as an informational issue from the source <code>branding</code>, marked as excluded from the score. The exclusion is always visible, so a reviewer can audit every excluded pair.</li>
+</ul>
+<p>Every branding explanation carries the same reminder: <strong>Classified as intentional branding — shown separately and excluded from the accessibility score. Brand colors still need a readable pairing wherever they carry text or UI meaning.</strong></p>
+<h3 id="branding-is-not-a-loophole">Branding is not a loophole</h3>
+<p>Only colour findings (contrast, APCA and colour-vision risk) can be classified as branding. Structural WCAG findings, such as a logo image without alt text or an unlabelled button, keep counting on a marked line. Their message adds: <strong>(A branding mark covers this line, but structural accessibility issues are not brandable — the finding still counts.)</strong> The Findings tool reports how many such marks were ignored. Code-health findings, including secrets, are never brandable.</p>
+<h3 id="mark-a-line-with-a-command">Mark a line with a command</h3>
+<ol>
+<li>Put the cursor on the line (or one cursor on each of several lines).</li>
+<li>Run <strong>Auric Artisan: Mark Line as Intentional Branding (Toggle)</strong> from the Command Palette or the editor&#39;s right-click menu. It is on the menu in HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript, TypeScript, JSX, TSX, CSS, SCSS, Less, Sass, PostCSS, Stylus and Markdown files.</li>
+<li>The command adds <code>auric-brand-line</code> at the end of the line in a comment, and the status bar says <strong>Auric Artisan: line marked as intentional branding — color findings here move to the Branding group.</strong></li>
+<li>Run it again on the same line to remove the mark: <strong>Auric Artisan: branding mark removed — findings here are graded again.</strong></li>
+</ol>
+<p>You can also select <strong>Intentional branding</strong> in a contrast hover, or <strong>Mark as intentional branding</strong> in the Contrast Studio.</p>
+<p>The command writes <code># …</code> in hash-comment languages, <code>&lt;!-- … --&gt;</code> in markup languages, <code>/* … */</code> in CSS dialects, and <code>// …</code> everywhere else. Inside a <code>&lt;style&gt;</code> block of an HTML, Vue or Svelte file you can change the comment to <code>/* auric-brand-line */</code>; it works the same.</p>
+<h3 id="the-brandingenabled-setting">The branding.enabled setting</h3>
+<p><code>auricColor.branding.enabled</code> and <code>auricA11y.branding.enabled</code> (both on by default) control whether the editor honours branding marks. When off, marked pairs are shown as ordinary contrast findings in the editor. Project scans and reports always honour the marks.</p>
+<h3 id="branding-colours-in-your-theme">Branding colours in your theme</h3>
+<p>The Branding group&#39;s colours can be changed with VS Code&#39;s <code>workbench.colorCustomizations</code>. See <a href="reference.html#theme-colours">Theme colours</a>.</p>
+<h2 id="suppression-or-branding">Suppression or branding?</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Situation</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td>The checker is wrong about this code</td><td>Suppression, scoped to the rule ID</td></tr>
+<tr><td>You deliberately accept a rule&#39;s risk here, after review</td><td>Suppression, scoped to the rule ID, with a comment explaining why</td></tr>
+<tr><td>A deliberate brand colour pair that fails contrast</td><td>Branding</td></tr>
+<tr><td>A structural failure on a brand element</td><td>Fix it; neither directive can hide it from the score as branding</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a>, which includes the accessible brand governance rulebook and policies such as <strong>Brand classification cannot suppress structural findings</strong>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="studio.html"><span>Previous</span>The Studio</a><a href="workstation.html"><span>Next</span>The Workstation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#suppression-directives">Suppression directives</a></li><li><a href="#suppress-with-a-quick-fix-or-hover">Suppress with a quick fix or hover</a></li><li><a href="#branding-directives">Branding directives</a></li><li><a href="#suppression-or-branding">Suppression or branding?</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

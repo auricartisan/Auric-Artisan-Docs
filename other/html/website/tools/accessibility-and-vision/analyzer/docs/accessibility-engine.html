@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The accessibility engine (A11y+) — Auric Artisan Docs</title>
+<meta name="description" content="Read and act on every view of the A11y+ panel, from the grade and findings to the accessibility tree, screen-reader transcript, conformance table and exports.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html" aria-current="page">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>The accessibility engine (A11y+)</h1>
+<p class="lede">Read and act on every view of the A11y+ panel, from the grade and findings to the accessibility tree, screen-reader transcript, conformance table and exports.</p>
+<p>The <strong>A11y+</strong> panel holds the Analyzer&#39;s accessibility engine: 126 rules checked against the page as your browser actually renders it, plus widget-pattern checks, an accessibility tree, a screen-reader transcript, a colour-vision table, a focus and target map, a WCAG 2.2 conformance table and five exports. It is available in Advanced mode, and runs when the <strong>Accessibility</strong> check is on.</p>
+<p>In Simple mode the same engine still runs and feeds the <strong>Accessibility</strong> category of the overall score; you just do not see its panel.</p>
+<h2 id="how-the-panel-is-organised">How the panel is organised</h2>
+<p>A row of four groups sits at the top of the panel. Selecting a group opens its first view; groups with more than one view show a second row of view buttons.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Views</th></tr></thead>
+<tbody>
+<tr><td><strong>Overview</strong></td><td>Overview</td></tr>
+<tr><td><strong>Findings</strong> (with the issue count)</td><td><strong>Issues</strong>, <strong>Fixes</strong></td></tr>
+<tr><td><strong>Inspect</strong></td><td><strong>Widgets</strong>, <strong>Annotations</strong>, <strong>A11y tree</strong>, <strong>Screen reader</strong>, <strong>Vision</strong>, <strong>Focus &amp; targets</strong></td></tr>
+<tr><td><strong>Report</strong></td><td><strong>Conformance</strong>, <strong>Export</strong></td></tr>
+</tbody></table></div>
+<p>Most blocks inside a view are folding cards: select the card&#39;s title to open or close it.</p>
+<h2 id="key-terms">Key terms</h2>
+<ul>
+<li><strong>Rule</strong> — one automated check, such as &quot;Buttons must have discernible text&quot;. Each rule applies to some elements and passes, fails, or needs review on each.</li>
+<li><strong>Impact</strong> — how badly a failure affects someone using the page. The engine uses four levels, each with a one-line meaning in the panel:</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Impact</th><th>Meaning shown</th></tr></thead>
+<tbody>
+<tr><td>critical</td><td>Blocks people from using the page at all.</td></tr>
+<tr><td>serious</td><td>Makes a task very difficult or unreliable.</td></tr>
+<tr><td>moderate</td><td>Causes friction and confusion.</td></tr>
+<tr><td>minor</td><td>Polish — worth fixing, rarely blocking.</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Needs review</strong> — the rule ran and could not decide. Text over a photograph or a gradient is the usual cause, because there is no single background colour to measure. A person has to look.</li>
+<li><strong>Not tested</strong> — no rule can judge that WCAG criterion automatically. It is never counted as passing.</li>
+<li><strong>Accessible name</strong> — the name assistive technology announces for an element, worked out from its text, its label, <code>aria-label</code>, <code>aria-labelledby</code> or <code>alt</code>.</li>
+<li><strong>Accessibility tree</strong> — the simplified version of the page that browsers give to screen readers and other assistive technology.</li>
+</ul>
+<h2 id="overview-view">Overview view</h2>
+<p>The top of the view is the engine&#39;s headline:</p>
+<ul>
+<li><strong>Accessibility</strong> with a score from 0 to 100 and a grade.</li>
+<li>A conformance line, for example &quot;Does not conform to WCAG 2.2 AA.&quot; followed by how many criteria need manual review before a conformance claim can be made.</li>
+<li>A bar and key: how many rules <strong>passed</strong>, <strong>failed</strong> and <strong>need review</strong>, out of the rules that ran.</li>
+</ul>
+<h3 id="the-engines-grade-scale">The engine&#39;s grade scale</h3>
+<p>This scale is stricter than the one used for the overall score:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Grade</th><th>Label</th><th>Score</th></tr></thead>
+<tbody>
+<tr><td>A+</td><td>Excellent</td><td>95–100</td></tr>
+<tr><td>A</td><td>Strong</td><td>90–94</td></tr>
+<tr><td>B</td><td>Good</td><td>80–89</td></tr>
+<tr><td>C</td><td>Needs work</td><td>70–79</td></tr>
+<tr><td>D</td><td>Poor</td><td>55–69</td></tr>
+<tr><td>F</td><td>Critical</td><td>0–54</td></tr>
+</tbody></table></div>
+<h3 id="how-the-engine-scores">How the engine scores</h3>
+<p>Every failing rule adds a penalty. The penalty is larger for higher impact (critical counts ten times as much as minor) and grows with the number of elements affected, but only slowly, so one component repeated forty times does not swamp an otherwise sound page. Rules that need review add a much smaller penalty. The score then falls smoothly as the penalty grows: it never jumps to zero, and a single critical failure is always visible.</p>
+<p>Two kinds of rule run and are reported but are left out of the score, because no Level AA claim depends on them: <strong>Level AAA</strong> rules and <strong>best-practice</strong> rules (those with no WCAG criterion).</p>
+<h3 id="the-cards">The cards</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Severity summary</td><td>&quot;N issues on N failing rules&quot;, with a button and a count for each impact level</td></tr>
+<tr><td><strong>Coverage limits for this run</strong></td><td>Shown when computed styles or element geometry were unavailable; affected rules report needs review</td></tr>
+<tr><td><strong>Where the problems are</strong></td><td>One bar per category with its issue count, for example Pointer &amp; touch, Colour &amp; contrast, Landmarks &amp; regions</td></tr>
+<tr><td><strong>Quick wins — highest value per unit of effort</strong></td><td>Up to eight low-effort, high-impact fixes, each with its node count and fix</td></tr>
+<tr><td><strong>Reading level (WCAG 3.1.5)</strong></td><td>Flesch reading ease, reading grade, sentence length and long sentences, over the page&#39;s prose</td></tr>
+<tr><td><strong>Full remediation backlog</strong></td><td>Every failing rule as a task, ranked by score gain per unit of effort</td></tr>
+</tbody></table></div>
+<p>Impact levels with no issues are listed together, for example &quot;Nothing critical, minor.&quot; The reading-level card measures paragraphs, list items and quotes only; a page that is mostly interface copy says a reading grade would not mean anything. The backlog says what score fixing everything would reach, and its table has these columns: <strong>Fix</strong> (with category and WCAG criterion), <strong>Impact</strong>, <strong>Nodes</strong>, <strong>Effort</strong>, <strong>Gain</strong> and <strong>Value</strong>.</p>
+<h2 id="findings-issues-view">Findings: Issues view</h2>
+<p>Every failing rule and every rule that needs review, as one folding row each. The row shows the rule&#39;s title, a badge for its impact (or <strong>needs review</strong>), its level (<strong>WCAG A</strong>, <strong>WCAG AA</strong>, <strong>WCAG AAA</strong> or <strong>best practice</strong>) and the number of elements affected.</p>
+<h3 id="filter-the-list">Filter the list</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Filter</th><th>Options</th></tr></thead>
+<tbody>
+<tr><td><strong>Impact</strong></td><td><strong>All</strong>, critical, serious, moderate, minor</td></tr>
+<tr><td><strong>Area</strong></td><td><strong>All</strong>, plus one button per category that has findings</td></tr>
+<tr><td><strong>Level</strong></td><td><strong>WCAG A</strong>, <strong>WCAG AA</strong>, <strong>WCAG AAA</strong>, <strong>Best practice</strong></td></tr>
+<tr><td>Search</td><td>&quot;Search rules, elements, selectors…&quot; matches rule names, IDs, descriptions and categories</td></tr>
+</tbody></table></div>
+<h3 id="inside-a-rule">Inside a rule</h3>
+<p>Open a row to see:</p>
+<ul>
+<li>a plain-language description of the rule;</li>
+<li>the rule ID (for example <code>color-contrast</code>), the WCAG criterion with its level as a link (for example &quot;1.4.3 Contrast (Minimum) (AA)&quot;), and badges for <strong>Section 508</strong> and <strong>EN 301 549</strong> when the rule maps to them;</li>
+<li><strong>How to meet this ↗</strong>, a link to the W3C Understanding page for that criterion;</li>
+<li>each affected element, with:<ul>
+<li>its impact and the exact problem, for example &quot;Contrast 1.19:1 is below the required 4.5:1 for normal text (12px). #ffffff on #efebe0.&quot;;</li>
+<li><strong>Where</strong>, the element&#39;s CSS selector;</li>
+<li>for contrast, a live specimen of the text as it is (&quot;Now&quot;) and with the recommended colour (&quot;Recommended&quot;), each with its ratio;</li>
+<li>for other rules, the element&#39;s code as it is now and as recommended;</li>
+<li><strong>Fix</strong>, the concrete change;</li>
+<li><strong>Copy selector</strong> and <strong>Copy fix</strong> buttons.</li>
+</ul>
+</li>
+</ul>
+<p>A rule with many elements shows the first few and says &quot;Showing N of M affected elements.&quot;</p>
+<h2 id="findings-fixes-view">Findings: Fixes view</h2>
+<p>Every failure the engine could turn into a concrete patch, grouped so that a component repeated many times is one job. Groups are ordered by impact, then by how many places they affect.</p>
+<p>The summary lists <strong>Fix groups</strong>, <strong>Auto-fixable</strong> (for example &quot;31 of 40&quot;), <strong>High confidence</strong> and <strong>Need human wording</strong>.</p>
+<p><strong>Ready-to-paste CSS patch</strong> is one stylesheet with every CSS change the engine proposes, each labelled with its rule. Select <strong>Copy the whole stylesheet</strong> to copy it. Review it against your design system before you ship it.</p>
+<p>Each fix group shows:</p>
+<ul>
+<li>a one-line summary, such as &quot;#d3af37 on #e5e0d1 is 1.6:1 — below the 4.5:1 minimum. #74601e reaches 4.62:1.&quot;;</li>
+<li>badges for impact, confidence, <strong>auto-fixable</strong> and the number of places;</li>
+<li>the rule and criterion;</li>
+<li>the code before and after;</li>
+<li>a note, for example &quot;Keeps the original hue and only moves lightness, so the design stays recognisable.&quot;;</li>
+<li><strong>Where (N)</strong>, a list of every selector with its own <strong>Copy</strong> button;</li>
+<li><strong>Copy fix</strong> and <strong>Copy CSS</strong>.</li>
+</ul>
+<h3 id="confidence">Confidence</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Confidence</th><th>Meaning shown</th></tr></thead>
+<tbody>
+<tr><td>high</td><td>Derived from the element&#39;s own markup or computed colours — safe to apply nearly verbatim.</td></tr>
+<tr><td>medium</td><td>Inferred from a filename, icon class or URL — the shape is right, read the wording.</td></tr>
+<tr><td>review</td><td>The defect is certain, the wording is not — a person has to supply the text.</td></tr>
+</tbody></table></div>
+<p>For example, a missing <code>alt</code> inside a link that already has a name is proposed as <code>alt=&quot;&quot;</code>, and an icon link&#39;s name is taken from where it points rather than from its icon. Always read medium and review suggestions before you use them.</p>
+<h2 id="inspect-widgets-view">Inspect: Widgets view</h2>
+<p>Per-element rules ask &quot;is this attribute legal?&quot;. This view asks &quot;is this widget wired up correctly?&quot;, checked against the W3C ARIA Authoring Practices. It recognises eight widget patterns:</p>
+<ul>
+<li>Tabs</li>
+<li>Disclosure / Accordion</li>
+<li>Combobox</li>
+<li>Dialog (modal)</li>
+<li>Menu / Menubar</li>
+<li>Tree view</li>
+<li>Slider</li>
+<li>Carousel</li>
+</ul>
+<p>For each, it checks structure and state: whether a tab actually controls a panel, whether <code>aria-expanded</code> matches what is really on screen, whether an auto-rotating carousel can be paused. The summary shows <strong>Widgets detected</strong>, <strong>Fully conformant</strong>, <strong>Not conformant</strong> and <strong>Pattern findings</strong>, and each widget gets a card with its name, pattern, status and any findings.</p>
+<p>Closed dialogs and collapsed menus are hidden from the accessibility tree and are deliberately not judged. If no widgets are found, the view says &quot;No composite widgets detected&quot;.</p>
+<h2 id="inspect-annotations-view">Inspect: Annotations view</h2>
+<p>A pass over the whole page in the style of a visual annotation tool, grouped and counted. Six tiles sit at the top; select one to isolate that category:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tile</th><th>Contains</th></tr></thead>
+<tbody>
+<tr><td><strong>Errors</strong></td><td>Accessibility failures that will block users</td></tr>
+<tr><td><strong>Contrast errors</strong></td><td>Text that does not meet the contrast minimum</td></tr>
+<tr><td><strong>Alerts</strong></td><td>Likely problems that need a human decision</td></tr>
+<tr><td><strong>Features</strong></td><td>Accessibility features found on the page</td></tr>
+<tr><td><strong>Structural elements</strong></td><td>Headings, landmarks and lists that shape the page</td></tr>
+<tr><td><strong>ARIA</strong></td><td>ARIA roles, states and properties in use</td></tr>
+</tbody></table></div>
+<p>Each group lists its items with a count and code; open <strong>Show elements</strong> to see every selector.</p>
+<h2 id="inspect-a11y-tree-view">Inspect: A11y tree view</h2>
+<p>What assistive technology actually sees. Generic wrappers are transparent and <code>aria-hidden</code> subtrees are removed, the way a browser builds the tree. Each node shows its role, its accessible name (or &quot;(no accessible name)&quot;) and its selector.</p>
+<p>The summary lists <strong>Exposed nodes</strong>, <strong>Landmarks</strong>, <strong>Interactive widgets</strong>, <strong>Widgets/landmarks with no name</strong> and <strong>Subtrees hidden from AT</strong>. Very large pages are cut off, with a note such as &quot;Tree truncated at N nodes.&quot;</p>
+<h2 id="inspect-screen-reader-view">Inspect: Screen reader view</h2>
+<p>The linear announcement stream a screen reader would produce, followed by the lists screen-reader users navigate by.</p>
+<ul>
+<li><strong>▶ Speak transcript</strong> reads the stream aloud with your browser&#39;s built-in speech. <strong>■ Stop</strong> stops it. <strong>Copy transcript</strong> copies the text.</li>
+<li><strong>Announcement stream</strong> lists each line in order, such as &quot;Site header, banner landmark&quot; or &quot;Company, button, collapsed, has pop up menu&quot;. The intro says how many lines announce a bare role with no name.</li>
+<li>The rotor lists: <strong>Headings</strong> (with level), <strong>Landmarks</strong>, <strong>Links</strong> and <strong>Form controls &amp; widgets</strong>. Items with no name are flagged.</li>
+<li><strong>Heading outline problems</strong> appears when the heading order has gaps.</li>
+</ul>
+<p>The speech is your browser&#39;s voice, not a real screen reader. Test with a real screen reader before you rely on the result.</p>
+<h2 id="inspect-vision-view">Inspect: Vision view</h2>
+<p>Every text colour pair on the page, re-rendered through four colour-vision deficiencies, with the WCAG contrast ratio for each and the APCA Lc value for reference.</p>
+<ul>
+<li>A summary line per condition: <strong>Protanopia</strong>, <strong>Deuteranopia</strong>, <strong>Tritanopia</strong> and <strong>Achromatopsia</strong>, each with how many pairs drop below AA and how many lose contrast.</li>
+<li><strong>Palette under colour-vision deficiency</strong> — a table with the original pair and its contrast (ratio and Lc), the ratio under each condition, and how many times the pair is used.</li>
+<li><strong>Colours that collide</strong> — palette colours that become indistinguishable from each other under a simulated deficiency. If none do, it says &quot;No colour collisions&quot;.</li>
+</ul>
+<p>Up to 400 text elements are sampled. See <a href="colour-contrast-and-vision.html">Colour, contrast and vision</a> for what the ratio and Lc mean.</p>
+<h2 id="inspect-focus-targets-view">Inspect: Focus &amp; targets view</h2>
+<p>Keyboard focus and touch target sizes.</p>
+<ul>
+<li>The summary lists <strong>Elements in the tab order</strong>, <strong>Positive tabindex</strong>, <strong>Focusable with no name</strong>, <strong>Focusable off-screen</strong>, <strong>Targets below 24×24px</strong> and <strong>Targets below 44×44px</strong>.</li>
+<li><strong>Tab order</strong> lists every stop in the order the <code>Tab</code> key reaches it, with its name, role, size and selector.</li>
+<li><strong>Touch target sizes</strong> is a table with <strong>Control</strong>, <strong>Role</strong>, <strong>Size</strong>, <strong>2.5.8 (24px)</strong> and <strong>2.5.5 (44px)</strong>. Each size column reads <strong>Pass</strong> or <strong>Below</strong>.</li>
+</ul>
+<p>WCAG 2.5.8 (Level AA) asks for targets of at least 24 by 24 CSS pixels, or enough clear space around them; 2.5.5 (Level AAA) asks for 44 by 44.</p>
+<h2 id="report-conformance-view">Report: Conformance view</h2>
+<p>The WCAG 2.2 conformance picture, separate from the score.</p>
+<ul>
+<li><strong>Automated verdict</strong> — the highest level the page meets with no failures (<strong>A</strong>, <strong>AA</strong> or <strong>AAA</strong>), or <strong>Does not conform</strong>, plus how many criteria need manual review. Conformance is all or nothing: one failure at a level denies that level.</li>
+<li>A note that automated testing can only confirm a subset of WCAG, and that criteria shown as untested need human evaluation and are never counted as passing.</li>
+<li>Three level cards, <strong>WCAG 2.2 A</strong>, <strong>WCAG 2.2 AA</strong> and <strong>WCAG 2.2 AAA</strong>, each with passes out of the total and counts of fail, review and untested.</li>
+<li><strong>Success criteria scorecard</strong> — all 60 criteria the engine knows, each marked ✓ pass, ✗ fail, ? review or – untested.</li>
+<li><strong>Accessibility Conformance Report (VPAT-style)</strong> — one row per Level A and AA criterion, with <strong>Criterion</strong>, <strong>Level</strong>, <strong>Conformance</strong> and <strong>Remarks</strong>.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Conformance</th><th>Remark shown</th></tr></thead>
+<tbody>
+<tr><td>Supports</td><td>Automated checks found no failures.</td></tr>
+<tr><td>Partially Supports</td><td>N item(s) require manual verification.</td></tr>
+<tr><td>Does Not Support</td><td>N instance(s) found, with the failing rule</td></tr>
+<tr><td>Not Evaluated</td><td>Not covered by automated testing — manual evaluation required.</td></tr>
+</tbody></table></div>
+<p>A VPAT (Voluntary Product Accessibility Template) is the format most procurement processes ask for. This table is evidence to support a claim, not the claim itself.</p>
+<h2 id="report-export-view">Report: Export view</h2>
+<p>&quot;Everything the engine produced, in the formats the rest of your toolchain expects.&quot; File names start with <code>a11y-</code> followed by a short form of the audited address.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Export</th><th>Contents</th><th>File</th></tr></thead>
+<tbody>
+<tr><td><strong>Results JSON (axe format)</strong></td><td>Violations, passes and incomplete results in the shape continuous-integration tools already read</td><td><code>a11y-&lt;site&gt;.json</code></td></tr>
+<tr><td><strong>Issues CSV</strong></td><td>One row per affected element: rule, impact, WCAG, selector, problem, fix, suggested patch, confidence</td><td><code>a11y-&lt;site&gt;-issues.csv</code></td></tr>
+<tr><td><strong>Remediation brief (Markdown)</strong></td><td>A developer write-up: score, conformance, every violation with selectors and fixes, and the suggested patches</td><td><code>a11y-&lt;site&gt;-remediation.md</code></td></tr>
+<tr><td><strong>Contrast fix CSS</strong></td><td>A stylesheet patch that raises every failing text pair to the AA minimum</td><td><code>a11y-&lt;site&gt;-contrast.css</code></td></tr>
+<tr><td><strong>Conformance report CSV</strong></td><td>VPAT-shaped Section 508 and EN 301 549 rows with conformance level and remarks. Marked <strong>Specialist</strong>.</td><td><code>a11y-&lt;site&gt;-conformance-report.csv</code></td></tr>
+</tbody></table></div>
+<p>The conformance report CSV is a paid perk of the Specialist plan. The other four exports are free.</p>
+<p><strong>Run metadata</strong> at the foot of the view lists the <strong>Engine</strong> (&quot;Auric Accessibility Engine&quot;), the <strong>Rule set</strong> (&quot;WCAG 2.2 (A/AA/AAA) · Section 508 · EN 301 549 · ARIA 1.2 · APCA preview&quot;), <strong>Rules available</strong>, <strong>Rules evaluated</strong>, <strong>Run at</strong>, <strong>URL</strong>, and whether <strong>Computed styles</strong> and <strong>Element geometry</strong> were available, with how many <strong>Stylesheets</strong> were read. The card&#39;s badge is how long the engine took.</p>
+<h2 id="below-the-engine-advanced-accessibility">Below the engine: Advanced Accessibility</h2>
+<p>Under the engine block, the panel continues with a summary card headed <strong>Advanced Accessibility</strong>: the same score, a <strong>Score Breakdown</strong>, <strong>Conformance Levels</strong> (Level A and Level AA, with how many were not tested), and <strong>Voice Flow</strong> (steps a screen reader visits, landmarks announced, issues in the flow, and <strong>▶ Play</strong> / <strong>■ Stop</strong> buttons that speak the flow).</p>
+<p>What comes after depends on your plan:</p>
+<ul>
+<li><strong>Paid plans</strong> see <strong>Top Accessibility Priorities</strong>, detailed cards comparing raw and rendered accessibility (keyboard, ARIA and contrast findings, and a WCAG mapping), and, for a site scan, <strong>A11y+ · Page-by-Page</strong>.</li>
+<li><strong>Free and signed-out visitors</strong> see a card headed <strong>The full accessibility report</strong> in their place. It says how many findings are shown, lists what the paid report adds, and offers <strong>See plans</strong> and <strong>Sign in</strong>. It also states that every other tool on the site stays free and that this is the one report that is not.</li>
+</ul>
+<h2 id="a-practical-order-of-work">A practical order of work</h2>
+<ol>
+<li>In <strong>Overview</strong>, read the grade and the conformance line, then open <strong>Quick wins</strong>.</li>
+<li>In <strong>Issues</strong>, filter <strong>Impact</strong> to critical, then serious. Fix what blocks a task first: controls with no name, fields with no label, keyboard traps.</li>
+<li>In <strong>Fixes</strong>, copy the CSS patch for contrast and target-size failures, and review the medium and review suggestions by hand.</li>
+<li>In <strong>Inspect</strong>, check <strong>Focus &amp; targets</strong> by pressing <code>Tab</code> through the real page, and read the <strong>Screen reader</strong> transcript for unnamed controls.</li>
+<li>Work through <strong>needs review</strong> items yourself: text over images, whether animation can be paused, whether focus order still makes sense visually.</li>
+<li>Re-run the audit and open <strong>Compare</strong> to confirm what changed.</li>
+</ol>
+<p>For every rule the engine checks, see <a href="accessibility-rules.html">Accessibility rules</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Analyzer</a><a href="accessibility-rules.html"><span>Next</span>Accessibility rules</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-the-panel-is-organised">How the panel is organised</a></li><li><a href="#key-terms">Key terms</a></li><li><a href="#overview-view">Overview view</a></li><li><a href="#findings-issues-view">Findings: Issues view</a></li><li><a href="#findings-fixes-view">Findings: Fixes view</a></li><li><a href="#inspect-widgets-view">Inspect: Widgets view</a></li><li><a href="#inspect-annotations-view">Inspect: Annotations view</a></li><li><a href="#inspect-a11y-tree-view">Inspect: A11y tree view</a></li><li><a href="#inspect-screen-reader-view">Inspect: Screen reader view</a></li><li><a href="#inspect-vision-view">Inspect: Vision view</a></li><li><a href="#inspect-focus-targets-view">Inspect: Focus &amp; targets view</a></li><li><a href="#report-conformance-view">Report: Conformance view</a></li><li><a href="#report-export-view">Report: Export view</a></li><li><a href="#below-the-engine-advanced-accessibility">Below the engine: Advanced Accessibility</a></li><li><a href="#a-practical-order-of-work">A practical order of work</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

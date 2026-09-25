@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel controls — Auric Artisan Docs</title>
+<meta name="description" content="Every title-bar control shared by the kit panels, what each one remembers, and where the kits differ.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Kits</a>
+<h2>Guides for all kits</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with kits</a></li>
+<li><a href="panel-controls.html" aria-current="page">Panel controls</a></li>
+<li><a href="the-kit-dock.html">The page utilities bar</a></li>
+<li><a href="troubleshooting.html">Troubleshooting kits</a></li>
+<li><a href="faq.html">Kits FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Kits</a> &rsaquo; <a href="README.html">Guides for all kits</a></nav>
+<p class="kicker">Website › Kits</p>
+<h1>Panel controls</h1>
+<p class="lede">Every title-bar control shared by the kit panels, what each one remembers, and where the kits differ.</p>
+<p>Every kit panel has a title bar with the same set of controls: move, <strong>Focus mode</strong>, <strong>Theme</strong>, <strong>Resize</strong>, <strong>Minimize</strong> and <strong>Close</strong>. This page explains each control, what the kits remember between visits, and the places where a kit does something different.</p>
+<h2 id="sizes-and-starting-position">Sizes and starting position</h2>
+<p>A kit opens in the bottom-left corner of the window, just above the page utilities bar, until you move it. It opens at its normal size unless you left it expanded.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Kit</th><th>Normal width</th><th>Expanded width</th></tr></thead>
+<tbody>
+<tr><td>Feature Kit</td><td>560 px</td><td>640 px</td></tr>
+<tr><td>Menu Kit</td><td>680 px</td><td>820 px</td></tr>
+<tr><td>Advanced Kit</td><td>480 px</td><td>720 px</td></tr>
+<tr><td>Status Kit</td><td>560 px</td><td>760 px</td></tr>
+<tr><td>Library Kit</td><td>680 px</td><td>940 px</td></tr>
+</tbody></table></div>
+<ul>
+<li>An expanded kit is never wider than the window, less a small margin.</li>
+<li>An expanded Menu, Advanced, Status or Library Kit grows to at most 900 px tall, and always leaves room for its title bar at the top of the window. An expanded Feature Kit grows to at most 900 px or 90% of the window height, whichever is smaller.</li>
+<li>On a phone (580 px wide or narrower) every kit spans the width of the screen, less a small margin.</li>
+</ul>
+<h2 id="move-a-panel">Move a panel</h2>
+<p><strong>With a pointer or touch:</strong></p>
+<ol>
+<li>Press on the kit&#39;s title bar, away from the buttons.</li>
+<li>Drag the panel to where you want it.</li>
+<li>Release.</li>
+</ol>
+<p>The panel stays inside the window: you cannot drag it past an edge. The kit remembers its position as a proportion of the window, so it returns to the same relative place next time you open it, on any page, and it moves back inside the window if the window becomes smaller.</p>
+<p>Differences between kits:</p>
+<ul>
+<li><strong>Feature Kit.</strong> Drag by the title text itself (&quot;Feature Kit&quot;, or the name of the tool you have open).</li>
+<li><strong>Library Kit.</strong> Drag the title bar or the six-dot grip at its left end.</li>
+</ul>
+<p><strong>With the keyboard (Library Kit only):</strong></p>
+<ol>
+<li>Press <code>Tab</code> until the six-dot grip at the left of the title bar has focus. It announces itself as <strong>Move library panel</strong>.</li>
+<li>Press an arrow key to move the panel 12 pixels in that direction.</li>
+<li>Hold <code>Shift</code> with an arrow key to move 1 pixel at a time.</li>
+</ol>
+<p><strong>Put a panel back in its corner:</strong></p>
+<ul>
+<li>Library Kit: open <strong>Panel options</strong> and select <strong>Reset position</strong>. A message confirms &quot;Library returned to its default position.&quot;</li>
+<li>Other kits: drag the panel back. There is no reset button. Clearing this site&#39;s stored data in your browser also returns every kit to its corner, but it clears your other kit preferences too.</li>
+</ul>
+<h2 id="focus-mode">Focus mode</h2>
+<p>The <strong>Focus mode</strong> button has a target icon and sits first in the row of title-bar buttons. Its tooltip reads &quot;Keep [kit name] open through navigation and while opening other kits.&quot; When it is on, the button turns gold. The kit remembers the setting in your browser.</p>
+<p>What Focus mode does depends on the kit:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Kit</th><th>Stays open when another kit opens</th><th>Opens again on the next page</th><th>Closing the kit turns Focus mode off</th></tr></thead>
+<tbody>
+<tr><td>Feature Kit</td><td>Yes</td><td>Yes, on the tool you were using</td><td>Yes</td></tr>
+<tr><td>Menu Kit</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>Advanced Kit</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>Status Kit</td><td>No</td><td>Yes</td><td>No</td></tr>
+<tr><td>Library Kit</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+</tbody></table></div>
+<p>In practice:</p>
+<ul>
+<li><strong>Feature Kit.</strong> Focus mode also changes how the kit sits on the page. With Focus mode off, the page behind the Feature Kit is dimmed, <code>Tab</code> keeps moving within the kit, and clicking the dimmed page closes the kit. With Focus mode on, the page is not dimmed and stays fully usable, and selecting the Feature launcher moves keyboard focus into the kit instead of closing it. Closing the Feature Kit with <strong>Close</strong> or <code>Esc</code> turns Focus mode off.</li>
+<li><strong>Menu, Advanced, Status and Library Kits.</strong> Focus mode stays on until you turn it off. If you close one of these kits while its Focus mode is on, it opens again on the next page you load. Turn Focus mode off before closing if you want it to stay closed.</li>
+<li><strong>Library Kit.</strong> The control is called <strong>Keep open</strong> in the <strong>Panel options</strong> menu, described as &quot;Stay visible while opening other kits&quot;.</li>
+</ul>
+<h2 id="theme">Theme</h2>
+<p>The <strong>Theme</strong> button switches the kit between light and dark. The icon shows the mode you will switch to: a sun while the kit is dark, a moon while it is light. The tooltip reads &quot;Switch this kit between light and dark mode.&quot; (In the Menu Kit it says &quot;this menu&quot;, and in the Library Kit &quot;this panel&quot;.)</p>
+<ul>
+<li>Until you use the button, a kit follows the site&#39;s theme and changes when the site changes.</li>
+<li>Once you use it, the kit keeps its own choice, even on a page whose theme is different. A light kit on a dark page, or the other way round, is expected.</li>
+<li>Each kit remembers its own choice. The kit&#39;s launcher in the page utilities bar follows the same choice.</li>
+<li>There is no button that hands a kit back to the site theme. Set the kit to match the site, or clear this site&#39;s stored data.</li>
+</ul>
+<p>The accent colour you choose in the site settings panel also colours the kits&#39; gold highlights. See <a href="../../site-features/README.html">Site features</a>.</p>
+<h2 id="resize">Resize</h2>
+<p>The <strong>Resize</strong> button, with four arrows, switches between the normal and the expanded size shown in the table above. The icon changes to arrows pointing inwards while the kit is expanded. Its tooltip reads &quot;Switch [kit name] between normal and expanded size.&quot;</p>
+<p>The kit remembers the choice and opens expanded next time, on any page. In the Library Kit the control is <strong>Panel size</strong> in <strong>Panel options</strong>, described as &quot;Toggle the wider workspace view&quot;.</p>
+<p>In the Feature Kit, expanding also gives the calculator&#39;s graph more room.</p>
+<h2 id="minimize">Minimize</h2>
+<p>The <strong>Minimize</strong> button, a short dash, shrinks the kit.</p>
+<ul>
+<li><strong>Menu, Advanced, Status and Library Kits.</strong> The kit collapses to its title bar. The button changes to a restore icon (a square with a line). Select the restore button, or select anywhere on the title bar that is not a button, to bring the kit back. The tooltip reads &quot;Collapse [kit name] to its title bar — click the bar to restore.&quot; A minimised kit is not remembered: it opens at full height next time.</li>
+<li><strong>Feature Kit.</strong> The kit shrinks to a small round icon where the panel was, and the Feature launcher hides. Select the icon, or give it focus and press <code>Enter</code> or <code>Space</code>, to reopen the kit at its menu. If the kit was expanded before, it comes back expanded.</li>
+</ul>
+<h2 id="close">Close</h2>
+<p>The <strong>Close</strong> button is a cross at the right end of the title bar. You can also:</p>
+<ul>
+<li>press <code>Esc</code> (see each kit&#39;s guide for how <code>Esc</code> interacts with search boxes and sub-panels);</li>
+<li>select the kit&#39;s launcher in the page utilities bar.</li>
+</ul>
+<p>Closing does not lose your work in the kits that keep it: calculator history, notes, library items and settings stay in your browser. What a closed kit forgets is listed in each kit&#39;s reference.</p>
+<h2 id="what-the-title-bar-holds-in-each-kit">What the title bar holds in each kit</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Kit</th><th>Left side</th><th>Buttons, left to right</th></tr></thead>
+<tbody>
+<tr><td>Feature Kit</td><td><strong>Back</strong> (only inside a tool), then the title</td><td><strong>Graph</strong> and <strong>History</strong> (calculator only), <strong>Focus mode</strong>, <strong>Theme</strong>, <strong>Resize</strong>, <strong>Minimize</strong>, <strong>Close</strong></td></tr>
+<tr><td>Menu Kit</td><td><strong>Menu Kit</strong> and a site status chip, for example <strong>Beta</strong></td><td><strong>Focus mode</strong>, <strong>Theme</strong>, <strong>Resize</strong>, <strong>Minimize</strong>, <strong>Close</strong></td></tr>
+<tr><td>Advanced Kit</td><td><strong>Advanced Kit</strong></td><td><strong>Focus mode</strong>, <strong>Theme</strong>, <strong>Resize</strong>, <strong>Minimize</strong>, <strong>Close</strong></td></tr>
+<tr><td>Status Kit</td><td><strong>Status Kit</strong></td><td><strong>Focus mode</strong>, <strong>Theme</strong>, <strong>Resize</strong>, <strong>Minimize</strong>, <strong>Close</strong></td></tr>
+<tr><td>Library Kit</td><td>Six-dot grip, <strong>Your Library</strong> and an item count</td><td><strong>Panel options</strong> (<strong>Keep open</strong>, <strong>Theme</strong>, <strong>Panel size</strong>, <strong>Minimize</strong>, <strong>Reset position</strong>), <strong>Close</strong></td></tr>
+</tbody></table></div>
+<p>On a phone, the Menu Kit&#39;s title bar stacks its title, status chip and buttons in a centred column.</p>
+<h2 id="what-the-kits-remember">What the kits remember</h2>
+<p>All kits keep these preferences in your browser, per kit:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Preference</th><th>Remembered</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Position after dragging</td><td>Yes</td><td>Stored as a proportion of the window size</td></tr>
+<tr><td>Expanded size</td><td>Yes</td><td>Opens expanded next time</td></tr>
+<tr><td>Focus mode</td><td>Yes</td><td>Feature Kit turns it off when you close the kit</td></tr>
+<tr><td>Theme</td><td>Yes, once you use the button</td><td>Until then the kit follows the site</td></tr>
+<tr><td>Minimised</td><td>No</td><td>A kit always opens at full height</td></tr>
+</tbody></table></div>
+<p>Each kit also remembers things of its own, such as the Menu Kit&#39;s last tab or the Library Kit&#39;s sort order. See <a href="../others/privacy.html">Privacy</a> for the full list.</p>
+<h2 id="other-things-you-may-see-in-a-kit">Other things you may see in a kit</h2>
+<p>Depending on your cookie choices and your plan, a small sponsored strip can appear in the Feature Kit menu, the Menu Kit and the Advanced Kit. The <strong>Ads in panels &amp; search</strong> switch in the site settings panel controls it; changing ad settings is a paid-plan convenience. See <a href="../../site-features/README.html">Site features</a> and <a href="../../account-and-billing/README.html">Account and billing</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="the-kit-dock.html">The page utilities bar</a></li>
+<li><a href="../others/shortcuts.html">Keyboard shortcuts</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with kits</a><a href="the-kit-dock.html"><span>Next</span>The page utilities bar</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#sizes-and-starting-position">Sizes and starting position</a></li><li><a href="#move-a-panel">Move a panel</a></li><li><a href="#focus-mode">Focus mode</a></li><li><a href="#theme">Theme</a></li><li><a href="#resize">Resize</a></li><li><a href="#minimize">Minimize</a></li><li><a href="#close">Close</a></li><li><a href="#what-the-title-bar-holds-in-each-kit">What the title bar holds in each kit</a></li><li><a href="#what-the-kits-remember">What the kits remember</a></li><li><a href="#other-things-you-may-see-in-a-kit">Other things you may see in a kit</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

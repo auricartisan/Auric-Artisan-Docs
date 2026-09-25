@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release notes — Auric Artisan Docs</title>
+<meta name="description" content="What changed in each version of the Auric Artisan browser extension, and what is built for the next release.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan browser extension</a>
+<h2>Other material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Keyboard shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html" aria-current="page">Release notes</a></li>
+<li><a href="related.html">Related tools</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="README.html">Other material</a></nav>
+<p class="kicker">Browser extension</p>
+<h1>Release notes</h1>
+<p class="lede">What changed in each version of the Auric Artisan browser extension, and what is built for the next release.</p>
+<p>The user-facing history of the Auric Artisan browser extension, newest first. Store listings update after each store&#39;s review, so your browser may show an earlier version for a while; check your version on the browser&#39;s extensions page.</p>
+<h2 id="upcoming-built-not-yet-released">Upcoming (built, not yet released)</h2>
+<p>A redesign called &quot;one studio, four surfaces&quot; lays out the same spaces (Home, Colour, Check, Code, Saved) for where you are: docked beside the page, drawn over it, and in a quick popup.</p>
+<h3 id="the-side-panel-becomes-the-home-base">The side panel becomes the home base</h3>
+<ul>
+<li>The spaces become a <strong>rail</strong> down the left edge, with the theme, Settings and the tour at its foot, so the whole width goes to the tool.</li>
+<li>Each space names itself and the tab its tools act on.</li>
+<li>Home leads with <strong>This tab</strong>: the site the panel is linked to, whether the page tools reach it, and <strong>Pick</strong>, <strong>Inspect</strong>, <strong>Audit</strong> and <strong>Vision</strong> in one click. After an audit it says when it ran and what failed, with <strong>Show on page</strong>.</li>
+<li>Home lists the page&#39;s own colours; a click opens one in the Picker.</li>
+<li>The panel follows the tab: switching tabs refreshes Home.</li>
+</ul>
+<h3 id="the-popup-becomes-a-quick-launcher">The popup becomes a quick launcher</h3>
+<p><strong>Pick a colour</strong>, <strong>Contrast</strong> (with its shortcut), <strong>Inspect</strong> and <strong>Audit this page</strong>; the last contrast pair; recent colours; <strong>Page palette</strong>, <strong>Vision</strong> and <strong>Search</strong>; and <strong>Open the side panel</strong>, shown only where the browser has one.</p>
+<h3 id="the-audit-reads-like-a-report">The audit reads like a report</h3>
+<ul>
+<li>A score from the rule engine, what was checked and when, a bar of failing, borderline, review and passed, and the four counts.</li>
+<li>Findings are numbered rows with their colour pair. The selected row offers <strong>Fix in Contrast</strong> and <strong>Copy selector</strong>.</li>
+<li>The run button says <strong>Run again</strong> after the first run.</li>
+</ul>
+<h3 id="outlines-drawn-over-the-page-not-on-it">Outlines drawn over the page, not on it</h3>
+<ul>
+<li>A layer over the page draws a box and a numbered pin for each finding. Pin 2 is row 2 in the list, and selecting either selects both.</li>
+<li>The selected finding opens a card with the nearest passing text colour, <strong>Try the fix</strong> (a preview on the page, undone on close), <strong>Copy CSS</strong> and Next.</li>
+<li>A <strong>page dock</strong> at the bottom counts what failed, steps through findings and closes with <strong>Done</strong> or <code>Esc</code>.</li>
+<li>The overlay stays until you close it; a switch in Check › Audit shows and hides it. Nothing on the site itself is changed.</li>
+</ul>
+<h3 id="inspector-and-right-click-menu">Inspector and right-click menu</h3>
+<ul>
+<li>With the side panel open, a pinned element keeps a compact card on the page (&quot;Details in the side panel&quot;) and the panel opens Code › Inspect with everything else.</li>
+<li>The right-click menu&#39;s header shows the clicked element&#39;s text contrast (for example &quot;16.5 AAA&quot;, red when it fails).</li>
+<li>In Chromium browsers the first element action becomes <strong>Inspect in side panel</strong>. Firefox keeps <strong>Inspect element</strong>, because its sidebar opens only from the browser&#39;s own controls.</li>
+<li>Hindi covers every new string.</li>
+</ul>
+<h2 id="102-2026-09-23">1.0.2 — 2026-09-23</h2>
+<p>Hindi throughout the product, and the Auric Studio redesign.</p>
+<h3 id="new">New</h3>
+<ul>
+<li><strong>A new workspace.</strong> Home plus four spaces, Colour, Check, Code and Saved, replace the old grid of tabs. <code>/</code> or <code>Ctrl</code> + <code>K</code> searches every tool, setting and auricartisan.com page.</li>
+<li><strong>Home:</strong> a colour of the day, four on-this-page actions that start the work, recent colours, <strong>Continue</strong>, and editable pinned tools.</li>
+<li><strong>The Picker is auricartisan.com&#39;s own colour picker</strong>, with twelve formats, contrast with the closest passing colour, colour-vision previews (Machado 2009), code for CSS, wide-gamut CSS, Tailwind v4, SwiftUI, Compose and Android, the page&#39;s own colours, chroma room in sRGB and P3, harmonies in HSL or OKLCH, an 11-step OKLCH scale, and opacity in every copied value.</li>
+<li><strong>Settings is a two-pane view</strong> (Appearance, Pickers, Right-click, Tools, Data, Shortcuts), with a switch for each of the 13 picker types, <strong>Leave designed controls alone</strong>, <strong>Never on</strong> lists, and <strong>Change them in the browser</strong>.</li>
+<li><strong>Search in dropdowns with more than seven options</strong>, on web pages and in the extension: typing filters and underlines matches, groups keep their headings, and &quot;No options match&quot; offers to clear the search.</li>
+<li><strong>Multi-select as a dropdown</strong>, with chips, an &quot;N/M chosen&quot; count, <strong>Select all</strong> and <strong>Clear</strong>.</li>
+<li><strong>The inspector</strong> has a light hover card and a pinned card that leads with contrast, shows the nearest passing colour, and explains every accessibility problem it finds, in seven sections with summaries.</li>
+<li><strong>The right-click menu, redesigned:</strong> a header naming what you clicked; its own actions first; Auric tools, Page, Tab &amp; window and View as one row each; a quick bar of up to six pinned actions; typing to filter everything; copy selector as CSS, JavaScript, Playwright or XPath; copy a selected colour as HEX, RGB, HSL or OKLCH; copy an image&#39;s palette; pick a colour from an image; side-by-side colour vision; Google Images search; <strong>Allow</strong> chips for actions that need a permission; and a gear for the quick bar, layout and row height.</li>
+<li><strong>Settings › Right-click</strong> gains <strong>Step aside for a site&#39;s own menu</strong>, the quick bar, layout, row height, a <strong>Never on</strong> list and the three permissions.</li>
+<li><strong>Hindi (हिन्दी)</strong> across the popup, side panel, website pickers, right-click menu, inspector and every accessibility finding. The store description, toolbar tooltip and shortcut names follow the browser&#39;s language.</li>
+<li>The Auric Artisan wordmark links to auricartisan.com.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>One colour picker in three shapes: a compact popover on web pages, split in the popup, stacked in the side panel.</li>
+<li>The colour picker on web pages is a compact 296 px popover with five panes, at most one open, a searchable format menu, and it opens upward near the bottom of the window.</li>
+<li>Number, range, checkbox and radio controls follow your theme. The number stepper disables its buttons at the minimum and maximum, and the range slider gets an editable value.</li>
+<li>On Dark or Light every in-page control uses that theme; on System they match the page.</li>
+<li>Search puts an exact title first and groups results as Best match, Tools, Settings, Actions and On the web.</li>
+<li>The default accent is Auric gold <code>#d3af37</code> everywhere.</li>
+<li>The inspector&#39;s bar sits at the bottom and names what is being inspected.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>The right-click menu no longer takes over sites that have their own menu, such as Figma and Google Docs, unless you turn off Step aside. Shift + right-click is always the browser&#39;s menu.</li>
+<li>The inspector no longer closes when you click an element on sites that rewrite their address on every click, such as auricartisan.com. If the page removes the pinned element, the card lets go.</li>
+<li>The website colour picker no longer shows its light theme while Settings says Dark.</li>
+<li>The popup passes its own accessibility audit again.</li>
+<li>Typing &quot;Settings&quot; in search and pressing Enter no longer runs &quot;Reset all settings&quot;.</li>
+<li>The audit no longer reports roving-tabindex items (such as inactive tabs) as unreachable.</li>
+<li>English text left in the Hindi popup is translated.</li>
+<li>Recent colours are no longer thin pills in a narrow side panel, and no longer list one colour twice in different letter cases.</li>
+</ul>
+<h2 id="101-2026-07-31">1.0.1 — 2026-07-31</h2>
+<h3 id="new-1">New</h3>
+<ul>
+<li><strong>Universal form pickers</strong> for a page&#39;s date, month, week, date-and-time, time, number, range and colour inputs, behind one switch. They set values the way the page expects and fire real events.</li>
+<li><strong>A custom in-page right-click menu</strong>, on demand, over the extension&#39;s tools.</li>
+<li><strong>Search over settings and features</strong> in the popup.</li>
+<li><strong>QR codes</strong> for the current page or a selection.</li>
+</ul>
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Everything the extension draws on a page is isolated from the site&#39;s styles.</li>
+<li>The popup and side panel adapt to their width instead of clipping.</li>
+<li>Packages for Edge and Opera, identical to the Chrome package.</li>
+<li>The Firefox package declares that it collects no data.</li>
+</ul>
+<h2 id="100-2026-07-22">1.0.0 — 2026-07-22</h2>
+<h3 id="new-2">New</h3>
+<ul>
+<li><strong>An accessibility engine with 80 rules across 32 WCAG success criteria</strong>, covering ARIA, accessible names, structure, forms, media, keyboard, contrast and page-level criteria. Before, the scan checked text contrast only.</li>
+<li>The engine checks against bundled WCAG 2.2, ARIA 1.2 and HTML accessibility data, and computes accessible names with the standard algorithm.</li>
+<li>Audits run in slices so the page stays responsive, with limits per rule instead of a fixed cap.</li>
+<li>APCA Lc beside WCAG ratios in the scanner, the popup and the inspector.</li>
+<li>A new icon family.</li>
+</ul>
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Scoring counts each failing rule, weighted by impact, instead of each failing element, so a large page no longer scores worse for being large.</li>
+<li>Only one extension, <strong>Auric Artisan</strong>, is published.</li>
+</ul>
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Invalid boolean ARIA values are reported instead of breaking the check.</li>
+<li>The focus-indicator rule no longer reports every control; it looks for stylesheets that remove the outline with no replacement.</li>
+<li>Target size respects WCAG 2.5.8&#39;s spacing exception.</li>
+<li>Browser-drawn checkboxes and radios are no longer flagged for non-text contrast.</li>
+</ul>
+<h2 id="0952">0.9.52</h2>
+<ul>
+<li><strong>Snippets</strong>, a vault of saved code: <strong>Save snippet</strong> in Gradient, Shades, Inspect and Tokens, <strong>+ New</strong>, search, <strong>This site</strong>, <strong>Copy all</strong>, <strong>Export</strong> and <strong>Clear all</strong>, up to 200 snippets.</li>
+<li><strong>Backup and restore</strong> of settings, history, library and snippets in one <code>.json</code> file.</li>
+<li>A storage meter with counts in Settings › Data.</li>
+<li>Lists update live across windows.</li>
+</ul>
+<h2 id="0951">0.9.51</h2>
+<ul>
+<li>The Auric colour picker can replace a page&#39;s colour inputs.</li>
+<li>APCA tiers (Lc 90, 75, 60, 45, 30) beside the WCAG ratio.</li>
+<li>A choice of auto-fix target: AA 4.5:1, AA Large 3:1, AAA 7:1, APCA Lc 60 or Lc 75.</li>
+<li>A deep scan mode for the page audit, with manual-review flags for text over images, gradients and shadows.</li>
+<li><strong>Inspect element</strong> in the right-click menu, and a grouped inspector read-out with keyboard DOM navigation, following your accent colour.</li>
+</ul>
+<h2 id="021">0.2.1</h2>
+<ul>
+<li>The element inspector, with copy-as-CSS.</li>
+<li>Design tokens from any page, exported as CSS, W3C tokens, a Tailwind v4 <code>@theme</code> block or JSON.</li>
+<li>Code export for every picked colour: <code>oklch()</code>, Tailwind, SwiftUI, Compose and Android.</li>
+<li>A first-run tour.</li>
+</ul>
+<h2 id="020">0.2.0</h2>
+<p>A rebuild into a colour, design and accessibility toolkit: harmonies on a colour wheel, shades and tints, a gradient builder, mixing and blending, a converter, a page contrast scan with outlines and JSON and CSV export, history and library, themes, keyboard shortcuts and right-click entries, APCA, OKLCH maths and a vision simulator.</p>
+<h2 id="010">0.1.0</h2>
+<p>The first release: a popup colour picker with an eyedropper, an eight-format read-out, basic palette extraction and WCAG contrast checking.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="privacy.html"><span>Previous</span>Privacy</a><a href="related.html"><span>Next</span>Related tools</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#upcoming-built-not-yet-released">Upcoming (built, not yet released)</a></li><li><a href="#102-2026-09-23">1.0.2 — 2026-09-23</a></li><li><a href="#101-2026-07-31">1.0.1 — 2026-07-31</a></li><li><a href="#100-2026-07-22">1.0.0 — 2026-07-22</a></li><li><a href="#0952">0.9.52</a></li><li><a href="#0951">0.9.51</a></li><li><a href="#021">0.2.1</a></li><li><a href="#020">0.2.0</a></li><li><a href="#010">0.1.0</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

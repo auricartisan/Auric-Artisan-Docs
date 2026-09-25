@@ -1,0 +1,137 @@
+==============================================================================
+QUERY SYNTAX
+==============================================================================
+The operators the Auric Artisan search page understands — phrases, exclusions
+and field filters — for site search and for web search.
+Area: Website › Search   Updated: 2026-09-25
+
+Plain words are enough for most searches. The operators below narrow a search
+when you need to. The line under the search field shows how your query was
+read, with a chip for each filter, phrase, word and exclusion, so you can
+check that an operator was understood.
+
+SITE SEARCH OPERATORS
+=====================
+
+  Operator:     Words
+  Example:      `oklch gradient`
+  What it does: Finds pages that contain the words; pages with more of them,
+                and with the words close together, rank higher.
+
+  Operator:     `"…"`
+  Example:      `"colour blindness"`
+  What it does: Only pages where the words appear together, in that order.
+
+  Operator:     `-word`
+  Example:      `palette -tailwind`
+  What it does: Leaves out pages that contain the word. The word must be at
+                least two characters.
+
+  Operator:     `type:`
+  Example:      `type:learn contrast`
+  What it does: Only one kind of page. See the list below.
+
+  Operator:     `tag:`
+  Example:      `tag:oklch`
+  What it does: Only pages with a tag containing the value.
+
+  Operator:     `title:`
+  Example:      `title:gamut`
+  What it does: Only pages whose title contains the value.
+
+  Operator:     `desc:` or `description:`
+  Example:      `desc:printing`
+  What it does: Only pages whose description or text contains the value.
+
+  Operator:     `path:`
+  Example:      `path:/library/learn/`
+  What it does: Only pages whose address contains the value.
+
+  Operator:     `category:`
+  Example:      `category:legal`
+  What it does: Only pages whose category contains the value. Categories
+                mostly match the `type:` values below.
+
+  Operator:     A hex code
+  Example:      `#d3af37`
+  What it does: Shows the colour answer card. See Instant answers
+                [instant-answers.txt].
+
+  Operator:     Two hex codes
+  Example:      `#d3af37 #0d0d0d`
+  What it does: Shows the contrast-pair card.
+
+You can combine operators, for example `type:learn "colour blindness" -quiz`.
+
+Filter values with spaces
+-------------------------
+
+Put the value in quotes after the colon: `title:"contrast ratio"`.
+
+A filter on its own
+-------------------
+
+A filter works without any words. `type:changelog` lists changelog pages, and
+`tag:oklch` lists everything tagged OKLCH.
+
+Values for type:
+----------------
+
+`type:` must match exactly. The main values are:
+
+  Value           | Pages
+  ----------------+----------------------------------
+  `learn`         | Learn articles
+  `documentation` | Documentation guides
+  `tool`          | Tool pages
+  `library`       | Library pages
+  `blog`          | Blog posts
+  `changelog`     | Changelog pages
+  `company`       | Company pages
+  `legal`         | Legal pages
+  `portfolio`     | Portfolios in the Portfolio Index
+
+The section tabs are often quicker than `type:`. See Search this site
+[search-this-site.txt].
+
+WEB SEARCH OPERATORS
+====================
+
+When the globe is on, the web index understands:
+
+  Operator:     Words
+  Example:      `color contrast`
+  What it does: Finds pages with the words. Pages with every word are shown
+                before pages missing one.
+
+  Operator:     `"…"`
+  Example:      `"design tokens"`
+  What it does: The words together, in that order.
+
+  Operator:     `-word`
+  Example:      `gradient -css`
+  What it does: Leaves out pages with the word.
+
+  Operator:     `site:`
+  Example:      `site:w3.org contrast`
+  What it does: Only pages on that site and its subdomains. `host:` does the
+                same.
+
+  Operator:     `intitle:`
+  Example:      `intitle:palette`
+  What it does: Only pages whose title contains the value.
+
+The site-search operators `type:`, `tag:`, `title:`, `desc:`, `path:` and
+`category:` do not apply to web search, and the answer cards appear only in
+site search.
+
+TIPS
+====
+
+  - If a query with operators finds nothing, the Worth trying list names the
+    operator most likely to be the cause.
+  - Hex codes work with or without `#`, in three-digit or six-digit form:
+    `#abc`, `abc`, `#aabbcc` or `aabbcc`.
+  - A word of three or six letters made only from the letters a to f, such as
+    `bad` or `facade`, is read as a hex code too. Put it in quotes to search
+    for the word itself.

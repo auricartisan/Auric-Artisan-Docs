@@ -1,0 +1,92 @@
+==============================================================================
+AUDIT A PALETTE
+==============================================================================
+Check every pair of colours in your palette under all 17 colour conditions,
+see which pairs merge, and get a lightness fix for each.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+Simulating one colour tells you what it becomes. It does not tell you that two
+of your colours became the same thing, which is what breaks a chart legend, a
+status badge or a map. Palette audit checks every pair in your palette, under
+all 17 colour conditions, on the same engine the panels use.
+
+ENTER YOUR PALETTE
+==================
+
+  1. Select Palette audit in the view bar. It opens with a five-colour sample
+     palette.
+  2. For each colour, use its swatch ("Change colour N") or type into its hex
+     field.
+  3. Select Add colour to add another, up to 24 colours.
+  4. Select Remove beside a colour to take it out.
+
+Each colour shows how many collapses it is involved in, for example "15
+collapses". Select a swatch to see only where that colour collapses. The
+palette is remembered in this browser.
+
+SET THE THRESHOLD
+=================
+
+Merge below, measured in CIEDE2000, is how close two simulated colours must be
+to count as merged.
+
+  Setting      | Range                                            | Default
+  -------------+--------------------------------------------------+--------
+  ΔE threshold | 1 ("identical") to 15 ("loose"), in steps of 0.5 | 5
+
+A lower threshold only flags pairs that become almost identical; a higher one
+also flags pairs that become merely similar.
+
+READ THE RESULT
+===============
+
+The middle column shows one condition at a time:
+
+  - a verdict, for example "4 of 10 pairs merge under Achromatopsia";
+  - Your palette above the same colours Under that condition, with the ΔE of
+    each merged pair now and what it was ("ΔE 3.0 was 67");
+  - What collapses, naming the condition, its severity score and prevalence,
+    and listing each merged pair with its distance before and after (for
+    example "16.6 → 1.59");
+  - Measured · this condition: pairs merged, the closest ΔE after simulation,
+    how many of the 17 conditions fail, and how many of your colours are safe
+    in every condition.
+
+If nothing merges, the verdict says "Every pair survives all 17 colour
+conditions."
+
+CHOOSE THE CONDITION
+====================
+
+The right column lists the 17 colour conditions, worst first. Each shows how
+many pairs merge (or "clean"), its severity score and prevalence.
+
+  - Search 17 conditions filters the list.
+  - All 17 and Only failing switch between every condition and those with
+    merges.
+
+Select a condition to show it in the middle column.
+
+FIX A MERGED PAIR
+=================
+
+Select Suggest a fix beside a merged pair. The audit finds the smallest change
+in lightness to one of the two colours that pulls the pair back apart under
+that condition, and shows the new colour, whether it is lighter or darker, and
+the distance it clears at. Lightness is used rather than hue because hue is
+exactly what these conditions remove.
+
+If no change of lightness under 80% separates the pair, it says "No lightness
+change under 80% separates these." Consider adding a pattern, label or shape
+instead of relying on colour.
+
+TAKE IT FURTHER
+===============
+
+  - Open this condition in the workbench opens the selected condition in the
+    Workbench.
+  - Copy the palette copies your palette's colours.
+
+The footer notes that the audit uses CIEDE2000 on the simulated colours, in
+your browser, and names the REST API endpoint that does the same audit (`POST
+/v1/vision/audit`).

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check contrast — Auric Artisan Docs</title>
+<meta name="description" content="Read the Audit tab and the plain-text contrast report, and control the contrast guard that keeps your theme readable.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Theme</a>
+<h2>Auric Artisan Theme guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Theme</a></li>
+<li><a href="check-contrast.html" aria-current="page">Check contrast</a></li>
+<li><a href="choose-a-theme.html">Choose a theme</a></li>
+<li><a href="compare-and-preview.html">Compare and preview</a></li>
+<li><a href="edit-colours.html">Edit individual colours</a></li>
+<li><a href="interface-language.html">Interface language (English and हिन्दी)</a></li>
+<li><a href="looks-and-dials.html">Looks and dials</a></li>
+<li><a href="save-share-and-export.html">Save, share and export</a></li>
+<li><a href="theme-sidebar.html">The Theme sidebar</a></li>
+<li><a href="reference.html">Auric Artisan Theme reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Theme</a> &rsaquo; <a href="README.html">Auric Artisan Theme guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Theme</p>
+<h1>Check contrast</h1>
+<p class="lede">Read the Audit tab and the plain-text contrast report, and control the contrast guard that keeps your theme readable.</p>
+<p>Every colour the theme produces is checked against the surface it actually sits on. You can read the results in three places: the <strong>Audit</strong> tab in Theme Studio, the <strong>Contrast</strong> section of the sidebar, and a plain-text contrast report.</p>
+<h2 id="key-terms">Key terms</h2>
+<ul>
+<li><strong>Contrast ratio (WCAG):</strong> a number from 1:1 to 21:1 comparing the luminance of text and background. WCAG 2 AA asks for 4.5:1 for body text and 3:1 for large text and control boundaries; AAA asks for 7:1.</li>
+<li><strong>APCA Lc:</strong> a perceptual contrast measure from the draft WCAG 3 work. Unlike the ratio, it accounts for polarity (dark on light versus light on dark). Roughly, Lc 60 suits body text, Lc 45 large text, and Lc 30 is the floor for anything you must read. A negative value means light text on a dark background.</li>
+<li><strong>Minimum:</strong> the threshold a particular pair is held to. Decorative washes are held to less than text.</li>
+</ul>
+<h2 id="what-is-audited">What is audited</h2>
+<p>The audit checks 81 pairs per theme: editor text, all 26 syntax roles, the 14 text-bearing ANSI terminal colours, source control decorations, and the text and borders of dropdowns, inputs, checkboxes, radios, buttons, badges, menus and quick picks. Form-control borders are held to 3:1 against the fill they enclose (WCAG 1.4.11).</p>
+<h2 id="use-the-audit-tab">Use the Audit tab</h2>
+<ol>
+<li>Open Theme Studio and select <strong>Audit</strong> (or press <code>4</code>). If any pair fails, the tab shows a badge with the number of failures.</li>
+<li>The top card shows the worst pair in the theme, its ratio, and either &quot;{n} failing&quot; or <strong>All clear</strong>.</li>
+<li>The <strong>Measured pairs</strong> table lists every pair, failures first, then by ratio.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Pair</td><td>An &quot;Aa&quot; sample drawn in the real colours, followed by the pair name.</td></tr>
+<tr><td>Ratio</td><td>The WCAG contrast ratio, such as 7.12:1.</td></tr>
+<tr><td>APCA</td><td>The APCA Lc value.</td></tr>
+<tr><td>Minimum</td><td>The threshold for this pair.</td></tr>
+<tr><td>Result</td><td><strong>AAA</strong> (7:1 or more), <strong>AA</strong> (meets its minimum), <strong>Tight</strong>, <strong>Fail</strong> (below minimum) or <strong>Missing</strong> (a colour the pair depends on is missing, so it could not be measured).</td></tr>
+</tbody></table></div>
+<p>A <strong>How to read this</strong> card at the bottom repeats these definitions.</p>
+<h2 id="use-the-sidebar">Use the sidebar</h2>
+<p>In the <strong>Auric Theme</strong> view, the <strong>Contrast</strong> section shows the worst pair, a <strong>Pass</strong> or <strong>Fail</strong> chip and its ratio. Select it (<strong>Open audit ›</strong>) to open Theme Studio on the Audit tab. Before the first audit it reads <strong>Not audited yet</strong>.</p>
+<h2 id="open-the-plain-text-contrast-report">Open the plain-text contrast report</h2>
+<ol>
+<li>Run <strong>Auric Theme: Show Contrast Report</strong>, or select the checklist icon in the sidebar&#39;s title bar.</li>
+<li>A read-only document called &quot;Auric contrast report&quot; opens in a preview tab.</li>
+</ol>
+<p>The report lists the theme name and polarity, the number of audited and failing pairs, then one row per pair with a result flag (<strong>AAA</strong>, <strong>AA</strong> or <strong>FAIL</strong>), the WCAG ratio, the APCA Lc value, the minimum and the pair name. Failures are sorted first. The footer explains AA, AAA and APCA Lc.</p>
+<p>The report updates when the theme is re-applied. You can copy it or save it like any other document.</p>
+<h2 id="the-contrast-guard">The contrast guard</h2>
+<p>When <strong>Enforce contrast</strong> (<code>auricTheme.a11y.enforceContrast</code>) is on, the default, every colour the customiser produces is adjusted along its OKLCH lightness until it clears your minimum, keeping its hue and chroma. The guard runs after your own colour overrides: a colour you choose is treated as a strong preference, but not as permission to make text unreadable.</p>
+<p>To change the guard:</p>
+<ol>
+<li>Open the <strong>Dials</strong> tab, <strong>Accessibility</strong> card.</li>
+<li>Set <strong>Minimum contrast</strong> between 3 and 7 (default 4.5). Use 7 for AAA-level text.</li>
+<li>Turn <strong>Enforce contrast</strong> off if you want exact colours. The audit still reports failures.</li>
+<li>Turn <strong>Audit on apply</strong> off if you do not want a warning notification each time failures appear.</li>
+</ol>
+<p>When <strong>Audit on apply</strong> is on and a change leaves pairs below the minimum, VS Code shows &quot;Auric Theme: {n} colour pairs no longer meet your contrast minimum.&quot; Select <strong>Show report</strong> to open the contrast report.</p>
+<h2 id="result">Result</h2>
+<p>You know which pairs pass, which are tight and which fail, and you can adjust the dials or overrides until the Audit tab shows <strong>All clear</strong>.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> The audit measures the colour pairs the theme defines. It is guidance, not a guarantee that every possible customisation meets accessibility requirements. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+</blockquote>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Auric Artisan Theme</a><a href="choose-a-theme.html"><span>Next</span>Choose a theme</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#key-terms">Key terms</a></li><li><a href="#what-is-audited">What is audited</a></li><li><a href="#use-the-audit-tab">Use the Audit tab</a></li><li><a href="#use-the-sidebar">Use the sidebar</a></li><li><a href="#open-the-plain-text-contrast-report">Open the plain-text contrast report</a></li><li><a href="#the-contrast-guard">The contrast guard</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,419 @@
+==============================================================================
+COLLAGE MAKER REFERENCE
+==============================================================================
+Every tab, control, button, readout, message and file format in the Collage
+Maker, with ranges and defaults.
+Area: Website › Tools › Image and file tools › Collage Maker   Updated: 2026-09-25
+
+Address: https://auricartisan.com/tool/general/tools/collage-maker/
+
+TABS
+====
+
+  Tab:      Studio
+  Contents: Pictures, canvas settings, history, selected-picture controls, the
+            canvas, the layers list, the readout cards
+
+  Tab:      Layout
+  Contents: Fitting options, apply buttons, the arrangement table and drawings
+            of the three best arrangements
+
+  Tab:      Measure
+  Contents: Worked examples of how coverage, overlap and off-canvas area are
+            measured
+
+  Tab:      Data
+  Contents: The list of every figure and its source, filterable by status; the
+            tab label shows the count (12)
+
+  Tab:      Export
+  Contents: Export scale, JPEG quality, save, copy and session buttons, file
+            sizes, the reading
+
+  Tab:      Reference
+  Contents: Sources, each marked Runs or Withdrawn, and the arithmetic table
+
+Links in the page text (for example Measure or Data in a note) switch to that
+tab.
+
+STUDIO TAB — PICTURES
+=====================
+
+  Control:      Drop pictures box
+  What it does: Adds pictures by drag and drop, or opens a file chooser when
+                selected or when `Enter` or `Space` is pressed
+  Accepts:      Any image type the browser opens; JPG, PNG, WebP, GIF named
+
+  Control:      The canvas
+  What it does: Also accepts dropped image files
+  Accepts:      As above
+
+Several files can be added at once. New pictures are centred, scaled down to
+fit within 42% of the canvas width and height (never enlarged), placed on top
+and selected.
+
+STUDIO TAB — THE CANVAS
+=======================
+
+  Control:         Shape
+  Values or range: 4 : 3 — 1200 × 900; 1 : 1 — 1200 × 1200; 3 : 2 — 1200 ×
+                   800; 16 : 9 — 1200 × 675; 9 : 16 — 1200 × 2133; 2 : 3 —
+                   1200 × 1800
+  Default:         4 : 3
+
+  Control:         Padding
+  Values or range: 0 to 120 px, step 1
+  Default:         24 px
+
+  Control:         Gap
+  Values or range: 0 to 80 px, step 1
+  Default:         8 px
+
+  Control:         Corner radius
+  Values or range: 0 to 80 px, step 1
+  Default:         18 px
+
+  Control:         Transparent background
+  Values or range: On (transparent) or off (white)
+  Default:         On
+
+  Control:         Centre and rule-of-thirds guides
+  Values or range: On or off; screen only
+  Default:         On
+
+  Control:         Snap to a 10 px grid
+  Values or range: On or off; applies to dragging
+  Default:         On
+
+  Control:         size (readout)
+  Values or range: Current canvas size
+  Default:         1200 × 900
+
+  Control:         background (readout)
+  Values or range: transparent, or the colour in use
+  Default:         transparent
+
+Padding and gap affect only grid arrangements. The corner radius clips the
+canvas and every export.
+
+STUDIO TAB — HISTORY
+====================
+
+  Control | What it does
+  --------+------------------------------------------------------------------------
+  ← Undo  | Steps back one change; disabled when there is nothing to undo
+  Redo →  | Steps forward one undone change; disabled when there is nothing to redo
+  Note    | Nothing to undo yet, or the number of steps back to the start
+
+Up to 60 steps are kept. A new change clears the redo steps.
+
+STUDIO TAB — THE SELECTED PICTURE
+=================================
+
+Shown when a picture is selected; otherwise the area reads nothing selected.
+
+  Control:                 Scale
+  Range or effect:         2% to 400%, step 1%
+  Default for a new picture:Whatever fits 42% of the canvas, at most 100%
+
+  Control:                 Rotation
+  Range or effect:         −180° to 180°, step 1°
+  Default for a new picture:0°
+
+  Control:                 Opacity
+  Range or effect:         0% to 100%, step 1%
+  Default for a new picture:100%
+
+  Control:                 Bring to front
+  Range or effect:         Moves the picture to the top of the stack
+  Default for a new picture:—
+
+  Control:                 Send to back
+  Range or effect:         Moves the picture to the bottom
+  Default for a new picture:—
+
+  Control:                 Centre
+  Range or effect:         Centres the picture on the canvas
+  Default for a new picture:—
+
+  Control:                 Duplicate
+  Range or effect:         Adds a copy offset 24 px right and 24 px down, and
+                           selects it
+  Default for a new picture:—
+
+  Control:                 Flip across
+  Range or effect:         Mirrors left to right (toggles)
+  Default for a new picture:Not flipped
+
+  Control:                 Flip down
+  Range or effect:         Mirrors top to bottom (toggles)
+  Default for a new picture:Not flipped
+
+  Control:                 Hide / Show
+  Range or effect:         Hides or shows the picture
+  Default for a new picture:Shown
+
+  Control:                 Remove
+  Range or effect:         Removes the picture
+  Default for a new picture:—
+
+STUDIO TAB — OTHER BUTTONS
+==========================
+
+  Button:       Arrange in a grid
+  What it does: Applies the arrangement with the highest measured coverage,
+                using the Layout tab's fitting choices
+
+  Button:       Clear the canvas
+  What it does: Removes every picture; undoable
+
+STUDIO TAB — CANVAS AND LAYERS
+==============================
+
+  Element:               Canvas heading
+  What it shows or does: Canvas · width × height, and measured at full size or
+                         measured at the reduced size
+
+  Element:               Note beside The canvas
+  What it shows or does: no pictures, or the number of pictures and the canvas
+                         size
+
+  Element:               Canvas
+  What it shows or does: Click to select, drag to move, drag a corner handle
+                         to resize, click empty space to deselect
+
+  Element:               Layers · top first
+  What it shows or does: One row per picture, top of the stack first:
+                         thumbnail, file name, own size and scale, visibility
+
+Pointer resizing by a corner handle ranges from 2% to 800%.
+
+STUDIO TAB — READOUT CARDS
+==========================
+
+  Card                 | Meaning
+  ---------------------+------------------------------------------------------------------
+  canvas covered       | Share of canvas pixels painted by pictures (measured from pixels)
+  overlapping          | Share of canvas pixels painted by two or more pictures
+  outside the canvas   | Share of picture area beyond the edges; warns above 0.1%
+  history              | Undo steps available
+  the old readout said | Sum of picture areas divided by canvas area; for comparison only
+
+Percentages are shown to one decimal place.
+
+LAYOUT TAB
+==========
+
+  Control:      Fit inside the cell
+  What it does: Scales pictures so all of each is inside its cell
+  Default:      Selected
+
+  Control:      Fill the cell, crop
+  What it does: Scales pictures to cover their cells; the excess is not
+                trimmed
+  Default:      —
+
+  Control:      Enlarge a small picture to fill its cell
+  What it does: Allows scaling above 100% of a picture's own pixels
+  Default:      Off
+
+  Control:      Apply buttons
+  What it does: One per valid arrangement, labelled columns × rows
+  Default:      —
+
+Arrangement table columns: Arrangement, Cell, Covered, Overlap, Off-canvas,
+What happened. One row per column count from 1 to the number of visible
+pictures. The three highest-covering arrangements are drawn under The grid,
+and what it leaves, each with covered and cells used.
+
+Applying an arrangement moves each visible picture to the centre of its cell,
+sets its scale, and sets its rotation to 0°. It is one history step.
+
+MEASURE TAB
+===========
+
+  Element:  What is measured
+  Contents: covered: pixels; overlapping: pixels; off-canvas: geometry;
+            arrangements: laid out
+
+  Element:  Withdrawn buttons
+  Contents: Bootstrap CI and Batch coverage scroll to the notes on two
+            withdrawn features
+
+  Element:  One number for three different collages
+  Contents: Three live panels, Stacked, Spread out, Dragged off the canvas,
+            with it said and really
+
+  Element:  Further panels
+  Contents: How undo records history, what an export contains, withdrawn
+            features, and what stayed unchanged
+
+DATA TAB
+========
+
+Status filter buttons: All, Measured, Computed, This tool's choice, Absent,
+each with a count. Each entry expands to an explanation; stand-in and absent
+entries add what it would take.
+
+EXPORT TAB
+==========
+
+  Control               | Range or effect                               | Default
+  ----------------------+-----------------------------------------------+------------
+  Scale                 | 0.25× to 4×, step 0.25                        | 1.00×
+  JPEG quality          | 0.10 to 1.00, step 0.01                       | 0.92
+  size (readout)        | Export size in pixels                         | 1200 × 900
+  background (readout)  | transparent or the colour in use              | transparent
+  Save the PNG          | Downloads `collage.png`                       | —
+  Save a JPEG           | Downloads `collage.jpg` at the chosen quality | —
+  Copy to the clipboard | Copies a PNG at the export scale              | —
+  Save the session      | Downloads `collage-session.json`              | —
+  Load a session        | Opens a chooser for a `.json` session file    | —
+  Save the reading      | Downloads `collage-reading.json`              | —
+
+The table under What leaves this page lists PNG, JPEG and Session JSON with
+what each carries, its measured size for your collage, and what it is good
+for.
+
+FILE FORMATS
+============
+
+collage.png and collage.jpg
+---------------------------
+
+  Property     | Value
+  -------------+------------------------------------------------------------------------------
+  Size         | Canvas size × Scale, rounded to whole pixels
+  Colour       | 8 bits per channel, as the browser draws the canvas
+  Transparency | PNG keeps it; JPEG cannot store it
+  Contents     | Visible pictures, background, rounded corners; no guides, outlines or handles
+
+collage-session.json
+--------------------
+
+    {
+      "tool": "Auric Artisan — collage",
+      "canvas": {
+        "w": 1200, "h": 900, "aspect": "4:3",
+        "pad": 24, "gap": 8, "radius": 18,
+        "background": "transparent"
+      },
+      "pictures": [
+        {
+          "name": "harbour.jpg", "cx": 300, "cy": 225, "bw": 4032, "bh": 3024,
+          "scale": 0.1339, "rot": 0, "opa": 1,
+          "flipX": false, "flipY": false, "visible": true
+        }
+      ]
+    }
+
+  Field:   `canvas.w`, `canvas.h`
+  Meaning: Canvas size in pixels
+
+  Field:   `canvas.aspect`
+  Meaning: Shape preset, for example `4:3`
+
+  Field:   `canvas.pad`, `canvas.gap`, `canvas.radius`
+  Meaning: Padding, gap and corner radius in pixels
+
+  Field:   `canvas.background`
+  Meaning: `transparent`, or a colour
+
+  Field:   `pictures[].name`
+  Meaning: The file name the picture had
+
+  Field:   `pictures[].cx`, `cy`
+  Meaning: Position of the picture's centre on the canvas, in pixels
+
+  Field:   `pictures[].bw`, `bh`
+  Meaning: The picture's own width and height in pixels
+
+  Field:   `pictures[].scale`
+  Meaning: Scale factor (1 is 100%)
+
+  Field:   `pictures[].rot`
+  Meaning: Rotation in degrees
+
+  Field:   `pictures[].opa`
+  Meaning: Opacity from 0 to 1
+
+  Field:   `pictures[].flipX`, `flipY`
+  Meaning: Mirrored across or down
+
+  Field:   `pictures[].visible`
+  Meaning: Shown or hidden
+
+The file holds no image data. On loading, stored pictures are matched to
+loaded pictures by order in the stack, bottom first. The values in the example
+are illustrative.
+
+collage-reading.json
+--------------------
+
+Fields: `tool`, `canvas` (`w`, `h`, `background`), `pictures` (a count),
+`measured` (`covered`, `overlapping`, `outsideCanvas` as fractions to four
+decimals, and `at`), `choices` (`neverEnlargeBeyond`, `snapStep`,
+`jpegQuality`), and `notHeld`. See Export, copy and save sessions
+[export-and-sessions.txt] for an example.
+
+MESSAGES
+========
+
+  Message:         Added name / Added N pictures
+  When it appears: Pictures were added
+
+  Message:         Could not read name
+  When it appears: A file could not be decoded as an image
+
+  Message:         Removed. Undo brings it back.
+  When it appears: A picture was removed
+
+  Message:         Cleared. Undo brings every picture back.
+  When it appears: The canvas was cleared
+
+  Message:         Arranged. Undo puts every picture back.
+  When it appears: An arrangement was applied from the Layout tab
+
+  Message:         Arranged C × R — N% covered. Undo puts them back.
+  When it appears: Arrange in a grid was used
+
+  Message:         No arrangement fits at this padding and gap.
+  When it appears: Every arrangement was refused
+
+  Message:         Nothing on the canvas yet.
+  When it appears: Export, copy or arrange with no pictures
+
+  Message:         Saved PNG or Saved JPG, with a size
+  When it appears: An image was saved
+
+  Message:         The browser could not encode that.
+  When it appears: The browser failed to produce the image file
+
+  Message:         Copied with a size
+  When it appears: The PNG was copied to the clipboard
+
+  Message:         This browser will not take an image from the clipboard.
+  When it appears: The browser does not support copying images
+
+  Message:         The browser refused the clipboard.
+  When it appears: Clipboard permission was refused
+
+  Message:         Session saved. It describes the layout, not the pictures.
+  When it appears: A session file was saved
+
+  Message:         Session applied to the N pictures you have loaded.
+  When it appears: A session was loaded onto loaded pictures
+
+  Message:         Session read. Load the same pictures and it will be applied
+                   to them.
+  When it appears: A session was loaded with no pictures on the canvas
+
+  Message:         That is not a session file this page wrote.
+  When it appears: The chosen file is not a valid session
+
+  Message:         Reading saved.
+  When it appears: The reading was saved
+
+  Message:         A picture in that step is no longer loaded.
+  When it appears: An undo or redo step refers to a picture the page no longer
+                   holds

@@ -1,0 +1,62 @@
+==============================================================================
+TONAL STEPS FAQ
+==============================================================================
+Short answers to common questions about Tonal Steps, Tints and Shades.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+WHICH ENGINE SHOULD I USE?
+==========================
+
+Use HSL lightness for a quick, familiar ramp. Use Equal luminance when you
+want steps tied to WCAG contrast, and adjust easing so the steps look even.
+The Ramps tab measures how even each one is.
+
+WHY ARE THERE TWO ENGINES, NOT THREE?
+=====================================
+
+Equal steps in WCAG contrast ratio are, mathematically, equal steps in
+relative luminance. The third engine produced the same colours as Equal
+luminance, so it is not offered as a separate choice.
+
+WHY IS OKLAB USED TO MEASURE THE STEPS?
+=======================================
+
+OKLab lightness tracks perceived lightness well, so gaps in OKLab L show
+whether a ramp looks evenly spaced. You can switch to CIELAB L* or relative Y
+on the Ramps tab.
+
+WHAT IS THE DIFFERENCE BETWEEN TINTS, SHADES AND TONES?
+=======================================================
+
+A tint adds white, a shade adds black, and a tone adds grey. All three start
+from your base colour.
+
+ARE THE 50–950 KEYS THE TAILWIND COLOURS?
+=========================================
+
+No. They are this tool's ladder with Tailwind's key names: mixed towards white
+below 500 and towards black above. Tailwind's own colours are tuned by hand
+per hue.
+
+IS APCA A REQUIREMENT?
+======================
+
+No. APCA is a working draft of what WCAG 3 may adopt. WCAG 2.2 ratios remain
+the published requirement. The tool shows both.
+
+WHY DOES THE APCA SIGN CHANGE?
+==============================
+
+APCA Lc is signed. Positive and negative values mark which colour is lighter,
+because APCA treats dark text on light backgrounds differently from light text
+on dark.
+
+CAN I USE MORE THAN 21 STEPS?
+=============================
+
+No. The range is 3 to 21.
+
+DOES ANYTHING LEAVE MY BROWSER?
+===============================
+
+No. Ramps, contrast and exports are computed and created on your device.

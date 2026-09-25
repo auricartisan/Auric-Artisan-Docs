@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gradient Maker — Auric Artisan Docs</title>
+<meta name="description" content="Build linear, radial and conic gradients with any number of stops, choose the colour space they blend in, add easing, and export CSS, SVG, PNG, JSON or Tailwind.">
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../../index.html">Home</a><a href="../../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Basic Color Tools documentation</a>
+<h2>Panel tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="collage-maker.html">Collage Maker (panel)</a></li>
+<li><a href="colour-battle.html">Color Battle</a></li>
+<li><a href="colour-picker.html">Color Picker</a></li>
+<li><a href="gradient-maker.html" aria-current="page">Gradient Maker</a></li>
+<li><a href="palette-remix.html">Palette Remix</a></li>
+<li><a href="palette-studio.html">Palette Studio</a></li>
+<li><a href="quick-converter.html">Quick Converter</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../../README.html">The website</a> &rsaquo; <a href="../../../../README.html">Website tools</a> &rsaquo; <a href="../../../README.html">Colour workspace</a> &rsaquo; <a href="../../README.html">Basic Color Tools</a> &rsaquo; <a href="../README.html">Basic Color Tools documentation</a> &rsaquo; <a href="README.html">Panel tools</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Gradient Maker</h1>
+<p class="lede">Build linear, radial and conic gradients with any number of stops, choose the colour space they blend in, add easing, and export CSS, SVG, PNG, JSON or Tailwind.</p>
+<p>Gradient Maker builds CSS gradients. You set a type (linear, radial or conic), add colour stops along a track, and choose how the colours blend between stops. It shows a large live preview, charts of how lightness, chroma and hue change along the gradient, nine presets, and export options for code and images.</p>
+<p>A <strong>colour stop</strong> is a colour pinned at a position along the gradient, from 0 % (the start) to 100 % (the end). <strong>Interpolation</strong> is the colour space the gradient blends in between stops: blending in sRGB (what CSS does by default) can pass through dull or dark middles, while blending in OKLCH keeps lightness and saturation more even. <strong>Easing</strong> changes the pace of the blend along the gradient.</p>
+<p>Gradient Maker is in the <strong>Generate</strong> category at the <strong>Basic</strong> level.</p>
+<h2 id="open-it">Open it</h2>
+<p>In the Workspace view, select <strong>Gradient Maker</strong> in <strong>Open a tool</strong>. It opens with a two-stop linear gradient from gold (#D3AF37) to deep blue (#1D2A3E) at 90 degrees.</p>
+<h2 id="screen-tour">Screen tour</h2>
+<h3 id="sidebar">Sidebar</h3>
+<ul>
+<li><strong>Type</strong>: <strong>Linear</strong>, <strong>Radial</strong> or <strong>Conic</strong>.</li>
+<li><strong>Angle</strong>: the direction in degrees. Hidden for radial gradients.</li>
+<li><strong>Interpolation</strong>: <strong>sRGB (native CSS)</strong>, <strong>OKLCh (perceptual)</strong>, <strong>HSL</strong> or <strong>CIE Lab</strong>.</li>
+<li><strong>Easing</strong>: <strong>Linear</strong>, <strong>Ease in</strong>, <strong>Ease out</strong>, <strong>Ease in-out</strong> or <strong>Sine</strong>.</li>
+<li><strong>Reverse</strong>, <strong>+ Stop</strong>, <strong>Even</strong> and <strong>Random</strong>.</li>
+<li><strong>Export</strong>: <strong>Copy CSS</strong>, <strong>SVG</strong>, <strong>1600px</strong>, <strong>4K</strong>, <strong>JSON</strong> and <strong>Tailwind</strong>.</li>
+</ul>
+<h3 id="main-area-tabs">Main area tabs</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Design</strong></td><td>The preview, the stop track, and the <strong>Stops</strong> list with a count, for example <strong>Stops (3)</strong>.</td></tr>
+<tr><td><strong>Curves</strong></td><td>Four charts of the gradient&#39;s colour along its length.</td></tr>
+<tr><td><strong>Presets</strong></td><td>Nine ready-made gradients.</td></tr>
+<tr><td><strong>Export</strong></td><td>Read-only boxes with the CSS, SVG and JSON code.</td></tr>
+</tbody></table></div>
+<h3 id="the-stop-track-and-list">The stop track and list</h3>
+<p>The track under the preview shows the gradient left to right with a round marker for each stop.</p>
+<ul>
+<li>Select an empty spot on the track to add a stop there. Its colour is a straight sRGB blend of the two stops either side of that point.</li>
+<li>Select a marker to highlight it.</li>
+</ul>
+<p>The <strong>Stops</strong> list has one row per stop:</p>
+<ul>
+<li>A colour well: select it to choose a colour.</li>
+<li>A HEX text box: type a six-digit or three-digit HEX code.</li>
+<li>A position slider from 0 to 100 in steps of 0.5, with the position shown as a percentage.</li>
+<li>A <strong>✕</strong> remove button, shown while there are more than two stops.</li>
+</ul>
+<h2 id="tasks">Tasks</h2>
+<h3 id="build-a-three-colour-gradient">Build a three-colour gradient</h3>
+<ol>
+<li>Select <strong>+ Stop</strong>. A new stop with a random colour appears at 50 %.</li>
+<li>In its row, type a HEX code or use the colour well.</li>
+<li>Drag its position slider to where you want it.</li>
+<li>Select <strong>Even</strong> to space all stops evenly.</li>
+<li>Change <strong>Type</strong> to <strong>Radial</strong> to see a circular version, or back to <strong>Linear</strong> and set <strong>Angle</strong> (0 to 360).</li>
+</ol>
+<p>Result: the preview shows your gradient and updates with every change.</p>
+<h3 id="make-the-blend-perceptually-smooth">Make the blend perceptually smooth</h3>
+<ol>
+<li>Set <strong>Interpolation</strong> to <strong>OKLCh (perceptual)</strong>.</li>
+<li>Open the <strong>Curves</strong> tab. Compare the <strong>Lightness across gradient</strong> chart with the sRGB result: the line becomes smoother.</li>
+<li>Try an <strong>Easing</strong> such as <strong>Ease in-out</strong> to hold the end colours longer and move quickly through the middle.</li>
+</ol>
+<p>Result: a gradient without a muddy middle. The CSS output now contains 20 generated stops that imitate the chosen blend, because CSS blends in sRGB unless told otherwise.</p>
+<h3 id="start-from-a-preset">Start from a preset</h3>
+<ol>
+<li>Open the <strong>Presets</strong> tab.</li>
+<li>Select a preset. It loads and the panel switches back to the <strong>Design</strong> tab.</li>
+<li>Edit its stops as you like.</li>
+</ol>
+<p>The presets are <strong>Sunset</strong>, <strong>Ocean</strong>, <strong>Aurora</strong>, <strong>Coral</strong>, <strong>Mint</strong>, <strong>Royal</strong>, <strong>Auric</strong>, <strong>Spectrum</strong> and <strong>Mono dark</strong>.</p>
+<p>Result: a starting gradient you can adjust.</p>
+<h3 id="export-the-gradient">Export the gradient</h3>
+<ol>
+<li>Select <strong>Copy CSS</strong> to copy a declaration such as <code>background: linear-gradient(90deg, #D3AF37 0.0%, #1D2A3E 100.0%);</code>.</li>
+<li>Or select <strong>SVG</strong>, <strong>1600px</strong> or <strong>4K</strong> to download a file.</li>
+<li>For JSON, open the <strong>Export</strong> tab first, then select <strong>JSON</strong> (see the note below).</li>
+</ol>
+<p>Result: code on your clipboard or an image in your downloads folder.</p>
+<h2 id="other-buttons">Other buttons</h2>
+<ul>
+<li><strong>Reverse</strong> mirrors every stop&#39;s position, so the gradient runs the other way.</li>
+<li><strong>Even</strong> keeps the order of the stops and spaces them evenly from 0 % to 100 %.</li>
+<li><strong>Random</strong> replaces the colours with new ones (keeping the number of stops), evenly spaced in hue around a random starting hue, and spreads the stops evenly.</li>
+</ul>
+<h2 id="curves">Curves</h2>
+<p>The charts sample the gradient at 60 points, using the current interpolation and easing:</p>
+<ul>
+<li><strong>Lightness across gradient (samples 60 points)</strong>: OKLCH lightness from 0 to 1.</li>
+<li><strong>Chroma across gradient</strong>: OKLCH chroma from 0 to 0.4.</li>
+<li><strong>Hue rotation along gradient</strong>: OKLCH hue from 0 to 360 degrees.</li>
+<li><strong>CIE 1931 path</strong>: sample points on the chromaticity diagram, with the sRGB triangle drawn dashed.</li>
+</ul>
+<h2 id="export">Export</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy CSS</strong></td><td>Copies <code>background: &lt;gradient&gt;;</code>.</td></tr>
+<tr><td><strong>SVG</strong></td><td>Downloads <code>gradient.svg</code>, 800 by 400 pixels.</td></tr>
+<tr><td><strong>1600px</strong></td><td>Downloads <code>gradient.png</code>, 1600 by 800 pixels.</td></tr>
+<tr><td><strong>4K</strong></td><td>Downloads <code>gradient.png</code>, 3840 by 1920 pixels.</td></tr>
+<tr><td><strong>JSON</strong></td><td>Copies the JSON shown on the <strong>Export</strong> tab: type, angle, interpolation, easing, and each stop&#39;s HEX, position and OKLCH values.</td></tr>
+<tr><td><strong>Tailwind</strong></td><td>Copies <code>backgroundImage: { &#39;gradient&#39;: &#39;&lt;gradient&gt;&#39; }</code> for a Tailwind theme.</td></tr>
+</tbody></table></div>
+<p>The CSS forms are:</p>
+<pre class="code" data-lang="css"><code>background: linear-gradient(90deg, #D3AF37 0.0%, #1D2A3E 100.0%);
+background: radial-gradient(circle at center, #D3AF37 0.0%, #1D2A3E 100.0%);
+background: conic-gradient(from 90deg at center, #D3AF37 0.0%, #1D2A3E 100.0%);</code></pre>
+<p>Notes on each format:</p>
+<ul>
+<li><strong>CSS</strong>: with <strong>sRGB (native CSS)</strong> or <strong>HSL</strong> interpolation and <strong>Linear</strong> easing, the CSS lists your stops as they are, and the browser blends them in sRGB. With any other combination the CSS lists 20 generated stops that reproduce the chosen interpolation and easing.</li>
+<li><strong>SVG</strong>: uses your stops as they are, blended in sRGB. SVG has no conic gradient, so a conic gradient is exported as a straight left-to-right gradient.</li>
+<li><strong>PNG</strong>: with <strong>sRGB (native CSS)</strong> and <strong>Linear</strong> easing the image uses your stops directly; otherwise it uses 40 generated stops. Conic PNGs need a browser that supports conic gradients on a canvas.</li>
+<li><strong>JSON</strong>: the <strong>JSON</strong> button copies the text in the <strong>Export</strong> tab&#39;s JSON box, which is refreshed only while that tab is open. Open the <strong>Export</strong> tab after your last change, then select <strong>JSON</strong>, to copy the current gradient.</li>
+</ul>
+<p>Example of the JSON:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;type&quot;: &quot;linear&quot;,
+  &quot;angle&quot;: 90,
+  &quot;interp&quot;: &quot;oklch&quot;,
+  &quot;easing&quot;: &quot;linear&quot;,
+  &quot;stops&quot;: [
+    { &quot;hex&quot;: &quot;#D3AF37&quot;, &quot;pos&quot;: 0, &quot;oklch&quot;: { &quot;L&quot;: 0.766, &quot;C&quot;: 0.138, &quot;H&quot;: 91.6 } },
+    { &quot;hex&quot;: &quot;#1D2A3E&quot;, &quot;pos&quot;: 100, &quot;oklch&quot;: { &quot;L&quot;: 0.283, &quot;C&quot;: 0.041, &quot;H&quot;: 258.8 } }
+  ]
+}</code></pre>
+<p>The copied JSON is indented over several lines and the OKLCH numbers carry more decimal places than shown here.</p>
+<h2 id="save-to-and-restore-from-the-library">Save to and restore from the Library</h2>
+<p>With Gradient Maker focused, <strong>Save to Library</strong> saves the gradient with its CSS, stops, type, angle, interpolation and easing. A saved gradient reopens in Gradient Maker with all of those settings, and <strong>Loaded gradient from library</strong> appears.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Type</strong></td><td>Gradient shape.</td><td>Linear, Radial, Conic</td><td>Linear</td></tr>
+<tr><td><strong>Angle</strong></td><td>Direction for linear, starting angle for conic.</td><td>0 to 360 degrees</td><td>90</td></tr>
+<tr><td><strong>Interpolation</strong></td><td>Colour space for blending between stops.</td><td>sRGB (native CSS), OKLCh (perceptual), HSL, CIE Lab</td><td>sRGB (native CSS)</td></tr>
+<tr><td><strong>Easing</strong></td><td>Pace of the blend.</td><td>Linear, Ease in, Ease out, Ease in-out, Sine</td><td>Linear</td></tr>
+<tr><td><strong>Reverse</strong></td><td>Mirrors stop positions.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>+ Stop</strong></td><td>Adds a random stop at 50 %.</td><td>No fixed maximum</td><td>—</td></tr>
+<tr><td><strong>Even</strong></td><td>Spaces stops evenly.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Random</strong></td><td>New colours, even spacing.</td><td>Keeps the stop count</td><td>—</td></tr>
+<tr><td>Track</td><td>Select empty space to add a stop; select a marker to highlight it.</td><td>0 % to 100 %</td><td>—</td></tr>
+<tr><td>Stop colour well</td><td>Sets a stop&#39;s colour.</td><td>Any colour</td><td>—</td></tr>
+<tr><td>Stop HEX box</td><td>Sets a stop&#39;s colour by code.</td><td>3- or 6-digit HEX</td><td>—</td></tr>
+<tr><td>Stop position slider</td><td>Moves a stop.</td><td>0 to 100, step 0.5</td><td>—</td></tr>
+<tr><td>Stop <strong>✕</strong></td><td>Removes a stop.</td><td>At least 2 stops remain</td><td>—</td></tr>
+<tr><td>Preset</td><td>Loads a preset.</td><td>9 presets</td><td>—</td></tr>
+<tr><td>Export buttons</td><td>Copy or download.</td><td>See Export</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="accuracy-and-limits">Accuracy and limits</h2>
+<ul>
+<li>The preview and the copied CSS are the same gradient, so what you see is what you copy.</li>
+<li>Non-sRGB blends and easing are approximated with generated stops. Twenty stops in CSS and forty in PNG are enough to look smooth in normal use, but the result is a close imitation, not an exact curve.</li>
+<li>Colours outside the sRGB range during OKLCH or Lab blending are clipped to the nearest displayable colour.</li>
+<li>The HSL blend takes the shorter way round the hue circle.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="README.html">Panel tools</a></li>
+<li><a href="palette-studio.html">Palette Studio</a></li>
+<li><a href="../colour-tools/gradient-library.html">Gradient Library</a> in the Colour Tools workbench</li>
+<li><a href="../import-export-and-library.html">Import, export and the Library</a></li>
+<li><a href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="colour-picker.html"><span>Previous</span>Color Picker</a><a href="palette-remix.html"><span>Next</span>Palette Remix</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#screen-tour">Screen tour</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#other-buttons">Other buttons</a></li><li><a href="#curves">Curves</a></li><li><a href="#export">Export</a></li><li><a href="#save-to-and-restore-from-the-library">Save to and restore from the Library</a></li><li><a href="#controls">Controls</a></li><li><a href="#accuracy-and-limits">Accuracy and limits</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

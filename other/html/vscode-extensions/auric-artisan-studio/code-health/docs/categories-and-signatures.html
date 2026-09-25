@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Categories and signatures — Auric Artisan Docs</title>
+<meta name="description" content="The seven code-health categories and every signature Auric Code Health detects, with the languages it checks and its confidence.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Code Health</a></li>
+<li><a href="categories-and-signatures.html" aria-current="page">Categories and signatures</a></li>
+<li><a href="code-health-studio.html">The Code Health Studio</a></li>
+<li><a href="health-records.html">Health records</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="reference.html">Auric Code Health reference</a></li>
+<li><a href="troubleshooting.html">Auric Code Health troubleshooting</a></li>
+<li><a href="faq.html">Auric Code Health FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Categories and signatures</h1>
+<p class="lede">The seven code-health categories and every signature Auric Code Health detects, with the languages it checks and its confidence.</p>
+<p>Auric Code Health groups its checks into seven <strong>categories</strong>. Within each, a <strong>signature</strong> is one specific detector with a stable ID, such as <code>ch-secret-github-token</code>. The ID stays the same when the wording of a message improves, so records, baselines and suppression comments keep working. Every finding also records the detector version (1.2.0 in the current package).</p>
+<h2 id="the-seven-categories">The seven categories</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Category</th><th>ID</th><th>Problems severity</th><th>Hover severity</th><th>Score weight</th><th>Setting</th></tr></thead>
+<tbody>
+<tr><td>Possible secrets</td><td><code>secret</code></td><td>Warning</td><td>Critical</td><td>14</td><td><code>codeHealth.secret</code></td></tr>
+<tr><td>Security risks</td><td><code>security</code></td><td>Warning</td><td>Serious</td><td>12</td><td><code>codeHealth.security</code></td></tr>
+<tr><td>Merge markers</td><td><code>conflict</code></td><td>Error</td><td>Critical</td><td>10</td><td><code>codeHealth.conflict</code></td></tr>
+<tr><td>Risky APIs</td><td><code>risk</code></td><td>Warning</td><td>Serious</td><td>4</td><td><code>codeHealth.risk</code></td></tr>
+<tr><td>Debug leftovers</td><td><code>debug</code></td><td>Information</td><td>Minor</td><td>2</td><td><code>codeHealth.debug</code></td></tr>
+<tr><td>Task markers</td><td><code>todo</code></td><td>Hint</td><td>Minor</td><td>0.25</td><td><code>codeHealth.todo</code></td></tr>
+<tr><td>Oversized</td><td><code>size</code></td><td>Hint</td><td>Minor</td><td>0.5</td><td><code>codeHealth.size</code></td></tr>
+</tbody></table></div>
+<p>Each setting is <code>auricCodeHealth.codeHealth.&lt;category&gt;</code> and is on by default. <code>auricCodeHealth.codeHealth.enabled</code> turns all of them off at once.</p>
+<h2 id="how-the-checks-read-code">How the checks read code</h2>
+<ul>
+<li>A small per-language reader marks comments and strings. Task markers must be inside comments; debug, risk and security signatures ignore commented-out or quoted code. Secrets are found everywhere, including comments, because a key in a comment is still leaked.</li>
+<li>Signatures run only in the languages where they mean something. In a language the Studio does not know, the checks behave language-agnostically.</li>
+<li><strong>Argument-aware</strong> signatures read the call&#39;s argument or assigned value: a dynamic value (a variable, concatenation or template with <code>${}</code>) gives <strong>high</strong> confidence; a constant gives <strong>low</strong> confidence (or is skipped where a constant is harmless); an argument that cannot be read gives <strong>medium</strong>.</li>
+<li>A file reports at most 300 code-health findings.</li>
+</ul>
+<p>In the tables, <em>web languages</em> means JavaScript, TypeScript, JSX, TSX, Vue, Svelte, Astro, HTML, EJS, Handlebars, Twig, Razor, PHP and CoffeeScript.</p>
+<h2 id="possible-secrets">Possible secrets</h2>
+<p>All secret signatures map to CWE-798 (hard-coded credentials). Every match is redacted; see <a href="secrets-and-redaction.html">Secrets and redaction</a>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Signature</th><th>Title</th><th>Detects</th></tr></thead>
+<tbody>
+<tr><td><code>ch-secret-aws-access</code></td><td>AWS access key</td><td>An AWS access key ID (<code>AKIA</code> followed by 16 characters)</td></tr>
+<tr><td><code>ch-secret-aws-temporary</code></td><td>AWS temporary access key</td><td>A temporary AWS key (<code>ASIA</code> followed by 16 characters)</td></tr>
+<tr><td><code>ch-secret-private-key</code></td><td>Embedded private key</td><td>A PEM private key block (RSA, EC, DSA, OpenSSH, encrypted or PGP)</td></tr>
+<tr><td><code>ch-secret-github-token</code></td><td>GitHub token</td><td>A GitHub token starting <code>ghp_</code>, <code>gho_</code>, <code>ghu_</code>, <code>ghs_</code> or <code>ghr_</code></td></tr>
+<tr><td><code>ch-secret-github-pat</code></td><td>GitHub fine-grained token</td><td>A token starting <code>github_pat_</code></td></tr>
+<tr><td><code>ch-secret-gitlab-token</code></td><td>GitLab access token</td><td>A GitLab personal access token (<code>glpat-</code>)</td></tr>
+<tr><td><code>ch-secret-slack-token</code></td><td>Slack token</td><td>A Slack token (<code>xoxb-</code>, <code>xoxp-</code> and similar, or <code>xapp-</code>)</td></tr>
+<tr><td><code>ch-secret-google-api-key</code></td><td>Google API key</td><td>A Google API key (<code>AIza</code> followed by 35 characters)</td></tr>
+<tr><td><code>ch-secret-google-oauth</code></td><td>Google OAuth client secret</td><td>A Google OAuth client secret (<code>GOCSPX-</code>)</td></tr>
+<tr><td><code>ch-secret-stripe-live</code></td><td>Stripe live secret</td><td>A live Stripe secret key (<code>sk_live_</code>)</td></tr>
+<tr><td><code>ch-secret-stripe-key</code></td><td>Stripe secret or restricted key</td><td>A Stripe test secret or restricted key (<code>sk_test_</code>, <code>rk_test_</code>, <code>rk_live_</code>)</td></tr>
+<tr><td><code>ch-secret-anthropic-key</code></td><td>Anthropic API key</td><td>An Anthropic API key (<code>sk-ant-</code>)</td></tr>
+<tr><td><code>ch-secret-openai-key</code></td><td>OpenAI API key</td><td>An OpenAI key (<code>sk-proj-</code>, <code>sk-svcacct-</code>, <code>sk-admin-</code>, or <code>sk-</code> and 32+ characters)</td></tr>
+<tr><td><code>ch-secret-npm-token</code></td><td>npm access token</td><td>An npm token (<code>npm_</code> and 36 characters)</td></tr>
+<tr><td><code>ch-secret-sendgrid-key</code></td><td>SendGrid API key</td><td>A SendGrid key (<code>SG.</code> with two dotted parts)</td></tr>
+<tr><td><code>ch-secret-digitalocean-token</code></td><td>DigitalOcean token</td><td>A DigitalOcean token (<code>dop_v1_</code> and 64 hex characters)</td></tr>
+<tr><td><code>ch-secret-slack-webhook</code></td><td>Slack webhook secret</td><td>A Slack incoming-webhook URL with its secret path</td></tr>
+<tr><td><code>ch-secret-discord-webhook</code></td><td>Discord webhook secret</td><td>A Discord webhook URL with its token</td></tr>
+<tr><td><code>ch-secret-jwt</code></td><td>JSON Web Token</td><td>A three-part token starting <code>eyJ</code> (medium confidence)</td></tr>
+<tr><td><code>ch-secret-credential-url</code></td><td>Credentials embedded in URL</td><td><code>scheme://user:password@host</code> for HTTP(S), Postgres, MySQL, MongoDB, Redis, AMQP, FTP, SSH, SMTP</td></tr>
+<tr><td><code>ch-secret-connection-string</code></td><td>Password in a connection string</td><td><code>Password=</code>, <code>Pwd=</code>, <code>AccountKey=</code> or <code>SharedAccessKey=</code> in a connection string (Azure, ADO.NET)</td></tr>
+<tr><td><code>ch-secret-auth-header</code></td><td>Hard-coded Authorization header</td><td>A <code>Bearer</code> or <code>Basic</code> token written into a string</td></tr>
+<tr><td><code>ch-secret-assignment</code></td><td>Hardcoded credential assignment</td><td>A credential-named key assigned a literal value (medium confidence; see below)</td></tr>
+<tr><td><code>ch-secret-custom</code></td><td>Workspace custom secret signature</td><td>A match of one of your <code>codeHealth.customSecretPatterns</code> (medium confidence)</td></tr>
+</tbody></table></div>
+<p><strong>Credential assignments</strong> are keys whose name ends in a credential word, such as <code>password</code>, <code>passwd</code>, <code>pwd</code>, <code>passphrase</code>, <code>secret</code>, <code>token</code>, <code>bearer</code>, <code>api_key</code>, <code>api_secret</code>, <code>secret_key</code> or <code>private_key</code> (so <code>DB_PASSWORD</code> and <code>adminPassword</code> count, but <code>password_hint</code> does not), assigned a value of 8 to 500 characters. Quoted and typed keys, <code>=</code>, <code>:</code>, <code>:=</code> and <code>=&gt;</code> are all understood, as are unquoted values in YAML, INI, properties, <code>.env</code>, shell and TOML files, and XML settings such as <code>&lt;add key=&quot;ApiKey&quot; value=&quot;…&quot;/&gt;</code> and <code>&lt;password&gt;…&lt;/password&gt;</code>.</p>
+<p>The message for each is short, for example <strong>Looks like a GitHub token.</strong>, and the fix is <strong>Move secrets to env vars / a secret manager and rotate any that were committed.</strong></p>
+<h2 id="security-risks">Security risks</h2>
+<p>All security signatures map to OWASP Top 10:2025 A05 and have high confidence unless noted. The fix is <strong>Harden or remove this — see the linked guidance.</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Signature</th><th>Title</th><th>Detects</th><th>Languages</th></tr></thead>
+<tbody>
+<tr><td><code>ch-sec-tls-node-option</code></td><td>Node TLS verification disabled</td><td><code>rejectUnauthorized: false</code></td><td>Any</td></tr>
+<tr><td><code>ch-sec-tls-node-env</code></td><td>Process-wide Node TLS bypass</td><td><code>NODE_TLS_REJECT_UNAUTHORIZED</code> set to <code>0</code></td><td>Any</td></tr>
+<tr><td><code>ch-sec-tls-python</code></td><td>Python TLS verification disabled</td><td><code>verify=False</code>, <code>ssl._create_unverified_context()</code>, <code>check_hostname=False</code>, <code>CERT_NONE</code></td><td>Any, outside strings</td></tr>
+<tr><td><code>ch-sec-tls-go</code></td><td>Go TLS verification disabled</td><td><code>InsecureSkipVerify: true</code></td><td>Any, outside strings</td></tr>
+<tr><td><code>ch-sec-tls-php</code></td><td>PHP cURL TLS verification disabled</td><td><code>CURLOPT_SSL_VERIFYPEER</code> or <code>CURLOPT_SSL_VERIFYHOST</code> set to false or 0</td><td>PHP</td></tr>
+<tr><td><code>ch-sec-weak-crypto-node</code></td><td>Weak Node cryptographic hash</td><td><code>createHash(&#39;md5&#39;)</code> or <code>createHash(&#39;sha1&#39;)</code></td><td>Any, outside strings</td></tr>
+<tr><td><code>ch-sec-weak-crypto-python</code></td><td>Weak Python cryptographic hash</td><td><code>hashlib.md5</code>, <code>hashlib.sha1</code>, <code>hashlib.new(&#39;md5&#39;)</code>; not with <code>usedforsecurity=False</code></td><td>Any, outside strings</td></tr>
+<tr><td><code>ch-sec-weak-crypto-java</code></td><td>Weak Java / .NET cryptographic hash</td><td><code>MessageDigest.getInstance(&quot;MD5&quot;)</code> or SHA-1, <code>DigestUtils.md5</code>, <code>MD5.Create()</code></td><td>Java, Kotlin, Scala, Groovy, C#, F#, VB</td></tr>
+<tr><td><code>ch-sec-weak-crypto-php</code></td><td>Weak PHP password hash</td><td><code>md5()</code> or <code>sha1()</code> of a <code>$…pass</code>, <code>$…pwd</code> or <code>$…secret</code> variable</td><td>PHP</td></tr>
+<tr><td><code>ch-sec-deserialize-python</code></td><td>Unsafe Python deserialization</td><td><code>pickle</code>, <code>cPickle</code> or <code>marshal</code> <code>load</code> and <code>loads</code></td><td>Any, outside strings</td></tr>
+<tr><td><code>ch-sec-yaml-load</code></td><td>Unsafe YAML deserialization</td><td><code>yaml.load</code>, <code>load_all</code>, <code>full_load</code>, <code>unsafe_load</code>; not with <code>SafeLoader</code>, not js-yaml</td><td>Any, outside strings</td></tr>
+<tr><td><code>ch-sec-php-unserialize</code></td><td>Unsafe PHP deserialization</td><td><code>unserialize()</code>, unless <code>allowed_classes</code> is false</td><td>PHP</td></tr>
+<tr><td><code>ch-sec-string-timer</code></td><td>String-evaluated timer</td><td><code>setTimeout</code> or <code>setInterval</code> given a string</td><td>Web languages</td></tr>
+<tr><td><code>ch-sec-vue-html</code></td><td>Vue raw HTML sink</td><td>The <code>v-html</code> directive</td><td>Any</td></tr>
+<tr><td><code>ch-sec-insert-html</code></td><td>insertAdjacentHTML sink</td><td><code>insertAdjacentHTML</code> with dynamic, unsanitised markup</td><td>Web languages</td></tr>
+<tr><td><code>ch-sec-wildcard-cors</code></td><td>Wildcard CORS policy</td><td><code>Access-Control-Allow-Origin</code> set to <code>*</code></td><td>Any</td></tr>
+<tr><td><code>ch-sec-command-injection</code></td><td>Dynamic shell command</td><td><code>child_process</code> <code>exec</code> with a dynamic command, or <code>spawn</code> and <code>execFile</code> with <code>shell: true</code></td><td>JavaScript family</td></tr>
+<tr><td><code>ch-sec-sql-template</code></td><td>Interpolated SQL query</td><td>SQL built by interpolation: JS templates, Python f-strings, C# <code>$&quot;&quot;</code>, PHP <code>&quot;$x&quot;</code>, Ruby <code>#{}</code></td><td>Any</td></tr>
+<tr><td><code>ch-sec-sql-concat</code></td><td>Concatenated SQL query</td><td>SQL built with <code>+</code>, PHP <code>.</code>, Python <code>%</code> or <code>.format</code>, or <code>sprintf</code>-style formatting</td><td>Any</td></tr>
+</tbody></table></div>
+<p>Notes:</p>
+<ul>
+<li><strong>Command injection</strong> follows how <code>child_process</code> was imported: <code>require</code>, <code>import</code>, aliases, destructuring and <code>promisify</code>. A constant command is not reported; an unreadable one is reported at medium confidence.</li>
+<li><strong>SQL</strong> signatures look for upper-case SQL shapes (<code>SELECT … FROM</code>, <code>INSERT INTO</code>, <code>UPDATE … SET</code>, <code>DELETE FROM</code>, <code>DROP</code>, <code>CREATE</code> or <code>ALTER TABLE</code>, <code>UNION SELECT</code>, <code>MERGE INTO</code>), so ordinary prose is ignored. Tagged templates such as <code>sql`…`</code> are parameterised and not reported.</li>
+<li><strong>insertAdjacentHTML</strong> is skipped when the markup is a constant or passes through a sanitiser (a function named like <code>sanitize…</code>, <code>escapeHtml</code>, <code>filterXSS</code>, <code>xss</code> or <code>purify</code>).</li>
+</ul>
+<h2 id="risky-apis">Risky APIs</h2>
+<p>Signatures with <strong>contextual</strong> confidence are argument-aware. The fix is <strong>Review this call for safer alternatives.</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Signature</th><th>Title</th><th>Detects</th><th>Languages</th><th>Confidence</th></tr></thead>
+<tbody>
+<tr><td><code>ch-risk-eval</code></td><td>Dynamic eval</td><td><code>eval(…)</code>, including <code>window.eval</code> and <code>globalThis.eval</code></td><td>Any, outside strings</td><td>contextual</td></tr>
+<tr><td><code>ch-risk-function-constructor</code></td><td>Function constructor</td><td><code>new Function(…)</code></td><td>Web languages</td><td>contextual</td></tr>
+<tr><td><code>ch-risk-innerhtml</code></td><td>Dynamic innerHTML assignment</td><td>Assigning a dynamic value to <code>innerHTML</code> or <code>outerHTML</code>; constants and sanitised values are skipped</td><td>Web languages</td><td>contextual</td></tr>
+<tr><td><code>ch-risk-react-html</code></td><td>React raw HTML sink</td><td><code>dangerouslySetInnerHTML</code></td><td>JSX, TSX</td><td>medium</td></tr>
+<tr><td><code>ch-risk-document-write</code></td><td>document.write usage</td><td><code>document.write()</code> or <code>writeln()</code></td><td>Web languages</td><td>medium</td></tr>
+<tr><td><code>ch-risk-shell</code></td><td>Shell execution</td><td><code>os.system</code>, <code>os.popen</code>, <code>subprocess.getoutput</code>, or <code>subprocess</code> calls with <code>shell=True</code></td><td>Python</td><td>contextual</td></tr>
+</tbody></table></div>
+<p>A constant argument adds <strong>(constant argument — lower risk)</strong> to the message and lowers the confidence.</p>
+<h2 id="debug-leftovers">Debug leftovers</h2>
+<p>The message is <strong>Leftover debug statement (…).</strong> and the fix <strong>Remove before committing, or route through a real logger.</strong> Normal output such as <code>print</code>, <code>echo</code> and <code>fmt.Println</code> is deliberately not reported. Commented-out and quoted code is ignored. Confidence is medium.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Signature</th><th>Title</th><th>Detects</th><th>Languages</th></tr></thead>
+<tbody>
+<tr><td><code>ch-debug-console</code></td><td>Console debug output</td><td><code>console.log</code>, <code>debug</code>, <code>trace</code>, <code>dir</code> or <code>table</code></td><td>Web languages</td></tr>
+<tr><td><code>ch-debug-debugger</code></td><td>Debugger statement</td><td><code>debugger</code></td><td>Web languages</td></tr>
+<tr><td><code>ch-debug-rust-dbg</code></td><td>Rust dbg! output</td><td><code>dbg!(…)</code></td><td>Rust</td></tr>
+<tr><td><code>ch-debug-php-dump</code></td><td>PHP diagnostic dump</td><td><code>var_dump</code>, <code>print_r</code>, <code>var_export</code></td><td>PHP</td></tr>
+<tr><td><code>ch-debug-ruby</code></td><td>Ruby debugger hook</td><td><code>binding.pry</code>, <code>binding.irb</code>, <code>byebug</code></td><td>Ruby</td></tr>
+<tr><td><code>ch-debug-python</code></td><td>Python debugger hook</td><td><code>pdb.set_trace()</code>, <code>ipdb.set_trace()</code>, <code>pudb.set_trace()</code>, <code>breakpoint()</code></td><td>Python</td></tr>
+<tr><td><code>ch-debug-nslog</code></td><td>NSLog debug output</td><td><code>NSLog(…)</code></td><td>Objective-C, Objective-C++, Swift</td></tr>
+<tr><td><code>ch-debug-java-system-out</code></td><td>Java System.out debug output</td><td><code>System.out.print</code> and <code>println</code></td><td>Java, Groovy, Scala, Kotlin</td></tr>
+<tr><td><code>ch-debug-go</code></td><td>Go debug print</td><td><code>fmt.Print</code>, <code>Println</code> or <code>Printf</code> whose text starts with <code>DEBUG</code></td><td>Go</td></tr>
+</tbody></table></div>
+<h2 id="task-markers">Task markers</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Signature</th><th>Marker</th></tr></thead>
+<tbody>
+<tr><td><code>ch-todo-todo</code></td><td>TODO</td></tr>
+<tr><td><code>ch-todo-fixme</code></td><td>FIXME</td></tr>
+<tr><td><code>ch-todo-hack</code></td><td>HACK</td></tr>
+<tr><td><code>ch-todo-xxx</code></td><td>XXX</td></tr>
+<tr><td><code>ch-todo-bug</code></td><td>BUG</td></tr>
+<tr><td><code>ch-todo-optimize</code></td><td>OPTIMIZE</td></tr>
+<tr><td><code>ch-todo-refactor</code></td><td>REFACTOR</td></tr>
+<tr><td><code>ch-todo-deprecated</code></td><td>DEPRECATED</td></tr>
+</tbody></table></div>
+<ul>
+<li>In languages the Studio can lex, an upper-case marker counts only inside a comment. Lower-case <code>@todo</code>, <code>todo:</code> and <code>fixme:</code> count inside comments too. Rust&#39;s <code>todo!()</code> and Kotlin&#39;s <code>TODO()</code> count in code.</li>
+<li>In markup files, a marker counts inside a comment, and <code>TODO</code>, <code>FIXME</code> and <code>HACK</code> count anywhere.</li>
+<li>The message quotes the text after the marker, for example <code>TODO: remove the legacy header</code>. The fix is <strong>Resolve or convert into a tracked issue.</strong> Confidence is medium.</li>
+</ul>
+<h2 id="merge-markers">Merge markers</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Signature</th><th>Title</th><th>Detects</th></tr></thead>
+<tbody>
+<tr><td><code>ch-conflict</code></td><td>Unresolved merge marker</td><td>A line starting with seven <code>&lt;</code> or <code>&gt;</code> characters, or seven equals signs or vertical bars inside a conflict</td></tr>
+</tbody></table></div>
+<p>A lone <code>=======</code> line outside a conflict, such as a Markdown heading underline, is not reported. The message is <strong>Unresolved merge-conflict marker.</strong> and the fix <strong>Resolve the conflict and remove the marker.</strong></p>
+<h2 id="oversized">Oversized</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Signature</th><th>Title</th><th>Detects</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td><code>ch-longline</code></td><td>Oversized source line</td><td>A line longer than 240 characters, except lines that start with a URL</td><td>Editor and scans</td></tr>
+<tr><td><code>ch-bigfile</code></td><td>Large file</td><td>A file with more than 800 lines, reported on line 1</td><td>Project scans and the command-line scanner</td></tr>
+</tbody></table></div>
+<p>Messages: <strong>Very long line (312 chars) — hard to read and review.</strong> and <strong>Large file (1204 lines) — consider splitting.</strong></p>
+<h2 id="search-the-rulebook">Search the rulebook</h2>
+<p>Every signature, the seven categories, four policies (on confidence, redaction, stable identities and suppression review) and two articles are in the knowledge database. Run <strong>Auric Artisan: Open Rulebook &amp; Knowledge Database</strong> and search for a signature ID or a word such as <code>secret</code>, or select <strong>Rule details</strong> in a finding&#39;s hover. The <strong>Code-health balanced baseline</strong> rulebook brings them together. See <a href="../../docs/rulebook-and-knowledge.html">Rulebook and knowledge database</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="../../docs/suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Auric Code Health</a><a href="code-health-studio.html"><span>Next</span>The Code Health Studio</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-seven-categories">The seven categories</a></li><li><a href="#how-the-checks-read-code">How the checks read code</a></li><li><a href="#possible-secrets">Possible secrets</a></li><li><a href="#security-risks">Security risks</a></li><li><a href="#risky-apis">Risky APIs</a></li><li><a href="#debug-leftovers">Debug leftovers</a></li><li><a href="#task-markers">Task markers</a></li><li><a href="#merge-markers">Merge markers</a></li><li><a href="#oversized">Oversized</a></li><li><a href="#search-the-rulebook">Search the rulebook</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

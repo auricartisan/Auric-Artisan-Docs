@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICC Profile Parser reference — Auric Artisan Docs</title>
+<meta name="description" content="Every tab, control, header field, value table, tag type, readout, rule and export format in the ICC Profile Parser.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ICC Profile Parser</a>
+<h2>ICC Profile Parser documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ICC Profile Parser</a></li>
+<li><a href="check-conformance.html">Check conformance</a></li>
+<li><a href="export-a-reading.html">Export a reading</a></li>
+<li><a href="identify-and-gamut.html">Identify a profile and read its gamut</a></li>
+<li><a href="understand-icc-profiles.html">Understand ICC profiles</a></li>
+<li><a href="reference.html" aria-current="page">ICC Profile Parser reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the ICC Profile Parser</a></li>
+<li><a href="faq.html">ICC Profile Parser FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">ICC Profile Parser</a> &rsaquo; <a href="README.html">ICC Profile Parser documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › ICC Profile Parser</p>
+<h1>ICC Profile Parser reference</h1>
+<p class="lede">Every tab, control, header field, value table, tag type, readout, rule and export format in the ICC Profile Parser.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/tools/icc-profile-parser/" rel="noopener">https://auricartisan.com/tool/general/tools/icc-profile-parser/</a></p>
+<h2 id="tabs">Tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>The drop box, header fields, <strong>Compare against</strong>, export buttons, and the full reading of the loaded profile</td></tr>
+<tr><td><strong>Method</strong></td><td>Five sections explaining how each figure is derived</td></tr>
+<tr><td><strong>Conformance</strong></td><td>All 23 rules, filterable by severity, with clauses and the two withdrawn checks</td></tr>
+<tr><td><strong>Data</strong></td><td>The 20 entries that every figure rests on, filterable by status</td></tr>
+<tr><td><strong>Export</strong></td><td>The contents, size and file name of the reading, and a preview</td></tr>
+<tr><td><strong>Reference</strong></td><td>The nine published sources, filterable by whether they run in the tool</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-controls">Lab tab — controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><strong>Drop a profile</strong></td><td>Loads a profile by drag and drop, or opens a chooser when selected or when <code>Enter</code> or <code>Space</code> is pressed</td><td><code>.icc</code>, <code>.icm</code> or <code>application/vnd.iccprofile</code> in the chooser</td></tr>
+<tr><td><strong>Compare against</strong></td><td>Chooses the reference space for the diagram, the tone curve plot and the area cards</td><td>sRGB, Rec. 709, Display P3, Adobe RGB (1998), Rec. 2020, ProPhoto RGB</td></tr>
+<tr><td><strong>Save the reading</strong></td><td>Downloads the reading as JSON</td><td>—</td></tr>
+<tr><td><strong>Copy it</strong></td><td>Copies the reading to the clipboard</td><td>—</td></tr>
+<tr><td><strong>Tag table, CSV</strong></td><td>Downloads the tag table as CSV</td><td>—</td></tr>
+<tr><td><strong>Clear</strong></td><td>Removes the loaded profile</td><td>—</td></tr>
+</tbody></table></div>
+<p>Only one profile is loaded at a time. Loading another replaces it.</p>
+<h2 id="lab-tab-what-the-header-says">Lab tab — What the header says</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Shows</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong>file</strong></td><td>The file name</td><td><code>display.icc</code></td></tr>
+<tr><td><strong>size</strong></td><td>The size declared in the header, in bytes</td><td>3,048 bytes</td></tr>
+<tr><td><strong>version</strong></td><td>Major.minor.bug-fix, from bytes 8 and 9</td><td>2.1.0</td></tr>
+<tr><td><strong>class</strong></td><td>Four-character code and class name</td><td>mntr · display</td></tr>
+<tr><td><strong>data space</strong></td><td>Data colour space and channel count</td><td>RGB · 3 ch</td></tr>
+<tr><td><strong>PCS</strong></td><td>Profile connection space</td><td>nCIEXYZ</td></tr>
+<tr><td><strong>intent</strong></td><td>Rendering intent number and name</td><td>0 · perceptual</td></tr>
+<tr><td><strong>CMM</strong></td><td>Preferred colour management module signature, or none declared</td><td>—</td></tr>
+<tr><td><strong>platform</strong></td><td>Primary platform</td><td>Microsoft</td></tr>
+<tr><td><strong>created</strong></td><td>Creation date and time, or <strong>not a valid date</strong></td><td>2024-03-18 09:30:00</td></tr>
+<tr><td><strong>tags</strong></td><td>Number of tags</td><td>17</td></tr>
+<tr><td><strong>profile ID</strong></td><td><strong>not carried</strong>, <strong>matches</strong> or <strong>does NOT match</strong></td><td>not carried</td></tr>
+</tbody></table></div>
+<p>If the file cannot be read, the panel shows the file name and <strong>status: unreadable</strong>. Example values are illustrative.</p>
+<h2 id="value-tables">Value tables</h2>
+<h3 id="device-classes">Device classes</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Shown as</th></tr></thead>
+<tbody>
+<tr><td><code>scnr</code></td><td>Input</td></tr>
+<tr><td><code>mntr</code></td><td>Display</td></tr>
+<tr><td><code>prtr</code></td><td>Output</td></tr>
+<tr><td><code>link</code></td><td>DeviceLink</td></tr>
+<tr><td><code>spac</code></td><td>ColorSpace</td></tr>
+<tr><td><code>abst</code></td><td>Abstract</td></tr>
+<tr><td><code>nmcl</code></td><td>NamedColor</td></tr>
+</tbody></table></div>
+<h3 id="data-colour-spaces-and-the-pcs">Data colour spaces and the PCS</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Shown as</th><th>Channels</th></tr></thead>
+<tbody>
+<tr><td><code>XYZ </code></td><td>nCIEXYZ</td><td>3</td></tr>
+<tr><td><code>Lab </code></td><td>CIELAB</td><td>3</td></tr>
+<tr><td><code>Luv </code></td><td>CIELUV</td><td>3</td></tr>
+<tr><td><code>YCbr</code></td><td>YCbCr</td><td>3</td></tr>
+<tr><td><code>Yxy </code></td><td>CIEYxy</td><td>3</td></tr>
+<tr><td><code>RGB </code></td><td>RGB</td><td>3</td></tr>
+<tr><td><code>GRAY</code></td><td>Grayscale</td><td>1</td></tr>
+<tr><td><code>HSV </code></td><td>HSV</td><td>3</td></tr>
+<tr><td><code>HLS </code></td><td>HLS</td><td>3</td></tr>
+<tr><td><code>CMYK</code></td><td>CMYK</td><td>4</td></tr>
+<tr><td><code>CMY </code></td><td>CMY</td><td>3</td></tr>
+<tr><td><code>2CLR</code> to <code>FCLR</code></td><td>2 colour to 15 colour</td><td>2 to 15</td></tr>
+</tbody></table></div>
+<h3 id="rendering-intents">Rendering intents</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Shown as</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>Perceptual</td></tr>
+<tr><td>1</td><td>Media-relative colorimetric</td></tr>
+<tr><td>2</td><td>Saturation</td></tr>
+<tr><td>3</td><td>ICC-absolute colorimetric</td></tr>
+</tbody></table></div>
+<h3 id="platforms">Platforms</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Shown as</th></tr></thead>
+<tbody>
+<tr><td><code>APPL</code></td><td>Apple</td></tr>
+<tr><td><code>MSFT</code></td><td>Microsoft</td></tr>
+<tr><td><code>SGI </code></td><td>Silicon Graphics</td></tr>
+<tr><td><code>SUNW</code></td><td>Sun Microsystems</td></tr>
+<tr><td>All zeros</td><td>none declared</td></tr>
+</tbody></table></div>
+<h2 id="tag-types-the-tool-reads">Tag types the tool reads</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Type</th><th>What it is</th><th>How the tool uses it</th></tr></thead>
+<tbody>
+<tr><td><code>text</code></td><td>Plain text</td><td>Read</td></tr>
+<tr><td><code>desc</code></td><td>Version 2 description text</td><td>Read</td></tr>
+<tr><td><code>mluc</code></td><td>Multi-language text (version 4)</td><td>Read, every language record</td></tr>
+<tr><td><code>XYZ </code></td><td>One or more XYZ values</td><td>Colorants and white point</td></tr>
+<tr><td><code>curv</code></td><td>Tone curve: identity, gamma or table</td><td>Tone curves and curve fit</td></tr>
+<tr><td><code>para</code></td><td>Parametric tone curve, five function types</td><td>Tone curves and curve fit</td></tr>
+<tr><td><code>sf32</code></td><td>Signed fixed-point array</td><td>The <code>chad</code> matrix</td></tr>
+<tr><td><code>sig </code></td><td>A signature</td><td>Read</td></tr>
+<tr><td><code>mft1</code></td><td>lut8 table</td><td>Gamut hull for profiles without colorants; completeness check</td></tr>
+<tr><td><code>mft2</code></td><td>lut16 table</td><td>As above</td></tr>
+<tr><td><code>mpet</code></td><td>Multi-process elements (version 4)</td><td>Structure only: element count and types; not evaluated</td></tr>
+<tr><td><code>ncl2</code></td><td>Named colour list</td><td>Structure only: count and up to 64 names; no colour resolved</td></tr>
+</tbody></table></div>
+<p>Any other type is listed in the tag table with its type code and is not decoded. The page does not print the text of description or copyright tags.</p>
+<h2 id="lab-tab-the-reading">Lab tab — the reading</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Shown when</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Verdict</td><td>A profile is loaded</td><td>Heading, distances, gamut source, conformance sentence, optional aside</td></tr>
+<tr><td><strong>How close, and to what</strong></td><td>The profile has RGB colorants</td><td>Ranking of six spaces: <strong>Space</strong>, <strong>Primaries Δu′v′</strong>, <strong>Curve fit</strong>, <strong>White</strong>, <strong>Verdict</strong></td></tr>
+<tr><td>Chromaticity diagram</td><td>The profile has RGB colorants</td><td>CIE 1931 xy, 2° observer: stored colorants, primaries, reference space, white point</td></tr>
+<tr><td>Gamut hull</td><td>No colorants, with a readable A2B table</td><td>CIELAB a<em>b</em> hull, rings every 20</td></tr>
+<tr><td><strong>Tone response</strong></td><td>The profile has RGB colorants</td><td>Red, green, blue and grey curves against the reference transfer function</td></tr>
+<tr><td>Figure cards</td><td>A profile is loaded</td><td><strong>version</strong>, <strong>conformance</strong>, <strong>tags</strong>, <strong>area, u′v′</strong>, <strong>covers of it</strong>, <strong>area, xy</strong></td></tr>
+<tr><td><strong>Findings</strong></td><td>A profile is loaded</td><td>One row per finding, or <strong>All 23 rules hold</strong></td></tr>
+<tr><td><strong>The tag table</strong></td><td>A profile is loaded</td><td><strong>Tag</strong>, <strong>Type</strong>, <strong>Offset</strong>, <strong>Size</strong>, <strong>Anything notable</strong></td></tr>
+</tbody></table></div>
+<p>The note beside <strong>Findings</strong> gives the tag count and how many tags share an element. The <strong>Anything notable</strong> column shows one of: <strong>outside the file</strong>, <strong>could not be decoded</strong>, <strong>shares this element with</strong> another tag, <strong>not 4-byte aligned</strong>, or a dash.</p>
+<h2 id="reference-spaces">Reference spaces</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Space</th><th>Defined by</th><th>White</th><th>Transfer function used for the curve fit</th></tr></thead>
+<tbody>
+<tr><td>sRGB</td><td>IEC 61966-2-1:1999</td><td>D65</td><td>Piecewise sRGB curve</td></tr>
+<tr><td>Rec. 709</td><td>ITU-R BT.709-6</td><td>D65</td><td>2.4 power</td></tr>
+<tr><td>Display P3</td><td>SMPTE RP 431-2 primaries, sRGB transfer</td><td>D65</td><td>Piecewise sRGB curve</td></tr>
+<tr><td>Adobe RGB (1998)</td><td>Adobe RGB (1998) Color Image Encoding</td><td>D65</td><td>Power of 563/256</td></tr>
+<tr><td>Rec. 2020</td><td>ITU-R BT.2020-2</td><td>D65</td><td>BT.2020 curve</td></tr>
+<tr><td>ProPhoto RGB</td><td>ISO 22028-2:2013 (ROMM RGB)</td><td>D50</td><td>1.8 power with a linear toe</td></tr>
+</tbody></table></div>
+<p>sRGB and Rec. 709 share their primaries and white, so only the tone curve can tell them apart.</p>
+<h2 id="conformance-rules">Conformance rules</h2>
+<p>The 23 rules, with their severities and clauses, are listed in <a href="check-conformance.html">Check conformance</a>. Summary: 11 errors, 8 warnings, 4 notes; 2 rules are house preferences with no clause.</p>
+<h2 id="method-tab">Method tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>The header</strong></td><td>Bytes 8 to 11 of the loaded profile (or an example), and how the version is read</td></tr>
+<tr><td><strong>Colorant vs primary</strong></td><td>sRGB&#39;s stored colorants against its primaries, and the two adaptation hypotheses</td></tr>
+<tr><td><strong>Identification</strong></td><td>Why a raw white-point term cannot be part of the score, and the order of the comparison</td></tr>
+<tr><td><strong>Gamut area</strong></td><td>Each reference space as a percentage of sRGB in xy and u′v′, and its coverage of sRGB</td></tr>
+<tr><td><strong>A profile with no colorants</strong></td><td>How an A2B table becomes a CIELAB hull, with figures when such a profile is loaded</td></tr>
+</tbody></table></div>
+<h2 id="conformance-tab">Conformance tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Rules</strong> buttons</td><td><strong>All</strong> (23), <strong>Errors</strong> (11), <strong>Warnings</strong> (8), <strong>Notes</strong> (4)</td></tr>
+<tr><td>Rail note</td><td>How many rules are shown, and how many cite no clause</td></tr>
+<tr><td><strong>Withdrawn</strong></td><td>Two checks removed because they fired on correct files</td></tr>
+<tr><td><strong>The rules that stayed, and what each cites</strong></td><td>Every rule with severity and clause, or <strong>house preference</strong></td></tr>
+<tr><td><strong>What the old validator got right</strong></td><td>The checks carried across unchanged</td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<p>Status buttons: <strong>All</strong> (20), <strong>Verbatim</strong> (8), <strong>Computed</strong> (7), <strong>Stand-in</strong> (2), <strong>Absent</strong> (3). Select an entry to expand it; stand-in and absent entries add <strong>what it would take</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Status</th><th>Meaning</th><th>Entries</th></tr></thead>
+<tbody>
+<tr><td><strong>Verbatim</strong></td><td>A published table, clause or definition carried unaltered</td><td>Header, tag table rules, required tags, CIE 1931 observer, sRGB, the other spaces, Bradford, MD5</td></tr>
+<tr><td><strong>Computed</strong></td><td>Derived here by stated arithmetic</td><td>Primaries, adaptation method, identification, area and coverage, curve fit, profile ID, CLUT gamut</td></tr>
+<tr><td><strong>Stand-in</strong></td><td>The tool&#39;s own choice in place of something published</td><td>The list of six spaces; the severity each rule carries</td></tr>
+<tr><td><strong>Absent</strong></td><td>Named but not held</td><td>Evaluating <code>mpet</code> pipelines; resolving named colours; any measurement of the device</td></tr>
+</tbody></table></div>
+<h2 id="reference-tab">Reference tab</h2>
+<p>Status buttons: <strong>All</strong> (9), <strong>Runs</strong> (7), <strong>Partly</strong> (1), <strong>Not held</strong> (1).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Source</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>ISO 15076-1:2010 / ICC.1:2010</td><td>Runs</td></tr>
+<tr><td>IEC 61966-2-1:1999 (sRGB)</td><td>Runs</td></tr>
+<tr><td>CIE 015:2018, Colorimetry</td><td>Runs</td></tr>
+<tr><td>Lam (1985), the Bradford matrix</td><td>Runs</td></tr>
+<tr><td>ITU-R BT.709-6, SMPTE RP 431-2:2011, Adobe RGB (1998), ITU-R BT.2020-2, ISO 22028-2:2013</td><td>Runs</td></tr>
+<tr><td>CIE 142-2001 (CIEDE2000)</td><td>Runs</td></tr>
+<tr><td>RFC 1321 (MD5)</td><td>Runs</td></tr>
+<tr><td>ICC.1:2010 §10.14, multiProcessElementsType</td><td>Partly</td></tr>
+<tr><td>ICC.1:2010 §10.17, namedColor2Type</td><td>Not held</td></tr>
+</tbody></table></div>
+<h2 id="export-formats">Export formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Name</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Reading</td><td><em>profile-name</em><code>-reading.json</code></td><td>Header with clauses, tags, identity, gamut, conformance, register</td></tr>
+<tr><td>Tag table</td><td><em>profile-name</em><code>-tags.csv</code></td><td><code>signature,type,offset,size,aligned,in_bounds,shares_with</code></td></tr>
+</tbody></table></div>
+<p>See <a href="export-a-reading.html">Export a reading</a> for the fields.</p>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Read</strong> followed by the file name</td><td>A profile was read</td></tr>
+<tr><td><strong>A profile is at least 132 bytes; this file is</strong> N.</td><td>The file is too short to be a profile</td></tr>
+<tr><td><strong>Bytes 36-39 are</strong> &quot;…&quot;, <strong>not &#39;acsp&#39; — this is not an ICC profile.</strong></td><td>The file lacks the profile signature</td></tr>
+<tr><td><strong>The reader could not get through this file:</strong> followed by a reason</td><td>Reading stopped unexpectedly</td></tr>
+<tr><td><strong>That file could not be read</strong></td><td>The browser could not read the file</td></tr>
+<tr><td><strong>Load a profile first</strong></td><td>An export was requested with nothing loaded</td></tr>
+<tr><td><strong>Saved the reading</strong> / <strong>Copied the reading</strong> / <strong>Saved the tag table</strong></td><td>An export succeeded</td></tr>
+<tr><td><strong>The clipboard refused</strong></td><td>Clipboard access was blocked</td></tr>
+<tr><td><strong>Cleared</strong></td><td><strong>Clear</strong> was selected</td></tr>
+</tbody></table></div>
+<p>When a file cannot be read, the verdict area turns red and reads <strong>This file could not be read</strong>, followed by the reason.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="understand-icc-profiles.html"><span>Previous</span>Understand ICC profiles</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting the ICC Profile Parser</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#tabs">Tabs</a></li><li><a href="#lab-tab-controls">Lab tab — controls</a></li><li><a href="#lab-tab-what-the-header-says">Lab tab — What the header says</a></li><li><a href="#value-tables">Value tables</a></li><li><a href="#tag-types-the-tool-reads">Tag types the tool reads</a></li><li><a href="#lab-tab-the-reading">Lab tab — the reading</a></li><li><a href="#reference-spaces">Reference spaces</a></li><li><a href="#conformance-rules">Conformance rules</a></li><li><a href="#method-tab">Method tab</a></li><li><a href="#conformance-tab">Conformance tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#export-formats">Export formats</a></li><li><a href="#messages">Messages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

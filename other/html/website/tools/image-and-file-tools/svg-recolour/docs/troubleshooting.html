@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting SVG Recolour — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms you may meet in SVG Recolour, why they happen, and what to do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; SVG Recolour</a>
+<h2>SVG Recolour documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with SVG Recolour</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="export-the-result.html">Export the result</a></li>
+<li><a href="recolour-an-svg.html">Recolour an SVG</a></li>
+<li><a href="use-a-harmony.html">Recolour from a harmony</a></li>
+<li><a href="reference.html">SVG Recolour reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting SVG Recolour</a></li>
+<li><a href="faq.html">SVG Recolour FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">SVG Recolour</a> &rsaquo; <a href="README.html">SVG Recolour documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › SVG Recolour</p>
+<h1>Troubleshooting SVG Recolour</h1>
+<p class="lede">Symptoms you may meet in SVG Recolour, why they happen, and what to do.</p>
+<h2 id="loading">Loading</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>That file will not parse as SVG, so nothing was changed.</strong></td><td>The markup is not well-formed XML</td><td>Read the parser&#39;s message under the paste box; fix the markup (often an unclosed tag or a stray <code>&amp;</code>) and try again</td></tr>
+<tr><td><strong>Paste some SVG markup first.</strong></td><td>The paste box is empty</td><td>Paste the markup, then select <strong>Read the markup</strong></td></tr>
+<tr><td>My file is greyed out in the file chooser</td><td>The chooser offers <code>.svg</code> files</td><td>Drag the file onto <strong>Drop an SVG</strong>, or rename it with the <code>.svg</code> ending</td></tr>
+<tr><td>A notice says active content was removed</td><td>The file contains scripts, event handlers or <code>javascript:</code> links</td><td>The previews are safe; remember the exported file still contains them</td></tr>
+<tr><td>My mappings disappeared</td><td>Loading a file, markup or the sample resets every mapping</td><td>Set the targets again, or apply a harmony</td></tr>
+</tbody></table></div>
+<h2 id="colours-not-found-or-not-changed">Colours not found or not changed</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>A colour I can see is not in the list</td><td>It is written in a form the tool does not read, such as <code>oklch()</code> or <code>var(--brand)</code></td><td>Rewrite it as hex, <code>rgb()</code>, <code>hsl()</code> or a CSS name before loading</td></tr>
+<tr><td>A colour inside a picture did not change</td><td>It is part of an embedded raster image, not markup</td><td>Recolour the raster image in an image editor</td></tr>
+<tr><td>A row reads <strong>left alone</strong></td><td>The value is <code>currentColor</code>, <code>none</code>, <code>transparent</code>, a keyword such as <code>inherit</code>, or a <code>url()</code> reference</td><td>Expected. <code>currentColor</code> takes its colour from the page the SVG is placed in</td></tr>
+<tr><td>A gradient did not change</td><td>Its colours are in <code>stop-color</code> on the gradient&#39;s stops, listed as their own rows; the shape&#39;s <code>fill</code> is a <code>url()</code> reference</td><td>Change the rows for the stop colours</td></tr>
+<tr><td>Few colours for a large file</td><td>The file is mostly embedded images, or uses <code>currentColor</code></td><td>Check <strong>left alone</strong> and <strong>occurrences</strong> under <strong>What the file holds</strong></td></tr>
+<tr><td>A semi-transparent colour became solid</td><td>It was written as hex with an alpha part, which is rewritten as six-digit hex</td><td>Re-add the alpha afterwards, or write the original colour as <code>rgba()</code> and use <strong>Keep the source form</strong></td></tr>
+<tr><td>Colours I wrote as names came back as hex</td><td><strong>Write hex</strong> is selected, or the new colour has no exact CSS name</td><td>Choose <strong>Keep the source form</strong>; names are kept only when the new colour has one</td></tr>
+</tbody></table></div>
+<h2 id="previews-and-checks">Previews and checks</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The previews are tinted</td><td>A colour-vision view is selected under <strong>Show it as seen by</strong></td><td>Select <strong>Normal vision</strong></td></tr>
+<tr><td>The <strong>Check</strong> tab says two colours or more are needed</td><td>The file has fewer than two changeable colours</td><td>Nothing to compare</td></tr>
+<tr><td>APCA Lc is negative</td><td>The text colour is lighter than the background colour</td><td>Expected: the sign shows polarity; <strong>Good for</strong> uses the size</td></tr>
+<tr><td>WCAG and APCA disagree</td><td>They measure different things</td><td>Treat both as evidence</td></tr>
+</tbody></table></div>
+<h2 id="exports">Exports</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>Nothing loaded.</strong></td><td>No file is loaded</td><td>Load a file first</td></tr>
+<tr><td>The exported file still contains a script</td><td>Only the previews are stripped</td><td>Remove active content in an editor if you do not trust the file</td></tr>
+<tr><td>The XML declaration or DOCTYPE is missing</td><td>Only the <code>&lt;svg&gt;</code> element and its contents are written</td><td>Add them back if your workflow needs them</td></tr>
+<tr><td>Attribute quotes changed</td><td>The browser writes the markup back out</td><td>This does not change the drawing</td></tr>
+<tr><td><strong>The browser refused the clipboard.</strong></td><td>Clipboard access was blocked</td><td>Allow clipboard access for the site, or use <strong>Save the recoloured SVG</strong></td></tr>
+<tr><td><strong>This browser will not take text from the clipboard.</strong></td><td>The browser cannot copy text</td><td>Use the save buttons</td></tr>
+</tbody></table></div>
+<p>For help with the site in general, see <a href="../../../../../help/README.html">Help</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>SVG Recolour reference</a><a href="faq.html"><span>Next</span>SVG Recolour FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#loading">Loading</a></li><li><a href="#colours-not-found-or-not-changed">Colours not found or not changed</a></li><li><a href="#previews-and-checks">Previews and checks</a></li><li><a href="#exports">Exports</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

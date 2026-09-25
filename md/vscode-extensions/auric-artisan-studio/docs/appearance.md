@@ -1,0 +1,91 @@
+---
+title: Auric Artisan Studio — Appearance
+description: Change the Studio's accent colour and understand how the Studio follows your VS Code light, dark and high-contrast themes.
+product: VS Code extensions › Auric Artisan Studio
+updated: 2026-09-25
+---
+
+# Appearance
+
+The Studio's own screens (the Overview, the Studio tab and the colour pickers) share one visual style that follows your VS Code theme. You can change one thing about it: the **accent colour** used for primary buttons, selected tabs and highlights.
+
+## How the Studio follows your theme
+
+| Your VS Code theme | What the Studio looks like |
+| --- | --- |
+| Dark | Warm near-black surfaces, light text, gold primary actions |
+| Light | Paper-coloured surfaces, dark text, gold primary actions |
+| High contrast (dark or light) | VS Code's own high-contrast colours and borders; the Studio does not repaint them |
+
+Headings and scores use the Fraunces typeface and other text uses Manrope. Both are bundled with the extensions as small Latin subsets, so nothing is downloaded.
+
+What VS Code draws itself stays native and follows your theme: hovers, the Command Center list, the status bar, the Problems panel and the Project Issues tree. The gold **Apply fix** button in hovers always uses Auric gold.
+
+## Change the accent colour
+
+The accent colour recolours the Studio, the pickers, buttons, tabs and highlights, in the same way as the accent setting on https://auricartisan.com.
+
+### In the Studio
+
+1. Open the Studio and select **Settings** at the foot of the rail.
+2. In the **Appearance** card, select one of the 13 swatches, or the **+** swatch to pick any colour with the full picker.
+3. The whole Studio changes immediately, and the choice is saved; there is no Save button for this card. A toast confirms, for example **Accent → Sapphire**.
+4. **Reset to Gold** returns to the default.
+
+The card shows the current accent and a small live preview of tabs, buttons, a badge and a bar. Arrow keys move between the swatches.
+
+### With a command
+
+1. Run **Auric Artisan: Change Accent Color (Theme the Studio)** (Auric Color only).
+2. Pick a preset (the current one is marked **current**), **Custom color…** to type a hex value such as `#2563EB` (three or six digits), or **Open Studio Appearance settings**.
+3. The status bar confirms, for example `Auric Artisan accent → Sapphire #2F5EAA`. Open Studio and picker views update straight away.
+
+### In settings.json
+
+Set the `appearance.accent` key of the extension that hosts your Studio (`auricA11y`, `auricColor` or `auricCodeHealth`) to a preset ID or a hex colour:
+
+```json
+{
+  "auricA11y.appearance.accent": "sapphire",
+  "auricColor.appearance.accent": "#2563EB"
+}
+```
+
+Anything that is not a preset ID or a `#rgb` or `#rrggbb` value falls back to `gold`.
+
+## The presets
+
+| Swatch name | Setting value | Colour |
+| --- | --- | --- |
+| Gold (default) | `gold` | `#D3AF37` |
+| Champagne | `champagne` | `#DEC68A` |
+| Rose Gold | `rose-gold` | `#B76E79` |
+| Silver | `silver` | `#C4C7CE` |
+| Platinum Grey | `platinum` | `#8A8F99` |
+| Bronze | `bronze` | `#B08D57` |
+| Copper | `copper` | `#B87333` |
+| Brown | `espresso` | `#8B5A2B` |
+| Maroon | `maroon` | `#800020` |
+| Pink | `rose` | `#E75480` |
+| Emerald | `emerald` | `#3EA882` |
+| Sapphire | `sapphire` | `#2F5EAA` |
+| Amethyst | `amethyst` | `#9966CC` |
+
+## Where the accent is stored
+
+The accent is a personal preference, so the Studio always saves it to your **user** settings, not the workspace. It follows you to every workspace on that machine (and to others if you use Settings Sync).
+
+Each Studio extension has its own `appearance.accent` key. The Studio you see reads the key of the extension that hosts it (see [The Workstation](workstation.md)), and the Appearance card and the command write to that key.
+
+## Readability of the accent
+
+A light accent such as Champagne or Silver would be hard to read as text on the paper theme. The Studio adjusts the accent's text colour, darkening or lightening it only as much as needed, until it reaches at least 4.5:1 on every surface it is used on, including its own tinted highlight. Button labels on the accent use black or white, whichever reads better.
+
+## Branding colours
+
+The pink colours used for the Branding group can be changed through VS Code's `workbench.colorCustomizations`. See [Theme colours](reference.md#theme-colours).
+
+## Related
+
+- [The Studio](studio.md)
+- [Accessibility of the Studio](studio-accessibility.md)

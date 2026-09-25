@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build a bath — Auric Artisan Docs</title>
+<meta name="description" content="Add, select, mute and remove dyes, set concentration and path length, and understand absorbance and the Beer–Lambert law.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Industrial Dye Chemistry (Dye in Solution)</a>
+<h2>Using Dye in Solution</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Dye in Solution</a></li>
+<li><a href="build-a-bath.html" aria-current="page">Build a bath</a></li>
+<li><a href="compare-lights.html">Compare lights</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="run-a-titration.html">Run a titration</a></li>
+<li><a href="run-a-tolerance-sweep.html">Run a tolerance sweep</a></li>
+<li><a href="use-a-measured-spectrum.html">Use a measured spectrum</a></li>
+<li><a href="reference.html">Dye in Solution reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Dye in Solution</a></li>
+<li><a href="faq.html">Dye in Solution FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Industrial Dye Chemistry (Dye in Solution)</a> &rsaquo; <a href="README.html">Using Dye in Solution</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Industrial Dye Chemistry</p>
+<h1>Build a bath</h1>
+<p class="lede">Add, select, mute and remove dyes, set concentration and path length, and understand absorbance and the Beer–Lambert law.</p>
+<h2 id="absorbance-in-brief">Absorbance in brief</h2>
+<p>A dye solution looks coloured because it absorbs some wavelengths of light more than others. <strong>Transmittance</strong> T is the fraction of light at a wavelength that gets through. <strong>Absorbance</strong> A is its negative base-10 logarithm, A = −log₁₀ T: an absorbance of 1 lets 10% through, 2 lets 1% through.</p>
+<p>The <strong>Beer–Lambert law</strong> says absorbance is proportional to how much dye the light meets:</p>
+<p>A = ε × c × l</p>
+<ul>
+<li><strong>ε</strong> (epsilon), the <strong>molar absorptivity</strong>, is the dye&#39;s own strength at that wavelength, in litres per mole per centimetre (M⁻¹ cm⁻¹).</li>
+<li><strong>c</strong> is the concentration in moles per litre. The page shows it in micromolar (µM, millionths of a mole per litre).</li>
+<li><strong>l</strong> is the <strong>path length</strong>, the distance the light travels through the solution, in centimetres.</li>
+</ul>
+<p>Absorbances of several dyes, and of the two forms of one dye, simply add. So doubling the concentration or the path length doubles the absorbance at every wavelength.</p>
+<p>The law holds well only up to about A = 1. Above that, real solutions fall below the straight line, because dye molecules clump together and spectrophotometers have finite bandwidth. The page flags a bath whose absorbance exceeds 1 anywhere.</p>
+<h2 id="the-six-preset-dyes">The six preset dyes</h2>
+<p>Every preset stands for a <strong>class</strong> of dye and says which; none is a named commercial substance, and all their constants are the tool&#39;s own. Each has an acid form and a base form, each drawn as a Gaussian band.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Dye</th><th>Stands for</th><th>pKa</th><th>Default concentration</th><th>Acid form: λmax, ε</th><th>Base form: λmax, ε</th></tr></thead>
+<tbody>
+<tr><td><strong>Weak-acid indicator</strong></td><td>The methyl-orange family: a large shift, low in the pH range</td><td>3.5</td><td>34 µM</td><td>508 nm, 26,000</td><td>462 nm, 22,000</td></tr>
+<tr><td><strong>Mid-range indicator</strong></td><td>The bromothymol-blue family: the widest shift, near neutral</td><td>7.1</td><td>20 µM</td><td>430 nm, 15,000</td><td>615 nm, 34,000</td></tr>
+<tr><td><strong>High-range indicator</strong></td><td>The phenolphthalein family: one form barely absorbs</td><td>9.4</td><td>25 µM</td><td>400 nm, 900</td><td>553 nm, 31,000</td></tr>
+<tr><td><strong>Azo red, pH-stable</strong></td><td>A textile azo red whose colour does not move over the working range</td><td>12.5</td><td>50 µM</td><td>505 nm, 30,000</td><td>512 nm, 29,000</td></tr>
+<tr><td><strong>Anthraquinone blue, pH-stable</strong></td><td>A textile blue with a narrow band and little pH response</td><td>11.8</td><td>40 µM</td><td>600 nm, 16,000</td><td>606 nm, 16,500</td></tr>
+<tr><td><strong>Yellow, pH-stable</strong></td><td>A short-wavelength dye for mixing, flat across the range</td><td>12.0</td><td>60 µM</td><td>428 nm, 21,000</td><td>431 nm, 21,000</td></tr>
+</tbody></table></div>
+<p><strong>λmax</strong> is the wavelength at which a band absorbs most.</p>
+<h2 id="add-select-mute-and-remove-components">Add, select, mute and remove components</h2>
+<p>The list under <strong>The components</strong> shows each dye in the bath as a button with a swatch (that dye alone in the current bath), its name, its pKa, concentration and the two band peaks, and a tag: <strong>Stand-in</strong> for drawn bands or <strong>Measured</strong> after you load a spectrum.</p>
+<ol>
+<li>Pick a dye in the menu under the list and select <strong>Add</strong>. It joins the bath and becomes the selected dye. A bath holds at most four; a fifth shows <strong>Four components is the ceiling here</strong>.</li>
+<li>Select a dye&#39;s button to make it the selected dye. The spectrum plot and <strong>The selected dye</strong> group switch to it.</li>
+<li>Select <strong>Mute</strong> to take the selected dye out of the bath without deleting it; its button dims. Select <strong>Mute</strong> again to bring it back.</li>
+<li>Select <strong>Remove</strong> to delete the selected dye. The bath keeps at least one; removing the last shows <strong>The bath needs at least one dye</strong>.</li>
+</ol>
+<p><strong>Reset the bath</strong> returns to the default single weak-acid indicator at pH 3.50, 1.0 cm and D65, and clears any sweep and measured spectra.</p>
+<h2 id="set-concentration-and-path-length">Set concentration and path length</h2>
+<ul>
+<li><strong>Concentration</strong> (under <strong>The selected dye</strong>, 0.5–200 µM in steps of 0.5) sets the selected dye&#39;s concentration.</li>
+<li><strong>pKa</strong> (0–14 in steps of 0.1) sets the selected dye&#39;s pKa; see <a href="run-a-titration.html">Run a titration</a>.</li>
+<li><strong>Path length</strong> (under <strong>The bath</strong>, 0.1–10 cm in steps of 0.1, default 1.0 cm) applies to the whole bath. A standard spectrophotometer cell is 1 cm.</li>
+</ul>
+<h2 id="read-the-absorbance-readouts">Read the absorbance readouts</h2>
+<p>These describe the whole bath (every component that is not muted):</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Peak absorbance</strong></td><td>The highest absorbance at any of the 81 wavelengths, three decimals</td></tr>
+<tr><td><strong>λmax</strong></td><td>The wavelength of that peak</td></tr>
+<tr><td><strong>Beer–Lambert holds</strong></td><td><strong>yes, A 0.63</strong> when the peak is at or below 1; <strong>no — A 1.85 is past 1</strong> when above, highlighted</td></tr>
+</tbody></table></div>
+<p>With the default dye at pH 3.5, raising <strong>Concentration</strong> above about 54 µM, or <strong>Path length</strong> above about 1.6 cm, pushes the peak past 1.</p>
+<p>The spectrum plot is different: it shows the <strong>selected</strong> dye&#39;s two forms and their weighted sum as molar absorptivity (the vertical axis is in thousands of M⁻¹ cm⁻¹), not scaled by concentration or path. Use it to see the shape of a dye; use the readouts for the bath.</p>
+<h2 id="try-it">Try it</h2>
+<ol>
+<li>Add the <strong>Anthraquinone blue, pH-stable</strong> to the default bath.</li>
+<li>Watch the swatch move to a muted grey (<code>#ACA1A6</code>) as the blue dye absorbs the orange-red light the indicator lets through; the two dyes together absorb across most of the spectrum.</li>
+<li>Select the blue dye&#39;s button and lower its <strong>Concentration</strong> until you like the shade.</li>
+<li>Select <strong>Mute</strong> on it to compare the bath with and without it.</li>
+</ol>
+<p>You should now have a mixture whose colour and absorbance you can adjust dye by dye.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Dye in Solution</a><a href="compare-lights.html"><span>Next</span>Compare lights</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#absorbance-in-brief">Absorbance in brief</a></li><li><a href="#the-six-preset-dyes">The six preset dyes</a></li><li><a href="#add-select-mute-and-remove-components">Add, select, mute and remove components</a></li><li><a href="#set-concentration-and-path-length">Set concentration and path length</a></li><li><a href="#read-the-absorbance-readouts">Read the absorbance readouts</a></li><li><a href="#try-it">Try it</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

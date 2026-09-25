@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started — Auric Artisan Docs</title>
+<meta name="description" content="Install the Studio, run your first project scan, and learn where every view, hover and status-bar item lives.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Getting started</h1>
+<p class="lede">Install the Studio, run your first project scan, and learn where every view, hover and status-bar item lives.</p>
+<p>This guide installs Auric Artisan Studio, runs a first scan and tours every place the Studio shows information. It assumes the Full Pack, which installs Auric Color, Auric Accessibility and Auric Code Health together. If you install only one extension, the same screens appear with only that extension&#39;s parts; the differences are listed in <a href="choosing-an-install.html">Choose what to install</a>.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li>You need Visual Studio Code 1.74 or newer.</li>
+<li>Open a folder or a multi-root workspace. Several features (the scan cache, reports, the remediation plan and the knowledge database) write to a <code>.auric-artisan</code> folder inside your workspace, so they need a folder to be open.</li>
+<li>No account, sign-in, API key or network connection is needed. Everything runs on your machine.</li>
+</ul>
+<h2 id="install">Install</h2>
+<ol>
+<li>Open the Extensions view with <code>Ctrl</code> + <code>Shift</code> + <code>X</code>.</li>
+<li>Search for <code>auric-artisan.auric-artisan</code> (the Full Pack) and select <strong>Install</strong>. VS Code installs the pack and its three members: Auric Color, Auric Accessibility and Auric Code Health.</li>
+<li>Alternatively, run this in a terminal:</li>
+</ol>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan</code></pre>
+<p>The extensions start automatically once VS Code has finished loading. There is nothing to configure before the first use.</p>
+<h2 id="your-first-scan">Your first scan</h2>
+<ol>
+<li>Open a project folder that contains stylesheets, templates or components.</li>
+<li>Select the Auric icon in the Activity Bar. When all three extensions are installed, the sidebar is titled <strong>Auric Accessibility</strong> and shows three views: <strong>Overview</strong>, <strong>Project Issues</strong> and a collapsed <strong>Color Picker</strong>.</li>
+<li>In the <strong>Overview</strong>, select <strong>Scan project</strong>. A notification titled <strong>Auric Artisan: scanning project...</strong> shows progress and has a <strong>Cancel</strong> button.</li>
+<li>When the scan finishes, a message reports the result, for example <code>Accessibility 82/100 (B) — 12 contrast + 30 WCAG issue(s) across 214 files (scanned).</code> It offers <strong>Open Studio</strong>, <strong>Show Issues</strong> and <strong>Force Rescan</strong>.</li>
+<li>The Overview&#39;s score ring now shows the overall score and grade, and the rows beside it show the accessibility, contrast and code-health results.</li>
+</ol>
+<p>The scan result is saved in <code>.auric-artisan/scan-cache.json</code>. Next time you open the workspace, the Studio loads it instead of reading every file again, as long as it is less than 24 hours old (you can change this; see <a href="scanning.html">Scanning</a>).</p>
+<h2 id="a-tour-of-the-screens">A tour of the screens</h2>
+<h3 id="the-activity-bar-views">The Activity Bar views</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>View</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Overview</strong></td><td>The Studio&#39;s home in the sidebar: the workspace score, the file you are editing, up to three suggestions, recent colours and buttons for the Studio, the Rulebook, the Icon Studio and the fix plan. See <a href="overview-view.html">The Overview view</a>.</td></tr>
+<tr><td><strong>Project Issues</strong></td><td>Every finding from the last scan as a tree, grouped by type, file or severity, with search. Provided by Auric Accessibility. See <a href="../accessibility/docs/project-issues-view.html">The Project Issues view</a>.</td></tr>
+<tr><td><strong>Color Picker</strong></td><td>A docked colour picker, collapsed by default. Provided by Auric Color. See <a href="../color/docs/color-picker.html">The colour pickers</a>.</td></tr>
+</tbody></table></div>
+<h3 id="the-status-bar">The status bar</h3>
+<p>Two items appear at the right of the status bar:</p>
+<ul>
+<li><strong>The score item</strong>, for example <code>A11y 82 B</code>. A database icon after it means the score came from the saved scan cache. Its background turns to the theme&#39;s warning colour below 90 and to the error colour below 70. Hover it for the pass rate of contrast pairs, the data source and a warning if a file limit cut the scan short. Select it to open the Studio.</li>
+<li><strong>Auric: N in this file</strong> appears only when the active file has contrast or accessibility findings. Hover it for the breakdown; select it to open the Project Issues view (or, without Auric Accessibility, the Contrast Studio).</li>
+</ul>
+<p>When Auric Code Health is installed on its own, the score item reads <code>Health</code> instead of <code>A11y</code> and shows the code-health score.</p>
+<h3 id="in-the-editor">In the editor</h3>
+<ul>
+<li><strong>Underlines.</strong> Auric findings are marked with a violet wavy underline and a mark in the overview ruler at the right edge of the editor. They also appear in the <strong>Problems</strong> panel with the source <code>auric-artisan</code>.</li>
+<li><strong>Issue hovers.</strong> Hover an underlined finding for a card that leads with what is wrong and how urgent it is, then shows the evidence, a before-and-after of the fix, and actions such as <strong>Apply fix</strong>, <strong>Go to code</strong>, <strong>WCAG docs</strong>, <strong>Ignore here</strong> and <strong>Copy reference</strong>.</li>
+<li><strong>Colour hovers.</strong> Hover any colour literal, such as <code>#1d4ed8</code> or <code>oklch(0.6 0.15 250)</code>, for its values, contrast on white and black, a colour-vision preview and an inline picker. See <a href="../color/docs/hover-and-swatches.html">Hover and swatches</a>.</li>
+<li><strong>Inspect.</strong> Hover an element or CSS rule (when you are not over a colour or a finding) for its accessible name and role, the colours that apply and a before-and-after preview. See <a href="../accessibility/docs/inspect.html">Inspect</a>.</li>
+<li><strong>Quick fixes.</strong> Put the cursor on an underline and press <code>Ctrl</code> + <code>.</code> to see fixes such as <strong>Fix contrast → #767676 (4.54:1)</strong> or <strong>Ignore this WCAG 1.1.1 finding here</strong>.</li>
+<li><strong>Swatches.</strong> A small coloured square appears before every colour literal. Clicking a literal opens the inline picker.</li>
+</ul>
+<h3 id="the-studio">The Studio</h3>
+<p>Select <strong>Studio</strong> in the Overview, or the status-bar score, to open the Studio in an editor tab titled <strong>Auric Artisan — Workstation Studio</strong>. A rail on the left lists its spaces:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Space</th><th>Tools inside</th></tr></thead>
+<tbody>
+<tr><td><strong>Home</strong></td><td>The workspace score, files to fix first, graphs, suggestions, the CI gate command and the project palette.</td></tr>
+<tr><td><strong>Color</strong></td><td><strong>Palette</strong>, <strong>Shades</strong> and <strong>Vision</strong>.</td></tr>
+<tr><td><strong>Check</strong></td><td><strong>Findings</strong>, <strong>Contrast</strong> (the Contrast Studio) and <strong>Preview</strong>.</td></tr>
+<tr><td><strong>Health</strong></td><td>The code-health score, categories and findings.</td></tr>
+<tr><td><strong>Brand</strong></td><td>A brand accessibility audit on real text.</td></tr>
+<tr><td><strong>Settings</strong></td><td>Appearance and the settings for installed capabilities.</td></tr>
+</tbody></table></div>
+<p>The <strong>Rulebook</strong> and <strong>Icons</strong> buttons at the foot of the rail open the knowledge database and the Icon Studio. See <a href="studio.html">The Studio</a>.</p>
+<h3 id="the-command-center">The Command Center</h3>
+<p>Press <code>Ctrl</code> + <code>Alt</code> + <code>.</code> (<code>Cmd</code> + <code>Alt</code> + <code>.</code> on macOS) anywhere to open <strong>Auric Artisan — Command Center</strong>, a searchable list with <strong>Suggested</strong>, <strong>Actions</strong>, <strong>Recent colors</strong>, <strong>Findings</strong> and <strong>Artifacts</strong> sections. See <a href="command-center.html">The Command Center</a>.</p>
+<h2 id="your-first-fix">Your first fix</h2>
+<ol>
+<li>Open a stylesheet with a violet underline under a colour value.</li>
+<li>Hover the underline. The card leads with the verdict, for example <code>2.32 : 1 — fails WCAG AA for normal text</code>, and shows the nearest passing colour of the same hue.</li>
+<li>Select the gold <strong>Apply fix</strong> button. The value is replaced in one edit you can undo with <code>Ctrl</code> + <code>Z</code>.</li>
+<li>If the colour comes from a CSS custom property defined in the same file, the button reads <strong>Apply to --token-name</strong> instead and changes the definition, so every use follows.</li>
+</ol>
+<p>The underline disappears and the status-bar count drops. To fix every failing pair in the file at once, run <strong>Auric Artisan: Fix All Contrast Issues in File</strong>; it shows a preview of every change and asks before applying.</p>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="overview-view.html">The Overview view</a> and <a href="studio.html">The Studio</a> for the full screen reference.</li>
+<li><a href="scanning.html">Scanning</a> to control what is scanned and when.</li>
+<li><a href="../color/README.html">Auric Color</a>, <a href="../accessibility/README.html">Auric Accessibility</a> and <a href="../code-health/README.html">Auric Code Health</a> for each extension&#39;s features.</li>
+<li><a href="exports-and-records.html">Exports and health records</a> and <a href="ci-gate.html">The CI gate</a> to share results and gate pull requests.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Auric Artisan Studio docs</a><a href="appearance.html"><span>Next</span>Appearance</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-you-start">Before you start</a></li><li><a href="#install">Install</a></li><li><a href="#your-first-scan">Your first scan</a></li><li><a href="#a-tour-of-the-screens">A tour of the screens</a></li><li><a href="#your-first-fix">Your first fix</a></li><li><a href="#where-to-go-next">Where to go next</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palette Library reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, filter, sort order, tab, output, file name and message in the Palette Library.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Palette Library</a>
+<h2>Palette Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="analyse-the-collection.html">Analyse the collection</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="copy-export-and-share.html">Copy, export and share</a></li>
+<li><a href="inspect-a-palette.html">Inspect a palette</a></li>
+<li><a href="save-palettes.html">Save palettes</a></li>
+<li><a href="reference.html" aria-current="page">Palette Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Palette Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Palette Library</a> &rsaquo; <a href="README.html">Palette Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Palette Library</p>
+<h1>Palette Library reference</h1>
+<p class="lede">Every control, filter, sort order, tab, output, file name and message in the Palette Library.</p>
+<p>Everything on <a href="https://auricartisan.com/library/palette/" rel="noopener">https://auricartisan.com/library/palette/</a>.</p>
+<h2 id="heading">Heading</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Content</th></tr></thead>
+<tbody>
+<tr><td>Kicker</td><td><strong>Auric Artisan · Palette</strong></td></tr>
+<tr><td>Headline</td><td><strong>Five million palettes, and a 660-byte file.</strong></td></tr>
+<tr><td><strong>Collection</strong></td><td>5,000,000</td></tr>
+<tr><td>Facts</td><td><strong>Five colours each</strong>, <strong>Derived, not stored</strong></td></tr>
+<tr><td><strong>Read the API guide →</strong></td><td>Opens the Palette Library API guide in the documentation library.</td></tr>
+<tr><td><strong>Automate this</strong> note</td><td><strong>3 API credits per call to GET /v1/palette/library</strong>; links to <strong>API docs</strong>; × dismisses it.</td></tr>
+</tbody></table></div>
+<h2 id="browse-controls">Browse controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Search by id or hex…</strong></td><td>An id (<code>pal_…</code>) or a number shows that one palette. Other words must each match the id, the method or a colour&#39;s hex.</td><td>Empty</td></tr>
+<tr><td><strong>Shuffle</strong></td><td>Sets <strong>Sort by</strong> to <strong>Random</strong>.</td><td>—</td></tr>
+<tr><td><strong>Open a random palette</strong></td><td>Opens any of the 5,000,000 palettes on <strong>Inspect</strong>.</td><td>—</td></tr>
+<tr><td><strong>Filter inside results</strong> box (<strong>id, hex, method…</strong>)</td><td>A second search, combined with the first.</td><td>Empty</td></tr>
+<tr><td><strong>Clear</strong></td><td>Empties the second box.</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="tabs">Tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Badge</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Library</strong></td><td><strong>5M</strong></td><td>Filters, sort, grid, counter.</td></tr>
+<tr><td><strong>Inspect</strong></td><td>—</td><td>The open palette.</td></tr>
+<tr><td><strong>Harmony</strong></td><td>—</td><td>Method, hue, harmony and lightness/chroma distributions of the sample.</td></tr>
+<tr><td><strong>Accessibility</strong></td><td>—</td><td>Pair-contrast summaries of the sample.</td></tr>
+<tr><td><strong>Stats</strong></td><td>—</td><td>Four histograms of the sample.</td></tr>
+<tr><td><strong>Export</strong></td><td>—</td><td>Selection and sample exports.</td></tr>
+<tr><td><strong>Saved</strong></td><td>Number saved</td><td>Saved palettes.</td></tr>
+</tbody></table></div>
+<h2 id="filters">Filters</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Filter</th><th>Options</th><th>Test</th></tr></thead>
+<tbody>
+<tr><td><strong>Dominant hue</strong></td><td><strong>All hues</strong>, <strong>Red</strong> (340° to under 20°), <strong>Orange</strong> (20–50°), <strong>Yellow</strong> (50–80°), <strong>Green</strong> (80–160°), <strong>Cyan</strong> (160–200°), <strong>Blue</strong> (200–260°), <strong>Purple</strong> (260–300°), <strong>Pink</strong> (300–340°)</td><td>Chroma-weighted average of the five OKLCH hues.</td></tr>
+<tr><td><strong>Chroma</strong></td><td><strong>Any chroma</strong>, <strong>Muted (&lt; 0.07)**, **Balanced** (0.07 to 0.15), **Vivid (&gt; 0.15)</strong></td><td>Average OKLCH chroma.</td></tr>
+<tr><td><strong>Lightness</strong></td><td><strong>Any lightness</strong>, <strong>Dark</strong> (below 0.40), <strong>Mid</strong> (0.40 to 0.70), <strong>Light</strong> (above 0.70)</td><td>Average OKLCH lightness.</td></tr>
+<tr><td><strong>Method</strong></td><td><strong>All methods</strong>, complementary, triadic, analogous, tetradic, golden_ratio, random, monochromatic</td><td>The palette&#39;s method label.</td></tr>
+</tbody></table></div>
+<h2 id="sort-by">Sort by</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Order</th></tr></thead>
+<tbody>
+<tr><td><strong>Sort: original</strong></td><td>Palette number (default). Streams through the whole collection.</td></tr>
+<tr><td><strong>Lightness ↑</strong> / <strong>Lightness ↓</strong></td><td>Average OKLCH lightness.</td></tr>
+<tr><td><strong>Chroma ↑</strong> / <strong>Chroma ↓</strong></td><td>Average OKLCH chroma.</td></tr>
+<tr><td><strong>Hue (rainbow)</strong></td><td>Dominant hue.</td></tr>
+<tr><td><strong>Random</strong></td><td>Shuffled.</td></tr>
+</tbody></table></div>
+<p>Any sort other than <strong>Sort: original</strong> orders a first stretch of 1,500 derived palettes (or the matches among them).</p>
+<h2 id="library-tab-buttons">Library tab buttons</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Reset</strong></td><td>Clears both searches and every filter; sets <strong>Sort: original</strong>.</td></tr>
+<tr><td><strong>Export visible</strong></td><td>Opens the <strong>Export</strong> tab.</td></tr>
+<tr><td><strong>Back to top</strong></td><td>Scrolls to the start of the grid.</td></tr>
+</tbody></table></div>
+<h2 id="card">Card</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>Swatch</td><td>Select to copy its hex. <code>Enter</code> or <code>Space</code> on a focused swatch opens the palette.</td></tr>
+<tr><td>Id and method</td><td>Palette id and method label.</td></tr>
+<tr><td><strong>Inspect</strong></td><td>Opens the palette on <strong>Inspect</strong>.</td></tr>
+<tr><td><strong>Copy</strong></td><td>Copies the five hexes, comma-separated.</td></tr>
+<tr><td><strong>Save</strong> / <strong>Saved</strong></td><td>Saves or unsaves.</td></tr>
+<tr><td>Rest of the card</td><td>Opens the palette on <strong>Inspect</strong>.</td></tr>
+</tbody></table></div>
+<h2 id="counter-under-the-grid">Counter under the grid</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Text</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>1–48 of 5,000,000 palettes</strong></td><td>Unfiltered; the range currently shown.</td></tr>
+<tr><td><strong>… · scroll reaches N; search an id for the rest</strong></td><td>The scrollbar cannot go beyond palette N.</td></tr>
+<tr><td><strong>N matches from M derived</strong></td><td>Filtered; M palettes worked out so far, N match.</td></tr>
+<tr><td><strong>· all five million looked at</strong></td><td>The scan reached the end.</td></tr>
+<tr><td><strong>N matches, ordered within the first M derived</strong></td><td>Filtered and sorted.</td></tr>
+<tr><td><strong>1 palette, by id</strong></td><td>An id is in the search box.</td></tr>
+<tr><td><strong>No palette with that id</strong></td><td>The id is outside the collection.</td></tr>
+</tbody></table></div>
+<h2 id="inspect-tab">Inspect tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Colour strip</td><td>Five columns with a three-word name and hex; select to copy.</td></tr>
+<tr><td><strong>Palette summary</strong></td><td>Badge (<strong>Neutral</strong>, <strong>Triadic</strong>, <strong>Analogous</strong>, <strong>Monochrome</strong>); <strong>Palette ID</strong>, <strong>Global index</strong>, <strong>Method</strong>, <strong>Colors</strong>, <strong>Avg L* (OKLCH)</strong>, <strong>Avg chroma</strong>, <strong>Hue span</strong>, <strong>DeltaE avg</strong>, <strong>Entropy</strong>, <strong>Min pair contrast</strong>, <strong>Max pair contrast</strong>.</td></tr>
+<tr><td><strong>Pair-by-pair WCAG contrast</strong></td><td>Ten pairs with ratios.</td></tr>
+<tr><td><strong>Quick export</strong></td><td><strong>Copy HEX</strong>, <strong>Copy CSS vars</strong>, <strong>Copy SCSS</strong>, <strong>Copy Tailwind</strong>, <strong>Download JSON</strong>, <strong>Download ASE</strong>, <strong>Download SVG</strong>, <strong>Download PNG</strong>, <strong>Open in Coolors</strong>, <strong>Save to library</strong> / <strong>Unsave</strong>, <strong>Copy share link</strong>, <strong>Design tokens…</strong></td></tr>
+<tr><td><strong>Color 1</strong> to <strong>Color 5</strong></td><td><strong>HEX</strong>, <strong>RGB</strong>, <strong>OKLCH</strong>, <strong>CIE L*a*b*</strong>, <strong>WCAG vs white</strong>, <strong>WCAG vs black</strong>, copy buttons.</td></tr>
+</tbody></table></div>
+<p>Select a card heading to fold or unfold it.</p>
+<h2 id="analysis-tabs">Analysis tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Cards</th></tr></thead>
+<tbody>
+<tr><td><strong>Harmony</strong></td><td><strong>Generation method</strong>, <strong>Dominant hue bucket</strong>, <strong>Harmony classification</strong>, <strong>Lightness &amp; chroma profile</strong></td></tr>
+<tr><td><strong>Accessibility</strong></td><td><strong>Palette-level WCAG summary</strong>, <strong>Pair-level WCAG breakdown</strong>, <strong>How many of the five can be used together</strong>, <strong>The most usable in this sample</strong></td></tr>
+<tr><td><strong>Stats</strong></td><td><strong>Avg lightness (OKLCH L)</strong> (0–1, 10 bands), <strong>Avg chroma (OKLCH C)</strong> (0–0.30, 10 bands), <strong>Hue spread</strong> (0–360°, 12 bands), <strong>Best pair contrast</strong> (1–15:1, 14 bands)</td></tr>
+</tbody></table></div>
+<p>Sample: the first 2,000 palettes, or up to 2,000 matches from the first 40,000 when filtered.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>Group</th><th>Buttons</th></tr></thead>
+<tbody>
+<tr><td><strong>Selection · id</strong></td><td><strong>Copy formats</strong></td><td><strong>HEX list</strong>, <strong>CSS variables</strong>, <strong>SCSS variables</strong>, <strong>Tailwind config</strong></td></tr>
+<tr><td></td><td><strong>Download</strong></td><td><strong>JSON</strong>, <strong>Adobe ASE</strong>, <strong>SVG strip</strong>, <strong>PNG strip</strong></td></tr>
+<tr><td></td><td><strong>External</strong></td><td><strong>Open in Coolors</strong></td></tr>
+<tr><td><strong>Visible page</strong></td><td><strong>Bulk download</strong></td><td><strong>Download JSON (visible page)</strong>, <strong>Download CSV (visible page)</strong>, <strong>Download CSS variables</strong>, <strong>Download SCSS variables</strong>, <strong>Download compact JSON</strong></td></tr>
+<tr><td></td><td><strong>Sample formats</strong></td><td><strong>Download .txt hex list</strong>, <strong>Download tailwind.config.js fragment</strong></td></tr>
+</tbody></table></div>
+<h2 id="files">Files</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Output</th><th>File name</th><th>Size or shape</th></tr></thead>
+<tbody>
+<tr><td>JSON (one palette)</td><td><code>&lt;id&gt;.json</code></td><td>Full record with contrast table.</td></tr>
+<tr><td>ASE</td><td><code>&lt;id&gt;.ase</code></td><td>Five RGB swatches <code>&lt;id&gt;_1</code> to <code>&lt;id&gt;_5</code>.</td></tr>
+<tr><td>SVG</td><td><code>&lt;id&gt;.svg</code></td><td>600 × 220.</td></tr>
+<tr><td>PNG</td><td><code>&lt;id&gt;.png</code></td><td>800 × 320.</td></tr>
+<tr><td>Bulk</td><td><code>palette-page-&lt;count&gt;-&lt;date&gt;.&lt;ext&gt;</code></td><td><code>json</code>, <code>csv</code>, <code>css</code>, <code>scss</code>, <code>txt</code>, <code>js</code>.</td></tr>
+<tr><td>Design tokens</td><td>See <a href="copy-export-and-share.html">Copy, export and share</a></td><td>Eight formats; <strong>Download all</strong> makes <code>palette-&lt;id&gt;.zip</code>.</td></tr>
+</tbody></table></div>
+<h2 id="design-tokens-dialog">Design tokens dialog</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Token prefix</strong></td><td>The start of every token name.</td><td><code>brand</code></td></tr>
+<tr><td>Format tabs</td><td><strong>W3C Design Tokens</strong>, <strong>CSS Variables</strong>, <strong>SCSS</strong>, <strong>Tailwind Config</strong>, <strong>Style Dictionary</strong>, <strong>Material UI Theme</strong>, <strong>iOS (SwiftUI)</strong>, <strong>Android colors.xml</strong></td><td><strong>W3C Design Tokens</strong></td></tr>
+<tr><td><strong>Copy</strong></td><td>Copies the preview.</td><td>—</td></tr>
+<tr><td><strong>Download</strong></td><td>Saves the current format.</td><td>—</td></tr>
+<tr><td><strong>Download all</strong></td><td>Saves every format in one ZIP.</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="share-link-dialog">Share link dialog</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Link field</td><td>The share address, selected and ready to copy.</td></tr>
+<tr><td><strong>Copy</strong></td><td>Copies the link (<strong>Copied!</strong>).</td></tr>
+<tr><td><strong>Share via…</strong></td><td>Opens your device&#39;s share sheet, where available.</td></tr>
+<tr><td><strong>Open in new tab</strong></td><td>Opens the link.</td></tr>
+<tr><td><strong>Close</strong> / ✕</td><td>Closes the dialog.</td></tr>
+</tbody></table></div>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Loading palette database…</strong></td><td>While the page prepares.</td></tr>
+<tr><td><strong>Could not load palette database</strong></td><td>The collection description failed to load.</td></tr>
+<tr><td><strong>Nothing matched yet</strong></td><td>No match found so far in a scan.</td></tr>
+<tr><td><strong>No palette selected</strong></td><td><strong>Inspect</strong> or <strong>Export</strong> before a palette is opened.</td></tr>
+<tr><td><strong>No palettes</strong></td><td>An analysis tab found no matches in its sample.</td></tr>
+<tr><td><strong>No saved palettes yet</strong></td><td>The <strong>Saved</strong> tab is empty.</td></tr>
+<tr><td><strong>#HEX copied</strong>, <strong>Palette hexes copied</strong>, <strong>HEX list copied</strong>, <strong>CSS variables copied</strong>, <strong>SCSS variables copied</strong>, <strong>Tailwind config copied</strong>, <strong>Copied</strong></td><td>After copying.</td></tr>
+<tr><td><strong>Downloaded</strong> and a file name</td><td>After a download.</td></tr>
+<tr><td><strong>Saved</strong>, <strong>Removed</strong></td><td>After saving or unsaving from <strong>Inspect</strong>.</td></tr>
+<tr><td><strong>Nothing to export</strong></td><td>Bulk export of an empty sample.</td></tr>
+<tr><td><strong>Could not encode PNG</strong></td><td>The browser could not make the PNG.</td></tr>
+<tr><td><strong>Shared palette not found in current dataset</strong></td><td>A share link&#39;s palette could not be found.</td></tr>
+</tbody></table></div>
+<h2 id="keyboard">Keyboard</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><code>/</code></td><td>Focus <strong>Search by id or hex…</strong> (when not typing in a field).</td></tr>
+<tr><td><code>Enter</code> / <code>Space</code></td><td>On a focused swatch: open its palette.</td></tr>
+<tr><td><code>Escape</code></td><td>Close the share or design-tokens dialog.</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="save-palettes.html"><span>Previous</span>Save palettes</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#heading">Heading</a></li><li><a href="#browse-controls">Browse controls</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#filters">Filters</a></li><li><a href="#sort-by">Sort by</a></li><li><a href="#library-tab-buttons">Library tab buttons</a></li><li><a href="#card">Card</a></li><li><a href="#counter-under-the-grid">Counter under the grid</a></li><li><a href="#inspect-tab">Inspect tab</a></li><li><a href="#analysis-tabs">Analysis tabs</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#files">Files</a></li><li><a href="#design-tokens-dialog">Design tokens dialog</a></li><li><a href="#share-link-dialog">Share link dialog</a></li><li><a href="#messages">Messages</a></li><li><a href="#keyboard">Keyboard</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

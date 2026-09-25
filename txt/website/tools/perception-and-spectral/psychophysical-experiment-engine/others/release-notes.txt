@@ -1,0 +1,45 @@
+==============================================================================
+RELEASE NOTES
+==============================================================================
+User-facing history of the Psychophysics Bench.
+Area: Website › Tools › Perception and spectral › Psychophysical Experiment Engine   Updated: 2026-09-25
+
+The site-wide history is at https://auricartisan.com/library/changelog/. The
+entries below cover what changed for users of this tool.
+
+SEPTEMBER 2026 — KNOWN ISSUE
+============================
+
+  - Only the Lab tab opens; the other five tabs, including Export, do not
+    respond. See Troubleshooting [../docs/troubleshooting.txt].
+
+SEPTEMBER 2026 — REBUILT AS THE PSYCHOPHYSICS BENCH
+===================================================
+
+Changed:
+
+  - Contrast is now Michelson contrast in relative luminance about a stated
+    background, through the sRGB curve. Earlier versions built the grating in
+    screen code values, so a requested 0.02 was drawn at about 0.051. Sessions
+    recorded before this change cannot be converted to the new axis, because
+    their exports did not record the background.
+  - Spatial frequency is now in cycles per degree, from a viewing distance and
+    pixel pitch you enter. Earlier versions used cycles across the patch.
+  - Staircase steps are ratios in decibels instead of a fixed 0.05, and
+    reversals are averaged geometrically in an even number.
+  - The Bayesian and accelerated procedures are named as the tool's own rather
+    than QUEST and PEST.
+  - The stage shows the stimulus at the starting contrast between runs.
+
+Added: Background, Viewing distance, Pixel pitch, Envelope σ in degrees,
+Delivered / asked, At what percentage, the Nyquist and contrast-cap warnings,
+and the header lines in the trials CSV.
+
+Removed: the m-alternative forced choice, same/different and odd-one-out
+tasks, which could not score a trial correctly.
+
+MAY 2026
+========
+
+  - The Psychophysical Experiment Engine User Guide was published in the site
+    documentation.

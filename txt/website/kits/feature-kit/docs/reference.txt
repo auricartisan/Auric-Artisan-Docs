@@ -1,0 +1,438 @@
+==============================================================================
+FEATURE KIT REFERENCE
+==============================================================================
+Every control, tab, field, option and message in the Feature Kit, with what it
+does and its default.
+Area: Website › Kits › Feature Kit   Updated: 2026-09-25
+
+Every control in the Feature Kit, grouped by where it appears. Defaults are
+given where the kit sets one.
+
+LAUNCHER
+========
+
+  Control:      Feature launcher (nine-dot icon)
+  What it does: Opens the kit on its menu; closes it when open (without Focus
+                mode)
+  Default:      Closed
+
+  Control:      `Ctrl` + `Shift` + `K`
+  What it does: Same as the launcher, from anywhere on the page
+  Default:      —
+
+  Control:      Launcher tooltip
+  What it does: "Calculator, converter, graph tools, and feedback."
+  Default:      —
+
+TITLE BAR
+=========
+
+  Control:         Back
+  What it does:    Returns to the menu from a tool
+  Values or range: Shown only inside a tool
+  Default:         —
+
+  Control:         Title
+  What it does:    Shows Feature Kit or the open tool's name; drag it to move
+                   the kit
+  Values or range: —
+  Default:         Bottom-left corner
+
+  Control:         Graph
+  What it does:    Shows or hides the graph area
+  Values or range: Calculator only; gold when on
+  Default:         Off
+
+  Control:         History
+  What it does:    Shows or hides past calculations
+  Values or range: Calculator only; gold when on
+  Default:         Off
+
+  Control:         Focus mode
+  What it does:    Keeps the kit open across pages and other kits, and stops
+                   dimming the page
+  Values or range: On or off; remembered
+  Default:         Off
+
+  Control:         Theme
+  What it does:    Switches the kit between light and dark
+  Values or range: Light or dark; remembered
+  Default:         Follows the site
+
+  Control:         Resize
+  What it does:    Normal (560 px wide) or full size (up to 640 px wide, 900
+                   px tall)
+  Values or range: Remembered
+  Default:         Normal
+
+  Control:         Minimize
+  What it does:    Shrinks the kit to a small round icon; select the icon to
+                   reopen at the menu
+  Values or range: —
+  Default:         —
+
+  Control:         Close
+  What it does:    Closes the kit, hides the graph and history, and turns
+                   Focus mode off
+  Values or range: —
+  Default:         —
+
+MENU
+====
+
+  Card                  | Key | Opens
+  ----------------------+-----+--------------------------------------
+  Scientific Calculator | `1` | Calculator [calculator.txt]
+  Unit Converter        | `2` | Unit Converter [unit-converter.txt]
+  Feedback              | `3` | Feedback [feedback.txt]
+  Notes                 | `4` | Notes [notes.txt]
+  Date & Time           | `5` | Date & Time [date-and-time.txt]
+  Developer Tools       | `6` | Developer Tools [developer-tools.txt]
+
+The hint line under the cards reads 1 – 6 Open · Ctrl ⇧ K Toggle (⌘ on a Mac).
+
+CALCULATOR
+==========
+
+Display and entry
+-----------------
+
+  Control:      Expression line
+  What it does: Shows the expression being entered
+  Default:      Empty
+
+  Control:      Result line
+  What it does: Shows the live result or an error; select it to copy the
+                result
+  Default:      `0`
+
+  Control:      RAD / DEG
+  What it does: Angle unit for trigonometric functions and the graph; not
+                remembered
+  Default:      RAD
+
+  Control:      Expression bar
+  What it does: Type a full expression and press `Enter`
+  Default:      Empty
+
+  Control:      ƒx
+  What it does: Shows or hides the function reference chips
+  Default:      Hidden
+
+  Control:      Variables strip
+  What it does: Chips for each defined variable and function, plus Clear
+  Default:      Hidden until something is defined
+
+  Control:      Basic, Scientific, Programmer tabs
+  What it does: Switch keypad; which tabs appear depends on the Advanced Kit
+                mode
+  Default:      Basic (or Scientific in Advanced mode)
+
+Memory row
+----------
+
+  Key | What it does
+  ----+-------------------------------------------------------
+  MC  | Memory clear (to 0)
+  MR  | Memory recall: adds the memory value to the expression
+  M+  | Adds the result line's number to memory
+  M−  | Subtracts the result line's number from memory
+
+Basic keypad keys
+-----------------
+
+C (clear), (, ), ÷, ×, −, +, 0 to 9, ., =.
+
+Scientific keypad keys
+----------------------
+
+  Key                                         | Inserts
+  --------------------------------------------+---------------------------
+  d/dx                                        | `diff(`
+  ∫                                           | `integral(`
+  solve                                       | `solve(`
+  Σ                                           | `sum(`
+  Π                                           | `product(`
+  nCr                                         | `nCr(`
+  gcd, lcm                                    | `gcd(`, `lcm(`
+  x̄                                          | `mean(`
+  σ                                           | `stdev(`
+  sin, cos, tan                               | `sin(`, `cos(`, `tan(`
+  sin⁻¹, cos⁻¹, tan⁻¹                         | `asin(`, `acos(`, `atan(`
+  π, e, φ                                     | The constant
+  ^                                           | Power
+  ln, log, log₂                               | `ln(`, `log(`, `log2(`
+  √, ∛                                        | `sqrt(`, `cbrt(`
+  exp                                         | `exp(`
+  Absolute value key (a bar either side of x) | `abs(`
+  n!                                          | Factorial sign
+  %                                           | Remainder operator
+  ⌫                                           | Deletes the last character
+  C                                           | Clears the expression
+  Ans                                         | The previous result
+  Digits, brackets, operators, ., =           | As labelled
+
+Programmer keypad keys
+----------------------
+
+  Key                   | Inserts
+  ----------------------+--------------------------------
+  AND                   | `&`
+  OR                    | The bitwise OR operator
+  XOR                   | `xor(`
+  NOT                   | `not(`
+  <<**, **>>            | Bit shifts
+  0x, 0b                | Hexadecimal and binary prefixes
+  A to F                | Hexadecimal digits
+  ⌫                     | Deletes the last character
+  AC                    | Clears the expression
+  Digits, +, −, ×, ., = | As labelled
+
+Function reference chips (ƒx)
+-----------------------------
+
+  Group      | Chip                                             | Inserts
+  -----------+--------------------------------------------------+--------------------------------
+  Calculus   | diff(x², at)                                     | `diff(`
+  Calculus   | diff2                                            | `diff2(`
+  Calculus   | ∫ integral(f, a, b)                              | `integral(`
+  Calculus   | solve(f, guess)                                  | `solve(`
+  Calculus   | Σ sum(f, n, 1, 99)                               | `sum(`
+  Calculus   | Π product                                        | `product(`
+  Statistics | mean, median, stdev, variance, geomean, rms      | The function name and `(`
+  Numbers    | gcd, lcm, isprime, nextprime, fib, nCr, nPr      | The function name and `(`
+  Numbers    | roundto(x, digits), nthroot(x, n), logb(x, base) | `roundto(`, `nthroot(`, `logb(`
+  Define     | x = 5                                            | `x = `
+  Define     | f(x) = x^2                                       | `f(x) = `
+  Define     | ans                                              | `ans`
+  Constants  | π, e, φ, τ                                       | `pi`, `e`, `phi`, `tau`
+  Constants  | c (light), G, g₀, Nᴀ, kʙ                         | `c`, `G`, `g0`, `NA`, `kB`
+
+Graph area
+----------
+
+  Control:      y = box
+  What it does: Expression in `x` to plot; redraws as you type
+  Default:      `sin(x)`
+
+  Control:      Graph canvas
+  What it does: Drag to pan; scroll or pinch to zoom
+  Default:      Centred on the origin, 50 px per unit
+
+  Control:      Zoom in
+  What it does: Zooms in one step
+  Default:      —
+
+  Control:      Zoom out
+  What it does: Zooms out one step
+  Default:      —
+
+  Control:      Reset view
+  What it does: Returns to the starting view
+  Default:      —
+
+Zoom range: 5 to 5,000 pixels per unit.
+
+History area
+------------
+
+  Control                 | What it does
+  ------------------------+----------------------------------------------------------------
+  Entry                   | Loads that expression and result into the display
+  Bin icon on an entry    | Delete — removes that calculation
+  Bin icon in the heading | Clear history — deletes every calculation, without confirmation
+
+Up to 100 calculations are kept in your browser. Empty history reads No
+calculations yet.
+
+UNIT CONVERTER
+==============
+
+  Control:      Search units...
+  What it does: Narrows the category pills to those with a matching unit name
+                or symbol
+  Default:      Empty
+
+  Control:      Category pills
+  What it does: Choose one of 70 categories
+  Default:      Length
+
+  Control:      From value box
+  What it does: The number to convert (Enter value)
+  Default:      Empty
+
+  Control:      From unit list
+  What it does: The unit you have
+  Default:      First unit of the category
+
+  Control:      Swap button
+  What it does: Exchanges the From and To units
+  Default:      —
+
+  Control:      To result
+  What it does: The converted value; select it to copy
+  Default:      —
+
+  Control:      Result sentence
+  What it does: For example `37 celsius = 98.6 fahrenheit`
+  Default:      —
+
+  Control:      To unit list
+  What it does: The unit you want
+  Default:      Second unit of the category
+
+  Control:      Unit count
+  What it does: 1344 units available
+  Default:      —
+
+FEEDBACK
+========
+
+  Control:      Five faces
+  What it does: Terrible, Bad, Okay, Good, Amazing (rating 1 to 5)
+
+  Control:      Tell us more (optional)...
+  What it does: Comment box, shown after you choose a face
+
+  Control:      Submit
+  What it does: Sends quick feedback; disabled until you choose a face
+
+  Control:      Give Detailed Feedback
+  What it does: Starts the multi-question form
+
+  Control:      Not now
+  What it does: Leaves without sending
+
+  Control:      ← Back, Skip, Next →
+  What it does: Move through the detailed form; Next → becomes Submit on the
+                last question
+
+  Control:      Done
+  What it does: Returns to the menu after sending
+
+  Control:      Try again or Check account
+  What it does: Retries a failed submission
+
+  Control:      Open form, Later
+  What it does: Buttons on the occasional feedback prompt
+
+NOTES
+=====
+
+  Control        | What it does
+  ---------------+--------------------------------------------------------------------------
+  Note tabs      | Switch note; each is named after the note's first line
+  + (New note)   | Adds an empty note
+  Edit / Preview | Switch between editing and formatted preview
+  Copy           | Copies the note's Markdown
+  Export         | Downloads the note as a `.md` file
+  Delete         | Deletes the note without confirmation (empties it if it is the only note)
+  Status line    | Saving…, Saved · time, Copied or Copy failed
+
+DATE & TIME
+===========
+
+  Tab:      Calendar
+  Controls: Calendar picker, Time box, format rows with Copy (Full (culture),
+            Long date, ISO 8601, Unix (s), Day of year, ISO week, Weekday),
+            Recent chips
+
+  Tab:      Difference
+  Controls: From and To date fields; results Days, Weeks, Months (≈), Years
+            (≈), Business days, Hours
+
+  Tab:      Add / Subtract
+  Controls: Start date, Amount (default 30), Unit (days, weeks, months,
+            years), Direction (after (+), before (−))
+
+  Tab:      Timezones
+  Controls: Live clocks for UTC, New York, Los Angeles, London, Berlin,
+            Kolkata, Tokyo, Sydney
+
+Calendar picker controls: ‹ previous month, « previous year, » next year, ›
+next month, Clear, Today.
+
+DEVELOPER TOOLS
+===============
+
+  Tab:     JSON
+  Inputs:  JSON text
+  Buttons: Format, Minify, Sort keys, → TypeScript, Stats, Escape, Copy
+
+  Tab:     Base64
+  Inputs:  Text or Base64
+  Buttons: Encode, URL-safe, Decode, → Hex, Copy
+
+  Tab:     URL
+  Inputs:  URL or text
+  Buttons: Parse, Encode, Decode, Copy
+
+  Tab:     Hash
+  Inputs:  Text; HMAC key
+  Buttons: Hash all, HMAC-SHA256, Copy
+
+  Tab:     UUID
+  Inputs:  Paste a UUID to inspect…
+  Buttons: v4, v4 ×10, v7, v7 ×10, NIL, Copy
+
+  Tab:     JWT
+  Inputs:  Token
+  Buttons: Decode, Copy
+
+  Tab:     Epoch
+  Inputs:  Seconds, milliseconds or a date
+  Buttons: Convert, Now, Copy
+
+  Tab:     Regex
+  Inputs:  Pattern, flags (default `g`), test string, replacement
+  Buttons: Test, Copy
+
+  Tab:     Cron
+  Inputs:  Five-field expression (default `*/15 9-17 * * MON-FRI`)
+  Buttons: Explain and four preset buttons
+
+  Tab:     Text
+  Inputs:  Text
+  Buttons: camelCase, PascalCase, snake_case, kebab-case, slug, Title Case,
+           UPPER, lower, reverse, sort lines, dedupe lines, trim lines, Copy
+
+  Tab:     HTML
+  Inputs:  HTML or text
+  Buttons: Encode, Decode, Strip tags, Copy
+
+MESSAGES
+========
+
+  Message: Copied!
+  Where:   Calculator, converter
+  Meaning: The value is on your clipboard
+
+  Message: Copy failed
+  Where:   Calculator, converter, notes, developer tools
+  Meaning: The browser blocked clipboard access
+
+  Message: Loading units — Preparing the converter.
+  Where:   Converter
+  Meaning: The unit list is downloading
+
+  Message: Units could not be loaded.
+  Where:   Converter
+  Meaning: The download failed; select Try again
+
+  Message: No matches
+  Where:   Converter search
+  Meaning: No unit name or symbol contains your search
+
+  Message: No calculations yet
+  Where:   History
+  Meaning: The history is empty
+
+  Message: Date & Time failed to load (or another tool's name)
+  Where:   Any tool card
+  Meaning: The tool could not be downloaded; reload the page
+
+  Message: Could not send yet
+  Where:   Feedback
+  Meaning: See Feedback [feedback.txt]
+
+Calculator error messages are listed in Troubleshooting [troubleshooting.txt].

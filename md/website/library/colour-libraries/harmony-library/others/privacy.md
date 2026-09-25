@@ -1,0 +1,27 @@
+---
+title: Harmony Library — Privacy
+description: What the Harmony Library keeps in your browser and what it fetches over the network.
+product: Website › Library › Colour libraries › Harmony Library
+updated: 2026-09-25
+---
+
+# Privacy
+
+## What stays in your browser
+
+| What | How to remove it |
+| --- | --- |
+| Saved harmony ids (up to 500) | Unsave each one, or clear this site's data. |
+| A copy of each saved harmony in your Library | Unsave it, or remove it in the Library. |
+| Whether you dismissed the **Automate this** note | Clear this site's data. |
+
+The colours you type into **What harmony is this?** are matched in your browser and never sent anywhere.
+
+## What uses the network
+
+- On opening, the page downloads a 5 KB description of the collection from auricartisan.com; the harmonies are calculated in your browser.
+- **Open in Coolors** sends the harmony's hex codes to coolors.co in the address of a new tab.
+- **Download all** in the design tokens dialog may fetch a small helper from auricartisan.com.
+- Share links carry the harmony in the link; nothing is uploaded.
+
+Advertising and analytics follow your consent choices. See [Company and legal](../../../../company-and-legal/README.md).

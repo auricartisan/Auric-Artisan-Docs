@@ -1,0 +1,65 @@
+---
+title: Perception and Vision — Getting started
+description: Open Perception Vision, learn the layout of the Lab tab and run a first colour vision simulation over the test card and your own image.
+product: Website › Tools › Perception and spectral › Perception and Vision
+updated: 2026-09-25
+---
+
+# Getting started with Perception and Vision
+
+## Open the tool
+
+Go to https://auricartisan.com/tool/general/perception-and-neuroscience/perception-vision/. The page opens on the **Lab** tab in its default state: the built-in test card, the **Colour vision** simulation at **Protan**, **Severity** 1.00, a **Split** comparison with the divider in the middle, illuminant D65 (the scene as authored) and the **GPU** renderer.
+
+A note strip above the tabs, which cannot be closed, states the check this page is built around: a colour-blind viewer sees white as white. Its **Data** link opens the register that explains the method.
+
+## The six tabs
+
+| Tab | What it is for |
+|---|---|
+| **Lab** | The workbench: controls on the left, the simulated frame on the right, the grey-ramp check and the readouts below |
+| **Simulation** | One colour's route through the colour vision simulation, the matrices, and a table of test colours |
+| **Modes** | Every simulation side by side over the same source |
+| **Data** | The register of every dataset and transform the tool rests on, with a status for each |
+| **Export** | A list of colours through the simulation, and the download, copy, load and link buttons |
+| **Reference** | Standards, formulas, citations and research notes, with a search box |
+
+## A tour of the Lab tab
+
+**The rail (left)**, from top to bottom:
+
+- **Source** — test card, grey ramp, Snellen chart, your image, or camera.
+- **Simulation** — nine buttons: the eight simulations and **None**.
+- Settings for the chosen simulation. For **Colour vision** these are **Type** (**Protan**, **Deutan**, **Tritan**), **Daltonise instead of simulate** and **Severity**. Other simulations show their own slider (adaptation level, age, scotoma radius, cataract or acuity) under **Severity**.
+- **Compare** — **Split**, **Simulated only** or **Difference**, and the **Divider** position for a split.
+- **Renderer** — **GPU** or **CPU**, and **Fixation cross**.
+- **Before the eye** — the illuminant and its **Adaptation** strength.
+- **Adjustments** — contrast, gamma, blur, glare and noise.
+- **Presets** and **Reset**.
+
+**The stage (right)**:
+
+- A caption naming what is shown (for example **Colour vision, protanopia at severity 1.00**) and, on the right, a coloured dot, the renderer in use and the frame size (for example **GPU · 800 × 600**).
+- The frame. In a split, the left half is labelled **Original** and the right half with the simulation's name. The line under the frame names the method's source.
+- **The grey ramp, which is the test that needs no reference**: nine grey steps with a number under each, the channel spread the simulation adds to that step.
+- Two rows of readouts: **Neutral drift**, **Colours merged**, **Out of sRGB**, **GPU and CPU agree**, then **Distinct colours left**, **Largest channel shift**, **Frame luminance, mean**, and **min and max**.
+- Two buttons: **Save the frame** and **Copy a link to this view**.
+
+## Your first simulation
+
+1. Look at the test card. Its top band has eight colour patches, the middle band a nine-step grey ramp, and the bottom three single-channel ramps (red, green and blue). The line printed on the card reads "a simulation that tints the ramp below is wrong".
+2. With **Colour vision** and **Protan** selected, compare the halves. Red and green patches move towards similar yellowish browns; the grey ramp stays grey.
+3. Check the numbers under the grey-ramp strip below the frame: all nine should be `0`, and **Neutral drift** should read `0`.
+4. Read **Colours merged**: the share of the card's colours that the simulation mapped onto the same colour as another.
+5. Select **Deutan**, then **Tritan**, and watch the patches and the merged figure change.
+6. Under **Source**, choose **Uploaded image**, select **Choose a file** and open an image. It appears in the frame, scaled to fit within 1200 × 900 pixels.
+7. Drag across the frame to move the divider over the part you care about.
+8. Select **Save the frame** to download the view.
+
+You should now have a PNG of your image, half original and half as a protanope would see it, and a figure for how many of its colours merged.
+
+## Next steps
+
+- [Simulate a design or image](simulate-a-design.md) covers every simulation and control.
+- [Read the checks](read-the-checks.md) explains the grey ramp and the readouts.
+- [Check a palette and export](check-a-palette-and-export.md) shows how to test a list of brand colours.

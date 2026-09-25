@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Options reference — Auric Artisan Docs</title>
+<meta name="description" content="All 391 Auric Artisan Formatter formatting options in 17 categories, with type, default, allowed values and effect.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html" aria-current="page">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Options reference</h1>
+<p class="lede">All 391 Auric Artisan Formatter formatting options in 17 categories, with type, default, allowed values and effect.</p>
+<p>Auric Artisan Formatter has 391 formatting options in 17 categories. This page lists every one. The eleven settings that control how the extension works in VS Code (preset, format on save, the workspace scan and so on) are in the <a href="reference.html">reference</a>.</p>
+<h2 id="how-to-use-this-page">How to use this page</h2>
+<p>Each option can be set in four places. The same name works in all of them:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>How it is written</th></tr></thead>
+<tbody>
+<tr><td>VS Code settings</td><td><code>&quot;auricFormatter.printWidth&quot;: 100</code></td></tr>
+<tr><td>A configuration file such as <code>.auricformatrc</code></td><td><code>&quot;printWidth&quot;: 100</code> (no prefix)</td></tr>
+<tr><td>The command line</td><td><code>--print-width 100</code> (the name in kebab case; booleans also take a <code>--no-</code> form)</td></tr>
+<tr><td>An inline directive in a file</td><td><code>// @auric printWidth=100</code></td></tr>
+</tbody></table></div>
+<p>The defaults shown are the extension&#39;s own defaults. A preset changes many of them; <code>&quot;preset&quot;: &quot;prettier&quot;</code>, for example, switches every Auric-only enhancement off. Anything you set yourself wins over the preset. See <a href="configuration.html">Configuration</a> and <a href="presets.html">Presets</a>.</p>
+<p>Options that only apply to some languages only affect files in those languages. Formatter Studio&#39;s <strong>Affects this file</strong> filter shows which options change the file you are looking at.</p>
+<p>Options marked &quot;Experimental&quot; are still settling; Formatter Studio hides them unless you tick <strong>Experimental</strong>.</p>
+<h2 id="global">Global</h2>
+<p>21 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.byteOrderMark</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>add</code>, <code>remove</code></td><td>Decide what happens to a UTF-8 byte order mark at the start of the file.</td></tr>
+<tr><td><code>auricFormatter.cursorOffset</code></td><td>integer</td><td><code>-1</code></td><td>-1–no maximum</td><td>Track this character offset through the reformat and report where it lands.</td></tr>
+<tr><td><code>auricFormatter.editorconfig</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Read .editorconfig and translate indent_style, indent_size, end_of_line, max_line_length and the final-newline keys.</td></tr>
+<tr><td><code>auricFormatter.embeddedLanguageFormatting</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>off</code></td><td>Decide whether code embedded inside another language is formatted.</td></tr>
+<tr><td><code>auricFormatter.endOfLine</code></td><td>string</td><td><code>lf</code></td><td><code>lf</code>, <code>crlf</code>, <code>cr</code>, <code>auto</code>, <code>preserve</code></td><td>Choose the line ending written to disk.</td></tr>
+<tr><td><code>auricFormatter.filepath</code></td><td>string</td><td>empty</td><td></td><td>Supply the path the text came from so language inference and glob overrides can work on stdin.</td></tr>
+<tr><td><code>auricFormatter.formatEmbeddedUnknown</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Attempt the universal engine on embedded fragments whose language has no native printer.</td></tr>
+<tr><td><code>auricFormatter.insertFinalNewline</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Guarantee the file ends with exactly one line ending.</td></tr>
+<tr><td><code>auricFormatter.insertPragma</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Insert an @format pragma into the leading comment of files that were formatted.</td></tr>
+<tr><td><code>auricFormatter.parser</code></td><td>string</td><td>empty</td><td></td><td>Force a specific parser instead of inferring one from the file path or language id.</td></tr>
+<tr><td><code>auricFormatter.plugins</code></td><td>array</td><td><code>[]</code></td><td></td><td>List additional printer plugins to load, by module path or by registered plugin name.</td></tr>
+<tr><td><code>auricFormatter.pragmaKeyword</code></td><td>string</td><td><code>format</code></td><td></td><td>Set the bare word an opt-in pragma comment must contain, without the leading at sign.</td></tr>
+<tr><td><code>auricFormatter.printWidth</code></td><td>integer</td><td><code>80</code></td><td>0–1000</td><td>Wrap lines that would otherwise exceed this many columns wherever the syntax allows a break.</td></tr>
+<tr><td><code>auricFormatter.rangeEnd</code></td><td>integer</td><td>end of file</td><td>0–no maximum</td><td>Format only the text before this character offset.</td></tr>
+<tr><td><code>auricFormatter.rangeStart</code></td><td>integer</td><td><code>0</code></td><td>0–no maximum</td><td>Format only the text at or after this character offset.</td></tr>
+<tr><td><code>auricFormatter.requirePragma</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Format only files whose leading comment carries an @format or @auric-format pragma.</td></tr>
+<tr><td><code>auricFormatter.respectIgnoreComments</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Honour auric-ignore, auric-ignore-start and auric-ignore-end comments and leave those regions untouched.</td></tr>
+<tr><td><code>auricFormatter.tabWidth</code></td><td>integer</td><td><code>2</code></td><td>0–24</td><td>Set how many columns one level of indentation occupies.</td></tr>
+<tr><td><code>auricFormatter.tabWidthByLanguage</code></td><td>array</td><td><code>[]</code></td><td></td><td>Override <code>tabWidth</code> for individual languages with <code>languageId=width</code> entries such as <code>python=4</code>.</td></tr>
+<tr><td><code>auricFormatter.trimTrailingWhitespace</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Strip whitespace at the end of every line outside of strings and preserved blocks.</td></tr>
+<tr><td><code>auricFormatter.useTabs</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Indent with hard tab characters instead of spaces.</td></tr>
+</tbody></table></div>
+<p>Notes and language-specific defaults:</p>
+<ul>
+<li><code>auricFormatter.printWidth</code>: <code>120</code> for java, kotlin, scala, csharp, swift.</li>
+<li><code>auricFormatter.tabWidth</code>: <code>4</code> for python, php, java, kotlin, csharp, c, cpp, objective-c, objective-cpp, rust, swift, groovy, solidity, apex; <code>4</code> for go, gomod, gowork, makefile, gotmpl.</li>
+<li><code>auricFormatter.useTabs</code>: <code>true</code> for go, gomod, gowork, makefile, gotmpl.</li>
+</ul>
+<h2 id="common">Common</h2>
+<p>15 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.arrowParens</code></td><td>string</td><td><code>always</code></td><td><code>always</code>, <code>avoid</code></td><td>Choose whether a single arrow function parameter is parenthesised.</td></tr>
+<tr><td><code>auricFormatter.bracketSameLine</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Put the closing angle bracket of a multi-line opening tag on the last attribute line.</td></tr>
+<tr><td><code>auricFormatter.bracketSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print spaces just inside object literal braces, as in <code>{ foo: 1 }</code>.</td></tr>
+<tr><td><code>auricFormatter.curlyBraces</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>all</code>, <code>multi-line</code></td><td>Decide whether single-statement control-flow bodies get braces.</td></tr>
+<tr><td><code>auricFormatter.hexCase</code></td><td>string</td><td><code>lower</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of hexadecimal digits in numeric literals and colour values.</td></tr>
+<tr><td><code>auricFormatter.htmlWhitespaceSensitivity</code></td><td>string</td><td><code>css</code></td><td><code>css</code>, <code>strict</code>, <code>ignore</code></td><td>Choose how strictly whitespace around HTML elements is preserved.</td></tr>
+<tr><td><code>auricFormatter.jsxSingleQuote</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Prefer single quotes over double quotes inside JSX attributes.</td></tr>
+<tr><td><code>auricFormatter.objectWrap</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>collapse</code></td><td>Decide whether the author&#39;s first newline inside an object forces it to stay expanded.</td></tr>
+<tr><td><code>auricFormatter.proseWrap</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose how prose paragraphs are wrapped.</td></tr>
+<tr><td><code>auricFormatter.quoteProps</code></td><td>string</td><td><code>as-needed</code></td><td><code>as-needed</code>, <code>consistent</code>, <code>preserve</code>, <code>consistent-as-needed</code></td><td>Choose when object property keys are quoted.</td></tr>
+<tr><td><code>auricFormatter.semi</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a semicolon at the end of every statement.</td></tr>
+<tr><td><code>auricFormatter.singleAttributePerLine</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Put every attribute on its own line as soon as a tag has to break.</td></tr>
+<tr><td><code>auricFormatter.singleQuote</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Prefer single quotes over double quotes for strings.</td></tr>
+<tr><td><code>auricFormatter.trailingComma</code></td><td>string</td><td><code>all</code></td><td><code>all</code>, <code>es5</code>, <code>none</code></td><td>Choose where trailing commas are added in multi-line constructs.</td></tr>
+<tr><td><code>auricFormatter.vueIndentScriptAndStyle</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Indent the contents of the top-level <code>&lt;script&gt;</code> and <code>&lt;style&gt;</code> blocks in a single file component.</td></tr>
+</tbody></table></div>
+<h2 id="javascript">JavaScript</h2>
+<p>60 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.arrayBracketSpacing</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print spaces just inside array brackets, as in <code>[ 1, 2 ]</code>.</td></tr>
+<tr><td><code>auricFormatter.arrayElementsPerLine</code></td><td>integer</td><td><code>0</code></td><td>0–100</td><td>Print at most this many array elements per line, or 0 to fit as many as the print width allows.</td></tr>
+<tr><td><code>auricFormatter.arrowBodyStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>as-needed</code>, <code>always</code></td><td>Choose whether arrow functions keep braced bodies or collapse to expressions.</td></tr>
+<tr><td><code>auricFormatter.arrowChainBreak</code></td><td>string</td><td><code>as-needed</code></td><td><code>as-needed</code>, <code>always</code>, <code>never</code></td><td>Choose how chains of curried arrow functions are broken.</td></tr>
+<tr><td><code>auricFormatter.assignmentLayout</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>break-after-operator</code>, <code>break-lhs</code>, <code>chain</code>, <code>never-break-after-operator</code></td><td>Choose how the two sides of an assignment are split when the line is too long.</td></tr>
+<tr><td><code>auricFormatter.awaitParens</code></td><td>string</td><td><code>as-needed</code></td><td><code>as-needed</code>, <code>always</code></td><td>Choose when the operand of <code>await</code> is wrapped in parentheses.</td></tr>
+<tr><td><code>auricFormatter.breakBeforeBinaryOperators</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Start the new line with the operator when a binary expression breaks.</td></tr>
+<tr><td><code>auricFormatter.breakLongStrings</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Split a string literal that overflows the print width into concatenated parts.</td></tr>
+<tr><td><code>auricFormatter.catchPosition</code></td><td>string</td><td><code>same-line</code></td><td><code>same-line</code>, <code>new-line</code></td><td>Choose where <code>catch</code> and <code>finally</code> sit relative to the preceding closing brace.</td></tr>
+<tr><td><code>auricFormatter.chainedCallIndent</code></td><td>string</td><td><code>indent</code></td><td><code>indent</code>, <code>align</code>, <code>preserve</code></td><td>Choose how a broken member chain is indented.</td></tr>
+<tr><td><code>auricFormatter.chainedCallKeepFirstCall</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep the first call of a member chain attached to its receiver, as in <code>expect(x)\n .toBe(y)</code>.</td></tr>
+<tr><td><code>auricFormatter.directivePrologueQuotes</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>follow</code>, <code>double</code>, <code>single</code></td><td>Choose how the quotes around directive prologues are printed.</td></tr>
+<tr><td><code>auricFormatter.doWhilePosition</code></td><td>string</td><td><code>same-line</code></td><td><code>same-line</code>, <code>new-line</code></td><td>Choose where the trailing <code>while</code> of a do-while loop sits.</td></tr>
+<tr><td><code>auricFormatter.elsePosition</code></td><td>string</td><td><code>same-line</code></td><td><code>same-line</code>, <code>new-line</code></td><td>Choose where the <code>else</code> keyword sits relative to the preceding closing brace.</td></tr>
+<tr><td><code>auricFormatter.emptyBlockStyle</code></td><td>string</td><td><code>collapse</code></td><td><code>collapse</code>, <code>preserve</code>, <code>expand</code></td><td>Choose how blocks with no statements are printed.</td></tr>
+<tr><td><code>auricFormatter.firstArgumentHugging</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Let a leading function argument expand in place for call shapes like <code>describe(function () {}, opts)</code>.</td></tr>
+<tr><td><code>auricFormatter.functionParameterNewline</code></td><td>string</td><td><code>multiline</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code>, <code>multiline</code></td><td>Choose how function parameter lists are broken across lines.</td></tr>
+<tr><td><code>auricFormatter.generatorStarPosition</code></td><td>string</td><td><code>after-function</code></td><td><code>after-function</code>, <code>before-name</code>, <code>spaced</code></td><td>Choose where the star of a generator function sits.</td></tr>
+<tr><td><code>auricFormatter.jsxBracketSameLine</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Put the closing angle bracket of a multi-line JSX opening tag on the last attribute line.</td></tr>
+<tr><td><code>auricFormatter.jsxEmptyExpressionComment</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep a comment that is the sole contents of a JSX expression container on its own line.</td></tr>
+<tr><td><code>auricFormatter.jsxSelfCloseSpace</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a space before the slash of a self-closing JSX element.</td></tr>
+<tr><td><code>auricFormatter.jsxSingleAttributeSameLine</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep an element with exactly one short attribute on a single line.</td></tr>
+<tr><td><code>auricFormatter.jsxSortProps</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort JSX attributes, keeping <code>key</code> and <code>ref</code> first and spreads pinned in place.</td></tr>
+<tr><td><code>auricFormatter.jsxSpaceBraces</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print spaces just inside JSX expression braces, as in <code>{ value }</code>.</td></tr>
+<tr><td><code>auricFormatter.jsxWrapMultiline</code></td><td>string</td><td><code>parens</code></td><td><code>parens</code>, <code>preserve</code>, <code>never</code></td><td>Choose whether multi-line JSX expressions are wrapped in parentheses.</td></tr>
+<tr><td><code>auricFormatter.labelIndent</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>dedent</code>, <code>flush</code></td><td>Choose how statement labels are indented.</td></tr>
+<tr><td><code>auricFormatter.lastArgumentHugging</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Let a trailing function or object argument expand in place instead of breaking the whole call.</td></tr>
+<tr><td><code>auricFormatter.memberChainBreakThreshold</code></td><td>integer</td><td><code>3</code></td><td>0–32</td><td>Break a member chain across lines once it contains at least this many member accesses.</td></tr>
+<tr><td><code>auricFormatter.methodChainCallThreshold</code></td><td>integer</td><td><code>3</code></td><td>0–32</td><td>Break a member chain across lines once it contains at least this many call expressions.</td></tr>
+<tr><td><code>auricFormatter.newExpressionParens</code></td><td>string</td><td><code>always</code></td><td><code>always</code>, <code>preserve</code></td><td>Choose whether a <code>new</code> expression with no arguments keeps its parentheses.</td></tr>
+<tr><td><code>auricFormatter.normalizeNumericLiterals</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Normalise numeric literals by trimming a trailing dot, adding a leading zero and dropping a redundant exponent sign.</td></tr>
+<tr><td><code>auricFormatter.numericLiteralCase</code></td><td>string</td><td><code>lower</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of the non-digit parts of numeric literals.</td></tr>
+<tr><td><code>auricFormatter.numericSeparators</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>remove</code>, <code>thousands</code></td><td>Choose how underscore separators inside numeric literals are handled.</td></tr>
+<tr><td><code>auricFormatter.objectDestructuringNewline</code></td><td>string</td><td><code>multiline</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code>, <code>multiline</code></td><td>Choose how object destructuring patterns are broken across lines.</td></tr>
+<tr><td><code>auricFormatter.objectExpandThreshold</code></td><td>integer</td><td><code>0</code></td><td>0–100</td><td>Force an object with at least this many properties onto multiple lines, or 0 to decide by width alone.</td></tr>
+<tr><td><code>auricFormatter.objectPropertyNewline</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether every object property gets its own line.</td></tr>
+<tr><td><code>auricFormatter.preserveArrayFormatting</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Keep the author&#39;s line breaks in arrays of numbers and short literals so hand-laid tables survive.</td></tr>
+<tr><td><code>auricFormatter.preserveObjectShape</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep an object expanded when the author already broke it after the opening brace.</td></tr>
+<tr><td><code>auricFormatter.preserveParens</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Keep every parenthesis the author wrote, even where precedence makes it redundant.</td></tr>
+<tr><td><code>auricFormatter.quoteStyleForJSXText</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>entities</code>, <code>curly</code></td><td>Choose how quotation marks inside JSX text are printed.</td></tr>
+<tr><td><code>auricFormatter.removeRedundantParens</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Drop parentheses that precedence and readability rules make unnecessary.</td></tr>
+<tr><td><code>auricFormatter.semiColonBeforeIIFE</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Start a line with a defensive semicolon when omitting semicolons would let it join the statement above.</td></tr>
+<tr><td><code>auricFormatter.shortArrayThreshold</code></td><td>integer</td><td><code>0</code></td><td>0–100</td><td>Collapse an array onto one line when it holds at most this many short elements, or 0 to decide by width alone.</td></tr>
+<tr><td><code>auricFormatter.singleLineArrowBody</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep a short arrow function body on the same line as the arrow.</td></tr>
+<tr><td><code>auricFormatter.singleLineIfStatement</code></td><td>string</td><td><code>fit</code></td><td><code>fit</code>, <code>preserve</code>, <code>never</code></td><td>Decide whether a braceless <code>if</code> may share a line with its body.</td></tr>
+<tr><td><code>auricFormatter.spaceAfterKeyword</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a space between a control-flow keyword and its opening parenthesis, as in <code>if (x)</code>.</td></tr>
+<tr><td><code>auricFormatter.spaceAroundOperators</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a single space on each side of binary and assignment operators.</td></tr>
+<tr><td><code>auricFormatter.spaceBeforeBlocks</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a space between a closing parenthesis or keyword and an opening block brace.</td></tr>
+<tr><td><code>auricFormatter.spaceBeforeColon</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a space before the colon in object properties and labels.</td></tr>
+<tr><td><code>auricFormatter.spaceBeforeFunctionParen</code></td><td>string</td><td><code>anonymous</code></td><td><code>never</code>, <code>always</code>, <code>named</code>, <code>anonymous</code>, <code>asyncArrow</code></td><td>Choose which functions get a space between the name and the parameter list.</td></tr>
+<tr><td><code>auricFormatter.spaceInParens</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print spaces just inside parentheses, as in <code>foo( a, b )</code>.</td></tr>
+<tr><td><code>auricFormatter.spreadSpacing</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a space between a spread or rest operator and its argument, as in <code>... rest</code>.</td></tr>
+<tr><td><code>auricFormatter.switchCaseBlankLine</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether consecutive switch cases are separated by a blank line.</td></tr>
+<tr><td><code>auricFormatter.switchCaseBraceSameLine</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep the opening brace of a braced case body on the case line.</td></tr>
+<tr><td><code>auricFormatter.switchCaseIndent</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Indent <code>case</code> clauses one level inside the switch block.</td></tr>
+<tr><td><code>auricFormatter.taggedTemplateFormat</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>preserve</code>, <code>always</code></td><td>Choose whether the contents of tagged template literals are formatted.</td></tr>
+<tr><td><code>auricFormatter.templateExpressionSpacing</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print spaces just inside template literal interpolations, as in <code>${ value }</code>.</td></tr>
+<tr><td><code>auricFormatter.templateLiteralIndent</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>indent</code>, <code>dedent</code></td><td>Choose whether the interior of a template literal is re-indented.</td></tr>
+<tr><td><code>auricFormatter.ternaryFormat</code></td><td>string</td><td><code>indented</code></td><td><code>inline</code>, <code>indented</code>, <code>aligned</code>, <code>nested-flat</code></td><td>Choose how conditional expressions are laid out when they break.</td></tr>
+<tr><td><code>auricFormatter.yieldParens</code></td><td>string</td><td><code>as-needed</code></td><td><code>as-needed</code>, <code>always</code></td><td>Choose when the operand of <code>yield</code> is wrapped in parentheses.</td></tr>
+</tbody></table></div>
+<h2 id="typescript">TypeScript</h2>
+<p>23 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.abstractMemberBlankLine</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Separate abstract members from concrete ones with a blank line.</td></tr>
+<tr><td><code>auricFormatter.arrowReturnTypeSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a space after the colon that introduces a function return type.</td></tr>
+<tr><td><code>auricFormatter.conditionalTypeFormat</code></td><td>string</td><td><code>indented</code></td><td><code>indented</code>, <code>aligned</code>, <code>chain</code>, <code>inline</code></td><td>Choose how conditional types are laid out when they break.</td></tr>
+<tr><td><code>auricFormatter.decoratorPosition</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>above</code>, <code>inline</code></td><td>Choose where decorators sit relative to the declaration they decorate.</td></tr>
+<tr><td><code>auricFormatter.decoratorsBeforeExport</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>before</code>, <code>after</code></td><td>Choose where decorators sit relative to the <code>export</code> keyword.</td></tr>
+<tr><td><code>auricFormatter.enumMemberTrailing</code></td><td>string</td><td><code>follow</code></td><td><code>follow</code>, <code>all</code>, <code>none</code></td><td>Choose whether a trailing comma follows the last member of an enum.</td></tr>
+<tr><td><code>auricFormatter.genericSpacing</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print spaces just inside type argument angle brackets, as in <code>Array&lt; string &gt;</code>.</td></tr>
+<tr><td><code>auricFormatter.importTypeStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>separate</code>, <code>inline</code></td><td>Choose how type-only import specifiers are grouped.</td></tr>
+<tr><td><code>auricFormatter.indexSignatureSpacing</code></td><td>string</td><td><code>none</code></td><td><code>none</code>, <code>inside</code></td><td>Choose the spacing inside index signature brackets.</td></tr>
+<tr><td><code>auricFormatter.intersectionFormat</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>inline</code>, <code>expanded</code></td><td>Choose how intersection types are laid out.</td></tr>
+<tr><td><code>auricFormatter.mappedTypeFormat</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>expanded</code>, <code>inline</code></td><td>Choose how mapped types are laid out.</td></tr>
+<tr><td><code>auricFormatter.parameterDecoratorInline</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep parameter decorators on the same line as the parameter they decorate.</td></tr>
+<tr><td><code>auricFormatter.preserveEnumOneLine</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Keep a short enum on a single line when the author wrote it that way.</td></tr>
+<tr><td><code>auricFormatter.preserveTypeParens</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Keep redundant parentheses inside type expressions where the author wrote them.</td></tr>
+<tr><td><code>auricFormatter.readonlyArrayShorthand</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print <code>readonly T[]</code> in place of <code>ReadonlyArray&lt;T&gt;</code> where the two are interchangeable.</td></tr>
+<tr><td><code>auricFormatter.satisfiesOperatorBreak</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>never</code>, <code>always</code></td><td>Choose how a <code>satisfies</code> expression breaks when the line is too long.</td></tr>
+<tr><td><code>auricFormatter.typeAnnotationSpacing</code></td><td>string</td><td><code>after</code></td><td><code>after</code>, <code>before</code>, <code>both</code>, <code>none</code></td><td>Choose the spacing around the colon of a type annotation.</td></tr>
+<tr><td><code>auricFormatter.typeCastParens</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Parenthesise an <code>as</code> expression whose position would otherwise make the cast ambiguous to a reader.</td></tr>
+<tr><td><code>auricFormatter.typeLiteralTrailingSeparator</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a trailing separator after the last member of a multi-line object type.</td></tr>
+<tr><td><code>auricFormatter.typeMemberSeparator</code></td><td>string</td><td><code>semi</code></td><td><code>semi</code>, <code>comma</code>, <code>none</code>, <code>preserve</code></td><td>Choose the separator printed between members of an object type.</td></tr>
+<tr><td><code>auricFormatter.typeParameterNewline</code></td><td>string</td><td><code>multiline</code></td><td><code>multiline</code>, <code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose how type parameter lists are broken across lines.</td></tr>
+<tr><td><code>auricFormatter.unionFormat</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>inline</code>, <code>expanded</code>, <code>leading-pipe</code></td><td>Choose how union types are laid out.</td></tr>
+<tr><td><code>auricFormatter.unionLeadingPipeWhenBroken</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a leading pipe on the first member of a union that has been broken across lines.</td></tr>
+</tbody></table></div>
+<h2 id="css">CSS</h2>
+<p>39 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.atRuleBlankLine</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a blank line before a block at-rule such as @media or @supports.</td></tr>
+<tr><td><code>auricFormatter.atRuleCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of at-rule names.</td></tr>
+<tr><td><code>auricFormatter.blankLineBetweenRules</code></td><td>integer</td><td><code>0</code></td><td>0–4</td><td>Print exactly this many blank lines between sibling rules, or 0 to leave the author&#39;s spacing.</td></tr>
+<tr><td><code>auricFormatter.colorNotation</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>hex</code>, <code>rgb</code>, <code>hsl</code>, <code>oklch</code></td><td>Choose the notation colour values are rewritten into.</td></tr>
+<tr><td><code>auricFormatter.cssTrailingSemicolon</code></td><td>string</td><td><code>always</code></td><td><code>always</code>, <code>never</code>, <code>preserve</code></td><td>Choose whether the last declaration in a block ends with a semicolon.</td></tr>
+<tr><td><code>auricFormatter.declarationColonSpace</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a space after the colon that separates a property from its value.</td></tr>
+<tr><td><code>auricFormatter.declarationOrder</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>alphabetical</code>, <code>concentric</code>, <code>smacss</code>, <code>idiomatic</code>, <code>grouped</code></td><td>Choose the order declarations are printed in inside a rule.</td></tr>
+<tr><td><code>auricFormatter.emptyLineBeforeNested</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a blank line before the first nested rule inside a block.</td></tr>
+<tr><td><code>auricFormatter.emptyRuleStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>collapse</code>, <code>remove</code></td><td>Choose what happens to rules with no declarations.</td></tr>
+<tr><td><code>auricFormatter.functionArgSpacing</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print spaces just inside the parentheses of CSS functions, as in <code>rgb( 1, 2, 3 )</code>.</td></tr>
+<tr><td><code>auricFormatter.gridTemplateAlign</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep each row of a multi-line grid-template-areas value on its own line and align the columns.</td></tr>
+<tr><td><code>auricFormatter.hexShorthand</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>short</code>, <code>long</code></td><td>Choose whether hex colours are written in their short or long form.</td></tr>
+<tr><td><code>auricFormatter.importantSpacing</code></td><td>string</td><td><code>before</code></td><td><code>before</code>, <code>none</code>, <code>both</code></td><td>Choose the spacing around an !important flag.</td></tr>
+<tr><td><code>auricFormatter.keyframeSelectorCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of keyframe selectors.</td></tr>
+<tr><td><code>auricFormatter.leadingZero</code></td><td>string</td><td><code>always</code></td><td><code>always</code>, <code>never</code>, <code>preserve</code></td><td>Choose whether decimals below one carry a leading zero.</td></tr>
+<tr><td><code>auricFormatter.lessGuardFormat</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>expanded</code>, <code>compact</code></td><td>Choose how Less mixin guard clauses are laid out.</td></tr>
+<tr><td><code>auricFormatter.lessMixinSeparator</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>semicolon</code>, <code>comma</code></td><td>Choose the separator printed between Less mixin arguments.</td></tr>
+<tr><td><code>auricFormatter.mathOperatorSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print spaces around the operators inside calc() and preprocessor arithmetic.</td></tr>
+<tr><td><code>auricFormatter.mediaQueryFormat</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>compact</code>, <code>expanded</code></td><td>Choose how media query feature lists are laid out.</td></tr>
+<tr><td><code>auricFormatter.nestedRuleBlankLine</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a blank line before a nested rule that follows a declaration.</td></tr>
+<tr><td><code>auricFormatter.preserveCustomPropertyValues</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print the value of a custom property exactly as written, since it may be an arbitrary token stream.</td></tr>
+<tr><td><code>auricFormatter.propertyCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of property names.</td></tr>
+<tr><td><code>auricFormatter.propertyValueAlign</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the values of consecutive declarations into a column.</td></tr>
+<tr><td><code>auricFormatter.quotesInUrl</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether url() arguments are quoted.</td></tr>
+<tr><td><code>auricFormatter.scssIncludeParens</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether an argument-free @include keeps its parentheses.</td></tr>
+<tr><td><code>auricFormatter.scssMapFormat</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>expanded</code>, <code>compact</code></td><td>Choose how SCSS maps are laid out.</td></tr>
+<tr><td><code>auricFormatter.scssOperatorSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print spaces around SCSS comparison and arithmetic operators inside @if and @while.</td></tr>
+<tr><td><code>auricFormatter.selectorAttributeQuotes</code></td><td>string</td><td><code>always</code></td><td><code>always</code>, <code>preserve</code>, <code>never</code></td><td>Choose whether attribute selector values are quoted.</td></tr>
+<tr><td><code>auricFormatter.selectorCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of type selectors and pseudo-class names.</td></tr>
+<tr><td><code>auricFormatter.selectorCombinatorSpacing</code></td><td>string</td><td><code>spaced</code></td><td><code>spaced</code>, <code>tight</code>, <code>preserve</code></td><td>Choose the spacing around child, sibling and descendant combinators.</td></tr>
+<tr><td><code>auricFormatter.selectorSeparator</code></td><td>string</td><td><code>newline</code></td><td><code>newline</code>, <code>space</code>, <code>preserve</code></td><td>Choose how the selectors of a selector list are separated.</td></tr>
+<tr><td><code>auricFormatter.shorthandExpansion</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>collapse</code>, <code>expand</code></td><td>Choose whether shorthand properties are expanded or collapsed.</td></tr>
+<tr><td><code>auricFormatter.singleLineRuleThreshold</code></td><td>integer</td><td><code>0</code></td><td>0–32</td><td>Print a rule on one line when it holds at most this many declarations, or 0 to always break.</td></tr>
+<tr><td><code>auricFormatter.singleQuoteCss</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Prefer single quotes over double quotes in stylesheets.</td></tr>
+<tr><td><code>auricFormatter.trailingZero</code></td><td>string</td><td><code>never</code></td><td><code>never</code>, <code>preserve</code></td><td>Choose whether trailing zeros in numbers are trimmed.</td></tr>
+<tr><td><code>auricFormatter.unitCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of units.</td></tr>
+<tr><td><code>auricFormatter.valueKeywordCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of keyword values.</td></tr>
+<tr><td><code>auricFormatter.vendorPrefixAlign</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align a run of vendor-prefixed variants of the same property into a column.</td></tr>
+<tr><td><code>auricFormatter.zeroUnits</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>strip</code>, <code>keep</code></td><td>Choose whether zero values keep their unit.</td></tr>
+</tbody></table></div>
+<h2 id="html">HTML</h2>
+<p>29 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.htmlAttributeCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of attribute names.</td></tr>
+<tr><td><code>auricFormatter.htmlAttributeOrder</code></td><td>array</td><td><code>[]</code></td><td></td><td>List attribute names or glob patterns in the order they should be printed when sorting is on.</td></tr>
+<tr><td><code>auricFormatter.htmlAttributeWrap</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose when a tag&#39;s attribute list is broken across lines.</td></tr>
+<tr><td><code>auricFormatter.htmlBlankLineBetweenBlocks</code></td><td>integer</td><td><code>0</code></td><td>0–4</td><td>Print exactly this many blank lines between sibling block elements, or 0 to leave the author&#39;s spacing.</td></tr>
+<tr><td><code>auricFormatter.htmlBooleanAttributeStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>bare</code>, <code>explicit</code></td><td>Choose how boolean attributes are printed.</td></tr>
+<tr><td><code>auricFormatter.htmlClassAttributeWrap</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Break a long class attribute into one class name per line.</td></tr>
+<tr><td><code>auricFormatter.htmlDoctypeCase</code></td><td>string</td><td><code>lower</code></td><td><code>lower</code>, <code>upper</code>, <code>preserve</code></td><td>Choose the letter case of the doctype declaration.</td></tr>
+<tr><td><code>auricFormatter.htmlEntityStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>named</code>, <code>numeric</code>, <code>minimal</code></td><td>Choose how character entities are printed.</td></tr>
+<tr><td><code>auricFormatter.htmlIndentInlineElements</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Indent the children of inline elements the way block elements are indented.</td></tr>
+<tr><td><code>auricFormatter.htmlMinifyWhitespace</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Collapse every run of insignificant whitespace between elements to nothing.</td></tr>
+<tr><td><code>auricFormatter.htmlPreserveTags</code></td><td>array</td><td><code>[&quot;pre&quot;,&quot;textarea&quot;,&quot;listing&quot;,&quot;plaintext&quot;]</code></td><td></td><td>List tags whose contents are copied through untouched because their whitespace is significant.</td></tr>
+<tr><td><code>auricFormatter.htmlQuoteAttributes</code></td><td>string</td><td><code>double</code></td><td><code>double</code>, <code>single</code>, <code>preserve</code>, <code>as-needed</code></td><td>Choose how attribute values are quoted.</td></tr>
+<tr><td><code>auricFormatter.htmlScriptIndent</code></td><td>string</td><td><code>indent</code></td><td><code>indent</code>, <code>flush</code>, <code>preserve</code></td><td>Choose how the contents of a <code>&lt;script&gt;</code> block are indented.</td></tr>
+<tr><td><code>auricFormatter.htmlSelfClosing</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether childless elements are printed self-closed.</td></tr>
+<tr><td><code>auricFormatter.htmlSortAttributes</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort attributes using htmlAttributeOrder, then alphabetically for anything left over.</td></tr>
+<tr><td><code>auricFormatter.htmlSrcsetWrap</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Break a long srcset or sizes attribute after each comma.</td></tr>
+<tr><td><code>auricFormatter.htmlStyleIndent</code></td><td>string</td><td><code>indent</code></td><td><code>indent</code>, <code>flush</code>, <code>preserve</code></td><td>Choose how the contents of a <code>&lt;style&gt;</code> block are indented.</td></tr>
+<tr><td><code>auricFormatter.htmlTagCase</code></td><td>string</td><td><code>lower</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of tag names.</td></tr>
+<tr><td><code>auricFormatter.htmlVoidElementSlash</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print the trailing slash on void elements, as in <code>&lt;br /&gt;</code>.</td></tr>
+<tr><td><code>auricFormatter.htmlWrapText</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Reflow text nodes so that they fit within the print width.</td></tr>
+<tr><td><code>auricFormatter.svgAttributeOrder</code></td><td>array</td><td><code>[]</code></td><td></td><td>List SVG attribute names in the order they should be printed when attribute sorting is on.</td></tr>
+<tr><td><code>auricFormatter.svgPathPrecision</code></td><td>integer</td><td><code>0</code></td><td>0–12</td><td>Round the numbers inside an SVG path to this many decimal places, or 0 to leave them untouched.</td></tr>
+<tr><td><code>auricFormatter.svgPathWrap</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>command</code>, <code>never</code></td><td>Choose how SVG path data is wrapped.</td></tr>
+<tr><td><code>auricFormatter.xmlDeclarationQuotes</code></td><td>string</td><td><code>double</code></td><td><code>double</code>, <code>single</code>, <code>preserve</code></td><td>Choose how the values in the XML declaration are quoted.</td></tr>
+<tr><td><code>auricFormatter.xmlIndentAttributes</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Indent a broken attribute list one level under its tag name.</td></tr>
+<tr><td><code>auricFormatter.xmlPreserveCdata</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Copy CDATA sections through byte for byte.</td></tr>
+<tr><td><code>auricFormatter.xmlSelfClosingSpace</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a space before the slash of a self-closing XML tag.</td></tr>
+<tr><td><code>auricFormatter.xmlSortAttributes</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort XML attributes alphabetically, leaving namespace declarations first.</td></tr>
+<tr><td><code>auricFormatter.xmlWhitespaceSensitivity</code></td><td>string</td><td><code>strict</code></td><td><code>strict</code>, <code>ignore</code>, <code>preserve-mixed</code></td><td>Choose how strictly whitespace inside XML elements is preserved.</td></tr>
+</tbody></table></div>
+<h2 id="markdown">Markdown</h2>
+<p>32 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.mdBlockquoteBlankLineMarker</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a lone marker on the blank lines inside a blockquote so the quote stays visually joined.</td></tr>
+<tr><td><code>auricFormatter.mdBlockquoteMarker</code></td><td>string</td><td><code>spaced</code></td><td><code>spaced</code>, <code>tight</code>, <code>preserve</code></td><td>Choose the spacing after a blockquote marker.</td></tr>
+<tr><td><code>auricFormatter.mdBulletAlternate</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Alternate the bullet character at each nesting level so that levels are visually distinct.</td></tr>
+<tr><td><code>auricFormatter.mdBulletMarker</code></td><td>string</td><td><code>dash</code></td><td><code>dash</code>, <code>asterisk</code>, <code>plus</code>, <code>preserve</code></td><td>Choose the character used for unordered list bullets.</td></tr>
+<tr><td><code>auricFormatter.mdCodeFence</code></td><td>string</td><td><code>backtick</code></td><td><code>backtick</code>, <code>tilde</code>, <code>preserve</code></td><td>Choose the character used to fence code blocks.</td></tr>
+<tr><td><code>auricFormatter.mdCodeFenceLength</code></td><td>integer</td><td><code>3</code></td><td>3–10</td><td>Print code fences with at least this many characters, lengthening them further when the content demands it.</td></tr>
+<tr><td><code>auricFormatter.mdEmphasisMarker</code></td><td>string</td><td><code>underscore</code></td><td><code>asterisk</code>, <code>underscore</code>, <code>preserve</code></td><td>Choose the character used for emphasis.</td></tr>
+<tr><td><code>auricFormatter.mdEscapeSpecial</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Escape characters in text that would otherwise be read as markup.</td></tr>
+<tr><td><code>auricFormatter.mdFormatCodeBlocks</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Format the contents of fenced code blocks whose info string names a language Auric supports.</td></tr>
+<tr><td><code>auricFormatter.mdFrontmatterFormat</code></td><td>string</td><td><code>format</code></td><td><code>format</code>, <code>preserve</code></td><td>Choose whether document frontmatter is formatted.</td></tr>
+<tr><td><code>auricFormatter.mdHeadingBlankLines</code></td><td>integer</td><td><code>1</code></td><td>0–3</td><td>Print exactly this many blank lines before a heading that follows other content.</td></tr>
+<tr><td><code>auricFormatter.mdHeadingClosingHashes</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a matching run of hashes at the end of an ATX heading.</td></tr>
+<tr><td><code>auricFormatter.mdHeadingStyle</code></td><td>string</td><td><code>atx</code></td><td><code>atx</code>, <code>setext</code>, <code>preserve</code></td><td>Choose the heading style.</td></tr>
+<tr><td><code>auricFormatter.mdHtmlBlockFormat</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>format</code></td><td>Choose whether raw HTML blocks inside Markdown are formatted.</td></tr>
+<tr><td><code>auricFormatter.mdLineBreakStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>backslash</code>, <code>spaces</code></td><td>Choose how hard line breaks inside a paragraph are written.</td></tr>
+<tr><td><code>auricFormatter.mdLinkStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>inline</code>, <code>reference</code></td><td>Choose whether links are printed inline or as references.</td></tr>
+<tr><td><code>auricFormatter.mdListIndent</code></td><td>string</td><td><code>aligned</code></td><td><code>aligned</code>, <code>one</code>, <code>tab</code>, <code>preserve</code></td><td>Choose how the continuation lines of a list item are indented.</td></tr>
+<tr><td><code>auricFormatter.mdListItemBlankLine</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>loose</code>, <code>tight</code></td><td>Choose whether list items are separated by blank lines.</td></tr>
+<tr><td><code>auricFormatter.mdMaxHeadingLevel</code></td><td>integer</td><td><code>0</code></td><td>0–6</td><td>Warn when a heading is nested deeper than this level, or 0 to allow any depth.</td></tr>
+<tr><td><code>auricFormatter.mdNumberedListAlign</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Right-align the numbers of an ordered list that reaches double digits.</td></tr>
+<tr><td><code>auricFormatter.mdOrderedMarker</code></td><td>string</td><td><code>period</code></td><td><code>period</code>, <code>paren</code>, <code>preserve</code></td><td>Choose the delimiter that follows an ordered list number.</td></tr>
+<tr><td><code>auricFormatter.mdOrderedNumbering</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>one</code>, <code>ordinal</code></td><td>Choose how ordered list items are numbered.</td></tr>
+<tr><td><code>auricFormatter.mdReferencePlacement</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>end</code>, <code>section</code></td><td>Choose where link reference definitions are placed.</td></tr>
+<tr><td><code>auricFormatter.mdSetextUnderlineFull</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Extend a setext heading underline to the full width of the heading text.</td></tr>
+<tr><td><code>auricFormatter.mdStrongMarker</code></td><td>string</td><td><code>asterisk</code></td><td><code>asterisk</code>, <code>underscore</code>, <code>preserve</code></td><td>Choose the character used for strong emphasis.</td></tr>
+<tr><td><code>auricFormatter.mdTableAlign</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Pad table cells so that every pipe lines up into a column.</td></tr>
+<tr><td><code>auricFormatter.mdTableCompact</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Collapse table alignment when the table would otherwise exceed the print width.</td></tr>
+<tr><td><code>auricFormatter.mdTableMinCellWidth</code></td><td>integer</td><td><code>3</code></td><td>1–40</td><td>Pad every aligned table cell to at least this many characters.</td></tr>
+<tr><td><code>auricFormatter.mdTablePadding</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print one space of padding inside each table cell&#39;s pipes.</td></tr>
+<tr><td><code>auricFormatter.mdThematicBreak</code></td><td>string</td><td><code>dashes</code></td><td><code>dashes</code>, <code>asterisks</code>, <code>underscores</code>, <code>preserve</code></td><td>Choose how thematic breaks are printed.</td></tr>
+<tr><td><code>auricFormatter.mdTocGenerate</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Rebuild the table of contents between the auric-toc markers from the document&#39;s headings.</td></tr>
+<tr><td><code>auricFormatter.mdTocMaxDepth</code></td><td>integer</td><td><code>3</code></td><td>1–6</td><td>Include headings down to this level when rebuilding a table of contents.</td></tr>
+</tbody></table></div>
+<h2 id="yaml">YAML</h2>
+<p>15 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.yamlAlignValues</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the values of consecutive mapping entries into a column.</td></tr>
+<tr><td><code>auricFormatter.yamlAnchorFormat</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>inline</code>, <code>above</code></td><td>Choose where anchors are printed relative to the value they name.</td></tr>
+<tr><td><code>auricFormatter.yamlBlankLineBetweenTopLevelKeys</code></td><td>integer</td><td><code>0</code></td><td>0–4</td><td>Print exactly this many blank lines between top-level keys, or 0 to leave the author&#39;s spacing.</td></tr>
+<tr><td><code>auricFormatter.yamlBooleanStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>true-false</code>, <code>yes-no</code>, <code>on-off</code></td><td>Choose how boolean values are written.</td></tr>
+<tr><td><code>auricFormatter.yamlBracketSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print spaces just inside the braces of flow mappings, as in <code>{ a: 1 }</code>.</td></tr>
+<tr><td><code>auricFormatter.yamlCommentIndent</code></td><td>string</td><td><code>align</code></td><td><code>align</code>, <code>preserve</code>, <code>flush</code></td><td>Choose how standalone comments are indented.</td></tr>
+<tr><td><code>auricFormatter.yamlDocumentSeparator</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether documents are introduced by a triple-dash separator.</td></tr>
+<tr><td><code>auricFormatter.yamlExplicitKeys</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Write complex mapping keys with the explicit question-mark form.</td></tr>
+<tr><td><code>auricFormatter.yamlFlowCollectionWidth</code></td><td>integer</td><td><code>0</code></td><td>0–1000</td><td>Break a flow collection into block form once it would exceed this many columns, or 0 to follow the print width.</td></tr>
+<tr><td><code>auricFormatter.yamlIndent</code></td><td>integer</td><td><code>2</code></td><td>1–12</td><td>Indent each nested mapping level by this many spaces.</td></tr>
+<tr><td><code>auricFormatter.yamlKeySort</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort mapping keys alphabetically, which is safe because YAML mappings are unordered.</td></tr>
+<tr><td><code>auricFormatter.yamlNullStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>empty</code>, <code>tilde</code>, <code>null</code></td><td>Choose how null values are written.</td></tr>
+<tr><td><code>auricFormatter.yamlPreserveBlockScalars</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Copy the body of a literal or folded block scalar through byte for byte.</td></tr>
+<tr><td><code>auricFormatter.yamlQuoteStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>single</code>, <code>double</code>, <code>minimal</code></td><td>Choose how scalar values are quoted.</td></tr>
+<tr><td><code>auricFormatter.yamlSequenceIndent</code></td><td>string</td><td><code>indented</code></td><td><code>indented</code>, <code>flush</code>, <code>preserve</code></td><td>Choose how sequence items are indented under their parent key.</td></tr>
+</tbody></table></div>
+<h2 id="json">JSON</h2>
+<p>22 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.iniAlignValues</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the values of consecutive properties into a column.</td></tr>
+<tr><td><code>auricFormatter.iniKeyCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of property names.</td></tr>
+<tr><td><code>auricFormatter.iniSectionBlankLine</code></td><td>integer</td><td><code>1</code></td><td>0–4</td><td>Print exactly this many blank lines before a section header, or 0 to leave the author&#39;s spacing.</td></tr>
+<tr><td><code>auricFormatter.iniSpaceAroundEquals</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print a space on each side of the equals sign.</td></tr>
+<tr><td><code>auricFormatter.jsonBracketSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print spaces just inside the braces of a single-line object.</td></tr>
+<tr><td><code>auricFormatter.jsonEmptyCollectionStyle</code></td><td>string</td><td><code>collapse</code></td><td><code>collapse</code>, <code>preserve</code></td><td>Choose how empty objects and arrays are printed.</td></tr>
+<tr><td><code>auricFormatter.jsonEscapeUnicode</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Escape every non-ASCII character in strings as a \u sequence.</td></tr>
+<tr><td><code>auricFormatter.jsonExpandArrayThreshold</code></td><td>integer</td><td><code>0</code></td><td>0–100</td><td>Break an array onto multiple lines once it holds at least this many elements, or 0 to decide by width alone.</td></tr>
+<tr><td><code>auricFormatter.jsonNormalizeNumbers</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Rewrite numbers into their shortest round-trip form.</td></tr>
+<tr><td><code>auricFormatter.jsonPackageJsonOrder</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print the well-known top-level keys of a package.json in their conventional order.</td></tr>
+<tr><td><code>auricFormatter.jsonPreserveComments</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep comments in JSON dialects that permit them and refuse to format the file if they cannot be placed.</td></tr>
+<tr><td><code>auricFormatter.jsonQuoteKeys</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>as-needed</code></td><td>Choose whether object keys are quoted.</td></tr>
+<tr><td><code>auricFormatter.jsonSingleLineArrays</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Keep arrays of primitives on one line whenever they fit.</td></tr>
+<tr><td><code>auricFormatter.jsonSortKeys</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort object keys alphabetically throughout the document.</td></tr>
+<tr><td><code>auricFormatter.jsonTrailingComma</code></td><td>string</td><td><code>none</code></td><td><code>none</code>, <code>all</code>, <code>preserve</code></td><td>Choose whether broken arrays and objects end with a trailing comma.</td></tr>
+<tr><td><code>auricFormatter.tomlAlignValues</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the values of consecutive key-value pairs into a column.</td></tr>
+<tr><td><code>auricFormatter.tomlArrayWrap</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>always</code>, <code>never</code>, <code>preserve</code></td><td>Choose how TOML arrays are wrapped.</td></tr>
+<tr><td><code>auricFormatter.tomlIndentTables</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Indent the body of a table one level under its header.</td></tr>
+<tr><td><code>auricFormatter.tomlInlineTableSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print spaces just inside the braces of an inline table.</td></tr>
+<tr><td><code>auricFormatter.tomlKeyQuoting</code></td><td>string</td><td><code>as-needed</code></td><td><code>as-needed</code>, <code>always</code>, <code>preserve</code></td><td>Choose whether TOML keys are quoted.</td></tr>
+<tr><td><code>auricFormatter.tomlSortKeys</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort the keys inside each table alphabetically.</td></tr>
+<tr><td><code>auricFormatter.tomlTableBlankLine</code></td><td>integer</td><td><code>1</code></td><td>0–4</td><td>Print exactly this many blank lines before a table header, or 0 to leave the author&#39;s spacing.</td></tr>
+</tbody></table></div>
+<h2 id="graphql">GraphQL</h2>
+<p>8 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.graphqlArgumentWrap</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>always</code>, <code>never</code></td><td>Choose how field and directive argument lists are wrapped.</td></tr>
+<tr><td><code>auricFormatter.graphqlBracketSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print spaces just inside the braces of an inline object value.</td></tr>
+<tr><td><code>auricFormatter.graphqlCommaSeparators</code></td><td>string</td><td><code>remove</code></td><td><code>remove</code>, <code>preserve</code></td><td>Choose whether GraphQL&#39;s optional commas are printed.</td></tr>
+<tr><td><code>auricFormatter.graphqlDescriptionStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>block</code>, <code>inline</code></td><td>Choose how schema descriptions are quoted.</td></tr>
+<tr><td><code>auricFormatter.graphqlFieldAlign</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the types of consecutive field definitions into a column.</td></tr>
+<tr><td><code>auricFormatter.graphqlSeparateOperations</code></td><td>integer</td><td><code>1</code></td><td>0–4</td><td>Print exactly this many blank lines between top-level definitions.</td></tr>
+<tr><td><code>auricFormatter.graphqlSortDefinitions</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort top-level definitions by kind and then by name.</td></tr>
+<tr><td><code>auricFormatter.graphqlSortFields</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort the fields of a type definition alphabetically.</td></tr>
+</tbody></table></div>
+<h2 id="universal">Universal</h2>
+<p>39 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.cPointerAlignment</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>left</code>, <code>right</code>, <code>middle</code></td><td>Choose where the star of a pointer declaration sits.</td></tr>
+<tr><td><code>auricFormatter.dockerfileInstructionCase</code></td><td>string</td><td><code>upper</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of Dockerfile instructions.</td></tr>
+<tr><td><code>auricFormatter.goAlignComments</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Align the trailing comments of a const or var block into a column, the way gofmt does.</td></tr>
+<tr><td><code>auricFormatter.goAlignStructTags</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Align the field names, types and struct tags of a struct definition into columns.</td></tr>
+<tr><td><code>auricFormatter.javaAnnotationPosition</code></td><td>string</td><td><code>above</code></td><td><code>above</code>, <code>inline</code>, <code>preserve</code></td><td>Choose where Java-family annotations are printed.</td></tr>
+<tr><td><code>auricFormatter.makefileTabGuard</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Refuse to convert the leading tab of a recipe line to spaces, because make requires it.</td></tr>
+<tr><td><code>auricFormatter.pythonAlignDictValues</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the values of a multi-line dictionary literal into a column.</td></tr>
+<tr><td><code>auricFormatter.pythonBlankLinesNested</code></td><td>integer</td><td><code>1</code></td><td>0–4</td><td>Separate methods and nested functions with exactly this many blank lines.</td></tr>
+<tr><td><code>auricFormatter.pythonBlankLinesTopLevel</code></td><td>integer</td><td><code>2</code></td><td>0–4</td><td>Separate top-level classes and functions with exactly this many blank lines.</td></tr>
+<tr><td><code>auricFormatter.rustAlignMatchArms</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the fat arrows of a match block into a column.</td></tr>
+<tr><td><code>auricFormatter.rustAlignStructFields</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the types of consecutive struct fields into a column.</td></tr>
+<tr><td><code>auricFormatter.shellFunctionKeyword</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print the optional <code>function</code> keyword before shell function definitions.</td></tr>
+<tr><td><code>auricFormatter.shellIndentCase</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Indent the patterns of a case statement one level inside the case block.</td></tr>
+<tr><td><code>auricFormatter.shellRedirectSpacing</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a space between a redirection operator and its target.</td></tr>
+<tr><td><code>auricFormatter.sqlAlignSelectColumns</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the aliases of a select list into a column.</td></tr>
+<tr><td><code>auricFormatter.sqlCommaPosition</code></td><td>string</td><td><code>trailing</code></td><td><code>trailing</code>, <code>leading</code>, <code>preserve</code></td><td>Choose whether the commas of a broken list lead or trail.</td></tr>
+<tr><td><code>auricFormatter.sqlIdentifierCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of unquoted identifiers.</td></tr>
+<tr><td><code>auricFormatter.sqlIndentJoins</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Indent join clauses one level under the FROM clause they belong to.</td></tr>
+<tr><td><code>auricFormatter.sqlIndentSubqueries</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Indent the body of a subquery one level inside its parentheses.</td></tr>
+<tr><td><code>auricFormatter.sqlKeywordCase</code></td><td>string</td><td><code>upper</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of SQL keywords.</td></tr>
+<tr><td><code>auricFormatter.universalAlignAssignments</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the equals signs of a consecutive run of assignments into a column.</td></tr>
+<tr><td><code>auricFormatter.universalAlignConsecutive</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align consecutive declarations, struct fields and case arms that share a shape.</td></tr>
+<tr><td><code>auricFormatter.universalAlignTrailingComments</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the trailing comments of a consecutive run of lines into a column.</td></tr>
+<tr><td><code>auricFormatter.universalAttributeIndent</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>above</code>, <code>inline</code></td><td>Choose where attributes and annotations are printed relative to their target.</td></tr>
+<tr><td><code>auricFormatter.universalBraceStyle</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>same-line</code>, <code>next-line</code>, <code>next-line-indented</code></td><td>Choose where the opening brace of a block is placed.</td></tr>
+<tr><td><code>auricFormatter.universalCaseIndent</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Indent case labels one level inside the switch or match block that owns them.</td></tr>
+<tr><td><code>auricFormatter.universalContinuationIndent</code></td><td>integer</td><td><code>0</code></td><td>0–24</td><td>Indent the continuation lines of a wrapped statement by this many columns, or 0 to use one full level.</td></tr>
+<tr><td><code>auricFormatter.universalHangingIndent</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Align a wrapped argument list under the opening bracket that introduced it.</td></tr>
+<tr><td><code>auricFormatter.universalIndentSize</code></td><td>integer</td><td><code>0</code></td><td>0–24</td><td>Indent universal-engine languages by this many columns, or 0 to follow tabWidth.</td></tr>
+<tr><td><code>auricFormatter.universalKeywordCase</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>lower</code>, <code>upper</code></td><td>Choose the letter case of language keywords.</td></tr>
+<tr><td><code>auricFormatter.universalLabelIndent</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>dedent</code>, <code>flush</code></td><td>Choose how goto labels and their equivalents are indented.</td></tr>
+<tr><td><code>auricFormatter.universalMaxBlankLines</code></td><td>integer</td><td><code>0</code></td><td>0–8</td><td>Collapse runs of blank lines to this many, or 0 to follow maxBlankLines.</td></tr>
+<tr><td><code>auricFormatter.universalNormalizeCommaSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print no space before a comma and exactly one after it.</td></tr>
+<tr><td><code>auricFormatter.universalNormalizeOperatorSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print exactly one space on each side of a binary operator.</td></tr>
+<tr><td><code>auricFormatter.universalNormalizeParenSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Remove the padding just inside parentheses and brackets.</td></tr>
+<tr><td><code>auricFormatter.universalNormalizeSemicolonSpacing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Print no space before a semicolon and exactly one after it when it separates rather than terminates.</td></tr>
+<tr><td><code>auricFormatter.universalPreserveAlignmentBlocks</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep a hand-aligned run of lines intact when its columns already line up.</td></tr>
+<tr><td><code>auricFormatter.universalPreserveShebang</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep a shebang line flush with the left margin and free of reformatting.</td></tr>
+<tr><td><code>auricFormatter.universalTrimBlockEdges</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Remove blank lines immediately inside an opening or closing brace.</td></tr>
+</tbody></table></div>
+<h2 id="alignment">Alignment</h2>
+<p>15 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.alignAssignments</code></td><td>string</td><td><code>off</code></td><td><code>off</code>, <code>consecutive</code>, <code>block</code></td><td>Choose how the equals signs of neighbouring assignments are aligned.</td></tr>
+<tr><td><code>auricFormatter.alignConsecutiveDeclarations</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the names of consecutive variable declarations into a column.</td></tr>
+<tr><td><code>auricFormatter.alignEnumValues</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the initialisers of consecutive enum members into a column.</td></tr>
+<tr><td><code>auricFormatter.alignImportSpecifiers</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the <code>from</code> keyword of consecutive import statements into a column.</td></tr>
+<tr><td><code>auricFormatter.alignObjectValues</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the values of consecutive object properties into a column.</td></tr>
+<tr><td><code>auricFormatter.alignTernaryBranches</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the question mark and colon of a broken conditional expression into a column.</td></tr>
+<tr><td><code>auricFormatter.alignTrailingComments</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the trailing comments of consecutive lines into a column.</td></tr>
+<tr><td><code>auricFormatter.alignTrailingCommentsMaxColumn</code></td><td>integer</td><td><code>0</code></td><td>0–1000</td><td>Give up aligning a trailing comment that would start past this column, or 0 to use the print width.</td></tr>
+<tr><td><code>auricFormatter.alignTrailingCommentsMinSpaces</code></td><td>integer</td><td><code>1</code></td><td>1–8</td><td>Leave at least this many spaces between code and an aligned trailing comment.</td></tr>
+<tr><td><code>auricFormatter.alignTypeMembers</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the types of consecutive members of an object type into a column.</td></tr>
+<tr><td><code>auricFormatter.alignmentBreakOnBlankLine</code></td><td>boolean</td><td><code>true</code></td><td></td><td>End an alignment group at a blank line, so that separate paragraphs align separately.</td></tr>
+<tr><td><code>auricFormatter.alignmentBreakOnComment</code></td><td>boolean</td><td><code>false</code></td><td></td><td>End an alignment group at a standalone comment.</td></tr>
+<tr><td><code>auricFormatter.alignmentMaxPadding</code></td><td>integer</td><td><code>24</code></td><td>1–200</td><td>Abandon an alignment that would need more than this many spaces of padding on any line.</td></tr>
+<tr><td><code>auricFormatter.alignmentMinGroupSize</code></td><td>integer</td><td><code>2</code></td><td>2–20</td><td>Align a group only once it contains at least this many lines.</td></tr>
+<tr><td><code>auricFormatter.alignmentUseSpacesOnly</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Pad alignment with spaces even when the file is indented with tabs, so columns survive any tab width.</td></tr>
+</tbody></table></div>
+<h2 id="sorting">Sorting</h2>
+<p>19 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.classMemberOrder</code></td><td>array</td><td>see note</td><td></td><td>List the class member kinds in the order they should be printed when class sorting is on.</td></tr>
+<tr><td><code>auricFormatter.exportOrder</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>alphabetical</code>, <code>grouped</code></td><td>Choose the order of export declarations.</td></tr>
+<tr><td><code>auricFormatter.importOrder</code></td><td>array</td><td><code>[]</code></td><td></td><td>List regular expressions describing the import groups, in the order those groups should appear.</td></tr>
+<tr><td><code>auricFormatter.importOrderCaseInsensitive</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Ignore letter case when sorting import paths.</td></tr>
+<tr><td><code>auricFormatter.importOrderGroupNamespaceSpecifiers</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Put namespace imports at the top of their group.</td></tr>
+<tr><td><code>auricFormatter.importOrderSeparation</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Separate the import groups with a blank line.</td></tr>
+<tr><td><code>auricFormatter.importOrderSideEffectsFirst</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep side-effect-only imports at the top and never move them past another import.</td></tr>
+<tr><td><code>auricFormatter.importOrderSortSpecifiers</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort the named specifiers inside each import statement.</td></tr>
+<tr><td><code>auricFormatter.importOrderTypeImports</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>first</code>, <code>last</code>, <code>separate</code></td><td>Choose where type-only imports are sorted.</td></tr>
+<tr><td><code>auricFormatter.sortCaseSensitivity</code></td><td>string</td><td><code>insensitive</code></td><td><code>insensitive</code>, <code>sensitive</code></td><td>Choose how letter case is treated when sorting names.</td></tr>
+<tr><td><code>auricFormatter.sortClassMembers</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort class members into the groups named by classMemberOrder.</td></tr>
+<tr><td><code>auricFormatter.sortIgnorePrefix</code></td><td>string</td><td>empty</td><td></td><td>Strip this leading prefix from a name before comparing it, so decorated names sort with their plain neighbours.</td></tr>
+<tr><td><code>auricFormatter.sortImports</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort import declarations into the groups named by importOrder.</td></tr>
+<tr><td><code>auricFormatter.sortInterfaceMembers</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort the members of an interface or object type alphabetically.</td></tr>
+<tr><td><code>auricFormatter.sortNaturalNumeric</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Compare digit runs inside names numerically so that item2 sorts before item10.</td></tr>
+<tr><td><code>auricFormatter.sortObjectKeys</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort the keys of object literals that carry a sort-keys comment directive.</td></tr>
+<tr><td><code>auricFormatter.sortPreserveComments</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Carry each entry&#39;s leading and trailing comments with it when it moves.</td></tr>
+<tr><td><code>auricFormatter.sortRespectBlankLineGroups</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Treat a blank line as a group boundary and sort only inside each group.</td></tr>
+<tr><td><code>auricFormatter.sortUnionMembers</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Sort the members of a union type, keeping null and undefined last.</td></tr>
+</tbody></table></div>
+<p>Notes and language-specific defaults:</p>
+<ul>
+<li><code>auricFormatter.classMemberOrder</code> default: <code>[&quot;static-field&quot;,&quot;field&quot;,&quot;constructor&quot;,&quot;static-method&quot;,&quot;method&quot;,&quot;getter&quot;,&quot;setter&quot;]</code></li>
+</ul>
+<h2 id="comments">Comments</h2>
+<p>18 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.bannerComment</code></td><td>string</td><td>empty</td><td></td><td>Ensure the file starts with this comment text, inserting it when it is missing.</td></tr>
+<tr><td><code>auricFormatter.blankLineAfterComment</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether standalone comment blocks are followed by a blank line.</td></tr>
+<tr><td><code>auricFormatter.blankLineBeforeComment</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether standalone comments are preceded by a blank line.</td></tr>
+<tr><td><code>auricFormatter.blockCommentStarAlign</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Align the leading stars of a block comment one column in from the opening slash.</td></tr>
+<tr><td><code>auricFormatter.blockCommentStarPad</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a space after each leading star of a block comment.</td></tr>
+<tr><td><code>auricFormatter.commentAttachment</code></td><td>string</td><td><code>smart</code></td><td><code>smart</code>, <code>preserve</code></td><td>Choose how comments are attached to the syntax around them.</td></tr>
+<tr><td><code>auricFormatter.commentIgnorePattern</code></td><td>string</td><td>empty</td><td></td><td>Copy through untouched any comment whose text matches this regular expression.</td></tr>
+<tr><td><code>auricFormatter.commentSpacing</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose the spacing between a line comment marker and its text.</td></tr>
+<tr><td><code>auricFormatter.commentWrap</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether comment text is reflowed.</td></tr>
+<tr><td><code>auricFormatter.commentWrapWidth</code></td><td>integer</td><td><code>0</code></td><td>0–1000</td><td>Wrap comment text at this column, or 0 to use the print width.</td></tr>
+<tr><td><code>auricFormatter.footerComment</code></td><td>string</td><td>empty</td><td></td><td>Ensure the file ends with this comment text, inserting it when it is missing.</td></tr>
+<tr><td><code>auricFormatter.jsdocAlign</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Align the type, name and description columns of a documentation block&#39;s tags.</td></tr>
+<tr><td><code>auricFormatter.jsdocBlankLineAfterDescription</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Separate a documentation block&#39;s description from its first tag with a blank line.</td></tr>
+<tr><td><code>auricFormatter.jsdocDescriptionIndent</code></td><td>integer</td><td><code>0</code></td><td>0–24</td><td>Indent the wrapped continuation of a tag description by this many extra columns.</td></tr>
+<tr><td><code>auricFormatter.jsdocNormalizeTags</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Rewrite documentation tag aliases to their canonical spelling, turning @return into @returns.</td></tr>
+<tr><td><code>auricFormatter.jsdocTagOrder</code></td><td>array</td><td><code>[]</code></td><td></td><td>List documentation tags in the order they should be printed, with unlisted tags keeping their relative order at the end.</td></tr>
+<tr><td><code>auricFormatter.jsdocWrap</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether documentation block descriptions are reflowed.</td></tr>
+<tr><td><code>auricFormatter.preserveBannerComment</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep the leading comment block of a file flush with the top and free of reflowing, so licence headers survive.</td></tr>
+</tbody></table></div>
+<h2 id="blank-lines">Blank Lines</h2>
+<p>15 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.blankLineAfterDirectives</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a blank line after the directive prologue of a file or function.</td></tr>
+<tr><td><code>auricFormatter.blankLineAfterImports</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether a blank line follows the import block.</td></tr>
+<tr><td><code>auricFormatter.blankLineBeforeControlFlow</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether if, for, while and switch statements are preceded by a blank line.</td></tr>
+<tr><td><code>auricFormatter.blankLineBeforeExport</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether an export declaration is preceded by a blank line.</td></tr>
+<tr><td><code>auricFormatter.blankLineBeforeReturn</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether a return statement is preceded by a blank line.</td></tr>
+<tr><td><code>auricFormatter.blankLineBetweenMethods</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether class members are separated by a blank line.</td></tr>
+<tr><td><code>auricFormatter.blankLineBetweenTopLevel</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>always</code>, <code>never</code></td><td>Choose whether top-level declarations are separated by a blank line.</td></tr>
+<tr><td><code>auricFormatter.collapseEmptyBlockBlankLines</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Remove the blank lines from a block that contains nothing else.</td></tr>
+<tr><td><code>auricFormatter.maxBlankLines</code></td><td>integer</td><td><code>1</code></td><td>0–8</td><td>Collapse any run of blank lines to at most this many.</td></tr>
+<tr><td><code>auricFormatter.maxBlankLinesAtEnd</code></td><td>integer</td><td><code>0</code></td><td>0–8</td><td>Allow at most this many blank lines at the very end of a file.</td></tr>
+<tr><td><code>auricFormatter.maxBlankLinesAtStart</code></td><td>integer</td><td><code>0</code></td><td>0–8</td><td>Allow at most this many blank lines at the very top of a file.</td></tr>
+<tr><td><code>auricFormatter.maxBlankLinesInsideBlocks</code></td><td>integer</td><td><code>1</code></td><td>0–8</td><td>Collapse any run of blank lines inside a block or function body to at most this many.</td></tr>
+<tr><td><code>auricFormatter.padBlocks</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a blank line just inside the braces of every block.</td></tr>
+<tr><td><code>auricFormatter.padClassBody</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a blank line just inside the opening and closing braces of a class body.</td></tr>
+<tr><td><code>auricFormatter.padFunctionBody</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Print a blank line just inside the opening and closing braces of a function body.</td></tr>
+</tbody></table></div>
+<p>Notes and language-specific defaults:</p>
+<ul>
+<li><code>auricFormatter.maxBlankLines</code>: <code>2</code> for python.</li>
+</ul>
+<h2 id="safety">Safety</h2>
+<p>12 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.formatMinified</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Format files that look minified, instead of leaving them alone.</td></tr>
+<tr><td><code>auricFormatter.maxFileSizeKb</code></td><td>integer</td><td><code>4096</code></td><td>0–1048576</td><td>Refuse to format a file larger than this many kilobytes, or 0 to lift the limit.</td></tr>
+<tr><td><code>auricFormatter.parseTimeoutMs</code></td><td>integer</td><td><code>5000</code></td><td>0–600000</td><td>Abandon a parse that has run for this many milliseconds, or 0 to wait indefinitely.</td></tr>
+<tr><td><code>auricFormatter.safetyCommentPreservation</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Require every comment body in the input to appear in the output.</td></tr>
+<tr><td><code>auricFormatter.safetyIdempotency</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Format the output a second time and require the two results to be identical.</td></tr>
+<tr><td><code>auricFormatter.safetyIdempotencyPasses</code></td><td>integer</td><td><code>1</code></td><td>1–8</td><td>Run this many extra formatting passes when the idempotency check is on.</td></tr>
+<tr><td><code>auricFormatter.safetyNumericLiterals</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Require every numeric literal to keep its value through any rewriting of its spelling.</td></tr>
+<tr><td><code>auricFormatter.safetyOnFailure</code></td><td>string</td><td><code>preserve</code></td><td><code>preserve</code>, <code>warn</code>, <code>throw</code></td><td>Choose what happens when a safety check fails.</td></tr>
+<tr><td><code>auricFormatter.safetyReparse</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Re-parse the output with the same parser and require it to succeed.</td></tr>
+<tr><td><code>auricFormatter.safetyStringLiterals</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Require the multiset of string and template literal contents to be identical before and after.</td></tr>
+<tr><td><code>auricFormatter.safetyTokenCheck</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Re-lex the output and require the significant token stream to match the input exactly.</td></tr>
+<tr><td><code>auricFormatter.safetyTokenCheckComments</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Include comment tokens in the token comparison.</td></tr>
+</tbody></table></div>
+<h2 id="experimental">Experimental</h2>
+<p>9 options.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.experimentalCommentReflow</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Experimental. Reflow comment prose with the Markdown paragraph engine, preserving lists and code spans.</td></tr>
+<tr><td><code>auricFormatter.experimentalDiffMinimization</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Experimental. Prefer the layout closest to the input whenever two layouts are equally valid.</td></tr>
+<tr><td><code>auricFormatter.experimentalIncrementalCache</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Experimental. Reuse printed fragments for subtrees whose text has not changed since the previous run.</td></tr>
+<tr><td><code>auricFormatter.experimentalJsxTextFill</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Experimental. Fill JSX text as prose so that words repack rather than each child taking a line.</td></tr>
+<tr><td><code>auricFormatter.experimentalMarkdownTableWrap</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Experimental. Wrap the contents of an over-wide Markdown table cell instead of letting the row overflow.</td></tr>
+<tr><td><code>auricFormatter.experimentalOperatorPosition</code></td><td>string</td><td><code>end</code></td><td><code>end</code>, <code>start</code></td><td>Experimental. Choose which side of a line break a binary operator lands on.</td></tr>
+<tr><td><code>auricFormatter.experimentalPreserveSemanticBlocks</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Experimental. Treat a blank-line separated run of statements as a paragraph and keep it intact when breaking.</td></tr>
+<tr><td><code>auricFormatter.experimentalTernaries</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Experimental. Use the indented case-and-result layout for nested conditional expressions.</td></tr>
+<tr><td><code>auricFormatter.experimentalWidthAwareChains</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Experimental. Choose member chain layout by measuring every candidate rather than by counting links.</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="formatter-studio.html"><span>Previous</span>Formatter Studio</a><a href="presets.html"><span>Next</span>Presets</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-to-use-this-page">How to use this page</a></li><li><a href="#global">Global</a></li><li><a href="#common">Common</a></li><li><a href="#javascript">JavaScript</a></li><li><a href="#typescript">TypeScript</a></li><li><a href="#css">CSS</a></li><li><a href="#html">HTML</a></li><li><a href="#markdown">Markdown</a></li><li><a href="#yaml">YAML</a></li><li><a href="#json">JSON</a></li><li><a href="#graphql">GraphQL</a></li><li><a href="#universal">Universal</a></li><li><a href="#alignment">Alignment</a></li><li><a href="#sorting">Sorting</a></li><li><a href="#comments">Comments</a></li><li><a href="#blank-lines">Blank Lines</a></li><li><a href="#safety">Safety</a></li><li><a href="#experimental">Experimental</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

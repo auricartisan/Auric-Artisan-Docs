@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HDR Gamut Plot limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="How far the HDR Gamut Plot's curves, planes, shares and image readings can be trusted.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; HDR Gamut Plot</a>
+<h2>HDR Gamut Plot: supporting pages</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">HDR Gamut Plot shortcuts</a></li>
+<li><a href="glossary.html">HDR Gamut Plot glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">HDR Gamut Plot limits and accuracy</a></li>
+<li><a href="privacy.html">HDR Gamut Plot privacy</a></li>
+<li><a href="release-notes.html">HDR Gamut Plot release notes</a></li>
+<li><a href="related.html">Related to the HDR Gamut Plot</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">HDR Gamut Plot</a> &rsaquo; <a href="README.html">HDR Gamut Plot: supporting pages</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>HDR Gamut Plot limits and accuracy</h1>
+<p class="lede">How far the HDR Gamut Plot's curves, planes, shares and image readings can be trusted.</p>
+<h2 id="exact-to-the-standard">Exact to the standard</h2>
+<ul>
+<li><strong>Primaries and white</strong> of Rec.709/sRGB, Display P3 and Rec.2020.</li>
+<li><strong>PQ</strong> with the ST 2084 constants written as the standard&#39;s exact fractions.</li>
+<li><strong>ICtCp</strong> matrices, matching BT.2100.</li>
+<li><strong>HLG</strong> with the BT.2100 system gamma (reference surround).</li>
+</ul>
+<h2 id="computed">Computed</h2>
+<ul>
+<li><strong>Jzazbz</strong> from Safdar et al. (2017), with its own quantiser.</li>
+<li><strong>Areas and locus shares</strong> by the shoelace formula, divided by the tabulated CIE 1931 2° locus (65 points, 380–700 nm; area 0.33323 in xy against a published 0.334).</li>
+<li><strong>Tone-mapping operators</strong> with published constants. &quot;ACES Filmic&quot; is Narkowicz&#39;s approximation, not the Academy&#39;s transform.</li>
+<li><strong>Image occupancy</strong>, binned at 0.002 in xy.</li>
+</ul>
+<h2 id="this-tools-own">This tool&#39;s own</h2>
+<ul>
+<li>The <strong>dim and bright surround</strong> multipliers for HLG (0.95 and 0.90). They are not in BT.2100 or BT.2390, and readings made with them are marked Adjusted.</li>
+</ul>
+<h2 id="not-available">Not available</h2>
+<ul>
+<li><strong>Image luminance.</strong> 8-bit PNG and JPEG files carry no absolute luminance. HDR formats (OpenEXR, or PNG with PQ or HLG and mastering metadata) are not read.</li>
+<li><strong>The 10° observer.</strong> The option has no effect.</li>
+</ul>
+<h2 id="current-version-caveats">Current-version caveats</h2>
+<ul>
+<li><strong>Working colour space</strong>, <strong>ICtCp marker</strong> and <strong>Tone mapping operator</strong> do not change the output.</li>
+<li>The image&#39;s pixels are measured but not drawn on the diagram.</li>
+<li>The <strong>EOTF comparison</strong> chart is drawn at page load and does not follow the controls.</li>
+<li>The <strong>Convert a list</strong> feature scales each HEX value&#39;s channel numbers directly to the chosen luminance when computing ICtCp, without first converting sRGB to linear Rec. 2020 light. Treat its ICtCp figures as illustrative; its CIELAB figures are standard sRGB conversions.</li>
+<li>For the Planes tab, the gamma 2.4 curve&#39;s luminance is computed with a 2.2 exponent.</li>
+<li>Charts are drawn in sRGB; the tool does not display HDR images.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>HDR Gamut Plot glossary</a><a href="privacy.html"><span>Next</span>HDR Gamut Plot privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#exact-to-the-standard">Exact to the standard</a></li><li><a href="#computed">Computed</a></li><li><a href="#this-tools-own">This tool's own</a></li><li><a href="#not-available">Not available</a></li><li><a href="#current-version-caveats">Current-version caveats</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

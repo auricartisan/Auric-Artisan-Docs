@@ -1,0 +1,168 @@
+---
+title: Search — Troubleshooting
+description: Symptoms, causes and fixes for problems with the Auric Artisan search page, web search and the Search Console.
+product: Website › Search
+updated: 2026-09-25
+---
+
+# Troubleshooting
+
+## Search page
+
+### Nothing happens when I type
+
+**Why:** Search starts at two characters, and the page may still be loading its index. While it loads, the page shows **Building search index…**.
+
+**What to do:** Type at least two characters and wait for **Index ready**. If the status line says **Search index is empty. Try refreshing the page.**, reload the page.
+
+### A page I know exists does not appear
+
+**Why:** The page may use different words, an operator may be ruling it out, or the page may be newer than the index your browser has.
+
+**What to do:**
+
+- Try a shorter or different word. The **Worth trying** list on the no-results screen suggests changes based on your query.
+- Remove filters, exclusions and quotes one at a time.
+- Check the section tab: select **All**.
+- Reload the page to fetch the latest index.
+
+### A section tab is greyed out
+
+**Why:** That section has no results for the current query.
+
+**What to do:** Select **All**, or change the query.
+
+### Sorting by Newest looks out of order
+
+**Why:** **Newest** uses the date in a page's address. Pages without a date, which are most pages, go to the end in no particular date order.
+
+**What to do:** Use **Newest** for dated pages such as blog posts and changelog entries, together with the **Blog** or **Docs** tab.
+
+### A word I typed shows a colour card
+
+**Why:** A word of three or six letters made only from a to f, such as `bad`, `add` or `facade`, is read as a hex code.
+
+**What to do:** Put the word in quotes: `"facade"`.
+
+### The tool card does not appear
+
+**Why:** The tool card appears only when the whole query is a tool's name, with no other words, filters, phrases or exclusions.
+
+**What to do:** Search for the name alone, for example `contrast`.
+
+### Palettes with it opens the Palette Library without my colour
+
+**Why:** The library opens at its usual view.
+
+**What to do:** Type the hex code into the Palette Library's search field.
+
+### My recent searches are missing
+
+**Why:** Recent searches are saved in this browser. A private window, another browser, or clearing site data starts an empty list. Half-typed queries are not saved; a search is saved when you press `Enter` or open a result.
+
+**What to do:** Search again. The list refills as you search.
+
+## Web search
+
+### Results do not update as I type
+
+**Why:** In web mode, typing shows word suggestions only.
+
+**What to do:** Press `Enter` or choose a suggestion.
+
+### "Global search failed"
+
+**Why:** The index had nothing for the query, and the live web search that followed did not complete.
+
+**What to do:** Try again in a moment, or change the query.
+
+### The results are about a different word
+
+**Why:** Your query found nothing, so the search corrected the spelling. The status line says **showing results for** the corrected word.
+
+**What to do:** Select **search instead for** your word to see its results, even if there are none.
+
+### The count starts with "about"
+
+**Why:** With `site:` or `intitle:`, the total can only be estimated.
+
+**What to do:** Nothing; the results themselves are exact matches.
+
+### A site I expected is not in the web results
+
+**Why:** The web index is Auric Artisan's own crawl, far smaller than the large search engines. The site may not have been found yet.
+
+**What to do:** If it is your site, add it in the [Search Console](search-console.md) and submit its sitemap.
+
+## Search Console
+
+### The console shows a sign-in page
+
+**Why:** The console needs an Auric Artisan account.
+
+**What to do:** Select **Sign in to start**, sign in, and return to https://auricartisan.com/search/console/.
+
+### Sections are greyed out
+
+**Why:** The open site is not verified yet. Only **Your sites** and **Portfolios** work until it is.
+
+**What to do:** Complete the **Prove you own** panel. See [Set up the Search Console](search-console.md).
+
+### Verification fails
+
+**Why:** The console could not find the file, tag or record it expected.
+
+**What to do:** Read the report under **Not verified yet**. It shows where each check looked, what it **expected** and what it **found instead**. Common causes:
+
+- The file is at a different address, or does not contain the token.
+- The meta tag is not on the home page, or not in its head.
+- The DNS record has not appeared yet. It can take an hour.
+- The site redirects the home page or the file somewhere else.
+
+### I added a URL prefix but the list shows the whole domain
+
+**Why:** At present the console registers the domain of any address you type.
+
+**What to do:** Nothing is lost: the property covers the whole domain, including the section you meant. Prove ownership of the domain.
+
+### "Read as a sitemap, but every URL in it was outside this property."
+
+**Why:** The sitemap lists addresses on a different domain from the open site.
+
+**What to do:** Open the right site in the console, or add that domain as a site of its own.
+
+### Pages stay "Crawled, waiting for the next index build"
+
+**Why:** Crawling and indexing are separate steps. A crawled page becomes searchable when the next index build includes it.
+
+**What to do:** Wait. Nothing you do on your site speeds this up.
+
+### Many pages show "Too little content"
+
+**Why:** The crawler does not run JavaScript. Pages that build their text with JavaScript look empty to it.
+
+**What to do:** Serve the main text in the HTML itself, for example with server-side or static rendering.
+
+### The console says the crawler is being turned away
+
+**Why:** Your site is refusing the crawler's requests, for example with a firewall rule or bot protection.
+
+**What to do:** Allow requests from the AuricBot crawler, then submit a page to test. Check **Your sites** and **Coverage** for the result.
+
+### Performance shows no impressions
+
+**Why:** Impressions count only appearances in Auric Artisan's own web search, which is much smaller than the big search engines. A new site may have none.
+
+**What to do:** Make sure your pages are indexed. The message **No impressions recorded yet.** changes once your site first appears in a result.
+
+### The Links section is empty
+
+**Why:** Link reports are not collected yet.
+
+**What to do:** Use **Coverage** and **Pages** for broken links (**Not found**), and the rank shown on **Links** for the site's weight.
+
+### "The search service did not answer."
+
+**Why:** The console could not reach its service.
+
+**What to do:** Check your connection and try again later.

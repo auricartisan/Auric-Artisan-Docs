@@ -1,0 +1,48 @@
+---
+title: Advanced Kit — Getting started
+description: Open the Advanced Kit, learn the parts of its screen, and change the site's tool visibility mode.
+product: Website › Kits › Advanced Kit
+updated: 2026-09-25
+---
+
+# Getting started with the Advanced Kit
+
+## Open the kit
+
+Use either:
+
+- **Page utilities** (bottom-left corner) > **Advanced**, or
+- `Ctrl` + `Shift` + `A`.
+
+The launcher's tooltip reads "Choose Basic, Advanced, or Everything tool visibility." The kit opens with keyboard focus on the card for your current mode.
+
+## The screen, top to bottom
+
+1. **Title bar.** **Advanced Kit** and the buttons **Focus mode**, **Theme**, **Resize**, **Minimize** and **Close**.
+2. **Heading.** **Tool visibility**, with the line "Choose which tools stay visible by default."
+3. **Current mode.** A badge showing **Basic**, **Advanced**, **Everything** or **Custom**.
+4. **Mode summary.** An illustration of the current mode, a one-line title, a short description and one or two buttons to switch mode.
+5. **Default visibility.** Four illustrated cards, one per mode. The **Basic** card carries a **Recommended** tag. The selected card shows a tick.
+6. **Choose your tools.** The Custom checklist. It appears only in Custom mode.
+7. **Quick cards.** Links to example tools that fit the current mode.
+
+## Change the mode
+
+1. Select a card under **Default visibility**, for example **Advanced**.
+2. The tick moves to that card, **Current mode** updates, and the summary changes to "Advanced tools are on".
+
+The change applies at once to the whole site, on this page and every page you open next. You do not need to save.
+
+## If you have never chosen a mode
+
+New visitors see the site in **Basic** mode. The Advanced Kit shows **Basic** as the current mode until you pick another card.
+
+## Close the kit
+
+Press `Esc`, select **Close**, or select the **Advanced** launcher again. Your mode stays as you set it.
+
+## Next steps
+
+- [Choose a mode](choose-a-mode.md)
+- [Build a custom tool set](build-a-custom-tool-set.md)
+- [What each mode changes](what-each-mode-changes.md)

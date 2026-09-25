@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Ishihara Plate Generator's scores measure, how far to trust them, and why the plates are not a colour-vision test.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Ishihara Plate Generator</a>
+<h2>Ishihara Plate Generator: supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Ishihara Plate Generator keyboard shortcuts</a></li>
+<li><a href="glossary.html">Ishihara Plate Generator glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Ishihara Plate Generator privacy</a></li>
+<li><a href="release-notes.html">Ishihara Plate Generator release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Ishihara Plate Generator</a> &rsaquo; <a href="README.html">Ishihara Plate Generator: supporting material</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Ishihara Plate Generator's scores measure, how far to trust them, and why the plates are not a colour-vision test.</p>
+<h2 id="not-a-colour-vision-test">Not a colour-vision test</h2>
+<p>The page is explicit: &quot;Not a colour-vision test. These plates are illustrative. A screen is not colour-calibrated and a real Ishihara examination is printed, lit and administered under controlled conditions. For diagnosis, see an eye-care professional.&quot;</p>
+<p>In particular:</p>
+<ul>
+<li><strong>Screens differ.</strong> Colour, brightness, gamut and night modes change what a plate looks like. The same file looks different on two screens.</li>
+<li><strong>Printing differs.</strong> Paper, ink and light change colours again. A printed plate from this tool is not a calibrated plate.</li>
+<li><strong>Examinations are controlled.</strong> A real test controls lighting, viewing distance and timing, and uses validated plates. These plates are not validated against people with colour-vision deficiencies.</li>
+</ul>
+<h2 id="what-the-scores-measure">What the scores measure</h2>
+<ul>
+<li>Colour distances are calculated in <strong>OKLab</strong> between the average figure colour and the average background colour.</li>
+<li>Deficiencies are simulated with the <strong>Brettel, Viénot and Mollon (1997)</strong> model for protanopia, deuteranopia and tritanopia. A simulation models a typical, complete (dichromatic) deficiency; milder forms and individual differences are not modelled.</li>
+<li>The quality score weighs four components (density .24, figure ratio .20, separation .32, concealment .24). It describes how well a plate is built, not whether it would detect a deficiency in a real person.</li>
+<li>A plate passes when density, figure share and separation are in range and the score is at least 45.</li>
+</ul>
+<h2 id="previews">Previews</h2>
+<p>The <strong>CVD Preview</strong> and the per-plate <strong>Protan</strong>, <strong>Deutan</strong> and <strong>Tritan</strong> switches show the same simulation. They are an illustration of how a plate might look, not what any particular person sees.</p>
+<h2 id="reproducibility">Reproducibility</h2>
+<p>A seed reproduces a plate exactly only with the same type, content, palette, difficulty and fine-tuning settings. The export ZIP includes a JSON description of every plate for this reason.</p>
+<h2 id="nothing-is-kept">Nothing is kept</h2>
+<p>Plates exist only while the page is open. Export or keep seeds for anything you need later.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Ishihara Plate Generator glossary</a><a href="privacy.html"><span>Next</span>Ishihara Plate Generator privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#not-a-colour-vision-test">Not a colour-vision test</a></li><li><a href="#what-the-scores-measure">What the scores measure</a></li><li><a href="#previews">Previews</a></li><li><a href="#reproducibility">Reproducibility</a></li><li><a href="#nothing-is-kept">Nothing is kept</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

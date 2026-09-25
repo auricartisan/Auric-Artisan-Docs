@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CMYK Soft-Proof — Auric Artisan Docs</title>
+<meta name="description" content="Simulate a screen colour or an image on five press and paper conditions, see the CMYK separation after dot gain and ink limits, spot colours that will shift, and copy CMYK values.">
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../../index.html">Home</a><a href="../../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Basic Color Tools documentation</a>
+<h2>Colour Tools workbench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility-lab.html">Accessibility Lab</a></li>
+<li><a href="animation-contrast.html">Animation Contrast</a></li>
+<li><a href="cmyk-soft-proof.html" aria-current="page">CMYK Soft-Proof</a></li>
+<li><a href="colour-formulation.html">Color Formulation</a></li>
+<li><a href="colour-inspector.html">Color Inspector</a></li>
+<li><a href="colour-library.html">Color Library</a></li>
+<li><a href="colour-name-finder.html">Color Name Finder</a></li>
+<li><a href="colour-psychology.html">Color Psychology</a></li>
+<li><a href="colour-space-converter.html">Color Space Converter</a></li>
+<li><a href="contrast-system.html">Contrast System</a></li>
+<li><a href="gradient-library.html">Gradient Library</a></li>
+<li><a href="harmony-studio.html">Harmony Studio</a></li>
+<li><a href="launcher-and-panels.html">Open the Colour Tools and manage their panels</a></li>
+<li><a href="pantone-and-named-lookup.html">Pantone &amp; Named Lookup</a></li>
+<li><a href="type-readability-sim.html">Type Readability Sim</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../../README.html">The website</a> &rsaquo; <a href="../../../../README.html">Website tools</a> &rsaquo; <a href="../../../README.html">Colour workspace</a> &rsaquo; <a href="../../README.html">Basic Color Tools</a> &rsaquo; <a href="../README.html">Basic Color Tools documentation</a> &rsaquo; <a href="README.html">Colour Tools workbench</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>CMYK Soft-Proof</h1>
+<p class="lede">Simulate a screen colour or an image on five press and paper conditions, see the CMYK separation after dot gain and ink limits, spot colours that will shift, and copy CMYK values.</p>
+<p>Screens mix light; printing presses lay down ink on paper. Many bright screen colours cannot be printed, paper is never pure white, printed black is never pure black, and ink spreads as it soaks in. CMYK Soft-Proof gives you a quick feel for these effects. It takes a colour, or an image you drop in, and shows how it may look on one of five print conditions, the CMYK ink amounts involved, and which parts of an image will change most.</p>
+<p><strong>Soft-proofing</strong> means previewing on screen how something will print. <strong>CMYK</strong> is the four-ink process (cyan, magenta, yellow and black). <strong>Dot gain</strong> is the darkening of mid-tones as ink spreads on paper. <strong>TAC</strong> (total area coverage) is the maximum combined ink a press allows, in percent (C + M + Y + K, up to 400 %).</p>
+<p>This tool is an intuition builder, not a colour-managed proof. It does not use ICC profiles.</p>
+<p>CMYK Soft-Proof is in the launcher&#39;s <strong>Design</strong> group.</p>
+<h2 id="open-it">Open it</h2>
+<p>Open the launcher and select <strong>CMYK Soft-Proof</strong>. See <a href="launcher-and-panels.html">Open the Colour Tools</a>. It starts with the colour you opened with, or a process blue (#0085CA).</p>
+<h2 id="screen-tour">Screen tour</h2>
+<ol>
+<li><strong>Source</strong> (<em>Soft-proof preview</em>): a colour field, the <strong>Press condition</strong> list, and a note describing the condition (its TAC limit, paper colour, black point and typical use).</li>
+<li><strong>Side-by-side preview</strong> (<em>Screen vs. simulated press</em>): <strong>Screen (sRGB)</strong> and <strong>Press simulation</strong> chips with their HEX codes, a ΔE pill with a label, and a TAC pill such as <em>TAC 173% / 330%</em> (the ink used against the limit). When the ink limit is exceeded, a note says how much cyan, magenta and yellow were reduced.</li>
+<li><strong>CMYK separation</strong> (<em>After dot gain &amp; TAC</em>): bars for <strong>Cyan</strong>, <strong>Magenta</strong>, <strong>Yellow</strong> and <strong>Black</strong> with percentages, and three copy buttons: <strong>CSS cmyk()</strong>, <strong>Channel values</strong> and <strong>Simulated hex</strong>.</li>
+<li><strong>Image soft-proof</strong>: a drop area (<em>Drop an image here, or paste from clipboard</em>) with <strong>Choose file</strong>. Once an image is loaded, three versions side by side and <strong>Clear</strong>.</li>
+</ol>
+<h2 id="press-conditions">Press conditions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Condition</th><th>TAC limit</th><th>Paper</th><th>Black point</th><th>Note shown</th></tr></thead>
+<tbody>
+<tr><td><strong>ISO Coated v2 (FOGRA39)</strong></td><td>330 %</td><td>#F4F2E8</td><td>#1B1814</td><td>European coated commercial offset. The most common print spec.</td></tr>
+<tr><td><strong>SWOP (US Web Coated)</strong></td><td>300 %</td><td>#F1EFE3</td><td>#1F1B16</td><td>US web offset on coated stock.</td></tr>
+<tr><td><strong>ISO Uncoated (FOGRA52)</strong></td><td>320 %</td><td>#EFEBD8</td><td>#252118</td><td>Premium uncoated stock; higher dot gain, warmer paper.</td></tr>
+<tr><td><strong>ISO Newsprint 26v5</strong></td><td>240 %</td><td>#EAE3CE</td><td>#2B2719</td><td>Heavy dot gain, low TAC.</td></tr>
+<tr><td><strong>Fine art / cotton rag</strong></td><td>360 %</td><td>#F8F3DF</td><td>#1C1610</td><td>Inkjet on cotton rag; closer to a monitor&#39;s range than offset.</td></tr>
+</tbody></table></div>
+<p>Each condition also has its own dot-gain amount: lowest for fine art, highest for newsprint.</p>
+<h2 id="how-the-simulation-works">How the simulation works</h2>
+<ol>
+<li>The screen colour is split into CMYK with a simple formula.</li>
+<li>Dot gain darkens the mid-tones of each ink.</li>
+<li>If the total ink exceeds the TAC limit, cyan, magenta and yellow are reduced evenly and black is kept, which preserves contrast.</li>
+<li>The inks are recombined over the condition&#39;s paper colour, with its practical black point, to give the simulated screen colour.</li>
+<li>The difference between the original and the simulation is measured with ΔE2000.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>ΔE2000</th><th>Label</th></tr></thead>
+<tbody>
+<tr><td>Below 2</td><td><strong>Match</strong></td></tr>
+<tr><td>2 to 5</td><td><strong>Close</strong></td></tr>
+<tr><td>5 to 10</td><td><strong>Shift</strong></td></tr>
+<tr><td>10 and above</td><td><strong>Lost</strong></td></tr>
+</tbody></table></div>
+<h2 id="tasks">Tasks</h2>
+<h3 id="check-a-brand-colour-for-print">Check a brand colour for print</h3>
+<ol>
+<li>Enter the colour.</li>
+<li>Choose the <strong>Press condition</strong> your printer uses (ask them; FOGRA39 is common in Europe, SWOP in the US).</li>
+<li>Compare <strong>Screen (sRGB)</strong> and <strong>Press simulation</strong>, and read the ΔE label.</li>
+<li>Check the TAC pill. Red means the colour needed more ink than the press allows.</li>
+</ol>
+<p>Result: a warning if the colour will shift noticeably or is too ink-heavy, before you send files.</p>
+<h3 id="copy-cmyk-values">Copy CMYK values</h3>
+<p>Under <strong>CMYK separation</strong>:</p>
+<ul>
+<li><strong>CSS cmyk()</strong> copies the separation as a CSS function. For the starting blue (#0085CA) on FOGRA39 it reads <code>cmyk(100%, 45%, 0%, 28%)</code>.</li>
+<li><strong>Channel values</strong> copies the same numbers as <code>C100 M45 Y0 K28</code>.</li>
+<li><strong>Simulated hex</strong> copies the HEX code of the press simulation.</li>
+</ul>
+<p>These values are after dot gain and the ink limit. Use them as a starting point to discuss with your printer, not as final separations.</p>
+<h3 id="soft-proof-an-image">Soft-proof an image</h3>
+<ol>
+<li>Drop an image on the drop area, select <strong>Choose file</strong>, or paste an image while the panel has focus.</li>
+<li>Three versions appear: <strong>Original</strong>, the <strong>Press simulation</strong>, and an <strong>Out-of-gamut warning</strong> view where pink marks pixels that change by more than ΔE 10.</li>
+<li>Change <strong>Press condition</strong> to compare conditions.</li>
+<li>Select <strong>Clear</strong> to remove the image.</li>
+</ol>
+<p>The image is scaled to at most 360 pixels on its longest side for the preview. Large images (the drop area suggests about 2 megapixels at most) are processed fastest.</p>
+<p>Result: you see which areas of the image, typically bright blues, greens and saturated oranges, will print noticeably differently.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Colour field</td><td>Colour to simulate</td><td>HEX, colour well, dice</td><td>#0085CA, or the colour you opened with</td></tr>
+<tr><td><strong>Press condition</strong></td><td>Paper, ink limit and dot gain</td><td>5 conditions</td><td>ISO Coated v2 (FOGRA39)</td></tr>
+<tr><td><strong>CSS cmyk()</strong></td><td>Copies the separation as <code>cmyk()</code></td><td>—</td><td>—</td></tr>
+<tr><td><strong>Channel values</strong></td><td>Copies <code>C… M… Y… K…</code></td><td>—</td><td>—</td></tr>
+<tr><td><strong>Simulated hex</strong></td><td>Copies the simulated colour</td><td>—</td><td>—</td></tr>
+<tr><td>Drop area / <strong>Choose file</strong> / paste</td><td>Loads an image</td><td>Image files</td><td>—</td></tr>
+<tr><td><strong>Clear</strong></td><td>Removes the image</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="accuracy-and-limits">Accuracy and limits</h2>
+<ul>
+<li>This is not colour-managed soft-proofing. The CMYK split is a naive formula, and the press conditions are simple models (paper colour, black point, dot gain and ink limit) named after common standards. They do not use the official characterisation data or ICC profiles.</li>
+<li>Your screen&#39;s own calibration affects what you see.</li>
+<li>Real separations depend on the printer&#39;s profile, rendering intent, black generation and more. Ask for a contract proof for colour-critical work.</li>
+<li>Images are processed in your browser and are not uploaded.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="README.html">Colour Tools documentation</a></li>
+<li><a href="pantone-and-named-lookup.html">Pantone &amp; Named Lookup</a></li>
+<li><a href="colour-formulation.html">Color Formulation</a></li>
+<li><a href="https://auricartisan.com/library/learn/articles/2026-06-03-cmyk-four-color-printing-process" rel="noopener">CMYK and the Four-Color Printing Process</a> on Learn</li>
+<li><a href="../../README.html">Basic Color Tools</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="animation-contrast.html"><span>Previous</span>Animation Contrast</a><a href="colour-formulation.html"><span>Next</span>Color Formulation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#screen-tour">Screen tour</a></li><li><a href="#press-conditions">Press conditions</a></li><li><a href="#how-the-simulation-works">How the simulation works</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#controls">Controls</a></li><li><a href="#accuracy-and-limits">Accuracy and limits</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read the scopes — Auric Artisan Docs</title>
+<meta name="description" content="Use the histogram, waveform, vectorscope, false-colour map and A/B split to judge a mapped frame.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tone Mapping</a>
+<h2>Tone Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tone Mapping</a></li>
+<li><a href="compare-operators.html">Compare operators</a></li>
+<li><a href="export-a-lut.html">Export a LUT</a></li>
+<li><a href="map-a-frame.html">Map a frame</a></li>
+<li><a href="read-the-scopes.html" aria-current="page">Read the scopes</a></li>
+<li><a href="reference.html">Tone Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tone Mapping</a></li>
+<li><a href="faq.html">Tone Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tone Mapping</a> &rsaquo; <a href="README.html">Tone Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Read the scopes</h1>
+<p class="lede">Use the histogram, waveform, vectorscope, false-colour map and A/B split to judge a mapped frame.</p>
+<p>The <strong>Scopes</strong> tab measures the mapped output — the end the question is about. The note at the top names the working and target spaces and the operator.</p>
+<h2 id="the-three-scopes">The three scopes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Scope</th><th>What it shows</th><th>How to read it</th></tr></thead>
+<tbody>
+<tr><td><strong>Histogram — output, 256 bins</strong></td><td>How many pixels sit at each output level</td><td>A pile-up at the right edge means clipped highlights; at the left, crushed shadows</td></tr>
+<tr><td><strong>Waveform — output luma by column</strong></td><td>Brightness of each column of the image, left to right</td><td>The dashed line is display white. A trace pressed flat against it is clipping</td></tr>
+<tr><td><strong>Vectorscope — output chroma</strong></td><td>Colour direction and strength, after gamut mapping</td><td>Distance from the centre is saturation; angle is hue. It shows only what the target can carry</td></tr>
+</tbody></table></div>
+<h2 id="the-false-colour-exposure-map">The false-colour exposure map</h2>
+<ol>
+<li>Tick <strong>Show the exposure map</strong> under <strong>False colour</strong>. The frame on the Lab tab is replaced by bands of colour.</li>
+<li>Read the key under <strong>False colour, and the peak it is counted against</strong>. Pixels are coloured by estimated luminance:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Up to (nits)</th><th>Colour</th></tr></thead>
+<tbody>
+<tr><td>0.01</td><td>Black</td></tr>
+<tr><td>0.1</td><td>Deep violet</td></tr>
+<tr><td>1</td><td>Blue</td></tr>
+<tr><td>10</td><td>Teal</td></tr>
+<tr><td>100</td><td>Green</td></tr>
+<tr><td>203</td><td>Yellow (203 nits is the HDR diffuse white of ITU-R BT.2408)</td></tr>
+<tr><td>1,000</td><td>Orange</td></tr>
+<tr><td>4,000</td><td>Red</td></tr>
+<tr><td>10,000</td><td>Magenta</td></tr>
+<tr><td>Above</td><td>White</td></tr>
+</tbody></table></div>
+<ol start="3">
+<li>The note reports the source&#39;s brightest pixel, using the <strong>Source peak</strong>, and greys out bands the source cannot reach.</li>
+</ol>
+<p>The map estimates luminance from the source pixel&#39;s luma multiplied by a peak. In the current version the map itself uses the <strong>Display peak</strong> for that multiplication while the note uses the <strong>Source peak</strong>, so they can disagree. Untick the box to see the frame again.</p>
+<h2 id="compare-two-versions-a-b">Compare two versions (A / B)</h2>
+<ol>
+<li>Set up the first version and select <strong>Store A</strong>.</li>
+<li>Change a setting and select <strong>Store B</strong>.</li>
+<li>Tick <strong>Split the viewport</strong>. The frame shows A on the left and B on the right.</li>
+<li>Move the split slider (0 to 1; default 0.5) to move the dividing line.</li>
+</ol>
+<p>Both versions must be stored, and the image must stay the same size, for the split to show.</p>
+<h2 id="timing">Timing</h2>
+<ul>
+<li><strong>Time a pass</strong> runs the whole image through the pipeline 20 times and reports the average in milliseconds per frame.</li>
+<li><strong>Time the curve</strong> does the same 5 times.</li>
+</ul>
+<p>The chip over the frame also shows the time the last update took.</p>
+<h2 id="controls-that-were-removed">Controls that were removed</h2>
+<p><strong>Controls that were read and never used</strong> lists three controls from an earlier version — Scene reference white, Highlight stress, and Zebra low / high — each tagged &quot;did nothing&quot;, with an explanation. They are not on the page any more.</p>
+<h2 id="result">Result</h2>
+<p>You can tell whether highlights or shadows are clipping, how saturated the output is, where the scene&#39;s luminance falls, and how two versions differ.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="map-a-frame.html"><span>Previous</span>Map a frame</a><a href="reference.html"><span>Next</span>Tone Mapping reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-three-scopes">The three scopes</a></li><li><a href="#the-false-colour-exposure-map">The false-colour exposure map</a></li><li><a href="#compare-two-versions-a-b">Compare two versions (A / B)</a></li><li><a href="#timing">Timing</a></li><li><a href="#controls-that-were-removed">Controls that were removed</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

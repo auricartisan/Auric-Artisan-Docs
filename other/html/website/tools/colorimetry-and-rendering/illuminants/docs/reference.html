@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Illuminants reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, readout, option and export in the Standard Illuminants lab, tab by tab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Illuminants</a>
+<h2>Illuminants documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Illuminants</a></li>
+<li><a href="adapt-between-white-points.html">Adapt colours between white points</a></li>
+<li><a href="compare-light-sources.html">Compare two light sources</a></li>
+<li><a href="estimate-uncertainty.html">Estimate measurement uncertainty</a></li>
+<li><a href="query-console.html">Query many illuminants at once</a></li>
+<li><a href="reference.html" aria-current="page">Illuminants reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Illuminants</a></li>
+<li><a href="faq.html">Illuminants FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Illuminants</a> &rsaquo; <a href="README.html">Illuminants documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Illuminants reference</h1>
+<p class="lede">Every control, readout, option and export in the Standard Illuminants lab, tab by tab.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/colorimetry/illuminants/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/illuminants/</a></p>
+<h2 id="lab-tab">Lab tab</h2>
+<h3 id="controls">Controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Source mode</strong></td><td>Chooses between a tabulated standard illuminant and a Planckian (blackbody) spectrum</td><td><strong>Standard</strong>, <strong>Blackbody</strong></td><td>Standard</td></tr>
+<tr><td><strong>Illuminant</strong></td><td>The standard illuminant to analyse</td><td>18 choices, listed below</td><td>CIE D65 (6504 K) — Daylight, sRGB</td></tr>
+<tr><td><strong>CCT</strong> slider and number box</td><td>Colour temperature of the blackbody source. Moving either switches to Blackbody mode</td><td>1,500 to 25,000 K in 50 K steps</td><td>6500</td></tr>
+<tr><td><strong>Link to select</strong></td><td>When ticked, choosing a standard illuminant also sets the CCT field to that illuminant&#39;s nominal CCT</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Reset to D65</strong></td><td>Returns to Standard mode, D65 and 6500 K</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Enable comparison</strong></td><td>Overlays a second illuminant on the SPD chart and fills the comparison table</td><td>On or off</td><td>Off</td></tr>
+<tr><td>Comparison illuminant list</td><td>The second illuminant</td><td>CIE A, D50, D55, D65, D75, Equal-energy E, F2, F7, F11</td><td>CIE A (2856 K)</td></tr>
+<tr><td><strong>Surface reflectance samples</strong></td><td>Which surfaces appear under Surface appearance</td><td>White, Gray, Red, Green, Blue, Skin, Yellow, Cyan</td><td>White, Gray, Red, Green, Skin on</td></tr>
+<tr><td><strong>Adapt from</strong></td><td>Source white point for the adaptation preview</td><td>D65, D50, D55, D75, A, E</td><td>D65</td></tr>
+<tr><td><strong>Swap</strong></td><td>Exchanges Adapt from and Adapt to</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Adapt to</strong></td><td>Destination white point</td><td>D65, D50, D55, D75, A, E</td><td>D50</td></tr>
+<tr><td>Transform chips</td><td>The chromatic adaptation transform</td><td>Bradford, CAT16, CAT02, Von Kries, Sharp, XYZ scaling, None</td><td>Bradford</td></tr>
+</tbody></table></div>
+<h3 id="the-18-standard-illuminants">The 18 standard illuminants</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice in the list</th><th>Kind</th></tr></thead>
+<tbody>
+<tr><td>CIE A (2856 K) — Incandescent</td><td>Tungsten, computed from Planck&#39;s law</td></tr>
+<tr><td>CIE D50 (5003 K) — Daylight, ICC PCS</td><td>Daylight, reconstructed from the CIE daylight basis</td></tr>
+<tr><td>CIE D55 (5503 K) — Daylight</td><td>Daylight</td></tr>
+<tr><td>CIE D65 (6504 K) — Daylight, sRGB</td><td>Daylight</td></tr>
+<tr><td>CIE D75 (7504 K) — North sky</td><td>Daylight</td></tr>
+<tr><td>Equal-energy E (5455 K)</td><td>Equal power at every wavelength</td></tr>
+<tr><td>F1 — Daylight fluorescent (6430 K)</td><td>Fluorescent, stand-in spectrum</td></tr>
+<tr><td>F2 — Cool white fluorescent (4230 K)</td><td>Fluorescent, stand-in</td></tr>
+<tr><td>F3 — White fluorescent (3450 K)</td><td>Fluorescent, stand-in</td></tr>
+<tr><td>F4 — Warm white fluorescent (2940 K)</td><td>Fluorescent, stand-in</td></tr>
+<tr><td>F5 — Daylight fluorescent (6350 K)</td><td>Fluorescent, stand-in</td></tr>
+<tr><td>F6 — Lite white fluorescent (4150 K)</td><td>Fluorescent, stand-in</td></tr>
+<tr><td>F7 — D65 simulator fluorescent (6500 K)</td><td>Broadband fluorescent, stand-in</td></tr>
+<tr><td>F8 — D50 simulator fluorescent (5000 K)</td><td>Broadband fluorescent, stand-in</td></tr>
+<tr><td>F9 — Cool white fluorescent (4150 K)</td><td>Broadband fluorescent, stand-in</td></tr>
+<tr><td>F10 — Narrow-band 3-phosphor (5000 K)</td><td>Three-band fluorescent, stand-in</td></tr>
+<tr><td>F11 — TL84 3-phosphor (4000 K)</td><td>Three-band fluorescent, stand-in</td></tr>
+<tr><td>F12 — TL83 3-phosphor (3000 K)</td><td>Three-band fluorescent, stand-in</td></tr>
+</tbody></table></div>
+<p>The kelvin figures in the list are nominal labels. The lab computes its own CCT from each spectrum.</p>
+<h3 id="readouts">Readouts</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Illuminant Summary</strong></td><td>A swatch of the white as sRGB, the name, the type and HEX, then <strong>CCT</strong>, <strong>Duv</strong>, <strong>CIE x</strong>, <strong>CIE y</strong>, <strong>CRI Ra</strong> and <strong>XYZ</strong> (Y normalised to 100)</td></tr>
+<tr><td><strong>SPD</strong> chart</td><td>Relative power from 380 to 780 nm at 5 nm. Gold is the selected light, blue the comparison. A faint rainbow fill marks the wavelength regions. Click to probe the nearest wavelength and its power</td></tr>
+<tr><td><strong>CRI</strong> chart</td><td>Bars for R1 to R14 and the Ra value (mean of R1 to R8). Reference: blackbody below 5,000 K, CIE daylight at or above. Computed on stand-in test samples</td></tr>
+<tr><td><strong>Surface appearance</strong></td><td>For each ticked surface: its colour under D65, its colour under the selected light after adaptation to D65, both HEX values and the ΔE₀₀ between them</td></tr>
+<tr><td><strong>Chromatic adaptation preview</strong></td><td>24 fixed colours (top) and their adapted versions (bottom), with a caption naming source, destination and method</td></tr>
+<tr><td><strong>Adaptation matrix details</strong></td><td>The transform&#39;s M matrix, the LMS scaling (destination ÷ source), and the source and destination white in LMS. With None selected it says no adaptation is applied</td></tr>
+<tr><td><strong>Illuminant comparison</strong></td><td>With comparison on: CCT, CRI Ra and CIE x, y for both lights, and the <strong>Metamerism Index (avg ΔE₀₀)</strong> over the 14 test samples</td></tr>
+</tbody></table></div>
+<p>Surface samples: White Paint, Neutral Gray, Saturated Red, Leaf Green, Sky Blue, Skin-like, Yellow Paint and Cyan Ink. They are simple educational reflectance curves, not measured materials.</p>
+<p>Each chart has a <strong>Fullscreen</strong> button; double-clicking the chart does the same.</p>
+<h2 id="chromaticity-tab">Chromaticity tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control or readout</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Plane</strong></td><td>The chromaticity diagram to draw</td><td><strong>1931 xy</strong>, <strong>1976 u′v′</strong>, <strong>1960 uv</strong></td><td>1931 xy</td></tr>
+<tr><td><strong>Planckian locus</strong></td><td>Draws the blackbody curve from 1,500 to 25,000 K</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Isotemperature lines</strong></td><td>Short lines across the locus at 2000, 2856, 4000, 5000, 6500, 10000 and 20000 K (needs the Planckian locus on)</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Daylight locus</strong></td><td>Draws CIE daylight chromaticities from 4,000 to 25,000 K</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>sRGB / P3 / Rec.2020</strong></td><td>Draws the three RGB primary triangles</td><td>On or off</td><td>Off</td></tr>
+<tr><td>Marks</td><td>A, D50, D65 and E in grey; the current light in gold, labelled</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Dominant wavelength</strong></td><td><strong>λ d</strong> (a minus sign means complementary wavelength), <strong>Purity</strong>, <strong>D uv</strong> and <strong>CCT</strong></td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p>The dominant wavelength is measured from the D65 reference white against the spectral locus. When the light is almost the reference white (purity below 0.2%), λ d shows a dash because it has no defined direction. CCT shows &quot;n/a&quot; when it is not valid (see Methods).</p>
+<p>MacAdam ellipses are not drawn. A note under the overlays explains that the measured ellipse parameters are not held.</p>
+<h2 id="uncertainty-tab">Uncertainty tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control or readout</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Input budget</strong></td><td>Six editable error terms</td><td>See <a href="estimate-uncertainty.html">Estimate measurement uncertainty</a></td><td>Preset spectroradiometer budget</td></tr>
+<tr><td><strong>Trials</strong></td><td>Number of Monte Carlo trials</td><td><strong>1k</strong>, <strong>4k</strong>, <strong>20k</strong></td><td>4k</td></tr>
+<tr><td><strong>Run the propagation</strong></td><td>Runs the simulation on the light selected in the Lab</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Expanded uncertainty, k = 2</strong></td><td>Table of Quantity, Value, u, U (k=2) and Relative for x, y, CCT and Duv</td><td>—</td><td>&quot;Not run yet.&quot;</td></tr>
+<tr><td><strong>Contribution to u(CCT)</strong></td><td>Share of the CCT uncertainty from each term</td><td>—</td><td>—</td></tr>
+<tr><td><strong>95% coverage region in u′v′</strong></td><td>Ellipse holding 95% of results; dashed ellipse at one standard deviation</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="methods-tab">Methods tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Observer</strong></td><td>The standard observer</td><td><strong>1931 2°</strong>; <strong>1964 10°</strong> is shown but switched off because its tables are not held</td><td>1931 2°</td></tr>
+<tr><td><strong>Interval</strong></td><td>Wavelength step used for integration</td><td><strong>1 nm</strong>, <strong>5 nm</strong>, <strong>10 nm</strong></td><td>5 nm</td></tr>
+<tr><td><strong>Interpolation</strong></td><td>How the source table is resampled onto the working grid</td><td><strong>Sprague</strong>, <strong>Linear</strong>, <strong>PCHIP</strong></td><td>Sprague</td></tr>
+</tbody></table></div>
+<p>The interval and interpolation apply to the Chromaticity, Uncertainty and Console readings and to the tables on this tab. The Lab tab&#39;s own readouts are always computed at 5 nm.</p>
+<p>Readouts:</p>
+<ul>
+<li><strong>What the pipeline is worth</strong> — a table with the current pipeline&#39;s x, y, CCT and Duv, then the change caused by switching to 1 nm, to 5 nm, to linear and to PCHIP. A dash means no change. The note beneath explains that a 5 nm table resampled onto a finer grid adds no information.</li>
+<li><strong>CCT method</strong> — the CCT and Duv by Ohno&#39;s method (named &quot;Ohno 2014, triangular&quot; or &quot;Ohno 2014, parabolic&quot; depending on how close the light is to the locus), with a validity note, and the older McCamy (1992) cubic for comparison, marked as having no validity test.</li>
+<li><strong>Rendition metrics</strong> — three cards, all switched off: TM-30-18, CIE 13.3 and CIE S 026. Each lists the dataset it would need.</li>
+</ul>
+<p>CCT validity notes: &quot;in range&quot; (Duv within ±0.02), &quot;far from the locus&quot; (Duv between ±0.02 and ±0.05), a note that CCT is not defined when Duv is beyond ±0.05, or &quot;outside 1000–100000 K&quot;. A CCT is reported as valid only between 1,000 and 100,000 K and with Duv within ±0.05.</p>
+<h2 id="console-tab">Console tab</h2>
+<p>See <a href="query-console.html">Query many illuminants at once</a> for the grammar.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Query</strong> box</td><td>The query text. <code>Ctrl</code> + <code>Enter</code> runs it</td></tr>
+<tr><td><strong>Run</strong></td><td>Runs the query</td></tr>
+<tr><td><strong>CSV</strong></td><td>Downloads <code>illuminants.csv</code></td></tr>
+<tr><td><strong>JSON</strong></td><td>Downloads <code>illuminants.json</code></td></tr>
+<tr><td><strong>Recipes</strong></td><td>Four ready-made queries; selecting one loads and runs it</td></tr>
+<tr><td><strong>Results</strong> table</td><td>One row per illuminant</td></tr>
+<tr><td><strong>Horizontal axis</strong>, <strong>Vertical axis</strong></td><td>Columns to plot in the scatter chart</td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<p>The register lists every dataset the lab touches, with its source, the interval it is tabulated at, its status and why it matters. The summary counts datasets, verbatim, computed and not held.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Verbatim</strong></td><td>The published table, copied</td></tr>
+<tr><td><strong>Computed</strong></td><td>Derived exactly from a defining formula or a verbatim table</td></tr>
+<tr><td><strong>Synthesised</strong></td><td>A stand-in that is not the published data; never reported as a standard value</td></tr>
+<tr><td><strong>Absent</strong></td><td>Not held; features that need it stay switched off</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Dataset</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Colour matching functions, 2° (CIE 1931)</td><td>Verbatim</td></tr>
+<tr><td>Colour matching functions, 10° (CIE 1964)</td><td>Absent</td></tr>
+<tr><td>Daylight eigenvectors S0 S1 S2</td><td>Verbatim</td></tr>
+<tr><td>Illuminant A</td><td>Computed</td></tr>
+<tr><td>Illuminants D50 D55 D65 D75</td><td>Computed</td></tr>
+<tr><td>Illuminant E</td><td>Computed</td></tr>
+<tr><td>Planckian radiators</td><td>Computed</td></tr>
+<tr><td>Fluorescent F1–F12</td><td>Synthesised</td></tr>
+<tr><td>Fluorescent FL3.1–FL3.15</td><td>Absent</td></tr>
+<tr><td>High pressure discharge HP1–HP5</td><td>Absent</td></tr>
+<tr><td>LED-B1–B5, BH1, RGB1, V1–V2</td><td>Absent</td></tr>
+<tr><td>Test colour samples 1–14</td><td>Synthesised</td></tr>
+<tr><td>Colour evaluation samples 1–99</td><td>Absent</td></tr>
+<tr><td>α-opic action spectra</td><td>Absent</td></tr>
+<tr><td>MacAdam ellipses</td><td>Absent</td></tr>
+</tbody></table></div>
+<p><strong>Switched off, and why</strong> lists the features that stay off: TM-30-18 Rf / Rg and the colour vector graphic; CIE 13.3 Ra and R1–R14 as standard values; melanopic EDI and the α-opic ratios; the CIE 1964 10° observer; F1–F12 as published illuminants; MacAdam ellipse overlays.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Export SPD CSV</strong></td><td>Downloads the selected light&#39;s spectrum</td><td><code>&lt;name&gt;-spd.csv</code> with columns <code>wavelength_nm</code> and <code>relative_power</code>, 380–780 nm at 5 nm</td></tr>
+<tr><td><strong>Export JSON</strong></td><td>Downloads the light&#39;s data</td><td><code>&lt;name&gt;.json</code> with the illuminant label, CCT, xy, XYZ, the CRI object (Ra and R1–R14) and the SPD</td></tr>
+<tr><td><strong>Export SPD PNG</strong></td><td>Saves the SPD chart as an image</td><td><code>&lt;name&gt;-spd.png</code></td></tr>
+<tr><td><strong>Copy white HEX</strong></td><td>Copies the sRGB HEX of the light&#39;s white to the clipboard</td><td>Text</td></tr>
+<tr><td><strong>Share URL</strong> field, <strong>Generate</strong>, <strong>Copy</strong></td><td>Builds and copies a link to the current settings</td><td>A URL</td></tr>
+<tr><td><strong>Generate comparison table</strong></td><td>Tables all 18 standard illuminants</td><td>Illum, CCT, x, y, CRI Ra and a white swatch</td></tr>
+</tbody></table></div>
+<p><code>&lt;name&gt;</code> is the illuminant (for example <code>D65</code>) or, in Blackbody mode, <code>BB_&lt;CCT&gt;K</code>.</p>
+<p>The share link stores the source mode, the illuminant (Standard mode) or the CCT (Blackbody mode), and the adaptation source, destination and method. It does not store the surface selection or the comparison settings.</p>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Standards</strong>, <strong>Formulas</strong>, <strong>Citations</strong>, <strong>Research notes</strong></td><td>Switch between the four sections. Each shows a count</td></tr>
+<tr><td><strong>Filter</strong></td><td>Searches all four sections at once and jumps to one with matches. <code>Esc</code> clears it</td></tr>
+<tr><td><strong>Status</strong> chips (Standards)</td><td><strong>All</strong>, <strong>Implemented</strong>, <strong>Stand-in</strong>, <strong>Cited only</strong></td></tr>
+<tr><td><strong>Expand</strong>, <strong>Collapse</strong> (Standards)</td><td>Open or close every row</td></tr>
+<tr><td><strong>Where it is used</strong> chips (Citations)</td><td><strong>All</strong>, <strong>Runs here</strong>, <strong>Data missing</strong>, <strong>Context only</strong></td></tr>
+<tr><td><strong>Open in the data register</strong> (inside a standard)</td><td>Jumps to the Data tab</td></tr>
+</tbody></table></div>
+<p>Each standard shows a badge read from the data register, the datasets it rests on, and any datasets it specifies that the lab does not hold. <strong>Formulas</strong> has eight sub-tabs: Planck Blackbody, CIE Daylight, SPD to XYZ, CRI Formula, TM-30 Overview, Bradford CAT, CCT Estimation and ΔE Formulas. These explain the background mathematics; where a formula (such as McCamy&#39;s CCT) is not what produces the readings, the Methods tab says which method does. <strong>Citations</strong> lists 22 sources, each marked Runs here, Data missing or Context only.</p>
+<h2 id="save-to-library">Save to Library</h2>
+<p>The floating <strong>Save to Library</strong> button stores a preset of the current settings in your Auric Artisan Library, so you can reopen it later.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="query-console.html"><span>Previous</span>Query many illuminants at once</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting Illuminants</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#lab-tab">Lab tab</a></li><li><a href="#chromaticity-tab">Chromaticity tab</a></li><li><a href="#uncertainty-tab">Uncertainty tab</a></li><li><a href="#methods-tab">Methods tab</a></li><li><a href="#console-tab">Console tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#save-to-library">Save to Library</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

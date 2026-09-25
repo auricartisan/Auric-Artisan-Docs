@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with LUT Lab — Auric Artisan Docs</title>
+<meta name="description" content="Open LUT Lab, find your way around its six tabs, and try a first look.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with LUT Lab</a></li>
+<li><a href="apply-a-look.html">Apply a look</a></li>
+<li><a href="load-a-cube-file.html">Load a .cube file</a></li>
+<li><a href="lut-concepts.html">LUT concepts</a></li>
+<li><a href="read-what-it-moved.html">Read what a transform moved</a></li>
+<li><a href="write-a-cube-file.html">Write a .cube file</a></li>
+<li><a href="reference.html">LUT Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting LUT Lab</a></li>
+<li><a href="faq.html">LUT Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>Getting started with LUT Lab</h1>
+<p class="lede">Open LUT Lab, find your way around its six tabs, and try a first look.</p>
+<h2 id="open-the-tool">Open the tool</h2>
+<p>Go to <a href="https://auricartisan.com/tool/general/tools/lut-lab/" rel="noopener">https://auricartisan.com/tool/general/tools/lut-lab/</a>. The page opens on the <strong>Lab</strong> tab, showing the <strong>Neutral wedge</strong> scene before and after the <strong>Teal and orange</strong> look.</p>
+<p>A note under the heading explains what the numbers on the page are measurements of. It has no close button on purpose.</p>
+<h2 id="the-screen-at-a-glance">The screen at a glance</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>The scene, the transform, the before and after pair, and what the transform moved</td></tr>
+<tr><td><strong>Method</strong></td><td>Five short explanations: sample order, interpolation, clipping, round trip and linear light</td></tr>
+<tr><td><strong>Looks</strong></td><td>A card for each built-in look, with what it is and what it does to a test strip</td></tr>
+<tr><td><strong>Data</strong></td><td>Every figure and what it rests on; the tab shows the number of entries (17)</td></tr>
+<tr><td><strong>Export</strong></td><td>Kind and size of the table, the file preview, and the save and copy buttons</td></tr>
+<tr><td><strong>Reference</strong></td><td>The published sources, marked by whether they run in the tool</td></tr>
+</tbody></table></div>
+<h3 id="the-lab-tab">The Lab tab</h3>
+<ul>
+<li><strong>The left-hand panel</strong> holds <strong>The scene</strong> (four scene buttons and a <strong>Drop an image</strong> box), <strong>The look</strong> (a menu, <strong>Strength</strong> and <strong>Tone-map exposure</strong>), <strong>A .cube file</strong> (a <strong>Drop a .cube</strong> box and <strong>Clear the file</strong>), and <strong>Show</strong> (the <strong>What the transform crushed</strong> switch and <strong>Copy a link to this setting</strong>).</li>
+<li><strong>The right-hand panel</strong> holds <strong>Before and after</strong>, a key to the clip overlay, the cards under <strong>What it moved</strong>, and the hue circle under <strong>Where it moved things to</strong> with its own cards.</li>
+</ul>
+<h2 id="try-a-first-look">Try a first look</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, select <strong>Colour patches</strong> under <strong>The scene</strong>. The pair shows 24 flat colour patches before and after.</li>
+<li>Open the menu under <strong>The look</strong> and choose <strong>Bleach bypass</strong>. The right-hand image loses colour and gains contrast. The label above the pair reads <strong>Bleach bypass</strong>.</li>
+<li>Move <strong>Strength</strong> to 50%. The look is blended halfway with the original.</li>
+<li>Read <strong>What it moved</strong>. <strong>mean ΔE₀₀</strong> is the average colour difference between before and after; <strong>clipped</strong> is the share of pixels driven to pure white or black.</li>
+<li>Look at the hue circle. Each hollow dot is a test colour before the look; the filled dot joined to it is where the look moved it.</li>
+<li>Open the <strong>Export</strong> tab. Leave <strong>Kind</strong> on <strong>3D cube</strong> and <strong>Size</strong> on 33, and select <strong>Save the .cube</strong>. Your browser downloads <code>auric-bleach-bypass-33.cube</code>.</li>
+</ol>
+<p>You now have a <code>.cube</code> of the look at half strength, ready to load in a program that reads <code>.cube</code> files.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li>To understand sizes, domains and why the file header mentions 8 bits, read <a href="lut-concepts.html">LUT concepts</a>.</li>
+<li>To test a <code>.cube</code> you already have, read <a href="load-a-cube-file.html">Load a .cube file</a>.</li>
+<li>To test on your own picture, see <a href="apply-a-look.html">Apply a look</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>LUT Lab documentation</a><a href="apply-a-look.html"><span>Next</span>Apply a look</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-tool">Open the tool</a></li><li><a href="#the-screen-at-a-glance">The screen at a glance</a></li><li><a href="#try-a-first-look">Try a first look</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

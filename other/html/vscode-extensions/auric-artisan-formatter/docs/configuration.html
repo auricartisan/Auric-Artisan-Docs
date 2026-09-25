@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configuration — Auric Artisan Docs</title>
+<meta name="description" content="Configure Auric Artisan Formatter with presets, configuration files, per-language and per-file overrides, .editorconfig, Prettier settings, inline directives and ignore files.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html" aria-current="page">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Configuration</h1>
+<p class="lede">Configure Auric Artisan Formatter with presets, configuration files, per-language and per-file overrides, .editorconfig, Prettier settings, inline directives and ignore files.</p>
+<p>The formatter has 391 options (see the <a href="options-reference.html">options reference</a>). You rarely need more than a handful: start from a preset and set only what you disagree with.</p>
+<h2 id="where-options-come-from">Where options come from</h2>
+<p>From lowest to highest precedence:</p>
+<ol>
+<li><strong>A preset</strong> — <code>&quot;preset&quot;: &quot;prettier&quot;</code> and twelve others. See <a href="presets.html">Presets</a>.</li>
+<li><strong>A configuration file</strong> — see the list below.</li>
+<li><strong><code>.editorconfig</code></strong> — for the options it can express.</li>
+<li><strong>VS Code settings</strong> under <code>auricFormatter.*</code>, a command-line flag, or an inline directive in the file itself.</li>
+</ol>
+<p>Inside a configuration file, <code>languages</code> (by language id) and <code>overrides</code> (by file pattern) beat the file&#39;s top-level values.</p>
+<p><strong>Auric Formatter: Explain Formatting Decisions for This File</strong> shows which layer set each option for the current file.</p>
+<h2 id="configuration-files">Configuration files</h2>
+<p>The formatter looks for the first of these files, searching from the file&#39;s folder upward. Within a folder, this order is the precedence:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td><code>.auricformatrc</code></td><td>JSON or YAML, detected automatically</td></tr>
+<tr><td><code>.auricformatrc.json</code></td><td>JSON</td></tr>
+<tr><td><code>.auricformatrc.yaml</code>, <code>.auricformatrc.yml</code></td><td>YAML</td></tr>
+<tr><td><code>.auricformatrc.js</code>, <code>.auricformatrc.cjs</code></td><td>JavaScript (CommonJS)</td></tr>
+<tr><td><code>.auricformat.config.js</code>, <code>.auricformat.config.cjs</code></td><td>JavaScript (CommonJS)</td></tr>
+<tr><td><code>auric.format.json</code></td><td>JSON</td></tr>
+<tr><td><code>package.json</code></td><td>Under an <code>auricFormatter</code> (or <code>auric-formatter</code>) key</td></tr>
+<tr><td><code>.prettierrc</code>, <code>.prettierrc.json</code>, <code>.prettierrc.yaml</code>, <code>.prettierrc.yml</code>, <code>.prettierrc.js</code>, <code>prettier.config.js</code></td><td>Prettier configuration, read for compatibility</td></tr>
+<tr><td><code>package.json</code></td><td>Under a <code>prettier</code> key</td></tr>
+</tbody></table></div>
+<p>Auric files come first, so adding one to a Prettier project is additive; Prettier files come last, so an existing project keeps working untouched. JSON configuration files get validation and completion in VS Code for <code>.auricformatrc</code>, <code>.auricformatrc.json</code> and <code>auric.format.json</code>.</p>
+<p>JavaScript configuration files are not run in an untrusted workspace. A JavaScript file written as an ES module must be renamed to <code>.cjs</code>, converted to CommonJS, or replaced with <code>.auricformatrc.json</code>.</p>
+<h3 id="an-example">An example</h3>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;prettier&quot;,
+  &quot;printWidth&quot;: 100,
+  &quot;languages&quot;: {
+    &quot;markdown&quot;: { &quot;proseWrap&quot;: &quot;always&quot; }
+  },
+  &quot;overrides&quot;: [
+    { &quot;files&quot;: &quot;**/*.test.ts&quot;, &quot;options&quot;: { &quot;printWidth&quot;: 200 } }
+  ]
+}</code></pre>
+<ul>
+<li><code>preset</code> — the starting point.</li>
+<li>Top-level options — apply to every file.</li>
+<li><code>languages</code> — options for one language id.</li>
+<li><code>overrides</code> — options for files matching a glob.</li>
+</ul>
+<h2 id="create-a-configuration-file">Create a configuration file</h2>
+<ul>
+<li><strong>Auric Formatter: Generate a Configuration File</strong> writes <code>.auricformatrc</code> in the first workspace folder, with your current preset and the options you have set in VS Code settings, and opens it.</li>
+<li><strong>Copy config</strong> in Formatter Studio copies only the options you changed, ready to paste.</li>
+</ul>
+<h2 id="choose-a-preset">Choose a preset</h2>
+<ul>
+<li><strong>Auric Formatter: Switch Formatting Preset</strong> — pick from the 13 presets (<strong>Every option you set yourself still wins over the preset</strong>). It saves <code>auricFormatter.preset</code> in the workspace settings (or user settings with no folder open) and re-runs the workspace scan.</li>
+<li>Or write <code>&quot;preset&quot;: &quot;&lt;name&gt;&quot;</code> in a configuration file; that wins over the VS Code setting.</li>
+<li>Or put <code>@auric-preset &lt;name&gt;</code> in a file&#39;s leading comment for that file.</li>
+</ul>
+<h2 id="coming-from-prettier">Coming from Prettier</h2>
+<p>If a project only has Prettier configuration, the formatter reads it and adopts the <code>prettier</code> preset automatically, so the output matches Prettier 3 at its defaults with every Auric-only enhancement off.</p>
+<p><strong>Auric Formatter: Import Settings From Prettier</strong> finds the first Prettier configuration in the workspace (outside <code>node_modules</code>) and opens an unsaved JSONC document containing the equivalent Auric configuration, starting from the <code>prettier</code> preset, with comments. Save it as <code>.auricformatrc</code> when you are happy. If there is no Prettier configuration: <strong>No Prettier configuration found in this workspace.</strong></p>
+<p><code>.prettierignore</code> and Prettier&#39;s <code>prettier-ignore</code> comments are honoured too.</p>
+<h2 id="editorconfig">.editorconfig</h2>
+<p>With <code>auricFormatter.editorconfig</code> on (the default), the formatter reads <code>.editorconfig</code> and uses <code>indent_style</code>, <code>indent_size</code>, <code>end_of_line</code>, <code>max_line_length</code> and the final-newline settings.</p>
+<h2 id="vs-code-settings">VS Code settings</h2>
+<p>Every option is also a VS Code setting, <code>auricFormatter.&lt;option&gt;</code>, with resource scope, so it can be set for the user, the workspace or one folder of a multi-root workspace. Search Settings for <code>auricFormatter</code>.</p>
+<h2 id="inline-directives">Inline directives</h2>
+<p>Put directives in a comment, in the file&#39;s own comment syntax. File-level directives only count at the top of the file, before any code (a byte order mark, shebang, XML declaration, front matter and earlier comments are allowed before them). A directive must be the whole content of its comment line, optionally followed by a reason, so a comment that merely mentions one does nothing.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Directive</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>auric-format-ignore</code></td><td>Leave the next node unformatted</td></tr>
+<tr><td><code>auric-format-ignore-file</code></td><td>Leave the whole file unformatted</td></tr>
+<tr><td><code>auric-format-ignore-start</code> … <code>auric-format-ignore-end</code></td><td>Leave everything between unformatted</td></tr>
+<tr><td><code>auric-format-off</code> … <code>auric-format-on</code></td><td>The same, other spelling</td></tr>
+<tr><td><code>@auric printWidth=120 singleQuote</code></td><td>Options for this file only</td></tr>
+<tr><td><code>@auric-preset compact</code></td><td>A preset for this file only</td></tr>
+<tr><td><code>@format</code></td><td>Marks the file as opted in when <code>requirePragma</code> is on</td></tr>
+</tbody></table></div>
+<p>Each directive also works with the short <code>auric</code> spelling and the <code>prettier</code> spelling (such as <code>prettier-ignore</code>). <code>@auric-format</code>, <code>@auric</code> and <code>@prettier</code> also mark a file as opted in.</p>
+<p>Related options: <code>auricFormatter.respectIgnoreComments</code> (honour ignore comments; on by default), <code>auricFormatter.requirePragma</code> (format only files with the pragma), <code>auricFormatter.insertPragma</code> (add <code>@format</code> to formatted files) and <code>auricFormatter.pragmaKeyword</code>.</p>
+<p>A malformed option value in a directive becomes a warning; the directive is dropped and the file still formats.</p>
+<h2 id="ignore-files">Ignore files</h2>
+<ul>
+<li><code>.auricformatignore</code> uses <code>.gitignore</code> syntax. Files it matches are not formatted by the editor, the scan or the command line.</li>
+<li><code>.prettierignore</code> is honoured too.</li>
+<li>The command line can use a different file with <code>--ignore-path</code>, or none with <code>--no-ignore</code>.</li>
+</ul>
+<h2 id="plugins">Plugins</h2>
+<p><code>auricFormatter.plugins</code> lists additional formatter plugins by module path or registered name. Plugin languages go through the same option handling and safety gate as the built-ins, and a plugin that fails disables itself with a warning. Plugins are not run in an untrusted workspace.</p>
+<h2 id="clear-the-cache">Clear the cache</h2>
+<p>The formatter caches configuration it has read. If a change to a configuration file does not seem to apply, run <strong>Auric Formatter: Clear the Configuration Cache</strong> (<strong>Auric Formatter: configuration cache cleared.</strong>).</p>
+<p>When your configuration is in place, <strong>Explain Formatting Decisions</strong> for any file lists your file as the source of the options you set.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="command-line.html"><span>Previous</span>Command line and CI</a><a href="format-and-format-on-save.html"><span>Next</span>Format files and format on save</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#where-options-come-from">Where options come from</a></li><li><a href="#configuration-files">Configuration files</a></li><li><a href="#create-a-configuration-file">Create a configuration file</a></li><li><a href="#choose-a-preset">Choose a preset</a></li><li><a href="#coming-from-prettier">Coming from Prettier</a></li><li><a href="#editorconfig">.editorconfig</a></li><li><a href="#vs-code-settings">VS Code settings</a></li><li><a href="#inline-directives">Inline directives</a></li><li><a href="#ignore-files">Ignore files</a></li><li><a href="#plugins">Plugins</a></li><li><a href="#clear-the-cache">Clear the cache</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

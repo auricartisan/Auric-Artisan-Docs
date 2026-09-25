@@ -1,0 +1,17 @@
+---
+title: Gamut Lab — Shortcuts
+description: Keyboard and mouse shortcuts in the Gamut Lab.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Gamut Lab shortcuts
+
+The Gamut Lab has no single-key shortcuts of its own.
+
+| Shortcut | Where | What it does |
+| --- | --- | --- |
+| Click or drag | Chromaticity diagram | Moves the probe and updates the vertex readout |
+| Double-click | A chart | Opens it full screen |
+| `Esc` | Full-screen view | Closes it |
+| `Esc` | Reference › Filter | Clears the filter |

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Color troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for Auric Color's hovers, swatches, pickers and contrast diagnostics.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="reference.html">Auric Color reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Auric Color troubleshooting</a></li>
+<li><a href="faq.html">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Auric Color troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for Auric Color's hovers, swatches, pickers and contrast diagnostics.</p>
+<p>For problems shared by all Studio extensions, see the <a href="../../docs/troubleshooting.html">Studio troubleshooting page</a>.</p>
+<h2 id="pickers-and-decorators">Pickers and decorators</h2>
+<h3 id="vs-codes-own-colour-squares-and-picker-disappeared-everywhere">VS Code&#39;s own colour squares and picker disappeared everywhere</h3>
+<p><strong>Why:</strong> In its default Auric mode, Auric Color turns off <code>editor.colorDecorators</code> in your user settings so two pickers do not stack.</p>
+<p><strong>What to do:</strong> If you prefer VS Code&#39;s picker, run <strong>Auric Artisan: Restore native color picker (use VS Code&#39;s)</strong>. See <a href="picker-modes.html">Picker modes</a>.</p>
+<h3 id="i-turned-editorcolordecorators-back-on-and-it-switched-off-again">I turned editor.colorDecorators back on, and it switched off again</h3>
+<p><strong>Why:</strong> While Auric mode is active, Auric Color re-applies its choice whenever the setting drifts, including after Settings Sync or another extension changes it.</p>
+<p><strong>What to do:</strong> Change the mode instead of the setting: run <strong>Choose Color Picker Mode</strong> and pick <strong>VS Code native picker</strong>, or <strong>Restore native color picker (use VS Code&#39;s)</strong>.</p>
+<h3 id="vs-codes-colour-decorators-are-still-off-after-uninstalling-auric-color">VS Code&#39;s colour decorators are still off after uninstalling Auric Color</h3>
+<p><strong>Why:</strong> Uninstalling does not reset the setting Auric Color changed.</p>
+<p><strong>What to do:</strong> Set <code>&quot;editor.colorDecorators&quot;: true</code> in your user settings (and in any workspace settings Auric Color overrode).</p>
+<h3 id="two-pickers-appear-at-once">Two pickers appear at once</h3>
+<p><strong>Why:</strong> Another extension provides its own colour decorators or picker, or <code>colorPicker.nativeHoverPicker</code> is on while you expect Auric&#39;s own picker.</p>
+<p><strong>What to do:</strong> Turn off the other extension&#39;s colour feature, or run <strong>Disable native color picker (use Auric Artisan)</strong>.</p>
+<h3 id="no-swatches-appear">No swatches appear</h3>
+<p><strong>Why:</strong> One of these applies: the mode is <strong>VS Code native picker</strong>; <code>colorPicker.nativeHoverPicker</code> is on; <code>colorPicker.swatches</code> is off; the file is larger than 1 MB; or VS Code does not recognise the file&#39;s language (install a language extension for it).</p>
+<p><strong>What to do:</strong> Check the three settings in <a href="reference.html#settings">Reference</a>, or run <strong>Disable native color picker (use Auric Artisan)</strong>.</p>
+<h3 id="clicking-a-colour-does-nothing">Clicking a colour does nothing</h3>
+<p><strong>Why:</strong> <code>colorPicker.clickAction</code> is <code>off</code>, the mode is <strong>VS Code native picker</strong>, or you clicked with several cursors or a selection.</p>
+<p><strong>What to do:</strong> Set <strong>Color picker</strong> to <strong>Inline hover picker</strong> or <strong>Spectrum picker panel</strong> in Studio › Settings, or press <code>Ctrl</code> + <code>Alt</code> + <code>C</code>.</p>
+<h3 id="the-hover-shows-a-finding-instead-of-the-colour-card">The hover shows a finding instead of the colour card</h3>
+<p><strong>Why:</strong> When a line has an Auric finding, the finding&#39;s card takes priority over the colour card.</p>
+<p><strong>What to do:</strong> Use <strong>Pick / edit color</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>C</code>) to edit the colour, or fix the finding first.</p>
+<h3 id="my-colour-is-not-detected">My colour is not detected</h3>
+<p><strong>Why:</strong> The format is not one Auric Color detects: for example an integer such as <code>0xFF00FF</code>, a custom property name, or a colour built at runtime.</p>
+<p><strong>What to do:</strong> Write the colour as hex, <code>rgb()</code>, <code>hsl()</code>, <code>hwb()</code>, <code>lab()</code>, <code>lch()</code>, <code>oklab()</code>, <code>oklch()</code>, <code>color()</code> or a CSS name. See <a href="hover-and-swatches.html#detected-colour-formats">Detected colour formats</a>.</p>
+<h3 id="the-eyedropper-says-eyedropper-unavailable-here">The eyedropper says &quot;Eyedropper unavailable here&quot;</h3>
+<p><strong>Why:</strong> The screen colour picker is not available in this VS Code window on your system.</p>
+<p><strong>What to do:</strong> Type or paste the colour value instead.</p>
+<h3 id="the-picker-wrote-a-different-format-than-i-expected">The picker wrote a different format than I expected</h3>
+<p><strong>Why:</strong> The picker writes in the tab you last chose. HSV is not a CSS format, so it writes hex.</p>
+<p><strong>What to do:</strong> Choose the format tab you want before applying. The hover&#39;s tiles and <strong>Type exact…</strong> always keep the token&#39;s own format.</p>
+<h3 id="apply-to-all-matches-is-missing">Apply to all matches is missing</h3>
+<p><strong>Why:</strong> The checkbox appears only when the same colour occurs more than once in the file.</p>
+<h2 id="contrast-diagnostics">Contrast diagnostics</h2>
+<h3 id="no-contrast-underlines-appear">No contrast underlines appear</h3>
+<p><strong>Why:</strong> One of these applies:</p>
+<ul>
+<li><code>contrast.enabled</code> is off;</li>
+<li>the file type is not checked (see <a href="contrast-diagnostics.html#where-contrast-is-checked">Where contrast is checked</a>);</li>
+<li>the text and background are in different files or set at runtime, so no pair can be resolved;</li>
+<li>Auric Accessibility is installed and its <code>auricA11y.contrast.enabled</code> is off (it owns contrast diagnostics then).</li>
+</ul>
+<p><strong>What to do:</strong> Check the setting of the extension that owns contrast, and see <a href="../../others/limits-and-accuracy.html#contrast-checks">Limits and accuracy</a>.</p>
+<h3 id="changing-auriccolorcontrast-settings-has-no-effect">Changing auricColor.contrast settings has no effect</h3>
+<p><strong>Why:</strong> Auric Accessibility is installed, so it owns contrast diagnostics and reads <code>auricA11y.contrast.*</code>.</p>
+<p><strong>What to do:</strong> Change the <code>auricA11y.contrast.*</code> keys, or use Studio › Settings › <strong>Contrast</strong>, which writes to the right extension.</p>
+<h3 id="many-possible-low-contrast-hints">Many &quot;Possible low contrast&quot; hints</h3>
+<p><strong>Why:</strong> Rules that set only a text colour are graded against the page background declared in the same file, which may not be the surface they really sit on.</p>
+<p><strong>What to do:</strong> Check the real background. If the hints are not useful for your project, turn off <code>contrast.checkPageBackground</code>.</p>
+<h3 id="the-quick-fix-only-offers-open-in-the-contrast-studio">The quick fix only offers &quot;Open in the Contrast Studio&quot;</h3>
+<p><strong>Why:</strong> The colour is a mix, a relative colour, text faded with <code>opacity</code>, or a dark-theme value shared with the light theme. A one-click rewrite could change more than this text.</p>
+<p><strong>What to do:</strong> Use the <a href="../../docs/contrast-studio.html">Contrast Studio</a> to choose and apply a colour.</p>
+<h3 id="fix-all-says-nothing-to-change">Fix All says &quot;nothing to change&quot;</h3>
+<p><strong>Why:</strong> The failing pairs are already at their best-effort fix: no colour of that hue reaches the target on that background, or the remaining pairs cannot be fixed with a one-click rewrite.</p>
+<p><strong>What to do:</strong> Change the background or the hue in the Contrast Studio, or classify deliberate brand colours as branding.</p>
+<h3 id="fix-all-did-not-fix-apca-findings">Fix All did not fix APCA findings</h3>
+<p><strong>Why:</strong> <strong>Fix All Contrast Issues in File</strong> raises pairs to their WCAG 2.x target.</p>
+<p><strong>What to do:</strong> Use the <strong>Fix APCA contrast</strong> quick fix on each APCA finding.</p>
+<h2 id="studio-tools">Studio tools</h2>
+<h3 id="load-from-scan-says-run-a-project-scan-first">Load from scan says &quot;Run a project scan first&quot;</h3>
+<p><strong>Why:</strong> The Studio has no scan result yet. Auric Color alone has no scan command; a result appears once the Studio has graded the workspace in the background while you edit.</p>
+<p><strong>What to do:</strong> Edit a stylesheet and try again, install Auric Accessibility or Auric Code Health and scan, or enter the brand colours by hand.</p>
+<h3 id="my-brand-colours-were-reset">My brand colours were reset</h3>
+<p><strong>Why:</strong> The Brand tool keeps its colours only while the Studio tab is open.</p>
+<p><strong>What to do:</strong> Use <strong>Export CSS vars</strong> or <strong>Export JSON</strong> to keep them.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Auric Color reference</a><a href="faq.html"><span>Next</span>Auric Color FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#pickers-and-decorators">Pickers and decorators</a></li><li><a href="#contrast-diagnostics">Contrast diagnostics</a></li><li><a href="#studio-tools">Studio tools</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

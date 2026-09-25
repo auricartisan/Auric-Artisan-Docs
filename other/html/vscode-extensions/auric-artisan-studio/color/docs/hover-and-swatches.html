@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hover and swatches — Auric Artisan Docs</title>
+<meta name="description" content="Every part of Auric Color's colour hover and inline swatches, which colour formats are detected, and which languages are supported.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html" aria-current="page">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="reference.html">Auric Color reference</a></li>
+<li><a href="troubleshooting.html">Auric Color troubleshooting</a></li>
+<li><a href="faq.html">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Hover and swatches</h1>
+<p class="lede">Every part of Auric Color's colour hover and inline swatches, which colour formats are detected, and which languages are supported.</p>
+<p>Auric Color finds colour literals in your code, draws a swatch before each one, and shows a detailed hover when you point at one.</p>
+<h2 id="supported-languages">Supported languages</h2>
+<p>The hover, swatches and pickers work in these VS Code languages. Some of them need a language extension installed so VS Code recognises the file type.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Languages</th></tr></thead>
+<tbody>
+<tr><td>Stylesheets</td><td>CSS, SCSS, Sass, Less, PostCSS, Stylus</td></tr>
+<tr><td>Web and markup</td><td>HTML, Vue, Svelte, Astro, PHP, XML, Markdown</td></tr>
+<tr><td>JavaScript family</td><td>JavaScript, TypeScript, JavaScript React (JSX), TypeScript React (TSX), CoffeeScript</td></tr>
+<tr><td>Data and config</td><td>JSON, JSON with Comments, JSON5, HJSON, YAML, TOML, INI, Properties</td></tr>
+<tr><td>Templates</td><td>Handlebars, Pug, Jade, EJS, Twig, Razor, Blade</td></tr>
+<tr><td>Systems and apps</td><td>C, C++, C#, Objective-C, Objective-C++, Go, Rust, Java, Kotlin, Swift, Dart, Scala, Groovy, F#, Visual Basic</td></tr>
+<tr><td>Scripting</td><td>Python, Ruby, Lua, R, Julia, Perl, Shell script, PowerShell</td></tr>
+<tr><td>Functional and others</td><td>Haskell, Elixir, Erlang, Clojure, Solidity, GraphQL, SQL, Dockerfile, Makefile</td></tr>
+</tbody></table></div>
+<h2 id="detected-colour-formats">Detected colour formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td>Hex, 3, 4, 6 or 8 digits</td><td><code>#abc</code>, <code>#abcd</code>, <code>#1d4ed8</code>, <code>#1d4ed880</code></td></tr>
+<tr><td><code>rgb()</code> and <code>rgba()</code></td><td><code>rgb(29 78 216)</code>, <code>rgba(29, 78, 216, 0.5)</code></td></tr>
+<tr><td><code>hsl()</code> and <code>hsla()</code></td><td><code>hsl(221 76% 48%)</code></td></tr>
+<tr><td><code>hwb()</code></td><td><code>hwb(221 11% 15%)</code></td></tr>
+<tr><td><code>lab()</code> and <code>lch()</code></td><td><code>lab(35 21 -71)</code>, <code>lch(35 74 287)</code></td></tr>
+<tr><td><code>oklab()</code> and <code>oklch()</code></td><td><code>oklch(0.49 0.22 264)</code></td></tr>
+<tr><td><code>color()</code></td><td><code>color(display-p3 0.2 0.3 0.85)</code></td></tr>
+<tr><td>CSS named colours (148)</td><td><code>rebeccapurple</code>, <code>tomato</code></td></tr>
+</tbody></table></div>
+<p>Not detected as colours: integer literals such as <code>0xFF00FF</code>, custom property names such as <code>var(--brand)</code>, and <code>color-mix()</code> as a whole (the colours inside it are detected individually).</p>
+<h2 id="swatches">Swatches</h2>
+<p>In the default Auric mode, a small square in the colour appears before every colour literal, and the literal gets a faint tinted outline. Swatches appear when:</p>
+<ul>
+<li>the picker mode is <strong>Auric</strong> (<code>auricColor.colorPicker.mode</code> is <code>auric</code>);</li>
+<li><code>auricColor.colorPicker.nativeHoverPicker</code> is off;</li>
+<li><code>auricColor.colorPicker.swatches</code> is on (the default).</li>
+</ul>
+<p>Swatches are not drawn in files larger than 1 MB, and at most 5,000 colours per file are decorated.</p>
+<p><strong>Clicking</strong> a colour literal (with a single cursor and no selection) does what <code>auricColor.colorPicker.clickAction</code> says: show the hover picker (default), open the full picker panel, or nothing. See <a href="color-picker.html">The colour pickers</a>.</p>
+<h2 id="the-colour-hover">The colour hover</h2>
+<p>Point at a colour literal to open the hover. In Auric Color alone, pointing anywhere else on a line that contains a colour shows the hover for the first colour on that line. With Auric Accessibility installed, pointing at an element or rule that is not a colour shows the Inspect card instead.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> When the line has an Auric finding (for example a contrast failure), the hover shows the finding&#39;s card instead of the colour card. To see the colour card on such a line, use the full picker (<code>Ctrl</code> + <code>Alt</code> + <code>C</code>).</p>
+</blockquote>
+<p>The hover has these parts, top to bottom.</p>
+<h3 id="header">Header</h3>
+<p>A swatch, the hex value, the original text when it differs (for example <code>oklch(0.49 0.22 264)</code>), and the nearest CSS colour name. The name is marked <code>≈</code> when it is only close, for example <code>≈ royalblue</code>.</p>
+<h3 id="actions">Actions</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Link</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Type exact…</strong></td><td>Asks for an exact value (hex, <code>rgb()</code>, <code>hsl()</code>, <code>oklch()</code>, <code>lch()</code> or a CSS colour name) and writes it back in the token&#39;s format. An invalid value shows <strong>Not a recognized color value.</strong></td></tr>
+<tr><td><strong>Spectrum picker</strong></td><td>Opens the full picker for this colour.</td></tr>
+<tr><td><strong>Picker mode</strong></td><td>Runs <strong>Choose Color Picker Mode</strong>.</td></tr>
+</tbody></table></div>
+<h3 id="picker-rows">Picker rows</h3>
+<p>Every tile applies its colour to the token immediately, in the token&#39;s own format, and the hover reopens on the new value.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Tiles</th></tr></thead>
+<tbody>
+<tr><td><strong>Spectrum</strong></td><td>7 rows of 18 tiles: saturation across, brightness down, at the colour&#39;s hue. The tile nearest the current colour has a ring.</td></tr>
+<tr><td><strong>Hue</strong></td><td>24 tiles around the colour wheel.</td></tr>
+<tr><td><strong>Alpha</strong></td><td>12 tiles from fully opaque down to 8% opacity. Hex tokens become 8-digit hex; <code>rgb()</code> and <code>hsl()</code> get an alpha value.</td></tr>
+<tr><td><strong>Shades</strong></td><td>The colour&#39;s 11-step OKLCH shade scale, 50 to 950.</td></tr>
+<tr><td><strong>Fix</strong></td><td>Versions of the colour that reach AA (4.5:1) and AAA (7:1) on white, and AA and AAA on black, keeping the hue.</td></tr>
+<tr><td><strong>Brand</strong></td><td>Nine fixed brand swatches.</td></tr>
+<tr><td><strong>Recent</strong></td><td>Up to 12 colours you applied recently.</td></tr>
+</tbody></table></div>
+<p>When VS Code&#39;s native picker is shown inside the hover (<code>colorPicker.nativeHoverPicker</code> on), the Spectrum, Hue and Alpha rows are left out because VS Code&#39;s sliders appear above the hover. In <strong>VS Code native picker</strong> mode, the hover shows only <strong>Shades</strong> and <strong>Brand</strong>.</p>
+<h3 id="values">Values</h3>
+<ul>
+<li><code>RGB</code> red, green and blue from 0 to 255;</li>
+<li><code>HSL</code> hue in degrees, saturation and lightness in percent;</li>
+<li><code>OKLCH</code> lightness, chroma and hue;</li>
+<li><code>A</code> alpha, when the colour is translucent;</li>
+<li><code>P3</code> the same colour as <code>color(display-p3 …)</code>, marked <em>(wide gamut)</em>.</li>
+</ul>
+<p>When the literal is outside the sRGB range (for example a vivid <code>oklch()</code> or <code>color(display-p3 …)</code>), a warning explains that it is shown, and its contrast measured, as the gamut-mapped sRGB colour a standard screen paints.</p>
+<h3 id="contrast">Contrast</h3>
+<p>The colour&#39;s contrast on white and on black, each with a pass or fail icon, the ratio and the level (<strong>AAA</strong>, <strong>AA</strong>, <strong>AA Large</strong> or <strong>Fail</strong>), and <strong>text → white</strong> or <strong>text → black</strong>, whichever reads better on this colour as a background.</p>
+<h3 id="colour-vision">Colour vision</h3>
+<p>The colour next to how it appears with protanopia, deuteranopia and tritanopia (<em>protan · deutan · tritan</em>).</p>
+<h3 id="open-in-studio">Open in Studio</h3>
+<p>Links that open the colour in a Studio tool: <strong>Shades</strong>, <strong>Palette</strong>, <strong>Vision</strong> and <strong>Brand</strong>.</p>
+<h2 id="turn-the-hover-off">Turn the hover off</h2>
+<p>Set <code>auricColor.hover.enabled</code> to <code>false</code>. Clicking a colour then opens the full picker panel instead of the hover. Contrast and issue hovers are not affected.</p>
+<h2 id="recent-colours">Recent colours</h2>
+<p>Colours you apply from the hover tiles, <strong>Type exact…</strong> and the pickers are added to your recent colours (up to 12, newest first). They appear in the hover&#39;s <strong>Recent</strong> row, the Overview, the Command Center and the pickers.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="contrast-diagnostics.html"><span>Previous</span>Contrast diagnostics</a><a href="palettes-and-shades.html"><span>Next</span>Palettes and shades</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#supported-languages">Supported languages</a></li><li><a href="#detected-colour-formats">Detected colour formats</a></li><li><a href="#swatches">Swatches</a></li><li><a href="#the-colour-hover">The colour hover</a></li><li><a href="#turn-the-hover-off">Turn the hover off</a></li><li><a href="#recent-colours">Recent colours</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

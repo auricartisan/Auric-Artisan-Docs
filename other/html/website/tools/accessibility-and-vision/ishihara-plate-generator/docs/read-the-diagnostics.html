@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read the diagnostics — Auric Artisan Docs</title>
+<meta name="description" content="Understand each plate's quality score, its four weighted components, and how well it hides from each colour-vision deficiency.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Ishihara Plate Generator</a>
+<h2>Ishihara Plate Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Ishihara Plate Generator</a></li>
+<li><a href="build-the-standard-38.html">Build the standard 38</a></li>
+<li><a href="export-plates.html">Export plates</a></li>
+<li><a href="generate-plates.html">Generate plates</a></li>
+<li><a href="read-the-diagnostics.html" aria-current="page">Read the diagnostics</a></li>
+<li><a href="reference.html">Ishihara Plate Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Ishihara Plate Generator</a></li>
+<li><a href="faq.html">Ishihara Plate Generator FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Ishihara Plate Generator</a> &rsaquo; <a href="README.html">Ishihara Plate Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Read the diagnostics</h1>
+<p class="lede">Understand each plate's quality score, its four weighted components, and how well it hides from each colour-vision deficiency.</p>
+<p>A good plate does two things at once: its figure is easy to see with typical colour vision, and it disappears for the deficiency it is meant to catch. The <strong>Diagnostics</strong> tab shows how well each plate does both.</p>
+<p>&quot;One number hides four measurements, so the score is shown taken apart. A plate fails when it is either invisible to normal vision or still legible to the deficiency it is meant to catch.&quot;</p>
+<h2 id="how-colour-distance-is-measured">How colour distance is measured</h2>
+<p>The generator works in <strong>OKLab</strong>, a colour space designed so that equal distances look roughly equally different. <strong>ΔE</strong> here is the straight-line distance between two colours in OKLab. On this scale, 0 means identical and a few hundredths is already a visible difference; figures such as 0.150 are clearly different colours.</p>
+<ul>
+<li><strong>Separation</strong> is the ΔE between the average figure colour and the average background colour: how far apart they are for someone with typical colour vision.</li>
+<li><strong>Concealment</strong> is that same distance recomputed after simulating protanopia, deuteranopia and tritanopia. The smaller it gets, the better the plate hides.</li>
+</ul>
+<h2 id="the-summary">The summary</h2>
+<p>At the top, <strong>This batch</strong> gives <strong>Plates</strong>, <strong>Passing</strong> (for example &quot;9 of 10&quot;), <strong>Mean score</strong> and <strong>Weakest</strong> (the lowest-scoring plate and its score).</p>
+<h2 id="each-plates-card">Each plate&#39;s card</h2>
+<ul>
+<li>The plate&#39;s content, its type, palette and difficulty, a thumbnail, its <strong>quality score</strong> out of 100, and <strong>Pass</strong> or <strong>Review</strong>.</li>
+<li>Four component bars, each with its weight and its measured value:</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Component</th><th>Weight</th><th>What it rewards</th></tr></thead>
+<tbody>
+<tr><td><strong>Dot density</strong></td><td>.24</td><td>A density close to the ideal of about 0.36 (the share of the plate covered by dots)</td></tr>
+<tr><td><strong>Figure ratio</strong></td><td>.20</td><td>A figure that takes up about 28% of the dots</td></tr>
+<tr><td><strong>Separation</strong></td><td>.32</td><td>A clear ΔE between figure and background for typical vision</td></tr>
+<tr><td><strong>Concealment</strong></td><td>.24</td><td>A figure that nearly vanishes through the most confusing deficiency, relative to its separation</td></tr>
+</tbody></table></div>
+<p>  A bar is highlighted when its component scores under 60%.</p>
+<ul>
+<li><strong>Through each deficiency — ΔE from the background</strong>: the figure&#39;s distance from the background under <strong>Protanopia</strong>, <strong>Deuteranopia</strong> and <strong>Tritanopia</strong>. Here the small number is the good one; values under 0.03 are marked as hidden.</li>
+<li>A sentence such as &quot;Hides best from deuteranopia; still most legible under tritanopia.&quot;</li>
+</ul>
+<h2 id="when-a-plate-passes">When a plate passes</h2>
+<p>A plate passes when all of these hold:</p>
+<ul>
+<li>dot density is between 0.08 and 0.95;</li>
+<li>the figure takes between 5% and 65% of the dots;</li>
+<li>separation is above 0.01;</li>
+<li>the quality score is 45 or more.</li>
+</ul>
+<p>Otherwise it is marked <strong>Review</strong>.</p>
+<h2 id="using-the-diagnostics">Using the diagnostics</h2>
+<ul>
+<li>A plate with low <strong>Separation</strong> may be invisible even to typical vision. Lower the difficulty, raise <strong>Color separation</strong> in <strong>Fine tuning</strong>, or try another palette.</li>
+<li>A plate with low <strong>Concealment</strong> is still legible through the deficiency. Choose a palette aimed at that deficiency, such as <strong>Red vs Green</strong> for red-green deficiencies, or raise the difficulty.</li>
+<li>The deficiency named in &quot;Hides best from …&quot; is the one the plate is best suited to demonstrate.</li>
+</ul>
+<p>If no plates exist yet, the tab says &quot;Nothing measured yet&quot; with a <strong>Go to the Lab</strong> button.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> These scores measure the plate as drawn on screen with simulated deficiencies. They do not make it a validated clinical test. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+</blockquote>
+
+<nav class="pager" aria-label="Previous and next"><a href="generate-plates.html"><span>Previous</span>Generate plates</a><a href="reference.html"><span>Next</span>Ishihara Plate Generator reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-colour-distance-is-measured">How colour distance is measured</a></li><li><a href="#the-summary">The summary</a></li><li><a href="#each-plates-card">Each plate's card</a></li><li><a href="#when-a-plate-passes">When a plate passes</a></li><li><a href="#using-the-diagnostics">Using the diagnostics</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

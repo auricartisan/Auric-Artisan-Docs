@@ -1,0 +1,60 @@
+---
+title: ASCII Art Generator — Getting started
+description: Open the ASCII Art Generator, learn its layout, and make and copy your first piece of character art.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Getting started with the ASCII Art Generator
+
+## Open the page
+
+Go to https://auricartisan.com/tool/ascii/. The masthead reads **ASCII Art Generator**, *Drop in a picture and get character art back. Nothing is uploaded — every pixel is read and converted in this browser.*, with a row of labels and **Developer reference →**.
+
+A short strip under it reads **Drop a picture**, **Pick a look**, **Take it away** and *It converts as you go.* Its **×** hides it for good on this browser.
+
+## The layout
+
+Four tabs: **Lab**, **Analysis**, **Compare** and **Export**. You do almost everything in **Lab**.
+
+**Lab** has two parts:
+
+- **The control rail** on the left:
+  - **Source**: **Image**, **Text** or **Webcam**, and the controls for the one you pick;
+  - **Look**: five named looks, a strip showing the characters in use from **Light** to **Dark**, and their count, such as **10 glyphs**;
+  - **Colour**: **Mono** or **From image**, and in Mono the **Ink** and **Paper** colours;
+  - **Detail**: how many characters wide the art is, and **Invert for dark paper**;
+  - **Fine tuning**: a button that opens every other setting, in folded groups.
+- **The stage** on the right: **Render** chips (**Text**, **HTML**, **Canvas**, **SVG**) and the render time, the art itself, and a footer with **Grid**, **Chars**, **Render**, **Copy** and **Full screen**.
+
+Select any group heading in the rail to fold it away or open it again.
+
+On screens narrower than about 1,180 pixels the stage comes first and the controls follow below it.
+
+## The empty stage
+
+Before you give it anything, the stage reads **Drop an image on the stage** and offers four buttons: **Choose a file**, **Try an example**, **Type some text** and **Use the webcam**. Under them, *Your ramp, right now* previews how the current character set draws a gradient.
+
+## Your first piece
+
+1. Select **Try an example**. The tool draws a lit sphere and converts it.
+2. Under **Look**, select **Blocks**, then **Line art**, and watch the art change.
+3. Drag **Detail** to about 160.
+4. Under **Colour**, select **From image**. The render switches to **HTML** and each character takes its colour from the picture.
+5. Select **Full screen** to see it large, then close it with **×**.
+6. Under **Colour**, select **Mono** again, and select **Copy**. The message **Copied!** confirms the text is on your clipboard.
+
+Result: a piece of plain-text art ready to paste into a document, a chat or a code comment.
+
+There is no Render button. The art converts as soon as you give it a source and again shortly after each change.
+
+## Next steps
+
+- [Choose a source](sources.md)
+- [Looks, colour and detail](looks-colour-and-detail.md)
+- [Copy, export and batch](export.md)
+
+## Related
+
+- [ASCII Art Generator overview](../README.md)
+- [Reference](reference.md)

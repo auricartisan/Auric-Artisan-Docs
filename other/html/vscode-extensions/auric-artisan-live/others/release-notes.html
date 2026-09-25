@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release notes — Auric Artisan Docs</title>
+<meta name="description" content="What changed in each published version of Auric Artisan Live.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and safeguards</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html" aria-current="page">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Release notes</h1>
+<p class="lede">What changed in each published version of Auric Artisan Live.</p>
+<p>Dates are when each version appeared on the Visual Studio Marketplace.</p>
+<h2 id="021-english-and-hindi-11-september-2026">0.2.1 — English and Hindi (11 September 2026)</h2>
+<p>Hindi is built into the same extension; there is nothing extra to install and no translation service.</p>
+<ul>
+<li>Choose <strong>Auto</strong>, <strong>English</strong> or <strong>हिन्दी</strong> in the Auric Live panel header. The choice is saved in <code>auricLive.interfaceLanguage</code>. <strong>Auto</strong> follows VS Code&#39;s display language, including regional Hindi locales.</li>
+<li>The control panel, quick settings, request controls, inline Phone QR guidance and common messages are translated.</li>
+<li>All 54 command titles and the three sidebar view names have Hindi versions that follow VS Code&#39;s display language.</li>
+<li>New preview tabs use the selected language; reopen an existing preview to update it.</li>
+<li>Switching language keeps the current section and request filters, and does not restart the server.</li>
+<li>Technical messages without a translation stay in English. Served websites, request data, commands and the browser dashboard are not translated.</li>
+<li>HAR exports now record the installed extension version.</li>
+</ul>
+<h2 id="020-a-more-connected-development-workspace-8-september-2026">0.2.0 — A more connected development workspace (8 September 2026)</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong>Development workspace.</strong> The control panel&#39;s Overview, Requests, Runtime, Routing and Settings sections bring server controls, backend setup and diagnostics into one tab.</li>
+<li><strong>Inline phone QR.</strong> Show a locally generated QR code inside the panel, copy the address and read network and HTTPS guidance without another tab.</li>
+<li><strong>Request exploration.</strong> Combine search and status filters, sort by time, latency or size, page through results, pause the display and open details on demand.</li>
+<li><strong>Runtime diagnostics.</strong> Check prerequisites and backend readiness, use optional HTTP health paths, or connect to an existing server with a URL-only run profile.</li>
+<li><strong>Browser console.</strong> Opt-in console mirroring with level filters, bounded history, credential redaction, rate limiting and copy and clear controls.</li>
+<li><strong>Certificate import checks.</strong> Imported certificates are checked for matching keys and validity dates. Generated certificates also cover IPv6 loopback.</li>
+<li>New commands: <strong>Select Active Server</strong>, <strong>Toggle Browser Console Capture</strong>, <strong>Use HTTPS Certificate and Key</strong> and <strong>Diagnose Project and Runtime</strong>.</li>
+</ul>
+<h3 id="improved">Improved</h3>
+<ul>
+<li>A clearer Marketplace title, <strong>Auric Artisan Live — Live Server &amp; Preview</strong>. The extension ID is unchanged.</li>
+<li>The Auric visual design across the panel and the browser dashboard.</li>
+<li>Keyboard-friendly custom drop-down menus throughout the panel, request filters, workspace selection, preview and browser console.</li>
+<li>Layouts that work in narrow editor splits and on phones.</li>
+<li>A responsive request feed that keeps your search focus, selection and display preferences.</li>
+<li>Inspector totals shown separately from a clearly labelled recent-request p95.</li>
+<li>Upload pacing and consistent download shaping across static files, proxied traffic, injected HTML, mocks and REST responses.</li>
+<li>Changing run targets keeps unrelated session settings and API routes; unrelated configuration changes keep in-memory REST data.</li>
+<li>Links to auricartisan.com in the panel, preview and dashboard.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Mouse-wheel, trackpad and keyboard scrolling in the browser dashboard, including on pages that block scrolling.</li>
+<li>Clipped console drop-downs, doubled borders and menus running off screen.</li>
+<li><code>Escape</code> closing the dashboard before an open drop-down.</li>
+<li>Stale phone QR codes after the server stopped or its address changed.</li>
+<li>Request updates from one workspace appearing in another.</li>
+<li>Unnecessary restarts after a clean exit, and duplicate restart attempts.</li>
+<li>Stalled or oversized uploads and abandoned transfers holding resources too long.</li>
+</ul>
+<h3 id="privacy-and-safeguards">Privacy and safeguards</h3>
+<ul>
+<li>Sensitive query and body fields are redacted before storage or export.</li>
+<li>HAR bodies need explicit opt-in; incomplete or redacted captures cannot be replayed.</li>
+<li>Workspace trust is enforced for project-supplied runtime, proxy and CGI settings.</li>
+<li>Static files cannot be reached through links that lead outside the served folder.</li>
+<li>Console capture is off by default.</li>
+</ul>
+<h3 id="compatibility">Compatibility</h3>
+<ul>
+<li>Requires VS Code 1.95 or newer. Backend runtimes are installed separately.</li>
+<li>Self-signed certificates still need trust on each browser or device.</li>
+</ul>
+<h2 id="010-first-release-31-july-2026">0.1.0 — First release (31 July 2026)</h2>
+<ul>
+<li>A local HTTP and HTTPS server with clean URLs, single-page-app fallback, directory listings, custom headers, basic authentication and safe dot-file handling.</li>
+<li>Live reload on explicit saves by default, optional file watching, CSS and image hot swap, scroll restoration and reconnection.</li>
+<li>Reload-storm protection and generated-file exclusions.</li>
+<li>Compression, range requests, ETags and conditional responses.</li>
+<li>Framework and language detection, custom launch commands, port discovery, backend monitoring and bounded crash recovery.</li>
+<li>HTTP and WebSocket proxying, mock routes, JSON REST collections and PHP through CGI in trusted workspaces.</li>
+<li>Network simulation, a responsive editor preview, network access and phone QR codes.</li>
+<li>The <strong>Servers</strong>, <strong>Requests</strong> and <strong>Routes</strong> views, request replay, curl and fetch copying and redacted HAR export.</li>
+<li>The in-page browser dashboard with health, performance, network, storage, server and environment tabs.</li>
+<li>The custom cursor with link, button and text states and a native-cursor switch.</li>
+<li>Multi-root workspaces, <code>auric.live.json</code>, project exclusions and local session records.</li>
+<li>No telemetry and no runtime npm dependencies.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="privacy.html"><span>Previous</span>Privacy</a><a href="related.html"><span>Next</span>Related</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#021-english-and-hindi-11-september-2026">0.2.1 — English and Hindi (11 September 2026)</a></li><li><a href="#020-a-more-connected-development-workspace-8-september-2026">0.2.0 — A more connected development workspace (8 September 2026)</a></li><li><a href="#010-first-release-31-july-2026">0.1.0 — First release (31 July 2026)</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

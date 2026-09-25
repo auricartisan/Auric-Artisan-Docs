@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG Recolour FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about SVG Recolour.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; SVG Recolour</a>
+<h2>SVG Recolour documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with SVG Recolour</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="export-the-result.html">Export the result</a></li>
+<li><a href="recolour-an-svg.html">Recolour an SVG</a></li>
+<li><a href="use-a-harmony.html">Recolour from a harmony</a></li>
+<li><a href="reference.html">SVG Recolour reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting SVG Recolour</a></li>
+<li><a href="faq.html" aria-current="page">SVG Recolour FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">SVG Recolour</a> &rsaquo; <a href="README.html">SVG Recolour documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › SVG Recolour</p>
+<h1>SVG Recolour FAQ</h1>
+<p class="lede">Short answers to common questions about SVG Recolour.</p>
+<h2 id="is-my-svg-uploaded">Is my SVG uploaded?</h2>
+<p>No. The file is parsed in the page and never sent anywhere. See <a href="../others/privacy.html">Privacy</a>.</p>
+<h2 id="can-i-swap-two-colours">Can I swap two colours?</h2>
+<p>Yes. Set each colour&#39;s target to the other. Every change is planned from the original file before anything is written, so the swap works cleanly.</p>
+<h2 id="does-it-change-colours-written-as-names-like-red">Does it change colours written as names, like <code>red</code>?</h2>
+<p>Yes. Names, hex, <code>rgb()</code> and <code>hsl()</code> forms are all found and rewritten. The same colour written different ways appears as one row.</p>
+<h2 id="why-is-currentcolor-left-alone">Why is <code>currentColor</code> left alone?</h2>
+<p>It takes its value from the <code>color</code> of the page the SVG is placed in, so the file does not contain the colour. The tool counts it and leaves it as it is, which keeps icons that rely on it working.</p>
+<h2 id="does-it-recolour-gradients">Does it recolour gradients?</h2>
+<p>Yes, through the <code>stop-color</code> of each gradient stop, which appear as their own rows. The shape that uses the gradient refers to it with <code>url()</code>, which is left alone.</p>
+<h2 id="does-it-recolour-embedded-images">Does it recolour embedded images?</h2>
+<p>No. Pictures embedded in an SVG are pixels, not markup, and are not found or changed.</p>
+<h2 id="can-i-recolour-several-files-at-once">Can I recolour several files at once?</h2>
+<p>No. The tool works on one file at a time.</p>
+<h2 id="are-near-identical-colours-merged-into-one-row">Are near-identical colours merged into one row?</h2>
+<p>No. Only exactly identical colours share a row, however they are written.</p>
+<h2 id="will-the-exported-file-look-exactly-like-the-after-preview">Will the exported file look exactly like the After preview?</h2>
+<p>Yes, in colour: the preview is drawn from the same rewrite. The preview has active content removed, but the file keeps it.</p>
+<h2 id="what-does-near-royalblue-mean">What does &quot;near royalblue&quot; mean?</h2>
+<p>It is the nearest CSS colour name, found by colour difference, to make hex values easier to read. An exact CSS name is shown without &quot;near&quot;. Nothing depends on the name.</p>
+<h2 id="is-the-harmony-a-guarantee-of-good-colours">Is the harmony a guarantee of good colours?</h2>
+<p>No. The harmonies are a convention from colour-wheel teaching. Check the result for contrast and colour vision on the <strong>Check</strong> tab.</p>
+<h2 id="does-the-colour-vision-preview-change-the-exported-file">Does the colour-vision preview change the exported file?</h2>
+<p>No. It changes only what is drawn on screen.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting SVG Recolour</a><a href="../others/README.html"><span>Next</span>SVG Recolour background material</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#is-my-svg-uploaded">Is my SVG uploaded?</a></li><li><a href="#can-i-swap-two-colours">Can I swap two colours?</a></li><li><a href="#does-it-change-colours-written-as-names-like-red">Does it change colours written as names, like red?</a></li><li><a href="#why-is-currentcolor-left-alone">Why is currentColor left alone?</a></li><li><a href="#does-it-recolour-gradients">Does it recolour gradients?</a></li><li><a href="#does-it-recolour-embedded-images">Does it recolour embedded images?</a></li><li><a href="#can-i-recolour-several-files-at-once">Can I recolour several files at once?</a></li><li><a href="#are-near-identical-colours-merged-into-one-row">Are near-identical colours merged into one row?</a></li><li><a href="#will-the-exported-file-look-exactly-like-the-after-preview">Will the exported file look exactly like the After preview?</a></li><li><a href="#what-does-near-royalblue-mean">What does &quot;near royalblue&quot; mean?</a></li><li><a href="#is-the-harmony-a-guarantee-of-good-colours">Is the harmony a guarantee of good colours?</a></li><li><a href="#does-the-colour-vision-preview-change-the-exported-file">Does the colour-vision preview change the exported file?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

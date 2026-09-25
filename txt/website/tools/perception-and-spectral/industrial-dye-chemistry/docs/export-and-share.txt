@@ -1,0 +1,112 @@
+==============================================================================
+EXPORT AND SHARE
+==============================================================================
+Download the 81-row spectrum CSV and the whole-bath JSON, and copy a link that
+rebuilds the bath.
+Area: Website › Tools › Perception and spectral › Industrial Dye Chemistry   Updated: 2026-09-25
+
+Open the Export tab. What to take switches the preview between The spectrum
+(the first lines of the CSV), The whole bath (the first part of the JSON) and
+A link to this; the note above it gives the row count. Nothing leaves the page
+until you press a button. Exports are never gated on a tick-box.
+
+  Button: Download the spectrum
+  Result: Saves `dye-in-solution-spectrum.csv`
+
+  Button: Download the bath
+  Result: Saves `dye-in-solution-bath.json`
+
+  Button: Copy a link to this bath
+  Result: Copies a link; the message Link copied confirms it, or the link is
+          shown if the clipboard is unavailable
+
+THE SPECTRUM CSV
+================
+
+The file starts with `#` header lines that state everything a reader needs to
+compare it with another spectrum:
+
+  - the time; the sampling (380–780 nm at 5 nm, 81 samples); the observer (CIE
+    1931 2°, not interpolated); the illuminant;
+  - the bath's pH and path length;
+  - for each component: name (and "(disabled)" if muted), concentration, pKa,
+    both forms' λmax and ε, whether the band shape is MEASURED or SYNTHESISED,
+    the base fraction at this pH and the isosbestic point;
+  - the peak absorbance and whether it is inside the Beer–Lambert linear
+    range;
+  - which white point the swatch and the L*a*b* use;
+  - the colour inconstancy (ΔE₀₀) to each other illuminant;
+  - statements that the file is not a metamerism index, that F11 is not held,
+    that it is not a fastness test, and that it holds no hazard data;
+  - the tolerance sweep's median and 95th percentile, if you ran one.
+
+Then 81 rows with these columns:
+
+  Column                                   | Meaning
+  -----------------------------------------+-------------------------------------------------
+  `wavelength_nm`                          | 380 to 780 in steps of 5
+  `absorbance`                             | The whole bath's absorbance
+  `transmittance`                          | 10 to the power of minus the absorbance
+  `eps_acid`, `eps_base`                   | The selected dye's two forms, molar absorptivity
+  `observer_x`, `observer_y`, `observer_z` | The CIE 1931 2° colour-matching functions
+
+THE BATH JSON
+=============
+
+  Field:    `tool`, `generated`
+  Contents: The tool name and time
+
+  Field:    `sampling`
+  Contents: Range, step and number of samples, with a note that nothing is
+            interpolated
+
+  Field:    `illuminant`, `illuminant_not_held`
+  Contents: The light used, and F11 with why it is not held and what it would
+            take
+
+  Field:    `bath`
+  Contents: `ph` and `path_cm`
+
+  Field:    `components`
+  Contents: For each dye: name, what it stands for, provenance, enabled, pKa,
+            concentration in mol/L, base fraction, both forms' λmax and ε,
+            isosbestic point
+
+  Field:    `beer_lambert`
+  Contents: Peak absorbance, its wavelength, whether it is inside the linear
+            range, and the limit
+
+  Field:    `colour`
+  Contents: sRGB hex (un-adapted), L*a*b*, the white it was taken against,
+            gamut flag, dominant wavelength, purity and note
+
+  Field:    `colour_inconstancy`
+  Contents: ΔE₀₀ to each other illuminant, each marked `is_metamerism: false`
+
+  Field:    `sensitivity`
+  Contents: The sweep result, or `null`
+
+  Field:    `not_held`
+  Contents: Every register entry marked absent, with why and what it would
+            take
+
+  Field:    `register`
+  Contents: Every register entry with its source and status
+
+  Field:    `spectrum`
+  Contents: Wavelengths, absorbance and transmittance arrays
+
+LINKS
+=====
+
+A link rebuilds the bath: `ph`, `path`, `ill` (`d65`, `d50`, `a` or `e`) and
+`dyes`, a comma-separated list of `id:pKa:concentration-in-µM`, for example:
+
+    https://auricartisan.com/tool/general/spectral-tools/industrial-dye-chemistry/?ph=3.50&path=1.00&ill=d65&dyes=weak-acid:3.50:34.00,anthraquinone-blue:11.80:40.00
+
+Dye identifiers: `weak-acid`, `mid-range`, `high-range`, `azo-red`,
+`anthraquinone-blue`, `yellow`. A link does not carry muted state, measured
+spectra or sweep tolerances.
+
+You should now have a file that anyone can read without the page, with its
+light, observer and data sources stated.

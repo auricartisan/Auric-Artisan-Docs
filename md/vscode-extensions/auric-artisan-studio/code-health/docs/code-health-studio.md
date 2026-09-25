@@ -1,0 +1,81 @@
+---
+title: Auric Code Health — The Code Health Studio
+description: Use the Studio's Health space and the Overview to see the code-health score, filter findings by category and confidence, and act on them.
+product: VS Code extensions › Auric Artisan Studio › Auric Code Health
+updated: 2026-09-25
+---
+
+# The Code Health Studio
+
+The Studio's **Health** space is Auric Code Health's full view of the repository: its score and grade, the seven categories, and every finding with filters. When Auric Code Health is installed alone, the Studio opens on it; in a Workstation, it is the **Health** space of the host's Studio.
+
+## Open it
+
+- **Auric Artisan: Open Code Health Studio**, or **Studio** on the Overview, or the status-bar item.
+- **Open Studio: Code Health** in the Command Center.
+
+The tab is titled **Auric Artisan — Code Health Studio** (or **Workstation Studio** in a Workstation). The space header reads **Repository intelligence** with the summary **Find secrets, security footguns, debug leftovers, risky APIs, task debt, and oversized code.**, and a chip showing how long ago the workspace was scanned.
+
+## Before the first scan
+
+A **Code Health Studio** card explains what will be checked and offers **Scan Code Health** (a fresh scan) and **Open data folder**.
+
+## After a scan
+
+### Header actions
+
+| Button | What it does |
+| --- | --- |
+| **health.json + SARIF** | Writes the health record. See [Health records](health-records.md). |
+| **Report** | Generates the project health report (Markdown, JSON and HTML). |
+| **Rescan** (gold) | Scans the workspace again and refreshes the cache. |
+
+### Repository hygiene and security
+
+- **Data folder**: shows `.auric-artisan` in your file manager.
+- **Fix plan for an agent**: generates the [remediation plan](../../docs/remediation-plan.md), with a task for each secret, security and risky-API finding.
+- A score ring with the code-health score and grade (A+ to F).
+- Four figures: **files**, **findings**, **high confidence** and **secret + security**.
+
+### Seven health categories
+
+A button for each category with its count and description, in this order:
+
+| Category | Description |
+| --- | --- |
+| **Possible secrets** | Hardcoded API keys, tokens or passwords. |
+| **Security risks** | Weak crypto, TLS bypass, unsafe deserialization, XSS sinks. |
+| **Merge markers** | Unresolved merge-conflict markers. |
+| **Risky APIs** | eval, innerHTML and other footguns. |
+| **Debug leftovers** | Forgotten debug / print statements. |
+| **Task markers** | TODO / FIXME / HACK left in the code. |
+| **Oversized** | Very long lines or large files. |
+
+Secrets, security and merge markers are shown in the fail colour; risky APIs and debug in the warning colour. Select a category to show only its findings; select **All** in the filter bar to show every category again.
+
+### Findings
+
+- Filter chips: **All** (with the total), **Any confidence**, **High**, **Medium** and **Low** (each with its count).
+- A search box, **Filter rule, message, file…**, matching the signature ID, category, message, fix, evidence, file, confidence and severity. Secret evidence is never searchable.
+- A count such as `42 of 118 shown`. Up to 300 findings are listed at a time.
+- Each row shows the category, the confidence, the signature ID, the message, **Fix:** with the fix, the evidence (or **Secret evidence redacted**), and the file and line. Select a row, or press `Enter`, to open the file at that line.
+
+When nothing matches, the list says **No Code Health findings match the current filters.** A clean project shows **No Code Health findings. All seven enabled categories are clean in the current scan.**
+
+Press `/` to jump to the search box and `Escape` to clear it.
+
+## The Overview
+
+When Auric Code Health is alone, its Overview is the code-health layout: a **Code health** ring and row, seven chips (**Secrets**, **Security**, **Risky APIs**, **Debug**, **TODOs**, **Conflicts**, **Large files**), **Report** and **health.json + SARIF**, the **This file** card, suggestions and navigation to **Studio**, **Rulebook**, **Icon Studio** and **Fix plan**. See [The Overview view](../../docs/overview-view.md#the-code-health-report).
+
+With Auric Accessibility as host, the Overview gains a **Code health** row, **Report** and **SARIF**, and the Studio's Home gains a **Code health** tile and the **CI gate** card.
+
+## Settings space
+
+With Auric Code Health alone, Studio › Settings shows **Appearance**, **Project data**, **Scan engine** and **Scope**. The category switches are in VS Code's settings (search `auricCodeHealth.codeHealth`). See [Reference](reference.md).
+
+## Related
+
+- [Categories and signatures](categories-and-signatures.md)
+- [The Studio](../../docs/studio.md)
+- [Exports and health records](../../docs/exports-and-records.md)

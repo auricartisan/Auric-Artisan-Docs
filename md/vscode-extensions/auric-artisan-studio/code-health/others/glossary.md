@@ -1,0 +1,50 @@
+---
+title: Auric Code Health — Glossary
+description: Code-health terms used in the Auric Code Health documentation.
+product: VS Code extensions › Auric Artisan Studio › Auric Code Health
+updated: 2026-09-25
+---
+
+# Auric Code Health glossary
+
+**Argument-aware.** A check that reads a call's argument or an assigned value to tell a constant (lower risk) from a dynamic value (higher risk).
+
+**Baseline.** A saved health record of existing findings, so a CI gate fails only on new ones.
+
+**Category.** One of the seven groups of checks: possible secrets, security risks, merge markers, risky APIs, debug leftovers, task markers and oversized.
+
+**Confidence.** How sure a signature is that a finding is real: high, medium or low (contextual for argument-aware risky-API signatures). Reported separately from severity.
+
+**Credential assignment.** A key named like a credential, such as `DB_PASSWORD`, given a literal value.
+
+**CWE-798.** The Common Weakness Enumeration entry for hard-coded credentials, which every secret signature maps to.
+
+**Deserialization.** Turning stored data back into objects. Unsafe deserialization of untrusted data can run attacker code.
+
+**Detector version.** The version of the checking engine that produced a finding (1.2.0 in the current package).
+
+**Entropy.** How unpredictable a value's characters are. Random-looking values are more likely to be real secrets.
+
+**Fingerprint.** An 8-character ID that identifies a finding across runs.
+
+**Health record.** `health.json`: every issue with scores and a summary, for CI.
+
+**Merge marker.** A `<<<<<<<`, `=======` or `>>>>>>>` line left behind by an unresolved version-control conflict.
+
+**OWASP A05:2025.** The OWASP Top 10 category the security signatures map to.
+
+**Placeholder.** A stand-in value such as `CHANGE_ME` or `<your-key>`, not reported as a secret.
+
+**Redaction.** Replacing a secret with `[redacted secret; N characters]` wherever it would appear.
+
+**SARIF.** Static Analysis Results Interchange Format, the JSON format read by GitHub code scanning.
+
+**Secret.** A credential such as an API key, token, password or private key.
+
+**Signature.** One specific detector with a stable ID, such as `ch-secret-github-token`.
+
+**Task marker.** A comment such as `TODO` or `FIXME` that marks unfinished work.
+
+**TLS verification.** Checking a server's certificate on a secure connection. Turning it off exposes traffic to interception.
+
+For all other terms, see the [Studio glossary](../../others/glossary.md).

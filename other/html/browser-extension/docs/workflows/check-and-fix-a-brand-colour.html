@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check and fix a brand colour — Auric Artisan Docs</title>
+<meta name="description" content="Test a brand colour as text and as a background in WCAG and APCA, see it through colour-vision simulations, and find accessible variants that keep its hue.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Workflows</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="audit-a-page-and-fix-contrast.html">Audit a page and fix contrast</a></li>
+<li><a href="back-up-and-move-your-data.html">Back up and move your data</a></li>
+<li><a href="build-a-colour-scale-for-tailwind.html">Build a colour scale for Tailwind</a></li>
+<li><a href="check-and-fix-a-brand-colour.html" aria-current="page">Check and fix a brand colour</a></li>
+<li><a href="extract-a-sites-design-system.html">Extract a site's design system</a></li>
+<li><a href="inspect-and-debug-an-element.html">Inspect and debug an element</a></li>
+<li><a href="review-a-page-for-colour-blindness.html">Review a page for colour blindness</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Workflows</a></nav>
+<p class="kicker">Browser extension › Workflows</p>
+<h1>Check and fix a brand colour</h1>
+<p class="lede">Test a brand colour as text and as a background in WCAG and APCA, see it through colour-vision simulations, and find accessible variants that keep its hue.</p>
+<p>Brand colours are often too light for text on white, or too dark for white text on top. This workflow tells you where a brand colour works and gives you accessible variants that still look like the brand.</p>
+<h2 id="1-get-the-colour">1. Get the colour</h2>
+<p>Do one of these:</p>
+<ul>
+<li>On the brand&#39;s site, choose <strong>Pick a colour</strong> on Home and click the colour (Chromium browsers).</li>
+<li>Choose Colour › <strong>Page palette</strong>, <strong>Read the page&#39;s colours</strong>, and choose the colour.</li>
+<li>Type its value into the Picker&#39;s value field.</li>
+</ul>
+<h2 id="2-read-its-specs">2. Read its specs</h2>
+<ol>
+<li>In the Picker, open the <strong>Specs</strong> pane. Note its contrast on white and on black and its WCAG levels.</li>
+<li>Open the <strong>Contrast</strong> pane. Switch between <strong>White</strong>, <strong>Black</strong> and <strong>Page</strong> backgrounds. If it fails AA, the closest passing colour is offered.</li>
+</ol>
+<h2 id="3-test-it-as-text">3. Test it as text</h2>
+<ol>
+<li>Choose <strong>Check as text</strong>. Contrast opens with the brand colour as text.</li>
+<li>Set <strong>Background</strong> to the background you use, for example <code>#ffffff</code>.</li>
+<li>Read the verdict and the APCA readable sizes. A colour may pass for large headings (<strong>AA Large</strong>) but not for body text.</li>
+<li>Choose <strong>Fix text</strong> with the target you need. Note the new colour.</li>
+</ol>
+<h2 id="4-test-it-as-a-background">4. Test it as a background</h2>
+<ol>
+<li>Go back to the Picker and choose <strong>Check as background</strong>.</li>
+<li>Set <strong>Text</strong> to the text colour you plan to use on it, often white or near-black.</li>
+<li>Read the verdict. Choose <strong>Swap</strong> to test the reverse.</li>
+<li>Choose <strong>Fix background</strong> if it fails.</li>
+</ol>
+<h2 id="5-check-colour-vision">5. Check colour vision</h2>
+<ol>
+<li>In Contrast, read the <strong>Colour-vision check</strong>: the ratio for protan, deutan and tritan vision.</li>
+<li>In the Picker&#39;s <strong>Vision</strong> pane, see how the colour itself changes. A ΔE under about 2 means the colour barely changes.</li>
+</ol>
+<h2 id="6-build-accessible-variants">6. Build accessible variants</h2>
+<ol>
+<li>From the Picker&#39;s <strong>Scale</strong> pane, choose <strong>Open the scale generator →</strong>.</li>
+<li>Keep <strong>Tailwind 50–950</strong>. The step nearest your brand colour is marked.</li>
+<li>Choose darker or lighter steps and use <strong>Contrast</strong> on each to find the ones that pass on your backgrounds.</li>
+</ol>
+<p><strong>The result:</strong> you know which uses of the brand colour pass, and you have tested variants in the same hue for the ones that do not.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../check/contrast.html">Contrast</a></li>
+<li><a href="../colour/scale.html">Scale</a></li>
+<li><a href="build-a-colour-scale-for-tailwind.html">Build a colour scale for Tailwind</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="build-a-colour-scale-for-tailwind.html"><span>Previous</span>Build a colour scale for Tailwind</a><a href="extract-a-sites-design-system.html"><span>Next</span>Extract a site's design system</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#1-get-the-colour">1. Get the colour</a></li><li><a href="#2-read-its-specs">2. Read its specs</a></li><li><a href="#3-test-it-as-text">3. Test it as text</a></li><li><a href="#4-test-it-as-a-background">4. Test it as a background</a></li><li><a href="#5-check-colour-vision">5. Check colour vision</a></li><li><a href="#6-build-accessible-variants">6. Build accessible variants</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

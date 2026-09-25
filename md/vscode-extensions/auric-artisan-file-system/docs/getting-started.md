@@ -1,0 +1,119 @@
+---
+title: Auric Artisan File System — getting started
+description: Install Auric Artisan File System, learn where its controls live, and complete a first task.
+product: VS Code extensions › Auric Artisan File System
+updated: 2026-09-25
+---
+
+# Getting started with Auric Artisan File System
+
+## Install
+
+1. Check that VS Code is version 1.95 or newer (**Help** › **About**).
+2. In the Extensions view (`Ctrl` + `Shift` + `X`), search for `@id:auric-artisan.auric-artisan-file-system` and select **Install**. Or run:
+
+   ```text
+   code --install-extension auric-artisan.auric-artisan-file-system
+   ```
+
+3. Open a workspace folder. File operations need a trusted workspace; in Restricted Mode you can browse, search, filter and navigate, but not create, rename, move, duplicate or delete.
+
+## The screen tour
+
+### The Auric Files section in the Explorer
+
+In the Explorer, below your file tree, expand **Auric Files**. It is a compact companion to the native Explorer, not a second file tree. It shows the same tools as the full workspace panel in a narrow layout. Its title bar has an **Open File Workspace** button for the larger panel.
+
+### The workspace panel
+
+Run **Auric Files: Open File Workspace**, select **Open workspace ↗** in the sidebar, or use the button in the Explorer title bar. The panel opens as an editor tab called **Auric Files**. From top to bottom:
+
+| Area | What it shows |
+| --- | --- |
+| Header | The Auric Artisan mark and a link to auricartisan.com |
+| **Active workspace** | The workspace name, whether it is trusted and whether the index is ready, with **Open Explorer →** and **Open workspace ↗** |
+| Summary | **Indexed files**, **Folders**, **Saved tags** and **Operations** (Auric operations recorded) |
+| Sections | **01 Actions** and **02 Properties** |
+| **Selected resource** | The file or folder the actions will use, with its path, and **Choose…** to pick another |
+| Status line | Messages about the last action |
+
+The selected resource follows the file you open in the editor. When you open the panel from the Explorer with several files selected, the whole selection is kept for batch actions.
+
+#### 01 Actions
+
+- **Find an action** — type to filter every action across the groups (for example `rename`, `tags` or `trash`). `Escape` clears the search.
+- The seven groups, each a collapsible section. Opening one closes the others unless you are searching. **Collapse all** closes every group.
+
+| Group | Covers |
+| --- | --- |
+| **Create** | Files, folders and complete structures |
+| **Inspect & navigate** | Properties, comparisons and companion files |
+| **Edit & batch** | Rename, duplicate and transform a selection |
+| **Organise** | Tags, groups and personal workspace views |
+| **Find & filter** | Search, duplicates and a quieter Explorer |
+| **History & recovery** | Review operations and recover workspace trash |
+| **Workspace** | Native Explorer and extension preferences |
+
+Actions that change or delete files are marked as such. An action that needs a target shows **Choose a resource inside the open workspace first** if there is none.
+
+- **Icon tools** — when the active file icon theme is **Auric Artisan File Icons: Facet** or **Playful**, this section offers **Explain smart match**, **Set icon…** and **Clear custom icon** for the selected resource, handled by that icon theme. With another icon theme it says **No compatible theme active**. The icon themes are a separate, optional extension.
+
+#### 02 Properties
+
+The file-system facts and Auric organisation data for the selected resource, with **Refresh**, **Copy path**, **Edit tags…** and **Add to group…**. See [Properties, compare and export](properties-compare-export.md).
+
+### Context menus
+
+- **Explorer:** right-click any file or folder for **File Properties** at the top, and an **Auric Files** submenu with **File Properties**, six sub-menus (**Create**, **Edit and Batch**, **Navigate and Paths**, **Organize**, **Safety and History**, **Sort**), **Open File Workspace** and **Open Settings**.
+- **Editor and editor tab:** the same **Auric Files** submenu.
+
+### Explorer title bar
+
+The native Explorer's title bar gains **Batch Structure…**, a **Sort** menu (name, type, date modified, ascending, descending) and **Open File Workspace**. Its **…** menu has **Quick Actions…**.
+
+### Quick Actions
+
+**Auric Files: Quick Actions…** opens a keyboard-first list of the most used actions, grouped under **VS Code Explorer**, **Create**, **Find and transform**, **Organise** and more. Use it if you prefer the keyboard to the panel.
+
+### Explorer badges and hovers
+
+Items you mark show a small badge in the Explorer: **★** favourite, **P** pinned, **●** highlighted, **H** hidden, the first two letters of a tag, or **W** for a member of a group. Hovering an item shows a compact summary (name and size, and a pointer to Properties). **Auric Files: Toggle File Metadata** (`Ctrl` + `Shift` + `M` with the Explorer focused) switches these summaries off and on.
+
+## A first task: create a component with its companions
+
+1. Right-click the `src` folder and choose **Auric Files** › **Create** › **Batch Create Files…**.
+2. Confirm or change the destination folder.
+3. Type:
+
+   ```text
+   components/{Button,Card}/{index.ts,styles.css}
+   ```
+
+4. Choose the content for the new files: **Empty files**, your configured default template, or a template from the list.
+5. Review the preview: **4 items planned · 0 conflicts**, with every path ticked. Untick anything you want to skip and press `Enter`.
+6. Confirm if asked (bulk operations ask once they reach `auricFiles.safety.confirmBulk` paths, 5 by default). Auric Files creates the folders and files and opens the first one.
+7. Open `components/Button/index.ts` and run **Auric Files: Go to Related File…** to move between companions.
+8. If you made a mistake, run **Auric Files: Undo Last File Operation** (`Ctrl` + `Alt` + `Z` once you enable the shortcut deck).
+
+You now have a nested structure created in one step, recorded in the operation history.
+
+## Keyboard shortcuts at a glance
+
+These work when the Explorer has focus:
+
+| Keys | Command |
+| --- | --- |
+| `Ctrl` + `N` | **New File…** (Auric's version) |
+| `Ctrl` + `Shift` + `N` | **New Folder…** |
+| `Alt` + `Enter` | **File Properties** |
+| `Ctrl` + `Shift` + `M` | **Toggle File Metadata** |
+| `Alt` + `S` | **Sort** (cycle name, type, date modified) |
+| `Ctrl` + `Alt` + `B` | **Batch Structure…** |
+
+About 60 more shortcuts are available once you turn on `auricFiles.keyboard.enableDefaultShortcuts`. See [Shortcuts](../others/shortcuts.md).
+
+## Next steps
+
+- [Create files and structures](create-files-and-structures.md)
+- [Rename, move and copy](rename-move-and-copy.md)
+- [History, undo and the workspace trash](history-and-workspace-trash.md)

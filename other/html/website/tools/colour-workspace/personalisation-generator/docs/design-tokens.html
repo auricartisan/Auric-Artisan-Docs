@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design tokens — Auric Artisan Docs</title>
+<meta name="description" content="The token system the Personalization Generator builds from the top palette — semantic roles, tonal ramps, light, dark and high-contrast themes, a WCAG and APCA audit, and data-visualisation scales — and how to copy it.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Personalization Generator</a>
+<h2>Personalization Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Personalization Generator</a></li>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="build-the-pool.html">Build your colour pool</a></li>
+<li><a href="design-tokens.html" aria-current="page">Design tokens</a></li>
+<li><a href="export-and-save.html">Export, save and share</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="result-tabs.html">Palettes, gradients, typography, UI pairs and posters</a></li>
+<li><a href="run-a-sweep.html">Run a sweep and read the results</a></li>
+<li><a href="tune-the-sweep.html">Tune the sweep</a></li>
+<li><a href="reference.html">Personalization Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Personalization Generator</a> &rsaquo; <a href="README.html">Personalization Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Design tokens</h1>
+<p class="lede">The token system the Personalization Generator builds from the top palette — semantic roles, tonal ramps, light, dark and high-contrast themes, a WCAG and APCA audit, and data-visualisation scales — and how to copy it.</p>
+<p>The <strong>Tokens</strong> tab turns the leader (the top palette of the last sweep) into a complete set of design tokens. It always uses the leader, whichever palette is open in the Studio, and it changes whenever a new sweep produces a new leader.</p>
+<p>The heading reads, for example, <strong>Semantic roles, 88 tonal stops, light/dark/high-contrast themes, APCA + WCAG audit, and chart scales — from your top palette.</strong> Four figures sit beside it: <strong>Roles</strong>, <strong>Tones</strong>, <strong>WCAG floor</strong> and <strong>APCA floor</strong>. The two floors are the weakest of the first four contrast checks in the light theme (body text, muted text, text on surface and the primary button).</p>
+<h2 id="semantic-roles">Semantic roles</h2>
+<p>Eight role chips. Select one to copy its HEX.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>How it is chosen</th></tr></thead>
+<tbody>
+<tr><td>primary</td><td>The most chromatic palette colour with a usable mid lightness.</td></tr>
+<tr><td>secondary</td><td>The most chromatic remaining colour.</td></tr>
+<tr><td>accent</td><td>A strongly coloured palette colour whose hue is furthest from the primary.</td></tr>
+<tr><td>neutral</td><td>The least chromatic palette colour.</td></tr>
+<tr><td>success</td><td>A green, pulled a little towards the nearest palette hue.</td></tr>
+<tr><td>warning</td><td>An amber, pulled the same way.</td></tr>
+<tr><td>danger</td><td>A red, pulled the same way.</td></tr>
+<tr><td>info</td><td>A blue, pulled the same way.</td></tr>
+</tbody></table></div>
+<p>If the palette is missing something (for example, it has only one strongly coloured colour), the generator makes a suitable colour instead.</p>
+<p><strong>Copy CSS</strong> and <strong>Copy JSON</strong> sit beside the heading. See Copying the tokens, below.</p>
+<h2 id="theme-preview">Theme preview</h2>
+<p><strong>Light</strong> and <strong>Dark</strong> switch a small console preview (<strong>Acme Console</strong>, a revenue card, <strong>Get started</strong> and <strong>Learn more</strong> buttons, and <strong>Active</strong>, <strong>Pending</strong>, <strong>Failed</strong> and <strong>Info</strong> chips) and list its background, surface, text, primary and accent values. The switch also changes which theme the contrast audit checks.</p>
+<p>The generator builds three themes. The high-contrast theme is not previewed; it is included in the CSS and JSON.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Theme</th><th>Character</th></tr></thead>
+<tbody>
+<tr><td>Light</td><td>Near-white background and white surfaces with a faint tint of the neutral&#39;s hue, dark text, the primary and accent as they are.</td></tr>
+<tr><td>Dark</td><td>Dark tinted background and surfaces, near-white text, a lighter primary with near-black text on it.</td></tr>
+<tr><td>High contrast</td><td>White background and surfaces, near-black text, a darker primary and accent with white text on them.</td></tr>
+</tbody></table></div>
+<p>Each theme has fourteen values: background, surface, surface alt, border, text, text muted, primary, primary text, accent, accent text, success, warning, danger and info.</p>
+<h2 id="tonal-ramps">Tonal ramps</h2>
+<p>One ramp for each of the eight roles, eleven steps each: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900 and 950. Lightness falls on a fixed OKLCH ladder from the light end to the dark end, and chroma is eased at both ends so the palest and darkest tones stay believable. The neutral ramp is kept almost grey.</p>
+<p>Select any step to copy its HEX. Hover to see the role, the step and the value.</p>
+<h2 id="contrast-audit">Contrast audit</h2>
+<p>A table for the theme you are previewing, with four columns: <strong>Pair</strong>, <strong>WCAG</strong>, <strong>APCA</strong> and <strong>Use for</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Pair</th><th>Checks</th></tr></thead>
+<tbody>
+<tr><td>Body text</td><td>text on background</td></tr>
+<tr><td>Muted text</td><td>muted text on background</td></tr>
+<tr><td>Text on surface</td><td>text on surface</td></tr>
+<tr><td>Primary button</td><td>primary text on primary</td></tr>
+<tr><td>Accent on bg</td><td>accent on background</td></tr>
+<tr><td>Primary on bg</td><td>primary on background</td></tr>
+</tbody></table></div>
+<p><strong>WCAG</strong> is the WCAG 2.1 contrast ratio. <strong>APCA</strong> is the APCA Lc value, and <strong>Use for</strong> names what that value supports:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Lc</th><th>Use for</th></tr></thead>
+<tbody>
+<tr><td>75 or more</td><td>Body text</td></tr>
+<tr><td>60 to 74</td><td>Fluent text</td></tr>
+<tr><td>45 to 59</td><td>Large / bold</td></tr>
+<tr><td>30 to 44</td><td>Headlines</td></tr>
+<tr><td>15 to 29</td><td>Non-text only</td></tr>
+<tr><td>under 15</td><td>Insufficient</td></tr>
+</tbody></table></div>
+<h2 id="data-visualisation-scales">Data-visualisation scales</h2>
+<p>Three strips, each with <strong>Copy</strong> (which copies the HEX values separated by spaces):</p>
+<ul>
+<li><strong>Categorical</strong>: eight colours for separate series, chosen from the palette&#39;s colourful members to be as far apart in hue as possible, with extra hues made up if the palette has fewer than eight.</li>
+<li><strong>Sequential</strong>: seven steps from light to dark in the hue of the most chromatic colour.</li>
+<li><strong>Diverging</strong>: nine steps between two clearly different hues, meeting at a light neutral in the middle.</li>
+</ul>
+<h2 id="copying-the-tokens">Copying the tokens</h2>
+<ul>
+<li><strong>Copy CSS</strong> (in the Tokens tab) copies the three themes as CSS custom properties named <code>--aa-background</code>, <code>--aa-surface</code>, <code>--aa-surface-alt</code>, <code>--aa-border</code>, <code>--aa-text</code>, <code>--aa-text-muted</code>, <code>--aa-primary</code>, <code>--aa-primary-text</code>, <code>--aa-accent</code>, <code>--aa-accent-text</code>, <code>--aa-success</code>, <code>--aa-warning</code>, <code>--aa-danger</code> and <code>--aa-info</code>:<ul>
+<li>the light theme under <code>:root</code>;</li>
+<li>the dark theme under <code>:root[data-theme=&quot;dark&quot;], .dark</code>;</li>
+<li>the high-contrast theme under <code>:root</code> inside <code>@media (prefers-contrast: more)</code>.</li>
+</ul>
+</li>
+<li><strong>Copy JSON</strong> copies everything: roles, themes, ramps, the audit for both previewed themes, the data-visualisation scales, the CSS and the summary figures.</li>
+<li>The <strong>Export</strong> tab adds these tokens to its CSS as well. See <a href="export-and-save.html">Export, save and share</a>.</li>
+</ul>
+<p>The ramps and data-visualisation scales are in the JSON only, not in the CSS.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="../others/glossary.html">Glossary</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="build-the-pool.html"><span>Previous</span>Build your colour pool</a><a href="export-and-save.html"><span>Next</span>Export, save and share</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#semantic-roles">Semantic roles</a></li><li><a href="#theme-preview">Theme preview</a></li><li><a href="#tonal-ramps">Tonal ramps</a></li><li><a href="#contrast-audit">Contrast audit</a></li><li><a href="#data-visualisation-scales">Data-visualisation scales</a></li><li><a href="#copying-the-tokens">Copying the tokens</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

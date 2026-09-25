@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export tokens — Auric Artisan Docs</title>
+<meta name="description" content="Export the ramp, key set or contrast table as CSS, SCSS, JSON or CSV, share a link, and analyse a list of colours.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tonal Steps</a>
+<h2>Tonal Steps documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tonal Steps</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="export-tokens.html" aria-current="page">Export tokens</a></li>
+<li><a href="tints-shades-tones.html">Make tints, shades, tones and key sets</a></li>
+<li><a href="reference.html">Tonal Steps reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tonal Steps</a></li>
+<li><a href="faq.html">Tonal Steps FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tonal Steps</a> &rsaquo; <a href="README.html">Tonal Steps documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Export tokens</h1>
+<p class="lede">Export the ramp, key set or contrast table as CSS, SCSS, JSON or CSV, share a link, and analyse a list of colours.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Build the ramp you want on the <strong>Lab</strong> tab.</li>
+<li>Open the <strong>Export</strong> tab.</li>
+<li>Under <strong>What to take</strong>, choose:<ul>
+<li><strong>The ramp</strong> — every step of the Lab&#39;s ramp;</li>
+<li><strong>The key set</strong> — the 50–950 or 50–900 ladder chosen on the Ramps tab;</li>
+<li><strong>The contrast table</strong> — the ramp with its contrast figures;</li>
+<li><strong>A link to this view</strong>.</li>
+</ul>
+</li>
+<li>Under <strong>As</strong>, choose a format. Only formats that fit are offered: CSS, SCSS, JSON or CSV for the ramp and key set; CSV or JSON for the contrast table; URL for the link.</li>
+<li>Check <strong>Exactly what you will get</strong>: the preview and its size in bytes.</li>
+<li>Select the download button, which names the file (for example <strong>Download tonal-2563eb.css</strong>), or <strong>Copy to clipboard</strong>. For a link the button reads <strong>Copy the link</strong>.</li>
+</ol>
+<h2 id="file-names">File names</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>File</th></tr></thead>
+<tbody>
+<tr><td>The ramp</td><td><code>tonal-&lt;hex&gt;.&lt;ext&gt;</code></td></tr>
+<tr><td>The key set</td><td><code>tonal-&lt;hex&gt;-50-950.&lt;ext&gt;</code> or <code>tonal-&lt;hex&gt;-50-900.&lt;ext&gt;</code></td></tr>
+<tr><td>The contrast table</td><td><code>tonal-&lt;hex&gt;-contrast.&lt;ext&gt;</code></td></tr>
+</tbody></table></div>
+<p><code>&lt;hex&gt;</code> is your base colour without <code>#</code>, in lower case.</p>
+<h2 id="what-each-format-contains">What each format contains</h2>
+<p>Every file records how the ramp was made: the base, engine, mixing space, step count and gamma, and a footer stating that OKLab was fed linear sRGB, WCAG 2.2, APCA-W3 0.1.9 and the D65 white.</p>
+<p><strong>CSS</strong> — custom properties in <code>:root</code>, one per step, with a comment giving OKLab L, WCAG ratio against white and APCA Lc against white. An abbreviated example:</p>
+<pre class="code" data-lang="css"><code>:root {
+  /* base #2563EB · engine HSL lightness · mixed in OKLab · 11 steps · gamma 1.00 */
+  --tonal-0:  #ffffff;  /* OKLab L 1.000  WCAG vs white  1.00:1  APCA    0.0 */
+  --tonal-1:  …
+}</code></pre>
+<p>HEX values in the files are lower case.</p>
+<p><strong>SCSS</strong> — a map: <code>$tonal: (0: #ffffff, 1: …, …);</code> with the provenance as comments.</p>
+<p><strong>JSON</strong> — a <code>provenance</code> object and a <code>steps</code> array. Each step has <code>index</code>, <code>hex</code>, <code>rgb</code>, <code>oklab_l</code>, <code>wcag_vs_white</code>, <code>wcag_vs_black</code>, <code>apca_on_white</code> and <code>apca_on_black</code>.</p>
+<p><strong>CSV</strong> — two comment lines, then the columns <code>index, hex, r, g, b, oklab_l, wcag_vs_white, wcag_vs_black, apca_on_white, apca_on_black</code>.</p>
+<p>The contrast table uses the same JSON and CSV layouts, so it lists contrast against both white and black. It does not use the <strong>Against</strong> choice from the Contrast tab. Key-set properties are numbered from 0 like the ramp, not by key.</p>
+<h2 id="the-link">The link</h2>
+<p>The link reopens the same ramp. It carries <code>hex</code>, <code>engine</code>, <code>steps</code>, <code>gamma</code> and <code>mode</code> (the mixing space). The read-only field on the Export tab always shows the current link.</p>
+<h2 id="analyse-a-list-of-colours">Analyse a list of colours</h2>
+<ol>
+<li>Under <strong>Analyse a list</strong>, enter six-digit HEX colours, one per line or separated by commas (the <code>#</code> is optional).</li>
+<li>Select <strong>Analyse</strong>. The table shows <strong>Hex</strong>, <strong>L*</strong>, <strong>a*</strong>, <strong>b*</strong>, <strong>OKL</strong> (OKLab L), <strong>Y</strong> (luminance), and the number of <strong>Tints</strong> and <strong>Shades</strong> built for it at the current step count.</li>
+<li>Select <strong>Download the result</strong> to copy the table as CSV (<code>hex, L*, a*, b*, okL, Y, tints, shades</code>) to your clipboard. Despite its label, the button copies rather than downloads.</li>
+</ol>
+<p>If nothing valid is found, the panel says &quot;No valid hex colours found.&quot;</p>
+<h2 id="result">Result</h2>
+<p>You have ramp or key-set tokens in the format your project uses, each carrying a record of how it was made, and a link that rebuilds the same ramp.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="check-contrast.html"><span>Previous</span>Check contrast</a><a href="tints-shades-tones.html"><span>Next</span>Make tints, shades, tones and key sets</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#steps">Steps</a></li><li><a href="#file-names">File names</a></li><li><a href="#what-each-format-contains">What each format contains</a></li><li><a href="#the-link">The link</a></li><li><a href="#analyse-a-list-of-colours">Analyse a list of colours</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

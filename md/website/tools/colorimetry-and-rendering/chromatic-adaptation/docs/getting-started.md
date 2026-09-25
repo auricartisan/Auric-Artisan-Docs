@@ -1,0 +1,67 @@
+---
+title: Chromatic Adaptation — Getting started
+description: Open the Chromatic Adaptation lab, learn its tabs and controls, and adapt your first image.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Getting started with Chromatic Adaptation
+
+## Open the lab
+
+Go to https://auricartisan.com/tool/general/colorimetry/chromatic-adaptation-dynamic/. The page heading is **Chromatic Adaptation**. You do not need an account. Images you load are processed in your browser and are never uploaded.
+
+## Key ideas
+
+- A **white point** is the colour of the light a scene is viewed under, such as D65 (average daylight) or A (tungsten).
+- A **chromatic adaptation transform (CAT)** predicts what a colour seen under the **source** white point would have to become to look the same under the **destination** white point. It works by converting XYZ into a cone-like space (L, M, S), scaling each channel by the ratio of the two whites, and converting back. The transforms differ in the cone-like matrix they use.
+- The **degree of adaptation D** says how complete the adaptation is: 0 means none, 1 means the source white maps exactly onto the destination white.
+- Adaptation takes **time**. In this lab, the adaptation at a moment t is the starting state moved towards D along a measured two-phase curve (fast phase with a 1 s time constant carrying half the change, slow phase with a 30 s half-life carrying the rest).
+
+## A tour of the screen
+
+A note at the top says every figure names its source: which table a white point came from, which paper a matrix is published in, and whether a spectrum is tabulated or reconstructed.
+
+| Tab | What it is for |
+| --- | --- |
+| **Lab** | Load an image, choose the illuminants, transform and timing, and see the result |
+| **Dynamics** | The adaptation time course over two minutes, with adjustable fast and slow phases |
+| **Matrix** | The matrices behind the chosen transform, a round-trip check, code to copy, and all eight transforms compared |
+| **Data** | The register of the 11 datasets the lab uses, with their status (the tab shows the count) |
+| **Export** | JSON and PNG export, links, the all-methods comparison and batch colour analysis |
+| **Reference** | Standards, formulas, citations and research notes with a search filter |
+
+### The Lab tab
+
+The left panel holds the controls: **Image Source**, **Illuminants**, **CAT Method**, **Display Gamma**, **Degree of adaptation D**, **Per-Pixel Modulation**, **Spatial Adaptation**, **Timeline** and **Options**, then the **Run**, **Animate**, **Pause** and **Reset** buttons.
+
+The right side shows **Adaptation Analysis** with two status chips (what the lab is doing, and the model with the current time and D), then:
+
+- **Original Image** and **Adapted Image**;
+- **RGB Histogram (Adapted)**;
+- **Adaptation Curve A(t)** — adaptation over the 0–5 s timeline with the current time marked;
+- **Per-Pixel Adaptation State Map** — white is fully adapted, black is unadapted;
+- **LMS Cone-Channel Analysis** — the L, M and S responses for source (light) and destination (dark);
+- **SPD Spectral Overlay (Source vs Dest)** — the two illuminants' spectra, where the lab holds them.
+
+Until you load an image, an empty-state panel covers the image area and offers **Generate the sample sweep** and **Choose an image**.
+
+## Adapt your first image
+
+1. Select **Generate the sample sweep**. A 360 × 240 test image of hues and lightnesses appears, and the status chip reads "Sample loaded (360×240)".
+2. Under **Illuminants**, keep **Source illuminant** as **CIE D65 (6504 K) — sRGB daylight** and set **Destination illuminant** to **CIE A (2856 K) — tungsten**.
+3. Keep **CAT Method** on **Bradford (Lam 1985)** and **Degree of adaptation D** at 1.00.
+4. Drag **Time (scrubber)** to 5 s. With **Live** ticked, the adapted image updates as you drag. It becomes warmer as the model adapts towards tungsten.
+5. Select **Reset** to return to 0 s, then **Animate** to play the five seconds. Select **Pause** to stop at any moment.
+6. Look at the **LMS Cone-Channel Analysis**: the short-wavelength (S) channel changes the most between D65 and A.
+7. Look at **SPD Spectral Overlay** to see the D65 and A spectra together.
+
+## Why the image is not fully adapted after five seconds
+
+The Lab's timeline runs from 0 to 5 s and starts from a small initial adaptation (0.1). With the measured two-phase time course, the fast phase is nearly complete by 5 s but the slow phase has barely begun, so the applied D reaches roughly 0.6 of the way to the value you set. The status chip always shows the D in use. To see the whole curve over two minutes, open the **Dynamics** tab ([Explore the adaptation time course](explore-the-time-course.md)).
+
+## Next steps
+
+- [Adapt an image to a new light](adapt-an-image.md)
+- [Compare transforms and copy a matrix](compare-transforms-and-copy-matrices.md)
+- [Adapt a list of colours](adapt-a-colour-list.md)

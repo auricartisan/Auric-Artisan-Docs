@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the Contrast Checker — Auric Artisan Docs</title>
+<meta name="description" content="Odd results in the Contrast Checker, why they happen, and what to do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Contrast Checker</a>
+<h2>Contrast Checker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Contrast Checker</a></li>
+<li><a href="check-a-colour-pair.html">Check a colour pair</a></li>
+<li><a href="make-a-pair-pass.html">Make a pair pass</a></li>
+<li><a href="share-a-pair.html">Share a pair</a></li>
+<li><a href="reference.html">Contrast Checker reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the Contrast Checker</a></li>
+<li><a href="faq.html">Contrast Checker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Contrast Checker</a> &rsaquo; <a href="README.html">Contrast Checker documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Troubleshooting the Contrast Checker</h1>
+<p class="lede">Odd results in the Contrast Checker, why they happen, and what to do.</p>
+<h3 id="the-ratio-looks-wrong-while-i-am-typing">The ratio looks wrong while I am typing</h3>
+<ul>
+<li><strong>Why:</strong> a half-typed value such as <code>#1A</code> cannot be read, so the checker grades pure black (for the text) or pure white (for the background) in its place.</li>
+<li><strong>What to do:</strong> finish typing all three or six digits, or press <code>Tab</code> to leave the field. The field rewrites a valid value in full, and the ratio is then yours.</li>
+</ul>
+<h3 id="my-colour-is-not-accepted">My colour is not accepted</h3>
+<ul>
+<li><strong>Why:</strong> the fields take hex only. <code>rgb()</code>, <code>hsl()</code>, colour names and eight-digit hex with transparency are not accepted.</li>
+<li><strong>What to do:</strong> convert the colour to six-digit hex first. For a semi-transparent colour, work out the colour it actually shows over its background, and test that.</li>
+</ul>
+<h3 id="the-ratio-says-4501-but-body-text-aa-says-fail">The ratio says 4.50:1 but body text AA says Fail</h3>
+<ul>
+<li><strong>Why:</strong> the display is rounded to two decimals; the badge uses the exact value, which is just under 4.5.</li>
+<li><strong>What to do:</strong> treat it as failing and move the colour a little further.</li>
+</ul>
+<h3 id="the-ratio-did-not-change-when-i-swapped-the-colours">The ratio did not change when I swapped the colours</h3>
+<ul>
+<li><strong>Why:</strong> the ratio does not depend on which colour is the text. Only the preview, and which colour <strong>Make it pass AA</strong> moves, change.</li>
+<li><strong>What to do:</strong> nothing; this is correct.</li>
+</ul>
+<h3 id="make-it-pass-aa-made-my-colour-grey">Make it pass AA made my colour grey</h3>
+<ul>
+<li><strong>Why:</strong> it moves the text colour in a straight line towards black or white and stops at the first passing step, which removes saturation.</li>
+<li><strong>What to do:</strong> use its result as a target and adjust your original colour towards it by hand. See <a href="make-a-pair-pass.html">Make a pair pass</a>.</li>
+</ul>
+<h3 id="make-it-pass-aa-went-towards-white-on-a-mid-grey-background">Make it pass AA went towards white on a mid-grey background</h3>
+<ul>
+<li><strong>Why:</strong> the direction follows relative luminance. Mid greys count as dark.</li>
+<li><strong>What to do:</strong> darken the text yourself if you want the other direction.</li>
+</ul>
+<h3 id="the-make-it-pass-aa-button-is-missing">The Make it pass AA button is missing</h3>
+<ul>
+<li><strong>Why:</strong> it only appears when body text fails AA. If the pair already reaches 4.5:1 there is nothing to fix.</li>
+<li><strong>What to do:</strong> for AAA (7:1), darken or lighten the text by hand.</li>
+</ul>
+<h3 id="copy-link-printed-the-address-instead-of-copying-it">Copy link printed the address instead of copying it</h3>
+<ul>
+<li><strong>Why:</strong> your browser did not allow clipboard access, for example on an insecure connection or because you declined the permission.</li>
+<li><strong>What to do:</strong> select the address in the status line and copy it by hand.</li>
+</ul>
+<h3 id="back-does-not-return-to-my-previous-colours">Back does not return to my previous colours</h3>
+<ul>
+<li><strong>Why:</strong> the address is replaced, not added to history.</li>
+<li><strong>What to do:</strong> copy a link whenever you want to keep a pair.</li>
+</ul>
+<h3 id="the-ui-graphics-row-passes-but-my-control-is-still-hard-to-see">The UI &amp; graphics row passes but my control is still hard to see</h3>
+<ul>
+<li><strong>Why:</strong> the row compares the two colours you entered. A control&#39;s edge is judged against the colour actually next to it, which may not be the background you typed.</li>
+<li><strong>What to do:</strong> enter the control&#39;s border colour and the colour directly behind the control.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Contrast Checker reference</a><a href="faq.html"><span>Next</span>Contrast Checker FAQ</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

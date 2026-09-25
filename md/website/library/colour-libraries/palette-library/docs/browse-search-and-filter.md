@@ -1,0 +1,104 @@
+---
+title: Palette Library — Browse, search and filter
+description: Scroll five million palettes, jump to a palette by id, search, filter and sort, and read the counter that says how far a scan went.
+product: Website › Library › Colour libraries › Palette Library
+updated: 2026-09-25
+---
+
+# Browse, search and filter
+
+## How the collection works
+
+Each palette has a number from 0 to 4,999,999, and an id made from that number: `pal_` followed by the number written in base 36 (digits 0–9 then letters a–z). Palette 0 is `pal_0`, palette 10 is `pal_a`, palette 13,368 is `pal_abc`. The five colours of a palette are worked out from its number every time you need them, so they never change.
+
+Because every palette can be reached by its number, the unfiltered grid can show any part of the collection instantly. A filtered grid cannot: the only way to find the hundredth blue palette is to look through every palette before it. So the page scans forward in chunks as you scroll, and the counter under the grid tells you how far it has looked.
+
+## Scroll the whole collection
+
+With no search or filter:
+
+- The grid starts at `pal_0` and scrolls continuously.
+- The counter reads, for example, **1–48 of 5,000,000 palettes**.
+- A browser cannot make a page tall enough to scroll through five million palettes, so the scrollbar stops before the end. When it does, the counter adds **scroll reaches N; search an id for the rest**. Every palette beyond that point can still be opened by searching for its id.
+- **Back to top** returns to `pal_0`.
+
+## Jump to a palette by id
+
+1. Type an id into **Search by id or hex…**, for example `pal_abc`, or type the palette's number, for example `13368`.
+2. The grid shows only that palette, and the counter reads **1 palette, by id**.
+3. If the id is outside the collection, the counter reads **No palette with that id**.
+
+An id or number anywhere in either search box takes priority over everything else: filters are ignored while an id is shown.
+
+## Search by hex or method
+
+Type anything that is not an id, for example `#3a` or `analogous`. A palette matches when every word you type is found in:
+
+- its id; or
+- its generation method; or
+- the hex code of any of its five colours (with or without `#`).
+
+The **Filter inside results** box works the same way; words in both boxes are combined. **Clear** empties only the second box.
+
+Searching counts as a filter, so it starts a scan (see below).
+
+## Filters
+
+| Filter | Options | What it tests |
+| --- | --- | --- |
+| **Dominant hue** | **All hues**, **Red**, **Orange**, **Yellow**, **Green**, **Cyan**, **Blue**, **Purple**, **Pink** | The palette's overall hue: the average of its five OKLCH hues, weighted so that more colourful colours count more. |
+| **Chroma** | **Any chroma**, **Muted (< 0.07)**, **Balanced**, **Vivid (> 0.15)** | The average OKLCH chroma of the five colours. **Balanced** is 0.07 to 0.15. |
+| **Lightness** | **Any lightness**, **Dark**, **Mid**, **Light** | The average OKLCH lightness: **Dark** below 0.40, **Mid** 0.40 to 0.70, **Light** above 0.70. |
+| **Method** | **All methods**, `complementary`, `triadic`, `analogous`, `tetradic`, `golden_ratio`, `random`, `monochromatic` | The generation method the palette is labelled with. |
+
+All filters and searches combine: a palette must pass every one.
+
+## Read the counter while filtering
+
+With any filter or search active, the counter reads, for example:
+
+- **96 matches from 1,500 derived** — the page has worked out 1,500 palettes so far and 96 of them match.
+- **4,210 matches from 5,000,000 derived · all five million looked at** — the scan has reached the end of the collection.
+
+Scroll down to make the scan continue; each step works out another stretch of palettes. A rare filter combination may need to look through many palettes before the first match. Until then the grid shows **Nothing matched yet** with the advice **Scroll to keep looking, or widen the filter — a rare one can go a long way into five million before the first hit.**
+
+## Sort
+
+**Sort by** has these options:
+
+| Option | Order |
+| --- | --- |
+| **Sort: original** | By palette number (default). |
+| **Lightness ↑** | Darkest palettes first (average OKLCH lightness). |
+| **Lightness ↓** | Lightest first. |
+| **Chroma ↑** | Least colourful first (average chroma). |
+| **Chroma ↓** | Most colourful first. |
+| **Hue (rainbow)** | By dominant hue, from 0°. |
+| **Random** | Shuffled. |
+
+Five million palettes cannot be put in order in a browser. Any sort other than **Sort: original** therefore works on a bounded first stretch of the collection — the first 1,500 palettes the page works out, or the matches among them when a filter is on — and orders those. With a filter on, the counter says so, for example **96 matches, ordered within the first 1,500 derived**. The sorted grid does not grow as you scroll.
+
+> **Tip:** To see, say, the most colourful palettes of one method, choose the method first and then **Chroma ↓**. You are ordering the matches the page has found, not the whole collection.
+
+## Shuffle, random, reset
+
+- **Shuffle** sets **Sort by** to **Random**. Like any sort, it shuffles the first stretch of the collection.
+- **Open a random palette** picks a palette from anywhere in the five million and opens it on **Inspect**.
+- **Reset** empties both search boxes, sets every filter back to "All" or "Any", and sets the sort back to **Sort: original**.
+- **Export visible** opens the **Export** tab.
+
+## Cards
+
+Each card shows:
+
+- five swatches, each labelled with its hex code — select a swatch to copy that hex code (the page confirms, for example, **#3A5F8C copied**);
+- the palette id and its method;
+- **Inspect** — opens the palette on the **Inspect** tab (selecting the card anywhere outside the buttons and swatches does the same);
+- **Copy** — copies all five hex codes, separated by commas (**Palette hexes copied**);
+- **Save** or **Saved** — saves or unsaves the palette.
+
+With the keyboard, `Tab` moves between swatches; `Enter` or `Space` on a swatch opens its palette on **Inspect**.
+
+## Result
+
+You can reach any of the five million palettes directly by id, or scan for palettes with the hue, chroma, lightness or method you need, and the counter always tells you how much of the collection the answer is based on.

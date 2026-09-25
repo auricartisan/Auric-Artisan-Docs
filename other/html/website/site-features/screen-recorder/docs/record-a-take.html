@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Record a take — Auric Artisan Docs</title>
+<meta name="description" content="Choose a source and capture settings, add audio, draw a region, and control the recording with the recording bar.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Screen recorder</a>
+<h2>Screen recorder guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Get started with the screen recorder</a></li>
+<li><a href="my-recordings-and-export.html">My recordings and export</a></li>
+<li><a href="record-a-take.html" aria-current="page">Record a take</a></li>
+<li><a href="reference.html">Screen recorder reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the screen recorder</a></li>
+<li><a href="faq.html">Screen recorder FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Site features</a> &rsaquo; <a href="../README.html">Screen recorder</a> &rsaquo; <a href="README.html">Screen recorder guides</a></nav>
+<p class="kicker">Website › Site features › Screen recorder</p>
+<h1>Record a take</h1>
+<p class="lede">Choose a source and capture settings, add audio, draw a region, and control the recording with the recording bar.</p>
+<h2 id="choose-a-source">Choose a source</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Source</th><th>Description on screen</th><th>Good for</th></tr></thead>
+<tbody>
+<tr><td><strong>Screen or window</strong></td><td>Pick any screen, window, or tab. Controls stay out of the video unless you share this tab.</td><td>Showing several apps or windows</td></tr>
+<tr><td><strong>This tab</strong></td><td>Records this page. The recording bar is part of the page, so collapse it to keep it small.</td><td>Walking through a page or tool</td></tr>
+<tr><td><strong>Region of this page</strong></td><td>Drag a rectangle or click an element. Everything outside it is cropped away.</td><td>A tidy clip of one panel or control</td></tr>
+<tr><td><strong>Tool canvas</strong></td><td>Records a tool&#39;s drawing surface directly — pixel-exact, and nothing on screen can spoil the take.</td><td>Animated or drawn output from a tool</td></tr>
+</tbody></table></div>
+<p>When a source is not possible, it is greyed out with the reason:</p>
+<ul>
+<li>&quot;No recordable canvas on this page.&quot; — the page has no canvas large enough to record;</li>
+<li>&quot;This browser cannot capture the screen.&quot; — the browser does not let pages capture the screen (the <strong>Tool canvas</strong> source may still work).</li>
+</ul>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> When you record this tab, anything shown on the page is in the video, including the recording bar. Collapse the bar to a dot, or record a region or a canvas, to keep it out.</p>
+</blockquote>
+<h2 id="choose-capture-settings">Choose capture settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Options</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Frame rate</strong></td><td>15 fps — smallest, 24 fps — cinematic, 30 fps — standard, 60 fps — smoothest</td><td>30 fps</td></tr>
+<tr><td><strong>Quality</strong></td><td>Low — smallest file, Balanced, High — sharpest text</td><td>Balanced</td></tr>
+<tr><td><strong>Resolution cap</strong></td><td>Native, 1080p, 720p, 480p</td><td>Native</td></tr>
+<tr><td><strong>Countdown</strong></td><td>None, 3 seconds, 5 seconds</td><td>3 seconds</td></tr>
+</tbody></table></div>
+<p><strong>Resolution cap</strong> scales down recordings wider than the chosen size (1080p is 1,920 pixels wide, 720p is 1,280, 480p is 854). <strong>Native</strong> keeps the source&#39;s own size. Higher quality and frame rate make larger files.</p>
+<h2 id="add-audio-and-a-pointer-highlight">Add audio and a pointer highlight</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Switch</th><th>Description on screen</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Microphone</strong></td><td>Narrate while you record.</td><td>Off</td></tr>
+<tr><td><strong>Tab audio</strong></td><td>Include sound the page itself makes.</td><td>On</td></tr>
+<tr><td><strong>Highlight the cursor</strong></td><td>Draws an accent ring around the pointer.</td><td>Off</td></tr>
+</tbody></table></div>
+<ul>
+<li>The browser asks for microphone permission the first time. If the microphone cannot be used, recording continues without it and the message reads &quot;Microphone unavailable — recording without it.&quot;</li>
+<li><strong>Tab audio</strong> is recorded only when the shared screen, window or tab offers sound; your browser&#39;s sharing dialog may have its own &quot;share audio&quot; option.</li>
+<li>If the browser has no microphone support, the switch is greyed out with &quot;Not available in this browser.&quot;</li>
+</ul>
+<h2 id="record-a-region">Record a region</h2>
+<ol>
+<li>Choose <strong>Region of this page</strong> and select <strong>Start recording</strong>.</li>
+<li>The page dims with the hint &quot;<strong>Drag</strong> to draw a region, or <strong>click</strong> an element to snap to it. <strong>Esc</strong> cancels.&quot;</li>
+<li>Either drag a rectangle, or move over the page (a box outlines the element under the pointer) and click to use that element.</li>
+<li>Your browser asks to share this tab. Allow it.</li>
+</ol>
+<p>Only the region is recorded; the rest of the tab is cropped away. A click or a very small drag (under 12 pixels) counts as choosing the element under the pointer.</p>
+<h2 id="record-a-tool-canvas">Record a tool canvas</h2>
+<p>Choose <strong>Tool canvas</strong> and select <strong>Start recording</strong>. The recorder uses the canvas a tool offers for recording, or else the largest visible canvas on the page. No sharing dialog is needed.</p>
+<h2 id="the-countdown">The countdown</h2>
+<p>With a countdown set, a large number counts down on the page before recording starts.</p>
+<h2 id="the-recording-bar">The recording bar</h2>
+<p>While recording, a small bar floats on the page:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Grip</td><td>Drag to move the bar</td></tr>
+<tr><td>Red dot and timer</td><td>Shows elapsed time</td></tr>
+<tr><td>Size</td><td>File size so far</td></tr>
+<tr><td><strong>Pause recording</strong> / <strong>Resume recording</strong></td><td>Pauses or resumes (<code>Alt</code> + <code>Shift</code> + <code>P</code>)</td></tr>
+<tr><td><strong>Stop and save</strong></td><td>Ends the recording and saves it (<code>Alt</code> + <code>Shift</code> + <code>R</code>)</td></tr>
+<tr><td><strong>Discard recording</strong></td><td>Ends and throws the recording away (&quot;Recording discarded.&quot;)</td></tr>
+<tr><td><strong>Collapse to a dot</strong> / <strong>Expand controls</strong></td><td>Shrinks the bar to a small dot, or restores it; remembered</td></tr>
+</tbody></table></div>
+<p>Click a collapsed dot to expand it again.</p>
+<h2 id="when-a-recording-stops-by-itself">When a recording stops by itself</h2>
+<ul>
+<li>Your browser&#39;s own <strong>Stop sharing</strong> button ends the recording and saves it.</li>
+<li>A recording stops at <strong>30 minutes</strong>: &quot;Time limit reached — recording stopped.&quot;</li>
+<li>If you try to leave or reload the page during a recording, the browser asks you to confirm.</li>
+</ul>
+<h2 id="after-you-stop">After you stop</h2>
+<ul>
+<li>The recording is saved to <strong>My recordings</strong>, titled &quot;Recording&quot; with the date and time, and the list opens with it highlighted.</li>
+<li>If there is little browser storage left (under about 50 MB), the recorder warns before you start: &quot;Storage is nearly full — this recording may not save. Delete some clips first.&quot;</li>
+<li>If the browser refuses to store it, the file is downloaded straight away instead: &quot;Saved to your downloads (browser storage was unavailable).&quot;</li>
+<li>If nothing was captured, the message reads &quot;Nothing was recorded.&quot;</li>
+</ul>
+<h2 id="reset-your-setup">Reset your setup</h2>
+<p>Select <strong>Reset setup</strong>, then <strong>Confirm reset</strong> within four seconds. The source and every setting return to their defaults: &quot;Recorder setup reset to defaults.&quot; Press <code>Esc</code> while it says <strong>Confirm reset</strong> to cancel.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="my-recordings-and-export.html"><span>Previous</span>My recordings and export</a><a href="reference.html"><span>Next</span>Screen recorder reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#choose-a-source">Choose a source</a></li><li><a href="#choose-capture-settings">Choose capture settings</a></li><li><a href="#add-audio-and-a-pointer-highlight">Add audio and a pointer highlight</a></li><li><a href="#record-a-region">Record a region</a></li><li><a href="#record-a-tool-canvas">Record a tool canvas</a></li><li><a href="#the-countdown">The countdown</a></li><li><a href="#the-recording-bar">The recording bar</a></li><li><a href="#when-a-recording-stops-by-itself">When a recording stops by itself</a></li><li><a href="#after-you-stop">After you stop</a></li><li><a href="#reset-your-setup">Reset your setup</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

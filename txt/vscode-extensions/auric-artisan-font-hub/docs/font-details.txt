@@ -1,0 +1,158 @@
+==============================================================================
+FONT DETAILS
+==============================================================================
+Inspect a font family in Font Hub's twelve detail tabs, from the live specimen
+and waterfall to glyphs, features, styles and licence.
+Area: VS Code extensions › Auric Artisan Font Hub   Updated: 2026-09-25
+
+Select a family's name on its card to open the details panel. The header shows
+the family name and a short summary, with Favorite, Select and a close button
+(×, or `Escape`). Twelve tabs sit below it.
+
+Previews are drawn with the real font, fetched from the Auric font CDN through
+VS Code and cached. If a preview cannot be loaded, the card and panel say
+Preview unavailable with the reason, and the rest of the details still work
+from the bundled catalogue.
+
+SPECIMEN
+========
+
+  - An editable sample: click it and type your own text.
+  - Size slider, 18 to 120 pixels (48 by default).
+  - Variable axes — for variable families, a slider for each axis (such as
+    weight or width), from its minimum to its maximum, starting at the
+    default.
+  - OpenType controls — tick up to twelve of the family's features (such as
+    ligatures or small capitals) to see them applied live.
+  - Copy family — copy the CSS `font-family` value.
+  - Insert embed — add the font to the active file (see Add a font to your
+    code [add-fonts-to-code.txt]).
+
+WATERFALL
+=========
+
+The same text at eleven sizes, from 11 to 88 pixels, so you can see where the
+design stops working small or large. Variable families with a weight axis also
+get a Weight ramp. A Paragraph proof shows a paragraph at 13, 16 and 19
+pixels. Change the text with Preview text in the toolbar.
+
+SUITABILITY
+===========
+
+Five scores out of 100 (Accessibility, Readability, UI & Product, Developer,
+Editorial), a Style fingerprint and Why these scores, which explains the
+measured traits behind them, such as x-height and how distinct similar letters
+are.
+
+PAIRINGS
+========
+
+Pairing suggestions for a second family, ranked by category contrast, x-height
+harmony, shared design traits and role strength.
+
+FEATURES
+========
+
+The family's OpenType features, each with its tag, a plain name (for example
+`liga` Standard ligatures, `kern` Kerning, `smcp` Small capitals, `onum`
+old-style figures, `tnum` Tabular figures, `frac` Fractions, `zero` Slashed
+zero) and a sample. Copy CSS copies the `font-feature-settings` line for that
+feature. Toggle features live on the Specimen tab. If there are none: This
+family exposes no cataloged OpenType features.
+
+DEVELOP
+=======
+
+Developer exports — framework configuration and design-system tokens. Choose a
+format (Tailwind configuration, SCSS variable, design tokens JSON, the
+AuricFonts loader and the others), then Copy, Insert or Save it to a file.
+
+GLYPHS
+======
+
+A Character map of the family's characters. Select a character to copy it.
+
+CHARSET
+=======
+
+Charset coverage: the Unicode ranges the family covers, with the number of
+characters and the first glyph in each range. Use it to check a language or
+script is supported.
+
+STYLES
+======
+
+Styles and files: every style with its weight, posture (normal or italic),
+glyph count, file size and embedding permission, plus whether it is a variable
+or static family. Download kit exports a self-hosting kit.
+
+ABOUT
+=====
+
+About the family: designer, foundry, version, dates and description where the
+catalogue has them, and the Copyright notice.
+
+LICENSE
+=======
+
+The licence name and identifier, and a grid of permissions, each marked
+allowed (✓), not allowed (×) or unknown (?):
+
+  - Commercial use
+  - Modification
+  - Distribution
+  - Private use
+  - Sell font alone
+  - Include license
+
+Load full license text shows the complete licence. The reminder Review the
+original license before redistribution. applies to every family: each font
+keeps its own licence.
+
+USE & EMBED
+===========
+
+Hosted CDN or self-hosting-ready code. Choose a format, then Copy, Insert or
+Save:
+
+  Format:       HTML stylesheet link
+  What you get: A `<link rel="stylesheet">` to the family's CDN stylesheet
+
+  Format:       CSS @import
+  What you get: An `@import url(…)` line
+
+  Format:       CSS font-family
+  What you get: A `font-family` declaration with a fallback stack
+
+  Format:       @font-face
+  What you get: `@font-face` rules for each style, with `font-display: swap`
+                and variable weight ranges preserved
+
+  Format:       AuricFonts loader
+  What you get: A script snippet that loads the Auric font loader for this
+                family
+
+  Format:       Tailwind config
+  What you get: A `fontFamily` entry for `tailwind.config.js`
+
+  Format:       SCSS variable
+  What you get: A `$font-…` variable
+
+  Format:       Design tokens JSON
+  What you get: A typography token with family, fallback and CSS address
+
+  Format:       Family name
+  What you get: Just the name
+
+Self-host this family offers Download kit. See Export a self-hosting kit
+[self-hosting-kit.txt].
+
+Copying a `font-family` declaration, Tailwind entry or SCSS variable alone
+does not load the font; you also need the stylesheet link, `@import`,
+`@font-face` rules or the loader.
+
+OPEN ON THE WEB
+===============
+
+Explore Fonts on AuricArtisan.com opens the same library in your browser at
+https://auricartisan.com/tool/font/.

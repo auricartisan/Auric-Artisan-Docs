@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Code Health reference — Auric Artisan Docs</title>
+<meta name="description" content="Every command, keybinding, setting and view Auric Code Health contributes.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Code Health</a></li>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="code-health-studio.html">The Code Health Studio</a></li>
+<li><a href="health-records.html">Health records</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="reference.html" aria-current="page">Auric Code Health reference</a></li>
+<li><a href="troubleshooting.html">Auric Code Health troubleshooting</a></li>
+<li><a href="faq.html">Auric Code Health FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Auric Code Health reference</h1>
+<p class="lede">Every command, keybinding, setting and view Auric Code Health contributes.</p>
+<p>Facts for Auric Code Health 0.1.0 (<code>auric-artisan.auric-codehealth</code>). It needs VS Code 1.74 or newer and starts when VS Code finishes loading. Categories: Linters, Other.</p>
+<h2 id="keybindings">Keybindings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys (Windows, Linux)</th><th>Keys (macOS)</th><th>Command</th><th>Active when</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>.</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>.</code></td><td>Workstation: Command Center</td><td>Auric Code Health is not suppressed by a Workstation host</td></tr>
+</tbody></table></div>
+<h2 id="commands">Commands</h2>
+<p>All titles appear in the Command Palette after <code>Auric Artisan:</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Title</th><th>Command ID</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Open Code Health Studio</td><td><code>auricCodeHealth.openStudio</code></td><td>Opens the Studio on Health, or the Workstation host&#39;s Studio</td></tr>
+<tr><td>Workstation: Command Center</td><td><code>auricCodeHealth.commandCenter</code></td><td>Opens the Command Center list</td></tr>
+<tr><td>Open Rulebook &amp; Knowledge Database</td><td><code>auricCodeHealth.openKnowledgeBase</code></td><td>Searches signatures, categories, policies, articles and sources</td></tr>
+<tr><td>Build Workspace Knowledge Database (JSON + Markdown)</td><td><code>auricCodeHealth.writeKnowledgeDatabase</code></td><td>Writes <code>knowledge.json</code>, <code>rulebook.md</code> and an overrides template</td></tr>
+<tr><td>Open Unified Icon Studio</td><td><code>auricCodeHealth.openIconStudio</code></td><td>Opens the combined Auric icon library</td></tr>
+<tr><td>Generate Agent-Ready Remediation Plan</td><td><code>auricCodeHealth.generateAiPlan</code></td><td>Writes the local remediation plan</td></tr>
+<tr><td>Generate Project Health Report (Color, A11y &amp; Code Health)</td><td><code>auricCodeHealth.projectHealthReport</code></td><td>Writes <code>project-health.md</code>, <code>.json</code> and <code>.html</code></td></tr>
+<tr><td>Write Health Record (health.json + SARIF)</td><td><code>auricCodeHealth.writeHealthReport</code></td><td>Writes <code>health.json</code>, SARIF and history</td></tr>
+<tr><td>Clear Workspace Scan Cache</td><td><code>auricCodeHealth.clearScanCache</code></td><td>Deletes <code>scan-cache.json</code></td></tr>
+<tr><td>Open Workspace Data Folder</td><td><code>auricCodeHealth.openDataFolder</code></td><td>Shows <code>.auric-artisan</code> in your file manager, creating it if needed</td></tr>
+</tbody></table></div>
+<h2 id="views">Views</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>View</th><th>ID</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Overview</td><td><code>auricCodeHealthHome</code></td><td>In the <strong>Auric Code Health</strong> Activity Bar container; hidden while another Studio extension hosts</td></tr>
+</tbody></table></div>
+<p>Auric Code Health adds no editor right-click entries.</p>
+<h2 id="settings">Settings</h2>
+<p>Auric Code Health has 28 settings. Search <code>auricCodeHealth</code> in <strong>File › Preferences › Settings</strong>. The data, scan, code-health and health settings are shared across installed Studio extensions; see <a href="../../docs/reference.html#shared-settings">Shared settings</a>.</p>
+<h3 id="appearance">Appearance</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricCodeHealth.appearance.accent</code></td><td>string</td><td><code>gold</code></td><td>The Studio&#39;s accent: a preset ID or a hex colour. See <a href="../../docs/appearance.html">Appearance</a>.</td></tr>
+</tbody></table></div>
+<h3 id="code-health">Code health</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricCodeHealth.codeHealth.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Runs the code-health checks at all</td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.diagnostics</code></td><td>boolean</td><td><code>true</code></td><td>Shows findings in the editor and Problems panel; when off, only in scans, the Studio and reports</td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.todo</code></td><td>boolean</td><td><code>true</code></td><td>Task markers: TODO, FIXME, HACK, XXX, BUG, OPTIMIZE, REFACTOR, DEPRECATED</td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.debug</code></td><td>boolean</td><td><code>true</code></td><td>Debug leftovers such as <code>console.log</code>, <code>debugger</code>, <code>dbg!</code>, <code>var_dump</code>, <code>breakpoint()</code>, <code>NSLog</code></td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.secret</code></td><td>boolean</td><td><code>true</code></td><td>Possible hardcoded secrets</td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.conflict</code></td><td>boolean</td><td><code>true</code></td><td>Merge-conflict markers</td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.risk</code></td><td>boolean</td><td><code>true</code></td><td>Risky APIs such as <code>eval()</code>, <code>new Function()</code>, <code>innerHTML =</code>, <code>document.write()</code></td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.security</code></td><td>boolean</td><td><code>true</code></td><td>Security footguns: TLS bypass, weak hashing, unsafe deserialization, XSS sinks, CORS, injection</td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.customSecretPatterns</code></td><td>array of strings</td><td><code>[]</code></td><td>Extra regular expressions reported as possible secrets (medium confidence)</td></tr>
+<tr><td><code>auricCodeHealth.codeHealth.size</code></td><td>boolean</td><td><code>true</code></td><td>Very long lines and large files</td></tr>
+</tbody></table></div>
+<h3 id="health-record">Health record</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricCodeHealth.health.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Maintains <code>health.json</code>, SARIF and history</td></tr>
+<tr><td><code>auricCodeHealth.health.writeOnScan</code></td><td>boolean</td><td><code>true</code></td><td>Rewrites the record after each project scan</td></tr>
+<tr><td><code>auricCodeHealth.health.formats</code></td><td>array: <code>json</code>, <code>sarif</code>, <code>history</code></td><td>all three</td><td>Which files to write</td></tr>
+<tr><td><code>auricCodeHealth.health.fileName</code></td><td>string</td><td><code>health.json</code></td><td>JSON file name; SARIF and history names follow it</td></tr>
+<tr><td><code>auricCodeHealth.health.maxIssues</code></td><td>number, 100–100000</td><td><code>5000</code></td><td>Most issues recorded, worst first</td></tr>
+<tr><td><code>auricCodeHealth.health.historyLimit</code></td><td>number, 10–5000</td><td><code>200</code></td><td>Most history entries kept</td></tr>
+</tbody></table></div>
+<h3 id="data-folder">Data folder</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricCodeHealth.data.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Creates and uses the <code>.auric-artisan</code> folder</td></tr>
+<tr><td><code>auricCodeHealth.data.folderName</code></td><td>string</td><td><code>.auric-artisan</code></td><td>The folder&#39;s name, relative to the workspace</td></tr>
+</tbody></table></div>
+<h3 id="scanning">Scanning</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricCodeHealth.scan.cache.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Reuses the scan cache</td></tr>
+<tr><td><code>auricCodeHealth.scan.cache.maxAgeMinutes</code></td><td>number, 0 or more</td><td><code>1440</code></td><td>Maximum cache age; <code>0</code> keeps it until a forced or automatic scan</td></tr>
+<tr><td><code>auricCodeHealth.scan.live</code></td><td>boolean</td><td><code>true</code></td><td>Re-grades the project as you type, from memory</td></tr>
+<tr><td><code>auricCodeHealth.scan.liveDelayMs</code></td><td>number, 200–5000</td><td><code>700</code></td><td>Wait after the last keystroke before a live re-grade</td></tr>
+<tr><td><code>auricCodeHealth.scan.autoScan</code></td><td>boolean</td><td><code>false</code></td><td>Rescans from disk after file changes</td></tr>
+<tr><td><code>auricCodeHealth.scan.autoScanOnStartup</code></td><td>boolean</td><td><code>false</code></td><td>With auto scan on, also rescans soon after the workspace opens</td></tr>
+<tr><td><code>auricCodeHealth.scan.autoScanDelayMs</code></td><td>number, 250–60000</td><td><code>1800</code></td><td>Wait after a file change before an automatic scan</td></tr>
+<tr><td><code>auricCodeHealth.scan.maxFiles</code></td><td>number</td><td><code>4000</code></td><td>Most files one scan reads</td></tr>
+<tr><td><code>auricCodeHealth.scan.exclude</code></td><td>glob</td><td>see below</td><td>Paths to skip</td></tr>
+</tbody></table></div>
+<p>The default of <code>scan.exclude</code> is <code>**/{node_modules,dist,build,out,.git,vendor,coverage,.auric-artisan}/**</code>.</p>
+<h2 id="diagnostics-codes">Diagnostics codes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Category</th></tr></thead>
+<tbody>
+<tr><td><code>code-health:secret</code></td><td>Possible secrets</td></tr>
+<tr><td><code>code-health:security</code></td><td>Security risks</td></tr>
+<tr><td><code>code-health:conflict</code></td><td>Merge markers</td></tr>
+<tr><td><code>code-health:risk</code></td><td>Risky APIs</td></tr>
+<tr><td><code>code-health:debug</code></td><td>Debug leftovers</td></tr>
+<tr><td><code>code-health:todo</code></td><td>Task markers</td></tr>
+<tr><td><code>code-health:size</code></td><td>Oversized</td></tr>
+</tbody></table></div>
+<h2 id="quick-fixes">Quick fixes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick fix</th><th>What it inserts</th></tr></thead>
+<tbody>
+<tr><td><strong>Ignore this secret finding here</strong> (category varies)</td><td><code>auric-disable-next-line &lt;category&gt;</code> on the line above</td></tr>
+<tr><td><strong>Ignore all secret findings in this file</strong> (category varies)</td><td><code>auric-disable-file &lt;category&gt;</code> at the top</td></tr>
+</tbody></table></div>
+<h2 id="studio-spaces">Studio spaces</h2>
+<p>On its own: <strong>Health</strong> and <strong>Settings</strong> (Appearance, Project data, Scan engine, Scope).</p>
+<h2 id="files-it-writes">Files it writes</h2>
+<p><code>.auric-artisan/</code> <code>scan-cache.json</code>, <code>settings.json</code>, <code>health.json</code>, <code>health.sarif</code>, <code>health-history.json</code>, <code>project-health.md</code>, <code>.json</code> and <code>.html</code>, <code>ai-remediation-plan.md</code> and <code>.json</code>, and the knowledge files. See <a href="../../docs/scanning.html#the-auric-artisan-folder">The .auric-artisan folder</a>.</p>
+<h2 id="command-line-scanner">Command-line scanner</h2>
+<p>The <code>auric-artisan</code> scanner ships inside the extension at <code>bin/auric-artisan.js</code>. See <a href="../../docs/ci-gate.html">The CI gate</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="../../docs/reference.html">Studio reference</a></li>
+<li><a href="../others/shortcuts.html">Shortcuts</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="secrets-and-redaction.html"><span>Previous</span>Secrets and redaction</a><a href="troubleshooting.html"><span>Next</span>Auric Code Health troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#keybindings">Keybindings</a></li><li><a href="#commands">Commands</a></li><li><a href="#views">Views</a></li><li><a href="#settings">Settings</a></li><li><a href="#diagnostics-codes">Diagnostics codes</a></li><li><a href="#quick-fixes">Quick fixes</a></li><li><a href="#studio-spaces">Studio spaces</a></li><li><a href="#files-it-writes">Files it writes</a></li><li><a href="#command-line-scanner">Command-line scanner</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

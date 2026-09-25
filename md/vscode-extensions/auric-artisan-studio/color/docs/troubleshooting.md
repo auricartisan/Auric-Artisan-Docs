@@ -1,0 +1,133 @@
+---
+title: Auric Color — Troubleshooting
+description: Symptoms, causes and fixes for Auric Color's hovers, swatches, pickers and contrast diagnostics.
+product: VS Code extensions › Auric Artisan Studio › Auric Color
+updated: 2026-09-25
+---
+
+# Auric Color troubleshooting
+
+For problems shared by all Studio extensions, see the [Studio troubleshooting page](../../docs/troubleshooting.md).
+
+## Pickers and decorators
+
+### VS Code's own colour squares and picker disappeared everywhere
+
+**Why:** In its default Auric mode, Auric Color turns off `editor.colorDecorators` in your user settings so two pickers do not stack.
+
+**What to do:** If you prefer VS Code's picker, run **Auric Artisan: Restore native color picker (use VS Code's)**. See [Picker modes](picker-modes.md).
+
+### I turned editor.colorDecorators back on, and it switched off again
+
+**Why:** While Auric mode is active, Auric Color re-applies its choice whenever the setting drifts, including after Settings Sync or another extension changes it.
+
+**What to do:** Change the mode instead of the setting: run **Choose Color Picker Mode** and pick **VS Code native picker**, or **Restore native color picker (use VS Code's)**.
+
+### VS Code's colour decorators are still off after uninstalling Auric Color
+
+**Why:** Uninstalling does not reset the setting Auric Color changed.
+
+**What to do:** Set `"editor.colorDecorators": true` in your user settings (and in any workspace settings Auric Color overrode).
+
+### Two pickers appear at once
+
+**Why:** Another extension provides its own colour decorators or picker, or `colorPicker.nativeHoverPicker` is on while you expect Auric's own picker.
+
+**What to do:** Turn off the other extension's colour feature, or run **Disable native color picker (use Auric Artisan)**.
+
+### No swatches appear
+
+**Why:** One of these applies: the mode is **VS Code native picker**; `colorPicker.nativeHoverPicker` is on; `colorPicker.swatches` is off; the file is larger than 1 MB; or VS Code does not recognise the file's language (install a language extension for it).
+
+**What to do:** Check the three settings in [Reference](reference.md#settings), or run **Disable native color picker (use Auric Artisan)**.
+
+### Clicking a colour does nothing
+
+**Why:** `colorPicker.clickAction` is `off`, the mode is **VS Code native picker**, or you clicked with several cursors or a selection.
+
+**What to do:** Set **Color picker** to **Inline hover picker** or **Spectrum picker panel** in Studio › Settings, or press `Ctrl` + `Alt` + `C`.
+
+### The hover shows a finding instead of the colour card
+
+**Why:** When a line has an Auric finding, the finding's card takes priority over the colour card.
+
+**What to do:** Use **Pick / edit color** (`Ctrl` + `Alt` + `C`) to edit the colour, or fix the finding first.
+
+### My colour is not detected
+
+**Why:** The format is not one Auric Color detects: for example an integer such as `0xFF00FF`, a custom property name, or a colour built at runtime.
+
+**What to do:** Write the colour as hex, `rgb()`, `hsl()`, `hwb()`, `lab()`, `lch()`, `oklab()`, `oklch()`, `color()` or a CSS name. See [Detected colour formats](hover-and-swatches.md#detected-colour-formats).
+
+### The eyedropper says "Eyedropper unavailable here"
+
+**Why:** The screen colour picker is not available in this VS Code window on your system.
+
+**What to do:** Type or paste the colour value instead.
+
+### The picker wrote a different format than I expected
+
+**Why:** The picker writes in the tab you last chose. HSV is not a CSS format, so it writes hex.
+
+**What to do:** Choose the format tab you want before applying. The hover's tiles and **Type exact…** always keep the token's own format.
+
+### Apply to all matches is missing
+
+**Why:** The checkbox appears only when the same colour occurs more than once in the file.
+
+## Contrast diagnostics
+
+### No contrast underlines appear
+
+**Why:** One of these applies:
+
+- `contrast.enabled` is off;
+- the file type is not checked (see [Where contrast is checked](contrast-diagnostics.md#where-contrast-is-checked));
+- the text and background are in different files or set at runtime, so no pair can be resolved;
+- Auric Accessibility is installed and its `auricA11y.contrast.enabled` is off (it owns contrast diagnostics then).
+
+**What to do:** Check the setting of the extension that owns contrast, and see [Limits and accuracy](../../others/limits-and-accuracy.md#contrast-checks).
+
+### Changing auricColor.contrast settings has no effect
+
+**Why:** Auric Accessibility is installed, so it owns contrast diagnostics and reads `auricA11y.contrast.*`.
+
+**What to do:** Change the `auricA11y.contrast.*` keys, or use Studio › Settings › **Contrast**, which writes to the right extension.
+
+### Many "Possible low contrast" hints
+
+**Why:** Rules that set only a text colour are graded against the page background declared in the same file, which may not be the surface they really sit on.
+
+**What to do:** Check the real background. If the hints are not useful for your project, turn off `contrast.checkPageBackground`.
+
+### The quick fix only offers "Open in the Contrast Studio"
+
+**Why:** The colour is a mix, a relative colour, text faded with `opacity`, or a dark-theme value shared with the light theme. A one-click rewrite could change more than this text.
+
+**What to do:** Use the [Contrast Studio](../../docs/contrast-studio.md) to choose and apply a colour.
+
+### Fix All says "nothing to change"
+
+**Why:** The failing pairs are already at their best-effort fix: no colour of that hue reaches the target on that background, or the remaining pairs cannot be fixed with a one-click rewrite.
+
+**What to do:** Change the background or the hue in the Contrast Studio, or classify deliberate brand colours as branding.
+
+### Fix All did not fix APCA findings
+
+**Why:** **Fix All Contrast Issues in File** raises pairs to their WCAG 2.x target.
+
+**What to do:** Use the **Fix APCA contrast** quick fix on each APCA finding.
+
+## Studio tools
+
+### Load from scan says "Run a project scan first"
+
+**Why:** The Studio has no scan result yet. Auric Color alone has no scan command; a result appears once the Studio has graded the workspace in the background while you edit.
+
+**What to do:** Edit a stylesheet and try again, install Auric Accessibility or Auric Code Health and scan, or enter the brand colours by hand.
+
+### My brand colours were reset
+
+**Why:** The Brand tool keeps its colours only while the Studio tab is open.
+
+**What to do:** Use **Export CSS vars** or **Export JSON** to keep them.

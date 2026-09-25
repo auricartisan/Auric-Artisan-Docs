@@ -1,0 +1,443 @@
+==============================================================================
+SETTINGS PANEL REFERENCE
+==============================================================================
+Every control in the Settings panel, with what it does, its values and its
+default, plus the settings file format and messages.
+Area: Website › Site features › Settings panel   Updated: 2026-09-25
+
+All settings apply immediately, are kept in this browser, and are shared by
+every tab of the site you have open.
+
+PANEL FRAME
+===========
+
+  Control:      Title Your Settings
+  What it does: Drag to move the panel. The position is remembered.
+
+  Control:      Focus mode
+  What it does: Kit-style focus button. Tooltip: "Keep Settings open through
+                navigation and while opening other kits."
+
+  Control:      Resize
+  What it does: Switches between normal width and a wider panel (up to 980
+                px). The choice is remembered.
+
+  Control:      Minimize / Restore
+  What it does: Collapses the panel to its title bar. Select the bar or the
+                button to restore.
+
+  Control:      Close settings (X)
+  What it does: Closes the panel. Focus returns to the control that opened it.
+
+  Control:      Section list
+  What it does: Appearance, Comfort, Highlights, Clock, Tooltips, Ads,
+                Shortcuts, each with a control count
+
+  Control:      Export
+  What it does: Downloads `auric-settings.json`
+
+  Control:      Import
+  What it does: Loads a settings file
+
+  Control:      Reset all
+  What it does: Resets every setting after a confirmation (saved colours are
+                kept)
+
+  Control:      `Ctrl` `,` hint
+  What it does: Reminder of the open and close shortcut
+
+APPEARANCE
+==========
+
+  Control:      Preview
+  What it does: Live sample of heading, accent chip, link, text and button
+  Values:       Read-only
+  Default:      —
+
+  Control:      Accent on background
+  What it does: WCAG contrast of the accent against the page background
+  Values:       Ratio and badge
+  Default:      —
+
+  Control:      Text on accent
+  What it does: WCAG contrast of the automatic text colour on the accent
+  Values:       Ratio and badge
+  Default:      —
+
+  Control:      Shade strip
+  What it does: Seven shades of the accent; selecting one makes it your accent
+  Values:       7 swatches
+  Default:      —
+
+  Control:      Accent color
+  What it does: Site-wide highlight colour
+  Values:       Gold, Champagne, Rose Gold, Silver, Platinum Grey, Bronze,
+                Copper, Brown, Maroon, Pink, Emerald, Sapphire, Amethyst
+  Default:      Gold
+
+  Control:      Saved colors
+  What it does: Your palette of kept accents; select to use, X to remove
+  Values:       Up to 18
+  Default:      Empty
+
+  Control:      Custom color chip
+  What it does: Opens your browser's colour picker
+  Values:       Any sRGB colour
+  Default:      —
+
+  Control:      + (Save this color)
+  What it does: Adds the custom colour to Saved colors
+  Values:       —
+  Default:      —
+
+  Control:      Eyedropper
+  What it does: Samples any pixel on screen as the accent (supported browsers
+                only)
+  Values:       —
+  Default:      —
+
+  Control:      Theme
+  What it does: Light, dark, or follow the device
+  Values:       Light, Dark, System
+  Default:      System
+
+  Control:      Language
+  What it does: Interface and article language
+  Values:       English, हिन्दी
+  Default:      English
+
+  Control:      Text size
+  What it does: Scales type across the site
+  Values:       Small 90%, Default 100%, Large 112%, X-Large 125%
+  Default:      Default
+
+  Control:      Restore section defaults
+  What it does: Resets accent, theme and text size
+  Values:       —
+  Default:      —
+
+Contrast badges: AAA 7:1 or more, AA 4.5:1 or more, AA Large 3:1 or more, Fail
+below 3:1.
+
+COMFORT
+=======
+
+  Control:      Reading mode
+  What it does: Distraction-free layout with comfortable typography (`Alt` +
+                `R`)
+  Values:       On, off
+  Default:      Off
+
+  Control:      Reduce motion
+  What it does: Minimises animations and transitions (`Alt` + `M`)
+  Values:       On, off
+  Default:      Off
+
+  Control:      Reduce transparency
+  What it does: Turns off blur and translucency
+  Values:       On, off
+  Default:      Off
+
+  Control:      Boost contrast
+  What it does: Stronger text and borders
+  Values:       On, off
+  Default:      Off
+
+  Control:      Underline links
+  What it does: Always underlines links in articles and prose
+  Values:       On, off
+  Default:      Off
+
+  Control:      Custom cursor
+  What it does: The ring and dot that follow your pointer
+  Values:       On, off
+  Default:      On
+
+  Control:      Eye-rest reminders
+  What it does: Reminders to rest your eyes on a schedule
+  Values:       On, off
+  Default:      Off
+
+  Control:      Reminder interval
+  What it does: Minutes between reminders
+  Values:       20m, 35m, 45m, 60m
+  Default:      20m
+
+  Control:      Screen saver
+  What it does: Ambient colour screen after inactivity
+  Values:       On, off
+  Default:      Off
+
+  Control:      Start after
+  What it does: Minutes of inactivity before the screen saver
+  Values:       1m, 5m, 10m, 20m, 30m
+  Default:      10m
+
+  Control:      Restore section defaults
+  What it does: Resets all Comfort settings
+  Values:       —
+  Default:      —
+
+HIGHLIGHTS
+==========
+
+  Control:      Live demo chips
+  What it does: Live / demo chips above demo sections
+  Values:       On, off
+  Default:      On
+
+  Control:      Welcome bar
+  What it does: Rotating welcome bar
+  Values:       Off; on (every page); homepage only
+  Default:      Homepage only
+
+  Control:      Announcement bar
+  What it does: Site announcements bar
+  Values:       Off; on (every page); homepage only
+  Default:      Homepage only
+
+  Control:      Quick links bar
+  What it does: Documentation, changelog, timeline, blog, learn cards
+  Values:       Off; on (every page); homepage only
+  Default:      Homepage only
+
+  Control:      Clock strip
+  What it does: Live clock, date and time zone above every page
+  Values:       On, off
+  Default:      Off
+
+  Control:      Hero notice
+  What it does: Notice banner on the homepage hero
+  Values:       On, off
+  Default:      On
+
+  Control:      Restore section defaults
+  What it does: Resets all Highlights settings
+  Values:       —
+  Default:      —
+
+"Homepage only" shows the switch as on. Switching it on after it has been off
+shows the bar on every page.
+
+CLOCK
+=====
+
+  Control:      Live preview
+  What it does: The clock drawn with your settings, updating each second
+  Values:       Read-only
+  Default:      —
+
+  Control:      24-hour time
+  What it does: 24-hour format instead of AM / PM (also used by the screen
+                saver clock)
+  Values:       On, off
+  Default:      Off
+
+  Control:      Show seconds
+  What it does: Seconds on the live clock
+  Values:       On, off
+  Default:      On
+
+  Control:      Show date
+  What it does: Calendar date next to the clock
+  Values:       On, off
+  Default:      On
+
+  Control:      Timezone
+  What it does: Zone shown by the clock
+  Values:       Auto-detect or any listed zone
+  Default:      Auto-detect
+
+  Control:      Date format
+  What it does: How the date is written
+  Values:       Long, DD/MM/YYYY, MM/DD/YYYY
+  Default:      Long
+
+  Control:      Restore section defaults
+  What it does: Resets all Clock settings
+  Values:       —
+  Default:      —
+
+TOOLTIPS
+========
+
+  Control:      Live preview
+  What it does: Sample tooltip reflecting the switches
+  Values:       Read-only
+  Default:      —
+
+  Control:      Show tooltips
+  What it does: Rich hover and focus tooltips across the site
+  Values:       On, off
+  Default:      On
+
+  Control:      Detailed tooltips
+  What it does: Preview image, metadata and tags
+  Values:       On, off
+  Default:      On
+
+  Control:      Advanced tooltips
+  What it does: Data section always expanded; off means press `Alt` to expand
+  Values:       On, off
+  Default:      Off
+
+  Control:      Restore section defaults
+  What it does: Resets all Tooltips settings
+  Values:       —
+  Default:      —
+
+ADS
+===
+
+Shown only while the site is showing ads. The controls are locked for
+signed-out and free-plan visitors.
+
+  Control:      Show ads
+  What it does: Sponsored slots across the site
+  Values:       On, off
+  Default:      On
+
+  Control:      Ad density
+  What it does: In-content slots per page
+  Values:       Standard, Reduced
+  Default:      Standard
+
+  Control:      Ads in panels & search
+  What it does: Compact sponsored strip in kits, Spotlight and search results
+  Values:       On, off
+  Default:      On
+
+  Control:      Restore section defaults
+  What it does: Resets all Ads settings
+  Values:       —
+  Default:      —
+
+SHORTCUTS
+=========
+
+The Shortcuts section lists the panel's own keyboard shortcuts. It has no
+settings.
+
+  Keys         | Action
+  -------------+---------------------------------------------
+  `Ctrl` + `,` | Open or close settings
+  `Alt` + `R`  | Toggle reading mode
+  `Alt` + `T`  | Switch theme (light, then dark, then system)
+  `Alt` + `+`  | Increase text size
+  `Alt` + `-`  | Decrease text size
+  `Alt` + `0`  | Reset text size
+  `Alt` + `M`  | Toggle reduced motion
+  `Esc`        | Close the dialog
+
+The `Alt` shortcuts do nothing while you are typing in a text field. On a Mac,
+`Cmd` + `,` also opens the panel. The whole site's shortcuts are in Keyboard
+shortcuts [../../keyboard-shortcuts/README.txt].
+
+THE SETTINGS FILE
+=================
+
+Export writes a JSON file named `auric-settings.json`. It starts with two
+marker fields and then lists every setting:
+
+    {
+      "_aa": "auric-settings",
+      "v": 1,
+      "accent": "sapphire",
+      "savedColors": ["#2e8b57"],
+      "themeMode": "system",
+      "textScale": 1.12,
+      "reduceMotion": false,
+      "customCursor": true,
+      "eyeRest": true,
+      "eyeRestInterval": 35,
+      "time24": true,
+      "clockTz": "",
+      "dateFormat": "dmy"
+    }
+
+The example is shortened. A real export also includes the remaining switches:
+`reduceTransparency`, `contrast`, `underlineLinks`, `reading`, `screenSaver`,
+`screenSaverDelay`, `showWelcome`, `showAnnouncements`, `showQuickLinks`,
+`showTimeStrip`, `showHeroNotice`, `showDemoBadges`, `showSeconds`,
+`showDate`, `tipEnabled`, `tipDetails`, `tipAdvanced`, `adsEnabled`,
+`adsDensity` and `adsInPanels`, plus `recentColors`, an older colour history
+that is only read to fill Saved colors once.
+
+  Field:           `accent`
+  Accepted values: A preset name (`gold`, `champagne`, `rose-gold`, `silver`,
+                   `platinum`, `bronze`, `copper`, `espresso`, `maroon`,
+                   `rose`, `emerald`, `sapphire`, `amethyst`) or a `#rrggbb`
+                   colour
+
+  Field:           `savedColors`
+  Accepted values: Up to 18 `#rrggbb` colours
+
+  Field:           `themeMode`
+  Accepted values: `light`, `dark`, `system`
+
+  Field:           `textScale`
+  Accepted values: `0.9`, `1`, `1.12`, `1.25`
+
+  Field:           `eyeRestInterval`
+  Accepted values: `20`, `35`, `45`, `60`
+
+  Field:           `screenSaverDelay`
+  Accepted values: `1`, `5`, `10`, `20`, `30`
+
+  Field:           `dateFormat`
+  Accepted values: `long`, `dmy`, `mdy`
+
+  Field:           `clockTz`
+  Accepted values: Empty for auto-detect, or a time zone name such as
+                   `Europe/London`
+
+  Field:           `showWelcome`, `showAnnouncements`, `showQuickLinks`
+  Accepted values: `true`, `false` or `"home"`
+
+  Field:           `adsDensity`
+  Accepted values: `standard`, `reduced`
+
+  Field:           Other switches
+  Accepted values: `true` or `false`
+
+The preset names in the file are fixed identifiers: `espresso` is the Brown
+swatch, `rose` is Pink, and `platinum` is Platinum Grey. The language is not
+part of the file; it is kept separately (see Language
+[../../language/README.txt]).
+
+MESSAGES
+========
+
+  Message:         Settings exported
+  When it appears: After Export
+
+  Message:         Couldn’t export settings
+  When it appears: The browser refused the download
+
+  Message:         Settings imported
+  When it appears: After a successful Import
+
+  Message:         That file isn’t valid settings
+  When it appears: The chosen file is not valid JSON
+
+  Message:         Couldn’t read that file
+  When it appears: The browser could not read the chosen file
+
+  Message:         Appearance / Comfort / Highlights / Clock restored to
+                   defaults
+  When it appears: After that section's restore
+
+  Message:         Section restored to defaults
+  When it appears: After the Tooltips or Ads restore
+
+  Message:         All settings reset to defaults
+  When it appears: After a confirmed Reset all
+
+  Message:         Theme: Light / Dark / System
+  When it appears: After `Alt` + `T`
+
+  Message:         Text size: Small / Default / Large / X-Large
+  When it appears: After `Alt` + `+`, `Alt` + `-` or `Alt` + `0`
+
+  Message:         Reduced motion on / Reduced motion off
+  When it appears: After `Alt` + `M`

@@ -1,0 +1,200 @@
+==============================================================================
+SAVE, REOPEN AND COMPARE
+==============================================================================
+How finished runs are kept in your browser, how to reopen them, how to compare
+two versions of a site, and how to keep a copy in your account.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+You do not have to save a run by hand. Every finished audit is filed in your
+browser as a version of the site it audited, so you can reopen it later
+without running it again, and compare it with the next run to see what your
+changes did.
+
+HOW RUNS ARE KEPT
+=================
+
+  - One project per site. A single-page audit is filed as a project named
+    "Audit · " followed by the host and path. A whole-site scan is its own
+    project, named "Audit · " followed by the host.
+  - Every run is a version. Running the same address again adds a new version
+    to the same project instead of creating a new entry. Versions are never
+    deleted to make room; after the 25 newest, older versions keep their
+    scores and dates in the list and their full reports stay stored.
+  - One collection per host. Projects for the same host are grouped in a
+    library collection named "URL Analyzer (" plus the host and ")", together
+    with the site's palette.
+  - The palette is filed too. The colours the page is built from are saved as
+    a palette named "Palette · " plus the host, so colour tools in your
+    library can open it.
+  - The full report is stored. Every section of the report is stored in your
+    browser, so reopening a version redraws every panel exactly as it was. The
+    site map, which finishes after the rest, is added to the version when it
+    arrives.
+
+Runs are kept in your browser's storage on this device. They do not follow you
+to another browser or computer unless you keep a copy in your account (below),
+and clearing this site's data in your browser removes them.
+
+Filing a run counts as a saved project in your library. The free plan allows
+20 saved projects; if your library is full, a new project is not filed. See
+the Library Kit docs in Library Kit [../../../../kits/library-kit/README.txt]
+for how the library works.
+
+The Save this run button fixed at the bottom right of the page is the
+site-wide library button. It saves the current output to your library, the
+same as on other tools.
+
+REOPEN A PAST RUN
+=================
+
+There are three ways:
+
+  - In the Workspace section, under Saved projects, select Open beside a
+    project.
+  - In the Compare section, pick the version on the right and select Open this
+    version.
+  - Open the project from your library.
+
+The Analyzer loads the stored report and redraws every section. Nothing is
+re-run and no tokens are used.
+
+THE WORKSPACE SECTION (ADVANCED)
+================================
+
+"History, saved palettes, monitoring, and workspace management."
+
+  Block:         Saved projects
+  What it holds: Every saved site, with its latest score, the number of
+                 versions, and Open
+
+  Block:         Also on this machine
+  What it holds: The older history list: URL, score and date for up to 50
+                 recent runs, each with Re-analyze and a remove button
+
+  Block:         Workspace Actions
+  What it holds: Export Workspace, Import Workspace and Clear All
+
+  Block:         Saved Palettes
+  What it holds: Palettes you saved from the Palette section's generated
+                 palettes
+
+  Block:         Continuous Monitoring
+  What it holds: Each analysed URL with its last score, date, trend and
+                 checks; Re-check and remove buttons
+
+Re-check current URL, at the top of Continuous Monitoring, runs the current
+address again.
+
+Export, import and clear
+------------------------
+
+  - Export Workspace downloads `workspace.json`: the history list, saved
+    palettes, notes and pinned findings.
+  - Import Workspace reads a `workspace.json` file back in. A file that is not
+    analyzer data is refused with "That file could not be read as analyzer
+    data."
+  - Clear All asks "Clear all workspace data?" and explains that saved
+    palettes, notes and pinned findings are deleted from this browser, that
+    analysis reports are not affected, and that this cannot be undone. Select
+    Clear workspace to confirm.
+
+Monitoring is not automatic. The Analyzer does not run in the background; it
+records each run you make, and Re-check runs it again when you ask.
+
+COMPARE TWO VERSIONS
+====================
+
+The Compare section sets two saved runs of the same site side by side: what
+was fixed, what appeared, and what stayed. It is available in both modes, and
+it works without a new run because it reads your saved versions.
+
+  1. Open Compare.
+  2. Choose the Site from the first menu.
+  3. Choose the earlier version under Was and the later one under Now. By
+     default the newest run is compared with the one before it.
+  4. Read the result (below).
+
+If nothing has been saved yet, the section says "Nothing has been saved to
+compare yet." with an Enter a URL button. If the site has one version, it says
+a comparison needs two and offers a button to analyse the site again.
+
+Reading a comparison
+--------------------
+
+  Part:          Header
+  What it shows: The Was and Now scores and the change: better, worse, no
+                 change or not scored
+
+  Part:          Scope note
+  What it shows: Appears when the two runs did not measure the same things,
+                 naming the checks that ran only then or only now
+
+  Part:          By category
+  What it shows: Each category whose score moved, with a bar, the change, and
+                 the scores before and after
+
+  Part:          Section by section
+  What it shows: Each section's finding count before and after, and the change
+
+  Part:          What changed
+  What it shows: A section's detail: Gone (fixed), New (appeared) and how many
+                 stayed in both
+
+A section that ran in only one of the two versions is marked only measured
+once instead of showing a change, because a check that did not run finds
+nothing, which is not the same as finding nothing wrong. Categories measured
+in only one run are left out of By category for the same reason.
+
+Contrast differences list each pair as two swatches with its ratio. Palette
+differences list colour swatches. Other sections list the finding and where it
+was found.
+
+Buttons for the Now version
+---------------------------
+
+  Button:       Open this version
+  What it does: Loads that version's full report into the Analyzer
+
+  Button:       Download it
+  What it does: Downloads that version's report as JSON, for example
+                `example.com-2026-09-24.json`
+
+  Button:       Keep in my account
+  What it does: Uploads that version to your account (below). Shows In your
+                account ✓ once kept.
+
+If a version's stored report has been removed from your browser, these buttons
+say "That version's results are no longer stored." Analysing the site again
+rebuilds it.
+
+KEEP A COPY IN YOUR ACCOUNT
+===========================
+
+Browser storage is one browser on one machine. To open a report elsewhere,
+keep it in your account.
+
+  1. Sign in.
+  2. Open Compare and choose the version as Now.
+  3. Select Keep in my account.
+
+The button changes to In your account ✓, and a message confirms "Kept in your
+account." Its tooltip shows the stored size. Select it again to remove the
+account copy; the message says "Removed from your account. This browser still
+has it."
+
+  - Nothing is uploaded unless you select the button. A whole-site report can
+    be large, so the Analyzer never spends your connection or storage without
+    being asked.
+  - The button only appears when you are signed in and report storage is
+    available for your account.
+  - Kept reports stay until you remove them, or until your account is deleted.
+
+GOOD HABITS
+===========
+
+  - Run the same page before and after a change, then compare. The Gone list
+    is your proof that a fix worked.
+  - Keep the same checks switched on between runs you want to compare, so the
+    scope note does not appear.
+  - Keep important versions in your account before you clear your browser's
+    data.

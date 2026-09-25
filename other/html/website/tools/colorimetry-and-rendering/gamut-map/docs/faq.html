@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut Mapping FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the Gamut Mapping lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Mapping</a>
+<h2>Gamut Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Gamut Mapping</a></li>
+<li><a href="compare-spaces-and-methods.html">Compare spaces and methods</a></li>
+<li><a href="map-a-colour-list.html">Map a list of colours</a></li>
+<li><a href="map-a-colour.html">Map a colour into a smaller gamut</a></li>
+<li><a href="reference.html">Gamut Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Gamut Mapping</a></li>
+<li><a href="faq.html" aria-current="page">Gamut Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Mapping</a> &rsaquo; <a href="README.html">Gamut Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Gamut Mapping FAQ</h1>
+<p class="lede">Short answers to common questions about the Gamut Mapping lab.</p>
+<h2 id="are-these-the-icc-rendering-intents">Are these the ICC rendering intents?</h2>
+<p>No. ICC perceptual and saturation intents are lookup tables that a profile author builds for a particular device, so no general algorithm can reproduce them. The lab&#39;s four methods are named for what they do. <strong>Adapt white, then clip</strong> has the shape of ICC relative colorimetric; <strong>Clip in target RGB</strong> (no white adaptation) resembles absolute colorimetric clipping.</p>
+<h2 id="which-method-should-i-use">Which method should I use?</h2>
+<p>For photographs, chroma compression usually looks most natural because it keeps lightness and hue. For logos and spot colours that must match exactly where they can, clipping keeps in-gamut colours untouched. The lab does not rank methods, because there is no agreed reference set of correct mappings; it reports what each does.</p>
+<h2 id="why-is-the-slice-painted-in-srgb">Why is the slice painted in sRGB?</h2>
+<p>Most screens and browsers show sRGB reliably. The geometry (which colours are in each gamut) is computed exactly; only the painting is limited to what your screen can show.</p>
+<h2 id="why-does-prophoto-rgb-look-lopsided">Why does ProPhoto RGB look lopsided?</h2>
+<p>ProPhoto RGB is defined against D50 and includes colours outside human vision. The lab adapts it onto the Lab plane&#39;s white with Bradford before testing its boundary, and its chroma can run past the ±128 range the slice draws.</p>
+<h2 id="why-do-the-areas-in-the-statistics-line-differ-from-percentages-i-see-elsewhere">Why do the areas in the statistics line differ from percentages I see elsewhere?</h2>
+<p>They are areas of the a<em>b</em> slice at one lightness, not the &quot;percentage of the spectral locus&quot; often quoted from the xy diagram. For total size, use the volume on the Boundary tab.</p>
+<h2 id="is-a-e00-of-2-acceptable">Is a ΔE₀₀ of 2 acceptable?</h2>
+<p>For critical work an average below 2 is a common target, and the lab&#39;s research notes suggest the same. It depends on your application.</p>
+<h2 id="can-i-load-an-icc-profile">Can I load an ICC profile?</h2>
+<p>No. The Data tab shows an <strong>Install a table</strong> area, but it does not load files in the current version.</p>
+<h2 id="is-anything-uploaded">Is anything uploaded?</h2>
+<p>No. All mapping runs in your browser.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting Gamut Mapping</a><a href="../others/README.html"><span>Next</span>Gamut Mapping: supporting pages</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#are-these-the-icc-rendering-intents">Are these the ICC rendering intents?</a></li><li><a href="#which-method-should-i-use">Which method should I use?</a></li><li><a href="#why-is-the-slice-painted-in-srgb">Why is the slice painted in sRGB?</a></li><li><a href="#why-does-prophoto-rgb-look-lopsided">Why does ProPhoto RGB look lopsided?</a></li><li><a href="#why-do-the-areas-in-the-statistics-line-differ-from-percentages-i-see-elsewhere">Why do the areas in the statistics line differ from percentages I see elsewhere?</a></li><li><a href="#is-a-e00-of-2-acceptable">Is a ΔE₀₀ of 2 acceptable?</a></li><li><a href="#can-i-load-an-icc-profile">Can I load an ICC profile?</a></li><li><a href="#is-anything-uploaded">Is anything uploaded?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

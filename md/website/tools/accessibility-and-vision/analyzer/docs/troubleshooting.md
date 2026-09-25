@@ -1,0 +1,189 @@
+---
+title: Analyzer — Troubleshooting
+description: What each Analyzer error or odd result means, why it happens, and what to do about it.
+product: Website › Tools › Accessibility and vision
+updated: 2026-09-25
+---
+
+# Troubleshooting the Analyzer
+
+Each entry gives the symptom as you see it, the cause, and what to do.
+
+## Starting a run
+
+### "That URL doesn't look valid"
+
+- **Why:** the address could not be turned into a web address, or it uses a scheme the Analyzer cannot fetch, such as `mailto:`, `tel:`, `ftp:` or `javascript:`.
+- **What to do:** type a full address including `https://`, for example `https://example.com`.
+
+### "Sign in to scan another site"
+
+- **Why:** auditing a website other than auricartisan.com runs on Auric Artisan's servers, which needs an account. Nothing has failed.
+- **What to do:** select **Sign in**, then run the audit again. Pages on auricartisan.com can be audited without an account.
+
+> **Note:** The tips under this and other error panels may mention a "This Page" button. That button has been removed from the strip. To audit a page on auricartisan.com, type or paste its address into the URL field.
+
+### "Scanning another site needs a plan"
+
+- **Why:** your account's plan does not include URL analysis, or the server refused the run for a plan reason. The message under the heading gives the exact reason. If it says "This run costs N tokens and your balance is M", your token balance is too low.
+- **What to do:** select **See plans**. On a paid plan the monthly token allowance renews; the free plan's starter balance does not.
+
+### "You have used this month's scans"
+
+- **Why:** you have used your monthly allowance of server-side URL analyses (20 a month on the free plan).
+- **What to do:** wait for the next month, or select **See plans**. Pages on auricartisan.com can still be audited in your browser.
+
+### "The token meter could not be read, so this run cannot be metered"
+
+- **Why:** a server-side run cannot start while your token balance is unavailable.
+- **What to do:** wait a moment and try again.
+
+## Reaching the page
+
+### "Couldn't reach the target" or "You are offline"
+
+The panel checks three things and shows each as a row:
+
+| Row | What it tells you |
+| --- | --- |
+| **Your connection** | Whether your browser reports it is online |
+| **Server-side scanning** | That scanning another site runs on Auric Artisan's servers via Scan Site, which needs an account |
+| **Target origin** | Whether the address is on auricartisan.com or on a site your browser cannot fetch |
+
+- **Why:** you are offline, the address has a typo or a private host name, the site is down, or the site is on another origin and you are not signed in.
+- **What to do:** check your connection and the address; sign in to scan another site; check any VPN or firewall on your network.
+
+### "Could not fetch this cross-origin page from the browser"
+
+- **Why:** the page would not embed, and your browser is not allowed to read another site's HTML directly.
+- **What to do:** sign in, so the page is rendered on Auric Artisan's servers. Or turn on **Public proxy** in **Site scan settings** (Advanced), which routes the fetch through a third-party public proxy. Only do this if you are happy for that service to see the address.
+
+### "Could not analyze this page. Every method the analyzer has was tried"
+
+- **Why:** every way of reaching the page failed. The numbered list names each method and why it failed: the frame, a rendered snapshot, a browser fetch and the server.
+- **What to do:** read the last line (the server) first. It is usually the one that explains the problem, such as a site that refused the scanner.
+
+### "That site refused the scanner (HTTP 403)" (or 401 or 429)
+
+- **Why:** the site declined to serve an automated browser. Sites behind a bot challenge, a login or a strict firewall cannot be audited remotely.
+- **What to do:** audit a page that is publicly reachable. If it is your own site, allow the scanner or test a staging copy that is publicly reachable.
+
+### "That address is not reachable from the scanner."
+
+- **Why:** the address is private or local, such as `localhost`, `127.0.0.1`, `10.x.x.x`, `192.168.x.x` or a link-local address. The scanner never visits private networks.
+- **What to do:** audit a publicly reachable copy of the page.
+
+### "Request timed out"
+
+- **Why:** the site did not respond in time. It may be slow, blocking automated visitors, or behind a captcha.
+- **What to do:** try again later, or audit a lighter page first.
+
+### "Rate-limited by target (HTTP 429)"
+
+- **Why:** the site you are auditing (or a proxy in front of it) asked the Analyzer to slow down. The Analyzer already waits and retries.
+- **What to do:** wait 30–60 seconds and select **Analyze** again. If you were scanning a whole site, lower **Workers** and **Pages**, or audit one URL at a time. A recent copy of the page, if this browser has one, may be used instead.
+
+## Results
+
+### The score is empty and the report says the page returned a bot-challenge page
+
+- **Why:** the site answered with a challenge page ("Just a moment", "Verify you are human" and similar) instead of its content. Scoring it would describe the challenge, not your page.
+- **What to do:** audit a page the site serves to automated browsers, or allow the scanner on your own site.
+
+### The score is empty and the report says the page returned almost no content
+
+- **Why:** the page had under 40 characters of text and under 10 elements. It is probably an error page, a redirect stub or a challenge.
+- **What to do:** check the address. If the page builds its content with JavaScript, sign in so it is rendered in a real browser.
+
+### A section says it "was switched off for this run"
+
+- **Why:** the check that fills that section did not run.
+- **What to do:** select **Turn it on and run again**.
+
+### "Accessibility engine did not run"
+
+- **Why:** the engine needs the page's rendered structure, and this run did not produce one.
+- **What to do:** sign in so the page is rendered on the server, or audit a page on auricartisan.com.
+
+### "Coverage limits for this run" appears in A11y+
+
+- **Why:** computed styles or element geometry were not available, so contrast, reflow, target-size and focus-order rules could not measure.
+- **What to do:** those rules report **needs review** instead of guessing. Check them by hand, or re-run with the page rendered in a browser.
+
+### Some content is missing from the audit
+
+- **Why:** the page was read from its HTML rather than rendered, so anything it builds with JavaScript is absent.
+- **What to do:** sign in so the page is rendered in a real browser. Compare **Raw HTML Summary** and **Rendered DOM Analysis** in **Deep** to see what depends on JavaScript.
+
+### My score dropped and I did not change anything
+
+- **Why:** the page changed underneath it (new content, an advert, a third-party embed or an A/B test), or a fix made hidden content visible so it was checked for the first time.
+- **What to do:** open **Compare** and read the **New** lists rather than the score.
+
+### Performance numbers change from run to run
+
+- **Why:** they come from a single lab load. Network, server load and caching change between runs, and estimated values depend on the **Network Simulation** profile.
+- **What to do:** compare several runs, and treat single numbers as indicative.
+
+### The Analyzer's result differs from another tool
+
+See the [FAQ](faq.md). Compare individual findings, not scores.
+
+## Previews
+
+### "Couldn't embed this page" in Simulation, Playground, Devices or Before / After
+
+- **Why:** the site sends `X-Frame-Options` or a Content-Security-Policy `frame-ancestors` rule that stops other sites from showing it in a frame.
+- **What to do:** select **Run in browser** to open the captured page in a pop-up window with the filter applied. Allow pop-ups for auricartisan.com if nothing opens. If it is your own site, follow **CSP Setup**.
+
+### Devices started capturing screenshots by itself
+
+- **Why:** on a page that blocks embedding, the Device Lab starts server-rendered captures a few seconds after it opens. Captures are metered.
+- **What to do:** close the **Devices** panel if you do not want captures.
+
+### Crawl Full Site is greyed out
+
+- **Why:** the audited page is on another site and the run did not use Auric Artisan's servers, so the crawl cannot read it. The button's hint says "Cross-origin page — use Scan Site (backend) instead".
+- **What to do:** sign in and run the audit again, or use **Scan Site**.
+
+### Robots, Subdomains or Workers seem to have no effect
+
+- **Why:** in the current version, a site scan on auricartisan.com uses only the address and the **Pages** number.
+- **What to do:** nothing; set **Pages** to control the size of the scan.
+
+## Exports, saving and sharing
+
+### Export PDF shows an upgrade prompt
+
+- **Why:** PDF is a Pro export format for paid plans.
+- **What to do:** use **Export HTML** and print it to PDF from your browser. It carries the same data.
+
+### Export PDF opens a print dialog instead of downloading
+
+- **Why:** a server PDF was not available, so the Analyzer opened the HTML report for printing.
+- **What to do:** choose **Save as PDF** in the print dialog. If the window was blocked, the HTML report was downloaded instead; open it and print it.
+
+### "Copy failed — the browser refused the clipboard write"
+
+- **Why:** your browser did not allow the page to write to the clipboard.
+- **What to do:** use **Developer Report** to download the same Markdown.
+
+### `Ctrl` + `P` opens the Sections picker instead of printing
+
+- **Why:** the Analyzer uses `Ctrl` + `P` for its section picker while the page is open.
+- **What to do:** use the exports in **Report** to get a printable copy.
+
+### "That version's results are no longer stored."
+
+- **Why:** the stored report for that version has been removed, usually because this site's data was cleared in your browser.
+- **What to do:** analyse the site again. To avoid this, keep important versions in your account.
+
+### A run does not appear in Compare or the library
+
+- **Why:** the library may be full (the free plan allows 20 saved projects), or your browser may be blocking storage, for example in some private windows.
+- **What to do:** remove old projects from your library, or use a normal browser window.
+
+### The **Keep in my account** button is missing
+
+- **Why:** you are signed out, or report storage is not available for your account.
+- **What to do:** sign in. If it still does not appear, download the version with **Download it** instead.

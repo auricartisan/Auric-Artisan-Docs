@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Auric Artisan Docs</title>
+<meta name="description" content="A summary of which Auric Artisan extensions use the network, what they send, and where their data is stored.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts and commands</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Compatibility and limits</a></li>
+<li><a href="privacy.html" aria-current="page">Privacy</a></li>
+<li><a href="related.html">Related extensions and pages</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Privacy</h1>
+<p class="lede">A summary of which Auric Artisan extensions use the network, what they send, and where their data is stored.</p>
+<h2 id="installing">Installing</h2>
+<p>Installing, updating and searching for extensions happens between VS Code and the Visual Studio Marketplace. That is VS Code&#39;s own traffic, covered by Microsoft&#39;s terms, and it is the same for every extension.</p>
+<h2 id="once-installed">Once installed</h2>
+<p>The Auric Artisan VS Code page states that none of the extensions contains telemetry. Most work entirely on your machine. Three use the network as part of their job:</p>
+<h3 id="auric-artisan-live">Auric Artisan Live</h3>
+<ul>
+<li>Runs a development server on your machine. With the default host <code>0.0.0.0</code>, other devices on your local network can reach it, subject to your firewall.</li>
+<li>Proxy routes you configure forward requests to the targets you name.</li>
+<li>The phone QR code is generated locally; no address goes to a QR service.</li>
+</ul>
+<h3 id="auric-artisan-font-hub">Auric Artisan Font Hub</h3>
+<ul>
+<li>Refreshes its catalogue, fetches preview fonts and downloads self-hosting files from <code>fonts.auricartisan.com</code>. Switch this off with <code>auricFontLib.network.enabled</code>.</li>
+<li>Search queries, source code, favourites and usage history are not uploaded. The CDN still receives ordinary request information, such as your IP address.</li>
+</ul>
+<h3 id="auric-artisan-icon-hub">Auric Artisan Icon Hub</h3>
+<ul>
+<li>Checks <code>icons.auricartisan.com</code> for catalogue updates, and can be switched off in its settings.</li>
+<li>Your code, searches and favourites are not sent.</li>
+</ul>
+<p>Everything else ships inside the extension. Opening a website link from a panel (for example <strong>auricartisan.com ↗</strong>) opens your browser and needs a network connection.</p>
+<h2 id="where-data-is-kept">Where data is kept</h2>
+<ul>
+<li><strong>Settings</strong> live in your user or workspace <code>settings.json</code>, like any VS Code setting.</li>
+<li><strong>Favourites, recents, likes, tags, groups, history and similar</strong> are kept in VS Code&#39;s extension storage on your machine. They are not copied by Settings Sync.</li>
+<li><strong>Project files</strong> you create (such as <code>auric.live.json</code>, <code>.auricformatrc</code> or File System&#39;s <code>.auric/trash</code>) stay in your project and travel wherever you copy or commit it.</li>
+</ul>
+<p>The privacy page in each extension&#39;s own folder describes that extension in detail.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="limits-and-accuracy.html"><span>Previous</span>Compatibility and limits</a><a href="related.html"><span>Next</span>Related extensions and pages</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#installing">Installing</a></li><li><a href="#once-installed">Once installed</a></li><li><a href="#where-data-is-kept">Where data is kept</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

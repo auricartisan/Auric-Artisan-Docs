@@ -1,0 +1,121 @@
+==============================================================================
+EDIT INDIVIDUAL COLOURS
+==============================================================================
+Override any of the 107 colour slots on the Colours tab using the custom
+colour picker, and revert them.
+Area: VS Code extensions › Auric Artisan Theme   Updated: 2026-09-25
+
+The theme is built from 107 colour slots. A slot is one named colour, such as
+Canvas (`bg.base`) or Keyword (`syntax.keyword`), that many parts of the
+workbench or syntax highlighting draw from. On the Colours tab you can
+override any slot. An override wins over whatever the dials produced.
+
+OPEN THE COLOURS TAB
+====================
+
+  1. Open Theme Studio (`Ctrl` + `Alt` + `;`).
+  2. Select the Colours tab, press `3`, or select Explore colours → in the
+     introduction.
+
+FIND A SLOT
+===========
+
+Slots are grouped into 12 collapsible cards:
+
+  Group           | Contents
+  ----------------+----------------------------------------------------------------------
+  Surfaces        | The planes the workbench is built from, deepest to nearest (8 slots).
+  Text            | Foreground ramp, from body copy to disabled (6).
+  Lines           | Every border, divider and focus ring (7).
+  Accent          | The accent fills, emphasis and washes derived from it (7).
+  States          | Hover, active, selected and drop feedback (5).
+  Selection       | Editor selection, find, word and range highlights (10).
+  Semantics       | Error, warning, info and success, quiet and loud (8).
+  Semantic washes | Tinted backdrops behind semantic messages (4).
+  Terminal        | The 16 ANSI colours (16).
+  Source control  | File decoration colours in source control views (9).
+  Syntax          | Token colours shared by semantic and TextMate highlighting (26).
+  Effects         | The shadow colour (1).
+
+  - Select a group heading to expand or collapse it. The Studio remembers
+    which groups are open.
+  - Each group shows a count. When you have overrides in a group, the count
+    reads like "2/26".
+  - Type in Filter by name or path — press / to jump here to filter across all
+    groups. Matching groups open automatically. Press `Escape` in the filter
+    to clear it.
+  - If nothing matches, the tab shows "No slots match that filter."
+
+OVERRIDE A SLOT
+===============
+
+  1. Find the slot row. It shows the slot label, its path (for example
+     `syntax.string`) and a colour field.
+  2. Type a hex value into the field, or select the swatch to open the colour
+     picker.
+  3. The editor updates live as you drag in the picker, and again when you
+     commit the value.
+
+The colour field accepts `#rgb`, `#rrggbb` or `#rrggbbaa`. Any other value
+shows "Needs #rgb, #rrggbb or #rrggbbaa".
+
+The colour picker
+-----------------
+
+  Control:      Hex field
+  What it does: Type an exact value.
+
+  Control:      Saturation and brightness plane
+  What it does: Drag to set saturation and brightness. Arrow keys nudge the
+                value.
+
+  Control:      Hue slider
+  What it does: Rotate the hue.
+
+  Control:      Opacity slider
+  What it does: Shown for slots that allow transparency (washes, selections,
+                states).
+
+  Control:      RGB channels
+  What it does: Numeric Red, Green and Blue inputs, plus opacity where
+                allowed. Values are range-checked.
+
+  Control:      Recent colours
+  What it does: Up to eight colours you picked in this panel session. They are
+                not saved after the panel closes.
+
+  Control:      Clear / inherit
+  What it does: Removes the value so the slot follows the dials again.
+
+Slots are one of three kinds: solid (no transparency), alpha (transparency
+allowed) or either.
+
+REVERT AN OVERRIDE
+==================
+
+When a slot is overridden, its row shows Shipped with the original colour and
+hex value, and a revert button. Select the revert button to return the slot to
+the shipped colour.
+
+To remove every override and dial change at once, use Reset all in the footer.
+It asks for confirmation: the button changes to Reset everything? and you must
+select it again within four seconds.
+
+THINGS TO KNOW
+==============
+
+  - Overrides are stored per variant. An override on Obsidian Gold does not
+    affect Parchment Gold.
+  - The contrast guard still runs after your overrides. If a colour you chose
+    would fail your minimum contrast, the guard adjusts its lightness. Turn
+    off Enforce contrast in the Accessibility dials if you want your exact
+    value, and check the Audit tab afterwards.
+  - Changing a slot triggers a full recompute of the theme, so dragging in the
+    picker sends updates at a limited rate.
+
+RESULT
+======
+
+The overridden slots show your colours in the editor, each row shows the
+shipped colour for comparison, and the group counts show how many overrides
+each group holds.

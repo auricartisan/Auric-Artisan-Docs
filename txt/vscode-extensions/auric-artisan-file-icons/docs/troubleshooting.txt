@@ -1,0 +1,80 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for common problems with Auric Artisan File Icons.
+Area: VS Code extensions › Auric Artisan File Icons   Updated: 2026-09-25
+
+  Symptom:        The Explorer still uses another icon set.
+  Why it happens: Browsing a style in the Studio only previews it.
+  What to do:     Select Use … in Explorer, or choose the theme in
+                  Preferences: File Icon Theme.
+
+  Symptom:        Colours or associations have not changed.
+  Why it happens: VS Code caches icon themes until a reload.
+  What to do:     Accept the reload prompt, or run Developer: Reload Window.
+
+  Symptom:        Still no change after reloading.
+  Why it happens: Workspace or folder settings override user settings.
+  What to do:     Check `.vscode/settings.json` for `auricFileIcons.*` values.
+
+  Symptom:        Duplicate Auric themes or actions.
+  Why it happens: The old standalone Playful extension is still installed, or
+                  Auric Icons: Modern also provides a Modern theme.
+  What to do:     Disable the old Playful extension. See Modern and older
+                  Playful settings [modern-and-legacy.txt].
+
+  Symptom:        The Auric File Icons Explorer submenu has only Open File
+                  Icon Studio.
+  Why it happens: The other actions need an Auric file icon theme to be
+                  active.
+  What to do:     Activate Facet, Playful or Modern.
+
+  Symptom:        No Insert action, or "No editor target".
+  Why it happens: No writable text editor is open.
+  What to do:     Open and click into a writable file first; Copy works
+                  without one.
+
+  Symptom:        A token hover does not appear.
+  Why it happens: The token is incomplete, hovers are off, or VS Code's editor
+                  hovers are disabled.
+  What to do:     Use a complete token copied from the inspector, and enable
+                  `auricFileIcons.hover.enabled` and editor hovers.
+
+  Symptom:        A hover action no longer inserts.
+  Why it happens: The document changed after the hover appeared.
+  What to do:     Hover again for a fresh action.
+
+  Symptom:        An unexpected smart badge appears.
+  Why it happens: A built-in or custom rule matched.
+  What to do:     Run Explain Smart Icon Match, then refresh or adjust smart
+                  settings.
+
+  Symptom:        Smart badges do not appear in a remote or virtual workspace.
+  Why it happens: The file system provider may not allow reading, or the
+                  folder is excluded.
+  What to do:     Check `auricFileIcons.smart.exclusions` and the provider's
+                  support.
+
+  Symptom:        Exported code does not match my Explorer colours.
+  Why it happens: Code output always uses shipped artwork.
+  What to do:     This is by design; recolour the code yourself if needed.
+
+  Symptom:        Import of a profile fails.
+  Why it happens: The clipboard is empty, too large, not JSON, or from an
+                  unknown source.
+  What to do:     See the messages in Profiles [profiles.txt].
+
+  Symptom:        Old Playful profiles are missing after switching.
+  Why it happens: File Icons cannot read another extension's private storage.
+  What to do:     Export profiles from the old extension first, then import
+                  them.
+
+DIAGNOSTICS
+===========
+
+Run Auric Artisan File Icons: Show Icon Theme Diagnostics. The report opens in
+the Auric Artisan File Icons output channel and omits filenames and file
+contents. Include it, with your VS Code version, the extension version, the
+active style and the steps to reproduce, when you contact support at
+https://auricartisan.com/company/contact/. Remove private information from
+screenshots.

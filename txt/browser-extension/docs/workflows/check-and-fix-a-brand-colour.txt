@@ -1,0 +1,74 @@
+==============================================================================
+CHECK AND FIX A BRAND COLOUR
+==============================================================================
+Test a brand colour as text and as a background in WCAG and APCA, see it
+through colour-vision simulations, and find accessible variants that keep its
+hue.
+Area: Browser extension › Workflows   Updated: 2026-09-25
+
+Brand colours are often too light for text on white, or too dark for white
+text on top. This workflow tells you where a brand colour works and gives you
+accessible variants that still look like the brand.
+
+1. GET THE COLOUR
+=================
+
+Do one of these:
+
+  - On the brand's site, choose Pick a colour on Home and click the colour
+    (Chromium browsers).
+  - Choose Colour › Page palette, Read the page's colours, and choose the
+    colour.
+  - Type its value into the Picker's value field.
+
+2. READ ITS SPECS
+=================
+
+  1. In the Picker, open the Specs pane. Note its contrast on white and on
+     black and its WCAG levels.
+  2. Open the Contrast pane. Switch between White, Black and Page backgrounds.
+     If it fails AA, the closest passing colour is offered.
+
+3. TEST IT AS TEXT
+==================
+
+  1. Choose Check as text. Contrast opens with the brand colour as text.
+  2. Set Background to the background you use, for example `#ffffff`.
+  3. Read the verdict and the APCA readable sizes. A colour may pass for large
+     headings (AA Large) but not for body text.
+  4. Choose Fix text with the target you need. Note the new colour.
+
+4. TEST IT AS A BACKGROUND
+==========================
+
+  1. Go back to the Picker and choose Check as background.
+  2. Set Text to the text colour you plan to use on it, often white or
+     near-black.
+  3. Read the verdict. Choose Swap to test the reverse.
+  4. Choose Fix background if it fails.
+
+5. CHECK COLOUR VISION
+======================
+
+  1. In Contrast, read the Colour-vision check: the ratio for protan, deutan
+     and tritan vision.
+  2. In the Picker's Vision pane, see how the colour itself changes. A ΔE
+     under about 2 means the colour barely changes.
+
+6. BUILD ACCESSIBLE VARIANTS
+============================
+
+  1. From the Picker's Scale pane, choose Open the scale generator →.
+  2. Keep Tailwind 50–950. The step nearest your brand colour is marked.
+  3. Choose darker or lighter steps and use Contrast on each to find the ones
+     that pass on your backgrounds.
+
+The result: you know which uses of the brand colour pass, and you have tested
+variants in the same hue for the ones that do not.
+
+RELATED PAGES
+=============
+
+  - Contrast [../check/contrast.txt]
+  - Scale [../colour/scale.txt]
+  - Build a colour scale for Tailwind [build-a-colour-scale-for-tailwind.txt]

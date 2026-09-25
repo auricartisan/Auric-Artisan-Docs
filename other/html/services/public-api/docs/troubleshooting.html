@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Common problems with the Auric Artisan API — keys, plans, limits, credits, inputs, collections and the analyzer — and how to fix them.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Common problems with the Auric Artisan API — keys, plans, limits, credits, inputs, collections and the analyzer — and how to fix them.</p>
+<h2 id="keys-and-access">Keys and access</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><code>401</code> on every call</td><td>No key, a mistyped key, or a revoked key</td><td>Send the key in <code>x-api-key</code>; check it starts with <code>aa_</code>; create a new one if it was revoked or lost</td></tr>
+<tr><td><code>401</code> right after revoking a key</td><td>Revocation takes effect within a minute</td><td>Use another key</td></tr>
+<tr><td><code>402 PLAN_UPGRADE_REQUIRED</code></td><td>Your plan does not include the API</td><td>Upgrade to Specialist or Industrial Pro</td></tr>
+<tr><td>I cannot create a key in the dashboard</td><td>Key creation is available from the Specialist plan</td><td>Upgrade, or use the public discovery endpoints meanwhile</td></tr>
+<tr><td>I lost a key</td><td>The full key is shown once and stored only as a hash</td><td>Create a new key and revoke the old one</td></tr>
+<tr><td><code>403 FORBIDDEN</code></td><td>The key has no rights for this route</td><td>Check the path; use an endpoint listed in the <a href="reference.html">Reference</a></td></tr>
+</tbody></table></div>
+<h2 id="limits-and-credits">Limits and credits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><code>429 RATE_LIMITED</code></td><td>Too many requests this minute</td><td>Wait for <code>Retry-After</code>; spread calls out</td></tr>
+<tr><td><code>429 IP_RATE_LIMITED</code></td><td>Too many requests from one address</td><td>Slow down, whatever key you use</td></tr>
+<tr><td><code>429 QUOTA_EXCEEDED</code></td><td>Included credits used up, overage off</td><td>Turn on prepaid overage and add credits, or wait for the reset in <code>details.resets_at</code></td></tr>
+<tr><td><code>402 INSUFFICIENT_CREDITS</code></td><td>Overage on, prepaid balance empty</td><td><strong>Add credits</strong> in the dashboard</td></tr>
+<tr><td><code>402 SPEND_CAP_REACHED</code></td><td>Your monthly spend cap was reached</td><td>Raise the cap in the dashboard</td></tr>
+<tr><td><code>429 HARD_CEILING_REACHED</code></td><td>Ten times the included allowance used this month</td><td>Contact support</td></tr>
+<tr><td>Adding more keys did not raise my limits</td><td>Limits are pooled per account</td><td>Upgrade the plan, or use overage</td></tr>
+<tr><td>Credits drain faster than calls</td><td>Heavier endpoints cost more than 1 credit</td><td>Read <code>x-credits-cost</code>; see <a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></td></tr>
+</tbody></table></div>
+<h2 id="requests">Requests</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><code>400 INVALID_JSON</code></td><td>The body is not valid JSON</td><td>Check quoting, especially in shell commands</td></tr>
+<tr><td><code>400 INVALID_INPUT</code></td><td>A field is missing or malformed</td><td>Read the message, which names the field</td></tr>
+<tr><td><code>405 METHOD_NOT_ALLOWED</code></td><td>Wrong method, such as <code>GET</code> for a <code>POST</code> endpoint</td><td>Use the method in the <code>Allow</code> header</td></tr>
+<tr><td><code>404 NOT_FOUND</code></td><td>Unknown path or id</td><td><code>GET /v1</code> lists every endpoint</td></tr>
+<tr><td><code>413 PAYLOAD_TOO_LARGE</code></td><td>Image bodies are limited to 4 MB</td><td>Resize or compress the image</td></tr>
+<tr><td><code>/v1/vision/simulate</code> refuses <code>deuteranopia</code></td><td>It takes model ids, not condition names</td><td>Use a model from <code>/v1/vision/models</code>, such as <code>brettel-deutan</code>, or use <code>/v1/vision/palette</code></td></tr>
+<tr><td>A colour is rejected</td><td>Unsupported format</td><td>Use <code>#rrggbb</code>, <code>#rgb</code>, <code>rgb(r,g,b)</code>, <code>[r,g,b]</code> or <code>{r,g,b}</code></td></tr>
+</tbody></table></div>
+<h2 id="collections">Collections</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>An empty page with a <code>next_cursor</code></td><td>The scan budget ran out before any match (<code>truncated: true</code>)</td><td>Follow <code>next_cursor</code>, or raise <code>max_scan</code></td></tr>
+<tr><td>Sorted results look out of order across pages</td><td>In scanned collections, sorting other than by <code>id</code> is within each scan</td><td>Check <code>sorted_within_scan</code>; sort on your side if you need a global order</td></tr>
+</tbody></table></div>
+<h2 id="analyzer">Analyzer</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><code>score</code> is always <code>null</code></td><td>Deliberate: markup alone cannot measure every category</td><td>Use <code>category_scores</code>, or run the tool for an overall score</td></tr>
+<tr><td><code>400 RENDER_REQUIRED</code></td><td>Contrast, accessibility, deep, performance, before-and-after and simulation need a browser</td><td>Remove those stages, or use the tool</td></tr>
+<tr><td><code>400 EMPTY_SCOPE</code></td><td><code>scope</code> was <code>[]</code></td><td>Omit <code>scope</code> for everything, or name stages</td></tr>
+<tr><td><code>502 FETCH_FAILED</code></td><td>The page could not be read: DNS, TLS, timeout, or a private address</td><td>Check the URL is public and reachable</td></tr>
+<tr><td>Non-Latin text missing from the PDF</td><td>The PDF uses standard fonts that cover Latin characters</td><td>Use <code>format: &quot;html&quot;</code></td></tr>
+</tbody></table></div>
+<h2 id="getting-help">Getting help</h2>
+<p>Quote the <code>request_id</code> from the error response when you contact Auric Artisan about a specific call.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Reference</a><a href="faq.html"><span>Next</span>FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#keys-and-access">Keys and access</a></li><li><a href="#limits-and-credits">Limits and credits</a></li><li><a href="#requests">Requests</a></li><li><a href="#collections">Collections</a></li><li><a href="#analyzer">Analyzer</a></li><li><a href="#getting-help">Getting help</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

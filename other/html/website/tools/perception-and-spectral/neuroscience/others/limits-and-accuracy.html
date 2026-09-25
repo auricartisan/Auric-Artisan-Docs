@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Visual Pathway takes from published sources, what is its own, how precise its numbers are and what it is not.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Neuroscience (Visual Pathway)</a>
+<h2>Visual Pathway background</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Visual Pathway shortcuts</a></li>
+<li><a href="glossary.html">Visual Pathway glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and articles</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Neuroscience (Visual Pathway)</a> &rsaquo; <a href="README.html">Visual Pathway background</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Neuroscience</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Visual Pathway takes from published sources, what is its own, how precise its numbers are and what it is not.</p>
+<h2 id="what-the-tool-is">What the tool is</h2>
+<p>An educational simulation of how early vision transforms a stimulus. It is not a physiological model fitted to measurements, not a diagnostic tool and not a vision test. Nothing it shows is a measurement of any real visual system.</p>
+<h2 id="the-data-register-in-plain-terms">The data register, in plain terms</h2>
+<p>The <strong>Data</strong> tab lists nine entries. This is what each means for the numbers you see.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entry</th><th>Status</th><th>What it means for you</th></tr></thead>
+<tbody>
+<tr><td>sRGB transfer and primaries</td><td>Verbatim</td><td>Screen colours are decoded and converted with the published IEC 61966-2-1 curve and matrices</td></tr>
+<tr><td>Dichromacy projection</td><td>Verbatim</td><td>The three colour-vision simulations use the published Viénot, Brettel and Mollon (1999) matrices, applied in cone space</td></tr>
+<tr><td>Cone transform</td><td>Computed</td><td>Cone signals come from the published Hunt-Pointer-Estévez matrix applied to XYZ; greys sit within about 2.2 × 10⁻⁴ of zero on the chromatic axes</td></tr>
+<tr><td>Spectral sensitivity table</td><td>Stand-in</td><td>The cone curves in the figure are the tool&#39;s own, with L and M both peaking at 590 nm; they draw the figure and nothing else</td></tr>
+<tr><td>Opponent axes</td><td>Stand-in</td><td>L − M, S − (L+M)/2 and L + M are useful axes but are not DKL; nothing is in cone-contrast units</td></tr>
+<tr><td>Spatial sensitivity</td><td>Stand-in</td><td>The weighting curve is the tool&#39;s own log-Gaussian peaking at 4 c/deg; it has no threshold criterion and gives no detection probability</td></tr>
+<tr><td>Cortical stage models</td><td>Stand-in</td><td>Retina, V1, V2 and V4 use standard forms with constants chosen by the tool, with sizes in pixels rather than degrees</td></tr>
+<tr><td>Viewing geometry</td><td>Computed</td><td>Degrees per pixel and the Nyquist limit follow exactly from the distance and pitch you enter</td></tr>
+<tr><td>Spike raster</td><td>Absent</td><td>The tool has no time axis and no firing model, so nothing may be reported as a spike train or a firing rate</td></tr>
+</tbody></table></div>
+<p>A figure that depends on a stand-in or absent entry is never labelled as a published value. The settings file and CSV carry <code>reportable: false</code> (or the line &quot;reportable against a published table: false&quot;) until you install a published cone table.</p>
+<h2 id="precision">Precision</h2>
+<ul>
+<li>Colours are handled as 8-bit sRGB values and computed in double precision.</li>
+<li>The maps are 256 × 256 pixels. The V1 bank runs at half resolution (128 × 128) and is enlarged back, so V1 and V2 maps are blockier than the retinal and LGN maps.</li>
+<li>Every map is stretched to its own range. Compare maps by their scale-bar numbers, not by their brightness.</li>
+<li>The grating&#39;s contrast is capped where sRGB cannot show it; <strong>Contrast achieved</strong> gives the value used.</li>
+<li>The geometry is only as accurate as the viewing distance and pixel pitch you enter. The page cannot measure your screen or your seat.</li>
+<li>Your screen is assumed to follow the sRGB standard. An uncalibrated or wide-gamut screen shows the stimulus differently.</li>
+</ul>
+<h2 id="what-it-does-not-do">What it does not do</h2>
+<ul>
+<li>It does not model the eye&#39;s optics, eccentricity, eye movements or time: every stage is a single static frame.</li>
+<li>It does not simulate anomalous trichromacy or a partial deficiency: <strong>Colour vision</strong> is full dichromacy.</li>
+<li>It does not load your own images.</li>
+<li>It does not report detection probabilities, thresholds, spike trains or firing rates.</li>
+<li>The <strong>Pupil</strong> control does not change any output in the current version.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Visual Pathway glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-tool-is">What the tool is</a></li><li><a href="#the-data-register-in-plain-terms">The data register, in plain terms</a></li><li><a href="#precision">Precision</a></li><li><a href="#what-it-does-not-do">What it does not do</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

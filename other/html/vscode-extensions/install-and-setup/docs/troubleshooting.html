@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Fix common problems when finding, installing, updating, configuring or removing an Auric Artisan VS Code extension.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html">Install from the command line</a></li>
+<li><a href="install-from-vsix.html">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Fix common problems when finding, installing, updating, configuring or removing an Auric Artisan VS Code extension.</p>
+<p>Each entry gives the symptom, the likely cause and what to do.</p>
+<h2 id="finding-and-installing">Finding and installing</h2>
+<h3 id="the-search-finds-nothing">The search finds nothing</h3>
+<ul>
+<li><strong>Cause:</strong> a filter such as <code>@installed</code>, <code>@disabled</code> or <code>@recommended</code> is still in the search box, or the ID is misspelt.</li>
+<li><strong>Fix:</strong> clear the search box and type <code>@id:</code> followed by the exact ID from the <a href="reference.html">reference</a>. Watch the IDs that are easy to get wrong: the Full Pack is <code>auric-artisan.auric-artisan</code>, Icon Hub is <code>auric-artisan.auric-artisan-icon-lib</code>, File Icons is <code>auric-artisan.auric-artisan-file-icon</code>.</li>
+</ul>
+<h3 id="the-search-finds-nothing-in-cursor-windsurf-or-vscodium">The search finds nothing in Cursor, Windsurf or VSCodium</h3>
+<ul>
+<li><strong>Cause:</strong> the editor searches Open VSX, and the Auric Artisan extensions are only on the Visual Studio Marketplace.</li>
+<li><strong>Fix:</strong> install from a VSIX file. See <a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a>.</li>
+</ul>
+<h3 id="not-compatible-or-requires-a-newer-version-of-vs-code">&quot;Not compatible&quot; or &quot;requires a newer version of VS Code&quot;</h3>
+<ul>
+<li><strong>Cause:</strong> your editor is older than the extension&#39;s minimum version. Live and File System need 1.95; Font Hub, the icon libraries, File Icons, Emoji, Icon Studio, Icon Hub and the Icon Pack need 1.85; Theme needs 1.75; Color, Accessibility, Code Health, the Full Pack and Formatter need 1.74.</li>
+<li><strong>Fix:</strong> update VS Code (<strong>Help</strong> › <strong>Check for Updates</strong> on Windows and Linux, <strong>Code</strong> › <strong>Check for Updates</strong> on macOS). In a fork, update the fork.</li>
+</ul>
+<h3 id="code-is-not-recognised-in-the-terminal"><code>code</code> is not recognised in the terminal</h3>
+<ul>
+<li><strong>Cause:</strong> the launcher is not on your <code>PATH</code>, or the terminal was opened before VS Code was installed.</li>
+<li><strong>Fix:</strong> open a new terminal. On macOS, run <strong>Shell Command: Install &#39;code&#39; command in PATH</strong> from the Command Palette. On Windows, reinstall VS Code with the option to add it to <code>PATH</code>, or use the full path to <code>code.cmd</code> in the VS Code <code>bin</code> folder.</li>
+</ul>
+<h3 id="the-install-fails-with-a-network-error">The install fails with a network error</h3>
+<ul>
+<li><strong>Cause:</strong> no connection to the Marketplace, or a proxy or firewall blocks it.</li>
+<li><strong>Fix:</strong> check VS Code&#39;s <code>http.proxy</code> setting and your network. If the machine cannot reach the Marketplace, download the VSIX on another machine and install from the file.</li>
+</ul>
+<h3 id="a-downloaded-file-will-not-install">A downloaded file will not install</h3>
+<ul>
+<li><strong>Cause:</strong> the file was saved without the <code>.vsix</code> extension, or the download was incomplete.</li>
+<li><strong>Fix:</strong> rename the file to end in <code>.vsix</code> and try again. If it still fails, download it again.</li>
+</ul>
+<h3 id="installed-with-the-command-line-but-the-extension-is-missing">Installed with the command line, but the extension is missing</h3>
+<ul>
+<li><strong>Cause:</strong> the window uses a different VS Code profile, or the window has not refreshed.</li>
+<li><strong>Fix:</strong> run <strong>Developer: Reload Window</strong>. Check the active profile and install with <code>--profile &quot;&lt;name&gt;&quot;</code> if needed.</li>
+</ul>
+<h2 id="packs">Packs</h2>
+<h3 id="a-pack-installed-but-its-members-did-not">A pack installed but its members did not</h3>
+<ul>
+<li><strong>Cause:</strong> the pack was installed from a VSIX in an editor that cannot reach the Marketplace, so the members could not be fetched.</li>
+<li><strong>Fix:</strong> install each member&#39;s VSIX. Members are listed in <a href="extension-packs.html">The two extension packs</a>.</li>
+</ul>
+<h3 id="an-extension-i-uninstalled-came-back">An extension I uninstalled came back</h3>
+<ul>
+<li><strong>Cause:</strong> it is a member of a pack that was reinstalled or updated.</li>
+<li><strong>Fix:</strong> disable the member instead of uninstalling it, or uninstall the pack and install only the members you want.</li>
+</ul>
+<h2 id="after-installing">After installing</h2>
+<h3 id="no-commands-appear-in-the-command-palette">No commands appear in the Command Palette</h3>
+<ul>
+<li><strong>Cause:</strong> the extension is disabled, the window needs a reload, or the command only appears in certain situations (for example with a folder open or an editor focused).</li>
+<li><strong>Fix:</strong> check the extension is enabled in the Extensions view, reload the window, open a folder, and type the command prefix from <a href="getting-started.html">Getting started</a>.</li>
+</ul>
+<h3 id="duplicate-font-hub-commands-and-views">Duplicate Font Hub commands and views</h3>
+<ul>
+<li><strong>Cause:</strong> the older Font Library extension is still installed alongside Font Hub.</li>
+<li><strong>Fix:</strong> disable or uninstall Font Library, then reload. Existing <code>auricFontLib.*</code> settings keep working in Font Hub.</li>
+</ul>
+<h3 id="some-features-are-missing-or-greyed-out-in-a-folder">Some features are missing or greyed out in a folder</h3>
+<ul>
+<li><strong>Cause:</strong> VS Code is in Restricted Mode because the folder is not trusted.</li>
+<li><strong>Fix:</strong> run <strong>Workspaces: Manage Workspace Trust</strong> and trust the folder if you trust its authors. See <a href="settings-and-sync.html">Settings, sync and workspace trust</a> for what each extension limits.</li>
+</ul>
+<h3 id="a-keyboard-shortcut-does-nothing">A keyboard shortcut does nothing</h3>
+<ul>
+<li><strong>Cause:</strong> another extension, your editor or your operating system uses the same keys, or the shortcut is off by default (File System&#39;s full shortcut deck needs <code>auricFiles.keyboard.enableDefaultShortcuts</code>).</li>
+<li><strong>Fix:</strong> open <strong>Preferences: Open Keyboard Shortcuts</strong>, search for the command and check for conflicts. Assign different keys if needed.</li>
+</ul>
+<h2 id="settings">Settings</h2>
+<h3 id="a-setting-i-changed-has-no-effect">A setting I changed has no effect</h3>
+<ul>
+<li><strong>Cause:</strong> a more specific level overrides it. A workspace setting beats a user setting, and a project file such as <code>auric.live.json</code> or <code>.auricformatrc</code> beats both for that project.</li>
+<li><strong>Fix:</strong> check the <strong>Workspace</strong> tab and the project files. The Settings editor marks a setting that is modified elsewhere.</li>
+</ul>
+<h3 id="a-setting-will-not-save-in-workspace-settings">A setting will not save in workspace settings</h3>
+<ul>
+<li><strong>Cause:</strong> it has <strong>application</strong> scope (for example Theme settings or <code>auricEmoji.interfaceLanguage</code>), so it can only be set in user settings.</li>
+<li><strong>Fix:</strong> set it on the <strong>User</strong> tab.</li>
+</ul>
+<h3 id="favourites-or-history-did-not-follow-me-to-another-machine">Favourites or history did not follow me to another machine</h3>
+<ul>
+<li><strong>Cause:</strong> Settings Sync copies settings and the list of extensions, not the data an extension keeps in its own storage.</li>
+<li><strong>Fix:</strong> none needed; this data is kept per machine by design. See <a href="settings-and-sync.html">Settings, sync and workspace trust</a>.</li>
+</ul>
+<h3 id="the-panel-is-still-in-english-after-choosing-hindi">The panel is still in English after choosing Hindi</h3>
+<ul>
+<li><strong>Cause:</strong> only Live, Theme and Emoji include Hindi, and some content (technical details, the Live browser dashboard) stays in English. An open Live preview tab keeps the language it opened with.</li>
+<li><strong>Fix:</strong> see <a href="display-language-hindi.html">Use an extension in Hindi</a>. Reopen the Live preview tab.</li>
+</ul>
+<p>If none of these helps, see <a href="get-support.html">Get support</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Reference: extension IDs and requirements</a><a href="faq.html"><span>Next</span>FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#finding-and-installing">Finding and installing</a></li><li><a href="#packs">Packs</a></li><li><a href="#after-installing">After installing</a></li><li><a href="#settings">Settings</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

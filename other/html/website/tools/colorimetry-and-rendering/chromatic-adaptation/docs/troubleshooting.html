@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting Chromatic Adaptation — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for common problems in the Chromatic Adaptation lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Chromatic Adaptation</a>
+<h2>Chromatic Adaptation documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Chromatic Adaptation</a></li>
+<li><a href="adapt-a-colour-list.html">Adapt a list of colours</a></li>
+<li><a href="adapt-an-image.html">Adapt an image to a new light</a></li>
+<li><a href="compare-transforms-and-copy-matrices.html">Compare transforms and copy a matrix</a></li>
+<li><a href="explore-the-time-course.html">Explore the adaptation time course</a></li>
+<li><a href="reference.html">Chromatic Adaptation reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting Chromatic Adaptation</a></li>
+<li><a href="faq.html">Chromatic Adaptation FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Chromatic Adaptation</a> &rsaquo; <a href="README.html">Chromatic Adaptation documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Troubleshooting Chromatic Adaptation</h1>
+<p class="lede">Fixes for common problems in the Chromatic Adaptation lab.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The image area is dark and says &quot;No image yet&quot;</td><td>No image has been loaded</td><td>Select <strong>Generate the sample sweep</strong> or <strong>Choose an image</strong></td></tr>
+<tr><td>Nothing changes when I move a slider</td><td><strong>Live</strong> is off, or no image is loaded</td><td>Tick <strong>Live</strong>, or select <strong>Run</strong> after changes</td></tr>
+<tr><td>The image hardly changes at 0 s</td><td>Adaptation starts at 0.1 and grows with time</td><td>Move <strong>Time (scrubber)</strong> towards 5 s</td></tr>
+<tr><td>The image is only partly adapted even at 5 s and D = 1</td><td>The measured slow phase has a 30 s half-life, so at 5 s about 55% of the change has happened</td><td>Expected. The <strong>Matrix</strong> tab shows the matrix at the D you set; the <strong>Dynamics</strong> tab shows when 90% is reached</td></tr>
+<tr><td>Display Gamma, the per-pixel scales, Local radius, Local strength, Mix, Tile factor or Target FPS change nothing</td><td>These controls are not applied in the current version; they are only recorded in the JSON export</td><td>See <a href="reference.html#controls-with-no-visible-effect-in-the-current-version">Reference</a></td></tr>
+<tr><td>The GPU box (or <code>G</code>) changes nothing</td><td>Processing always runs on the CPU</td><td>Expected</td></tr>
+<tr><td>The state map is a flat grey</td><td>The per-pixel model has no effect in the current version, so every pixel has the same adaptation</td><td>Expected. Its brightness equals the adaptation in use</td></tr>
+<tr><td>The SPD overlay says &quot;No spectrum held&quot;</td><td>B, C, F2, F7 and F11 spectra are not held</td><td>The adaptation is still correct, because it uses the tabulated white point</td></tr>
+<tr><td>Bright colours clip after a large shift such as D65 to A</td><td>Adapted values exceed the sRGB range and are clipped</td><td>Tick <strong>HDR Tonemap</strong> to compress highlights first, or choose a smaller shift</td></tr>
+<tr><td>My photo looks smaller or softer</td><td>Images are scaled to fit 480 × 320 for processing</td><td>Expected. The exported PNG is at the processing size</td></tr>
+<tr><td><strong>Run Batch</strong> says &quot;Enter valid hex values&quot;</td><td>No six-digit HEX lines were found</td><td>Enter values such as <code>#735244</code> or <code>735244</code>, one per line</td></tr>
+<tr><td>Only 50 of my colours appear</td><td>The batch is capped at 50</td><td>Split the list and run it in parts</td></tr>
+<tr><td>The share link opens without my image</td><td>Links carry settings only</td><td>Send the image separately</td></tr>
+<tr><td><strong>Copy Link</strong> gave a link without my settings</td><td>Copy Link copies the page&#39;s current address</td><td>Use <strong>Generate</strong> under Share URL instead</td></tr>
+<tr><td>Copying fails with &quot;Copy failed&quot;</td><td>The browser blocked clipboard access</td><td>Allow clipboard access, or copy the text from the field manually</td></tr>
+<tr><td>Dropping a file on <strong>Install a table</strong> does nothing</td><td>The drop area is not active in the current version</td><td>No workaround; the lab uses its built-in tables</td></tr>
+<tr><td>Space, R, C or G does nothing</td><td>The focus is in a text box, slider or list</td><td>Click an empty part of the page first</td></tr>
+<tr><td>A chart is too small to read</td><td>—</td><td>Double-click it, or select its <strong>Fullscreen</strong> button; <code>Esc</code> closes</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Chromatic Adaptation reference</a><a href="faq.html"><span>Next</span>Chromatic Adaptation FAQ</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,113 @@
+==============================================================================
+LIMITS AND ACCURACY
+==============================================================================
+What Auric Artisan File System reports and how precisely, its built-in limits,
+and what it deliberately does not do.
+Area: VS Code extensions › Auric Artisan File System   Updated: 2026-09-25
+
+WHAT PROPERTIES CAN REPORT
+==========================
+
+Properties shows what the file system reports through VS Code, and labels
+anything it cannot know.
+
+  Detail:   Name, path, type
+  Accuracy: Exact
+
+  Detail:   Size
+  Accuracy: As reported. Folders show Folder; a recursive disk-usage total is
+            not calculated
+
+  Detail:   Created
+  Accuracy: Only where the file system records a creation time; otherwise
+            Unavailable
+
+  Detail:   Modified
+  Accuracy: As reported
+
+  Detail:   Owner / creator
+  Accuracy: Not available through VS Code; never guessed
+
+  Detail:   Permissions
+  Accuracy: Only the read-only flag. Its absence does not prove you can write
+            the file. Full access-control lists are not available
+
+  Detail:   Git status
+  Accuracy: From the last index, and labelled so; refresh the index to update
+            it
+
+  Detail:   Related files
+  Accuracy: Found through the index; before it is built, shown as not indexed
+
+  Detail:   Version
+  Accuracy: Counts Auric operations only
+
+BUILT-IN LIMITS
+===============
+
+  Limit:   Entries per index scan
+  Default: 20,000 (500–200,000)
+  Setting: `auricFiles.explorer.maxNodes`
+
+  Limit:   Matches per search
+  Default: 2,000 (50–50,000)
+  Setting: `auricFiles.search.maxResults`
+
+  Limit:   Paths from one brace expression
+  Default: 1,000
+  Setting: —
+
+  Limit:   Paths in one batch creation
+  Default: 2,000
+  Setting: —
+
+  Limit:   Operations kept for undo
+  Default: 200 (10–2,000)
+  Setting: `auricFiles.safety.historyLimit`
+
+  Limit:   Workspace trash size
+  Default: 256 MiB
+  Setting: `auricFiles.safety.trashMaxBytes`
+
+  Limit:   Workspace trash retention
+  Default: 14 days (1–365)
+  Setting: `auricFiles.safety.trashRetentionDays`
+
+  Limit:   Folders read at once while indexing
+  Default: 8 (1–64)
+  Setting: `auricFiles.performance.scanConcurrency`
+
+  Limit:   Regular expression length in batch rename
+  Default: 512 characters
+  Setting: —
+
+When the index reaches its limit, it stops and marks itself as truncated, and
+counts say so, rather than stalling VS Code.
+
+DELIBERATE BOUNDARIES
+=====================
+
+  - The Auric Files sidebar is a companion, not a second file tree. VS Code
+    owns the Explorer's rows, sorting and drag-and-drop.
+  - VS Code's Explorer supports sorting by name, type and date modified only.
+    Auric's other sort and grouping options apply to its own indexed lists.
+  - The operation history records Auric operations only. It does not record
+    editor edits or native Explorer actions, and it does not keep old copies
+    of file contents.
+  - Duplicate review never deletes by itself; you choose every file.
+  - Selection export is a JSON manifest, not an archive of file contents.
+  - Template expressions are substitution only; templates cannot run code.
+  - File-changing operations require a trusted workspace.
+  - Remote and virtual file systems offer different capabilities. In virtual
+    workspaces, revealing in the operating system's file manager, content
+    hashing and the native trash are unavailable.
+  - The interface is in English.
+  - The icon tools only work with the Auric Artisan File Icons Facet or
+    Playful theme. Icon menu entries added by those themes are managed by that
+    extension.
+
+KEEPING YOUR WORK SAFE
+======================
+
+Protected paths, confirmations, previews, history and the workspace trash are
+safeguards, not a backup. Keep using version control and normal backups.

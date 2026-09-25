@@ -1,0 +1,455 @@
+==============================================================================
+THE 50 CHECKS
+==============================================================================
+Every check in the Accessibility Checklist, area by area, with its WCAG
+criterion, level and how much the Analyzer can decide.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+The checklist has 50 checks in nine areas. This page lists them all, with the
+one-line summary the page shows for each (a few are slightly shortened to fit
+the table). Open a check on the page for its full explanation, test and fix.
+
+HOW TO READ THE TABLES
+======================
+
+  - ID is the check's identifier. Open it directly with `#check-` plus the ID,
+    for example
+    `https://auricartisan.com/resources/accessibility-checklist/#check-k2`.
+  - Tag is the level and WCAG success criterion, as the page shows it.
+    Practice means good practice with no criterion of its own.
+  - Checks at Level A or AA are Required; AAA and Practice checks are
+    optional.
+  - Decided by says how much the Analyzer can do:
+    - AUTO — "The analyzer decides this one on its own"
+    - PARTLY — "The analyzer narrows this down; a person confirms it"
+    - BY HAND — "Only a person can decide this one"
+
+The checklist itself does not import Analyzer results. Run the Analyzer
+[../../analyzer/README.txt] and mark the checks yourself.
+
+  Totals                  | Count
+  ------------------------+-------------
+  Level A                 | 22
+  Level AA                | 13
+  Level AAA               | 2
+  Practice                | 13
+  Required (A and AA)     | 35
+  AUTO / PARTLY / BY HAND | 11 / 23 / 16
+
+01 SEMANTICS & STRUCTURE
+========================
+
+"What a screen reader builds its map from. Nothing below works if this is
+wrong."
+
+  ID:         d1
+  Check:      Landmarks wrap every region of the page
+  Tag:        A 1.3.1
+  Decided by: PARTLY
+  Summary:    header, nav, main, footer — one main per page, and any repeated
+              nav named.
+
+  ID:         d2
+  Check:      Headings describe structure, not size
+  Tag:        A 1.3.1
+  Decided by: AUTO
+  Summary:    One h1, no skipped levels. Style with CSS; never pick a heading
+              level to get a font size.
+
+  ID:         d3
+  Check:      html lang is set, and switches on foreign passages
+  Tag:        A 3.1.1
+  Decided by: AUTO
+  Summary:    It picks the speech synthesiser. A French quote inside English
+              needs its own lang.
+
+  ID:         d4
+  Check:      Every route has a unique, front-loaded title
+  Tag:        A 2.4.2
+  Decided by: PARTLY
+  Summary:    In a SPA the title is yours to set on navigation — the browser
+              will not do it.
+
+  ID:         d5
+  Check:      Lists, tables and figures use real elements
+  Tag:        A 1.3.1
+  Decided by: PARTLY
+  Summary:    A table needs th with scope and a caption. A div grid announces
+              nothing.
+
+  ID:         d6
+  Check:      The reading order matches the visual order
+  Tag:        Practice
+  Decided by: BY HAND
+  Summary:    CSS order, grid placement and absolute positioning all move the
+              eye without moving the DOM.
+
+02 KEYBOARD & FOCUS
+===================
+
+"The whole product, without a mouse. This is where most single-page apps
+fail."
+
+  ID:         k1
+  Check:      Every interactive element is reachable and operable by keyboard
+  Tag:        A 2.1.1
+  Decided by: PARTLY
+  Summary:    A div with onClick is not. Use a button, or add role, tabindex
+              and both key handlers.
+
+  ID:         k2
+  Check:      No keyboard trap — focus can always get back out
+  Tag:        A 2.1.2
+  Decided by: BY HAND
+  Summary:    Modals, embedded players and custom editors are the usual
+              offenders.
+
+  ID:         k3
+  Check:      Focus is always visible, and never removed without a replacement
+  Tag:        AA 2.4.7
+  Decided by: PARTLY
+  Summary:    outline: none with nothing in its place is the most common
+              accessibility bug in the wild.
+
+  ID:         k4
+  Check:      Focus order follows meaning
+  Tag:        A 2.4.3
+  Decided by: PARTLY
+  Summary:    No positive tabindex. tabindex="-1" for programmatic targets,
+              "0" to add to the order.
+
+  ID:         k5
+  Check:      Focus is managed across route changes and dialogs
+  Tag:        Practice
+  Decided by: BY HAND
+  Summary:    On open, move focus in; on close, return it to the trigger. On
+              navigation, move it to the new h1.
+
+  ID:         k6
+  Check:      A skip link comes first and actually moves focus
+  Tag:        A 2.4.1
+  Decided by: PARTLY
+  Summary:    It must be the first tabbable thing, visible on focus, and
+              target a focusable container.
+
+  ID:         k7
+  Check:      Pointer targets are at least 24x24 CSS pixels
+  Tag:        AA 2.5.8
+  Decided by: AUTO
+  Summary:    New in WCAG 2.2. Spacing counts toward it — small icons need
+              room around them.
+
+03 FORMS & ERRORS
+=================
+
+"Where an inaccessible product stops being annoying and starts costing money."
+
+  ID:         f1
+  Check:      Every control has a programmatic label
+  Tag:        A 3.3.2
+  Decided by: AUTO
+  Summary:    A placeholder is not a label. It vanishes on input and many
+              screen readers skip it.
+
+  ID:         f2
+  Check:      Errors are identified in text and tied to the field
+  Tag:        A 3.3.1
+  Decided by: PARTLY
+  Summary:    aria-describedby links the message; aria-invalid marks the
+              state. Colour alone says nothing.
+
+  ID:         f3
+  Check:      Common fields declare autocomplete
+  Tag:        AA 1.3.5
+  Decided by: AUTO
+  Summary:    name, email, tel, address — it is a requirement, and it halves
+              the typing for everyone.
+
+  ID:         f4
+  Check:      Related controls are grouped with fieldset and legend
+  Tag:        A 1.3.1
+  Decided by: PARTLY
+  Summary:    Radio sets and checkbox groups are meaningless read one at a
+              time.
+
+  ID:         f5
+  Check:      Validation is announced, not just painted
+  Tag:        Practice
+  Decided by: BY HAND
+  Summary:    A live region or a focus move — otherwise a screen reader user
+              submits into silence.
+
+  ID:         f6
+  Check:      Legal and financial submissions are reversible or confirmed
+  Tag:        A 3.3.4
+  Decided by: BY HAND
+  Summary:    Reversible, checked, or confirmed. Pick one before taking the
+              payment.
+
+04 IMAGES & MEDIA
+=================
+
+"Alt text is a decision, not a field to fill in."
+
+  ID:         m1
+  Check:      Every image is either described or explicitly decorative
+  Tag:        A 1.1.1
+  Decided by: PARTLY
+  Summary:    alt="" and aria-hidden for decoration. A filename in the alt is
+              worse than nothing.
+
+  ID:         m2
+  Check:      Text in an image is repeated in real text
+  Tag:        A 1.4.5
+  Decided by: BY HAND
+  Summary:    It cannot be resized, restyled, translated or searched —
+              screenshots of code are the worst case.
+
+  ID:         m3
+  Check:      Video has captions; audio has a transcript
+  Tag:        A 1.2.2
+  Decided by: BY HAND
+  Summary:    Auto-captions are a draft. Someone reads them before they ship.
+
+  ID:         m4
+  Check:      Video has audio description where it carries visual information
+  Tag:        AA 1.2.5
+  Decided by: BY HAND
+  Summary:    If the picture says something the soundtrack does not, it needs
+              describing.
+
+  ID:         m5
+  Check:      Nothing plays automatically for more than three seconds
+  Tag:        A 1.4.2
+  Decided by: PARTLY
+  Summary:    Or there is a control to stop it, reachable before everything
+              else.
+
+  ID:         m6
+  Check:      Icons carry an accessible name or are hidden
+  Tag:        Practice
+  Decided by: PARTLY
+  Summary:    An icon-only button needs aria-label; an icon beside a label
+              needs aria-hidden.
+
+05 COLOUR & CONTRAST
+====================
+
+"The part an automated tool can genuinely finish for you."
+
+  ID:         c1
+  Check:      Body text reaches 4.5:1, large text 3:1
+  Tag:        AA 1.4.3
+  Decided by: AUTO
+  Summary:    Against the composited background — the colour after every
+              translucent layer, not the token.
+
+  ID:         c2
+  Check:      Controls and meaningful graphics reach 3:1
+  Tag:        AA 1.4.11
+  Decided by: AUTO
+  Summary:    Input borders, toggles, chart series, focus rings.
+
+  ID:         c3
+  Check:      Colour is never the only carrier of meaning
+  Tag:        A 1.4.1
+  Decided by: PARTLY
+  Summary:    Links underlined, errors iconned, chart series labelled or
+              patterned.
+
+  ID:         c4
+  Check:      Hover, focus, active and selected states all pass too
+  Tag:        AA 1.4.11
+  Decided by: PARTLY
+  Summary:    A rule that wins at rest can lose on hover — measure the state,
+              not the resting colour.
+
+  ID:         c5
+  Check:      Dark mode and forced-colors are checked separately
+  Tag:        Practice
+  Decided by: PARTLY
+  Summary:    An inverted palette almost never passes, and Windows High
+              Contrast drops your backgrounds.
+
+  ID:         c6
+  Check:      Simulated for protanopia, deuteranopia and tritanopia
+  Tag:        Practice
+  Decided by: AUTO
+  Summary:    On real screens, not only on the swatch sheet.
+
+06 MOTION & PREFERENCES
+=======================
+
+"The settings the operating system already knows about."
+
+  ID:         p1
+  Check:      prefers-reduced-motion is honoured
+  Tag:        AAA 2.3.3
+  Decided by: PARTLY
+  Summary:    Not only decorative animation — parallax, autoplaying carousels
+              and scroll-jacking.
+
+  ID:         p2
+  Check:      Nothing flashes more than three times a second
+  Tag:        A 2.3.1
+  Decided by: BY HAND
+  Summary:    This one can cause seizures. It is not a preference.
+
+  ID:         p3
+  Check:      Moving or auto-updating content can be paused
+  Tag:        A 2.2.2
+  Decided by: PARTLY
+  Summary:    Carousels, tickers, live feeds — pause, stop or hide.
+
+  ID:         p4
+  Check:      Timeouts are announced, or there are none
+  Tag:        AAA 2.2.6
+  Decided by: BY HAND
+  Summary:    A session that dies silently loses the form someone spent twenty
+              minutes on.
+
+07 ARIA & CUSTOM WIDGETS
+========================
+
+"No ARIA beats bad ARIA. Reach for a native element first, every time."
+
+  ID:         a1
+  Check:      Custom widgets expose name, role and value
+  Tag:        A 4.1.2
+  Decided by: PARTLY
+  Summary:    And keep them in sync as state changes. A silent aria-expanded
+              is a broken disclosure.
+
+  ID:         a2
+  Check:      The widget follows its APG keyboard pattern
+  Tag:        Practice
+  Decided by: BY HAND
+  Summary:    Tabs, menus, comboboxes and trees each have an expected key map.
+              Users know it already.
+
+  ID:         a3
+  Check:      Status messages reach a live region
+  Tag:        AA 4.1.3
+  Decided by: PARTLY
+  Summary:    polite for confirmations, assertive only for genuine
+              interruptions. Never both.
+
+  ID:         a4
+  Check:      No aria-hidden on a focusable element
+  Tag:        Practice
+  Decided by: AUTO
+  Summary:    It creates a control a screen reader cannot see but can still
+              land on.
+
+  ID:         a5
+  Check:      Link text makes sense out of context
+  Tag:        A 2.4.4
+  Decided by: PARTLY
+  Summary:    "Read more" repeated eleven times is a list of eleven identical
+              links.
+
+08 ZOOM, REFLOW & SPACING
+=========================
+
+"The same page in the conditions people actually browse it."
+
+  ID:         z1
+  Check:      No horizontal scroll at 320 CSS pixels wide
+  Tag:        AA 1.4.10
+  Decided by: AUTO
+  Summary:    Equivalent to 400% zoom on a desktop. Two-dimensional scrolling
+              is the failure.
+
+  ID:         z2
+  Check:      Text resizes to 200% without loss
+  Tag:        AA 1.4.4
+  Decided by: PARTLY
+  Summary:    Fixed-height containers with overflow: hidden are where the text
+              goes.
+
+  ID:         z3
+  Check:      User text-spacing overrides do not break the layout
+  Tag:        AA 1.4.12
+  Decided by: PARTLY
+  Summary:    Line height 1.5, paragraph 2em, letter 0.12em, word 0.16em —
+              nothing may be clipped.
+
+  ID:         z4
+  Check:      Both orientations work
+  Tag:        AA 1.3.4
+  Decided by: PARTLY
+  Summary:    No locking to portrait unless the content genuinely requires it.
+
+  ID:         z5
+  Check:      Focused elements are not hidden behind sticky chrome
+  Tag:        AA 2.4.11
+  Decided by: BY HAND
+  Summary:    New in 2.2, and a sticky header plus scroll-into-view is exactly
+              how it happens.
+
+09 TESTING & PROOF
+==================
+
+"How it stays fixed after the sprint that fixed it." All five are Practice
+checks, and each links to the W3C's guidance on evaluation.
+
+  ID:         x1
+  Check:      An automated pass runs in CI on every pull request
+  Tag:        Practice
+  Decided by: AUTO
+  Summary:    It catches about a third. That third should never reach a human
+              reviewer again.
+
+  ID:         x2
+  Check:      A keyboard-only pass is part of review
+  Tag:        Practice
+  Decided by: BY HAND
+  Summary:    Unplug the mouse and do the primary task. Ten minutes, most of
+              the remaining bugs.
+
+  ID:         x3
+  Check:      A screen reader pass on one real combination
+  Tag:        Practice
+  Decided by: BY HAND
+  Summary:    NVDA with Firefox, or VoiceOver with Safari. Not the browser
+              plugin that reads the DOM.
+
+  ID:         x4
+  Check:      Findings carry evidence and a criterion
+  Tag:        Practice
+  Decided by: BY HAND
+  Summary:    A screenshot and a number turn "this feels wrong" into something
+              a developer can close.
+
+  ID:         x5
+  Check:      People with disabilities are in the testing loop
+  Tag:        Practice
+  Decided by: BY HAND
+  Summary:    Every checklist including this one is a proxy for that, never a
+              replacement.
+
+LINKS INSIDE THE CHECKS
+=======================
+
+Every check links to the W3C Understanding document for its criterion
+("Understanding 1.3.1" and so on); area 09 links to "W3C on evaluation". Some
+checks add a tool link:
+
+  Check | Link                  | Opens
+  ------+-----------------------+--------------------------
+  d1    | Check the landmarks   | The Analyzer
+  k3    | Check the focus ring  | The Analyzer
+  c1    | Check a pair          | The tools collection page
+  c2    | Audit the page        | The Analyzer
+  c3    | Simulate it           | The Vision Lab
+  c6    | Run the simulator     | The Vision Lab
+  x1    | Automate with the API | The API documentation
+
+To check a single colour pair for c1, use the Contrast Checker
+[../../contrast-checker/README.txt].
+
+Checks with no What the fix looks like block: d6, f6, m2, m3, m4, m5, c2, c3,
+c4, c6, p2, p3, p4, a2, z1, z4, x2, x3, x4 and x5.
+
+For notes on the level tags of m2 and f6, see Limits and accuracy
+[../others/limits-and-accuracy.txt].

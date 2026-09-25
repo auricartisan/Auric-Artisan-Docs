@@ -1,0 +1,278 @@
+==============================================================================
+IMPORT, EXPORT AND THE LIBRARY
+==============================================================================
+Every way to bring colours and images into Basic Color Tools, every copy and
+download format, the palette share link, and saving to and reopening from your
+Library.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+Open panels in Basic Color Tools are not kept when you reload or leave the
+page. To keep your work, copy it, download it, or save it to your Auric
+Artisan Library. This guide lists every way in and out.
+
+BRINGING COLOURS AND IMAGES IN
+==============================
+
+  Into:    Palette Studio
+  How:     From Image
+  Accepts: Any image file your browser can open. Colours are extracted on your
+           device.
+
+  Into:    Palette Studio
+  How:     Select a HEX label on a strip
+  Accepts: Any colour, through the site colour picker.
+
+  Into:    Palette Remix
+  How:     Seed colors box
+  Accepts: HEX, `rgb()`, `rgba()`, `hsl()`, `hsla()`, `hsv()`, `oklch()`,
+           separated by lines, spaces, commas, semicolons or vertical bars.
+
+  Into:    Color Battle
+  How:     Team A and Team B boxes
+  Accepts: Same as Palette Remix, up to nine colours per team.
+
+  Into:    Gradient Maker
+  How:     Stop HEX boxes and colour wells
+  Accepts: Three- or six-digit HEX, or the browser's picker.
+
+  Into:    Color Picker
+  How:     HEX box, colour well, Pick eyedropper
+  Accepts: HEX; any pixel on screen where the eyedropper is supported.
+
+  Into:    Quick Converter
+  How:     Input box, colour well
+  Accepts: HEX, `rgb()`, `rgba()`, `hsl()`, `hsla()`, `hsv()`, `oklch()`.
+
+  Into:    Collage Maker
+  How:     + Add Images, or select a cell
+  Accepts: Image files from your device.
+
+  Into:    Any tool
+  How:     Your Library
+  Accepts: Saved palettes, gradients and colours reopen in the matching tool.
+           See below.
+
+Colours you type in any of the text boxes are converted to sRGB HEX codes.
+Values outside the sRGB range are clipped.
+
+COPY AND DOWNLOAD FORMATS
+=========================
+
+Palette Studio
+--------------
+
+  Button | Kind     | Output
+  -------+----------+----------------------------------------------------
+  Share  | Copy     | A link with the HEX codes after `#palette=`
+  CSS    | Copy     | CSS custom properties `--color-1` …
+  SCSS   | Copy     | Sass variables `$color-1` …
+  TW     | Copy     | Tailwind `extend.colors` snippet with `palette-1` …
+  JSON   | Copy     | Array of colour objects with metrics
+  SVG    | Download | `palette.svg`, 1200 × 240
+  PNG    | Download | `palette.png`, 1200 × 240
+  ASE    | Copy     | Tab-separated text lines
+
+Examples:
+
+    :root {
+      --color-1: #D3AF37;
+      --color-2: #1A1A2E;
+    }
+
+    $color-1: #D3AF37;
+    $color-2: #1A1A2E;
+
+    extend: { colors: {
+        "palette-1": "#D3AF37",
+        "palette-2": "#1A1A2E"
+    } }
+
+    [
+      {
+        "hex": "#D3AF37",
+        "rgb": { "r": 211, "g": 175, "b": 55 },
+        "oklch": { "L": 0.766, "C": 0.138, "H": 91.6 },
+        "lab": { "L": 72.75, "a": 0.95, "b": 62.79 },
+        "luminance": 0.448,
+        "bestText": { "hex": "#000000", "ratio": 9.96, "label": "dark", "passes": true },
+        "locked": false
+      }
+    ]
+
+For role palettes each object also has `role`, `token`, `pairWith`, `target`
+and `note`. The real output carries more decimal places than shown here.
+
+The ASE text looks like this, with tab characters between the parts:
+
+    Color 1	#D3AF37	RGB(211, 175, 55)
+    Color 2	#1A1A2E	RGB(26, 26, 46)
+
+It is plain text, not a binary Adobe Swatch Exchange file.
+
+Palette Remix
+-------------
+
+  Button      | Kind | Output
+  ------------+------+----------------------------------------------------
+  CSS         | Copy | One `:root` block per set, `--remix-1-1` …
+  JSON        | Copy | Array of the four sets with `name`, `note`, `hexes`
+  All HEX     | Copy | Every HEX code, one per line
+  Copy (card) | Copy | One set's HEX codes, space-separated
+  Swatch      | Copy | One HEX code
+
+Gradient Maker
+--------------
+
+  Button   | Kind     | Output
+  ---------+----------+-------------------------------------------------------
+  Copy CSS | Copy     | `background: linear-gradient(…);` (or radial or conic)
+  SVG      | Download | `gradient.svg`, 800 × 400
+  1600px   | Download | `gradient.png`, 1600 × 800
+  4K       | Download | `gradient.png`, 3840 × 1920
+  JSON     | Copy     | The JSON shown on the Export tab
+  Tailwind | Copy     | `backgroundImage: { 'gradient': '…' }`
+
+Open the Export tab after your last change before you copy JSON; see Gradient
+Maker [panel-tools/gradient-maker.txt].
+
+Color Picker and Quick Converter
+--------------------------------
+
+Every row on the Formats tab (Color Picker) and the Convert tab (Quick
+Converter) has its own copy button. Quick Converter's CSS oklch(), CSS oklab()
+and CSS lab() rows are ready for stylesheets.
+
+Color Battle
+------------
+
+  Button      | Kind | Output
+  ------------+------+--------------------------------------------------------------
+  Copy winner | Copy | The winning team's HEX codes, one per line (Team A in a draw)
+  Copy report | Copy | A short text report with the result and both scores
+  Swatch      | Copy | One HEX code
+
+Collage Maker
+-------------
+
+  Button: Export PNG (4K)
+  Kind:   Download
+  Output: `collage.png`, 3,840 pixels wide when the preview is at least 800
+          pixels wide
+
+What "copied" looks like
+------------------------
+
+Every copy button shows a short message such as Copied, CSS copied or JSON
+copied near the bottom of the page. If your browser blocks clipboard access,
+nothing is copied; see Troubleshooting [troubleshooting.txt].
+
+THE PALETTE SHARE LINK
+======================
+
+Palette Studio's Share button copies a link like this:
+
+    https://auricartisan.com/tool/basic-tools/#palette=D3AF37-1A1A2E-F5DEB3-0F172A-FFFFFF
+
+The HEX codes are listed after `#palette=`, without `#` signs and separated by
+hyphens. Opening the link opens Basic Color Tools, but the page does not
+rebuild the palette from it automatically. Use the link as a compact record:
+copy the codes and paste them into Palette Remix, Color Battle or Quick
+Converter.
+
+The Catalogue's Copy link button copies the page address as it is in your
+browser.
+
+SAVE TO LIBRARY
+===============
+
+The Save to Library button floats near the bottom-right corner of the page. On
+narrow screens it shows only its icon.
+
+  1. Focus the panel you want to save by selecting it.
+  2. Select Save to Library.
+  3. A save window opens listing what will be saved. For each item you can
+     edit the Name and Description. You can also choose a Collection (or leave
+     it Unfiled) and add Tags (comma-separated) for all items.
+  4. Select Save to Library in the window, or press `Ctrl` + `Enter` (`Cmd` +
+     `Enter` on a Mac). Select Cancel to close without saving.
+
+Result: a message such as Saved "Palette · 5 colors (analogous)" appears, and
+the item is in your Library.
+
+What each tool saves:
+
+  Focused panel: Palette Studio
+  Saved as:      One palette, with the harmony mode and CVD preview setting.
+
+  Focused panel: Palette Remix
+  Saved as:      Four palettes, one per remix set, named after the set.
+
+  Focused panel: Gradient Maker
+  Saved as:      One gradient, with its CSS, stops, type, angle, interpolation
+                 and easing.
+
+  Focused panel: Color Picker
+  Saved as:      One colour, with its formats and harmony colours.
+
+  Focused panel: Color Battle
+  Saved as:      Two palettes, Team A and Team B, each remembering both teams
+                 and the result.
+
+  Focused panel: Quick Converter
+  Saved as:      One colour, with every format.
+
+  Focused panel: Collage Maker
+  Saved as:      Nothing from the collage. Export the PNG instead.
+
+  Focused panel: No panel open, or only Collage Maker
+  Saved as:      A Basic Tools workspace bookmark that records your level
+                 setting.
+
+Save acts on the focused panel. Docked (minimised) panels are not saved. If
+there is nothing to save, a message says Nothing to save yet — try creating
+something first.
+
+REOPENING SAVED ITEMS
+=====================
+
+You can reopen items from your Library in Basic Color Tools. The item opens in
+a fresh panel of the tool that suits it, replacing any panel of that tool that
+is already open:
+
+  Saved item: A palette saved from Palette Studio
+  Reopens in: Palette Studio (Loaded N colors from library)
+
+  Saved item: A remix set
+  Reopens in: Palette Remix, as seed colours (Loaded remix from library)
+
+  Saved item: A gradient
+  Reopens in: Gradient Maker (Loaded gradient from library)
+
+  Saved item: A colour saved from Color Picker
+  Reopens in: Color Picker (Loaded color from library)
+
+  Saved item: A colour saved from Quick Converter
+  Reopens in: Quick Converter (Loaded color from library)
+
+  Saved item: A Color Battle team
+  Reopens in: Color Battle, with both teams (Loaded teams from library)
+
+  Saved item: A palette, gradient or colour saved from another tool
+  Reopens in: Palette Studio, Gradient Maker or Color Picker, by type
+
+  Saved item: A saved analysis run from the URL Analyzer
+  Reopens in: Palette Studio, with the colours of the audited page
+
+Because a restore opens a fresh panel, any unsaved work in the replaced panel
+is lost.
+
+For how to browse, organise and send items from the Library, see the Library
+Kit [../../../../kits/library-kit/README.txt].
+
+RELATED
+=======
+
+  - Basic Color Tools overview [../README.txt]
+  - Panel tools [panel-tools/README.txt]
+  - Reference [reference.txt]
+  - Privacy [../others/privacy.txt]

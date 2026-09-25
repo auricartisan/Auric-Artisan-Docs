@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Library — Auric Artisan Docs</title>
+<meta name="description" content="Save colours and palettes to the extension's library, reuse them, remove them and export them as JSON.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Saved</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="library.html" aria-current="page">Library</a></li>
+<li><a href="on-the-web.html">On the web</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Saved</a></nav>
+<p class="kicker">Browser extension › Saved</p>
+<h1>Library</h1>
+<p class="lede">Save colours and palettes to the extension's library, reuse them, remove them and export them as JSON.</p>
+<p>The Library keeps the colours and palettes you choose to save. It is stored in your browser&#39;s extension storage and is not synced between devices.</p>
+<h2 id="add-to-the-library">Add to the library</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>From</th><th>Button</th><th>Adds</th></tr></thead>
+<tbody>
+<tr><td>Picker</td><td><strong>Save to library</strong> (the bookmark)</td><td>The current colour. If it is already there, the extension says so.</td></tr>
+<tr><td>Page palette</td><td><strong>Save</strong></td><td>The whole palette</td></tr>
+<tr><td>Image</td><td><strong>Save palette</strong></td><td>The image&#39;s colours</td></tr>
+<tr><td>Harmony</td><td><strong>Save</strong></td><td>The harmony, labelled with its scheme</td></tr>
+</tbody></table></div>
+<p>The toolbar icon&#39;s badge shows how many colours are in the library.</p>
+<h2 id="use-the-library">Use the library</h2>
+<p>Open Saved › <strong>Library</strong>. It has two sections.</p>
+<h3 id="colours">Colours</h3>
+<ul>
+<li><strong>Click</strong> a colour to copy it in the format set in Settings › Tools › <strong>Copy colours as</strong>.</li>
+<li><strong>Right-click</strong> a colour, or focus it and press <code>Delete</code> or <code>Backspace</code>, to remove it.</li>
+</ul>
+<p>&quot;Nothing saved yet.&quot; appears while the section is empty.</p>
+<h3 id="palettes">Palettes</h3>
+<ul>
+<li><strong>Click</strong> a palette to open it in Page palette, where every export is available.</li>
+<li>Choose its <strong>✕</strong> to delete it.</li>
+</ul>
+<p>&quot;No saved palettes.&quot; appears while the section is empty.</p>
+<h2 id="export">Export</h2>
+<p><strong>Export</strong> copies the whole library as JSON, with a <code>colors</code> list and a <code>palettes</code> list:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;colors&quot;: [&quot;#d3af37&quot;],
+  &quot;palettes&quot;: [{ &quot;id&quot;: 1790000000000, &quot;colors&quot;: [&quot;#d3af37&quot;, &quot;#1a73e8&quot;], &quot;label&quot;: &quot;triadic&quot; }]
+}</code></pre>
+<p>To keep the library with your settings, history and snippets in one file, use Settings › Data › <strong>Download a backup</strong>.</p>
+<h2 id="limits">Limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>What</th><th>Limit</th></tr></thead>
+<tbody>
+<tr><td>Colours</td><td>500</td></tr>
+<tr><td>Palettes</td><td>The newest 30 are kept when you save; a restored backup can hold up to 100</td></tr>
+<tr><td>Colours in a palette</td><td>64 in a restored backup</td></tr>
+</tbody></table></div>
+<h2 id="clear-it">Clear it</h2>
+<p>Settings › Data › <strong>Clear history &amp; library</strong> removes all colours, palettes and your history, after you confirm. Snippets are kept.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="history.html">History</a></li>
+<li><a href="../settings/data.html">Data settings</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="history.html"><span>Previous</span>History</a><a href="on-the-web.html"><span>Next</span>On the web</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#add-to-the-library">Add to the library</a></li><li><a href="#use-the-library">Use the library</a></li><li><a href="#export">Export</a></li><li><a href="#limits">Limits</a></li><li><a href="#clear-it">Clear it</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

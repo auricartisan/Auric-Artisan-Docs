@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started — Auric Artisan Docs</title>
+<meta name="description" content="How the Icon CDN is organised, how icons are named, and how to put a first icon on a page.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Icon CDN</a>
+<h2>Icon CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="embed-an-icon.html">Embed an icon</a></li>
+<li><a href="export-and-self-host.html">Export and self-host</a></li>
+<li><a href="style-size-and-colour.html">Style, size and colour</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Icon CDN</a> &rsaquo; <a href="README.html">Icon CDN documentation</a></nav>
+<p class="kicker">Services › Icon CDN</p>
+<h1>Getting started</h1>
+<p class="lede">How the Icon CDN is organised, how icons are named, and how to put a first icon on a page.</p>
+<h2 id="how-the-cdn-is-organised">How the CDN is organised</h2>
+<p>Everything is served from <a href="https://icons.auricartisan.com" rel="noopener">https://icons.auricartisan.com</a>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Path</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td><code>/icon-cdn.js</code></td><td>The loader script</td></tr>
+<tr><td><code>/icon/&lt;set&gt;/…</code></td><td>The original SVG files, and the Material and Remix webfonts</td></tr>
+<tr><td><code>/data/sets.json</code></td><td>The seven sets: styles, licence, grid and counts</td></tr>
+<tr><td><code>/data/index.json</code></td><td>One record per icon, used for names and search</td></tr>
+<tr><td><code>/data/bodies/&lt;set&gt;.&lt;style&gt;.json</code></td><td>The icon markup for one set and style, loaded by the loader as needed</td></tr>
+<tr><td><code>/data/material.json</code></td><td>The code points for the Material webfont</td></tr>
+<tr><td><code>/LICENSE.md</code></td><td>The licence reference for every set</td></tr>
+</tbody></table></div>
+<h2 id="icon-names">Icon names</h2>
+<p>An icon is named by its set and its name, joined by a colon: <code>lucide:house</code>, <code>tabler:home</code>, <code>phosphor:heart</code>. The loader also accepts:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Form</th><th>Example</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>set:name</code></td><td><code>tabler:home</code></td><td>This icon from this set</td></tr>
+<tr><td><code>set-name</code></td><td><code>tabler-home</code></td><td>The same</td></tr>
+<tr><td><code>name</code></td><td><code>home</code></td><td>The first set with this name: Lucide, Phosphor, Tabler, Remix, Heroicons, Feather, then Material</td></tr>
+</tbody></table></div>
+<p>Names are the set&#39;s own icon names in lower case with hyphens. Different sets name things differently: Lucide calls it <code>house</code>, Tabler calls it <code>home</code>. The Icon Library shows every icon&#39;s name and gives you the exact tag with <strong>Copy CDN tag</strong>.</p>
+<h2 id="your-first-icon">Your first icon</h2>
+<ol>
+<li><p>Add the loader once, anywhere in the page:</p>
+<pre class="code" data-lang="html"><code>&lt;script src=&quot;https://icons.auricartisan.com/icon-cdn.js&quot;&gt;&lt;/script&gt;</code></pre>
+</li>
+<li><p>Add a placeholder where the icon should go:</p>
+<pre class="code" data-lang="html"><code>&lt;button&gt;&lt;i data-icon=&quot;lucide:house&quot;&gt;&lt;/i&gt; Home&lt;/button&gt;</code></pre>
+</li>
+<li><p>Load the page. When the page has loaded, the loader replaces the contents of every <code>data-icon</code> element with the icon&#39;s SVG.</p>
+</li>
+</ol>
+<p>The icon uses <code>currentColor</code>, so it takes the button&#39;s text colour.</p>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> The SVG markup the CDN serves has a <code>viewBox</code> but no width or height of its own. Without a size, browsers draw it at their default size for SVG, which is usually far too large. Always give icons a size, either with <code>data-size</code> or with CSS such as the rule below.</p>
+</blockquote>
+<pre class="code" data-lang="css"><code>[data-icon] svg { width: 1em; height: 1em; }</code></pre>
+<p>See <a href="style-size-and-colour.html">Style, size and colour</a>.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="collections.html">Collections</a>, to choose a set and a style.</li>
+<li><a href="embed-an-icon.html">Embed an icon</a>, for ways that do not use the loader.</li>
+<li><a href="use-the-loader.html">Use the loader</a>, for icons added after the page loads.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Icon CDN documentation</a><a href="collections.html"><span>Next</span>Collections</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-the-cdn-is-organised">How the CDN is organised</a></li><li><a href="#icon-names">Icon names</a></li><li><a href="#your-first-icon">Your first icon</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

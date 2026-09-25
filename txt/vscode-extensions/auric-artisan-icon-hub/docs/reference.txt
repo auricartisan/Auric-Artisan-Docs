@@ -1,0 +1,288 @@
+==============================================================================
+ICON HUB REFERENCE
+==============================================================================
+Every command, keybinding, setting, view, collection, format and message in
+Auric Artisan Icon Hub 0.1.0.
+Area: VS Code extensions › Auric Artisan Icon Hub   Updated: 2026-09-25
+
+This reference describes version 0.1.0 as published on the Visual Studio
+Marketplace.
+
+COMMANDS
+========
+
+Category in the Command Palette: Auric Icon Hub.
+
+  Command:      Open Icon Hub
+  ID:           `auricIconLib.openStudio`
+  What it does: Opens the full Hub panel.
+
+  Command:      Quick Search Icons
+  ID:           `auricIconLib.quickSearch`
+  What it does: Search box, then a Quick Pick of matches; runs your click
+                action.
+
+  Command:      Smart Insert Icon
+  ID:           `auricIconLib.smartInsert`
+  What it does: Same flow as Quick Search; insertion follows the editor
+                language.
+
+  Command:      Copy Icon As…
+  ID:           `auricIconLib.copyAs`
+  What it does: Pick an icon and a format; copies.
+
+  Command:      Save Icon As…
+  ID:           `auricIconLib.saveIcon`
+  What it does: Pick an icon; saves in your copy format.
+
+  Command:      Show Favorite Icons
+  ID:           `auricIconLib.showFavorites`
+  What it does: Quick Search limited to favorites.
+
+  Command:      Show Recent Icons
+  ID:           `auricIconLib.showRecents`
+  What it does: Quick Search limited to recent icons.
+
+  Command:      Refresh Icon Catalog
+  ID:           `auricIconLib.refreshCatalog`
+  What it does: Checks for compatible metadata now.
+
+  Command:      Clear Downloaded Icon Catalog
+  ID:           `auricIconLib.clearCache`
+  What it does: Returns to the bundled metadata.
+
+  Command:      Open Auric Icon Tool
+  ID:           `auricIconLib.openWebsite`
+  What it does: Opens https://icons.auricartisan.com in your browser.
+
+  Command:      Clear Icon Favorites and Recents
+  ID:           `auricIconLib.clearPersonalization`
+  What it does: Clears favorites and recents immediately, without a
+                confirmation.
+
+  Command:      Export Selected Icons
+  ID:           `auricIconLib.exportSelected`
+  What it does: Opens the Hub for exporting; hidden from the Command Palette.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows and Linux)       | Keys (macOS)                  | Command
+  -------------------------------+-------------------------------+-------------------
+  `Ctrl` + `Alt` + `Shift` + `I` | `Cmd` + `Alt` + `Shift` + `I` | Quick Search Icons
+
+Keys inside the Hub
+-------------------
+
+  Key                        | Action
+  ---------------------------+------------------------------------------------------------------
+  `Ctrl` + `K` / `Cmd` + `K` | Focus search
+  Arrow keys                 | Move between cards; move in dropdowns
+  `Enter`                    | Open the inspector for the focused card; choose a dropdown option
+  `F`                        | Star the focused card
+  `Home`, `End`              | First or last dropdown option
+  `Escape`                   | Close a dropdown or the inspector
+  `Tab`                      | Stays inside the inspector while it is open
+
+SETTINGS
+========
+
+  Setting:         `auricIconLib.clickAction`
+  Type:            string
+  Values or range: `insert`, `copy`, `insertAndCopy`
+  Default:         `insert`
+  What it does:    Action when an icon is chosen.
+
+  Setting:         `auricIconLib.copyFormat`
+  Type:            string
+  Values or range: `svg`, `jsx`, `reactComponent`, `html`, `dataUri`, `css`,
+                   `cdn`
+  Default:         `svg`
+  What it does:    Default format for Copy and Save.
+
+  Setting:         `auricIconLib.defaultSet`
+  Type:            string
+  Values or range: `all`, `phosphor`, `tabler`, `lucide`, `remix`,
+                   `heroicons`, `feather`, `material`
+  Default:         `all`
+  What it does:    Initial collection filter.
+
+  Setting:         `auricIconLib.defaultStyle`
+  Type:            string
+  Values or range: `auto` or a style ID
+  Default:         `auto`
+  What it does:    Initial style filter.
+
+  Setting:         `auricIconLib.size`
+  Type:            number
+  Values or range: 8 to 512
+  Default:         24
+  What it does:    Output size in pixels.
+
+  Setting:         `auricIconLib.color`
+  Type:            string
+  Values or range: `currentColor` or `#rrggbb`
+  Default:         `currentColor`
+  What it does:    Preview and output colour.
+
+  Setting:         `auricIconLib.strokeWidth`
+  Type:            number
+  Values or range: 0.5 to 4
+  Default:         2
+  What it does:    Stroke width.
+
+  Setting:         `auricIconLib.density`
+  Type:            string
+  Values or range: `compact`, `comfortable`, `showcase`
+  Default:         `comfortable`
+  What it does:    Card density.
+
+  Setting:         `auricIconLib.pageSize`
+  Type:            number
+  Values or range: 24 to 240
+  Default:         72
+  What it does:    Cards per batch.
+
+  Setting:         `auricIconLib.recommendations.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Shows the Smart Finder.
+
+  Setting:         `auricIconLib.statusBar.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Shows the status bar item.
+
+  Setting:         `auricIconLib.maxRecents`
+  Type:            number
+  Values or range: 5 to 200
+  Default:         40
+  What it does:    Recent icons kept.
+
+  Setting:         `auricIconLib.remoteRefresh.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Allow metadata checks from https://icons.auricartisan.com.
+
+  Setting:         `auricIconLib.remoteRefresh.onStartup`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Check in the background when the Hub activates.
+
+  Setting:         `auricIconLib.remoteRefresh.intervalHours`
+  Type:            number
+  Values or range: 1 to 168
+  Default:         24
+  What it does:    Minimum hours between automatic attempts.
+
+Style IDs: Phosphor `thin`, `light`, `regular`, `bold`, `fill`, `duotone`;
+Tabler `outline`, `filled`; Lucide and Feather `regular`; Remix `line`,
+`fill`; Heroicons `24/outline`, `24/solid`, `20/solid`, `16/solid`; Material
+`outlined`, `round`, `sharp`, `regular`, `twotone`.
+
+VIEWS AND MENUS
+===============
+
+  Place:    Activity Bar
+  Contents: Auric Icon Hub container with the Icon Hub view.
+
+  Place:    View title bar
+  Contents: Quick Search Icons, Refresh Icon Catalog, Open Icon Hub.
+
+  Place:    Editor right-click
+  Contents: Smart Insert Icon, Copy Icon As….
+
+  Place:    Status bar
+  Contents: Icon and "{count} Icons"; tooltip "Auric Icon Hub · {catalog
+            source}"; opens the Hub.
+
+HUB CONTROLS
+============
+
+  Area             | Controls
+  -----------------+------------------------------------------------------------
+  Header           | Refresh, Website ↗, open in editor tab
+  Views            | Library, Favorites, Recent, Selected
+  Refine library   | Set, style, category, licence, sort (Relevance, Name, Set)
+  Shape the output | Size, Color (picker), Stroke
+  Finder footer    | Reset filters
+  Smart Finder     | Shuffle
+  Card             | Preview (inspector), star, check (select), Insert, Copy
+  Inspector        | Style buttons, Copy format, CDN preview, Insert, Copy, Save
+  Selection tray   | Copy sprite, Export ZIP, Clear
+  Grid             | Load more
+
+COLLECTIONS
+===========
+
+  ID          | Name      | Icons | Licence
+  ------------+-----------+-------+-----------
+  `phosphor`  | Phosphor  | 1,512 | MIT
+  `tabler`    | Tabler    | 5,093 | MIT
+  `lucide`    | Lucide    | 1,714 | ISC
+  `remix`     | Remix     | 1,689 | Remix v1.0
+  `heroicons` | Heroicons | 324   | MIT
+  `feather`   | Feather   | 287   | MIT
+  `material`  | Material  | 2,276 | Apache-2.0
+
+Total: 12,895 icons, 32,802 indexed variants.
+
+INSERTION BY LANGUAGE
+=====================
+
+  Language IDs                         | Insert output
+  -------------------------------------+-------------------------------------------------------
+  `html`, `vue`, `svelte`, `astro`     | CDN placeholder; bridge connected
+  `javascriptreact`, `typescriptreact` | CDN placeholder (or React component); bridge connected
+  `javascript`, `typescript`           | Named markup constant; bridge connected
+  `css`, `scss`, `less`                | CSS (not available for Material)
+  `svg`, `xml` and others              | SVG (not available for Material)
+
+LIMITS
+======
+
+  Item                     | Limit
+  -------------------------+------------------
+  Icons per export         | 200
+  Metadata request timeout | 15 seconds
+  Metadata files           | 5, under `/data/`
+
+MESSAGES YOU MAY SEE
+====================
+
+  Message: No writable editor selected; icon copied to the clipboard.
+  Meaning: Insert fell back to Copy.
+
+  Message: Material Icons are font-backed; generated HTML markup instead of
+           SVG.
+  Meaning: You asked for SVG or data URI for a Material icon.
+
+  Message: The selected editor is read-only. Use Copy instead.
+  Meaning: Insert was refused.
+
+  Message: The editor could not accept this insertion. Use Copy instead.
+  Meaning: The edit was rejected.
+
+  Message: Insert Material icons into HTML or a web-framework file to connect
+           your CDN. Use Copy for other formats.
+  Meaning: Material insertion needs a web file.
+
+  Message: Catalog metadata updated. Shipped artwork remains available
+           offline.
+  Meaning: Manual refresh succeeded.
+
+  Message: Using offline catalog: …
+  Meaning: Refresh failed; the local catalog is used.
+
+  Message: Remote catalog refresh is disabled.
+  Meaning: `remoteRefresh.enabled` is off.
+
+  Message: Cache cleared; bundled catalog restored.
+  Meaning: Downloaded metadata removed.
+
+  Message: Select one or more icons
+  Meaning: Export was started with an empty selection.

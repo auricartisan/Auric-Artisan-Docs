@@ -1,0 +1,70 @@
+---
+title: Search — Request a crawl
+description: How to submit pages and sitemaps in the Auric Artisan Search Console, read the crawl queue, and control what the crawler fetches with robots.txt.
+product: Website › Search
+updated: 2026-09-25
+---
+
+# Request a crawl
+
+The crawler finds pages by following links and by reading sitemaps. You can speed this up by submitting a page or a whole sitemap in the **Submit** section of the Search Console. Your site must be verified first; see [Set up the Search Console](search-console.md).
+
+## Submit a page or a sitemap
+
+1. Open **Submit** in the console's side rail. The section is headed **Crawling**.
+2. In **Add a page or a sitemap**, paste an address, for example `https://example.com/sitemap.xml`.
+3. As you type, a hint says what it will do: **Looks like a sitemap — every URL inside it will join the queue.** or **Queued as one page.** The hint is a guess; the console decides when it reads the address.
+4. Select **Submit** or press `Enter`.
+
+The result:
+
+| Message | Meaning |
+| --- | --- |
+| **Read as a sitemap — 120 URLs queued.** | The address was a sitemap, and its addresses were queued. |
+| **Read as a sitemap, but every URL in it was outside this property.** | The sitemap lists addresses on a different site. Submit it under the site it belongs to. |
+| **Queued. It will be crawled at this host's own pace.** | The address was queued as one page. |
+
+To queue a single address from a report, use **Ask for a crawl** in the inspection panel instead. See [Read the console reports](console-reports.md).
+
+## The queue
+
+The first card shows how many addresses are **waiting for the next pass**, or **Nothing waiting** and **Everything known has been crawled.** When the crawler's pace is known, it adds how long the queue will take, for example **At 1,000 ms a request, about 7 minutes of crawling.**
+
+A bar shows where the waiting addresses came from:
+
+| Source | Meaning |
+| --- | --- |
+| from your sitemaps | Listed in a sitemap. |
+| you asked for | Submitted in the console. |
+| sitemaps to re-read | Sitemaps due to be read again. |
+| found by following links | Found in links on pages already crawled. |
+| due a re-crawl | Already crawled, and due to be fetched again. |
+
+## Your sitemaps
+
+The **Sitemaps** card lists every sitemap known for the site. Sitemaps are re-read on every pass. Each shows how the crawler knows it:
+
+- **You added** — submitted in the console.
+- **Detected** — listed on a `Sitemap:` line in your robots.txt.
+- **Found while crawling** — met by following a link.
+
+A sitemap that did not answer normally shows its HTTP status. The line below says how many addresses were queued from your sitemaps and how many sitemaps your robots.txt lists. If it lists none, add them there: that is how the crawler finds them on its own.
+
+## What the crawler obeys
+
+The crawler calls itself AuricBot.
+
+- **robots.txt.** The crawler reads your robots.txt and obeys it. It follows the group for `AuricBot` if there is one, and the `*` group otherwise. An address that robots.txt disallows is never fetched, and shows in Coverage as **Blocked by robots.txt**.
+- **Crawl-delay.** The crawler waits between requests to your site so that a crawl never floods it. It uses the `Crawl-delay` in your robots.txt, between 1 and 60 seconds, or 1 second if there is none. The wait shows as **Pace** under **Your sites**.
+- **noindex.** A page with a robots meta tag or an `X-Robots-Tag` header asking not to be indexed is fetched but not indexed.
+- **Canonical addresses.** When two pages are near-identical, one is kept. A `rel=canonical` link tells the crawler which one you prefer.
+- **Web pages only.** Only HTML pages are read and indexed. PDFs, images, feeds and downloads are not.
+- **No JavaScript.** Pages that are mostly an empty shell filled in by JavaScript look empty to the crawler, and show as **Too little content**.
+
+## Crawled is not yet searchable
+
+Crawling and indexing are separate steps. A page that has been fetched shows as **Crawled, waiting for the next index build**. It becomes searchable when the next index build includes it.
+
+## When the crawler is turned away
+
+If your site stops the crawler, for example with a firewall or an error on every request, **Your sites** shows **The crawler is being turned away.** with the reason. Nothing on the site can be indexed until the crawler can fetch pages again. The header also changes to **Crawling stopped** with the time of the last pass.

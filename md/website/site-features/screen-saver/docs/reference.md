@@ -1,0 +1,53 @@
+---
+title: Screen saver — Reference
+description: Screen saver settings, timings, and what counts as activity.
+product: Website › Site features › Screen saver
+updated: 2026-09-25
+---
+
+# Screen saver reference
+
+## Settings (Settings › Comfort)
+
+| Control | Values | Default |
+|---|---|---|
+| **Screen saver** | On, off | Off |
+| **Start after** | **1m**, **5m**, **10m**, **20m**, **30m** | 10m |
+
+The **Start after** buttons are dimmed while **Screen saver** is off.
+
+## What counts as activity
+
+Mouse movement, mouse button press, key press, scrolling, touch, and mouse wheel. Any of them resets the idle time and closes the screen saver.
+
+## Timings
+
+| Item | Value |
+|---|---|
+| Idle check | Every 10 seconds |
+| Time per colour | 12 seconds |
+| **Move to return** hint | First 60 seconds |
+| Clock refresh | Every 30 seconds |
+
+## Readout fields
+
+| Label | Content |
+|---|---|
+| **Colour atlas** | Atlas number of the colour, out of 8,192 |
+| Name | Colour name |
+| Hex | Hex code |
+| **oklch** | Lightness, chroma, hue |
+| **reads as** | Associated mood |
+| **movement** | Associated art movement |
+| **on black** | WCAG contrast ratio against black |
+
+## Bands
+
+Seven OKLCH lightness steps: 0.22, 0.35, 0.48, 0.61 (the colour's own step), 0.74, 0.85, 0.94. Side by side on wide screens; stacked on narrow or portrait screens.
+
+## Related settings
+
+| Setting | Effect on the screen saver |
+|---|---|
+| Settings › Clock › **24-hour time** | The screen saver clock uses 24-hour time |
+| Language | The clock uses the page's language for dates |

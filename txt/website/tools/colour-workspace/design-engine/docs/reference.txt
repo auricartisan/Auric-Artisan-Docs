@@ -1,0 +1,348 @@
+==============================================================================
+DESIGN SYSTEM GENERATOR REFERENCE
+==============================================================================
+Every control, option, default, view and output of the Design System Generator
+in one place.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+PAGE
+====
+
+  Item              | Value
+  ------------------+----------------------------------------------------------
+  Address           | https://auricartisan.com/tool/design-engine/
+  Tabs              | Overview, Colour, Type, Icons, Scales, Components, Tokens
+  Views             | Compare, Workspace, Audit, Help
+  Tokens            | 177 (light + dark), 163 (light only)
+  Export targets    | 12
+  Contrast measures | WCAG 2.1 ratio, APCA Lc
+  API equivalent    | POST /v1/tokens/generate, 4 API credits per call
+
+MASTHEAD
+========
+
+  Control:      Surprise
+  What it does: Random industry, style and target; seed reset to auto; harmony
+                auto or random. Keeps other overrides.
+
+  Control:      Share
+  What it does: Copies a link with the current inputs and updates the address
+                bar.
+
+  Control:      Save
+  What it does: Saves the system to your Library.
+
+  Control:      Help
+  What it does: Opens the How this works view.
+
+  Control:      Workspace
+  What it does: Opens saved systems and the Connect cards.
+
+  Control:      Read the API reference →
+  What it does: Opens the API documentation.
+
+  Control:      API note ×
+  What it does: Hides the "Automate this" note; remembered in your browser.
+
+  Control:      Expand / Collapse
+  What it does: Hides or shows both side rails; remembered in your browser.
+
+THE BRIEF
+=========
+
+  Control:      Industry
+  What it does: Brand hue, chroma, mood and font/icon tags
+  Values:       Auto, Fintech, Healthcare, SaaS / B2B, E-commerce, Education,
+                Creative / Agency, Gaming, Luxury, Food & Drink, Travel, Real
+                Estate, Non-profit, Crypto / Web3, Wellness
+  Default:      Auto
+
+  Control:      Style
+  What it does: Saturation, corners, shadows, weights, ratio, motion
+  Values:       Modern, Minimal, Classic, Bold, Playful, Elegant, Corporate,
+                Brutalist, Organic, Futuristic
+  Default:      Modern
+
+  Control:      Contrast target
+  What it does: Body-text requirement
+  Values:       AA Large (3:1), AA (4.5:1), AAA (7:1)
+  Default:      AAA
+
+  Control:      Density
+  What it does: Body size and spacing
+  Values:       Compact (15 px, 4 px × 0.9), Comfort (16 px, 4 px), Spacious
+                (17 px, 5 px × 1.15)
+  Default:      Comfort
+
+  Control:      Seed colour well and HEX box
+  What it does: Brand colour
+  Values:       Any HEX; Auto
+  Default:      Auto (from the industry)
+
+  Control:      Seed hue buttons
+  What it does: Set a seed at a fixed hue
+  Values:       0° to 330° in 30° steps
+  Default:      —
+
+  Control:      Harmony
+  What it does: Secondary and accent hue positions
+  Values:       Auto, Complementary, Analogous, Triadic, Split-complementary,
+                Tetradic, Monochrome
+  Default:      Auto
+
+  Control:      Colour mode
+  What it does: Which role sets are built into the tokens
+  Values:       Light, Dark, Both
+  Default:      Both
+
+  Control:      Corner style
+  What it does: Radius family
+  Values:       Auto, Sharp, Soft, Rounded, Pill
+  Default:      Auto
+
+  Control:      Type ratio
+  What it does: Modular scale ratio
+  Values:       Auto, 1.125, 1.2, 1.25, 1.333, 1.414, 1.5, 1.618
+  Default:      Auto
+
+  Control:      Ramp shape span
+  What it does: Lightness travel of brand ramps
+  Values:       Tight, Even, Wide
+  Default:      Even
+
+  Control:      Ramp shape peak
+  What it does: Chroma curve of brand ramps
+  Values:       Flat, Natural, Vivid
+  Default:      Natural
+
+  Control:      Token naming prefix
+  What it does: Prefix for every token
+  Values:       Free text
+  Default:      Empty
+
+  Control:      Token naming case
+  What it does: Name style
+  Values:       kebab, camel, snake, Pascal
+  Default:      kebab
+
+  Control:      Compare every style →
+  What it does: Opens Compare
+  Values:       —
+  Default:      —
+
+GENERATED SYSTEM
+================
+
+  Part:     Ramps
+  Contents: Primary, secondary, accent: 50, 100, 200, 300, 400, 500, 600, 700,
+            800, 900, 950. Neutral: 0, 50, 100 … 950, 1000.
+
+  Part:     Semantic
+  Contents: Success, warning, danger, info: solid, bg, border, text, and a
+            label colour.
+
+  Part:     Roles
+  Contents: bg, bg-subtle, bg-muted, surface, elevated, border, border-strong,
+            text, text-muted, text-subtle, primary, primary-hover,
+            primary-active, primary-subtle, on-primary, ring (light, and dark
+            unless mode is Light).
+
+  Part:     Gradients
+  Contents: brand, brand-soft, sunrise, mesh, subtle.
+
+  Part:     Type
+  Contents: Heading, body and mono families; 13 sizes (2xs to 7xl); 12 roles;
+            leading (none, tight, snug, normal, relaxed, loose); tracking
+            (tighter, tight, normal, wide, wider, widest).
+
+  Part:     Icons
+  Contents: One of Feather, Lucide, Heroicons, Phosphor, Tabler, Remix Icon,
+            Material Symbols, with stroke width.
+
+  Part:     Spacing
+  Contents: 19 steps: 0, px, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16,
+            20, 24, 32, 40.
+
+  Part:     Radius
+  Contents: none, sm, md, lg, xl, 2xl, 3xl, pill.
+
+  Part:     Shadows
+  Contents: xs, sm, md, lg, xl, 2xl, inner, primary.
+
+  Part:     Motion
+  Contents: Durations fast, base, slow; easings standard, spring.
+
+  Part:     Z-index
+  Contents: base 0, dropdown 1000, sticky 1100, banner 1200, overlay 1300,
+            modal 1400, popover 1500, toast 1600, tooltip 1700.
+
+  Part:     Breakpoints
+  Contents: sm 640, md 768, lg 1024, xl 1280, 2xl 1536 (px).
+
+Motion by style personality:
+
+  Personality | fast / base / slow (ms) | Used by
+  ------------+-------------------------+----------------------------------
+  Subtle      | 120 / 200 / 320         | Minimal, Corporate
+  Smooth      | 150 / 250 / 400         | Modern, Classic, Elegant, Organic
+  Snappy      | 110 / 180 / 280         | Bold, Brutalist, Futuristic
+  Bouncy      | 160 / 280 / 460         | Playful
+
+TABS
+====
+
+  Tab:   Overview
+  Cards: System summary, At a glance, Generation recipe, Jump to
+
+  Tab:   Colour
+  Cards: Color ramps, Semantic colors, Surfaces & roles, Gradients (folded)
+
+  Tab:   Type
+  Cards: Font pairing, Type scale, Roles, Available weights (folded)
+
+  Tab:   Icons
+  Cards: Recommended icon family, Preview set, On brand color (folded), Size
+         ramp (folded)
+
+  Tab:   Scales
+  Cards: Spacing scale, Border radius scale, Elevation / shadow scale, Shadow
+         values (folded), Durations, Easing curves
+
+  Tab:   Components
+  Cards: Component playground
+
+  Tab:   Tokens
+  Cards: Find token, Design tokens, Export tokens
+
+COMPONENT PLAYGROUND CONTROLS
+=============================
+
+  Control: Theme
+  Values:  Light, Dark (as allowed by colour mode)
+  Default: Light
+
+  Control: Density
+  Values:  Compact, Cozy, Spacious
+  Default: Cozy
+
+  Control: Corners
+  Values:  Auto, Sharp, Soft, Round, Pill
+  Default: Auto
+
+  Control: Elevation
+  Values:  None, Flat, Auto, Deep
+  Default: Auto
+
+  Control: Buttons
+  Values:  Auto, Square, Pill
+  Default: Auto
+
+  Control: Viewport
+  Values:  Fluid, Desktop, Tablet, Mobile
+  Default: Fluid
+
+  Control: ↺ Reset
+  Values:  Resets density, corners, elevation, buttons, viewport
+  Default: —
+
+  Control: Category chips
+  Values:  ✦ All, Navigation, Buttons, Forms, Feedback, Data, Overlays,
+           Commerce, Marketing, Industry
+  Default: ✦ All
+
+  Control: Scene chips (Industry)
+  Values:  The 14 industries
+  Default: Your industry, or SaaS
+
+AUDIT
+=====
+
+  Item:  Pairings
+  Value: 12 per theme (8 roles + 4 semantic solids)
+
+  Item:  Requirements
+  Value: Target (body, text on surface, text on muted), 4.5 (muted text,
+         on-primary), 3 (subtle text, primary vs bg, semantic solids), 1.4
+         (strong border)
+
+  Item:  Score
+  Value: Accessibility 55, Vibrancy 18, Headroom 15, Hierarchy 12; range
+         40–100
+
+  Item:  Rail score colours
+  Value: Green 85+, amber 70+, red below
+
+  Item:  Overview ring colours
+  Value: Green 85+, amber 65+, red below
+
+  Item:  Full audit
+  Value: Theme audited (Light, Dark), requirements, What would fix it, Every
+         foreground on every surface, Color-vision preview
+
+  Item:  Matrix colours
+  Value: Gold: meets target; green: 4.5+; amber: 3+; red: below 3
+
+  Item:  APCA rating labels
+  Value: Lc 90 fine print, Lc 75 body text, Lc 60 fluent text, Lc 45
+         large/bold, Lc 30 headlines, Lc 15 non-text, insufficient
+
+COMPARE
+=======
+
+  Control  | Values                        | Default
+  ---------+-------------------------------+--------
+  Vary     | Style, Industry               | Style
+  Order by | Score, Chroma, Listed         | Score
+  Use      | Adopts that style or industry | —
+
+EXPORT FORMATS
+==============
+
+  Pill         | File               | Language
+  -------------+--------------------+-----------
+  CSS          | tokens.css         | css
+  CSS (modern) | tokens.modern.css  | css
+  SCSS         | _tokens.scss       | scss
+  Tailwind v3  | tailwind.config.js | javascript
+  Tailwind v4  | theme.css          | css
+  Figma / W3C  | design-tokens.json | json
+  JSON         | design-system.json | json
+  TypeScript   | tokens.ts          | typescript
+  Android XML  | colors.xml         | xml
+  SwiftUI      | DesignTokens.swift | swift
+  Flutter      | app_tokens.dart    | dart
+  Compose      | Tokens.kt          | kotlin
+
+Buttons: Copy, Download, Download all (.zip-less bundle)
+(`design-system-bundle.txt`). Coverage per format: see Export tokens
+[export-tokens.txt].
+
+SHARE LINK PARAMETERS
+=====================
+
+`industry`, `style`, `a11y`, `mode`, `density`, `harmony`, `ratio`, `corner`
+and `seedHex` are applied when a link is opened. `rampSpan`, `rampPeak`,
+`tokenPrefix` and `tokenCase` are written into shared links but not applied.
+See Share, save and connect [share-save-and-connect.txt].
+
+MESSAGES
+========
+
+  Message                                                 | When
+  --------------------------------------------------------+----------------------------------
+  Copied …                                                | A value was copied.
+  Shareable link copied ✓                                 | After Share.
+  Saved to workspace ⭐                                    | After Save.
+  Workspace library isn't available on this page          | Save could not reach the Library.
+  Restored from workspace ✓                               | After Restore.
+  Couldn't read that saved system                         | A saved item had no inputs.
+  Removed from workspace                                  | After Delete.
+  Export copied ✓, Downloaded …, Downloaded full bundle ✓ | After export actions.
+  Using …                                                 | After Use in Compare.
+  Generation failed — see console                         | Generation hit an error.
+
+RELATED
+=======
+
+  - Getting started [getting-started.txt]
+  - Glossary [../others/glossary.txt]

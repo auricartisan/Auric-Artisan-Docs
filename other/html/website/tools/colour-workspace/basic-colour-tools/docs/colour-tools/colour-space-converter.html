@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color Space Converter — Auric Artisan Docs</title>
+<meta name="description" content="Convert one colour into 34 notations across eight groups, from HEX and HSL to Lab, OKLCH, Display P3, Rec.2020, ACEScg, JzAzBz and YCbCr, with gamut badges, two diagrams, channel bars and a JSON export.">
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../../index.html">Home</a><a href="../../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Basic Color Tools documentation</a>
+<h2>Colour Tools workbench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility-lab.html">Accessibility Lab</a></li>
+<li><a href="animation-contrast.html">Animation Contrast</a></li>
+<li><a href="cmyk-soft-proof.html">CMYK Soft-Proof</a></li>
+<li><a href="colour-formulation.html">Color Formulation</a></li>
+<li><a href="colour-inspector.html">Color Inspector</a></li>
+<li><a href="colour-library.html">Color Library</a></li>
+<li><a href="colour-name-finder.html">Color Name Finder</a></li>
+<li><a href="colour-psychology.html">Color Psychology</a></li>
+<li><a href="colour-space-converter.html" aria-current="page">Color Space Converter</a></li>
+<li><a href="contrast-system.html">Contrast System</a></li>
+<li><a href="gradient-library.html">Gradient Library</a></li>
+<li><a href="harmony-studio.html">Harmony Studio</a></li>
+<li><a href="launcher-and-panels.html">Open the Colour Tools and manage their panels</a></li>
+<li><a href="pantone-and-named-lookup.html">Pantone &amp; Named Lookup</a></li>
+<li><a href="type-readability-sim.html">Type Readability Sim</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../../README.html">The website</a> &rsaquo; <a href="../../../../README.html">Website tools</a> &rsaquo; <a href="../../../README.html">Colour workspace</a> &rsaquo; <a href="../../README.html">Basic Color Tools</a> &rsaquo; <a href="../README.html">Basic Color Tools documentation</a> &rsaquo; <a href="README.html">Colour Tools workbench</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Color Space Converter</h1>
+<p class="lede">Convert one colour into 34 notations across eight groups, from HEX and HSL to Lab, OKLCH, Display P3, Rec.2020, ACEScg, JzAzBz and YCbCr, with gamut badges, two diagrams, channel bars and a JSON export.</p>
+<p>Color Space Converter writes one colour in every colour space you are likely to meet, from web notations to scientific and broadcast ones: 34 notations in eight groups. Each row has a copy button, wide-gamut rows show whether the colour fits the space, and two diagrams place the colour on the CIE 1931 chromaticity chart and on an OKLab slice. A third tab shows the main channels as bars.</p>
+<p>A <strong>colour space</strong> is a system of numbers that describes colours. Different spaces suit different jobs: HEX and RGB for screens and code, CMYK for print, Lab and OKLab for measuring how different colours look, P3 and Rec.2020 for wide-gamut screens, YCbCr for video. A <strong>gamut</strong> is the range of colours a space or device can represent.</p>
+<p>Color Space Converter is in the launcher&#39;s <strong>Deep dive</strong> group.</p>
+<h2 id="open-it">Open it</h2>
+<p>Open the launcher and select <strong>Color Space Converter</strong>, or pick it from the right-click menu&#39;s <strong>Colour tools</strong> group. See <a href="launcher-and-panels.html">Open the Colour Tools</a>. It starts with the colour you opened with, or gold (#D3AF37).</p>
+<h2 id="screen-tour">Screen tour</h2>
+<h3 id="sidebar">Sidebar</h3>
+<ul>
+<li><strong>Color</strong>: a colour field.</li>
+<li>A large chip showing the colour and its HEX code.</li>
+<li>Key figures: <strong>Luminance</strong> (WCAG relative luminance), <strong>OKLCh L</strong>, <strong>Chroma</strong>, <strong>Hue°</strong>, <strong>Saturation</strong> (HSL) and <strong>CCT</strong> (estimated colour temperature with a label).</li>
+<li><strong>Copy All (JSON)</strong>.</li>
+</ul>
+<h3 id="main-area-tabs">Main area tabs</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>All Spaces</strong></td><td>A search box (<em>Search 30 spaces…</em>), a count, and the 34 notations in eight groups.</td></tr>
+<tr><td><strong>Diagrams</strong></td><td><strong>CIE 1931 xy Chromaticity</strong> and <strong>OKLab a–b Gamut Plane</strong>, plus six figures.</td></tr>
+<tr><td><strong>Channels</strong></td><td>Bars for the channels of eight spaces.</td></tr>
+</tbody></table></div>
+<h2 id="the-notations">The notations</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Rows</th></tr></thead>
+<tbody>
+<tr><td><strong>Web / Device-RGB</strong></td><td>HEX, HEX (short), RGB, RGBA, RGB %</td></tr>
+<tr><td><strong>Cylindrical / Perceptual Device</strong></td><td>HSL, HSV / HSB, HWB, HSI</td></tr>
+<tr><td><strong>Print / Subtractive</strong></td><td>CMYK, Linear sRGB</td></tr>
+<tr><td><strong>CIE Standard</strong></td><td>XYZ D65, XYZ D50, Lab (D65), LCh (D65), Lab (D50), LCh (D50)</td></tr>
+<tr><td><strong>Perceptual Uniform</strong></td><td>OKLab, OKLCh, CIELuv, LChuv</td></tr>
+<tr><td><strong>Wide Gamut</strong></td><td>Display P3, Linear P3, Adobe RGB 1998, Linear AdobeRGB, Rec.2020, Linear Rec.2020, ACEScg (AP1)</td></tr>
+<tr><td><strong>Scientific / Appearance</strong></td><td>Hunter Lab, IPT, JzAzBz</td></tr>
+<tr><td><strong>Video / Broadcast</strong></td><td>YCbCr BT.709, YUV, YIQ (NTSC)</td></tr>
+</tbody></table></div>
+<p>Each group heading shows how many spaces it holds. The wide-gamut rows carry a badge: <strong>✓ In</strong> when all three channels are between 0 and 1, <strong>! Out</strong> otherwise.</p>
+<p>What some of these are:</p>
+<ul>
+<li><strong>HWB</strong>: hue, whiteness and blackness, a CSS colour notation.</li>
+<li><strong>HSI</strong>: hue, saturation and intensity, used in image processing.</li>
+<li><strong>Linear sRGB</strong>: sRGB with the gamma curve removed, so values are proportional to light.</li>
+<li><strong>XYZ D65 / D50</strong>: CIE tristimulus values for a daylight (D65) or print-standard (D50) white.</li>
+<li><strong>Lab and LCh (D65 and D50)</strong>: CIELAB and its cylindrical form. CSS <code>lab()</code> and <code>lch()</code> are defined relative to D50, so use the D50 rows for CSS.</li>
+<li><strong>OKLab and OKLCh</strong>: a modern perceptual space where equal steps look roughly equal; CSS supports <code>oklab()</code> and <code>oklch()</code>.</li>
+<li><strong>CIELuv and LChuv</strong>: another CIE perceptual space, used for lighting and displays.</li>
+<li><strong>Display P3, Adobe RGB 1998, Rec.2020</strong>: wider-gamut RGB spaces for modern screens, photography and HDR video. The encoded rows use CSS <code>color()</code> syntax, such as <code>color(display-p3 …)</code>.</li>
+<li><strong>ACEScg (AP1)</strong>: a linear space used in film and visual-effects rendering.</li>
+<li><strong>Hunter Lab</strong>: an older opponent-colour space still used in some industries.</li>
+<li><strong>IPT</strong> and <strong>JzAzBz</strong>: perceptual spaces from colour science research; JzAzBz is designed to also cover high dynamic range.</li>
+<li><strong>YCbCr BT.709</strong>, <strong>YUV</strong>, <strong>YIQ (NTSC)</strong>: luma and colour-difference encodings used in video.</li>
+</ul>
+<h2 id="tasks">Tasks</h2>
+<h3 id="copy-a-colour-in-a-particular-notation">Copy a colour in a particular notation</h3>
+<ol>
+<li>Set <strong>Color</strong>.</li>
+<li>On <strong>All Spaces</strong>, type part of a name or value in the search box, for example <code>p3</code> or <code>lab</code>. Only matching rows show, and the count reads <em>N matching spaces</em>.</li>
+<li>Select the copy button on the row. <strong>Copied</strong> appears.</li>
+</ol>
+<p>The copied text sometimes differs slightly from the displayed text: for example HSL is copied with commas (<code>hsl(46.2, 63.9%, 52.2%)</code>) and the degree signs shown in LCh rows are left out, so the copied value is valid in CSS or code.</p>
+<p>Result: the notation you need on your clipboard.</p>
+<h3 id="export-every-notation-at-once">Export every notation at once</h3>
+<p>Select <strong>Copy All (JSON)</strong>. A JSON object with one key per notation (for example <code>&quot;hex&quot;</code>, <code>&quot;oklch&quot;</code>, <code>&quot;p3&quot;</code>, <code>&quot;rec2020&quot;</code>) is copied, and <strong>All spaces copied as JSON</strong> appears.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;hex&quot;: &quot;#D3AF37&quot;,
+  &quot;hex-s&quot;: &quot;#D3AF37&quot;,
+  &quot;rgb&quot;: &quot;rgb(211, 175, 55)&quot;,
+  &quot;oklch&quot;: &quot;oklch(0.7655 0.1385 91.6)&quot;,
+  &quot;p3&quot;: &quot;color(display-p3 …)&quot;
+}</code></pre>
+<p>The real output has all 34 keys.</p>
+<h3 id="see-where-a-colour-sits">See where a colour sits</h3>
+<ol>
+<li>Open <strong>Diagrams</strong>.</li>
+<li><strong>CIE 1931 xy Chromaticity</strong> shows the horseshoe of visible colours, the white point (D65) as a small white dot, and four gamut triangles: <strong>sRGB</strong>, <strong>P3</strong>, <strong>a98-RGB</strong> and <strong>Rec.2020</strong>. Your colour is a ringed dot with guide lines.</li>
+<li><strong>OKLab a–b Gamut Plane</strong> shows a slice through OKLab at your colour&#39;s lightness (given as <em>L = N%</em>). The coloured area is the part of the slice that sRGB can show; the grey area is outside sRGB. Your colour is the ringed dot.</li>
+<li>Under the diagrams, read <strong>xy chromaticity</strong>, <strong>Y (luminance)</strong>, <strong>Rel. luminance</strong>, <strong>CCT</strong>, <strong>Temp. kind</strong> and <strong>Hue category</strong>.</li>
+</ol>
+<p>Result: you can see how close the colour is to the edge of sRGB, and how much room the wider gamuts leave.</p>
+<h3 id="compare-channels">Compare channels</h3>
+<p>Open <strong>Channels</strong> to see bars for <strong>sRGB (gamma-encoded, 0–255)</strong>, <strong>Linear-light sRGB (0–1)</strong>, <strong>HSL</strong>, <strong>OKLab (perceptually uniform)</strong>, <strong>OKLCh (cylindrical)</strong>, <strong>CIE XYZ D65</strong>, <strong>Display P3 (encoded, 0–1)</strong> and <strong>YCbCr BT.709 (0–1)</strong>. Each bar shows the value as a number and as a filled length.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Color</strong></td><td>The colour to convert</td><td>HEX, colour well, dice</td><td>#D3AF37, or the colour you opened with</td></tr>
+<tr><td><strong>Copy All (JSON)</strong></td><td>Copies all notations as JSON</td><td>34 keys</td><td>—</td></tr>
+<tr><td>Tabs</td><td>Switch view</td><td>All Spaces, Diagrams, Channels</td><td>All Spaces</td></tr>
+<tr><td>Search box</td><td>Filters rows by name or value</td><td>Free text</td><td>Empty</td></tr>
+<tr><td>Row copy button</td><td>Copies one notation</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="accuracy-and-limits">Accuracy and limits</h2>
+<ul>
+<li>Every conversion starts from an 8-bit sRGB colour, so values are only as precise as that input. A colour chosen here is always inside sRGB, so the wide-gamut badges read <strong>✓ In</strong>; the badges are useful for colours near the edges and as a reminder of what each space can hold.</li>
+<li>D65 values use the sRGB white point directly. D50 values use a standard chromatic adaptation from D65.</li>
+<li><strong>CCT</strong> uses a common approximation for light sources. It is meaningful for near-white and near-neutral colours and rough for saturated ones; some colours show <em>Indeterminate</em>.</li>
+<li>The chromaticity diagram&#39;s fill colours are approximate and clipped to what your screen can show.</li>
+<li>The scientific spaces (IPT, JzAzBz, Hunter Lab) follow their published formulas with standard assumptions (for example an absolute luminance for JzAzBz). Use a colour-science library for research-grade work.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="README.html">Colour Tools documentation</a></li>
+<li><a href="../panel-tools/quick-converter.html">Quick Converter</a>, the fourteen-notation converter in the workspace</li>
+<li><a href="colour-inspector.html">Color Inspector</a></li>
+<li><a href="../../../colour-science-lab/README.html">Color Science Lab</a></li>
+<li><a href="https://auricartisan.com/library/learn/articles/2026-06-02-oklab-oklch-perceptual-color-spaces" rel="noopener">Oklab and Oklch</a> on Learn</li>
+<li><a href="../../README.html">Basic Color Tools</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="colour-psychology.html"><span>Previous</span>Color Psychology</a><a href="contrast-system.html"><span>Next</span>Contrast System</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#screen-tour">Screen tour</a></li><li><a href="#the-notations">The notations</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#controls">Controls</a></li><li><a href="#accuracy-and-limits">Accuracy and limits</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

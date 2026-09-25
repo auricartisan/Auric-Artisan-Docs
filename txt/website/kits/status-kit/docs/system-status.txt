@@ -1,0 +1,140 @@
+==============================================================================
+SYSTEM STATUS
+==============================================================================
+Every live reading in the Status Kit's System status panel, what it means and
+when it shows a dash.
+Area: Website › Kits › Status Kit   Updated: 2026-09-25
+
+The System status panel shows live information about your device, connection
+and the page, read from your browser. It refreshes every two seconds while the
+Status Kit is open, and at once when your connection goes on or off line.
+
+OPEN, COLLAPSE AND SWITCH PAGES
+===============================
+
+  - The panel is expanded when the kit opens. Select its heading (System
+    status) or the chevron to collapse or expand it. With the keyboard, focus
+    the heading and press `Enter` or `Space`.
+  - The pill next to the heading shows Online or Offline.
+  - Select a tab to switch between Network, Hardware, Memory, Display and
+    Runtime.
+
+A reading shows — when your browser does not provide it. Some readings exist
+only in certain browsers, noted below.
+
+NETWORK
+=======
+
+  Reading:       Connection
+  What it shows: Your connection's effective speed class, such as 4G or 3G, or
+                 Online or Offline if the browser does not report a class
+
+  Reading:       Speed
+  What it shows: Estimated download speed in Mbps, with a bar (full at 20
+                 Mbps) and the connection type, such as wifi, when known
+
+  Reading:       Latency
+  What it shows: Estimated round-trip time in milliseconds
+
+  Reading:       Data Saver
+  What it shows: On if your browser's data-saving mode is on, otherwise Off
+
+Speed, latency and data saver come from the browser's network information,
+which Chromium-based browsers provide and others often do not. They are the
+browser's rough estimates, not a speed test.
+
+HARDWARE
+========
+
+  Reading:       Battery
+  What it shows: Charge level with a bar, and Charging or On battery. The bar
+                 turns to a warning colour at 20% or below when not charging
+
+  Reading:       Device memory
+  What it shows: Approximate memory in GB, as the browser reports it (browsers
+                 round this and cap it)
+
+  Reading:       CPU threads
+  What it shows: Number of logical processor threads available to the browser
+
+Battery information is available only in some browsers.
+
+MEMORY
+======
+
+  Reading:       JS heap
+  What it shows: Memory the page's scripts are using, and the limit, with a
+                 bar that turns to a warning colour above 85%. Chromium-based
+                 browsers only
+
+  Reading:       Storage
+  What it shows: Space the site uses in your browser's storage, out of the
+                 space allowed, with a percentage. The bar turns to a warning
+                 colour above 90%
+
+  Reading:       Caches
+  What it shows: Number of caches the site has stored, for example for offline
+                 use
+
+DISPLAY
+=======
+
+  Reading:       Resolution
+  What it shows: Your screen's size in CSS pixels, such as 1920×1080
+
+  Reading:       Viewport
+  What it shows: The browser window's inner size in CSS pixels
+
+  Reading:       Pixel ratio
+  What it shows: Device pixels per CSS pixel, such as 2× on a high-density
+                 screen
+
+  Reading:       Color
+  What it shows: Colour depth in bits, such as 24-bit, and the gamut: P3 gamut
+                 for a wide-gamut display, otherwise sRGB gamut
+
+RUNTIME
+=======
+
+  Reading:       Frame rate
+  What it shows: Frames drawn in the last second, with a sparkline of the last
+                 48 seconds
+
+  Reading:       Page load
+  What it shows: Seconds the page took to finish loading
+
+  Reading:       Service worker
+  What it shows: Active if the site's offline helper is controlling the page,
+                 Registered if your browser supports one but it is not
+                 controlling this page, Unsupported otherwise
+
+  Reading:       App mode
+  What it shows: Installed app if you opened the site as an installed app,
+                 otherwise Browser tab
+
+  Reading:       Language
+  What it shows: Your browser's preferred language, such as en-GB
+
+  Reading:       Time zone
+  What it shows: Your device's time zone, such as Europe/London
+
+  Reading:       Cookies
+  What it shows: Enabled or Blocked
+
+The frame rate is measured only while the Status Kit is open, and measuring
+stops when you close it. The figure usually matches your display's refresh
+rate, for example about 60 on a 60 Hz screen, and drops when the page is busy.
+
+USING THE READINGS FOR A BUG REPORT
+===================================
+
+When you report a problem, the Runtime and Display tabs give most of what
+support needs: browser language, time zone, app mode, screen and window size,
+pixel ratio and gamut. Copy them by hand; the kit does not send them anywhere.
+See Help [../../../../help/README.txt] for how to contact support.
+
+RELATED
+=======
+
+  - Limits and accuracy [../others/limits-and-accuracy.txt]
+  - Privacy [../others/privacy.txt]

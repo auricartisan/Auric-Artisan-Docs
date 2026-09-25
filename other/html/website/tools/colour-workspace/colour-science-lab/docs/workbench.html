@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Workbench — Auric Artisan Docs</title>
+<meta name="description" content="Resolve one colour into CIE XYZ, xyY, Lab, LCh, Oklab, Oklch, sRGB, HSL and CMYK under a chosen illuminant, standard observer and adaptation transform, and see its gamut and how it shifts under other lights.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Color Science Lab</a>
+<h2>Color Science Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Color Science Lab</a></li>
+<li><a href="arrange-link-save-export.html">Arrange, link, save and export panels</a></li>
+<li><a href="catalogue-and-panels.html">The Catalogue and its panels</a></li>
+<li><a href="catalogue-compare-and-analytics.html">Catalogue Compare and Analytics</a></li>
+<li><a href="compare-two-colours.html">Compare two colours</a></li>
+<li><a href="gamut-audit.html">Gamut audit</a></li>
+<li><a href="illuminants.html">Illuminants</a></li>
+<li><a href="tool-list.html">The 45 tools</a></li>
+<li><a href="workbench.html" aria-current="page">The Workbench</a></li>
+<li><a href="reference.html">Color Science Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Color Science Lab</a></li>
+<li><a href="faq.html">Color Science Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Color Science Lab</a> &rsaquo; <a href="README.html">Color Science Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>The Workbench</h1>
+<p class="lede">Resolve one colour into CIE XYZ, xyY, Lab, LCh, Oklab, Oklch, sRGB, HSL and CMYK under a chosen illuminant, standard observer and adaptation transform, and see its gamut and how it shifts under other lights.</p>
+<p>The Workbench takes one colour, the <strong>specimen</strong>, and computes it in nine notations at once, all from the same linear-light values. You can change the viewing conditions (the illuminant, the standard observer and the chromatic adaptation transform) and every row moves together. The page&#39;s own note under the board says: <em>Computed, not looked up.</em></p>
+<p>A few terms:</p>
+<ul>
+<li><strong>Illuminant</strong>: a standard light defined by its white point, such as D65 (average daylight) or A (incandescent).</li>
+<li><strong>Standard observer</strong>: the CIE&#39;s model of human colour matching over a 2° field (1931) or a 10° field (1964). Lab values depend on which one you use.</li>
+<li><strong>Chromatic adaptation transform</strong>: a formula that predicts how a colour appears after the eye adapts to a different white. Bradford, CAT02 and CAT16 are three versions of the von Kries method.</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<h3 id="left-the-controls">Left: the controls</h3>
+<ul>
+<li><strong>Specimen</strong> (<em>sRGB in</em>): a large swatch, a HEX box, a colour well and eight preset swatches (#4F7FE0, #D3AF37, #2F6D3A, #C4562C, #8F3B22, #2B6F8F, #B0169A, #F0E6D2).</li>
+<li><strong>Observer</strong> (<em>CIE standard</em>): <strong>2° 1931</strong> or <strong>10° 1964</strong>.</li>
+<li><strong>Illuminant</strong> (<em>white point</em>): <strong>D65</strong>, <strong>D50</strong>, <strong>D55</strong>, <strong>C</strong>, <strong>A</strong>, <strong>F2</strong> and <strong>F11</strong>.</li>
+<li><strong>Adaptation</strong> (<em>von Kries family</em>): <strong>Bradford</strong>, <strong>CAT02</strong> or <strong>CAT16</strong>. While the illuminant is D65, a note says no adaptation is applied: the transform only works once you move the white point.</li>
+</ul>
+<h3 id="centre-the-results">Centre: the results</h3>
+<p><strong>Resolved coordinates</strong>, with a note naming the illuminant, observer and transform:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Space</th><th>Coordinates</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>CIE XYZ</td><td>X, Y, Z</td><td>reference</td></tr>
+<tr><td>CIE xyY</td><td>x, y, Y</td><td>chromaticity</td></tr>
+<tr><td><code>CIE L*a*b*</code></td><td>L, a, b</td><td>illuminant and observer</td></tr>
+<tr><td>CIE LCh</td><td>L, C, h</td><td>polar Lab</td></tr>
+<tr><td>Oklab</td><td>L, a, b</td><td>perceptual</td></tr>
+<tr><td>Oklch</td><td>L, C, h</td><td>polar Oklab</td></tr>
+<tr><td>sRGB</td><td>R, G, B</td><td>display</td></tr>
+<tr><td>HSL</td><td>H, S, L</td><td>cylindrical</td></tr>
+<tr><td>CMYK</td><td>C, M, Y, K</td><td>naive, no profile</td></tr>
+</tbody></table></div>
+<p><strong>CIE 1931 chromaticity</strong> plots the specimen on the xy diagram and gives x and y, with three figures: <code>CIE L*</code>, <code>C* ab</code> and <strong>hue angle</strong>.</p>
+<h3 id="right-gamut-and-other-lights">Right: gamut and other lights</h3>
+<ul>
+<li><strong>Gamut</strong> (<em>this colour</em>): <strong>sRGB</strong> (IEC 61966-2-1), <strong>Display P3</strong> (SMPTE RP 431-2), <strong>Adobe RGB</strong> (1998) and <strong>Rec. 2020</strong> (ITU-R BT.2020), each marked <strong>inside</strong> or with the ΔE of clipping. A HEX colour is always inside sRGB.</li>
+<li><strong>Under other light</strong> (<em>ΔE00 vs the current illuminant</em>): every other illuminant with the ΔE 2000 shift the colour would undergo. Green below 3, amber 3 to 8, red above 8. Select a row to switch to that illuminant.</li>
+</ul>
+<h2 id="how-the-numbers-are-computed">How the numbers are computed</h2>
+<ol>
+<li>The specimen&#39;s sRGB values are decoded to linear light and converted to XYZ for D65 and the 1931 observer, where sRGB is defined.</li>
+<li>If you choose another illuminant or the 10° observer, XYZ is adapted from D65 to that white with the chosen transform.</li>
+<li>Lab and LCh are computed against the chosen white. Oklab and Oklch come straight from sRGB, as the Oklab definition specifies.</li>
+</ol>
+<h2 id="tasks">Tasks</h2>
+<h3 id="get-print-condition-lab-values">Get print-condition Lab values</h3>
+<ol>
+<li>Enter your colour.</li>
+<li>Select <strong>D50</strong> and <strong>2° 1931</strong>.</li>
+<li>Choose the transform your workflow uses (Bradford is the common choice in ICC workflows).</li>
+<li>Read the <code>CIE L*a*b*</code> row.</li>
+</ol>
+<p>Result: Lab values relative to D50, as used in print.</p>
+<h3 id="check-a-colours-stability-under-shop-lighting">Check a colour&#39;s stability under shop lighting</h3>
+<ol>
+<li>Enter the colour.</li>
+<li>Read <strong>Under other light</strong>. Large values under <strong>A</strong>, <strong>F2</strong> or <strong>F11</strong> mean the colour will look noticeably different under incandescent or fluorescent light.</li>
+</ol>
+<p>Result: a quick risk check before choosing a surface or product colour.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Specimen HEX box</td><td><code>#RRGGBB</code> (with <code>#</code>)</td><td>#4F7FE0, or your last specimen</td></tr>
+<tr><td>Colour well</td><td>Any sRGB colour</td><td>Same</td></tr>
+<tr><td>Preset swatches</td><td>8 colours</td><td>—</td></tr>
+<tr><td><strong>Observer</strong></td><td>2° 1931, 10° 1964</td><td>2° 1931</td></tr>
+<tr><td><strong>Illuminant</strong></td><td>D65, D50, D55, C, A, F2, F11</td><td>D65</td></tr>
+<tr><td><strong>Adaptation</strong></td><td>Bradford, CAT02, CAT16</td><td>Bradford</td></tr>
+<tr><td><strong>Under other light</strong> row</td><td>Switches the illuminant</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="illuminants.html">Illuminants</a></li>
+<li><a href="compare-two-colours.html">Compare two colours</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="tool-list.html"><span>Previous</span>The 45 tools</a><a href="reference.html"><span>Next</span>Color Science Lab reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#layout">Layout</a></li><li><a href="#how-the-numbers-are-computed">How the numbers are computed</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#controls">Controls</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

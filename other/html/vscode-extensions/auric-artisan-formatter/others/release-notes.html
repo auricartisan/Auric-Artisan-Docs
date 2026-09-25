@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release notes — Auric Artisan Docs</title>
+<meta name="description" content="What changed in each published version of Auric Artisan Formatter.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html" aria-current="page">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Release notes</h1>
+<p class="lede">What changed in each published version of Auric Artisan Formatter.</p>
+<p>Formatting output is treated as part of the extension&#39;s public behaviour: a change that makes an already-formatted file format differently is at least a minor version and is listed under &quot;Formatting changes&quot;, so a team can decide when to take the diff.</p>
+<h2 id="010-23-september-2026">0.1.0 (23 September 2026)</h2>
+<p>The first Marketplace release.</p>
+<h3 id="editor">Editor</h3>
+<ul>
+<li>A native read-only formatting preview beside the source, with <strong>Apply</strong>, <strong>Discard</strong>, <strong>Refresh</strong> and <strong>Compare Changes</strong> in the editor title and CodeLens.</li>
+<li>Format document, selection and every pending file; format on save, optionally only changed lines; format as you type.</li>
+<li>A status bar item reporting the tier and any safety reversion.</li>
+<li><strong>Explain Formatting Decisions</strong>, <strong>Import Settings From Prettier</strong>, <strong>Generate a Configuration File</strong>, <strong>Switch Formatting Preset</strong> and <strong>Report a Formatting Problem</strong>.</li>
+<li>A setup walkthrough on the Welcome page.</li>
+</ul>
+<h3 id="formatter-studio">Formatter Studio</h3>
+<ul>
+<li>Formatter Studio and a matching Explorer sidebar, with searchable drop-downs, a filterable option rail (category, changed-only, affects-this-file and experimental filters), <strong>Find what matters</strong>, and live <strong>Result</strong>, <strong>Diff</strong> and <strong>Explain</strong> views.</li>
+<li><strong>Full document</strong> and <strong>Editor selection</strong> scopes, a preview toggle, and explicit <strong>Yes, apply</strong> and <strong>No, discard</strong>. Apply is bound to the original document and refuses stale, discarded, scratch and truncated previews.</li>
+<li>A side-by-side or inline diff with change highlights, change navigation and expandable context.</li>
+<li>A validated JSON rules editor and <strong>Copy config</strong>, which exports only the options you changed.</li>
+<li>A command palette on <code>Ctrl</code> + <code>K</code>, full light, dark, high-contrast, forced-colours and reduced-motion support, and state that survives a reload.</li>
+</ul>
+<h3 id="workspace">Workspace</h3>
+<ul>
+<li>The in-memory workspace scan: the <strong><em>N</em> unformatted</strong> status bar count and the <strong>Workspace</strong> tab, with sorting, filtering, <strong>Format selected</strong>, <strong>Format all files</strong> and per-file diffs. Nothing is written until you choose.</li>
+<li>Files are re-read and re-formatted at the moment they are written, and open unsaved files are written through the editor.</li>
+<li>Tracking of edits and file changes, with bounded rescans for new files; the preset or a configuration change re-runs the scan.</li>
+<li><strong>Check Formatting Without Writing (CI Mode)</strong> reports line counts per file in Problems.</li>
+<li>New settings: <code>scanOnStartup</code>, <code>scanExclude</code>, <code>scanMaxFiles</code>, <code>confirmBeforeFormattingAll</code>.</li>
+</ul>
+<h3 id="engine">Engine</h3>
+<ul>
+<li>A zero-dependency engine that measures width in display columns, so CJK text, emoji and combining marks break where a person expects.</li>
+<li>391 options in 17 categories, each with a type, a validated default and a command-line flag.</li>
+<li>13 presets, including <code>prettier</code>, byte-compatible with Prettier 3 at its defaults.</li>
+<li>Native formatting for 31 modes, including JavaScript and TypeScript, and a universal structural engine for 220 more languages.</li>
+<li>The five-check safety gate, aware of which changes your options allow.</li>
+<li>Tiered fallback: a failed parse falls back to safe whitespace formatting.</li>
+<li>Configuration compatibility with <code>.auricformatrc</code>, <code>package.json</code>, <code>.editorconfig</code> and Prettier configuration, with per-language and per-glob overrides and inline directives.</li>
+<li>The <code>auric-format</code> command line with the familiar <code>--check</code>, <code>--write</code>, <code>--list-different</code> and related flags, and typo suggestions.</li>
+<li>A plugin mechanism for additional languages, where a failing plugin disables itself.</li>
+</ul>
+<h3 id="not-in-this-release">Not in this release</h3>
+<ul>
+<li>A native JSX front end: <code>.jsx</code> and <code>.tsx</code> files containing JSX elements are formatted by the universal tier.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="privacy.html"><span>Previous</span>Privacy</a><a href="related.html"><span>Next</span>Related</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#010-23-september-2026">0.1.0 (23 September 2026)</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

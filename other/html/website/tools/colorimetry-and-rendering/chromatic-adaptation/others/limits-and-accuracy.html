@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chromatic Adaptation limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Chromatic Adaptation lab computes exactly, what it approximates, and what it does not do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Chromatic Adaptation</a>
+<h2>Chromatic Adaptation: supporting pages</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Chromatic Adaptation shortcuts</a></li>
+<li><a href="glossary.html">Chromatic Adaptation glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Chromatic Adaptation limits and accuracy</a></li>
+<li><a href="privacy.html">Chromatic Adaptation privacy</a></li>
+<li><a href="release-notes.html">Chromatic Adaptation release notes</a></li>
+<li><a href="related.html">Related to Chromatic Adaptation</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Chromatic Adaptation</a> &rsaquo; <a href="README.html">Chromatic Adaptation: supporting pages</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Chromatic Adaptation limits and accuracy</h1>
+<p class="lede">What the Chromatic Adaptation lab computes exactly, what it approximates, and what it does not do.</p>
+<p>The lab is an educational and research simulator that runs in your browser. It is not a substitute for measured device profiles, calibrated displays, spectrophotometer data or a validated ICC workflow.</p>
+<h2 id="what-is-exact">What is exact</h2>
+<ul>
+<li><strong>White points</strong> of all 12 illuminants are tabulated CIE xy values, held verbatim. Adaptation needs only these, so it is correct even where a spectrum is not held.</li>
+<li><strong>Transform matrices</strong> are the published values; each inverse is recomputed, and the Matrix tab shows the round-trip error.</li>
+<li><strong>sRGB conversion</strong> uses the IEC 61966-2-1 primaries and transfer function. Adaptation happens in linear light; the transfer function is applied only at the ends.</li>
+<li><strong>ΔE₀₀</strong> is the CIEDE2000 formula (CIE 142:2001).</li>
+</ul>
+<h2 id="what-is-modelled-or-simplified">What is modelled or simplified</h2>
+<ul>
+<li><strong>Time course.</strong> The two-phase model uses constants from Fairchild and Reniff (1995). It describes average behaviour in their experiments, not any particular viewer or scene.</li>
+<li><strong>Degree of adaptation</strong> is yours to set. CIECAM02 would compute it from the adapting luminance and the surround; the lab does not.</li>
+<li><strong>Clipping.</strong> Adapted colours outside sRGB are clipped per channel (or compressed first with HDR Tonemap). This is not perceptual gamut mapping. For that, see <a href="../../gamut-map/README.html">Gamut Mapping</a>.</li>
+<li><strong>Spectra.</strong> The daylight illuminants are reconstructed from the CIE daylight basis; A is computed from Planck&#39;s law. B, C, F2, F7 and F11 are not drawn because their tables are not held.</li>
+</ul>
+<h2 id="what-is-not-done">What is not done</h2>
+<ul>
+<li><strong>Ranking transforms by accuracy.</strong> That needs corresponding-colour data sets, which are not held. The comparisons report what each transform does, measured against Bradford or as a colour shift, and say so.</li>
+<li><strong>Spatial or per-pixel adaptation.</strong> The Spatial Adaptation and Per-Pixel Modulation controls do not affect the result in the current version, nor do Display Gamma, Target FPS or GPU.</li>
+<li><strong>Colour appearance modelling.</strong> Only the adaptation step is applied; lightness, colourfulness and hue correlates of CIECAM02 or CAM16 are not computed.</li>
+<li><strong>The 10° observer.</strong> Not held.</li>
+</ul>
+<h2 id="precision">Precision</h2>
+<ul>
+<li>Images are processed at up to 480 × 320 pixels, in 8-bit sRGB.</li>
+<li>Batch results round ΔE₀₀ to two decimals and L*, C* and h° to one.</li>
+<li>The Lab timeline covers 0 to 5 seconds only; the Dynamics tab covers 0 to 120 seconds.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Chromatic Adaptation glossary</a><a href="privacy.html"><span>Next</span>Chromatic Adaptation privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-exact">What is exact</a></li><li><a href="#what-is-modelled-or-simplified">What is modelled or simplified</a></li><li><a href="#what-is-not-done">What is not done</a></li><li><a href="#precision">Precision</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

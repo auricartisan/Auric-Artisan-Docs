@@ -1,0 +1,129 @@
+==============================================================================
+USE AN EXTENSION IN HINDI
+==============================================================================
+Switch Auric Artisan Live, Auric Artisan Theme and Auric Artisan Emoji to
+Hindi, and understand which labels follow VS Code's own display language.
+Area: VS Code extensions › Install and setup   Updated: 2026-09-25
+
+Three Auric Artisan extensions include Hindi in the extension itself, with no
+separate download and no translation service: Auric Artisan Live, Auric
+Artisan Theme and Auric Artisan Emoji. The other fourteen extensions use
+English.
+
+Two separate things decide the language you see:
+
+  - The extension's interface language. This controls the extension's own
+    panels, such as the Auric Live control panel, Theme Studio or Emoji
+    Studio. Each of the three extensions has its own switch and setting.
+  - VS Code's display language. This controls native VS Code labels: Command
+    Palette titles, sidebar view names, the Settings editor and VS Code's own
+    notifications. Change it with the VS Code command Configure Display
+    Language.
+
+THE INTERFACE-LANGUAGE SETTING
+==============================
+
+Each of the three extensions has a setting with the same three values.
+
+  Extension:       Auric Artisan Live
+  Setting:         `auricLive.interfaceLanguage`
+  Values:          `auto`, `en`, `hi`
+  Default:         `auto`
+  What it changes: The Auric Live control panel, quick settings, Phone QR
+                   guidance, preview toolbar and common messages
+
+  Extension:       Auric Artisan Theme
+  Setting:         `auricTheme.interfaceLanguage`
+  Values:          `auto`, `en`, `hi`
+  Default:         `auto`
+  What it changes: Theme Studio and the Theme sidebar
+
+  Extension:       Auric Artisan Emoji
+  Setting:         `auricEmoji.interfaceLanguage`
+  Values:          `auto`, `en`, `hi`
+  Default:         `auto`
+  What it changes: Emoji Studio
+
+  - `auto` follows VS Code's display language: Hindi locales, including
+    regional Hindi locales, use Hindi; every other locale uses English.
+  - `en` always uses English.
+  - `hi` always uses Hindi.
+
+The Theme and Emoji settings have application scope, so they can only be set
+in user settings. The Live setting can also be set per workspace.
+
+SWITCH AURIC ARTISAN LIVE TO HINDI
+==================================
+
+  1. Open the Auric Live control panel: run Auric Live: Open Control Panel
+     (`Ctrl` + `Alt` + `Shift` + `I`).
+  2. In the panel header, choose हिन्दी. The other choices are Auto and
+     English.
+
+The choice is saved in `auricLive.interfaceLanguage`. Switching does not
+restart the server, and the panel keeps its current section and request
+filters.
+
+What changes and what does not:
+
+  - The control panel, quick settings, request controls, inline Phone QR
+    guidance and common extension messages appear in Hindi.
+  - New preview tabs use the selected language. Close and reopen an existing
+    preview tab to update its toolbar.
+  - Technical setting descriptions, detailed diagnostics and messages without
+    a Hindi translation stay in English.
+  - The in-page browser dashboard (opened with `Alt` + `Shift` + `D` inside a
+    served page) and the website being served are not translated.
+  - URLs, request and response content, commands and configuration values are
+    never rewritten.
+
+SWITCH AURIC ARTISAN THEME TO HINDI
+===================================
+
+Use the Auto · English · हिन्दी control in Theme Studio or the Theme sidebar,
+or run Auric Theme: Choose Interface Language…. The switch changes both Theme
+panels at once, without a reload, and needs no language pack. It does not
+change VS Code's own display language.
+
+SWITCH AURIC ARTISAN EMOJI TO HINDI
+===================================
+
+Use the Auto / English / हिन्दी switch in Emoji Studio, run Auric Artisan
+Emoji: Choose Interface Language…, or set `auricEmoji.interfaceLanguage`.
+Switching keeps your search, filters and sequence. Emoji names, shortcodes and
+code points keep their catalogue spelling, but common Hindi words also find
+emoji when you search.
+
+COMMAND TITLES AND VIEW NAMES IN HINDI
+======================================
+
+Command Palette titles, sidebar view names and Settings descriptions come from
+VS Code, which shows them in its display language.
+
+  1. Open the Command Palette (`Ctrl` + `Shift` + `P`).
+  2. Run Configure Display Language.
+  3. Choose a Hindi display language if your VS Code offers one, and restart
+     VS Code when asked.
+
+With a Hindi display language:
+
+  - Auric Artisan Live shows all 54 command titles and its three sidebar view
+    names (Servers, Requests, Routes and Mocks) in Hindi.
+  - Auric Artisan Theme and Auric Artisan Emoji show their command titles in
+    Hindi.
+  - With `interfaceLanguage` set to `auto`, the three extensions' panels also
+    switch to Hindi.
+
+If Hindi is not available as a VS Code display language on your installation,
+set the extension's `interfaceLanguage` to `hi`. The extension's panels then
+use Hindi while VS Code's own labels stay in English.
+
+EXTENSIONS WITHOUT HINDI
+========================
+
+Auric Artisan File System, Font Hub, Formatter, File Icons, Icon Studio, Icon
+Hub, Auric Icons: Modern, Drawn and Playful, Auric Color, Auric Accessibility
+and Auric Code Health currently use English only.
+
+After switching, the panel's headings and buttons appear in Hindi straight
+away.

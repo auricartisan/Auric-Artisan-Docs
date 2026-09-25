@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perception and Vision — Auric Artisan Docs</title>
+<meta name="description" content="What the Perception Vision tool does, who it is for, where to find it and how to run a first colour vision simulation over your own image.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and spectral tools</a>
+<h2>Perception and Vision</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Using Perception and Vision &rsaquo;</a></li>
+<li><a href="others/README.html">Perception and Vision background &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Perception and spectral tools</a> &rsaquo; <a href="README.html">Perception and Vision</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Perception and Vision</p>
+<h1>Perception and Vision</h1>
+<p class="lede">What the Perception Vision tool does, who it is for, where to find it and how to run a first colour vision simulation over your own image.</p>
+<p>Perception and Vision (the page is titled <strong>Perception Vision</strong>) runs eight simulations of how a scene reaches a different visual system: colour vision deficiency (protan, deutan and tritan), rod-only night vision, twilight vision, a yellowing lens, cataract, loss of central vision, light adaptation and reduced acuity. You run them over a built-in test card, a grey ramp, a Snellen chart or an image of your own, and compare the result with the original in a split view.</p>
+<p>The colour vision simulation follows the published method of Viénot, Brettel and Mollon (1999): each colour goes from sRGB through CIE XYZ into cone signals, the missing cone type is projected away, and the result comes back to sRGB. The page checks itself as it goes. A grey ramp shows whether the simulation tints neutrals (a correct dichromacy simulation never does), a counter reports how many of the frame&#39;s colours merged into one, and the graphics-card and processor renderers are compared on 216 colours after every change.</p>
+<p>The tool is an educational and design-review aid. Only the colour vision projection comes from a publication; the other seven simulations use the tool&#39;s own constants and show that an effect exists rather than how strong it is for any person. It is not a clinical instrument, and everything runs in your browser.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Designers and front-end developers checking whether a screen, chart or palette still works for people with colour vision deficiency, in dim light or with ageing eyes.</li>
+<li>Accessibility specialists who want a traceable simulation with a stated method.</li>
+<li>Students learning what dichromacy, rod vision and lens yellowing do to colour.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<p>Open <a href="https://auricartisan.com/tool/general/perception-and-neuroscience/perception-vision/" rel="noopener">https://auricartisan.com/tool/general/perception-and-neuroscience/perception-vision/</a> in a current desktop browser. It is listed as <strong>Perception &amp; Vision</strong> on the Collections page (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) and as <strong>Perception and Vision</strong> in the site menu. WebGL2 is used when available; without it the page runs the same simulations on the processor.</p>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open the tool. The <strong>Lab</strong> tab shows the test card, split down the middle: original on the left, protanopia on the right.</li>
+<li>Under <strong>Source</strong>, choose <strong>Uploaded image</strong>, select <strong>Choose a file</strong> and pick a screenshot or picture.</li>
+<li>Under <strong>Simulation</strong>, keep <strong>Colour vision</strong> and try <strong>Protan</strong>, <strong>Deutan</strong> and <strong>Tritan</strong> under <strong>Type</strong>.</li>
+<li>Drag on the image to move the divider, or set <strong>Divider</strong> on the rail.</li>
+<li>Read <strong>Colours merged</strong> and <strong>Distinct colours left</strong> to see how many of your image&#39;s colours became indistinguishable.</li>
+<li>Try <strong>Scotopic</strong>, <strong>Lens yellowing</strong> or <strong>Acuity</strong>, or pick a <strong>Presets</strong> entry.</li>
+<li>Select <strong>Save the frame</strong> to download the view as a PNG, or open <strong>Export</strong> to check a list of hex colours.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Simulate eight visual conditions over a test card, a grey ramp, a Snellen chart or your own image.</li>
+<li>Set severity, adaptation level, age, scotoma radius, cataract level and Snellen acuity.</li>
+<li>Daltonise instead of simulate, to see a colour correction for dichromats.</li>
+<li>Relight the scene with illuminant D50 or A before it reaches the simulated eye.</li>
+<li>Add contrast, gamma, blur, glare and noise adjustments to both halves of the comparison.</li>
+<li>Compare as a split view, simulated only, or an amplified difference image.</li>
+<li>Read neutral drift, merged colours, out-of-gamut share, renderer agreement and frame luminance.</li>
+<li>Run a list of hex colours through the simulation and export CSV, clipboard text, settings JSON, a PNG of the frame or a link.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the tool.<ul>
+<li><a href="docs/getting-started.html">Getting started</a> — open it, the screen tour, the first simulation.</li>
+<li><a href="docs/simulate-a-design.html">Simulate a design or image</a> — sources, the eight simulations, their controls, presets and comparison views.</li>
+<li><a href="docs/read-the-checks.html">Read the checks</a> — the grey ramp, the readouts, the Simulation and Modes tabs.</li>
+<li><a href="docs/check-a-palette-and-export.html">Check a palette and export</a> — the colour list, CSV, clipboard, frame PNG, settings and links.</li>
+<li><a href="docs/reference.html">Reference</a> — every control, readout, tab and file format.</li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a> — symptoms, causes and fixes.</li>
+<li><a href="docs/faq.html">FAQ</a> — short answers to common questions.</li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background material.<ul>
+<li><a href="others/glossary.html">Glossary</a> — terms used in this tool.</li>
+<li><a href="others/shortcuts.html">Shortcuts</a> — keyboard and pointer actions.</li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a> — what is published, what is the tool&#39;s own, what is not held.</li>
+<li><a href="others/related.html">Related</a> — related tools and Learn articles.</li>
+<li><a href="others/release-notes.html">Release notes</a> — user-facing history.</li>
+<li><a href="others/privacy.html">Privacy</a> — what stays in your browser.</li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../neuroscience/others/related.html"><span>Previous</span>Related tools and articles</a><a href="docs/README.html"><span>Next</span>Using Perception and Vision</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

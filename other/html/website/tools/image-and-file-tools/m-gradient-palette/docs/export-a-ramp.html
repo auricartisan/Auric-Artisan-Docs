@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export a ramp — Auric Artisan Docs</title>
+<meta name="description" content="Copy the ramp as a CSS gradient, custom properties, a hex list or SVG, save an SVG, and save the JSON reading.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; M-Gradient Palette</a>
+<h2>M-Gradient Palette documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the M-Gradient Palette</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="compare-routes.html">Compare routes and easings</a></li>
+<li><a href="export-a-ramp.html" aria-current="page">Export a ramp</a></li>
+<li><a href="interpolation-and-gamut.html">Interpolation and gamut</a></li>
+<li><a href="reference.html">M-Gradient Palette reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the M-Gradient Palette</a></li>
+<li><a href="faq.html">M-Gradient Palette FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">M-Gradient Palette</a> &rsaquo; <a href="README.html">M-Gradient Palette documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › M-Gradient Palette</p>
+<h1>Export a ramp</h1>
+<p class="lede">Copy the ramp as a CSS gradient, custom properties, a hex list or SVG, save an SVG, and save the JSON reading.</p>
+<p>All exports are on the <strong>Export</strong> tab, under <strong>Take it away</strong>. They always use the true colours, whatever <strong>Show it as seen by</strong> is set to.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy the CSS gradient</strong></td><td>A CSS <code>linear-gradient</code> from the two ends, in the space of your route</td></tr>
+<tr><td><strong>Copy the custom properties</strong></td><td>One CSS custom property per measured step</td></tr>
+<tr><td><strong>Copy the hex list</strong></td><td>The steps&#39; hex values, one per line</td></tr>
+<tr><td><strong>Copy the SVG</strong></td><td>An SVG gradient built from the measured steps</td></tr>
+<tr><td><strong>Save the SVG</strong></td><td>The same SVG, downloaded as <code>ramp.svg</code></td></tr>
+<tr><td><strong>Save the reading</strong></td><td>A JSON record of the ramp and its measurements, downloaded as <code>ramp-reading.json</code></td></tr>
+</tbody></table></div>
+<p>A message confirms each copy, for example <strong>Custom properties copied</strong> or <strong>12 colours copied</strong>. If the browser blocks the clipboard, it reads <strong>The browser refused the clipboard.</strong></p>
+<p>The table under <strong>What leaves this page</strong> gives the size of each form for your ramp and what each is good for.</p>
+<h2 id="the-css-gradient">The CSS gradient</h2>
+<p>The CSS gradient asks the browser to do the blending, from your two ends:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Route</th><th>Copied text</th></tr></thead>
+<tbody>
+<tr><td>OKLCH, short hue</td><td><code>background: linear-gradient(in oklch shorter hue, #0B3D5C 0%, #F2B134 100%);</code></td></tr>
+<tr><td>OKLCH, long hue</td><td><code>background: linear-gradient(in oklch longer hue, #0B3D5C 0%, #F2B134 100%);</code></td></tr>
+<tr><td>HSL, short or long hue</td><td>As above, with <code>in hsl</code></td></tr>
+<tr><td>Linear RGB</td><td><code>background: linear-gradient(in srgb-linear, #0B3D5C 0%, #F2B134 100%);</code></td></tr>
+<tr><td>sRGB</td><td><code>background: linear-gradient(#0B3D5C 0%, #F2B134 100%);</code></td></tr>
+</tbody></table></div>
+<p>The copied text is laid out over two lines, as shown in the preview.</p>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> The CSS gradient carries only the two ends and the space. It does not carry your step count or easing, and it is smooth rather than stepped. Browsers that do not support interpolation in a named space fall back to sRGB, which is no longer the ramp you chose. A browser also brings out-of-gamut colours back into range in its own way, which may differ from this tool&#39;s chroma reduction.</p>
+</blockquote>
+<h2 id="the-custom-properties">The custom properties</h2>
+<p>The custom properties hand over the exact steps the tool measured:</p>
+<pre class="code" data-lang="css"><code>--ramp-01: #0B3D5C;
+--ramp-02: #004B63;
+--ramp-03: #005A67;
+--ramp-04: #00686A;
+--ramp-05: #00776B;
+--ramp-06: #0E8666;
+--ramp-07: #3E925C;
+--ramp-08: #649C50;
+--ramp-09: #88A441;
+--ramp-10: #ACAA32;
+--ramp-11: #D0AE2A;
+--ramp-12: #F2B134;</code></pre>
+<p>This is the default ramp. Paste the lines inside a rule such as <code>:root { … }</code>. Use them for design tokens, and anywhere a browser might not support the space.</p>
+<h2 id="the-hex-list">The hex list</h2>
+<p><strong>Copy the hex list</strong> copies the same steps as plain hex values, one per line, in capitals.</p>
+<h2 id="the-svg">The SVG</h2>
+<p>The SVG is 600 × 80 pixels: a rectangle filled with a linear gradient whose stops are the measured steps, spaced evenly from 0% to 100%. Use it to hand the ramp to a drawing program.</p>
+<pre class="code" data-lang="text"><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;600&quot; height=&quot;80&quot;&gt;
+  &lt;defs&gt;&lt;linearGradient id=&quot;ramp&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;1&quot; y2=&quot;0&quot;&gt;
+    &lt;stop offset=&quot;0.00%&quot; stop-color=&quot;#0B3D5C&quot;/&gt;
+    …
+    &lt;stop offset=&quot;100.00%&quot; stop-color=&quot;#F2B134&quot;/&gt;
+  &lt;/linearGradient&gt;&lt;/defs&gt;
+  &lt;rect width=&quot;600&quot; height=&quot;80&quot; fill=&quot;url(#ramp)&quot;/&gt;
+&lt;/svg&gt;</code></pre>
+<p>Between its stops, the SVG is blended by the program that displays it, usually in sRGB.</p>
+<h2 id="the-reading">The reading</h2>
+<p><strong>Save the reading</strong> downloads <code>ramp-reading.json</code>, shown under <strong>The reading that goes with it</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>tool</code></td><td>The tool&#39;s name</td></tr>
+<tr><td><code>ends</code></td><td>The two end colours</td></tr>
+<tr><td><code>route</code>, <code>easing</code>, <code>steps</code></td><td>Your settings; the route as an id such as <code>oklch-short</code></td></tr>
+<tr><td><code>colors</code></td><td>Every step&#39;s hex value</td></tr>
+<tr><td><code>measured</code></td><td><code>meanDeltaE00</code>, <code>evenness</code>, <code>largestJump</code> (three decimals) and <code>gamutMapped</code> (a count)</td></tr>
+<tr><td><code>contrast</code></td><td>The algorithm (<code>APCA-W3 0.1.9</code>), the text colour, and each step&#39;s APCA Lc and WCAG 2 ratio</td></tr>
+<tr><td><code>notHeld</code></td><td>What the reading does not cover: colour-vision deficiency below full severity</td></tr>
+</tbody></table></div>
+<p>The route ids are <code>oklch-short</code>, <code>oklch-long</code>, <code>srgb</code>, <code>linear</code>, <code>hsl-short</code> and <code>hsl-long</code>.</p>
+<h2 id="which-to-use">Which to use</h2>
+<ul>
+<li>For a design system or a data scale, use the <strong>custom properties</strong> or the <strong>hex list</strong>: they are exactly the measured steps.</li>
+<li>For a smooth background, use the <strong>CSS gradient</strong>, and check it in the browsers you support.</li>
+<li>For a drawing program, use the <strong>SVG</strong>.</li>
+<li>To record what was measured, or to hand the ramp to someone else to check, keep the <strong>reading</strong>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-routes.html"><span>Previous</span>Compare routes and easings</a><a href="interpolation-and-gamut.html"><span>Next</span>Interpolation and gamut</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-css-gradient">The CSS gradient</a></li><li><a href="#the-custom-properties">The custom properties</a></li><li><a href="#the-hex-list">The hex list</a></li><li><a href="#the-svg">The SVG</a></li><li><a href="#the-reading">The reading</a></li><li><a href="#which-to-use">Which to use</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

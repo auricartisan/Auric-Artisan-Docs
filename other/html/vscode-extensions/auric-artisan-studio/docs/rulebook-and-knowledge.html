@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rulebook and knowledge database — Auric Artisan Docs</title>
+<meta name="description" content="Search the local rulebook and knowledge database, build knowledge.json and rulebook.md for your workspace, and add validated team guidance.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html" aria-current="page">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Rulebook and knowledge database</h1>
+<p class="lede">Search the local rulebook and knowledge database, build knowledge.json and rulebook.md for your workspace, and add validated team guidance.</p>
+<p>Every Studio extension ships a local, versioned <strong>knowledge database</strong>: a searchable collection of the rules the Studio checks, the standards they come from, manual test procedures, policies, articles, glossary terms and rulebooks. It works offline and is filtered to the capabilities you installed.</p>
+<h2 id="what-is-in-it">What is in it</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Kind</th><th>What it is</th><th>Accessibility</th><th>Color</th><th>Code Health</th></tr></thead>
+<tbody>
+<tr><td>Automated rule</td><td>One entry per rule the engine runs, with severity, confidence and remediation</td><td>72 WCAG rules</td><td>none</td><td>68 signatures</td></tr>
+<tr><td>Requirement</td><td>Every WCAG 2.2 success criterion</td><td>86</td><td>none</td><td>none</td></tr>
+<tr><td>Manual check</td><td>A step-by-step manual test procedure</td><td>8</td><td>none</td><td>none</td></tr>
+<tr><td>Rule category</td><td>The seven code-health categories</td><td>none</td><td>none</td><td>7</td></tr>
+<tr><td>Policy</td><td>A governance policy</td><td>3 brand</td><td>3 brand</td><td>4 code health</td></tr>
+<tr><td>Article</td><td>A short practical guide</td><td>3 accessibility, 1 brand</td><td>1 brand</td><td>2 code health</td></tr>
+<tr><td>Rulebook</td><td>A structured rulebook</td><td>accessibility and brand</td><td>brand</td><td>code health</td></tr>
+<tr><td>Glossary</td><td>Term definitions</td><td>yes</td><td>yes</td><td>yes</td></tr>
+<tr><td>Official source</td><td>Links to the standards the entries cite</td><td>14 shared sources</td><td>same</td><td>same</td></tr>
+</tbody></table></div>
+<p>The counts are for version 0.1.0. With all three extensions installed, the database holds 283 entries.</p>
+<h3 id="rulebooks">Rulebooks</h3>
+<ul>
+<li><strong>Accessibility engineering rulebook</strong></li>
+<li><strong>Accessible brand governance rulebook</strong></li>
+<li><strong>Code-health balanced baseline</strong></li>
+</ul>
+<h3 id="manual-checks">Manual checks</h3>
+<ul>
+<li>Confirm text alternatives communicate the same purpose</li>
+<li>Review media alternatives for accuracy and synchronization</li>
+<li>Complete error recovery and authentication flows</li>
+<li>Verify focus order preserves meaning and operation</li>
+<li>Operate every workflow with a keyboard</li>
+<li>Test zoom, reflow, and text spacing without loss</li>
+<li>Confirm name, role, value, and state in an accessibility tree</li>
+<li>Verify important status changes are announced without moving focus</li>
+</ul>
+<p>See <a href="../accessibility/docs/manual-evidence.html">Manual evidence</a> for what each one asks you to do.</p>
+<h3 id="policies">Policies</h3>
+<ul>
+<li>Brand exceptions are narrow, owned, and temporary</li>
+<li>Brand classification cannot suppress structural findings</li>
+<li>Every brand token has provenance and a semantic role</li>
+<li>Report severity and confidence independently</li>
+<li>Never persist a detected secret value</li>
+<li>Each detector signature has a stable identity</li>
+<li>Suppressions are scoped and reviewable</li>
+</ul>
+<h3 id="articles">Articles</h3>
+<ul>
+<li>Debug accessible names from the computed result backward</li>
+<li>Use automation as evidence, not as a conformance verdict</li>
+<li>Audit keyboard and focus as complete user workflows</li>
+<li>Govern brand exceptions without creating an accessibility loophole</li>
+<li>Triage code-health findings with confidence and evidence</li>
+<li>Treat a committed secret as an incident, not a text-edit task</li>
+</ul>
+<h3 id="official-sources">Official sources</h3>
+<p>WCAG 2.2, Understanding WCAG 2.2, Techniques for WCAG 2.2, WAI-ARIA 1.2, HTML Accessibility API Mappings 1.0, the ACT Rules Format 1.1, ACT Rules, OWASP Top 10:2025, the OWASP Application Security Verification Standard, the OWASP Cheat Sheet Series, the Common Weakness Enumeration and CWE-798 (hard-coded credentials), NIST&#39;s Secure Software Development Framework, and the Design Tokens Format Module.</p>
+<h3 id="act-alignment">ACT alignment</h3>
+<p>The accessibility entries follow the structure of the W3C&#39;s Accessibility Conformance Testing (ACT) rules format: they record what each check applies to, what it expects, how it is assessed, the requirements it maps to and where it comes from. This makes the evidence consistent and reviewable. It is <strong>not</strong> a claim of ACT conformance, and every exported file says so (<code>actConformant: false</code>).</p>
+<h2 id="search-the-database">Search the database</h2>
+<ol>
+<li>Run <strong>Auric Artisan: Open Rulebook &amp; Knowledge Database</strong>, or select <strong>Rulebook</strong> on the Overview or at the foot of the Studio&#39;s rail, or <strong>Open rulebook &amp; knowledge database</strong> in the Command Center.</li>
+<li>A searchable list opens, titled <strong>Auric Artisan Knowledge Base · 283 entries</strong> (the number depends on what is installed). Rulebooks are listed first, then manual checks, automated rules, policies, articles, requirements, glossary entries, sources and rule categories.</li>
+<li>Type to filter. The search matches titles, descriptions (kind, domain and ID) and summaries, so you can search for a rule ID such as <code>img-alt</code>, a criterion such as <code>1.4.3</code>, a term such as <code>ARIA</code>, or words such as <code>secret</code>.</li>
+<li>Select an entry. It opens as a Markdown document with its summary, domain, kind, severity, confidence, requirements, remediation, applicability, procedure, pass and fail conditions, evidence to record, controls and official sources, whichever apply.</li>
+</ol>
+<p>Selecting a rulebook opens the whole rulebook.</p>
+<p><strong>Rule details</strong> in an issue hover opens the entry for that finding&#39;s rule directly.</p>
+<h2 id="build-the-workspace-knowledge-database">Build the workspace knowledge database</h2>
+<p><strong>Auric Artisan: Build Workspace Knowledge Database (JSON + Markdown)</strong> writes the database into your workspace so it can be read by other tools, reviewed or shared.</p>
+<ol>
+<li>Open a workspace folder and run the command (or <strong>Build workspace knowledge database</strong> in the Command Center).</li>
+<li>The Studio writes:<ul>
+<li><code>.auric-artisan/knowledge.json</code>: every entry, with the schema version, knowledge version, content hash, alignment, <code>actConformant: false</code>, domains and statistics;</li>
+<li><code>.auric-artisan/rulebook.md</code>: every installed rulebook in full, with a note that the database makes no ACT conformance claim;</li>
+<li><code>.auric-artisan/knowledge-overrides.json</code>: an empty template for team additions, created only if the file does not exist yet. An existing file is never overwritten.</li>
+</ul>
+</li>
+<li><code>rulebook.md</code> opens. A message confirms, for example <strong>Auric Artisan: built 283-entry knowledge.json and 3 rulebook(s) locally. A team override template was also created.</strong>, with <strong>Open JSON</strong>, <strong>Open Overrides</strong> and <strong>Open Data Folder</strong>.</li>
+</ol>
+<p><code>knowledge.json</code> and <code>rulebook.md</code> are regenerated each time and are excluded from source control. <code>knowledge-overrides.json</code> is meant to be committed.</p>
+<h2 id="add-team-guidance-with-knowledge-overridesjson">Add team guidance with knowledge-overrides.json</h2>
+<p><code>knowledge-overrides.json</code> lets your team add reviewed guidance: manual checks, articles, policies, glossary entries and rulebooks. Added entries appear in search and in the generated files alongside the built-in ones. They can never replace a built-in entry.</p>
+<p>The template looks like this:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;schemaVersion&quot;: 1,
+  &quot;kind&quot;: &quot;auric-artisan.knowledge-overlay&quot;,
+  &quot;entries&quot;: []
+}</code></pre>
+<p>An example entry:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;id&quot;: &quot;custom:a11y:modal-focus-return&quot;,
+  &quot;kind&quot;: &quot;manual-check&quot;,
+  &quot;domain&quot;: &quot;a11y&quot;,
+  &quot;title&quot;: &quot;Return focus when a modal closes&quot;,
+  &quot;summary&quot;: &quot;After any modal closes, focus returns to the control that opened it.&quot;,
+  &quot;sourceIds&quot;: [&quot;w3c-wcag22&quot;],
+  &quot;tags&quot;: [&quot;focus&quot;, &quot;modal&quot;]
+}</code></pre>
+<h3 id="rules-for-entries">Rules for entries</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Rule</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>Required. Must start with <code>custom:</code>, then 3 to 128 lowercase letters, digits, <code>:</code>, <code>.</code>, <code>_</code> or <code>-</code>. Must be unique and must not match a built-in ID.</td></tr>
+<tr><td><code>kind</code></td><td>Required. One of <code>manual-check</code>, <code>article</code>, <code>policy</code>, <code>glossary</code>, <code>rulebook</code>.</td></tr>
+<tr><td><code>domain</code></td><td>Required. One of <code>shared</code>, <code>a11y</code>, <code>code-health</code>, <code>brand</code>, <code>color</code> (also accepted: <code>accessibility</code>, <code>codehealth</code>, <code>health</code>, <code>branding</code>, <code>colour</code>).</td></tr>
+<tr><td><code>title</code>, <code>summary</code></td><td>Required, non-empty, up to 12,000 characters each.</td></tr>
+<tr><td><code>sourceIds</code></td><td>Optional. Must name built-in sources, for example <code>w3c-wcag22</code>, <code>w3c-aria12</code>, <code>owasp-top10-2025</code>.</td></tr>
+<tr><td><code>sections</code></td><td>Required for a rulebook: a list of sections, each with a <code>title</code> and optional <code>entryIds</code> that must exist.</td></tr>
+</tbody></table></div>
+<p>A policy with <code>&quot;policyType&quot;: &quot;brand-exception&quot;</code> must also have <code>scope</code>, <code>rationale</code>, <code>owner</code>, <code>approvedAt</code> and <code>expiresAt</code> (ISO dates, expiry after approval and not already passed), a non-empty <code>allowedFindingKinds</code> limited to <code>contrast</code>, <code>color-vision</code> and <code>branding</code>, and non-empty <code>ruleIds</code> limited to colour rules (<code>low-contrast…</code>, <code>cvd-risk…</code>, <code>branding-…</code>, <code>contrast:…</code>). A brand exception can never cover a structural accessibility rule.</p>
+<p>The whole file must be under 256 KB and hold at most 500 entries. Entries whose domain is not installed are kept in the file but not shown.</p>
+<h3 id="when-the-file-is-invalid">When the file is invalid</h3>
+<ul>
+<li><strong>Searching</strong> falls back to the built-in database and shows a warning that starts <strong>Auric Artisan: workspace knowledge overrides are invalid; using the built-in database.</strong>, followed by the problems found.</li>
+<li><strong>Building</strong> stops and shows <strong>Auric Artisan: could not build the knowledge database —</strong> followed by every problem, one per line, such as <code>overlay.entries[0].id must start with custom: and use stable lowercase characters</code>.</li>
+</ul>
+<p>Fix the listed problems and run the command again.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../accessibility/docs/manual-evidence.html">Manual evidence</a></li>
+<li><a href="../accessibility/docs/rules.html">The accessibility rules</a></li>
+<li><a href="../code-health/docs/categories-and-signatures.html">Code-health categories and signatures</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="remediation-plan.html"><span>Previous</span>The remediation plan</a><a href="scanning.html"><span>Next</span>Scanning</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-in-it">What is in it</a></li><li><a href="#search-the-database">Search the database</a></li><li><a href="#build-the-workspace-knowledge-database">Build the workspace knowledge database</a></li><li><a href="#add-team-guidance-with-knowledge-overridesjson">Add team guidance with knowledge-overrides.json</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

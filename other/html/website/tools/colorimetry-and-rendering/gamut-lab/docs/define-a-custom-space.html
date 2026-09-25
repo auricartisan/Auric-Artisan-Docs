@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Define a custom colour space — Auric Artisan Docs</title>
+<meta name="description" content="Enter your own primaries and white point, derive the RGB ↔ XYZ matrices, and keep, import or export the space.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Lab</a>
+<h2>Gamut Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Gamut Lab</a></li>
+<li><a href="compare-colour-spaces.html">Compare colour spaces</a></li>
+<li><a href="define-a-custom-space.html" aria-current="page">Define a custom colour space</a></li>
+<li><a href="inspect-transfer-functions.html">Inspect transfer functions</a></li>
+<li><a href="reference.html">Gamut Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Gamut Lab</a></li>
+<li><a href="faq.html">Gamut Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Lab</a> &rsaquo; <a href="README.html">Gamut Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Define a custom colour space</h1>
+<p class="lede">Enter your own primaries and white point, derive the RGB ↔ XYZ matrices, and keep, import or export the space.</p>
+<p>Use this to check a display&#39;s measured primaries, a camera&#39;s native gamut, or a proposed working space.</p>
+<h2 id="how-the-matrices-are-derived">How the matrices are derived</h2>
+<p>Given the xy chromaticities of the red, green and blue primaries and of the white point, the lab:</p>
+<ol>
+<li>turns each primary into XYZ with Y = 1;</li>
+<li>builds a matrix with those three columns;</li>
+<li>solves for the scale of each column that makes RGB (1, 1, 1) equal the white point;</li>
+<li>applies the scales to get the RGB → XYZ matrix;</li>
+<li>inverts it to get the XYZ → RGB matrix.</li>
+</ol>
+<p>This is the standard construction (as described by Bruce Lindbloom), so a custom space gets exactly the same treatment as a published one.</p>
+<h2 id="enter-and-solve">Enter and solve</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, set <strong>Working color space</strong> to <strong>Custom</strong>.</li>
+<li>Under <strong>Primaries (xy)</strong>, type the <strong>R</strong>, <strong>G</strong> and <strong>B</strong> x and y values, and the <strong>W</strong> (white point) x and y. The fields accept four decimal places.</li>
+<li>Select <strong>Solve from primaries</strong>.</li>
+<li>Read <strong>RGB ↔ XYZ matrices</strong>: the RGB → XYZ and XYZ → RGB matrices, then the triangle&#39;s <strong>Area (xy)</strong> and <strong>Area % sRGB</strong>.</li>
+<li><strong>White point XYZ</strong> shows the white as X, Y, Z with Y = 1, for reference.</li>
+<li>Your triangle is drawn on the diagram as <strong>Custom</strong>.</li>
+</ol>
+<p>A custom space made this way uses the sRGB transfer curve. It lasts until you reload the page. To keep it, export it with <strong>This space</strong> (below) while <strong>Custom</strong> is the working space, then import the JSON into the library.</p>
+<h2 id="keep-it-in-the-library">Keep it in the library</h2>
+<p>The <strong>Export</strong> tab has a library table listing every standard space and any you have added. Standard spaces show <strong>Load</strong>; your spaces show <strong>Load</strong> and <strong>Del</strong>. Your spaces are kept in this browser&#39;s storage, so they are there next time you open the lab on the same device and browser.</p>
+<p>To add a space to the library, import it:</p>
+<ol>
+<li>Open <strong>Export</strong>.</li>
+<li>Paste a colour space definition into <strong>Bring one in</strong>. The format is:</li>
+</ol>
+<pre class="code" data-lang="json"><code>{
+  &quot;name&quot;: &quot;MyDisplay&quot;,
+  &quot;label&quot;: &quot;My display&quot;,
+  &quot;primaries&quot;: { &quot;r&quot;: [0.680, 0.320], &quot;g&quot;: [0.265, 0.690], &quot;b&quot;: [0.150, 0.060] },
+  &quot;whitePoint&quot;: [0.3127, 0.3290],
+  &quot;gamma&quot;: &quot;sRGB&quot;
+}</code></pre>
+<p>   <code>name</code> and <code>primaries</code> are required; <code>label</code> defaults to the name and <code>gamma</code> to <code>sRGB</code>.
+3. Select <strong>Add to the library</strong>. The status line says &quot;Imported: MyDisplay&quot;, or &quot;Invalid JSON&quot; or &quot;Parse error: …&quot; if something is wrong.
+4. Select <strong>Load</strong> in the library table to draw the space and make it the working space.</p>
+<p>The <code>gamma</code> value names the transfer curve: <code>sRGB</code>, <code>BT.2020</code>, <code>ROMM</code>, <code>AdobeRGB</code>, <code>PQ</code>, <code>HLG</code>, <code>linear</code>, or a number such as <code>2.2</code> for a pure power law.</p>
+<h2 id="export-a-space">Export a space</h2>
+<ol>
+<li>On <strong>Export</strong>, under <strong>What to take</strong>, choose <strong>This space</strong> (the working space) or <strong>Every space</strong> (all of them, including imports).</li>
+<li>The format is <strong>JSON</strong>. <strong>Exactly what you will get</strong> previews the file and its size.</li>
+<li>Select <strong>Download</strong> (the button names the file, for example <code>gamut-lab-srgb.json</code>) or <strong>Copy to clipboard</strong>.</li>
+</ol>
+<p>An exported space contains <code>name</code>, <code>label</code>, <code>primaries</code>, <code>whitePoint</code>, <code>gamma</code>, <code>rgb2xyz</code>, <code>xyz2rgb</code> and <code>area</code> (the xy triangle area). It can be pasted back into <strong>Bring one in</strong>.</p>
+<h2 id="result">Result</h2>
+<p>You have a custom space with verified matrices, drawn beside the standards, saved in your browser and portable as JSON.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-colour-spaces.html"><span>Previous</span>Compare colour spaces</a><a href="inspect-transfer-functions.html"><span>Next</span>Inspect transfer functions</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-the-matrices-are-derived">How the matrices are derived</a></li><li><a href="#enter-and-solve">Enter and solve</a></li><li><a href="#keep-it-in-the-library">Keep it in the library</a></li><li><a href="#export-a-space">Export a space</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

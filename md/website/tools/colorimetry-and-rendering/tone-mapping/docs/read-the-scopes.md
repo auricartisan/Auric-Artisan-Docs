@@ -1,0 +1,64 @@
+---
+title: Tone Mapping — Read the scopes
+description: Use the histogram, waveform, vectorscope, false-colour map and A/B split to judge a mapped frame.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Read the scopes
+
+The **Scopes** tab measures the mapped output — the end the question is about. The note at the top names the working and target spaces and the operator.
+
+## The three scopes
+
+| Scope | What it shows | How to read it |
+| --- | --- | --- |
+| **Histogram — output, 256 bins** | How many pixels sit at each output level | A pile-up at the right edge means clipped highlights; at the left, crushed shadows |
+| **Waveform — output luma by column** | Brightness of each column of the image, left to right | The dashed line is display white. A trace pressed flat against it is clipping |
+| **Vectorscope — output chroma** | Colour direction and strength, after gamut mapping | Distance from the centre is saturation; angle is hue. It shows only what the target can carry |
+
+## The false-colour exposure map
+
+1. Tick **Show the exposure map** under **False colour**. The frame on the Lab tab is replaced by bands of colour.
+2. Read the key under **False colour, and the peak it is counted against**. Pixels are coloured by estimated luminance:
+
+| Up to (nits) | Colour |
+| --- | --- |
+| 0.01 | Black |
+| 0.1 | Deep violet |
+| 1 | Blue |
+| 10 | Teal |
+| 100 | Green |
+| 203 | Yellow (203 nits is the HDR diffuse white of ITU-R BT.2408) |
+| 1,000 | Orange |
+| 4,000 | Red |
+| 10,000 | Magenta |
+| Above | White |
+
+3. The note reports the source's brightest pixel, using the **Source peak**, and greys out bands the source cannot reach.
+
+The map estimates luminance from the source pixel's luma multiplied by a peak. In the current version the map itself uses the **Display peak** for that multiplication while the note uses the **Source peak**, so they can disagree. Untick the box to see the frame again.
+
+## Compare two versions (A / B)
+
+1. Set up the first version and select **Store A**.
+2. Change a setting and select **Store B**.
+3. Tick **Split the viewport**. The frame shows A on the left and B on the right.
+4. Move the split slider (0 to 1; default 0.5) to move the dividing line.
+
+Both versions must be stored, and the image must stay the same size, for the split to show.
+
+## Timing
+
+- **Time a pass** runs the whole image through the pipeline 20 times and reports the average in milliseconds per frame.
+- **Time the curve** does the same 5 times.
+
+The chip over the frame also shows the time the last update took.
+
+## Controls that were removed
+
+**Controls that were read and never used** lists three controls from an earlier version — Scene reference white, Highlight stress, and Zebra low / high — each tagged "did nothing", with an explanation. They are not on the page any more.
+
+## Result
+
+You can tell whether highlights or shadows are clipping, how saturated the output is, where the scene's luminance falls, and how two versions differ.

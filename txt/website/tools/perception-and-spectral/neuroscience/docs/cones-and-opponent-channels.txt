@@ -1,0 +1,146 @@
+==============================================================================
+CONES, OPPONENT CHANNELS AND THE CONE TABLE
+==============================================================================
+How the Visual Pathway turns a screen colour into cone signals and opponent
+channels, how to read the Pipeline tab and the cone figure, and how to install
+your own cone table.
+Area: Website › Tools › Perception and spectral › Neuroscience   Updated: 2026-09-25
+
+THE IDEA IN BRIEF
+=================
+
+Your retina has three kinds of cone. The L (long-wavelength) cones respond
+most to yellowish-red light, the M (medium) cones to green light and the S
+(short) cones to violet-blue light. Their sensitivities overlap heavily: in
+the published CIE 2006 fundamentals the L and M cones peak at 566.8 nm and
+541.2 nm, only about 25 nm apart, and the S cones at 441.8 nm. A colour you
+see is summarised by three numbers, the cone signals, one per type.
+
+Early in the visual pathway these three signals are recombined into opponent
+channels: one that compares L with M (red against green), one that compares S
+with the sum of L and M (blue against yellow), and one that adds L and M
+(roughly, lightness). A neutral grey drives neither chromatic channel, which
+is why you never see a "reddish green" or a "bluish yellow".
+
+HOW THE TOOL GETS FROM A HEX COLOUR TO OPPONENT VALUES
+======================================================
+
+The Pipeline tab draws the chain as a row of steps:
+
+  Step          | What happens
+  --------------+---------------------------------------------------------------------------------
+  sRGB          | The 8-bit, gamma-encoded screen value
+  linear        | Decoded through the sRGB transfer curve (IEC 61966-2-1)
+  XYZ           | Converted to CIE XYZ with the sRGB primaries at D65
+  LMS           | Converted to cone signals with the Hunt-Pointer-Estévez matrix
+  cone contrast | Marked not held: the tool has no adapting white to express cone contrast against
+  opponent      | L − M, S − (L+M)/2 and L + M
+  stages        | The retina-to-V4 stages read these values
+
+The Hunt-Pointer-Estévez matrix is published for XYZ and is scaled so that the
+D65 white point gives equal L, M and S signals. That is what puts every
+neutral grey at zero on both chromatic channels. The Neutral off-axis readout
+on the Lab tab checks it: the largest departure of a nine-step grey ramp from
+zero is about 2.2 × 10⁻⁴, which is the rounding of the published four-decimal
+matrix.
+
+These axes are not DKL
+----------------------
+
+The opponent space of Derrington, Krauskopf and Lennie (DKL), used widely in
+vision science, is built on cone contrast relative to a stated adapting white,
+with its chromatic axes scaled so they carry no luminance change. The tool's
+axes are plain differences of absolute cone signals, and its luminance channel
+gives L and M equal weight, where their published contribution to luminance is
+closer to two to one. They are useful axes and they are the tool's own.
+Nothing on the page is reported in cone-contrast units.
+
+USE THE PIPELINE TAB
+====================
+
+The rail has two groups of buttons.
+
+Show
+
+  - The chain — the step row above and a table of seven colours (`#000000`,
+    `#404040`, `#808080`, `#C0C0C0`, `#FFFFFF`, `#3A8CFF`, `#E03131`) with
+    their L − M and S − (L+M)/2 values to four decimals. Greys are highlighted
+    when they sit at zero.
+  - The opponent axes — the same table, with a note giving the worst neutral
+    departure.
+  - The sensitivity curve — a table of pupil sizes (2, 3, 5 and 8 mm) against
+    the peak of the tool's sensitivity curve (always 4.0 c/deg) and the
+    published photopic peak range (2–6 c/deg).
+
+Against
+
+  - What it was (default) — adds columns showing the values an earlier version
+    of this page produced, marked as shipped, so you can see how large each
+    correction was.
+  - Hide — shows the current values only.
+
+Try it: with The chain and What it was selected, compare the white row. The
+current columns read 0.0000; the "as shipped" columns do not.
+
+READ THE CONE FIGURE
+====================
+
+On the Lab tab, The front end: where the two cone curves actually sit plots
+three curves from 390 to 730 nm: L in red, M in green and S in blue, each
+scaled to peak at 1. Dashed vertical lines mark the published peaks, labelled
+442, 541 and 567 nm. The note under the figure explains what you are seeing.
+
+The built-in curves are the tool's own. They are smooth and plausibly shaped,
+but both the L and M curves peak at 590 nm, on top of each other, where the
+published curves peak 25 nm apart. That is why L − M peak gap reads 0 nm and
+is highlighted. These curves draw the figure and nothing else: every cone
+signal the stages use comes from the matrix described above, not from this
+table.
+
+INSTALL YOUR OWN CONE TABLE
+===========================
+
+You can replace the figure's curves with a published table, for example the
+CIE 170-1:2006 2° cone fundamentals, which the page does not include.
+
+  1. Prepare a CSV or JSON file with four columns in this order: wavelength in
+     nm, L, M, S.
+     - CSV: one row per line, values separated by commas, semicolons, tabs or
+       spaces. Lines that begin with `#` or a letter (such as a header row)
+       are skipped.
+     - JSON: an array of four-number rows, or an object with a `rows` array.
+  2. Open the Data tab.
+  3. Drop the file on Drop a CSV or JSON under Install a cone table, or select
+     that area to choose the file.
+  4. Read the message at the top of the page: Cone table installed — L peaks
+     at N nm, or Not installed: followed by the reason.
+
+The table is refused when it has fewer than eight rows, when a row has fewer
+than four columns or a non-numeric value, when the wavelengths do not
+increase, or when its L and M curves peak less than 5 nm apart.
+
+Once installed, the cone figure, the curve labels, L − M peak gap and the note
+under the figure change to the new table, and the settings file and CSV record
+the file name as the cone table with `reportable` set to `true`. The stages do
+not change, because they never used the table. The installed table lasts until
+you reload the page.
+
+SIMULATE A COLOUR VISION DEFICIENCY
+===================================
+
+Colour vision on the Lab rail applies a dichromacy simulation to the stimulus
+before the stages: Protanopia (no L cones), Deuteranopia (no M cones) or
+Tritanopia (no S cones). The tool uses the three projection matrices of
+Viénot, Brettel and Mollon (1999), applied in cone space as they are defined,
+at full strength. Try Protanopia with the default blue grating, then with a
+red base colour, and watch the LGN, L − M map. For a fuller set of simulations
+over your own images, use Perception and Vision
+[../../perception-and-vision/README.txt].
+
+TAKE THE NUMBERS AWAY
+=====================
+
+The Export tab runs any list of hex colours through the same front end and
+gives L, M, S and the three opponent values; see Export and share
+[export-and-share.txt]. Put a grey in the list: its two chromatic values
+should read zero.

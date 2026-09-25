@@ -1,0 +1,14 @@
+---
+title: Documentation — Privacy
+description: What the documentation pages store and send.
+product: Website › Library › Documentation
+updated: 2026-09-25
+---
+
+# Privacy
+
+The documentation index and articles do not ask for any information and do not keep a history of what you read. Search and the audience filter run in your browser. The audience you choose can be part of the page address (`?audience=…`), so it appears in your browser history like any other address.
+
+Articles download a list of subjects from auricartisan.com to build the side list and the pair switch.
+
+Analytics on the site follow your consent choices. See [Company and legal](../../../company-and-legal/README.md).

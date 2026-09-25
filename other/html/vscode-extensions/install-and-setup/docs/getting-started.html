@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install an extension from the Extensions view — Auric Artisan Docs</title>
+<meta name="description" content="Find the right Auric Artisan extension in VS Code, install it, and confirm that it is working.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html">Install from the command line</a></li>
+<li><a href="install-from-vsix.html">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Install an extension from the Extensions view</h1>
+<p class="lede">Find the right Auric Artisan extension in VS Code, install it, and confirm that it is working.</p>
+<p>The Extensions view is the panel inside VS Code where you search the Visual Studio Marketplace and install, update and manage extensions. This is the simplest way to install any Auric Artisan extension, and it needs a network connection to the Marketplace.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li><strong>Check your VS Code version.</strong> Open <strong>Help</strong> › <strong>About</strong> (on macOS, <strong>Code</strong> › <strong>About Visual Studio Code</strong>). Each extension states the lowest version it runs on. The lowest version across the family is 1.74; Auric Artisan Live and Auric Artisan File System need 1.95. The <a href="reference.html">reference</a> lists every extension.</li>
+<li><strong>Open a folder if the extension works on a project.</strong> Auric Artisan Live, File System and Formatter act on the folder you have open. The icon, theme and library extensions work without one.</li>
+</ul>
+<h2 id="install">Install</h2>
+<ol>
+<li><p>Open the Extensions view: select the Extensions icon in the Activity Bar, or press <code>Ctrl</code> + <code>Shift</code> + <code>X</code>.</p>
+</li>
+<li><p>In the search box, type the extension ID with the <code>@id:</code> prefix. For example:</p>
+<pre class="code" data-lang="text"><code>@id:auric-artisan.auric-artisan-live</code></pre>
+<p>The <code>@id:</code> prefix returns exactly one extension. You can also type a name such as <code>Auric Artisan</code> and browse the results.</p>
+</li>
+<li><p>Remove any other filter from the search box, such as <code>@installed</code> or <code>@disabled</code>. A leftover filter hides extensions you have not installed yet.</p>
+</li>
+<li><p>Select the result. Check that the publisher shown under the name is <strong>Auric Artisan</strong> and that the identifier on the page matches the ID you searched for.</p>
+</li>
+<li><p>Select <strong>Install</strong>.</p>
+</li>
+<li><p>If VS Code shows a trust prompt for the publisher, read it and confirm.</p>
+</li>
+</ol>
+<p>When installation finishes, the <strong>Install</strong> button changes to <strong>Disable</strong> and <strong>Uninstall</strong> (or a settings gear), and the extension is active. Most Auric Artisan extensions do not need a restart.</p>
+<h2 id="check-it-worked">Check it worked</h2>
+<ul>
+<li><strong>Command Palette.</strong> Press <code>Ctrl</code> + <code>Shift</code> + <code>P</code> and type the extension&#39;s command prefix. Each extension groups its commands under a prefix, shown in the table below.</li>
+<li><strong>Activity Bar or Explorer.</strong> Some extensions add their own icon to the Activity Bar (for example <strong>Auric Live</strong> and <strong>Auric Font Hub</strong>) or a section to the Explorer (for example <strong>Auric Files</strong> and <strong>Auric Formatter</strong>).</li>
+<li><strong>Features tab.</strong> On the extension&#39;s page in the Extensions view, the <strong>Features</strong> tab lists every command, setting and keyboard shortcut the extension contributes.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Extension</th><th>Command Palette prefix</th><th>Settings prefix</th></tr></thead>
+<tbody>
+<tr><td>Auric Artisan Live</td><td><code>Auric Live</code></td><td><code>auricLive.</code></td></tr>
+<tr><td>Auric Artisan File System</td><td><code>Auric Files</code></td><td><code>auricFiles.</code></td></tr>
+<tr><td>Auric Artisan Font Hub</td><td><code>Auric Artisan Font Hub</code> (and <code>Auric Font Hub</code> for <strong>Show Logs</strong>)</td><td><code>auricFontLib.</code></td></tr>
+<tr><td>Auric Artisan Formatter</td><td><code>Auric Formatter</code></td><td><code>auricFormatter.</code></td></tr>
+<tr><td>Auric Artisan Theme</td><td><code>Auric Theme</code></td><td><code>auricTheme.</code></td></tr>
+<tr><td>Auric Artisan File Icons</td><td><code>Auric Artisan File Icons</code></td><td><code>auricFileIcons.</code></td></tr>
+<tr><td>Auric Icons: Modern</td><td><code>Auric Icons: Modern</code></td><td><code>auricIcons.</code></td></tr>
+<tr><td>Auric Icons: Drawn</td><td><code>Auric Icons: Drawn</code></td><td><code>auricIconsDrawn.</code></td></tr>
+<tr><td>Auric Icons: Playful</td><td><code>Auric Icons: Playful</code></td><td><code>auricIconsPlayful.</code></td></tr>
+<tr><td>Auric Artisan Emoji</td><td><code>Auric Artisan Emoji</code></td><td><code>auricEmoji.</code></td></tr>
+<tr><td>Auric Artisan Icon Studio</td><td><code>Auric Icon Studio</code></td><td><code>auricIconStudio.</code></td></tr>
+<tr><td>Auric Artisan Icon Hub</td><td><code>Auric Icon Hub</code></td><td><code>auricIconLib.</code></td></tr>
+<tr><td>Auric Color</td><td><code>Auric Artisan</code></td><td><code>auricColor.</code></td></tr>
+<tr><td>Auric Accessibility</td><td><code>Auric Artisan</code></td><td><code>auricA11y.</code></td></tr>
+<tr><td>Auric Code Health</td><td><code>Auric Artisan</code></td><td><code>auricCodeHealth.</code></td></tr>
+</tbody></table></div>
+<p>The two packs, Auric Artisan Icon Pack and Auric Artisan Studio — Full Pack, add no commands or settings of their own. See <a href="extension-packs.html">The two extension packs</a>.</p>
+<h2 id="install-several-at-once">Install several at once</h2>
+<ul>
+<li>Install a pack to get a set in one step. See <a href="extension-packs.html">The two extension packs</a>.</li>
+<li>Run several <code>code --install-extension</code> lines in a terminal. See <a href="install-from-command-line.html">Install from the command line</a>.</li>
+<li>Add the IDs to your repository&#39;s <code>.vscode/extensions.json</code> so VS Code recommends them to everyone who opens the project. See <a href="settings-and-sync.html">Settings, sync and workspace trust</a>.</li>
+</ul>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li>Configure the extension: <a href="settings-and-sync.html">Settings, sync and workspace trust</a>.</li>
+<li>Use it in Hindi, where supported: <a href="display-language-hindi.html">Use an extension in Hindi</a>.</li>
+<li>Learn the extension itself: open its folder from <a href="../others/related.html">Related extensions and pages</a>.</li>
+</ul>
+<p>You should now see the extension listed under <strong>Installed</strong> in the Extensions view, and its commands in the Command Palette.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Install and setup guides</a><a href="display-language-hindi.html"><span>Next</span>Use an extension in Hindi</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-you-start">Before you start</a></li><li><a href="#install">Install</a></li><li><a href="#check-it-worked">Check it worked</a></li><li><a href="#install-several-at-once">Install several at once</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

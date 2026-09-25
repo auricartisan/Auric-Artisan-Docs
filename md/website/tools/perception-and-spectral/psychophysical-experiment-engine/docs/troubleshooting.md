@@ -1,0 +1,80 @@
+---
+title: Psychophysical Experiment Engine — Troubleshooting
+description: Symptoms, causes, fixes and workarounds for the Psychophysics Bench, including tabs that do not open.
+product: Website › Tools › Perception and spectral › Psychophysical Experiment Engine
+updated: 2026-09-25
+---
+
+# Troubleshooting the Psychophysics Bench
+
+## Only the Lab tab opens; Method, Paradigms, Data, Export and Reference do nothing
+
+**Why:** at the time of writing (checked on the live site in September 2026), the page's tab buttons do not switch the view. Links in the page text that point to another tab (for example **Data** in the note strip, or **Paradigms** under **Task**) do nothing for the same reason.
+
+**What this affects:** everything on the Lab tab works: designing, running and reading results. The explanation tabs and the **Export** tab's downloads and link button cannot be reached.
+
+**What to do:**
+
+- Read the content of those tabs in these docs: [Read the results](read-the-results.md) summarises Method, Paradigms, Data and Reference, and [Export your data](export-your-data.md) describes the files.
+- Record results from the Lab readouts, or take a screenshot, before starting another run.
+- Share a setup by building a link by hand, as shown in [Export your data](export-your-data.md).
+
+## The arrow keys do nothing
+
+**Why:** answers are accepted only after the intervals of the current trial have finished and the page is waiting; between runs they do nothing. The keys also do nothing when focus is in another window or the browser's address bar.
+
+**What to do:** click an empty part of the page, then use the keys, or use the on-screen response buttons.
+
+## Stop does not end the run immediately
+
+**Why:** **Stop** takes effect at the end of the current interval. If the page is already waiting for your answer, it ends the run at your next key or button press, without recording that answer.
+
+**What to do:** press `Esc` while the page is waiting for an answer; it stops at once.
+
+## The staircase climbs to the top and stays there
+
+**Why:** you could not see the patch at any contrast offered. Common causes: a spatial frequency above the Nyquist limit, a very small **Envelope σ**, a background that caps the contrast, or looking away from the centre.
+
+**What to do:** check the **Nyquist limit of the grid** readout and warning, check **Delivered / asked**, try a lower frequency or larger envelope, and run **Practice** first.
+
+## "The contrast asked for does not fit about this background" appears
+
+**Why:** the procedure asked for more contrast than a symmetric swing around the background can hold. Bright backgrounds leave little room: around code 220 the maximum is about 0.40.
+
+**What to do:** lower **Background** (code 128 allows up to 1.0), or lower **Starting contrast**. A threshold measured while the warning shows is for a capped stimulus.
+
+## "Above the pixel grid's Nyquist limit" appears
+
+**Why:** at your viewing distance and pixel pitch, the screen cannot draw the frequency you asked for.
+
+**What to do:** lower **Spatial frequency**, and check the geometry. The limit rises as the viewing distance grows and as the pixel pitch shrinks. The warning's own text suggests moving closer or raising the pitch; both in fact lower the limit.
+
+## The threshold reads "—"
+
+**Why:** for the up-down and accelerated staircases, there are not yet two reversals after the two warm-up reversals (**Reversals used** says so). For **Constant stimuli** there is no threshold estimate at all.
+
+**What to do:** run longer (raise **Trial ceiling** or **Stop after**), or read **Proportion correct** for constant stimuli.
+
+## "At what percentage" says "not defined for this ladder"
+
+**Why:** the **Accelerated** staircase and **Constant stimuli** do not converge on a stated proportion correct.
+
+**What to do:** use **1-up / 2-down** or **3-down / 1-up** for a threshold at a stated percentage.
+
+## The trace stays empty during a run
+
+**Why:** the trace is drawn only for procedures with reversals. The **Bayesian tracker** and **Constant stimuli** show **The trace appears here once the run starts** throughout.
+
+**What to do:** read the numeric readouts for those procedures.
+
+## Practice results disappeared
+
+**Why:** starting a measured run clears the trials of the previous run, practice included.
+
+**What to do:** this is expected; practice is not meant to be kept.
+
+## Intervals look uneven or flicker
+
+**Why:** the timing runs in your browser. A busy computer, a background tab or power saving can delay drawing.
+
+**What to do:** close other applications and tabs, keep the page in the foreground, plug in a laptop, and avoid very short **Stimulus** durations.

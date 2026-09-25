@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Save, share and export — Auric Artisan Docs</title>
+<meta name="description" content="Keep your customisation as named presets, move it between machines as JSON, and export a standalone VS Code colour theme file.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Theme</a>
+<h2>Auric Artisan Theme guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Theme</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="choose-a-theme.html">Choose a theme</a></li>
+<li><a href="compare-and-preview.html">Compare and preview</a></li>
+<li><a href="edit-colours.html">Edit individual colours</a></li>
+<li><a href="interface-language.html">Interface language (English and हिन्दी)</a></li>
+<li><a href="looks-and-dials.html">Looks and dials</a></li>
+<li><a href="save-share-and-export.html" aria-current="page">Save, share and export</a></li>
+<li><a href="theme-sidebar.html">The Theme sidebar</a></li>
+<li><a href="reference.html">Auric Artisan Theme reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Theme</a> &rsaquo; <a href="README.html">Auric Artisan Theme guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Theme</p>
+<h1>Save, share and export</h1>
+<p class="lede">Keep your customisation as named presets, move it between machines as JSON, and export a standalone VS Code colour theme file.</p>
+<p>Your customisation is small: the dials you changed plus any colour slot overrides. The extension gives you three ways to keep and move it.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Where it lives</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>Preset</td><td>Inside the extension, on this machine</td><td>Switching between several set-ups quickly.</td></tr>
+<tr><td>Customisation JSON</td><td>Clipboard or any text file</td><td>Moving a set-up to another machine or sharing it.</td></tr>
+<tr><td>Theme file</td><td>A <code>.json</code> colour theme file</td><td>Using the result without this extension, or packaging it as your own theme.</td></tr>
+</tbody></table></div>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> Edits apply live and there is no general undo history. Save a preset or export JSON before large experiments.</p>
+</blockquote>
+<h2 id="presets">Presets</h2>
+<h3 id="save-a-preset">Save a preset</h3>
+<ol>
+<li>Open Theme Studio and select <strong>Share</strong> (or press <code>5</code>).</li>
+<li>In the <strong>Presets</strong> card, type a name in <strong>Name this preset…</strong> (up to 64 characters).</li>
+<li>Select <strong>Save</strong> or press <code>Enter</code>.</li>
+</ol>
+<p>If you leave the name empty, the Studio shows &quot;Give the preset a name first.&quot; Saving again with the same name updates that preset. Names that differ only by Hindi characters or punctuation are kept as separate presets.</p>
+<p>You can also run <strong>Auric Theme: Save Current as Preset…</strong> from the Command Palette or the sidebar&#39;s <strong>…</strong> menu. It asks you to name the preset.</p>
+<h3 id="load-or-delete-a-preset">Load or delete a preset</h3>
+<ul>
+<li>In the <strong>Saved</strong> list, select <strong>Load</strong> beside a preset. Each entry shows the date and time it was saved.</li>
+<li>Select the bin icon beside a preset to delete it.</li>
+<li>From the Command Palette, run <strong>Auric Theme: Load Preset…</strong>. Each preset shows the theme it was saved on. If there are none, you see &quot;Auric Theme: no saved presets yet.&quot;</li>
+</ul>
+<p>Loading a preset replaces your current dials and the colour overrides of the active variant.</p>
+<h2 id="customisation-json">Customisation JSON</h2>
+<p>The customisation is a small JSON document. It contains a format version, the theme it came from, your changed dials and your colour overrides. Default values are left out.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;$schema&quot;: &quot;https://auricartisan.com/schema/theme-customization-1.json&quot;,
+  &quot;version&quot;: 1,
+  &quot;generator&quot;: &quot;auric-artisan-theme&quot;,
+  &quot;name&quot;: &quot;Auric Artisan — Obsidian Gold&quot;,
+  &quot;theme&quot;: &quot;obsidian-gold&quot;,
+  &quot;knobs&quot;: {
+    &quot;accent.preset&quot;: &quot;sapphire&quot;,
+    &quot;syntax.palette&quot;: &quot;cool&quot;
+  },
+  &quot;overrides&quot;: {
+    &quot;syntax.string&quot;: &quot;#A0D0B0&quot;
+  }
+}</code></pre>
+<h3 id="export-from-the-studio">Export from the Studio</h3>
+<ol>
+<li>On the <strong>Share</strong> tab, the <strong>Export</strong> card shows your current customisation as read-only JSON.</li>
+<li>Select <strong>Copy</strong> to copy it, or <strong>Refresh</strong> to regenerate it after more changes.</li>
+</ol>
+<h3 id="copy-from-the-command-palette">Copy from the Command Palette</h3>
+<p>Run <strong>Auric Theme: Copy Customisation to Clipboard</strong>. VS Code confirms with &quot;Auric Theme: customisation copied to the clipboard.&quot;</p>
+<h3 id="import">Import</h3>
+<ol>
+<li>On the <strong>Share</strong> tab, paste JSON into <strong>Paste a customisation JSON here…</strong> in the <strong>Import</strong> card.</li>
+<li>Select <strong>Import</strong>. Select <strong>Clear</strong> to empty the box.</li>
+</ol>
+<p>Or copy the JSON and run <strong>Auric Theme: Apply Customisation from Clipboard</strong>.</p>
+<p>Importing replaces your dials and the overrides of the active variant. Export first if you want a way back. The import is checked first; you may see:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Nothing to import — paste some JSON first.</td><td>The Import box is empty.</td></tr>
+<tr><td>Auric Theme: the clipboard is empty.</td><td>The clipboard command found no text.</td></tr>
+<tr><td>That is not valid JSON (…).</td><td>The text could not be read as JSON.</td></tr>
+<tr><td>This looks like it came from &quot;…&quot;, not Auric Artisan Theme.</td><td>The JSON was produced by another tool.</td></tr>
+<tr><td>This customisation needs a newer version of the extension (format v…).</td><td>Update the extension, then import again.</td></tr>
+<tr><td>That customisation is empty — no dials and no colours.</td><td>There is nothing to apply.</td></tr>
+</tbody></table></div>
+<h2 id="export-a-standalone-theme-file">Export a standalone theme file</h2>
+<ol>
+<li>Make sure an Auric theme is active. Otherwise you see &quot;Auric Theme: switch to an Auric Artisan theme first.&quot;</li>
+<li>Run <strong>Auric Theme: Export as Theme File…</strong> from the Command Palette, or choose it from the sidebar&#39;s <strong>…</strong> menu.</li>
+<li>A save dialog opens with a suggested name such as <code>obsidian-gold-custom-color-theme.json</code>. Choose a location and select <strong>Export theme</strong>.</li>
+<li>VS Code confirms, for example &quot;Auric Theme: exported obsidian-gold-custom-color-theme.json.&quot; If some pairs fail your contrast minimum, the message includes the number of contrast warnings.</li>
+</ol>
+<p>The file is a complete VS Code colour theme built from your current palette. You can use it in a theme extension of your own. It does not update when you change the Studio later; export again after changes.</p>
+<h2 id="result">Result</h2>
+<p>Your set-up is saved as a preset on this machine, available as portable JSON for other machines, and optionally exported as a standalone theme file.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="looks-and-dials.html"><span>Previous</span>Looks and dials</a><a href="theme-sidebar.html"><span>Next</span>The Theme sidebar</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#presets">Presets</a></li><li><a href="#customisation-json">Customisation JSON</a></li><li><a href="#export-a-standalone-theme-file">Export a standalone theme file</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

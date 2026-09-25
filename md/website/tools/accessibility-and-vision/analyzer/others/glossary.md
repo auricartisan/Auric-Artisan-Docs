@@ -1,0 +1,106 @@
+---
+title: Analyzer — Glossary
+description: Plain-language definitions of the terms used in the Analyzer and its documentation.
+product: Website › Tools › Accessibility and vision
+updated: 2026-09-25
+---
+
+# Analyzer glossary
+
+**Accessible name** — The name assistive technology announces for an element, worked out from its visible text, its label, `alt`, `aria-label` or `aria-labelledby`.
+
+**Accessibility tree** — The simplified version of a page that browsers give to screen readers and other assistive technology.
+
+**APCA** — The Accessible Perceptual Contrast Algorithm, a newer model of perceived contrast being developed for a future version of WCAG. Advisory only in the Analyzer.
+
+**API credits** — The balance that pays for calls to Auric Artisan's REST API. Separate from tool tokens; neither pays for the other.
+
+**ARIA** — Accessible Rich Internet Applications: attributes such as `role`, `aria-label` and `aria-expanded` that add meaning for assistive technology.
+
+**ARIA widget pattern** — A standard way to build a composite control, such as tabs or a menu, described in the W3C ARIA Authoring Practices.
+
+**Axe format** — The JSON shape used by a widely used open-source accessibility testing library, which many continuous-integration tools can read. The A11y+ **Results JSON** export uses it.
+
+**Before / After** — The section that shows the page as it is beside the page with the contrast fixes applied.
+
+**Bot challenge** — A page a site shows automated visitors instead of its content ("Just a moment", "Verify you are human"). The Analyzer does not score it.
+
+**Canonical URL** — The address a page tells search engines is its main version.
+
+**Check** — One of the 13 switchable parts of a run, such as Colour contrast or Performance. Page structure always runs.
+
+**Conformance** — Meeting every WCAG success criterion at a level. One failure at a level denies that level.
+
+**Core Web Vitals** — Google's measures of loading (LCP), visual stability (CLS) and responsiveness (INP). The Analyzer also reports FCP, TTFB and TBT.
+
+**CLS (Cumulative Layout Shift)** — How much the page's content jumps around while it loads. Good is 0.10 or less.
+
+**CORS (cross-origin resource sharing)** — The browser rule that stops one site reading another site's pages unless that site allows it.
+
+**CSP (Content Security Policy)** — A response header that tells browsers which sources a page may load and who may embed it.
+
+**CVD (colour-vision deficiency)** — Reduced ability to tell some colours apart, often called colour blindness.
+
+**Deuteranopia, protanopia, tritanopia** — Colour-vision deficiencies in which the green-, red- or blue-sensitive cones do not work.
+
+**Achromatopsia** — Seeing no colour at all, only light and dark.
+
+**DOM, raw and rendered** — The page's structure. Raw is the HTML the server sends; rendered is the structure after JavaScript has run.
+
+**EN 301 549** — The European accessibility standard for ICT, which references WCAG 2.1 Level A and AA.
+
+**FCP (First Contentful Paint)** — When the first text or image appears. Good is 1,800 ms or less.
+
+**frame-ancestors** — The CSP directive that says which sites may show a page in a frame.
+
+**Hydration** — When JavaScript takes over a page the server already rendered and makes it interactive.
+
+**Impact** — How badly a failure affects people: critical, serious, moderate or minor.
+
+**INP (Interaction to Next Paint)** — How quickly the page responds to a click, tap or key press. Good is 200 ms or less.
+
+**JSON-LD** — Structured data written as JSON inside a page, which search engines read.
+
+**Landmark** — A region of a page, such as the header, navigation, main content or footer, that assistive technology can jump to.
+
+**Large text** — Text of at least 24 CSS pixels, or at least 18.66 CSS pixels in bold. It needs less contrast than normal text.
+
+**LCP (Largest Contentful Paint)** — When the largest image or text block appears. Good is 2,500 ms or less.
+
+**Lc** — APCA's lightness contrast value, from 0 to a little over 100. Negative values mean light text on a dark background.
+
+**Level A, AA, AAA** — WCAG's three conformance levels. A is the minimum, AA is what most laws require, AAA is the highest.
+
+**Needs review** — A rule ran and could not decide; a person has to look.
+
+**Not tested** — No rule can judge that WCAG criterion automatically. Never counted as a pass.
+
+**Panel** — One section of the report shown in the workspace grid.
+
+**Relative luminance** — How much light a colour gives off, from 0 for black to 1 for white, used by the WCAG contrast ratio.
+
+**Rule** — One automated accessibility check, such as "Buttons must have discernible text".
+
+**Section 508** — The US federal accessibility standard, which references WCAG 2.0 Level A and AA.
+
+**Site scan** — A run that finds and audits several pages of one site, up to 24.
+
+**Success criterion** — One testable requirement in WCAG, such as 1.4.3 Contrast (Minimum).
+
+**TBT (Total Blocking Time)** — How long the main thread was blocked during loading. Good is 200 ms or less.
+
+**Token** — The unit that pays for work done on Auric Artisan's servers, such as rendering another site's page or crawling a site.
+
+**TTFB (Time to First Byte)** — How long the server took to start answering. Good is 800 ms or less.
+
+**Version** — One saved run of a site. Re-running the same address adds a version to the same project.
+
+**VPAT** — Voluntary Product Accessibility Template, the report format most procurement processes ask for.
+
+**WCAG** — The Web Content Accessibility Guidelines published by the W3C. The Analyzer maps its rules to versions 2.0, 2.1 and 2.2.
+
+**WCAG contrast ratio** — The ratio between two colours' relative luminance, from 1:1 to 21:1.
+
+**Workspace** — The grid of panels the Analyzer shows its report in. Also the name of the Advanced section that holds saved projects and history.
+
+**X-Frame-Options** — An older response header that stops a page being shown in a frame on other sites.

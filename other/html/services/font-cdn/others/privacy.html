@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Auric Artisan Docs</title>
+<meta name="description" content="What a page that uses the Font CDN requests from it, and what the loader script does and does not do.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font CDN</a>
+<h2>Other material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="licences.html">Licences</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html" aria-current="page">Privacy</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Font CDN</a> &rsaquo; <a href="README.html">Other material</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Privacy</h1>
+<p class="lede">What a page that uses the Font CDN requests from it, and what the loader script does and does not do.</p>
+<h2 id="what-your-visitors-browsers-request">What your visitors&#39; browsers request</h2>
+<p>A page that uses the CDN makes requests to <a href="https://fonts.auricartisan.com" rel="noopener">https://fonts.auricartisan.com</a> and nowhere else for its fonts:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>You use</th><th>Your visitors&#39; browsers request</th></tr></thead>
+<tbody>
+<tr><td>A link tag or <code>@import</code></td><td>The family stylesheet, then the font files the page actually uses</td></tr>
+<tr><td>The loader with <code>data-families</code> or <code>load()</code></td><td>The loader script, the family stylesheets, then the font files</td></tr>
+<tr><td><code>list()</code>, <code>search()</code> or <code>get()</code></td><td>Also the catalogue data files</td></tr>
+</tbody></table></div>
+<p>As with any file host, the CDN receives the ordinary information that comes with each request.</p>
+<h2 id="what-the-loader-does-not-do">What the loader does not do</h2>
+<p>The loader served at <a href="https://fonts.auricartisan.com/font-cdn.js" rel="noopener">https://fonts.auricartisan.com/font-cdn.js</a>:</p>
+<ul>
+<li>sets no cookies;</li>
+<li>writes nothing to the browser&#39;s storage;</li>
+<li>makes no requests other than the stylesheets and data files described above.</li>
+</ul>
+<h2 id="self-hosting">Self-hosting</h2>
+<p>If you prefer your visitors&#39; browsers never to contact the CDN, download a kit and serve the files from your own site. See <a href="../docs/self-host-a-family.html">Self-host a family</a>.</p>
+<h2 id="the-font-library-page">The Font Library page</h2>
+<p>Previews on the Font Library page are drawn in your browser from the CDN&#39;s files, and download kits are assembled in your browser. For the auricartisan.com website as a whole, see the site&#39;s privacy policy at <a href="https://auricartisan.com/legal/privacy/" rel="noopener">https://auricartisan.com/legal/privacy/</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="limits-and-accuracy.html"><span>Previous</span>Limits and accuracy</a><a href="related.html"><span>Next</span>Related</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-your-visitors-browsers-request">What your visitors' browsers request</a></li><li><a href="#what-the-loader-does-not-do">What the loader does not do</a></li><li><a href="#self-hosting">Self-hosting</a></li><li><a href="#the-font-library-page">The Font Library page</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

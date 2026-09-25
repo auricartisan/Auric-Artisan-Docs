@@ -1,0 +1,111 @@
+==============================================================================
+CHARTS, BENCHMARK AND COMPARE
+==============================================================================
+The measurements, charts and benchmark in the Analysis tab, and the character
+set comparison in the Compare tab.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+The Analysis and Compare tabs explain why the art looks the way it does. You
+do not need them to make art; they help when a result bands, looks flat or
+converts slowly.
+
+THE ANALYSIS TAB
+================
+
+This render
+-----------
+
+The left column repeats the facts of the last conversion:
+
+  - Grid, Characters and Render (time in milliseconds);
+  - Character set, and Ramp (the number of glyphs, for example 10 glyphs);
+  - Sampler and Dithering.
+
+Benchmark
+---------
+
+Run benchmark converts the current source ten times with the current settings
+and reports the average, for example Avg: 18.4 ms (10 runs), and the Min, Max
+and Spread. Use it to see which setting makes conversion slow. With the Image
+source and no picture loaded, it reads Load an image first.
+
+The charts
+----------
+
+Six charts. Each has a ⛶ button, and you can also double-click a chart, to
+open it full screen. Close the full-screen chart with ×, `Esc`, or by
+selecting the dark background.
+
+  Chart:            Glyph density calibration
+  What it shows:    The ink of each character in the current set, measured by
+                    drawing it at 32 × 32 pixels, sorted light to dark.
+  What to look for: A smooth rise. Big jumps or flat runs mean some tones have
+                    no matching character.
+
+  Chart:            Character frequency
+  What it shows:    How often each character appears in the latest output.
+  What to look for: A spike at one end means gamma or contrast is crushing the
+                    mid-tones.
+
+  Chart:            Top character distribution
+  What it shows:    The twelve most frequent characters as a ring, with the
+                    rest grouped as one slice.
+  What to look for: Whether a few characters dominate the art.
+
+  Chart:            Sobel edge field
+  What it shows:    The strength of edges in the source picture; bright means
+                    a strong edge.
+  What to look for: Where edge-aware glyph selection can act. Where it is
+                    dark, Edge weight has nothing to work on.
+
+  Chart:            Sampling comparison
+  What it shows:    The same source through area averaging, bilinear and point
+                    sampling.
+  What to look for: Point sampling breaking fine detail into noise.
+
+  Chart:            Render timeline
+  What it shows:    Conversion time for the last hundred conversions.
+  What to look for: Where live updates stop keeping up with the sliders.
+
+The charts redraw after every conversion and when you open the tab.
+
+THE COMPARE TAB
+===============
+
+Measure all sets draws every character of all seven sets at 32 × 32 pixels,
+measures how much ink each one has, and fills a table:
+
+  Column:  Charset
+  Meaning: The set: standard, detailed, blocks, minimal, symbols, lines or
+           braille.
+
+  Column:  Glyphs
+  Meaning: The number of characters, including the space.
+
+  Column:  Min density
+  Meaning: The ink of the lightest character, from 0 to 1.
+
+  Column:  Max density
+  Meaning: The ink of the darkest character.
+
+  Column:  Range
+  Meaning: Max minus min. A wider range carries more contrast.
+
+  Column:  Monotonic
+  Meaning: ✓ if every character has at least as much ink as the one before it,
+           in the set's own order; ✗ if not.
+
+A set that is not monotonic has at least one character darker than the one
+after it, and a smooth gradient drawn with it shows bands. More glyphs carry
+more detail; a wider range carries more contrast. They are not the same thing.
+
+The measurement uses the fonts on your device, so results can differ slightly
+between computers. Your custom ramp is not in the table; when it is in use,
+its densities show in the Glyph density calibration chart.
+
+RELATED
+=======
+
+  - Fine tuning [fine-tuning.txt]
+  - Limits and accuracy [../others/limits-and-accuracy.txt]
+  - Glossary [../others/glossary.txt]

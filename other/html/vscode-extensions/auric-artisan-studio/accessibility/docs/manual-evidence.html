@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual evidence — Auric Artisan Docs</title>
+<meta name="description" content="The eight manual test procedures in Auric Accessibility's knowledge database, what each asks you to do, and how to record evidence for what automation cannot decide.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html" aria-current="page">Manual evidence</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="reference.html">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>Manual evidence</h1>
+<p class="lede">The eight manual test procedures in Auric Accessibility's knowledge database, what each asks you to do, and how to record evidence for what automation cannot decide.</p>
+<p>Static checks can find a missing <code>alt</code> attribute, but not whether the alt text is accurate; they can find a click handler without a key handler, but not whether a whole task works from the keyboard. Auric Accessibility&#39;s knowledge database includes eight <strong>manual checks</strong>: step-by-step procedures for the parts of WCAG a person has to test. Each one says what to do, what counts as a pass or a fail, and what evidence to record.</p>
+<h2 id="open-a-manual-check">Open a manual check</h2>
+<ol>
+<li>Run <strong>Auric Artisan: Open Rulebook &amp; Knowledge Database</strong> (or <strong>Rulebook</strong> on the Overview or the Studio rail).</li>
+<li>Manual checks are listed near the top, after the rulebooks, marked <strong>Manual check</strong>. Type part of a title, or a criterion such as <code>2.4.3</code>, to find one.</li>
+<li>Select it. It opens as a Markdown document with its <strong>Procedure</strong>, <strong>Pass</strong>, <strong>Fail</strong>, <strong>Evidence to record</strong> and <strong>Official sources</strong>.</li>
+</ol>
+<p>The <strong>Accessibility engineering rulebook</strong> brings the rules and procedures together. <strong>Build Workspace Knowledge Database</strong> writes all of them to <code>.auric-artisan/rulebook.md</code> and <code>knowledge.json</code> for your team. See <a href="../../docs/rulebook-and-knowledge.html">Rulebook and knowledge database</a>.</p>
+<h2 id="the-eight-procedures">The eight procedures</h2>
+<h3 id="operate-every-workflow-with-a-keyboard">Operate every workflow with a keyboard</h3>
+<p>WCAG 2.1.1 and 2.1.2. Static analysis can find suspicious handlers, but only interaction testing proves complete keyboard operation.</p>
+<ol>
+<li>Start at the browser chrome and use only <code>Tab</code>, <code>Shift</code> + <code>Tab</code>, arrow keys, <code>Enter</code>, <code>Space</code>, <code>Escape</code> and documented shortcuts.</li>
+<li>Complete each primary task, and open and close every transient surface.</li>
+<li>Confirm focus never becomes trapped, except inside a modal that provides an escape action.</li>
+<li>Confirm pointer-only operations have an equivalent single-pointer or keyboard path.</li>
+</ol>
+<p><strong>Pass:</strong> every task is operable, focus stays discoverable and you can always move away or dismiss. <strong>Evidence:</strong> workflow name, keystroke sequence, observed focus order, failure recording.</p>
+<h3 id="verify-focus-order-preserves-meaning-and-operation">Verify focus order preserves meaning and operation</h3>
+<p>WCAG 2.4.3.</p>
+<ol>
+<li>Traverse the page forward and backward at each supported responsive breakpoint.</li>
+<li>Compare focus movement with reading order, visual grouping and task dependencies.</li>
+<li>Open dynamic content and confirm focus moves to and returns from it predictably.</li>
+<li>Record any jump that changes meaning or forces the user to rediscover context.</li>
+</ol>
+<p><strong>Evidence:</strong> viewport, ordered focus trace, DOM and visual comparison, dynamic-state notes.</p>
+<h3 id="confirm-text-alternatives-communicate-the-same-purpose">Confirm text alternatives communicate the same purpose</h3>
+<p>WCAG 1.1.1. Presence checks cannot decide whether alternative text is accurate, concise, contextual or intentionally empty.</p>
+<ol>
+<li>Identify the purpose the non-text content serves in its context.</li>
+<li>Inspect the computed accessible name and any adjacent equivalent text.</li>
+<li>Confirm informative content is equivalent and decorative content is ignored.</li>
+<li>Repeat for each distinct use; the same asset can need different alternatives in different places.</li>
+</ol>
+<p><strong>Evidence:</strong> element locator, accessible name, visible context, reviewer rationale.</p>
+<h3 id="review-media-alternatives-for-accuracy-and-synchronization">Review media alternatives for accuracy and synchronization</h3>
+<p>WCAG 1.2.2, 1.2.3 and 1.2.5. A <code>&lt;track&gt;</code> element proves only presence.</p>
+<ol>
+<li>Play the complete media with captions on, and separately with the audio muted.</li>
+<li>Confirm speech, speakers, meaningful sounds and timing are accurate.</li>
+<li>Confirm important visual information is available in narration, audio description or an equivalent.</li>
+<li>Check the controls and alternatives remain keyboard and screen-reader operable.</li>
+</ol>
+<p><strong>Evidence:</strong> media identifier, timecode, caption or transcript excerpt, reviewer notes.</p>
+<h3 id="confirm-name-role-value-and-state-in-an-accessibility-tree">Confirm name, role, value, and state in an accessibility tree</h3>
+<p>WCAG 4.1.2.</p>
+<ol>
+<li>Inspect the element in the browser&#39;s accessibility tree.</li>
+<li>Confirm its computed name, role, value, states and relationships match the visible control.</li>
+<li>Operate it with at least one supported screen reader and browser combination.</li>
+<li>Confirm state changes are exposed when they happen, without duplicate or stale announcements.</li>
+</ol>
+<p><strong>Evidence:</strong> browser and assistive technology, accessibility-tree snapshot, announcement transcript.</p>
+<h3 id="test-zoom-reflow-and-text-spacing-without-loss">Test zoom, reflow, and text spacing without loss</h3>
+<p>WCAG 1.4.4, 1.4.10 and 1.4.12.</p>
+<ol>
+<li>Test at 200% browser zoom and at a 320 CSS-pixel viewport where applicable.</li>
+<li>Apply the WCAG text-spacing overrides for line, paragraph, letter and word spacing.</li>
+<li>Exercise controls and reveal hidden, expanded, validation and error states.</li>
+<li>Confirm content does not clip, overlap, disappear or require two-dimensional scrolling, except for essential layouts.</li>
+</ol>
+<p><strong>Evidence:</strong> viewport and zoom, spacing preset, screenshots, exception rationale.</p>
+<h3 id="verify-important-status-changes-are-announced-without-moving-focus">Verify important status changes are announced without moving focus</h3>
+<p>WCAG 4.1.3. Live-region markup alone does not prove that a meaningful, timely announcement reaches users.</p>
+<ol>
+<li>Trigger each asynchronous success, progress, warning and error state.</li>
+<li>Listen with a supported screen reader while focus stays on the control that started it.</li>
+<li>Confirm the announcement is timely, concise, unique and includes what is needed for the next action.</li>
+<li>Confirm rapid updates do not flood or overwrite critical messages.</li>
+</ol>
+<p><strong>Evidence:</strong> trigger, announcement transcript, timing, focus location.</p>
+<h3 id="complete-error-recovery-and-authentication-flows">Complete error recovery and authentication flows</h3>
+<p>WCAG 3.3.1, 3.3.3, 3.3.7 and 3.3.8.</p>
+<ol>
+<li>Trigger each validation and service-error state with realistic invalid input.</li>
+<li>Confirm errors identify the field and explain how to recover, in text.</li>
+<li>Confirm entered data remains available and repeated entry is not unnecessarily required.</li>
+<li>Verify authentication offers a path that does not depend solely on memory, transcription or puzzle solving.</li>
+</ol>
+<p><strong>Evidence:</strong> scenario, input, error text, recovery path, authentication alternative.</p>
+<h2 id="record-your-evidence">Record your evidence</h2>
+<p>The procedures list what to record so that another reviewer can repeat the test. Keep it wherever your team tracks accessibility work. To make your own procedures part of the database, add them as <code>manual-check</code> entries in <code>.auric-artisan/knowledge-overrides.json</code>; accessibility manual checks you add are marked as ACT-aligned manual assessments automatically. See <a href="../../docs/rulebook-and-knowledge.html#add-team-guidance-with-knowledge-overridesjson">Add team guidance</a>.</p>
+<p>The manual checks follow the structure of the W3C&#39;s ACT rules format, but make no claim of ACT conformance.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="inspect.html"><span>Previous</span>Inspect</a><a href="project-issues-view.html"><span>Next</span>The Project Issues view</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-a-manual-check">Open a manual check</a></li><li><a href="#the-eight-procedures">The eight procedures</a></li><li><a href="#record-your-evidence">Record your evidence</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

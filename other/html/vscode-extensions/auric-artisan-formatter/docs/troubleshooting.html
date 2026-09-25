@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common Auric Artisan Formatter problems.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common Auric Artisan Formatter problems.</p>
+<p>For anything not listed, run <strong>Auric Formatter: Report a Formatting Problem</strong>, add what happened and a small sample file, and see <a href="../../install-and-setup/docs/get-support.html">Get support</a>. <strong>Show the Formatter Log</strong> has the details of each run; set <code>auricFormatter.logLevel</code> to <code>debug</code> for more.</p>
+<h2 id="nothing-happens-when-i-save">Nothing happens when I save</h2>
+<ul>
+<li><strong>Why:</strong> Auric is not the default formatter, format on save is off, or the language is excluded.</li>
+<li><strong>Fix:</strong> run <strong>Toggle Format on Save</strong>, or check <code>editor.defaultFormatter</code> and <code>editor.formatOnSave</code> (including language-specific blocks such as <code>&quot;[typescript]&quot;</code>). Check <code>auricFormatter.enabledLanguages</code> and <code>auricFormatter.disabledLanguages</code>.</li>
+</ul>
+<h2 id="vs-code-asks-which-formatter-to-use-on-every-save">VS Code asks which formatter to use on every save</h2>
+<ul>
+<li><strong>Why:</strong> several formatters are installed and no default is set.</li>
+<li><strong>Fix:</strong> run <strong>Toggle Format on Save</strong>, which sets <code>editor.defaultFormatter</code>, or set it yourself per language.</li>
+</ul>
+<h2 id="the-status-bar-shows-a-shield-your-original-text-was-kept">The status bar shows a shield: &quot;your original text was kept&quot;</h2>
+<ul>
+<li><strong>Why:</strong> a safety check failed, so the formatter refused to change the file.</li>
+<li><strong>Fix:</strong> open the log to see which check failed and where. Often the file has a construct the parser does not handle yet; the file is safe as it is. Report it with <strong>Report a Formatting Problem</strong> if you think the change should have been allowed.</li>
+</ul>
+<h2 id="the-file-was-skipped">The file was skipped</h2>
+<ul>
+<li><strong>Why:</strong> it is larger than <code>auricFormatter.maxFileSizeKb</code>, looks minified, is in <code>.auricformatignore</code> or <code>.prettierignore</code>, has an ignore directive, or <code>requirePragma</code> is on and it has no <code>@format</code>.</li>
+<li><strong>Fix:</strong> hover the status bar item for the reason. Raise the size limit, turn on <code>auricFormatter.formatMinified</code>, or remove the ignore entry, as appropriate.</li>
+</ul>
+<h2 id="jsx-or-tsx-is-only-indented-not-reformatted">JSX or TSX is only indented, not reformatted</h2>
+<ul>
+<li><strong>Why:</strong> in version 0.1.0 a file containing JSX elements falls back to the universal tier.</li>
+<li><strong>Fix:</strong> none yet; the output is still safe. Plain TypeScript in <code>.tsx</code> files is formatted natively.</li>
+</ul>
+<h2 id="a-language-is-only-lightly-formatted">A language is only lightly formatted</h2>
+<ul>
+<li><strong>Why:</strong> it uses the universal tier, which only changes whitespace, and for some languages only spacing or only trailing whitespace. See <a href="supported-languages.html">Supported languages</a>.</li>
+<li><strong>Fix:</strong> none needed; this is deliberate so the meaning cannot change.</li>
+</ul>
+<h2 id="my-configuration-file-is-ignored">My configuration file is ignored</h2>
+<ul>
+<li><strong>Why:</strong> another file takes precedence, the workspace is untrusted and the file is JavaScript, the JavaScript file is an ES module, or the cache is stale.</li>
+<li><strong>Fix:</strong> run <strong>Explain Formatting Decisions</strong> to see which file and layer set each option. Trust the workspace, rename an ES module config to <code>.cjs</code> or use <code>.auricformatrc.json</code>, and run <strong>Clear the Configuration Cache</strong>.</li>
+</ul>
+<h2 id="output-matches-prettier-not-the-auric-style">Output matches Prettier, not the Auric style</h2>
+<ul>
+<li><strong>Why:</strong> the project has only a Prettier configuration, so the <code>prettier</code> preset was adopted automatically.</li>
+<li><strong>Fix:</strong> add an <code>.auricformatrc</code> with the preset you want, or run <strong>Import Settings From Prettier</strong> and remove <code>&quot;preset&quot;: &quot;prettier&quot;</code>.</li>
+</ul>
+<h2 id="select-some-code-first">&quot;Select some code first.&quot;</h2>
+<ul>
+<li><strong>Fix:</strong> select text before <strong>Format Selection</strong>.</li>
+</ul>
+<h2 id="preview-problems">Preview problems</h2>
+<ul>
+<li><strong>&quot;The source changed. Refresh the preview before applying.&quot;</strong> — you edited the source after opening the preview. Refresh, review, then apply.</li>
+<li><strong>&quot;Close or discard an existing formatting preview before opening another.&quot;</strong> — 24 previews are open. Discard some.</li>
+<li><strong>&quot;focus the source editor to create a preview.&quot;</strong> — the preview itself is focused. Click in the source file first.</li>
+<li><strong>No preview opened, with a warning</strong> — formatting failed or the safety gate refused the change; the warning says which.</li>
+</ul>
+<h2 id="formatter-studio-problems">Formatter Studio problems</h2>
+<ul>
+<li><strong>&quot;Preview is limited to 200,000 characters.&quot;</strong> — use editor formatting or the native preview for larger files.</li>
+<li><strong>&quot;Unsupported rule: <em>name</em>&quot;</strong> — the custom rules JSON contains a name that is not a formatting option (or a range option). Check the spelling in the <a href="options-reference.html">options reference</a>.</li>
+<li><strong>&quot;The file changed since this preview. Reload from the editor and review again.&quot;</strong> — select <strong>Reload editor</strong> and review again before <strong>Yes, apply</strong>.</li>
+<li><strong>A blank or scratch preview cannot be applied</strong> — text typed into Studio, or a truncated preview, can only be copied.</li>
+</ul>
+<h2 id="workspace-scan-problems">Workspace scan problems</h2>
+<ul>
+<li><strong>The status bar shows no count</strong> — the scan is off (<code>auricFormatter.scanOnStartup</code>) or no folder is open. Run <strong>Scan the Workspace Without Writing</strong>.</li>
+<li><strong>Files are missing from the scan</strong> — they match <code>auricFormatter.scanExclude</code> or the built-in exclusions, exceed <code>maxFileSizeKb</code>, or the scan stopped at <code>scanMaxFiles</code>.</li>
+<li><strong>Format Every File in the Workspace formatted more than one folder</strong> — in this version it formats every pending file in the workspace. Use the Workspace tab&#39;s tick boxes and <strong>Format selected</strong> to take one folder at a time.</li>
+</ul>
+<h2 id="no-prettier-configuration-found-in-this-workspace">&quot;No Prettier configuration found in this workspace.&quot;</h2>
+<ul>
+<li><strong>Why:</strong> <strong>Import Settings From Prettier</strong> found no <code>.prettierrc</code>, <code>.prettierrc.json</code>, <code>.prettierrc.yaml</code>, <code>.prettierrc.yml</code>, <code>.prettierrc.js</code> or <code>prettier.config.js</code> outside <code>node_modules</code>.</li>
+<li><strong>Fix:</strong> none needed if you do not use Prettier; create a configuration with <strong>Generate a Configuration File</strong> instead.</li>
+</ul>
+<h2 id="the-command-line-is-not-found">The command line is not found</h2>
+<ul>
+<li><strong>Why:</strong> <code>auric-format</code> is a script inside the installed extension, not a command on your <code>PATH</code>.</li>
+<li><strong>Fix:</strong> run it with Node from the extension folder, or create an alias. See <a href="command-line.html">Command line and CI</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Reference: commands, keys and settings</a><a href="faq.html"><span>Next</span>FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#nothing-happens-when-i-save">Nothing happens when I save</a></li><li><a href="#vs-code-asks-which-formatter-to-use-on-every-save">VS Code asks which formatter to use on every save</a></li><li><a href="#the-status-bar-shows-a-shield-your-original-text-was-kept">The status bar shows a shield: &quot;your original text was kept&quot;</a></li><li><a href="#the-file-was-skipped">The file was skipped</a></li><li><a href="#jsx-or-tsx-is-only-indented-not-reformatted">JSX or TSX is only indented, not reformatted</a></li><li><a href="#a-language-is-only-lightly-formatted">A language is only lightly formatted</a></li><li><a href="#my-configuration-file-is-ignored">My configuration file is ignored</a></li><li><a href="#output-matches-prettier-not-the-auric-style">Output matches Prettier, not the Auric style</a></li><li><a href="#select-some-code-first">&quot;Select some code first.&quot;</a></li><li><a href="#preview-problems">Preview problems</a></li><li><a href="#formatter-studio-problems">Formatter Studio problems</a></li><li><a href="#workspace-scan-problems">Workspace scan problems</a></li><li><a href="#no-prettier-configuration-found-in-this-workspace">&quot;No Prettier configuration found in this workspace.&quot;</a></li><li><a href="#the-command-line-is-not-found">The command line is not found</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

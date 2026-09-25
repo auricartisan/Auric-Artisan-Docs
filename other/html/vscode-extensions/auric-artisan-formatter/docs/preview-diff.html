@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview formatting as a diff — Auric Artisan Docs</title>
+<meta name="description" content="See the formatted result beside your source in a read-only editor, compare the changes, and apply or discard them.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html" aria-current="page">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Preview formatting as a diff</h1>
+<p class="lede">See the formatted result beside your source in a read-only editor, compare the changes, and apply or discard them.</p>
+<p>The native preview shows what formatting would do before your file changes. It opens a read-only copy of the formatted result in a normal VS Code editor beside your source; no Studio panel opens.</p>
+<h2 id="open-a-preview">Open a preview</h2>
+<ol>
+<li>Focus the source file in the editor.</li>
+<li>Use any of these:<ul>
+<li><strong>Auric Formatter: Preview Formatting as a Diff</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>F</code>; <code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>F</code> on macOS);</li>
+<li>the <strong>Preview Formatting as a Diff</strong> button in the editor title bar;</li>
+<li>right-click with nothing selected and choose <strong>Preview Formatting as a Diff</strong>;</li>
+<li><strong>Preview beside editor</strong> in Formatter Studio.</li>
+</ul>
+</li>
+<li>A read-only tab named <strong>Preview — <em>file name</em></strong> opens beside the source, with the same language highlighting.</li>
+</ol>
+<p>With text selected, only the selection is formatted in the preview (it may grow to a complete syntax unit).</p>
+<p>If formatting fails or the safety gate refuses the change, no preview opens and a warning says why, for example <strong>Auric Formatter: the safety gate refused this change</strong>.</p>
+<h2 id="act-on-the-preview">Act on the preview</h2>
+<p>The preview shows CodeLens links at the top and buttons in the editor title bar:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Apply formatting</strong></td><td>Replace the source with the preview, after confirming <strong>Apply formatting to <em>file</em>?</strong> (<strong>The source stays unsaved. You can undo this edit.</strong>)</td></tr>
+<tr><td><strong>Compare changes</strong></td><td>Open VS Code&#39;s diff editor, <strong>Formatting changes — <em>file</em></strong>, source on the left and result on the right</td></tr>
+<tr><td><strong>Discard preview</strong></td><td>Close the preview; the source is unchanged</td></tr>
+<tr><td><strong>Full file · refresh preview</strong> (or <strong>Selection preview · refresh from source</strong>)</td><td>Format the source again and update the preview</td></tr>
+</tbody></table></div>
+<p>When the result is the same as the source, the first CodeLens reads <strong>No formatting changes</strong> and opens the comparison instead.</p>
+<p>The same actions are commands: <strong>Apply Formatting Preview</strong>, <strong>Compare Formatting Changes</strong>, <strong>Discard Formatting Preview</strong> and <strong>Refresh Formatting Preview</strong>. The title-bar buttons appear only while a preview is focused.</p>
+<h2 id="stale-previews">Stale previews</h2>
+<p>The preview is tied to the exact version of your source. If you edit the source after opening it:</p>
+<ul>
+<li>the CodeLens changes to <strong>Source changed — refresh preview</strong>;</li>
+<li><strong>Apply</strong> and <strong>Compare</strong> refuse with <strong>The source changed. Refresh the preview before applying.</strong></li>
+</ul>
+<p>Refresh, review again, then apply. A preview can never overwrite a different document or a newer version of the same one.</p>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>Up to 24 previews can be open at once; beyond that you are asked to close or discard one first.</li>
+<li>Focus the source editor, not a preview, before creating a preview: <strong>focus the source editor to create a preview.</strong></li>
+<li>If you close the source file, <strong>Refresh</strong> asks you to reopen it.</li>
+</ul>
+<p>After <strong>Apply formatting</strong>, the source shows the formatted text, unsaved, and the preview closes.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="presets.html"><span>Previous</span>Presets</a><a href="safety-gate-and-tiers.html"><span>Next</span>The safety gate and formatting tiers</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-a-preview">Open a preview</a></li><li><a href="#act-on-the-preview">Act on the preview</a></li><li><a href="#stale-previews">Stale previews</a></li><li><a href="#limits">Limits</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

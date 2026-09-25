@@ -1,0 +1,52 @@
+---
+title: Chromatic Adaptation — Explore the adaptation time course
+description: Use the Dynamics tab to see how quickly the eye adapts to a new light, with the two-phase model and its single-exponential predecessor side by side.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Explore the adaptation time course
+
+Adaptation is not instant. Fairchild and Reniff (1995) measured it for colour-appearance judgements and found two components: a **fast phase**, completing about half the adaptation within roughly a second, and a **slow phase** with a half-life near 30 seconds. The **Dynamics** tab plots that model over two minutes.
+
+## The model
+
+The fraction of adaptation completed t seconds after the light changes is:
+
+```text
+fraction(t) = w1 × (1 − e^(−t / τ1)) + (1 − w1) × (1 − e^(−t / τ2))
+τ2 = t½ ÷ ln 2
+```
+
+- **τ1** is the fast time constant (default 1.0 s).
+- **w1** is the share of adaptation in the fast phase (default 0.50).
+- **t½** is the half-life of the slow phase (default 30 s, which is τ2 ≈ 43 s).
+
+The defaults come from the paper. For comparison the chart also draws the single exponential the page used before (time constant 0.6 s after a 0.4 s delay), which reaches 90% within two seconds.
+
+## Steps
+
+1. Choose your illuminants and transform on the **Lab** tab. The Dynamics heading shows the pair, for example "D65 → A".
+2. Open the **Dynamics** tab.
+3. Under **Model**, keep **Two components** selected. (**Single exponential** hides the fast and slow controls and reads the playhead value from the older curve; the half-adapted and 90% figures still describe the two-component model.)
+4. Adjust **τ1** (0.2 to 4 s), **w1** (0 to 1) and **t½** (5 to 120 s).
+5. Move the **Playhead** (0 to 120 s) to a moment of interest.
+6. Read the statistics under the chart:
+   - **D at t = …** — the fraction adapted at the playhead;
+   - **Half-adapted at** — when the fraction reaches 0.5;
+   - **90% at** — when it reaches 0.9;
+   - **Legacy 90% at** — the same point for the old single exponential, for contrast.
+
+## Reading the chart
+
+- The solid gold curve is the two-component model with your settings. The dashed red curve is the single exponential, always drawn so the difference stays visible.
+- The vertical line and dot mark the playhead.
+- With the defaults, the curve rises steeply for the first few seconds and then creeps up over the next minute or two.
+
+## How this relates to the Lab tab
+
+The Dynamics controls are for exploring the time course. The Lab tab's image timeline (0 to 5 s) always uses the published defaults (τ1 = 1 s, w1 = 0.5, t½ = 30 s), starts from an initial adaptation of 0.1, and scales the result towards the **Degree of adaptation D** you set.
+
+## Result
+
+You can see how long adaptation to a new light takes under the measured model, and how different that is from a one-second exponential.

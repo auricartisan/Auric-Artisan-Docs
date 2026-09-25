@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with the Design System Generator — Auric Artisan Docs</title>
+<meta name="description" content="Open the Design System Generator, learn the layout, and generate, check and export your first design system.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Design System Generator</a>
+<h2>Design System Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with the Design System Generator</a></li>
+<li><a href="compare.html">Compare styles and industries</a></li>
+<li><a href="component-playground.html">Use the component playground</a></li>
+<li><a href="contrast-audit.html">Check contrast with the audit</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="read-the-system.html">Read the system</a></li>
+<li><a href="set-the-brief.html">Set the brief</a></li>
+<li><a href="share-save-and-connect.html">Share, save and connect</a></li>
+<li><a href="reference.html">Design System Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Design System Generator</a></li>
+<li><a href="faq.html">Design System Generator FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Design System Generator</a> &rsaquo; <a href="README.html">Design System Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Getting started with the Design System Generator</h1>
+<p class="lede">Open the Design System Generator, learn the layout, and generate, check and export your first design system.</p>
+<p>This guide takes about ten minutes. By the end you will have a design system that meets a contrast target, and its tokens in a file.</p>
+<h2 id="open-the-tool">Open the tool</h2>
+<ol>
+<li>Go to <a href="https://auricartisan.com/tool/design-engine/" rel="noopener">https://auricartisan.com/tool/design-engine/</a> in a current desktop browser. The tool works on smaller screens, but the three-column layout is easiest on a wide one.</li>
+<li>A system appears straight away. Which one depends on how you arrived:<ul>
+<li>from a shared link, the link&#39;s settings are applied first;</li>
+<li>otherwise, on a return visit, the settings you used last in this browser;</li>
+<li>otherwise the defaults: <strong>Auto</strong> industry, <strong>Modern</strong> style, <strong>AAA</strong> contrast.</li>
+</ul>
+</li>
+</ol>
+<h2 id="a-tour-of-the-screen">A tour of the screen</h2>
+<h3 id="the-masthead">The masthead</h3>
+<p>The top of the page reads <em>Three choices, one whole system.</em> with a short description, the number of tokens, <strong>Targets 12</strong> and <em>OKLCH · WCAG 2.1 · APCA</em>. On the right are five buttons and a link:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Surprise</strong></td><td>Picks a random industry, style and contrast target, resets the seed to auto, and sets harmony to auto or a random harmony.</td></tr>
+<tr><td><strong>Share</strong></td><td>Copies a link that rebuilds this system.</td></tr>
+<tr><td><strong>Save</strong></td><td>Saves the system to your Library.</td></tr>
+<tr><td><strong>Help</strong></td><td>Opens <strong>How this works</strong>: what the defaults assume and how the score is worked out.</td></tr>
+<tr><td><strong>Workspace</strong></td><td>Opens your saved systems and the options for sending the palette to other tools.</td></tr>
+<tr><td><strong>Read the API reference →</strong></td><td>Opens the public API documentation.</td></tr>
+</tbody></table></div>
+<p>Under the masthead a short note shows what the same job costs through the REST API (<strong>Automate this — 4 API credits per call to POST /v1/tokens/generate</strong>). You can dismiss it with its <strong>×</strong>.</p>
+<h3 id="the-tab-row">The tab row</h3>
+<p>Seven tabs: <strong>Overview</strong>, <strong>Colour</strong>, <strong>Type</strong>, <strong>Icons</strong>, <strong>Scales</strong>, <strong>Components</strong> and <strong>Tokens</strong>. The <strong>Tokens</strong> tab shows the token count. At the right end, <strong>Expand</strong> hides the two side rails so the tab you are reading gets the full width; select it again (<strong>Collapse</strong>) to bring them back. The page remembers this choice.</p>
+<h3 id="the-three-columns">The three columns</h3>
+<ul>
+<li><strong>The brief</strong> (left): every input. Changing any of them regenerates the system.</li>
+<li><strong>The stage</strong> (middle): the tab you selected.</li>
+<li><strong>The audit</strong> (right): the score, where the points went, and the twelve contrast pairings. It is always visible.</li>
+</ul>
+<p>Below the columns a note reads <em>Generated, not designed.</em></p>
+<h2 id="your-first-system">Your first system</h2>
+<ol>
+<li>In <strong>The brief</strong>, open <strong>Industry</strong> and choose <strong>Education</strong>.</li>
+<li>Open <strong>Style</strong> and choose <strong>Playful</strong>.</li>
+<li>Under <strong>Contrast target</strong>, select <strong>AA</strong>.</li>
+<li>Look at <strong>The audit</strong>. The large number is the score out of 100. Under it, a line says how it changed (<em>+3 on that change</em>) and a pill says whether all twelve pairings pass. A line below says how many tokens moved.</li>
+<li>Open the <strong>Colour</strong> tab. Read the ramps, the semantic colours and the <strong>Surfaces &amp; roles</strong> card. Select any colour to copy it.</li>
+<li>Open <strong>Components</strong>. Try the buttons, tabs and switches, and switch <strong>Theme</strong> to <strong>Dark</strong>.</li>
+<li>Open <strong>Tokens</strong>. Scroll to <strong>Export tokens</strong>, select the <strong>CSS</strong> pill, then select <strong>Download</strong>. The file <code>tokens.css</code> downloads.</li>
+</ol>
+<p>Result: a complete token file for an education product with a playful style, whose text colours meet WCAG AA.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li>Anchor the system to your own brand colour: <a href="set-the-brief.html">Set the brief</a>.</li>
+<li>Understand the score and the pairings: <a href="contrast-audit.html">Check contrast with the audit</a>.</li>
+<li>Choose the right export for your stack: <a href="export-tokens.html">Export tokens</a>.</li>
+<li>Keep the system: <a href="share-save-and-connect.html">Share, save and connect</a>.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../README.html">Design System Generator overview</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Design System Generator documentation</a><a href="compare.html"><span>Next</span>Compare styles and industries</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-tool">Open the tool</a></li><li><a href="#a-tour-of-the-screen">A tour of the screen</a></li><li><a href="#your-first-system">Your first system</a></li><li><a href="#next-steps">Next steps</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit profiles and contrast standards — Auric Artisan Docs</title>
+<meta name="description" content="Choose which WCAG version the audit targets, and choose between WCAG 2.x contrast ratios and APCA.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html" aria-current="page">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html">Manual evidence</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="reference.html">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>Audit profiles and contrast standards</h1>
+<p class="lede">Choose which WCAG version the audit targets, and choose between WCAG 2.x contrast ratios and APCA.</p>
+<h2 id="audit-profiles">Audit profiles</h2>
+<p>WCAG has grown in versions: 2.1 and 2.2 each added success criteria to 2.0. An <strong>audit profile</strong> tells Auric Accessibility which version you are targeting, so it only reports criteria that apply.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Profile</th><th>Studio label</th><th>Criteria checked</th></tr></thead>
+<tbody>
+<tr><td><code>2.0</code></td><td>WCAG 2.0</td><td>Only criteria introduced in WCAG 2.0</td></tr>
+<tr><td><code>2.1</code></td><td>WCAG 2.1</td><td>2.0 plus 2.1 criteria, such as reflow, text spacing, label in name and character key shortcuts</td></tr>
+<tr><td><code>2.2</code> (default)</td><td>WCAG 2.2 (default)</td><td>Everything from 2.0 to 2.2, such as target size and accessible authentication</td></tr>
+<tr><td><code>3.0-draft</code></td><td>WCAG 3.0 draft (+APCA)</td><td>All 2.x rules, plus APCA contrast on top of the WCAG 2.x ratio checks</td></tr>
+</tbody></table></div>
+<p>Criteria that depend on the profile:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Introduced in</th><th>Criteria with rules</th></tr></thead>
+<tbody>
+<tr><td>WCAG 2.1</td><td>1.3.5 Identify Input Purpose, 1.4.10 Reflow, 1.4.12 Text Spacing, 2.1.4 Character Key Shortcuts, 2.3.3 Animation from Interactions, 2.5.3 Label in Name</td></tr>
+<tr><td>WCAG 2.2</td><td>2.5.8 Target Size (Minimum), 3.3.8 Accessible Authentication (Minimum)</td></tr>
+</tbody></table></div>
+<p>All other rules belong to WCAG 2.0 criteria and run in every profile.</p>
+<h3 id="change-the-profile">Change the profile</h3>
+<ul>
+<li>Studio › Settings › <strong>Accessibility audit</strong> › <strong>Audit profile</strong>, then <strong>Save settings</strong>; or</li>
+<li>set <code>auricA11y.a11y.profile</code> in your settings.</li>
+</ul>
+<p>Editor diagnostics update immediately. Rescan the project afterwards: a cache made under another profile is treated as stale, so the next <strong>Scan project</strong> reads the workspace again. The command-line scanner has its own <code>--profile</code> option.</p>
+<h2 id="contrast-standards">Contrast standards</h2>
+<h3 id="wcag-2x-contrast-ratio">WCAG 2.x contrast ratio</h3>
+<p>The <strong>contrast ratio</strong> compares the relative brightness of two colours, from 1:1 (identical) to 21:1 (black on white). WCAG 2.x asks for:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Target</th><th>Applies to</th></tr></thead>
+<tbody>
+<tr><td>4.5:1</td><td>Normal text, level AA (1.4.3)</td></tr>
+<tr><td>3:1</td><td>Large text (24 px, or 18.66 px bold) at AA, and user-interface parts (1.4.11)</td></tr>
+<tr><td>7:1</td><td>Normal text at AAA (1.4.6); large text at AAA needs 4.5:1</td></tr>
+</tbody></table></div>
+<p>Set your target with <code>auricA11y.contrast.threshold</code> (default 4.5). Large text automatically gets the lower target.</p>
+<h3 id="apca">APCA</h3>
+<p><strong>APCA</strong> (Accessible Perceptual Contrast Algorithm) is the contrast model proposed for the WCAG 3 working draft. It reports <strong>Lc</strong> (lightness contrast), roughly 0 to 106, and accounts for which colour is the text and which the background, so dark-on-light and light-on-dark pairs are rated differently. The Studio shows what an Lc value is suitable for:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Lc</th><th>Suitable for</th></tr></thead>
+<tbody>
+<tr><td>90 or more</td><td>Any text</td></tr>
+<tr><td>75 or more</td><td>Body text, 16 px and up</td></tr>
+<tr><td>60 or more</td><td>Large or medium text, 18 px and up</td></tr>
+<tr><td>45 or more</td><td>Large bold text, 24 px and up</td></tr>
+<tr><td>30 or more</td><td>Non-text and UI only</td></tr>
+<tr><td>below 30</td><td>Decorative only</td></tr>
+</tbody></table></div>
+<p>APCA uses APCA-W3 0.0.98G. WCAG 3 is an unfinished W3C working draft, so an APCA verdict means only &quot;meets the configured Lc target&quot;. It is not a WCAG 3 conformance claim.</p>
+<h3 id="choose-the-standard">Choose the standard</h3>
+<div class="table-wrap"><table>
+<thead><tr><th><code>auricA11y.contrast.standard</code></th><th>Studio label</th><th>What is flagged</th></tr></thead>
+<tbody>
+<tr><td><code>wcag2</code> (default)</td><td>WCAG 2.x ratios</td><td>Pairs below the ratio target</td></tr>
+<tr><td><code>apca</code></td><td>APCA (WCAG 3 draft)</td><td>Pairs below <code>auricA11y.contrast.apcaThreshold</code> (default Lc 60, range 15–106)</td></tr>
+<tr><td><code>both</code></td><td>WCAG 2.x + APCA</td><td>WCAG failures first, then APCA shortfalls on pairs that pass WCAG</td></tr>
+</tbody></table></div>
+<p>With the <strong>3.0-draft</strong> profile, <code>wcag2</code> behaves like <code>both</code>.</p>
+<p>APCA findings are shown as <code>Low APCA contrast Lc … [WCAG 3 draft]</code>, with the quick fix <strong>Fix APCA contrast</strong>. Project scores and the Studio&#39;s pass rates always use WCAG 2.x ratios.</p>
+<h3 id="colour-vision-risk">Colour-vision risk</h3>
+<p>Whichever standard you use, <code>auricA11y.contrast.flagCvdRisk</code> (on by default) adds a hint for pairs that pass for typical vision but fall below the target under protanopia, deuteranopia or tritanopia (WCAG 1.4.1, Use of Color).</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../../color/docs/contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="../../docs/scores-and-grades.html">Scores and grades</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Auric Accessibility</a><a href="check-space.html"><span>Next</span>The Check space: Findings and Preview</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#audit-profiles">Audit profiles</a></li><li><a href="#contrast-standards">Contrast standards</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

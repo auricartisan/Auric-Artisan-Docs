@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perception and Vision reference — Auric Artisan Docs</title>
+<meta name="description" content="Every tab, control, readout, message and file format in Perception Vision, with ranges and defaults.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and Vision</a>
+<h2>Using Perception and Vision</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Perception and Vision</a></li>
+<li><a href="check-a-palette-and-export.html">Check a palette and export</a></li>
+<li><a href="read-the-checks.html">Read the checks</a></li>
+<li><a href="simulate-a-design.html">Simulate a design or image</a></li>
+<li><a href="reference.html" aria-current="page">Perception and Vision reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Perception and Vision</a></li>
+<li><a href="faq.html">Perception and Vision FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Perception and Vision</a> &rsaquo; <a href="README.html">Using Perception and Vision</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Perception and Vision</p>
+<h1>Perception and Vision reference</h1>
+<p class="lede">Every tab, control, readout, message and file format in Perception Vision, with ranges and defaults.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/perception-and-neuroscience/perception-vision/" rel="noopener">https://auricartisan.com/tool/general/perception-and-neuroscience/perception-vision/</a></p>
+<h2 id="tabs">Tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>Source, simulation, comparison, renderer, illuminant, adjustments and presets; the frame, grey-ramp check and readouts</td></tr>
+<tr><td><strong>Simulation</strong></td><td>The colour vision chain, its matrices and a seven-colour table, with an earlier-version comparison</td></tr>
+<tr><td><strong>Modes</strong></td><td>Previews of every simulation over one source, and the list of controls from an earlier version</td></tr>
+<tr><td><strong>Data</strong></td><td>The register of nine datasets and transforms, filterable by status; the tab label shows the count (9)</td></tr>
+<tr><td><strong>Export</strong></td><td>Colour list, CSV, clipboard, settings download and load, link</td></tr>
+<tr><td><strong>Reference</strong></td><td>Standards, formulas, citations and research notes, with a search box</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-source">Lab tab — Source</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Source</strong></td><td><strong>Test card</strong>, <strong>Grey ramp only</strong>, <strong>Snellen chart</strong>, <strong>Uploaded image</strong>, <strong>Camera</strong></td><td>Test card</td></tr>
+<tr><td><strong>Choose a file</strong></td><td>Opens a file chooser for images (shown for Uploaded image); images are fitted within 1200 × 900</td><td>—</td></tr>
+<tr><td><strong>Start or stop</strong></td><td>Switches the camera (shown for Camera); status <strong>off</strong>, <strong>active</strong> or <strong>unavailable</strong></td><td>off</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-simulation">Lab tab — Simulation</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values or range</th><th>Default</th><th>Shown for</th></tr></thead>
+<tbody>
+<tr><td><strong>Simulation</strong></td><td><strong>Colour vision</strong>, <strong>Scotopic</strong>, <strong>Mesopic</strong>, <strong>Lens yellowing</strong>, <strong>Cataract</strong>, <strong>Central loss</strong>, <strong>Light adaptation</strong>, <strong>Acuity</strong>, <strong>None</strong></td><td>Colour vision</td><td>Always</td></tr>
+<tr><td><strong>Type</strong></td><td><strong>Protan</strong>, <strong>Deutan</strong>, <strong>Tritan</strong></td><td>Protan</td><td>Colour vision</td></tr>
+<tr><td><strong>Daltonise instead of simulate</strong></td><td>On or off</td><td>Off</td><td>Colour vision</td></tr>
+<tr><td><strong>Severity</strong></td><td>0–1, step 0.01</td><td>1.00</td><td>Always</td></tr>
+<tr><td><strong>Adaptation level</strong></td><td>0–1, step 0.01</td><td>0.50</td><td>Mesopic, Light adaptation</td></tr>
+<tr><td><strong>Age</strong></td><td>20–80, step 1</td><td>40</td><td>Lens yellowing</td></tr>
+<tr><td><strong>Scotoma radius</strong></td><td>0.02–0.45, step 0.01</td><td>0.15</td><td>Central loss</td></tr>
+<tr><td><strong>Cataract</strong></td><td>0–1, step 0.01</td><td>0.50</td><td>Cataract</td></tr>
+<tr><td><strong>Acuity</strong></td><td>20/20–20/200, step 5</td><td>20/20</td><td>Acuity</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-compare-and-renderer">Lab tab — Compare and renderer</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Compare</strong></td><td><strong>Split</strong>, <strong>Simulated only</strong>, <strong>Difference</strong> (absolute difference × 4)</td><td>Split</td></tr>
+<tr><td><strong>Divider</strong></td><td>0–100%, step 1%; also set by dragging on the frame (Split only)</td><td>50%</td></tr>
+<tr><td><strong>Renderer</strong></td><td><strong>GPU</strong>, <strong>CPU</strong>; GPU is disabled without WebGL2</td><td>GPU</td></tr>
+<tr><td><strong>Fixation cross</strong></td><td>Draws a cross and ring at the frame centre</td><td>Off</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-before-the-eye">Lab tab — Before the eye</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Illuminant</td><td><strong>D65 — as authored</strong>, <strong>D50</strong>, <strong>A — tungsten</strong></td><td>D65</td></tr>
+<tr><td><strong>Adaptation</strong></td><td>0–1, step 0.01 (Bradford strength)</td><td>1.00</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-adjustments">Lab tab — Adjustments</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range and step</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Contrast</strong></td><td>−0.9 to 0.9, step 0.01</td><td>0.00</td></tr>
+<tr><td><strong>Gamma</strong></td><td>0.4 to 2.6, step 0.01</td><td>1.00</td></tr>
+<tr><td><strong>Blur</strong></td><td>0 to 8, step 0.1</td><td>0.0</td></tr>
+<tr><td><strong>Glare</strong></td><td>0 to 1, step 0.01</td><td>0.00</td></tr>
+<tr><td><strong>Noise</strong></td><td>0 to 0.08, step 0.001</td><td>0.000</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-presets">Lab tab — Presets</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><strong>Presets</strong></td><td><strong>—</strong>, <strong>Protanopia</strong>, <strong>Mild deuteranomaly</strong>, <strong>Tritanopia</strong>, <strong>Low light with glare</strong>, <strong>Lens at 70</strong>, <strong>Cataract</strong>, <strong>Central loss</strong>, <strong>Acuity 20/80</strong> (values in <a href="simulate-a-design.html">Simulate a design or image</a>)</td></tr>
+<tr><td><strong>Reset</strong></td><td>Returns every control to its default and stops the camera</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-stage-elements">Lab tab — Stage elements</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Caption</td><td>The simulation, type and severity, or <strong>The frame, unchanged</strong></td></tr>
+<tr><td>Renderer note</td><td>A dot (green when WebGL2 is available), <strong>GPU</strong> or <strong>CPU</strong>, and the frame size</td></tr>
+<tr><td>Frame</td><td>The simulated view; in Split the halves are labelled <strong>Original</strong> and the simulation&#39;s name; the line under it names the method&#39;s source</td></tr>
+<tr><td><strong>No WebGL2 here.</strong></td><td>Shown when the browser has no WebGL2; the CPU is used</td></tr>
+<tr><td>Grey-ramp strip</td><td>Nine steps and the channel spread added to each, in code values</td></tr>
+<tr><td><strong>Save the frame</strong></td><td>Downloads <code>perception-&lt;simulation&gt;-&lt;severity × 100&gt;.png</code></td></tr>
+<tr><td><strong>Copy a link to this view</strong></td><td>Copies a link to the current settings</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-readouts">Lab tab — Readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td><strong>Neutral drift</strong></td><td>Code values, 0–255</td></tr>
+<tr><td><strong>Colours merged</strong></td><td>Percentage, one decimal; <strong>n/a</strong> for spatial simulations</td></tr>
+<tr><td><strong>Out of sRGB</strong></td><td>Percentage, one decimal; <strong>n/a</strong> for spatial simulations</td></tr>
+<tr><td><strong>GPU and CPU agree</strong></td><td><strong>yes</strong>, <strong>N off</strong>, <strong>n/a — spatial</strong> or <strong>not run</strong></td></tr>
+<tr><td><strong>Distinct colours left</strong></td><td><strong>N of M</strong>, or <strong>spatial mode</strong></td></tr>
+<tr><td><strong>Largest channel shift</strong></td><td>Code values; <strong>n/a</strong> for spatial simulations</td></tr>
+<tr><td><strong>Frame luminance, mean</strong></td><td>Relative luminance, four decimals</td></tr>
+<tr><td><strong>min and max</strong></td><td>Relative luminance, four decimals</td></tr>
+</tbody></table></div>
+<p>Simulation identifiers used in file names and links: <code>none</code>, <code>cvd</code>, <code>scotopic</code>, <code>mesopic</code>, <code>age-yellowing</code>, <code>cataracts</code>, <code>macular-degeneration</code> (Central loss), <code>photopic-adaptation</code> (Light adaptation), <code>acuity</code>.</p>
+<h2 id="simulation-tab">Simulation tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Show</strong></td><td><strong>The chain</strong>, <strong>The matrices</strong></td><td>The chain</td></tr>
+<tr><td><strong>Against</strong></td><td><strong>What it was</strong>, <strong>Hide</strong></td><td>What it was</td></tr>
+<tr><td><strong>Type</strong></td><td><strong>Protan</strong>, <strong>Deutan</strong>, <strong>Tritan</strong>, <strong>All three</strong></td><td>Protan</td></tr>
+</tbody></table></div>
+<p>Table columns: <strong>Input</strong>, <strong>Type</strong>, <strong>Through XYZ</strong>, and with <strong>What it was</strong> also <strong>On screen</strong>, <strong>In the file</strong> and <strong>Apart</strong>.</p>
+<h2 id="modes-tab">Modes tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Show</strong></td><td><strong>Everything</strong>, <strong>The eight that simulate</strong></td><td>Everything</td></tr>
+<tr><td><strong>On</strong></td><td><strong>Test card</strong>, <strong>Grey ramp</strong>, <strong>Snellen chart</strong></td><td>Test card</td></tr>
+<tr><td><strong>Severity</strong></td><td><strong>0.50</strong>, <strong>1.00</strong></td><td>1.00</td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Status</strong></td><td><strong>All</strong> (9), <strong>Verbatim</strong> (3), <strong>Computed</strong> (3), <strong>Stand-in</strong> (2), <strong>Absent</strong> (1)</td></tr>
+<tr><td>Register row</td><td>Select, or press <code>Enter</code> or <code>Space</code>, to expand the note and <strong>What it would take</strong></td></tr>
+<tr><td><strong>Drop a CSV or JSON</strong></td><td>Shown under <strong>Install a table</strong>; not active in the current version</td></tr>
+</tbody></table></div>
+<p>Entries: <strong>sRGB transfer and primaries</strong>, <strong>Hunt-Pointer-Estévez cone fundamentals</strong>, <strong>Bradford chromatic adaptation</strong> (Verbatim); <strong>Dichromacy projection</strong>, <strong>One implementation, two renderers</strong>, <strong>The shader&#39;s matrix literals</strong> (Computed); <strong>Rod spectral weighting</strong>, <strong>Lens, cataract, acuity and adaptation models</strong> (Stand-in); <strong>Contrast sensitivity function</strong> (Absent).</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>What to take</strong></td><td><strong>A list of colours</strong>, <strong>The frame</strong>, <strong>The settings</strong>, <strong>A link to this view</strong></td></tr>
+<tr><td><strong>Colours</strong></td><td>Hex colours, one per line; commas and semicolons also separate</td></tr>
+<tr><td><strong>Run them</strong></td><td>Redraws the table (it also updates as you type)</td></tr>
+<tr><td><strong>Download the CSV</strong></td><td>Saves <code>perception-&lt;simulation&gt;-&lt;severity × 100&gt;.csv</code></td></tr>
+<tr><td><strong>Copy to clipboard</strong></td><td>Copies a tab-separated table</td></tr>
+<tr><td><strong>Download the settings</strong></td><td>Saves <code>perception-vision-settings.json</code></td></tr>
+<tr><td><strong>Load settings</strong></td><td>Applies a settings JSON file</td></tr>
+</tbody></table></div>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><strong>Reference</strong></td><td><strong>Standards</strong> (7), <strong>Formulas</strong> (11), <strong>Citations</strong> (13, default), <strong>Research notes</strong> (9)</td></tr>
+<tr><td><strong>Filter</strong></td><td>Searches all four groups; shows <strong>Nothing in the reference matches that.</strong> when empty</td></tr>
+</tbody></table></div>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Preset: …</strong></td><td>A preset was applied</td></tr>
+<tr><td><strong>Reset</strong></td><td>All controls returned to defaults</td></tr>
+<tr><td><strong>Camera: …</strong></td><td>The camera could not start; the source returned to the test card</td></tr>
+<tr><td><strong>PNG saved</strong>, <strong>CSV saved</strong>, <strong>Settings exported</strong>, <strong>Settings imported</strong>, <strong>Copied</strong>, <strong>Link copied</strong></td><td>The action succeeded</td></tr>
+<tr><td><strong>Import failed: …</strong></td><td>The settings file could not be read</td></tr>
+<tr><td><strong>Copy blocked</strong></td><td>The browser refused clipboard access</td></tr>
+<tr><td><strong>No colours to write</strong> / <strong>No colours to copy</strong></td><td>The colour list is empty</td></tr>
+</tbody></table></div>
+<h2 id="file-formats">File formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Format</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>perception-&lt;simulation&gt;-&lt;severity&gt;.png</code></td><td>PNG</td><td>The frame at its own size, with the divider and fixation cross if shown</td></tr>
+<tr><td><code>perception-&lt;simulation&gt;-&lt;severity&gt;.csv</code></td><td>CSV with <code>#</code> comment lines</td><td><code>Input,Simulated,L,M,S,RG,BY,DeltaE00,InSRGB</code></td></tr>
+<tr><td>Clipboard table</td><td>Tab-separated text</td><td><code>Input</code>, <code>Simulated</code>, <code>L</code>, <code>M</code>, <code>S</code>, <code>DeltaE00</code>, <code>InSRGB</code></td></tr>
+<tr><td><code>perception-vision-settings.json</code></td><td>JSON</td><td>See <a href="check-a-palette-and-export.html">Check a palette and export</a></td></tr>
+</tbody></table></div>
+<h2 id="link-parameters">Link parameters</h2>
+<p><code>simMode</code>, <code>cvdType</code> (<code>protan</code>, <code>deutan</code>, <code>tritan</code>), <code>severity</code>, <code>contrast</code>, <code>gamma</code>, <code>blur</code>, <code>noise</code>, <code>bloom</code> (glare), <code>adaptLevel</code>, <code>age</code>, <code>scotomaR</code>, <code>cataractLvl</code>, <code>acuity</code>, <code>illum</code> (<code>D65</code>, <code>D50</code>, <code>A</code>), <code>adaptStrength</code>, <code>compare</code> (<code>split</code>, <code>sim</code>, <code>diff</code>), <code>source</code> (<code>sample</code>, <code>ramp</code>, <code>snellen</code>, <code>upload</code>, <code>camera</code>), <code>renderer</code> (<code>gpu</code>, <code>cpu</code>).</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="simulate-a-design.html"><span>Previous</span>Simulate a design or image</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting Perception and Vision</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#tabs">Tabs</a></li><li><a href="#lab-tab-source">Lab tab — Source</a></li><li><a href="#lab-tab-simulation">Lab tab — Simulation</a></li><li><a href="#lab-tab-compare-and-renderer">Lab tab — Compare and renderer</a></li><li><a href="#lab-tab-before-the-eye">Lab tab — Before the eye</a></li><li><a href="#lab-tab-adjustments">Lab tab — Adjustments</a></li><li><a href="#lab-tab-presets">Lab tab — Presets</a></li><li><a href="#lab-tab-stage-elements">Lab tab — Stage elements</a></li><li><a href="#lab-tab-readouts">Lab tab — Readouts</a></li><li><a href="#simulation-tab">Simulation tab</a></li><li><a href="#modes-tab">Modes tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#messages">Messages</a></li><li><a href="#file-formats">File formats</a></li><li><a href="#link-parameters">Link parameters</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

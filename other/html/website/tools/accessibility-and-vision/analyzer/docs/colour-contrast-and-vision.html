@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour, contrast and vision — Auric Artisan Docs</title>
+<meta name="description" content="Read the Contrast, Palette, Simulation and Before / After panels, and understand the WCAG contrast ratio and the APCA Lc value.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html" aria-current="page">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Colour, contrast and vision</h1>
+<p class="lede">Read the Contrast, Palette, Simulation and Before / After panels, and understand the WCAG contrast ratio and the APCA Lc value.</p>
+<p>Four sections deal with colour: <strong>Contrast</strong> measures every text colour pair on the page, <strong>Palette</strong> extracts the page&#39;s colours, <strong>Simulation</strong> shows the page through colour-vision filters, and <strong>Before / After</strong> previews the contrast fixes. The <strong>Vision</strong> view of the A11y+ panel adds a table of every pair under four colour-vision deficiencies (see <a href="accessibility-engine.html">The accessibility engine</a>).</p>
+<h2 id="two-ways-to-measure-contrast">Two ways to measure contrast</h2>
+<h3 id="the-wcag-contrast-ratio">The WCAG contrast ratio</h3>
+<p>WCAG 2.x measures contrast as a ratio between two colours&#39; <strong>relative luminance</strong>, which is how much light a colour gives off on a scale from 0 (black) to 1 (white). Green counts most towards it and blue least, as in human vision. The ratio is the lighter luminance plus 0.05, divided by the darker plus 0.05. It runs from 1:1 (the same colour twice) to 21:1 (black on white), and it does not matter which colour is the text.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>What</th><th>Needs at least</th><th>Level</th></tr></thead>
+<tbody>
+<tr><td>Normal text</td><td>4.5:1</td><td>AA</td></tr>
+<tr><td>Large text</td><td>3:1</td><td>AA</td></tr>
+<tr><td>The visible edge of a control, focus indicators, meaningful graphics</td><td>3:1</td><td>AA</td></tr>
+<tr><td>Normal text, enhanced</td><td>7:1</td><td>AAA</td></tr>
+<tr><td>Large text, enhanced</td><td>4.5:1</td><td>AAA</td></tr>
+</tbody></table></div>
+<p><strong>Large text</strong> means at least 24 CSS pixels, or at least 18.66 CSS pixels in bold. It is a size threshold, not a heading rule.</p>
+<h3 id="the-apca-lc-value">The APCA Lc value</h3>
+<p>APCA, the Accessible Perceptual Contrast Algorithm, is a newer contrast model being developed for a future version of WCAG. It gives a <strong>lightness contrast</strong> value, written <strong>Lc</strong>, that tracks how people actually perceive contrast more closely than the ratio, especially for light text on dark backgrounds and thin type.</p>
+<ul>
+<li>Lc runs from 0 (no contrast) to a little over 100 for black on white.</li>
+<li>It has a direction: dark text on a light background gives a positive value, light text on a dark background a negative one. Compare the size of the number, not its sign.</li>
+<li>A larger number is needed for smaller or thinner text.</li>
+</ul>
+<p>The Analyzer shows Lc beside the ratio for reference, for example &quot;needs 4.5:1 · 12px · APCA Lc 22.9 (needs 90)&quot;. The &quot;needs&quot; value comes from this size-and-weight guide:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Text size</th><th>Normal weight</th><th>Bold (700 and above)</th></tr></thead>
+<tbody>
+<tr><td>24px and above</td><td>Lc 60</td><td>Lc 45</td></tr>
+<tr><td>18px to under 24px</td><td>Lc 75</td><td>Lc 60</td></tr>
+<tr><td>16px to under 18px</td><td>Lc 90</td><td>Lc 75</td></tr>
+<tr><td>Under 16px</td><td>Lc 90</td><td>Lc 90</td></tr>
+</tbody></table></div>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> APCA is advisory. It is not part of any current conformance requirement, so it never affects a pass, a fail or a score. Use it for judgement calls, and use the WCAG ratio for compliance.</p>
+</blockquote>
+<h2 id="the-contrast-section">The Contrast section</h2>
+<p>The Contrast section lists every text colour pair the page actually paints, measured against its effective background. Semi-transparent colours are blended with what is behind them first, because that blend is what a reader sees.</p>
+<h3 id="blocks-in-the-section">Blocks in the section</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>What is contrast?</strong></td><td>A short explanation of the ratio and the AA, AAA and FAIL labels</td></tr>
+<tr><td><strong>Statistics (unique pairs)</strong></td><td>Counts of <strong>Failing</strong>, <strong>AA Pass</strong> and <strong>AAA Pass</strong> pairs</td></tr>
+<tr><td><strong>Pair Count Breakdown</strong></td><td>Raw, duplicate, unique, shared and same-colour pair counts, and total fail occurrences</td></tr>
+<tr><td><strong>Impact-Based Contrast Score</strong></td><td>The section&#39;s score, with text, UI and decorative failures counted separately</td></tr>
+<tr><td><strong>Rendered Scene Contrast</strong></td><td>When canvas or rendered layers were sampled: scene samples, low-contrast regions, contrast range and penalty</td></tr>
+<tr><td><strong>Detected Brand Colors</strong></td><td>The page&#39;s dominant colours. Suggested fixes keep these where they can and adjust the text or UI colour instead.</td></tr>
+<tr><td><strong>Contrast Pairs</strong></td><td>Every pair, grouped as <strong>Failing Combinations</strong>, <strong>AA Passes</strong> and <strong>AAA Passes</strong></td></tr>
+<tr><td>Live page preview</td><td>The analysed page, with reload, open in a new tab, zoom and full-screen controls</td></tr>
+</tbody></table></div>
+<p>The <strong>Pair Count Breakdown</strong> lists <strong>Raw candidate pairs</strong>, <strong>Duplicate pairs removed</strong>, <strong>Unique pairs retained</strong>, <strong>Shared across ≥2 pages</strong>, <strong>Same-colour (no contrast)</strong> and <strong>Total fail occurrences</strong>. A pair from a shared stylesheet is counted once, with the pages it appears on, not once per page.</p>
+<h3 id="how-the-section-is-scored">How the section is scored</h3>
+<p>The Contrast score starts at 100 and loses points for each failing pair, weighted by what it is: text failures count most (×12), then interface components (×9), then decorative colour (×3). Critical failures and low contrast in the rendered scene cost extra. The <strong>Why this score?</strong> box shows the breakdown.</p>
+<h3 id="read-a-pair">Read a pair</h3>
+<p>Each pair shows:</p>
+<ul>
+<li>the ratio and its grade, for example &quot;4.6:1 AA&quot;, and what it needs (&quot;needs 4.5:1&quot;, or &quot;needs 3:1 · large&quot; for large text);</li>
+<li>the element type and a sample of its text;</li>
+<li>a sentence such as &quot;Text colour #15803d is rendered on its effective background #ecf8f1 (e.g. <code>&lt;span&gt;</code>). Ratio 4.6:1 meets WCAG AA for normal text (AA needs 4.5:1).&quot;</li>
+</ul>
+<p>A failing pair also offers a suggested replacement colour. Select it (&quot;Click to copy fix&quot;) to copy the corrected colour. The suggestion keeps your hue and changes only the lightness, so the result still looks like your brand.</p>
+<h3 id="what-the-section-does-not-measure">What the section does not measure</h3>
+<ul>
+<li><strong>Text over gradients, photographs and video.</strong> There is no single background colour, so no honest ratio exists. The accessibility engine reports these as needs review.</li>
+<li><strong>Text nobody can see.</strong> Empty layout boxes, decorative bars and hidden controls are skipped.</li>
+</ul>
+<h2 id="the-palette-section">The Palette section</h2>
+<p>The Palette section extracts the colours the page uses and generates accessible alternatives.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>What is this?</strong></td><td>A short explanation. Select any swatch to copy its hex code.</td></tr>
+<tr><td><strong>Extracted Dominant Colors</strong></td><td>The most-used colours, with a count</td></tr>
+<tr><td><strong>Theme Mode Detection</strong></td><td>Whether light, dark or both modes were detected, with the signals and colour references counted</td></tr>
+<tr><td><strong>All Text Colors</strong> and <strong>All Background Colors</strong></td><td>Every text and background colour found</td></tr>
+<tr><td><strong>Fonts</strong></td><td>The font families the page uses</td></tr>
+<tr><td><strong>Export as CSS</strong> and <strong>Export as JSON</strong></td><td>Download the extracted palette as <code>palette.css</code> or <code>palette.json</code></td></tr>
+<tr><td><strong>CVD Previews</strong></td><td>The palette under deuteranopia, protanopia, tritanopia and achromatopsia</td></tr>
+<tr><td><strong>Color Usage Frequency</strong></td><td>Each colour with how many times it is used, split into computed styles and colours written in the HTML</td></tr>
+<tr><td><strong>Generated Accessible Palettes</strong></td><td>Twelve AA-tuned palettes: Complementary, Triadic, Split-Comp and Analogous, three of each</td></tr>
+</tbody></table></div>
+<p>Select <strong>Save</strong> on a generated palette to keep it in the <strong>Workspace</strong> section&#39;s <strong>Saved Palettes</strong> list.</p>
+<p>If you open the Analyzer with a palette sent from your library, the Palette section shows that palette&#39;s contrast audit even before a page has been analysed.</p>
+<h2 id="the-simulation-section">The Simulation section</h2>
+<p>The Simulation section shows the analysed page through colour-vision and low-vision filters, so you can see whether information carried by colour survives.</p>
+<p>The panel explains that about 8% of males and 0.5% of females have some form of colour blindness. Choose a <strong>Vision Type</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Vision Type</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Normal Vision</strong></td><td>The page unfiltered</td></tr>
+<tr><td><strong>Deuteranopia</strong></td><td>No working green-sensitive cones: reds and greens are hard to tell apart</td></tr>
+<tr><td><strong>Protanopia</strong></td><td>No working red-sensitive cones: reds look darker and merge with greens</td></tr>
+<tr><td><strong>Tritanopia</strong></td><td>No working blue-sensitive cones: blues and yellows are confused</td></tr>
+<tr><td><strong>Achromatopsia</strong></td><td>No colour at all: the page in greyscale</td></tr>
+<tr><td><strong>Low Vision</strong></td><td>A slight blur with reduced saturation</td></tr>
+</tbody></table></div>
+<p>The live preview has buttons to reload, open the page in a new tab, zoom out, zoom in and go full screen. The active filter is named under the preview.</p>
+<p>A strip at the top says how the preview is running, for example &quot;Live preview — This page is on our origin, so it runs here exactly as it does for a visitor.&quot;</p>
+<h3 id="when-the-page-will-not-embed">When the page will not embed</h3>
+<p>Many sites send headers that forbid other sites from showing them in a frame. The preview then shows <strong>Couldn&#39;t embed this page</strong> and explains that the site is blocking embedding with X-Frame-Options or a Content-Security-Policy frame-ancestors rule. You have four choices:</p>
+<ul>
+<li><strong>Run in browser</strong> opens a real pop-up window with the page as it was captured, with the active filter applied. It works whatever the site&#39;s framing policy. Allow pop-ups for auricartisan.com if nothing opens.</li>
+<li><strong>Open in new tab</strong> opens the live site, without a filter.</li>
+<li><strong>Try again</strong> reloads the preview.</li>
+<li><strong>View CSP setup</strong> opens the <strong>CSP Setup</strong> section, which explains how a site you own can allow Auric Artisan to embed it. See <a href="fix-and-preview.html">Fix and preview</a>.</li>
+</ul>
+<p>These filters are quick previews. For the full range of conditions, severities and models, use the <a href="../../vision-simulation/README.html">Vision Lab</a>.</p>
+<h2 id="the-before-after-section">The Before / After section</h2>
+<p>Before / After shows the page as it is beside the page with the Analyzer&#39;s contrast fixes applied, so you can judge the fixes before you change your CSS.</p>
+<ul>
+<li><strong>BEFORE (Original)</strong> and <strong>AFTER (Fixed)</strong> previews sit side by side under <strong>Original vs. Fixed</strong>.</li>
+<li><strong>Applied Fixes</strong> lists every colour change, with <strong>Locate</strong> to find the element and <strong>Highlight all</strong> to mark them all.</li>
+<li><strong>Score Comparison</strong> shows the score now and the estimated score after the fixes.</li>
+<li><strong>Regression Check (after applying fixes)</strong> is a list to tick through by hand after you apply the fixes to your real site: the page still loads without errors, critical user paths still work, keyboard navigation still works, the mobile breakpoint is still responsive, performance has not regressed, the visual layout looks correct, and the score went up or stayed the same. <strong>Mark all validated</strong> ticks them all.</li>
+</ul>
+<p>If every pair already passes, the section says &quot;No fixes needed&quot; and &quot;All contrast pairs pass WCAG requirements. Your colors are accessible!&quot;</p>
+<h2 id="a-practical-workflow-for-colour">A practical workflow for colour</h2>
+<ol>
+<li>Run an audit with <strong>Colour contrast</strong>, <strong>Palette</strong> and <strong>Vision simulation</strong> switched on, or apply the <strong>Colour and vision</strong> layout in Advanced mode.</li>
+<li>In <strong>Contrast</strong>, open <strong>Failing Combinations</strong> and note which components the failing pairs belong to.</li>
+<li>Copy a suggested colour, or take it to the <a href="../../contrast-checker/README.html">Contrast Checker</a> to adjust it by hand.</li>
+<li>Check <strong>Before / After</strong> to see the fixes in place.</li>
+<li>Look at the page under <strong>Protanopia</strong>, <strong>Deuteranopia</strong> and <strong>Achromatopsia</strong> in <strong>Simulation</strong>, and make sure no information is carried by colour alone.</li>
+<li>Check both your light and dark themes: a colour that passes on one often fails on the other.</li>
+</ol>
+
+<nav class="pager" aria-label="Previous and next"><a href="choose-what-to-scan.html"><span>Previous</span>Choose what to scan</a><a href="export-and-share.html"><span>Next</span>Export and share</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#two-ways-to-measure-contrast">Two ways to measure contrast</a></li><li><a href="#the-contrast-section">The Contrast section</a></li><li><a href="#the-palette-section">The Palette section</a></li><li><a href="#the-simulation-section">The Simulation section</a></li><li><a href="#the-before-after-section">The Before / After section</a></li><li><a href="#a-practical-workflow-for-colour">A practical workflow for colour</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ishihara Plate Generator reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, option, default and output of the Ishihara Plate Generator.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Ishihara Plate Generator</a>
+<h2>Ishihara Plate Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Ishihara Plate Generator</a></li>
+<li><a href="build-the-standard-38.html">Build the standard 38</a></li>
+<li><a href="export-plates.html">Export plates</a></li>
+<li><a href="generate-plates.html">Generate plates</a></li>
+<li><a href="read-the-diagnostics.html">Read the diagnostics</a></li>
+<li><a href="reference.html" aria-current="page">Ishihara Plate Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Ishihara Plate Generator</a></li>
+<li><a href="faq.html">Ishihara Plate Generator FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Ishihara Plate Generator</a> &rsaquo; <a href="README.html">Ishihara Plate Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Ishihara Plate Generator reference</h1>
+<p class="lede">Every control, option, default and output of the Ishihara Plate Generator.</p>
+<h2 id="page">Page</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Address</td><td><a href="https://auricartisan.com/tool/ishihara-plate-generation/" rel="noopener">https://auricartisan.com/tool/ishihara-plate-generation/</a></td></tr>
+<tr><td>Tabs</td><td><strong>Lab</strong>, <strong>Diagnostics</strong>, <strong>Set 38</strong>, <strong>Export</strong></td></tr>
+<tr><td>API hint</td><td>3 API credits per call to <code>POST /v1/ishihara/plate</code></td></tr>
+<tr><td>On load</td><td>Six starter plates are generated</td></tr>
+<tr><td>Notice</td><td>&quot;Not a colour-vision test. These plates are illustrative…&quot;</td></tr>
+</tbody></table></div>
+<h2 id="lab-main-controls">Lab: main controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Options</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Plate Type</strong></td><td>Number, Letter, Symbol, Number (Gradient), Shape, Multi-layer (Shape+Number), Hidden Path</td><td>Number</td></tr>
+<tr><td><strong>Color Palette</strong></td><td>Auto (Random) or one of eight named palettes (see <a href="generate-plates.html">Generate plates</a>)</td><td>Auto (Random)</td></tr>
+<tr><td><strong>Difficulty</strong></td><td>Easy, Medium, Hard, Extreme</td><td>Medium</td></tr>
+<tr><td><strong>+ Generate</strong></td><td>One plate</td><td>—</td></tr>
+<tr><td><strong>×1</strong>, <strong>×3</strong>, <strong>×6</strong></td><td>Several plates</td><td>—</td></tr>
+<tr><td><strong>Custom</strong></td><td>Opens <strong>Create Custom Plate</strong></td><td>—</td></tr>
+<tr><td><strong>Clear All</strong></td><td>Removes every plate</td><td>—</td></tr>
+<tr><td><strong>↓ Export All</strong></td><td>ZIP of every plate</td><td>—</td></tr>
+<tr><td><strong>Plate Size</strong></td><td>S (210 px), M (290 px), L (440 px), XL (900 px)</td><td>M</td></tr>
+</tbody></table></div>
+<h2 id="create-custom-plate">Create Custom Plate</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><strong>Plate Type</strong></td><td>As above</td></tr>
+<tr><td><strong>Content</strong></td><td>A number, a letter, or a symbol or shape name</td></tr>
+<tr><td><strong>Color Palette</strong></td><td>As above</td></tr>
+<tr><td><strong>Difficulty</strong></td><td>As above</td></tr>
+<tr><td><strong>Seed (optional)</strong></td><td>Any whole number; the same seed and settings give an identical plate</td></tr>
+<tr><td><strong>Cancel</strong> / <strong>Generate</strong></td><td>—</td></tr>
+</tbody></table></div>
+<p>Symbol names: star, arrow, triangle, heart, diamond, circle, square, moon, sun, check, x, target, squareDot, dot, leaf, wave, shield. Shape names: pentagon, octagon, rounded-square, annulus, oval.</p>
+<h2 id="fine-tuning">Fine tuning</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range or options</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Dot Count</strong></td><td>2,000–15,000</td><td>7,000</td></tr>
+<tr><td><strong>Plate Shape</strong></td><td>Circle, Square</td><td>Circle</td></tr>
+<tr><td><strong>CVD Preview</strong></td><td>Off, Protanopia, Deuteranopia, Tritanopia</td><td>Off</td></tr>
+<tr><td><strong>Placement Engine</strong></td><td>Balanced, Organic, Precision, Dense</td><td>Balanced</td></tr>
+<tr><td><strong>Dot Style</strong></td><td>Mixed, Round, Soft Edge, Rings</td><td>Mixed</td></tr>
+<tr><td><strong>Material</strong></td><td>Paper, Warm Card, Cool Card, Transparent</td><td>Paper</td></tr>
+<tr><td><strong>Color separation</strong></td><td>0–100</td><td>55</td></tr>
+<tr><td><strong>Edge blend</strong></td><td>0–100</td><td>42</td></tr>
+<tr><td><strong>Dot scale</strong></td><td>70–145</td><td>100</td></tr>
+<tr><td><strong>Texture grain</strong></td><td>0–100</td><td>35</td></tr>
+</tbody></table></div>
+<h2 id="plate-card">Plate card</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Heading</td><td>Plate number and content, for example &quot;#1 - 45&quot;</td></tr>
+<tr><td>Tags</td><td>Type, palette, difficulty, dot count, placement engine, dot style</td></tr>
+<tr><td><strong>QA PASS</strong> and percentage</td><td>Pass or review, and the quality score</td></tr>
+<tr><td>Preview switch</td><td><strong>Normal</strong>, <strong>Protan</strong>, <strong>Deutan</strong>, <strong>Tritan</strong></td></tr>
+<tr><td><strong>Normal ΔE</strong></td><td>Figure against background for typical vision (OKLab)</td></tr>
+<tr><td><strong>CVD min</strong></td><td>The smallest figure-to-background distance through the three deficiencies</td></tr>
+<tr><td><strong>Density</strong></td><td>Share of the plate covered by dots</td></tr>
+<tr><td><strong>Figure</strong></td><td>Share of dots in the figure</td></tr>
+<tr><td><strong>Seed</strong></td><td>The number that rebuilds the plate</td></tr>
+<tr><td><strong>Material</strong></td><td>The card stock</td></tr>
+<tr><td><strong>Copy seed</strong>, <strong>Download PNG</strong>, <strong>Download SVG</strong></td><td>Actions</td></tr>
+</tbody></table></div>
+<h2 id="full-size-view">Full-size view</h2>
+<p>Opened by double-clicking a plate, or <code>Enter</code> or <code>Space</code> on it. Shows content, type, palette, difficulty, dots, plate number, QA score, <strong>Separation ΔE</strong>, <strong>Concealment ΔE</strong>, seed and position; the preview switch; <code>Left</code> / <code>Right</code> to move; <code>Esc</code> to close.</p>
+<h2 id="this-batch-lab">This batch (Lab)</h2>
+<p><strong>Plates</strong>, <strong>Rendered</strong>, <strong>Avg dots</strong>, <strong>Color space</strong> (&quot;P3 HDR&quot; or &quot;sRGB&quot;), <strong>Avg QA</strong>.</p>
+<h2 id="diagnostics">Diagnostics</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Summary</td><td><strong>Plates</strong>, <strong>Passing</strong>, <strong>Mean score</strong>, <strong>Weakest</strong></td></tr>
+<tr><td>Components</td><td><strong>Dot density</strong> (.24), <strong>Figure ratio</strong> (.20), <strong>Separation</strong> (.32), <strong>Concealment</strong> (.24)</td></tr>
+<tr><td>Through each deficiency</td><td>ΔE from the background under Protanopia, Deuteranopia, Tritanopia</td></tr>
+<tr><td>Pass rule</td><td>Density 0.08–0.95, figure 5–65% of dots, separation above 0.01, score 45 or more</td></tr>
+</tbody></table></div>
+<h2 id="set-38">Set 38</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td><strong>Generate the set</strong></td><td>Builds 38 plates without touching the Lab</td></tr>
+<tr><td>Composition</td><td>24 numbers, 6 letters, 4 symbols, 2 shapes, 2 paths</td></tr>
+<tr><td>Seed</td><td>42</td></tr>
+</tbody></table></div>
+<h2 id="export">Export</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td>Card <strong>Download PNG</strong></td><td><code>ishihara-plate-&lt;number&gt;-&lt;content&gt;.png</code>, 4,096 px</td></tr>
+<tr><td>Card <strong>Download SVG</strong></td><td><code>ishihara-plate-&lt;number&gt;-&lt;content&gt;.svg</code></td></tr>
+<tr><td><strong>Export every plate</strong>, <strong>Download every .png</strong>, <strong>↓ Export All</strong></td><td><code>ishihara-plates.zip</code>: PNG (2,048 px), SVG and JSON per plate</td></tr>
+<tr><td><strong>Download every .svg</strong></td><td>One SVG per plate</td></tr>
+<tr><td><strong>Download the seeds</strong></td><td><code>ishihara-seeds.txt</code>: content, seed, type, palette, difficulty, dots, quality</td></tr>
+</tbody></table></div>
+<h2 id="remembered-in-this-browser">Remembered in this browser</h2>
+<p>Only the <strong>Plate Size</strong>. Plates themselves are not kept between visits.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="read-the-diagnostics.html"><span>Previous</span>Read the diagnostics</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting the Ishihara Plate Generator</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#page">Page</a></li><li><a href="#lab-main-controls">Lab: main controls</a></li><li><a href="#create-custom-plate">Create Custom Plate</a></li><li><a href="#fine-tuning">Fine tuning</a></li><li><a href="#plate-card">Plate card</a></li><li><a href="#full-size-view">Full-size view</a></li><li><a href="#this-batch-lab">This batch (Lab)</a></li><li><a href="#diagnostics">Diagnostics</a></li><li><a href="#set-38">Set 38</a></li><li><a href="#export">Export</a></li><li><a href="#remembered-in-this-browser">Remembered in this browser</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

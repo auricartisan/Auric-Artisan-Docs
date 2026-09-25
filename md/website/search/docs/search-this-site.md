@@ -1,0 +1,101 @@
+---
+title: Search — Search this site
+description: How site search works on the Auric Artisan search page — typing, suggestions, results, section tabs, sorting, paging, corrections and recent searches.
+product: Website › Search
+updated: 2026-09-25
+---
+
+# Search this site
+
+Site search is the default mode of the search page. The mode label beside the status line reads **LOCAL**.
+
+## Type a query
+
+- Type at least two characters. Results update as you type, after a short pause.
+- Words shorter than two letters and very common words such as "the", "and" or "with" are ignored.
+- A word does not have to be complete: `grad` finds pages about gradients.
+- Small typing mistakes are tolerated. A word of three to five letters may be one letter out; a longer word may be two out. This applies only when the word as typed matches nothing.
+- Related words also count, at reduced weight, when your query has four words or fewer. For example, `palette` also finds pages that say "swatch" or "scheme", and `colour` also finds "color". These related words appear dashed in the line under the field.
+
+## Suggestions
+
+While you type, a list opens under the field with up to eight suggestions:
+
+- **Pages** whose title or address contains what you typed. Choose one to open that page.
+- **Tags**, shown with a `#`, for example `#oklch`. Choose one to search for pages with that tag.
+
+Close the list with `Escape`, or by clicking elsewhere on the page.
+
+## Read the results
+
+The status line above the list says how many results there are and how long the search took, for example **About 24 results (3 ms)**.
+
+Each result shows:
+
+- A coloured dot and the kind of page: **Tool**, **Learn**, **Docs**, **Blog**, **Portfolio** or **Page**.
+- The page's address on the site.
+- The title, with the words you searched for highlighted.
+- A short excerpt or description.
+
+Results open in the same tab, except a portfolio kept on another website, which opens in a new tab.
+
+## Narrow by section
+
+The tabs under the field filter the results you already have:
+
+| Tab | What it contains |
+| --- | --- |
+| **All** | Every result. |
+| **Tools** | Tool pages and the Collections page. |
+| **Learn** | Learn articles. |
+| **Docs** | Documentation and changelog pages. |
+| **Blog** | Blog posts. |
+| **Portfolios** | Portfolios in the Portfolio Index, both builder portfolios and ones kept on other sites, and the Portfolio Index page itself. |
+| **Pages** | Everything else: the colour libraries, company, legal, download and other pages. |
+
+Each tab shows its count. A tab with no results for the current query is greyed out.
+
+## Sort
+
+Open **Tools** at the end of the tab row. Under **Sort by**:
+
+- **Relevance** — the default.
+- **Newest** — pages with a date in their address come first, newest first. Pages without a date go last.
+- **A–Z** — by title.
+
+Sorting appears only when there are at least two results. It goes back to **Relevance** when you clear the search.
+
+## Paging
+
+The first 20 results show at once. As you scroll near the bottom, more are added 12 at a time. When every result is on screen, a line says so, for example **All 38 shown**. The page lists up to 100 results for a query.
+
+## When a word is misspelt
+
+If a correction is likely, the status line adds **did you mean** followed by the corrected query. Select it to search for that instead. The correction is not offered when the results for your spelling are already strong.
+
+## When nothing matches
+
+The page shows **Nothing matched that** and **No page on this site matches** your query. Below it:
+
+- **Did you mean**, when a correction exists.
+- **Search the web instead**, which switches to the globe and runs the same query. See [Search the web](search-the-web.md).
+- **Worth trying** — advice worked out from your query. For example, it suggests dropping a filter, removing an exclusion, unquoting a phrase or using fewer words.
+- **Or start from a section** — links to **Tools**, **Learn**, **Documentation** and **Palettes**.
+
+## Recent searches
+
+A search counts as recent when you press `Enter` or open a result. The six most recent appear on the start screen next to **Recent**. Select one to run it again, or select **Clear** to empty the list. The same list is used by Spotlight, the quick search you open with `Ctrl`+`K`.
+
+## Share or bookmark a search
+
+The page address follows your search. A query adds `?q=` and a section tab adds `&scope=`, for example `https://auricartisan.com/search/?q=contrast&scope=learn`. Open that address and the same search runs.
+
+## Results you open rise over time
+
+When you open a result, this browser remembers it. Pages you choose often are nudged up in your future results. This stays in your browser; see [Privacy](../others/privacy.md).
+
+## Related
+
+- [Query syntax](query-syntax.md)
+- [Understand the ranking](understand-the-ranking.md)
+- [Shortcuts](../others/shortcuts.md)

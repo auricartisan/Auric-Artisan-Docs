@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with the Contrast Checker — Auric Artisan Docs</title>
+<meta name="description" content="Open the Contrast Checker, learn each part of the screen, and grade your first colour pair.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Contrast Checker</a>
+<h2>Contrast Checker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with the Contrast Checker</a></li>
+<li><a href="check-a-colour-pair.html">Check a colour pair</a></li>
+<li><a href="make-a-pair-pass.html">Make a pair pass</a></li>
+<li><a href="share-a-pair.html">Share a pair</a></li>
+<li><a href="reference.html">Contrast Checker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Contrast Checker</a></li>
+<li><a href="faq.html">Contrast Checker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Contrast Checker</a> &rsaquo; <a href="README.html">Contrast Checker documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Getting started with the Contrast Checker</h1>
+<p class="lede">Open the Contrast Checker, learn each part of the screen, and grade your first colour pair.</p>
+<h2 id="open-it">Open it</h2>
+<p>Go to <a href="https://auricartisan.com/tool/contrast-checker/" rel="noopener">https://auricartisan.com/tool/contrast-checker/</a>. The page loads with a default pair, text <code>#1A1400</code> on background <code>#F7F3E6</code>, and grades it straight away, so there is no empty state to get past.</p>
+<h2 id="the-screen-part-by-part">The screen, part by part</h2>
+<p>On a wide screen the tool is two columns over a full-width strip: controls on the left, the result on the right, and the preview underneath. Below 720 pixels wide it becomes one column in the order controls, result, preview, and the swap button turns so its arrows point up and down. Nothing is hidden on a narrow screen.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Area</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td>Breadcrumb</td><td><strong>Home</strong>, <strong>Tools</strong> (links to the tools collection) and <strong>Contrast Checker</strong></td></tr>
+<tr><td>Heading</td><td>The kicker &quot;WCAG 2.1 · Contrast&quot;, the title <strong>Color Contrast Checker</strong>, and a line saying nothing is uploaded</td></tr>
+<tr><td>API hint</td><td>&quot;Automate this — 1 API credit per call to <code>POST /v1/accessibility/check</code>&quot;, with <strong>API docs</strong> and a dismiss button</td></tr>
+<tr><td>Controls</td><td><strong>Text colour</strong> and <strong>Background colour</strong>, each a colour swatch beside a hex field, with the swap button between them</td></tr>
+<tr><td>Result</td><td>The ratio (<strong>Contrast ratio</strong>), five grade rows, <strong>Make it pass AA</strong>, <strong>Copy link</strong> and a status line</td></tr>
+<tr><td>Preview</td><td>A panel painted in your pair, with a line of large text, a paragraph of body text and an &quot;Interface element&quot; chip</td></tr>
+<tr><td>Below</td><td><strong>What the numbers mean</strong>, four questions and answers, and three cards linking to other tools</td></tr>
+</tbody></table></div>
+<p>The API hint is for developers who want to check pairs from code; API credits are a separate balance from tool tokens. Dismissing it hides it on every tool page in this browser.</p>
+<h2 id="check-your-first-pair">Check your first pair</h2>
+<ol>
+<li>Select the <strong>Text colour</strong> hex field and replace the value with <code>#6B7280</code>.</li>
+<li>Select the <strong>Background colour</strong> hex field and replace the value with <code>#FFFFFF</code>.</li>
+<li>Read the ratio. It updates as you type, and reads <strong>4.83:1</strong>.</li>
+<li>Read the five rows. <strong>Body text · AA</strong> reads <strong>Pass</strong>; <strong>Body text · AAA</strong> reads <strong>Fail</strong>.</li>
+<li>Look at the preview. Judge whether the paragraph is comfortable to read at length, not just whether it passes.</li>
+</ol>
+<p>The result: you know the exact ratio and which WCAG levels the pair meets.</p>
+<h2 id="try-the-other-controls">Try the other controls</h2>
+<ul>
+<li>Select the swap button (between the two colours) to exchange them. The ratio stays the same; the preview turns inside out.</li>
+<li>Type a failing pair, such as <code>#D3AF37</code> on <code>#F7F3E6</code>. A <strong>Make it pass AA</strong> button appears. Select it, and the text colour moves to the nearest value that reaches 4.5:1. The status line says what it chose.</li>
+<li>Select <strong>Copy link</strong>. The status line says &quot;Share link copied.&quot; Paste the link anywhere to reopen this exact pair.</li>
+</ul>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="check-a-colour-pair.html">Check a colour pair</a> explains the ratio, the five grades and what counts as large text.</li>
+<li><a href="make-a-pair-pass.html">Make a pair pass</a> explains how the fix chooses its colour.</li>
+<li>To check every pair on a live page at once, use the <a href="../../analyzer/README.html">Analyzer</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Contrast Checker documentation</a><a href="check-a-colour-pair.html"><span>Next</span>Check a colour pair</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#the-screen-part-by-part">The screen, part by part</a></li><li><a href="#check-your-first-pair">Check your first pair</a></li><li><a href="#try-the-other-controls">Try the other controls</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

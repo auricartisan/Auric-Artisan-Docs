@@ -1,0 +1,78 @@
+==============================================================================
+M-GRADIENT PALETTE FAQ
+==============================================================================
+Short answers to common questions about the M-Gradient Palette.
+Area: Website › Tools › Image and file tools › M-Gradient Palette   Updated: 2026-09-25
+
+WHICH ROUTE SHOULD I USE?
+=========================
+
+For even-looking steps, start with OKLCH, short hue, and confirm on the Spaces
+tab, which measures all six routes and five easings for your two colours.
+
+WHY ARE THERE FOUR SPACES BUT SIX ROUTES?
+=========================================
+
+OKLCH and HSL have a hue angle, and each can go the short or the long way
+round the colour wheel. That is two routes in the same space, not two spaces.
+
+WHAT DOES "EVENNESS" MEAN?
+==========================
+
+The standard deviation of the colour differences between neighbouring steps.
+Lower means the steps look more equally spaced. It is a ranking, not a pass
+mark: the tool marks the evenest of the thirty combinations but sets no
+threshold for "even enough".
+
+WHY DID SOME STEPS GET A GOLD UNDERLINE?
+========================================
+
+Blending in OKLCH asked for a colour more colourful than sRGB can show. The
+tool reduced its chroma, keeping its lightness and hue, until it fitted.
+
+CAN I HAVE MORE THAN TWO COLOURS IN A RAMP?
+===========================================
+
+No. A ramp runs between two ends. For a multi-stop scale, build one ramp per
+section, or join exported steps yourself.
+
+CAN I HAVE MORE THAN 32 STEPS?
+==============================
+
+No. The Steps slider runs from 2 to 32.
+
+IS THE CSS GRADIENT THE SAME AS THE STEPS?
+==========================================
+
+No. The CSS gradient asks the browser to blend smoothly between the two ends
+in the chosen space. The custom properties and the hex list are the exact
+steps the tool measured.
+
+WHY DOES THE TOOL SHOW TWO CONTRAST FIGURES?
+============================================
+
+WCAG 2.2 and APCA measure contrast differently and often disagree. Both are
+shown so you can see the disagreement.
+
+WHY IS THE APCA FIGURE NEGATIVE?
+================================
+
+APCA is signed. Negative means light text on a darker background; positive
+means dark text on a lighter background.
+
+DOES THE COLOUR-VISION VIEW CHANGE THE EXPORTS?
+===============================================
+
+No. It changes only what is drawn on screen. All figures and exports use the
+true colours.
+
+DOES IT SIMULATE MILD COLOUR BLINDNESS?
+=======================================
+
+No. It simulates full protanopia, deuteranopia and tritanopia only.
+
+IS ANYTHING SAVED BETWEEN VISITS?
+=================================
+
+No. The ramp and settings are not stored. Save the reading or copy the custom
+properties to keep them.

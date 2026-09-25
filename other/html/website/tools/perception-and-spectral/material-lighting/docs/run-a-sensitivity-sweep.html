@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run a sensitivity sweep — Auric Artisan Docs</title>
+<meta name="description" content="Use the Metrics tab to see how far the colour moves when the reflectance curve is perturbed, and read why the CRI and TM-30 figures were withdrawn.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Material Lighting (Material Under Light)</a>
+<h2>Using Material Under Light</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Material Under Light</a></li>
+<li><a href="compare-with-the-reference.html">Compare with the reference light</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="run-a-sensitivity-sweep.html" aria-current="page">Run a sensitivity sweep</a></li>
+<li><a href="set-up-a-scene.html">Set up a scene</a></li>
+<li><a href="use-a-measured-reflectance.html">Use a measured reflectance</a></li>
+<li><a href="reference.html">Material Under Light reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Material Under Light</a></li>
+<li><a href="faq.html">Material Under Light FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Material Lighting (Material Under Light)</a> &rsaquo; <a href="README.html">Using Material Under Light</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Material Lighting</p>
+<h1>Run a sensitivity sweep</h1>
+<p class="lede">Use the Metrics tab to see how far the colour moves when the reflectance curve is perturbed, and read why the CRI and TM-30 figures were withdrawn.</p>
+<p>A reflectance curve is never known exactly: a spectrophotometer&#39;s reading carries error, and the presets are inventions. The sweep asks how much that matters for the colour.</p>
+<h2 id="run-it">Run it</h2>
+<ol>
+<li><p>Set up the scene on the <strong>Lab</strong> tab.</p>
+</li>
+<li><p>Open the <strong>Metrics</strong> tab. Under <strong>Sensitivity sweep</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range and step</th><th>Default</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Perturbation</strong></td><td>±0.005–0.1, step 0.005</td><td>±0.02</td><td>The size of the random change to the reflectance, in reflectance units</td></tr>
+<tr><td><strong>Correlation length</strong></td><td>0–120 nm, step 5</td><td>40 nm</td><td>How far along the spectrum neighbouring changes move together; 0 shows <strong>independent</strong></td></tr>
+<tr><td><strong>Draws</strong></td><td>100–2000, step 100</td><td>500</td><td>How many perturbed curves to try</td></tr>
+</tbody></table></div>
+</li>
+<li><p>Select <strong>Run the sweep</strong>. A message reports how many draws took how long.</p>
+</li>
+</ol>
+<h2 id="read-the-result">Read the result</h2>
+<p>Under <strong>How far the colour moves when the curve does</strong> appear <strong>Median</strong>, <strong>95th percentile</strong> and <strong>Worst draw</strong>, each a ΔE₀₀ between the unperturbed colour and a perturbed one. The note gives the number of draws and the time, and the line under the figures restates the perturbation and correlation, adding, for a synthesised material, that this is the sensitivity of the model, not of any pigment.</p>
+<p>For gold under D65 with the defaults, the median is typically about 0.5 and the 95th percentile about 1.2. The draws are random, so each run differs slightly.</p>
+<h2 id="why-the-perturbation-is-correlated">Why the perturbation is correlated</h2>
+<p>A real instrument&#39;s error does not jump independently from one wavelength to the next; it drifts over tens of nanometres. The sweep smooths its random noise over the <strong>Correlation length</strong> so neighbouring wavelengths move together. Independent noise (correlation length 0) largely cancels when the spectrum is summed into a colour, and gives a misleadingly small spread: for the default scene, roughly half the correlated value.</p>
+<p>This is a sensitivity sweep, not a bootstrap: there is no observed data to resample, so the page perturbs the curve and says by how much.</p>
+<p>The result is written into the exports until you run another sweep or reset the scene; it is not rerun when the scene changes.</p>
+<h2 id="what-used-to-print-here">What used to print here</h2>
+<p>Below the sweep, <strong>What used to print here</strong> (marked <strong>2 withdrawn</strong>) explains two rendering figures an earlier version printed.</p>
+<p>A <strong>colour rendering index</strong> (CRI, CIE 13.3) scores how faithfully a light source renders a specified set of measured test colours, compared with its reference light, on a scale up to 100. <strong>TM-30</strong> (IES TM-30-20) is a newer method with a fidelity score, Rf, and a gamut score, Rg, over 99 samples.</p>
+<ul>
+<li><strong>CIE colour rendering index</strong> — marked <strong>Withdrawn</strong>. The earlier version compared every source with D65 regardless of its temperature, used invented test colours and the wrong colour space. A table reruns that old formula for D65, D50, D55, illuminant A and blackbodies at 2700 K and 2000 K, beside the value each ought to have (100, since each is its own reference) and the tool&#39;s current colour difference for skin.</li>
+<li><strong>TM-30 Rf and Rg</strong> — marked <strong>Withdrawn</strong>. Both old numbers were simple functions of the same fourteen values, so they could never disagree. A table shows this over several sources.</li>
+</ul>
+<p>Each panel ends with <strong>What it would take</strong> to hold the index properly. The tool now holds the reference-selection rule, but not the measured sample sets or the colour spaces the indices need, so it prints neither.</p>
+<p>You should now know how sensitive your material&#39;s colour is to errors in its curve.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-and-share.html"><span>Previous</span>Export and share</a><a href="set-up-a-scene.html"><span>Next</span>Set up a scene</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#run-it">Run it</a></li><li><a href="#read-the-result">Read the result</a></li><li><a href="#why-the-perturbation-is-correlated">Why the perturbation is correlated</a></li><li><a href="#what-used-to-print-here">What used to print here</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

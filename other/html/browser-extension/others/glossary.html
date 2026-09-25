@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary — Auric Artisan Docs</title>
+<meta name="description" content="Plain-language definitions of the colour, contrast, accessibility and browser terms used in the browser extension documentation.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan browser extension</a>
+<h2>Other material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Keyboard shortcuts</a></li>
+<li><a href="glossary.html" aria-current="page">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="README.html">Other material</a></nav>
+<p class="kicker">Browser extension</p>
+<h1>Glossary</h1>
+<p class="lede">Plain-language definitions of the colour, contrast, accessibility and browser terms used in the browser extension documentation.</p>
+<h2 id="colour">Colour</h2>
+<p><strong>Accent colour.</strong> The colour the extension uses for its buttons, focus rings and highlights. You choose it in Settings › Appearance.</p>
+<p><strong>ASE.</strong> Adobe Swatch Exchange, a palette file format many design applications can import.</p>
+<p><strong>Chroma.</strong> How colourful a colour is, from grey (no chroma) to fully saturated. <strong>Chroma room</strong> in the Picker is how much more chroma a colour can take before it leaves a gamut.</p>
+<p><strong>CMYK.</strong> Cyan, magenta, yellow and black, the inks of print. The extension converts to CMYK with a simple formula, not a print profile.</p>
+<p><strong>Colour space.</strong> A system for describing colours with numbers, such as sRGB, LAB or OKLCH. Mixing or blending in different spaces gives different in-between colours.</p>
+<p><strong>Display P3 (P3).</strong> A wider gamut than sRGB, used by many modern screens. Colours outside sRGB can be written in CSS with <code>color(display-p3 …)</code> or <code>oklch()</code>.</p>
+<p><strong>ΔE (delta E).</strong> A number for how different two colours look. Under about 2, most people cannot see the difference.</p>
+<p><strong>Gamut.</strong> The range of colours a screen or colour space can show.</p>
+<p><strong>Harmony.</strong> A set of colours chosen by their positions on the colour wheel, such as complementary (opposite) or triadic (evenly spaced three).</p>
+<p><strong>HEX.</strong> A colour written as <code>#RRGGBB</code> in hexadecimal, for example <code>#d3af37</code>. An eight-digit form adds opacity.</p>
+<p><strong>HSL, HSV, HWB.</strong> Ways of writing a colour by hue (its position on the wheel) plus saturation and lightness (HSL), saturation and value (HSV), or whiteness and blackness (HWB).</p>
+<p><strong>Hue.</strong> The quality that makes a colour red, green, blue and so on, measured in degrees around a wheel.</p>
+<p><strong>k-means.</strong> A method that groups many colours into a few representative ones. Page palette&#39;s <strong>Dominant (k-means)</strong> mode uses it to find eight.</p>
+<p><strong>LAB and LCH.</strong> Colour spaces designed around how people perceive lightness and colour. LCH is LAB written as lightness, chroma and hue.</p>
+<p><strong>Linear RGB.</strong> RGB without the brightness curve screens apply, so light adds up as it does physically.</p>
+<p><strong>OKLAB and OKLCH.</strong> Newer perceptual colour spaces. Equal steps in OKLCH lightness look like equal steps to the eye, and hue stays steady as lightness changes, which makes them good for scales and gradients. CSS supports both with <code>oklab()</code> and <code>oklch()</code>.</p>
+<p><strong>Opacity (alpha).</strong> How transparent a colour is, from 0 (invisible) to 1 or 100% (solid).</p>
+<p><strong>Scale.</strong> A series of steps of one colour, from light to dark, such as Tailwind&#39;s 50 to 950.</p>
+<p><strong>sRGB.</strong> The standard colour space of the web. HEX, <code>rgb()</code> and <code>hsl()</code> colours are sRGB.</p>
+<p><strong>Tint, shade, tone.</strong> A colour mixed toward white (tint), toward black (shade) or toward grey (tone).</p>
+<p><strong>XYZ.</strong> A reference colour space from which the others are calculated.</p>
+<h2 id="contrast-and-accessibility">Contrast and accessibility</h2>
+<p><strong>AA and AAA.</strong> WCAG conformance levels. AA is the common legal and industry target; AAA is stricter.</p>
+<p><strong>Accessible name.</strong> The name assistive technology announces for an element, such as a button&#39;s text or an <code>aria-label</code>. It is computed by a standard algorithm.</p>
+<p><strong>APCA and Lc.</strong> The Accessible Perceptual Contrast Algorithm, used in the WCAG 3 drafts. It gives a lightness contrast score, Lc, whose sign shows polarity (dark on light or light on dark). A higher absolute Lc reads more easily, and the score needed depends on font size and weight.</p>
+<p><strong>ARIA.</strong> Accessible Rich Internet Applications, attributes such as <code>role</code> and <code>aria-label</code> that tell assistive technology what an element is and does.</p>
+<p><strong>Borderline.</strong> In the audit, text that passes its contrast threshold by less than 1.5.</p>
+<p><strong>Colour-vision deficiency.</strong> Reduced ability to tell some colours apart. Protanopia, deuteranopia and tritanopia are the absence of red-, green- or blue-sensitive cones; the &quot;-anomaly&quot; forms are weaker versions; achromatopsia is the absence of colour vision.</p>
+<p><strong>Contrast ratio.</strong> WCAG&#39;s measure of contrast between two colours, from 1:1 to 21:1, based on their relative luminance.</p>
+<p><strong>Finding.</strong> One problem the extension found, with its severity and the actions that fit it.</p>
+<p><strong>Impact.</strong> How much a finding affects people: critical, serious, moderate or minor.</p>
+<p><strong>Landmark.</strong> A region of a page, such as main, navigation or footer, that assistive technology lets people jump between.</p>
+<p><strong>Large text.</strong> In WCAG, text at least 24 px, or at least 18.66 px when bold. It needs less contrast than body text.</p>
+<p><strong>Low vision.</strong> Sight that glasses cannot fully correct. The extension simulates cataracts, general low vision, glaucoma (tunnel vision) and AMD (age-related macular degeneration, loss in the centre).</p>
+<p><strong>Relative luminance.</strong> How bright a colour is to the eye, on a scale from 0 (black) to 1 (white).</p>
+<p><strong>Roving tabindex.</strong> A pattern where a group of controls, such as tabs, holds one Tab stop and arrow keys move inside it.</p>
+<p><strong>Success criterion.</strong> A single testable requirement in WCAG, numbered like 1.4.3 (contrast).</p>
+<p><strong>WCAG.</strong> The Web Content Accessibility Guidelines. The extension audits against WCAG 2.2.</p>
+<h2 id="browser-and-code">Browser and code</h2>
+<p><strong>Content script (page script).</strong> The small part of the extension that runs inside web pages so the tools can read them.</p>
+<p><strong>CSS custom property (CSS variable).</strong> A named value in CSS, written <code>--name</code>, and used with <code>var(--name)</code>.</p>
+<p><strong>Design token.</strong> A named design decision, such as a colour or spacing value, stored so tools can share it. <strong>W3C design tokens</strong> is the standard JSON format for them.</p>
+<p><strong>Eyedropper.</strong> A tool that samples the colour of any pixel on screen.</p>
+<p><strong>Locator.</strong> Code that finds an element on a page, such as a CSS selector or a Playwright <code>page.locator(…)</code>.</p>
+<p><strong>Manifest V3.</strong> The current format for browser extensions in Chromium browsers and Firefox.</p>
+<p><strong>Selector.</strong> A CSS pattern that identifies an element, such as <code>main &gt; .card h2</code>.</p>
+<p><strong>Shadow root.</strong> An isolated part of a page. The extension draws its panels in shadow roots so the site&#39;s styles and its own cannot affect each other.</p>
+<p><strong>Side panel, sidebar.</strong> A panel docked beside the page, in Chromium browsers and Firefox respectively.</p>
+<p><strong>Tailwind <code>@theme</code>.</strong> The block Tailwind CSS version 4 uses to define design tokens as CSS variables.</p>
+<p><strong>XPath.</strong> A way of addressing an element by its path in the page&#39;s structure.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="shortcuts.html"><span>Previous</span>Keyboard shortcuts</a><a href="limits-and-accuracy.html"><span>Next</span>Limits and accuracy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#colour">Colour</a></li><li><a href="#contrast-and-accessibility">Contrast and accessibility</a></li><li><a href="#browser-and-code">Browser and code</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

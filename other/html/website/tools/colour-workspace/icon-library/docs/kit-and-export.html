@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your kit and export — Auric Artisan Docs</title>
+<meta name="description" content="Select icons into Your kit, and take them away as a ZIP of SVG files or a single SVG sprite.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Icon Library</a>
+<h2>Icon Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Icon Library</a></li>
+<li><a href="browse-and-filter.html">Browse, search and filter</a></li>
+<li><a href="icon-panel.html">The icon panel</a></li>
+<li><a href="kit-and-export.html" aria-current="page">Your kit and export</a></li>
+<li><a href="sets-and-finder.html">Sets, collections and Find your icon</a></li>
+<li><a href="reference.html">Icon Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Icon Library</a> &rsaquo; <a href="README.html">Icon Library documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Your kit and export</h1>
+<p class="lede">Select icons into Your kit, and take them away as a ZIP of SVG files or a single SVG sprite.</p>
+<p>Icons you select gather in <strong>Your kit</strong>. The kit is kept in your browser on this device, so it is still there next time.</p>
+<h2 id="select-icons">Select icons</h2>
+<p>Open an icon and select <strong>＋ Select</strong> in its panel; it turns to <strong>✓ Selected</strong>, and the icon&#39;s tile in the grid is marked as selected. Select the button again to remove it.</p>
+<p>Each icon is kept in the style the grid was showing when you selected it. To keep a different style, switch the style in the rail first.</p>
+<h2 id="the-your-kit-tray">The Your kit tray</h2>
+<p>Once something is selected, a <strong>Your kit</strong> button with a count appears. Select it to open or close the tray: <strong>Your kit</strong> with the count and <em>Kept in this browser</em>, a list of your icons with a small preview, name and set (each with <strong>✕</strong> to remove it), and three buttons:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th><th>Message</th></tr></thead>
+<tbody>
+<tr><td><strong>Download ZIP</strong></td><td>Downloads all your icons as SVG files</td><td><strong>Downloaded</strong> <em>n</em> <strong>icons</strong></td></tr>
+<tr><td><strong>Copy sprite</strong></td><td>Copies one SVG sprite containing all your icons</td><td><strong>SVG sprite copied</strong></td></tr>
+<tr><td><strong>Clear</strong></td><td>Empties the kit</td><td>none</td></tr>
+</tbody></table></div>
+<p><strong>Hide</strong> closes the tray. <strong>Download selected</strong> at the foot of the rail does the same as <strong>Download ZIP</strong> and shows the count, for example <strong>Download selected (5)</strong>; it is disabled while the kit is empty. With an empty kit, the messages read <strong>Select some icons first</strong>.</p>
+<h2 id="the-zip">The ZIP</h2>
+<p>The file is <code>auric-icons.zip</code>. Inside:</p>
+<ul>
+<li>a folder per set, holding one SVG per icon named after the icon and style, for example <code>lucide/bell-regular.svg</code>;</li>
+<li><code>README.txt</code>, noting the number of icons and that each uses <code>currentColor</code> for fill or stroke, so you set the colour with CSS and the size with <code>width</code> and <code>height</code> or CSS.</li>
+</ul>
+<p>The files are the icons as they come from their sets, without the size, stroke or colour you previewed. For a restyled single icon, use <strong>Download .svg</strong> or <strong>Copy SVG</strong> in the icon panel.</p>
+<p>Material icons are a webfont, so each one appears in the ZIP as a short text note under <code>material/</code> giving its character reference, not as an SVG.</p>
+<h2 id="the-svg-sprite">The SVG sprite</h2>
+<p><strong>Copy sprite</strong> copies a hidden <code>&lt;svg&gt;</code> block with one <code>&lt;symbol&gt;</code> per icon, each with the icon&#39;s identifier as its <code>id</code>, followed by a comment showing how to use it:</p>
+<pre class="code" data-lang="html"><code>&lt;svg&gt;&lt;use href=&quot;#lucide-bell&quot;/&gt;&lt;/svg&gt;</code></pre>
+<p>Paste the sprite once near the top of your page, then show any icon with a <code>&lt;use&gt;</code> that points at its identifier. Material icons are left out of the sprite.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="icon-panel.html">The icon panel</a></li>
+<li><a href="../../../../../services/icon-cdn/docs/export-and-self-host.html">Icon CDN: export and self-host</a></li>
+<li><a href="../others/privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="icon-panel.html"><span>Previous</span>The icon panel</a><a href="sets-and-finder.html"><span>Next</span>Sets, collections and Find your icon</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#select-icons">Select icons</a></li><li><a href="#the-your-kit-tray">The Your kit tray</a></li><li><a href="#the-zip">The ZIP</a></li><li><a href="#the-svg-sprite">The SVG sprite</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

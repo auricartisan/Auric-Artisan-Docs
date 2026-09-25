@@ -1,0 +1,67 @@
+==============================================================================
+SDKS AND TOOLING
+==============================================================================
+The official clients and integrations for the Auric Artisan API — JavaScript,
+Python, the CLI, an MCP server, a Postman collection and GraphQL.
+Area: Services › Public API   Updated: 2026-09-25
+
+The API documentation lists these official clients and integrations. All of
+them use the same `/v1` endpoints.
+
+  Client:              JavaScript
+  Package or location: `@auric-artisan/api`
+  Notes:               Node 18 and later, browsers and Workers. Typed methods
+                       for every endpoint.
+
+  Client:              Python
+  Package or location: `auric-artisan`
+  Notes:               Python 3.8 and later, standard library only, no
+                       dependencies
+
+  Client:              CLI
+  Package or location: `@auric-artisan/cli`
+  Notes:               For example `auric contrast '#222' '#fff'` in your
+                       terminal
+
+  Client:              MCP server
+  Package or location: Listed on the API page
+  Notes:               Gives Claude, Cursor or any MCP host direct access to
+                       the colour tools
+
+  Client:              Postman
+  Package or location: Listed on the API page
+  Notes:               A ready-made collection covering the whole API
+
+  Client:              GraphQL
+  Package or location: `POST /v1/graphql`
+  Notes:               A single-endpoint alternative, with a playground at
+                       `GET /v1/graphql`
+
+  | Note: The documentation names these packages; check your package registry for
+  | their availability and current versions before depending on them.
+
+THE CLI AND OAUTH
+=================
+
+The `auric` CLI signs in with a device flow and sends an OAuth bearer token
+(`Authorization: Bearer <token>`) instead of an API key. See Authentication
+[authentication.txt].
+
+GENERATING YOUR OWN CLIENT
+==========================
+
+`GET /v1/openapi.yaml` returns the OpenAPI 3.1 document, which most API tools
+can import or use to generate a client. `GET /v1/catalog` returns the same
+information as JSON, with parameters and examples.
+
+RETRIES
+=======
+
+The official SDKs retry automatically on `429` responses. If you write your
+own client, honour `retry-after`; see Errors [errors.txt].
+
+RELATED PAGES
+=============
+
+  - Getting started [getting-started.txt]
+  - Request examples [examples.txt]

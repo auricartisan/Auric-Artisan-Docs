@@ -1,0 +1,195 @@
+==============================================================================
+ACCESSIBILITY CHECKLIST REFERENCE
+==============================================================================
+Every control, label, message and stored item of the Accessibility Checklist.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+PAGE
+====
+
+  Item:   Address
+  Detail: https://auricartisan.com/resources/accessibility-checklist/
+
+  Item:   Old addresses
+  Detail: `/accessibility-compliance/` and `/compliance` forward here
+
+  Item:   Menu entry
+  Detail: Learn › Accessibility Compliance ("WCAG checks & guidance")
+
+  Item:   Deep link to a check
+  Detail: `#check-` plus the ID, for example `#check-k2`
+
+  Item:   Masthead links
+  Detail: Run the automated pass first → (Analyzer), Wire it into CI → (API
+          documentation)
+
+TABS AND METER
+==============
+
+  Control    | What it does
+  -----------+------------------------------------------------------------------------------------
+  Checklist  | The Inspector: index and pane
+  Export     | Counts, a preview of the Markdown, and the three export actions
+  Reference  | WCAG levels and the law in 15 jurisdictions
+  Meter      | "N passed · N flagged · N left … of 50", with a two-part bar. Always counts all 50.
+  Scope chip | Shown when a filter is on: the filter's name and how many rows are visible
+
+INDEX
+=====
+
+  Control     | What it does
+  ------------+-----------------------------------------------------------
+  All 50      | Show every check (default)
+  Required    | Show Level A and AA checks (35)
+  AAA         | Show Level AAA checks (2)
+  Practice    | Show good-practice checks (13)
+  Open only   | Hide checks marked Passed; combines with the filters above
+  Area header | Fold or unfold the area; shows decided out of total
+  Row         | Select the check; shows state, title and tag
+
+PANE
+====
+
+  Control:      All checks
+  What it does: Back to the list (phone layout only)
+
+  Control:      Position
+  What it does: "N of 50", the check's place in the full list
+
+  Control:      Previous check / Next check
+  What it does: Move through the visible checks (`K` / `J`)
+
+  Control:      Chips
+  What it does: Criterion tag, Required, and AUTO, PARTLY or BY HAND
+
+  Control:      Pass
+  What it does: Mark as passed (`Space`); select again to clear
+
+  Control:      Fail
+  What it does: Mark as flagged (`F`); select again to clear
+
+  Control:      N/A
+  What it does: Mark as not applicable (`N`); select again to clear
+
+  Control:      Attach screenshot
+  What it does: Open the screenshot evidence dialog
+
+  Control:      Evidence
+  What it does: Thumbnails of attached screenshots, and an Add tile
+
+  Control:      Explanation
+  What it does: What it means, who it affects, how to test it, what the fix
+                looks like, what usually breaks it, links
+
+SCREENSHOT EVIDENCE DIALOG
+==========================
+
+  Control:      Choose a file
+  What it does: Pick one or more images
+  Default:      —
+
+  Control:      Drop or paste
+  What it does: Drop image files, or paste with `Ctrl` + `V`
+  Default:      —
+
+  Control:      Pen, Highlighter, Arrow, Box, Redact, Callout
+  What it does: Drawing tools (`P`, `H`, `A`, `B`, `R`, `C`)
+  Default:      Arrow
+
+  Control:      Colour
+  What it does: Red, Blue, Green, Black
+  Default:      Red
+
+  Control:      Line width
+  What it does: Fine, Medium, Broad
+  Default:      Medium
+
+  Control:      Marks list
+  What it does: Every mark on this screenshot, with a remove button each
+  Default:      —
+
+  Control:      Thumbnail strip
+  What it does: Switch screenshot, or add another
+  Default:      —
+
+  Control:      Undo
+  What it does: Remove the last mark
+  Default:      —
+
+  Control:      Clear marks
+  What it does: Remove every mark on this screenshot, without asking
+  Default:      —
+
+  Control:      Remove
+  What it does: Delete this screenshot; confirm with Remove this one? within
+                four seconds
+  Default:      —
+
+  Control:      Done
+  What it does: Close the dialog (`Esc` does the same)
+  Default:      —
+
+EXPORT TAB
+==========
+
+  Control           | What it does
+  ------------------+-------------------------------------------------------------------
+  Export the report | Opens the browser's print dialog with flagged and untouched checks
+  Copy as Markdown  | Copies a Markdown report of all 50 checks to the clipboard
+  Reset             | Clears every mark and screenshot at once, without asking
+
+MESSAGES
+========
+
+  Message: "Nothing matches these filters."
+  When:    No check matches the active filters
+
+  Message: "N screenshot(s) attached."
+  When:    Screenshots were added
+
+  Message: "Screenshot removed."
+  When:    A screenshot was deleted
+
+  Message: "Printing N finding(s)."
+  When:    Export the report with flagged checks
+
+  Message: "Nothing is flagged — printing the list as it stands."
+  When:    Export the report with nothing flagged
+
+  Message: "The findings are on your clipboard, as Markdown."
+  When:    Copy as Markdown worked
+
+  Message: "Could not reach the clipboard — the browser refused it."
+  When:    Copy as Markdown failed
+
+  Message: "Cleared — marks and screenshots."
+  When:    After Reset
+
+STORED IN THIS BROWSER
+======================
+
+  Item                                               | Kept
+  ---------------------------------------------------+-----------------------------------------
+  Your marks (Pass, Fail, N/A) for each check        | Yes
+  Screenshots, their marks, and the marked-up copies | Yes
+  Filters, folded areas, the selected check          | No (a `#check-` address selects a check)
+  Notes or reasons                                   | Not available
+
+Nothing is sent to a server. See Privacy [../others/privacy.txt].
+
+LAYOUT
+======
+
+  Width:  1080 px and wider
+  Layout: Index and pane side by side; the pane stays in view; the tab rail
+          and meter stay under the header
+
+  Width:  Under 1080 px
+  Layout: Index only; a row opens the one-check view
+
+  Width:  620 px and narrower
+  Layout: Key hints on the verdict buttons are hidden; Attach screenshot
+          becomes an icon button
+
+Without JavaScript, the page shows the plain list of all 50 checks with their
+explanations, and no filters, meter or marking.

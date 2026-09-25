@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The icon panel — Auric Artisan Docs</title>
+<meta name="description" content="Preview an icon large, switch its style, size, colour and stroke, copy it as SVG, JSX, a data URI or a CDN tag, download it, and read its details.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Icon Library</a>
+<h2>Icon Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Icon Library</a></li>
+<li><a href="browse-and-filter.html">Browse, search and filter</a></li>
+<li><a href="icon-panel.html" aria-current="page">The icon panel</a></li>
+<li><a href="kit-and-export.html">Your kit and export</a></li>
+<li><a href="sets-and-finder.html">Sets, collections and Find your icon</a></li>
+<li><a href="reference.html">Icon Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Icon Library</a> &rsaquo; <a href="README.html">Icon Library documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>The icon panel</h1>
+<p class="lede">Preview an icon large, switch its style, size, colour and stroke, copy it as SVG, JSX, a data URI or a CDN tag, download it, and read its details.</p>
+<p>Selecting an icon opens it in a panel.</p>
+<h2 id="where-the-panel-sits">Where the panel sits</h2>
+<ul>
+<li><strong>On a wide screen</strong> (wider than about 1,180 pixels), the panel docks to the right edge as a column of the page. Nothing is covered, and selecting another icon shows that one instead.<ul>
+<li>Drag the grip on the panel&#39;s left edge to resize it (380 to 720 pixels; 460 at first). Double-click the grip to go back to 460. With the grip focused, <code>←</code> and <code>→</code> resize it, faster with <code>Shift</code>. The width is remembered.</li>
+</ul>
+</li>
+<li><strong>On a narrower screen</strong>, the panel is a sheet from the bottom at about 62% of the screen. Drag the grip up to open it to 94%, or down to close it. Tapping the dimmed page closes it.</li>
+</ul>
+<p>Close the panel with <strong>✕</strong> or <code>Esc</code>.</p>
+<h2 id="the-header">The header</h2>
+<ul>
+<li>The icon&#39;s name, and a line with its set, licence, category (Tabler and Remix only) and number of styles.</li>
+<li><strong>＋ Select</strong> adds the icon to <strong>Your kit</strong>; it then reads <strong>✓ Selected</strong>. See <a href="kit-and-export.html">Your kit and export</a>.</li>
+<li><strong>Download .svg</strong> downloads the icon in the style the grid is showing, as it comes from the set, without your panel colour or stroke. Use <strong>Download .svg</strong> among the copy buttons for a restyled file.</li>
+</ul>
+<h2 id="preview-controls">Preview controls</h2>
+<p>A large preview sits beside the controls. Changing these affects the preview; colour and stroke also change the code below.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>Style</strong></td><td>The icon&#39;s styles</td><td>Only when it has more than one. Switches the preview, code and copy buttons to that style.</td></tr>
+<tr><td><strong>Size</strong></td><td>16 to 160 px</td><td>Starts at the grid size. Changes the preview only.</td></tr>
+<tr><td><strong>Color</strong></td><td>Any colour</td><td>The picker starts at the grid colour, or near-black; until you pick, the preview follows the text colour. <strong>currentColor</strong> goes back to that.</td></tr>
+<tr><td><strong>Stroke</strong></td><td>0.5 to 3</td><td>Only for outline sets (Tabler, Lucide, Heroicons, Feather). Starts at the grid stroke.</td></tr>
+</tbody></table></div>
+<h2 id="copy-and-download">Copy and download</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What you get</th><th>Message</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy SVG</strong></td><td>The SVG markup with your colour and stroke</td><td><strong>SVG copied</strong></td></tr>
+<tr><td><strong>Copy JSX</strong></td><td>A React component named after the icon, passing props to the SVG</td><td><strong>JSX copied</strong></td></tr>
+<tr><td><strong>Copy data-URI</strong></td><td>An <code>&lt;img&gt;</code> tag whose source is the SVG as a data URI, sized to the grid size</td><td><strong>data-URI copied</strong></td></tr>
+<tr><td><strong>Copy CDN tag</strong></td><td>An <code>&lt;i data-icon=&quot;set:name&quot;&gt;</code> tag and the Icon CDN script that fills it</td><td><strong>CDN tag copied</strong></td></tr>
+<tr><td><strong>Download .svg</strong></td><td>An SVG file named after the icon and style, with your colour and stroke</td><td>none</td></tr>
+</tbody></table></div>
+<p>The icons use <code>currentColor</code>, so without a chosen colour they take the colour of the text around them. Picking a colour replaces <code>currentColor</code> with that colour in the copied code.</p>
+<h2 id="the-code-blocks">The code blocks</h2>
+<p>Under the preview, four blocks show the code in full, each with its own <strong>Copy</strong> (message <strong>Copied</strong>):</p>
+<ul>
+<li><strong>SVG</strong>;</li>
+<li><strong>JSX / React</strong>: <code>export const IconName = (props) =&gt; (…);</code>;</li>
+<li><strong><code>&lt;img&gt;</code> data-URI</strong>;</li>
+<li><strong>CDN (auto-inject)</strong>: the tag with a <code>data-style</code> attribute when the style is not the set&#39;s default, and the loader script.</li>
+</ul>
+<p>The blocks update when you change the colour or stroke.</p>
+<p>For how the CDN tag and loader work, see <a href="../../../../../services/icon-cdn/docs/embed-an-icon.html">Icon CDN: embed an icon</a>.</p>
+<h2 id="details">Details</h2>
+<p>At the foot of the panel: <strong>Set</strong> (linked to the set&#39;s own website), <strong>License</strong>, <strong>Author</strong>, <strong>Category</strong> and <strong>Keywords</strong> when the icon has them, and <strong>Path</strong>, which says which set and style the icon comes from.</p>
+<h2 id="material-icons">Material icons</h2>
+<p>Material icons are served as a webfont, so the panel works differently for them:</p>
+<ul>
+<li>the copy buttons are <strong>Copy glyph</strong>, which copies the icon&#39;s HTML character reference such as <code>&amp;#xe88a;</code> (message <strong>Glyph entity copied</strong>), and <strong>Copy CDN tag</strong>;</li>
+<li>the code blocks are <strong>HTML (CDN)</strong>, a tag and the loader script, and <strong>Webfont @font-face</strong>, a rule for the Material font of that style with a class to apply it;</li>
+<li><strong>Download .svg</strong> shows <strong>Material is a webfont — use the embed code</strong> instead of downloading;</li>
+<li>there is no stroke control.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="kit-and-export.html">Your kit and export</a></li>
+<li><a href="../../../../../services/icon-cdn/docs/style-size-and-colour.html">Icon CDN: style, size and colour</a></li>
+<li><a href="browse-and-filter.html">Browse, search and filter</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="browse-and-filter.html"><span>Previous</span>Browse, search and filter</a><a href="kit-and-export.html"><span>Next</span>Your kit and export</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#where-the-panel-sits">Where the panel sits</a></li><li><a href="#the-header">The header</a></li><li><a href="#preview-controls">Preview controls</a></li><li><a href="#copy-and-download">Copy and download</a></li><li><a href="#the-code-blocks">The code blocks</a></li><li><a href="#details">Details</a></li><li><a href="#material-icons">Material icons</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

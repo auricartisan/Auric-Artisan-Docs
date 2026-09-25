@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read what a transform moved — Auric Artisan Docs</title>
+<meta name="description" content="Interpret the clip overlay, the colour difference cards and the hue circle on the Lab tab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with LUT Lab</a></li>
+<li><a href="apply-a-look.html">Apply a look</a></li>
+<li><a href="load-a-cube-file.html">Load a .cube file</a></li>
+<li><a href="lut-concepts.html">LUT concepts</a></li>
+<li><a href="read-what-it-moved.html" aria-current="page">Read what a transform moved</a></li>
+<li><a href="write-a-cube-file.html">Write a .cube file</a></li>
+<li><a href="reference.html">LUT Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting LUT Lab</a></li>
+<li><a href="faq.html">LUT Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>Read what a transform moved</h1>
+<p class="lede">Interpret the clip overlay, the colour difference cards and the hue circle on the Lab tab.</p>
+<p>Everything below the before and after pair on the <strong>Lab</strong> tab describes the difference between the two images, for the transform currently shown: a look at its strength, or a loaded file.</p>
+<h2 id="the-pair">The pair</h2>
+<ul>
+<li><strong>Before</strong> is the scene, with its pixel count beside the label, for example <strong>57600</strong> for a 320 × 180 scene.</li>
+<li><strong>After</strong> is the scene through the transform, with the clipped share beside the label, for example <strong>0.83% clipped</strong>.</li>
+</ul>
+<h3 id="the-clip-overlay">The clip overlay</h3>
+<p>With <strong>What the transform crushed</strong> switched on, the <strong>After</strong> image is hatched with diagonal stripes where the transform clipped a pixel:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Stripes</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Pink</td><td>A channel was driven to white (255) that was not at 255 before</td></tr>
+<tr><td>Blue</td><td>A channel was driven to black (0) that was not at 0 before</td></tr>
+</tbody></table></div>
+<p>Pixels that were already at 0 or 255 and stayed there are not marked. Switch the overlay off to see the clean result; the figures do not change.</p>
+<h2 id="what-it-moved">What it moved</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>mean ΔE₀₀</strong></td><td>The average CIEDE2000 colour difference between each pixel before and after</td></tr>
+<tr><td><strong>95th percentile</strong></td><td>The difference that 95% of pixels are at or below; shows how big the typical large change is</td></tr>
+<tr><td><strong>largest</strong></td><td>The single largest difference on any pixel</td></tr>
+<tr><td><strong>clipped</strong></td><td>The share of pixels with at least one channel driven to 0 or 255 by the transform; the card turns red above 1%</td></tr>
+<tr><td><strong>the old test said</strong></td><td>The share of output pixels with any channel at 0 or 255, whatever it was before</td></tr>
+</tbody></table></div>
+<p>The last card is the test an earlier version of the tool used. It counts every saturated or black or white pixel in the result, even those the transform did not touch, so it is shown only for comparison. On the <strong>Colour patches</strong> or <strong>Saturation field</strong> scene, compare it with <strong>clipped</strong> to see the difference.</p>
+<h2 id="where-it-moved-things-to">Where it moved things to</h2>
+<p>The hue circle tests the transform on 72 colours arranged round a ring in CIELAB, at a constant lightness (L* 60) and chroma (C* 40), one every 5° of hue.</p>
+<ul>
+<li>The angle round the circle is the CIELAB hue; the distance from the centre is the chroma. Faint rings mark every 20 units of chroma.</li>
+<li>Each hollow dot is a test colour before the transform. The filled dot, joined to it by a thin line, is where the transform moved it.</li>
+<li>A pink ring around a filled dot marks a test colour the transform clipped.</li>
+</ul>
+<p>Not every colour at L* 60, C* 40 fits inside sRGB. Test colours that do not fit are pulled in towards the centre, keeping their hue, until they do. The caption says how many: <strong>13 of 72</strong>, whatever the transform, because the ring is the same every time. This is done before the transform runs, so the shift you see belongs to the transform, not to the gamut.</p>
+<h3 id="the-circle-cards">The circle cards</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>largest hue shift</strong></td><td>The largest turn of hue on any test colour, in degrees, with its direction (+ or −)</td></tr>
+<tr><td><strong>mean hue shift</strong></td><td>The average size of the hue turn across all 72, in degrees</td></tr>
+<tr><td><em><em>largest L</em> shift</em>*</td><td>The largest change in CIELAB lightness, with its direction</td></tr>
+<tr><td><strong>clipped on the circle</strong></td><td>How many of the 72 test colours the transform clipped</td></tr>
+</tbody></table></div>
+<p>Hue alone rarely tells the whole story: most looks move lightness and chroma at the same time, often by more. The CSV export of the hue sweep gives all three for every test colour; see <a href="write-a-cube-file.html">Write a .cube file</a>.</p>
+<h2 id="reading-the-numbers-together">Reading the numbers together</h2>
+<ul>
+<li>A look with a small <strong>mean ΔE₀₀</strong> but a large <strong>largest</strong> changes most colours a little and a few a lot. Find the few with the overlay or the hue circle.</li>
+<li>A high <strong>clipped</strong> figure on your own picture means detail is being lost in highlights or shadows. Lower <strong>Strength</strong>, or for the tone-map, change <strong>Tone-map exposure</strong>.</li>
+<li>A consistent twist on the hue circle, all dots turning the same way, is a hue rotation. Dots moving inwards or outwards are chroma changes.</li>
+</ul>
+<h2 id="the-method-tab">The Method tab</h2>
+<p>The <strong>Method</strong> tab explains the method in five sections, chosen with the buttons under <strong>The chain</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Sample order</strong></td><td>How a <code>.cube</code> indexes its rows, with the first eight rows of a 2 × 2 × 2 table</td></tr>
+<tr><td><strong>Interpolation</strong></td><td>How trilinear interpolation works, and the worst error on an identity at sizes 2 to 65</td></tr>
+<tr><td><strong>Clipping</strong></td><td>Seven test pixels judged by the old test and by the clip test used now</td></tr>
+<tr><td><strong>Round trip</strong></td><td>Writing a table and reading it back, and whether an identity survives at various sizes</td></tr>
+<tr><td><strong>Linear light</strong></td><td>The tone-map applied in linear light compared with applying it to encoded values</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="lut-concepts.html"><span>Previous</span>LUT concepts</a><a href="write-a-cube-file.html"><span>Next</span>Write a .cube file</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-pair">The pair</a></li><li><a href="#what-it-moved">What it moved</a></li><li><a href="#where-it-moved-things-to">Where it moved things to</a></li><li><a href="#reading-the-numbers-together">Reading the numbers together</a></li><li><a href="#the-method-tab">The Method tab</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

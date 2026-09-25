@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export plates — Auric Artisan Docs</title>
+<meta name="description" content="Download plates as PNG or SVG, export every plate as a ZIP, save a seeds file, and rebuild a plate from its seed.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Ishihara Plate Generator</a>
+<h2>Ishihara Plate Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Ishihara Plate Generator</a></li>
+<li><a href="build-the-standard-38.html">Build the standard 38</a></li>
+<li><a href="export-plates.html" aria-current="page">Export plates</a></li>
+<li><a href="generate-plates.html">Generate plates</a></li>
+<li><a href="read-the-diagnostics.html">Read the diagnostics</a></li>
+<li><a href="reference.html">Ishihara Plate Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Ishihara Plate Generator</a></li>
+<li><a href="faq.html">Ishihara Plate Generator FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Ishihara Plate Generator</a> &rsaquo; <a href="README.html">Ishihara Plate Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Export plates</h1>
+<p class="lede">Download plates as PNG or SVG, export every plate as a ZIP, save a seeds file, and rebuild a plate from its seed.</p>
+<p>Every file is built in your browser and handed straight to the download. Nothing leaves your device.</p>
+<h2 id="one-plate-from-its-card">One plate, from its card</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What you get</th><th>File name</th></tr></thead>
+<tbody>
+<tr><td><strong>Download PNG</strong></td><td>A raster image, 4,096 pixels square, on the chosen card material</td><td><code>ishihara-plate-&lt;number&gt;-&lt;content&gt;.png</code></td></tr>
+<tr><td><strong>Download SVG</strong></td><td>A vector image with one circle per dot, which scales to any print size</td><td><code>ishihara-plate-&lt;number&gt;-&lt;content&gt;.svg</code></td></tr>
+<tr><td><strong>Copy seed</strong></td><td>The plate&#39;s seed, on your clipboard</td><td>—</td></tr>
+</tbody></table></div>
+<p>The page says &quot;Rendering high-res PNG…&quot; while it builds the PNG. For example, plate 1 showing 93 downloads as <code>ishihara-plate-1-93.png</code>.</p>
+<h2 id="every-plate-from-the-export-tab">Every plate, from the Export tab</h2>
+<p>The <strong>Export</strong> tab has four actions. They cover every plate currently in the Lab.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><strong>Everything at once</strong> › <strong>Export every plate</strong></td><td>One ZIP, <code>ishihara-plates.zip</code>, with a PNG (2,048 pixels), an SVG and a JSON description for each plate</td></tr>
+<tr><td><strong>PNG</strong> (Raster) › <strong>Download every .png</strong></td><td>The same ZIP of every plate</td></tr>
+<tr><td><strong>SVG</strong> (Vector) › <strong>Download every .svg</strong></td><td>One SVG file per plate, downloaded one after another</td></tr>
+<tr><td><strong>Seeds</strong> (Reproducible) › <strong>Download the seeds</strong></td><td>A text file, <code>ishihara-seeds.txt</code>, with the seed, palette and settings of every plate</td></tr>
+</tbody></table></div>
+<p><strong>↓ Export All</strong> in the Lab does the same as <strong>Export every plate</strong>.</p>
+<p>Inside the ZIP, files are named by plate number, type and content, for example <code>plate-001-number-93.png</code>, <code>plate-001-number-93.svg</code> and <code>plate-001-number-93.json</code>. The JSON records the plate&#39;s ID, seed, type, content, palette, difficulty, plate shape, dot count, fine-tuning settings and its quality report.</p>
+<p>The seeds file is a table with the columns content, seed, type, palette, difficulty, dots and quality, one row per plate.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Your browser may ask permission before it saves several files in a row, as <strong>Download every .svg</strong> does. Allow it for auricartisan.com.</p>
+</blockquote>
+<h2 id="reproduce-a-plate">Reproduce a plate</h2>
+<p>&quot;A seed rebuilds a plate exactly. Keep it with the file and the same settings will produce the same dots on any machine.&quot;</p>
+<ol>
+<li>Copy the plate&#39;s seed with <strong>Copy seed</strong>, or read it from the seeds file.</li>
+<li>Select <strong>Custom</strong> in the Lab.</li>
+<li>Choose the same type, content, palette and difficulty, and use the same fine-tuning settings.</li>
+<li>Paste the seed into <strong>Seed (optional)</strong> and select <strong>Generate</strong>.</li>
+</ol>
+<p>The result: the same plate, dot for dot.</p>
+<h2 id="over-the-rest-api">Over the REST API</h2>
+<p>The Export tab ends with &quot;Or ask for one over HTTP&quot;: &quot;Three API credits a call. A separate balance from the tool&#39;s tokens.&quot; It shows an example request to <code>POST /v1/ishihara/plate</code> with a type, content, palette, difficulty and seed. See the public API documentation at <a href="https://auricartisan.com/library/documentation/api/" rel="noopener">https://auricartisan.com/library/documentation/api/</a>.</p>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>&quot;PNG downloaded&quot; / &quot;SVG downloaded&quot;</td><td>The file was saved</td></tr>
+<tr><td>&quot;Loading ZIP library…&quot;</td><td>The ZIP builder is loading, the first time you export</td></tr>
+<tr><td>&quot;Exporting all plates…&quot; then &quot;N plates exported as ZIP&quot;</td><td>The ZIP is ready</td></tr>
+<tr><td>&quot;No plates to export&quot;</td><td>The bench is empty</td></tr>
+<tr><td>&quot;ZIP library unavailable — downloading first plate as PNG&quot;</td><td>The ZIP builder could not load, so only the first plate was saved</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="build-the-standard-38.html"><span>Previous</span>Build the standard 38</a><a href="generate-plates.html"><span>Next</span>Generate plates</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#one-plate-from-its-card">One plate, from its card</a></li><li><a href="#every-plate-from-the-export-tab">Every plate, from the Export tab</a></li><li><a href="#reproduce-a-plate">Reproduce a plate</a></li><li><a href="#over-the-rest-api">Over the REST API</a></li><li><a href="#messages">Messages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

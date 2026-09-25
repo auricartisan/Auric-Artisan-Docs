@@ -1,0 +1,15 @@
+---
+title: Gamut Lab — Privacy
+description: What the Gamut Lab stores, where, and what leaves your device.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Gamut Lab privacy
+
+- **All calculations run in your browser.** Diagrams, matrices, volumes and overlaps are computed on your device.
+- **Imported colour spaces are stored in this browser.** They are kept in the site's local storage on your device, not on a server, and are removed with **Del** or by clearing site data. They do not follow you to another browser or device.
+- **Exports are created locally** and saved through your browser's download, or copied to your clipboard when you choose.
+- **The link** encodes your view settings (drawn spaces, diagram mode, overlays and similar). Anyone with the link sees them. If you defined a custom space, its primaries may be part of the encoded settings.
+- **Save to Library** stores a snapshot in your Auric Artisan Library.
+- The page loads the site's shared features like every other page on auricartisan.com; see the site's privacy policy.

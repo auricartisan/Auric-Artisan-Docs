@@ -1,0 +1,83 @@
+==============================================================================
+ILLUMINANTS FAQ
+==============================================================================
+Short answers to common questions about the Standard Illuminants lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+WHY DOES CIE A SHOW 2856 K WHEN THE STANDARD DEFINES IT AT 2848 K?
+==================================================================
+
+Illuminant A is defined as a Planckian radiator at 2848 K using the 1931 value
+of the second radiation constant. Measured on a modern (ITS-90) Planckian
+locus, its CCT is 2856 K. The lab computes A the way it is defined and reports
+the CCT you would measure, which is why the list says 2856 K. The Data tab
+explains this under Illuminant A.
+
+ARE THE D65 AND D50 SPECTRA THE PUBLISHED CIE TABLES?
+=====================================================
+
+They are reconstructed from the published CIE daylight basis functions (S0,
+S1, S2), which the lab holds verbatim. The reconstructions land on their
+published chromaticities to better than 0.0003, which is why they are marked
+"computed" rather than "verbatim".
+
+WHY ARE THE FLUORESCENT ILLUMINANTS MARKED AS STAND-INS?
+========================================================
+
+The lab does not hold the CIE 15 table of fluorescent spectra. F1 to F12 are
+built from smooth peaks as illustrations, so their chromaticity, CCT and
+rendering figures describe the stand-in, not the real CIE illuminant. They are
+flagged wherever they appear.
+
+IS THE CRI VALUE A REAL CIE 13.3 RESULT?
+========================================
+
+No. The 14 test colour samples are approximations, so Ra and R1–R14 are
+indicative only. The Methods tab shows the CIE 13.3 card as switched off for
+that reason.
+
+WHY IS THERE NO TM-30 FIGURE?
+=============================
+
+TM-30 is defined on 99 colour evaluation samples that the lab does not hold.
+Rather than invent a figure, the lab leaves TM-30 switched off. The Reference
+tab still explains what TM-30 measures.
+
+WHAT IS THE DIFFERENCE BETWEEN THE OHNO AND MCCAMY CCT?
+=======================================================
+
+McCamy's (1992) formula is a quick cubic fit that returns a number for any
+input, even where CCT is meaningless. Ohno's method (2014) searches a finely
+computed Planckian locus, returns a signed Duv, and says when the result is
+not valid. The lab uses Ohno for every reading and shows McCamy only on the
+Methods tab for comparison.
+
+WHAT DOES A NEGATIVE DUV MEAN?
+==============================
+
+The light sits below the Planckian locus in the uv plane, which looks slightly
+pink or magenta. Positive Duv is above the locus, slightly green.
+
+CAN I USE THE 10° OBSERVER?
+===========================
+
+Not yet. The CIE 1964 10° colour matching functions are not held, so the
+option is switched off rather than silently returning 2° results.
+
+CAN I LOAD MY OWN MEASURED SPECTRUM?
+====================================
+
+The page has no control for importing a spectrum. You can choose any standard
+illuminant or a blackbody at any CCT from 1,500 to 25,000 K.
+
+DOES IT WORK OFFLINE?
+=====================
+
+Once the page has loaded, all calculations run in your browser without a
+network connection. Loading the page needs one.
+
+CAN I SAVE MY SETTINGS?
+=======================
+
+Yes. Use Export › Share URL for a link, or the floating Save to Library button
+to keep a preset in your Library.

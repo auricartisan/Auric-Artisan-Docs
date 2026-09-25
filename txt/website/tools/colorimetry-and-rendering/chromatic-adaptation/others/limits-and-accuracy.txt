@@ -1,0 +1,60 @@
+==============================================================================
+CHROMATIC ADAPTATION LIMITS AND ACCURACY
+==============================================================================
+What the Chromatic Adaptation lab computes exactly, what it approximates, and
+what it does not do.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+The lab is an educational and research simulator that runs in your browser. It
+is not a substitute for measured device profiles, calibrated displays,
+spectrophotometer data or a validated ICC workflow.
+
+WHAT IS EXACT
+=============
+
+  - White points of all 12 illuminants are tabulated CIE xy values, held
+    verbatim. Adaptation needs only these, so it is correct even where a
+    spectrum is not held.
+  - Transform matrices are the published values; each inverse is recomputed,
+    and the Matrix tab shows the round-trip error.
+  - sRGB conversion uses the IEC 61966-2-1 primaries and transfer function.
+    Adaptation happens in linear light; the transfer function is applied only
+    at the ends.
+  - ΔE₀₀ is the CIEDE2000 formula (CIE 142:2001).
+
+WHAT IS MODELLED OR SIMPLIFIED
+==============================
+
+  - Time course. The two-phase model uses constants from Fairchild and Reniff
+    (1995). It describes average behaviour in their experiments, not any
+    particular viewer or scene.
+  - Degree of adaptation is yours to set. CIECAM02 would compute it from the
+    adapting luminance and the surround; the lab does not.
+  - Clipping. Adapted colours outside sRGB are clipped per channel (or
+    compressed first with HDR Tonemap). This is not perceptual gamut mapping.
+    For that, see Gamut Mapping [../../gamut-map/README.txt].
+  - Spectra. The daylight illuminants are reconstructed from the CIE daylight
+    basis; A is computed from Planck's law. B, C, F2, F7 and F11 are not drawn
+    because their tables are not held.
+
+WHAT IS NOT DONE
+================
+
+  - Ranking transforms by accuracy. That needs corresponding-colour data sets,
+    which are not held. The comparisons report what each transform does,
+    measured against Bradford or as a colour shift, and say so.
+  - Spatial or per-pixel adaptation. The Spatial Adaptation and Per-Pixel
+    Modulation controls do not affect the result in the current version, nor
+    do Display Gamma, Target FPS or GPU.
+  - Colour appearance modelling. Only the adaptation step is applied;
+    lightness, colourfulness and hue correlates of CIECAM02 or CAM16 are not
+    computed.
+  - The 10° observer. Not held.
+
+PRECISION
+=========
+
+  - Images are processed at up to 480 × 320 pixels, in 8-bit sRGB.
+  - Batch results round ΔE₀₀ to two decimals and L*, C* and h° to one.
+  - The Lab timeline covers 0 to 5 seconds only; the Dynamics tab covers 0 to
+    120 seconds.

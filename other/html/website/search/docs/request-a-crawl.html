@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a crawl — Auric Artisan Docs</title>
+<meta name="description" content="How to submit pages and sitemaps in the Auric Artisan Search Console, read the crawl queue, and control what the crawler fetches with robots.txt.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Search and the Search Console</a>
+<h2>Search documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with search</a></li>
+<li><a href="console-reports.html">Read the console reports</a></li>
+<li><a href="instant-answers.html">Instant answers</a></li>
+<li><a href="manage-your-sites.html">Manage your sites</a></li>
+<li><a href="query-syntax.html">Query syntax</a></li>
+<li><a href="request-a-crawl.html" aria-current="page">Request a crawl</a></li>
+<li><a href="search-console.html">Set up the Search Console</a></li>
+<li><a href="search-the-web.html">Search the web</a></li>
+<li><a href="search-this-site.html">Search this site</a></li>
+<li><a href="understand-the-ranking.html">Understand the ranking</a></li>
+<li><a href="reference.html">Search reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Search FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Search and the Search Console</a> &rsaquo; <a href="README.html">Search documentation</a></nav>
+<p class="kicker">Website › Search</p>
+<h1>Request a crawl</h1>
+<p class="lede">How to submit pages and sitemaps in the Auric Artisan Search Console, read the crawl queue, and control what the crawler fetches with robots.txt.</p>
+<p>The crawler finds pages by following links and by reading sitemaps. You can speed this up by submitting a page or a whole sitemap in the <strong>Submit</strong> section of the Search Console. Your site must be verified first; see <a href="search-console.html">Set up the Search Console</a>.</p>
+<h2 id="submit-a-page-or-a-sitemap">Submit a page or a sitemap</h2>
+<ol>
+<li>Open <strong>Submit</strong> in the console&#39;s side rail. The section is headed <strong>Crawling</strong>.</li>
+<li>In <strong>Add a page or a sitemap</strong>, paste an address, for example <code>https://example.com/sitemap.xml</code>.</li>
+<li>As you type, a hint says what it will do: <strong>Looks like a sitemap — every URL inside it will join the queue.</strong> or <strong>Queued as one page.</strong> The hint is a guess; the console decides when it reads the address.</li>
+<li>Select <strong>Submit</strong> or press <code>Enter</code>.</li>
+</ol>
+<p>The result:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Read as a sitemap — 120 URLs queued.</strong></td><td>The address was a sitemap, and its addresses were queued.</td></tr>
+<tr><td><strong>Read as a sitemap, but every URL in it was outside this property.</strong></td><td>The sitemap lists addresses on a different site. Submit it under the site it belongs to.</td></tr>
+<tr><td><strong>Queued. It will be crawled at this host&#39;s own pace.</strong></td><td>The address was queued as one page.</td></tr>
+</tbody></table></div>
+<p>To queue a single address from a report, use <strong>Ask for a crawl</strong> in the inspection panel instead. See <a href="console-reports.html">Read the console reports</a>.</p>
+<h2 id="the-queue">The queue</h2>
+<p>The first card shows how many addresses are <strong>waiting for the next pass</strong>, or <strong>Nothing waiting</strong> and <strong>Everything known has been crawled.</strong> When the crawler&#39;s pace is known, it adds how long the queue will take, for example <strong>At 1,000 ms a request, about 7 minutes of crawling.</strong></p>
+<p>A bar shows where the waiting addresses came from:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Source</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>from your sitemaps</td><td>Listed in a sitemap.</td></tr>
+<tr><td>you asked for</td><td>Submitted in the console.</td></tr>
+<tr><td>sitemaps to re-read</td><td>Sitemaps due to be read again.</td></tr>
+<tr><td>found by following links</td><td>Found in links on pages already crawled.</td></tr>
+<tr><td>due a re-crawl</td><td>Already crawled, and due to be fetched again.</td></tr>
+</tbody></table></div>
+<h2 id="your-sitemaps">Your sitemaps</h2>
+<p>The <strong>Sitemaps</strong> card lists every sitemap known for the site. Sitemaps are re-read on every pass. Each shows how the crawler knows it:</p>
+<ul>
+<li><strong>You added</strong> — submitted in the console.</li>
+<li><strong>Detected</strong> — listed on a <code>Sitemap:</code> line in your robots.txt.</li>
+<li><strong>Found while crawling</strong> — met by following a link.</li>
+</ul>
+<p>A sitemap that did not answer normally shows its HTTP status. The line below says how many addresses were queued from your sitemaps and how many sitemaps your robots.txt lists. If it lists none, add them there: that is how the crawler finds them on its own.</p>
+<h2 id="what-the-crawler-obeys">What the crawler obeys</h2>
+<p>The crawler calls itself AuricBot.</p>
+<ul>
+<li><strong>robots.txt.</strong> The crawler reads your robots.txt and obeys it. It follows the group for <code>AuricBot</code> if there is one, and the <code>*</code> group otherwise. An address that robots.txt disallows is never fetched, and shows in Coverage as <strong>Blocked by robots.txt</strong>.</li>
+<li><strong>Crawl-delay.</strong> The crawler waits between requests to your site so that a crawl never floods it. It uses the <code>Crawl-delay</code> in your robots.txt, between 1 and 60 seconds, or 1 second if there is none. The wait shows as <strong>Pace</strong> under <strong>Your sites</strong>.</li>
+<li><strong>noindex.</strong> A page with a robots meta tag or an <code>X-Robots-Tag</code> header asking not to be indexed is fetched but not indexed.</li>
+<li><strong>Canonical addresses.</strong> When two pages are near-identical, one is kept. A <code>rel=canonical</code> link tells the crawler which one you prefer.</li>
+<li><strong>Web pages only.</strong> Only HTML pages are read and indexed. PDFs, images, feeds and downloads are not.</li>
+<li><strong>No JavaScript.</strong> Pages that are mostly an empty shell filled in by JavaScript look empty to the crawler, and show as <strong>Too little content</strong>.</li>
+</ul>
+<h2 id="crawled-is-not-yet-searchable">Crawled is not yet searchable</h2>
+<p>Crawling and indexing are separate steps. A page that has been fetched shows as <strong>Crawled, waiting for the next index build</strong>. It becomes searchable when the next index build includes it.</p>
+<h2 id="when-the-crawler-is-turned-away">When the crawler is turned away</h2>
+<p>If your site stops the crawler, for example with a firewall or an error on every request, <strong>Your sites</strong> shows <strong>The crawler is being turned away.</strong> with the reason. Nothing on the site can be indexed until the crawler can fetch pages again. The header also changes to <strong>Crawling stopped</strong> with the time of the last pass.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="query-syntax.html"><span>Previous</span>Query syntax</a><a href="search-console.html"><span>Next</span>Set up the Search Console</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#submit-a-page-or-a-sitemap">Submit a page or a sitemap</a></li><li><a href="#the-queue">The queue</a></li><li><a href="#your-sitemaps">Your sitemaps</a></li><li><a href="#what-the-crawler-obeys">What the crawler obeys</a></li><li><a href="#crawled-is-not-yet-searchable">Crawled is not yet searchable</a></li><li><a href="#when-the-crawler-is-turned-away">When the crawler is turned away</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

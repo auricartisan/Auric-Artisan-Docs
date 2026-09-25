@@ -1,0 +1,295 @@
+==============================================================================
+TONE MAPPING REFERENCE
+==============================================================================
+Every control, readout, option and export in the Tone Mapping lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+Address:
+https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/
+
+LAB TAB
+=======
+
+Source
+------
+
+  Control:      Source
+  What it does: The frame to map
+  Values:       HDR test scene; Exposure gradient; ColorChecker patches;
+                Uploaded image
+  Default:      HDR test scene
+
+  Control:      Choose a file
+  What it does: Picks an image (shown for Uploaded image)
+  Values:       Image files
+  Default:      "no file"
+
+  Control:      Source encoding
+  What it does: How the source values are decoded (step 1)
+  Values:       Linear (scene); sRGB; PQ (ST 2084); HLG (inverse OETF); Gamma
+                2.2; Gamma 2.4
+  Default:      Linear (scene)
+
+  Control:      Source primaries
+  What it does: The source's RGB space
+  Values:       Rec.709; Display P3; Rec.2020; ACEScg AP1
+  Default:      Rec.709
+
+  Control:      Source white
+  What it does: The source's white point
+  Values:       D65; D60; D50
+  Default:      D65
+
+Exposure and curve
+------------------
+
+  Control:      Exposure
+  What it does: Multiplies by 2^EV before the curve (step 3)
+  Values:       −6 to +6 EV, step 0.1
+  Default:      0.0 EV
+
+  Control:      Tone curve
+  What it does: The operator (step 5)
+  Values:       None (clip); Reinhard; Uchimura / Gran Turismo; Hable filmic;
+                Narkowicz fit; Log (soft); Custom 1D curve
+  Default:      Hable filmic
+
+  Control:      Use the custom curve instead
+  What it does: Uses the knee / mid / shoulder curve whatever is selected
+  Values:       On or off
+  Default:      Off
+
+  Control:      Custom curve knee, mid, shoulder
+  What it does: The three points of the custom curve
+  Values:       0 to 1 each
+  Default:      0.15, 0.5, 0.85
+
+  Control:      Low-level operator
+  What it does: A per-channel function before the curve (step 4)
+  Values:       None; Add; Multiply; Soft clip; Power; Sigmoid; Exp; Log; Tanh
+  Default:      None
+
+  Control:      Parameters a, b
+  What it does: Values for the low-level operator
+  Values:       Numbers, step 0.1
+  Default:      0, 0
+
+Grade (steps 6–8)
+-----------------
+
+  Field        | Range        | Default
+  -------------+--------------+--------
+  Contrast     | 0 to 3       | 1
+  Saturation   | 0 to 3       | 1
+  Lift         | Any          | 0
+  Gamma        | 0.1 to 4     | 1
+  Gain         | 0 to 4       | 1
+  Temperature  | Any          | 0
+  Tint         | Any          | 0
+  Hue rotation | −180 to 180° | 0
+  Vibrance     | 0 to 3       | 1
+
+The fields appear as one row in this order. See Map a frame [map-a-frame.txt]
+for what each does.
+
+Working → target (steps 2, 9–11)
+--------------------------------
+
+  Control:      Working space
+  What it does: The space the curve and grade run in
+  Values:       ACEScg AP1 (D60); Rec.709 (D65); Display P3 (D65); Rec.2020
+                (D65)
+  Default:      ACEScg AP1 (D60)
+
+  Control:      Target primaries
+  What it does: The display's RGB space
+  Values:       sRGB / Rec.709; Display P3; Rec.2020
+  Default:      sRGB / Rec.709
+
+  Control:      Target white
+  What it does: The display's white; Bradford adapts between whites
+  Values:       D65; D60; D50
+  Default:      D65
+
+  Control:      Gamut mapping
+  What it does: What happens to out-of-gamut colours
+  Values:       Soft compress; Clip; Preserve hue
+  Default:      Soft compress
+
+  Control:      Output OETF
+  What it does: How the result is encoded
+  Values:       sRGB; Gamma 2.2; Gamma 2.4; PQ; Linear
+  Default:      sRGB
+
+  Control:      Mark out-of-gamut pixels
+  What it does: Paints pixels that left the target gamut in magenta
+  Values:       On or off
+  Default:      Off
+
+  Control:      Dither the 8-bit output
+  What it does: Adds noise of up to half a code value
+  Values:       On or off
+  Default:      Off
+
+  Control:      Display peak
+  What it does: Display peak luminance
+  Values:       80 to 4,000 nits, step 10
+  Default:      100
+
+  Control:      Source peak
+  What it does: Source peak luminance
+  Values:       100 to 10,000 nits, step 50
+  Default:      1,000
+
+The two peaks change only the two retired operators, the false-colour map
+(display peak) and the false-colour note (source peak). The seven working
+curves do not depend on them.
+
+Presets
+-------
+
+  Button   | Sets
+  ---------+------------------------------------------------------------------------
+  SDR 100  | Hable filmic, sRGB / Rec.709 target, 100 nits, sRGB output, sRGB source
+  P3 600   | Hable filmic, Display P3 target, 600 nits, sRGB output, sRGB source
+  HDR 1000 | Narkowicz fit, Rec.2020 target, 1,000 nits, PQ output, linear source
+  Reset    | Reloads the lab with defaults
+
+Readouts
+--------
+
+  Readout:       The mapped frame
+  What it shows: The result, with its resolution
+
+  Readout:       Frame chips
+  What it shows: Working → target, curve and processing time; Scene-referred
+                 or Display-referred; Photographic or Display; "out of gamut"
+                 when any pixel left the target
+
+  Readout:       The curve, and where the scene sits on it
+  What it shows: The tone curve over a histogram of the scene
+
+  Readout:       Linear axis, Log axis, Film stops
+  What it shows: Fill the custom curve with presets (0.33 / 0.5 / 0.66; 0.05 /
+                 0.35 / 0.7; 0.15 / 0.5 / 0.85)
+
+  Readout:       Statistics
+  What it shows: Mid-grey, curve; Scene white at; Working luma; Display peak
+
+  Readout:       Behaviour label
+  What it shows: A short description of the curve, such as Photographic or
+                 Filmic shoulder
+
+  Readout:       Note
+  What it shows: What mid-grey becomes, where white is reached, or why a curve
+                 clips
+
+OPERATORS TAB
+=============
+
+  Control:      Compare
+  What it does: Rows shown
+  Values:       All nine; The seven that work
+  Default:      All nine
+
+  Control:      Read out at
+  What it does: Input columns
+  Values:       Mid-grey 0.18 (0.18, 1, 4, 12); Scene white (1, 4, 12, 32);
+                Both (0.18, 1, 2, 4, 8, 16)
+  Default:      Mid-grey 0.18
+
+  Control:      Curve domain
+  What it does: Chart range
+  Values:       0 – 1; 0 – 12
+  Default:      0 – 12
+
+  Control:      Redraw the curves
+  What it does: Redraws the chart
+  Values:       Button
+  Default:      —
+
+Table columns: Operator, one column per input, White at, Output strip, tag
+(runs, exceeds 1, not a curve).
+
+SCOPES TAB
+==========
+
+  Control               | What it does                               | Values            | Default
+  ----------------------+--------------------------------------------+-------------------+--------
+  Show the exposure map | Replaces the frame with false colour       | On or off         | Off
+  Store A, Store B      | Stores the current frame                   | Buttons           | —
+  Split the viewport    | Shows A left and B right                   | On or off         | Off
+  Split position        | Where the split falls                      | 0 to 1, step 0.01 | 0.5
+  Time a pass           | Average of 20 full passes, in ms per frame | Button            | —
+  Time the curve        | Average of 5 full passes                   | Button            | —
+
+Readouts: Histogram — output, 256 bins; Waveform — output luma by column;
+Vectorscope — output chroma; the false-colour key and note; Controls that were
+read and never used.
+
+DATA TAB
+========
+
+  Dataset                              | Status
+  -------------------------------------+---------------------------------------------------
+  sRGB, PQ and HLG transfer            | Verbatim
+  Primaries and white points, 4 spaces | Verbatim
+  Bradford adaptation                  | Verbatim
+  Tone-mapping operators               | Computed: seven of nine do what they are named for
+  Working-space luminance              | Computed from each space's own matrix
+  Hue rotation                         | Computed
+  BT.2446 Method A and Method C        | Absent: the names were held, the methods were not
+  Absolute scene luminance             | Absent: the generated scenes carry none
+
+Status chips filter the list. Install a table ("Drop a CSV or JSON") does not
+load files in the current version.
+
+EXPORT TAB
+==========
+
+  Control:      What to take
+  What it does: The tone curve; The whole pipeline; A link to this view
+
+  Control:      As
+  What it does: .cube or CSV (curve); .cube (pipeline); URL (link)
+
+  Control:      Input domain
+  What it does: 0 – 1 or 0 – 12 for the curve export (default 0 – 1)
+
+  Control:      Download button
+  What it does: Names and saves the file; Copy the link for links
+
+  Control:      Copy to clipboard
+  What it does: Copies the payload
+
+  Control:      Exactly what you will get
+  What it does: Preview, bytes and lines
+
+  Control:      What this file carries
+  What it does: Which of the eleven steps the file includes
+
+  Control:      Analyse a list, Analyse, Download the result
+  What it does: Maps HEX colours; saves `tone-map-batch.csv`
+
+Link parameters: `op`, `exp`, `src` (source encoding), `peak` (display peak),
+`oetf`, `tp` (target primaries).
+
+REFERENCE TAB
+=============
+
+  Control                                        | What it does
+  -----------------------------------------------+------------------
+  Standards, Formulas, Citations, Research notes | Switch sections
+  Filter                                         | Searches all four
+
+Standards include IEC 61966-2-1, SMPTE ST 2084, ARIB STD-B67 / BT.2100,
+BT.709, BT.2020, Academy S-2014-004 (ACEScg), BT.2446-1 (not implemented),
+BT.2408 and the Adobe Cube LUT Specification 1.0. Formulas give each operator,
+the transfer curves, working luminance, hue rotation, Bradford adaptation and
+the out-of-gamut test.
+
+SAVE TO LIBRARY
+===============
+
+The floating Save to Library button stores an image of the mapped frame in
+your Auric Artisan Library.

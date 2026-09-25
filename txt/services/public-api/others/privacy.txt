@@ -1,0 +1,57 @@
+==============================================================================
+PRIVACY
+==============================================================================
+What the Auric Artisan API keeps about your keys and usage, and what analyzer
+requests fetch, as its documentation describes.
+Area: Services › Public API   Updated: 2026-09-25
+
+This page covers what the API's documentation says about data. The site's
+privacy policy, https://auricartisan.com/legal/privacy/, covers your account
+as a whole.
+
+KEYS
+====
+
+  - The full key is shown once, when you create it, and stored only as a
+    SHA-256 hash. Nobody can recover it later.
+  - Each successful request updates the key's "last used" time, visible in
+    your dashboard.
+
+USAGE RECORDS
+=============
+
+The API keeps a record of your use so it can meter and report it:
+
+  - per-day, per-endpoint history, available through `GET /v1/usage`;
+  - the last 100 individual calls with latency and errors, through `GET
+    /v1/usage/live` and the stream;
+  - your month-to-date credits, through `GET /v1/usage/me`.
+
+Error responses carry a `request_id` so a specific call can be traced when you
+ask for support.
+
+WHAT YOU SEND
+=============
+
+The API processes the colours, palettes, images, reports and other values you
+send in order to answer the request. Do not send personal data you do not need
+to.
+
+ANALYZER REQUESTS
+=================
+
+`POST /v1/analyzer/inspect` fetches the public URL you name and reads its
+source. Private and reserved addresses are refused. `POST /v1/analyzer/render`
+fetches nothing: it renders the report you send.
+
+WEBHOOKS
+========
+
+Webhook deliveries go only to the HTTPS URLs you register, and are signed so
+you can verify they came from the API.
+
+RELATED PAGES
+=============
+
+  - Authentication [../docs/authentication.txt]
+  - Plans, credits and quotas [../docs/plans-credits-and-quotas.txt]

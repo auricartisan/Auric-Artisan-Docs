@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Usage, jobs, webhooks and GraphQL — Auric Artisan Docs</title>
+<meta name="description" content="Read your usage history and live feed, run long work as asynchronous jobs, subscribe to webhooks, and query the API through GraphQL.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html" aria-current="page">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Usage, jobs, webhooks and GraphQL</h1>
+<p class="lede">Read your usage history and live feed, run long work as asynchronous jobs, subscribe to webhooks, and query the API through GraphQL.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="get-v1usage">GET /v1/usage</h3>
+<p>Per-day, per-endpoint usage history.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>In</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>since</code></td><td>query</td><td>Earliest day to include, <code>YYYY-MM-DD</code>. Defaults to seven days back.</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/usage&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h3 id="get-v1usageme">GET /v1/usage/me</h3>
+<p>Your tier, limits and month-to-date consumption.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/usage/me&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<pre class="code" data-lang="json"><code>{&quot;tier&quot;:&quot;pro&quot;,&quot;plan&quot;:&quot;specialist&quot;,&quot;auth_type&quot;:&quot;api_key&quot;,
+ &quot;limits&quot;:{&quot;rate_per_minute&quot;:300,&quot;monthly_quota&quot;:1000000},
+ &quot;this_month&quot;:{&quot;slot&quot;:&quot;2026-08&quot;,&quot;used&quot;:412}}</code></pre>
+<p><code>used</code> counts credits, not calls.</p>
+<h3 id="get-v1usagelive">GET /v1/usage/live</h3>
+<p>The last 100 individual calls, with rolling latency and error statistics. It answers &quot;what is happening right now&quot;, where <code>/v1/usage</code> answers &quot;how much have I used&quot;. Pass the returned <code>cursor</code> back as <code>since</code> to poll for new calls only.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>In</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>limit</code></td><td>query</td><td>1–100. Default 50.</td></tr>
+<tr><td><code>since</code></td><td>query</td><td>Sequence number from a previous cursor</td></tr>
+</tbody></table></div>
+<p>Returns <code>cursor</code>, <code>stats</code> and <code>events</code>.</p>
+<h3 id="get-v1usagestream">GET /v1/usage/stream</h3>
+<p>The same live feed, pushed over Server-Sent Events (SSE). It emits <code>hello</code> on connect with current stats, <code>usage</code> for each request, and <code>heartbeat</code> every 15 seconds. Connections are capped at 10 minutes; a browser <code>EventSource</code> reconnects on its own. 5 credits, charged once when the stream opens; events are free.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/usage/stream&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="async-jobs">Async jobs</h2>
+<p>Long-running work runs as a job: you queue it, get an id back at once, then poll or follow it.</p>
+<h3 id="get-v1jobs">GET /v1/jobs</h3>
+<p>The job types available, and what each accepts.</p>
+<h3 id="post-v1jobstype">POST /v1/jobs/:type</h3>
+<p>Queue a job. 25 credits. The body is the parameter set for the chosen job type, so its shape varies; <code>GET /v1/jobs</code> documents each type.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/jobs/palette-batch&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;count&quot;:500}'</code></pre>
+<h3 id="get-v1jobsidid">GET /v1/jobs/id/:id</h3>
+<p>Poll one job. 1 credit per poll.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/jobs/id/&lt;id&gt;&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h3 id="get-v1jobsididstream">GET /v1/jobs/id/:id/stream</h3>
+<p>Follow a job to completion over SSE instead of polling.</p>
+<h2 id="webhooks">Webhooks</h2>
+<h3 id="get-v1webhooksevents">GET /v1/webhooks/events</h3>
+<p>The event types you can subscribe to. Public, so you can check whether the API fits before you buy. Events mentioned in the documentation include <code>job.succeeded</code> and <code>quota.threshold</code>, which fires when you cross 80% of your included credits.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/webhooks/events&quot;</code></pre>
+<h3 id="post-v1webhooks">POST /v1/webhooks</h3>
+<p>Subscribe a URL to one or more events. Deliveries are signed: verify the signature header before trusting a payload.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>url</code></td><td>string</td><td>Yes</td><td>HTTPS endpoint to deliver to</td></tr>
+<tr><td><code>events</code></td><td>string array</td><td>Yes</td><td>From <code>/v1/webhooks/events</code></td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/webhooks&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;url&quot;:&quot;https://example.com/hook&quot;,&quot;events&quot;:[&quot;job.succeeded&quot;]}'</code></pre>
+<h3 id="get-v1webhooks-get-v1webhooksid-delete-v1webhooksid">GET /v1/webhooks, GET /v1/webhooks/:id, DELETE /v1/webhooks/:id</h3>
+<p>List your subscriptions, fetch one, or revoke one.</p>
+<pre class="code" data-lang="bash"><code>curl -X DELETE &quot;https://api.auricartisan.com/v1/webhooks/&lt;id&gt;&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="graphql">GraphQL</h2>
+<h3 id="get-v1graphql">GET /v1/graphql</h3>
+<p>The GraphQL playground. Public.</p>
+<h3 id="post-v1graphql">POST /v1/graphql</h3>
+<p>Run a GraphQL query against the same resolvers as the REST endpoints. 2–4 credits. Useful when one round trip should answer several questions, such as converting a colour, checking its contrast and simulating it at once.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>query</code></td><td>string</td><td>Yes</td><td>The GraphQL document</td></tr>
+<tr><td><code>variables</code></td><td>object</td><td>No</td><td>Variable values</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/graphql&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;query&quot;:&quot;{ contrast(foreground: \&quot;#000\&quot;, background: \&quot;#fff\&quot;) { ratio wcag_aa } }&quot;}'</code></pre>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="../reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="tokens-and-personalisation.html"><span>Previous</span>Design tokens and personalisation</a><a href="vision-and-ishihara.html"><span>Next</span>Vision and Ishihara</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#usage">Usage</a></li><li><a href="#async-jobs">Async jobs</a></li><li><a href="#webhooks">Webhooks</a></li><li><a href="#graphql">GraphQL</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

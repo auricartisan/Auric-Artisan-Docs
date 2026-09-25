@@ -1,0 +1,61 @@
+---
+title: Browser extension — Audit a page and fix contrast
+description: Run the audit on a page, see its contrast problems on the page, fix a failing colour pair, review the other findings and export a record.
+product: Browser extension › Workflows
+updated: 2026-09-25
+---
+
+# Audit a page and fix contrast
+
+This workflow finds a page's accessibility problems, fixes its contrast failures and leaves you with a record to share.
+
+**You need:** the page open in a normal tab. The side panel is the most comfortable place to work, because it stays open while you look at the page.
+
+## 1. Run the audit
+
+1. Open the page and wait for it to finish loading.
+2. Open the extension and choose **Open the side panel**.
+3. On Home, choose **Audit**. The audit runs at once.
+
+You see four counts: **Tested**, **Failing**, **Borderline** and **Review**, and a row for each flagged piece of text.
+
+## 2. See where the problems are
+
+1. Choose **Outline on page**.
+2. Look at the page. Failing text has a red outline, borderline text an amber one, and each has a label such as `3.12:1 needs 4.5:1`.
+3. The outlines disappear after 15 seconds; choose **Outline on page** again to redraw them.
+
+## 3. Fix a failing pair
+
+1. In the list, choose the row you want to fix. Contrast opens with that text colour and background.
+2. Check the verdict. For body text you need **AA** (4.5:1) at least.
+3. Leave the fix target on **AA 4.5:1**, or choose **AAA 7:1** or an APCA target.
+4. Choose **Fix text**. The text colour moves to the nearest lightness that passes, keeping its hue and saturation, and a message names the new colour.
+5. If you would rather change the background, choose **Fix background**.
+6. Compare the **On-brand text** and **On-brand background** suggestions and click one if it fits your design better.
+7. Choose **Copy report** to keep the before-and-after numbers.
+
+Use the new colour in your stylesheet. To try it on the live page first, see [Inspect and debug an element](inspect-and-debug-an-element.md).
+
+## 4. Review the other findings
+
+1. Open Check › **Findings**. The rule engine's findings are listed with the contrast findings, failures first, then by impact.
+2. For each finding, read the title and message, then:
+   - choose **Copy selector** to find the element in your code;
+   - choose **Inspect** to open it in Code › Inspect.
+3. Check the rules that need human judgement, such as whether alt text actually describes the image.
+
+The [Audit rules](../check/audit-rules.md) page explains what each rule checks.
+
+## 5. Keep a record
+
+1. Back in Check › **Audit**, choose **Export JSON** for the full result, or **Export CSV** for the contrast findings.
+2. Paste the result into a file or a ticket.
+
+Results are kept only while the extension is open, so export before you close it.
+
+## 6. Check again
+
+After you change the page, reload it and choose **Run audit** again. Compare the counts with your export.
+
+**The result:** a list of problems fixed and a record of what remains.

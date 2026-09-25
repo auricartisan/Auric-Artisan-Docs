@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common problems with Auric Artisan File Icons.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File Icons</a>
+<h2>Auric Artisan File Icons guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File Icons</a></li>
+<li><a href="assign-icons.html">Assign icons to files and folders</a></li>
+<li><a href="choose-a-style.html">Choose a style</a></li>
+<li><a href="customise-the-explorer.html">Customise the Explorer</a></li>
+<li><a href="insert-icons-into-code.html">Insert icons into code</a></li>
+<li><a href="modern-and-legacy.html">Modern and older Playful settings</a></li>
+<li><a href="profiles.html">Profiles</a></li>
+<li><a href="smart-detection.html">Smart detection</a></li>
+<li><a href="reference.html">Auric Artisan File Icons reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File Icons</a> &rsaquo; <a href="README.html">Auric Artisan File Icons guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File Icons</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common problems with Auric Artisan File Icons.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The Explorer still uses another icon set.</td><td>Browsing a style in the Studio only previews it.</td><td>Select <strong>Use … in Explorer</strong>, or choose the theme in <strong>Preferences: File Icon Theme</strong>.</td></tr>
+<tr><td>Colours or associations have not changed.</td><td>VS Code caches icon themes until a reload.</td><td>Accept the reload prompt, or run <strong>Developer: Reload Window</strong>.</td></tr>
+<tr><td>Still no change after reloading.</td><td>Workspace or folder settings override user settings.</td><td>Check <code>.vscode/settings.json</code> for <code>auricFileIcons.*</code> values.</td></tr>
+<tr><td>Duplicate Auric themes or actions.</td><td>The old standalone Playful extension is still installed, or Auric Icons: Modern also provides a Modern theme.</td><td>Disable the old Playful extension. See <a href="modern-and-legacy.html">Modern and older Playful settings</a>.</td></tr>
+<tr><td>The <strong>Auric File Icons</strong> Explorer submenu has only <strong>Open File Icon Studio</strong>.</td><td>The other actions need an Auric file icon theme to be active.</td><td>Activate Facet, Playful or Modern.</td></tr>
+<tr><td>No <strong>Insert</strong> action, or &quot;No editor target&quot;.</td><td>No writable text editor is open.</td><td>Open and click into a writable file first; <strong>Copy</strong> works without one.</td></tr>
+<tr><td>A token hover does not appear.</td><td>The token is incomplete, hovers are off, or VS Code&#39;s editor hovers are disabled.</td><td>Use a complete token copied from the inspector, and enable <code>auricFileIcons.hover.enabled</code> and editor hovers.</td></tr>
+<tr><td>A hover action no longer inserts.</td><td>The document changed after the hover appeared.</td><td>Hover again for a fresh action.</td></tr>
+<tr><td>An unexpected smart badge appears.</td><td>A built-in or custom rule matched.</td><td>Run <strong>Explain Smart Icon Match</strong>, then refresh or adjust smart settings.</td></tr>
+<tr><td>Smart badges do not appear in a remote or virtual workspace.</td><td>The file system provider may not allow reading, or the folder is excluded.</td><td>Check <code>auricFileIcons.smart.exclusions</code> and the provider&#39;s support.</td></tr>
+<tr><td>Exported code does not match my Explorer colours.</td><td>Code output always uses shipped artwork.</td><td>This is by design; recolour the code yourself if needed.</td></tr>
+<tr><td>Import of a profile fails.</td><td>The clipboard is empty, too large, not JSON, or from an unknown source.</td><td>See the messages in <a href="profiles.html#export-and-import">Profiles</a>.</td></tr>
+<tr><td>Old Playful profiles are missing after switching.</td><td>File Icons cannot read another extension&#39;s private storage.</td><td>Export profiles from the old extension first, then import them.</td></tr>
+</tbody></table></div>
+<h2 id="diagnostics">Diagnostics</h2>
+<p>Run <strong>Auric Artisan File Icons: Show Icon Theme Diagnostics</strong>. The report opens in the <strong>Auric Artisan File Icons</strong> output channel and omits filenames and file contents. Include it, with your VS Code version, the extension version, the active style and the steps to reproduce, when you contact support at <a href="https://auricartisan.com/company/contact/" rel="noopener">https://auricartisan.com/company/contact/</a>. Remove private information from screenshots.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Auric Artisan File Icons reference</a><a href="faq.html"><span>Next</span>Frequently asked questions</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#diagnostics">Diagnostics</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

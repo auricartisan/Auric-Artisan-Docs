@@ -1,0 +1,52 @@
+---
+title: Auric Artisan Font Hub — glossary
+description: Plain-language definitions of the typography and delivery terms used in the Font Hub documentation.
+product: VS Code extensions › Auric Artisan Font Hub
+updated: 2026-09-25
+---
+
+# Glossary
+
+**@font-face** — a CSS rule that tells the browser where to download a font file and which weight and style it provides.
+
+**Automatic insertion** — Font Hub's default way of adding a font: a CDN stylesheet plus a reusable class, placed according to the file type.
+
+**CDN (content delivery network)** — a server that delivers files such as fonts to websites. Font Hub uses `fonts.auricartisan.com`.
+
+**Charset / character coverage** — which characters, grouped into Unicode ranges, a font can display.
+
+**CORS (cross-origin resource sharing)** — the rule that lets a browser use a font from a different address only if that server allows it.
+
+**Content Security Policy** — a website setting that limits where styles, fonts and scripts may load from.
+
+**Design intent** — what the type has to do, such as UI and product text or editorial reading, used to rank recommendations.
+
+**Design tokens** — named values, such as a font family and its fallbacks, shared across a design system.
+
+**Fallback stack** — the list of fonts the browser tries if the chosen one is not available.
+
+**Family** — a set of related fonts sharing one design, in several weights and styles.
+
+**Glyph** — the drawn shape of a character in a font.
+
+**OpenType feature** — an optional font behaviour switched on with a four-letter tag, such as `liga` for ligatures or `tnum` for tabular figures.
+
+**Pairing** — two families that work well together, often a heading face and a body face.
+
+**Self-hosting** — serving font files from your own website instead of a CDN.
+
+**Specimen** — sample text set in a font to judge it.
+
+**Suitability score** — a 0–100 catalogue estimate of how well a family suits a role such as accessibility, readability, UI, developer or editorial use.
+
+**System font** — a font installed on a computer rather than served from the web.
+
+**Variable font** — one font file with adjustable axes, such as weight, instead of a separate file per style.
+
+**Variable axis** — one adjustable dimension of a variable font, such as `wght` (weight) or `wdth` (width).
+
+**Waterfall** — the same text at a range of sizes.
+
+**Weight** — how thick the strokes are, from 100 (thin) to 900 (black); 400 is regular and 700 is bold.
+
+**x-height** — the height of lower-case letters such as x, which strongly affects readability at small sizes.

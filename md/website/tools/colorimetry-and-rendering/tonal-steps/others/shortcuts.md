@@ -1,0 +1,23 @@
+---
+title: Tonal Steps — Shortcuts
+description: Keyboard shortcuts in Tonal Steps, Tints and Shades.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Tonal Steps shortcuts
+
+These keys work when the focus is not in a text box, slider or list.
+
+| Key | What it does |
+| --- | --- |
+| `1` | Ramp engine: HSL lightness |
+| `2` | Ramp engine: Equal luminance |
+| `3` | Ramp engine: Equal contrast (gives the same colours as Equal luminance) |
+| `R` | Random base colour |
+| `Esc` | Closes a full-screen chart |
+
+| Mouse | What it does |
+| --- | --- |
+| Double-click a chart | Opens it full screen |
+| Hover a swatch in The other sets | Shows its HEX, luminance Y and contrast against black |

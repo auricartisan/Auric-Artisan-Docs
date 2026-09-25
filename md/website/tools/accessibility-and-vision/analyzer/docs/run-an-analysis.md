@@ -1,0 +1,120 @@
+---
+title: Analyzer — Run an analysis
+description: What happens when you select Analyze, which addresses are accepted, how the page is reached, and what the progress card tells you.
+product: Website › Tools › Accessibility and vision
+updated: 2026-09-25
+---
+
+# Run an analysis
+
+This guide explains a single-page audit from the moment you select **Analyze** to the moment results appear. For a whole-site crawl, see [Scan a whole site](scan-a-whole-site.md).
+
+## Start a run
+
+1. Type or paste an address into the URL field.
+2. Select **Analyze**, or press `Enter` in the field.
+3. To stop a run part-way, select **Cancel**. The Overview panel then says "Analysis cancelled".
+
+There are three other ways to start a run:
+
+- Open a link of the form `https://auricartisan.com/tool/analyzer/?url=<address>`. The Analyzer fills the field and starts at once.
+- Open a link someone made with **Share**. It re-runs the audit on the same address.
+- Select **Re-analyze** next to a past run in the **Workspace** panel, or **Recheck** on an issue card.
+
+## Which addresses are accepted
+
+| You type | What the Analyzer uses |
+| --- | --- |
+| `https://example.com/page` | Exactly that address |
+| `example.com` or `example.com/page` | The same with `https://` added in front |
+| `/tool/contrast-checker/` | That path on auricartisan.com |
+| Nothing at all | The Analyzer's own page |
+| `ftp:`, `mailto:`, `tel:`, `javascript:` or a malformed address | Refused with "That URL doesn't look valid" and a hint to try a full address such as `https://example.com` |
+
+When the Analyzer tidies what you typed, it writes the tidied address back into the field so you can see what was actually audited.
+
+## How the page is reached
+
+A web page can only be measured once the Analyzer has a copy of it. The Analyzer tries several ways, in order, and uses the first that works. The live line in the progress card tells you which one it is on.
+
+| Order | Live line | When it is used |
+| --- | --- | --- |
+| 1 | "Rendering the page on our servers…" | You are signed in. The page is rendered in a real browser on Auric Artisan's servers. |
+| 2 | "Loading the page in a frame…" | The page loads in a hidden frame in your browser. Works for auricartisan.com pages. |
+| 3 | "The page would not embed — reading its HTML instead…" | Your browser reads the page's HTML; needs the site's permission or **Public proxy**. |
+| 4 | "Using the copy saved from a previous run…" | Everything else failed, and this browser holds a copy of the page from a run in the last seven days. |
+
+In step 1 the rendered page comes back to your browser for the rest of the analysis. Before step 2 the Analyzer checks the page's headers and skips the frame at once if they refuse embedding. Step 3 only works when the other site allows cross-origin requests, or when you have turned on **Public proxy** in the site scan settings.
+
+If the server render in step 1 is refused, for example because this month's analyses are used up, the Analyzer still tries steps 2 to 4. Pages on auricartisan.com therefore still work.
+
+> **Note:** When a page is read from its HTML (step 3 or 4), its scripts are removed before it is displayed, apart from JSON-LD structured data. Anything the page builds with JavaScript may then be missing from the audit. The **Deep** panel compares raw HTML with the rendered page so you can see how much that matters.
+
+### When you are not signed in
+
+Auditing another website without an account ends with a panel headed **Sign in to scan another site**, with **Sign in** and **See plans** buttons. It explains that analysing an auricartisan.com page needs no account, and that scanning another site runs on Auric Artisan's servers, which the account meters. It is not an error in the Analyzer.
+
+Two related panels appear for signed-in accounts:
+
+- **Scanning another site needs a plan** — your plan does not include URL analysis. Select **See plans**.
+- **You have used this month's scans** — your monthly allowance of URL analyses is spent. Select **See plans**, or wait for the next month.
+
+## The progress card
+
+While a run is working, the Overview panel shows a card headed **Auditing**. It has:
+
+- a live line saying what is happening now;
+- a bar that fills as steps finish;
+- a numbered list of the steps this run will take, in the order they really happen. Each step is marked waiting, active or done.
+
+The steps are named after the checks you chose:
+
+| Step | Check |
+| --- | --- |
+| Reading the page | Page structure (always runs) |
+| Building the project model | Project model |
+| Measuring contrast | Colour contrast |
+| Previewing the fixes | Before / After |
+| Running the accessibility rules | Accessibility |
+| Extracting the palette | Palette |
+| Simulating colour vision | Vision simulation |
+| Checking metadata | SEO and metadata |
+| Listing media | Media |
+| Measuring performance | Performance |
+| Checking responsive behaviour | Responsive behaviour |
+| Comparing rendered and raw HTML | Deep DOM and framework |
+| Checking headers and links | Security and reliability |
+| Discovering the site map | Site map |
+
+If you switched some checks off, a line under the list says how many, for example "3 checks switched off for this run."
+
+Two steps take noticeably longer than the rest:
+
+- **Measuring performance** loads the page a second time and waits for it to settle ("Measuring how fast the page loads…").
+- **Running the accessibility rules** runs 126 rules over the whole page ("Checking the page against the accessibility rules…").
+
+The site map step keeps working after the results appear, because it reads robots.txt and every sitemap. The **Site Map** and **SEO** panels fill in when it finishes.
+
+The checks for a run are fixed when you select **Analyze**. Ticking or unticking a check part-way through does not change what that run measures.
+
+## When the run finishes
+
+- The progress rail moves to **2 Issues**.
+- The workspace opens the section of every check that ran and that your mode can show. The **Devices** section is the exception: it never opens by itself, because opening it on a page that blocks embedding can start paid screenshot captures.
+- The run is filed in your browser's library as a new version of that site, and added to the history and monitoring lists in the **Workspace** panel. See [Save, reopen and compare](save-reopen-and-compare.md).
+- The tab badges update with finding counts: **Contrast**, **SEO**, **A11y+** and **Fixes**.
+
+## Pages that cannot be scored
+
+The Analyzer refuses to give a number when the page it received is not the real page:
+
+- **A bot-challenge page.** If the page title looks like a challenge ("Just a moment", "Attention required", "Access denied", "Checking your browser", "Verify you are human", a captcha and similar), the report says the host answered with a bot-challenge page instead of the real content, and the score is left empty.
+- **An almost empty page.** If the page has under 40 characters of text and under 10 elements, the report says it returned almost no content, which is likely an error page, a redirect stub or a challenge.
+
+## Rate limits on the target site
+
+If the site you are auditing answers "too many requests" (HTTP 429), the Analyzer waits and retries by itself. The live line reads "Target rate-limited (HTTP 429) — waiting N s then retrying…". If it keeps happening, the run ends with a panel headed **Rate-limited by target (HTTP 429)** and advice to wait 30–60 seconds, lower the scan workers, or analyse one URL at a time.
+
+## Re-running
+
+Select **Analyze** again with the same address. The progress rail returns to **1 Analyze** for the length of the run. Every re-run of the same address becomes another version of the same saved project, so you can compare them later.

@@ -1,0 +1,48 @@
+---
+title: Auric Icons: Modern — The merged Icon Studio
+description: How Auric Icons: Modern, Drawn and Playful merge into one Icon Studio library when co-installed, and how Auric Artisan Icon Studio takes over hosting.
+product: VS Code extensions › Auric Icons: Modern
+updated: 2026-09-25
+---
+
+# The merged Icon Studio
+
+Auric Icons: Modern, **Auric Icons: Drawn** and **Auric Icons: Playful** are three extensions built on the same library. Each works on its own. When you install more than one, they cooperate so you get one library instead of duplicate sidebars.
+
+## What you see with two or three collections installed
+
+1. One extension automatically becomes the **host**. The choice is made the same way every time, so it does not change from one start-up to the next unless you install, update or remove a collection.
+2. The host shows one **Icon Library** view (headed "Icon Studio") that contains every installed collection.
+3. A **Library** filter appears, with **All libraries** and one entry per collection, each with its icon count.
+4. Every card shows a badge naming its collection, for example **Drawn**, with the tooltip "From the Drawn library".
+5. The **Variant** buttons offer every variant any installed collection provides: Color, Mono, Outline and Duotone from Modern and Drawn, plus Filled and Small from Playful. If a collection does not have the selected variant, its cards fall back to Color.
+6. The other extensions hide their Activity Bar view, their Command Palette entries and their `Ctrl` + `Alt` + `I` and `Ctrl` + `Alt` + `R` shortcuts. If you run one of their commands (for example from a keybinding), it is passed to the host.
+
+The merge updates by itself when you install, enable, disable or remove a collection. No reload is needed.
+
+## Likes, recents and recommendations
+
+- Likes and recent icons belong to the extension that owns each icon. Liking a Drawn icon in the merged view stores it with Drawn.
+- The merged view shows everyone's likes and recents together.
+- If you uninstall one collection, its icons and their history leave the merged view; the other collections keep theirs.
+- **Clear Likes, Recents and Learned Recommendations** in the merged view clears the history of every merged collection.
+
+## Hover previews
+
+Each extension previews only its own icon IDs, so hovering over an ID always shows exactly one preview.
+
+## When Auric Artisan Icon Studio is installed
+
+[Auric Artisan Icon Studio](../../auric-artisan-icon-studio/README.md) bundles all three collections plus emoji and open-source sets. By default it hosts them: the Modern, Drawn and Playful library views, palette entries and shortcuts are hidden and you use Icon Studio instead.
+
+- Modern's Explorer file icon theme is not affected.
+- To bring back the collections' own library views, set `auricIconStudio.hostFamilyLibraries` to `false`. Icon Studio's shortcuts then step aside for the collections' shortcuts.
+- Icon Studio keeps its own separate likes and recents.
+
+## Which extension is the host?
+
+You do not need to know, because every command works the same whichever extension hosts. The host is the extension with the newest shared library version; if they are equal, the choice falls to a fixed alphabetical order of extension IDs. With the current Marketplace versions (all 0.12.1), the host is Auric Icons: Modern when it is installed, otherwise Auric Icons: Drawn.
+
+## Result
+
+With several Auric collections installed, you browse all of them in one library, filter by collection when you need to, and see each icon once.

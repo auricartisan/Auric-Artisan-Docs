@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check contrast and colour vision — Auric Artisan Docs</title>
+<meta name="description" content="Measure every colour in the SVG as a background for text with WCAG 2.2 and APCA, find the colours hardest to tell apart, and preview the artwork as seen with colour-vision deficiencies.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; SVG Recolour</a>
+<h2>SVG Recolour documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with SVG Recolour</a></li>
+<li><a href="check-contrast-and-colour-vision.html" aria-current="page">Check contrast and colour vision</a></li>
+<li><a href="export-the-result.html">Export the result</a></li>
+<li><a href="recolour-an-svg.html">Recolour an SVG</a></li>
+<li><a href="use-a-harmony.html">Recolour from a harmony</a></li>
+<li><a href="reference.html">SVG Recolour reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting SVG Recolour</a></li>
+<li><a href="faq.html">SVG Recolour FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">SVG Recolour</a> &rsaquo; <a href="README.html">SVG Recolour documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › SVG Recolour</p>
+<h1>Check contrast and colour vision</h1>
+<p class="lede">Measure every colour in the SVG as a background for text with WCAG 2.2 and APCA, find the colours hardest to tell apart, and preview the artwork as seen with colour-vision deficiencies.</p>
+<p>The <strong>Check</strong> tab measures the colours the file will have after your changes: the targets, not the originals.</p>
+<h2 id="contrast-against-a-text-colour">Contrast against a text colour</h2>
+<ol>
+<li>Open the <strong>Check</strong> tab.</li>
+<li>Under <strong>Text laid over the artwork</strong>, select the swatch and choose the colour of any text that will sit on the artwork. The default is white, <code>#FFFFFF</code>.</li>
+<li>Read <strong>What can be read on it</strong>. The note beside the heading gives the number of colours checked.</li>
+</ol>
+<p>Each colour is treated as a background for text in the chosen colour:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Colour</strong></td><td>The colour&#39;s swatch and hex value</td></tr>
+<tr><td><strong>WCAG</strong></td><td>The WCAG 2.2 contrast ratio, for example <strong>4.54:1</strong></td></tr>
+<tr><td><strong>Rating</strong></td><td><strong>AAA</strong> (7:1 and above), <strong>AA</strong> (4.5:1), <strong>AA large</strong> (3:1) or <strong>fail</strong></td></tr>
+<tr><td><strong>APCA Lc</strong></td><td>The APCA-W3 0.1.9 lightness contrast; negative when the text is lighter than the colour</td></tr>
+<tr><td><strong>Good for</strong></td><td>APCA&#39;s guidance by size of Lc, from <strong>any text</strong> to <strong>not for text</strong> (see the table below)</td></tr>
+<tr><td><strong>It used to say</strong></td><td>The Lc an earlier version of this tool printed, struck through</td></tr>
+</tbody></table></div>
+<p>The two methods measure different things, so a row can pass one and fail the other. Neither is a verdict on the artwork; both describe text laid on that colour.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Absolute Lc</th><th><strong>Good for</strong></th></tr></thead>
+<tbody>
+<tr><td>90 or more</td><td>any text</td></tr>
+<tr><td>75 or more</td><td>body text</td></tr>
+<tr><td>60 or more</td><td>large text</td></tr>
+<tr><td>45 or more</td><td>headlines only</td></tr>
+<tr><td>30 or more</td><td>non-text only</td></tr>
+<tr><td>Below 30</td><td>not for text</td></tr>
+</tbody></table></div>
+<p>Under <strong>The Lc that was always zero</strong>, a small table shows what the earlier version printed for four pairs against what APCA gives: the earlier version printed zero for every pair.</p>
+<h2 id="the-colours-hardest-to-tell-apart">The colours hardest to tell apart</h2>
+<p><strong>The two colours hardest to tell apart</strong> compares every pair of colours in the file and reports the closest pair, measured with CIEDE2000, under four kinds of vision:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Seen as</strong></td><td><strong>normal vision</strong>, <strong>protanopia</strong>, <strong>deuteranopia</strong> or <strong>tritanopia</strong></td></tr>
+<tr><td><strong>The two closest colours</strong></td><td>Swatches as seen under that vision, and the two original hex values</td></tr>
+<tr><td><strong>ΔE₀₀ between them</strong></td><td>Their CIEDE2000 difference under that vision</td></tr>
+<tr><td><strong>What that means</strong></td><td><strong>close to indistinguishable</strong> (below 5), <strong>tells apart with effort</strong> (below 12), or <strong>clearly different</strong></td></tr>
+</tbody></table></div>
+<p>The row with the smallest difference among the three deficiencies is highlighted. You need at least two colours for this check.</p>
+<p>The same figure appears on the <strong>Recolour</strong> tab as the <strong>closest pair</strong> card, highlighted when it is below 8.</p>
+<h2 id="the-artwork-under-three-dichromacies">The artwork under three dichromacies</h2>
+<p><strong>The artwork under three dichromacies</strong> draws the recoloured file four times, as seen with <strong>Normal vision</strong>, <strong>Protanopia</strong>, <strong>Deuteranopia</strong> and <strong>Tritanopia</strong>, with <strong>closest two</strong> under each: the closest pair&#39;s difference, highlighted when below 8.</p>
+<h2 id="preview-with-a-colour-vision-deficiency-on-the-recolour-tab">Preview with a colour-vision deficiency on the Recolour tab</h2>
+<p>On the <strong>Recolour</strong> tab, under <strong>Show it as seen by</strong>, choose <strong>Normal vision</strong>, <strong>Protan</strong>, <strong>Deutan</strong> or <strong>Tritan</strong>. Both previews are redrawn as seen with that deficiency. The exports always use the true colours.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Simulates</th></tr></thead>
+<tbody>
+<tr><td><strong>Protan</strong></td><td>Protanopia: no working long-wavelength (red) cones</td></tr>
+<tr><td><strong>Deutan</strong></td><td>Deuteranopia: no working medium-wavelength (green) cones</td></tr>
+<tr><td><strong>Tritan</strong></td><td>Tritanopia: no working short-wavelength (blue) cones</td></tr>
+</tbody></table></div>
+<p>The simulation follows Machado, Oliveira and Fernandes (2009) at full severity, in linear light. It shows complete loss of one cone type only; milder, more common forms are not shown.</p>
+<h2 id="using-the-results">Using the results</h2>
+<ul>
+<li>If two colours are <strong>close to indistinguishable</strong> under a deficiency, change one of them, usually in lightness, and check again.</li>
+<li>If text must sit on a colour, choose a text colour and target colour that pass the standard you work to, under both methods if you can.</li>
+<li>Colours the file does not hold, such as <code>currentColor</code>, are not checked, because their value comes from outside the file.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with SVG Recolour</a><a href="export-the-result.html"><span>Next</span>Export the result</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#contrast-against-a-text-colour">Contrast against a text colour</a></li><li><a href="#the-colours-hardest-to-tell-apart">The colours hardest to tell apart</a></li><li><a href="#the-artwork-under-three-dichromacies">The artwork under three dichromacies</a></li><li><a href="#preview-with-a-colour-vision-deficiency-on-the-recolour-tab">Preview with a colour-vision deficiency on the Recolour tab</a></li><li><a href="#using-the-results">Using the results</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

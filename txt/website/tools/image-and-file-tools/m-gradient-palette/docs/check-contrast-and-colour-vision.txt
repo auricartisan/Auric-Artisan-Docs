@@ -1,0 +1,139 @@
+==============================================================================
+CHECK CONTRAST AND COLOUR VISION
+==============================================================================
+Check every step of a ramp as a background for a text colour with WCAG 2.2 and
+APCA, and view the ramp as seen with three colour-vision deficiencies.
+Area: Website › Tools › Image and file tools › M-Gradient Palette   Updated: 2026-09-25
+
+CHECK TEXT ON EVERY STEP
+========================
+
+  1. Build your ramp on the Ramp tab.
+  2. Open the Contrast tab.
+  3. Under Text colour, select the swatch and choose the colour your text will
+     be. The default is white, `#FFFFFF`.
+  4. Read Your ramp, checked both ways. The note beside the heading names the
+     text colour, for example against #FFFFFF.
+
+Every step is treated as a background for text in the chosen colour, and
+measured by two methods at once.
+
+  Column:  Step
+  Meaning: The step's swatch and hex value
+
+  Column:  WCAG 2
+  Meaning: The WCAG 2.2 contrast ratio, for example 7.90:1
+
+  Column:  Rating
+  Meaning: AAA, AA, AA large or fail
+
+  Column:  APCA Lc
+  Meaning: The APCA lightness contrast, signed
+
+  Column:  Good for
+  Meaning: What APCA considers the pair suitable for
+
+  Column:  The old figure
+  Meaning: The Lc an earlier version of this tool printed, struck through;
+           highlighted where it differs by more than 20
+
+WCAG 2.2
+--------
+
+The WCAG 2.2 contrast ratio compares the relative luminance of the two
+colours, from 1:1 (identical) to 21:1 (black on white).
+
+  Rating   | Ratio         | Meaning
+  ---------+---------------+--------------------------------
+  AAA      | 7:1 or more   | Body text at the enhanced level
+  AA       | 4.5:1 or more | Body text at the minimum level
+  AA large | 3:1 or more   | Large text only
+  fail     | Below 3:1     | Not enough for text
+
+APCA
+----
+
+APCA, the Advanced Perceptual Contrast Algorithm (version APCA-W3 0.1.9 here),
+measures lightness contrast in units called Lc. It treats dark text on a light
+background and light text on a dark background differently, so it is signed:
+
+  - a positive Lc means dark text on a lighter background;
+  - a negative Lc means light text on a darker background.
+
+With white text, a dark step gives a negative figure, for example −99.8 for
+`#0B3D5C`.
+
+  Absolute Lc | Good for
+  ------------+---------------
+  90 or more  | any text
+  75 or more  | body text
+  60 or more  | large text
+  45 or more  | headlines only
+  30 or more  | non-text only
+  Below 30    | not for text
+
+Black text on white gives Lc 106.04; white text on black gives −107.88.
+
+Why two figures
+---------------
+
+WCAG 2.2 and APCA disagree by design: they measure different things on
+different scales. A step can pass one and fail the other. Both are always
+shown so you can see the disagreement rather than being handed whichever one
+passes.
+
+The samples
+-----------
+
+Under the table, three boxes show the sentence "The quick brown fox" in your
+text colour on the first, middle and last steps, so you can judge by eye.
+
+WHAT THE EVIDENCE TABLE SHOWS
+=============================
+
+At the top of the Contrast tab, The contrast figure passed text its own
+algorithm fails compares, for five fixed pairs, what an earlier version of
+this tool printed (It printed) with what APCA gives (APCA gives) and the
+difference (Out by). The earlier version used the wrong scale and was missing
+two parts of the algorithm, so it reported contrast about 1.4 times too high:
+161.80 for black on white, where APCA gives 106.04. The footnote under your
+own table says how far the old figure is off on your ramp, and how many steps
+it would wrongly have passed at Lc 60.
+
+WCAG 2.2 was already right confirms the WCAG figures: black on white gives
+exactly 21.00, `#767676` on white gives 4.54, and `#595959` gives 7.00.
+
+VIEW THE RAMP WITH A COLOUR-VISION DEFICIENCY
+=============================================
+
+On the Ramp tab, under Show it as seen by, choose:
+
+  Button        | Simulates
+  --------------+---------------------------------------------------------
+  Normal vision | No simulation
+  Protan        | Protanopia: no working long-wavelength (red) cones
+  Deutan        | Deuteranopia: no working medium-wavelength (green) cones
+  Tritan        | Tritanopia: no working short-wavelength (blue) cones
+
+The simulation redraws the ramp, the dots on the hue circle, the three ramps
+on the Spaces tab and the samples on the Contrast tab. It uses the model of
+Machado, Oliveira and Fernandes (2009) at full severity, applied in linear
+light.
+
+The figures, the contrast table, the copied values and the exports always use
+the true colours.
+
+What to look for
+----------------
+
+  - Two neighbouring steps that become hard to tell apart under a simulation
+    are a problem for a data scale.
+  - A ramp that runs from red to green can collapse to a single-hue ramp under
+    Protan or Deutan; one that changes lightness steadily stays readable.
+
+What the simulation does not cover
+----------------------------------
+
+It simulates complete loss of one cone type (dichromacy). It has no setting
+for milder, partial forms (anomalous trichromacy), which are more common, so
+the case the tool cannot show is the more likely one.

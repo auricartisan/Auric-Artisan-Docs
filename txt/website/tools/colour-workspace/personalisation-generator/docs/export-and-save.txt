@@ -1,0 +1,163 @@
+==============================================================================
+EXPORT, SAVE AND SHARE
+==============================================================================
+Copy CSS, download the JSON snapshot, save results to your Library, bring
+Library colours in, and automate the generator through the Public API.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+Results live only in the open page; a reload starts a fresh sweep. Copy,
+download or save anything you want to keep.
+
+THE EXPORT TAB
+==============
+
+The Export tab has two buttons at the top and two cards.
+
+  Control:      Copy CSS (top)
+  What it does: Copies the CSS shown in the CSS tokens card.
+
+  Control:      Download JSON
+  What it does: Downloads the full snapshot as
+                `auric-personalization-generator.json`.
+
+  Control:      Copy (CSS tokens card)
+  What it does: The same as Copy CSS.
+
+  Control:      Copy JSON (JSON snapshot card)
+  What it does: Copies the full snapshot as text.
+
+The JSON snapshot card previews only the start of a long snapshot and marks it
+(truncated, full file in download). The copy and the download are always
+complete.
+
+What the CSS contains
+---------------------
+
+A `:root` block with:
+
+  - `--aa-personal-1`, `--aa-personal-2` and so on: the leader's colours, in
+    order (if there are no results yet, the first six pool colours);
+  - `--aa-personal-gradient`: the first gradient;
+  - `--aa-font-display`, `--aa-font-body` and `--aa-font-mono`: the first
+    typography card's three font stacks;
+
+followed by the design tokens for the light, dark and high-contrast themes, as
+described in Design tokens [design-tokens.txt].
+
+What the JSON contains
+----------------------
+
+  - `preferences`: your pool, styles, use case, brief, and the search settings
+    (palette size, depth, keep, the three weights and the three filters);
+  - `results`: every palette (with its relationship, source and score
+    breakdown), gradient, typography card, UI pair and poster, and the full
+    token system;
+  - the time it was made.
+
+There is no way to load a JSON snapshot back into the generator. Keep it as a
+record, or use it in your own code.
+
+COPY SINGLE RESULTS
+===================
+
+Every result card has its own copy buttons. See Palettes, gradients,
+typography, UI pairs and posters [result-tabs.txt] for exactly what each one
+copies. In short:
+
+  Where:  Palette card
+  Button: Copy hex
+  Copies: HEX values separated by spaces
+
+  Where:  Overview
+  Button: Copy hex list
+  Copies: the leader's HEX values
+
+  Where:  Any swatch or role chip
+  Button: select it
+  Copies: that HEX
+
+  Where:  Gradient card
+  Button: Copy CSS, Copy stops
+  Copies: a `background:` line, or the stop colours
+
+  Where:  Typography card
+  Button: Copy CSS
+  Copies: five custom properties
+
+  Where:  UI pair card
+  Button: Copy CSS
+  Copies: five custom properties
+
+  Where:  Poster card
+  Button: Copy CSS
+  Copies: a short `.poster` rule
+
+  Where:  Tokens tab
+  Button: Copy CSS, Copy JSON, scale Copy
+  Copies: the token system, or one scale
+
+A short message confirms each copy.
+
+SAVE TO YOUR LIBRARY
+====================
+
+Save on a palette, gradient, typography, UI pair or poster card, and Save
+brand system in the Studio, store the item in your Auric Artisan Library with
+a preview image.
+
+  - The message reads, for example, Saved “Balanced Analogous” to Library.
+  - Saving the same card twice from the same sweep shows Already saved instead
+    of making a copy.
+  - If the Library is not available, the message reads Save failed.
+
+  Saved from: Palette card
+  Saved as:   palette
+  Holds:      colours, relationship, source and score
+
+  Saved from: Gradient card
+  Saved as:   gradient
+  Holds:      CSS, stops, style and score
+
+  Saved from: Typography card
+  Saved as:   typography
+  Holds:      fonts, colours and score
+
+  Saved from: UI pair card
+  Saved as:   preset
+  Holds:      the four colours, accent text colour, contrast and colour-vision
+              score
+
+  Saved from: Poster card
+  Saved as:   preset
+  Holds:      layout, colours, fonts and score
+
+  Saved from: Studio
+  Saved as:   preset
+  Holds:      palette, brand system, overrides, theme and density
+
+The Library's own Save to Library captures the leader palette (or, before any
+sweep, your pool) and the first gradient. See the Library Kit
+[../../../../kits/library-kit/README.txt] for managing saved items.
+
+BRING COLOURS IN FROM YOUR LIBRARY
+==================================
+
+A palette, gradient, colour or shade saved in any Auric Artisan tool can be
+opened in the Personalization Generator from your Library. Its colours are
+added to the front of your pool and the Pool tab opens, ready for a sweep. See
+the Library Kit [../../../../kits/library-kit/README.txt].
+
+AUTOMATE IT
+===========
+
+The page notes the matching Public API call: POST /v1/personalize/system, at
+14 API credits per call. API credits are a separate balance from your tool
+tokens. See the Public API [../../../../../services/public-api/README.txt] and
+the API reference at https://auricartisan.com/library/documentation/api/.
+
+RELATED
+=======
+
+  - Design tokens [design-tokens.txt]
+  - Brand Studio [brand-studio.txt]
+  - Privacy [../others/privacy.txt]

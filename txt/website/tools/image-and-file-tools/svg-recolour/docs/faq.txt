@@ -1,0 +1,77 @@
+==============================================================================
+SVG RECOLOUR FAQ
+==============================================================================
+Short answers to common questions about SVG Recolour.
+Area: Website › Tools › Image and file tools › SVG Recolour   Updated: 2026-09-25
+
+IS MY SVG UPLOADED?
+===================
+
+No. The file is parsed in the page and never sent anywhere. See Privacy
+[../others/privacy.txt].
+
+CAN I SWAP TWO COLOURS?
+=======================
+
+Yes. Set each colour's target to the other. Every change is planned from the
+original file before anything is written, so the swap works cleanly.
+
+DOES IT CHANGE COLOURS WRITTEN AS NAMES, LIKE `RED`?
+====================================================
+
+Yes. Names, hex, `rgb()` and `hsl()` forms are all found and rewritten. The
+same colour written different ways appears as one row.
+
+WHY IS `CURRENTCOLOR` LEFT ALONE?
+=================================
+
+It takes its value from the `color` of the page the SVG is placed in, so the
+file does not contain the colour. The tool counts it and leaves it as it is,
+which keeps icons that rely on it working.
+
+DOES IT RECOLOUR GRADIENTS?
+===========================
+
+Yes, through the `stop-color` of each gradient stop, which appear as their own
+rows. The shape that uses the gradient refers to it with `url()`, which is
+left alone.
+
+DOES IT RECOLOUR EMBEDDED IMAGES?
+=================================
+
+No. Pictures embedded in an SVG are pixels, not markup, and are not found or
+changed.
+
+CAN I RECOLOUR SEVERAL FILES AT ONCE?
+=====================================
+
+No. The tool works on one file at a time.
+
+ARE NEAR-IDENTICAL COLOURS MERGED INTO ONE ROW?
+===============================================
+
+No. Only exactly identical colours share a row, however they are written.
+
+WILL THE EXPORTED FILE LOOK EXACTLY LIKE THE AFTER PREVIEW?
+===========================================================
+
+Yes, in colour: the preview is drawn from the same rewrite. The preview has
+active content removed, but the file keeps it.
+
+WHAT DOES "NEAR ROYALBLUE" MEAN?
+================================
+
+It is the nearest CSS colour name, found by colour difference, to make hex
+values easier to read. An exact CSS name is shown without "near". Nothing
+depends on the name.
+
+IS THE HARMONY A GUARANTEE OF GOOD COLOURS?
+===========================================
+
+No. The harmonies are a convention from colour-wheel teaching. Check the
+result for contrast and colour vision on the Check tab.
+
+DOES THE COLOUR-VISION PREVIEW CHANGE THE EXPORTED FILE?
+========================================================
+
+No. It changes only what is drawn on screen.

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arrange pictures in a grid — Auric Artisan Docs</title>
+<meta name="description" content="Use the Layout tab to compare every grid arrangement for your pictures and apply the one you want.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Collage Maker</a>
+<h2>Collage Maker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Collage Maker</a></li>
+<li><a href="arrange-in-a-grid.html" aria-current="page">Arrange pictures in a grid</a></li>
+<li><a href="build-a-collage.html">Build and edit a collage</a></li>
+<li><a href="export-and-sessions.html">Export, copy and save sessions</a></li>
+<li><a href="read-the-measurements.html">Read the measurements</a></li>
+<li><a href="reference.html">Collage Maker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Collage Maker</a></li>
+<li><a href="faq.html">Collage Maker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Collage Maker</a> &rsaquo; <a href="README.html">Collage Maker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Collage Maker</p>
+<h1>Arrange pictures in a grid</h1>
+<p class="lede">Use the Layout tab to compare every grid arrangement for your pictures and apply the one you want.</p>
+<p>The <strong>Layout</strong> tab answers one question: which grid gives these pictures the most canvas? Every arrangement is laid out on the real canvas and measured, rather than estimated from the size of the cells, because a cell is only filled by a picture that shares its shape.</p>
+<h2 id="how-a-grid-is-built">How a grid is built</h2>
+<p>A grid is a set of equal cells, filled row by row in the order the pictures are painted (the bottom of the stack goes in the first cell). Two settings from the <strong>Studio</strong> tab decide the size of the cells:</p>
+<ul>
+<li><strong>Padding</strong> is the margin between the canvas edge and the block of cells.</li>
+<li><strong>Gap</strong> is the space between neighbouring cells.</li>
+</ul>
+<p>Both come out of the same canvas. The cell width is the canvas width, minus padding on both sides, minus one gap between each pair of columns, divided by the number of columns; the height works the same way. With a large gap on a small canvas this can come out as zero or less. The tool then refuses that arrangement and says why, rather than drawing it inside out.</p>
+<p>Only visible pictures are arranged. Hidden pictures keep their place and are not counted.</p>
+<h2 id="choose-how-a-picture-fits-its-cell">Choose how a picture fits its cell</h2>
+<p>The <strong>Fitting</strong> group on the left of the <strong>Layout</strong> tab has two buttons and a switch.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Fit inside the cell</strong> (default)</td><td>Scales each picture so all of it sits inside its cell; a different shape leaves part of the cell empty</td></tr>
+<tr><td><strong>Fill the cell, crop</strong></td><td>Scales each picture so it covers its whole cell; the excess is not cut away (see below)</td></tr>
+<tr><td><strong>Enlarge a small picture to fill its cell</strong></td><td>Off by default. Allows scaling above 100% of a picture&#39;s own pixels</td></tr>
+</tbody></table></div>
+<p>With <strong>Fill the cell, crop</strong>, the part of a picture beyond its cell is not trimmed off. It overlaps the neighbouring pictures or hangs off the canvas, and the <strong>Overlap</strong> and <strong>Off-canvas</strong> columns of the table show how much.</p>
+<p>With enlarging off, a picture smaller than its cell stays at its own resolution and leaves the cell short. That keeps small pictures sharp. It is a preference, not a rule; switch it on when you would rather fill the frame than keep every pixel crisp.</p>
+<h2 id="read-the-arrangement-table">Read the arrangement table</h2>
+<p>The table under <strong>Which arrangement gives these pictures the most canvas</strong> has one row for every number of columns, from one column up to one column per picture.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Arrangement</strong></td><td>Columns × rows, for example <code>3 × 2</code></td></tr>
+<tr><td><strong>Cell</strong></td><td>The size of each cell in pixels</td></tr>
+<tr><td><strong>Covered</strong></td><td>The share of the canvas the pictures cover in this arrangement</td></tr>
+<tr><td><strong>Overlap</strong></td><td>The share of the canvas where pictures sit on top of one another (only possible with <strong>Fill the cell, crop</strong>)</td></tr>
+<tr><td><strong>Off-canvas</strong></td><td>The share of picture area outside the canvas (only possible with <strong>Fill the cell, crop</strong>)</td></tr>
+<tr><td><strong>What happened</strong></td><td><strong>the most canvas of these</strong>, a count of cells left empty, or the reason a row was refused</td></tr>
+</tbody></table></div>
+<p>A refused row shows <strong>refused</strong> in the <strong>Covered</strong> column. A grid with spare cells says so in the last column, for example <strong>1 cell left empty</strong>.</p>
+<p>A row is only marked as the winner when it truly covers more than every other row. If every arrangement covers the same amount, no row is marked, and the note under the table explains why: none of the pictures is larger than its cell, so each keeps its own size wherever it goes. Switch on enlarging, or use larger pictures, and the rows separate.</p>
+<p>Under the table, <strong>The grid, and what it leaves</strong> draws the three best arrangements with their coverage and the number of cells used, for example <strong>cells used 4 of 6</strong>.</p>
+<h2 id="apply-an-arrangement">Apply an arrangement</h2>
+<ol>
+<li>Open the <strong>Layout</strong> tab.</li>
+<li>Choose <strong>Fit inside the cell</strong> or <strong>Fill the cell, crop</strong>, and set <strong>Enlarge a small picture to fill its cell</strong> as you want it.</li>
+<li>Under <strong>Apply</strong>, select the button for the arrangement you want, for example <strong>3 × 2</strong>. Only arrangements that fit are offered.</li>
+<li>A message confirms: <strong>Arranged. Undo puts every picture back.</strong></li>
+</ol>
+<p>Every visible picture is moved to the centre of its cell, scaled as the fitting choice says, and turned back to 0° rotation. The whole arrangement is one history step, so one <strong>Undo</strong> returns every picture to where it was.</p>
+<p>To let the tool choose for you, select <strong>Arrange in a grid</strong> on the <strong>Studio</strong> tab instead. It applies the arrangement with the highest coverage; where several tie, it takes the one with the fewest columns.</p>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>If every arrangement shows the same coverage, your pictures are all smaller than their cells. Reduce <strong>Padding</strong> or <strong>Gap</strong>, switch on enlarging, or accept the tie.</li>
+<li>If an arrangement is refused, the message gives the padding, gap, grid and canvas that caused it. Reduce the padding or gap and look again.</li>
+<li>Mixed portrait and landscape pictures rarely fill a grid well with <strong>Fit inside the cell</strong>. Compare the rows, or use <strong>Fill the cell, crop</strong> and check the <strong>Overlap</strong> column.</li>
+<li>The arrangement only sets position, scale and rotation. You can still move and resize any picture afterwards on the <strong>Studio</strong> tab.</li>
+</ul>
+<h2 id="what-you-should-see">What you should see</h2>
+<p>After you apply an arrangement, the <strong>Studio</strong> canvas shows the pictures in their cells, and the <strong>canvas covered</strong> card is close to the <strong>Covered</strong> figure the table gave for that row. The two are measured differently: the table works from where the pictures are placed, while the card reads the pixels. A picture with transparent areas, such as a PNG cut-out, therefore covers less on the card than in the table.</p>
+<p>The <strong>Covered</strong> column shows a dash when three or more pictures overlap at one point, because the placement arithmetic cannot then give an exact figure. The card on the <strong>Studio</strong> tab is still exact in that case.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Collage Maker</a><a href="build-a-collage.html"><span>Next</span>Build and edit a collage</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-a-grid-is-built">How a grid is built</a></li><li><a href="#choose-how-a-picture-fits-its-cell">Choose how a picture fits its cell</a></li><li><a href="#read-the-arrangement-table">Read the arrangement table</a></li><li><a href="#apply-an-arrangement">Apply an arrangement</a></li><li><a href="#tips">Tips</a></li><li><a href="#what-you-should-see">What you should see</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

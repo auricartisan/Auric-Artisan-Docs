@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert, copy and save — Auric Artisan Docs</title>
+<meta name="description" content="How Icon Hub's Insert adapts to your file, the inspector and its formats, Quick Search and the Command Palette, and saving icons to files.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Icon Hub</a>
+<h2>Icon Hub guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Icon Hub</a></li>
+<li><a href="browse-and-refine.html">Browse and refine</a></li>
+<li><a href="catalog-updates.html">Catalog metadata updates</a></li>
+<li><a href="cdn-insertion.html">Connect the icon CDN</a></li>
+<li><a href="collect-and-export.html">Collect and export</a></li>
+<li><a href="insert-copy-and-save.html" aria-current="page">Insert, copy and save</a></li>
+<li><a href="shape-the-output.html">Shape the output</a></li>
+<li><a href="reference.html">Icon Hub reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Icon Hub</a> &rsaquo; <a href="README.html">Icon Hub guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Icon Hub</p>
+<h1>Insert, copy and save</h1>
+<p class="lede">How Icon Hub's Insert adapts to your file, the inspector and its formats, Quick Search and the Command Palette, and saving icons to files.</p>
+<h2 id="insert">Insert</h2>
+<p>Select <strong>Insert</strong> on a card, or in the inspector. Icon Hub inserts at every selection in the active editor or, if you clicked into the Hub, the last text editor you used.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Editing in</th><th>Insert produces</th></tr></thead>
+<tbody>
+<tr><td>HTML, Vue, Svelte, Astro</td><td>A CDN icon placeholder element, and the CDN loader is connected.</td></tr>
+<tr><td>React JSX or TSX</td><td>The CDN placeholder as JSX (or a React component if you chose one in the inspector), and the loader is connected.</td></tr>
+<tr><td>JavaScript, TypeScript</td><td>A named, quoted markup constant, and the loader is connected.</td></tr>
+<tr><td>CSS, SCSS, Less</td><td>A self-contained CSS declaration.</td></tr>
+<tr><td>SVG, XML and other languages</td><td>Self-contained SVG markup.</td></tr>
+</tbody></table></div>
+<p>See <a href="cdn-insertion.html">Connect the icon CDN</a> for what the loader is and what it needs.</p>
+<ul>
+<li>Material icons can only be inserted into HTML or web-framework files: &quot;Insert Material icons into HTML or a web-framework file to connect your CDN. Use Copy for other formats.&quot;</li>
+<li>Read-only editors are refused: &quot;The selected editor is read-only. Use Copy instead.&quot;</li>
+<li>A rejected edit is reported, not recorded as a success.</li>
+<li>With no editor, the output is copied and VS Code says &quot;No writable editor selected; icon copied to the clipboard.&quot;</li>
+</ul>
+<h2 id="the-inspector">The inspector</h2>
+<p>Select a card&#39;s preview to open the inspector. It shows a large preview, the set, name, category and licence, the available styles, a <strong>Copy format</strong> dropdown, a CDN snippet preview, and <strong>Insert</strong>, <strong>Copy</strong> and <strong>Save</strong>.</p>
+<ul>
+<li>Select a style button to switch the icon&#39;s style.</li>
+<li>The <strong>Copy format</strong> applies to <strong>Copy</strong> and <strong>Save</strong>. <strong>Insert</strong> always follows the editor language.</li>
+<li><code>Escape</code> closes the inspector; <code>Tab</code> stays inside it.</li>
+</ul>
+<h2 id="formats">Formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Setting value</th><th>SVG icons</th><th>Material icons</th></tr></thead>
+<tbody>
+<tr><td>SVG</td><td><code>svg</code></td><td>Yes</td><td>No (HTML is used instead)</td></tr>
+<tr><td>JSX</td><td><code>jsx</code></td><td>Yes</td><td>Yes</td></tr>
+<tr><td>React component</td><td><code>reactComponent</code></td><td>Yes</td><td>Yes</td></tr>
+<tr><td>HTML</td><td><code>html</code></td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Data URI</td><td><code>dataUri</code></td><td>Yes</td><td>No (HTML is used instead)</td></tr>
+<tr><td>CSS</td><td><code>css</code></td><td>Yes</td><td>Yes</td></tr>
+<tr><td>CDN snippet</td><td><code>cdn</code></td><td>Yes</td><td>Yes</td></tr>
+</tbody></table></div>
+<p>The CDN snippet looks like this:</p>
+<pre class="code" data-lang="html"><code>&lt;i data-icon=&quot;set:name&quot; data-style=&quot;…&quot; data-size=&quot;24&quot; data-color=&quot;currentColor&quot; data-stroke=&quot;2&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+&lt;script src=&quot;https://icons.auricartisan.com/icon-cdn.js&quot; defer&gt;&lt;/script&gt;</code></pre>
+<p>Standalone SVG, data URI and CSS exports include the SVG namespace, so they work as separate files. SVG is sanitised before preview and export.</p>
+<p>Set the default for <strong>Copy</strong> with <code>auricIconLib.copyFormat</code> (default <code>svg</code>), and what a card choice does with <code>auricIconLib.clickAction</code> (<code>insert</code>, <code>copy</code>, <code>insertAndCopy</code>; default <code>insert</code>).</p>
+<h2 id="save">Save</h2>
+<p>Select <strong>Save</strong> in the inspector, or run <strong>Auric Icon Hub: Save Icon As…</strong>. A save dialog opens in your first workspace folder with a file name based on the icon. The file type follows the format:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Extension</th></tr></thead>
+<tbody>
+<tr><td>SVG</td><td><code>.svg</code></td></tr>
+<tr><td>CSS</td><td><code>.css</code></td></tr>
+<tr><td>JSX, React component</td><td><code>.jsx</code></td></tr>
+<tr><td>HTML, CDN snippet</td><td><code>.html</code></td></tr>
+<tr><td>Data URI</td><td><code>.txt</code></td></tr>
+</tbody></table></div>
+<p><strong>Save Icon As…</strong> from the Command Palette uses your <code>copyFormat</code> setting.</p>
+<h2 id="from-the-command-palette">From the Command Palette</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Flow</th></tr></thead>
+<tbody>
+<tr><td><strong>Quick Search Icons</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>I</code>)</td><td>Type a search (&quot;Search Auric Icons&quot;), pick from the matches, and your click action runs.</td></tr>
+<tr><td><strong>Smart Insert Icon</strong></td><td>The same flow; also on the editor right-click menu.</td></tr>
+<tr><td><strong>Show Favorite Icons</strong> / <strong>Show Recent Icons</strong></td><td>The same flow, limited to favorites or recent icons.</td></tr>
+<tr><td><strong>Copy Icon As…</strong></td><td>Pick from all icons, then a format; copies. Also on the editor right-click menu.</td></tr>
+<tr><td><strong>Save Icon As…</strong></td><td>Pick an icon, then save.</td></tr>
+</tbody></table></div>
+<h2 id="result">Result</h2>
+<p>The icon is in your file, on the clipboard or saved as a file, in the form you need, and it appears under <strong>Recent</strong>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="collect-and-export.html"><span>Previous</span>Collect and export</a><a href="shape-the-output.html"><span>Next</span>Shape the output</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#insert">Insert</a></li><li><a href="#the-inspector">The inspector</a></li><li><a href="#formats">Formats</a></li><li><a href="#save">Save</a></li><li><a href="#from-the-command-palette">From the Command Palette</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

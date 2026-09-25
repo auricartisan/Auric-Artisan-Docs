@@ -1,0 +1,50 @@
+---
+title: SVG Recolour — Recolour from a harmony
+description: Recolour every colour in an SVG at once from a colour harmony built on the file's main colour, and put the colours back.
+product: Website › Tools › Image and file tools › SVG Recolour
+updated: 2026-09-25
+---
+
+# Recolour from a harmony
+
+A harmony is a set of colours at fixed angles round the colour wheel, such as opposite (complementary) or evenly spaced in threes (triadic). **Recolour from a harmony** builds one from your file's main colour and assigns it to every colour in the file in one step.
+
+## Apply a harmony
+
+1. Load an SVG on the **Recolour** tab.
+2. Under **Recolour from a harmony**, select one of the five buttons: **complementary**, **analogous**, **triadic**, **tetradic** or **split complementary**.
+3. Every colour in the file gets a new target, the **After** preview updates, and a message names the harmony and the base colour, for example **A triadic palette from #E5484D.**
+
+If no file is loaded, the message reads **Load an SVG first.**
+
+## How the harmony is built
+
+- **The base colour** is the first row of **Every colour in the file**: the colour used in the most places. It keeps its own colour.
+- **The angles** are applied to the base colour's hue in OKLCH, a perceptual colour space, keeping its lightness and chroma. Rotating hue in OKLCH keeps colours looking equally light and colourful, which rotating in HSL does not.
+- **Assignment** goes down the colour list in order: the second row gets the second angle, and so on.
+
+| Harmony | Hue angles from the base |
+|---|---|
+| **complementary** | 0°, 180° |
+| **analogous** | 0°, −30°, +30° |
+| **triadic** | 0°, 120°, 240° |
+| **tetradic** | 0°, 90°, 180°, 270° |
+| **split complementary** | 0°, 150°, 210° |
+
+When the file has more colours than the harmony has angles, the pattern repeats, turned a further 12° each time round, so later colours are close to, but not the same as, earlier ones.
+
+If a new colour would fall outside sRGB, its chroma is reduced, keeping its lightness and hue, until it fits.
+
+Colours left alone, such as `currentColor`, are not affected.
+
+## After applying
+
+- Adjust any row by hand afterwards; the harmony only sets the starting targets.
+- **Put every colour back** returns every target to the original colour.
+- Applying a harmony replaces any targets you set by hand.
+
+## Things to know
+
+- The five harmonies are a convention from colour-wheel teaching. They do not guarantee a pleasing or accessible result, and the **Data** tab lists them as this tool's choice.
+- Because every generated colour shares the base colour's lightness, a harmony can make colours that differ in hue but are hard to tell apart for someone with a colour-vision deficiency, or too similar in lightness for text. Check the result on the **Check** tab; see [Check contrast and colour vision](check-contrast-and-colour-vision.md).
+- A file whose main colour is a grey or near-grey has little chroma, so the harmony produces greys or near-greys too.

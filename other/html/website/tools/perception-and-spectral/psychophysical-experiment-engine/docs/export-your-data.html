@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export your data — Auric Artisan Docs</title>
+<meta name="description" content="The trials CSV, the session JSON and setup links on the Export tab, their exact contents, and what to do while the Export tab does not open.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Psychophysical Experiment Engine</a>
+<h2>Using the Psychophysics Bench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Psychophysics Bench</a></li>
+<li><a href="design-an-experiment.html">Design an experiment</a></li>
+<li><a href="export-your-data.html" aria-current="page">Export your data</a></li>
+<li><a href="read-the-results.html">Read the results</a></li>
+<li><a href="run-a-session.html">Run a session</a></li>
+<li><a href="reference.html">Psychophysics Bench reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Psychophysics Bench</a></li>
+<li><a href="faq.html">Psychophysics Bench FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Psychophysical Experiment Engine</a> &rsaquo; <a href="README.html">Using the Psychophysics Bench</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Psychophysical Experiment Engine</p>
+<h1>Export your data</h1>
+<p class="lede">The trials CSV, the session JSON and setup links on the Export tab, their exact contents, and what to do while the Export tab does not open.</p>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> At the time of writing, the <strong>Export</strong> tab does not open, so the three buttons below cannot be reached. The last section of this page describes what you can do meanwhile.</p>
+</blockquote>
+<h2 id="the-export-tab">The Export tab</h2>
+<p><strong>What to take</strong> switches the preview on the right between <strong>Every trial</strong> (the CSV), <strong>The session</strong> (the JSON, first part) and <strong>A link to this</strong>. The note above the preview gives the number of rows. Nothing leaves the page until you press a button:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Download the trials</strong></td><td>Saves <code>psychophysics-trials.csv</code></td></tr>
+<tr><td><strong>Download the session</strong></td><td>Saves <code>psychophysics-session.json</code></td></tr>
+<tr><td><strong>Copy a link to this setup</strong></td><td>Copies a link with every rail setting; shows <strong>Link copied</strong>, or the link itself if the clipboard is unavailable</td></tr>
+</tbody></table></div>
+<p>With no trials yet, the download buttons show <strong>No trials yet — run the experiment first</strong>.</p>
+<h2 id="the-trials-csv">The trials CSV</h2>
+<p>The file starts with header lines that record what the numbers mean, then one row per trial:</p>
+<pre class="code" data-lang="text"><code># Auric Artisan · psychophysics bench · 2026-09-25T10:00:00.000Z
+# contrast_unit    = michelson, relative luminance, sRGB EOTF
+# mean_luminance   = 0.2159 (code 128)
+# frequency_unit   = cycles per degree
+# viewing_distance = 570 mm ; pixel_pitch = 0.248 mm ; deg_per_px = 0.0249
+# display_gamma    = sRGB standard curve, not a measurement of this screen
+# paradigm         = Two-interval forced choice
+# staircase        = 1-up / 2-down, 2.0 dB step, target 70.7%
+# reportable       = false   (the fit is this tool's own; see the Data register)
+trial,contrast,delivered,response,correct,rt_ms,interval,present,cpd</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>trial</code></td><td>Trial number</td></tr>
+<tr><td><code>contrast</code></td><td>The Michelson contrast the procedure asked for</td></tr>
+<tr><td><code>delivered</code></td><td>The contrast the screen could show; lower than <code>contrast</code> when capped</td></tr>
+<tr><td><code>response</code></td><td><code>0</code> (first interval) or <code>1</code> (second) in two-interval; <code>yes</code> or <code>no</code> in yes/no</td></tr>
+<tr><td><code>correct</code></td><td><code>1</code> or <code>0</code></td></tr>
+<tr><td><code>rt_ms</code></td><td>Response time from the end of the stimulus, in milliseconds</td></tr>
+<tr><td><code>interval</code></td><td>The interval that held the patch (<code>0</code> or <code>1</code>); <code>-1</code> in yes/no</td></tr>
+<tr><td><code>present</code></td><td><code>1</code> if the patch was shown, <code>0</code> if not (always <code>1</code> in two-interval)</td></tr>
+<tr><td><code>cpd</code></td><td>Spatial frequency in cycles per degree</td></tr>
+</tbody></table></div>
+<p>The header carries the background luminance and the geometry because a Michelson contrast cannot be reconstructed without its mean, and a frequency in cycles per degree means nothing without a viewing distance.</p>
+<h2 id="the-session-json">The session JSON</h2>
+<p><code>psychophysics-session.json</code> contains:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>tool</code>, <code>version</code>, <code>recorded</code></td><td><code>psychophysics-bench</code>, <code>2</code> and the time of export</td></tr>
+<tr><td><code>units</code></td><td>Contrast unit, <code>mean_luminance</code>, <code>mean_code</code>, frequency unit and <code>deg_per_px</code></td></tr>
+<tr><td><code>display_gamma</code></td><td>&quot;sRGB standard curve, not a measurement of this screen&quot;</td></tr>
+<tr><td><code>settings</code></td><td>Every rail setting</td></tr>
+<tr><td><code>paradigm</code>, <code>staircase</code></td><td>The task and a description of the procedure and step</td></tr>
+<tr><td><code>threshold</code>, <code>threshold_at</code></td><td>The current threshold and its proportion correct, or <code>null</code></td></tr>
+<tr><td><code>reversals_used</code></td><td>The same text as the readout</td></tr>
+<tr><td><code>trials</code></td><td>Number of trials</td></tr>
+<tr><td><code>reportable</code></td><td>Whether the result may be reported as a published quantity (currently <code>false</code>)</td></tr>
+<tr><td><code>data</code></td><td>Every trial, with the fields of the CSV</td></tr>
+</tbody></table></div>
+<h2 id="setup-links">Setup links</h2>
+<p>A setup link opens the bench with the same rail settings. It uses these parameters:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Control</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><code>paradigm</code></td><td>Task</td><td><code>2afc</code>, <code>yesno</code></td></tr>
+<tr><td><code>stimType</code></td><td>Stimulus type</td><td><code>gabor</code>, <code>grating</code></td></tr>
+<tr><td><code>cpd</code></td><td>Spatial frequency</td><td>0.25–20</td></tr>
+<tr><td><code>orientation</code></td><td>Orientation</td><td>0–179</td></tr>
+<tr><td><code>sigmaDeg</code></td><td>Envelope σ</td><td>0.1–2</td></tr>
+<tr><td><code>meanCode</code></td><td>Background</td><td>40–220</td></tr>
+<tr><td><code>distanceCm</code></td><td>Viewing distance</td><td>20–200</td></tr>
+<tr><td><code>pitchMm</code></td><td>Pixel pitch</td><td>0.05–0.6</td></tr>
+<tr><td><code>stair</code></td><td>Staircase</td><td><code>1u2d</code>, <code>3d1u</code>, <code>bayes</code>, <code>accel</code>, <code>constant</code></td></tr>
+<tr><td><code>stepDb</code></td><td>Step</td><td>0.5–12</td></tr>
+<tr><td><code>start</code></td><td>Starting contrast</td><td>0.01–1</td></tr>
+<tr><td><code>nReversals</code></td><td>Stop after</td><td>4–24</td></tr>
+<tr><td><code>trials</code></td><td>Trial ceiling</td><td>20–400</td></tr>
+<tr><td><code>duration</code></td><td>Stimulus (ms)</td><td>20–1000</td></tr>
+<tr><td><code>iti</code></td><td>Between trials (ms)</td><td>100–2000</td></tr>
+</tbody></table></div>
+<p>A link carries settings, not results.</p>
+<h2 id="while-the-export-tab-does-not-open">While the Export tab does not open</h2>
+<ul>
+<li><p><strong>Share or save a setup:</strong> build the link by hand. Start from the tool address and add the parameters you want to set, for example:</p>
+<pre class="code" data-lang="text"><code>https://auricartisan.com/tool/general/perception-and-neuroscience/psychophysical-experiment-engine/?paradigm=yesno&amp;cpd=2&amp;stair=3d1u&amp;trials=160</code></pre>
+<p>Parameters you leave out keep their defaults.</p>
+</li>
+<li><p><strong>Keep a result:</strong> write down <strong>Threshold, Michelson</strong>, <strong>At what percentage</strong>, <strong>Reversals used</strong>, <strong>Delivered / asked</strong>, <strong>Trials run</strong> and <strong>Proportion correct</strong>, together with your settings, before starting another run. A screenshot of the Lab tab records the trace as well. Double-clicking the trace enlarges it first.</p>
+</li>
+<li><p><strong>Per-trial data</strong> cannot be taken away until the tab opens.</p>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="design-an-experiment.html"><span>Previous</span>Design an experiment</a><a href="read-the-results.html"><span>Next</span>Read the results</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-export-tab">The Export tab</a></li><li><a href="#the-trials-csv">The trials CSV</a></li><li><a href="#the-session-json">The session JSON</a></li><li><a href="#setup-links">Setup links</a></li><li><a href="#while-the-export-tab-does-not-open">While the Export tab does not open</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

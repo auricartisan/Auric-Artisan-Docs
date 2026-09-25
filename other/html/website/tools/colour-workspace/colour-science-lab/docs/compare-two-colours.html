@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare two colours — Auric Artisan Docs</title>
+<meta name="description" content="Measure the difference between a reference and a candidate colour with ΔE 2000, ΔE 1994, ΔE 1976 and Oklab distance, and see whether the gap is lightness, chroma or hue.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Color Science Lab</a>
+<h2>Color Science Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Color Science Lab</a></li>
+<li><a href="arrange-link-save-export.html">Arrange, link, save and export panels</a></li>
+<li><a href="catalogue-and-panels.html">The Catalogue and its panels</a></li>
+<li><a href="catalogue-compare-and-analytics.html">Catalogue Compare and Analytics</a></li>
+<li><a href="compare-two-colours.html" aria-current="page">Compare two colours</a></li>
+<li><a href="gamut-audit.html">Gamut audit</a></li>
+<li><a href="illuminants.html">Illuminants</a></li>
+<li><a href="tool-list.html">The 45 tools</a></li>
+<li><a href="workbench.html">The Workbench</a></li>
+<li><a href="reference.html">Color Science Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Color Science Lab</a></li>
+<li><a href="faq.html">Color Science Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Color Science Lab</a> &rsaquo; <a href="README.html">Color Science Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Compare two colours</h1>
+<p class="lede">Measure the difference between a reference and a candidate colour with ΔE 2000, ΔE 1994, ΔE 1976 and Oklab distance, and see whether the gap is lightness, chroma or hue.</p>
+<p>The <strong>Compare</strong> view measures how different two colours are. It is useful for checking a match (a print against a screen colour, a paint against a brand colour, a new token against an old one) and for understanding why two colours look different.</p>
+<p><strong>ΔE</strong> (delta E) is a number for colour difference. Several formulas exist; newer ones follow human perception more closely.</p>
+<h2 id="layout">Layout</h2>
+<p>Two cards side by side:</p>
+<ul>
+<li><strong>Reference</strong> (<strong>A</strong>) and <strong>Candidate</strong> (<strong>B</strong>), each with a large swatch, a HEX box, a colour well, and a table of <strong>CIE XYZ</strong>, <strong>CIE Lab</strong>, <strong>CIE LCh</strong> and <strong>Oklab</strong> coordinates.</li>
+</ul>
+<p>The Reference starts as the Workbench specimen; the Candidate starts as #5A86D8.</p>
+<p>Below them, four verdicts:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Verdict</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>ΔE 2000</strong></td><td>The current CIE standard (CIEDE2000). Its note says whether the difference is below the just-noticeable threshold (under 1), noticeable only side by side (1 to 2), perceptible at a glance but acceptable side by side (2 to 5), or two different colours (5 and above).</td></tr>
+<tr><td><strong>ΔE 1976</strong></td><td>The original straight-line Lab distance. It overstates differences in blues, which is why it was replaced.</td></tr>
+<tr><td><strong>ΔE 1994</strong></td><td>The step between the two: it weights chroma by its own size.</td></tr>
+<tr><td><strong>Oklab distance</strong></td><td>Plain distance in Oklab, a space designed to make that distance meaningful.</td></tr>
+</tbody></table></div>
+<p>Each figure is green (small), amber or red (large).</p>
+<p><strong>Where the difference sits</strong> splits the gap into <strong>Δ lightness</strong>, <strong>Δ chroma</strong> and <strong>Δ hue angle</strong>, and a sentence says which dominates: lightness (match L first), chroma (same hue, different saturation) or hue (genuinely different colours).</p>
+<h2 id="tasks">Tasks</h2>
+<h3 id="check-whether-a-match-is-close-enough">Check whether a match is close enough</h3>
+<ol>
+<li>Enter the target in <strong>Reference</strong> and the sample in <strong>Candidate</strong> (HEX with <code>#</code>, or the colour well).</li>
+<li>Read <strong>ΔE 2000</strong>. Under 1 is effectively identical; under 2 is usually acceptable for close work; above 5 is a clear mismatch.</li>
+<li>Read <strong>Where the difference sits</strong> to know what to adjust.</li>
+</ol>
+<p>Result: a measured, explained difference.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Reference</strong> HEX box and colour well</td><td><code>#RRGGBB</code></td><td>The Workbench specimen</td></tr>
+<tr><td><strong>Candidate</strong> HEX box and colour well</td><td><code>#RRGGBB</code></td><td>#5A86D8</td></tr>
+</tbody></table></div>
+<p>Lab values here use D65 and the 2° observer.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="workbench.html">The Workbench</a></li>
+<li><a href="../../basic-colour-tools/docs/panel-tools/quick-converter.html">Quick Converter&#39;s Compare tab</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="catalogue-compare-and-analytics.html"><span>Previous</span>Catalogue Compare and Analytics</a><a href="gamut-audit.html"><span>Next</span>Gamut audit</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#layout">Layout</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#controls">Controls</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

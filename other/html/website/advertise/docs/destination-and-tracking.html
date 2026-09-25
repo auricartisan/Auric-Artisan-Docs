@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Destination and tracking — Auric Artisan Docs</title>
+<meta name="description" content="How to set the destination address of an Auric Artisan ad campaign, with UTM auto-tagging, custom URL parameters and tracking macros.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Advertise on Auric Artisan</a>
+<h2>Advertise documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with advertising</a></li>
+<li><a href="ad-library.html">The Ad Library</a></li>
+<li><a href="create-a-campaign.html">Create a campaign</a></li>
+<li><a href="design-your-creative.html">Design your creative</a></li>
+<li><a href="destination-and-tracking.html" aria-current="page">Destination and tracking</a></li>
+<li><a href="formats-and-placements.html">Formats and placements</a></li>
+<li><a href="pricing-and-booking.html">Pricing and booking</a></li>
+<li><a href="reference.html">Advertise reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Advertise FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Advertise on Auric Artisan</a> &rsaquo; <a href="README.html">Advertise documentation</a></nav>
+<p class="kicker">Website › Advertise</p>
+<h1>Destination and tracking</h1>
+<p class="lede">How to set the destination address of an Auric Artisan ad campaign, with UTM auto-tagging, custom URL parameters and tracking macros.</p>
+<p>The <strong>Destination URL</strong> in the first step is where every click on your ad lands. Below it, <strong>Destination &amp; tracking</strong> builds the full address that clicks will actually use, called the <strong>Final URL</strong>.</p>
+<h2 id="the-destination-address">The destination address</h2>
+<ul>
+<li>Type the address of your landing page. If you type a bare domain such as <code>your-product.com</code>, it becomes <code>https://your-product.com</code> when you leave the field.</li>
+<li><strong>Display link</strong> shows the short form of the address that goes with the ad: the site and the start of the path.</li>
+<li><strong>Test link ↗</strong> opens the final address with sample values in place of the macros, so you can check it loads. It appears once the address is valid.</li>
+</ul>
+<h3 id="what-the-builder-checks">What the builder checks</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Enter a destination URL.</strong></td><td>The field is empty.</td></tr>
+<tr><td><strong>That doesn&#39;t parse as a complete URL — include https://.</strong></td><td>The address is incomplete.</td></tr>
+<tr><td><strong>Only http(s) destinations can be served.</strong></td><td>The address uses another scheme.</td></tr>
+<tr><td><strong>Credentials inside the URL are not allowed.</strong></td><td>The address contains a user name or password.</td></tr>
+<tr><td><strong>That hostname doesn&#39;t look reachable.</strong></td><td>The site name is not a full domain.</td></tr>
+</tbody></table></div>
+<p>These stop you continuing. Two warnings let you continue:</p>
+<ul>
+<li><strong>Not secure (http) — browsers may warn your visitors. Prefer https.</strong></li>
+<li><strong>Link shorteners hide the real destination from the Ad Library — use the final URL.</strong> This appears for common shorteners such as bit.ly and tinyurl.com.</li>
+</ul>
+<p>When all is well, the status reads <strong>Looks good — clicks go straight to this URL.</strong>, or <strong>Looks good —</strong> followed by how many tracking parameters <strong>will ride along on every click.</strong></p>
+<h2 id="auto-tagging">Auto-tagging</h2>
+<p><strong>Auto-tagging</strong> adds UTM parameters to the final address, so visits from the campaign show up attributed in your analytics. It is on by default. Untick it to send clicks to the address exactly as you typed it, plus any custom parameters.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><code>utm_source</code></td><td><code>auricartisan</code></td></tr>
+<tr><td><code>utm_medium</code></td><td><code>adssense</code></td></tr>
+<tr><td><code>utm_campaign</code></td><td>Made from your campaign name, for example <code>summer-product-launch</code></td></tr>
+<tr><td><code>utm_content</code></td><td><code>{placement}</code></td></tr>
+<tr><td><code>utm_term</code></td><td><code>{zone}</code></td></tr>
+</tbody></table></div>
+<p>Edit any value, up to 60 characters. An empty value is left out. Leave <code>utm_campaign</code> empty to keep it following the campaign name.</p>
+<h2 id="custom-url-parameters">Custom URL parameters</h2>
+<p>Select <strong>+ Add parameter</strong> to add your own name and value, up to five parameters.</p>
+<ul>
+<li>A name can use letters, numbers, dots, dashes and underscores, up to 32 characters. Otherwise the builder says <strong>Custom parameter names can only use letters, numbers, dot, dash and underscore.</strong></li>
+<li>A value can be up to 200 characters and can include macros.</li>
+<li>A parameter with the same name as a UTM parameter replaces it.</li>
+<li>Parameters already in your destination address are kept.</li>
+<li>Select <strong>✕</strong> to remove a parameter.</li>
+</ul>
+<h2 id="tracking-macros">Tracking macros</h2>
+<p>Macros are placeholders that are filled in each time the ad is shown. Select a macro chip to insert it where your cursor was in the tracking fields.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Macro</th><th>Replaced with</th></tr></thead>
+<tbody>
+<tr><td><code>{placement}</code></td><td>The unit that served the click: <code>leader</code>, <code>rect</code>, <code>strip</code> or <code>infeed</code>.</td></tr>
+<tr><td><code>{zone}</code></td><td>The zone this campaign runs on.</td></tr>
+<tr><td><code>{campaign}</code></td><td>Your campaign&#39;s order ID.</td></tr>
+<tr><td><code>{clickid}</code></td><td>A unique ID for each ad shown, for attribution.</td></tr>
+</tbody></table></div>
+<h2 id="the-final-url">The final URL</h2>
+<p><strong>Final URL</strong> shows the complete address, with the macros still in braces. This is the address that appears as <strong>Destination</strong> in the review step and in your booking request.</p>
+<p>For example, with the defaults, a destination of <code>https://your-product.com/</code> and the campaign name &quot;Summer product launch&quot;, the final URL is:</p>
+<p><code>https://your-product.com/?utm_source=auricartisan&amp;utm_medium=adssense&amp;utm_campaign=summer-product-launch&amp;utm_content={placement}&amp;utm_term={zone}</code></p>
+
+<nav class="pager" aria-label="Previous and next"><a href="design-your-creative.html"><span>Previous</span>Design your creative</a><a href="formats-and-placements.html"><span>Next</span>Formats and placements</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-destination-address">The destination address</a></li><li><a href="#auto-tagging">Auto-tagging</a></li><li><a href="#custom-url-parameters">Custom URL parameters</a></li><li><a href="#tracking-macros">Tracking macros</a></li><li><a href="#the-final-url">The final URL</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

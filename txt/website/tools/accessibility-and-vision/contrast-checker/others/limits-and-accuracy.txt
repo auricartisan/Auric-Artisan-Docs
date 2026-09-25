@@ -1,0 +1,57 @@
+==============================================================================
+LIMITS AND ACCURACY
+==============================================================================
+What the Contrast Checker measures, how precisely, and where it stops.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+WHAT IT MEASURES
+================
+
+The WCAG 2.1 contrast ratio between two solid sRGB colours, using the
+relative-luminance formula from the WCAG specification. The number is exact
+for the two colours you enter; it is displayed to two decimal places, and the
+pass or fail decisions use the unrounded value.
+
+WHAT IT DOES NOT MEASURE
+========================
+
+  - APCA, WCAG 3 drafts or colour difference. Despite the page title, there is
+    no APCA or Lc score, no colour-difference metric and no colour-vision
+    simulation in this tool.
+  - Transparency or layering. Hex values only, with no alpha. Text at partial
+    opacity, or over an image or a gradient, has to be reduced to its
+    effective solid colour first.
+  - Font weight and spread. The formula ignores weight, ignores size beyond
+    the large-text threshold, and does not model how light text on a dark
+    background appears to spread. A pass is a floor, not a verdict; use the
+    preview.
+  - Context. The UI & graphics row compares the two colours you typed. In a
+    real design, a component's edge is judged against whatever is next to it.
+  - Scope decisions. Disabled controls, decoration, logos and text in pictures
+    are exempt from WCAG, but the checker grades any pair you give it.
+    Deciding what is in scope is up to you.
+
+MAKE IT PASS AA
+===============
+
+  - Aims at 4.5:1 only.
+  - Changes only the text colour.
+  - Moves in a straight line towards black or white, so it does not preserve
+    hue or saturation.
+  - Takes the first of about fifty steps that passes, so the result is close
+    to minimal, not exactly minimal.
+  - Chooses its direction by relative luminance, so mid greys push text
+    towards white.
+
+ONE PAIR AT A TIME
+==================
+
+There is no batch mode, no palette import and no matrix of every colour
+against every other colour. For every pair on a live page, use the Analyzer
+[../../analyzer/README.txt].
+
+NOT A CERTIFICATION
+===================
+
+A passing ratio shows that one pair meets one WCAG threshold. It does not make
+a page or a product accessible or compliant.

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Gradient Library's banding verdicts, contrast figures and previews measure, and what they do not.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gradient Library</a>
+<h2>Gradient Library: other material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Gradient Library shortcuts</a></li>
+<li><a href="glossary.html">Gradient Library glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Gradient Library</a> &rsaquo; <a href="README.html">Gradient Library: other material</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Gradient Library</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Gradient Library's banding verdicts, contrast figures and previews measure, and what they do not.</p>
+<h2 id="the-banding-verdict">The banding verdict</h2>
+<ul>
+<li>The checker samples 96 points along the ramp and compares neighbouring samples in OKLab. The verdict depends on the ratio of the largest step to the average step, so it does not change with the number of samples.</li>
+<li>The thresholds (3.2 and 5.5) were set from the collection&#39;s own labelled gradients, as the page explains. They are a good guide, not a guarantee: whether a step is visible also depends on the screen, its bit depth, the size of the gradient, image compression and the viewer.</li>
+<li>The checker models a plain CSS gradient: evenly spaced stops blended in sRGB. It ignores stop positions, colour hints, easing and <code>in oklch</code>-style interpolation you may use in your own CSS.</li>
+<li>The collection&#39;s verdicts were recorded when each gradient was generated, using its own positions, space and easing.</li>
+</ul>
+<h2 id="contrast">Contrast</h2>
+<ul>
+<li>Contrast uses the WCAG 2 formula on sampled colours: 24 samples for <strong>White min</strong> and <strong>Black min</strong>, 17 on the <strong>Accessibility</strong> tab, and 33 on the <strong>Pair</strong> tab. A very narrow dark or light band between samples could be missed.</li>
+<li>Passing contrast is one part of readable text; font size, weight and any texture behind the text also matter.</li>
+</ul>
+<h2 id="vision-previews">Vision previews</h2>
+<p>The <strong>Vision</strong> tab uses approximate screen filters for complete deuteranopia, protanopia, tritanopia and achromatopsia, and a blur for low vision. They show the idea, not an exact simulation of any individual&#39;s sight.</p>
+<h2 id="scores-and-labels">Scores and labels</h2>
+<p>The score, complexity, method and scheme are recorded with each gradient when it was generated. The score is a ranking aid, not a judgement of beauty or fitness for your purpose.</p>
+<h2 id="exports">Exports</h2>
+<ul>
+<li>The SVG export draws a linear gradient at the gradient&#39;s angle across the image; for very steep angles it can differ slightly from how CSS fits the same angle to a box.</li>
+<li>The PNG export is drawn by your browser, so it reflects your browser&#39;s sRGB blending.</li>
+</ul>
+<h2 id="what-it-is-not">What it is not</h2>
+<p>It is not a certified measurement of display performance, and it does not know how your gradient will be compressed or displayed.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Gradient Library glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-banding-verdict">The banding verdict</a></li><li><a href="#contrast">Contrast</a></li><li><a href="#vision-previews">Vision previews</a></li><li><a href="#scores-and-labels">Scores and labels</a></li><li><a href="#exports">Exports</a></li><li><a href="#what-it-is-not">What it is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for common problems in the ASCII Art Generator, from files that will not load to downloads that do not match the art.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ASCII Art Generator</a>
+<h2>ASCII Art Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ASCII Art Generator</a></li>
+<li><a href="charts-and-compare.html">Charts, benchmark and Compare</a></li>
+<li><a href="export.html">Copy, export and batch</a></li>
+<li><a href="fine-tuning.html">Fine tuning</a></li>
+<li><a href="looks-colour-and-detail.html">Looks, colour and detail</a></li>
+<li><a href="render-modes.html">Render modes and full screen</a></li>
+<li><a href="sources.html">Choose a source</a></li>
+<li><a href="reference.html">ASCII Art Generator reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">ASCII Art Generator</a> &rsaquo; <a href="README.html">ASCII Art Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Fixes for common problems in the ASCII Art Generator, from files that will not load to downloads that do not match the art.</p>
+<h2 id="nothing-happens-when-i-open-the-page">Nothing happens when I open the page</h2>
+<p>That is expected: the stage waits for a source. Choose a file, drop or paste a picture, select <strong>Try an example</strong>, or switch to <strong>Text</strong>. There is no Render button; conversion starts by itself.</p>
+<h2 id="my-file-will-not-load">My file will not load</h2>
+<ul>
+<li><strong>Unsupported file type</strong>: use PNG, JPEG, GIF, WebP, BMP, SVG or TIFF. Convert other formats, such as HEIC, first.</li>
+<li><strong>File too large</strong>: the limit is 20 MB. Save a smaller copy or a JPEG.</li>
+<li><strong>Failed to load image</strong>: the file may be damaged, or your browser cannot read that format. TIFF in particular opens only in some browsers.</li>
+</ul>
+<h2 id="pasting-a-picture-does-nothing">Pasting a picture does nothing</h2>
+<p>Click on an empty part of the page first, so you are not typing in a field, then press <code>Ctrl</code> + <code>V</code> (<code>Cmd</code> + <code>V</code> on a Mac). The clipboard must hold an image, not a link to one.</p>
+<h2 id="the-webcam-will-not-start">The webcam will not start</h2>
+<p>At the time of writing, auricartisan.com tells browsers not to allow camera access on any of its pages. <strong>Start</strong> then shows a message that camera permission was denied. Changing permissions in your browser does not help. Take a photo with your camera app and load it with <strong>Image</strong> instead.</p>
+<h2 id="the-art-looks-stretched-or-squashed">The art looks stretched or squashed</h2>
+<ul>
+<li>Leave <strong>Match the output font</strong> on in <strong>Fine tuning › Shape</strong>, so the cell shape matches the font.</li>
+<li>If you pasted the art somewhere else, use a monospaced font there too; a proportional font breaks the columns.</li>
+<li>If <strong>Lock row count</strong> is on, the row count no longer follows the picture. Turn it off.</li>
+</ul>
+<h2 id="the-art-looks-like-a-negative">The art looks like a negative</h2>
+<p>The characters with the most ink should stand for the dark parts on light paper, and the light parts on dark paper. Check <strong>Invert for dark paper</strong>. Once you have changed it yourself, it no longer follows the paper colour automatically.</p>
+<h2 id="the-art-is-too-dark-too-light-or-flat">The art is too dark, too light or flat</h2>
+<ul>
+<li>Try <strong>Gamma</strong>: above 1 lightens the mid-tones, below 1 darkens them.</li>
+<li>Raise <strong>Contrast</strong>.</li>
+<li>Look at <strong>Character frequency</strong> in <strong>Analysis</strong>: a spike at one end means the tones are crushed.</li>
+<li>Try the <strong>Line art</strong> or <strong>Bold</strong> look for strong shapes, or <strong>Fine</strong> for subtle tones.</li>
+</ul>
+<h2 id="smooth-areas-show-bands">Smooth areas show bands</h2>
+<p>Turn on <strong>Floyd-Steinberg</strong> or <strong>Ordered (Bayer)</strong> dithering, or choose a longer set such as <strong>Detailed</strong>. The <strong>Compare</strong> tab shows which sets are not ordered light to dark.</p>
+<h2 id="colour-does-not-show">Colour does not show</h2>
+<ul>
+<li>Under <strong>Colour</strong>, choose <strong>From image</strong>. Colour shows in the <strong>HTML</strong>, <strong>Canvas</strong> and <strong>SVG</strong> renders, not in <strong>Text</strong>.</li>
+<li>With <strong>Rotate 90°</strong>, <strong>Border</strong>, <strong>Frame</strong> or <strong>Thin out</strong> on, the Canvas and SVG renders fall back to one colour. Turn those off for colour art.</li>
+</ul>
+<h2 id="filters-do-nothing">Filters do nothing</h2>
+<p>The <strong>HTML</strong> render shows the art before filters. Switch to <strong>Text</strong>, <strong>Canvas</strong> or <strong>SVG</strong>. <strong>Brighten</strong>, <strong>Darken</strong> and <strong>Noise</strong> work on Standard-set characters, so with other sets they change little or mix Standard characters in.</p>
+<h2 id="the-png-svg-or-html-download-does-not-match-the-art">The PNG, SVG or HTML download does not match the art</h2>
+<p>Those downloads can reuse an earlier render. Before downloading, select the matching render on the <strong>Lab</strong> tab: <strong>Canvas</strong> for PNG, <strong>SVG</strong> for SVG, <strong>HTML</strong> for HTML. Then download again.</p>
+<h2 id="the-ansi-download-says-to-turn-colour-on">The ANSI download says to turn colour on</h2>
+<p>The ANSI file carries the picture&#39;s colours, so it needs <strong>From image</strong>. For plain characters, use the TXT download or <strong>Copy</strong>.</p>
+<h2 id="export-all-gave-me-five-files-not-six">Export all gave me five files, not six</h2>
+<p>That is how it works at present: <strong>Export all six</strong> downloads TXT, PNG, SVG, JSON and CSV. Download the HTML and ANSI files from their own cards. If only one file arrived, allow the page to download several files when your browser asks.</p>
+<h2 id="full-screen-shows-no-colour">Full screen shows no colour</h2>
+<p>Full screen shows the plain characters for every render except <strong>Canvas</strong>. Switch to <strong>Canvas</strong> first to see the colour art full screen. Close full screen with <strong>×</strong>.</p>
+<h2 id="the-analysis-charts-are-empty">The Analysis charts are empty</h2>
+<p>Convert something first; the charts describe the last conversion. If they are still blank, switch to another tab and back.</p>
+<h2 id="conversion-is-slow-or-lags-behind-the-sliders">Conversion is slow or lags behind the sliders</h2>
+<p>Lower <strong>Detail</strong>, switch <strong>Sampling</strong> to <strong>Bilinear</strong> or <strong>Point / Nearest</strong>, turn off dithering, or use the <strong>Text</strong> render. The <strong>Render timeline</strong> chart and <strong>Run benchmark</strong> show the effect.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="../../../../../help/README.html">Help centre</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>ASCII Art Generator reference</a><a href="faq.html"><span>Next</span>Frequently asked questions</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#nothing-happens-when-i-open-the-page">Nothing happens when I open the page</a></li><li><a href="#my-file-will-not-load">My file will not load</a></li><li><a href="#pasting-a-picture-does-nothing">Pasting a picture does nothing</a></li><li><a href="#the-webcam-will-not-start">The webcam will not start</a></li><li><a href="#the-art-looks-stretched-or-squashed">The art looks stretched or squashed</a></li><li><a href="#the-art-looks-like-a-negative">The art looks like a negative</a></li><li><a href="#the-art-is-too-dark-too-light-or-flat">The art is too dark, too light or flat</a></li><li><a href="#smooth-areas-show-bands">Smooth areas show bands</a></li><li><a href="#colour-does-not-show">Colour does not show</a></li><li><a href="#filters-do-nothing">Filters do nothing</a></li><li><a href="#the-png-svg-or-html-download-does-not-match-the-art">The PNG, SVG or HTML download does not match the art</a></li><li><a href="#the-ansi-download-says-to-turn-colour-on">The ANSI download says to turn colour on</a></li><li><a href="#export-all-gave-me-five-files-not-six">Export all gave me five files, not six</a></li><li><a href="#full-screen-shows-no-colour">Full screen shows no colour</a></li><li><a href="#the-analysis-charts-are-empty">The Analysis charts are empty</a></li><li><a href="#conversion-is-slow-or-lags-behind-the-sliders">Conversion is slow or lags behind the sliders</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

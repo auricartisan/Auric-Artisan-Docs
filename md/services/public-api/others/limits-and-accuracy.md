@@ -1,0 +1,50 @@
+---
+title: Public API — Limits and accuracy
+description: What the Auric Artisan API's results measure, how precisely, and where they need judgement.
+product: Services › Public API
+updated: 2026-09-25
+---
+
+# Limits and accuracy
+
+## Colour science
+
+- **Delta E:** CIEDE2000 is the headline figure and is verified against the Sharma reference set, the standard test data for that formula.
+- **Colour temperature** is only meaningful near the Planckian locus. The response reports Duv and a `meaningful` flag; beyond about ±0.05 Duv, a temperature does not describe the colour.
+- **Nearest colour** in the atlas uses CIE76 distance in Lab, and the response names the metric.
+
+## Accessibility
+
+- Contrast checks work on the colours you send. They cannot know what is actually behind text on a real page; for that, measure the rendered page, for example with the website's Analyzer or the browser extension.
+- APCA is a draft method for WCAG 3; its thresholds may change.
+- `/v1/accessibility/map` returns `null` lightness for hues that can never reach the target on a background. That is a real answer, not a failure.
+- `/v1/accessibility/audit` and `/v1/accessibility/picks` refuse to return colours that do not meet the target.
+
+## Vision simulation
+
+- Simulations model how colours may appear with a deficiency; they are not a diagnosis, and individual vision varies.
+- `/v1/vision/palette` and `/v1/vision/audit` simulate colour conditions; spatial conditions are listed under `refused`.
+
+## Collections
+
+- Library and corpus records are derived from a published seed, so ids are reproducible and citable.
+- Statistics endpoints count or sample the collection and state the sample they used.
+- In the five-million-record collections, a filtered browse scans a budget of records. A `truncated` page is not proof that nothing matches.
+
+## Analyzer
+
+- `/v1/analyzer/inspect` reads page source only. It refuses contrast, the accessibility engine, deep DOM analysis, performance, the rendered-versus-raw comparison and simulation rather than guess.
+- `palette` returns declared colours, not the colours that cover the most pixels; `media` misses anything added by JavaScript.
+- There is no overall score. The markup-level `a11y` category is not the analyzer's full accessibility engine.
+- PDF reports show Latin characters only.
+
+## Operational limits
+
+- Image request bodies are limited to 4 MB.
+- Usage streams are capped at 10 minutes per connection.
+- Rate limits, quotas and ceilings are listed in [Plans, credits and quotas](../docs/plans-credits-and-quotas.md).
+
+## Related pages
+
+- [Reference](../docs/reference.md)
+- [Analyzer](../docs/endpoints/analyzer.md)

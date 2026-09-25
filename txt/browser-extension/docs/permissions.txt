@@ -1,0 +1,122 @@
+==============================================================================
+PERMISSIONS
+==============================================================================
+Every permission Auric Artisan asks for, when the browser asks, why each is
+needed, and how to review or revoke them.
+Area: Browser extension   Updated: 2026-09-25
+
+When you install Auric Artisan, the browser warns that it can "read and change
+your data on all websites". This page explains exactly what the extension
+declares, when each permission is asked for, and what it is used for.
+
+THE SHORT VERSION
+=================
+
+  - The tools work on whatever page you use them on, so the extension needs
+    access to all sites.
+  - A small script loads on each page and waits. Until you start a tool, it
+    only reads your settings and listens for your commands. It does not read
+    your content or change the page.
+  - Everything that changes a page, the website pickers and the custom
+    right-click menu, is off until you turn it on.
+  - Three extra permissions are asked for only if you turn on the custom
+    right-click menu.
+  - Nothing is sent anywhere. See Privacy [../others/privacy.txt].
+
+ASKED FOR AT INSTALL
+====================
+
+  Permission:              Host access to all sites
+  What the browser calls it:Read and change your data on all websites
+  Why it is needed:        The page tools work on any page you choose; the
+                           optional pickers and menu must be ready before you
+                           use a page
+
+  Permission:              `activeTab`
+  What the browser calls it:—
+  Why it is needed:        Access to the tab you are on when you use the
+                           popup, a shortcut or a menu item
+
+  Permission:              `scripting`
+  What the browser calls it:—
+  Why it is needed:        Starts the page script in tabs opened before
+                           install, and runs the eyedropper in the page when
+                           needed
+
+  Permission:              `storage`
+  What the browser calls it:—
+  Why it is needed:        Keeps your settings, history, library, snippets and
+                           pinned tools in your browser
+
+  Permission:              `clipboardWrite`
+  What the browser calls it:—
+  Why it is needed:        The copy buttons: colour values, CSS, selectors and
+                           exports
+
+  Permission:              `contextMenus`
+  What the browser calls it:—
+  Why it is needed:        Adds the extension's entries to the browser's own
+                           right-click menu (you can turn them off in Settings
+                           › Right-click)
+
+  Permission:              `sidePanel` (Chromium only)
+  What the browser calls it:—
+  Why it is needed:        Docks the workspace in the side panel
+
+Firefox gets the same list without `sidePanel`. Its sidebar needs no
+permission. The Firefox package also declares to Mozilla that it collects no
+data.
+
+ASKED FOR ONLY WHEN YOU TURN ON THE CUSTOM RIGHT-CLICK MENU
+===========================================================
+
+When you turn on Settings › Right-click › Custom right-click menu, the browser
+asks for three optional permissions. If you decline, the menu stays off.
+
+  Permission: `clipboardRead` (read the clipboard)
+  Only for:   Paste in text fields
+  Without it: Paste shows an Allow chip
+
+  Permission: `downloads` (manage downloads)
+  Only for:   Save link as…, Save image as…, Save media as… and Save
+              screenshot
+  Without it: Those rows show an Allow chip
+
+  Permission: `sessions` (recently closed tabs)
+  Only for:   Reopen closed tab
+  Without it: The row shows an Allow chip
+
+Save page as… works without `downloads`: it then saves the page's current HTML
+as a file instead of using the browser's Save dialog.
+
+Nothing else in the extension asks for these. You can grant them one at a time
+in Settings › Right-click › Permissions.
+
+WHERE THE PAGE SCRIPT DOES NOT RUN
+==================================
+
+  - Browser pages (such as `chrome://` and `about:` pages) and the extension
+    stores, where browsers forbid it.
+  - Frames inside a page: the script runs in the top page only.
+  - `file://` pages, unless you allow file access for the extension in the
+    browser.
+
+REVIEW OR REVOKE PERMISSIONS
+============================
+
+  - Chromium browsers: open the extensions page, choose Details on Auric
+    Artisan, and review Site access and Permissions. You can limit site
+    access, but the page tools then work only on the sites you allow.
+  - Firefox: open `about:addons`, choose Auric Artisan, then the Permissions
+    tab.
+
+Revoking an optional permission turns the matching right-click actions back to
+Allow chips.
+
+RELATED PAGES
+=============
+
+  - Privacy [../others/privacy.txt]
+  - Right-click settings [settings/right-click.txt]
+  - The extension privacy policy:
+    https://auricartisan.com/legal/extension-privacy/

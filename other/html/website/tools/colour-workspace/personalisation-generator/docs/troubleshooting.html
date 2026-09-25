@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for common problems in the Personalization Generator, from lost results to unreadable palettes.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Personalization Generator</a>
+<h2>Personalization Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Personalization Generator</a></li>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="build-the-pool.html">Build your colour pool</a></li>
+<li><a href="design-tokens.html">Design tokens</a></li>
+<li><a href="export-and-save.html">Export, save and share</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="result-tabs.html">Palettes, gradients, typography, UI pairs and posters</a></li>
+<li><a href="run-a-sweep.html">Run a sweep and read the results</a></li>
+<li><a href="tune-the-sweep.html">Tune the sweep</a></li>
+<li><a href="reference.html">Personalization Generator reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Personalization Generator</a> &rsaquo; <a href="README.html">Personalization Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Fixes for common problems in the Personalization Generator, from lost results to unreadable palettes.</p>
+<h2 id="my-results-disappeared-after-a-reload">My results disappeared after a reload</h2>
+<p>Results are kept only while the page is open. On every visit a quick new sweep runs, using your saved pool and settings. Before you leave, copy what you need, select <strong>Download JSON</strong> in <strong>Export</strong>, or <strong>Save</strong> the results you want to your Library. See <a href="export-and-save.html">Export, save and share</a>.</p>
+<h2 id="the-brief-box-is-empty-after-a-reload-but-the-results-still-follow-my-old-brief">The brief box is empty after a reload, but the results still follow my old brief</h2>
+<p>The brief is remembered, but the box in the left column starts empty. The remembered text is still used, and it shows in <strong>Tune</strong> under <strong>Preference note</strong>. Edit or clear it there, or type a new brief.</p>
+<h2 id="changing-the-brief-does-not-change-much">Changing the brief does not change much</h2>
+<p>The brief is matched word by word against the names of built-in reference palettes; it is not read as a sentence. Words that appear in no name have no effect. Use a few distinctive words, and steer with the pool, style chips and <strong>Use case</strong> for bigger changes. See <a href="tune-the-sweep.html">Tune the sweep</a>.</p>
+<h2 id="every-palette-looks-like-my-pool">Every palette looks like my pool</h2>
+<p>Preference, closeness to your pool, carries the largest share of the score.</p>
+<ul>
+<li>Select <strong>Jitter</strong> once or twice in <strong>Pool</strong>.</li>
+<li>Raise <strong>Diversity</strong> in <strong>Tune</strong>.</li>
+<li>Remove near-duplicates from the pool.</li>
+<li>Use <strong>+24 random</strong> or <strong>Build</strong> to widen the pool.</li>
+</ul>
+<h2 id="the-palettes-have-no-readable-text-pair">The palettes have no readable text pair</h2>
+<ul>
+<li>Make sure <strong>Contrast</strong> (<strong>UI contrast bonus (4.5:1)</strong>) is on.</li>
+<li>Raise <strong>Accessibility</strong> in <strong>Tune</strong>.</li>
+<li>Add a very dark and a very light colour, or select <strong>+ Grayscale</strong> in <strong>Quick seeds</strong>.</li>
+</ul>
+<p>Contrast is a weight, not a filter, so a palette with weak contrast can still be kept if the rest of its score is high. Check <strong>The leader, checked</strong> in the right column after each sweep.</p>
+<h2 id="generate-does-nothing">Generate does nothing</h2>
+<p>A sweep is already running; <strong>Generate</strong> reads <strong>Generating…</strong> until it ends. Wait, or select <strong>Stop</strong>. If <strong>Endless</strong> is on, each new sweep starts on its own; select <strong>Endless</strong> again to turn it off.</p>
+<h2 id="a-big-sweep-is-slow">A big sweep is slow</h2>
+<p>Sweeps of several thousand candidates take longer, especially on older devices. Lower <strong>Search depth</strong>, or select <strong>Stop</strong> at any time; the best of what the sweep has already found is kept.</p>
+<h2 id="endless-mode-shows-the-same-kind-of-palette-over-and-over">Endless mode shows the same kind of palette over and over</h2>
+<p>Endless merges each sweep into the list and keeps only the 96 best, so strong early palettes stay at the top. Change the pool or styles and run a normal sweep with <strong>Generate</strong> to start afresh.</p>
+<h2 id="the-studio-shows-colours-that-are-not-in-the-palette">The Studio shows colours that are not in the palette</h2>
+<p>The <strong>Test</strong> overrides from an earlier palette are still set: a new sweep or a reload keeps them. Open <strong>Test</strong> and select <strong>Reset</strong>, or choose a palette from <strong>Available Palettes</strong>, which clears them.</p>
+<h2 id="the-check-boxes-in-the-left-column-disagree-with-tune">The check boxes in the left column disagree with Tune</h2>
+<p>The left-column boxes pick up changes made in <strong>Tune</strong> only after a reload. The Tune settings are the ones in force. Use one place for the filters, or reload the page to bring the two into line.</p>
+<h2 id="this-run-shows-old-numbers">This run shows old numbers</h2>
+<p><strong>This run</strong> refreshes when you change a setting in the left column. After moving a slider in <strong>Tune</strong>, it can show the previous value until you next touch the left column. The Tune slider value is the one in force.</p>
+<h2 id="the-fonts-in-typography-or-the-studio-look-wrong">The fonts in Typography or the Studio look wrong</h2>
+<p>The page does not download the named fonts. If a font is not installed on your device, the browser uses the next one in the stack, often a system sans or serif. Install the font, or read the three faces listed on each card.</p>
+<h2 id="save-says-already-saved">Save says Already saved</h2>
+<p>That card from the same sweep is already in your Library. Run a new sweep to save a new copy, or open your Library to find the saved item.</p>
+<h2 id="save-says-save-failed">Save says Save failed</h2>
+<p>The Library could not store the item. Reload the page and try again. If it keeps failing, see the <a href="../../../../kits/library-kit/README.html">Library Kit</a>.</p>
+<h2 id="loading-a-preset-lost-my-colours">Loading a preset lost my colours</h2>
+<p>Loading a preset replaces the pool. There is no undo. Add your colours back with <strong>Add</strong>, or from a palette you saved to your Library.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="../../../../../help/README.html">Help centre</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Personalization Generator reference</a><a href="faq.html"><span>Next</span>Frequently asked questions</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#my-results-disappeared-after-a-reload">My results disappeared after a reload</a></li><li><a href="#the-brief-box-is-empty-after-a-reload-but-the-results-still-follow-my-old-brief">The brief box is empty after a reload, but the results still follow my old brief</a></li><li><a href="#changing-the-brief-does-not-change-much">Changing the brief does not change much</a></li><li><a href="#every-palette-looks-like-my-pool">Every palette looks like my pool</a></li><li><a href="#the-palettes-have-no-readable-text-pair">The palettes have no readable text pair</a></li><li><a href="#generate-does-nothing">Generate does nothing</a></li><li><a href="#a-big-sweep-is-slow">A big sweep is slow</a></li><li><a href="#endless-mode-shows-the-same-kind-of-palette-over-and-over">Endless mode shows the same kind of palette over and over</a></li><li><a href="#the-studio-shows-colours-that-are-not-in-the-palette">The Studio shows colours that are not in the palette</a></li><li><a href="#the-check-boxes-in-the-left-column-disagree-with-tune">The check boxes in the left column disagree with Tune</a></li><li><a href="#this-run-shows-old-numbers">This run shows old numbers</a></li><li><a href="#the-fonts-in-typography-or-the-studio-look-wrong">The fonts in Typography or the Studio look wrong</a></li><li><a href="#save-says-already-saved">Save says Already saved</a></li><li><a href="#save-says-save-failed">Save says Save failed</a></li><li><a href="#loading-a-preset-lost-my-colours">Loading a preset lost my colours</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

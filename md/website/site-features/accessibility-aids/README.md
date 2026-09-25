@@ -1,0 +1,62 @@
+---
+title: Accessibility aids — Overview
+description: The site-wide aids that make Auric Artisan easier to read, see and use: reading mode, text size, contrast, motion, keyboard access and more.
+product: Website › Site features › Accessibility aids
+updated: 2026-09-25
+---
+
+# Accessibility aids
+
+Auric Artisan is built for accessibility work, and the site offers the same care to its own visitors. On every page you can:
+
+- make text larger or smaller in four steps;
+- switch to **reading mode**, a calm, narrow column of large text with the floating controls hidden;
+- **boost contrast**, **reduce motion**, **reduce transparency** and **underline links**;
+- replace the custom cursor with your system pointer;
+- choose light, dark or system theme;
+- use the whole site from the keyboard, with shortcuts for the most common actions;
+- switch the interface to Hindi.
+
+Many of these respond to your device settings as well: the site follows your system's light or dark preference, and it turns off the custom cursor and animated effects when your device asks for reduced motion.
+
+For the site's formal accessibility commitment, see the Accessibility statement at https://auricartisan.com/company/accessibility/.
+
+## Who it is for
+
+- People with low vision, colour vision differences, reading difficulties or motion sensitivity.
+- Keyboard and screen reader users.
+- Anyone who reads long pages and wants fewer distractions.
+
+## Where to find it
+
+- **Settings** (`Ctrl` + `,`) › **Appearance** (text size, theme, language) and **Comfort** (everything else).
+- Keyboard shortcuts anywhere: `Alt` + `R` (reading mode), `Alt` + `M` (reduced motion), `Alt` + `+` / `Alt` + `-` / `Alt` + `0` (text size), `Alt` + `T` (theme).
+
+## Quick start
+
+1. Press `Alt` + `+` twice. Text grows to **X-Large**.
+2. Press `Ctrl` + `,`, select **Comfort**, and switch on **Boost contrast** and **Underline links**.
+3. Open a long article and press `Alt` + `R`. Reading mode hides the floating controls and sets the text in a comfortable column.
+4. Select **Reading mode ✕** at the bottom of the screen to leave it.
+5. Press `Alt` + `0` to return text to the default size.
+
+## What you can do
+
+- Adjust text size, contrast, motion, transparency, link underlines and the pointer.
+- Read in a distraction-free layout with a progress bar.
+- Reach every panel and feature from the keyboard.
+- Rely on labelled controls, announced messages and a skip link on every page.
+
+## In this folder
+
+- [docs/](docs/README.md) — guides and reference
+  - [Getting started](docs/getting-started.md)
+  - [Reading mode](docs/reading-mode.md)
+  - [Keyboard and screen readers](docs/keyboard-and-screen-readers.md)
+  - [Reference](docs/reference.md)
+  - [Troubleshooting](docs/troubleshooting.md)
+  - [FAQ](docs/faq.md)
+- [others/](others/README.md) — supporting material
+  - [Glossary](others/glossary.md)
+  - [Related](others/related.md)
+  - [Privacy](others/privacy.md)

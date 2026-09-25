@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pick exact colours — Auric Artisan Docs</title>
+<meta name="description" content="Use the live eyedropper to read any pixel, pin exact colours, and copy them.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="extract-a-palette.html">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html" aria-current="page">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html">Image Picker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Pick exact colours</h1>
+<p class="lede">Use the live eyedropper to read any pixel, pin exact colours, and copy them.</p>
+<p>The palette is made of averages. When you need the exact colour of one spot, such as a logo&#39;s red or a product&#39;s trim, use the eyedropper and pins.</p>
+<h2 id="read-a-pixel">Read a pixel</h2>
+<ol>
+<li>Load a picture on the <strong>Workbench</strong> tab.</li>
+<li>Hover the <strong>Preview</strong>. The readout beside the swatch under it shows the colour under the pointer:</li>
+</ol>
+<pre class="code" data-lang="text"><code>#C0392B
+RGB(192,57,43) · HSL(6°,63%,46%) · L=0.1431 · px(212,88)</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>#C0392B</code></td><td>The hex value</td></tr>
+<tr><td><code>RGB(…)</code></td><td>Red, green and blue, 0 to 255</td></tr>
+<tr><td><code>HSL(…)</code></td><td>Hue in degrees, saturation and lightness in percent</td></tr>
+<tr><td><code>L=</code></td><td>Relative luminance, 0 (black) to 1 (white), as used by WCAG</td></tr>
+<tr><td><code>px(…)</code></td><td>The pixel&#39;s position in the working copy of the picture, not in the original</td></tr>
+</tbody></table></div>
+<p>When the pointer leaves the preview, the readout returns to <strong>Hover the image to preview</strong>.</p>
+<p>The eyedropper reads the working copy, which is shrunk to fit 800 × 500. On a large photograph each working pixel stands for several original pixels.</p>
+<h2 id="pin-a-colour">Pin a colour</h2>
+<ol>
+<li>Hover the spot you want.</li>
+<li>Click. The exact colour is added to <strong>Pinned</strong> on the right.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Limit</td><td>Up to 24 pins. Adding a 25th removes the oldest</td></tr>
+<tr><td>Duplicates</td><td>A colour already pinned is not added again</td></tr>
+<tr><td>Transparent pixels</td><td>Nearly transparent pixels cannot be pinned</td></tr>
+<tr><td>Counter</td><td>The heading reads <strong>Pinned</strong> with the count, for example <strong>3 of 24</strong></td></tr>
+</tbody></table></div>
+<p>Clicking directly on the preview is the reliable way to pin. The <strong>Pin</strong> button beside the readout pins the colour under the pointer, but moving the pointer onto the button clears the readout first, so it usually has nothing to pin.</p>
+<h2 id="use-your-pins">Use your pins</h2>
+<ul>
+<li>Select a pin to copy its hex value.</li>
+<li>Pins are included when you copy or download the palette as JSON, in a <code>picks</code> list. The <strong>Hex</strong>, <strong>CSS</strong>, <strong>SVG</strong> and <strong>CSV</strong> exports contain the extracted palette only.</li>
+<li><strong>Reset</strong> clears the pins along with the picture.</li>
+</ul>
+<h2 id="copy-a-palette-colour">Copy a palette colour</h2>
+<p>Select any swatch under <strong>Extracted palette</strong> to copy its hex value.</p>
+<p>The page shows no confirmation when something is copied. Paste it to check.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="extract-a-palette.html"><span>Previous</span>Extract a palette</a><a href="read-contrast-and-harmony.html"><span>Next</span>Read contrast pairs, tone bands and harmony</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#read-a-pixel">Read a pixel</a></li><li><a href="#pin-a-colour">Pin a colour</a></li><li><a href="#use-your-pins">Use your pins</a></li><li><a href="#copy-a-palette-colour">Copy a palette colour</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

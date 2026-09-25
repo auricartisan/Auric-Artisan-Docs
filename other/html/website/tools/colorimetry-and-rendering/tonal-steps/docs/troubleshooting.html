@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting Tonal Steps — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for common problems in Tonal Steps, Tints and Shades.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tonal Steps</a>
+<h2>Tonal Steps documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tonal Steps</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="tints-shades-tones.html">Make tints, shades, tones and key sets</a></li>
+<li><a href="reference.html">Tonal Steps reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting Tonal Steps</a></li>
+<li><a href="faq.html">Tonal Steps FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tonal Steps</a> &rsaquo; <a href="README.html">Tonal Steps documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Troubleshooting Tonal Steps</h1>
+<p class="lede">Fixes for common problems in Tonal Steps, Tints and Shades.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>My base colour is not in the ramp</td><td>The engines step lightness or luminance evenly from white to black; the base rarely lands exactly on a step. The base note says &quot;not a step&quot;</td><td>Expected. Use the key sets, where 500 is always your colour, or tints and shades, which start from it</td></tr>
+<tr><td>Changing <strong>Mix in</strong> does not change the ramp</td><td>The mixing space applies to tints, shades, tones and key sets, not to the main ramp</td><td>Tick a set under <strong>Also show</strong> to see the effect</td></tr>
+<tr><td><strong>sRGB linear</strong> gives the same result as OKLab</td><td>In the current version the sRGB linear option mixes in OKLab</td><td>Use CIELAB or HSL for a visibly different mix</td></tr>
+<tr><td><strong>Easing γ</strong> does nothing</td><td>Easing applies only to Equal luminance and the neutral ladder</td><td>Switch the engine to <strong>Equal luminance</strong></td></tr>
+<tr><td>The <strong>Equal contrast</strong> engine is missing</td><td>It produces the same ramp as Equal luminance, so it is not offered on the Lab tab</td><td>Use Equal luminance; the Ramps tab shows both</td></tr>
+<tr><td>Pressing <code>3</code> shows a ramp that looks like Equal luminance</td><td><code>3</code> selects the Equal contrast engine, which gives the same colours</td><td>Expected</td></tr>
+<tr><td>The base colour field ignores my value</td><td>It needs a six-digit HEX with <code>#</code></td><td>Type a value such as <code>#D3AF37</code></td></tr>
+<tr><td>The <strong>Metric</strong> choice on Contrast changes nothing</td><td>Both WCAG and APCA figures are always shown</td><td>Read the column you need</td></tr>
+<tr><td>The contrast export ignores my <strong>Against</strong> choice</td><td>Exports list contrast against both white and black</td><td>Use the Contrast tab for the base colour</td></tr>
+<tr><td><strong>Download the result</strong> did not save a file</td><td>It copies the analysis as CSV to your clipboard</td><td>Paste it where you need it</td></tr>
+<tr><td>&quot;No valid hex colours found.&quot;</td><td>The list has no six-digit HEX values</td><td>Put one value per line, for example <code>2563eb</code></td></tr>
+<tr><td>Copying fails</td><td>The browser blocked clipboard access</td><td>Allow clipboard access, or select the preview and copy manually</td></tr>
+<tr><td><code>1</code>, <code>2</code>, <code>3</code> or <code>R</code> do nothing</td><td>The focus is in a field or slider</td><td>Click an empty part of the page first</td></tr>
+<tr><td>Colours differ from the Tailwind or Material palettes</td><td>The key sets borrow the key names only</td><td>Expected; they are this tool&#39;s own ladders</td></tr>
+<tr><td>OKLab L values differ from an older export</td><td>Earlier versions fed OKLab gamma-encoded values; OKLab now receives linear sRGB</td><td>Re-export; new files note <code>oklab_input=linear_srgb</code></td></tr>
+<tr><td>APCA values differ from an older export</td><td>APCA-W3 0.1.9 now runs as published</td><td>Turn on <strong>Show the difference</strong> to compare</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Tonal Steps reference</a><a href="faq.html"><span>Next</span>Tonal Steps FAQ</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

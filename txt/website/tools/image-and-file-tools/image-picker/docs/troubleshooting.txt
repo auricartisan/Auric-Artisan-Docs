@@ -1,0 +1,131 @@
+==============================================================================
+TROUBLESHOOTING THE IMAGE PICKER
+==============================================================================
+Symptoms you may meet in the Image Picker, why they happen, and what to do.
+Area: Website › Tools › Image and file tools › Image Picker   Updated: 2026-09-25
+
+The Image Picker does not show pop-up messages, so when something fails, the
+usual sign is that nothing changes. This page lists the common causes.
+
+LOADING PICTURES
+================
+
+  Symptom:    Nothing happens after dropping or choosing a file
+  Why:        The file is not an image, or your browser cannot decode it
+  What to do: Save it as PNG or JPEG and try again. Some formats, such as HEIC
+              or camera RAW, are not opened by every browser
+
+  Symptom:    Dropping a second picture on the preview opens it in the browser
+              instead
+  Why:        The drop area is only active before a picture is loaded
+  What to do: Use Replace, or select Reset first to bring the drop area back
+
+  Symptom:    Load URL does nothing
+  Why:        The address is not an image, cannot be reached, or the server
+              does not allow other sites to read its pixels
+  What to do: Download the image and load it with Replace
+
+  Symptom:    After Load URL the middle panel goes blank
+  Why:        The picture loaded, but its server does not allow its pixels to
+              be read (cross-origin protection)
+  What to do: Download the image and load it as a file
+
+  Symptom:    The size line shows a much smaller working size
+  Why:        Pictures are shrunk to fit 800 × 500 for analysis
+  What to do: This is expected; the palette still covers the whole picture
+
+THE PALETTE
+===========
+
+  Symptom:    The Clusters label says 16 but the slider will not go past 12
+  Why:        The page starts at 16; the slider covers 2 to 12
+  What to do: Move the slider to choose 2 to 12, or leave it untouched to keep
+              16
+
+  Symptom:    Fewer colours than the cluster count
+  Why:        Merging combined some, or the picture has fewer distinct colours
+  What to do: Lower Merge threshold, or accept it: flat artwork keeps its
+              exact colours
+
+  Symptom:    Several near-identical shades
+  Why:        Clusters that are close are kept apart when merging is off
+  What to do: Raise Merge threshold
+
+  Symptom:    A white background or black border dominates
+  Why:        Those pixels are part of the picture
+  What to do: Turn on Ignore light or Ignore dark
+
+  Symptom:    The palette changes slightly each time
+  Why:        k-means++ starts from random colours
+  What to do: Select Re-extract until you are happy, then export
+
+  Symptom:    A small but important colour is missing
+  Why:        It covers too few pixels to form a cluster
+  What to do: Raise Quality or Clusters, or pin it with the eyedropper
+
+EYEDROPPER AND PINS
+===================
+
+  Symptom:    Pin does nothing
+  Why:        Moving the pointer onto the button clears the colour under it
+  What to do: Click directly on the preview to pin
+
+  Symptom:    A click does not add a pin
+  Why:        The colour is already pinned, or the pixel is transparent
+  What to do: Check Pinned; pick an opaque pixel
+
+  Symptom:    The oldest pin disappeared
+  Why:        Pins are capped at 24
+  What to do: Copy the JSON before pinning more
+
+  Symptom:    Pins are missing from my CSS or hex copy
+  Why:        Only the JSON export includes pins
+  What to do: Copy or download the JSON
+
+COPYING AND EXPORTS
+===================
+
+  Symptom:    No sign that anything was copied
+  Why:        The page shows no confirmation
+  What to do: Paste to check
+
+  Symptom:    Nothing is copied
+  Why:        Your browser blocked clipboard access
+  What to do: Allow clipboard access for the site, or use the downloads on the
+              Actions tab
+
+  Symptom:    The shortcut keys do nothing
+  Why:        Focus is in a text field, slider, switch or menu
+  What to do: Click an empty part of the page first
+
+  Symptom:    The page reset unexpectedly
+  Why:        `R` resets the workbench when focus is not in a control
+  What to do: Load the picture again; your settings are kept
+
+  Symptom:    The copied page link opens an empty tool
+  Why:        The link does not carry the picture or palette
+  What to do: Share the JSON, CSS or SVG instead
+
+BATCH ANALYSIS
+==============
+
+  Symptom:    No valid hex colours found.
+  Why:        Nothing in the box is a hex value
+  What to do: Enter values such as `#D3AF37` or `D3AF37`
+
+  Symptom:    A colour's figures look wrong
+  Why:        It was entered with an alpha part (four or eight digits)
+  What to do: Use three or six digits
+
+CHARTS
+======
+
+  Symptom:    Nothing charted yet
+  Why:        No picture is loaded
+  What to do: Load a picture on the Workbench
+
+  Symptom:    Bar labels are missing
+  Why:        There are too many clusters for the labels to fit
+  What to do: Open the chart full screen, or read the shares on the swatches
+
+For help with the site in general, see Help [../../../../../help/README.txt].

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="How the Image Picker makes a palette, how precise its figures are, and what it is not.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker background material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Image Picker shortcuts</a></li>
+<li><a href="glossary.html">Image Picker glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker background material</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">How the Image Picker makes a palette, how precise its figures are, and what it is not.</p>
+<h2 id="how-the-palette-is-made">How the palette is made</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Step</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Working copy</td><td>The picture is shrunk to fit 800 × 500 pixels; it is never enlarged</td></tr>
+<tr><td>Sampling</td><td>A regular grid set by <strong>Quality</strong>, widened so that no more than about 50,000 pixels are sampled</td></tr>
+<tr><td>Skipped pixels</td><td>Nearly transparent pixels; with the switches on, relative luminance below 0.03 or above 0.97</td></tr>
+<tr><td>Exact colours</td><td>Used when the samples hold no more distinct colours than the cluster count</td></tr>
+<tr><td>Clustering</td><td>k-means++ in RGB, up to 20 refinement rounds, stopping early once fewer than 1 in 2,000 samples change cluster</td></tr>
+<tr><td>Merging</td><td>Clusters closer than the merge threshold in RGB are combined, weighted by size</td></tr>
+<tr><td>Shares</td><td>Each cluster&#39;s sample count divided by all samples</td></tr>
+</tbody></table></div>
+<h2 id="precision">Precision</h2>
+<ul>
+<li><strong>Swatch colours</strong> are averages of their clusters, rounded to whole RGB values. The same picture can give slightly different averages on different runs, because k-means++ starts from random colours.</li>
+<li><strong>Shares</strong> are shares of the sampled pixels, not of every pixel in the original picture. With widely spaced sampling, very small areas may not be sampled at all.</li>
+<li><strong>The eyedropper and pins</strong> read the working copy. On a large photograph each working pixel stands for a block of original pixels, so a pin is exact to the working copy, not to a single original pixel.</li>
+<li><strong>Relative luminance and contrast ratios</strong> follow the WCAG 2 definitions exactly, from the sRGB values.</li>
+<li><strong>CIELAB and LCH</strong> are calculated from sRGB with a D65 white.</li>
+<li><strong>Clusters are formed in RGB.</strong> RGB distance does not match perceived difference evenly, so two swatches can look closer or further apart than their separation suggests.</li>
+</ul>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>One picture at a time.</li>
+<li>Images from other websites load only if their server allows cross-origin reading.</li>
+<li>The slider sets 2 to 12 clusters; 16 is used only before it is first moved.</li>
+<li>Up to 24 pins.</li>
+<li>Harmony uses HSL hue and fixed angle ranges. Greys have no meaningful hue.</li>
+<li>Contrast pairs cover the eight highest-contrast pairs of palette colours; pins are not included.</li>
+<li>Batch analysis reads three- and six-digit hex correctly; values with an alpha part are not.</li>
+<li>The page does not compare palettes side by side, even though it counts extractions.</li>
+<li>The page shows no confirmation messages.</li>
+</ul>
+<h2 id="what-it-is-not">What it is not</h2>
+<p>The palette describes which colours occupy the picture and how much of it. It is not a judgement of which colours are important to the picture&#39;s meaning, and the harmony readout is a convention, not a measure of quality. The contrast ratings are a first pass; confirm text and background pairs in a dedicated contrast tool.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Image Picker glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-the-palette-is-made">How the palette is made</a></li><li><a href="#precision">Precision</a></li><li><a href="#limits">Limits</a></li><li><a href="#what-it-is-not">What it is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

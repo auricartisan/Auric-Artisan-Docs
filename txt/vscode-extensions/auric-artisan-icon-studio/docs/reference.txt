@@ -1,0 +1,398 @@
+==============================================================================
+ICON STUDIO REFERENCE
+==============================================================================
+Every command, keybinding, setting, collection, style, output format, view and
+control in Auric Artisan Icon Studio 0.1.0.
+Area: VS Code extensions › Auric Artisan Icon Studio   Updated: 2026-09-25
+
+This reference describes version 0.1.0 as published on the Visual Studio
+Marketplace.
+
+COMMANDS
+========
+
+Category in the Command Palette: Auric Icon Studio.
+
+  Command:      Open Icon Studio
+  ID:           `auricIconStudio.openStudio`
+  What it does: Opens the editor-tab Studio beside the active editor, or
+                reveals it and focuses search.
+
+  Command:      Search All Icons…
+  ID:           `auricIconStudio.searchIcons`
+  What it does: Quick Pick over the whole catalog, then an action list.
+
+  Command:      Smart Insert Icon (matches active language)
+  ID:           `auricIconStudio.smartInsert`
+  What it does: Quick Pick, then insert with smart output.
+
+  Command:      Copy Icon As…
+  ID:           `auricIconStudio.copyAs`
+  What it does: Quick Pick, then a format list; copies.
+
+  Command:      Save Icon as SVG…
+  ID:           `auricIconStudio.saveSvg`
+  What it does: Quick Pick of SVG icons; saves through a dialog.
+
+  Command:      Insert from Likes
+  ID:           `auricIconStudio.insertFavorite`
+  What it does: Quick Pick of liked icons; runs the click action.
+
+  Command:      Insert from Recent
+  ID:           `auricIconStudio.insertRecent`
+  What it does: Quick Pick of recent icons; runs the click action.
+
+  Command:      Clear Likes, Recents and Learned Recommendations
+  ID:           `auricIconStudio.clearPersonalization`
+  What it does: Asks for confirmation, then resets personalisation.
+
+  Command:      Insert Icon by ID
+  ID:           `auricIconStudio.insertIcon`
+  What it does: Inserts a given icon; for keybindings and macros. Hidden from
+                the Command Palette.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows and Linux):`Ctrl` + `Alt` + `I`
+  Keys (macOS):            `Cmd` + `Alt` + `I`
+  Command:                 Smart Insert Icon
+  When:                    Editor has focus and Icon Studio's shortcuts are
+                           active.
+
+  Keys (Windows and Linux):`Ctrl` + `Alt` + `R`
+  Keys (macOS):            `Cmd` + `Alt` + `R`
+  Command:                 Insert from Recent
+  When:                    Editor has focus and Icon Studio's shortcuts are
+                           active.
+
+Icon Studio's shortcuts are active when it hosts the Auric collections (the
+default) or when none of Modern, Drawn and Playful is installed.
+
+Keys inside Icon Studio
+-----------------------
+
+  Key                      | Action
+  -------------------------+---------------------------------------------------------------------
+  `/`                      | Focus and select the search box.
+  `Escape`                 | In search: clear it. In an open dropdown: close it and return focus.
+  `Arrow Up`, `Arrow Down` | Open a dropdown from its button; move between options.
+  `Home`, `End`            | First or last dropdown option.
+  `Tab`                    | Closes open dropdowns.
+
+SETTINGS
+========
+
+  Setting:         `auricIconStudio.clickAction`
+  Type:            string
+  Values or range: `insert`, `copy`, `insertAndCopy`
+  Default:         `insert`
+  What it does:    Action when you choose an icon from a Quick Pick (Likes,
+                   Recent).
+
+  Setting:         `auricIconStudio.smartInsert`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Language-aware output for Insert.
+
+  Setting:         `auricIconStudio.size`
+  Type:            number
+  Values or range: 0 to 512
+  Default:         0
+  What it does:    Width and height in SVG and font output; 0 keeps the native
+                   size.
+
+  Setting:         `auricIconStudio.color`
+  Type:            string
+  Values or range: `currentColor` or `#rrggbb`
+  Default:         `currentColor`
+  What it does:    Colour for monochrome output.
+
+  Setting:         `auricIconStudio.strokeWidth`
+  Type:            number
+  Values or range: 0.5 to 4
+  Default:         2
+  What it does:    Stroke width for Tabler, Lucide and Feather.
+
+  Setting:         `auricIconStudio.emojiSkinTone`
+  Type:            string
+  Values or range: `none`, `light`, `mediumLight`, `medium`, `mediumDark`,
+                   `dark`
+  Default:         `none`
+  What it does:    Default emoji skin tone.
+
+  Setting:         `auricIconStudio.density`
+  Type:            string
+  Values or range: `comfortable`, `compact`
+  Default:         `comfortable`
+  What it does:    Card size in the grid.
+
+  Setting:         `auricIconStudio.pageSize`
+  Type:            number
+  Values or range: 24 to 240
+  Default:         96
+  What it does:    Cards loaded per batch as you scroll.
+
+  Setting:         `auricIconStudio.recommendations.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    The For you view and Quick Pick recommendations.
+
+  Setting:         `auricIconStudio.hoverPreview`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Previews for Auric icon IDs in code.
+
+  Setting:         `auricIconStudio.hostFamilyLibraries`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Hide the separate Modern, Drawn and Playful library views
+                   while Icon Studio is installed.
+
+Search Settings for `@ext:auric-artisan.auric-artisan-icon-studio` to see them
+all.
+
+VIEWS AND MENUS
+===============
+
+  Place:    Activity Bar
+  Contents: Icon Studio container with the Icon Studio view.
+
+  Place:    View title bar
+  Contents: Open Icon Studio, Search All Icons…, Insert from Likes; in the …
+            menu, Clear Likes, Recents and Learned Recommendations.
+
+  Place:    Editor right-click menu
+  Contents: Smart Insert Icon (matches active language) (writable editors
+            only).
+
+  Place:    Editor tab
+  Contents: "Icon Studio", opened beside the active editor.
+
+STUDIO CONTROLS
+===============
+
+  Control:              View chips
+  Options or behaviour: Library, For you, Likes (count), Recent (count).
+
+  Control:              Search your library
+  Options or behaviour: Synonym-aware search; `/` to focus; `Escape` to clear.
+
+  Control:              Refine library
+  Options or behaviour: Collapsed in the sidebar, open in the editor tab.
+
+  Control:              Collection
+  Options or behaviour: All collections or one of 11.
+
+  Control:              Category
+  Options or behaviour: All categories or one category.
+
+  Control:              Style
+  Options or behaviour: Shown for a single multi-style collection; Default or
+                        a style.
+
+  Control:              Skin tone
+  Options or behaviour: Shown for all collections or Emoji; six tones.
+
+  Control:              Reset filters
+  Options or behaviour: Clears search and refinements; keeps the current view.
+
+  Control:              Card
+  Options or behaviour: Artwork (inserts), heart (like), badge, name,
+                        category, Insert, Copy, As…, quick formats.
+
+  Control:              Load more
+  Options or behaviour: Shown only if automatic loading is unavailable.
+
+COLLECTIONS
+===========
+
+  ID:                 `modern`
+  Collection:         Modern
+  Group:              Auric Artisan
+  Entries:            720
+  Styles (ID: label): color, mono, outline, duotone
+  Default style:      color
+  Licence:            Auric Artisan Free Use Licence
+
+  ID:                 `drawn`
+  Collection:         Drawn
+  Group:              Auric Artisan
+  Entries:            480
+  Styles (ID: label): color, mono, outline, duotone
+  Default style:      color
+  Licence:            Auric Artisan Free Use Licence
+
+  ID:                 `playful`
+  Collection:         Playful
+  Group:              Auric Artisan
+  Entries:            1,225
+  Styles (ID: label): color, outline, filled, small
+  Default style:      color
+  Licence:            Auric Artisan Free Use Licence
+
+  ID:                 `emoji`
+  Collection:         Emoji
+  Group:              Emoji
+  Entries:            1,914
+  Styles (ID: label): none plus five tones
+  Default style:      none
+  Licence:            MIT (data); glyphs drawn by your system
+
+  ID:                 `phosphor`
+  Collection:         Phosphor
+  Group:              Open source
+  Entries:            1,512
+  Styles (ID: label): thin, light, regular, bold, fill, duotone
+  Default style:      regular
+  Licence:            MIT
+
+  ID:                 `tabler`
+  Collection:         Tabler
+  Group:              Open source
+  Entries:            5,093
+  Styles (ID: label): outline, filled
+  Default style:      outline
+  Licence:            MIT
+
+  ID:                 `lucide`
+  Collection:         Lucide
+  Group:              Open source
+  Entries:            1,714
+  Styles (ID: label): regular
+  Default style:      regular
+  Licence:            ISC
+
+  ID:                 `remix`
+  Collection:         Remix
+  Group:              Open source
+  Entries:            1,689
+  Styles (ID: label): line, fill
+  Default style:      line
+  Licence:            Remix v1.0
+
+  ID:                 `heroicons`
+  Collection:         Heroicons
+  Group:              Open source
+  Entries:            324
+  Styles (ID: label): 24/outline, 24/solid, 20/solid, 16/solid
+  Default style:      24/outline
+  Licence:            MIT
+
+  ID:                 `feather`
+  Collection:         Feather
+  Group:              Open source
+  Entries:            287
+  Styles (ID: label): regular
+  Default style:      regular
+  Licence:            MIT
+
+  ID:                 `material`
+  Collection:         Material
+  Group:              Open source
+  Entries:            2,276
+  Styles (ID: label): outlined, round, sharp, regular, twotone
+  Default style:      outlined
+  Licence:            Apache-2.0
+
+Total: 17,234 entries.
+
+OUTPUT FORMATS
+==============
+
+  Kind     | Format ID      | Label
+  ---------+----------------+-------------------------------
+  SVG      | `raw`          | SVG markup (plain format)
+  SVG      | `jsx`          | JSX element
+  SVG      | `jsxComponent` | React component
+  SVG      | `js`           | JavaScript string constant
+  SVG      | `img`          | Image tag (self-contained)
+  SVG      | `markdown`     | Markdown image
+  SVG      | `css`          | CSS background
+  SVG      | `dataUri`      | Data URI
+  SVG      | `name`         | Icon ID
+  Material | `html`         | HTML span (plain format)
+  Material | `jsx`          | JSX span
+  Material | `jsxComponent` | React component
+  Material | `js`           | JavaScript string constant
+  Material | `css`          | CSS declarations
+  Material | `name`         | Ligature name
+  Emoji    | `emoji`        | Emoji character (plain format)
+  Emoji    | `shortcode`    | Shortcode
+  Emoji    | `unicode`      | Unicode code points
+  Emoji    | `html`         | HTML entities
+
+SMART INSERT BY LANGUAGE
+========================
+
+  Language IDs:    `javascriptreact`, `typescriptreact`, `mdx`
+  SVG output:      JSX element
+  Material output: JSX span
+
+  Language IDs:    `javascript`, `typescript`
+  SVG output:      JavaScript string constant
+  Material output: JavaScript string constant
+
+  Language IDs:    `html`, `vue`, `svelte`, `astro`, `php`, `handlebars`,
+                   `razor`, `erb`, `django-html`, `jinja`, `blade`, `xml`,
+                   `svg`
+  SVG output:      SVG markup
+  Material output: HTML span
+
+  Language IDs:    `markdown`
+  SVG output:      Markdown image
+  Material output: HTML span
+
+  Language IDs:    `css`, `scss`, `sass`, `less`, `stylus`, `postcss`
+  SVG output:      CSS background
+  Material output: CSS declarations
+
+  Language IDs:    `json`, `jsonc`, `yaml`, `toml`, `python`
+  SVG output:      Data URI
+  Material output: HTML span
+
+  Language IDs:    Anything else
+  SVG output:      SVG markup
+  Material output: HTML span
+
+Emoji always insert as the character.
+
+LIMITS
+======
+
+  Item               | Limit
+  -------------------+------------------------------------
+  Recent icons kept  | 60
+  Liked icons kept   | 500
+  For you view       | Up to 96 icons
+  Quick Pick results | 200 with a search term; 300 without
+  Hover preview size | 48 pixels
+
+MESSAGES YOU MAY SEE
+====================
+
+  Message: … copied — open an editor to insert it.
+  Meaning: No editor was available, so the output was copied.
+
+  Message: … is an emoji character and has no SVG file to save.
+  Meaning: Only SVG artwork can be saved.
+
+  Message: … is a font glyph and has no SVG file to save.
+  Meaning: Material icons cannot be saved as SVG.
+
+  Message: Icon Studio: like an icon first — press the heart on any card.
+  Meaning: Insert from Likes found no likes.
+
+  Message: Icon Studio: no recent icons yet.
+  Meaning: Insert from Recent found no recent icons.
+
+  Message: Icon Studio: unknown icon id …
+  Meaning: Insert Icon by ID received an ID that is not in the catalog.
+
+  Message: VS Code could not apply the edit.
+  Meaning: The editor rejected the insertion, for example because it is
+           read-only.

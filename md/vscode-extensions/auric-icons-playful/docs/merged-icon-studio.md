@@ -1,0 +1,38 @@
+---
+title: Auric Icons: Playful — Use Playful with Modern and Drawn
+description: How Playful merges with Auric Icons: Modern and Drawn into one library, and how Auric Artisan Icon Studio takes over hosting.
+product: VS Code extensions › Auric Icons: Playful
+updated: 2026-09-25
+---
+
+# Use Playful with Modern and Drawn
+
+Playful works by itself or beside **Auric Icons: Modern** and **Auric Icons: Drawn**. Installed together, they show one library.
+
+## What happens when they are co-installed
+
+1. One extension becomes the **host** automatically. With the current versions, Modern hosts when it is installed; otherwise Drawn hosts. Playful hosts only when it is the only collection installed.
+2. The host's **Icon Library** view (headed "Icon Studio") contains every installed collection.
+3. A **Library** filter appears, and each card shows a badge naming its collection.
+4. The **Variant** switcher offers every collection's variants. Playful's **Filled** and **Small** join Color, Mono, Outline and Duotone. Where a collection lacks the selected variant, its cards fall back to Color.
+5. The other extensions hide their views, Command Palette entries and shortcuts, and forward their commands to the host.
+
+This updates by itself when you install or remove a collection.
+
+## Likes and recents
+
+They stay with the extension that owns each icon. Liking a Playful icon in the merged view stores it with Playful. If you uninstall Playful, its icons and history leave the merged view.
+
+## Hover previews
+
+Playful previews only Playful icon IDs, so you never see two hovers.
+
+## With Auric Artisan Icon Studio
+
+[Auric Artisan Icon Studio](../../auric-artisan-icon-studio/README.md) already contains the Playful collection and, by default, hosts Playful, Modern and Drawn. Set `auricIconStudio.hostFamilyLibraries` to `false` to bring the Playful view back. Icon Studio keeps its own likes and recents.
+
+See [The merged Icon Studio](../../auric-icons-modern/docs/merged-icon-studio.md) in the Modern documentation for more detail.
+
+## Result
+
+With several Auric collections installed, you browse Playful with the others in one library and can filter to it with **Library** › **Playful**.

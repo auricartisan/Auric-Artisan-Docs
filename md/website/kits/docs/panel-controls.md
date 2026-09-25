@@ -1,0 +1,143 @@
+---
+title: Kits — Panel controls
+description: Every title-bar control shared by the kit panels, what each one remembers, and where the kits differ.
+product: Website › Kits
+updated: 2026-09-25
+---
+
+# Panel controls
+
+Every kit panel has a title bar with the same set of controls: move, **Focus mode**, **Theme**, **Resize**, **Minimize** and **Close**. This page explains each control, what the kits remember between visits, and the places where a kit does something different.
+
+## Sizes and starting position
+
+A kit opens in the bottom-left corner of the window, just above the page utilities bar, until you move it. It opens at its normal size unless you left it expanded.
+
+| Kit | Normal width | Expanded width |
+|---|---|---|
+| Feature Kit | 560 px | 640 px |
+| Menu Kit | 680 px | 820 px |
+| Advanced Kit | 480 px | 720 px |
+| Status Kit | 560 px | 760 px |
+| Library Kit | 680 px | 940 px |
+
+- An expanded kit is never wider than the window, less a small margin.
+- An expanded Menu, Advanced, Status or Library Kit grows to at most 900 px tall, and always leaves room for its title bar at the top of the window. An expanded Feature Kit grows to at most 900 px or 90% of the window height, whichever is smaller.
+- On a phone (580 px wide or narrower) every kit spans the width of the screen, less a small margin.
+
+## Move a panel
+
+**With a pointer or touch:**
+
+1. Press on the kit's title bar, away from the buttons.
+2. Drag the panel to where you want it.
+3. Release.
+
+The panel stays inside the window: you cannot drag it past an edge. The kit remembers its position as a proportion of the window, so it returns to the same relative place next time you open it, on any page, and it moves back inside the window if the window becomes smaller.
+
+Differences between kits:
+
+- **Feature Kit.** Drag by the title text itself ("Feature Kit", or the name of the tool you have open).
+- **Library Kit.** Drag the title bar or the six-dot grip at its left end.
+
+**With the keyboard (Library Kit only):**
+
+1. Press `Tab` until the six-dot grip at the left of the title bar has focus. It announces itself as **Move library panel**.
+2. Press an arrow key to move the panel 12 pixels in that direction.
+3. Hold `Shift` with an arrow key to move 1 pixel at a time.
+
+**Put a panel back in its corner:**
+
+- Library Kit: open **Panel options** and select **Reset position**. A message confirms "Library returned to its default position."
+- Other kits: drag the panel back. There is no reset button. Clearing this site's stored data in your browser also returns every kit to its corner, but it clears your other kit preferences too.
+
+## Focus mode
+
+The **Focus mode** button has a target icon and sits first in the row of title-bar buttons. Its tooltip reads "Keep [kit name] open through navigation and while opening other kits." When it is on, the button turns gold. The kit remembers the setting in your browser.
+
+What Focus mode does depends on the kit:
+
+| Kit | Stays open when another kit opens | Opens again on the next page | Closing the kit turns Focus mode off |
+|---|---|---|---|
+| Feature Kit | Yes | Yes, on the tool you were using | Yes |
+| Menu Kit | Yes | Yes | No |
+| Advanced Kit | Yes | Yes | No |
+| Status Kit | No | Yes | No |
+| Library Kit | Yes | Yes | No |
+
+In practice:
+
+- **Feature Kit.** Focus mode also changes how the kit sits on the page. With Focus mode off, the page behind the Feature Kit is dimmed, `Tab` keeps moving within the kit, and clicking the dimmed page closes the kit. With Focus mode on, the page is not dimmed and stays fully usable, and selecting the Feature launcher moves keyboard focus into the kit instead of closing it. Closing the Feature Kit with **Close** or `Esc` turns Focus mode off.
+- **Menu, Advanced, Status and Library Kits.** Focus mode stays on until you turn it off. If you close one of these kits while its Focus mode is on, it opens again on the next page you load. Turn Focus mode off before closing if you want it to stay closed.
+- **Library Kit.** The control is called **Keep open** in the **Panel options** menu, described as "Stay visible while opening other kits".
+
+## Theme
+
+The **Theme** button switches the kit between light and dark. The icon shows the mode you will switch to: a sun while the kit is dark, a moon while it is light. The tooltip reads "Switch this kit between light and dark mode." (In the Menu Kit it says "this menu", and in the Library Kit "this panel".)
+
+- Until you use the button, a kit follows the site's theme and changes when the site changes.
+- Once you use it, the kit keeps its own choice, even on a page whose theme is different. A light kit on a dark page, or the other way round, is expected.
+- Each kit remembers its own choice. The kit's launcher in the page utilities bar follows the same choice.
+- There is no button that hands a kit back to the site theme. Set the kit to match the site, or clear this site's stored data.
+
+The accent colour you choose in the site settings panel also colours the kits' gold highlights. See [Site features](../../site-features/README.md).
+
+## Resize
+
+The **Resize** button, with four arrows, switches between the normal and the expanded size shown in the table above. The icon changes to arrows pointing inwards while the kit is expanded. Its tooltip reads "Switch [kit name] between normal and expanded size."
+
+The kit remembers the choice and opens expanded next time, on any page. In the Library Kit the control is **Panel size** in **Panel options**, described as "Toggle the wider workspace view".
+
+In the Feature Kit, expanding also gives the calculator's graph more room.
+
+## Minimize
+
+The **Minimize** button, a short dash, shrinks the kit.
+
+- **Menu, Advanced, Status and Library Kits.** The kit collapses to its title bar. The button changes to a restore icon (a square with a line). Select the restore button, or select anywhere on the title bar that is not a button, to bring the kit back. The tooltip reads "Collapse [kit name] to its title bar — click the bar to restore." A minimised kit is not remembered: it opens at full height next time.
+- **Feature Kit.** The kit shrinks to a small round icon where the panel was, and the Feature launcher hides. Select the icon, or give it focus and press `Enter` or `Space`, to reopen the kit at its menu. If the kit was expanded before, it comes back expanded.
+
+## Close
+
+The **Close** button is a cross at the right end of the title bar. You can also:
+
+- press `Esc` (see each kit's guide for how `Esc` interacts with search boxes and sub-panels);
+- select the kit's launcher in the page utilities bar.
+
+Closing does not lose your work in the kits that keep it: calculator history, notes, library items and settings stay in your browser. What a closed kit forgets is listed in each kit's reference.
+
+## What the title bar holds in each kit
+
+| Kit | Left side | Buttons, left to right |
+|---|---|---|
+| Feature Kit | **Back** (only inside a tool), then the title | **Graph** and **History** (calculator only), **Focus mode**, **Theme**, **Resize**, **Minimize**, **Close** |
+| Menu Kit | **Menu Kit** and a site status chip, for example **Beta** | **Focus mode**, **Theme**, **Resize**, **Minimize**, **Close** |
+| Advanced Kit | **Advanced Kit** | **Focus mode**, **Theme**, **Resize**, **Minimize**, **Close** |
+| Status Kit | **Status Kit** | **Focus mode**, **Theme**, **Resize**, **Minimize**, **Close** |
+| Library Kit | Six-dot grip, **Your Library** and an item count | **Panel options** (**Keep open**, **Theme**, **Panel size**, **Minimize**, **Reset position**), **Close** |
+
+On a phone, the Menu Kit's title bar stacks its title, status chip and buttons in a centred column.
+
+## What the kits remember
+
+All kits keep these preferences in your browser, per kit:
+
+| Preference | Remembered | Notes |
+|---|---|---|
+| Position after dragging | Yes | Stored as a proportion of the window size |
+| Expanded size | Yes | Opens expanded next time |
+| Focus mode | Yes | Feature Kit turns it off when you close the kit |
+| Theme | Yes, once you use the button | Until then the kit follows the site |
+| Minimised | No | A kit always opens at full height |
+
+Each kit also remembers things of its own, such as the Menu Kit's last tab or the Library Kit's sort order. See [Privacy](../others/privacy.md) for the full list.
+
+## Other things you may see in a kit
+
+Depending on your cookie choices and your plan, a small sponsored strip can appear in the Feature Kit menu, the Menu Kit and the Advanced Kit. The **Ads in panels & search** switch in the site settings panel controls it; changing ad settings is a paid-plan convenience. See [Site features](../../site-features/README.md) and [Account and billing](../../account-and-billing/README.md).
+
+## Related
+
+- [The page utilities bar](the-kit-dock.md)
+- [Keyboard shortcuts](../others/shortcuts.md)
+- [Troubleshooting](troubleshooting.md)

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build a ramp — Auric Artisan Docs</title>
+<meta name="description" content="Set the two ends, use a preset, choose a route, steps and easing, and read everything on the Ramp tab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; M-Gradient Palette</a>
+<h2>M-Gradient Palette documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the M-Gradient Palette</a></li>
+<li><a href="build-a-ramp.html" aria-current="page">Build a ramp</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="compare-routes.html">Compare routes and easings</a></li>
+<li><a href="export-a-ramp.html">Export a ramp</a></li>
+<li><a href="interpolation-and-gamut.html">Interpolation and gamut</a></li>
+<li><a href="reference.html">M-Gradient Palette reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the M-Gradient Palette</a></li>
+<li><a href="faq.html">M-Gradient Palette FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">M-Gradient Palette</a> &rsaquo; <a href="README.html">M-Gradient Palette documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › M-Gradient Palette</p>
+<h1>Build a ramp</h1>
+<p class="lede">Set the two ends, use a preset, choose a route, steps and easing, and read everything on the Ramp tab.</p>
+<p>Everything in this guide happens on the <strong>Ramp</strong> tab. The ramp and its figures update as soon as you change a control.</p>
+<h2 id="set-the-two-ends">Set the two ends</h2>
+<p>Under <strong>The two ends</strong>, the first row is the start colour and the second the end colour.</p>
+<ol>
+<li>Select a swatch to open the colour picker and choose a colour, or</li>
+<li>type a hex value in the box beside it and press <code>Enter</code> or move focus away. Three- or six-digit hex is accepted, with or without <code>#</code>, for example <code>F2B134</code> or <code>#abc</code>.</li>
+</ol>
+<p>If the box holds something that is not a colour, it returns to the previous value and a message reads <strong>That is not a colour.</strong></p>
+<p><strong>Swap the ends</strong> exchanges the start and end colours.</p>
+<h2 id="start-from-a-preset">Start from a preset</h2>
+<p><strong>A starting point</strong> offers 25 named pairs. Choosing one sets both ends; the steps, route and easing stay as they are. The pairs are a starting point only and make no claim to be good ramps. The full list is in the <a href="reference.html">Reference</a>.</p>
+<h2 id="choose-a-route">Choose a route</h2>
+<p>Under <strong>Interpolate in</strong>, select one of six routes:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Route</th><th>Space</th><th>Hue direction</th></tr></thead>
+<tbody>
+<tr><td><strong>OKLCH, short hue</strong> (default)</td><td>OKLCH</td><td>The shorter way round</td></tr>
+<tr><td><strong>OKLCH, long hue</strong></td><td>OKLCH</td><td>The longer way round</td></tr>
+<tr><td><strong>sRGB</strong></td><td>sRGB</td><td>—</td></tr>
+<tr><td><strong>Linear RGB</strong></td><td>Linear RGB</td><td>—</td></tr>
+<tr><td><strong>HSL, short hue</strong></td><td>HSL</td><td>The shorter way round</td></tr>
+<tr><td><strong>HSL, long hue</strong></td><td>HSL</td><td>The longer way round</td></tr>
+</tbody></table></div>
+<p>See <a href="interpolation-and-gamut.html">Interpolation and gamut</a> for how the spaces differ.</p>
+<h2 id="set-the-shape">Set the shape</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Steps</strong></td><td>The number of colours in the ramp, including both ends</td><td>2 to 32</td><td>12</td></tr>
+<tr><td><strong>Easing</strong></td><td>Where along the route the steps land</td><td>linear, ease-in, ease-out, ease-in-out, step</td><td>linear</td></tr>
+</tbody></table></div>
+<p>The <strong>step</strong> easing gives only five distinct colours, so with more than five steps, neighbouring steps repeat.</p>
+<h2 id="read-the-ramp">Read the ramp</h2>
+<p>The note above the ramp repeats your settings, for example <strong>12 steps · OKLCH, short hue · linear</strong>.</p>
+<ul>
+<li><strong>The ramp</strong> shows one button per step. The first and last are labelled with their hex values underneath. Hover a step to see its hex value; select it to copy the value, and a message confirms, for example <strong>#3E925C copied</strong>.</li>
+<li>A <strong>gold underline</strong> under a step means its chroma was reduced to fit sRGB. The colour you get has the lightness and hue you asked for, on the edge of what sRGB can show.</li>
+</ul>
+<h2 id="read-the-differences-between-steps">Read the differences between steps</h2>
+<p><strong>ΔE₀₀ between adjacent steps</strong> draws one bar per gap: 11 bars for a 12-step ramp. Each is the CIEDE2000 difference between two neighbouring colours in the ramp. A line marks the mean, labelled with its value.</p>
+<ul>
+<li>Flat bars mean each step looks as far from the next as every other.</li>
+<li>A tall bar is a visible seam, where the ramp jumps.</li>
+<li>Bars are highlighted in two stronger colours when a difference reaches 2 and 5.</li>
+</ul>
+<p>Hover a bar to see its value, for example <strong>step 3 to 4: ΔE₀₀ 8.12</strong>.</p>
+<h2 id="read-the-figures">Read the figures</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>mean ΔE₀₀</strong></td><td>The average difference between neighbouring steps</td></tr>
+<tr><td><strong>evenness</strong></td><td>The standard deviation of those differences; lower is more even. The card is highlighted when it is under 15% of the mean</td></tr>
+<tr><td><strong>largest jump</strong></td><td>The largest difference, with the steps it lies between, for example <strong>step 10 → 11</strong></td></tr>
+<tr><td><strong>moved to fit sRGB</strong></td><td>How many steps had their chroma reduced; the card is highlighted when any were</td></tr>
+</tbody></table></div>
+<p>With the default ends, 12 steps, <strong>OKLCH, short hue</strong> and <strong>linear</strong>, the figures are a mean of 8.26, an evenness of 0.69, a largest jump of 9.36 between steps 10 and 11, and 4 steps moved to fit sRGB.</p>
+<h2 id="read-the-hue-circle">Read the hue circle</h2>
+<p><strong>Where the ramp goes in hue and chroma</strong> plots every step in OKLCH: the angle round the circle is hue, and the distance from the centre is chroma. Spokes mark every 30°, the four quarters are labelled 0°, 90°, 180° and 270°, and the label on the outer ring gives the largest chroma in the ramp, which sets the scale. A gold line joins the steps in order.</p>
+<ul>
+<li>A route that crosses from, say, 350° to 10° draws a short arc across the 0° spoke, not a line across the whole plot.</li>
+<li>Steps whose chroma was reduced are outlined in amber.</li>
+<li>A ramp through grey passes close to the centre.</li>
+</ul>
+<h2 id="view-it-with-a-colour-vision-deficiency">View it with a colour-vision deficiency</h2>
+<p>Under <strong>Show it as seen by</strong>, select <strong>Protan</strong>, <strong>Deutan</strong> or <strong>Tritan</strong> to redraw the ramp, the hue circle dots and the contrast samples as they would look with protanopia, deuteranopia or tritanopia. <strong>Normal vision</strong> returns to the true colours. The figures, the copied values and the exports always use the true colours. See <a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a>.</p>
+<h2 id="what-you-should-see">What you should see</h2>
+<p>A ramp whose bars are as flat as you need, a low <strong>evenness</strong>, and a hue path that goes where you intend, ready to export.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the M-Gradient Palette</a><a href="check-contrast-and-colour-vision.html"><span>Next</span>Check contrast and colour vision</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#set-the-two-ends">Set the two ends</a></li><li><a href="#start-from-a-preset">Start from a preset</a></li><li><a href="#choose-a-route">Choose a route</a></li><li><a href="#set-the-shape">Set the shape</a></li><li><a href="#read-the-ramp">Read the ramp</a></li><li><a href="#read-the-differences-between-steps">Read the differences between steps</a></li><li><a href="#read-the-figures">Read the figures</a></li><li><a href="#read-the-hue-circle">Read the hue circle</a></li><li><a href="#view-it-with-a-colour-vision-deficiency">View it with a colour-vision deficiency</a></li><li><a href="#what-you-should-see">What you should see</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

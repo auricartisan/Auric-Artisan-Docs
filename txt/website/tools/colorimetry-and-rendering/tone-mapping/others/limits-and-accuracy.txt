@@ -1,0 +1,62 @@
+==============================================================================
+TONE MAPPING LIMITS AND ACCURACY
+==============================================================================
+What the Tone Mapping lab implements exactly, what is its own, and what it
+does not do.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+EXACT TO THE SOURCE
+===================
+
+  - Transfer functions: the sRGB curve, PQ (SMPTE ST 2084, constants as the
+    standard gives them) and HLG (the OETF and its inverse; the OOTF is not
+    applied).
+  - Primaries and white points of Rec.709, Display P3, Rec.2020 and ACEScg.
+  - Bradford adaptation between white points.
+  - Operators with their published constants: Reinhard (2002), Hable (2010),
+    Narkowicz (2016) and Uchimura (2017).
+
+THIS TOOL'S OWN
+===============
+
+  - Log (soft) and the custom curve.
+  - The grade controls, the low-level operators and the gamut mapping options.
+  - Working luminance is read from each working space's own matrix, so
+    saturation and vibrance mix towards the right grey.
+
+NOT IMPLEMENTED
+===============
+
+  - ITU-R BT.2446 Methods A and C. The two operators once named after them are
+    kept as "Gamma-domain scale" and "Scaled Reinhard" and are not tone
+    curves.
+  - The Academy's ACES transforms (RRT and ODT). The Narkowicz fit
+    approximates their look.
+  - HDR image files such as OpenEXR. Uploaded images are 8-bit and carry no
+    absolute luminance.
+
+CURRENT-VERSION CAVEATS
+=======================
+
+  - The operators work per channel, not on luminance, so strongly saturated
+    highlights can shift hue.
+  - Soft compress gives the same result as Clip.
+  - Display peak and Source peak affect only the two retired operators and the
+    false-colour display; they do not scale the working curves or the PQ
+    output.
+  - With PQ output, display value 1.0 is encoded as 10,000 cd/m².
+  - The false-colour map multiplies source luma by the display peak, while its
+    note uses the source peak.
+  - The link records only operator, exposure, source encoding, display peak,
+    output encoding and target primaries.
+  - The Linear axis, Log axis and Film stops buttons set custom-curve presets
+    rather than changing the chart's axis.
+  - Install a table on the Data tab does not load files.
+
+PRECISION
+=========
+
+  - The curve `.cube` has 33 entries; the pipeline `.cube` is 17 × 17 × 17.
+    Programs interpolate between entries, so very steep curves lose some
+    detail.
+  - Output is 8-bit per channel.

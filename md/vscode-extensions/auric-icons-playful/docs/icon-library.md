@@ -1,0 +1,101 @@
+---
+title: Auric Icons: Playful — Browse the Icon Library
+description: Search the 1,225 Playful icons, filter by category, switch between Color, Outline, Filled and Small, and use previews, the smart guide and recommendations.
+product: VS Code extensions › Auric Icons: Playful
+updated: 2026-09-25
+---
+
+# Browse the Icon Library
+
+The Playful library holds 1,225 icons in 24 categories. Each icon has four dedicated variants:
+
+| Variant | Use |
+| --- | --- |
+| Color | Full-colour artwork. |
+| Outline | Line drawing. |
+| Filled | Solid shapes. |
+| Small | A simplified redrawing for 16 to 24 pixels. |
+
+There is no Mono or Duotone variant in this collection.
+
+## Open the library
+
+- **Sidebar:** select **Auric Icons: Playful** in the Activity Bar.
+- **Editor tab:** run **Auric Icons: Playful: Open Icon Library**, select **↗** (**Open full explorer**), or the open-preview icon in the view's title bar. The tab is called **Icon Studio — Library**.
+
+## The screen
+
+| Area | What it does |
+| --- | --- |
+| Header | "Icon Studio", **Icon Library**, a count line such as "1,225 icons · 72 loaded", and **↗**. |
+| Smart guide | Up to four dismissible tips. Turn off with `auricIconsPlayful.library.showGuide`. |
+| Search | Placeholder "Search 1,225 icons — try “empty state” or “auth”". |
+| Library | Only shown when several collections are merged. |
+| Category | **All categories** or one of 24. |
+| Style | **All styles** or **Playful**. |
+| Variant | **Auto**, **Color**, **Outline**, **Filled**, **Small**. |
+| Preview surface | **Auto**, **Light**, **Dark**. |
+| Chips | **All**, **✦ For you**, **♥ Likes** (count), **↺ Recent** (count). |
+| Recommended rail | **✦ Recommended for this file**, with **Refresh**. |
+| Grid | Cards that load as you scroll. |
+
+## Search
+
+Search by name, concept, description, tag or synonym; results are ranked as you type and personalised by your likes and use. Press `/` to focus search and `Escape` to clear it.
+
+## Variants and Auto
+
+**Auto** follows the file you are editing and shows what it resolved to, such as "Auto · outline".
+
+| Editing in | Auto variant |
+| --- | --- |
+| JavaScript, TypeScript, React JSX and TSX | Outline |
+| Every other language | Color |
+
+Command Palette actions use `auricIconsPlayful.library.defaultVariant` (`auto`, `color`, `outline`, `filled`, `small`).
+
+## Preview surface
+
+**Light** and **Dark** place every card on a light or dark backdrop; **Auto** follows your VS Code theme. The choice is remembered.
+
+## The views
+
+| Chip | Shows |
+| --- | --- |
+| **All** | Every icon matching the search and filters. |
+| **✦ For you** | Icons recommended for the file you are editing and your likes and use. |
+| **♥ Likes** | Liked icons. |
+| **↺ Recent** | Icons you inserted, copied, saved or opened, newest first (up to 60). |
+
+## Recommendations
+
+The **✦ Recommended for this file** rail shows icons that match the file you are editing or your habits, each with a reason: **Matches this file**, **In your likes**, **Used recently**, **Fits your style** or **Popular in your catalog**. Selecting a rail card inserts it; **Refresh** recomputes.
+
+| Setting | Default | Effect |
+| --- | --- | --- |
+| `auricIconsPlayful.library.recommendations.enabled` | true | Show recommendations. |
+| `auricIconsPlayful.library.recommendations.limit` | 12 | Icons in the rail (4 to 24). |
+
+## Cards
+
+| Control | Action |
+| --- | --- |
+| Artwork | Opens the SVG source in an editor tab. |
+| Heart | Adds to or removes from **Likes**. |
+| **Insert** | Inserts into the editor. |
+| **Copy** | Copies raw SVG. |
+| **Save** | Saves an `.svg` file through a dialog. |
+| **JSX** | Copies a JSX element. |
+| **URI** | Copies a data URI. |
+| **Source** | Opens the SVG source. |
+
+## Density and batch size
+
+| Setting | Values | Default |
+| --- | --- | --- |
+| `auricIconsPlayful.library.density` | `comfortable`, `compact` | `comfortable` |
+| `auricIconsPlayful.library.pageSize` | 24 to 240 | 72 |
+
+## Result
+
+You can find any Playful icon, compare its four variants on either background, and act on it from its card.

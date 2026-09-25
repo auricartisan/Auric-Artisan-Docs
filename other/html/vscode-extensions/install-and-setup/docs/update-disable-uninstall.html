@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Update, disable and uninstall — Auric Artisan Docs</title>
+<meta name="description" content="Keep Auric Artisan extensions up to date, install a specific version, switch an extension off, or remove it.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html">Install from the command line</a></li>
+<li><a href="install-from-vsix.html">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html" aria-current="page">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Update, disable and uninstall</h1>
+<p class="lede">Keep Auric Artisan extensions up to date, install a specific version, switch an extension off, or remove it.</p>
+<p>These controls are part of VS Code itself and work the same way for every Auric Artisan extension.</p>
+<h2 id="updates">Updates</h2>
+<p>VS Code checks the Marketplace for new versions and, by default, updates installed extensions automatically.</p>
+<ul>
+<li><strong>See pending updates.</strong> In the Extensions view, an extension with an update available shows an <strong>Update</strong> button. The view&#39;s <strong>…</strong> menu has <strong>Check for Extension Updates</strong>.</li>
+<li><strong>Control automatic updates.</strong> The VS Code setting <code>extensions.autoUpdate</code> decides whether updates install on their own. You can also switch auto-update on or off for one extension: right-click it in the Extensions view and choose <strong>Auto Update</strong> (the exact wording depends on your VS Code version).</li>
+<li><strong>Read what changed.</strong> The <strong>Changelog</strong> tab on an extension&#39;s page shows its release notes. Each extension&#39;s folder in these docs has a user-facing release-notes page.</li>
+</ul>
+<h3 id="install-a-specific-version">Install a specific version</h3>
+<p>Use this to stay on a version you know, or to go back after an update.</p>
+<ol>
+<li>In the Extensions view, right-click the extension (or use the gear on its page).</li>
+<li>Choose <strong>Install Specific Version…</strong>.</li>
+<li>Pick the version from the list.</li>
+<li>Reload the window if asked.</li>
+</ol>
+<p>From a terminal:</p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-live@0.2.0</code></pre>
+<p>After installing an older version, turn off automatic updates for that extension, or VS Code will update it again.</p>
+<h2 id="disable">Disable</h2>
+<p>Disabling keeps the extension installed but stops it running. Its settings are kept.</p>
+<ol>
+<li>In the Extensions view, select the extension.</li>
+<li>Select <strong>Disable</strong>, or open the drop-down next to it and choose <strong>Disable (Workspace)</strong> to switch it off only for the folder you have open.</li>
+</ol>
+<p>A disabled extension contributes no commands, views, themes or icon themes until you select <strong>Enable</strong> again.</p>
+<p>Two situations where disabling matters:</p>
+<ul>
+<li><strong>Moving from the old Font Library to Font Hub.</strong> Font Hub replaces an earlier extension called Font Library, which has a different ID. Disable or uninstall the old one before enabling Font Hub, otherwise you see duplicate commands and views.</li>
+<li><strong>Keeping part of a pack.</strong> Disable any pack member you do not use. See <a href="extension-packs.html">The two extension packs</a>.</li>
+</ul>
+<h2 id="uninstall">Uninstall</h2>
+<ol>
+<li>In the Extensions view, select the extension.</li>
+<li>Select <strong>Uninstall</strong>.</li>
+<li>Reload the window if VS Code asks.</li>
+</ol>
+<p>From a terminal:</p>
+<pre class="code" data-lang="text"><code>code --uninstall-extension auric-artisan.auric-artisan-live</code></pre>
+<h3 id="what-uninstalling-leaves-behind">What uninstalling leaves behind</h3>
+<p>Uninstalling removes the extension&#39;s code. Some things it created stay where they are, because they belong to you or to VS Code:</p>
+<ul>
+<li><strong>Your settings.</strong> Values you set, such as <code>auricLive.port</code>, stay in your <code>settings.json</code> files. VS Code shows them as unknown settings; you can delete them.</li>
+<li><strong>Files in your project.</strong> Files you created with an extension stay. For example: <code>auric.live.json</code>, <code>.auricignore-live</code> and the <code>.auric-live/</code> session folder from Auric Artisan Live; <code>.auric/templates/</code> and the <code>.auric/trash/</code> workspace trash from Auric Artisan File System; <code>.auricformatrc</code> and <code>.auricformatignore</code> from Auric Artisan Formatter. Before uninstalling File System, restore anything you still need from its workspace trash.</li>
+<li><strong>Workspace settings an extension wrote for you.</strong> For example, <strong>Auric Formatter: Toggle Format on Save</strong> writes <code>editor.defaultFormatter</code> and <code>editor.formatOnSave</code>, and File System&#39;s sort and exclusion commands write <code>explorer.sortOrder</code> and <code>files.exclude</code>. Review your workspace settings after removing those extensions.</li>
+<li><strong>Extension storage.</strong> Favourites, recents and similar per-extension data live in VS Code&#39;s extension storage, which VS Code manages.</li>
+</ul>
+<p>When you have finished, the extension no longer appears under <strong>Installed</strong>, and its commands are gone from the Command Palette.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="settings-and-sync.html"><span>Previous</span>Settings, sync and workspace trust</a><a href="reference.html"><span>Next</span>Reference: extension IDs and requirements</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#updates">Updates</a></li><li><a href="#disable">Disable</a></li><li><a href="#uninstall">Uninstall</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

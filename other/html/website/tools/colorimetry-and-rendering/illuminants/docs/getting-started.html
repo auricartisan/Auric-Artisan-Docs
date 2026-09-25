@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Illuminants — Auric Artisan Docs</title>
+<meta name="description" content="Open the Standard Illuminants lab, learn its eight tabs and take your first reading of a light source.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Illuminants</a>
+<h2>Illuminants documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Illuminants</a></li>
+<li><a href="adapt-between-white-points.html">Adapt colours between white points</a></li>
+<li><a href="compare-light-sources.html">Compare two light sources</a></li>
+<li><a href="estimate-uncertainty.html">Estimate measurement uncertainty</a></li>
+<li><a href="query-console.html">Query many illuminants at once</a></li>
+<li><a href="reference.html">Illuminants reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Illuminants</a></li>
+<li><a href="faq.html">Illuminants FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Illuminants</a> &rsaquo; <a href="README.html">Illuminants documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Getting started with Illuminants</h1>
+<p class="lede">Open the Standard Illuminants lab, learn its eight tabs and take your first reading of a light source.</p>
+<h2 id="open-the-lab">Open the lab</h2>
+<p>Go to <a href="https://auricartisan.com/tool/general/colorimetry/illuminants/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/illuminants/</a>. The page title is <strong>Standard Illuminants</strong>. Nothing needs installing and you do not need to sign in. All calculations run in your browser.</p>
+<h2 id="key-ideas-before-you-start">Key ideas before you start</h2>
+<ul>
+<li>An <strong>illuminant</strong> is a light source described by its <strong>spectral power distribution (SPD)</strong>: the relative power it emits at each wavelength from 380 nm (violet) to 780 nm (deep red).</li>
+<li>The lab turns an SPD into colour by weighting it with the <strong>CIE 1931 2° standard observer</strong> — three curves that describe how an average observer matches colours in a small (2°) field of view. The result is the tristimulus values <strong>X, Y, Z</strong>, and from them the chromaticity <strong>x, y</strong> — the illuminant&#39;s <strong>white point</strong>.</li>
+<li><strong>Correlated colour temperature (CCT)</strong> is the temperature, in kelvin, of the blackbody (Planckian) radiator whose colour is closest to the light. Low CCT is warm (candle, tungsten); high CCT is cool (north sky).</li>
+<li><strong>Duv</strong> is how far the light&#39;s chromaticity sits from the blackbody curve, in the CIE 1960 uv plane. Positive Duv is greenish; negative is pinkish. CCT only means something when Duv is small.</li>
+</ul>
+<h2 id="a-tour-of-the-screen">A tour of the screen</h2>
+<p>A note at the top of the tool explains that every figure is traceable: the line under each result names the dataset, observer and interval behind it.</p>
+<p>The tabs across the top are:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>Choose the light, compare it, see surfaces and chromatic adaptation. The main working view.</td></tr>
+<tr><td><strong>Chromaticity</strong></td><td>The chromaticity diagram in three planes, with loci, isotemperature lines and the dominant wavelength.</td></tr>
+<tr><td><strong>Uncertainty</strong></td><td>Monte Carlo propagation of an instrument uncertainty budget into x, y, CCT and Duv.</td></tr>
+<tr><td><strong>Methods</strong></td><td>How much the interval and interpolation choices move the result, and how two CCT methods compare.</td></tr>
+<tr><td><strong>Console</strong></td><td>A small query language for comparing many illuminants in one table and plot.</td></tr>
+<tr><td><strong>Data</strong></td><td>The register of every dataset the lab uses, with its status. The tab label shows the count (15).</td></tr>
+<tr><td><strong>Export</strong></td><td>Downloads, the share link and the all-illuminant comparison table.</td></tr>
+<tr><td><strong>Reference</strong></td><td>Standards, formulas, citations and research notes, with a search filter.</td></tr>
+</tbody></table></div>
+<h3 id="the-lab-tab">The Lab tab</h3>
+<p>The left rail holds the controls, grouped as <strong>Source mode</strong>, <strong>Illuminant</strong>, <strong>CCT</strong>, <strong>Comparison illuminant</strong>, <strong>Surface reflectance samples</strong> and <strong>Chromatic adaptation</strong>. The results column on the right shows, from top to bottom:</p>
+<ol>
+<li><strong>Illuminant Summary</strong> — a swatch of the white, its name, type and HEX, then CCT, Duv, CIE x, CIE y, CRI Ra and XYZ.</li>
+<li><strong>SPD — Spectral Power Distribution (380–780 nm)</strong> — the spectrum. Gold is the selected light; blue is the comparison light when comparison is on.</li>
+<li><strong>CRI — Colour Rendering Index (R1–R14)</strong> — one bar per test sample and the Ra figure.</li>
+<li><strong>Surface appearance — D65 reference vs test illuminant</strong> — one row per ticked surface.</li>
+<li><strong>Chromatic adaptation preview (24 patches)</strong> — original colours on top, adapted colours below.</li>
+<li><strong>Adaptation matrix details</strong> — the transform matrix and cone scaling.</li>
+<li><strong>Illuminant comparison</strong> — metrics side by side when comparison is on.</li>
+</ol>
+<h2 id="take-your-first-reading">Take your first reading</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, make sure <strong>Standard</strong> is selected under <strong>Source mode</strong>.</li>
+<li>Open the <strong>Illuminant</strong> list and choose <strong>CIE D50 (5003 K) — Daylight, ICC PCS</strong>.</li>
+<li>Read the <strong>Illuminant Summary</strong>. CIE x and y should be close to 0.3457 and 0.3585, the published D50 white point.</li>
+<li>Click anywhere on the SPD chart. The line under the chart shows the nearest wavelength and its relative power, with a colour chip for that wavelength.</li>
+<li>Select the <strong>Fullscreen</strong> button on the chart (or double-click the chart) to see it larger. Press <code>Esc</code> or select the close button to return.</li>
+<li>Drag the <strong>CCT</strong> slider to 3000 K. The lab switches to <strong>Blackbody</strong> mode and the spectrum becomes a smooth Planckian curve rising towards red.</li>
+<li>Select <strong>Reset to D65</strong> to go back to standard D65 at 6500 K.</li>
+</ol>
+<p>You should now see the D65 spectrum, a CCT of about 6504 K and a Duv close to zero.</p>
+<h2 id="where-the-numbers-come-from">Where the numbers come from</h2>
+<p>Under several results you will see a provenance line such as &quot;CIE 15:2018 Table 5, verbatim · CIE 1931 2° · 5 nm · Ohno 2014, parabolic · ∑ 380–780 nm&quot;. It tells you the dataset and its status, the observer, the wavelength interval, the method and the range summed over. When a reading rests on a stand-in, the line says &quot;not a standard value&quot;. The <a href="reference.html#data-tab">Data tab</a> explains each dataset.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="compare-light-sources.html">Compare two light sources</a></li>
+<li><a href="adapt-between-white-points.html">Adapt colours between white points</a></li>
+<li><a href="estimate-uncertainty.html">Estimate measurement uncertainty</a></li>
+<li><a href="query-console.html">Query many illuminants at once</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Illuminants documentation</a><a href="adapt-between-white-points.html"><span>Next</span>Adapt colours between white points</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-lab">Open the lab</a></li><li><a href="#key-ideas-before-you-start">Key ideas before you start</a></li><li><a href="#a-tour-of-the-screen">A tour of the screen</a></li><li><a href="#take-your-first-reading">Take your first reading</a></li><li><a href="#where-the-numbers-come-from">Where the numbers come from</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

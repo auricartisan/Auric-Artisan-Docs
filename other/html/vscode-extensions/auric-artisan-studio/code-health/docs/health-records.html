@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Health records — Auric Artisan Docs</title>
+<meta name="description" content="Write health.json, SARIF 2.1.0 and a trend history for CI, understand how code-health findings are recorded and fingerprinted, and gate on new issues with a baseline.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Code Health</a></li>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="code-health-studio.html">The Code Health Studio</a></li>
+<li><a href="health-records.html" aria-current="page">Health records</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="reference.html">Auric Code Health reference</a></li>
+<li><a href="troubleshooting.html">Auric Code Health troubleshooting</a></li>
+<li><a href="faq.html">Auric Code Health FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Health records</h1>
+<p class="lede">Write health.json, SARIF 2.1.0 and a trend history for CI, understand how code-health findings are recorded and fingerprinted, and gate on new issues with a baseline.</p>
+<p>Auric Code Health writes the project&#39;s findings to machine-readable files, so CI systems, dashboards and code-scanning tools can use them. The records cover every source the Studio scans: accessibility, contrast, colour vision, branding and code health.</p>
+<h2 id="the-three-files">The three files</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Format</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>health.json</code></td><td>JSON</td><td>A versioned record of scores, a summary and every issue, each with a stable fingerprint</td></tr>
+<tr><td><code>health.sarif</code></td><td>SARIF 2.1.0</td><td>The same issues for GitHub code scanning and other SARIF tools</td></tr>
+<tr><td><code>health-history.json</code></td><td>JSON</td><td>One entry per recorded scan, for tracking scores over time</td></tr>
+</tbody></table></div>
+<p>They are written to <code>.auric-artisan/</code> in your workspace. The full formats are described in <a href="../../docs/exports-and-records.html#the-health-record">Exports and health records</a>.</p>
+<h2 id="when-they-are-written">When they are written</h2>
+<ul>
+<li><strong>Auric Artisan: Write Health Record (health.json + SARIF)</strong>, <strong>SARIF</strong> or <strong>health.json + SARIF</strong> on the Overview, the button of the same name in the Health space, and <strong>Write health.json + SARIF</strong> in the Home space&#39;s CI gate card. The record opens when it is written, and a message offers <strong>Open SARIF</strong> and <strong>Open Data Folder</strong>.</li>
+<li>Automatically after every project scan, when <code>health.writeOnScan</code> is on (the default).</li>
+<li>Never during live re-grades while you type.</li>
+</ul>
+<h2 id="settings">Settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>auricCodeHealth.health.enabled</code></td><td><code>true</code></td><td>Maintain the record at all</td></tr>
+<tr><td><code>auricCodeHealth.health.writeOnScan</code></td><td><code>true</code></td><td>Rewrite it after each project scan</td></tr>
+<tr><td><code>auricCodeHealth.health.formats</code></td><td><code>[&quot;json&quot;,&quot;sarif&quot;,&quot;history&quot;]</code></td><td>Which files to write</td></tr>
+<tr><td><code>auricCodeHealth.health.fileName</code></td><td><code>health.json</code></td><td>Name of the JSON file; SARIF and history names follow it</td></tr>
+<tr><td><code>auricCodeHealth.health.maxIssues</code></td><td><code>5000</code></td><td>Most issues recorded, worst first (100–100000)</td></tr>
+<tr><td><code>auricCodeHealth.health.historyLimit</code></td><td><code>200</code></td><td>Most history entries kept (10–5000)</td></tr>
+</tbody></table></div>
+<h2 id="how-code-health-findings-are-recorded">How code-health findings are recorded</h2>
+<p>Each code-health issue in <code>health.json</code> has:</p>
+<ul>
+<li><code>source</code>: <code>code-health</code>;</li>
+<li><code>ruleId</code>: the signature, for example <code>ch-sec-tls-python</code>, and <code>category</code>: <code>security</code>;</li>
+<li><code>severity</code>: merge markers <code>high</code>; secrets, security and risky APIs <code>medium</code>; debug <code>low</code>; task markers and oversized <code>info</code>;</li>
+<li><code>confidence</code>, <code>detectorVersion</code> (1.2.0) and <code>knowledgeRuleId</code> (the rule&#39;s entry in the knowledge database);</li>
+<li><code>file</code>, <code>line</code>, <code>col</code>, <code>message</code> and <code>fix</code>;</li>
+<li><code>match</code>: the evidence, which for secrets is only the redaction note; <code>evidenceType</code> (the kind of secret) and <code>redacted: true</code> for secrets.</li>
+</ul>
+<p>In SARIF, each signature is a rule with its category, detector version and confidence as properties; results for secrets carry <code>evidenceRedacted</code>. Levels are <code>error</code> for high, <code>warning</code> for medium and <code>note</code> for low and info.</p>
+<p>The <code>summary.codeHealthByCategory</code> object counts findings per category, and <code>scores.codeHealth</code> holds the code-health score.</p>
+<h2 id="fingerprints-and-baselines">Fingerprints and baselines</h2>
+<p>Every issue has an 8-character <code>id</code> fingerprint built from its source, signature, file, line and a key detail. For secrets, the key detail is the signature and column, never the secret. Fingerprints let a CI gate compare two runs:</p>
+<ol>
+<li>Save the current state as a baseline once.</li>
+<li>On each pull request, compare with it and fail only if there are new fingerprints.</li>
+</ol>
+<p>Use the command-line scanner for this; see <a href="../../docs/ci-gate.html">The CI gate</a>. A finding that moves to another line gets a new fingerprint.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Code-health findings are fingerprinted with the detector version that produced them. A baseline written by an earlier detector (1.1.0) may list some existing findings as new once. Regenerate the baseline after updating.</p>
+</blockquote>
+<h2 id="git-information">Git information</h2>
+<p>When the workspace has a <code>.git</code> folder, the record includes the current branch and commit, read directly from the folder (no Git command is run). SARIF includes them as version-control provenance, so code scanning can link results to the commit.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../../docs/exports-and-records.html">Exports and health records</a></li>
+<li><a href="../../docs/ci-gate.html">The CI gate</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="code-health-studio.html"><span>Previous</span>The Code Health Studio</a><a href="secrets-and-redaction.html"><span>Next</span>Secrets and redaction</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-three-files">The three files</a></li><li><a href="#when-they-are-written">When they are written</a></li><li><a href="#settings">Settings</a></li><li><a href="#how-code-health-findings-are-recorded">How code-health findings are recorded</a></li><li><a href="#fingerprints-and-baselines">Fingerprints and baselines</a></li><li><a href="#git-information">Git information</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore ICtCp and Jzazbz planes — Auric Artisan Docs</title>
+<meta name="description" content="View the three gamuts in the ICtCp or Jzazbz perceptual planes, read the boundary rings from 0.1 to 10,000 nits, and convert HEX colours.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; HDR Gamut Plot</a>
+<h2>HDR Gamut Plot documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the HDR Gamut Plot</a></li>
+<li><a href="compare-broadcast-gamuts.html">Compare broadcast gamuts</a></li>
+<li><a href="explore-perceptual-planes.html" aria-current="page">Explore ICtCp and Jzazbz planes</a></li>
+<li><a href="read-hdr-curves.html">Read HDR transfer curves</a></li>
+<li><a href="reference.html">HDR Gamut Plot reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the HDR Gamut Plot</a></li>
+<li><a href="faq.html">HDR Gamut Plot FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">HDR Gamut Plot</a> &rsaquo; <a href="README.html">HDR Gamut Plot documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Explore ICtCp and Jzazbz planes</h1>
+<p class="lede">View the three gamuts in the ICtCp or Jzazbz perceptual planes, read the boundary rings from 0.1 to 10,000 nits, and convert HEX colours.</p>
+<h2 id="key-ideas">Key ideas</h2>
+<ul>
+<li><strong>ICtCp</strong> (ITU-R BT.2100, from Dolby) splits colour into <strong>I</strong> (intensity), <strong>Ct</strong> (tritan, blue–yellow) and <strong>Cp</strong> (protan, red–green). It converts linear Rec. 2020 RGB to cone responses, encodes each with the PQ curve, then rotates to I, Ct, Cp. It is the basis of the ΔE ITP colour difference.</li>
+<li><strong>Jzazbz</strong> (Safdar et al., 2017) gives lightness <strong>Jz</strong> and opponent axes <strong>az</strong> and <strong>bz</strong>. It starts from absolute XYZ and uses its own PQ-like quantiser with the exponent raised by a factor of 1.7 (p = 134.034375).</li>
+<li>Both are built to keep equal steps roughly equal from very dark to very bright, which CIELAB does not.</li>
+</ul>
+<h2 id="view-the-plane">View the plane</h2>
+<ol>
+<li>Set the luminance first: on the <strong>Curves</strong> tab, choose a tone curve, peak brightness and <strong>Signal level</strong>. Together they define the absolute luminance the plane is drawn at.</li>
+<li>Open the <strong>Planes</strong> tab.</li>
+<li>Under <strong>Perceptual plane</strong>, choose <strong>ICtCp (Ct–Cp)</strong> (default) or <strong>JzAzBz (Az–Bz)</strong>. The title and note change to name the space and its quantiser.</li>
+<li>Read the plane: each gamut switched on in the Lab&#39;s <strong>Overlay gamuts</strong> is outlined, showing how far its chroma extends at that luminance.</li>
+<li>Read <strong>Boundary rings by luminance</strong>: the same boundaries at eight luminances — 0.1, 1, 10, 100, 500, 1,000, 4,000 and 10,000 nits — listed under <strong>Boundary rings</strong> in the rail with a matching key. A ring is a slice at one luminance, so the stack shows the boundary changing with brightness.</li>
+</ol>
+<p>The <strong>Tone mapping operator</strong> menu (Reinhard, Hable (Filmic), ACES Filmic, Uchimura (Gran Turismo)) is shown on this tab, but in the current version it does not change any plot. For tone mapping, use the <a href="../../tone-mapping/README.html">Tone Mapping</a> lab.</p>
+<h2 id="convert-a-list-of-colours">Convert a list of colours</h2>
+<ol>
+<li>Set the tone curve, peak and <strong>Signal level</strong> on the Curves tab; the conversion uses the resulting luminance.</li>
+<li>Open <strong>Export</strong> and find <strong>Convert a list</strong>.</li>
+<li>Enter six-digit HEX colours, one per line or separated by commas.</li>
+<li>Select <strong>Convert to ICtCp</strong>. The table lists <strong>Hex</strong>, <strong>L*</strong>, <strong>a*</strong>, <strong>b*</strong>, <strong>I</strong>, <strong>Ct</strong>, <strong>Cp</strong>, <strong>Jz</strong>, <strong>Az</strong> and <strong>Bz</strong> for each colour.</li>
+<li>Select <strong>Download the result</strong> to copy the table as CSV to your clipboard (the button copies rather than downloads).</li>
+</ol>
+<p>The ICtCp and Jzazbz values depend on the luminance you set. Treat them as illustrations of how the spaces behave; see <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="export-the-plane">Export the plane</h2>
+<p>On <strong>Export</strong>, choose <strong>The plane</strong> (PNG) to download the ICtCp or Jzazbz plane at the current luminance.</p>
+<h2 id="result">Result</h2>
+<p>You can see how much chroma each broadcast gamut offers at a given HDR luminance, in a space designed for HDR, and how that changes from 0.1 to 10,000 nits.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-broadcast-gamuts.html"><span>Previous</span>Compare broadcast gamuts</a><a href="read-hdr-curves.html"><span>Next</span>Read HDR transfer curves</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#key-ideas">Key ideas</a></li><li><a href="#view-the-plane">View the plane</a></li><li><a href="#convert-a-list-of-colours">Convert a list of colours</a></li><li><a href="#export-the-plane">Export the plane</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

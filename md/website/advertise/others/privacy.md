@@ -1,0 +1,40 @@
+---
+title: Advertise — Privacy
+description: What you share when you request an Auric Artisan ad campaign, what stays in your browser, and what ads do and do not track about visitors.
+product: Website › Advertise
+updated: 2026-09-25
+---
+
+# Privacy
+
+## For advertisers
+
+### What you send
+
+When you select **Request campaign**, Auric Artisan receives:
+
+- Your brand or company name and your billing email.
+- The campaign details: campaign name, goal, format, zone, flight, start date, share of voice, frequency cap, audience groups, final destination address, quoted total and estimated impressions.
+
+Your billing email is used for receipts and campaign updates.
+
+### What stays in your browser
+
+Your draft, including any uploaded artwork, is saved in this browser while you build, so you can return to it. It is cleared when you send the request. To discard a draft without sending, clear this site's data in your browser.
+
+### Payment
+
+Payment is made through a Razorpay link that Auric Artisan sends after confirming your campaign. Card and bank details are handled by Razorpay.
+
+### What becomes public
+
+While your campaign runs, the [Ad Library](../docs/ad-library.md) lists your creative, your brand as the advertiser, the format, the zones, the flight dates and the landing address, for the full run and at least 90 days after. Your campaign name, billing email and price are not listed.
+
+## For visitors who see ads
+
+- Every ad is labelled **Sponsored**.
+- Campaigns are placed by page context. The audience groups advertisers choose guide the creative review and do not identify or follow individual visitors.
+- Ads never track visitors across sites.
+- No third-party ad technology runs unless a visitor accepts the marketing cookie category. Cookie choices are covered in [Company and legal](../../company-and-legal/README.md).
+- The ad system counts impressions, viewable impressions and clicks to produce flight reports and to apply frequency caps.
+- Paid Auric Artisan subscribers browse without ads.

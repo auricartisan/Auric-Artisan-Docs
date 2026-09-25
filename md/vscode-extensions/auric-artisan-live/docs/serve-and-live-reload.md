@@ -1,0 +1,130 @@
+---
+title: Auric Artisan Live — serve a folder with live reload
+description: Start the Auric Live server, choose what it serves and where, and control how and when connected pages update.
+product: VS Code extensions › Auric Artisan Live
+updated: 2026-09-25
+---
+
+# Serve a folder with live reload
+
+*Live reload* means the pages you have open in a browser update by themselves when you change a file. Auric Live adds a small script to every HTML page it serves; the script listens to the server and refreshes the page, or swaps just the changed stylesheet or image, when you save.
+
+## Start the server
+
+Use whichever is closest:
+
+- **Auric Live: Go Live** — `Ctrl` + `Alt` + `L` (`Cmd` + `Alt` + `L` on macOS), the **Go Live** status-bar item, the **Go Live** button in the **Servers** view, or the editor's **Run** menu › **Auric Live**.
+- **Serve This Folder** — right-click a folder in the Explorer. That folder becomes the served root for this session.
+- **Open with Auric Live** — right-click an HTML, XHTML, PHP or Markdown file. The server starts if needed and opens that file's address. A file outside the served root cannot be opened this way.
+
+With several workspace folders, **Go Live** asks **Which folder should Auric Live serve?**. Each workspace folder gets its own server and port. **Auric Live: Select Active Server** chooses which one the panel and commands act on; **Auric Live: Stop All Servers** (`Ctrl` + `Alt` + `Shift` + `L`) stops every one.
+
+When the server starts:
+
+1. What opens depends on `auricLive.open`: `default` opens your default browser, `preview` opens the preview beside the editor, `none` opens nothing. `auricLive.openPath` adds a path, such as `/docs/index.html`, for sites whose entry page is not the root.
+2. A notification says what is being served and where, with **Open**, **Preview** and (when a network address exists) **Phone QR**.
+3. If the project looks like a framework with its own dev server, or a PHP site, Auric Live offers the matching setup once per folder. Turn this off with `auricLive.suggestFrameworkSetup`.
+
+To start automatically whenever you open the folder, set `auricLive.startOnOpen` to `true`.
+
+If the server cannot start, an error offers **Change Port** and **Show Log**.
+
+## Choose what is served
+
+- **Served folder.** By default, the workspace folder itself. Set `auricLive.root` to a subfolder such as `dist` or `public` for a build output, or run **Auric Live: Change Served Folder…** and pick one for this session.
+- **Index files.** A request for a folder tries `auricLive.index` in order (`index.html`, then `index.htm`). A folder without one shows a browsable listing unless you turn off `auricLive.directoryListing`.
+- **Clean URLs.** With `auricLive.cleanUrls` on, `/about` serves `about.html`.
+- **Single-page apps.** Turn on `auricLive.spa.enabled` so unknown paths return the fallback document (`auricLive.spa.fallback`, default `/index.html`), keeping client-side routes working on a deep link or hard refresh. Paths in `auricLive.spa.ignore` (by default `/api/**` and anything with a file extension) still return a real 404, so a missing script is not answered with HTML.
+- **Custom 404.** Point `auricLive.notFoundPage` at a page in the served folder.
+- **Dot-files.** `auricLive.dotfiles` is `ignore` by default, which hides paths such as `.env` and `.git`. `allow` serves them; `deny` refuses them.
+- **Exclusions.** Paths listed in `.auricignore-live` are never served, listed, watched, hot-swapped, reloaded or recorded. See [Project configuration](project-configuration.md).
+
+Links that leave the served folder through a symbolic link or junction are blocked.
+
+## Choose the address
+
+- **Port.** `auricLive.port` is `5500` by default. `0` lets the operating system choose a free port, useful for several projects at once. Change it for this session with **Auric Live: Change Port…**; ports below 1024 usually need administrator rights.
+- **When the port is taken.** `auricLive.portStrategy`: `increment` walks upward to the next free port (default), `fail` reports the conflict (for a port your OAuth callback or code depends on), `random` picks a free port between 20000 and 40000.
+- **Host.** `auricLive.host` is `0.0.0.0` in a trusted workspace, which also answers other devices on your network so you can test on a phone; your firewall may ask the first time. Set `127.0.0.1` to keep the server on this machine only. In an untrusted workspace the server stays on this machine.
+- **Password.** `auricLive.auth.enabled` with `auricLive.auth.username` and `auricLive.auth.password` requires a login before anything is served. The password is kept in plain settings; it is a convenience for shared networks, not a secret store.
+
+Copy addresses with **Auric Live: Copy Local URL** and **Auric Live: Copy Network URL**. If your computer has several network adapters, you choose one; virtual adapters are marked as probably unreachable from a phone.
+
+## Control how pages update
+
+### The reload trigger
+
+`auricLive.liveReload.reloadOnSave` decides what may refresh the page:
+
+| Value | Behaviour | Use it when |
+| --- | --- | --- |
+| `save` (default) | Only an explicit save in VS Code updates pages, once per save | Normal editing. Generated files, sync tools, formatters and caches cannot keep refreshing the page |
+| `change` | Any change in the served folder triggers an update | An external compiler or build tool writes the files the browser shows |
+| `off` | Nothing reloads automatically | You want the page completely still; use **Reload Connected Pages** when ready |
+
+In the control panel's **Overview**, the same choice appears as **VS Code saves**, **Filesystem changes** and **Manual only**.
+
+### What an update does
+
+- **Stylesheets** swap in place without a reload (`auricLive.liveReload.cssHotSwap`), so the page keeps its scroll position, open dialogs and filled-in forms.
+- **Images** refresh in place (`auricLive.liveReload.imageHotSwap`).
+- **Everything else** reloads the page. After a full reload, the scroll position and open disclosure elements are restored (`auricLive.liveReload.preserveScroll`).
+- **Failures** in a proxied request or CGI handler show as an overlay on the page (`auricLive.liveReload.overlay`) instead of only in the log.
+
+The reload script goes at the end of `body` by default. Set `auricLive.liveReload.injectTo` to `head` if a page fails while loading and you need the script attached earlier.
+
+### Manual controls
+
+| Command | Keys | What it does |
+| --- | --- | --- |
+| **Auric Live: Reload Connected Pages** | `Ctrl` + `Alt` + `U` | Reload every connected page now |
+| **Auric Live: Toggle Live Reload** | — | Turn live reload on or off for this session |
+| **Auric Live: Resume Live Reload** | — | Resume after reload-storm protection paused it |
+
+### Reload-storm protection
+
+If files keep changing, for example while a package installs or a sync tool rewrites files, reloading every time would make the page unusable. Auric Live allows `auricLive.liveReload.stormLimit` updates (default 3) within `auricLive.liveReload.stormWindowMs` (default 10 seconds). Beyond that it pauses live reload and shows **Auric Live paused live reload — files kept changing** with the files responsible. The page stays live. Choose:
+
+- **Ignore *folder*/** — adds that folder to `.auricignore-live` and resumes;
+- **Resume** — resumes as it was;
+- **Show log** — opens the output channel.
+
+### What never triggers a reload
+
+`auricLive.liveReload.ignore` lists paths that never trigger an update. The default covers `node_modules`, `dist`, `out`, `build`, `coverage`, `target`, `vendor`, `bin`, `obj`, `__pycache__`, `venv`, `tmp`, `temp`, log, temporary, swap, compiled and database files, and the lock and thumbnail files left by Office, OneDrive, Dropbox, Windows and macOS. Dot-folders such as `.next/`, `.vite/` and `.git/` are always excluded in addition.
+
+In `change` mode, `auricLive.liveReload.debounceMs` (default 350 ms) waits for a quiet moment so a build writing many files produces one update.
+
+### Watching on network shares and virtual machines
+
+Some file systems never report changes. Set `auricLive.watch.pollIntervalMs` to a number of milliseconds to poll instead. `auricLive.watch.enabled` set to `false` stops watching entirely and leaves updates to **Reload Connected Pages**.
+
+## Responses and caching
+
+- **Compression** (`auricLive.compression`): `auto`, `gzip`, `brotli` or `off`, for text responses over one kilobyte. Turn it off to measure uncompressed sizes.
+- **Caching** (`auricLive.cache`): `no-store` (default; a stale file never survives a reload), `no-cache` (keep but revalidate), `short` (a short freshness window, for measuring repeat visits), `immutable-assets` (fonts and images cached for a year, everything else uncached).
+- **Validators** (`auricLive.etag`): unchanged files answer `304 Not Modified`.
+- **Range requests** are supported, so audio and video can seek.
+- **Content types**: add or override types with `auricLive.mimeTypes`, for example `{ ".data": "application/json" }`.
+- **Extra headers**: `auricLive.headers` is a list of rules, each with `match` globs and the `headers` to add:
+
+  ```json
+  [
+    { "match": ["**/*.html"], "headers": { "X-Frame-Options": "SAMEORIGIN" } }
+  ]
+  ```
+
+- **Cross-origin requests** are answered by default (`auricLive.cors.enabled`, origin `*`). Set a specific `auricLive.cors.origin` and turn on `auricLive.cors.credentials` if the calling page sends cookies.
+- **Cross-origin isolation** (`auricLive.crossOriginIsolation`) sends the headers that `SharedArrayBuffer`, WebAssembly threads and precise timers need. It also blocks cross-origin resources that do not opt in.
+
+## Changes while running
+
+With `auricLive.autoRestart.onConfigChange` on (the default), changes to settings or the project file apply to the running server straight away. Only a change of port, host, served root, mount point or HTTPS settings restarts the listener; other changes apply without dropping connections. Connected pages reload afterwards unless you turn off `auricLive.autoRestart.reloadBrowsers`.
+
+## Stop
+
+- **Auric Live: Stop Server** stops the active server.
+- **Auric Live: Stop All Servers** (`Ctrl` + `Alt` + `Shift` + `L`) stops every one.
+- **Auric Live: Restart Server** restarts the active one.
+
+When you save a file with the server running, connected pages update within a moment, and the **Servers** view shows how many pages are connected.

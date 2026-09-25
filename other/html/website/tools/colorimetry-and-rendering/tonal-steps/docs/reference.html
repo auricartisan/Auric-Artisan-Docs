@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tonal Steps reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, readout, option and export in Tonal Steps, Tints and Shades.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tonal Steps</a>
+<h2>Tonal Steps documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tonal Steps</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="tints-shades-tones.html">Make tints, shades, tones and key sets</a></li>
+<li><a href="reference.html" aria-current="page">Tonal Steps reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tonal Steps</a></li>
+<li><a href="faq.html">Tonal Steps FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tonal Steps</a> &rsaquo; <a href="README.html">Tonal Steps documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Tonal Steps reference</h1>
+<p class="lede">Every control, readout, option and export in Tonal Steps, Tints and Shades.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/gamut-and-rendering/tonal-steps-tints-shades/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/tonal-steps-tints-shades/</a></p>
+<h2 id="lab-tab">Lab tab</h2>
+<h3 id="controls">Controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Base colour</strong> field and picker</td><td>The colour every step is built from</td><td>Six-digit HEX</td><td>#2563EB</td></tr>
+<tr><td><strong>Random base</strong></td><td>Picks a random base colour</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Ramp engine</strong></td><td>How the main ramp is built</td><td>HSL lightness; Equal luminance</td><td>HSL lightness</td></tr>
+<tr><td><strong>Mix in</strong></td><td>Space for tints, shades, tones and key sets</td><td>sRGB linear; CIELAB; OKLab; HSL</td><td>OKLab</td></tr>
+<tr><td><strong>Steps</strong></td><td>Number of ramp steps</td><td>3 to 21</td><td>11</td></tr>
+<tr><td><strong>Easing γ</strong></td><td>Bends the Equal luminance targets and the neutral ladder</td><td>0.4 to 2.6, step 0.05</td><td>1.0</td></tr>
+<tr><td><strong>Full ramp</strong></td><td>Adds the ramp to The other sets</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Tints — toward white</strong></td><td>Shows tints</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Shades — toward black</strong></td><td>Shows shades</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Tones — toward grey</strong></td><td>Shows tones</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Neutral ladder</strong></td><td>Shows greys</td><td>On or off</td><td>Off</td></tr>
+</tbody></table></div>
+<p>In the current version, <strong>sRGB linear</strong> mixes the same way as OKLab.</p>
+<h3 id="readouts">Readouts</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Caption</td><td>Steps, engine and mixing space</td></tr>
+<tr><td>Base note</td><td>The base HEX, whether it is one of the steps (&quot;step n&quot; or &quot;not a step&quot;) and γ</td></tr>
+<tr><td>Strip and step rows</td><td>Each step&#39;s swatch, HEX, OKLab L and contrast against white</td></tr>
+<tr><td><strong>Base OKLab L</strong>, <strong>Largest step</strong>, <strong>Smallest step</strong>, <strong>Evenness</strong></td><td>Lightness and step-size statistics in OKLab L; evenness as ±%</td></tr>
+<tr><td><strong>Where the steps fall</strong></td><td>OKLab L of each step</td></tr>
+<tr><td><strong>Base colour</strong></td><td>HEX, RGB, HSL, L*a*b*, LCh, OKLab L, Y (luminance), vs white and vs black with ratings</td></tr>
+<tr><td><strong>The other sets</strong></td><td>The sets ticked under Also show, each titled with its count; tiles show HEX and contrast against black</td></tr>
+</tbody></table></div>
+<h2 id="ramps-tab">Ramps tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Compare</strong></td><td>Which engines to show</td><td>Every engine; One at a time</td><td>Every engine</td></tr>
+<tr><td><strong>Measure evenness in</strong></td><td>Measure for the evenness figure and step-size chart</td><td>OKLab L; CIELAB L*; Relative Y</td><td>OKLab L</td></tr>
+<tr><td><strong>Endpoints</strong></td><td>Which evenness figure leads</td><td>Include black; Interior only</td><td>Include black</td></tr>
+<tr><td><strong>Key sets</strong></td><td>The key list for the design-scale ladder</td><td>50–950; 50–900</td><td>50–950</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Engine rows</td><td>Name, what it holds even, a &quot;same ramp as&quot; badge where two engines produce the same colours, the strip, evenness with and without the end steps</td></tr>
+<tr><td><strong>Step sizes, as the chosen measure sees them</strong></td><td>Chart and statistics of the gaps between steps</td></tr>
+<tr><td><strong>Where the ramp sits in chroma</strong></td><td>The ramp, tints, shades and tones on the OKLab a–b plane</td></tr>
+<tr><td><strong>Design-scale key sets</strong></td><td>The ladder for the chosen key list</td></tr>
+</tbody></table></div>
+<h2 id="contrast-tab">Contrast tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Against</strong></td><td>The colour every step is measured against</td><td>White; Black; The base</td><td>White</td></tr>
+<tr><td><strong>Metric</strong></td><td>Shown, but the table always lists both measures in the current version</td><td>WCAG 2.2; APCA</td><td>WCAG 2.2</td></tr>
+<tr><td><strong>Superseded APCA</strong></td><td>Adds the former approximate figure and the difference</td><td>Show the difference; Hide</td><td>Hide</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Caption and note</td><td>&quot;Every step against …&quot; and &quot;WCAG 2.2 ratio · APCA-W3 0.1.9 Lc · n steps&quot;</td></tr>
+<tr><td>Table</td><td>Step, WCAG, Rating (AAA, AA, AA large, Fail), APCA Lc, and optionally Superseded and Difference</td></tr>
+<tr><td><strong>The ladder</strong></td><td>A chart of the steps&#39; contrast</td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Dataset</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>sRGB transfer and primaries (IEC 61966-2-1:1999)</td><td>Verbatim</td></tr>
+<tr><td>WCAG 2.2 contrast</td><td>Verbatim</td></tr>
+<tr><td>OKLab matrices (Ottosson 2020)</td><td>Verbatim</td></tr>
+<tr><td>OKLab lightness</td><td>Computed from linear sRGB</td></tr>
+<tr><td>CIELAB (CIE 015:2018, D65)</td><td>Computed</td></tr>
+<tr><td>Ramp engines (two distinct)</td><td>Computed</td></tr>
+<tr><td>APCA Lc (APCA-W3 0.1.9)</td><td>Computed</td></tr>
+<tr><td>Tailwind and Material palettes</td><td>Absent: key names only</td></tr>
+</tbody></table></div>
+<p><strong>Status</strong> chips filter the list. <strong>Install a table</strong> (&quot;Drop a CSV or JSON&quot;) does not load files in the current version.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>What to take</strong></td><td>The ramp; The key set; The contrast table; A link to this view</td></tr>
+<tr><td><strong>As</strong></td><td>CSS, SCSS, JSON, CSV or URL, as fits the choice</td></tr>
+<tr><td>Download button</td><td>Names and saves the file; for a link, <strong>Copy the link</strong></td></tr>
+<tr><td><strong>Copy to clipboard</strong></td><td>Copies the payload</td></tr>
+<tr><td>Link field</td><td>Read-only; always shows the current link</td></tr>
+<tr><td><strong>Analyse a list</strong>, <strong>Analyse</strong></td><td>Table of Hex, L*, a*, b*, OKL, Y, Tints, Shades</td></tr>
+<tr><td><strong>Download the result</strong></td><td>Copies the analysis as CSV to the clipboard</td></tr>
+<tr><td><strong>Exactly what you will get</strong></td><td>Preview, size in bytes and a footer explaining the provenance lines</td></tr>
+</tbody></table></div>
+<p>Link parameters: <code>hex</code>, <code>engine</code> (<code>hsl</code>, <code>luminance</code>, or <code>contrast</code>), <code>steps</code>, <code>gamma</code>, <code>mode</code> (<code>srgb</code>, <code>lab</code>, <code>oklab</code>, <code>hsl</code>).</p>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Standards</strong>, <strong>Formulas</strong>, <strong>Citations</strong>, <strong>Research notes</strong></td><td>Switch sections</td></tr>
+<tr><td><strong>Filter</strong></td><td>Searches all four</td></tr>
+</tbody></table></div>
+<p>Standards include IEC 61966-2-1:1999, ITU-R BT.709-6, CIE 015:2018, WCAG 2.2, APCA-W3 0.1.9, the WCAG 3.0 working draft, the Design Tokens Format Module and Ottosson (2020). Formulas list 11 formulas as written, from the sRGB curve to the evenness measure. Citations list 14 references, tagged runs, context or names only, with corrected ones marked. Research notes describe six fixes. <strong>Where these colours sit on the 1931 diagram</strong> plots the ramp on the CIE 1931 chromaticity diagram.</p>
+<h2 id="save-to-library">Save to Library</h2>
+<p>The floating <strong>Save to Library</strong> button saves the colours shown on the page as a palette in your Auric Artisan Library. A palette or colour sent back from the Library to this tool sets the base colour.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="tints-shades-tones.html"><span>Previous</span>Make tints, shades, tones and key sets</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting Tonal Steps</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#lab-tab">Lab tab</a></li><li><a href="#ramps-tab">Ramps tab</a></li><li><a href="#contrast-tab">Contrast tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#save-to-library">Save to Library</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

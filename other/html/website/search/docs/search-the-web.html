@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search the web — Auric Artisan Docs</title>
+<meta name="description" content="How to use the globe on the Auric Artisan search page to search Auric Artisan's own index of the web, with suggestions, spelling correction and paging.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Search and the Search Console</a>
+<h2>Search documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with search</a></li>
+<li><a href="console-reports.html">Read the console reports</a></li>
+<li><a href="instant-answers.html">Instant answers</a></li>
+<li><a href="manage-your-sites.html">Manage your sites</a></li>
+<li><a href="query-syntax.html">Query syntax</a></li>
+<li><a href="request-a-crawl.html">Request a crawl</a></li>
+<li><a href="search-console.html">Set up the Search Console</a></li>
+<li><a href="search-the-web.html" aria-current="page">Search the web</a></li>
+<li><a href="search-this-site.html">Search this site</a></li>
+<li><a href="understand-the-ranking.html">Understand the ranking</a></li>
+<li><a href="reference.html">Search reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Search FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Search and the Search Console</a> &rsaquo; <a href="README.html">Search documentation</a></nav>
+<p class="kicker">Website › Search</p>
+<h1>Search the web</h1>
+<p class="lede">How to use the globe on the Auric Artisan search page to search Auric Artisan's own index of the web, with suggestions, spelling correction and paging.</p>
+<p>The globe button beside the search field switches from the site to the web. Web search uses Auric Artisan&#39;s own crawl of the web: an independent index, very much smaller than Google&#39;s or Bing&#39;s. Pages get into it when the crawler finds them by following links, and when site owners submit them through the <a href="search-console.html">Search Console</a>.</p>
+<h2 id="switch-the-globe-on">Switch the globe on</h2>
+<ol>
+<li>Select the globe button beside the search field. Its tooltip reads <strong>Web search</strong>. The mode label beside the status line changes from <strong>LOCAL</strong> to <strong>GLOBAL</strong>.</li>
+<li>If there is already a query in the field, it runs on the web straight away.</li>
+<li>To go back to site search, select the globe again.</li>
+</ol>
+<p>You can also switch from the no-results screen: <strong>Search the web instead</strong> turns the globe on and runs the same query.</p>
+<h2 id="search">Search</h2>
+<ol>
+<li>Type your query. In web mode, results do not update as you type. Instead, a list suggests up to eight words from the web index&#39;s own vocabulary, most common first, marked <strong>web</strong>.</li>
+<li>Press <code>Enter</code>, or choose a suggestion, to search.</li>
+<li>The status line reads <strong>Searching the web for</strong> your query while it works.</li>
+</ol>
+<h2 id="read-the-results">Read the results</h2>
+<p>Each result shows:</p>
+<ul>
+<li>The site&#39;s icon, or the first letter of its name on a coloured tile when it has no icon.</li>
+<li>The page title, with your words highlighted.</li>
+<li>The site name and its address.</li>
+<li>An excerpt with your words highlighted.</li>
+<li>Sometimes a tag such as <strong>missing: gradient</strong>, when the page does not contain one of your words.</li>
+</ul>
+<p>Web results always open in a new tab.</p>
+<p>The status line says how many results the index holds, for example <strong>365 results from the crawled index for &quot;github&quot;</strong>, and how long it took. It may add:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Status line addition</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td><strong>about</strong> before the count</td><td>The count is an estimate. This happens with <code>site:</code> and <code>intitle:</code> filters.</td></tr>
+<tr><td><strong>answered without</strong> a word, <strong>exact matches first</strong></td><td>No page had every word, so the search was relaxed. Pages with all your words, if any, come first.</td></tr>
+<tr><td><strong>showing results for</strong> a word; <strong>search instead for</strong> your word</td><td>Your query found nothing, so a corrected spelling was used. Select <strong>search instead for</strong> to see the results for your original spelling.</td></tr>
+</tbody></table></div>
+<h2 id="more-results">More results</h2>
+<p>Web results come 20 at a time. Under the list, <strong>More results</strong> shows how many are left, for example <strong>More results 345 left</strong>. Select it to add the next 20. The button disappears when there is nothing more.</p>
+<h2 id="operators">Operators</h2>
+<p>Web search understands phrases in quotes, <code>-word</code> exclusions, <code>site:</code> (or <code>host:</code>) and <code>intitle:</code>. See <a href="query-syntax.html">Query syntax</a>.</p>
+<h2 id="when-the-index-has-nothing">When the index has nothing</h2>
+<p>If the crawled index has no results for your query, the page searches the web live instead. This takes longer. The status line then reads, for example, <strong>12 global results from 4 sources, 15 crawled pages</strong>. If that finds nothing too, it reads <strong>No global results for</strong> your query. If it fails, it reads <strong>Global search failed for</strong> your query, with the reason.</p>
+<h2 id="what-web-mode-does-not-do">What web mode does not do</h2>
+<p>The section tabs, sorting, answer cards and ranking panel belong to site search. They do not apply to web results.</p>
+<h2 id="your-privacy-in-web-mode">Your privacy in web mode</h2>
+<p>Web queries are sent to Auric Artisan&#39;s search service, unlike site search. When you open a web result, the page tells Auric Artisan the query, which result you chose and its position in the list. This helps ranking, and it gives site owners their click counts in the Search Console. Site icons are fetched through Auric Artisan, so other services are not told which sites appear in your results. See <a href="../others/privacy.html">Privacy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="search-console.html"><span>Previous</span>Set up the Search Console</a><a href="search-this-site.html"><span>Next</span>Search this site</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#switch-the-globe-on">Switch the globe on</a></li><li><a href="#search">Search</a></li><li><a href="#read-the-results">Read the results</a></li><li><a href="#more-results">More results</a></li><li><a href="#operators">Operators</a></li><li><a href="#when-the-index-has-nothing">When the index has nothing</a></li><li><a href="#what-web-mode-does-not-do">What web mode does not do</a></li><li><a href="#your-privacy-in-web-mode">Your privacy in web mode</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

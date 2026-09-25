@@ -1,0 +1,154 @@
+==============================================================================
+INSERT, COPY AND SAVE ICONS
+==============================================================================
+Insert Modern icons with language-aware output, copy them in nine formats,
+save SVG files, open the source and preview icon IDs on hover.
+Area: VS Code extensions › Auric Icons: Modern   Updated: 2026-09-25
+
+INSERT FROM THE ICON LIBRARY
+============================
+
+  1. Open a file in a text editor and place one or more cursors, or select
+     text to replace.
+  2. In the Icon Library, select Insert on a card.
+  3. The icon is inserted at every cursor. Multi-line output keeps the
+     indentation of the cursor's line.
+
+If no text editor is open, you see "Open a text editor before inserting an
+SVG." When you work in the full editor-tab library, the icon goes into the
+first visible file editor.
+
+SMART INSERT
+============
+
+With `auricIcons.library.smartInsert` on (the default), Insert adapts to the
+language of the file:
+
+  Editing in                                     | Output
+  -----------------------------------------------+---------------
+  JavaScript, TypeScript, React JSX and TSX, MDX | JSX element
+  HTML, PHP, Handlebars, Vue, Svelte, Astro      | HTML markup
+  Markdown                                       | Markdown image
+  CSS, SCSS, Less                                | CSS background
+  JSON, JSONC, YAML, Python                      | Data URI
+  XML, SVG and any other language                | Raw SVG
+
+With the setting off, Insert always inserts raw SVG. The Smart Insert Icon
+command always adapts, whatever the setting.
+
+Smart insert from the keyboard
+------------------------------
+
+  1. In a text editor, press `Ctrl` + `Alt` + `I` (`Cmd` + `Alt` + `I` on
+     macOS), or run Auric Icons: Modern: Smart Insert Icon (matches active
+     language).
+  2. A list opens. With no search text, it starts with Recommended for this
+     file, then All icons. Each row shows the category and tags (and the
+     collection when several are merged).
+  3. Type to search and choose an icon. VS Code confirms, for example "…
+     inserted for the active language."
+
+COPY IN A CHOSEN FORMAT
+=======================
+
+Run Auric Icons: Modern: Copy Icon As… (JSX, CSS, Markdown, Data URI, Image
+tag), choose an icon, then choose a format:
+
+  Format:       Raw SVG
+  What you get: The SVG markup.
+
+  Format:       JSX element
+  What you get: The SVG with JSX attribute names.
+
+  Format:       React component
+  What you get: `export function IconName(props) { return (<svg {...props}
+                …>); }`
+
+  Format:       Markdown image
+  What you get: `![Icon name](data:image/svg+xml,…)`
+
+  Format:       CSS background
+  What you get: `background-image: url("data:image/svg+xml,…");` plus
+                `background-repeat: no-repeat;` and `background-size:
+                contain;`
+
+  Format:       Data URI
+  What you get: `data:image/svg+xml,…`
+
+  Format:       Image tag (self-contained)
+  What you get: `<img src="data:image/svg+xml,…" alt="Icon name" width="24"
+                height="24">`
+
+  Format:       Icon name
+  What you get: The icon ID, such as `analytics-bar-chart-0042`.
+
+  Format:       Catalog path
+  What you get: The icon's relative path in the catalog.
+
+Smart insert can also produce HTML markup, which is the SVG markup itself.
+
+On a card, Copy copies raw SVG, JSX copies a JSX element and URI copies a data
+URI.
+
+SAVE AN SVG FILE
+================
+
+  1. Select Save on a card, or run Save SVG As… and choose an icon.
+  2. A save dialog opens in your first workspace folder (or your home folder)
+     with the icon's file name.
+  3. Choose a location and select Save icon.
+
+The saved file is the artwork in the selected variant.
+
+OPEN THE SVG SOURCE
+===================
+
+Select the artwork on a card, Source on a card, or run Open SVG Source. The
+SVG file opens in a preview tab so you can read or copy its markup.
+
+OTHER COMMAND PALETTE ACTIONS
+=============================
+
+  Command:      Search Icons
+  What it does: Choose an icon, then an action: Smart Insert (matches this
+                file), Insert SVG at Cursor, Copy SVG, Save SVG As…, Open SVG
+                Source or Toggle Like.
+
+  Command:      Insert SVG at Cursor
+  What it does: Choose an icon and insert it (smart insert applies when the
+                setting is on).
+
+  Command:      Copy SVG
+  What it does: Choose an icon and copy raw SVG.
+
+  Command:      Insert from Likes
+  What it does: Choose from your liked icons and insert.
+
+  Command:      Insert from Recent
+  What it does: Choose from recent icons and insert. Also `Ctrl` + `Alt` +
+                `R`.
+
+  Command:      Toggle Like for an Icon
+  What it does: Choose an icon and like or unlike it.
+
+  Command:      Clear Likes, Recents and Learned Recommendations
+  What it does: Asks for confirmation (Clear), then resets.
+
+HOVER PREVIEWS
+==============
+
+Type or find a Modern icon ID in code, such as `analytics-bar-chart-0042`, and
+hover over it. The hover shows a 48-pixel colour preview, the name and
+description, the ID, category and tags, and Open in Icon Library.
+
+Hovers work in HTML, CSS, SCSS, Less, Vue, Svelte, Astro, JavaScript,
+TypeScript, React JSX and TSX, JSON, JSONC, Markdown, PHP, Handlebars and XML.
+Turn them off with `auricIcons.library.hoverPreview`. When Drawn or Playful is
+also installed, each extension previews only its own icons, so you never see
+two hovers.
+
+RESULT
+======
+
+The icon is in your file, on your clipboard or saved as an `.svg` file, and it
+appears under Recent.

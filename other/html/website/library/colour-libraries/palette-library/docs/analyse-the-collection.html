@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyse the collection — Auric Artisan Docs</title>
+<meta name="description" content="Use the Harmony, Accessibility and Stats tabs to see how methods, hues, contrast and lightness are distributed across a sample of palettes.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Palette Library</a>
+<h2>Palette Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="analyse-the-collection.html" aria-current="page">Analyse the collection</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="copy-export-and-share.html">Copy, export and share</a></li>
+<li><a href="inspect-a-palette.html">Inspect a palette</a></li>
+<li><a href="save-palettes.html">Save palettes</a></li>
+<li><a href="reference.html">Palette Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Palette Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Palette Library</a> &rsaquo; <a href="README.html">Palette Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Palette Library</p>
+<h1>Analyse the collection</h1>
+<p class="lede">Use the Harmony, Accessibility and Stats tabs to see how methods, hues, contrast and lightness are distributed across a sample of palettes.</p>
+<p>The <strong>Harmony</strong>, <strong>Accessibility</strong> and <strong>Stats</strong> tabs describe many palettes at once. A browser cannot count five million palettes, so each tab measures a sample and says how big it was.</p>
+<h2 id="the-sample">The sample</h2>
+<p>Every tab opens with a line such as:</p>
+<blockquote class="callout">
+<p>Measured on 2,000 palettes from the start of the collection. Five million cannot be counted in a browser, so these are a sample — the API samples the same way.</p>
+</blockquote>
+<ul>
+<li><strong>No filter or search:</strong> the sample is the first 2,000 palettes of the collection.</li>
+<li><strong>A filter or search is on:</strong> the page looks through up to 40,000 palettes from the start of the collection and keeps up to 2,000 that match. The line then says, for example, <strong>Measured on 812 palettes matching this filter, out of 40,000 derived</strong>.</li>
+<li><strong>An id is in the search box:</strong> the sample is that one palette.</li>
+</ul>
+<p>The sample is rebuilt every time you change a filter or search, so the tabs always describe the filter the grid is showing. If nothing in the looked-at stretch matches, the tabs show <strong>No palettes</strong> and suggest widening the filter.</p>
+<h2 id="harmony-tab">Harmony tab</h2>
+<p>Four cards, each a bar chart with counts:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>What it counts</th></tr></thead>
+<tbody>
+<tr><td><strong>Generation method</strong></td><td>How many sampled palettes carry each method label.</td></tr>
+<tr><td><strong>Dominant hue bucket</strong></td><td>How many have each dominant hue: red, orange, yellow, green, cyan, blue, purple or pink.</td></tr>
+<tr><td><strong>Harmony classification</strong></td><td>How many are classified <strong>Neutral</strong>, <strong>Triadic</strong>, <strong>Analogous</strong> or <strong>Monochrome</strong> from their measured hues (see <a href="inspect-a-palette.html">Inspect a palette</a>).</td></tr>
+<tr><td><strong>Lightness &amp; chroma profile</strong></td><td>How many are <strong>Dark (L &lt; 0.4)**, **Mid (0.4-0.7)** or **Light (&gt; 0.7)</strong>, and <strong>Muted (&lt; 0.07)**, **Balanced** or **Vivid (&gt; 0.15)</strong>.</td></tr>
+</tbody></table></div>
+<h2 id="accessibility-tab">Accessibility tab</h2>
+<h3 id="palette-level-wcag-summary">Palette-level WCAG summary</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Has any AA pair (4.5+)</strong></td><td>Palettes with at least one pair of colours at 4.5:1 or more, as a count and percentage.</td></tr>
+<tr><td><strong>Has any AAA pair (7+)</strong></td><td>Palettes with at least one pair at 7:1 or more.</td></tr>
+<tr><td><strong>Largest mutually-legible set</strong></td><td>The most colours from one palette that all reach 4.5:1 against each other, for example <strong>2 of 5 (sRGB allows 3)</strong>.</td></tr>
+</tbody></table></div>
+<h3 id="pair-level-wcag-breakdown">Pair-level WCAG breakdown</h3>
+<p>Every palette has ten pairs, so the sample has ten times as many pairs as palettes. The card counts <strong>AAA pairs (&gt;= 7:1)</strong>, <strong>AA pairs (&gt;= 4.5:1)</strong> and <strong>Below AA</strong>.</p>
+<h3 id="how-many-of-the-five-can-be-used-together">How many of the five can be used together</h3>
+<p>This card answers a practical question: how many of a palette&#39;s five colours can all be used as text on each other? The page explains why the answer can never be five. Contrast depends only on how light each colour is, and between black and white there is room for at most three lightness levels that are each 4.5:1 apart — and only two at 7:1. So <strong>no five-colour palette can have all ten pairs at AA</strong>, here or anywhere. The card shows how many sampled palettes allow 1, 2 or 3 mutually legible colours, marking 3 as <strong>(the ceiling)</strong>.</p>
+<h3 id="the-most-usable-in-this-sample">The most usable in this sample</h3>
+<p>Up to 24 palettes that contain at least one legible pair, ordered by their strongest pair. The page notes that two is what this collection realistically offers: a legible trio needs a near-black, a mid-tone and a near-white to turn up together in one palette, which the page reports did not happen in any of the 60,000 palettes it measured. The cards work like cards in the grid: select one to inspect it, select a swatch to copy it.</p>
+<h2 id="stats-tab">Stats tab</h2>
+<p>A line first states how many sampled palettes contain a pair at 4.5:1 or better, &quot;so they can carry body text on themselves&quot;. Then four histograms:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>Range</th><th>Bands</th></tr></thead>
+<tbody>
+<tr><td><strong>Avg lightness (OKLCH L)</strong></td><td>0 to 1</td><td>10</td></tr>
+<tr><td><strong>Avg chroma (OKLCH C)</strong></td><td>0 to 0.30</td><td>10</td></tr>
+<tr><td><strong>Hue spread</strong></td><td>0 to 360 degrees</td><td>12</td></tr>
+<tr><td><strong>Best pair contrast</strong></td><td>1:1 to 15:1</td><td>14</td></tr>
+</tbody></table></div>
+<p>Values beyond a histogram&#39;s range are counted in its last band. The best pair is charted rather than the worst because, as the page explains, with five colours some pair is nearly always close to identical, so the worst pair says little about whether a palette can carry text.</p>
+<h2 id="keeping-the-tabs-current">Keeping the tabs current</h2>
+<p>Each tab is drawn when you open it and redrawn after any change of filter or search. If a tab looks out of date, select it again.</p>
+<h2 id="result">Result</h2>
+<p>You can see, for any filter, what share of palettes can carry text, which methods and hues dominate, and how light and colourful the palettes tend to be — with the size of the sample stated every time.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started</a><a href="browse-search-and-filter.html"><span>Next</span>Browse, search and filter</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-sample">The sample</a></li><li><a href="#harmony-tab">Harmony tab</a></li><li><a href="#accessibility-tab">Accessibility tab</a></li><li><a href="#stats-tab">Stats tab</a></li><li><a href="#keeping-the-tabs-current">Keeping the tabs current</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

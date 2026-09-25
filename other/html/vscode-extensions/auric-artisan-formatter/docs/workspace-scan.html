@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scan the workspace — Auric Artisan Docs</title>
+<meta name="description" content="See how many files would change before formatting a repository, review them in the Workspace tab, format them explicitly, or check without writing.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html" aria-current="page">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Scan the workspace</h1>
+<p class="lede">See how many files would change before formatting a repository, review them in the Workspace tab, format them explicitly, or check without writing.</p>
+<p>Adopting a formatter on an existing codebase is mostly a question of trust. Format on save quietly rewrites the first file you open; formatting the whole workspace rewrites thousands at once. The workspace scan is a third option: it formats every supported file <strong>in memory</strong>, tells you what would change, and writes nothing.</p>
+<h2 id="what-the-scan-does">What the scan does</h2>
+<p>A few seconds after the window opens (<code>auricFormatter.scanOnStartup</code>, on by default), the formatter:</p>
+<ul>
+<li>reads every supported file in the workspace and formats it in memory;</li>
+<li>records whether each file would change, and how many lines it would gain and lose;</li>
+<li>notes files that fail to parse, are skipped, or trip the safety gate.</li>
+</ul>
+<p>Nothing is written to disk; your working tree and <code>git status</code> stay as they were.</p>
+<p>The scan also follows your work: saved and unsaved edits, external changes and created or deleted files update the results, and new files trigger a short, delayed rescan. Changing the preset or saving a configuration file re-runs the scan, because they change what &quot;already formatted&quot; means.</p>
+<h2 id="where-the-results-appear">Where the results appear</h2>
+<ul>
+<li><strong>The status bar</strong> shows <strong><em>N</em> unformatted</strong> with a warning background. The tooltip says <strong><em>N</em> of <em>M</em> files would change if formatted. Nothing has been written — click to review them.</strong> When everything is formatted, it shows <strong>Auric</strong> with a double tick.</li>
+<li><strong>The Workspace tab</strong> of Formatter Studio lists every file.</li>
+<li><strong>Check Formatting Without Writing (CI Mode)</strong> puts the same result in the Problems panel.</li>
+</ul>
+<h2 id="run-a-scan-on-demand">Run a scan on demand</h2>
+<p><strong>Auric Formatter: Scan the Workspace Without Writing</strong> runs the scan now, even if the startup scan is off. Afterwards:</p>
+<ul>
+<li>if files would change: <strong><em>N</em> of <em>M</em> files would change. Nothing has been written.</strong> with <strong>Review them</strong> and <strong>Format them all</strong>;</li>
+<li>otherwise: <strong>all <em>M</em> files are already formatted.</strong></li>
+</ul>
+<h2 id="the-workspace-tab">The Workspace tab</h2>
+<p>Open it with <strong>Show Files That Need Formatting</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>U</code>), the status bar item, or <strong>02 Workspace</strong> in Studio.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Options</th></tr></thead>
+<tbody>
+<tr><td>Which files to show</td><td><strong>Needs formatting</strong> (files whose bytes would change), <strong>Every scanned file</strong>, <strong>Already formatted</strong>, <strong>Errors and skips</strong> (parse failures, safety reverts, skipped files)</td></tr>
+<tr><td>Sort order</td><td><strong>Largest change first</strong> (what a review will notice), <strong>Path</strong> (alphabetical, grouped by folder), <strong>Language</strong>, <strong>File size</strong> (biggest first)</td></tr>
+<tr><td><strong>Filter by path…</strong></td><td>Type part of a path</td></tr>
+<tr><td><strong>Rescan</strong> / <strong>Stop</strong></td><td>Format every file in memory again, or stop a running scan</td></tr>
+<tr><td>Tick boxes and <strong>Select every listed file</strong></td><td>Choose files</td></tr>
+<tr><td><strong>Format selected</strong></td><td>Write the ticked files</td></tr>
+<tr><td><strong>Format all files</strong></td><td>Write every file that needs formatting</td></tr>
+<tr><td>A row&#39;s diff button</td><td>Open that file with a preview of what would change</td></tr>
+<tr><td>A row&#39;s write button</td><td>Write this one file</td></tr>
+</tbody></table></div>
+<p>Each row shows the path, language, tier and the lines added and removed.</p>
+<h2 id="taking-the-change">Taking the change</h2>
+<p>All three ways are explicit:</p>
+<ol>
+<li><strong>Format all files</strong> writes every pending file at once.</li>
+<li>Tick rows, then <strong>Format selected</strong>, to take a folder at a time so each commit stays reviewable.</li>
+<li>The diff button on a row lets you read the change for one file first.</li>
+</ol>
+<p>Writing more than one file asks <strong>Format <em>N</em> files?</strong> first, while <code>auricFormatter.confirmBeforeFormattingAll</code> is on. Each file is re-read and re-formatted at the moment it is written, so a file you edited since the scan is never overwritten with a stale result; a file open with unsaved changes is written through the editor. Batch formatting saves the files, unlike a single-document <strong>Apply</strong>, which leaves the file unsaved.</p>
+<p>The result is reported as <strong>formatted <em>N</em> files</strong>, or with a count of failures and <strong>Show log</strong>.</p>
+<h2 id="check-without-writing-ci-mode">Check without writing (CI mode)</h2>
+<p><strong>Auric Formatter: Check Formatting Without Writing (CI Mode)</strong> runs a fresh scan and adds a Problems entry for every file that is not formatted (<strong>This file is not formatted (<em>N</em> lines added, <em>M</em> removed). Run Auric Formatter to fix it.</strong>) or could not be formatted. It then reports <strong><em>N</em> of <em>M</em> files need formatting. See Problems.</strong> For the same check in a CI pipeline, use the command line: see <a href="command-line.html">Command line and CI</a>.</p>
+<h2 id="scan-settings">Scan settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.scanOnStartup</code></td><td><code>true</code></td><td>Scan when the window opens</td></tr>
+<tr><td><code>auricFormatter.scanExclude</code></td><td>empty (built-in list)</td><td>Globs the scan skips. Empty uses <code>node_modules</code>, <code>.git</code>, <code>dist</code>, <code>build</code>, <code>out</code>, <code>coverage</code>, <code>vendor</code>, <code>target</code>, <code>.next</code>, <code>.venv</code>, minified files and source maps</td></tr>
+<tr><td><code>auricFormatter.scanMaxFiles</code></td><td>4000</td><td>Stop after this many files, so a very large monorepo is bounded</td></tr>
+<tr><td><code>auricFormatter.confirmBeforeFormattingAll</code></td><td><code>true</code></td><td>Ask before writing more than one file</td></tr>
+</tbody></table></div>
+<p>Files larger than <code>auricFormatter.maxFileSizeKb</code> are skipped before they are read. In a multi-root workspace, each file is identified with its folder name.</p>
+<p>The scan is not an unlimited index: exclusions, the file-size limit and <code>scanMaxFiles</code> always apply.</p>
+<p>When you format selected files, the Workspace tab removes them from <strong>Needs formatting</strong>, and the status bar count goes down.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="supported-languages.html"><span>Previous</span>Supported languages</a><a href="reference.html"><span>Next</span>Reference: commands, keys and settings</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-scan-does">What the scan does</a></li><li><a href="#where-the-results-appear">Where the results appear</a></li><li><a href="#run-a-scan-on-demand">Run a scan on demand</a></li><li><a href="#the-workspace-tab">The Workspace tab</a></li><li><a href="#taking-the-change">Taking the change</a></li><li><a href="#check-without-writing-ci-mode">Check without writing (CI mode)</a></li><li><a href="#scan-settings">Scan settings</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

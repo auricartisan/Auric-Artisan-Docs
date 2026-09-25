@@ -1,0 +1,102 @@
+==============================================================================
+TROUBLESHOOTING ILLUMINANTS
+==============================================================================
+What to do when a reading, chart, export or shortcut in the Standard
+Illuminants lab does not behave as expected.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+  Symptom:        Moving the CCT slider changed my illuminant to a blackbody
+  Why it happens: The CCT controls drive Blackbody mode, so touching them
+                  switches the source
+  What to do:     Choose Standard under Source mode and pick the illuminant
+                  again, or select Reset to D65
+
+  Symptom:        The CCT box jumps back when I pick a standard illuminant
+  Why it happens: Link to select copies the illuminant's nominal CCT into the
+                  box
+  What to do:     Untick Link to select to keep your own CCT value
+
+  Symptom:        The Illuminant comparison panel is empty
+  Why it happens: Comparison is off
+  What to do:     Tick Enable comparison
+
+  Symptom:        CCT shows "n/a" or a validity warning
+  Why it happens: The light is too far from the blackbody curve (Duv beyond
+                  ±0.05) or outside 1,000–100,000 K, where CCT is not defined
+  What to do:     Read Duv and x, y instead. See Limits and accuracy
+                  [../others/limits-and-accuracy.txt]
+
+  Symptom:        The dominant wavelength shows a dash
+  Why it happens: The light is almost the same colour as the D65 reference
+                  white, so there is no direction to measure
+  What to do:     Expected. Purity will read close to 0%
+
+  Symptom:        The CRI of a fluorescent light looks wrong compared with a
+                  datasheet
+  Why it happens: The lab's test colour samples and fluorescent spectra are
+                  stand-ins, not the CIE tables
+  What to do:     Treat CRI as indicative. Use a published or measured value
+                  for specifications
+
+  Symptom:        I want TM-30 Rf and Rg
+  Why it happens: The 99 colour evaluation samples are not held, so TM-30 is
+                  not computed
+  What to do:     The Methods tab shows the card as switched off. Use IES
+                  software for TM-30
+
+  Symptom:        The 1964 10° observer button is greyed out
+  Why it happens: Its colour matching functions are not held
+  What to do:     Only the 1931 2° observer is available
+
+  Symptom:        The equal-energy E spectrum is a flat line
+  Why it happens: E has equal power at every wavelength by definition
+  What to do:     Expected
+
+  Symptom:        Changing interval or interpolation does not change the Lab
+                  summary
+  Why it happens: Those settings apply to the Chromaticity, Uncertainty,
+                  Console and Methods views; the Lab tab always works at 5 nm
+  What to do:     Read the changed figures on those tabs
+
+  Symptom:        Changing interval or interpolation changes nothing at all
+  Why it happens: The source tables are tabulated at 5 nm, so a finer grid
+                  adds no information; the Methods note says so
+  What to do:     Expected. The deltas show as dashes
+
+  Symptom:        The Uncertainty results change slightly each run
+  Why it happens: Monte Carlo sampling is random
+  What to do:     Use 20k trials for a steadier result
+
+  Symptom:        Console CSV or JSON does nothing
+  Why it happens: No query has returned rows yet
+  What to do:     Select Run first, then export
+
+  Symptom:        Console says "Nothing matched"
+  Why it happens: A name was misspelt, or a range used an unknown prefix
+  What to do:     Use names such as `D65` or `F1..F12`
+
+  Symptom:        Pressing S, R, C or E does nothing
+  Why it happens: The Lab rail shows these keys as a hint, but they are not
+                  active in the current version
+  What to do:     Use Swap, Reset to D65, Enable comparison and Export SPD CSV
+                  instead
+
+  Symptom:        Copy white HEX or Copy gives no toast and nothing is copied
+  Why it happens: The browser blocked clipboard access (permissions, or a page
+                  not opened over https)
+  What to do:     Allow clipboard access, or select the share field and copy
+                  it manually
+
+  Symptom:        The share link opened without my surfaces or comparison
+  Why it happens: The link stores source, illuminant or CCT, and adaptation
+                  settings only
+  What to do:     Re-tick the surfaces and comparison after opening
+
+  Symptom:        The full-screen chart will not close
+  Why it happens: —
+  What to do:     Press `Esc`, select the close button, or click outside the
+                  chart
+
+  Symptom:        Charts look blurred after resizing the window
+  Why it happens: Some charts redraw only when their view changes
+  What to do:     Switch tabs and back, or reload the page

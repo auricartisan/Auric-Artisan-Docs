@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export and share — Auric Artisan Docs</title>
+<meta name="description" content="Copy the palette as hex, CSS custom properties or JSON, download it as SVG, JSON or CSV, and copy the page link.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html" aria-current="page">Export and share</a></li>
+<li><a href="extract-a-palette.html">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html">Image Picker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Export and share</h1>
+<p class="lede">Copy the palette as hex, CSS custom properties or JSON, download it as SVG, JSON or CSV, and copy the page link.</p>
+<p>There are two places to take a palette away: <strong>Take it with you</strong> on the right of the <strong>Workbench</strong> tab, and <strong>Download</strong> on the <strong>Actions</strong> tab.</p>
+<p>The page shows no confirmation after copying or downloading. Paste the text, or check your downloads, to confirm.</p>
+<h2 id="what-each-export-contains">What each export contains</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Export</th><th>Where</th><th>Contains</th><th>Pins included</th></tr></thead>
+<tbody>
+<tr><td><strong>Hex</strong></td><td>Workbench</td><td>Palette hex values, comma separated</td><td>No</td></tr>
+<tr><td><strong>CSS</strong></td><td>Workbench</td><td>Palette as CSS custom properties</td><td>No</td></tr>
+<tr><td><strong>JSON</strong> (copy)</td><td>Workbench</td><td>Full analysis</td><td>Yes</td></tr>
+<tr><td><strong>SVG</strong></td><td>Workbench</td><td>A strip of palette swatches with labels, downloaded</td><td>No</td></tr>
+<tr><td><strong>JSON</strong> (download)</td><td>Actions</td><td>Full analysis, as <code>palette-analysis.json</code></td><td>Yes</td></tr>
+<tr><td><strong>CSV</strong></td><td>Actions</td><td>One row per palette colour, as <code>palette.csv</code></td><td>No</td></tr>
+</tbody></table></div>
+<p>The heading <strong>Take it with you</strong> says <strong>palette + pins</strong>, but only the JSON carries the pins.</p>
+<h2 id="hex">Hex</h2>
+<p>Selecting <strong>Hex</strong>, or pressing <code>H</code>, copies the palette in order of share:</p>
+<pre class="code" data-lang="text"><code>#2E4A5C, #D9C7A8, #8A6A4F, #C0392B</code></pre>
+<h2 id="css">CSS</h2>
+<p>Selecting <strong>CSS</strong> copies a block of numbered custom properties:</p>
+<pre class="code" data-lang="css"><code>:root {
+  --palette-01: #2E4A5C;
+  --palette-02: #D9C7A8;
+  --palette-03: #8A6A4F;
+  --palette-04: #C0392B;
+}</code></pre>
+<h2 id="json">JSON</h2>
+<p>Selecting <strong>JSON</strong> on the <strong>Workbench</strong>, or pressing <code>J</code>, copies the full analysis. <strong>JSON</strong> on the <strong>Actions</strong> tab downloads the same content as <code>palette-analysis.json</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;image&quot;: {
+    &quot;width&quot;: 4032, &quot;height&quot;: 3024,
+    &quot;canvasWidth&quot;: 667, &quot;canvasHeight&quot;: 500,
+    &quot;label&quot;: &quot;harbour.jpg&quot;
+  },
+  &quot;settings&quot;: {
+    &quot;clusterCount&quot;: 6, &quot;quality&quot;: 4, &quot;mergeThreshold&quot;: 0,
+    &quot;ignoreDark&quot;: false, &quot;ignoreLight&quot;: false
+  },
+  &quot;sampleCount&quot;: 41750,
+  &quot;palette&quot;: [
+    {
+      &quot;hex&quot;: &quot;#2E4A5C&quot;, &quot;r&quot;: 46, &quot;g&quot;: 74, &quot;b&quot;: 92,
+      &quot;hsl&quot;: { &quot;h&quot;: 203.5, &quot;s&quot;: 33.3, &quot;l&quot;: 27.1 },
+      &quot;lab&quot;: { &quot;L&quot;: 30.04, &quot;a&quot;: -4.96, &quot;b&quot;: -13.89 },
+      &quot;lch&quot;: { &quot;L&quot;: 30.04, &quot;C&quot;: 14.75, &quot;h&quot;: 250.3 },
+      &quot;luminance&quot;: 0.06251,
+      &quot;population&quot;: &quot;24.13%&quot;,
+      &quot;count&quot;: 10074
+    }
+  ],
+  &quot;picks&quot;: [ { &quot;r&quot;: 192, &quot;g&quot;: 57, &quot;b&quot;: 43, &quot;hex&quot;: &quot;#C0392B&quot; } ],
+  &quot;exportedAt&quot;: &quot;2026-09-24T10:15:00.000Z&quot;
+}</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>image</code></td><td>Original width and height, working width and height, and the file name or address</td></tr>
+<tr><td><code>settings</code></td><td>Clusters, quality (1 Fast to 5 Max detail), merge threshold, and the two ignore switches</td></tr>
+<tr><td><code>sampleCount</code></td><td>Pixels sampled</td></tr>
+<tr><td><code>palette[].hex</code>, <code>r</code>, <code>g</code>, <code>b</code></td><td>The colour</td></tr>
+<tr><td><code>palette[].hsl</code></td><td>Hue in degrees, saturation and lightness in percent</td></tr>
+<tr><td><code>palette[].lab</code></td><td>CIELAB, calculated for a D65 white</td></tr>
+<tr><td><code>palette[].lch</code></td><td>CIELAB lightness, chroma and hue angle</td></tr>
+<tr><td><code>palette[].luminance</code></td><td>WCAG relative luminance, 0 to 1</td></tr>
+<tr><td><code>palette[].population</code>, <code>count</code></td><td>Share of the samples as a percentage, and the number of samples</td></tr>
+<tr><td><code>picks</code></td><td>Your pinned colours</td></tr>
+<tr><td><code>exportedAt</code></td><td>When the export was made</td></tr>
+</tbody></table></div>
+<p>The values in the example are illustrative.</p>
+<h2 id="svg">SVG</h2>
+<p>Selecting <strong>SVG</strong> downloads <code>palette.svg</code>: one 60 × 60 swatch per palette colour with rounded corners, 4 pixels apart, with the hex value written under each. Open it in any drawing program or browser.</p>
+<h2 id="csv">CSV</h2>
+<p>On the <strong>Actions</strong> tab, <strong>CSV</strong> downloads <code>palette.csv</code>:</p>
+<pre class="code" data-lang="text"><code>#,Hex,R,G,B,H,S,L,Luminance,Population%,Count
+1,#2E4A5C,46,74,92,203.5,33.3,27.1,0.06251,24.13,10074</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>#</code></td><td>Position in the palette</td></tr>
+<tr><td><code>Hex</code>, <code>R</code>, <code>G</code>, <code>B</code></td><td>The colour</td></tr>
+<tr><td><code>H</code>, <code>S</code>, <code>L</code></td><td>HSL hue in degrees, saturation and lightness in percent</td></tr>
+<tr><td><code>Luminance</code></td><td>Relative luminance, five decimal places</td></tr>
+<tr><td><code>Population%</code></td><td>Share of the samples</td></tr>
+<tr><td><code>Count</code></td><td>Number of samples in the cluster</td></tr>
+</tbody></table></div>
+<h2 id="copy-the-page-link">Copy the page link</h2>
+<p>On the <strong>Actions</strong> tab, <strong>Copy page link</strong> copies the address of the page. It does not carry the picture, the settings or the palette; whoever opens it starts with an empty tool. To share a palette, send the JSON, CSS or SVG instead.</p>
+<h2 id="automate-it">Automate it</h2>
+<p>The same job, extracting a palette from an image, is available through the site&#39;s REST API as <code>POST /v1/palette/from-image</code>. The line under the page heading gives the current cost in API credits, and <strong>API docs</strong> opens the documentation for that endpoint at <a href="https://auricartisan.com/library/documentation/api/#ep-post-palette-from-image" rel="noopener">https://auricartisan.com/library/documentation/api/#ep-post-palette-from-image</a>. API credits are a separate balance from the tokens that tools use. See <a href="../../../../../services/public-api/README.html">Public API</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="chart-the-palette.html"><span>Previous</span>Chart the palette</a><a href="extract-a-palette.html"><span>Next</span>Extract a palette</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-each-export-contains">What each export contains</a></li><li><a href="#hex">Hex</a></li><li><a href="#css">CSS</a></li><li><a href="#json">JSON</a></li><li><a href="#svg">SVG</a></li><li><a href="#csv">CSV</a></li><li><a href="#copy-the-page-link">Copy the page link</a></li><li><a href="#automate-it">Automate it</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

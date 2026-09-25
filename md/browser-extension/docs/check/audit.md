@@ -1,0 +1,90 @@
+---
+title: Browser extension — Audit
+description: Audit the current page against WCAG 2.2 A and AA, read the contrast results, outline problems on the page, and export the results.
+product: Browser extension › Check
+updated: 2026-09-25
+---
+
+# Audit
+
+Audit (the Page audit) checks the current tab's colours and accessibility against WCAG 2.2. One run does two things:
+
+- a **contrast scan** of the page's text, shown in the Audit tool itself;
+- an **accessibility audit** by an 80-rule engine, run at level AA, so the 78 rules that test levels A and AA apply. Its findings go to [Findings](all-findings.md).
+
+Everything runs in your browser. Nothing is sent anywhere, and results are kept only while the popup or side panel is open.
+
+## Run an audit
+
+1. Open the page you want to check and wait for it to finish loading.
+2. Open Check › **Audit** and choose **Run the audit**. (Home › **Audit** opens it and starts at once.)
+3. The button reads **Auditing…** while it works. Large pages take longer; the page stays responsive.
+
+When it finishes, the button reads **Run audit**, so you can run it again after you change the page.
+
+## Read the contrast results
+
+Four counts sit at the top:
+
+- **Tested**: Pieces of text the scan measured
+- **Failing**: Text below its WCAG AA threshold: 4.5:1, or 3:1 for large text
+- **Borderline**: Text that passes, but by less than 1.5 (for example 5.2:1 against 4.5:1)
+- **Review**: Text over a background image, gradient or text shadow, where the true contrast cannot be measured exactly; check these by eye
+
+Below, each flagged piece of text is a row:
+
+- two swatches: the text colour and the background it sits on;
+- the tag and whether the text counts as **large** or **body**, with its font size, and **review** when it needs a manual check;
+- an excerpt of the text, in quotes;
+- a CSS selector for the element;
+- the measured ratio and the ratio it needs.
+
+Choose a row to load its colour pair into [Contrast](contrast.md), where **Fix text** finds the nearest passing colour. If nothing fails, the list says "No contrast issues found."
+
+The background used for each piece of text is the colour actually behind it, found by walking up through its parent elements. Translucent layers are combined.
+
+## Outline problems on the page
+
+Choose **Outline on page**. Each failing piece of text on the page gets a red outline, each borderline one an amber outline, and each carries a label such as `3.12:1 needs 4.5:1`. The outlines clear after 15 seconds; choose the button again to redraw them.
+
+To outline automatically after every audit, turn on Settings › Tools › **Outline issues after an audit**.
+
+## The accessibility audit
+
+The rule engine checks ARIA, accessible names, structure, forms, media, keyboard access, contrast and page-level criteria such as language, title and zoom. Its findings are not listed in the Audit tool itself. Open Check › **Findings** to see them, sorted by severity, with the contrast findings; the Findings chip shows how many are open. See [Findings](all-findings.md) and [Audit rules](audit-rules.md).
+
+The engine also calculates a score from 0 to 100 and totals by severity. They are included in the JSON export and announced to screen readers.
+
+## Export
+
+- **Export JSON**: The whole result: the contrast scan (counts and every flagged item) and the accessibility audit (score, totals, results by WCAG criterion, every finding with its rule, impact, criteria, message and selector, the time taken and whether limits were reached)
+- **Export CSV**: The contrast findings, one per row, with the columns `tag`, `selector`, `text`, `fg`, `bg`, `ratio`, `threshold`, `severity` and `manualReview`
+
+Paste the result into a file, a ticket or a spreadsheet.
+
+## Limits
+
+| Setting | Contrast scan |
+|---|---|
+| Settings › Tools › **Deep page audit** on (the default) | Up to 3 500 elements and 160 issues |
+| **Deep page audit** off | Up to 1 800 elements and 80 issues |
+
+The rule engine has its own limits: up to 25 000 elements and 250 issues per rule, and 30 seconds in all. What cannot be checked automatically:
+
+- text inside embedded frames, images and canvas;
+- text coloured with some modern colour functions, which the contrast check skips rather than reporting;
+- anything that needs human judgement, such as whether alt text is accurate.
+
+An automated audit finds many problems but cannot prove a page accessible. See [Limits and accuracy](../../others/limits-and-accuracy.md).
+
+## Other ways to audit
+
+- **Audit contrast on page** in the browser's own right-click menu outlines the contrast problems and opens the popup at Audit.
+- The **Run a full accessibility audit** shortcut, once you assign a key in the browser, opens the popup at Audit and runs it.
+- **Check contrast on page** in the custom right-click menu runs the contrast outlines.
+
+## Related pages
+
+- [Findings](all-findings.md)
+- [Audit rules](audit-rules.md)
+- [Audit a page and fix contrast](../workflows/audit-a-page-and-fix-contrast.md)

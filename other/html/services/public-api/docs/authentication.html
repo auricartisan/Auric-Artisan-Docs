@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authentication — Auric Artisan Docs</title>
+<meta name="description" content="How to authenticate with the Auric Artisan API — API keys, the CLI's OAuth bearer token, keeping keys safe, and revoking them.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="authentication.html" aria-current="page">Authentication</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Authentication</h1>
+<p class="lede">How to authenticate with the Auric Artisan API — API keys, the CLI's OAuth bearer token, keeping keys safe, and revoking them.</p>
+<p>Every metered endpoint requires a credential. Requests without a valid one receive <code>401 Unauthorized</code>. Endpoints marked &quot;None&quot; in the <a href="reference.html">Reference</a> are public and unmetered.</p>
+<h2 id="methods">Methods</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>How to send it</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>API key (recommended)</td><td>The <code>x-api-key: aa_…</code> header, or the <code>?key=aa_…</code> query parameter</td><td>Servers, scripts and CI; create keys in the dashboard</td></tr>
+<tr><td>OAuth bearer</td><td><code>Authorization: Bearer &lt;token&gt;</code>, from the CLI&#39;s device flow</td><td>The <code>auric</code> command-line tool and interactive tools</td></tr>
+</tbody></table></div>
+<p>Prefer the header. A key in a query string can end up in server logs and browser history.</p>
+<pre class="code" data-lang="bash"><code>curl https://api.auricartisan.com/v1/usage/me -H &quot;x-api-key: aa_YOUR_KEY&quot;</code></pre>
+<h2 id="keys-are-secret">Keys are secret</h2>
+<ul>
+<li>The full key is displayed <strong>once</strong>, when you create it. It is stored only as a SHA-256 hash, so nobody, including Auric Artisan, can recover it later. If you lose it, create a new one.</li>
+<li>Keep keys out of source code and front-end code. Load them from environment variables or a secret store, as the examples do with <code>$AURIC_API_KEY</code>.</li>
+<li>Each successful request updates the key&#39;s &quot;last used&quot; time, which you can check in the dashboard to spot a key in use where it should not be.</li>
+</ul>
+<h2 id="several-keys">Several keys</h2>
+<p>You can hold up to <strong>10</strong> active keys, for example one per service or environment. Rate limits, monthly credits and the credit balance are pooled <strong>per account</strong>, not per key: ten keys share one allowance, so splitting traffic across keys does not raise your limits.</p>
+<h2 id="revoke-a-key">Revoke a key</h2>
+<p>If a key leaks, revoke it in the dashboard with <strong>Revoke</strong>. Revocation takes effect within a minute. Requests with a revoked key then receive <code>401</code>.</p>
+<h2 id="plan-and-access">Plan and access</h2>
+<p>A valid key on a plan without API access authenticates, but metered endpoints refuse it with <code>402 PLAN_UPGRADE_REQUIRED</code>. See <a href="plans-credits-and-quotas.html">Plans, credits and quotas</a>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li>The account documentation, in the website section of these docs, covers the dashboard itself: <a href="../../../website/account-and-billing/README.html">Account and billing</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started</a><a href="errors.html"><span>Next</span>Errors</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#methods">Methods</a></li><li><a href="#keys-are-secret">Keys are secret</a></li><li><a href="#several-keys">Several keys</a></li><li><a href="#revoke-a-key">Revoke a key</a></li><li><a href="#plan-and-access">Plan and access</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

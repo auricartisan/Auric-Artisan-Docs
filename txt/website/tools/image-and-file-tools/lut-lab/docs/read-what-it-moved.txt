@@ -1,0 +1,135 @@
+==============================================================================
+READ WHAT A TRANSFORM MOVED
+==============================================================================
+Interpret the clip overlay, the colour difference cards and the hue circle on
+the Lab tab.
+Area: Website › Tools › Image and file tools › LUT Lab   Updated: 2026-09-25
+
+Everything below the before and after pair on the Lab tab describes the
+difference between the two images, for the transform currently shown: a look
+at its strength, or a loaded file.
+
+THE PAIR
+========
+
+  - Before is the scene, with its pixel count beside the label, for example
+    57600 for a 320 × 180 scene.
+  - After is the scene through the transform, with the clipped share beside
+    the label, for example 0.83% clipped.
+
+The clip overlay
+----------------
+
+With What the transform crushed switched on, the After image is hatched with
+diagonal stripes where the transform clipped a pixel:
+
+  Stripes | Meaning
+  --------+---------------------------------------------------------------
+  Pink    | A channel was driven to white (255) that was not at 255 before
+  Blue    | A channel was driven to black (0) that was not at 0 before
+
+Pixels that were already at 0 or 255 and stayed there are not marked. Switch
+the overlay off to see the clean result; the figures do not change.
+
+WHAT IT MOVED
+=============
+
+  Card:    mean ΔE₀₀
+  Meaning: The average CIEDE2000 colour difference between each pixel before
+           and after
+
+  Card:    95th percentile
+  Meaning: The difference that 95% of pixels are at or below; shows how big
+           the typical large change is
+
+  Card:    largest
+  Meaning: The single largest difference on any pixel
+
+  Card:    clipped
+  Meaning: The share of pixels with at least one channel driven to 0 or 255 by
+           the transform; the card turns red above 1%
+
+  Card:    the old test said
+  Meaning: The share of output pixels with any channel at 0 or 255, whatever
+           it was before
+
+The last card is the test an earlier version of the tool used. It counts every
+saturated or black or white pixel in the result, even those the transform did
+not touch, so it is shown only for comparison. On the Colour patches or
+Saturation field scene, compare it with clipped to see the difference.
+
+WHERE IT MOVED THINGS TO
+========================
+
+The hue circle tests the transform on 72 colours arranged round a ring in
+CIELAB, at a constant lightness (L* 60) and chroma (C* 40), one every 5° of
+hue.
+
+  - The angle round the circle is the CIELAB hue; the distance from the centre
+    is the chroma. Faint rings mark every 20 units of chroma.
+  - Each hollow dot is a test colour before the transform. The filled dot,
+    joined to it by a thin line, is where the transform moved it.
+  - A pink ring around a filled dot marks a test colour the transform clipped.
+
+Not every colour at L* 60, C* 40 fits inside sRGB. Test colours that do not
+fit are pulled in towards the centre, keeping their hue, until they do. The
+caption says how many: 13 of 72, whatever the transform, because the ring is
+the same every time. This is done before the transform runs, so the shift you
+see belongs to the transform, not to the gamut.
+
+The circle cards
+----------------
+
+  Card:    largest hue shift
+  Meaning: The largest turn of hue on any test colour, in degrees, with its
+           direction (+ or −)
+
+  Card:    mean hue shift
+  Meaning: The average size of the hue turn across all 72, in degrees
+
+  Card:    largest L shift*
+  Meaning: The largest change in CIELAB lightness, with its direction
+
+  Card:    clipped on the circle
+  Meaning: How many of the 72 test colours the transform clipped
+
+Hue alone rarely tells the whole story: most looks move lightness and chroma
+at the same time, often by more. The CSV export of the hue sweep gives all
+three for every test colour; see Write a .cube file [write-a-cube-file.txt].
+
+READING THE NUMBERS TOGETHER
+============================
+
+  - A look with a small mean ΔE₀₀ but a large largest changes most colours a
+    little and a few a lot. Find the few with the overlay or the hue circle.
+  - A high clipped figure on your own picture means detail is being lost in
+    highlights or shadows. Lower Strength, or for the tone-map, change
+    Tone-map exposure.
+  - A consistent twist on the hue circle, all dots turning the same way, is a
+    hue rotation. Dots moving inwards or outwards are chroma changes.
+
+THE METHOD TAB
+==============
+
+The Method tab explains the method in five sections, chosen with the buttons
+under The chain:
+
+  Section:       Sample order
+  What it shows: How a `.cube` indexes its rows, with the first eight rows of
+                 a 2 × 2 × 2 table
+
+  Section:       Interpolation
+  What it shows: How trilinear interpolation works, and the worst error on an
+                 identity at sizes 2 to 65
+
+  Section:       Clipping
+  What it shows: Seven test pixels judged by the old test and by the clip test
+                 used now
+
+  Section:       Round trip
+  What it shows: Writing a table and reading it back, and whether an identity
+                 survives at various sizes
+
+  Section:       Linear light
+  What it shows: The tone-map applied in linear light compared with applying
+                 it to encoded values

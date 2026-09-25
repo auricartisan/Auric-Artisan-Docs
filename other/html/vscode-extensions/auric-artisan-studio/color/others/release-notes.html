@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Color release notes — Auric Artisan Docs</title>
+<meta name="description" content="Auric Color's version history, taken from the Studio changelog.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color: other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Auric Color shortcuts</a></li>
+<li><a href="glossary.html">Auric Color glossary</a></li>
+<li><a href="limits-and-accuracy.html">Auric Color limits and accuracy</a></li>
+<li><a href="privacy.html">Auric Color privacy</a></li>
+<li><a href="release-notes.html" aria-current="page">Auric Color release notes</a></li>
+<li><a href="related.html">Related to Auric Color</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color: other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Auric Color release notes</h1>
+<p class="lede">Auric Color's version history, taken from the Studio changelog.</p>
+<p>Auric Color shares one version number and one changelog with the other Studio extensions. This page lists the entries that concern colour. The complete history is in the <a href="../../others/release-notes.html">Studio release notes</a>.</p>
+<h2 id="unreleased">Unreleased</h2>
+<p>Listed under <strong>Unreleased</strong> in the changelog, as upcoming entries for the next numbered release:</p>
+<ul>
+<li>Every CSS Color 4 and 5 syntax is parsed, including <code>oklch()</code>, <code>lab()</code>, <code>lch()</code>, <code>hwb()</code>, <code>color()</code>, <code>color-mix()</code>, relative colour, <code>none</code> and <code>transparent</code>, with CSS gamut mapping for wide-gamut colours. Invalid hex such as <code>#12345g</code> is rejected.</li>
+<li>CIEDE2000 colour difference matches all 34 Sharma test pairs; colour naming uses it.</li>
+<li>Colour-vision simulation uses the Brettel 1997 method in linear light.</li>
+<li>The suggested fix is the nearest passing colour (<code>#888</code> on white becomes <code>#767676</code>, 4.54:1).</li>
+<li>Ratios just under a threshold never display as the threshold; translucent colours blend with 8-bit alpha.</li>
+<li>Writing colours back round-trips every CSS format exactly.</li>
+<li>The contrast scanner was rebuilt on a CSS rule tree: large text at 3:1, blended translucency and <code>opacity</code>, dark themes graded as themselves, <code>color-mix()</code>, relative colours and <code>light-dark()</code> graded, disabled controls and Markdown code samples exempt.</li>
+<li>The Quick Fix never corrupts source; values it cannot rewrite safely open the Contrast Studio.</li>
+<li>Contrast hovers lead with the ratio and verdict and offer <strong>Apply to --token</strong>, <strong>Open in Contrast Studio</strong> and <strong>Intentional branding</strong>.</li>
+<li>The Studio&#39;s Contrast tool became the Contrast Studio.</li>
+<li>Every Studio screen, including the picker, uses the new Auric look.</li>
+</ul>
+<h2 id="010-initial-studio-release">0.1.0 — Initial Studio release</h2>
+<ul>
+<li>Colour detection and editable swatches across CSS and 40+ programming, template, data and markup languages.</li>
+<li>WCAG contrast, APCA, RGB, HSL, OKLCH, Display-P3, colour naming, accessible alternatives, palette generation, shade scales and colour-vision simulation.</li>
+<li>Colour editing inline, from the editor hover and in the docked picker.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="privacy.html"><span>Previous</span>Auric Color privacy</a><a href="related.html"><span>Next</span>Related to Auric Color</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#unreleased">Unreleased</a></li><li><a href="#010-initial-studio-release">0.1.0 — Initial Studio release</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+==============================================================================
+GETTING STARTED WITH DYE IN SOLUTION
+==============================================================================
+Open Dye in Solution, learn the layout of the Lab tab and read the default
+bath.
+Area: Website › Tools › Perception and spectral › Industrial Dye Chemistry   Updated: 2026-09-25
+
+OPEN THE TOOL
+=============
+
+Go to
+https://auricartisan.com/tool/general/spectral-tools/industrial-dye-chemistry/.
+The page opens on the Lab tab with a default bath: one Weak-acid indicator
+(standing for the methyl-orange family) at 34.0 µM, pKa 3.5, at pH 3.50, in a
+1.0 cm path, lit by D65 daylight.
+
+A note strip above the tabs, which cannot be closed, says what an earlier
+version of the page got wrong and links to the Method and Safety tabs.
+
+THE SIX TABS
+============
+
+  Tab:            Lab
+  What it is for: Build the bath, see the spectrum, read the colour and
+                  compare the lights
+
+  Tab:            Method
+  What it is for: How the titration, Beer–Lambert law and light are modelled;
+                  the tolerance sweep
+
+  Tab:            Safety
+  What it is for: What the page does and does not know about hazards
+
+  Tab:            Data
+  What it is for: The register of 18 tables and formulas, with a status for
+                  each; load a measured spectrum here
+
+  Tab:            Export
+  What it is for: The spectrum CSV, the bath JSON and a link
+
+  Tab:            Reference
+  What it is for: Thirteen sources, filterable by whether they run
+
+A TOUR OF THE LAB TAB
+=====================
+
+The rail (left), top to bottom:
+
+  - The bath — pH, Path length and Run the titration.
+  - The light — the illuminant menu.
+  - The components — the list of dyes in the bath, a menu of dyes to add, and
+    Add, Mute and Remove.
+  - The selected dye — its name, what it stands for, and its pKa and
+    Concentration sliders.
+  - Reset the bath.
+
+The stage (right):
+
+  - The two forms, and what you measure — the spectrum plot for the selected
+    dye, 380–780 nm, with a legend: Acid form `HA` (dashed), Base form `A⁻`
+    (dashed), What you measure (the filled curve, their weighted sum) and
+    Isosbestic (a green circle and label where the two forms cross).
+  - Three rows of readouts: sRGB, CIE L*, a*, b*, Base fraction; Peak
+    absorbance, λmax, Beer–Lambert holds, Isosbestic point; Dominant λ,
+    Excitation purity, Inside sRGB, Observer.
+  - The same bath under every light this tool holds — one swatch per
+    illuminant, with the colour difference from the current light, and a card
+    for F11 marked not held.
+
+READ THE DEFAULT BATH
+=====================
+
+  1. Look at the plot. The acid form peaks near 508 nm and the base form near
+     462 nm. At pH 3.50, equal to the dye's pKa, half the dye is in each form,
+     so Base fraction reads 0.500 and the filled curve sits halfway between
+     them.
+  2. Find the green circle: Isosbestic point reads about 480 nm, where the two
+     forms absorb equally.
+  3. Read the colour: sRGB `#FFBF9F`, a pale orange-pink, with CIE L* 84.8 and
+     a*, b* 28.2, 28.9.
+  4. Read Peak absorbance 0.630 at λmax 485 nm, and Beer–Lambert holds yes, A
+     0.63: the bath is inside the range where absorbance grows in proportion
+     to concentration.
+  5. Look at the lights row: the same bath differs by about 1.60 ΔE₀₀ under
+     D50, 6.57 under A and 0.74 under E.
+  6. Select Run the titration. The pH climbs from 0 to 14 in about six seconds
+     and the swatch moves from pink (`#FF96C7` at pH 0) to yellow (`#FFF17A`
+     at pH 14).
+
+You should now see a bath whose colour, spectrum and readouts respond to every
+control.
+
+NEXT STEPS
+==========
+
+  - Build a bath [build-a-bath.txt] — add dyes and understand absorbance.
+  - Run a titration [run-a-titration.txt] — pH and the isosbestic point.
+  - Compare lights [compare-lights.txt] — what the lights row means.

@@ -1,0 +1,98 @@
+==============================================================================
+GETTING STARTED
+==============================================================================
+How the Font CDN is organised — family ids, stylesheets and font files — and
+how to put a first family on a page.
+Area: Services › Font CDN   Updated: 2026-09-25
+
+HOW THE CDN IS ORGANISED
+========================
+
+Everything is served from https://fonts.auricartisan.com:
+
+  Path:       `/css/<family-id>.css`
+  What it is: One stylesheet per family, with an `@font-face` rule for each
+              style
+
+  Path:       `/font/…`
+  What it is: The font files the stylesheets point to
+
+  Path:       `/font-cdn.js`
+  What it is: The loader script
+
+  Path:       `/data/index.json`
+  What it is: The catalogue: one short record per family
+
+  Path:       `/data/detail/<group>.json`
+  What it is: Full metadata for the families in a group (`A-F`, `G-L`, `M-R`,
+              `S-Z`)
+
+  Path:       `/LICENSE.md`
+  What it is: The licence reference for the collection
+
+You do not need to know the file paths inside `/font/`: the family stylesheet
+refers to them for you.
+
+FAMILY IDS
+==========
+
+Every family has an id, used in its stylesheet URL. The id is the family name
+in lower case, with apostrophes and quotation marks removed and every run of
+other characters replaced by a hyphen:
+
+  Family      | Id            | Stylesheet
+  ------------+---------------+-----------------------------------------------------
+  Alegreya    | `alegreya`    | `https://fonts.auricartisan.com/css/alegreya.css`
+  Roboto Slab | `roboto-slab` | `https://fonts.auricartisan.com/css/roboto-slab.css`
+  Open Sans   | `open-sans`   | `https://fonts.auricartisan.com/css/open-sans.css`
+
+The Font Library's Use & Embed tab always shows the exact URL for a family.
+
+YOUR FIRST FAMILY
+=================
+
+  1. Add the family's stylesheet to the `<head>` of your page:
+         <link rel="stylesheet" href="https://fonts.auricartisan.com/css/alegreya.css">
+  2. Use the family in your CSS, with a fallback:
+         body { font-family: 'Alegreya', serif; }
+  3. Load the page. The text appears in Alegreya once the font file has
+     downloaded. Until then the browser shows the fallback, because the
+     stylesheets use `font-display: swap`.
+
+WHAT A FAMILY STYLESHEET CONTAINS
+=================================
+
+Each stylesheet starts with a comment naming the family, its licence and
+copyright, and how many files and weights it has, then one `@font-face` rule
+per file:
+
+    /* Alegreya — Auric Artisan Font CDN
+     * SIL Open Font License 1.1 · Copyright 2011 The Alegreya Project Authors (https://github.com/huertatipografica/Alegreya)
+     * 2 file(s), weights 400 500 600 700 800 900, variable
+     */
+    @font-face {
+      font-family: 'Alegreya';
+      font-style: italic;
+      font-weight: 400 900;
+      font-display: swap;
+      src: url('../font/A-F/ALEGREYA/Alegreya-Italic%5Bwght%5D.ttf') format('truetype-variations');
+    }
+    @font-face {
+      font-family: 'Alegreya';
+      font-style: normal;
+      font-weight: 400 900;
+      font-display: swap;
+      src: url('../font/A-F/ALEGREYA/Alegreya%5Bwght%5D.ttf') format('truetype-variations');
+    }
+
+A variable family, like this one, covers a whole weight range with one file
+per style. A static family has one rule per weight and style.
+
+NEXT STEPS
+==========
+
+  - Embed a family [embed-a-family.txt] for the other ways to embed.
+  - Use the loader [use-the-loader.txt] to load several families with one tag,
+    or from JavaScript.
+  - Self-host a family [self-host-a-family.txt] to serve the files from your
+    own site.

@@ -1,0 +1,51 @@
+---
+title: Accessibility Library — Getting started
+description: Open the Accessibility Library, learn the screen, and find passing text colours for a background.
+product: Website › Library › Colour libraries › Accessibility Library
+updated: 2026-09-25
+---
+
+# Getting started
+
+## Open the page
+
+Go to https://auricartisan.com/library/accessibility/, or open the **Learn** menu in the site header and select **Accessibility Library** under **Libraries**. The map draws straight away; it needs nothing from the network.
+
+## A tour of the screen
+
+### The heading
+
+Kicker **Auric Artisan · Accessibility**; headline **What may I write on this?**; and a line with **Corpus 5,000,000**, **Seed 9001**, **Every figure computed in your browser**, and **Read the API guide →**.
+
+A note starting **Automate this** may appear: the same job is available through the site's REST API — **8 API credits per call to POST /v1/accessibility/map** — with **API docs**. Select × to dismiss it.
+
+### The control bar
+
+- **Ground** — four preset swatches (`#0D0D0D`, `#1D2A3E`, `#FFFCF7`, `#1B4D3E`), a colour picker for any other ground, and **Swap**.
+- **Target** — **3:1**, **4.5:1** or **7:1**.
+- **Territory** — the share of the map that passes, as a percentage.
+
+### The map and the readout
+
+On the left, the contrast map: hue from left (0°, red) to right (360°), lightness from bottom (0) to top (1.0). Three lines mark where contrast reaches 3:1, 4.5:1 and 7:1, and the part of the map that fails your target is dimmed. A small caret marks your current foreground.
+
+On the right, the readout: a text specimen in your foreground on the ground, the contrast ratio with a verdict, a table of figures, and a sentence of advice.
+
+### Below the map
+
+- **N that work on this ground** — up to twelve passing foregrounds, with **Copy as CSS**.
+- **Or bring your own** — a box to paste your colours, and a table of results.
+- **All of this from your own code** — an example API call and links: **Read the guide**, **Endpoint reference** and **Get a key**.
+- **The index** — look up any of five million scored pairs, and browse them.
+
+## Your first task: text colours for a dark green banner
+
+1. Select the `#1B4D3E` ground swatch.
+2. Keep the target at **4.5:1** (body text).
+3. Read **Territory**: the share of colour space that can carry body text on this green.
+4. Drag on the map inside the bright (undimmed) region. The ratio turns to a pass, and the verdict reads **clears AA for body text**.
+5. Scroll to **N that work on this ground**. Each card shows a sample sentence in a passing colour on your green, with its ratio.
+6. Select **Copy as CSS**. The button briefly reads **Copied**.
+7. Paste into your stylesheet: you get `--ground` and `--fg-01`, `--fg-02` … custom properties.
+
+**Result:** a set of text colours, across the whole hue circle, that are all at least 4.5:1 on your banner colour.

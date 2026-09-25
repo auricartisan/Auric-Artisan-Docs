@@ -1,0 +1,435 @@
+==============================================================================
+OPEN THE COLOUR TOOLS AND MANAGE THEIR PANELS
+==============================================================================
+Every way to open the 14 floating Colour Tools, how the launcher works, and
+how to move, arrange, pin and close the panels they open in.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+The Colour Tools are 14 small colour tools that open in floating panels over
+the page you are on. You do not have to leave an article, a tool page or the
+home page to check a contrast ratio or look up a colour's name. The panel
+opens on top, you work in it, and you close it when you are done.
+
+This page covers everything the 14 tools share: the ways to open them, the
+Color Tools launcher, the floating panel window and the control bar that
+appears while panels are open. Each tool has its own page in this folder.
+
+WHERE THE COLOUR TOOLS ARE AVAILABLE
+====================================
+
+The Colour Tools load on almost every page of the site, a moment after the
+page finishes loading. The Basic Color Tools page
+(https://auricartisan.com/tool/basic-tools/) is their home page.
+
+A few pages do not load them, for example the Analyzer. On those pages the
+right-click menu has no Colour tools group, and `Ctrl` + `Shift` + `C` takes
+you to the Basic Color Tools page instead of opening the launcher.
+
+WAYS TO OPEN A TOOL
+===================
+
+From the right-click menu
+-------------------------
+
+Right-click anywhere on a page (outside a text field) to open the site's menu.
+The Colour tools row opens a submenu:
+
+  Item:          All colour tools…
+  What it opens: The launcher, at the place you right-clicked. The row shows
+                 the shortcut `Ctrl` + `Shift` + `C`.
+
+  Item:          Contrast System
+  What it opens: Contrast System
+
+  Item:          Accessibility Lab
+  What it opens: Accessibility Lab
+
+  Item:          Harmony Studio
+  What it opens: Harmony Studio
+
+  Item:          Color Space Converter
+  What it opens: Color Space Converter
+
+  Item:          Color Name Finder
+  What it opens: Color Name Finder
+
+  Item:          Gradient Library
+  What it opens: Gradient Library
+
+  Item:          Color Library
+  What it opens: Color Library
+
+The other seven tools are always one step away through All colour tools….
+
+  | Tip: While the menu is open you can type to filter it. Typing part of a tool's
+  | name finds it, even inside a submenu.
+
+To use the browser's own menu instead, hold `Shift` while you right-click.
+
+Right-click a colour value
+--------------------------
+
+When the thing you right-click is a colour, the menu header changes to Colour
+and shows the hex code and its RGB value. The menu recognises a colour when:
+
+  - you have selected text that is a hex code starting with `#` (3 or 6
+    digits), or six hex characters that include at least one digit, and you
+    right-click on that selection;
+  - you right-click a swatch or chip that the site marks with its colour (the
+    colour cards in many tools and libraries do this);
+  - you right-click a short piece of text that is only a hex code, such as
+    `#D3AF37`.
+
+The colour section then offers:
+
+  Item                    | What it does
+  ------------------------+----------------------------------------------------------------
+  Copy HEX                | Copies the hex code in capitals.
+  Copy RGB                | Copies `rgb(R G B)`.
+  Copy HSL                | Copies the HSL value.
+  Copy OKLCH              | Copies the OKLCH value.
+  Check its contrast      | Opens Contrast System with this colour as the first foreground.
+  Build harmonies         | Opens Harmony Studio with this colour.
+  Find its name           | Opens Color Name Finder with this colour.
+  Inspect in Colour Tools | Opens the Color Inspector with this colour.
+
+The Colour tools row is still there too, and every tool you open from it
+starts with the colour you right-clicked.
+
+The keyboard shortcut
+---------------------
+
+Press `Ctrl` + `Shift` + `C` on any page that loads the Colour Tools to open
+the launcher. It opens where you last right-clicked, or near the top-left
+corner if you have not right-clicked yet.
+
+If you have text selected that is exactly a hex code (3 or 6 digits, with or
+without `#`), the tool you then pick in the launcher opens with that colour.
+Select `#1E40AF` in an article, press the shortcut, choose Contrast System,
+and the pair is ready to check.
+
+A `?color=` link
+----------------
+
+Add `?color=` and a colour to the address of any page on the site, and the
+Color Inspector opens over that page with the full read-out for the colour.
+For example:
+
+    https://auricartisan.com/?color=CEA1B5
+    https://auricartisan.com/library/?color=1E40AF&on=FFFFFF&ctab=contrast
+
+  Parameter:       `color`, `colour` or `hex`
+  What it does:    The colour to inspect. If you list several, the first is
+                   inspected and the rest appear as comparison colours.
+  Accepted values: See the forms below. Separate several colours with a comma,
+                   a semicolon or a vertical bar.
+
+  Parameter:       `on`, `bg`, `against` or `vs`
+  What it does:    One or more comparison colours. They appear under Compare
+                   and as extra rows in the Contrast and Vision tabs.
+  Accepted values: Same forms as `color`.
+
+  Parameter:       `ctab`
+  What it does:    The Inspector tab to open on.
+  Accepted values: `overview`, `formats`, `contrast`, `vision`, `harmony`,
+                   `names`, `mind` (the Psychology tab), `scales`, `science`,
+                   `export`
+
+The colour can be written as:
+
+  - a hex code with 3, 4, 6 or 8 digits: `CEA`, `CEA1B5`, `CEA1B5CC` (the 4-
+    and 8-digit forms carry transparency);
+  - `rgb()` or `rgba()`, `hsl()` or `hsla()`, `hwb()`, for example `rgb(206
+    161 181)`;
+  - three numbers separated by spaces, read as red, green and blue:
+    `206+161+181`;
+  - a CSS colour name such as `rebeccapurple` or `tomato`;
+  - a fragment of a hex code. One digit is read as a grey (`C` becomes
+    `#CCCCCC`), two digits are repeated (`CE` becomes `#CECECE`), five or
+    seven digits are padded with the last digit, and anything longer than
+    eight digits keeps the first six. The Inspector then shows a small tag
+    saying which text it started from.
+
+  | Important: Leave out the `#`, or write it as `%23`. In an address, `#` starts
+  | the page fragment, so `?color=#CEA1B5` reaches the site without a colour.
+
+In an address bar, a space can be typed as `+` or `%20`. When a value contains
+brackets, such as `rgb(206 161 181)`, separate several colours with `;` or
+`|`, because a comma is then read as part of the colour.
+
+When the Inspector was opened by a link, it keeps the address bar in step with
+what you see: change the colour or the tab and the `color` and `ctab` values
+update, so copying the page address shares the current read-out. If you open a
+second `?color=` link, or go back and forward between two, the open Inspector
+switches colour instead of opening another panel. An Inspector opened from the
+launcher leaves the address bar alone.
+
+From other tools
+----------------
+
+  - The Color Inspector's Open in list opens eight other Colour Tools with the
+    colour you are inspecting. See Color Inspector [colour-inspector.txt].
+  - The Design Engine can open Colour Tools with your system's primary colour.
+    See Design Engine [../../../design-engine/README.txt].
+
+THE LAUNCHER
+============
+
+The launcher is a small dark card titled Color Tools, with "Auric Artisan ·
+Tools" in small capitals above the title. It lists all 14 tools in four
+groups, each heading followed by the number of tools in it.
+
+  - Essentials (6): Color Inspector (INSP), Accessibility Lab (A11Y), Contrast
+    System (CR), Color Name Finder (NAME), Animation Contrast (ANIM), Type
+    Readability Sim (TYPE).
+  - Explore (3): Color Library (LIB), Color Psychology (PSY), Pantone & Named
+    Lookup (PMS).
+  - Design (3): Harmony Studio (HARM), Gradient Library (GRAD), CMYK
+    Soft-Proof (CMYK).
+  - Deep dive (2): Color Formulation (FORM), Color Space Converter (SPACE).
+
+Each row shows an icon, the tool's name and its short tag. Hover over a row to
+see a tooltip with a one-line description of the tool.
+
+Search
+------
+
+The search box at the top says "Search 14 tools…". Type to filter the list as
+you go. The search matches words in the tool names and in their descriptions,
+so `apca`, `video`, `pantone` or `print` all find the right tool. Groups with
+no match disappear. If nothing matches, the launcher says "No tools match your
+search."
+
+Keyboard use
+------------
+
+  Key:          `Tab` / `Shift` + `Tab`
+  What it does: Moves between the search box, the tool rows, the footer links
+                and the close button.
+
+  Key:          `Enter` or `Space`
+  What it does: Opens the focused tool.
+
+  Key:          `Esc` in the search box
+  What it does: Clears the search. Press it again, with the box empty, to
+                close the launcher.
+
+  Key:          `Esc` elsewhere
+  What it does: Closes the launcher.
+
+Moving, resizing and closing
+----------------------------
+
+  - Move: drag the launcher by its header.
+  - Resize: drag its bottom-right corner. On a narrow screen the tools stack
+    in one column instead of two.
+  - Close: select the close button (×), press `Esc`, click anywhere outside
+    the launcher, or open a tool. Opening a tool closes the launcher.
+
+The footer has two links that leave the page: View all tools ("Browse the
+complete toolkit") and Open dashboard ("Your tools & recent activity").
+
+THE PANEL WINDOW
+================
+
+Every tool opens in the same kind of floating window.
+
+The title bar
+-------------
+
+The title bar shows a grip, the tool's name and the label "Color Tools", then
+six icon buttons. Hover over one to see its tooltip.
+
+  Button (tooltip): Chain icon ("Link — sync controls with other linked
+                    panels")
+  What it does:     Turns linking on or off for this panel (see below).
+
+  Button (tooltip): Two squares ("Open another instance of this simulation")
+  What it does:     Opens a second copy of this tool, offset slightly from the
+                    first.
+
+  Button (tooltip): Pin icon ("Pin — prevent auto-replacement when over the
+                    panel limit")
+  What it does:     Keeps the panel open when the panel limit is reached.
+
+  Button (tooltip): Dash ("Minimize to dock")
+  What it does:     Hides the panel. Bring it back from its tab on the control
+                    bar.
+
+  Button (tooltip): Square ("Maximize / restore")
+  What it does:     Fills the browser window, leaving a small margin. Select
+                    it again to go back.
+
+  Button (tooltip): Cross ("Close")
+  What it does:     Closes the panel.
+
+Linking. When two or more panels are linked, changing a control in one changes
+the matching control in the others. This is most useful with two copies of the
+same tool, made with the two-squares button. Tools that share a control, such
+as a background colour field, follow each other too. A pinned panel is also
+skipped by Close all but pinned on the control bar.
+
+Moving, resizing and focus
+--------------------------
+
+  - Drag the title bar to move a panel. You cannot drag a maximised panel.
+  - Double-click the title bar to maximise or restore.
+  - Drag the corner handle at the bottom right to resize. On a computer a
+    panel is at least 520 by 420 pixels, and it always stays inside the
+    browser window.
+  - Click anywhere in a panel to bring it to the front.
+  - Each tool remembers the size and position you last gave it, and whether it
+    was pinned, and reopens there next time.
+
+While a tool loads, the panel shows a small card with the tool's name and a
+progress bar. If a tool cannot open, the panel says "Couldn't open" with the
+tool's name and a short reason.
+
+Keyboard in a panel
+-------------------
+
+  Key:          `Esc`
+  What it does: Leaves full-window view if the panel is maximised. Otherwise
+                it closes the panel that has focus.
+
+  | Note: `Esc` closes the panel even when your cursor is in one of its fields. If
+  | you only meant to dismiss a dropdown list, click outside the list instead.
+
+How many panels can be open
+---------------------------
+
+Up to five panels can be open at once. If you open a sixth, the oldest panel
+that is not pinned closes to make room. If all five are pinned, the new tool
+does not open until you unpin or close one.
+
+Opening a tool that is already open brings its panel to the front (and
+restores it if it was minimised) instead of opening a second one. The panel
+keeps the colour it already has. Use the two-squares button in the title bar
+when you want two copies side by side.
+
+Theme and small screens
+-----------------------
+
+The launcher, the panels, their dropdown lists and the control bar keep the
+same dark look whichever site theme you use, so the tools look the same on a
+light page and a dark page.
+
+When a panel is narrow (under roughly 780 pixels wide), its sidebar moves
+above the main area. On a phone, a panel takes the full width of the screen
+and buttons grow to a comfortable touch size.
+
+THE CONTROL BAR
+===============
+
+While at least one panel is open, a slim bar appears at the bottom-right of
+the window. Drag it by its grip (the dotted handle at its left end) to move
+it; its position is remembered.
+
+From left to right the bar holds five layout buttons, one tab per open panel,
+a count and a menu button.
+
+  Part (tooltip): Grid icon ("Tile in a grid")
+  What it does:   Tiles the panels to fill the window: 1 fills it, 2 side by
+                  side, 3–4 in 2 × 2, 5 in 3 × 2.
+
+  Part (tooltip): Split icon ("Split left and right")
+  What it does:   Places the panels side by side at full height.
+
+  Part (tooltip): Split icon ("Split top and bottom")
+  What it does:   Stacks the panels at full width.
+
+  Part (tooltip): Cascade icon ("Cascade with an offset")
+  What it does:   Gives each panel the same size and staggers them diagonally.
+
+  Part (tooltip): Stack icon ("Stack them centred")
+  What it does:   Centres every panel in the same place, the last one in
+                  front.
+
+  Part (tooltip): Panel tabs
+  What it does:   Select a tab to bring that panel to the front and restore it
+                  if minimised.
+
+  Part (tooltip): Count
+  What it does:   How many panels are open out of five, for example `2/5`.
+
+  Part (tooltip): Three dots ("More panel actions")
+  What it does:   Opens the menu below.
+
+The layout buttons act on panels that are neither minimised nor maximised.
+Small icons on each tab show whether that panel is pinned, synced, minimised
+or maximised, and its tooltip spells the state out.
+
+The three-dots menu (More panel actions):
+
+  Item:         Sync all panels / Unsync all panels
+  What it does: Links or unlinks every open panel at once. Needs at least two
+                panels.
+
+  Item:         Minimize all
+  What it does: Minimises every panel.
+
+  Item:         Restore all
+  What it does: Brings every minimised panel back.
+
+  Item:         Export a comparison PNG
+  What it does: Downloads one image with a cell per open panel.
+
+  Item:         Open the verification panel
+  What it does: Opens a comparison overlay.
+
+  Item:         Close all but pinned
+  What it does: Asks "Close all unpinned floating panels?" and then closes
+                every panel that is not pinned.
+
+  | Note: The same control bar serves the Vision Simulation panels. Export a
+  | comparison PNG and Open the verification panel are built for those: with
+  | Colour Tools panels, the PNG shows only each panel's name and a "no image
+  | data" placeholder.
+
+On a phone the bar runs along the bottom edge and shows the panel tabs, the
+count and the three-dots button; the layout buttons are hidden.
+
+WHAT ALL 14 TOOLS SHARE
+=======================
+
+  - Colour fields. Most tools use the same colour field: a colour swatch that
+    opens your browser's colour picker, a text box for a hex code, and a dice
+    button (Random color tooltip) that picks a random colour. The text box
+    accepts 3, 4, 6 or 8 hex digits, with or without `#`. The tool updates as
+    soon as the text is a valid code.
+  - Live results. There is no "calculate" button. Every change updates the
+    results at once.
+  - Copying. When you copy a value, a short message such as "Copied: #D3AF37"
+    appears at the bottom of the screen.
+  - Dropdowns. Select a dropdown to open its list, then select an option.
+    `Esc`, a click outside, or scrolling closes the list.
+  - Tooltips. Many buttons and controls explain themselves when you hover over
+    them.
+  - Vision simulations. The tools that preview colour-vision deficiency use
+    the same set of filters, so a result in one tool matches the others. See
+    Accessibility Lab [accessibility-lab.txt] for what each filter simulates
+    and its limits.
+  - A fresh start each time. A tool starts from its default colours, or from
+    the colour you opened it with. Colours and settings are not kept after you
+    close a panel; only the panel's size, position and pin state are.
+  - Everything runs in your browser. Colours, images and videos you use in the
+    tools are not uploaded.
+
+RELATED
+=======
+
+  - Colour Tools documentation [README.txt] — the contents of this folder
+  - Basic Color Tools [../../README.txt]
+  - The Essentials tools: Color Inspector [colour-inspector.txt],
+    Accessibility Lab [accessibility-lab.txt], Contrast System
+    [contrast-system.txt], Color Name Finder [colour-name-finder.txt],
+    Animation Contrast [animation-contrast.txt], Type Readability Sim
+    [type-readability-sim.txt]
+  - The other tools: Color Library [colour-library.txt], Color Psychology
+    [colour-psychology.txt], Pantone & Named Lookup
+    [pantone-and-named-lookup.txt], Harmony Studio [harmony-studio.txt],
+    Gradient Library [gradient-library.txt], CMYK Soft-Proof
+    [cmyk-soft-proof.txt], Color Formulation [colour-formulation.txt], Color
+    Space Converter [colour-space-converter.txt]
+  - Site features [../../../../../site-features/README.txt] — the right-click
+    menu, settings and themes

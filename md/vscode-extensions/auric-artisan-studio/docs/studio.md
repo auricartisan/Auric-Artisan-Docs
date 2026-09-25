@@ -1,0 +1,140 @@
+---
+title: Auric Artisan Studio — The Studio
+description: Open the Studio tab, move between its spaces, and use the Home and Settings spaces.
+product: VS Code extensions › Auric Artisan Studio
+updated: 2026-09-25
+---
+
+# The Studio
+
+The **Studio** is an editor tab that holds the Studio's larger tools: the workspace score and its details, the full list of findings, the Contrast Studio, colour generators, the brand audit, code health and settings. It is laid out as a **rail** of spaces on the left and the selected space's content on the right.
+
+## Open the Studio
+
+Any of these opens it:
+
+- **Studio** in the Overview, or the arrow button at the top right of the Overview.
+- The status-bar score item.
+- **Auric Artisan: Open Color Studio**, **Auric Artisan: Open Accessibility Studio** or **Auric Artisan: Open Code Health Studio** from the Command Palette.
+- An **Open Studio: …** entry in the Command Center.
+- Links in hovers and quick fixes, such as **Open in Contrast Studio**, **Tune the pair** or **Open in Preview**. These open the Studio on the matching tool.
+- **Generate Accessible Palette** or **Check Contrast of Selection**, which open the Palette or Contrast tool on the selected colour.
+
+The tab title shows which Studio you have: **Auric Artisan — Color Studio**, **Auric Artisan — Accessibility Studio**, **Auric Artisan — Code Health Studio**, or **Auric Artisan — Workstation Studio** when the host covers more than one installed extension. Only one Studio tab exists at a time; opening it again brings the existing tab forward.
+
+## The rail
+
+The rail lists the spaces this install carries. Spaces with nothing to show for your install are left out.
+
+| Space | Tools | Provided by | Documented in |
+| --- | --- | --- | --- |
+| **Home** | Workspace score, files to fix first, graphs, suggestions, CI gate, project palette | Auric Accessibility | [Home space](#the-home-space) below |
+| **Color** | **Palette**, **Shades**, **Vision** | Auric Color | [Palettes and shades](../color/docs/palettes-and-shades.md), [Colour vision](../color/docs/colour-vision.md) |
+| **Check** | **Findings**, **Contrast**, **Preview** | Findings and Preview: Auric Accessibility; Contrast: Auric Accessibility or Auric Color | [The Check space: Findings and Preview](../accessibility/docs/check-space.md), [The Contrast Studio](contrast-studio.md) |
+| **Health** | Code-health score, categories and findings | Auric Code Health | [The Code Health Studio](../code-health/docs/code-health-studio.md) |
+| **Brand** | Brand accessibility audit | Auric Color | [The brand audit](../color/docs/brand-audit.md) |
+| **Settings** | Appearance and settings for installed capabilities | All | [Settings space](#the-settings-space) below |
+
+At the foot of the rail:
+
+- **Rulebook** opens the rulebook and knowledge database search. See [Rulebook and knowledge database](rulebook-and-knowledge.md).
+- **Icons** opens the combined Auric icon library. See [The Icon Studio bridge](icon-studio-bridge.md).
+- The Auric Artisan mark at the top of the rail links to https://auricartisan.com.
+
+The Studio opens on the first space in the rail: **Home** when Auric Accessibility is installed, **Color** for Auric Color alone, and **Health** for Auric Code Health alone. Within a session, each space remembers the tool you last used in it.
+
+When the Studio tab is narrow, the rail turns horizontal above the content.
+
+## The space header
+
+Every space opens with a header:
+
+- A **kicker** (small label) naming the space and tool, for example **Check · Accessibility findings**.
+- A **title**. On Home it is your workspace's name; in the Contrast Studio it is **Contrast checker**, or **Text on** followed by the rule or element when a pair is linked to a file.
+- A one-line **summary** of what the tool is for.
+- A **scan chip** on Home, Findings and Health showing the workspace and how long ago it was scanned, for example `my-app · scanned 12 min ago`.
+- The tool's **actions**. The primary action is gold; the others are plain.
+- A **tab row** when the space holds more than one tool (Color and Check). The Findings tab shows a count.
+
+A thin status line under the header reads **Scanning the workspace…** or **Refreshing the workspace scan…** while a scan runs. When results arrive, a toast reports them, for example `Scan complete · 82/100 · fresh+cached`.
+
+The footer reads **Crafted by Auric Artisan. Everything here runs on this machine.** with a link to auricartisan.com.
+
+## The Home space
+
+### Before the first scan
+
+The header shows **Scan project**. The body explains what a scan does and offers **Fix plan for an agent** (which scans first) and, when Auric Color is installed, **Audit a brand by hand →**.
+
+### After a scan
+
+Header actions:
+
+| Button | What it does |
+| --- | --- |
+| **Report** | With Auric Code Health: generates the project health report. Without it: saves an accessibility report as Markdown (`accessibility-report.md`) through a save dialog. |
+| **Rescan** (gold) | Re-reads the workspace and refreshes the scan cache. |
+
+Left column:
+
+- **Score card.** A ring with the overall score and grade, and tiles for **Accessibility** (the WCAG sub-score and number of findings), **Contrast** (text pairs below target, or **every text pair passes**) and, with Auric Code Health, **Code health** (score, findings and number of secrets).
+- **Files to fix first.** Up to eight files ranked by critical and serious findings, then contrast failures, then total issues, with columns **File**, **Contrast**, **WCAG** and **Color vision**. Select a file name to open it at its first finding. The card shows how many files were scanned.
+- **Graphs & details** (collapsed at first): **Score split** (Overall, Contrast, WCAG a11y), **Contrast distribution** (AAA, AA, Large/UI only, Fail, CVD risk) and **WCAG impact distribution** (Critical, Serious, Moderate, Minor), each with counts and percentages.
+- **Harmony & temperature** (collapsed at first): the detected colour scheme of your palette, the number of hue families with a confidence percentage, a chip for each hue, and a warm and cool balance bar.
+
+Right column:
+
+- **Suggested.** Up to three recommendations from the scan, each with a priority pill (**high**, **medium**, **low** or **good**), a title, detail and the recommended action. Examples: **Fix the lowest contrast text pairs first**, **Clear critical and serious WCAG findings**, **Reduce color-vision-dependent distinctions**, **Fix repeated 1.1.1 patterns**, **Consolidate repeated color literals into tokens**, or **No urgent automated findings**.
+- **CI gate** (with Auric Code Health): the command to fail a pull request only on new issues, a **Copy command** button and **Write health.json + SARIF**. See [The CI gate](ci-gate.md).
+- **Project palette · N**: up to 14 of the most used colours. Select a swatch to copy it. **Audit as a brand** sends the palette to the Brand space.
+
+Collapsible sections remember whether you left them open or closed, across sessions.
+
+## The Settings space
+
+The Settings space shows only controls for installed capabilities. Its header reads **Your Settings — only controls for installed capabilities** and offers **Open data folder**, **Clear cache** and **Force rescan** when a scanning extension is installed.
+
+### Appearance
+
+The **Appearance** card changes the Studio's accent colour and saves immediately; there is no Save button for it. See [Appearance](appearance.md).
+
+### The other cards
+
+| Card and control | Values | Setting written |
+| --- | --- | --- |
+| **Project data** › **Store workspace data locally** | checkbox | `data.enabled` |
+| **Project data** › **Data folder** | folder name; the full path is shown below | `data.folderName` |
+| **Scan engine** › **Continuous scan as you type** | checkbox | `scan.live` |
+| **Scan engine** › **Use cached scan data** | checkbox | `scan.cache.enabled` |
+| **Scan engine** › **Auto scan after file changes** | checkbox | `scan.autoScan` |
+| **Scan engine** › **Auto scan on startup** | checkbox | `scan.autoScanOnStartup` |
+| **Scan engine** › **Live scan delay (ms)** | 200–5000 | `scan.liveDelayMs` |
+| **Scan engine** › **Cache max age (minutes)** | 0 or more | `scan.cache.maxAgeMinutes` |
+| **Scan engine** › **Auto scan delay (ms)** | 250–60000 | `scan.autoScanDelayMs` |
+| **Scope** › **Maximum files** | 1 or more | `scan.maxFiles` |
+| **Scope** › **Exclude glob** | a glob pattern | `scan.exclude` |
+| **Accessibility audit** › **Audit profile** | WCAG 2.0, WCAG 2.1, WCAG 2.2 (default), WCAG 3.0 draft (+APCA) | `a11y.profile` |
+| **Contrast** › **Contrast standard** | WCAG 2.x ratios, APCA (WCAG 3 draft), WCAG 2.x + APCA | `contrast.standard` |
+| **Contrast** › **WCAG 2.x ratio target** | 1–21, in steps of 0.5 | `contrast.threshold` |
+| **Contrast** › **APCA min Lc** | 15–106 | `contrast.apcaThreshold` |
+| **Color picker** › click action | Inline hover picker, Spectrum picker panel, Click disabled | `colorPicker.clickAction` |
+
+The **Scan engine** card also shows whether the cache is ready, how old it is and when it was saved.
+
+Project data, Scan engine and Scope appear when Auric Accessibility or Auric Code Health is installed; Accessibility audit with Auric Accessibility; Contrast with Auric Accessibility or Auric Color; Color picker with Auric Color.
+
+Select **Save settings** at the bottom to write your changes. They are saved to the workspace's VS Code settings (or your user settings when no folder is open) and mirrored into `.auric-artisan/settings.json`. Each value is written to the extension that owns it. The contrast card reminds you to **Force a rescan after changing**, because saved scans keep the old thresholds until you rescan.
+
+## Keyboard use
+
+- `Tab` moves through controls; arrow keys, `Home` and `End` move between spaces on the rail and between tools in a tab row.
+- `/` jumps to the search box on the Findings and Health tools; `Escape` closes an open picker, menu or tooltip first, then clears that search.
+- `Enter` or `Space` activates swatches, finding rows and other clickable tiles.
+
+See [Accessibility of the Studio](studio-accessibility.md) for the full list.
+
+## Related
+
+- [The Contrast Studio](contrast-studio.md)
+- [The Overview view](overview-view.md)
+- [Scanning](scanning.md)

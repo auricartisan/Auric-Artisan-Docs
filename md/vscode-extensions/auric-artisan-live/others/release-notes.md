@@ -1,0 +1,84 @@
+---
+title: Auric Artisan Live — release notes
+description: What changed in each published version of Auric Artisan Live.
+product: VS Code extensions › Auric Artisan Live
+updated: 2026-09-25
+---
+
+# Release notes
+
+Dates are when each version appeared on the Visual Studio Marketplace.
+
+## 0.2.1 — English and Hindi (11 September 2026)
+
+Hindi is built into the same extension; there is nothing extra to install and no translation service.
+
+- Choose **Auto**, **English** or **हिन्दी** in the Auric Live panel header. The choice is saved in `auricLive.interfaceLanguage`. **Auto** follows VS Code's display language, including regional Hindi locales.
+- The control panel, quick settings, request controls, inline Phone QR guidance and common messages are translated.
+- All 54 command titles and the three sidebar view names have Hindi versions that follow VS Code's display language.
+- New preview tabs use the selected language; reopen an existing preview to update it.
+- Switching language keeps the current section and request filters, and does not restart the server.
+- Technical messages without a translation stay in English. Served websites, request data, commands and the browser dashboard are not translated.
+- HAR exports now record the installed extension version.
+
+## 0.2.0 — A more connected development workspace (8 September 2026)
+
+### Added
+
+- **Development workspace.** The control panel's Overview, Requests, Runtime, Routing and Settings sections bring server controls, backend setup and diagnostics into one tab.
+- **Inline phone QR.** Show a locally generated QR code inside the panel, copy the address and read network and HTTPS guidance without another tab.
+- **Request exploration.** Combine search and status filters, sort by time, latency or size, page through results, pause the display and open details on demand.
+- **Runtime diagnostics.** Check prerequisites and backend readiness, use optional HTTP health paths, or connect to an existing server with a URL-only run profile.
+- **Browser console.** Opt-in console mirroring with level filters, bounded history, credential redaction, rate limiting and copy and clear controls.
+- **Certificate import checks.** Imported certificates are checked for matching keys and validity dates. Generated certificates also cover IPv6 loopback.
+- New commands: **Select Active Server**, **Toggle Browser Console Capture**, **Use HTTPS Certificate and Key** and **Diagnose Project and Runtime**.
+
+### Improved
+
+- A clearer Marketplace title, **Auric Artisan Live — Live Server & Preview**. The extension ID is unchanged.
+- The Auric visual design across the panel and the browser dashboard.
+- Keyboard-friendly custom drop-down menus throughout the panel, request filters, workspace selection, preview and browser console.
+- Layouts that work in narrow editor splits and on phones.
+- A responsive request feed that keeps your search focus, selection and display preferences.
+- Inspector totals shown separately from a clearly labelled recent-request p95.
+- Upload pacing and consistent download shaping across static files, proxied traffic, injected HTML, mocks and REST responses.
+- Changing run targets keeps unrelated session settings and API routes; unrelated configuration changes keep in-memory REST data.
+- Links to auricartisan.com in the panel, preview and dashboard.
+
+### Fixed
+
+- Mouse-wheel, trackpad and keyboard scrolling in the browser dashboard, including on pages that block scrolling.
+- Clipped console drop-downs, doubled borders and menus running off screen.
+- `Escape` closing the dashboard before an open drop-down.
+- Stale phone QR codes after the server stopped or its address changed.
+- Request updates from one workspace appearing in another.
+- Unnecessary restarts after a clean exit, and duplicate restart attempts.
+- Stalled or oversized uploads and abandoned transfers holding resources too long.
+
+### Privacy and safeguards
+
+- Sensitive query and body fields are redacted before storage or export.
+- HAR bodies need explicit opt-in; incomplete or redacted captures cannot be replayed.
+- Workspace trust is enforced for project-supplied runtime, proxy and CGI settings.
+- Static files cannot be reached through links that lead outside the served folder.
+- Console capture is off by default.
+
+### Compatibility
+
+- Requires VS Code 1.95 or newer. Backend runtimes are installed separately.
+- Self-signed certificates still need trust on each browser or device.
+
+## 0.1.0 — First release (31 July 2026)
+
+- A local HTTP and HTTPS server with clean URLs, single-page-app fallback, directory listings, custom headers, basic authentication and safe dot-file handling.
+- Live reload on explicit saves by default, optional file watching, CSS and image hot swap, scroll restoration and reconnection.
+- Reload-storm protection and generated-file exclusions.
+- Compression, range requests, ETags and conditional responses.
+- Framework and language detection, custom launch commands, port discovery, backend monitoring and bounded crash recovery.
+- HTTP and WebSocket proxying, mock routes, JSON REST collections and PHP through CGI in trusted workspaces.
+- Network simulation, a responsive editor preview, network access and phone QR codes.
+- The **Servers**, **Requests** and **Routes** views, request replay, curl and fetch copying and redacted HAR export.
+- The in-page browser dashboard with health, performance, network, storage, server and environment tabs.
+- The custom cursor with link, button and text states and a native-cursor switch.
+- Multi-root workspaces, `auric.live.json`, project exclusions and local session records.
+- No telemetry and no runtime npm dependencies.

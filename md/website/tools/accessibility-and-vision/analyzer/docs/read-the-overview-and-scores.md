@@ -1,0 +1,123 @@
+---
+title: Analyzer — Read the Overview and scores
+description: Understand the overall score, the grade bands, how categories are weighted, and how to work through the issue cards.
+product: Website › Tools › Accessibility and vision
+updated: 2026-09-25
+---
+
+# Read the Overview and scores
+
+The **Overview** panel is the summary of a run: one score, the categories behind it, and the issues ranked by how much fixing them is worth. This guide explains each part and how the numbers are made.
+
+## The score
+
+The large number at the top is the **Overall Audit Score**, from 0 to 100, with a letter grade beside it. Under it, a line names the categories it was weighted from. If some checks were switched off, the line says so, for example "Scored on 4 of 10 categories — performance, reliability, security, media, colour and palette, rendered DOM were not scanned for this run and were excluded rather than counted as zero."
+
+A page that could not be measured (a bot-challenge page or an almost empty page) gets no score at all, rather than a misleading one. See [Run an analysis](run-an-analysis.md).
+
+### Grade bands
+
+The overall score and each section's own score use the same bands:
+
+| Grade | Tier | Range | Meaning shown |
+| --- | --- | --- | --- |
+| A+ | Excellent | 90–100 | Production-ready; meets or exceeds best practices. |
+| A | Strong | 80–89 | Solid foundations with only minor refinements left. |
+| B | Good | 70–79 | Generally healthy, with a few clear gaps to close. |
+| C | Fair | 55–69 | Usable, but several material issues should be addressed. |
+| D | Weak | 40–54 | Significant issues are affecting real users. |
+| F | Critical | 0–39 | Serious, widespread problems need urgent attention. |
+
+The accessibility engine in the **A11y+** panel uses its own, stricter letter scale. See [The accessibility engine](accessibility-engine.md).
+
+### Why this score?
+
+Open **Why this score?** under the score. It shows:
+
+- the tier, its meaning, and how many points you need to reach the next tier, for example "To reach Excellent (A+), gain about 6 more points.";
+- **How it's calculated** — a one-line formula;
+- **Category weights & impact** — each category's share and how many points it cost;
+- **Checks** — how many failed, how many items and pages were analysed, and a **Confidence** level;
+- **What moved the score** — the categories that cost the most;
+- **Top recommendations** — the first fixes to make.
+
+Every section's panel has its own **Why this score?** box built the same way.
+
+## How the overall score is made
+
+The overall score is a weighted average of up to ten category scores. The **Report** panel's table **How Your Score Was Calculated** shows the exact weights, contributions and points lost for your run.
+
+| Category | Base weight | Comes from |
+| --- | --- | --- |
+| Accessibility | 20% | The accessibility engine's score, when it ran |
+| Colour contrast | 16% | The Contrast audit |
+| Performance | 13% | The Performance audit, capped by measured Core Web Vitals |
+| Deep analysis | 10% | The Deep DOM comparison |
+| Metadata | 9% | The SEO and metadata check |
+| Responsive | 8% | The Responsive behaviour check |
+| Visual quality | 8% | What is painted on screen, sampled from the rendered page |
+| Reliability | 7% | Whether the links that were checked resolved |
+| Security | 7% | Whether the expected protective headers are declared |
+| Media | 2% | Images, video and audio alternatives |
+
+Two rules keep the number honest:
+
+- **A category with nothing to measure is excluded**, and the remaining weights are scaled up to fill the gap. A page with no images is not penalised for media, and a check you switched off does not count as zero or as 100. Excluded rows show **Not scored**.
+- **SEO and A11y+ are shown but not counted** in the overall score. The SEO score is reported for its own sake; the A11y+ score is the same engine result that already feeds Accessibility.
+
+A score can go down after you improve a page. Fixing a component so that content becomes visible can expose text that was never checked before. That is the report becoming more accurate, not the page getting worse.
+
+## The rest of the Overview
+
+| Block | What it shows |
+| --- | --- |
+| **What is this?** | A short explanation of the score for first-time readers |
+| **Human Summary** | Score, strong and weak areas, confidence, the previous run, and the estimated score after top fixes |
+| **Category Scores** | Every category's score, including SEO and A11yPlus |
+| **Score Weight Transparency** | The categories that cost points, with their weight and point impact |
+| **Analysis Context** | **Environment**, **Performance context** and **Template inference** (shared header and footer) |
+| **Canvas / GPU / Non-DOM Layer (hyper-detail)** | Canvas layers, pixels sampled, low-contrast regions, unreadable and unnamed canvases |
+| **Statistics** | Counts of Critical, Medium and Minor issues, colours, contrast pairs and elements |
+| **Summary** | A plain count, for example "Your site has 8 issues." with a line per severity |
+| **Issue Details** | The issue cards, described below |
+
+For a whole-site scan, the Overview adds **Full-Site Scan** and **Page-By-Page Breakdown**. See [Scan a whole site](scan-a-whole-site.md).
+
+## Work through the issue cards
+
+### Top 3 Things To Improve Score
+
+The first block under **Issue Details** is the three fixes worth the most. Each shows the estimated points it would add, the category, **Why** it matters, the **Fix**, and a **Fix first** label.
+
+### Issue Classification
+
+A row of badges separates **Real issues** from **Branding-related** and **Dev/temporary** ones, so that, for example, a finding caused by a development server is not mixed with real defects.
+
+### The issue list
+
+Issues are grouped by severity: **Critical**, **Important** and **Low Impact**. Each card shows:
+
+- the issue title and its current status;
+- tags such as the metric it affects (for example LCP) and its area;
+- **Fix:** **Safe** or **Medium**, which says how risky the change is, and an estimated score gain;
+- **Cause chain**, a disclosure that explains what **caused by**, **blocked by** and **affects** — the chain from the defect to the user;
+- **Why** and **Fix** lines;
+- four status buttons.
+
+| Button | What it does |
+| --- | --- |
+| **Open** | The default status: still to do |
+| **Fixed** | Marks the issue as fixed |
+| **Ignore** | Marks the issue as accepted and out of scope |
+| **Recheck** | Marks the issue for checking and re-runs the audit straight away |
+
+Statuses are remembered in this browser. **Recheck** starts a new run, which is metered like any other run.
+
+If nothing was found, the list says "No issues detected — your page passed all checks."
+
+## Use the score well
+
+- Watch it as a trend on the same page, not as a target. Hiding an element from assistive technology can remove a finding and make the page worse.
+- Count causes, not findings. One button component used in twelve places produces twelve findings and needs one fix.
+- Use **Compare** after a fix to see exactly what changed. See [Save, reopen and compare](save-reopen-and-compare.md).
+- A good score is not a legal conformance claim. See [Limits and accuracy](../others/limits-and-accuracy.md).

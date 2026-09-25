@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Back up, restore and reset — Auric Artisan Docs</title>
+<meta name="description" content="Export your settings to a file, import them on another browser, restore one section, reset everything, and use the panel's right-click menu.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Settings panel</a>
+<h2>Settings panel guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Get started with the Settings panel</a></li>
+<li><a href="back-up-restore-and-reset.html" aria-current="page">Back up, restore and reset</a></li>
+<li><a href="change-the-appearance.html">Change the appearance</a></li>
+<li><a href="comfort-options.html">Comfort options</a></li>
+<li><a href="highlights-and-clock.html">Highlights and clock</a></li>
+<li><a href="tooltips-and-ads.html">Tooltips and ads</a></li>
+<li><a href="reference.html">Settings panel reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Settings panel</a></li>
+<li><a href="faq.html">Settings panel FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Site features</a> &rsaquo; <a href="../README.html">Settings panel</a> &rsaquo; <a href="README.html">Settings panel guides</a></nav>
+<p class="kicker">Website › Site features › Settings panel</p>
+<h1>Back up, restore and reset</h1>
+<p class="lede">Export your settings to a file, import them on another browser, restore one section, reset everything, and use the panel's right-click menu.</p>
+<p>Your settings live in this browser only. Clearing the browser&#39;s site data, using a private window or switching to another browser starts you from the defaults. A settings file lets you carry them across.</p>
+<h2 id="export-your-settings">Export your settings</h2>
+<ol>
+<li>Open the panel (<code>Ctrl</code> + <code>,</code>).</li>
+<li>Select <strong>Export</strong> in the footer.</li>
+<li>Your browser downloads a file named <code>auric-settings.json</code>. A message confirms &quot;Settings exported&quot;.</li>
+</ol>
+<p>The file contains every setting in the panel, including your saved colours. It is plain JSON (see <a href="reference.html#the-settings-file">Reference</a> for its fields). It contains no account details.</p>
+<h2 id="import-settings-from-a-file">Import settings from a file</h2>
+<ol>
+<li>Open the panel on the browser you want to set up.</li>
+<li>Select <strong>Import</strong> in the footer.</li>
+<li>Choose an <code>auric-settings.json</code> file (any <code>.json</code> file is accepted for selection).</li>
+<li>The settings apply at once, including the theme. A message confirms &quot;Settings imported&quot;.</li>
+</ol>
+<p>What happens to the file&#39;s contents:</p>
+<ul>
+<li>Only settings the panel knows are read. Anything else in the file is ignored.</li>
+<li>A setting missing from the file is set to its default.</li>
+<li>A value that is not allowed (for example a text size that does not exist) is replaced by that setting&#39;s default.</li>
+<li>If the file is not valid JSON, nothing changes and the message reads &quot;That file isn&#39;t valid settings&quot;. If the file cannot be read, the message reads &quot;Couldn&#39;t read that file&quot;.</li>
+</ul>
+<p>You can import the same file again later; the panel accepts a repeat of the same file.</p>
+<h2 id="restore-one-section">Restore one section</h2>
+<p>Every section except Shortcuts ends with <strong>Restore section defaults</strong>. It resets only that section&#39;s settings. For example, in Comfort it turns every switch back to its default and leaves your accent colour alone. A message names the section, for example &quot;Clock restored to defaults&quot;.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>What its restore resets</th></tr></thead>
+<tbody>
+<tr><td>Appearance</td><td>Accent, theme and text size (not language, not saved colours)</td></tr>
+<tr><td>Comfort</td><td>Reading mode, reduce motion, reduce transparency, boost contrast, underline links, custom cursor, eye-rest reminders and interval, screen saver and delay</td></tr>
+<tr><td>Highlights</td><td>Live demo chips, welcome bar, announcement bar, quick links bar, clock strip, hero notice</td></tr>
+<tr><td>Clock</td><td>24-hour time, show seconds, show date, timezone, date format</td></tr>
+<tr><td>Tooltips</td><td>Show tooltips, detailed tooltips, advanced tooltips</td></tr>
+<tr><td>Ads</td><td>Show ads, ad density, ads in panels &amp; search</td></tr>
+</tbody></table></div>
+<h2 id="reset-everything">Reset everything</h2>
+<ol>
+<li>Select <strong>Reset all</strong> in the footer.</li>
+<li>A confirmation covers the panel: &quot;Reset <strong>all</strong> settings to their defaults? Your accent, theme, comfort and clock preferences will be cleared.&quot;</li>
+<li>Select <strong>Reset all</strong> to confirm, or <strong>Cancel</strong> (or press <code>Esc</code>, or click outside the card) to keep your settings.</li>
+</ol>
+<p>After a reset, a message confirms &quot;All settings reset to defaults&quot;. Your <strong>saved colours are kept</strong>, because they are a palette you built rather than a preference. Remove them one by one with the X on each swatch if you want them gone.</p>
+<blockquote class="callout callout-tip">
+<p><strong>Tip:</strong> Export your settings before a reset if you might want them back.</p>
+</blockquote>
+<h2 id="use-the-panels-right-click-menu">Use the panel&#39;s right-click menu</h2>
+<p>Right-clicking inside the Settings panel opens a small menu of its own instead of the site&#39;s page menu.</p>
+<ul>
+<li>The heading shows the name of the setting you right-clicked, or <strong>Settings</strong> if you right-clicked elsewhere in the panel.</li>
+<li><strong>This setting</strong> (only when you right-clicked a switch row): <strong>Turn on</strong> or <strong>Turn off</strong>.</li>
+<li><strong>Panel</strong>: <strong>Export</strong>, <strong>Import</strong>, <strong>Reset section</strong> and <strong>Reset all</strong>. <strong>Reset section</strong> is unavailable in the Shortcuts section, which has nothing to reset. <strong>Reset all</strong> still asks for confirmation.</li>
+</ul>
+<p>Press <code>Esc</code>, click elsewhere, scroll or resize the window to close the menu. <code>Esc</code> closes only the menu, not the panel.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Get started with the Settings panel</a><a href="change-the-appearance.html"><span>Next</span>Change the appearance</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#export-your-settings">Export your settings</a></li><li><a href="#import-settings-from-a-file">Import settings from a file</a></li><li><a href="#restore-one-section">Restore one section</a></li><li><a href="#reset-everything">Reset everything</a></li><li><a href="#use-the-panels-right-click-menu">Use the panel's right-click menu</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

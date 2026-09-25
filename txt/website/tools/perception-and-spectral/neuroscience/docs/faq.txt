@@ -1,0 +1,83 @@
+==============================================================================
+VISUAL PATHWAY FAQ
+==============================================================================
+Short answers to common questions about the Visual Pathway.
+Area: Website › Tools › Perception and spectral › Neuroscience   Updated: 2026-09-25
+
+IS THIS A MODEL OF REAL NEURONS?
+================================
+
+No. Each stage uses a standard form from the literature (a difference of
+Gaussians, a Gabor energy model, divisive normalisation, a projection in an
+opponent plane), but every constant is the tool's own and sizes are in pixels
+rather than degrees of retina. The maps show the shape of what each area does.
+The page marks itself "Educational, not physiological".
+
+WHY ARE THE TOOL'S L AND M CONE CURVES ON TOP OF EACH OTHER?
+============================================================
+
+The built-in spectral table is the tool's own and puts both peaks at 590 nm.
+It only draws the figure. The cone signals the stages use come from a
+published matrix (Hunt-Pointer-Estévez) applied to CIE XYZ. You can install a
+published table on the Data tab to fix the figure.
+
+ARE THE OPPONENT CHANNELS THE DKL SPACE?
+========================================
+
+No. They are differences of absolute cone signals (L − M, S − (L+M)/2) and a
+luminance channel of L + M. DKL uses cone contrast against a stated white and
+scaled isoluminant axes. See Cones, opponent channels and the cone table
+[cones-and-opponent-channels.txt].
+
+WHY DOES A GREY NOT READ EXACTLY ZERO ON THE CHROMATIC CHANNELS?
+================================================================
+
+It reads about 0.0002 at worst, because the published cone matrix is given to
+four decimals. That is the Neutral off-axis readout.
+
+WHAT DOES "SENSITIVITY AT THIS FREQUENCY" MEAN? IS IT THE CHANCE I CAN SEE THE GRATING?
+==============================================================================
+
+It is a weighting curve that peaks at 1.0 at 4 c/deg and falls off either
+side. It is not a probability of detection; the page deliberately gives no
+detection figure. To measure your own threshold, use the Psychophysical
+Experiment Engine [../../psychophysical-experiment-engine/README.txt].
+
+WHY DO I NEED TO ENTER A VIEWING DISTANCE AND PIXEL PITCH?
+==========================================================
+
+Cycles per degree depends on both. Without them, the same image has a
+different spatial frequency at every distance. Defaults are 57 cm and 0.248
+mm.
+
+CAN I LOAD MY OWN IMAGE?
+========================
+
+No. The sources are the grating and the built-in test card. To run simulations
+over your own images, use Perception and Vision
+[../../perception-and-vision/README.txt].
+
+CAN I SIMULATE A MILDER COLOUR VISION DEFICIENCY?
+=================================================
+
+Not on this page: Colour vision applies full dichromacy. Perception and Vision
+has a Severity control.
+
+DOES THE PUPIL CONTROL DO ANYTHING?
+===================================
+
+Not in the current version. It is shown on the rail, but no map or readout
+uses it.
+
+IS THERE A SPIKE RASTER OR FIRING RATE?
+=======================================
+
+No. An earlier version drew a panel called a spike raster; it had no time axis
+and was withdrawn. Nothing on the page may be reported as a spike train or a
+firing rate.
+
+DOES ANYTHING I ENTER LEAVE MY COMPUTER?
+========================================
+
+No. All processing is in the page. Files and copies are only created when you
+press an export or copy button. See Privacy [../others/privacy.txt].

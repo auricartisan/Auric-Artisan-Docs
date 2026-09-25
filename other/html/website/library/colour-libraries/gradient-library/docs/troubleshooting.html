@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for problems in the Gradient Library.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gradient Library</a>
+<h2>Gradient Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="check-your-gradient.html">Check your own gradient</a></li>
+<li><a href="copy-export-and-share.html">Copy, export and share</a></li>
+<li><a href="inspect-a-gradient.html">Inspect a gradient</a></li>
+<li><a href="save-gradients.html">Save gradients</a></li>
+<li><a href="tags-and-statistics.html">Tags and statistics</a></li>
+<li><a href="test-vision-contrast-and-text.html">Test vision, contrast and text</a></li>
+<li><a href="reference.html">Gradient Library reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Gradient Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Gradient Library</a> &rsaquo; <a href="README.html">Gradient Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Gradient Library</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for problems in the Gradient Library.</p>
+<h2 id="could-not-load-gradient-library">&quot;Could not load gradient library&quot;</h2>
+<p><strong>Why:</strong> The collection could not be downloaded — usually a dropped connection or a content blocker.</p>
+<p><strong>What to do:</strong> Check your connection, allow auricartisan.com in any blocker, and reload.</p>
+<h2 id="no-gradients-match">&quot;No gradients match&quot;</h2>
+<p><strong>Why:</strong> The search and filters together exclude everything. Some combinations are rare, for example <strong>Extreme</strong> complexity with <strong>2 to 4 stops</strong>.</p>
+<p><strong>What to do:</strong> Select <strong>Reset</strong>, then add filters back one at a time.</p>
+<h2 id="my-gradient-says-it-will-step-but-looks-fine-to-me">My gradient says &quot;It will step&quot; but looks fine to me</h2>
+<p><strong>Why:</strong> The check measures the ratio between the largest and the average step. On a small preview, a step can be hard to see; on a large hero area, on a different screen, or after image compression, it often shows.</p>
+<p><strong>What to do:</strong> Look at the ramp full-width on the screens you care about. If the worst step is at the dark end, lift the black slightly; otherwise add a stop near <strong>Worst transition at</strong>.</p>
+<h2 id="the-checker-gives-a-different-verdict-from-the-same-gradient-in-the-collection">The checker gives a different verdict from the same gradient in the collection</h2>
+<p><strong>Why:</strong> The checker always paints evenly spaced stops blended in plain sRGB, the way a basic CSS gradient is drawn. The collection&#39;s gradients were generated with their own stop positions, interpolation space and easing, and their verdict describes that.</p>
+<p><strong>What to do:</strong> Treat the checker as &quot;how will this look as a basic CSS gradient&quot;. To keep a collection gradient&#39;s smoothness, use its CSS exactly as exported.</p>
+<h2 id="stop-n-is-not-a-colour-yet">&quot;Stop N is not a colour yet&quot;</h2>
+<p><strong>Why:</strong> The text in that stop&#39;s field is not a colour the page can read, such as a half-typed hex.</p>
+<p><strong>What to do:</strong> Finish or correct the value. Until then the stop is measured with its last valid colour; leaving the field puts that colour back.</p>
+<h2 id="selecting-a-banding-value-on-the-tags-tab-does-nothing">Selecting a Banding value on the Tags tab does nothing</h2>
+<p><strong>Why:</strong> On the <strong>Tags</strong> tab, the <strong>Banding</strong> values are counts only.</p>
+<p><strong>What to do:</strong> Use the <strong>Banding</strong> filter on the <strong>Library</strong> tab.</p>
+<h2 id="vision-accessibility-or-pair-say-select-a-gradient">Vision, Accessibility or Pair say &quot;Select a gradient&quot;</h2>
+<p><strong>Why:</strong> These tabs work on the open gradient.</p>
+<p><strong>What to do:</strong> Select a card first, then open the tab.</p>
+<h2 id="the-stats-tab-has-not-changed-after-i-filtered">The Stats tab has not changed after I filtered</h2>
+<p><strong>Why:</strong> The tab is drawn when opened.</p>
+<p><strong>What to do:</strong> Select the <strong>Stats</strong> tab again.</p>
+<h2 id="a-share-link-opens-the-page-but-not-the-gradient">A share link opens the page but not the gradient</h2>
+<p><strong>Why:</strong> The link was cut short or edited, or the page says <strong>Shared gradient not in current library</strong>.</p>
+<p><strong>What to do:</strong> Ask for the link again, or search for the gradient&#39;s name.</p>
+<h2 id="saved-gradients-have-gone">Saved gradients have gone</h2>
+<p><strong>Why:</strong> Saves live in this browser only, and the <strong>Saved</strong> tab keeps the latest 240.</p>
+<p><strong>What to do:</strong> Save them again, or export them as JSON or CSS to keep a permanent copy.</p>
+<h2 id="downloads-do-not-start">Downloads do not start</h2>
+<p><strong>Why:</strong> Some browsers block several downloads in a row, or ask before downloading.</p>
+<p><strong>What to do:</strong> Allow downloads from auricartisan.com when your browser asks.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Gradient Library reference</a><a href="faq.html"><span>Next</span>Gradient Library FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#could-not-load-gradient-library">&quot;Could not load gradient library&quot;</a></li><li><a href="#no-gradients-match">&quot;No gradients match&quot;</a></li><li><a href="#my-gradient-says-it-will-step-but-looks-fine-to-me">My gradient says &quot;It will step&quot; but looks fine to me</a></li><li><a href="#the-checker-gives-a-different-verdict-from-the-same-gradient-in-the-collection">The checker gives a different verdict from the same gradient in the collection</a></li><li><a href="#stop-n-is-not-a-colour-yet">&quot;Stop N is not a colour yet&quot;</a></li><li><a href="#selecting-a-banding-value-on-the-tags-tab-does-nothing">Selecting a Banding value on the Tags tab does nothing</a></li><li><a href="#vision-accessibility-or-pair-say-select-a-gradient">Vision, Accessibility or Pair say &quot;Select a gradient&quot;</a></li><li><a href="#the-stats-tab-has-not-changed-after-i-filtered">The Stats tab has not changed after I filtered</a></li><li><a href="#a-share-link-opens-the-page-but-not-the-gradient">A share link opens the page but not the gradient</a></li><li><a href="#saved-gradients-have-gone">Saved gradients have gone</a></li><li><a href="#downloads-do-not-start">Downloads do not start</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

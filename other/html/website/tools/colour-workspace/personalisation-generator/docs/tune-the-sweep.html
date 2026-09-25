@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tune the sweep — Auric Artisan Docs</title>
+<meta name="description" content="Style chips, use case, the brief, engine settings, scoring weights and filters, and what each one changes in the Personalization Generator.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Personalization Generator</a>
+<h2>Personalization Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Personalization Generator</a></li>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="build-the-pool.html">Build your colour pool</a></li>
+<li><a href="design-tokens.html">Design tokens</a></li>
+<li><a href="export-and-save.html">Export, save and share</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="result-tabs.html">Palettes, gradients, typography, UI pairs and posters</a></li>
+<li><a href="run-a-sweep.html">Run a sweep and read the results</a></li>
+<li><a href="tune-the-sweep.html" aria-current="page">Tune the sweep</a></li>
+<li><a href="reference.html">Personalization Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Personalization Generator</a> &rsaquo; <a href="README.html">Personalization Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Tune the sweep</h1>
+<p class="lede">Style chips, use case, the brief, engine settings, scoring weights and filters, and what each one changes in the Personalization Generator.</p>
+<p>Open the <strong>Tune</strong> tab to shape the next sweep. It has four cards (<strong>Style chips</strong>, <strong>Intent &amp; note</strong>, <strong>Engine</strong> and <strong>Scoring weights</strong>) and a <strong>Current configuration</strong> summary. Changes apply to the next sweep; they do not change results you already have.</p>
+<h2 id="style-chips">Style chips</h2>
+<p>Eighteen chips: <strong>Calm</strong>, <strong>Luxe</strong>, <strong>Playful</strong>, <strong>Tech</strong>, <strong>Earthy</strong>, <strong>Editorial</strong>, <strong>Neon</strong>, <strong>Minimal</strong>, <strong>Heritage</strong>, <strong>Pastel</strong>, <strong>Cyber</strong>, <strong>Sun</strong>, <strong>Monochrome</strong>, <strong>Botanical</strong>, <strong>Nordic</strong>, <strong>Sunset</strong>, <strong>Midnight</strong> and <strong>Coastal</strong>. <strong>Calm</strong> and <strong>Editorial</strong> are on at first.</p>
+<p>Select a chip to turn it on or off. You can combine several; at least one is always on, and turning the last one off switches <strong>Calm</strong> back on.</p>
+<p>Each style describes a range of saturation, lightness and chroma, a warmth and a contrast level. With several chips on, the generator averages them. Styles affect the sweep in three ways:</p>
+<ul>
+<li>new colours are drawn towards the style&#39;s ranges;</li>
+<li>each palette gets a <strong>style</strong> score for how well its colours fall inside those ranges;</li>
+<li>built-in reference palettes that share your styles are drawn on more often.</li>
+</ul>
+<h2 id="use-case">Use case</h2>
+<p><strong>Use case</strong> has five options: <strong>Ui</strong> (the default), <strong>Brand</strong>, <strong>Poster</strong>, <strong>Editorial</strong> and <strong>Dashboard</strong>. It favours the colour relationships and reference palettes suited to that use, and, together with your styles, chooses the type systems offered in <strong>Typography</strong> and the Studio.</p>
+<h2 id="the-brief-and-the-preference-note">The brief and the preference note</h2>
+<p>The brief box in the left column and <strong>Preference note</strong> in Tune are the same setting: typing in either one sets it.</p>
+<p>The generator does not read the brief as a sentence. It splits it into words and compares each word with the names of about 80 built-in reference palettes, such as <em>Clay Garden</em>, <em>Quiet Finance</em>, <em>Night Market</em> or <em>Coast Studio</em>. A reference palette whose name contains one of your words is drawn on more often. So <em>garden</em>, <em>coast</em>, <em>console</em>, <em>finance</em> or <em>studio</em> have an effect; words that match no name have none.</p>
+<p>Short words such as <em>a</em> or <em>for</em> also match parts of names, so a brief of a few distinctive words steers better than a long sentence. For a real change of direction, use the pool, the style chips and the use case.</p>
+<h2 id="engine-settings">Engine settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Range</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Pool target</strong></td><td>5 to 240</td><td>64</td><td>How many colours <strong>Build</strong> fills the pool to.</td></tr>
+<tr><td><strong>Palette size</strong></td><td>5 to 12</td><td>6</td><td>Colours in each generated palette.</td></tr>
+<tr><td><strong>Search depth</strong></td><td>40 to 4,000, steps of 20</td><td>320</td><td>Candidate palettes sampled per sweep. More finds better results but takes longer.</td></tr>
+<tr><td><strong>Keep top</strong></td><td>6 to 96</td><td>24</td><td>How many of the best palettes survive the sweep.</td></tr>
+</tbody></table></div>
+<p>The same four settings appear in the left column in Advanced mode as <strong>Depth</strong>, <strong>Pool</strong>, <strong>Size</strong> and <strong>Keep</strong>. Moving a Tune slider updates those boxes. The <strong>Keep</strong> box accepts up to 120, but the generator never keeps more than 96.</p>
+<h2 id="scoring-weights">Scoring weights</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Weight</th><th>Range</th><th>Default</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><strong>Diversity</strong></td><td>0 to 100</td><td>68</td><td>How much the score rewards palettes whose colours are clearly different from one another.</td></tr>
+<tr><td><strong>Accessibility</strong></td><td>0 to 100</td><td>72</td><td>How much the score rewards contrast and colour-vision safety.</td></tr>
+<tr><td><strong>Warmth</strong></td><td>0 to 100</td><td>52</td><td>Pulls new colours towards warmer (higher) or cooler (lower) hues. It is averaged with your styles&#39; own warmth.</td></tr>
+</tbody></table></div>
+<h2 id="filters">Filters</h2>
+<p>Three check boxes, all on by default. They are in the <strong>Scoring weights</strong> card and, in Advanced mode, in the left column.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tune label</th><th>Left-column label</th><th>When on</th></tr></thead>
+<tbody>
+<tr><td><strong>CVD-safe penalty</strong></td><td><strong>CVD-safe</strong></td><td>Palettes whose colours become hard to tell apart under simulated protanopia, deuteranopia or tritanopia score lower. When off, every palette gets the same middling colour-vision score.</td></tr>
+<tr><td><strong>UI contrast bonus (4.5:1)</strong></td><td><strong>Contrast</strong></td><td>Palettes with at least one colour pair of 4.5:1 or more score higher (the bar is 3:1 when off), and new candidates are built with a wider light-to-dark spread.</td></tr>
+<tr><td><strong>Strict perceptual dedupe</strong></td><td><strong>Unique</strong></td><td>Candidates that repeat one already seen in the sweep are thrown out. With <strong>Endless</strong>, repeats of palettes you already have are thrown out too.</td></tr>
+</tbody></table></div>
+<p>Contrast and colour-vision safety are weights, not hard filters: a palette that reads badly is ranked lower, but it can still be kept if everything else about it scores well. Only repeats are discarded.</p>
+<p>The two sets of check boxes set the same values, but the left-column boxes only pick up a change made in Tune after a reload. Use one place consistently.</p>
+<h2 id="simple-and-advanced">Simple and Advanced</h2>
+<p>The <strong>Simple</strong> and <strong>Advanced</strong> switch in the left column only shows or hides the search settings there. Every setting keeps working in both modes, and all of them are always in <strong>Tune</strong>.</p>
+<h2 id="current-configuration">Current configuration</h2>
+<p>The right-hand card in Tune summarises the next sweep: up to ten pool colours, the selected styles, <strong>Intent</strong>, the four engine settings, the three weights and <strong>Search space</strong>, a rough count of possible palettes from your pool size and palette size. It has two buttons:</p>
+<ul>
+<li><strong>Run sweep</strong> starts a sweep, the same as <strong>Generate</strong>.</li>
+<li><strong>Reset defaults</strong> puts the engine settings, weights and filters back to their defaults. It does not change your pool, styles, use case or brief.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="build-the-pool.html">Build your colour pool</a></li>
+<li><a href="run-a-sweep.html">Run a sweep and read the results</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="run-a-sweep.html"><span>Previous</span>Run a sweep and read the results</a><a href="reference.html"><span>Next</span>Personalization Generator reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#style-chips">Style chips</a></li><li><a href="#use-case">Use case</a></li><li><a href="#the-brief-and-the-preference-note">The brief and the preference note</a></li><li><a href="#engine-settings">Engine settings</a></li><li><a href="#scoring-weights">Scoring weights</a></li><li><a href="#filters">Filters</a></li><li><a href="#simple-and-advanced">Simple and Advanced</a></li><li><a href="#current-configuration">Current configuration</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

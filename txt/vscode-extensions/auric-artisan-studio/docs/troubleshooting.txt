@@ -1,0 +1,262 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for problems that affect the Studio as a whole,
+from missing views to scans that skip files.
+Area: VS Code extensions › Auric Artisan Studio   Updated: 2026-09-25
+
+This page covers problems shared by all Studio extensions. Problems specific
+to one extension are in its own troubleshooting page: Auric Color
+[../color/docs/troubleshooting.txt], Auric Accessibility
+[../accessibility/docs/troubleshooting.txt], Auric Code Health
+[../code-health/docs/troubleshooting.txt] and the Full Pack
+[../full-pack/docs/troubleshooting.txt].
+
+VIEWS AND SCREENS
+=================
+
+I installed several Studio extensions but see only one Auric icon
+-----------------------------------------------------------------
+
+Why: This is intended. Installed together, the extensions form one
+Workstation. The host (Auric Accessibility, else Auric Color, else Auric Code
+Health) keeps its views; the others hide theirs.
+
+What to do: Use the host's sidebar. Its Overview, Command Center and Studio
+include every installed extension. See The Workstation [workstation.txt].
+
+The Color Picker view is missing
+--------------------------------
+
+Why: It is collapsed by default, and in a Workstation hosted by Auric
+Accessibility it appears only when Auric Color is installed.
+
+What to do: Expand Color Picker at the bottom of the sidebar, or run Auric
+Artisan: Pick / edit color.
+
+The Command Palette lists the same command two or three times
+-------------------------------------------------------------
+
+Why: Each installed extension contributes its own copy of shared commands such
+as Workstation: Command Center and Open Rulebook & Knowledge Database.
+
+What to do: Either works. For the Command Center, use `Ctrl` + `Alt` + `.`,
+which always opens the host's version covering every capability.
+
+Ctrl + Alt + . does nothing
+---------------------------
+
+Why: Another extension or your operating system uses the same keys, or your
+keyboard layout treats `Ctrl` + `Alt` as `AltGr` and types a character
+instead.
+
+What to do: Open File › Preferences › Keyboard Shortcuts, search for
+Workstation: Command Center, and check for conflicts or assign different keys.
+You can always run the command from the Command Palette.
+
+The Studio or Overview does not appear in VS Code for the Web
+-------------------------------------------------------------
+
+Why: The Studio extensions run as desktop (and remote workspace) extensions;
+they do not include a build for VS Code in the browser.
+
+What to do: Use VS Code on the desktop.
+
+SCORES AND SCANS
+================
+
+The status bar shows "A11y" with no number
+------------------------------------------
+
+Why: There is no scan result yet. The tooltip says Auric Artisan — run a
+project scan.
+
+What to do: Select Scan project on the Overview or run Auric Artisan: Scan
+Project for Accessibility (Use Cache). With Auric Color alone, the score
+appears after the Studio has re-graded the workspace in the background as you
+edit.
+
+The scan says "no color/background pairs found to evaluate"
+-----------------------------------------------------------
+
+Why: The scan found no text and background colours it could pair and no markup
+or CSS files to grade, so there is no score.
+
+What to do: Check that your stylesheets and templates use file extensions the
+scan reads, and are not excluded. See What is read [scanning.txt].
+
+I changed the threshold or audit profile but the score did not change
+---------------------------------------------------------------------
+
+Why: The loaded score comes from the scan cache, which was graded with the old
+settings. (Changing the audit profile makes Auric Accessibility treat the old
+cache as stale, but other settings do not.)
+
+What to do: Select Rescan, Force rescan in Studio Settings, or run Auric
+Artisan: Force Rescan Project and Refresh Cache. Editor underlines update
+immediately without a rescan.
+
+Some files were not scanned
+---------------------------
+
+Why: One of these applies:
+
+  - the file's extension is not in the scan list;
+  - it matches `scan.exclude` or a `.auricignore` rule;
+  - it is larger than 1 MB;
+  - the scan hit the `scan.maxFiles` limit (the status-bar tooltip says
+    Scanned N of M files);
+  - it is a file named exactly `.env`, which the in-editor scan does not read.
+
+What to do: Adjust `scan.exclude`, `.auricignore` or `scan.maxFiles` in Studio
+› Settings › Scope, then rescan. See Scanning [scanning.txt].
+
+Test fixtures or generated files flood the results
+--------------------------------------------------
+
+What to do: Add them to `.auricignore` (for example `test/fixtures/` or
+`*.min.css`), or to `scan.exclude`, then rescan. For a single deliberate case,
+use a suppression directive. See Suppression and branding
+[suppression-and-branding.txt].
+
+The score does not follow my edits
+----------------------------------
+
+Why: One of these applies:
+
+  - `scan.live` is off;
+  - the workspace is too large for live re-grading (more than 1,500 files or
+    about 12 MB of text);
+  - the file you are editing was not part of the last scan (for example a new
+    file);
+  - another installed Studio extension owns live re-grading, and its views are
+    the ones updating.
+
+What to do: Turn on Continuous scan as you type in Studio Settings, or rescan
+after your edits. For large workspaces, consider Auto scan after file changes.
+
+A scan failed
+-------------
+
+What you see: Auric Artisan: project scan failed — followed by a reason, and
+Existing results are untouched. In the Studio, a toast starting Scan failed.
+
+What to do: Your previous results are kept. Check that the workspace folder is
+readable and try Force Rescan. If a particular file causes the failure, add it
+to `.auricignore`.
+
+The scan takes a long time
+--------------------------
+
+Why: Large workspaces with many files take longer, and background scans after
+every save add work.
+
+What to do: Keep `scan.cache.enabled` on so ordinary Scan project reuses the
+cache, exclude generated folders, lower `scan.maxFiles` if you only need part
+of the project, and leave `scan.autoScan` off unless you need it.
+
+FILES AND FOLDERS
+=================
+
+A command says "open a workspace folder before …"
+-------------------------------------------------
+
+Why: Reports, health records, the remediation plan and the knowledge database
+are written to `.auric-artisan` inside a workspace folder.
+
+What to do: Open a folder with File › Open Folder… and run the command again.
+
+A .auric-artisan folder appeared in my project
+----------------------------------------------
+
+Why: The Studio stores its scan cache and outputs there. It includes a
+`.gitignore` so regenerated files are not committed.
+
+What to do: Keep it, rename it with `data.folderName`, or turn off Store
+workspace data locally (`data.enabled`) to stop writing workspace data.
+Deleting it is safe; it is recreated when needed.
+
+Write Health Record says "health report is disabled"
+----------------------------------------------------
+
+Why: `auricCodeHealth.health.enabled` is off.
+
+What to do: Turn it back on to use Write Health Record.
+
+Knowledge overrides are reported as invalid
+-------------------------------------------
+
+What you see: Auric Artisan: workspace knowledge overrides are invalid; using
+the built-in database. or could not build the knowledge database — with a list
+of problems.
+
+What to do: Fix each listed problem in
+`.auric-artisan/knowledge-overrides.json`. The rules are in Rulebook and
+knowledge database [rulebook-and-knowledge.txt].
+
+SETTINGS
+========
+
+Studio Settings changes do not stick
+------------------------------------
+
+Why: The cards other than Appearance are saved only when you select Save
+settings. A value set in a narrower scope (for example a workspace folder
+setting) can also override what you changed.
+
+What to do: Select Save settings, then check File › Preferences › Settings for
+the same key under Workspace or a folder.
+
+I changed a scan setting in one extension but another ignores it
+----------------------------------------------------------------
+
+Why: Shared scan and data settings are read from the first extension that has
+a value, checking Auric Code Health, then Auric Accessibility, then Auric
+Color.
+
+What to do: Set shared keys under one prefix only, or give them the same value
+everywhere. See Shared settings [reference.txt].
+
+The accent colour did not change
+--------------------------------
+
+Why: You changed the `appearance.accent` of an extension that is not hosting
+the Studio.
+
+What to do: Use the Studio's Settings › Appearance card, which writes to the
+right extension. See Appearance [appearance.txt].
+
+SUGGESTIONS AND THE CONTRAST STUDIO
+===================================
+
+A dismissed suggestion never comes back
+---------------------------------------
+
+Why: Dismissals are permanent by design, and there is no command to undo them.
+
+What to do: The same actions remain available in the Command Center's Actions
+section and in the Studio.
+
+"This pair is no longer linked to its file"
+-------------------------------------------
+
+Why: You opened another pair, or the Studio tab was closed and reopened, so
+the link to the original line was lost.
+
+What to do: Open the pair again from its hover or quick fix. See The Contrast
+Studio [contrast-studio.txt].
+
+"The source line changed since the Studio opened it"
+----------------------------------------------------
+
+Why: The line was edited after the pair was opened, so the Studio will not
+write to it.
+
+What to do: Open the pair again from the editor.
+
+STILL STUCK?
+============
+
+Check Limits and accuracy [../others/limits-and-accuracy.txt] to see whether
+the behaviour is a known limit of static analysis, and the FAQ [faq.txt]. You
+can report a problem through https://auricartisan.com.

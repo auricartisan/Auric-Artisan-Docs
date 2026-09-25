@@ -1,0 +1,98 @@
+==============================================================================
+SELF-HOST A FAMILY
+==============================================================================
+Download a font kit from the Font Library, understand what it contains, and
+serve the family from your own site.
+Area: Services › Font CDN   Updated: 2026-09-25
+
+Instead of loading fonts from fonts.auricartisan.com, you can download a
+family and serve it from your own site. The Font Library builds a ready-to-use
+kit in your browser.
+
+DOWNLOAD A KIT
+==============
+
+For one family:
+
+  1. Open the family in the Font Library at
+     https://auricartisan.com/tool/font/.
+  2. Choose Download kit ("Download N bundled font files with CSS and license
+     notes"). The same button is in the Styles tab under Download self-hosting
+     kit.
+  3. Your browser saves `<Family>-font-kit.zip`.
+
+For several families:
+
+  1. Add them to your selection. They collect in the Your kit tray.
+  2. Choose Download in the tray (it reads Download selected (N)). The file is
+     named `auric-font-selection-kit.zip` (or after the family when there is
+     one).
+
+The Font Library shows "Preparing download kit..." while it gathers the files,
+then "Downloaded" and the file name.
+
+WHAT A KIT CONTAINS
+===================
+
+For each family, a folder with:
+
+  File:       `fonts/…`
+  What it is: Every font file the CDN serves for the family
+
+  File:       `css/<family-id>.css`
+  What it is: `@font-face` rules pointing at `../fonts/`, and a
+              `--font-<family-id>` variable with a fallback
+
+  File:       `demo.html`
+  What it is: A page that shows the family, using the stylesheet
+
+  File:       `README.txt`
+  What it is: The family, category, designer, licence, file list and three
+              steps to use it
+
+  File:       `LICENSE.txt`
+  What it is: The family's licence text, when the library has it
+
+If a file could not be fetched, the kit adds `DOWNLOAD_NOTES.txt` listing what
+is missing.
+
+INSTALL IT ON YOUR SITE
+=======================
+
+  1. Unzip the kit and copy the family's folder into your site, for example to
+     `/fonts/alegreya/`.
+  2. Keep the `fonts`, `css` and licence files together.
+  3. Link the stylesheet from your pages:
+         <link rel="stylesheet" href="/fonts/alegreya/css/alegreya.css">
+  4. Apply the family:
+         body { font-family: 'Alegreya', serif; }
+     or use the variable the stylesheet defines, such as
+     `var(--font-alegreya)`.
+  5. Open `demo.html` from the kit to check the files work.
+
+POINT THE LOADER AT YOUR COPY
+=============================
+
+If you use `font-cdn.js`, you can host it with your own stylesheets and data
+and set its base address; see Use the loader [use-the-loader.txt].
+
+FAMILIES THAT CANNOT BE DOWNLOADED
+==================================
+
+Families tagged Installed are system fonts: the library lists them but does
+not serve their files, because their licences do not allow redistribution. For
+these, the download button reads Installed only, and the Font Library says
+"Only bundled library fonts can be downloaded".
+
+KEEP THE LICENCE
+================
+
+Every kit includes the licence information for a reason: most open font
+licences require the licence to travel with the files. See Licences
+[../others/licences.txt].
+
+RELATED PAGES
+=============
+
+  - Embed a family [embed-a-family.txt]
+  - Licences [../others/licences.txt]

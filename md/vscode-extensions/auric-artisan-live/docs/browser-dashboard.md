@@ -1,0 +1,103 @@
+---
+title: Auric Artisan Live — the in-page browser dashboard
+description: Open the Auric Live developer dashboard over a served page to see page health, network delivery, server state, storage, environment, requests and console messages.
+product: VS Code extensions › Auric Artisan Live
+updated: 2026-09-25
+---
+
+# Use the in-page browser dashboard
+
+Auric Live can place a *developer dashboard* over any page it serves. It shows how the page is doing and what the server is doing, without opening browser developer tools, and it works on a phone too.
+
+## Open and close it
+
+- In a served page, press `Alt` + `Shift` + `D`. Change the keys with `auricLive.dashboard.shortcut` (modifier names joined with `+`, for example `Ctrl+Shift+.`).
+- Close it with the **×** button, or press `Escape` (an open drop-down closes first).
+
+The dashboard is on by default (`auricLive.dashboard.enabled`). It is added to the page along with the live-reload script. If a framework's own dev server handles reloading, Auric Live still adds the dashboard on its own (`auricLive.dashboard.independent`).
+
+The dashboard's styles and menus are kept separate from your page (in a Shadow DOM), so it does not restyle your site and your site does not restyle it. It makes no requests for external fonts or branding.
+
+## The header
+
+| Control | What it does |
+| --- | --- |
+| **auricartisan.com ↗** | Open the Auric Artisan website in a new tab |
+| Shortcut badge | Shows the key combination that opens the dashboard |
+| **Use site cursor** / **Use Auric cursor** | Switch between the Auric pointer and the page's own cursor |
+| **Pause metrics** / **Resume metrics** | Stop or restart sampling |
+| **↻** (Refresh dashboard data) | Re-read storage and server data now |
+| **×** (Close developer dashboard) | Close the dashboard |
+
+The subtitle shows **LOCAL DEVELOPMENT /** and the page address.
+
+## The seven tabs
+
+Move between tabs with the mouse, or with the arrow keys, `Home` and `End` when a tab has focus.
+
+### Overview
+
+- **Development health** — a summary status (**All systems nominal**, or findings marked **Critical**, **Warning** or **Review**), such as the live-reload connection being unavailable or the frame rate falling below 30 FPS.
+- **Live page health** — frame rate, first contentful paint, largest contentful paint, interaction latency, layout shift, long tasks and DOM node count.
+- **Runtime findings** and a **Delivery summary**: requests, reloads and the current reload trigger, time to first byte, DOM ready, window load and connected pages.
+
+### Network
+
+Transfer overview and resource analysis for the page: resources by type, bytes transferred and decoded, the largest and slowest resources, and a request timeline. Cached responses are labelled either **Likely cached** (the browser's estimate) or **Confirmed** (the server answered from cache or with 304), so estimates are never presented as facts.
+
+### Server
+
+The Auric server's state: connection, uptime, HTTP or HTTPS, bytes served, compression and cache policy, network profile, live reload and its trigger, proxy rules, mock routes, REST collections and CGI, and routing and project controls such as the ignore file and its patterns.
+
+### Storage
+
+A summary of the page's storage: origin usage and quota, local storage, session storage, Cache Storage, IndexedDB, cookies and whether storage is persistent or best effort. It counts and sizes storage; it does not read stored values. Storage is only sampled while this tab is open or when you refresh.
+
+### Environment
+
+**Page context** (address, viewport, device pixel ratio, DOM nodes, visibility, service worker), **Security and capabilities** (secure context, cross-origin isolation, online status, cookies, reduced motion, forced colours), **Device and browser** (language, logical processors, device memory, touch points, JavaScript heap) and **Connection** (type, round-trip time, downlink, data saver).
+
+### Requests
+
+The server's recent requests for this page, with method, path, status, time, size and source.
+
+### Console
+
+A copy of the page's browser console messages, when console capture is on (see below). Filter by level, **Copy console** (copies the sanitised messages) or **Clear console**.
+
+Measurements the browser does not support show as **Unavailable** rather than a guess.
+
+## Console capture
+
+Console capture is **off by default**. When on, the page's console messages are mirrored into the dashboard's **Console** tab and into the **Auric Artisan Live** output channel in VS Code.
+
+1. Turn it on with **Auric Live: Toggle Browser Console Capture**, **Capture browser console** in the control panel, or `auricLive.console.enabled`.
+2. Reload any page that was already open.
+3. Open the dashboard and choose **Console**.
+
+| Setting | Default | Range | What it does |
+| --- | --- | --- | --- |
+| `auricLive.console.levels` | `error`, `warn`, `info`, `log`, `debug` | — | Levels to capture |
+| `auricLive.console.maxEntries` | 200 | 20–2000 | Messages kept per page |
+| `auricLive.console.maxMessageLength` | 2000 | 100–10000 | Characters kept from one console call |
+| `auricLive.console.rateLimit` | 20 | 1–100 | Messages sent per second from each page |
+
+Sensitive fields are redacted and output is rate-limited. The page's own console keeps working normally, and the original console behaviour is restored when the page leaves. Captured messages are not added to session records.
+
+## The Auric cursor
+
+While a page is served, Auric Live replaces the page's cursor with the Auric pointer, which has link, button and text states. Touch screens, coarse pointers and forced-colour (high-contrast) modes keep the native cursor. Switch it off at once with **Use site cursor** in the dashboard, or permanently with `auricLive.dashboard.customCursor`.
+
+## Scrolling and keyboard
+
+- Scroll the dashboard with the mouse wheel or trackpad, even on pages that block scrolling.
+- With the content focused, use the arrow keys, `Page Up`, `Page Down`, `Home` and `End`; `Space` and `Shift` + `Space` page up and down without triggering buttons.
+- Scrolling inside an open drop-down stays in the drop-down.
+
+## Performance of the dashboard itself
+
+Sampling is on demand. It pauses when the tab is hidden, runs local measurements during browser idle time, and asks the server for its state every `auricLive.dashboard.sampleIntervalMs` (default 1000 ms) only while the dashboard is open. Its own requests are excluded from the page's figures.
+
+The dashboard and the website being served are not translated when you choose Hindi in the Auric Live panel.
+
+When it is working, pressing `Alt` + `Shift` + `D` on a served page opens the dashboard on its **Overview** tab with live figures.

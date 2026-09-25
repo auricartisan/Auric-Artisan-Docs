@@ -1,0 +1,47 @@
+---
+title: Advertise — Limits and accuracy
+description: What the AdsSense price and delivery estimates are based on, how accurate they are, and the limits of the campaign builder.
+product: Website › Advertise
+updated: 2026-09-25
+---
+
+# Limits and accuracy
+
+## The price
+
+The quote in the builder is the price you are asked to pay. It is worked out from the format's daily rate, the zone, the flight length, the share of voice and any promo code, in the currency you chose. The payment link is for the price shown.
+
+## The delivery estimate
+
+- **Impressions** are estimated from each zone's typical daily views, shown on the zone buttons, multiplied by the days in the flight and your share of voice. Real traffic varies from day to day.
+- **Unique viewers** are a rough estimate from impressions.
+- **Clicks** use each format's typical click-through rate: house averages measured by the ad system, not a promise for your ad.
+- **eff. CPM** divides the price before tax by the estimated impressions.
+- The figures on the page, such as estimated daily ad views, are the page's own estimates.
+
+Your flight report gives the delivered figures, measured by the ad system rather than estimated.
+
+## What reduces delivery
+
+- Paid Auric Artisan subscribers browse without ads.
+- Your frequency cap limits how often one visitor sees the ad.
+- Ad units render only as they come near the part of the page on screen, so a unit far down a page a visitor never scrolls to is not shown.
+
+## Builder limits
+
+| Item | Limit |
+| --- | --- |
+| Formats per campaign | 1 |
+| Zones per campaign | 1 |
+| Audience groups | Up to 3 |
+| Custom URL parameters | Up to 5 |
+| Uploaded artwork | PNG, JPG, WebP or SVG; up to 300 KB |
+| Earliest start date | Tomorrow |
+| Flight lengths | 1 week, 2 weeks, 1 month, 3 months |
+| Currencies | INR, USD |
+
+For anything outside these, such as several formats, a custom flight length or a bulk buy, use **Contact us** at https://auricartisan.com/company/contact/.
+
+## Drafts
+
+A draft is saved only in the browser where you build it, including an uploaded file. It does not follow you to another browser or device.

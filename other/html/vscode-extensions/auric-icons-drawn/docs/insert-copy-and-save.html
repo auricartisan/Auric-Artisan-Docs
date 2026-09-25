@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert, copy and save icons — Auric Artisan Docs</title>
+<meta name="description" content="Insert Drawn icons with language-aware output, copy them in nine formats, save SVG files, open the source and preview icon IDs on hover.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Icons: Drawn</a>
+<h2>Auric Icons: Drawn guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Icons: Drawn</a></li>
+<li><a href="icon-library.html">Browse the Icon Library</a></li>
+<li><a href="insert-copy-and-save.html" aria-current="page">Insert, copy and save icons</a></li>
+<li><a href="merged-icon-studio.html">Use Drawn with Modern and Playful</a></li>
+<li><a href="reference.html">Auric Icons: Drawn reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Icons: Drawn</a> &rsaquo; <a href="README.html">Auric Icons: Drawn guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Icons: Drawn</p>
+<h1>Insert, copy and save icons</h1>
+<p class="lede">Insert Drawn icons with language-aware output, copy them in nine formats, save SVG files, open the source and preview icon IDs on hover.</p>
+<h2 id="insert-from-the-library">Insert from the library</h2>
+<ol>
+<li>Open a file and place one or more cursors, or select text to replace.</li>
+<li>Select <strong>Insert</strong> on a card.</li>
+<li>The icon is inserted at every cursor; multi-line output keeps the cursor line&#39;s indentation.</li>
+</ol>
+<p>Without an open text editor you see &quot;Open a text editor before inserting an SVG.&quot;</p>
+<h2 id="smart-insert">Smart insert</h2>
+<p>With <code>auricIconsDrawn.library.smartInsert</code> on (the default), <strong>Insert</strong> adapts to the file:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Editing in</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td>JavaScript, TypeScript, React JSX and TSX, MDX</td><td>JSX element</td></tr>
+<tr><td>HTML, PHP, Handlebars, Vue, Svelte, Astro</td><td>HTML markup (the SVG)</td></tr>
+<tr><td>Markdown</td><td>Markdown image</td></tr>
+<tr><td>CSS, SCSS, Less</td><td>CSS background</td></tr>
+<tr><td>JSON, JSONC, YAML, Python</td><td>Data URI</td></tr>
+<tr><td>XML, SVG and any other language</td><td>Raw SVG</td></tr>
+</tbody></table></div>
+<p>With the setting off, <strong>Insert</strong> uses raw SVG. <strong>Smart Insert Icon</strong> always adapts.</p>
+<p>From the keyboard: press <code>Ctrl</code> + <code>Alt</code> + <code>I</code> (<code>Cmd</code> + <code>Alt</code> + <code>I</code> on macOS) in a text editor, search, and choose an icon. With no search text the list starts with <strong>Recommended for this file</strong>.</p>
+<h2 id="copy-in-a-chosen-format">Copy in a chosen format</h2>
+<p>Run <strong>Auric Icons: Drawn: Copy Icon As… (JSX, CSS, Markdown, Data URI, Image tag)</strong>, choose an icon and a format:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td>Raw SVG</td><td>The SVG markup.</td></tr>
+<tr><td>JSX element</td><td>The SVG with JSX attribute names.</td></tr>
+<tr><td>React component</td><td><code>export function IconName(props) { return (&lt;svg {...props} …&gt;); }</code></td></tr>
+<tr><td>Markdown image</td><td><code>![Icon name](data:image/svg+xml,…)</code></td></tr>
+<tr><td>CSS background</td><td><code>background-image: url(&quot;data:image/svg+xml,…&quot;);</code> plus no-repeat and contain sizing</td></tr>
+<tr><td>Data URI</td><td><code>data:image/svg+xml,…</code></td></tr>
+<tr><td>Image tag (self-contained)</td><td><code>&lt;img src=&quot;data:image/svg+xml,…&quot; alt=&quot;Icon name&quot; width=&quot;24&quot; height=&quot;24&quot;&gt;</code></td></tr>
+<tr><td>Icon name</td><td>The icon ID, such as <code>files-blank-document-drawn-0001</code>.</td></tr>
+<tr><td>Catalog path</td><td>The icon&#39;s relative path in the catalog.</td></tr>
+</tbody></table></div>
+<p>On a card, <strong>Copy</strong> copies raw SVG, <strong>JSX</strong> a JSX element and <strong>URI</strong> a data URI.</p>
+<h2 id="save-and-open-the-source">Save and open the source</h2>
+<ul>
+<li><strong>Save</strong> on a card, or <strong>Save SVG As…</strong>, opens a save dialog in your first workspace folder (or home folder) with the icon&#39;s file name. Select <strong>Save icon</strong>.</li>
+<li>The artwork, <strong>Source</strong> on a card, or <strong>Open SVG Source</strong> opens the SVG in a preview tab.</li>
+</ul>
+<h2 id="other-commands">Other commands</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Search Icons</strong></td><td>Choose an icon, then <strong>Smart Insert (matches this file)</strong>, <strong>Insert SVG at Cursor</strong>, <strong>Copy SVG</strong>, <strong>Save SVG As…</strong>, <strong>Open SVG Source</strong> or <strong>Toggle Like</strong>.</td></tr>
+<tr><td><strong>Insert SVG at Cursor</strong></td><td>Choose and insert (smart insert applies when on).</td></tr>
+<tr><td><strong>Copy SVG</strong></td><td>Choose and copy raw SVG.</td></tr>
+<tr><td><strong>Insert from Likes</strong></td><td>Choose a liked icon and insert.</td></tr>
+<tr><td><strong>Insert from Recent</strong></td><td>Choose a recent icon and insert. Also <code>Ctrl</code> + <code>Alt</code> + <code>R</code>.</td></tr>
+<tr><td><strong>Toggle Like for an Icon</strong></td><td>Like or unlike an icon.</td></tr>
+<tr><td><strong>Clear Likes, Recents and Learned Recommendations</strong></td><td>Confirm with <strong>Clear</strong> to reset.</td></tr>
+</tbody></table></div>
+<h2 id="hover-previews">Hover previews</h2>
+<p>Hover over a Drawn icon ID, such as <code>files-blank-document-drawn-0001</code>, in HTML, CSS, SCSS, Less, Vue, Svelte, Astro, JavaScript, TypeScript, React JSX and TSX, JSON, JSONC, Markdown, PHP, Handlebars or XML. The hover shows a 48-pixel colour preview, the name and description, ID, category and tags, and <strong>Open in Icon Library</strong>. Turn it off with <code>auricIconsDrawn.library.hoverPreview</code>.</p>
+<h2 id="result">Result</h2>
+<p>The icon is in your file, on your clipboard or saved as an <code>.svg</code> file, and it appears under <strong>Recent</strong>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="icon-library.html"><span>Previous</span>Browse the Icon Library</a><a href="merged-icon-studio.html"><span>Next</span>Use Drawn with Modern and Playful</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#insert-from-the-library">Insert from the library</a></li><li><a href="#smart-insert">Smart insert</a></li><li><a href="#copy-in-a-chosen-format">Copy in a chosen format</a></li><li><a href="#save-and-open-the-source">Save and open the source</a></li><li><a href="#other-commands">Other commands</a></li><li><a href="#hover-previews">Hover previews</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

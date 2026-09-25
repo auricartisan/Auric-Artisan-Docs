@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Code Health privacy — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Code Health stores and writes, how it protects secrets, and when it uses the network.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health: other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Auric Code Health shortcuts</a></li>
+<li><a href="glossary.html">Auric Code Health glossary</a></li>
+<li><a href="limits-and-accuracy.html">Auric Code Health limits and accuracy</a></li>
+<li><a href="privacy.html" aria-current="page">Auric Code Health privacy</a></li>
+<li><a href="release-notes.html">Auric Code Health release notes</a></li>
+<li><a href="related.html">Related to Auric Code Health</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health: other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Auric Code Health privacy</h1>
+<p class="lede">What Auric Code Health stores and writes, how it protects secrets, and when it uses the network.</p>
+<p>Auric Code Health analyses your code on your machine. It sends no code, findings or telemetry anywhere and needs no account. The bundled command-line scanner makes no network requests either.</p>
+<h2 id="secrets-are-never-stored">Secrets are never stored</h2>
+<p>When it finds a secret, only a note with its length (<code>[redacted secret; 40 characters]</code>) is kept. The secret itself never reaches the editor hover, the Problems panel, the Studio, the scan cache, <code>health.json</code>, SARIF, the history, the project health report or the remediation plan. See <a href="../docs/secrets-and-redaction.html">Secrets and redaction</a>.</p>
+<h2 id="what-it-writes">What it writes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>What</th></tr></thead>
+<tbody>
+<tr><td><code>.auric-artisan/</code> in your workspace</td><td>The scan cache, a settings copy, <code>health.json</code>, <code>health.sarif</code>, <code>health-history.json</code>, the project health report, the remediation plan and the knowledge files</td></tr>
+<tr><td>Your settings</td><td>The accent colour (user settings) and values you save in Studio › Settings (workspace settings)</td></tr>
+<tr><td>VS Code&#39;s storage for the extension</td><td>Dismissed suggestions and collapsed Studio sections</td></tr>
+</tbody></table></div>
+<p>The health record includes your current Git branch and commit, read from the <code>.git</code> folder. Review records before sharing them outside your team: they contain file paths and messages, never secret values.</p>
+<h2 id="when-the-network-is-used">When the network is used</h2>
+<p>Only when you open a link yourself, such as auricartisan.com or an official source in the knowledge database.</p>
+<p>See the <a href="../../others/privacy.html">Studio privacy page</a> for details.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="limits-and-accuracy.html"><span>Previous</span>Auric Code Health limits and accuracy</a><a href="release-notes.html"><span>Next</span>Auric Code Health release notes</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#secrets-are-never-stored">Secrets are never stored</a></li><li><a href="#what-it-writes">What it writes</a></li><li><a href="#when-the-network-is-used">When the network is used</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

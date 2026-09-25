@@ -1,0 +1,92 @@
+---
+title: Browser extension — Contrast
+description: Check a text and background colour pair against WCAG 2.2 and APCA, read the verdict and size guidance, and fix the pair to the nearest passing colour.
+product: Browser extension › Check
+updated: 2026-09-25
+---
+
+# Contrast
+
+Contrast (the Contrast checker) tells you whether a text colour is readable on a background, in WCAG 2.2 and APCA, and finds the nearest colour that passes if it is not.
+
+## Open it
+
+- Check › **Contrast**;
+- `Alt` + `Shift` + `C`;
+- **Check as text** or **Check as background** in the Picker;
+- clicking a finding in Audit, or **Check contrast** in Findings;
+- **Contrast** in a colour's detail card (Page palette, Image, Scale);
+- **Use text colour** or **Use background** in Code › Inspect.
+
+## Set the pair
+
+1. Set **Text** with its swatch or by typing a HEX value.
+2. Set **Background** the same way.
+
+The pair starts as near-black on gold. A **Recent** strip loads one of your latest colours as the text colour.
+
+A live preview shows the pair as large "Aa", a sentence, 14 px body text, and a button, a link and a chip.
+
+## Read the results
+
+### Verdict
+
+A banner shows the strongest WCAG level the pair clears and what that means:
+
+| Verdict | Ratio | Meaning shown |
+|---|---|---|
+| **AAA** | 7:1 or more | Excellent, fine for body text at any size |
+| **AA** | 4.5:1 or more | Passes for normal body text and everything larger |
+| **AA Large** | 3:1 or more | Large text and UI elements only |
+| **Fail** | Below 3:1 | Decorative use only, not for text |
+
+The banner also shows the ratio and, when APCA is on, the APCA Lc score.
+
+### WCAG table
+
+The ratio (**WCAG ratio**) and six checks, each marked pass or fail:
+
+| Check | Needs |
+|---|---|
+| **AA** Body | 4.5:1 |
+| **AA** Large | 3:1 |
+| **AAA** Body | 7:1 |
+| **AAA** Large | 4.5:1 |
+| **AA** UI 3:1 | 3:1, for user-interface components |
+| **Gfx** 3:1 | 3:1, for meaningful graphics |
+
+### APCA
+
+With Settings › Tools › **Show APCA beside WCAG** on (the default):
+
+- the APCA Lc score beside the ratio;
+- five tiers, each marked pass or fail: **Lc 90** (any text), **Lc 75** (body), **Lc 60** (large), **Lc 45** (extra-large or bold) and **Lc 30** (UI);
+- **APCA readable sizes**: for 14, 16, 18, 24, 36 and 48 px text, whether the pair is readable at normal and at bold weight.
+
+The extension uses a simplified APCA calculation that is accurate enough for design feedback; see [Limits and accuracy](../../others/limits-and-accuracy.md).
+
+### Colour-vision check
+
+"Contrast as about 8% of men see it": the ratio of the pair as it appears with normal vision and with protan, deutan and tritan colour-vision deficiency, each with an "Aa" sample and a pass, warning or fail mark.
+
+## Fix the pair
+
+1. Choose a target in the fix menu: **AA 4.5:1** (the default), **AA Large 3:1**, **AAA 7:1**, **APCA Lc 60** or **APCA Lc 75**.
+2. Choose **Fix text** to find the nearest text colour that passes, or **Fix background** to find the nearest background.
+
+The tool keeps the colour's hue and saturation and moves its lightness until the pair passes, then applies the result and tells you what changed (for example "Adjusted fg to #6B5A1F (4.5:1)"). If the pair already passes, it says so.
+
+Below, **On-brand text** and **On-brand background** show up to six suggestions each: colours with the same hue that pass the target. Click one to apply it.
+
+## Other buttons
+
+- **Swap**: Exchanges the text and background colours
+- **Copy report**: Copies a plain-text report: both colours, the ratio and level, the APCA score, each WCAG threshold with PASS or FAIL, and the colour-vision ratios
+
+> **Note:** The copied report labels its thresholds "WCAG 2.1". The thresholds are the same in WCAG 2.1 and 2.2.
+
+## Related pages
+
+- [Audit](audit.md)
+- [Picker](../colour/picker.md)
+- [Check and fix a brand colour](../workflows/check-and-fix-a-brand-colour.md)

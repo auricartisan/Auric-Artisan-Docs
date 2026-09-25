@@ -1,0 +1,72 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Why an Icon CDN icon might not appear, appear huge, show the wrong icon or
+ignore its colour, and what to do.
+Area: Services › Icon CDN   Updated: 2026-09-25
+
+  Symptom:    Icons are huge, or fill their container
+  Why:        Served SVGs have no width or height
+  What to do: Set `data-size`, or add CSS such as `[data-icon] svg { width:
+              1em; height: 1em; }`
+
+  Symptom:    A placeholder stays empty
+  Why:        The name matches no icon
+  What to do: Copy the name from the Icon Library; check the spelling and the
+              set
+
+  Symptom:    The wrong set's icon appears
+  Why:        The set you named has no icon by that name, so another set's is
+              used
+  What to do: Use the set's own name, for example `lucide:house` rather than
+              `lucide:home`
+
+  Symptom:    Icons added after page load stay empty
+  Why:        The loader fills placeholders once, when the page loads
+  What to do: Call `AuricIcons.inject()` after adding them
+
+  Symptom:    An icon does not update when I change `data-icon`
+  Why:        Filled placeholders are marked `data-icon-done`
+  What to do: Remove that attribute (and the contents), then call `inject()`
+              again
+
+  Symptom:    The colour does not change
+  Why:        An `<img>` or linked SVG file cannot inherit text colour
+  What to do: Use the loader, inline SVG or a sprite; or pick the colour
+              before copying
+
+  Symptom:    `data-stroke` has no effect
+  Why:        The set is drawn with fills
+  What to do: Choose a lighter or heavier style instead, for example Phosphor
+              `light` or `bold`
+
+  Symptom:    A style is ignored
+  Why:        The icon does not have that style
+  What to do: Check the icon's Style buttons; the loader falls back to the
+              default
+
+  Symptom:    A Material icon looks like a letter or box
+  Why:        The Material font has not loaded yet, or the name is wrong
+  What to do: Wait for the font; check the name in the Icon Library
+
+  Symptom:    The first icons are slow to appear
+  Why:        The loader downloads the catalogue index and the markup for each
+              set and style on first use
+  What to do: Use fewer sets and styles, or export a sprite
+
+  Symptom:    `AuricIcons` is undefined
+  Why:        Your code ran before the script loaded
+  What to do: Put your code after the script tag, or wait for the page's
+              `load` event
+
+  Symptom:    A strict Content-Security-Policy blocks it
+  Why:        Your policy does not allow the CDN
+  What to do: Allow `https://icons.auricartisan.com` for `script-src` and
+              `connect-src` (and `font-src` for Material), or self-host
+
+RELATED PAGES
+=============
+
+  - Use the loader [use-the-loader.txt]
+  - Style, size and colour [style-size-and-colour.txt]
+  - FAQ [faq.txt]

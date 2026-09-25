@@ -1,0 +1,129 @@
+==============================================================================
+ANALYSE THE COLLECTION
+==============================================================================
+Use the Harmony, Accessibility and Stats tabs to see how methods, hues,
+contrast and lightness are distributed across a sample of palettes.
+Area: Website › Library › Colour libraries › Palette Library   Updated: 2026-09-25
+
+The Harmony, Accessibility and Stats tabs describe many palettes at once. A
+browser cannot count five million palettes, so each tab measures a sample and
+says how big it was.
+
+THE SAMPLE
+==========
+
+Every tab opens with a line such as:
+
+  | Measured on 2,000 palettes from the start of the collection. Five million
+  | cannot be counted in a browser, so these are a sample — the API samples the
+  | same way.
+
+  - No filter or search: the sample is the first 2,000 palettes of the
+    collection.
+  - A filter or search is on: the page looks through up to 40,000 palettes
+    from the start of the collection and keeps up to 2,000 that match. The
+    line then says, for example, Measured on 812 palettes matching this
+    filter, out of 40,000 derived.
+  - An id is in the search box: the sample is that one palette.
+
+The sample is rebuilt every time you change a filter or search, so the tabs
+always describe the filter the grid is showing. If nothing in the looked-at
+stretch matches, the tabs show No palettes and suggest widening the filter.
+
+HARMONY TAB
+===========
+
+Four cards, each a bar chart with counts:
+
+  Card:           Generation method
+  What it counts: How many sampled palettes carry each method label.
+
+  Card:           Dominant hue bucket
+  What it counts: How many have each dominant hue: red, orange, yellow, green,
+                  cyan, blue, purple or pink.
+
+  Card:           Harmony classification
+  What it counts: How many are classified Neutral, Triadic, Analogous or
+                  Monochrome from their measured hues (see Inspect a palette
+                  [inspect-a-palette.txt]).
+
+  Card:           Lightness & chroma profile
+  What it counts: How many are Dark (L < 0.4)**, **Mid (0.4-0.7)** or **Light
+                  (> 0.7), and Muted (< 0.07)**, **Balanced** or **Vivid (>
+                  0.15).
+
+ACCESSIBILITY TAB
+=================
+
+Palette-level WCAG summary
+--------------------------
+
+  Row:     Has any AA pair (4.5+)
+  Meaning: Palettes with at least one pair of colours at 4.5:1 or more, as a
+           count and percentage.
+
+  Row:     Has any AAA pair (7+)
+  Meaning: Palettes with at least one pair at 7:1 or more.
+
+  Row:     Largest mutually-legible set
+  Meaning: The most colours from one palette that all reach 4.5:1 against each
+           other, for example 2 of 5 (sRGB allows 3).
+
+Pair-level WCAG breakdown
+-------------------------
+
+Every palette has ten pairs, so the sample has ten times as many pairs as
+palettes. The card counts AAA pairs (>= 7:1), AA pairs (>= 4.5:1) and Below
+AA.
+
+How many of the five can be used together
+-----------------------------------------
+
+This card answers a practical question: how many of a palette's five colours
+can all be used as text on each other? The page explains why the answer can
+never be five. Contrast depends only on how light each colour is, and between
+black and white there is room for at most three lightness levels that are each
+4.5:1 apart — and only two at 7:1. So no five-colour palette can have all ten
+pairs at AA, here or anywhere. The card shows how many sampled palettes allow
+1, 2 or 3 mutually legible colours, marking 3 as (the ceiling).
+
+The most usable in this sample
+------------------------------
+
+Up to 24 palettes that contain at least one legible pair, ordered by their
+strongest pair. The page notes that two is what this collection realistically
+offers: a legible trio needs a near-black, a mid-tone and a near-white to turn
+up together in one palette, which the page reports did not happen in any of
+the 60,000 palettes it measured. The cards work like cards in the grid: select
+one to inspect it, select a swatch to copy it.
+
+STATS TAB
+=========
+
+A line first states how many sampled palettes contain a pair at 4.5:1 or
+better, "so they can carry body text on themselves". Then four histograms:
+
+  Card                    | Range            | Bands
+  ------------------------+------------------+------
+  Avg lightness (OKLCH L) | 0 to 1           | 10
+  Avg chroma (OKLCH C)    | 0 to 0.30        | 10
+  Hue spread              | 0 to 360 degrees | 12
+  Best pair contrast      | 1:1 to 15:1      | 14
+
+Values beyond a histogram's range are counted in its last band. The best pair
+is charted rather than the worst because, as the page explains, with five
+colours some pair is nearly always close to identical, so the worst pair says
+little about whether a palette can carry text.
+
+KEEPING THE TABS CURRENT
+========================
+
+Each tab is drawn when you open it and redrawn after any change of filter or
+search. If a tab looks out of date, select it again.
+
+RESULT
+======
+
+You can see, for any filter, what share of palettes can carry text, which
+methods and hues dominate, and how light and colourful the palettes tend to be
+— with the size of the sample stated every time.

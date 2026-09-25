@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting Material Under Light — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for Material Under Light: black samples, disabled controls, clipping, refused files and links.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Material Lighting (Material Under Light)</a>
+<h2>Using Material Under Light</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Material Under Light</a></li>
+<li><a href="compare-with-the-reference.html">Compare with the reference light</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="run-a-sensitivity-sweep.html">Run a sensitivity sweep</a></li>
+<li><a href="set-up-a-scene.html">Set up a scene</a></li>
+<li><a href="use-a-measured-reflectance.html">Use a measured reflectance</a></li>
+<li><a href="reference.html">Material Under Light reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting Material Under Light</a></li>
+<li><a href="faq.html">Material Under Light FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Material Lighting (Material Under Light)</a> &rsaquo; <a href="README.html">Using Material Under Light</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Material Lighting</p>
+<h1>Troubleshooting Material Under Light</h1>
+<p class="lede">Symptoms, causes and fixes for Material Under Light: black samples, disabled controls, clipping, refused files and links.</p>
+<h2 id="the-sphere-and-swatch-are-black">The sphere and swatch are black</h2>
+<p><strong>Why:</strong> you chose <strong>Conductor</strong> with the <strong>Oren-Nayar</strong> lobe. A conductor has no diffuse term, and Oren-Nayar has no specular term, so nothing is reflected.</p>
+<p><strong>What to do:</strong> choose <strong>Dielectric</strong>, or a specular lobe such as <strong>GGX</strong>, <strong>Beckmann</strong>, <strong>Ward</strong> or <strong>Ashikhmin-Shirley</strong>.</p>
+<h2 id="the-temperature-slider-does-nothing-or-is-greyed-out">The Temperature slider does nothing or is greyed out</h2>
+<p><strong>Why:</strong> it is used only by <strong>Blackbody at a temperature you choose</strong> and <strong>Daylight at a temperature you choose</strong>. Every other light has its own fixed definition.</p>
+<p><strong>What to do:</strong> choose one of those two options.</p>
+<h2 id="i-set-a-daylight-below-4000-k-but-the-readout-says-4000-k">I set a daylight below 4000 K but the readout says 4000 K</h2>
+<p><strong>Why:</strong> the CIE daylight model is defined from 4000 K upwards, so lower values are raised to 4000 K. The exports record this.</p>
+<p><strong>What to do:</strong> use <strong>Blackbody at a temperature you choose</strong> for warmer sources.</p>
+<h2 id="measured-temperature-is-highlighted-and-mentions-mccamy">&quot;Measured temperature&quot; is highlighted and mentions McCamy</h2>
+<p><strong>Why:</strong> above 7000 K the colour-temperature formula is outside its accurate range; the error band grows to ±139 K and beyond.</p>
+<p><strong>What to do:</strong> nothing; the reference chosen above 5000 K is a daylight either way. Treat the temperature as approximate.</p>
+<h2 id="clipped-to-srgb-appears-or-inside-srgb-reads-no-or-the-highlight-is-not">&quot;clipped to sRGB&quot; appears, or &quot;Inside sRGB&quot; reads &quot;no&quot; or &quot;the highlight is not&quot;</h2>
+<p><strong>Why:</strong> the material&#39;s colour, or its highlight, is outside what sRGB can show; the swatch and sphere show the nearest displayable colour. Saturated materials such as the default gold, and bright highlights on shiny surfaces, often do this.</p>
+<p><strong>What to do:</strong> nothing is wrong; the L*a*b* values are computed before clipping. Raise <strong>Roughness</strong> or change the angles to dim the highlight.</p>
+<h2 id="moving-seen-from-or-between-them-does-not-change-the-sphere">Moving &quot;Seen from&quot; or &quot;Between them&quot; does not change the sphere</h2>
+<p><strong>Why:</strong> the sphere is always drawn seen head-on, lit from <strong>Light from</strong>. The view angles set the geometry of the single point the readouts and swatches describe.</p>
+<p><strong>What to do:</strong> read the swatch and the readouts, which do change.</p>
+<h2 id="the-refractive-index-slider-is-greyed-out">The Refractive index slider is greyed out</h2>
+<p><strong>Why:</strong> it applies only to dielectrics.</p>
+<p><strong>What to do:</strong> select <strong>Dielectric</strong>.</p>
+<h2 id="every-material-looks-similar-under-e-or-a-high-temperature-light">Every material looks similar under E or a high-temperature light</h2>
+<p><strong>Why:</strong> the presets are smooth invented curves, and the lobe mixes in a colourless highlight on dielectrics.</p>
+<p><strong>What to do:</strong> compare L*a*b* values rather than swatches, or load a measured reflectance.</p>
+<h2 id="my-reflectance-file-is-refused">My reflectance file is refused</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td><strong>No two-column numeric rows in that file</strong></td><td>Make sure each data line has two numbers: wavelength and reflectance</td></tr>
+<tr><td><strong>Not installed: fewer than eight rows</strong></td><td>Supply at least eight rows</td></tr>
+<tr><td><strong>Not installed: covers X to Y nm; at least 420 to 680 is needed …</strong></td><td>Extend the data to cover 420–680 nm</td></tr>
+</tbody></table></div>
+<p>A file in percent is converted automatically. A file mixing fractions and percentages is read as percent throughout.</p>
+<h2 id="the-material-menu-shows-only-my-file">The material menu shows only my file</h2>
+<p><strong>Why:</strong> a loaded reflectance replaces the twenty presets until you remove it.</p>
+<p><strong>What to do:</strong> select <strong>Go back to the presets</strong> on the Data tab.</p>
+<h2 id="a-file-chooser-opens-when-i-click-the-spectrum">A file chooser opens when I click the spectrum</h2>
+<p><strong>Why:</strong> the plot is also a drop zone for reflectance files; clicking it opens a chooser.</p>
+<p><strong>What to do:</strong> cancel it if you did not mean to load a file.</p>
+<h2 id="the-sweep-result-is-out-of-date">The sweep result is out of date</h2>
+<p><strong>Why:</strong> the sweep is not rerun when the scene changes.</p>
+<p><strong>What to do:</strong> select <strong>Run the sweep</strong> again on the Metrics tab before exporting.</p>
+<h2 id="a-link-did-not-restore-my-measured-material">A link did not restore my measured material</h2>
+<p><strong>Why:</strong> links carry the light, preset material, surface, lobe and angles only.</p>
+<p><strong>What to do:</strong> load the file again after opening the link.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Material Under Light reference</a><a href="faq.html"><span>Next</span>Material Under Light FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-sphere-and-swatch-are-black">The sphere and swatch are black</a></li><li><a href="#the-temperature-slider-does-nothing-or-is-greyed-out">The Temperature slider does nothing or is greyed out</a></li><li><a href="#i-set-a-daylight-below-4000-k-but-the-readout-says-4000-k">I set a daylight below 4000 K but the readout says 4000 K</a></li><li><a href="#measured-temperature-is-highlighted-and-mentions-mccamy">&quot;Measured temperature&quot; is highlighted and mentions McCamy</a></li><li><a href="#clipped-to-srgb-appears-or-inside-srgb-reads-no-or-the-highlight-is-not">&quot;clipped to sRGB&quot; appears, or &quot;Inside sRGB&quot; reads &quot;no&quot; or &quot;the highlight is not&quot;</a></li><li><a href="#moving-seen-from-or-between-them-does-not-change-the-sphere">Moving &quot;Seen from&quot; or &quot;Between them&quot; does not change the sphere</a></li><li><a href="#the-refractive-index-slider-is-greyed-out">The Refractive index slider is greyed out</a></li><li><a href="#every-material-looks-similar-under-e-or-a-high-temperature-light">Every material looks similar under E or a high-temperature light</a></li><li><a href="#my-reflectance-file-is-refused">My reflectance file is refused</a></li><li><a href="#the-material-menu-shows-only-my-file">The material menu shows only my file</a></li><li><a href="#a-file-chooser-opens-when-i-click-the-spectrum">A file chooser opens when I click the spectrum</a></li><li><a href="#the-sweep-result-is-out-of-date">The sweep result is out of date</a></li><li><a href="#a-link-did-not-restore-my-measured-material">A link did not restore my measured material</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

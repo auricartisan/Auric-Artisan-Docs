@@ -1,0 +1,583 @@
+==============================================================================
+COLOR INSPECTOR
+==============================================================================
+Use the Color Inspector to read one colour in every format, check it for
+contrast and colour-vision safety, find its name, build scales and harmonies,
+and export it as code.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+The Color Inspector takes one colour and shows you everything the site can
+work out about it. A plain-language summary tells you how light, saturated,
+warm and readable the colour is. Around it sit ten tabs of detail: more than
+forty notations, contrast against real surfaces, how the colour looks with
+colour-vision deficiencies, harmonies, the nearest named colours and industry
+swatches, colour psychology, tint and shade scales, spectral science, and
+ready-to-paste code.
+
+Use it when you meet a colour and want to know whether you can use it, and
+how. It is also the tool behind the site's `?color=` links: add `?color=` and
+a hex code to any page address and the Inspector opens over that page.
+
+The Inspector is one of the six Essentials in the Colour Tools. It opens in a
+floating panel; for moving, resizing and closing panels, see Open the Colour
+Tools and manage their panels [launcher-and-panels.txt].
+
+HOW TO OPEN IT
+==============
+
+  - Launcher: right-click the page, choose Colour tools › All colour tools…
+    (or press `Ctrl` + `Shift` + `C`), then select Color Inspector in the
+    Essentials group.
+  - Right-click a colour: when you right-click a hex code or a colour swatch
+    on the site, choose Inspect in Colour Tools. The Inspector opens with that
+    colour.
+  - A link: add `?color=` and a colour to any page address, for example
+    `https://auricartisan.com/?color=CEA1B5`. Add `&ctab=contrast` to open on
+    a tab, or `&on=FFFFFF` to add a comparison colour. The full list of
+    accepted forms is in Open the Colour Tools and manage their panels
+    [launcher-and-panels.txt].
+
+Opened without a colour, the Inspector starts on the site's gold, `#D3AF37`.
+
+SCREEN TOUR
+===========
+
+The panel has three areas: a strip of ten tabs across the top, a sidebar, and
+the main area that shows the selected tab. In a narrow panel the sidebar moves
+above the main area.
+
+The sidebar
+-----------
+
+  - The hero swatch. A large swatch of the colour with its hex code, its
+    closest colour name, and four badges: the hue family, the correlated
+    colour temperature in kelvin, the CIE L* lightness, and a readability
+    badge (AA on white, AA on black or Decorative). Select the swatch to copy
+    the hex code. When the name is only approximate, it starts with `≈`. If
+    the colour came from a link with transparency, the swatch shows a
+    checkerboard and an `α` tag; if the link held a fragment the site had to
+    interpret, a tag shows the text it started from.
+  - The colour field. The colour swatch opens your browser's colour picker,
+    the text box takes a hex code, and two icon buttons follow: the dice
+    (Random color tooltip, "Jump to a perceptually balanced random color")
+    picks a random colour of medium saturation and lightness, and the drop
+    (Screen picker tooltip, "Sample any pixel on screen") lets you pick a
+    colour from anywhere on your screen. The drop only appears in browsers
+    that support picking colours from the screen.
+  - Read-out. Nine cells: RGB, HSL, OKLCh, CIE L*, Luminance, Chroma, Temp, On
+    white and On black. Select any cell to copy its value.
+  - Compare. Chips for comparison colours. They come from a link (every colour
+    after the first, and any `on=` colours), and every colour you move away
+    from in this panel is added too, most recent first, up to eight. Select a
+    chip to inspect that colour instead. The section is hidden while it is
+    empty.
+  - Actions. Copy hex, Copy CSS, Share link, Save and Download swatch. See
+    Outputs and exports.
+  - Open in. Eight buttons that open another Colour Tool with this colour:
+    Contrast System, Harmony Studio, Space Converter, Pantone & Named,
+    Accessibility Lab, Formulation, CMYK Soft-Proof and Psychology.
+
+Almost every swatch in the tabs is a button. Select one and the Inspector
+switches to that colour, and the colour you were on goes into Compare, so you
+can always step back.
+
+The tab strip
+-------------
+
+The tabs are Overview, Formats, Contrast, Vision, Harmony, Names, Psychology,
+Scales, Science and Export. When the panel is too narrow to show them all,
+arrow buttons appear at each end of the strip to scroll it.
+
+With a tab focused, `←` and `→` move to the previous or next tab (wrapping
+round), and `Home` and `End` jump to the first and last.
+
+Overview
+--------
+
+  - Summary. A sentence or two in plain words, for example: "#D3AF37 — closest
+    named color … is a light yellow, vivid. It is warm (3352 K) and carries
+    body text on black but not on white." It describes lightness (from
+    near-black to near-white), saturation (from achromatic to "at the edge of
+    what sRGB can show"), temperature, which text use the colour can carry,
+    and the colour's dominant wavelength.
+  - Live preview. The colour as a background with a headline, 14 px body copy,
+    11.5 px small print and a Primary action button, all in whichever of black
+    or white reads better on it. Below it: White text and Black text ratios,
+    and Best ink.
+  - Channels. Bars for R, G, B and alpha, and for hue, saturation, lightness
+    and OKLCh chroma.
+  - Quick numbers. Hex, RGB, HSL, HSV, CMYK, CIELAB, CIELCh, OKLCh, luminance
+    Y, hue family, temperature and total ink.
+  - Shades → tints. Eleven steps from dark to light with your colour in the
+    middle, mixed in OKLCh. Select a step to inspect it.
+
+Formats
+-------
+
+A button, Copy the full read-out (JSON), and 43 notations in five groups.
+Select any row to copy just that value.
+
+  Group:     Web & CSS (19)
+  Notations: HEX, HEX (short), RGB, RGBA, RGB %, HSL, HSLA, HSV, CMYK, CIE XYZ
+             (D65), CIELAB (D65), CIELCh (D65)
+
+  Group:     -
+  Notations: OKLab, OKLCh, Linear sRGB, HEX + alpha, CSS modern rgb, HWB, HSI
+
+  Group:     Wide gamut (5)
+  Notations: Display P3, Adobe RGB, Rec. 2020 (as CSS `color()` values),
+             ACEScg (linear), Linear sRGB
+
+  Group:     Perceptual & CIE (9)
+  Notations: CIE xyY, CIE u′v′, CIELAB (D50), CIELCh (D50), CIELUV, LCh(uv),
+             Hunter Lab, IPT, JzAzBz
+
+  Group:     Video & broadcast (3)
+  Notations: YCbCr, YUV, YIQ
+
+  Group:     Code (7)
+  Notations: Decimal, Android (ARGB), Swift UIColor, SwiftUI, Flutter, OpenGL
+             vec4, .NET ARGB
+
+Contrast
+--------
+
+Against real surfaces is a table that treats your colour as text on seven
+standard surfaces: White `#FFFFFF`, Paper `#F5F5F3`, Light gray `#E5E5E5`, Mid
+gray `#767676`, Charcoal `#333333`, Near black `#111111` and Black `#000000`.
+When the Inspector was opened by a link, two more rows show This page's
+background and This page's text, sampled from the page underneath. Every
+comparison colour adds a Compared color row.
+
+  Column:  Ratio
+  Meaning: The WCAG 2.x contrast ratio.
+
+  Column:  Body / Large
+  Meaning: The WCAG level for normal and for large text: AAA, AA or Fail.
+
+  Column:  UI
+  Meaning: Pass at 3:1 or more, the WCAG threshold for icons, borders and
+           other interface parts.
+
+  Column:  APCA Lc
+  Meaning: The APCA lightness contrast of your colour as text on that surface.
+
+  Column:  APCA verdict
+  Meaning: AAA (Lc 90 or more), AA (75), Body (60) or Fail.
+
+  Column:  ISO mod.
+  Meaning: The ISO 9241-3 luminance modulation and its rating.
+
+  Column:  Preview
+  Meaning: "Aa" in your colour on the surface.
+
+A line under the table gives the reverse reading: white and paper text on your
+colour, in Lc.
+
+Nearest accessible version offers four swatches, each your colour with its
+lightness changed and its hue kept, just enough to reach AA body text on white
+(4.5:1), AAA body text on white (7:1), AA body text on black and AAA body text
+on black. Each shows the new hex and ratio, or "already passes". Select one to
+inspect it.
+
+As a background shows your colour behind white text and behind black text,
+with the ratio and the body and large-text levels for each.
+
+Vision
+------
+
+  - How this color is seen. A table of typical vision and four colour-vision
+    deficiencies: Protanopia (no long-wave, red-sensitive cones), Deuteranopia
+    (no medium-wave, green-sensitive cones), Tritanopia (no short-wave,
+    blue-sensitive cones) and Achromatopsia (no colour discrimination). For
+    each: the simulated colour, its hex (select it to inspect), and the ΔE2000
+    shift from the original. A shift above ΔE 10 means the colour reads as a
+    clearly different hue.
+  - Filtered preview. Five sample cards of your colour, one per vision type,
+    drawn through live filters.
+  - Grayscale survival. Your colour next to its grey equivalent, with the
+    grey's hex and L*. This is how it fares in black-and-white print,
+    photocopies and e-ink.
+  - Confusion risk. Shown only when there are comparison colours. For each
+    one: the ΔE between it and your colour for typical vision, the vision type
+    under which they are closest, the ΔE there, and a verdict: Distinct (ΔE 10
+    or more), Tight (5 to 10) or Confusable (under 5).
+
+Harmony
+-------
+
+Every scheme is rotated in OKLCh, so companion colours keep the lightness and
+chroma of your colour instead of drifting the way HSL rotations do. The tab
+shows eight schemes, each swatch labelled with its hue and OKLCh lightness:
+
+  Scheme              | Hue offsets
+  --------------------+----------------------------------------------
+  Complementary       | 0°, +180°
+  Split-Complementary | 0°, +150°, +210°
+  Analogous           | −30°, 0°, +30°
+  Triadic             | 0°, +120°, +240°
+  Tetradic            | 0°, +90°, +180°, +270°
+  Square              | 0°, +90°, +180°, +270°
+  Monochromatic       | Six steps of lightness at your hue and chroma
+  Double Split        | 0°, +30°, −30°, +150°, +210°
+
+Tetradic and Square use the same 90° spacing in this tab. Accessible triad
+then shows the triadic colours adjusted to reach 4.5:1 on white and,
+separately, on black, with each ratio.
+
+Names
+-----
+
+  - Closest named color. Your colour beside the nearest of 1,058 named
+    colours, the ΔE2000 between them, and what that distance means, from
+    "indistinguishable" (under ΔE 1) to "the nearest entry, but visibly
+    different" (ΔE 10 or more).
+  - Industry systems. The three closest entries in each of five systems:
+    HTML/CSS (141 colours), Pantone Solid C (105), RAL Classic (148), NCS (56)
+    and Crayola (111).
+  - Similar named colors. The next 17 names by ΔE2000.
+
+This tab downloads its data the first time you open it, and shows "Loading
+names data…" until it arrives.
+
+Psychology
+----------
+
+  - Emotional read. Emotion words for the colour's hue family at its
+    lightness, and meters for Warmth (Warm, Neutral or Cool), Energy (High,
+    Moderate or Calm), Saturation pull (OKLCh chroma) and Lightness (L*). Very
+    light colours read softer and calmer; very dark ones read more serious and
+    grounded.
+  - Personality. Trait words.
+  - Brand fit. A sentence on where this hue family suits a brand.
+  - Cultural meaning. Positive and negative associations by region or
+    tradition, for example China, India and Japan for red.
+
+This tab also downloads its data the first time you open it.
+
+Scales
+------
+
+  - Tints, Shades and Tones. Ten steps each from your colour towards white,
+    black and mid grey, mixed in OKLCh. Tones lower the chroma and keep the
+    hue.
+  - Design-token ramp. Eleven steps named 50 to 950, each at a fixed OKLCh
+    lightness, with chroma eased off towards the ends and limited to what sRGB
+    can show at that lightness. Each step shows its hex and its contrast ratio
+    on white and on black, and the step nearest your colour is marked with
+    `◂`.
+  - CSS custom properties. The ramp as `--color-50` to `--color-950` inside
+    `:root`, with a Copy button.
+
+Science
+-------
+
+  - Where this color sits in the spectrum. Dominant wavelength (with its band:
+    violet, blue, cyan, green, yellow, orange or red), excitation purity, CIE
+    x, y, CIE u′, v′, tristimulus Y, correlated colour temperature and a
+    temperature description from Very warm to Very cool. Purples and magentas
+    have no single wavelength, so they show a complementary wavelength and
+    "Line of purples" instead.
+  - Approximate reflectance. A spectrum strip from 380 to 780 nm, masked to
+    show roughly which light a surface of this colour would send back.
+  - Gamut headroom. How much of the available chroma your colour uses at its
+    lightness and hue in sRGB, the current and maximum chroma, and a 12-step
+    ramp from grey to the most saturated version.
+  - Coordinates in other gamuts. The colour's R, G, B values in sRGB, Display
+    P3, Adobe RGB and Rec. 2020.
+  - On press. A simple CMYK split, the total ink, and a pass mark for total
+    ink up to 300% (a warning up to 320%). Most web presses cap total ink
+    around 300%.
+
+Export
+------
+
+  - Share this read-out. A read-only box with the current page address plus
+    `?color=`, and three buttons: Copy link, Swatch file and Save to library.
+    A note reminds you that `?on=ffffff` adds a comparison colour and
+    `&ctab=contrast` opens a tab.
+  - Six code blocks, each with a Copy button: CSS custom properties, SCSS,
+    Tailwind, Android colors.xml, SwiftUI and JSON — everything above.
+
+WALKTHROUGHS
+============
+
+Check whether a brand colour can carry text
+-------------------------------------------
+
+  1. Open the Inspector with your colour, for example with `?color=D3AF37` on
+     any page.
+  2. Read the summary on Overview. For `#D3AF37` it says the colour "carries
+     body text on black but not on white".
+  3. Open the Contrast tab. The White row shows a ratio of 2.11 and Fail for
+     body text; the Black row shows 9.96 and AAA.
+  4. Under Nearest accessible version, select AA body text on white.
+
+The Inspector switches to a darker version of your gold that reaches 4.5:1 on
+white, and your original colour moves into Compare so you can go back to it.
+
+Check that two colours stay distinct for colour-blind readers
+-------------------------------------------------------------
+
+  1. Open the Inspector with both colours in one link, for example
+     `?color=D3AF37,4F9D69`.
+  2. Open the Vision tab.
+  3. Read Confusion risk. It names the vision type under which the two colours
+     are closest and gives a verdict.
+
+If the verdict is Confusable or Tight, do not rely on the colour difference
+alone: add a label, an icon or a pattern.
+
+Export a colour as design tokens
+--------------------------------
+
+  1. Set the colour you want in the colour field.
+  2. Open the Export tab.
+  3. Select Copy above the block you need, for example Tailwind.
+
+The clipboard now holds a `tailwind.config.js` snippet with a `brand` scale
+from 50 to 950. The CSS custom properties block for `#D3AF37` starts like
+this:
+
+    :root {
+      --brand: #d3af37;
+      --brand-rgb: 211 175 55;
+      --brand-oklch: oklch(0.7655 0.1385 91.55);
+      --brand-ink: #000000;
+      --brand-50: #fff5c2;
+      --brand-100: #ffe998;
+      /* … through --brand-950 */
+    }
+
+Share exactly what you are looking at
+-------------------------------------
+
+  1. Open the tab you want the other person to see, for example Names.
+  2. In the sidebar, select Share link.
+
+A message confirms "Share link copied" with the address. The link opens the
+current page with the Inspector on the same colour and the same tab.
+
+CONTROLS
+========
+
+  Control:         Hero swatch
+  What it does:    Copies the hex code.
+  Values or range: —
+  Default:         —
+
+  Control:         Colour swatch (picker)
+  What it does:    Opens the browser's colour picker.
+  Values or range: Any sRGB colour
+  Default:         `#D3AF37`, or the colour you opened with
+
+  Control:         Hex text box
+  What it does:    Sets the colour.
+  Values or range: 3, 4, 6 or 8 hex digits, `#` optional
+  Default:         Same as above
+
+  Control:         Dice button (Random color)
+  What it does:    Picks a random colour of medium saturation and lightness.
+  Values or range: —
+  Default:         —
+
+  Control:         Drop button (Screen picker)
+  What it does:    Picks a colour from your screen.
+  Values or range: Supported browsers only
+  Default:         —
+
+  Control:         Read-out cells
+  What it does:    Copy one value each.
+  Values or range: 9 cells
+  Default:         —
+
+  Control:         Compare chips
+  What it does:    Inspect a comparison colour.
+  Values or range: Up to 8
+  Default:         Empty, or from the link
+
+  Control:         Copy hex
+  What it does:    Copies the hex code.
+  Values or range: —
+  Default:         —
+
+  Control:         Copy CSS
+  What it does:    Copies `--color: #rrggbb;`.
+  Values or range: —
+  Default:         —
+
+  Control:         Share link
+  What it does:    Copies a link to this page, colour and tab.
+  Values or range: —
+  Default:         —
+
+  Control:         Save
+  What it does:    Saves the colour to your Library.
+  Values or range: —
+  Default:         —
+
+  Control:         Download swatch
+  What it does:    Downloads a 512 × 512 px swatch.
+  Values or range: SVG; hold `Shift` for PNG
+  Default:         SVG
+
+  Control:         Open in buttons
+  What it does:    Open another Colour Tool with this colour.
+  Values or range: 8 tools
+  Default:         —
+
+  Control:         Tabs
+  What it does:    Switch the main view.
+  Values or range: 10 tabs
+  Default:         Overview, or the `ctab` value
+
+  Control:         Tab scroll arrows
+  What it does:    Scroll the tab strip.
+  Values or range: Shown when tabs overflow
+  Default:         —
+
+  Control:         Swatches in tabs
+  What it does:    Inspect that colour.
+  Values or range: —
+  Default:         —
+
+  Control:         Formats rows
+  What it does:    Copy one notation.
+  Values or range: 43 rows
+  Default:         —
+
+  Control:         Copy the full read-out (JSON)
+  What it does:    Copies the JSON read-out.
+  Values or range: —
+  Default:         —
+
+  Control:         Copy (Scales, Export)
+  What it does:    Copies that code block.
+  Values or range: 7 blocks
+  Default:         —
+
+  Control:         Copy link / Swatch file / Save to library
+  What it does:    Same as Share link, Download swatch and Save.
+  Values or range: —
+  Default:         —
+
+OUTPUTS AND EXPORTS
+===================
+
+  Output: Copy hex
+  Format: Text, for example `#D3AF37`
+  Notes:  —
+
+  Output: Copy CSS
+  Format: `--color: #d3af37;`
+  Notes:  —
+
+  Output: Share link / Copy link
+  Format: A URL with `color` and `ctab`
+  Notes:  Opens the Inspector on the same page, colour and tab.
+
+  Output: Download swatch / Swatch file
+  Format: 512 × 512 px SVG, or PNG with `Shift` held
+  Notes:  Named after the hex code, for example `D3AF37.svg`.
+
+  Output: Save / Save to library
+  Format: A colour item in your Library
+  Notes:  Named with the hex and closest name, tagged with the hue family.
+
+  Output: Read-out cells, Formats rows
+  Format: Text
+  Notes:  One value each.
+
+  Output: Copy the full read-out (JSON) and the JSON block
+  Format: JSON
+  Notes:  Hex, alpha, RGB, HSL, HSV, CMYK, CIELAB, CIELCh, OKLab, OKLCh, XYZ,
+          CIE xy, luminance, contrast on white and on black, temperature, hue
+          family, dominant wavelength, excitation purity, nearest name and
+          total ink.
+
+  Output: CSS custom properties
+  Format: CSS
+  Notes:  `--brand`, `--brand-rgb`, `--brand-oklch`, `--brand-ink`,
+          `--brand-50` to `--brand-950`.
+
+  Output: SCSS
+  Format: SCSS variables
+  Notes:  `$brand`, `$brand-ink`, `$brand-50` to `$brand-950`.
+
+  Output: Tailwind
+  Format: `tailwind.config.js` snippet
+  Notes:  A `brand` colour scale 50 to 950.
+
+  Output: Android colors.xml
+  Format: XML resources
+  Notes:  `brand_50` to `brand_950`.
+
+  Output: SwiftUI
+  Format: Swift `Color` extension
+  Notes:  `brand50` to `brand950`.
+
+After a copy, save or download, the button you used briefly shows a tick and a
+short message confirms what happened. If you select Save on a page where the
+Library is not available, the message says "The library isn't available on
+this page".
+
+ACCURACY AND LIMITS
+===================
+
+  - Terms used on this page. WCAG contrast ratio: the ratio between the
+    relative luminance of two colours, from 1:1 to 21:1. WCAG 2 asks for 4.5:1
+    for normal text (AA), 3:1 for large text and interface parts, and 7:1 for
+    AAA. APCA Lc: a newer measure of perceived lightness contrast, roughly
+    −108 to +106. Positive values mean dark text on a lighter background,
+    negative values light text on a darker one. ΔE2000: the CIEDE2000 colour
+    difference; under about 1 two colours look the same side by side. OKLCh: a
+    colour model with lightness, chroma and hue that changes evenly to the
+    eye. Colour-vision deficiency (CVD): reduced or missing sensitivity in one
+    type of cone.
+  - APCA verdicts are a guide. WCAG 3, which may adopt APCA, is still a draft.
+    The AAA, AA and Body labels are the site's reading of the published APCA
+    guidance, not a conformance result. For a WCAG 2.2 audit, use the Ratio
+    column.
+  - ISO 9241-3 ratings. The modulation is (Lmax − Lmin) / (Lmax + Lmin) from 0
+    to 1. The tool rates 0.7 and over Excellent, 0.5 Good, 0.3 Marginal and
+    below that Poor.
+  - Vision simulations are approximations. They model full-strength dichromacy
+    with simple fixed matrices. Real colour vision varies from person to
+    person, and milder forms (anomalous trichromacy) are more common than the
+    full forms shown. Use the results to find risks, not to certify a design.
+  - Temperature. Correlated colour temperature is calculated with McCamy's
+    formula. It is meaningful for near-neutral colours and only indicative for
+    saturated ones.
+  - Reflectance is a heuristic. The curve explains the colour; it is not a
+    spectrophotometer reading and cannot be used to match pigments.
+  - CMYK is arithmetic. The On press split is a simple conversion, not an ICC
+    profile conversion. Soft-proof in CMYK Soft-Proof [cmyk-soft-proof.txt]
+    before sending artwork to print.
+  - Named-system matches are approximate. Pantone, RAL and NCS entries are
+    published sRGB approximations of printed swatches, so the tool always
+    shows the ΔE distance rather than calling a match exact.
+  - sRGB only. Colours are handled as sRGB. Transparency from a link is shown
+    and exported, but contrast is calculated on the solid colour.
+  - Page sampling. The "This page's" rows use the page's main background and
+    text colour, not the colour behind a particular element.
+  - Network. The Names and Psychology tabs download their data from the site
+    the first time you open them. If that fails, the tab says "That data set
+    could not be loaded."
+
+RELATED
+=======
+
+  - Colour Tools documentation [README.txt]
+  - Open the Colour Tools and manage their panels [launcher-and-panels.txt] —
+    `?color=` parameters, panels and the control bar
+  - Contrast System [contrast-system.txt] — deeper contrast work on several
+    foregrounds
+  - Accessibility Lab [accessibility-lab.txt] — a whole palette against the
+    standards and vision filters
+  - Color Name Finder [colour-name-finder.txt] — a quick name lookup
+  - Harmony Studio [harmony-studio.txt], Pantone & Named Lookup
+    [pantone-and-named-lookup.txt], Color Space Converter
+    [colour-space-converter.txt], CMYK Soft-Proof [cmyk-soft-proof.txt], Color
+    Psychology [colour-psychology.txt]
+  - Library Kit [../../../../../kits/library-kit/README.txt] — where saved
+    colours go

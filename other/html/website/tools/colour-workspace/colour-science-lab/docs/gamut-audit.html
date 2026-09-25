@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut audit — Auric Artisan Docs</title>
+<meta name="description" content="Check a palette against sRGB, Display P3, Adobe RGB and Rec. 2020, see how much headroom its tightest colour has, and what clipping would cost.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Color Science Lab</a>
+<h2>Color Science Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Color Science Lab</a></li>
+<li><a href="arrange-link-save-export.html">Arrange, link, save and export panels</a></li>
+<li><a href="catalogue-and-panels.html">The Catalogue and its panels</a></li>
+<li><a href="catalogue-compare-and-analytics.html">Catalogue Compare and Analytics</a></li>
+<li><a href="compare-two-colours.html">Compare two colours</a></li>
+<li><a href="gamut-audit.html" aria-current="page">Gamut audit</a></li>
+<li><a href="illuminants.html">Illuminants</a></li>
+<li><a href="tool-list.html">The 45 tools</a></li>
+<li><a href="workbench.html">The Workbench</a></li>
+<li><a href="reference.html">Color Science Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Color Science Lab</a></li>
+<li><a href="faq.html">Color Science Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Color Science Lab</a> &rsaquo; <a href="README.html">Color Science Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Gamut audit</h1>
+<p class="lede">Check a palette against sRGB, Display P3, Adobe RGB and Rec. 2020, see how much headroom its tightest colour has, and what clipping would cost.</p>
+<p>The <strong>Gamut audit</strong> view checks a palette against four RGB working spaces. A <strong>gamut</strong> is the range of colours a space can hold. A palette written in HEX is sRGB by definition, so it always fits sRGB; the useful number is <strong>headroom</strong> (margin): how far the palette&#39;s tightest colour is from the edge of each space. At 0 % a colour already sits on a primary, and any adjustment clips it.</p>
+<h2 id="layout">Layout</h2>
+<h3 id="palette-under-audit">Palette under audit</h3>
+<p>The palette (<em>N colours · target sRGB</em>): each colour with its HEX code and a line saying its sRGB margin (for example <em>12% margin</em>) or, for a colour from a wider space, <em>clips ΔE N</em>. Each has a <strong>×</strong> to remove it. Below: a colour well and <strong>Add to palette</strong>.</p>
+<p>The starting palette has eight colours: #4F7FE0, #D3AF37, #00C264, #C4562C, #2F6D3A, #00E07A, #8F3B22 and #2B6F8F. A palette holds from 1 to 16 colours.</p>
+<h3 id="coverage-by-working-space">Coverage by working space</h3>
+<p>A table with one row per space (<strong>sRGB</strong>, <strong>Display P3</strong>, <strong>Adobe RGB</strong>, <strong>Rec. 2020</strong>):</p>
+<ul>
+<li><strong>Tightest headroom</strong>: a bar for the smallest margin in the palette.</li>
+<li><strong>In gamut</strong>: how many colours fit, for example <strong>8 / 8</strong>.</li>
+<li><strong>Margin</strong>: the tightest margin as a percentage. Red if any colour falls outside, amber if the margin is under 2 %, green otherwise.</li>
+</ul>
+<h3 id="the-verdict-and-the-cost-of-clipping">The verdict and the cost of clipping</h3>
+<ul>
+<li>A large figure such as <strong>8/8</strong> with <em>Every colour survives sRGB unchanged.</em>, or how many clip and whether they fit Display P3 instead.</li>
+<li><strong>What clipping costs</strong> (<em>ΔE00 after clip</em>): for each colour that clips, its clipped HEX code and the ΔE 2000 lost. With nothing clipping, it names the colour closest to the edge and its margin.</li>
+</ul>
+<h2 id="tasks">Tasks</h2>
+<h3 id="find-the-palette-colour-most-at-risk-in-conversion">Find the palette colour most at risk in conversion</h3>
+<ol>
+<li>Replace the palette with yours: remove the starting colours with <strong>×</strong> and add yours with the colour well and <strong>Add to palette</strong>.</li>
+<li>Read the <strong>Margin</strong> column. The space with the lowest margin, and the colour named under <strong>What clipping costs</strong>, is where trouble will start.</li>
+</ol>
+<p>Result: you know which colour to watch when converting or adjusting the palette.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>×</strong> on a colour</td><td>Removes it</td><td>At least 1 colour remains</td></tr>
+<tr><td>Colour well + <strong>Add to palette</strong></td><td>Adds a colour</td><td>Up to 16 colours</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="workbench.html">The Workbench</a> for one colour&#39;s gamut</li>
+<li><a href="../../../colorimetry-and-rendering/README.html">Colorimetry and rendering tools</a> for gamut mapping</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-two-colours.html"><span>Previous</span>Compare two colours</a><a href="illuminants.html"><span>Next</span>Illuminants</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#layout">Layout</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#controls">Controls</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

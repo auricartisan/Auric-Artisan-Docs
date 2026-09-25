@@ -1,0 +1,1092 @@
+==============================================================================
+REFERENCE: COMMANDS, KEYS AND SETTINGS
+==============================================================================
+Every Auric Artisan File System command grouped as the product groups them,
+every keyboard shortcut, menu and setting, with types, defaults and ranges.
+Area: VS Code extensions › Auric Artisan File System   Updated: 2026-09-25
+
+This page covers Auric Artisan File System 0.1.0: 81 commands, 69 keyboard
+shortcut declarations, one Explorer view and 48 settings. Commands appear in
+the Command Palette with the Auric Files: prefix.
+
+COMMANDS
+========
+
+Commands are grouped as the workspace panel groups them. The Keys column gives
+Windows and Linux keys. (Explorer) keys work whenever the Explorer has focus.
+(deck) keys need `auricFiles.keyboard.enableDefaultShortcuts`. On macOS, `Cmd`
+replaces `Ctrl` in every shortcut, except Redo File Operation, which is `Cmd`
++ `Alt` + `Shift` + `Z`. "Then" means press the first combination, release,
+then press the second.
+
+Commands marked "not in the Command Palette" act on a selection and run from
+the panel, context menus or shortcuts.
+
+Create
+------
+
+Files, folders and complete structures.
+
+  Command:      Auric Files: New File…
+  ID:           `auricFiles.newFile`
+  Keys:         `Ctrl` + `N` (Explorer); `Ctrl` + `Alt` + `A`, then `Ctrl` +
+                `N` (deck)
+  What it does: Create a file: choose the folder, type a name (a trailing /
+                makes a folder), optionally pick a template
+
+  Command:      Auric Files: New Folder…
+  ID:           `auricFiles.newFolder`
+  Keys:         `Ctrl` + `Shift` + `N` (Explorer); `Ctrl` + `Alt` + `A`, then
+                `Ctrl` + `Shift` + `N` (deck)
+  What it does: Create a folder, including nested paths
+
+  Command:      Auric Files: New File from Template…
+  ID:           `auricFiles.newFromTemplate`
+  Keys:         `Ctrl` + `Alt` + `A`, then `T` (deck)
+  What it does: Create a file from a built-in, workspace or global template,
+                filling in its variables
+
+  Command:      Auric Files: New from Framework Preset…
+  ID:           `auricFiles.newFromPreset`
+  Keys:         `Ctrl` + `Alt` + `A`, then `P` (deck)
+  What it does: Create files from a framework preset (React, Vue, Angular and
+                more) or a custom generator
+
+  Command:      Auric Files: New Sibling File
+  ID:           `auricFiles.newSibling`
+  Keys:         `Ctrl` + `Alt` + `N` (deck); `Ctrl` + `Alt` + `A`, then `N`
+                (deck)
+  What it does: Create a file next to the selected file
+
+  Command:      Auric Files: New Child File
+  ID:           `auricFiles.newChild`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `N` (deck)
+  What it does: Create a file inside the selected folder
+
+  Command:      Auric Files: Create Related Files…
+  ID:           `auricFiles.newRelated`
+  Keys:         `Ctrl` + `Alt` + `A`, then `R` (deck)
+  What it does: Create companion files (test, style, story and so on) for the
+                selected file
+
+  Command:      Auric Files: Batch Structure…
+  ID:           `auricFiles.batchCreate`
+  Keys:         `Ctrl` + `Alt` + `B` (Explorer); `Ctrl` + `Alt` + `A`, then
+                `B` (deck)
+  What it does: Type a whole structure of files and folders in one line;
+                braces and ranges expand
+
+  Command:      Auric Files: Batch Create Files…
+  ID:           `auricFiles.batchCreateFiles`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `F` (deck); `Ctrl` + `Alt` + `A`,
+                then `F` (deck)
+  What it does: Create many files at once from comma-separated paths with
+                brace expansion
+
+  Command:      Auric Files: Batch Create Folders…
+  ID:           `auricFiles.batchCreateFolders`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `N` (deck); `Ctrl` + `Alt` + `A`,
+                then `Shift` + `F` (deck)
+  What it does: Create many folders at once from comma-separated paths with
+                brace expansion
+
+Inspect & navigate
+------------------
+
+Properties, comparisons and companion files.
+
+  Command:      Auric Files: File Properties
+  ID:           `auricFiles.showMetadata`
+  Keys:         `Alt` + `Enter` (Explorer)
+  What it does: Open Properties for the selected resource
+
+  Command:      Auric Files: Quick Open in Auric Files…
+  ID:           `auricFiles.quickOpen`
+  Keys:         `Ctrl` + `Alt` + `O` (deck)
+  What it does: Focus the Explorer and search indexed files by name or path
+
+  Command:      Auric Files: Compare Selected Files
+  ID:           `auricFiles.compareSelected`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `D` (deck); `Ctrl` + `Alt` + `A`,
+                then `Shift` + `C` (deck)
+  What it does: Open two selected files in VS Code's diff editor
+
+  Command:      Auric Files: Merge Selected Files
+  ID:           `auricFiles.mergeSelected`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `G` (deck)
+  What it does: Open two files, or a base plus two inputs, in VS Code's merge
+                editor
+
+  Command:      Auric Files: Export Selected Items…
+  ID:           `auricFiles.exportSelection`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `X` (deck)
+  What it does: Save a JSON manifest of the selected items' paths and metadata
+
+  Command:      Auric Files: Go to Related File…
+  ID:           `auricFiles.goToRelated`
+  Keys:         `Ctrl` + `Alt` + `R` (deck); `Ctrl` + `Alt` + `A`, then `O`
+                (deck)
+  What it does: Pick and open any companion of the current file
+
+  Command:      Auric Files: Open Matching Test
+  ID:           `auricFiles.goToTest`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Q` (deck)
+  What it does: Open the current file's test
+
+  Command:      Auric Files: Open Matching Style
+  ID:           `auricFiles.goToStyle`
+  Keys:         `Ctrl` + `Alt` + `A`, then `S` (deck)
+  What it does: Open the current file's stylesheet
+
+  Command:      Auric Files: Open Matching Story
+  ID:           `auricFiles.goToStory`
+  Keys:         `Ctrl` + `Alt` + `A`, then `W` (deck)
+  What it does: Open the current file's story
+
+  Command:      Auric Files: Open Matching Component
+  ID:           `auricFiles.goToComponent`
+  Keys:         `Ctrl` + `Alt` + `A`, then `I` (deck)
+  What it does: Open the component a test, style or story belongs to
+
+  Command:      Auric Files: Open Matching Documentation
+  ID:           `auricFiles.goToDocs`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `D` (deck)
+  What it does: Open the current file's documentation
+
+  Command:      Auric Files: Show Related File Group
+  ID:           `auricFiles.showRelatedGroup`
+  Keys:         —
+  What it does: List the file's related group, including missing companions;
+                not in the Command Palette
+
+  Command:      Auric Files: Generate Missing Companion Files
+  ID:           `auricFiles.generateMissingRelated`
+  Keys:         —
+  What it does: Create the companion files that do not exist yet
+
+  Command:      Auric Files: Reveal in File Manager
+  ID:           `auricFiles.revealInExplorer`
+  Keys:         `Ctrl` + `Alt` + `A`, then `V` (deck)
+  What it does: Show the file in your operating system's file manager
+
+  Command:      Auric Files: Reveal in VS Code Explorer
+  ID:           `auricFiles.revealInVsCodeExplorer`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `V` (deck)
+  What it does: Select the file in the VS Code Explorer
+
+  Command:      Auric Files: Copy Relative Path
+  ID:           `auricFiles.copyRelativePath`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `C` (deck); `Ctrl` + `Alt` + `A`,
+                then `L` (deck)
+  What it does: Copy the workspace-relative path
+
+  Command:      Auric Files: Copy Absolute Path
+  ID:           `auricFiles.copyAbsolutePath`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `A` (deck); `Ctrl` + `Alt` + `A`,
+                then `A` (deck)
+  What it does: Copy the full path
+
+  Command:      Auric Files: Copy File URI
+  ID:           `auricFiles.copyUri`
+  Keys:         `Ctrl` + `Alt` + `A`, then `U` (deck)
+  What it does: Copy the file's URI
+
+Edit & batch
+------------
+
+Rename, duplicate and transform a selection.
+
+  Command:      Auric Files: Rename…
+  ID:           `auricFiles.rename`
+  Keys:         —
+  What it does: Rename the selected item with collision checks and history;
+                not in the Command Palette
+
+  Command:      Auric Files: Move…
+  ID:           `auricFiles.move`
+  Keys:         —
+  What it does: Move the selected items to another folder; not in the Command
+                Palette
+
+  Command:      Auric Files: Copy To…
+  ID:           `auricFiles.copyTo`
+  Keys:         `Ctrl` + `Alt` + `A`, then `C` (deck)
+  What it does: Copy the selected items to another folder; not in the Command
+                Palette
+
+  Command:      Auric Files: Duplicate
+  ID:           `auricFiles.duplicate`
+  Keys:         —
+  What it does: Make a copy beside the original with a non-clashing name; not
+                in the Command Palette
+
+  Command:      Auric Files: Batch Rename…
+  ID:           `auricFiles.batchRename`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `R` (deck)
+  What it does: Rename many files by find and replace, regular expression,
+                pattern, sequence, case or extension, with a preview
+
+  Command:      Auric Files: Batch Move…
+  ID:           `auricFiles.batchMove`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `M` (deck)
+  What it does: Move many items to one folder, with collision planning
+
+  Command:      Auric Files: Convert Extension…
+  ID:           `auricFiles.convertExtension`
+  Keys:         `Ctrl` + `Alt` + `A`, then `X` (deck)
+  What it does: Change the extension of the selected files, with a preview
+
+Organise
+--------
+
+Tags, groups and personal workspace views.
+
+  Command:      Auric Files: Tag Files…
+  ID:           `auricFiles.tagFiles`
+  Keys:         `Ctrl` + `Alt` + `A`, then `G` (deck)
+  What it does: Assign or remove tags on the selected items; not in the
+                Command Palette
+
+  Command:      Auric Files: Manage Tags…
+  ID:           `auricFiles.manageTags`
+  Keys:         —
+  What it does: Create, rename or delete tags
+
+  Command:      Auric Files: Add to Group…
+  ID:           `auricFiles.addToCollection`
+  Keys:         `Ctrl` + `Alt` + `A`, then `K` (deck)
+  What it does: Add the selected items to a group, or create a new one; not in
+                the Command Palette
+
+  Command:      Auric Files: Create Workspace from Selection
+  ID:           `auricFiles.createWorkspace`
+  Keys:         —
+  What it does: Create a group (virtual workspace) from the current selection
+
+  Command:      Auric Files: Manage Groups…
+  ID:           `auricFiles.manageCollections`
+  Keys:         —
+  What it does: Rename, delete or open members of groups and virtual folders
+
+  Command:      Auric Files: New Virtual Folder…
+  ID:           `auricFiles.newVirtualFolder`
+  Keys:         —
+  What it does: Create a virtual folder that gathers items without moving
+                them; not in the Command Palette
+
+  Command:      Auric Files: Toggle Favorite
+  ID:           `auricFiles.toggleFavorite`
+  Keys:         `Ctrl` + `Alt` + `A`, then `1` (deck)
+  What it does: Mark or unmark as a favourite (★ in the Explorer); not in the
+                Command Palette
+
+  Command:      Auric Files: Toggle Pinned
+  ID:           `auricFiles.togglePinned`
+  Keys:         `Ctrl` + `Alt` + `A`, then `2` (deck)
+  What it does: Pin or unpin (P in the Explorer); not in the Command Palette
+
+  Command:      Auric Files: Toggle Native Explorer Exclusion
+  ID:           `auricFiles.toggleHidden`
+  Keys:         `Ctrl` + `Alt` + `A`, then `3` (deck)
+  What it does: Add or remove the item from VS Code's files.exclude for this
+                workspace; not in the Command Palette
+
+  Command:      Auric Files: Toggle Highlight
+  ID:           `auricFiles.toggleHighlight`
+  Keys:         `Ctrl` + `Alt` + `A`, then `4` (deck)
+  What it does: Highlight or unhighlight (● in the Explorer); not in the
+                Command Palette
+
+  Command:      Auric Files: Toggle Focus Mode
+  ID:           `auricFiles.toggleFocusMode`
+  Keys:         —
+  What it does: Limit Auric's indexed file lists to chosen paths, or switch
+                focus mode off
+
+  Command:      Auric Files: Switch Workspace Profile…
+  ID:           `auricFiles.switchProfile`
+  Keys:         —
+  What it does: Apply a saved workspace profile
+
+  Command:      Auric Files: Save Workspace Profile…
+  ID:           `auricFiles.saveProfile`
+  Keys:         —
+  What it does: Save the current view preferences as a named profile
+
+Find & filter
+-------------
+
+Search, duplicates and a quieter Explorer.
+
+  Command:      Auric Files: Search Files…
+  ID:           `auricFiles.search`
+  Keys:         —
+  What it does: Search indexed files by name or path and open one
+
+  Command:      Auric Files: Apply Filter…
+  ID:           `auricFiles.applyFilter`
+  Keys:         —
+  What it does: Build a filter from text, kinds, tags, extensions, globs,
+                size, dates, flags and Git state
+
+  Command:      Auric Files: Save Current Filter…
+  ID:           `auricFiles.saveFilter`
+  Keys:         —
+  What it does: Save the current filter under a name
+
+  Command:      Auric Files: Clear Filter
+  ID:           `auricFiles.clearFilter`
+  Keys:         —
+  What it does: Remove the active filter
+
+  Command:      Auric Files: Find Duplicate Files
+  ID:           `auricFiles.findDuplicates`
+  Keys:         —
+  What it does: Find duplicate files and choose copies to move to the
+                workspace trash
+
+  Command:      Auric Files: Find Empty Files
+  ID:           `auricFiles.findEmptyFiles`
+  Keys:         —
+  What it does: Find empty files and folders and choose which to move to the
+                workspace trash
+
+  Command:      Auric Files: Sort
+  ID:           `auricFiles.setSort`
+  Keys:         `Alt` + `S` (Explorer)
+  What it does: Cycle the native Explorer sort between name, type and date
+                modified
+
+  Command:      Auric Files: Sort by Name
+  ID:           `auricFiles.sortName`
+  Keys:         —
+  What it does: Sort the native Explorer by name
+
+  Command:      Auric Files: Sort by Type
+  ID:           `auricFiles.sortType`
+  Keys:         —
+  What it does: Sort the native Explorer by type
+
+  Command:      Auric Files: Sort by Date Modified
+  ID:           `auricFiles.sortModified`
+  Keys:         —
+  What it does: Sort the native Explorer by date modified
+
+  Command:      Auric Files: Sort Ascending
+  ID:           `auricFiles.sortAscending`
+  Keys:         —
+  What it does: Sort the native Explorer ascending
+
+  Command:      Auric Files: Sort Descending
+  ID:           `auricFiles.sortDescending`
+  Keys:         —
+  What it does: Sort the native Explorer descending
+
+  Command:      Auric Files: Group Indexed Files…
+  ID:           `auricFiles.setGrouping`
+  Keys:         —
+  What it does: Choose the headings used by the indexed file list; not in the
+                Command Palette
+
+  Command:      Auric Files: Collapse All
+  ID:           `auricFiles.collapseAll`
+  Keys:         —
+  What it does: Collapse every folder in the Explorer
+
+  Command:      Auric Files: Expand All
+  ID:           `auricFiles.expandAll`
+  Keys:         —
+  What it does: Expand the Explorer tree
+
+History & recovery
+------------------
+
+Review operations and recover workspace trash.
+
+  Command:      Auric Files: Undo Last File Operation
+  ID:           `auricFiles.undo`
+  Keys:         `Ctrl` + `Alt` + `Z` (deck); `Ctrl` + `Alt` + `A`, then `Z`
+                (deck)
+  What it does: Undo the last Auric file operation
+
+  Command:      Auric Files: Redo File Operation
+  ID:           `auricFiles.redo`
+  Keys:         `Ctrl` + `Alt` + `Y` (deck); `Ctrl` + `Alt` + `A`, then `Y`
+                (deck)
+  What it does: Redo an undone Auric file operation
+
+  Command:      Auric Files: Show Operation History
+  ID:           `auricFiles.showHistory`
+  Keys:         `Ctrl` + `Alt` + `A`, then `H` (deck)
+  What it does: List recent Auric operations and undo back to one
+
+  Command:      Auric Files: Open Workspace Trash
+  ID:           `auricFiles.openTrash`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `T` (deck)
+  What it does: Browse the workspace trash; restore an entry or empty it
+
+  Command:      Auric Files: Restore from Trash…
+  ID:           `auricFiles.restoreFromTrash`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `U` (deck)
+  What it does: Restore an entry from the workspace trash to its original
+                place
+
+  Command:      Auric Files: Delete (Workspace Trash)
+  ID:           `auricFiles.delete`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `Backspace` (deck); `Ctrl` + `Alt`
+                + `A`, then `Backspace` (deck)
+  What it does: Move the selected items to the workspace trash; not in the
+                Command Palette
+
+  Command:      Auric Files: Delete Permanently
+  ID:           `auricFiles.deletePermanent`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `Backspace` (deck)
+  What it does: Delete the selected items permanently, after confirmation; not
+                in the Command Palette
+
+  Command:      Auric Files: Empty Workspace Trash
+  ID:           `auricFiles.emptyTrash`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `Delete` (deck)
+  What it does: Permanently delete everything in the workspace trash
+
+Workspace
+---------
+
+Native Explorer and extension preferences.
+
+  Command:      Auric Files: Focus VS Code Explorer
+  ID:           `auricFiles.focus`
+  Keys:         `Ctrl` + `Alt` + `E` (deck)
+  What it does: Focus the native VS Code Explorer
+
+  Command:      Auric Files: Refresh
+  ID:           `auricFiles.refresh`
+  Keys:         —
+  What it does: Rebuild the workspace index
+
+  Command:      Auric Files: Open Settings
+  ID:           `auricFiles.openSettings`
+  Keys:         `Ctrl` + `Alt` + `A`, then `Shift` + `S` (deck)
+  What it does: Open the Settings editor filtered to Auric Files
+
+  Command:      Auric Files: Show Log
+  ID:           `auricFiles.showLog`
+  Keys:         —
+  What it does: Show the Auric Artisan File System output channel
+
+Editor and global commands
+--------------------------
+
+Commands outside the workspace groups.
+
+  Command:      Auric Files: Rename Current File
+  ID:           `auricFiles.renameCurrent`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `R` (deck); `Ctrl` + `Alt` + `A`,
+                then `E` (deck)
+  What it does: Rename the file open in the editor
+
+  Command:      Auric Files: Move Current File
+  ID:           `auricFiles.moveCurrent`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `M` (deck); `Ctrl` + `Alt` + `A`,
+                then `M` (deck)
+  What it does: Move the file open in the editor
+
+  Command:      Auric Files: Duplicate Current File
+  ID:           `auricFiles.duplicateCurrent`
+  Keys:         `Ctrl` + `Alt` + `D` (deck); `Ctrl` + `Alt` + `A`, then `D`
+                (deck)
+  What it does: Duplicate the file open in the editor
+
+  Command:      Auric Files: Toggle File Metadata
+  ID:           `auricFiles.toggleMetadata`
+  Keys:         `Ctrl` + `Shift` + `M` (Explorer)
+  What it does: Switch the compact Explorer hover summaries on or off
+
+  Command:      Auric Files: Open File Workspace
+  ID:           `auricFiles.openMenu`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `E` (deck); `Ctrl` + `Alt` + `A`,
+                then `Shift` + `E` (deck)
+  What it does: Open the Auric Files workspace in an editor tab
+
+  Command:      Auric Files: Quick Actions…
+  ID:           `auricFiles.quickActions`
+  Keys:         —
+  What it does: Open a keyboard-first list of file-system actions
+
+WHERE COMMANDS APPEAR
+=====================
+
+  - Explorer title bar: Batch Structure…, the Sort menu, Open File Workspace;
+    … menu: Quick Actions…
+  - Explorer context menu: File Properties at the top; the Auric Files submenu
+  - Editor and editor tab context menus: The Auric Files submenu (not for
+    untitled files)
+  - Auric Files submenu: File Properties, Create, Edit and Batch, Navigate and
+    Paths, Organize, Safety and History, Sort, Open File Workspace, Open
+    Settings
+  - Create: New File…, New Folder…, New Sibling File (files) or New Child File
+    (folders), Batch Create Files…, Batch Create Folders…, Batch Structure…,
+    New File from Template…, New from Framework Preset…, Create Related Files…
+    (files)
+  - Edit and Batch: Rename Current File, Duplicate, Move Current File, Copy
+    To…, Batch Rename…, Batch Move…, Convert Extension…
+  - Navigate and Paths: File Properties, Compare Selected Files, Merge
+    Selected Files, Export Selected Items…, Go to Related File…, Open Matching
+    Test, Style, Story, Component and Documentation, Reveal in VS Code
+    Explorer, Reveal in File Manager, Copy Relative Path, Copy Absolute Path,
+    Copy File URI
+  - Organize: Create Workspace from Selection, Tag Files…, Add to Group…,
+    Toggle Favorite, Toggle Pinned, Toggle Native Explorer Exclusion, Toggle
+    Highlight
+  - Safety and History: Delete (Workspace Trash), Delete Permanently, Undo
+    Last File Operation, Redo File Operation, Show Operation History, Open
+    Workspace Trash, Restore from Trash…, Empty Workspace Trash
+  - Sort: Sort by Name, Sort by Type, Sort by Date Modified, Sort Ascending,
+    Sort Descending
+  - Auric Files view title: Open File Workspace
+
+VIEWS AND PANELS
+================
+
+  Surface:  Auric Files
+  Where:    A section of the Explorer
+  Contents: The compact workspace: summary, selection, 01 Actions, 02
+            Properties
+
+  Surface:  Auric Files panel
+  Where:    An editor tab
+  Contents: The same workspace at full size
+
+Output channel: Auric Artisan File System.
+
+EXPLORER BADGES
+===============
+
+  Badge       | Meaning
+  ------------+----------------------------------------------
+  ●           | Highlighted
+  ★           | Favourite
+  P           | Pinned
+  H           | Hidden (excluded from the native Explorer)
+  Two letters | The first two letters of the item's first tag
+  W           | A member of a group
+
+When an item has several marks, the first in this list is shown.
+
+SETTINGS
+========
+
+All 48 settings, grouped by area. They can be set in user or workspace
+settings.
+
+Explorer, sorting and indexing
+------------------------------
+
+  Setting:         `auricFiles.explorer.sort`
+  Type:            string
+  Default:         `name`
+  Values or range: `name`, `path`, `type`, `size`, `modified`, `created`,
+                   `extension`, `status`, `custom`
+  What it does:    Primary order for Auric's indexed pickers. Orders VS Code
+                   supports are also applied to its Explorer.
+
+  Setting:         `auricFiles.explorer.sortDirection`
+  Type:            string
+  Default:         `asc`
+  Values or range: `asc`, `desc`
+  What it does:    Direction the chosen sort runs in — ascending puts A, the
+                   smallest and the oldest first.
+
+  Setting:         `auricFiles.explorer.secondarySort`
+  Type:            string
+  Default:         `none`
+  Values or range: `none`, `name`, `path`, `type`, `size`, `modified`,
+                   `created`, `extension`, `status`, `custom`
+  What it does:    Optional second sort key used when two entries have the
+                   same primary value.
+
+  Setting:         `auricFiles.explorer.secondarySortDirection`
+  Type:            string
+  Default:         `asc`
+  Values or range: `asc`, `desc`
+  What it does:    Direction for the secondary sort key.
+
+  Setting:         `auricFiles.explorer.grouping`
+  Type:            string
+  Default:         `none`
+  Values or range: `none`, `type`, `extension`, `folder`, `tag`, `modified`,
+                   `status`
+  What it does:    Headings used by Auric's indexed grouped-file picker.
+
+  Setting:         `auricFiles.explorer.foldersFirst`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep directories above files no matter which sort is
+                   active.
+
+  Setting:         `auricFiles.explorer.showHiddenFiles`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Include dot-files and metadata-hidden entries in Auric
+                   search and filter results.
+
+  Setting:         `auricFiles.explorer.showFileSize`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Show a size beside each file in Auric's file lists. Costs
+                   one file check per entry on large trees.
+
+  Setting:         `auricFiles.explorer.showGitStatus`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Read Git state for filtering and Git-aware safety warnings.
+
+  Setting:         `auricFiles.explorer.previewOnSingleClick`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Open a single click in a reusable preview tab. Off, a
+                   double click is needed to open anything.
+
+  Setting:         `auricFiles.explorer.maxNodes`
+  Type:            number
+  Default:         `20000`
+  Values or range: 500–200000
+  What it does:    Most entries held in one scan. Reaching it stops the scan
+                   and marks the index as truncated.
+
+  Setting:         `auricFiles.explorer.excludePatterns`
+  Type:            array
+  Default:         see "Long default values"
+  Values or range: -
+  What it does:    Globs skipped while scanning. Matches are never indexed,
+                   searched, compared or batch-processed.
+
+  Setting:         `auricFiles.explorer.respectGitignore`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Read the workspace .gitignore and skip whatever it
+                   excludes, on top of the patterns above.
+
+Creating files
+--------------
+
+  Setting:         `auricFiles.create.defaultTemplate`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Template id applied by New File when you do not pick one.
+                   Leave empty to create a blank file.
+
+  Setting:         `auricFiles.create.openAfterCreate`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Open a new file in the editor, with the cursor at the
+                   template's cursor marker.
+
+  Setting:         `auricFiles.create.createIntermediateDirs`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Create missing folders in a path such as
+                   `src/lib/util/index.ts` instead of refusing.
+
+  Setting:         `auricFiles.create.expandBraces`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Treat braces and ranges as several targets, so
+                   `src/{Button,Card}/index.ts` makes two files.
+
+  Setting:         `auricFiles.create.preset`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `react`, `vue`, `angular`, `svelte`, `node`,
+                   `python`, `java`, `go`, `rust`, `generic`
+  What it does:    Which framework's templates and relation rules are offered.
+                   `auto` picks from the workspace's files.
+
+  Setting:         `auricFiles.create.componentStyleLanguage`
+  Type:            string
+  Default:         `css`
+  Values or range: `css`, `scss`, `less`, `styled`, `module-css`,
+                   `module-scss`
+  What it does:    Stylesheet flavour for a component's companion style file,
+                   and the extension relation rules look for.
+
+  Setting:         `auricFiles.create.testFramework`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `jest`, `vitest`, `mocha`, `node`, `pytest`,
+                   `junit`, `gotest`, `cargo`
+  What it does:    Test style and imports for generated test files. `auto`
+                   reads the workspace's dependencies and scripts.
+
+  Setting:         `auricFiles.create.indent`
+  Type:            string
+  Default:         `space2`
+  Values or range: `space2`, `space4`, `tab`
+  What it does:    Indentation written into generated file bodies.
+
+  Setting:         `auricFiles.create.generatorProfiles`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Custom generators shown beside the framework presets. Each
+                   can create any number of companion files.
+
+Safety, trash and history
+-------------------------
+
+  Setting:         `auricFiles.safety.confirmDelete`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Ask before anything is deleted, listing what goes and where
+                   it lands.
+
+  Setting:         `auricFiles.safety.confirmBulk`
+  Type:            number
+  Default:         `5`
+  Values or range: 0–no maximum
+  What it does:    Ask for confirmation once an operation touches this many
+                   paths. `0` asks every time.
+
+  Setting:         `auricFiles.safety.useWorkspaceTrash`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Move deleted items to `.auric/trash` in the workspace so
+                   they can be restored.
+
+  Setting:         `auricFiles.safety.trashRetentionDays`
+  Type:            number
+  Default:         `14`
+  Values or range: 1–365
+  What it does:    How long a trashed entry survives before it is purged
+                   automatically.
+
+  Setting:         `auricFiles.safety.trashMaxBytes`
+  Type:            number
+  Default:         `268435456`
+  Values or range: 0–no maximum
+  What it does:    Size limit for the workspace trash in bytes (256 MiB). The
+                   oldest entries are purged first.
+
+  Setting:         `auricFiles.safety.protectedPaths`
+  Type:            array
+  Default:         see "Long default values"
+  Values or range: -
+  What it does:    Globs no Auric operation may rename, move or delete. A plan
+                   touching one is blocked before any change.
+
+  Setting:         `auricFiles.safety.warnOnGitTracked`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Warn when a file about to be deleted or moved is tracked by
+                   Git.
+
+  Setting:         `auricFiles.safety.warnOnUncommittedChanges`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Warn when a file about to be deleted or moved has
+                   uncommitted edits.
+
+  Setting:         `auricFiles.safety.previewBeforeApply`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Show the full before-and-after list of a batch rename or
+                   move, with conflicts, and require approval.
+
+  Setting:         `auricFiles.safety.historyLimit`
+  Type:            number
+  Default:         `200`
+  Values or range: 10–2000
+  What it does:    How many past operations stay undoable. Older entries drop
+                   off the end of the stack.
+
+Related files
+-------------
+
+  Setting:         `auricFiles.related.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Resolve companions for the active file: test, style, story,
+                   component, docs and types.
+
+  Setting:         `auricFiles.related.rules`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Extra file relationships for conventions the built-in
+                   presets do not know.
+
+  Setting:         `auricFiles.related.testDirectories`
+  Type:            array
+  Default:         `["__tests__","tests","test","spec"]`
+  Values or range: -
+  What it does:    Folder names searched when tests live in a separate folder
+                   rather than beside each file.
+
+  Setting:         `auricFiles.related.storyExtensions`
+  Type:            array
+  Default:         see "Long default values"
+  Values or range: -
+  What it does:    Suffixes recognised as a component's story file, in the
+                   order they are tried.
+
+Templates
+---------
+
+  Setting:         `auricFiles.templates.directories`
+  Type:            array
+  Default:         `[".auric/templates",".vscode/templates"]`
+  Values or range: -
+  What it does:    Workspace folders scanned for templates. A workspace
+                   template replaces a built-in one with the same id.
+
+  Setting:         `auricFiles.templates.global`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Absolute folders of templates shared across every
+                   workspace, for conventions you carry between projects.
+
+  Setting:         `auricFiles.templates.variables`
+  Type:            object
+  Default:         `{}`
+  Values or range: -
+  What it does:    Values available in every template, such as an author or
+                   licence header. Prompted values win.
+
+Search and duplicates
+---------------------
+
+  Setting:         `auricFiles.search.defaultMode`
+  Type:            string
+  Default:         `glob`
+  Values or range: `glob`, `regex`, `fuzzy`
+  What it does:    How a filter's search text is read: `glob` wildcards,
+                   `regex` regular expression, or `fuzzy` matching.
+
+  Setting:         `auricFiles.search.caseSensitive`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Match letter case exactly. Off, a search for button also
+                   finds Button.tsx.
+
+  Setting:         `auricFiles.search.maxResults`
+  Type:            number
+  Default:         `2000`
+  Values or range: 50–50000
+  What it does:    Matches kept by one search before it stops and reports a
+                   partial result.
+
+  Setting:         `auricFiles.search.duplicateStrategy`
+  Type:            string
+  Default:         `content`
+  Values or range: `content`, `name`, `size`
+  What it does:    What counts as a duplicate: `content` (same bytes), `name`
+                   (same file name) or `size` (same length).
+
+Performance
+-----------
+
+  Setting:         `auricFiles.performance.watchWorkspace`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    After the first indexed command, follow file changes and
+                   update the index. Turn off on slow network shares.
+
+  Setting:         `auricFiles.performance.scanConcurrency`
+  Type:            number
+  Default:         `8`
+  Values or range: 1–64
+  What it does:    Folders read at once while indexing. Raise on a fast local
+                   disk, lower on a remote file system.
+
+  Setting:         `auricFiles.performance.debounceMs`
+  Type:            number
+  Default:         `120`
+  Values or range: 0–2000
+  What it does:    Quiet period after the last file change before the index
+                   updates.
+
+Keyboard and logging
+--------------------
+
+  Setting:         `auricFiles.keyboard.enableDefaultShortcuts`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Turn on the full shortcut deck of `Ctrl` + `Alt` (`Cmd` +
+                   `Alt`) combinations. Off by default.
+
+  Setting:         `auricFiles.logLevel`
+  Type:            string
+  Default:         `warn`
+  Values or range: `off`, `error`, `warn`, `info`, `debug`
+  What it does:    Detail written to the output channel. Paths are logged
+                   workspace-relative; file contents never.
+
+Long default values
+-------------------
+
+`auricFiles.explorer.excludePatterns`:
+
+    ["**/node_modules/**", "**/.git/**", "**/dist/**", "**/out/**", "**/.next/**", "**/__pycache__/**", "**/target/**", "**/vendor/**"]
+
+`auricFiles.safety.protectedPaths`:
+
+    ["**/.git/**", "**/node_modules/**", "**/.env", "**/.env.*", "**/*.pem", "**/*.key", "**/package-lock.json", "**/yarn.lock", "**/pnpm-lock.yaml"]
+
+`auricFiles.related.storyExtensions`:
+
+    [".stories.tsx", ".stories.jsx", ".stories.ts", ".stories.js", ".stories.svelte", ".stories.mdx"]
+
+Enumerated values explained
+---------------------------
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `name`
+  Meaning: Alphabetical, natural order, so `file10` follows `file9`
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `path`
+  Meaning: By the full workspace-relative path
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `type`
+  Meaning: Folders, files and links in that order, then by name
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `size`
+  Meaning: Largest first when descending; folders keep name order
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `modified`
+  Meaning: Most recently written first when descending
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `created`
+  Meaning: Creation time, where recorded
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `extension`
+  Meaning: By extension, then by name
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `status`
+  Meaning: Conflicts and changed Git files first, then clean and ignored
+
+  Setting: `auricFiles.explorer.sort`
+  Value:   `custom`
+  Meaning: A stored custom rank; unranked items follow by name
+
+  Setting: `auricFiles.explorer.grouping`
+  Value:   `none`
+  Meaning: One continuous list
+
+  Setting: `auricFiles.explorer.grouping`
+  Value:   `type`
+  Meaning: Folders, files and links under separate headings
+
+  Setting: `auricFiles.explorer.grouping`
+  Value:   `extension`
+  Meaning: One heading per extension
+
+  Setting: `auricFiles.explorer.grouping`
+  Value:   `folder`
+  Meaning: One heading per parent folder
+
+  Setting: `auricFiles.explorer.grouping`
+  Value:   `tag`
+  Meaning: One heading per tag; untagged last
+
+  Setting: `auricFiles.explorer.grouping`
+  Value:   `modified`
+  Meaning: Today, this week, this month and older
+
+  Setting: `auricFiles.explorer.grouping`
+  Value:   `status`
+  Meaning: Changed, untracked, conflicted, clean and ignored
+
+  Setting: `auricFiles.search.defaultMode`
+  Value:   `glob`
+  Meaning: Wildcards over the path
+
+  Setting: `auricFiles.search.defaultMode`
+  Value:   `regex`
+  Meaning: A regular expression tested against the path
+
+  Setting: `auricFiles.search.defaultMode`
+  Value:   `fuzzy`
+  Meaning: Loose matching ranking the closest paths first
+
+  Setting: `auricFiles.search.duplicateStrategy`
+  Value:   `content`
+  Meaning: Same bytes; files are bucketed by size first
+
+  Setting: `auricFiles.search.duplicateStrategy`
+  Value:   `name`
+  Meaning: Same file name in different folders
+
+  Setting: `auricFiles.search.duplicateStrategy`
+  Value:   `size`
+  Meaning: Same length; fastest and loosest
+
+  Setting: `auricFiles.logLevel`
+  Value:   `off`, `error`, `warn`, `info`, `debug`
+  Meaning: Nothing, failures, skips too, one line per operation, per-step
+           detail
+
+Settings restricted in untrusted workspaces
+-------------------------------------------
+
+Workspace values of these settings are ignored until you trust the folder:
+`auricFiles.safety.confirmDelete`, `auricFiles.safety.confirmBulk`,
+`auricFiles.safety.useWorkspaceTrash`, `auricFiles.safety.protectedPaths`,
+`auricFiles.safety.warnOnGitTracked`,
+`auricFiles.safety.warnOnUncommittedChanges`,
+`auricFiles.safety.previewBeforeApply`, `auricFiles.related.rules`,
+`auricFiles.templates.directories`, `auricFiles.templates.global` and
+`auricFiles.templates.variables`.
+
+FILES AND SETTINGS AURIC FILES WRITES
+=====================================
+
+  What:       Workspace trash
+  Where:      `.auric/trash/` in the workspace folder, with `index.json`
+  Written by: Delete (Workspace Trash)
+
+  What:       Workspace templates
+  Where:      `.auric/templates/`, `.vscode/templates/` (read, not written)
+  Written by: You
+
+  What:       Selection manifest
+  Where:      Where you choose; default `auric-selection.json`
+  Written by: Export Selected Items…
+
+  What:       `files.exclude`
+  Where:      Workspace or folder settings
+  Written by: Toggle Native Explorer Exclusion
+
+  What:       `explorer.sortOrder` and its direction
+  Where:      Workspace settings
+  Written by: The Sort commands
+
+  What:       Tags, groups, virtual folders, flags, filters, profiles, history
+  Where:      VS Code's storage for this workspace
+  Written by: The Organise, Find & filter and history commands

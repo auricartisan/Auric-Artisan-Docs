@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut Lab — Auric Artisan Docs</title>
+<meta name="description" content="What the Gamut Lab does, who it is for, where to find it and how to compare your first colour spaces.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Colorimetry and rendering tools</a>
+<h2>Gamut Lab</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Gamut Lab documentation &rsaquo;</a></li>
+<li><a href="others/README.html">Gamut Lab: supporting pages &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="README.html">Gamut Lab</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Gamut Lab</h1>
+<p class="lede">What the Gamut Lab does, who it is for, where to find it and how to compare your first colour spaces.</p>
+<p>The Gamut Lab shows where an RGB colour space ends. Every RGB space is defined by three <strong>primaries</strong> (the reddest red, greenest green and bluest blue it can make), a <strong>white point</strong>, and a <strong>transfer function</strong> that turns stored values into light. Plot the primaries on a chromaticity diagram and they form a triangle: the space&#39;s <strong>gamut</strong>. The lab draws those triangles for 13 standard spaces — from sRGB and Display P3 to Rec. 2020, the HDR Rec. 2100 encodings, Adobe RGB, ProPhoto RGB, the ACES spaces and legacy television standards — plus any space you define yourself.</p>
+<p>Beyond the diagram, it derives the RGB-to-XYZ matrices from the primaries, draws each space&#39;s transfer curve (and tells you whether that curve is exactly the one its standard defines), slices gamuts at constant lightness in CIELAB, and measures gamut volume in CIELAB and overlap in u′v′ with quasi-random sampling. You can keep your own spaces in a library in your browser, import and export them as JSON, and export the diagram as SVG or PNG.</p>
+<p>The Gamut Lab defines and measures spaces. It does not map colours from one space into another; that is the job of <a href="../gamut-map/README.html">Gamut Mapping</a>.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Designers and developers choosing a working or output colour space.</li>
+<li>Video, VFX and HDR practitioners comparing Rec. 709, P3, Rec. 2020 and ACES.</li>
+<li>Display and camera engineers checking primaries and matrices for a custom space.</li>
+<li>Students learning chromaticity diagrams, transfer functions and gamut volume.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li>Address: <a href="https://auricartisan.com/tool/general/gamut-and-rendering/gamut/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/gamut/</a></li>
+<li>In the tool collection (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) under <strong>Gamut &amp; Rendering</strong>, as <strong>Gamut Explorer</strong>. The page itself is titled <strong>Gamut Lab</strong>.</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open <a href="https://auricartisan.com/tool/general/gamut-and-rendering/gamut/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/gamut/</a>. The diagram shows sRGB, Display P3 and Rec. 2020 on the CIE 1931 xy diagram.</li>
+<li>Under <strong>Working color space</strong>, choose <strong>Adobe RGB</strong>. Its triangle is added and its primaries, white point and matrices appear in the panel.</li>
+<li>Click inside the diagram. <strong>Vertex readout</strong> shows the x, y you clicked, a colour chip and which spaces contain that chromaticity.</li>
+<li>Change <strong>Diagram mode</strong> to <strong>CIE 1976 u′v′</strong> to see a more evenly spaced diagram.</li>
+<li>Open the <strong>Compare</strong> tab and select <strong>Measure them all</strong>.</li>
+<li>Open <strong>Transfer</strong> to see every transfer curve and whether it is exact.</li>
+<li>Open <strong>Export</strong>, choose <strong>The diagram</strong> and <strong>SVG</strong>, and select the download button.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Draw 13 standard RGB spaces and your own on CIE 1931 xy or CIE 1976 u′v′ diagrams, or as 3-D wireframes in CIELAB.</li>
+<li>Read a space&#39;s primaries, white point and both RGB ↔ XYZ matrices, and solve the matrices for custom primaries.</li>
+<li>Probe any chromaticity for its colour, CIELAB value and gamut membership.</li>
+<li>Plot transfer curves (EOTF/OETF) and see which are exact, partial or corrected.</li>
+<li>Slice gamuts at constant CIELAB L* or at OKLab L.</li>
+<li>Measure gamut volume in CIELAB and overlap in u′v′ between two spaces, or measure all spaces at once.</li>
+<li>Keep, import and export custom spaces as JSON.</li>
+<li>Export the diagram (SVG, PNG), a space (JSON), all spaces (JSON), the comparison (CSV, JSON) or a link.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the lab<ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/compare-colour-spaces.html">Compare colour spaces</a></li>
+<li><a href="docs/define-a-custom-space.html">Define a custom colour space</a></li>
+<li><a href="docs/inspect-transfer-functions.html">Inspect transfer functions</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background and supporting pages<ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/shortcuts.html">Shortcuts</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related tools</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../chromatic-adaptation/others/related.html"><span>Previous</span>Related to Chromatic Adaptation</a><a href="docs/README.html"><span>Next</span>Gamut Lab documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

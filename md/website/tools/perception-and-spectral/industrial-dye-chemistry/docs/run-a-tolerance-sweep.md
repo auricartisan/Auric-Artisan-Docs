@@ -1,0 +1,55 @@
+---
+title: Industrial Dye Chemistry (Dye in Solution) — Run a tolerance sweep
+description: Estimate how far a bath's colour moves when concentration, path length and molar absorptivity vary within stated tolerances.
+product: Website › Tools › Perception and spectral › Industrial Dye Chemistry
+updated: 2026-09-25
+---
+
+# Run a tolerance sweep
+
+A real bath never matches its recipe exactly. The balance and flask set the concentration to within a tolerance, the cell's specification sets the path length, and a published molar absorptivity comes with its own uncertainty. The sweep on the **Method** tab asks: if each of those varies within its tolerance, how far does the colour move, in ΔE₀₀?
+
+## Run it
+
+1. Set up the bath on the **Lab** tab.
+2. Open the **Method** tab. The sweep controls are under **The sweep** on the rail:
+
+   | Control | Range and step | Default |
+   |---|---|---|
+   | **Concentration** | ±0–20%, step 0.5 | ±2.0% |
+   | **Path length** | ±0–2 mm, step 0.01 | ±0.10 mm |
+   | **Molar absorptivity** | ±0–30%, step 0.5 | ±5.0% |
+   | **Draws** | 100–2000, step 100 | 500 |
+
+3. Replace the defaults with your own tolerances if you know them. The defaults are the tool's guess at a hand-weighed bath in a 10 mm cell, not a measurement of your laboratory.
+4. Select **Run the sweep**. A message reports how many draws took how long.
+
+## Read the result
+
+Under **How far the colour moves when the tolerances do**, three figures appear, each a ΔE₀₀ from the unperturbed bath under the current light:
+
+| Figure | Meaning |
+|---|---|
+| **Median** | Half the draws moved less than this |
+| **95th percentile** | 95% of draws moved less than this |
+| **Worst draw** | The largest movement seen |
+
+The note beside the heading gives the number of draws and the time taken, and a line under the figures restates the tolerances used.
+
+For the default bath with the default tolerances, the median is typically around 0.3 and the 95th percentile around 0.8; because the draws are random, each run differs slightly.
+
+## How the draws are made
+
+Each draw changes, independently and uniformly within ± the tolerance:
+
+- each dye's concentration (as a percentage of its value);
+- the path length (in millimetres, the same for the whole bath);
+- each dye's molar absorptivity (as a percentage, the same factor for both of its forms).
+
+The pH and the illuminant are not varied. The result is written into the export: the CSV header gains a **sensitivity** line and the JSON a `sensitivity` object. It is cleared by **Reset the bath**, but it is not rerun when you change the bath, so run the sweep again after any change before you export.
+
+## What this is not
+
+This is a tolerance sweep, not a statistical confidence interval from repeated measurements, and not a bootstrap. The **Method** tab's **What was resampled** view shows what an earlier version reported instead and explains why that interval was meaningless.
+
+You should now have a colour tolerance in ΔE₀₀ that follows from tolerances you can defend.

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the Design System Generator — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms you may meet in the Design System Generator, why they happen, and what to do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Design System Generator</a>
+<h2>Design System Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Design System Generator</a></li>
+<li><a href="compare.html">Compare styles and industries</a></li>
+<li><a href="component-playground.html">Use the component playground</a></li>
+<li><a href="contrast-audit.html">Check contrast with the audit</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="read-the-system.html">Read the system</a></li>
+<li><a href="set-the-brief.html">Set the brief</a></li>
+<li><a href="share-save-and-connect.html">Share, save and connect</a></li>
+<li><a href="reference.html">Design System Generator reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the Design System Generator</a></li>
+<li><a href="faq.html">Design System Generator FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Design System Generator</a> &rsaquo; <a href="README.html">Design System Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Troubleshooting the Design System Generator</h1>
+<p class="lede">Symptoms you may meet in the Design System Generator, why they happen, and what to do.</p>
+<h2 id="generation-and-inputs">Generation and inputs</h2>
+<h3 id="my-open-modal-typed-text-or-folded-cards-reset-when-i-changed-an-input">My open modal, typed text or folded cards reset when I changed an input</h3>
+<ul>
+<li><strong>Why:</strong> every change regenerates the whole system and rebuilds every tab.</li>
+<li><strong>What to do:</strong> settle the brief first, then explore the tabs and the playground.</li>
+</ul>
+<h3 id="my-seed-colour-looks-duller-than-the-colour-i-entered">My seed colour looks duller than the colour I entered</h3>
+<ul>
+<li><strong>Why:</strong> the seed&#39;s chroma is kept within a workable range, and ramp steps outside sRGB have their chroma reduced until they fit.</li>
+<li><strong>What to do:</strong> this is expected. For more colour, try a more saturated style (Bold, Playful, Futuristic) or a <strong>Vivid</strong> ramp peak.</li>
+</ul>
+<h3 id="my-brand-colour-is-not-the-primary-button-colour">My brand colour is not the primary button colour</h3>
+<ul>
+<li><strong>Why:</strong> the primary fill is the ramp step that is visible on the background (3:1) and takes a readable label at your target. Your exact seed may not meet that.</li>
+<li><strong>What to do:</strong> keep the generated fill for accessibility, or lower the <strong>Contrast target</strong> if your requirements allow.</li>
+</ul>
+<h3 id="changing-industry-does-nothing-to-the-colours">Changing Industry does nothing to the colours</h3>
+<ul>
+<li><strong>Why:</strong> when a seed is set, the seed decides hue and chroma; the industry then only affects fonts and icons.</li>
+<li><strong>What to do:</strong> select <strong>Auto</strong> beside the seed to go back to the industry&#39;s hue.</li>
+</ul>
+<h3 id="generation-failed-see-console">Generation failed — see console</h3>
+<ul>
+<li><strong>Why:</strong> an unexpected error while generating.</li>
+<li><strong>What to do:</strong> reload the page. If a shared link caused it, check its parameter values against <a href="share-save-and-connect.html">Share, save and connect</a>.</li>
+</ul>
+<h2 id="audit">Audit</h2>
+<h3 id="some-pairings-say-check-or-the-pill-says-n-failing">Some pairings say CHECK or the pill says N failing</h3>
+<ul>
+<li><strong>Why:</strong> a role colour does not meet its requirement.</li>
+<li><strong>What to do:</strong> open the full audit and read <strong>What would fix it</strong>. Try the next contrast target, a less saturated style, or a different seed.</li>
+</ul>
+<h3 id="the-score-went-down-when-i-relaxed-the-contrast-target">The score went down when I relaxed the contrast target</h3>
+<ul>
+<li><strong>Why:</strong> lighter text tiers can collide (losing hierarchy points) and headroom shrinks.</li>
+<li><strong>What to do:</strong> keep the stricter target and raise the score through a more saturated style or seed instead.</li>
+</ul>
+<h3 id="the-dark-theme-is-not-reflected-in-the-score">The dark theme is not reflected in the score</h3>
+<ul>
+<li><strong>Why:</strong> the score uses the light roles. The dark roles are audited separately.</li>
+<li><strong>What to do:</strong> open the full audit and choose <strong>Dark</strong>.</li>
+</ul>
+<h2 id="fonts-and-icons">Fonts and icons</h2>
+<h3 id="the-type-specimens-look-like-system-fonts">The type specimens look like system fonts</h3>
+<ul>
+<li><strong>Why:</strong> the fonts load from the Auric font CDN, with Google Fonts as a fallback. If both are blocked (by an extension, a firewall or no connection), the page uses system fonts. The names, sizes and weights shown are still correct.</li>
+<li><strong>What to do:</strong> allow fonts.auricartisan.com and fonts.googleapis.com, or check your connection, then reload.</li>
+</ul>
+<h3 id="the-icons-look-generic-not-like-the-recommended-family">The icons look generic, not like the recommended family</h3>
+<ul>
+<li><strong>Why:</strong> the real icons come from the Auric icon CDN. If it cannot be reached, the tool shows built-in line icons of the same stroke weight.</li>
+<li><strong>What to do:</strong> allow icons.auricartisan.com and reload.</li>
+</ul>
+<h2 id="share-save-and-export">Share, save and export</h2>
+<h3 id="a-shared-link-opens-with-different-ramp-shape-or-token-names">A shared link opens with different ramp shape or token names</h3>
+<ul>
+<li><strong>Why:</strong> shared links, saved systems and your last visit do not apply the ramp shape or token naming.</li>
+<li><strong>What to do:</strong> set <strong>Ramp shape</strong> and <strong>Token naming</strong> again after opening the link, or share the exported file.</li>
+</ul>
+<h3 id="save-shows-workspace-library-isnt-available-on-this-page">Save shows &quot;Workspace library isn&#39;t available on this page&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the Library did not load on the page.</li>
+<li><strong>What to do:</strong> reload. If it persists, use <strong>Share</strong> or an export to keep your system.</li>
+</ul>
+<h3 id="a-generator-link-in-connect-shows-a-missing-page">A generator link in Connect shows a missing page</h3>
+<ul>
+<li><strong>Why:</strong> the Palette, Harmony, Gradient, Shade and Accessibility Generator pages are not available on the site at the time of writing.</li>
+<li><strong>What to do:</strong> use the collections in the library area instead: <a href="../../../../library/colour-libraries/README.html">Colour libraries</a>.</li>
+</ul>
+<h3 id="download-all-gives-a-txt-file-not-a-zip">Download all gives a .txt file, not a zip</h3>
+<ul>
+<li><strong>Why:</strong> the bundle is one text file with every format separated by comment lines.</li>
+<li><strong>What to do:</strong> download the formats you need one at a time, or split the bundle by hand.</li>
+</ul>
+<h3 id="my-tailwind-v3-or-figma-export-has-no-background-or-text-roles">My Tailwind v3 or Figma export has no background or text roles</h3>
+<ul>
+<li><strong>Why:</strong> those formats do not carry role tokens.</li>
+<li><strong>What to do:</strong> use CSS, Tailwind v4, JSON or a native export for roles. See the coverage table in <a href="export-tokens.html">Export tokens</a>.</li>
+</ul>
+<h3 id="native-exports-are-missing-spacing-and-radius-after-i-set-a-token-prefix">Native exports are missing spacing and radius after I set a token prefix</h3>
+<ul>
+<li><strong>Why:</strong> with a prefix or a non-kebab case, the native exporters may not recognise dimension tokens.</li>
+<li><strong>What to do:</strong> export native formats with no prefix and kebab case, then rename in your project.</li>
+</ul>
+<h3 id="copy-does-nothing">Copy does nothing</h3>
+<ul>
+<li><strong>Why:</strong> the browser blocked clipboard access.</li>
+<li><strong>What to do:</strong> select <strong>Download</strong> instead, or select the code in the export block and copy it by hand.</li>
+</ul>
+<h3 id="the-automate-this-api-note-has-gone-from-every-tool">The &quot;Automate this&quot; API note has gone from every tool</h3>
+<ul>
+<li><strong>Why:</strong> dismissing it with <strong>×</strong> hides it on all tool pages in this browser.</li>
+<li><strong>What to do:</strong> clear the site&#39;s data for auricartisan.com in your browser to see it again.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="../../../../../help/README.html">Help centre</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Design System Generator reference</a><a href="faq.html"><span>Next</span>Design System Generator FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#generation-and-inputs">Generation and inputs</a></li><li><a href="#audit">Audit</a></li><li><a href="#fonts-and-icons">Fonts and icons</a></li><li><a href="#share-save-and-export">Share, save and export</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

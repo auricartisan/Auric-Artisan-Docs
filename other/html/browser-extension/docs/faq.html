@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the Auric Artisan browser extension.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan browser extension</a>
+<h2>Browser extension documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="hindi-interface.html">Hindi interface</a></li>
+<li><a href="permissions.html">Permissions</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html" aria-current="page">FAQ</a></li>
+<li><a href="check/README.html">Check tools &rsaquo;</a></li>
+<li><a href="code/README.html">Code tools &rsaquo;</a></li>
+<li><a href="colour/README.html">Colour tools &rsaquo;</a></li>
+<li><a href="install/README.html">Install the extension &rsaquo;</a></li>
+<li><a href="on-websites/README.html">On websites &rsaquo;</a></li>
+<li><a href="saved/README.html">Saved &rsaquo;</a></li>
+<li><a href="settings/README.html">Settings &rsaquo;</a></li>
+<li><a href="surfaces/README.html">Surfaces &rsaquo;</a></li>
+<li><a href="workflows/README.html">Workflows &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="README.html">Browser extension documentation</a></nav>
+<p class="kicker">Browser extension</p>
+<h1>FAQ</h1>
+<p class="lede">Short answers to common questions about the Auric Artisan browser extension.</p>
+<h2 id="getting-it">Getting it</h2>
+<h3 id="where-do-i-install-it-from">Where do I install it from?</h3>
+<p>The Chrome Web Store for Chrome, Edge, Opera, Brave, Vivaldi and Arc, and Firefox Add-ons for Firefox. Links are on <a href="https://auricartisan.com/extension" rel="noopener">https://auricartisan.com/extension</a> and in <a href="install/README.html">Install</a>.</p>
+<h3 id="is-it-free">Is it free?</h3>
+<p>Yes. Every tool ships in the one install. There is no paid edition and no account.</p>
+<h3 id="do-i-need-an-auric-artisan-account">Do I need an Auric Artisan account?</h3>
+<p>No. There is no sign-in anywhere in the extension, and it does not talk to auricartisan.com or anything else.</p>
+<h3 id="what-is-the-difference-between-the-chrome-edge-and-opera-zips">What is the difference between the Chrome, Edge and Opera ZIPs?</h3>
+<p>Nothing: they are identical copies of the same Chromium package, named for their stores. Any of them works in any Chromium browser. The Firefox package is a separate build.</p>
+<h3 id="does-it-work-in-safari">Does it work in Safari?</h3>
+<p>It is not published for Safari. On a Mac you can convert the Chromium package with Apple&#39;s tools yourself, without a side panel. See <a href="install/safari.html">Safari</a>.</p>
+<h3 id="does-it-survive-a-firefox-restart">Does it survive a Firefox restart?</h3>
+<p>From Firefox Add-ons, yes. A copy loaded with <strong>Load Temporary Add-on</strong> is removed when Firefox quits, because Firefox keeps only signed add-ons.</p>
+<h2 id="privacy-and-permissions">Privacy and permissions</h2>
+<h3 id="why-does-it-need-access-to-all-websites">Why does it need access to all websites?</h3>
+<p>The tools work on whatever page you are looking at, and the extension cannot know in advance which pages those will be. A small script loads on each page and waits until you start a tool; everything that changes a page is off until you turn it on. See <a href="permissions.html">Permissions</a>.</p>
+<h3 id="does-it-send-anything-to-a-server">Does it send anything to a server?</h3>
+<p>No. There are no analytics, accounts or remote calls. Everything stays in your browser&#39;s extension storage. Links, web searches and translations open only when you choose them. See <a href="../others/privacy.html">Privacy</a>.</p>
+<h3 id="does-it-change-the-websites-i-visit">Does it change the websites I visit?</h3>
+<p>Only if you ask. The inspector, vision filters and audit outlines appear when you start them. The website pickers and the custom right-click menu stay off until you turn them on in Settings.</p>
+<h3 id="does-it-slow-pages-down">Does it slow pages down?</h3>
+<p>The page script only registers a listener and reads your settings until you use a tool. The audit is the heavy part, and it runs only when you start it, in small slices so the page stays responsive.</p>
+<h2 id="using-it">Using it</h2>
+<h3 id="why-does-pick-from-page-not-work-in-firefox">Why does Pick from page not work in Firefox?</h3>
+<p>Firefox does not offer the screen eyedropper that extensions use. Use <strong>Page palette</strong> instead, which reads every colour the page uses.</p>
+<h3 id="how-do-i-keep-the-extension-open-while-i-click-around-the-page">How do I keep the extension open while I click around the page?</h3>
+<p>Open the side panel: <strong>Open the side panel</strong> in the header, or the browser&#39;s own side panel menu. Or use <strong>Open in its own window</strong>.</p>
+<h3 id="the-audit-says-80-rules-but-only-78-ran-why">The audit says 80 rules, but only 78 ran. Why?</h3>
+<p>The engine has 80 rules. The audit checks WCAG 2.2 levels A and AA, so the two AAA-level rules are not run.</p>
+<h3 id="does-a-clean-audit-mean-my-page-is-accessible">Does a clean audit mean my page is accessible?</h3>
+<p>No. An automated audit finds many problems but cannot judge everything, such as whether alt text is accurate or whether content makes sense. Test with real assistive technology and people too.</p>
+<h3 id="where-do-my-audit-results-go-when-i-close-the-popup">Where do my audit results go when I close the popup?</h3>
+<p>They are not kept. Use <strong>Export JSON</strong> or <strong>Export CSV</strong> before closing.</p>
+<h3 id="can-i-change-the-keyboard-shortcuts">Can I change the keyboard shortcuts?</h3>
+<p>Yes, in the browser: Settings › Shortcuts › <strong>Change them in the browser</strong>. You can also give keys to Inspect and the full audit, which have none by default.</p>
+<h3 id="how-do-i-get-the-browsers-own-right-click-menu-back">How do I get the browser&#39;s own right-click menu back?</h3>
+<p><strong>Shift</strong> + right-click always opens it. To stop the custom menu altogether, turn off Settings › Right-click › <strong>Custom right-click menu</strong>.</p>
+<h3 id="how-do-i-move-my-colours-and-snippets-to-another-computer">How do I move my colours and snippets to another computer?</h3>
+<p>Settings › Data › <strong>Download a backup</strong>, then <strong>Restore from a file</strong> on the other computer. See <a href="workflows/back-up-and-move-your-data.html">Back up and move your data</a>.</p>
+<h3 id="can-i-use-it-in-hindi">Can I use it in Hindi?</h3>
+<p>Yes. Settings › Appearance › Language › <strong>हिन्दी</strong>. See <a href="hindi-interface.html">Hindi interface</a>.</p>
+<h3 id="is-there-a-vs-code-version">Is there a VS Code version?</h3>
+<p>Auric Artisan has separate VS Code extensions. See the VS Code extensions section of these docs.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting</a><a href="check/README.html"><span>Next</span>Check tools</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#getting-it">Getting it</a></li><li><a href="#privacy-and-permissions">Privacy and permissions</a></li><li><a href="#using-it">Using it</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

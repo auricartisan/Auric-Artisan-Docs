@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit individual colours — Auric Artisan Docs</title>
+<meta name="description" content="Override any of the 107 colour slots on the Colours tab using the custom colour picker, and revert them.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Theme</a>
+<h2>Auric Artisan Theme guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Theme</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="choose-a-theme.html">Choose a theme</a></li>
+<li><a href="compare-and-preview.html">Compare and preview</a></li>
+<li><a href="edit-colours.html" aria-current="page">Edit individual colours</a></li>
+<li><a href="interface-language.html">Interface language (English and हिन्दी)</a></li>
+<li><a href="looks-and-dials.html">Looks and dials</a></li>
+<li><a href="save-share-and-export.html">Save, share and export</a></li>
+<li><a href="theme-sidebar.html">The Theme sidebar</a></li>
+<li><a href="reference.html">Auric Artisan Theme reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Theme</a> &rsaquo; <a href="README.html">Auric Artisan Theme guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Theme</p>
+<h1>Edit individual colours</h1>
+<p class="lede">Override any of the 107 colour slots on the Colours tab using the custom colour picker, and revert them.</p>
+<p>The theme is built from 107 <strong>colour slots</strong>. A slot is one named colour, such as <strong>Canvas</strong> (<code>bg.base</code>) or <strong>Keyword</strong> (<code>syntax.keyword</code>), that many parts of the workbench or syntax highlighting draw from. On the <strong>Colours</strong> tab you can override any slot. An override wins over whatever the dials produced.</p>
+<h2 id="open-the-colours-tab">Open the Colours tab</h2>
+<ol>
+<li>Open Theme Studio (<code>Ctrl</code> + <code>Alt</code> + <code>;</code>).</li>
+<li>Select the <strong>Colours</strong> tab, press <code>3</code>, or select <strong>Explore colours →</strong> in the introduction.</li>
+</ol>
+<h2 id="find-a-slot">Find a slot</h2>
+<p>Slots are grouped into 12 collapsible cards:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Surfaces</td><td>The planes the workbench is built from, deepest to nearest (8 slots).</td></tr>
+<tr><td>Text</td><td>Foreground ramp, from body copy to disabled (6).</td></tr>
+<tr><td>Lines</td><td>Every border, divider and focus ring (7).</td></tr>
+<tr><td>Accent</td><td>The accent fills, emphasis and washes derived from it (7).</td></tr>
+<tr><td>States</td><td>Hover, active, selected and drop feedback (5).</td></tr>
+<tr><td>Selection</td><td>Editor selection, find, word and range highlights (10).</td></tr>
+<tr><td>Semantics</td><td>Error, warning, info and success, quiet and loud (8).</td></tr>
+<tr><td>Semantic washes</td><td>Tinted backdrops behind semantic messages (4).</td></tr>
+<tr><td>Terminal</td><td>The 16 ANSI colours (16).</td></tr>
+<tr><td>Source control</td><td>File decoration colours in source control views (9).</td></tr>
+<tr><td>Syntax</td><td>Token colours shared by semantic and TextMate highlighting (26).</td></tr>
+<tr><td>Effects</td><td>The shadow colour (1).</td></tr>
+</tbody></table></div>
+<ul>
+<li>Select a group heading to expand or collapse it. The Studio remembers which groups are open.</li>
+<li>Each group shows a count. When you have overrides in a group, the count reads like &quot;2/26&quot;.</li>
+<li>Type in <strong>Filter by name or path — press / to jump here</strong> to filter across all groups. Matching groups open automatically. Press <code>Escape</code> in the filter to clear it.</li>
+<li>If nothing matches, the tab shows &quot;No slots match that filter.&quot;</li>
+</ul>
+<h2 id="override-a-slot">Override a slot</h2>
+<ol>
+<li>Find the slot row. It shows the slot label, its path (for example <code>syntax.string</code>) and a colour field.</li>
+<li>Type a hex value into the field, or select the swatch to open the colour picker.</li>
+<li>The editor updates live as you drag in the picker, and again when you commit the value.</li>
+</ol>
+<p>The colour field accepts <code>#rgb</code>, <code>#rrggbb</code> or <code>#rrggbbaa</code>. Any other value shows &quot;Needs #rgb, #rrggbb or #rrggbbaa&quot;.</p>
+<h3 id="the-colour-picker">The colour picker</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Hex field</td><td>Type an exact value.</td></tr>
+<tr><td>Saturation and brightness plane</td><td>Drag to set saturation and brightness. Arrow keys nudge the value.</td></tr>
+<tr><td>Hue slider</td><td>Rotate the hue.</td></tr>
+<tr><td>Opacity slider</td><td>Shown for slots that allow transparency (washes, selections, states).</td></tr>
+<tr><td>RGB channels</td><td>Numeric <strong>Red</strong>, <strong>Green</strong> and <strong>Blue</strong> inputs, plus opacity where allowed. Values are range-checked.</td></tr>
+<tr><td>Recent colours</td><td>Up to eight colours you picked in this panel session. They are not saved after the panel closes.</td></tr>
+<tr><td>Clear / inherit</td><td>Removes the value so the slot follows the dials again.</td></tr>
+</tbody></table></div>
+<p>Slots are one of three kinds: solid (no transparency), alpha (transparency allowed) or either.</p>
+<h2 id="revert-an-override">Revert an override</h2>
+<p>When a slot is overridden, its row shows <strong>Shipped</strong> with the original colour and hex value, and a revert button. Select the revert button to return the slot to the shipped colour.</p>
+<p>To remove every override and dial change at once, use <strong>Reset all</strong> in the footer. It asks for confirmation: the button changes to <strong>Reset everything?</strong> and you must select it again within four seconds.</p>
+<h2 id="things-to-know">Things to know</h2>
+<ul>
+<li>Overrides are stored per variant. An override on Obsidian Gold does not affect Parchment Gold.</li>
+<li>The contrast guard still runs after your overrides. If a colour you chose would fail your minimum contrast, the guard adjusts its lightness. Turn off <strong>Enforce contrast</strong> in the Accessibility dials if you want your exact value, and check the Audit tab afterwards.</li>
+<li>Changing a slot triggers a full recompute of the theme, so dragging in the picker sends updates at a limited rate.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>The overridden slots show your colours in the editor, each row shows the shipped colour for comparison, and the group counts show how many overrides each group holds.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-and-preview.html"><span>Previous</span>Compare and preview</a><a href="interface-language.html"><span>Next</span>Interface language (English and हिन्दी)</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-colours-tab">Open the Colours tab</a></li><li><a href="#find-a-slot">Find a slot</a></li><li><a href="#override-a-slot">Override a slot</a></li><li><a href="#revert-an-override">Revert an override</a></li><li><a href="#things-to-know">Things to know</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

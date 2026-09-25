@@ -1,0 +1,118 @@
+==============================================================================
+SECURITY PAGE
+==============================================================================
+A plain-language summary of Auric Artisan's Security page — how requests are
+protected, encryption, authentication, payments, what it does not claim, and
+responsible disclosure.
+Area: Website › Company and legal   Updated: 2026-09-25
+
+Official page: https://auricartisan.com/security/ — Security at Auric Artisan
+(last updated 23 May 2026, version 2.1). This is the trust page. It is
+separate from the legal Security Policy, summarised in Security Policy
+[security-policy.txt]. The official page is authoritative.
+
+THE OVERVIEW
+============
+
+The page describes a layered ("defence in depth") design and headlines four
+figures: 256-bit AES encryption, a 9-step security pipeline, more than 20
+security modules and a 3-tier defence model.
+
+DEFENCE-IN-DEPTH ARCHITECTURE
+=============================
+
+Three tiers and a token layer work together: server-side checks that run
+before any request is handled; abuse detection that escalates from throttling
+to a challenge to a block; a behavioural check that scores signals such as
+pointer movement, typing cadence and timing without interactive challenges;
+and signed tokens verified on the server.
+
+REQUEST SECURITY PIPELINE
+=========================
+
+Every request passes nine steps in order, and is rejected at the first one
+that fails: rate limiting, CSRF protection, request validation, session
+integrity, token verification, bot scoring, abuse analysis, escalating
+countermeasures (soft throttle, visual challenge, temporary block, permanent
+ban) and security logging.
+
+ENCRYPTION AND DATA PROTECTION
+==============================
+
+  - TLS 1.3 in transit, with HSTS.
+  - Stored data encrypted at rest by Cloudflare; Auric Artisan does not run
+    its own storage.
+  - API keys, signing secrets and database credentials kept in an encrypted
+    secret store that cannot be read back.
+  - Two-factor secrets encrypted before storage under a separately held key.
+
+AUTHENTICATION AND ACCESS CONTROL
+=================================
+
+  - Passwords hashed with PBKDF2-SHA256 at 600,000 iterations; they cannot be
+    recovered, only replaced.
+  - API keys kept only as a SHA-256 hash plus a short prefix; shown once.
+  - TOTP two-factor authentication with backup codes.
+  - OAuth sign-in protected with PKCE and state checks.
+  - Device and session management: sessions rotate, expire on inactivity, have
+    a maximum lifetime and can be revoked remotely.
+
+INFRASTRUCTURE SECURITY
+=======================
+
+Deployed on Cloudflare's edge network, with DDoS protection, a web application
+firewall and bot management; strict security headers on every response; HSTS
+with a one-year max-age, submitted for browser preload lists; each worker
+isolated in its own sandbox.
+
+PAYMENTS
+========
+
+  - Cards never reach Auric Artisan: payments go through Razorpay, a PCI-DSS
+    compliant gateway.
+  - Orders are priced from Auric Artisan's own catalogue, so a modified
+    browser cannot change what a purchase costs.
+  - Payment notifications are verified before they affect an account, and
+    delivering one twice grants an entitlement once.
+  - Account erasure anonymises personal data rather than destroying financial
+    records, because tax law requires invoices to be kept: "the transaction
+    remains and your identity does not."
+
+WHAT WE DO NOT CLAIM
+====================
+
+The page lists its own limits:
+
+  - No formal certification — not SOC 2, ISO 27001 or HIPAA certified.
+  - No external penetration test — the measures are implemented and tested by
+    Auric Artisan, not independently audited.
+  - Operated by one person — fixes ship quickly, but there is no 24/7 on-call
+    rotation and no separation of duties; response times are best effort.
+  - Third-party dependencies — email through Resend, payments through
+    Razorpay, hosting and storage through Cloudflare; their security practices
+    are their own.
+
+RESPONSIBLE DISCLOSURE
+======================
+
+  - Send a detailed report to security@auricartisan.com: the vulnerability,
+    steps to reproduce and any proof of concept.
+  - Or use the contact form, which opens with the Security queue selected:
+    https://auricartisan.com/company/contact/?topic=security.
+  - Do not disclose publicly until the issue has been investigated and
+    patched.
+  - Stated aims: acknowledge within 24 hours, an initial assessment within 72
+    hours, and a fix for confirmed vulnerabilities within 30 days.
+  - "Researchers acting in good faith will never face legal action."
+
+The contact form's Security topic asks you not to paste a working exploit into
+the form; send the location and impact, and a way to send the rest will
+follow.
+
+RELATED
+=======
+
+  - Security Policy [security-policy.txt]
+  - Two-step verification
+    [../../account-and-billing/docs/two-step-verification.txt]
+  - Contact and support [../../../help/contact-and-support.txt]

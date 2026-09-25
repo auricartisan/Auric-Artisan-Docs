@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility — Auric Artisan Docs</title>
+<meta name="description" content="Check colour pairs against WCAG 2.2 and APCA, get accessible alternatives, audit images and palettes, map accessible foregrounds on a background, and browse the contrast corpus.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html" aria-current="page">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Accessibility</h1>
+<p class="lede">Check colour pairs against WCAG 2.2 and APCA, get accessible alternatives, audit images and palettes, map accessible foregrounds on a background, and browse the contrast corpus.</p>
+<h2 id="post-v1accessibilitycheck">POST /v1/accessibility/check</h2>
+<p>Check a foreground and background pair against WCAG 2.2 and APCA. 1 credit.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>fg</code></td><td>colour</td><td>Yes</td><td>Text colour. <code>foreground</code> is accepted too.</td></tr>
+<tr><td><code>bg</code></td><td>colour</td><td>Yes</td><td>The surface behind the text. <code>background</code> is accepted too.</td></tr>
+<tr><td><code>standard</code></td><td>string</td><td>No</td><td><code>WCAG 2.1</code>, <code>WCAG 2.2</code>, <code>WCAG 3.0</code>, <code>Auric SD Flexible</code>, <code>Auric SD Strict</code>, or <code>all</code> (the default)</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/accessibility/check&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;fg&quot;:&quot;#767676&quot;,&quot;bg&quot;:&quot;#ffffff&quot;}'</code></pre>
+<h2 id="post-v1accessibilityrecommend">POST /v1/accessibility/recommend</h2>
+<p>Suggest the nearest accessible alternative to a failing pair. It keeps the hue and moves the lightness, so the fix still looks like the brand. <code>target</code> chooses which colour may move; set the level with <code>minRatio</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>fg</code></td><td>colour</td><td>Yes</td><td>Text colour (<code>foreground</code> also accepted)</td></tr>
+<tr><td><code>bg</code></td><td>colour</td><td>Yes</td><td>Surface colour (<code>background</code> also accepted)</td></tr>
+<tr><td><code>target</code></td><td>string</td><td>No</td><td>Which side to move: <code>foreground</code> (default) or <code>background</code></td></tr>
+<tr><td><code>minRatio</code></td><td>number</td><td>No</td><td>Contrast ratio to reach. Default 4.5.</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/accessibility/recommend&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;fg&quot;:&quot;#c9a227&quot;,&quot;bg&quot;:&quot;#ffffff&quot;,&quot;target&quot;:&quot;foreground&quot;,&quot;minRatio&quot;:4.5}'</code></pre>
+<h2 id="post-v1accessibilityfrom-image">POST /v1/accessibility/from-image</h2>
+<p>Audit the colour contrast present in an image. 10–12 credits.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>image</code></td><td>string</td><td>Yes</td><td>Base64 or a data URL (up to 4 MB)</td></tr>
+</tbody></table></div>
+<h2 id="post-v1accessibilitymap">POST /v1/accessibility/map</h2>
+<p>The whole territory of foreground colour a background leaves you. For each hue, it returns the lightness at which the most saturated colour of that hue just reaches the target on this background. <code>territory_pct</code> is the share of the slice that qualifies, so one background can be compared with another. A <code>null</code> lightness means that hue never reaches the target at any lightness.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>ground</code></td><td>colour</td><td>Yes</td><td>The background colour</td></tr>
+<tr><td><code>targets</code></td><td>number array</td><td>No</td><td>Contrast ratios to contour. Default <code>[3, 4.5, 7]</code>, at most 6.</td></tr>
+<tr><td><code>resolution</code></td><td>number</td><td>No</td><td>Hues sampled around the circle, 12–360. Default 72.</td></tr>
+</tbody></table></div>
+<p>Returns <code>ground</code>, <code>polarity</code> and <code>contours</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/accessibility/map&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;ground&quot;:&quot;#1D2A3E&quot;,&quot;targets&quot;:[4.5,7]}'</code></pre>
+<h2 id="post-v1accessibilitypicks">POST /v1/accessibility/picks</h2>
+<p>A ready set of foreground colours that clear a target on one background. It walks the hue circle, takes each hue to its boundary lightness, then steps a margin past it so rounding cannot land a pick under the target. Hues that cannot make it are dropped and counted.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>ground</code></td><td>colour</td><td>Yes</td><td>The background colour</td></tr>
+<tr><td><code>target</code></td><td>number</td><td>No</td><td>Contrast ratio to clear. Default 4.5.</td></tr>
+<tr><td><code>count</code></td><td>number</td><td>No</td><td>Hues to try, 1–72. Default 12.</td></tr>
+<tr><td><code>margin</code></td><td>number</td><td>No</td><td>Lightness held back from the boundary, 0–0.5. Default 0.10.</td></tr>
+</tbody></table></div>
+<p>Returns <code>count</code>, <code>dropped</code> and <code>picks</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/accessibility/picks&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;ground&quot;:&quot;#1D2A3E&quot;,&quot;target&quot;:4.5,&quot;count&quot;:12}'</code></pre>
+<h2 id="post-v1accessibilityaudit">POST /v1/accessibility/audit</h2>
+<p>Audit a palette against one background, with a fix for each failure. The fix keeps the hue and moves the lightness onto the contour. Where a hue cannot reach the target on that background at all, the response says so instead of returning a colour that does not work.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>ground</code></td><td>colour</td><td>Yes</td><td>The background everything sits on</td></tr>
+<tr><td><code>colors</code></td><td>colour array</td><td>Yes</td><td>The palette, 1–64 colours</td></tr>
+<tr><td><code>target</code></td><td>number</td><td>No</td><td>Contrast ratio to clear. Default 4.5.</td></tr>
+</tbody></table></div>
+<p>Returns <code>verdict</code>, <code>passing</code>, <code>failing</code> and <code>results</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/accessibility/audit&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;ground&quot;:&quot;#1D2A3E&quot;,&quot;colors&quot;:[&quot;#D3AF37&quot;,&quot;#4A5568&quot;,&quot;#F7FAFC&quot;],&quot;target&quot;:4.5}'</code></pre>
+<h2 id="the-contrast-corpus">The contrast corpus</h2>
+<p>A corpus of five million colour pairs, derived from a seed rather than stored, so paging is cheap and any record can be recomputed. Most pairs are unusable: 88% of the corpus fails AA for body text, so a filter for rare pairs scans many records per result.</p>
+<h3 id="get-v1accessibilitycorpus">GET /v1/accessibility/corpus</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>min_ratio</code>, <code>max_ratio</code></td><td>Contrast ratio bounds, 1–21</td></tr>
+<tr><td><code>level</code></td><td><code>AA</code>, <code>AAA</code>, <code>fail</code> or <code>any</code> (default)</td></tr>
+<tr><td><code>grade</code></td><td>Auric SD grade: <code>A+</code>, <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>F</code></td></tr>
+<tr><td><code>polarity</code></td><td><code>BoW</code> (dark on light), <code>WoB</code> or <code>any</code></td></tr>
+<tr><td><code>limit</code></td><td>Records per page, 1–200. Default 24.</td></tr>
+<tr><td><code>cursor</code></td><td>Corpus index to resume from; use <code>next_cursor</code></td></tr>
+<tr><td><code>max_scan</code></td><td>Records this call may examine. Default 100,000, maximum 1,000,000.</td></tr>
+<tr><td><code>full</code></td><td><code>true</code> for the complete record, including all ten vision models</td></tr>
+</tbody></table></div>
+<p>Returns <code>count</code>, <code>scanned</code>, <code>hit_rate</code>, <code>next_cursor</code>, <code>exhausted</code>, <code>truncated</code> and <code>records</code>. When <code>truncated</code> is <code>true</code>, the scan budget ran out before the page filled: follow <code>next_cursor</code>.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/accessibility/corpus?level=AAA&amp;limit=5&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h3 id="get-v1accessibilitycorpusstats">GET /v1/accessibility/corpus/stats</h3>
+<p>The measured distribution of contrast across the corpus, from a deterministic sample, so the same sample always gives the same numbers.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>sample</code></td><td>Records to measure, 1,000–1,000,000. Default 200,000.</td></tr>
+</tbody></table></div>
+<p>Returns <code>sample</code>, <code>mean_contrast_ratio</code>, <code>share_at_least</code>, <code>share_failing_aa_body</code> and <code>distribution</code>.</p>
+<h3 id="get-v1accessibilitycorpusrecordid">GET /v1/accessibility/corpus/:record_id</h3>
+<p>Resolve one record, for citation: put <code>acc_2j</code> in a report and anyone can recover the same two colours. <code>:record_id</code> is a record id such as <code>acc_2j</code>, or a corpus index such as <code>91</code>. An id that does not parse, or an index outside the corpus, returns <code>VALIDATION_ERROR</code>. Returns <code>record</code>, <code>cite</code> and <code>recompute</code>.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/accessibility/corpus/acc_2j&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a>, for <code>/v1/color/contrast</code></li>
+<li><a href="../../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Endpoints</a><a href="analyzer.html"><span>Next</span>Analyzer</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#post-v1accessibilitycheck">POST /v1/accessibility/check</a></li><li><a href="#post-v1accessibilityrecommend">POST /v1/accessibility/recommend</a></li><li><a href="#post-v1accessibilityfrom-image">POST /v1/accessibility/from-image</a></li><li><a href="#post-v1accessibilitymap">POST /v1/accessibility/map</a></li><li><a href="#post-v1accessibilitypicks">POST /v1/accessibility/picks</a></li><li><a href="#post-v1accessibilityaudit">POST /v1/accessibility/audit</a></li><li><a href="#the-contrast-corpus">The contrast corpus</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

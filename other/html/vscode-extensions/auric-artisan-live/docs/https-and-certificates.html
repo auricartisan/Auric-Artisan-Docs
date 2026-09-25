@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serve over HTTPS — Auric Artisan Docs</title>
+<meta name="description" content="Serve your site over HTTPS with a generated or imported certificate, and make browsers and phones trust it.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html" aria-current="page">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Serve over HTTPS</h1>
+<p class="lede">Serve your site over HTTPS with a generated or imported certificate, and make browsers and phones trust it.</p>
+<p>Browsers only allow some features in a <em>secure context</em>: service workers, <code>navigator.clipboard</code>, the camera, microphone and geolocation. On <code>localhost</code> plain HTTP counts as secure, but on any other address, such as your computer&#39;s network address on a phone, it does not. Serving over HTTPS makes those features testable on a phone.</p>
+<p>Two things are separate:</p>
+<ul>
+<li><strong>Encryption.</strong> Auric Live encrypts the connection as soon as HTTPS is on.</li>
+<li><strong>Trust.</strong> Whether the browser accepts the certificate without a warning depends on whether that device trusts it. Auric Live does not install trust on your computer or phone.</li>
+</ul>
+<h2 id="turn-https-on-with-a-generated-certificate">Turn HTTPS on with a generated certificate</h2>
+<ol>
+<li>Run <strong>Auric Live: Toggle HTTPS</strong>, or use <strong>Toggle HTTPS</strong> in the Auric Live menu.</li>
+<li>Confirm <strong>Enable HTTPS</strong>. The message explains that the server will use a self-signed certificate and that the browser will warn once.</li>
+<li>The server restarts on <code>https://</code>. Addresses you copy and the phone QR code now use <code>https://</code>.</li>
+<li>The first time you open the site, the browser warns that the certificate is not trusted. Accept it for this address to continue.</li>
+</ol>
+<p>To make it permanent, set <code>auricLive.https.enabled</code> to <code>true</code> in settings or <code>&quot;https&quot;: { &quot;enabled&quot;: true }</code> in <code>auric.live.json</code>.</p>
+<p>The generated certificate is self-signed, is reused between sessions, and covers <code>localhost</code>, the IPv4 and IPv6 loopback addresses and your computer&#39;s current network addresses. <strong>Auric Live: Reveal Development Certificate</strong> shows the certificate file in your operating system&#39;s file manager, so you can install it as trusted on a device if you choose. If none has been generated yet, it says <strong>Enable HTTPS first</strong>.</p>
+<h2 id="use-your-own-certificate">Use your own certificate</h2>
+<p>For no browser warning at all, use a certificate your devices already trust, for example one made with a local certificate tool such as <code>mkcert</code>.</p>
+<h3 id="import-it-with-the-command">Import it with the command</h3>
+<ol>
+<li>Trust the workspace; certificate files need workspace trust.</li>
+<li>Run <strong>Auric Live: Use HTTPS Certificate and Key</strong>, or <strong>Import an HTTPS certificate</strong> in the Auric Live menu, or <strong>Configure HTTPS certificate</strong> in the control panel&#39;s <strong>Settings</strong> section.</li>
+<li><strong>Choose HTTPS certificate (PEM)</strong> — pick a <code>.pem</code>, <code>.crt</code> or <code>.cer</code> file.</li>
+<li><strong>Choose matching private key</strong> — pick a <code>.pem</code> or <code>.key</code> file.</li>
+<li>If the key is encrypted, enter its passphrase. It is kept for this session only and never saved.</li>
+<li>Auric Live checks that the key matches the certificate and that today falls within the certificate&#39;s validity dates, then turns HTTPS on. The message says <strong>HTTPS certificate configured until <em>date</em></strong>, and reminds you whether each browser or device still needs to trust it.</li>
+</ol>
+<p>Imported certificates apply for the session, like other panel changes.</p>
+<h3 id="set-it-permanently">Set it permanently</h3>
+<pre class="code" data-lang="json"><code>{
+  &quot;https&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;certPath&quot;: &quot;certs/localhost.pem&quot;,
+    &quot;keyPath&quot;: &quot;certs/localhost-key.pem&quot;
+  }
+}</code></pre>
+<p>The same keys exist as settings: <code>auricLive.https.enabled</code>, <code>auricLive.https.certPath</code> and <code>auricLive.https.keyPath</code>. Certificate paths need a trusted workspace.</p>
+<h2 id="trust-on-a-phone">Trust on a phone</h2>
+<ol>
+<li>Get the certificate file (<strong>Reveal Development Certificate</strong> for the generated one, or your own).</li>
+<li>Transfer it to the phone and install it following the phone&#39;s own instructions for installing a certificate, then mark it as trusted where the phone asks.</li>
+<li>Open the site from the QR code. If the browser still warns, the certificate is not trusted on that phone yet.</li>
+</ol>
+<p>The control panel&#39;s phone guidance reminds you that the phone must also trust the HTTPS certificate.</p>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>Auric Live never adds a certificate authority to your operating system, browser or phone.</li>
+<li>A certificate only matches the addresses it lists. If a device reaches your computer at an address the certificate does not cover, the browser warns.</li>
+<li>HTTPS here is for development. Auric Live is not a production server.</li>
+</ul>
+<p>When HTTPS is on, the <strong>Servers</strong> view shows a <strong>Certificate</strong> row (<strong>generated</strong> or <strong>provided</strong>) and the local address begins with <code>https://</code>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="browser-dashboard.html"><span>Previous</span>Use the in-page browser dashboard</a><a href="inspect-requests.html"><span>Next</span>Inspect requests</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#turn-https-on-with-a-generated-certificate">Turn HTTPS on with a generated certificate</a></li><li><a href="#use-your-own-certificate">Use your own certificate</a></li><li><a href="#trust-on-a-phone">Trust on a phone</a></li><li><a href="#limits">Limits</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

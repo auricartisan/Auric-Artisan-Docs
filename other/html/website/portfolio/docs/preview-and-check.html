@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview and check — Auric Artisan Docs</title>
+<meta name="description" content="Preview your portfolio at different widths and full screen, and use the Check pane to fix accessibility problems before publishing.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Portfolio Builder and Portfolio Index</a>
+<h2>Portfolio documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="edit-in-the-preview.html">Edit in the preview</a></li>
+<li><a href="export-and-import.html">Export and import</a></li>
+<li><a href="header-and-avatar.html">Header and avatar</a></li>
+<li><a href="list-your-portfolio.html">List your portfolio</a></li>
+<li><a href="manage-sections.html">Manage sections</a></li>
+<li><a href="markdown-and-raw-html.html">Markdown and Raw HTML</a></li>
+<li><a href="portfolio-index.html">The Portfolio Index</a></li>
+<li><a href="preview-and-check.html" aria-current="page">Preview and check</a></li>
+<li><a href="publish-and-share.html">Publish and share</a></li>
+<li><a href="save-undo-and-sync.html">Save, undo and sync</a></li>
+<li><a href="section-types.html">Section types</a></li>
+<li><a href="style-and-theme.html">Style and theme</a></li>
+<li><a href="templates.html">Templates</a></li>
+<li><a href="the-published-page.html">The published page</a></li>
+<li><a href="reference.html">Portfolio reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Portfolio FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Portfolio Builder and Portfolio Index</a> &rsaquo; <a href="README.html">Portfolio documentation</a></nav>
+<p class="kicker">Website › Portfolio</p>
+<h1>Preview and check</h1>
+<p class="lede">Preview your portfolio at different widths and full screen, and use the Check pane to fix accessibility problems before publishing.</p>
+<h2 id="preview-widths">Preview widths</h2>
+<p>The <strong>Live preview</strong> bar has four width buttons:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Width</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td><strong>Fit</strong> (default)</td><td>The width of the preview column, at full size</td><td>Writing and editing.</td></tr>
+<tr><td><strong>Desktop</strong></td><td>1160 px</td><td>Checking the desktop layout.</td></tr>
+<tr><td><strong>Tablet</strong></td><td>800 px</td><td>Checking a tablet layout.</td></tr>
+<tr><td><strong>Mobile</strong></td><td>390 px</td><td>Checking a phone layout.</td></tr>
+</tbody></table></div>
+<p>The bar shows the current width (for example <strong>Desktop · 1160px</strong>) and the number of sections. Desktop, Tablet and Mobile may be scaled down to fit the column; Fit is the width to write at. The builder remembers your choice in this browser.</p>
+<p><strong>Fullscreen preview</strong> (the button at the right of the bar) enlarges the preview to fill the screen; select it again, or press <code>Escape</code>, to leave.</p>
+<h2 id="full-preview-in-a-new-tab">Full preview in a new tab</h2>
+<p>Select <strong>Preview</strong> in the top bar (or the command <strong>Open a full preview</strong>). The finished page opens in a new tab, exactly as an exported HTML file would look. If nothing opens, the builder says <strong>Allow pop-ups to preview.</strong> — allow pop-ups for auricartisan.com.</p>
+<h2 id="the-check-pane">The Check pane</h2>
+<p>Open <strong>Check</strong>. It audits the page as it is actually rendered — the colours, sizes and text a visitor will get — against WCAG 2.2 AA.</p>
+<h3 id="what-it-checks">What it checks</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Finding</th><th>Severity</th><th>What it means</th><th>The fix it suggests</th></tr></thead>
+<tbody>
+<tr><td><strong>Text below AA</strong></td><td>Blocking when well below; otherwise a warning</td><td>Normal text is under 4.5:1 against its background.</td><td>&quot;Take a darker step from the same palette in Style, or change the paper.&quot;</td></tr>
+<tr><td><strong>Large text below AA</strong></td><td>Blocking when well below; otherwise a warning</td><td>Large text (24 px, or about 19 px bold) is under 3:1.</td><td>&quot;Deepen this colour, or set the text larger so the 3:1 threshold applies.&quot;</td></tr>
+<tr><td><strong>A link with no text</strong></td><td>Blocking</td><td>A link with nothing readable inside it.</td><td>&quot;Give it text, or an aria-label if it is deliberately an icon.&quot;</td></tr>
+<tr><td><strong>A link that does not say where it goes</strong></td><td>Blocking</td><td>Link text such as &quot;click here&quot;, &quot;here&quot;, &quot;read more&quot;, &quot;more&quot;, &quot;link&quot;, &quot;this&quot;, &quot;learn more&quot; or &quot;see more&quot;.</td><td>&quot;Name the destination in the link itself.&quot;</td></tr>
+<tr><td><strong>An image with no alt text</strong></td><td>Blocking</td><td>An image with no description for screen readers.</td><td>&quot;Describe what the image shows, or set alt=&quot;&quot; if it is decoration.&quot;</td></tr>
+<tr><td><strong>Heading jumps from hN to hM</strong></td><td>Warning</td><td>A heading level is skipped, for example h2 to h4.</td><td>&quot;Make this an h3, or add the level it skipped.&quot;</td></tr>
+<tr><td><strong>A target smaller than 24px</strong></td><td>Warning</td><td>A link or button smaller than 24 × 24 pixels.</td><td>&quot;Give it padding, or set a minimum height.&quot;</td></tr>
+<tr><td><strong>A colour this check could not read</strong></td><td>Warning</td><td>Text in a colour format the check does not measure (for example from Raw HTML).</td><td>&quot;Pick this colour from the Style pane, which works in sRGB and is graded.&quot;</td></tr>
+</tbody></table></div>
+<p>Each finding explains why it matters and names the section it is in. Contrast findings show the colour pair and ratio, for example &quot;#9A8F7B on #FBFAF7 is 3.05:1&quot;.</p>
+<h3 id="using-the-pane">Using the pane</h3>
+<ol>
+<li>Read the summary: how many faults, in how many places, and how many would stop the page going online — or &quot;None of them blocks publishing.&quot;</li>
+<li>When there are several kinds, use the filter chips <strong>All</strong>, <strong>Blocking</strong> and <strong>Contrast</strong>.</li>
+<li>Select a finding. The preview scrolls to it and outlines the element.</li>
+<li>Fix it in the section card, the preview, or <strong>Style</strong>. The pane updates.</li>
+</ol>
+<p>When everything passes, it says the pairs checked &quot;against WCAG 2.2 AA. Nothing to fix.&quot; If the preview has not rendered yet, it says <strong>The preview has not rendered yet.</strong></p>
+<h3 id="blocking-findings-stop-publishing">Blocking findings stop publishing</h3>
+<p>While any <strong>Blocking</strong> finding remains, the <strong>Publish</strong> button is disabled and its tooltip says, for example, &quot;2 things to fix in Check before this can go online&quot;. Warnings do not block publishing. Saving and exporting are never blocked.</p>
+<p>While you work in <strong>Content</strong>, a dot on the <strong>Check</strong> tab tells you there is something to look at.</p>
+<h2 id="result">Result</h2>
+<p>You have seen the page at every width, and it goes online without contrast, link, alt-text or heading problems.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="portfolio-index.html"><span>Previous</span>The Portfolio Index</a><a href="publish-and-share.html"><span>Next</span>Publish and share</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#preview-widths">Preview widths</a></li><li><a href="#full-preview-in-a-new-tab">Full preview in a new tab</a></li><li><a href="#the-check-pane">The Check pane</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

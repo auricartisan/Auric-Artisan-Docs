@@ -1,0 +1,37 @@
+---
+title: Analyzer — Release notes
+description: User-facing history of the Analyzer, from the public changelog and the current page.
+product: Website › Tools › Accessibility and vision
+updated: 2026-09-25
+---
+
+# Analyzer release notes
+
+The Analyzer changes with the website. Dated entries below come from the public changelog at https://auricartisan.com/library/changelog/. The first section describes how the current page differs from the last changelog entry that mentions the Analyzer.
+
+## Since v0.9.11 (current page, September 2026)
+
+These changes are visible on the page today:
+
+- **126 accessibility rules**, up from the 112 announced in v0.9.10. The engine also checks eight ARIA widget patterns, and proposes concrete fixes with a confidence level in a new **Fixes** view.
+- **A workspace instead of a tab row.** Sections open as panels you can move, resize, focus, collapse and close, in both modes. Advanced adds a **Sections** picker (`Ctrl` + `P`) and a **Layouts** menu with ready-made and saved layouts.
+- **What to scan.** In Advanced mode you choose which of 13 checks run. The token meter prices the checks you chose, at four checks to a token.
+- **Simple mode** now shows 8 sections, including **Project**, **Site Map** and **Compare**.
+- **Runs are kept.** Every run is filed in your browser as a version of its site, with the full report, and can be reopened without running again.
+- **Compare** sets two versions of a site side by side and lists what was fixed, what appeared and what stayed. A version can be kept in your account.
+- **The progress card** lists the steps a run is really taking, based on the checks you chose.
+- **This Page** has been removed from the strip. Type an auricartisan.com address to audit a page on this site.
+- The page has a masthead, "One URL, audited seven ways.", and a one-line note on automating audits through the API.
+
+## v0.9.11 — 12 August 2026
+
+- Tokens and API credits were separated and explained: tokens pay for server work started in a tool, and appear in the token bar on the Analyzer; API credits pay for REST API calls.
+
+## v0.9.10 — 27 July 2026
+
+- The **A11y+** tab was rebuilt on a 112-rule accessibility engine covering ARIA 1.2, accessible-name computation and APCA contrast, with an accessibility tree view, a screen-reader transcript, colour-vision deficiency simulation and a VPAT export.
+- The engine's rules load only when needed, so the Analyzer page stays fast.
+
+## v0.9.8 — 2 May 2026
+
+- Improved the Analyzer's interface, workflow and feature behaviour for clearer workflows and more reliable interactions.

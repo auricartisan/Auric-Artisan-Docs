@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release notes — Auric Artisan Docs</title>
+<meta name="description" content="The version history of Auric Artisan Studio, taken from the changelog that ships with the extensions.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html" aria-current="page">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Release notes</h1>
+<p class="lede">The version history of Auric Artisan Studio, taken from the changelog that ships with the extensions.</p>
+<p>All four Studio extensions share one version number. These notes are taken from the changelog bundled with the extensions (the <strong>Changelog</strong> tab of each Marketplace listing), rewritten for readers of these docs.</p>
+<h2 id="unreleased">Unreleased</h2>
+<p>The changelog lists the following changes under <strong>Unreleased</strong>, which means they are not yet recorded against a version number; they are the upcoming entries for the next numbered release. The rest of these docs describe the extensions as they behave in the package currently offered on the Marketplace.</p>
+<h3 id="accuracy">Accuracy</h3>
+<p>Every engine was measured against an external reference, and each defect found was fixed with a permanent regression test: colour science against published reference values, contrast against Chromium&#39;s rendering, the WCAG rules against axe-core, and code health against a labelled set of examples.</p>
+<p>Colour:</p>
+<ul>
+<li>Every CSS Color 4 and 5 syntax is parsed: <code>oklch()</code>, <code>lab()</code>, <code>lch()</code>, <code>hwb()</code>, <code>color()</code> with Display-P3, Rec. 2020 and other spaces, <code>color-mix()</code>, relative colour, <code>none</code>, angle units and <code>transparent</code>. Wide-gamut colours use CSS gamut mapping.</li>
+<li>Invalid hex values such as <code>#12345g</code> are rejected.</li>
+<li>CIEDE2000 colour difference was added and matches all 34 Sharma test pairs; colour naming now uses it.</li>
+<li>Colour-vision simulation now uses the Brettel 1997 method in linear light. The previous method brightened red for protanopes. Achromatopsia keeps relative luminance.</li>
+<li>The suggested fix is the nearest passing colour: <code>#888</code> on white now becomes <code>#767676</code> (4.54:1), not <code>#717171</code>.</li>
+<li>Ratios just under a threshold never display as the threshold.</li>
+<li>Translucent colours blend with 8-bit alpha, matching Chromium&#39;s pixels.</li>
+<li>Writing colours back round-trips every CSS format exactly. Previously <code>hsl()</code> output rounded to whole numbers and moved the colour, and <code>lch()</code> used the wrong white point.</li>
+</ul>
+<p>Contrast scanning, rebuilt on a CSS rule tree (agreement with Chromium on the audit set rose from 14 to 62 of 68 cases; the six left are deliberate skips):</p>
+<ul>
+<li>Large text is graded at 3:1.</li>
+<li>Translucent text, translucent backgrounds and <code>opacity</code> are blended.</li>
+<li>Dark-mode token overrides no longer grade the light theme; dark themes are graded as themselves (<strong>in the dark theme</strong>).</li>
+<li>Only real <code>body</code>, <code>html</code> and <code>:root</code> rules set the page background.</li>
+<li>Nested and <code>@media</code> rules are graded once, never paired across rules; comments are ignored.</li>
+<li><code>color-mix()</code>, relative colours and <code>light-dark()</code> are graded; cyclic tokens fall back as the CSS specification says.</li>
+<li>Inline colours sit on their ancestor element&#39;s background.</li>
+<li>Disabled controls and Markdown code samples are exempt; pass or fail uses the exact ratio.</li>
+<li>The Quick Fix never corrupts source: it rewrites a value only when the whole value is one colour (or one side of <code>light-dark()</code>); anything else opens the Contrast Studio.</li>
+<li>The Contrast Studio writes token fixes to the light theme&#39;s <code>:root</code> value, not to a later dark override.</li>
+</ul>
+<p>Code health (detector 1.2.0; on a labelled set including a held-out set, precision is 1.00 in every category and recall is 1.00 except secrets at 0.96, up from 0.53):</p>
+<ul>
+<li>Secret detection now covers JSON, PHP, typed and Go assignments, prefixed names such as <code>MYSQL_PASSWORD</code>, unquoted <code>.env</code>, YAML and INI values, OpenAI <code>sk-proj-</code> keys, Google keys ending in <code>-</code>, and Azure and ADO.NET connection strings.</li>
+<li>False positives removed: placeholders (<code>CHANGE_ME</code>, <code>{{API_KEY}}</code>, <code>$VAR</code>, SOPS <code>ENC[…]</code>), translation labels, autocomplete tokens and key-file paths, <code>redis.eval</code> and <code>model.eval()</code>, tagged SQL templates, phone masks read as <code>XXX</code> markers, and Markdown underlines read as merge markers.</li>
+<li>One credential is one finding.</li>
+<li>Secret bytes no longer leak through task-marker messages or security evidence into SARIF or <code>health.json</code>.</li>
+<li>A call whose arguments cannot be read is now reported at medium confidence instead of being passed.</li>
+<li>A mention of <code>auric-disable-file</code> in prose or a string no longer silences a whole file.</li>
+<li>Task markers, <code>debugger</code> and breakpoints are recognised only where they belong in each language.</li>
+<li>The underline covers the finding&#39;s real span.</li>
+<li>Worst-case inputs (a 200 KB minified line, a 5,000-line file) scan in 5–30 ms.</li>
+<li>Because findings are fingerprinted by detector 1.2.0, a CI baseline written by detector 1.1.0 may list some findings as new once.</li>
+</ul>
+<p>WCAG rules (detector 1.2.0; on a 264-case regression suite, false positives fell from 132 to 0 and false negatives from 21 to 0; 80 of 83 rendered cases agree with axe-core, and the three that differ are contested or best practice):</p>
+<ul>
+<li>One tag reader for every rule: a JSX <code>=&gt;</code> or a Vue <code>v-if=&quot;n &gt; 0&quot;</code> no longer cuts a tag short; attributes are whole names; bound values are respected.</li>
+<li>Components such as <code>&lt;Input&gt;</code>, <code>&lt;Button&gt;</code> and <code>&lt;Form&gt;</code> are no longer judged as native elements.</li>
+<li>Correct markup no longer fails: required owned roles on <code>&lt;ul role=&quot;list&quot;&gt;</code>, radio groups and table rows; required context in component files; <code>aria-selected</code> on <code>option</code>; <code>lang</code> on <code>&lt;style lang=&quot;scss&quot;&gt;</code>; image alt with <code>aria-label</code> or spreads; Razor, Material and shadcn labels; unnamed forms as landmarks; duplicate IDs inside <code>&lt;template&gt;</code>.</li>
+<li>Accessible names now come from labelled <code>svg</code> and <code>img</code> children, template output and <code>v-text</code>; <code>aria-hidden</code> text no longer counts.</li>
+<li><code>focus-outline-none</code>: one <code>:focus-visible</code> rule no longer exempts a whole file.</li>
+<li><code>interactive-keyboard</code> understands <code>tabIndex={0}</code> and catches Vue, Angular and Svelte click handlers.</li>
+<li>New rule <code>input-placeholder-label</code> (3.3.2, advisory).</li>
+<li>Six rules are now marked best practice rather than WCAG failures: <code>accesskey</code>, <code>autofocus</code>, <code>heading-skip</code>, <code>positive-tabindex</code>, <code>tiny-font</code> and <code>text-spacing-important</code>. They are shown as hints and weigh half in the score.</li>
+<li>A case that never finished (60,000 links) now takes 0.28 s; scanning 2,930 real markup files went from 7.6 s to 6.2 s.</li>
+</ul>
+<h3 id="studio-redesign">Studio redesign</h3>
+<ul>
+<li>Every Studio screen now uses the Auric look shared with auricartisan.com and the browser extension: warm near-black on dark themes, paper on light themes, Fraunces headings and scores, Manrope text and gold primary actions. The fonts are bundled; nothing is fetched. High-contrast themes keep VS Code&#39;s own colours.</li>
+<li>The Studio is one tab with a rail of five spaces (Home, Color, Check, Health, Brand) plus Settings, Rulebook and Icon Studio at the foot. Each space opens with a header, and spaces with several tools have their own tab row. Each extension shows only the spaces it carries.</li>
+<li>A new Home space: the score ring with Accessibility, Contrast and Code-health tiles, files to fix first, suggestions, the CI gate command and the project palette. The findings list moved to <strong>Check › Findings</strong>, which the <strong>pattern-rule</strong> suggestion now opens.</li>
+<li>The Overview was rebuilt: a workspace card, a <strong>This file</strong> card with <strong>Fix N in this file</strong>, suggestions, recent colours and doors into the Studio, Rulebook, Icon Studio and fix plan, with one gold action per view.</li>
+<li><strong>Generate Project Health Report</strong> also writes a printable, self-contained <code>project-health.html</code>, with <strong>Open in Browser</strong>.</li>
+<li>Contrast hovers lead with the ratio and verdict, show the pair, APCA Lc and the nearest passing colour of the same hue, and offer <strong>Apply to --token</strong>, <strong>Open in Contrast Studio</strong> and <strong>Intentional branding</strong>.</li>
+<li>New <strong>Auric: N in this file</strong> status-bar item.</li>
+<li>The Studio&#39;s Contrast tool is now the Contrast Studio: the pair on its background with four WCAG checks, passing colours that keep the hue, where the token is used, and write-back to the token or one use.</li>
+<li>The issue hover&#39;s <strong>Apply fix</strong> button is gold.</li>
+</ul>
+<h2 id="010-initial-studio-release">0.1.0 — Initial Studio release</h2>
+<p>The first public release of Auric Artisan Studio: a privacy-first workstation delivered as three focused extensions and one Full Pack.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Package</th><th>Focus</th></tr></thead>
+<tbody>
+<tr><td>Auric Color</td><td>Colour picking, contrast, palettes, OKLCH scales and colour-vision previews</td></tr>
+<tr><td>Auric Accessibility</td><td>WCAG 2.0, 2.1 and 2.2 auditing, APCA analysis, Inspect and project scans</td></tr>
+<tr><td>Auric Code Health</td><td>Secrets, debug leftovers, task markers, risky APIs, size checks and SARIF</td></tr>
+<tr><td>Full Pack</td><td>Installs Color, Accessibility and Code Health only</td></tr>
+</tbody></table></div>
+<p>Studio experience:</p>
+<ul>
+<li>A Workstation that lets independently installed extensions behave as one product, without duplicate views, scans or diagnostics, with live host switching when extensions are installed or removed.</li>
+<li>The Full Pack installs only the three Studio extensions; icon themes and icon libraries are not included.</li>
+<li>A navigation rail, page summaries, action cards, consistent dialogs and a theme-aware settings experience.</li>
+<li>Custom dropdowns, switches, tooltips, focus management, keyboard navigation, visible focus, reduced-motion and forced-colours support throughout.</li>
+<li>Issue hovers built around priority, confidence, conformance, source context, fix guidance, ignore actions and rule references.</li>
+<li>Command Center shortcuts, capability-aware actions and deterministic suggestions.</li>
+</ul>
+<p>Colour:</p>
+<ul>
+<li>Colour detection and editable swatches across CSS and 40+ programming, template, data and markup languages.</li>
+<li>WCAG contrast, APCA, RGB, HSL, OKLCH, Display-P3, colour naming, accessible alternatives, palette generation, shade scales and colour-vision simulation.</li>
+<li>Colour editing inline, from the hover and in the docked picker.</li>
+</ul>
+<p>Accessibility:</p>
+<ul>
+<li>A WCAG 2.2 engine with structural, semantic, ARIA, language, form, media, focus, motion and contrast checks.</li>
+<li>Inspect for element-level names, roles, colours, contrast, colour-vision impact, issues and fixes.</li>
+<li>Workspace scans, grouped findings, score summaries, suppressions, quick fixes, remediation plans and rule documentation.</li>
+<li>Framework and template awareness, so comments, runtime bindings and inert source are not reported.</li>
+</ul>
+<p>Code health and reporting:</p>
+<ul>
+<li>Checks for exposed secrets, injection risks, unsafe APIs, merge markers, debug code, task markers, oversized files and maintainability problems.</li>
+<li>Secret evidence redacted before it reaches diagnostics, reports or the Studio.</li>
+<li>Project health records, JSON and SARIF 2.1.0 output, stable fingerprints, baselines, trend history and an offline command-line scanner.</li>
+<li>A versioned local knowledge base of rules, requirements, procedures, policies, glossary entries, sources and remediation guidance.</li>
+</ul>
+<p>Accessibility and trust:</p>
+<ul>
+<li>Every Studio screen designed for WCAG 2.2 AA and checked across light, dark, high-contrast, narrow and zoomed layouts.</li>
+<li>A no-network runtime, a strict content security policy for the Studio&#39;s screens, local-only analysis and deterministic builds.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="privacy.html"><span>Previous</span>Privacy</a><a href="related.html"><span>Next</span>Related</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#unreleased">Unreleased</a></li><li><a href="#010-initial-studio-release">0.1.0 — Initial Studio release</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

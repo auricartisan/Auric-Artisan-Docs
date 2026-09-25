@@ -1,0 +1,86 @@
+---
+title: Neuroscience (Visual Pathway) — Troubleshooting
+description: Symptoms, causes and fixes for flat maps, warnings, refused cone tables, links and copying in the Visual Pathway.
+product: Website › Tools › Perception and spectral › Neuroscience
+updated: 2026-09-25
+---
+
+# Troubleshooting the Visual Pathway
+
+## A map is completely black and its name ends in "— stage off"
+
+**Why:** the stage that produces that map is switched off under **Stages**, or it is **V2** and **V1** is off.
+
+**What to do:** tick the stage's checkbox. For **V2, boundary signal**, tick both **V1 — Gabor bank** and **V2 — boundary signal**.
+
+## The scale bar says "flat — this stage found no variation in this stimulus"
+
+**Why:** the stage gave the same response everywhere. This is a real result. Common cases: the off-centre retinal map with a chromatic grating (the retinal stage reads luminance, and a surround weight below 1 adds a positive constant), the chromatic LGN maps with a luminance grating (a grey pattern has no colour to oppose), or any map at **Contrast** 0%.
+
+**What to do:** change the **Carrier**, raise **Contrast**, or set **Surround weight** closer to 1 for the off-centre map.
+
+## A warning says "Above the pixel grid's Nyquist limit"
+
+**Why:** at your viewing distance and pixel pitch, the screen cannot draw the spatial frequency you asked for. The pattern you see is an alias, a coarser false pattern.
+
+**What to do:** lower **Spatial frequency** below the **Nyquist limit of the grid** readout. Also check that **Viewing distance** and **Pixel pitch** match your real setup. The limit rises when you sit further away and when the pixels are smaller; the warning's own text suggests moving closer, but moving closer lowers the limit.
+
+## A warning says "The contrast you asked for does not fit in sRGB"
+
+**Why:** the colour opposite your base colour, at the swing you asked for, is outside what an sRGB screen can show. The page reduced the swing so both phases fit, rather than clipping one of them.
+
+**What to do:** read **Contrast achieved** for the value actually used. To reach a higher contrast, choose a less saturated base colour.
+
+## Moving the Pupil slider changes nothing
+
+**Why:** in the current version the pupil size is not used by any map or readout. The tool's sensitivity curve peaks at 4 c/deg whatever the pupil.
+
+**What to do:** nothing; the **Pipeline** tab's **The sensitivity curve** view shows the reason.
+
+## L − M peak gap reads 0 nm and is highlighted
+
+**Why:** the built-in cone table is the tool's own and puts the L and M peaks together at 590 nm. It affects only the cone figure.
+
+**What to do:** install a published table on the **Data** tab; see [Cones, opponent channels and the cone table](cones-and-opponent-channels.md).
+
+## My cone table is refused
+
+| Message | Fix |
+|---|---|
+| **Not installed: too few rows** | Supply at least eight rows |
+| **Not installed: row N has fewer than 4 columns** | Every row needs wavelength, L, M and S |
+| **Not installed: row N is not numeric** | Remove text from data rows (in CSV, a header line that starts with a letter is skipped automatically) |
+| **Not installed: wavelengths must increase** | Sort the rows by wavelength, lowest first, with no repeats |
+| **Not installed: L and M peak N nm apart, which is not a cone table** | Check the column order is wavelength, L, M, S |
+
+A JSON file must be an array of rows or an object with a `rows` array. A JSON file in any other shape is read as CSV text and usually fails.
+
+## My installed cone table disappeared
+
+**Why:** an installed table lasts only for the current page visit.
+
+**What to do:** install it again after reloading. Links do not carry it.
+
+## The Cells previews do not match my new settings
+
+**Why:** the previews are drawn when you first open the **Cells** tab and when you press one of its buttons, not every time a Lab control moves.
+
+**What to do:** press any **Show** or **Contrast** button on the Cells tab.
+
+## Nothing is copied, or the page says "Copy blocked"
+
+**Why:** the browser refused clipboard access, which can happen in private windows, in embedded views or when the page is not focused.
+
+**What to do:** click inside the page and try again, or use **Download the CSV** instead of **Copy to clipboard**.
+
+## A link I opened does not restore the stage checkboxes or pupil
+
+**Why:** links carry the stimulus, geometry, stage settings, colour vision, colourmap and map, but not the stage checkboxes, the pupil or the scale-bar setting.
+
+**What to do:** set those by hand after opening the link. See [Export and share](export-and-share.md) for the full list.
+
+## Sliders feel slow on an older device
+
+**Why:** each change recomputes all five stages over a 256 × 256 frame.
+
+**What to do:** switch off stages you are not looking at, or lower **Orientations** and **Kernel size**, which set most of the V1 work.

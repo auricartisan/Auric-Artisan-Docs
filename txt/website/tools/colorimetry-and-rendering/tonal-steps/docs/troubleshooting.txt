@@ -1,0 +1,78 @@
+==============================================================================
+TROUBLESHOOTING TONAL STEPS
+==============================================================================
+Fixes for common problems in Tonal Steps, Tints and Shades.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+  Symptom:        My base colour is not in the ramp
+  Why it happens: The engines step lightness or luminance evenly from white to
+                  black; the base rarely lands exactly on a step. The base
+                  note says "not a step"
+  What to do:     Expected. Use the key sets, where 500 is always your colour,
+                  or tints and shades, which start from it
+
+  Symptom:        Changing Mix in does not change the ramp
+  Why it happens: The mixing space applies to tints, shades, tones and key
+                  sets, not to the main ramp
+  What to do:     Tick a set under Also show to see the effect
+
+  Symptom:        sRGB linear gives the same result as OKLab
+  Why it happens: In the current version the sRGB linear option mixes in OKLab
+  What to do:     Use CIELAB or HSL for a visibly different mix
+
+  Symptom:        Easing γ does nothing
+  Why it happens: Easing applies only to Equal luminance and the neutral
+                  ladder
+  What to do:     Switch the engine to Equal luminance
+
+  Symptom:        The Equal contrast engine is missing
+  Why it happens: It produces the same ramp as Equal luminance, so it is not
+                  offered on the Lab tab
+  What to do:     Use Equal luminance; the Ramps tab shows both
+
+  Symptom:        Pressing `3` shows a ramp that looks like Equal luminance
+  Why it happens: `3` selects the Equal contrast engine, which gives the same
+                  colours
+  What to do:     Expected
+
+  Symptom:        The base colour field ignores my value
+  Why it happens: It needs a six-digit HEX with `#`
+  What to do:     Type a value such as `#D3AF37`
+
+  Symptom:        The Metric choice on Contrast changes nothing
+  Why it happens: Both WCAG and APCA figures are always shown
+  What to do:     Read the column you need
+
+  Symptom:        The contrast export ignores my Against choice
+  Why it happens: Exports list contrast against both white and black
+  What to do:     Use the Contrast tab for the base colour
+
+  Symptom:        Download the result did not save a file
+  Why it happens: It copies the analysis as CSV to your clipboard
+  What to do:     Paste it where you need it
+
+  Symptom:        "No valid hex colours found."
+  Why it happens: The list has no six-digit HEX values
+  What to do:     Put one value per line, for example `2563eb`
+
+  Symptom:        Copying fails
+  Why it happens: The browser blocked clipboard access
+  What to do:     Allow clipboard access, or select the preview and copy
+                  manually
+
+  Symptom:        `1`, `2`, `3` or `R` do nothing
+  Why it happens: The focus is in a field or slider
+  What to do:     Click an empty part of the page first
+
+  Symptom:        Colours differ from the Tailwind or Material palettes
+  Why it happens: The key sets borrow the key names only
+  What to do:     Expected; they are this tool's own ladders
+
+  Symptom:        OKLab L values differ from an older export
+  Why it happens: Earlier versions fed OKLab gamma-encoded values; OKLab now
+                  receives linear sRGB
+  What to do:     Re-export; new files note `oklab_input=linear_srgb`
+
+  Symptom:        APCA values differ from an older export
+  Why it happens: APCA-W3 0.1.9 now runs as published
+  What to do:     Turn on Show the difference to compare

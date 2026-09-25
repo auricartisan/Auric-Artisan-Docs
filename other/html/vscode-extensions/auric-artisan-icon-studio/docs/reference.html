@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Icon Studio reference — Auric Artisan Docs</title>
+<meta name="description" content="Every command, keybinding, setting, collection, style, output format, view and control in Auric Artisan Icon Studio 0.1.0.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Icon Studio</a>
+<h2>Icon Studio guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Icon Studio</a></li>
+<li><a href="auric-collections.html">Work with the Auric collection extensions</a></li>
+<li><a href="commands-and-keybindings.html">Commands and keybindings</a></li>
+<li><a href="insert-copy-and-save.html">Insert, copy and save</a></li>
+<li><a href="search-and-browse.html">Search and browse</a></li>
+<li><a href="reference.html" aria-current="page">Icon Studio reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Icon Studio</a> &rsaquo; <a href="README.html">Icon Studio guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Icon Studio</p>
+<h1>Icon Studio reference</h1>
+<p class="lede">Every command, keybinding, setting, collection, style, output format, view and control in Auric Artisan Icon Studio 0.1.0.</p>
+<p>This reference describes version 0.1.0 as published on the Visual Studio Marketplace.</p>
+<h2 id="commands">Commands</h2>
+<p>Category in the Command Palette: <strong>Auric Icon Studio</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Open Icon Studio</td><td><code>auricIconStudio.openStudio</code></td><td>Opens the editor-tab Studio beside the active editor, or reveals it and focuses search.</td></tr>
+<tr><td>Search All Icons…</td><td><code>auricIconStudio.searchIcons</code></td><td>Quick Pick over the whole catalog, then an action list.</td></tr>
+<tr><td>Smart Insert Icon (matches active language)</td><td><code>auricIconStudio.smartInsert</code></td><td>Quick Pick, then insert with smart output.</td></tr>
+<tr><td>Copy Icon As…</td><td><code>auricIconStudio.copyAs</code></td><td>Quick Pick, then a format list; copies.</td></tr>
+<tr><td>Save Icon as SVG…</td><td><code>auricIconStudio.saveSvg</code></td><td>Quick Pick of SVG icons; saves through a dialog.</td></tr>
+<tr><td>Insert from Likes</td><td><code>auricIconStudio.insertFavorite</code></td><td>Quick Pick of liked icons; runs the click action.</td></tr>
+<tr><td>Insert from Recent</td><td><code>auricIconStudio.insertRecent</code></td><td>Quick Pick of recent icons; runs the click action.</td></tr>
+<tr><td>Clear Likes, Recents and Learned Recommendations</td><td><code>auricIconStudio.clearPersonalization</code></td><td>Asks for confirmation, then resets personalisation.</td></tr>
+<tr><td>Insert Icon by ID</td><td><code>auricIconStudio.insertIcon</code></td><td>Inserts a given icon; for keybindings and macros. Hidden from the Command Palette.</td></tr>
+</tbody></table></div>
+<h2 id="keybindings">Keybindings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys (Windows and Linux)</th><th>Keys (macOS)</th><th>Command</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>I</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>I</code></td><td>Smart Insert Icon</td><td>Editor has focus and Icon Studio&#39;s shortcuts are active.</td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>R</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>R</code></td><td>Insert from Recent</td><td>Editor has focus and Icon Studio&#39;s shortcuts are active.</td></tr>
+</tbody></table></div>
+<p>Icon Studio&#39;s shortcuts are active when it hosts the Auric collections (the default) or when none of Modern, Drawn and Playful is installed.</p>
+<h3 id="keys-inside-icon-studio">Keys inside Icon Studio</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><code>/</code></td><td>Focus and select the search box.</td></tr>
+<tr><td><code>Escape</code></td><td>In search: clear it. In an open dropdown: close it and return focus.</td></tr>
+<tr><td><code>Arrow Up</code>, <code>Arrow Down</code></td><td>Open a dropdown from its button; move between options.</td></tr>
+<tr><td><code>Home</code>, <code>End</code></td><td>First or last dropdown option.</td></tr>
+<tr><td><code>Tab</code></td><td>Closes open dropdowns.</td></tr>
+</tbody></table></div>
+<h2 id="settings">Settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Values or range</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricIconStudio.clickAction</code></td><td>string</td><td><code>insert</code>, <code>copy</code>, <code>insertAndCopy</code></td><td><code>insert</code></td><td>Action when you choose an icon from a Quick Pick (Likes, Recent).</td></tr>
+<tr><td><code>auricIconStudio.smartInsert</code></td><td>boolean</td><td><code>true</code>, <code>false</code></td><td><code>true</code></td><td>Language-aware output for Insert.</td></tr>
+<tr><td><code>auricIconStudio.size</code></td><td>number</td><td>0 to 512</td><td>0</td><td>Width and height in SVG and font output; 0 keeps the native size.</td></tr>
+<tr><td><code>auricIconStudio.color</code></td><td>string</td><td><code>currentColor</code> or <code>#rrggbb</code></td><td><code>currentColor</code></td><td>Colour for monochrome output.</td></tr>
+<tr><td><code>auricIconStudio.strokeWidth</code></td><td>number</td><td>0.5 to 4</td><td>2</td><td>Stroke width for Tabler, Lucide and Feather.</td></tr>
+<tr><td><code>auricIconStudio.emojiSkinTone</code></td><td>string</td><td><code>none</code>, <code>light</code>, <code>mediumLight</code>, <code>medium</code>, <code>mediumDark</code>, <code>dark</code></td><td><code>none</code></td><td>Default emoji skin tone.</td></tr>
+<tr><td><code>auricIconStudio.density</code></td><td>string</td><td><code>comfortable</code>, <code>compact</code></td><td><code>comfortable</code></td><td>Card size in the grid.</td></tr>
+<tr><td><code>auricIconStudio.pageSize</code></td><td>number</td><td>24 to 240</td><td>96</td><td>Cards loaded per batch as you scroll.</td></tr>
+<tr><td><code>auricIconStudio.recommendations.enabled</code></td><td>boolean</td><td><code>true</code>, <code>false</code></td><td><code>true</code></td><td>The <strong>For you</strong> view and Quick Pick recommendations.</td></tr>
+<tr><td><code>auricIconStudio.hoverPreview</code></td><td>boolean</td><td><code>true</code>, <code>false</code></td><td><code>true</code></td><td>Previews for Auric icon IDs in code.</td></tr>
+<tr><td><code>auricIconStudio.hostFamilyLibraries</code></td><td>boolean</td><td><code>true</code>, <code>false</code></td><td><code>true</code></td><td>Hide the separate Modern, Drawn and Playful library views while Icon Studio is installed.</td></tr>
+</tbody></table></div>
+<p>Search Settings for <code>@ext:auric-artisan.auric-artisan-icon-studio</code> to see them all.</p>
+<h2 id="views-and-menus">Views and menus</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Place</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Activity Bar</td><td><strong>Icon Studio</strong> container with the <strong>Icon Studio</strong> view.</td></tr>
+<tr><td>View title bar</td><td><strong>Open Icon Studio</strong>, <strong>Search All Icons…</strong>, <strong>Insert from Likes</strong>; in the <strong>…</strong> menu, <strong>Clear Likes, Recents and Learned Recommendations</strong>.</td></tr>
+<tr><td>Editor right-click menu</td><td><strong>Smart Insert Icon (matches active language)</strong> (writable editors only).</td></tr>
+<tr><td>Editor tab</td><td>&quot;Icon Studio&quot;, opened beside the active editor.</td></tr>
+</tbody></table></div>
+<h2 id="studio-controls">Studio controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Options or behaviour</th></tr></thead>
+<tbody>
+<tr><td>View chips</td><td><strong>Library</strong>, <strong>For you</strong>, <strong>Likes</strong> (count), <strong>Recent</strong> (count).</td></tr>
+<tr><td>Search your library</td><td>Synonym-aware search; <code>/</code> to focus; <code>Escape</code> to clear.</td></tr>
+<tr><td>Refine library</td><td>Collapsed in the sidebar, open in the editor tab.</td></tr>
+<tr><td>Collection</td><td><strong>All collections</strong> or one of 11.</td></tr>
+<tr><td>Category</td><td><strong>All categories</strong> or one category.</td></tr>
+<tr><td>Style</td><td>Shown for a single multi-style collection; <strong>Default</strong> or a style.</td></tr>
+<tr><td>Skin tone</td><td>Shown for all collections or Emoji; six tones.</td></tr>
+<tr><td>Reset filters</td><td>Clears search and refinements; keeps the current view.</td></tr>
+<tr><td>Card</td><td>Artwork (inserts), heart (like), badge, name, category, <strong>Insert</strong>, <strong>Copy</strong>, <strong>As…</strong>, quick formats.</td></tr>
+<tr><td>Load more</td><td>Shown only if automatic loading is unavailable.</td></tr>
+</tbody></table></div>
+<h2 id="collections">Collections</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Collection</th><th>Group</th><th>Entries</th><th>Styles (ID: label)</th><th>Default style</th><th>Licence</th></tr></thead>
+<tbody>
+<tr><td><code>modern</code></td><td>Modern</td><td>Auric Artisan</td><td>720</td><td>color, mono, outline, duotone</td><td>color</td><td>Auric Artisan Free Use Licence</td></tr>
+<tr><td><code>drawn</code></td><td>Drawn</td><td>Auric Artisan</td><td>480</td><td>color, mono, outline, duotone</td><td>color</td><td>Auric Artisan Free Use Licence</td></tr>
+<tr><td><code>playful</code></td><td>Playful</td><td>Auric Artisan</td><td>1,225</td><td>color, outline, filled, small</td><td>color</td><td>Auric Artisan Free Use Licence</td></tr>
+<tr><td><code>emoji</code></td><td>Emoji</td><td>Emoji</td><td>1,914</td><td>none plus five tones</td><td>none</td><td>MIT (data); glyphs drawn by your system</td></tr>
+<tr><td><code>phosphor</code></td><td>Phosphor</td><td>Open source</td><td>1,512</td><td>thin, light, regular, bold, fill, duotone</td><td>regular</td><td>MIT</td></tr>
+<tr><td><code>tabler</code></td><td>Tabler</td><td>Open source</td><td>5,093</td><td>outline, filled</td><td>outline</td><td>MIT</td></tr>
+<tr><td><code>lucide</code></td><td>Lucide</td><td>Open source</td><td>1,714</td><td>regular</td><td>regular</td><td>ISC</td></tr>
+<tr><td><code>remix</code></td><td>Remix</td><td>Open source</td><td>1,689</td><td>line, fill</td><td>line</td><td>Remix v1.0</td></tr>
+<tr><td><code>heroicons</code></td><td>Heroicons</td><td>Open source</td><td>324</td><td>24/outline, 24/solid, 20/solid, 16/solid</td><td>24/outline</td><td>MIT</td></tr>
+<tr><td><code>feather</code></td><td>Feather</td><td>Open source</td><td>287</td><td>regular</td><td>regular</td><td>MIT</td></tr>
+<tr><td><code>material</code></td><td>Material</td><td>Open source</td><td>2,276</td><td>outlined, round, sharp, regular, twotone</td><td>outlined</td><td>Apache-2.0</td></tr>
+</tbody></table></div>
+<p>Total: 17,234 entries.</p>
+<h2 id="output-formats">Output formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Kind</th><th>Format ID</th><th>Label</th></tr></thead>
+<tbody>
+<tr><td>SVG</td><td><code>raw</code></td><td>SVG markup (plain format)</td></tr>
+<tr><td>SVG</td><td><code>jsx</code></td><td>JSX element</td></tr>
+<tr><td>SVG</td><td><code>jsxComponent</code></td><td>React component</td></tr>
+<tr><td>SVG</td><td><code>js</code></td><td>JavaScript string constant</td></tr>
+<tr><td>SVG</td><td><code>img</code></td><td>Image tag (self-contained)</td></tr>
+<tr><td>SVG</td><td><code>markdown</code></td><td>Markdown image</td></tr>
+<tr><td>SVG</td><td><code>css</code></td><td>CSS background</td></tr>
+<tr><td>SVG</td><td><code>dataUri</code></td><td>Data URI</td></tr>
+<tr><td>SVG</td><td><code>name</code></td><td>Icon ID</td></tr>
+<tr><td>Material</td><td><code>html</code></td><td>HTML span (plain format)</td></tr>
+<tr><td>Material</td><td><code>jsx</code></td><td>JSX span</td></tr>
+<tr><td>Material</td><td><code>jsxComponent</code></td><td>React component</td></tr>
+<tr><td>Material</td><td><code>js</code></td><td>JavaScript string constant</td></tr>
+<tr><td>Material</td><td><code>css</code></td><td>CSS declarations</td></tr>
+<tr><td>Material</td><td><code>name</code></td><td>Ligature name</td></tr>
+<tr><td>Emoji</td><td><code>emoji</code></td><td>Emoji character (plain format)</td></tr>
+<tr><td>Emoji</td><td><code>shortcode</code></td><td>Shortcode</td></tr>
+<tr><td>Emoji</td><td><code>unicode</code></td><td>Unicode code points</td></tr>
+<tr><td>Emoji</td><td><code>html</code></td><td>HTML entities</td></tr>
+</tbody></table></div>
+<h2 id="smart-insert-by-language">Smart insert by language</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Language IDs</th><th>SVG output</th><th>Material output</th></tr></thead>
+<tbody>
+<tr><td><code>javascriptreact</code>, <code>typescriptreact</code>, <code>mdx</code></td><td>JSX element</td><td>JSX span</td></tr>
+<tr><td><code>javascript</code>, <code>typescript</code></td><td>JavaScript string constant</td><td>JavaScript string constant</td></tr>
+<tr><td><code>html</code>, <code>vue</code>, <code>svelte</code>, <code>astro</code>, <code>php</code>, <code>handlebars</code>, <code>razor</code>, <code>erb</code>, <code>django-html</code>, <code>jinja</code>, <code>blade</code>, <code>xml</code>, <code>svg</code></td><td>SVG markup</td><td>HTML span</td></tr>
+<tr><td><code>markdown</code></td><td>Markdown image</td><td>HTML span</td></tr>
+<tr><td><code>css</code>, <code>scss</code>, <code>sass</code>, <code>less</code>, <code>stylus</code>, <code>postcss</code></td><td>CSS background</td><td>CSS declarations</td></tr>
+<tr><td><code>json</code>, <code>jsonc</code>, <code>yaml</code>, <code>toml</code>, <code>python</code></td><td>Data URI</td><td>HTML span</td></tr>
+<tr><td>Anything else</td><td>SVG markup</td><td>HTML span</td></tr>
+</tbody></table></div>
+<p>Emoji always insert as the character.</p>
+<h2 id="limits">Limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Limit</th></tr></thead>
+<tbody>
+<tr><td>Recent icons kept</td><td>60</td></tr>
+<tr><td>Liked icons kept</td><td>500</td></tr>
+<tr><td>For you view</td><td>Up to 96 icons</td></tr>
+<tr><td>Quick Pick results</td><td>200 with a search term; 300 without</td></tr>
+<tr><td>Hover preview size</td><td>48 pixels</td></tr>
+</tbody></table></div>
+<h2 id="messages-you-may-see">Messages you may see</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>… copied — open an editor to insert it.</td><td>No editor was available, so the output was copied.</td></tr>
+<tr><td>… is an emoji character and has no SVG file to save.</td><td>Only SVG artwork can be saved.</td></tr>
+<tr><td>… is a font glyph and has no SVG file to save.</td><td>Material icons cannot be saved as SVG.</td></tr>
+<tr><td>Icon Studio: like an icon first — press the heart on any card.</td><td><strong>Insert from Likes</strong> found no likes.</td></tr>
+<tr><td>Icon Studio: no recent icons yet.</td><td><strong>Insert from Recent</strong> found no recent icons.</td></tr>
+<tr><td>Icon Studio: unknown icon id …</td><td><strong>Insert Icon by ID</strong> received an ID that is not in the catalog.</td></tr>
+<tr><td>VS Code could not apply the edit.</td><td>The editor rejected the insertion, for example because it is read-only.</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="search-and-browse.html"><span>Previous</span>Search and browse</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#commands">Commands</a></li><li><a href="#keybindings">Keybindings</a></li><li><a href="#settings">Settings</a></li><li><a href="#views-and-menus">Views and menus</a></li><li><a href="#studio-controls">Studio controls</a></li><li><a href="#collections">Collections</a></li><li><a href="#output-formats">Output formats</a></li><li><a href="#smart-insert-by-language">Smart insert by language</a></li><li><a href="#limits">Limits</a></li><li><a href="#messages-you-may-see">Messages you may see</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

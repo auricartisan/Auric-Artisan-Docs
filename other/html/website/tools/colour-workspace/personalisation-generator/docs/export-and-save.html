@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export, save and share — Auric Artisan Docs</title>
+<meta name="description" content="Copy CSS, download the JSON snapshot, save results to your Library, bring Library colours in, and automate the generator through the Public API.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Personalization Generator</a>
+<h2>Personalization Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Personalization Generator</a></li>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="build-the-pool.html">Build your colour pool</a></li>
+<li><a href="design-tokens.html">Design tokens</a></li>
+<li><a href="export-and-save.html" aria-current="page">Export, save and share</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="result-tabs.html">Palettes, gradients, typography, UI pairs and posters</a></li>
+<li><a href="run-a-sweep.html">Run a sweep and read the results</a></li>
+<li><a href="tune-the-sweep.html">Tune the sweep</a></li>
+<li><a href="reference.html">Personalization Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Personalization Generator</a> &rsaquo; <a href="README.html">Personalization Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Export, save and share</h1>
+<p class="lede">Copy CSS, download the JSON snapshot, save results to your Library, bring Library colours in, and automate the generator through the Public API.</p>
+<p>Results live only in the open page; a reload starts a fresh sweep. Copy, download or save anything you want to keep.</p>
+<h2 id="the-export-tab">The Export tab</h2>
+<p>The <strong>Export</strong> tab has two buttons at the top and two cards.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy CSS</strong> (top)</td><td>Copies the CSS shown in the <strong>CSS tokens</strong> card.</td></tr>
+<tr><td><strong>Download JSON</strong></td><td>Downloads the full snapshot as <code>auric-personalization-generator.json</code>.</td></tr>
+<tr><td><strong>Copy</strong> (CSS tokens card)</td><td>The same as <strong>Copy CSS</strong>.</td></tr>
+<tr><td><strong>Copy JSON</strong> (JSON snapshot card)</td><td>Copies the full snapshot as text.</td></tr>
+</tbody></table></div>
+<p>The <strong>JSON snapshot</strong> card previews only the start of a long snapshot and marks it <em>(truncated, full file in download)</em>. The copy and the download are always complete.</p>
+<h3 id="what-the-css-contains">What the CSS contains</h3>
+<p>A <code>:root</code> block with:</p>
+<ul>
+<li><code>--aa-personal-1</code>, <code>--aa-personal-2</code> and so on: the leader&#39;s colours, in order (if there are no results yet, the first six pool colours);</li>
+<li><code>--aa-personal-gradient</code>: the first gradient;</li>
+<li><code>--aa-font-display</code>, <code>--aa-font-body</code> and <code>--aa-font-mono</code>: the first typography card&#39;s three font stacks;</li>
+</ul>
+<p>followed by the design tokens for the light, dark and high-contrast themes, as described in <a href="design-tokens.html">Design tokens</a>.</p>
+<h3 id="what-the-json-contains">What the JSON contains</h3>
+<ul>
+<li><code>preferences</code>: your pool, styles, use case, brief, and the search settings (palette size, depth, keep, the three weights and the three filters);</li>
+<li><code>results</code>: every palette (with its relationship, source and score breakdown), gradient, typography card, UI pair and poster, and the full token system;</li>
+<li>the time it was made.</li>
+</ul>
+<p>There is no way to load a JSON snapshot back into the generator. Keep it as a record, or use it in your own code.</p>
+<h2 id="copy-single-results">Copy single results</h2>
+<p>Every result card has its own copy buttons. See <a href="result-tabs.html">Palettes, gradients, typography, UI pairs and posters</a> for exactly what each one copies. In short:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>Button</th><th>Copies</th></tr></thead>
+<tbody>
+<tr><td>Palette card</td><td><strong>Copy hex</strong></td><td>HEX values separated by spaces</td></tr>
+<tr><td>Overview</td><td><strong>Copy hex list</strong></td><td>the leader&#39;s HEX values</td></tr>
+<tr><td>Any swatch or role chip</td><td>select it</td><td>that HEX</td></tr>
+<tr><td>Gradient card</td><td><strong>Copy CSS</strong>, <strong>Copy stops</strong></td><td>a <code>background:</code> line, or the stop colours</td></tr>
+<tr><td>Typography card</td><td><strong>Copy CSS</strong></td><td>five custom properties</td></tr>
+<tr><td>UI pair card</td><td><strong>Copy CSS</strong></td><td>five custom properties</td></tr>
+<tr><td>Poster card</td><td><strong>Copy CSS</strong></td><td>a short <code>.poster</code> rule</td></tr>
+<tr><td>Tokens tab</td><td><strong>Copy CSS</strong>, <strong>Copy JSON</strong>, scale <strong>Copy</strong></td><td>the token system, or one scale</td></tr>
+</tbody></table></div>
+<p>A short message confirms each copy.</p>
+<h2 id="save-to-your-library">Save to your Library</h2>
+<p><strong>Save</strong> on a palette, gradient, typography, UI pair or poster card, and <strong>Save brand system</strong> in the Studio, store the item in your Auric Artisan Library with a preview image.</p>
+<ul>
+<li>The message reads, for example, <strong>Saved “Balanced Analogous” to Library</strong>.</li>
+<li>Saving the same card twice from the same sweep shows <strong>Already saved</strong> instead of making a copy.</li>
+<li>If the Library is not available, the message reads <strong>Save failed</strong>.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Saved from</th><th>Saved as</th><th>Holds</th></tr></thead>
+<tbody>
+<tr><td>Palette card</td><td>palette</td><td>colours, relationship, source and score</td></tr>
+<tr><td>Gradient card</td><td>gradient</td><td>CSS, stops, style and score</td></tr>
+<tr><td>Typography card</td><td>typography</td><td>fonts, colours and score</td></tr>
+<tr><td>UI pair card</td><td>preset</td><td>the four colours, accent text colour, contrast and colour-vision score</td></tr>
+<tr><td>Poster card</td><td>preset</td><td>layout, colours, fonts and score</td></tr>
+<tr><td>Studio</td><td>preset</td><td>palette, brand system, overrides, theme and density</td></tr>
+</tbody></table></div>
+<p>The Library&#39;s own <strong>Save to Library</strong> captures the leader palette (or, before any sweep, your pool) and the first gradient. See the <a href="../../../../kits/library-kit/README.html">Library Kit</a> for managing saved items.</p>
+<h2 id="bring-colours-in-from-your-library">Bring colours in from your Library</h2>
+<p>A palette, gradient, colour or shade saved in any Auric Artisan tool can be opened in the Personalization Generator from your Library. Its colours are added to the front of your pool and the <strong>Pool</strong> tab opens, ready for a sweep. See the <a href="../../../../kits/library-kit/README.html">Library Kit</a>.</p>
+<h2 id="automate-it">Automate it</h2>
+<p>The page notes the matching Public API call: <strong>POST /v1/personalize/system</strong>, at 14 API credits per call. API credits are a separate balance from your tool tokens. See the <a href="../../../../../services/public-api/README.html">Public API</a> and the API reference at <a href="https://auricartisan.com/library/documentation/api/" rel="noopener">https://auricartisan.com/library/documentation/api/</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="design-tokens.html">Design tokens</a></li>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="../others/privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="design-tokens.html"><span>Previous</span>Design tokens</a><a href="presets.html"><span>Next</span>Presets</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-export-tab">The Export tab</a></li><li><a href="#copy-single-results">Copy single results</a></li><li><a href="#save-to-your-library">Save to your Library</a></li><li><a href="#bring-colours-in-from-your-library">Bring colours in from your Library</a></li><li><a href="#automate-it">Automate it</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+---
+title: Browser extension — Snippets
+description: Keep reusable code in the extension's on-device vault — save from tools or paste your own, search, filter by site, copy and export.
+product: Browser extension › Code
+updated: 2026-09-25
+---
+
+# Snippets
+
+Snippets is a vault for code you want to keep: CSS, gradients, scales, tokens and your own notes. It is stored on this device only, in the browser's extension storage.
+
+## Save a snippet
+
+From a tool:
+
+| Tool | Button | Saves |
+|---|---|---|
+| Gradient | **Save snippet** | The gradient declaration |
+| Scale | **Save** | The scale's CSS |
+| Tokens | **Save snippet** | The CSS variables |
+| Inspect › Live CSS | **Save snippet** | The CSS in the editor |
+
+Or your own:
+
+1. Open Code › **Snippets** and choose **+ New**.
+2. Paste or type the code when asked.
+3. Give it a title, or leave it blank for "Note".
+
+Each snippet records its type, a title, the page and site it was saved from, and when.
+
+## Find a snippet
+
+- **Search snippets…** matches titles, types, code and site names.
+- **This site** shows only snippets saved from the site in the current tab.
+
+Each card shows its type (CSS, Gradient, Shades, Tokens, Palette, Contrast or Note), its title, how long ago it was saved and the site. Long code is shown shortened.
+
+## Use snippets
+
+| Button | What it does |
+|---|---|
+| **Copy** (on a card) | Copies that snippet's code |
+| **Delete** (on a card) | Deletes that snippet at once |
+| **Copy all** | Copies every snippet, each headed by a comment with its title, type and site |
+| **Export file** | Downloads every snippet as a `.txt` file (`auric-snippets-` and the date) |
+| **Clear all** | Deletes every snippet, after you confirm |
+
+The Snippets chip shows how many snippets you have. The list updates live if you add snippets in another window.
+
+## Limits
+
+- Up to **200** snippets; saving more drops the oldest.
+- Each snippet's code is kept up to **20 000** characters, and titles up to 80.
+
+Snippets are included in a backup from Settings › Data › **Download a backup**. Because each snippet records the page it came from, a backup contains those addresses.
+
+## Related pages
+
+- [Data settings](../settings/data.md)
+- [Privacy](../../others/privacy.md)

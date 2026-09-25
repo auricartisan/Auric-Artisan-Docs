@@ -1,0 +1,131 @@
+---
+title: Perception and Vision — Simulate a design or image
+description: Choose a source, run any of the eight simulations with its settings, relight the scene, apply adjustments and presets, and compare the result.
+product: Website › Tools › Perception and spectral › Perception and Vision
+updated: 2026-09-25
+---
+
+# Simulate a design or image
+
+All controls in this guide are on the **Lab** tab.
+
+## 1. Choose a source
+
+| Source | What it is |
+|---|---|
+| **Test card** (default) | Eight colour patches, a nine-step grey ramp and red, green and blue ramps, 800 × 600 |
+| **Grey ramp only** | The nine grey steps across the whole frame, for reading neutral drift at a glance |
+| **Snellen chart** | Letter rows labelled 20/200, 20/100, 20/70, 20/50, 20/40, 20/30 and 20/20, so the **Acuity** simulation has something to be judged on |
+| **Uploaded image** | A picture from your device |
+| **Camera** | Live frames from a camera; see the note below |
+
+**Uploaded image.** Choose it, then select **Choose a file** and pick any image your browser can open (PNG, JPEG, WebP and so on). The file name appears beside the button. Large images are scaled down to fit within 1200 × 900 pixels; small ones are not enlarged. The image is read by the page and never uploaded.
+
+**Camera.** Choose it, then **Start or stop** switches the camera on and off; the status reads **off**, **active** or **unavailable**. The camera needs your browser's permission, and auricartisan.com currently does not allow its pages to use the camera, so in most browsers the page shows a message beginning **Camera:**, sets the status to **unavailable** and returns to the test card. Use a screenshot or photo with **Uploaded image** instead.
+
+## 2. Pick a simulation
+
+Select one of the buttons under **Simulation**. Every simulation has a **Severity** slider (0 to 1, default 1.00): 0 leaves the image alone and 1 applies the simulation in full; values between blend the two.
+
+### Colour vision
+
+Simulates dichromacy, colour vision with one cone type missing. Choose the **Type**:
+
+- **Protan** — no L (long-wavelength) cones; reds darken and reds and greens converge.
+- **Deutan** — no M (medium-wavelength) cones; reds and greens converge without the darkening.
+- **Tritan** — no S (short-wavelength) cones; blues and greens converge, and yellows move towards pink.
+
+Each colour is converted from sRGB to linear light, to CIE XYZ, to cone signals (Hunt-Pointer-Estévez), projected with the Viénot, Brettel and Mollon (1999) matrix for the type, and converted back. The projection leaves greys unchanged.
+
+At a **Severity** below 1 the page blends between the original and full dichromacy. That is a convention of this tool, not a model of anomalous trichromacy (a weakened rather than missing cone type).
+
+**Daltonise instead of simulate** shows a correction instead: the colour difference the projection would lose is pushed into channels a dichromat can still see (after Fidaner, Lin and Ozguven, 2005). Use it to preview how a daltonising filter would recolour the image.
+
+### Scotopic
+
+Night vision with rods only. Colour collapses to a single rod signal, which is darkened and drawn with a blue cast. The three weights used to form the rod signal from red, green and blue (0.10, 0.59 and 0.31) are the tool's own and are not the published scotopic curve, so no scotopic luminance is reported.
+
+### Mesopic
+
+Twilight vision, between rods and cones. **Adaptation level** (0 to 1, default 0.50) crossfades between the rod image at 0 and the original colours at 1. This is a crossfade, not the CIE mesopic photometry system.
+
+### Lens yellowing
+
+The eye's lens absorbs more blue light with age. **Age** (20 to 80 years, default 40) sets a blue-absorbing filter that is zero at 20 and grows to its maximum at 80. The direction follows the published ageing literature; the strength is the tool's own.
+
+### Cataract
+
+A clouded lens scatters light forward. **Cataract** (0 to 1, default 0.50) sets a blur, a slight yellow cast and a loss of contrast towards grey together. This simulation reads neighbouring pixels.
+
+### Central loss
+
+A soft-edged disc of lost vision at the centre of the frame, drawn as a darkened grey. **Scotoma radius** (0.02 to 0.45, default 0.15) is the disc's radius as a fraction of the frame. It is named for what it draws, not for a particular disease. Tick **Fixation cross** to mark the centre.
+
+### Light adaptation
+
+The eye adjusting to a brighter or dimmer scene. **Adaptation level** (0 to 1, default 0.50) sets a gain and a saturation together: low levels brighten and desaturate the image, high levels darken it slightly with full saturation. The constants are the tool's own.
+
+### Acuity
+
+Blur from reduced sharpness of vision. **Acuity** is the denominator of a Snellen fraction, from 20/20 (no blur) to 20/200 in steps of 5; the blur grows with the denominator. The mapping from Snellen value to blur is the tool's own and does not use a viewing distance, so it shows the kind of loss, not how a given person with that acuity would see your screen. Use the **Snellen chart** source to judge it.
+
+### None
+
+Shows the source unchanged. It is what the other half of a split is compared against, and it is not counted as a simulation.
+
+## 3. Relight the scene (Before the eye)
+
+The illuminant menu changes the light falling on the scene before the simulated eye sees it:
+
+- **D65 — as authored** (default) — no change; screen images are authored under D65.
+- **D50** — a slightly warmer daylight.
+- **A — tungsten** — incandescent light, much warmer.
+
+The change uses the Bradford chromatic adaptation transform. **Adaptation** (0 to 1, default 1.00) sets how far it goes. Under illuminant A many colours leave the sRGB range; that is the correct result, and **Out of sRGB** reports how much.
+
+## 4. Apply adjustments
+
+These change the source for both halves of a comparison, so the only difference across the divider is the simulation. They are not simulations.
+
+| Adjustment | Range | Default | Effect |
+|---|---|---|---|
+| **Contrast** | −0.9 to 0.9 | 0.00 | Stretches or flattens values around mid-grey |
+| **Gamma** | 0.4 to 2.6 | 1.00 | Raises linear values to this power; above 1 darkens mid-tones |
+| **Blur** | 0 to 8 | 0.0 | Blurs the source |
+| **Glare** | 0 to 1 | 0.00 | Adds a halo around bright areas |
+| **Noise** | 0 to 0.08 | 0.000 | Adds random speckle, redrawn each frame |
+
+## 5. Use a preset
+
+**Presets** sets several controls at once:
+
+| Preset | Sets |
+|---|---|
+| **Protanopia** | Colour vision, Protan, Severity 1.00 |
+| **Mild deuteranomaly** | Colour vision, Deutan, Severity 0.40 |
+| **Tritanopia** | Colour vision, Tritan, Severity 1.00 |
+| **Low light with glare** | Scotopic, Severity 0.70, Glare 0.30, Noise 0.010, Contrast −0.20, Gamma 1.30 |
+| **Lens at 70** | Lens yellowing, Severity 1.00, Age 70 |
+| **Cataract** | Cataract, Severity 0.80, Cataract 0.60 |
+| **Central loss** | Central loss, Severity 0.90, Scotoma radius 0.18 |
+| **Acuity 20/80** | Acuity, Severity 1.00, Acuity 20/80 |
+
+A preset changes only the values listed; other adjustments stay as they were. **Reset** returns everything to the defaults: test card, Colour vision Protan at 1.00, split at 50%, D65 at full adaptation, all adjustments neutral, daltonise and fixation cross off, and the GPU renderer if available. It also stops the camera.
+
+## 6. Compare
+
+Under **Compare**:
+
+- **Split** (default) — original on the left of the divider, simulated on the right. Drag anywhere on the frame to move the divider, or use the **Divider** slider (0 to 100%, default 50%). The side labels read **Original** and the simulation's name.
+- **Simulated only** — the whole frame simulated.
+- **Difference** — the absolute difference between original and simulated, amplified four times, so black means "unchanged".
+
+**Renderer** chooses where the drawing is computed: **GPU** (WebGL2, the default) or **CPU**. The colour arithmetic is the same single calculation in both; the **GPU and CPU agree** readout checks it. If your browser has no WebGL2, the page uses the CPU automatically, disables the GPU button and shows **No WebGL2 here.**
+
+Double-click the frame to see it enlarged; press `Esc` to close.
+
+## 7. Save the result
+
+**Save the frame** downloads the current view as a PNG named after the simulation and severity, for example `perception-cvd-100.png`. The divider line and fixation cross, if shown, are included. See [Check a palette and export](check-a-palette-and-export.md) for the other exports.
+
+You should now be able to produce a side-by-side view of any image under any of the eight conditions.

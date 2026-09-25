@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install from a VSIX file — Auric Artisan Docs</title>
+<meta name="description" content="Download an Auric Artisan extension as a VSIX package and install it in VS Code or an editor that cannot reach the Visual Studio Marketplace.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html">Install from the command line</a></li>
+<li><a href="install-from-vsix.html" aria-current="page">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Install from a VSIX file</h1>
+<p class="lede">Download an Auric Artisan extension as a VSIX package and install it in VS Code or an editor that cannot reach the Visual Studio Marketplace.</p>
+<p>A <em>VSIX file</em> is the package format for VS Code extensions: a single file ending in <code>.vsix</code> that contains everything the extension needs. Installing from a VSIX is the route to use when your editor cannot reach the Visual Studio Marketplace, for example Cursor, Windsurf or VSCodium, or a machine with restricted network access.</p>
+<h2 id="when-to-use-this-route">When to use this route</h2>
+<ul>
+<li>Your editor is based on VS Code but searches a different gallery (see <a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a>). The Auric Artisan extensions are published only on the Visual Studio Marketplace; they are not on Open VSX.</li>
+<li>You need to install on a computer without direct Marketplace access.</li>
+<li>You want to keep a copy of a specific version.</li>
+</ul>
+<p>A VSIX installed this way does not update itself from the Marketplace in an editor that cannot reach it. You repeat these steps for each new version.</p>
+<h2 id="step-1-download-the-vsix">Step 1: download the VSIX</h2>
+<p>Every published version of every Auric Artisan extension can be downloaded from the Marketplace at an address of this form:</p>
+<pre class="code" data-lang="text"><code>https://marketplace.visualstudio.com/_apis/public/gallery/publishers/auric-artisan/vsextensions/&lt;extension-name&gt;/&lt;version&gt;/vspackage</code></pre>
+<ul>
+<li><code>&lt;extension-name&gt;</code> is the part of the ID after <code>auric-artisan.</code>, for example <code>auric-artisan-live</code>.</li>
+<li><code>&lt;version&gt;</code> is the version number, for example <code>0.2.1</code>. The versions available at the time of writing are in the <a href="reference.html">reference</a>. The <strong>Version History</strong> tab of the extension&#39;s Marketplace page lists every version.</li>
+</ul>
+<p>For example, to download Auric Artisan Live 0.2.1:</p>
+<pre class="code" data-lang="text"><code>https://marketplace.visualstudio.com/_apis/public/gallery/publishers/auric-artisan/vsextensions/auric-artisan-live/0.2.1/vspackage</code></pre>
+<p>Open the address in a browser, or download it from a terminal. Save the file with a <code>.vsix</code> extension, for example <code>auric-artisan-live-0.2.1.vsix</code>. Some browsers save it without an extension; rename it if so.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> An extension pack only lists other extensions. Installing a pack from a VSIX in an editor that cannot reach the Marketplace does not fetch its members. Download and install each member&#39;s VSIX instead. The members are listed in <a href="extension-packs.html">The two extension packs</a>.</p>
+</blockquote>
+<h2 id="step-2-install-the-file">Step 2: install the file</h2>
+<p>Use any one of these three methods.</p>
+<p><strong>From the Command Palette</strong></p>
+<ol>
+<li>Open the Command Palette with <code>Ctrl</code> + <code>Shift</code> + <code>P</code>.</li>
+<li>Run <strong>Extensions: Install from VSIX…</strong>.</li>
+<li>Choose the <code>.vsix</code> file and select <strong>Install</strong>.</li>
+</ol>
+<p><strong>From the Extensions view</strong></p>
+<ol>
+<li>Open the Extensions view with <code>Ctrl</code> + <code>Shift</code> + <code>X</code>.</li>
+<li>Select the <strong>…</strong> (Views and More Actions) menu at the top of the view.</li>
+<li>Choose <strong>Install from VSIX…</strong> and pick the file.</li>
+</ol>
+<p><strong>From a terminal</strong></p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan-live-0.2.1.vsix</code></pre>
+<p>Use the launcher for your editor if it is not VS Code. See <a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a>.</p>
+<h2 id="step-3-confirm">Step 3: confirm</h2>
+<ol>
+<li>Open the Extensions view and select <strong>Installed</strong>.</li>
+<li>Find the extension and check the version on its page.</li>
+<li>Open the Command Palette and type the extension&#39;s command prefix (listed in <a href="getting-started.html">Getting started</a>).</li>
+</ol>
+<h2 id="things-to-know">Things to know</h2>
+<ul>
+<li><strong>Minimum editor version.</strong> A VSIX still declares the lowest VS Code version it supports. If your editor reports an older VS Code version, installation fails with a message that the extension is not compatible. See <a href="troubleshooting.html">Troubleshooting</a>.</li>
+<li><strong>Replacing a version.</strong> Installing a VSIX of a different version replaces the installed one. You may be asked to reload the window.</li>
+<li><strong>Only download from the Marketplace or Auric Artisan.</strong> A VSIX runs code on your machine. Get it from the Marketplace address above, or from Auric Artisan support.</li>
+</ul>
+<p>When this works, the extension is listed under <strong>Installed</strong> with the version you downloaded, and its commands appear in the Command Palette.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="install-from-command-line.html"><span>Previous</span>Install from the command line</a><a href="settings-and-sync.html"><span>Next</span>Settings, sync and workspace trust</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#when-to-use-this-route">When to use this route</a></li><li><a href="#step-1-download-the-vsix">Step 1: download the VSIX</a></li><li><a href="#step-2-install-the-file">Step 2: install the file</a></li><li><a href="#step-3-confirm">Step 3: confirm</a></li><li><a href="#things-to-know">Things to know</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

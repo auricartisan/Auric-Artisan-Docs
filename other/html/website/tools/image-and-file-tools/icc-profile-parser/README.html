@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICC Profile Parser — Auric Artisan Docs</title>
+<meta name="description" content="What the ICC Profile Parser does, who it is for, where to find it and how to read a first profile.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image and file tools</a>
+<h2>ICC Profile Parser</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">ICC Profile Parser documentation &rsaquo;</a></li>
+<li><a href="others/README.html">ICC Profile Parser background material &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Image and file tools</a> &rsaquo; <a href="README.html">ICC Profile Parser</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › ICC Profile Parser</p>
+<h1>ICC Profile Parser</h1>
+<p class="lede">What the ICC Profile Parser does, who it is for, where to find it and how to read a first profile.</p>
+<p>The ICC Profile Parser (the page is titled <strong>ICC Profile Reading</strong>) opens a colour profile file, <code>.icc</code> or <code>.icm</code>, and tells you what it says. An ICC profile is a small file, defined by the International Color Consortium, that describes how a device or colour space reproduces colour, so that software can convert colours between devices. The tool reads the profile&#39;s header at the byte positions the ICC specification (ICC.1:2010, also published as ISO 15076-1:2010) sets out, lists every tag in the file, and runs a conformance check in which every finding names the clause of the specification it enforces.</p>
+<p>For RGB display-style profiles, it recovers the primaries behind the stored colorants, draws them on a CIE 1931 chromaticity diagram, plots the tone curves, and identifies which of six well-known colour spaces the profile matches most closely: sRGB, Rec. 709, Display P3, Adobe RGB (1998), Rec. 2020 or ProPhoto RGB. It reports gamut area and coverage against the space you choose, using the more even CIE 1976 u′v′ diagram. For press and other profiles with no colorants, it walks the profile&#39;s lookup table to draw the gamut in CIELAB instead.</p>
+<p>The file is read in the page and never sent anywhere. You can save the whole reading as JSON, copy it, or save the tag table as CSV.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Designers and photographers checking what a monitor, camera or printer profile actually contains.</li>
+<li>Colour-management and prepress staff triaging a profile that an application rejects.</li>
+<li>Developers who need the header fields, the tag table and a clause-by-clause verdict to paste into a ticket.</li>
+<li>Students learning how ICC profiles are put together.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<p>Open <a href="https://auricartisan.com/tool/general/tools/icc-profile-parser/" rel="noopener">https://auricartisan.com/tool/general/tools/icc-profile-parser/</a> in a current browser. It is listed as <strong>ICC Parser</strong> on the Collections page at <a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>. Nothing needs installing.</p>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open the tool. The <strong>Lab</strong> tab is selected.</li>
+<li>Drop an <code>.icc</code> or <code>.icm</code> file on the <strong>Drop a profile</strong> box, or select the box to choose one.</li>
+<li>Read the verdict under <strong>What this profile is</strong>, for example &quot;An sRGB profile, matrix/TRC, ICC v2.1.0&quot;.</li>
+<li>Check <strong>What the header says</strong> on the left for the version, class, data space, connection space and more.</li>
+<li>Look at the <strong>conformance</strong> card and the <strong>Findings</strong> list for anything that breaks the specification.</li>
+<li>Select <strong>Save the reading</strong> to download the full reading as JSON.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Read every header field: size, version, device class, data colour space and channel count, connection space, rendering intent, CMM, platform, creation date, tag count and profile ID.</li>
+<li>See every tag with its type, offset and size, and which tags share one data element.</li>
+<li>Recompute the profile ID and see whether it matches the bytes.</li>
+<li>Identify the closest of six reference colour spaces, with primaries distance, tone-curve fit and the adaptation the profile was built with.</li>
+<li>Compare gamut area and coverage against any of the six spaces in CIE 1976 u′v′, with the CIE 1931 xy figure alongside.</li>
+<li>Plot stored colorants, recovered primaries and the reference space on a chromaticity diagram, and the tone curves against the reference transfer function.</li>
+<li>Draw the CIELAB a<em>b</em> gamut of a CMYK or other LUT-based profile from its A2B table.</li>
+<li>Run 23 conformance rules, each graded error, warning or note and citing its clause.</li>
+<li>Export the reading as JSON and the tag table as CSV.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the tool.<ul>
+<li><a href="docs/getting-started.html">Getting started</a> — open it, the screen tour, the first profile.</li>
+<li><a href="docs/understand-icc-profiles.html">Understand ICC profiles</a> — classes, tags, the connection space, versions, intents and curves.</li>
+<li><a href="docs/identify-and-gamut.html">Identify a profile and read its gamut</a> — the verdict, the ranking, the diagram, area and coverage, tone curves.</li>
+<li><a href="docs/check-conformance.html">Check conformance</a> — findings, severities, clauses and the rule list.</li>
+<li><a href="docs/export-a-reading.html">Export a reading</a> — JSON, clipboard and the tag table CSV.</li>
+<li><a href="docs/reference.html">Reference</a> — every field, tag, value, rule and file format.</li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a> — symptoms, causes and fixes.</li>
+<li><a href="docs/faq.html">FAQ</a> — short answers to common questions.</li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background material.<ul>
+<li><a href="others/glossary.html">Glossary</a> — terms used in this tool.</li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a> — what it can and cannot read, and how precise it is.</li>
+<li><a href="others/related.html">Related</a> — related tools and Learn articles.</li>
+<li><a href="others/release-notes.html">Release notes</a> — user-facing history.</li>
+<li><a href="others/privacy.html">Privacy</a> — what stays in your browser.</li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../collage-maker/others/related.html"><span>Previous</span>Related tools and reading</a><a href="docs/README.html"><span>Next</span>ICC Profile Parser documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

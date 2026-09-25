@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plans, credits and quotas — Auric Artisan Docs</title>
+<meta name="description" content="What each plan includes, how credits are charged per endpoint, rate limits, overage, spend caps, the hard ceiling, and the headers that report usage.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html" aria-current="page">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Plans, credits and quotas</h1>
+<p class="lede">What each plan includes, how credits are charged per endpoint, rate limits, overage, spend caps, the hard ceiling, and the headers that report usage.</p>
+<p>Limits follow your account plan. The rate limit, monthly credits and credit balance are pooled per account, not per key.</p>
+<h2 id="what-each-plan-includes">What each plan includes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Plan</th><th>API tier</th><th>Requests per minute</th><th>Credits per month</th><th>Hard ceiling</th><th>Max keys</th></tr></thead>
+<tbody>
+<tr><td>Apprentice (free)</td><td>Free</td><td>—</td><td>Not included</td><td>—</td><td>—</td></tr>
+<tr><td>Artisan</td><td>Paid</td><td>—</td><td>Not included</td><td>—</td><td>—</td></tr>
+<tr><td>Specialist</td><td>Pro</td><td>300</td><td>1,000,000</td><td>10,000,000</td><td>10</td></tr>
+<tr><td>Industrial Pro</td><td>Enterprise</td><td>3,000</td><td>10,000,000</td><td>100,000,000</td><td>10</td></tr>
+</tbody></table></div>
+<p><code>GET /v1/tiers</code> returns the machine-readable version of this table, so a client can read its own terms instead of hard-coding them.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Industrial Pro was sold as &quot;Unlimited&quot; before 12 August 2026. Subscriptions created before that date keep that promise: they are metered at 1,000,000,000 credits a month, a hundred times the new figure, and their hard ceiling scales with that allowance. The 10,000,000 figure applies to subscriptions started on or after 12 August 2026.</p>
+</blockquote>
+<h2 id="credits">Credits</h2>
+<p>The monthly quota is counted in <strong>credits</strong>, not calls. One credit is one standard request; endpoints that do more work cost more, so simple colour maths does not subsidise image rendering. Every response states its cost in the <code>x-credits-cost</code> header.</p>
+<ul>
+<li><strong>1 credit</strong>: Standard work: <code>/v1/color/convert</code>, <code>/v1/color/contrast</code>, <code>/v1/science/convert</code>, <code>/v1/accessibility/check</code>, <code>/v1/vision/simulate</code>, and anything not listed below</li>
+<li><strong>2–4 credits</strong>: Generators and multi-step maths: <code>/v1/palette/generate</code>, <code>/v1/harmony/generate</code>, <code>/v1/gradient/generate</code>, <code>/v1/shade/scale</code>, <code>/v1/science/delta-e</code>, <code>/v1/science/temperature</code>, <code>/v1/tokens/generate</code>, <code>/v1/graphql</code></li>
+<li><strong>5 credits</strong>: <code>/v1/science/dossier</code>, and <code>/v1/usage/stream</code> (charged once when the stream opens; events are free)</li>
+<li><strong>10–12 credits</strong>: Rendered pixels: <code>/v1/palette/png</code>, <code>/v1/gradient/png</code>, <code>/v1/ishihara/png</code>, <code>/v1/vision/simulate-image</code>, <code>/v1/palette/from-image</code>, <code>/v1/accessibility/from-image</code></li>
+<li><strong>25 credits</strong>: Async jobs: <code>POST /v1/jobs/{type}</code>. Polling a job with <code>GET /v1/jobs/id/{id}</code> costs 1.</li>
+</ul>
+<p>The analyzer endpoints cost: <code>GET /v1/analyzer/stages</code> 1 credit, <code>POST /v1/analyzer/inspect</code> 12 credits and <code>POST /v1/analyzer/render</code> 10 credits. See <a href="endpoints/analyzer.html">Analyzer</a>.</p>
+<p>A new endpoint that has not been given its own weight bills as standard work, 1 credit; nothing is free by accident. Public discovery endpoints are unmetered.</p>
+<h2 id="when-you-run-out">When you run out</h2>
+<p>By default, running out of included credits stops the traffic. Further calls return <code>429 QUOTA_EXCEEDED</code> until the monthly reset. Nothing is charged.</p>
+<h3 id="pay-as-you-go-overage-opt-in">Pay-as-you-go overage (opt-in)</h3>
+<ul>
+<li>Overage is <strong>off</strong> until you turn it on in the dashboard&#39;s API keys area.</li>
+<li>It is <strong>prepaid</strong>: it spends a credit balance bought in advance, at <strong>$1.00 (₹85) per 100,000 credits</strong>.</li>
+<li>If the balance will not cover a call, the call is refused with <code>402 INSUFFICIENT_CREDITS</code>. It is never served on account, and no usage produces an invoice after the fact.</li>
+<li>Buy credit packs in the dashboard with <strong>Add credits</strong>. Purchased credits do not expire at the end of the period.</li>
+</ul>
+<p>In the dashboard, the overage switch reads &quot;Off — calls stop at your included allowance. Nothing is charged.&quot; while it is off, and asks you to confirm with <strong>Turn on paid overage</strong> or <strong>Keep it off</strong>.</p>
+<h3 id="spend-cap">Spend cap</h3>
+<p>Set a <strong>Monthly spend cap</strong> in money, up to $10,000. Overage stops there with <code>402 SPEND_CAP_REACHED</code>; raise the cap in the dashboard to continue.</p>
+<h3 id="hard-ceiling">Hard ceiling</h3>
+<p>Independent of anything you configure, no account may spend more than <strong>ten times its included allowance</strong> in one month. Reaching it returns <code>429 HARD_CEILING_REACHED</code>. It is a safety stop against runaway retries and leaked keys; support can raise it.</p>
+<h2 id="reading-the-meter">Reading the meter</h2>
+<p>Every response carries these headers:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Header</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>x-ratelimit-limit</code></td><td>Requests allowed per minute</td></tr>
+<tr><td><code>x-ratelimit-remaining</code></td><td>Requests left this minute</td></tr>
+<tr><td><code>x-ratelimit-reset</code></td><td>When the minute resets, in Unix seconds</td></tr>
+<tr><td><code>x-quota-limit</code></td><td>Included credits this month</td></tr>
+<tr><td><code>x-quota-used</code></td><td>Credits used this month</td></tr>
+<tr><td><code>x-quota-remaining</code></td><td>Included credits left</td></tr>
+<tr><td><code>x-quota-reset</code></td><td>When the monthly quota resets, in Unix seconds</td></tr>
+<tr><td><code>x-credits-cost</code></td><td>What this call consumed</td></tr>
+<tr><td><code>x-credits-overage</code></td><td>Only when the call was paid from the prepaid balance: the overage credits used</td></tr>
+<tr><td><code>x-overage-cost-usd</code></td><td>Only with overage: 1.00 when this call opened a new 100,000-credit block, otherwise 0.00</td></tr>
+<tr><td><code>x-credits-ceiling</code></td><td>The hard ceiling</td></tr>
+</tbody></table></div>
+<p>Check usage at any time with <code>GET /v1/usage/me</code>, or full per-day, per-endpoint history with <code>GET /v1/usage</code>. A <code>quota.threshold</code> webhook fires when you cross 80% of the included allowance.</p>
+<h2 id="the-dashboard">The dashboard</h2>
+<p>The dashboard&#39;s API area shows <strong>Usage &amp; cost</strong> (credits used, included credits left, overage credits and overage cost, and <strong>Credits per day</strong>), your <strong>prepaid credits</strong> balance, <strong>Spend controls</strong>, <strong>Recent credit activity</strong>, <strong>Where the credits went</strong>, and a live feed of recent calls once you connect a key.</p>
+<h2 id="beyond-the-largest-plan">Beyond the largest plan</h2>
+<p>For volume beyond the largest credit pack, a custom rate limit or a contract, contact Auric Artisan. Billing terms for prepaid credits, including expiry, cancellation, downgrade and refunds, are in the Subscription &amp; Billing Policy at <a href="https://auricartisan.com/legal/subscription-billing/" rel="noopener">https://auricartisan.com/legal/subscription-billing/</a>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="errors.html">Errors</a>, for the 429 and 402 codes</li>
+<li><a href="endpoints/usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="examples.html"><span>Previous</span>Request examples</a><a href="sdks-and-tooling.html"><span>Next</span>SDKs and tooling</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-each-plan-includes">What each plan includes</a></li><li><a href="#credits">Credits</a></li><li><a href="#when-you-run-out">When you run out</a></li><li><a href="#reading-the-meter">Reading the meter</a></li><li><a href="#the-dashboard">The dashboard</a></li><li><a href="#beyond-the-largest-plan">Beyond the largest plan</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

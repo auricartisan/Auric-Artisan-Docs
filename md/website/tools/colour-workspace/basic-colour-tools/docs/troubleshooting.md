@@ -1,0 +1,145 @@
+---
+title: Basic Color Tools — Troubleshooting
+description: Symptoms you may meet in Basic Color Tools, why they happen, and what to do.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Troubleshooting Basic Color Tools
+
+Each entry gives the symptom, the reason, and what to do. For problems with the site-wide Colour Tools, see also [Open the Colour Tools and manage their panels](colour-tools/launcher-and-panels.md).
+
+## Panels
+
+### A panel closed by itself when I opened another tool
+
+- **Why:** five panels is the limit. Opening a sixth closes the panel that was opened earliest.
+- **What to do:** before opening a sixth tool, save or export what you need from the oldest panel, or close a panel you no longer need. The Workspace **Panels** meter shows how many slots are left.
+
+### A panel closed when I pressed Escape
+
+- **Why:** `Escape` inside a panel closes it (or, if it is maximised, restores its size first).
+- **What to do:** select outside the panel before pressing `Escape` for other purposes. Closed panels cannot be reopened with their work; save to your Library as you go.
+
+### I minimised a panel and now I cannot find it
+
+- **Why:** a minimised panel is hidden completely and kept in a dock.
+- **What to do:** in the Workspace view, select it in the **Panels** list, or select the tool again in **Open a tool**. In the Catalogue, choose **Open Panels** in the category list and select its card.
+
+### All my panels disappeared after a reload
+
+- **Why:** open panels and their contents live only in the page. They are not saved when you reload or leave.
+- **What to do:** copy, download or **Save to Library** before leaving. See [Import, export and the Library](import-export-and-library.md).
+
+### A panel is partly off the screen or too small to use
+
+- **Why:** panels are kept inside the stage or window, but a very small window leaves little room.
+- **What to do:** make the browser window larger; panels are pulled back inside automatically. Maximise the panel with its **Maximize or restore** button or by double-clicking its title bar.
+
+### I cannot drag or resize a panel
+
+- **Why:** maximised panels cannot be moved or resized.
+- **What to do:** select **Maximize or restore** to return it to normal size first.
+
+### The Workspace list shows fewer than seven tools
+
+- **Why:** **Open a tool** lists what the Catalogue currently shows. A search, a **Level** other than **Both**, or the **Favorites** or **Open Panels** category hides tools.
+- **What to do:** open the Catalogue, select **Clear**, set **Level** to **Both** and choose **All Tools**.
+
+## Copying, downloading and sharing
+
+### Nothing is copied when I select a copy button
+
+- **Why:** the browser can refuse clipboard access, for example in some private windows, embedded views or when the page is not focused.
+- **What to do:** select the button again directly, and make sure the page has focus. For Gradient Maker, the **Export** tab shows the CSS, SVG and JSON in text boxes you can select and copy by hand.
+
+### Gradient Maker's JSON button copies nothing, or an old gradient
+
+- **Why:** the **JSON** button copies the text in the **Export** tab's JSON box, which is only refreshed while the **Export** tab is open.
+- **What to do:** open the **Export** tab after your last change, then select **JSON**.
+
+### The share link opens the page but not my palette
+
+- **Why:** the Palette Studio share link records the HEX codes in the address, but the page does not rebuild the palette from it.
+- **What to do:** copy the codes from the link (after `#palette=`) into Palette Remix or Color Battle, or save the palette to your Library to reopen it properly.
+
+### The collage PNG is smaller than 4K
+
+- **Why:** the export is scaled from the preview. When the preview is narrower than 800 pixels, the image is under 3,840 pixels wide.
+- **What to do:** widen or maximise the Collage Maker panel before selecting **Export PNG (4K)**.
+
+### The conic gradient PNG does not download or looks wrong
+
+- **Why:** conic PNG export needs a browser that can draw conic gradients on a canvas.
+- **What to do:** update your browser, or copy the CSS instead. Note that SVG export has no conic form and exports a straight gradient.
+
+### The ASE file does not open in my design app
+
+- **Why:** **ASE** copies tab-separated text, not a binary Adobe Swatch Exchange file.
+- **What to do:** paste the text into a document or spreadsheet, or use **CSS**, **JSON** or **SVG** instead.
+
+## Colours and images
+
+### Typing a colour in Quick Converter changes it before I finish
+
+- **Why:** the input converts as soon as its contents are a valid colour and then rewrites itself as HEX. A partial value such as `#D3A` is already valid.
+- **What to do:** paste complete values, or use the colour well.
+
+### Space does not generate a new palette
+
+- **Why:** `Space` works only when the Palette Studio panel is the focused panel and the cursor is not in a text box or list.
+- **What to do:** select an empty part of the Palette Studio panel, then press `Space`, or select **Generate**.
+
+### "Max 9" or "Min 2 swatches" appears
+
+- **Why:** a Palette Studio palette holds between two and nine colours.
+- **What to do:** remove a colour before adding one, or add one before removing.
+
+### "Eyedropper not supported" appears in Color Picker
+
+- **Why:** the system eyedropper uses a browser feature available mainly in Chromium-based desktop browsers.
+- **What to do:** use the colour well or type the HEX code, or switch to a browser that supports the eyedropper.
+
+### "Cannot extract (CORS)" appears when extracting from an image
+
+- **Why:** the browser would not let the page read the image's pixels. This can happen with images that come from another website.
+- **What to do:** save the image to your device first, then choose the local file with **From Image**.
+
+### Colours in a palette or ramp look duller than the numbers I set
+
+- **Why:** OKLCH and Lab values can describe colours outside the sRGB range that screens and CSS HEX codes can show. The tools clip such colours to the nearest displayable one.
+- **What to do:** lower the chroma, or accept the clipped colour. The HEX code always reflects what you see.
+
+### Dropping images onto the collage does nothing
+
+- **Why:** the preview's hint mentions dropping files, but the current version adds images only through the file picker.
+- **What to do:** select **+ Add Images** and choose several files at once.
+
+### Right-clicking a collage cell opens the site menu instead of changing the filter
+
+- **Why:** the site's own right-click menu takes the plain right-click.
+- **What to do:** hold `Shift` while you right-click the cell. Each `Shift` + right-click moves the cell to the next filter.
+
+## Saving to the Library
+
+### "Nothing to save yet — try creating something first."
+
+- **Why:** the focused panel has nothing the Library can store yet.
+- **What to do:** create a result in the panel, select the panel to focus it, and try again.
+
+### Saving from Collage Maker saved a workspace bookmark, not my collage
+
+- **Why:** the Library cannot capture the collage preview. With only Collage Maker focused, it saves a Basic Tools workspace bookmark instead.
+- **What to do:** use **Export PNG (4K)** to keep the collage.
+
+### Opening a saved item replaced my open panel
+
+- **Why:** restoring an item opens a fresh panel of that tool and closes the existing one.
+- **What to do:** save the open panel's work before you reopen a Library item in the same tool.
+
+## Related
+
+- [FAQ](faq.md)
+- [Workspace and panels](workspace-and-panels.md)
+- [Limits and accuracy](../others/limits-and-accuracy.md)
+- [Help centre](../../../../../help/README.md)

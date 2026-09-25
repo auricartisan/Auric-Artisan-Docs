@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check contrast — Auric Artisan Docs</title>
+<meta name="description" content="Read every ramp step's WCAG 2.2 ratio and rating and its APCA-W3 Lc against white, black or the base colour.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tonal Steps</a>
+<h2>Tonal Steps documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tonal Steps</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast.html" aria-current="page">Check contrast</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="tints-shades-tones.html">Make tints, shades, tones and key sets</a></li>
+<li><a href="reference.html">Tonal Steps reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tonal Steps</a></li>
+<li><a href="faq.html">Tonal Steps FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tonal Steps</a> &rsaquo; <a href="README.html">Tonal Steps documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Check contrast</h1>
+<p class="lede">Read every ramp step's WCAG 2.2 ratio and rating and its APCA-W3 Lc against white, black or the base colour.</p>
+<h2 id="two-measures">Two measures</h2>
+<ul>
+<li><strong>WCAG 2.2 contrast ratio</strong> — (L1 + 0.05) ÷ (L2 + 0.05), lighter over darker, where L is relative luminance. Thresholds: 3:1 for large text (AA large), 4.5:1 for normal text (AA), 7:1 for enhanced (AAA).</li>
+<li><strong>APCA Lc</strong> (APCA-W3 0.1.9) — a perceptual contrast value that treats dark-on-light and light-on-dark differently. It is signed: the sign tells you which way round the pair is. APCA is a working draft of what WCAG 3 may adopt, not a ratified requirement.</li>
+</ul>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Build your ramp on the <strong>Lab</strong> tab.</li>
+<li>Open the <strong>Contrast</strong> tab.</li>
+<li>Under <strong>Against</strong>, choose <strong>White</strong> (default), <strong>Black</strong> or <strong>The base</strong> (your base colour). The caption changes to &quot;Every step against white&quot;, and so on.</li>
+<li>Read the table:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Step</strong></td><td>The step&#39;s swatch and HEX</td></tr>
+<tr><td><strong>WCAG</strong></td><td>The ratio, for example 4.63:1</td></tr>
+<tr><td><strong>Rating</strong></td><td><strong>AAA</strong> (7 and above), <strong>AA</strong> (4.5 and above), <strong>AA large</strong> (3 and above) or <strong>Fail</strong></td></tr>
+<tr><td><strong>APCA Lc</strong></td><td>The signed Lc, to one decimal</td></tr>
+</tbody></table></div>
+<ol start="5">
+<li>Under <strong>Superseded APCA</strong>, choose <strong>Show the difference</strong> to add two columns: <strong>Superseded</strong> (the approximate figure an earlier version of the page computed) and <strong>Difference</strong>. Differences of 1 Lc or more are highlighted. Choose <strong>Hide</strong> to remove them (the default).</li>
+<li>Look at <strong>The ladder</strong> for a chart of the steps&#39; contrast.</li>
+</ol>
+<p>The <strong>Metric</strong> choice (<strong>WCAG 2.2</strong> or <strong>APCA</strong>) does not change the table in the current version; both figures are always shown.</p>
+<h2 id="reading-the-result">Reading the result</h2>
+<ul>
+<li>Pick text and background steps whose WCAG rating meets your target (AA for body text is the usual minimum).</li>
+<li>For APCA, larger absolute Lc means more contrast. Common reference levels are Lc 45, 60, 75 and 90, used by APCA guidance for progressively smaller or thinner text.</li>
+<li>The difference column shows why the correction mattered: under 0.3 Lc through the mid-range, 8 at black against white, and up to 20 against black.</li>
+</ul>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>Each step row on the Lab tab already shows its ratio against white; the Contrast tab adds black, the base and APCA.</li>
+<li>The contrast table export on the Export tab lists every step&#39;s WCAG ratio and APCA Lc against both white and black, whichever <strong>Against</strong> you chose here.</li>
+<li>For checking a single text and background pair in depth, use the <a href="../../../accessibility-and-vision/contrast-checker/README.html">Contrast Checker</a>.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>You know which steps of your ramp pass WCAG AA or AAA, and their APCA Lc, against white, black or your base colour.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="build-a-ramp.html"><span>Previous</span>Build a ramp</a><a href="export-tokens.html"><span>Next</span>Export tokens</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#two-measures">Two measures</a></li><li><a href="#steps">Steps</a></li><li><a href="#reading-the-result">Reading the result</a></li><li><a href="#tips">Tips</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

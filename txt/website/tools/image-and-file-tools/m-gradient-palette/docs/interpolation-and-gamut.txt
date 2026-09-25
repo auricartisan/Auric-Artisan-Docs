@@ -1,0 +1,159 @@
+==============================================================================
+INTERPOLATION AND GAMUT
+==============================================================================
+How the four colour spaces blend two colours differently, what short and long
+hue routes and easing do, how evenness is measured, and how out-of-gamut steps
+are brought back.
+Area: Website › Tools › Image and file tools › M-Gradient Palette   Updated: 2026-09-25
+
+A ramp is made by interpolation: choosing colours part of the way between the
+two ends. What "part of the way" means depends on the colour space the
+blending happens in, so the same two colours give different ramps in different
+spaces.
+
+THE FOUR SPACES
+===============
+
+  Space:                 sRGB
+  What is blended:       The red, green and blue values as stored in a web
+                         colour
+  Character of the ramp: The browser's default. Middles between very different
+                         colours can turn dull or dark
+
+  Space:                 Linear RGB
+  What is blended:       Red, green and blue as amounts of light, before the
+                         sRGB curve is applied
+  Character of the ramp: Physically like mixing light. Middles tend to look
+                         too light, and the dark end changes quickly
+
+  Space:                 HSL
+  What is blended:       Hue, saturation and lightness, a cylinder built from
+                         sRGB
+  Character of the ramp: Keeps colours saturated, but HSL lightness is not
+                         perceived lightness, so brightness can bulge in the
+                         middle
+
+  Space:                 OKLCH
+  What is blended:       Lightness, chroma and hue in OKLab
+  Character of the ramp: Designed so equal steps look equal. Keeps
+                         colourfulness through the middle. The default
+
+OKLab and OKLCH
+---------------
+
+OKLab is a perceptual colour space published by Björn Ottosson in 2020. It has
+a lightness axis, L, and two colour axes, a and b, arranged so that equal
+distances look roughly equally different. OKLCH is the same space in polar
+form: L for lightness, C for chroma (how colourful, the distance from grey),
+and H for hue (an angle, 0° to 360°). Blending lightness, chroma and hue
+separately gives ramps whose steps look even and whose middle stays colourful.
+
+sRGB and linear RGB
+-------------------
+
+sRGB values are encoded with a curve that spends more of the 0 to 255 range on
+dark tones, roughly matching how eyes see. Blending the encoded values is
+quick and familiar; it is what CSS gradients do by default. Linear RGB undoes
+that curve first, so the blend is proportional to light. Neither is designed
+to make equal steps look equal.
+
+HSL
+---
+
+HSL rearranges sRGB into hue, saturation and lightness. It is easy to reason
+about, but its lightness is a simple average of the largest and smallest
+channel, not a perceptual measure: fully saturated yellow and fully saturated
+blue have the same HSL lightness and look very different.
+
+SHORT AND LONG HUE ROUTES
+=========================
+
+In the two polar spaces, OKLCH and HSL, hue is an angle, and there are two
+ways round the circle from one hue to another.
+
+  - Short hue takes the smaller arc, never more than 180°.
+  - Long hue goes the other way round, through the hues the short route skips.
+
+This is a choice of route, not a different space, which is why the tool offers
+four spaces but six routes. The long route covers much more distance when the
+two hues are close together; when they are nearly opposite, the two routes are
+similar in length.
+
+sRGB and linear RGB have no hue angle, so they have one route each.
+
+EASING
+======
+
+Easing decides where along the way each step lands. The tool uses the familiar
+CSS timing curves:
+
+  Easing:               linear
+  Where the steps land: Evenly spaced along the route
+
+  Easing:               ease-in
+  Where the steps land: Bunched near the start, spreading out towards the end
+
+  Easing:               ease-out
+  Where the steps land: Spread out at the start, bunched near the end
+
+  Easing:               ease-in-out
+  Where the steps land: Bunched at both ends, spread in the middle
+
+  Easing:               step
+  Where the steps land: Only five distinct positions (0, ¼, ½, ¾ and the end),
+                        so neighbouring steps repeat colours
+
+Easing changes where the steps land, not the path the ramp takes. That is why
+it barely changes the average difference between steps but can change how even
+they are a great deal.
+
+MEASURING A RAMP
+================
+
+  - ΔE₀₀ is the CIEDE2000 colour difference, the CIE's standard formula for
+    how different two colours look. The tool measures it between each step and
+    the next.
+  - mean ΔE₀₀ is the average of those differences: how far apart the steps
+    are.
+  - evenness is the standard deviation of those differences: how much they
+    vary. Zero would mean every step is exactly as far from the next. Lower is
+    more even.
+  - largest jump is the biggest single difference, and where it is.
+
+The mean and the evenness answer different questions and move independently. A
+ramp is usually being asked the evenness question.
+
+GAMUT AND GAMUT MAPPING
+=======================
+
+A gamut is the range of colours a device or colour space can show. sRGB, the
+gamut of ordinary screens and web colours, cannot hold every colour OKLCH can
+describe. Blending in OKLCH between two saturated colours often asks for a
+middle step more colourful than sRGB allows.
+
+There are two ways to bring such a colour back:
+
+  - Clipping each channel to 0 to 255 is simple, but it changes the hue and
+    lightness as well as the colourfulness.
+  - Gamut mapping by chroma, which this tool uses, keeps the lightness and hue
+    you asked for and reduces only the chroma, until the colour just fits. The
+    result sits on the edge of sRGB at the right lightness and hue.
+
+The tool finds the edge by halving the search twenty times, which is far finer
+than one step of an 8-bit channel. Steps that were brought back this way are
+marked with a gold underline in the ramp and outlined in amber on the hue
+circle, and moved to fit sRGB counts them.
+
+Only the OKLCH routes can leave sRGB. Blends in sRGB, linear RGB and HSL
+always stay inside it.
+
+THE DESATURATED MIDDLE
+======================
+
+A ramp between two colours on opposite sides of the colour wheel, blended in
+sRGB or linear RGB, passes close to grey in the middle, because the straight
+line between them crosses the neutral axis. Blending in OKLCH goes round the
+hue circle instead and stays colourful. The Spaces tab draws the same two ends
+in sRGB, Linear RGB and OKLCH, short hue and gives the chroma of the least
+colourful step of each, measured in OKLCH, so the three can be compared on one
+scale.

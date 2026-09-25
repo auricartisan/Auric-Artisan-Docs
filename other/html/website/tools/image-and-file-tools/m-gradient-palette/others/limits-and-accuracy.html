@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the M-Gradient Palette measures, how precisely, the choices it makes, and what it does not hold.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; M-Gradient Palette</a>
+<h2>M-Gradient Palette background material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="glossary.html">M-Gradient Palette glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">M-Gradient Palette</a> &rsaquo; <a href="README.html">M-Gradient Palette background material</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › M-Gradient Palette</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the M-Gradient Palette measures, how precisely, the choices it makes, and what it does not hold.</p>
+<h2 id="what-is-measured-and-how-precisely">What is measured, and how precisely</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Figure</th><th>Method</th><th>Accuracy</th></tr></thead>
+<tbody>
+<tr><td>ΔE₀₀ per step</td><td>CIEDE2000 (ISO/CIE 11664-6:2014) between neighbouring steps, via CIELAB with a D65 white</td><td>Agrees with the 34 published test pairs of Sharma, Wu and Dalal (2005) to within 0.000042</td></tr>
+<tr><td>Evenness</td><td>Standard deviation of the step differences</td><td>Exact from the above</td></tr>
+<tr><td>OKLab and OKLCH</td><td>Ottosson&#39;s published matrices</td><td>Checked against the article&#39;s own reference values</td></tr>
+<tr><td>sRGB conversions</td><td>The piecewise sRGB transfer function, both directions</td><td>Exact</td></tr>
+<tr><td>WCAG 2 ratio</td><td>(L₁ + 0.05) ÷ (L₂ + 0.05) from relative luminance</td><td>Exact: 21.00, 4.54 for <code>#767676</code>, 7.00 for <code>#595959</code> on white</td></tr>
+<tr><td>APCA Lc</td><td>APCA-W3 0.1.9 with all its constants</td><td>Black on white 106.04</td></tr>
+<tr><td>Colour-vision view</td><td>Machado, Oliveira and Fernandes (2009), severity 1.0, in linear light</td><td>Full dichromacy only</td></tr>
+<tr><td>Gamut mapping</td><td>Chroma halved towards the boundary 20 times, lightness and hue held</td><td>Far finer than one 8-bit step</td></tr>
+</tbody></table></div>
+<p>Every step is rounded to an 8-bit hex colour before it is measured, so the figures describe the colours you export.</p>
+<h2 id="choices-the-tool-makes">Choices the tool makes</h2>
+<p>These are listed as <strong>This tool&#39;s choice</strong> on the <strong>Data</strong> tab.</p>
+<ul>
+<li><strong>How out-of-gamut steps are brought back:</strong> by reducing chroma, not by clipping channels. A different method gives a visibly different ramp.</li>
+<li><strong>The five easings</strong> are CSS animation curves, not a colour standard.</li>
+<li><strong>Calling a ramp even:</strong> there is no published threshold for evenness, so the tool ranks rows and marks the evenest rather than passing or failing them.</li>
+<li><strong>The 25 presets</strong> are pairs someone liked; they carry no claim to be good ramps.</li>
+</ul>
+<h2 id="what-the-tool-does-not-hold">What the tool does not hold</h2>
+<ul>
+<li><strong>Colour-vision deficiency below full severity.</strong> The simulation shows complete loss of one cone type only. Milder forms are more common and are not shown.</li>
+</ul>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>Two ends only; 2 to 32 steps.</li>
+<li>Only the OKLCH routes can go outside sRGB; the other routes always stay inside it.</li>
+<li>The CSS gradient export carries the ends and the space only, and depends on browser support.</li>
+<li>The APCA figure is a guide to legibility, and the Lc bands are APCA&#39;s own guidance, not a conformance level.</li>
+<li>Nothing is stored between visits.</li>
+</ul>
+<h2 id="what-it-is-not">What it is not</h2>
+<p>The tool measures how evenly spaced and how legible a ramp is. It does not judge whether the colours suit your brand, and it does not test your final layout; check text in context at its real size.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>M-Gradient Palette glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-measured-and-how-precisely">What is measured, and how precisely</a></li><li><a href="#choices-the-tool-makes">Choices the tool makes</a></li><li><a href="#what-the-tool-does-not-hold">What the tool does not hold</a></li><li><a href="#limits">Limits</a></li><li><a href="#what-it-is-not">What it is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

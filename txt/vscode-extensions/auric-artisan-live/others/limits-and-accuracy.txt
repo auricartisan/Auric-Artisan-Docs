@@ -1,0 +1,122 @@
+==============================================================================
+LIMITS AND SAFEGUARDS
+==============================================================================
+The built-in limits of Auric Artisan Live, why they exist, which ones you can
+change, and how to read its measurements.
+Area: VS Code extensions › Auric Artisan Live   Updated: 2026-09-25
+
+Auric Live keeps memory bounded and protects your data by design. Most limits
+can be changed; the safeguards around privacy and workspace trust are
+deliberate.
+
+BUILT-IN LIMITS
+===============
+
+  Limit:          Requests kept by the inspector
+  Default:        500
+  Change it with: `auricLive.inspector.maxEntries` (20–10000)
+
+  Limit:          Requests shown in the control panel
+  Default:        Newest 200
+  Change it with: —
+
+  Limit:          Body captured per request or response
+  Default:        256 KiB
+  Change it with: `auricLive.inspector.maxBodyBytes` (0–8388608)
+
+  Limit:          Incoming request body
+  Default:        8 MiB; larger bodies get 413; `0` rejects all non-empty
+                  bodies
+  Change it with: `auricLive.maxRequestBodyBytes`
+
+  Limit:          Time to receive a request body
+  Default:        30 seconds; stalled bodies get 408; `0` disables it
+  Change it with: `auricLive.requestBodyTimeoutMs`
+
+  Limit:          Console capture
+  Default:        Off; when on, 200 entries, 2,000 characters per message, 20
+                  messages per second
+  Change it with: `auricLive.console.*`
+
+  Limit:          Session records
+  Default:        On; 200 request summaries, 12 sessions, about 5 MiB per
+                  session
+  Change it with: `auricLive.records.*`
+
+  Limit:          Reloads before storm protection
+  Default:        3 in 10 seconds
+  Change it with: `auricLive.liveReload.stormLimit`,
+                  `auricLive.liveReload.stormWindowMs`
+
+  Limit:          Dev server restarts
+  Default:        5
+  Change it with: `auricLive.devServer.maxRestarts` (0–50)
+
+  Limit:          Wait for a starting backend
+  Default:        25 seconds
+  Change it with: `auricLive.upstream.waitTimeoutMs`
+
+  Limit:          Proxy request timeout
+  Default:        30 seconds per rule
+  Change it with: `timeoutMs` in a proxy rule
+
+  Limit:          CGI script run time
+  Default:        30 seconds
+  Change it with: `cgi.timeoutMs` in the project file
+
+DELIBERATE BOUNDARIES
+=====================
+
+  - Development only. Auric Live is not public or production hosting.
+  - Virtual workspaces are not supported. It needs files on disk and a local
+    port.
+  - Runtimes are not installed for you. Executables and framework packages
+    must already be installed. Diagnostics report what is missing without
+    installing or running anything.
+  - Detection suggests, it does not certify. A detected run target is based on
+    files in the folder. It does not guarantee every framework configuration
+    will work.
+  - Workspace trust. Untrusted project files cannot turn on running commands,
+    proxying, CGI, file-backed mocks, custom certificates or listening on your
+    network.
+  - Symbolic links. Links or junctions that lead outside the served folder are
+    not followed.
+  - Certificates. Generating or importing a certificate never installs trust
+    on a device.
+  - Platform coverage. Automated tests do not certify every operating system,
+    framework or VS Code installation.
+
+NETWORK SIMULATION ACCURACY
+===========================
+
+  - Latency and bandwidth are applied per transfer, not as a shared budget
+    across all connections.
+  - There is no packet loss and no packet-level emulation.
+  - WebSocket messages are not bandwidth-shaped.
+  - Treat results as an approximation of a slow connection, not a measurement
+    of a real network.
+
+READING THE MEASUREMENTS
+========================
+
+  - p95 latency in the control panel is calculated from the recent requests
+    shown (up to 200), not from the whole session. Inspector totals count
+    everything captured since the inspector was cleared.
+  - Dashboard metrics come from browser APIs. A browser that does not provide
+    one shows Unavailable, not an estimate.
+  - Cache results in the dashboard are labelled either as the browser's
+    estimate (Likely cached) or as confirmed by the server (304 or cached
+    responses).
+  - Storage figures are sizes and counts reported by the browser; stored
+    values are never read.
+  - Frame rate and timings are sampled while the dashboard is open and the tab
+    is visible, so they describe that moment, not the page's lifetime.
+
+REDACTION
+=========
+
+Credential headers are always masked. Common sensitive query parameters and
+JSON or form fields are redacted by default, and you can add your own field
+names. Redaction is not a general personal-data detector: names, addresses and
+free text in bodies may still be sensitive. Review exports before sharing
+them.

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit a page and fix contrast — Auric Artisan Docs</title>
+<meta name="description" content="Run the audit on a page, see its contrast problems on the page, fix a failing colour pair, review the other findings and export a record.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Workflows</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="audit-a-page-and-fix-contrast.html" aria-current="page">Audit a page and fix contrast</a></li>
+<li><a href="back-up-and-move-your-data.html">Back up and move your data</a></li>
+<li><a href="build-a-colour-scale-for-tailwind.html">Build a colour scale for Tailwind</a></li>
+<li><a href="check-and-fix-a-brand-colour.html">Check and fix a brand colour</a></li>
+<li><a href="extract-a-sites-design-system.html">Extract a site's design system</a></li>
+<li><a href="inspect-and-debug-an-element.html">Inspect and debug an element</a></li>
+<li><a href="review-a-page-for-colour-blindness.html">Review a page for colour blindness</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Workflows</a></nav>
+<p class="kicker">Browser extension › Workflows</p>
+<h1>Audit a page and fix contrast</h1>
+<p class="lede">Run the audit on a page, see its contrast problems on the page, fix a failing colour pair, review the other findings and export a record.</p>
+<p>This workflow finds a page&#39;s accessibility problems, fixes its contrast failures and leaves you with a record to share.</p>
+<p><strong>You need:</strong> the page open in a normal tab. The side panel is the most comfortable place to work, because it stays open while you look at the page.</p>
+<h2 id="1-run-the-audit">1. Run the audit</h2>
+<ol>
+<li>Open the page and wait for it to finish loading.</li>
+<li>Open the extension and choose <strong>Open the side panel</strong>.</li>
+<li>On Home, choose <strong>Audit</strong>. The audit runs at once.</li>
+</ol>
+<p>You see four counts: <strong>Tested</strong>, <strong>Failing</strong>, <strong>Borderline</strong> and <strong>Review</strong>, and a row for each flagged piece of text.</p>
+<h2 id="2-see-where-the-problems-are">2. See where the problems are</h2>
+<ol>
+<li>Choose <strong>Outline on page</strong>.</li>
+<li>Look at the page. Failing text has a red outline, borderline text an amber one, and each has a label such as <code>3.12:1 needs 4.5:1</code>.</li>
+<li>The outlines disappear after 15 seconds; choose <strong>Outline on page</strong> again to redraw them.</li>
+</ol>
+<h2 id="3-fix-a-failing-pair">3. Fix a failing pair</h2>
+<ol>
+<li>In the list, choose the row you want to fix. Contrast opens with that text colour and background.</li>
+<li>Check the verdict. For body text you need <strong>AA</strong> (4.5:1) at least.</li>
+<li>Leave the fix target on <strong>AA 4.5:1</strong>, or choose <strong>AAA 7:1</strong> or an APCA target.</li>
+<li>Choose <strong>Fix text</strong>. The text colour moves to the nearest lightness that passes, keeping its hue and saturation, and a message names the new colour.</li>
+<li>If you would rather change the background, choose <strong>Fix background</strong>.</li>
+<li>Compare the <strong>On-brand text</strong> and <strong>On-brand background</strong> suggestions and click one if it fits your design better.</li>
+<li>Choose <strong>Copy report</strong> to keep the before-and-after numbers.</li>
+</ol>
+<p>Use the new colour in your stylesheet. To try it on the live page first, see <a href="inspect-and-debug-an-element.html">Inspect and debug an element</a>.</p>
+<h2 id="4-review-the-other-findings">4. Review the other findings</h2>
+<ol>
+<li>Open Check › <strong>Findings</strong>. The rule engine&#39;s findings are listed with the contrast findings, failures first, then by impact.</li>
+<li>For each finding, read the title and message, then:<ul>
+<li>choose <strong>Copy selector</strong> to find the element in your code;</li>
+<li>choose <strong>Inspect</strong> to open it in Code › Inspect.</li>
+</ul>
+</li>
+<li>Check the rules that need human judgement, such as whether alt text actually describes the image.</li>
+</ol>
+<p>The <a href="../check/audit-rules.html">Audit rules</a> page explains what each rule checks.</p>
+<h2 id="5-keep-a-record">5. Keep a record</h2>
+<ol>
+<li>Back in Check › <strong>Audit</strong>, choose <strong>Export JSON</strong> for the full result, or <strong>Export CSV</strong> for the contrast findings.</li>
+<li>Paste the result into a file or a ticket.</li>
+</ol>
+<p>Results are kept only while the extension is open, so export before you close it.</p>
+<h2 id="6-check-again">6. Check again</h2>
+<p>After you change the page, reload it and choose <strong>Run audit</strong> again. Compare the counts with your export.</p>
+<p><strong>The result:</strong> a list of problems fixed and a record of what remains.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Workflows</a><a href="back-up-and-move-your-data.html"><span>Next</span>Back up and move your data</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#1-run-the-audit">1. Run the audit</a></li><li><a href="#2-see-where-the-problems-are">2. See where the problems are</a></li><li><a href="#3-fix-a-failing-pair">3. Fix a failing pair</a></li><li><a href="#4-review-the-other-findings">4. Review the other findings</a></li><li><a href="#5-keep-a-record">5. Keep a record</a></li><li><a href="#6-check-again">6. Check again</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

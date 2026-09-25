@@ -1,0 +1,865 @@
+==============================================================================
+RULES
+==============================================================================
+Every WCAG rule Auric Accessibility checks, grouped by success criterion, with
+its impact, what it catches and how to fix it.
+Area: VS Code extensions › Auric Artisan Studio › Auric Accessibility   Updated: 2026-09-25
+
+Auric Accessibility runs 70+ static rules (72 in the current package) mapped
+to 29 WCAG success criteria, on top of the contrast checks. This page lists
+every rule by success criterion, in the order of WCAG's four principles:
+perceivable, operable, understandable and robust.
+
+HOW TO READ THIS PAGE
+=====================
+
+  - Rule ID is what the editor, the Project Issues view, `health.json` and
+    SARIF show, and what you can put in a suppression comment, for example
+    `auric-disable-next-line img-alt`.
+  - Impact is how much the problem affects users: critical, serious, moderate
+    or minor. It sets the Problems severity (critical and serious are
+    warnings, moderate is information, minor is a hint) and the weight in the
+    score.
+  - hint marks a best-practice rule: a pattern worth fixing that does not by
+    itself fail the criterion. Best-practice findings are shown as hints
+    (`Best practice (related to WCAG …)`), have low confidence, and weigh half
+    in the score.
+  - Checks says whether the rule reads markup (HTML, JSX, TSX, Vue, Svelte,
+    Astro, PHP, XML and template dialects) or CSS (every CSS dialect).
+  - Confidence and automation are given where a rule reports them. Other rules
+    are high-confidence and fully automated. Assisted means a person should
+    confirm the finding.
+  - The level and WCAG version are those of the success criterion. The audit
+    profile decides which criteria run; see Audit profiles and contrast
+    [audit-profiles-and-contrast.txt].
+
+Each finding links to the W3C's Understanding page for its criterion, and Rule
+details in the hover opens the rule's entry in the knowledge database
+[../../docs/rulebook-and-knowledge.txt].
+
+CONTRAST CRITERIA
+=================
+
+Contrast is graded by the contrast checks rather than by a markup rule. See
+Contrast diagnostics [../../color/docs/contrast-diagnostics.txt].
+
+  Criterion:       1.4.3 Contrast (Minimum)
+  Level:           AA
+  What is checked: Text and background pairs against your threshold (4.5:1,
+                   large text 3:1)
+
+  Criterion:       1.4.6 Contrast (Enhanced)
+  Level:           AAA
+  What is checked: The same, when your threshold is 7 or more
+
+  Criterion:       1.4.1 Use of Color
+  Level:           A
+  What is checked: Pairs that pass normally but lose contrast under
+                   colour-vision deficiency (hint)
+
+  Criterion:       1.4.11 Non-text Contrast
+  Level:           AA
+  What is checked: Use a 3:1 threshold for UI parts and large text
+
+APCA is offered as an experimental alternative model. An APCA result means
+"meets the configured Lc target", not WCAG 3 conformance.
+
+PERCEIVABLE
+===========
+
+1.1.1 Non-text Content
+----------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `img-alt`
+  Impact:          critical
+  Checks:          Markup
+  What it catches: Image has no alt attribute.
+
+  Rule ID:         `area-alt`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Image-map `<area>` has no alt text.
+
+  Rule ID:         `input-image-alt`
+  Impact:          critical
+  Checks:          Markup
+  What it catches: Image button (`<input type="image">`) has no alt text.
+
+  Rule ID:         `svg-img-name`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: `<svg role="img">` has no accessible name.
+
+  Rule ID:         `object-name`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: `<object>`/`<embed>` has no accessible name.
+
+  Rule ID:         `redundant-alt`
+  Impact:          minor
+  Checks:          Markup
+  What it catches: Alt text starts with “image of / photo of …” — screen
+                   readers already announce it as an image.
+
+  Rule ID:         `alt-filename`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Alt text looks like a file name, not a description.
+
+How to fix:
+
+  - `img-alt`: Add alt="description" (or alt="" for purely decorative images).
+    Apply fix adds alt="".
+  - `area-alt`: Add alt="link destination" to every `<area>` that has an href.
+  - `input-image-alt`: Add alt="action name" so the button has an accessible
+    name.
+  - `svg-img-name`: Add aria-label / aria-labelledby, or a `<title>` as the
+    first child of the `<svg>`.
+  - `object-name`: Add title="what it shows" (or aria-label) to the
+    `<object>`/`<embed>`.
+  - `redundant-alt`: Describe the content directly; drop the “image of”
+    prefix.
+  - `alt-filename`: Replace the file name with a real description of the
+    image.
+
+1.2.2 Captions (Prerecorded)
+----------------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID          | Impact   | Checks | What it catches
+  -----------------+----------+--------+--------------------------------------------------------
+  `media-captions` | serious  | Markup | `<video>`/`<audio>` has no captions or subtitles track.
+  `video-captions` | moderate | Markup | Playable `<video>` has no captions track.
+
+How to fix:
+
+  - `media-captions`: Add a `<track kind="captions">` (or provide a
+    transcript) for the audio content. Muted video is skipped.
+  - `video-captions`: Add `<track kind="captions" src="…" srclang="…">` inside
+    the `<video>` (not needed for silent/decorative video).
+
+1.3.1 Info and Relationships
+----------------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `fieldset-legend`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: `<fieldset>` has no `<legend>` to name the group.
+
+  Rule ID:         `duplicate-main`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: More than one main landmark — a page should have exactly
+                   one.
+
+  Rule ID:         `heading-skip`
+  Impact:          minor, hint
+  Checks:          Markup
+  What it catches: Heading level skipped — breaks the document outline.
+
+  Rule ID:         `aria-required-owned`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Composite ARIA role is missing a required owned role.
+
+  Rule ID:         `aria-required-context`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: ARIA role appears outside the context role it requires.
+
+  Rule ID:         `table-headers`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Data table has no header cells (`<th>`).
+
+  Rule ID:         `details-summary`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: `<details>` has no `<summary>` label.
+
+  Rule ID:         `landmark-unique-name`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Repeated landmarks of the same type need unique accessible
+                   names.
+
+  Rule ID:         `content-text`
+  Impact:          minor
+  Checks:          CSS
+  What it catches: Meaningful text inserted via CSS content is unreliable for
+                   assistive tech and can't be translated or selected.
+
+How to fix:
+
+  - `fieldset-legend`: Add a `<legend>` as the first child describing the
+    grouped controls.
+  - `duplicate-main`: Keep a single `<main>` / role="main"; remove or relabel
+    the extras.
+  - `heading-skip`: Don't jump heading levels (e.g. h2 → h4); step one at a
+    time. Best-practice hint.
+  - `aria-required-owned`: Add the required child role, or use the equivalent
+    native HTML control. Uses the WAI-ARIA 1.2 role matrix. In a component or
+    partial, reported only when the wrong parent is visible in the same file.
+    Confidence high, automated.
+  - `aria-required-context`: Nest it in the required composite/container role,
+    or use native HTML with equivalent semantics. Uses the WAI-ARIA 1.2 role
+    matrix. In a component or partial, reported only when the wrong parent is
+    visible in the same file. Confidence high, automated.
+  - `table-headers`: Mark header cells with `<th scope="col/row">` (or
+    role="presentation" for layout tables).
+  - `details-summary`: Add a direct `<summary>` child that names the
+    disclosure. Confidence high, automated.
+  - `landmark-unique-name`: Give each repeated landmark a short, unique
+    aria-label or aria-labelledby reference. Needs review. Confidence medium,
+    assisted.
+  - `content-text`: Move real words into the markup; keep CSS content for
+    decoration only.
+
+1.3.5 Identify Input Purpose
+----------------------------
+
+Level AA, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.
+
+  Rule ID:         `input-autocomplete`
+  Impact:          minor
+  Checks:          Markup
+  What it catches: Identity input has no autocomplete token.
+
+  Rule ID:         `autocomplete-invalid`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: autocomplete value is not a valid autofill field name.
+
+How to fix:
+
+  - `input-autocomplete`: Add an autocomplete token (e.g. email, tel, name,
+    current-password) to help users autofill.
+  - `autocomplete-invalid`: Use a token from the HTML autofill vocabulary — an
+    unrecognised value turns autofill off entirely. Checked against the HTML
+    autofill vocabulary.
+
+1.4.2 Audio Control
+-------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID          | Impact   | Checks | What it catches
+  -----------------+----------+--------+-------------------------------------------------------
+  `media-autoplay` | moderate | Markup | Media autoplays — provide a way to pause/stop or mute.
+
+How to fix:
+
+  - `media-autoplay`: Avoid autoplay, or add muted (video) and visible media
+    controls.
+
+1.4.4 Resize Text
+-----------------
+
+Level AA, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `viewport-zoom`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Viewport meta disables zoom (user-scalable=no /
+                   maximum-scale below 2).
+
+  Rule ID:         `tiny-font`
+  Impact:          minor, hint
+  Checks:          CSS
+  What it catches: Font size below 10px is illegible for many readers even
+                   after zooming.
+
+How to fix:
+
+  - `viewport-zoom`: Remove user-scalable=no and let maximum-scale be ≥ 2 so
+    users can zoom. Flags user-scalable=no, or maximum-scale below 2. Apply
+    fix rewrites the viewport.
+  - `tiny-font`: Use at least 12px (0.75rem) for any text users must read.
+    Best-practice hint.
+
+1.4.8 Visual Presentation
+-------------------------
+
+Level AAA, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `justify-text`
+  Impact:          minor
+  Checks:          CSS
+  What it catches: Justified text creates uneven “rivers” of space that hurt
+                   dyslexic readers.
+
+  Rule ID:         `line-height-tight`
+  Impact:          minor
+  Checks:          CSS
+  What it catches: Line height under 1.2 squeezes lines together and clips
+                   ascenders/descenders.
+
+How to fix:
+
+  - `justify-text`: Use text-align: left (or start) for body copy.
+  - `line-height-tight`: Use a line-height of at least 1.2 for text (1.5 for
+    body copy). Unitless or em values only; a px line-height is not judged.
+
+1.4.10 Reflow
+-------------
+
+Level AA, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.
+
+  Rule ID:         `viewport-fixed-width`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Viewport meta locks a fixed pixel width — content can't
+                   reflow on small screens.
+
+How to fix:
+
+  - `viewport-fixed-width`: Use content="width=device-width, initial-scale=1".
+    Apply fix rewrites the viewport.
+
+1.4.12 Text Spacing
+-------------------
+
+Level AA, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.
+
+  Rule ID:         `text-spacing-important`
+  Impact:          minor, hint
+  Checks:          CSS
+  What it catches: !important text spacing blocks user style-sheet overrides
+                   (WCAG text-spacing test).
+
+How to fix:
+
+  - `text-spacing-important`: Drop !important from line-height /
+    letter-spacing / word-spacing so users can adapt spacing. Best-practice
+    hint. Apply fix removes !important.
+
+OPERABLE
+========
+
+2.1.1 Keyboard
+--------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `interactive-keyboard`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Click handler on a non-interactive element is not keyboard
+                   accessible.
+
+How to fix:
+
+  - `interactive-keyboard`: Use a `<button>`/`<a>`, or add role + tabindex="0"
+    and a key handler. Understands tabIndex={0}; catches Vue, Angular and
+    Svelte click handlers.
+
+2.1.4 Character Key Shortcuts
+-----------------------------
+
+Level A, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.
+
+  Rule ID:         `accesskey`
+  Impact:          minor, hint
+  Checks:          Markup
+  What it catches: accesskey creates a single-character shortcut users can't
+                   remap or turn off.
+
+How to fix:
+
+  - `accesskey`: Remove accesskey, or provide a way to disable/remap the
+    shortcut. Best-practice hint. Apply fix removes the attribute.
+
+2.2.1 Timing Adjustable
+-----------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `meta-refresh`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Timed `<meta refresh>` reloads/redirects the page without
+                   user control.
+
+How to fix:
+
+  - `meta-refresh`: Remove the timed refresh (an instant 0-second server
+    redirect is exempt).
+
+2.2.2 Pause, Stop, Hide
+-----------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `blink-marquee`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: `<blink>`/`<marquee>` auto-moves content and can't be
+                   paused.
+
+How to fix:
+
+  - `blink-marquee`: Remove it; use CSS animation gated behind
+    prefers-reduced-motion if needed.
+
+2.3.3 Animation from Interactions
+---------------------------------
+
+Level AAA, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft
+profiles.
+
+  Rule ID:         `smooth-scroll-motion`
+  Impact:          minor
+  Checks:          CSS
+  What it catches: scroll-behavior: smooth without a prefers-reduced-motion
+                   fallback.
+
+  Rule ID:         `reduced-motion`
+  Impact:          minor
+  Checks:          CSS
+  What it catches: Infinite animation without a prefers-reduced-motion
+                   fallback.
+
+How to fix:
+
+  - `smooth-scroll-motion`: Wrap it in @media (prefers-reduced-motion:
+    no-preference) { … }.
+  - `reduced-motion`: Wrap or disable it inside @media
+    (prefers-reduced-motion: reduce).
+
+2.4.1 Bypass Blocks
+-------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `bypass-blocks`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Page has navigation but no skip link, `<main>` landmark or
+                   headings to bypass it.
+
+How to fix:
+
+  - `bypass-blocks`: Add `<main>` (or role="main"), headings, or a “skip to
+    content” link as the first focusable element.
+
+2.4.2 Page Titled
+-----------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID     | Impact  | Checks | What it catches
+  ------------+---------+--------+-------------------------------------
+  `doc-title` | serious | Markup | Document has no non-empty `<title>`.
+
+How to fix:
+
+  - `doc-title`: Add a descriptive `<title>` in `<head>`.
+
+2.4.3 Focus Order
+-----------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID             | Impact      | Checks | What it catches
+  --------------------+-------------+--------+----------------------------------------------------
+  `positive-tabindex` | minor, hint | Markup | Positive tabindex disturbs the natural focus order.
+
+How to fix:
+
+  - `positive-tabindex`: Use tabindex="0" (focusable, natural order) or "-1"
+    (programmatic) — never > 0. Best-practice hint. Apply fix sets
+    tabindex="0".
+
+2.4.4 Link Purpose (In Context)
+-------------------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID        | Impact  | Checks | What it catches
+  ---------------+---------+--------+---------------------------------------------
+  `link-name`    | serious | Markup | Link has no discernible text.
+  `link-generic` | minor   | Markup | Link text is not descriptive out of context.
+
+How to fix:
+
+  - `link-name`: Give the link meaningful text, or an aria-label for icon
+    links. Apply fix adds an aria-label placeholder to replace.
+  - `link-generic`: Replace generic text like “click here” / “read more” with
+    the link's destination.
+
+2.4.6 Headings and Labels
+-------------------------
+
+Level AA, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID         | Impact   | Checks | What it catches
+  ----------------+----------+--------+--------------------------------------
+  `empty-heading` | moderate | Markup | Heading is empty — it labels nothing.
+
+How to fix:
+
+  - `empty-heading`: Give the heading text (or remove it; don't use headings
+    for spacing).
+
+2.4.7 Focus Visible
+-------------------
+
+Level AA, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID              | Impact  | Checks | What it catches
+  ---------------------+---------+--------+-----------------------------------------------------
+  `focus-outline-none` | serious | CSS    | Focus outline removed without a visible replacement.
+
+How to fix:
+
+  - `focus-outline-none`: Keep a visible focus indicator — add box-shadow /
+    border, or use :focus-visible. One :focus-visible rule elsewhere in the
+    file does not exempt every rule.
+
+2.5.3 Label in Name
+-------------------
+
+Level A, introduced in WCAG 2.1. Runs in the 2.1, 2.2 and 3.0-draft profiles.
+
+  Rule ID:         `label-in-name`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: aria-label doesn't contain the visible text — speech-input
+                   users can't activate it by name.
+
+How to fix:
+
+  - `label-in-name`: Start the aria-label with the visible text (or drop the
+    aria-label).
+
+2.5.8 Target Size (Minimum)
+---------------------------
+
+Level AA, introduced in WCAG 2.2. Runs in the 2.2 and 3.0-draft profiles.
+
+  Rule ID       | Impact | Checks | What it catches
+  --------------+--------+--------+-----------------------------------------------------
+  `target-size` | minor  | CSS    | Interactive target may be smaller than 24×24 CSS px.
+
+How to fix:
+
+  - `target-size`: Give buttons/links/icons a min target of 24×24px (padding
+    or min-width/height). Flags a CSS rule for a button, link, form control,
+    `summary`, a `.btn` or `.button` class, `[role=button]` or `.chip` whose
+    width and height are both set in pixels below 24.
+
+UNDERSTANDABLE
+==============
+
+3.1.1 Language of Page
+----------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID        | Impact   | Checks | What it catches
+  ---------------+----------+--------+-------------------------------------------------
+  `html-lang`    | serious  | Markup | `<html>` element is missing a lang attribute.
+  `lang-invalid` | moderate | Markup | `<html lang>` value is not a valid language tag.
+
+How to fix:
+
+  - `html-lang`: Add lang="en" (or the page's language) to `<html>`. Apply fix
+    adds lang="en".
+  - `lang-invalid`: Use a BCP-47 tag like lang="en", "en-US", "hi", "pt-BR".
+
+3.1.2 Language of Parts
+-----------------------
+
+Level AA, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID             | Impact   | Checks | What it catches
+  --------------------+----------+--------+------------------------------------------------
+  `lang-part-invalid` | moderate | Markup | lang on an element is not a valid language tag.
+
+How to fix:
+
+  - `lang-part-invalid`: Use a BCP-47 tag like lang="fr", "es-MX", "hi" — or
+    drop the attribute. The html element is left to 3.1.1, so one problem is
+    never reported twice; templated values are skipped. Confidence high,
+    automated.
+
+3.2.1 On Focus
+--------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `autofocus`
+  Impact:          minor, hint
+  Checks:          Markup
+  What it catches: autofocus moves focus on load — disorienting for
+                   screen-reader and zoom users.
+
+How to fix:
+
+  - `autofocus`: Avoid autofocus, or reserve it for single-purpose pages (like
+    a lone search box). Best-practice hint.
+
+3.2.2 On Input
+--------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `select-onchange-nav`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Changing this control submits or navigates automatically —
+                   a context change on input.
+
+How to fix:
+
+  - `select-onchange-nav`: Trigger submit/navigation from an explicit button
+    instead of onchange.
+
+3.3.2 Labels or Instructions
+----------------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `input-placeholder-label`
+  Impact:          minor
+  Checks:          Markup
+  What it catches: Field is labelled only by its placeholder, which disappears
+                   as soon as the user types.
+
+  Rule ID:         `select-textarea-label`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: `<select>`/`<textarea>` has no label or accessible name.
+
+How to fix:
+
+  - `input-placeholder-label`: Add a visible `<label>` (keep the placeholder
+    as an example or hint, not the label). Advisory: the placeholder does give
+    the field a name, but it disappears as soon as someone types. Confidence
+    medium, assisted.
+  - `select-textarea-label`: Associate a `<label for>`, or add aria-label /
+    title. Apply fix adds an aria-label placeholder to replace.
+
+3.3.8 Accessible Authentication (Minimum)
+-----------------------------------------
+
+Level AA, introduced in WCAG 2.2. Runs in the 2.2 and 3.0-draft profiles.
+
+  Rule ID:         `no-paste-auth`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Blocking paste / autocomplete on a password field fails
+                   accessible authentication.
+
+How to fix:
+
+  - `no-paste-auth`: Allow paste and autocomplete="current-password" so
+    password managers work.
+
+ROBUST
+======
+
+4.1.2 Name, Role, Value
+-----------------------
+
+Level A, introduced in WCAG 2.0. Runs in all profiles.
+
+  Rule ID:         `aria-attr-unknown`
+  Impact:          minor
+  Checks:          Markup
+  What it catches: Unknown ARIA attribute — likely a typo.
+
+  Rule ID:         `input-label`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Form field has no associated label or accessible name.
+
+  Rule ID:         `button-name`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Button has no discernible text.
+
+  Rule ID:         `duplicate-id`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Duplicate id — breaks label/aria references and scripting.
+
+  Rule ID:         `aria-role-invalid`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Unknown ARIA role.
+
+  Rule ID:         `aria-abstract-role`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: Abstract ARIA role must not be used by authors.
+
+  Rule ID:         `redundant-role`
+  Impact:          minor
+  Checks:          Markup
+  What it catches: Redundant ARIA role duplicates the element's native
+                   semantics.
+
+  Rule ID:         `aria-reference-missing`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: ARIA reference points to a missing id.
+
+  Rule ID:         `aria-attr-unsupported`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: ARIA attribute is not supported on this element's role.
+
+  Rule ID:         `aria-attr-invalid-value`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: ARIA attribute has a value outside its allowed set.
+
+  Rule ID:         `aria-required-attr`
+  Impact:          critical
+  Checks:          Markup
+  What it catches: Role is missing an attribute it requires.
+
+  Rule ID:         `aria-required-name`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: ARIA role requires an accessible name.
+
+  Rule ID:         `aria-roledescription-name`
+  Impact:          moderate
+  Checks:          Markup
+  What it catches: aria-roledescription is present on an unnamed element.
+
+  Rule ID:         `aria-attr-deprecated`
+  Impact:          minor
+  Checks:          Markup
+  What it catches: Deprecated ARIA attribute has no effect.
+
+  Rule ID:         `aria-prohibited-name`
+  Impact:          minor
+  Checks:          Markup
+  What it catches: This role does not support an accessible name.
+
+  Rule ID:         `iframe-title`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: `<iframe>` has no accessible title.
+
+  Rule ID:         `aria-hidden-focusable`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: aria-hidden="true" on a focusable element hides it from
+                   assistive tech but not the keyboard.
+
+  Rule ID:         `role-presentation-interactive`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: role="presentation"/"none" on an interactive element strips
+                   its semantics but keeps it focusable.
+
+  Rule ID:         `nested-interactive`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Interactive element nested inside another interactive
+                   element.
+
+  Rule ID:         `dialog-name`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: Dialog has no accessible name.
+
+  Rule ID:         `summary-name`
+  Impact:          serious
+  Checks:          Markup
+  What it catches: `<summary>` has no accessible name.
+
+  Rule ID:         `aria-hidden-body`
+  Impact:          critical
+  Checks:          Markup
+  What it catches: The document body is hidden from the accessibility tree.
+
+How to fix:
+
+  - `aria-attr-unknown`: Use a valid WAI-ARIA attribute (e.g. aria-label,
+    aria-describedby, aria-expanded). Checked against the WAI-ARIA 1.2
+    attribute list.
+  - `input-label`: Add a `<label for>` tied to the field's id, or an
+    aria-label / title. Apply fix adds an aria-label placeholder to replace.
+  - `button-name`: Add visible text, or an aria-label / title for icon-only
+    buttons. Apply fix adds an aria-label placeholder to replace.
+  - `duplicate-id`: Make every id unique within the document. An id nothing
+    refers to is a best-practice hint (minor); one a label or ARIA attribute
+    points at stays moderate.
+  - `aria-role-invalid`: Use a valid WAI-ARIA role (or remove it).
+  - `aria-abstract-role`: Replace it with a concrete role (e.g. button,
+    navigation, region) or remove it.
+  - `redundant-role`: Remove the role — the native element already exposes it.
+    Deliberately narrow: never flags a list or list item given its role again
+    (the fix for lists that lose their semantics when styled), a header or
+    footer inside article, aside, main, nav or section, or an unnamed section
+    or form given a role.
+  - `aria-reference-missing`: Make the referenced id exist, or remove the
+    broken ARIA reference. Templated and framework-bound references are
+    skipped.
+  - `aria-attr-unsupported`: Remove the attribute, or change the role to one
+    that supports it.
+  - `aria-attr-invalid-value`: Use one of the values the specification defines
+    — anything else is treated as absent.
+  - `aria-required-attr`: Add the required state — without it the role is
+    announced but its value is not.
+  - `aria-required-name`: Provide visible text, aria-label, or aria-labelledby
+    as appropriate for the role. Confidence high, automated.
+  - `aria-roledescription-name`: Give the element an accessible name, or
+    remove aria-roledescription. Confidence high, automated.
+  - `aria-attr-deprecated`: Remove it — no current browser or screen reader
+    implements it.
+  - `aria-prohibited-name`: Move the label to an element with a naming role,
+    or give this one a role that accepts a name.
+  - `iframe-title`: Add title="what the frame contains" to the `<iframe>`.
+    Apply fix adds a title placeholder to replace.
+  - `aria-hidden-focusable`: Remove aria-hidden, or also remove it from the
+    tab order (tabindex="-1" / disabled). Apply fix adds tabindex="-1".
+  - `role-presentation-interactive`: Remove the role — interactive elements
+    must expose their role to assistive tech. Applies to native controls and
+    to any element with both a tab stop and a handler; purely decorative
+    markup is not flagged.
+  - `nested-interactive`: Un-nest them — a link/button must not contain
+    another link, button, or form control.
+  - `dialog-name`: Add aria-label or aria-labelledby pointing at the dialog's
+    heading.
+  - `summary-name`: Put concise visible text in `<summary>`, or provide an
+    accessible name. Confidence high, automated.
+  - `aria-hidden-body`: Remove aria-hidden="true" from `<body>`; hide only the
+    specific inactive subtree. Confidence high, automated.
+
+RULES THAT OFFER APPLY FIX
+==========================
+
+`img-alt`, `iframe-title`, `input-label`, `select-textarea-label`,
+`button-name`, `link-name`, `html-lang`, `aria-hidden-focusable`,
+`positive-tabindex`, `accesskey`, `text-spacing-important`, `viewport-zoom`
+and `viewport-fixed-width`. See Apply fix [editor-linting.txt] for what each
+rewrite does. Every other rule suggests a fix for you to make.
+
+WHAT THE RULES CANNOT JUDGE
+===========================
+
+These rules read source text. They do not run your code, compute the final CSS
+cascade, expand component state or see markup that JavaScript generates.
+Several rules flag things that need human judgement, such as alt-text quality,
+link purpose, dialog naming, field labels and authentication; for those, the
+fix is a suggestion to review, never an automatic repair. Automated checks
+cover only part of WCAG; use the manual checks [manual-evidence.txt] for the
+rest. See Limits and accuracy [../others/limits-and-accuracy.txt].
+
+RELATED
+=======
+
+  - Editor linting [editor-linting.txt]
+  - Suppression and branding [../../docs/suppression-and-branding.txt]
+  - Scores and grades [../../docs/scores-and-grades.txt]

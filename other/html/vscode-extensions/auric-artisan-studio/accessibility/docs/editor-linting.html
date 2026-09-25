@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor linting — Auric Artisan Docs</title>
+<meta name="description" content="Where Auric Accessibility checks your code as you type, how to read its diagnostics and hovers, and which fixes it can apply for you.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html" aria-current="page">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html">Manual evidence</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="reference.html">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>Editor linting</h1>
+<p class="lede">Where Auric Accessibility checks your code as you type, how to read its diagnostics and hovers, and which fixes it can apply for you.</p>
+<p>Auric Accessibility checks every open file it supports about 300 ms after you stop typing, and shows problems as underlines, hovers and entries in the Problems panel. No scan is needed for this.</p>
+<h2 id="supported-languages">Supported languages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Rules</th><th>VS Code languages</th></tr></thead>
+<tbody>
+<tr><td>Markup rules</td><td>HTML, JavaScript React (JSX), TypeScript React (TSX), Vue, Svelte, Astro, PHP, XML, Handlebars</td></tr>
+<tr><td>Markup rules, template dialects</td><td>Twig, Liquid, Jinja, ERB, Razor, Blade, EJS, Nunjucks, Mustache, Edge (when VS Code recognises the file type)</td></tr>
+<tr><td>CSS rules</td><td>CSS, SCSS, Sass, Less, PostCSS, Stylus</td></tr>
+<tr><td>Contrast checks</td><td>CSS dialects, HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript, TypeScript, JSX, TSX, Markdown</td></tr>
+</tbody></table></div>
+<p>Plain JavaScript and TypeScript files (<code>.js</code>, <code>.ts</code>) get contrast checks for CSS-in-JS but not the markup rules; JSX and TSX files get both. Files larger than 1 MB are not checked.</p>
+<p>The markup rules understand framework syntax: JSX attribute names such as <code>htmlFor</code> and <code>tabIndex</code>, bound values such as <code>:attr</code>, <code>[attr.x]</code> and <code>attr={…}</code>, and template output such as <code>{{ }}</code>, <code>&lt;%= %&gt;</code> and <code>@expr</code>. Values supplied at runtime are treated as unknown rather than wrong. Components such as <code>&lt;Button&gt;</code> are not judged as the native <code>&lt;button&gt;</code>. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="diagnostics">Diagnostics</h2>
+<p>Every WCAG finding appears in the Problems panel with the source <code>auric-artisan</code> and a code such as <code>WCAG 1.1.1</code>, which links to the W3C&#39;s <em>Understanding</em> page for that criterion. The message has this shape:</p>
+<pre class="code" data-lang="text"><code>&lt;problem&gt;  —  WCAG &lt;criterion&gt; &lt;title&gt; (Level &lt;level&gt;, WCAG &lt;version&gt;). &lt;how to fix&gt;</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Impact</th><th>Problems severity</th></tr></thead>
+<tbody>
+<tr><td>Critical, serious</td><td>Warning</td></tr>
+<tr><td>Moderate</td><td>Information</td></tr>
+<tr><td>Minor</td><td>Hint</td></tr>
+<tr><td>Best-practice hint (any impact)</td><td>Hint, with <code>Best practice (related to WCAG …)</code> instead of the level</td></tr>
+</tbody></table></div>
+<p>In the editor, findings get a violet wavy underline (lighter in dark themes) and a mark in the overview ruler.</p>
+<p>When a branding mark covers the line of a structural finding, the message ends with <strong>(A branding mark covers this line, but structural accessibility issues are not brandable — the finding still counts.)</strong></p>
+<p>Contrast findings are covered in <a href="../../color/docs/contrast-diagnostics.html">Contrast diagnostics</a>; when Auric Accessibility is installed, it publishes them with its own <code>auricA11y.contrast.*</code> settings.</p>
+<h2 id="the-issue-hover">The issue hover</h2>
+<p>Hover an underline (or anywhere on its line) for the finding&#39;s card. Reading from the top:</p>
+<ol>
+<li><strong>Title</strong>: the criterion&#39;s name, for example <strong>Non-text Content</strong>.</li>
+<li><strong>Badges</strong>: a severity pill (<strong>CRITICAL</strong>, <strong>SERIOUS</strong>, <strong>MODERATE</strong> or <strong>MINOR</strong>), <strong>Accessibility</strong>, <strong>Level A</strong> (or AA, AAA), <strong>WCAG 2.0</strong> (the version that introduced the criterion), and a confidence chip when the rule reports one.</li>
+<li><strong>Priority</strong>: a ten-segment meter with <strong>Priority N/100</strong> and advice: <strong>fix now</strong>, <strong>fix soon</strong>, <strong>worth fixing</strong> or <strong>low urgency</strong>. See <a href="../../docs/scores-and-grades.html#priority-in-hovers">Priority in hovers</a>.</li>
+<li><strong>Where</strong>: the file and line (select it to go there) and a link to the WCAG criterion.</li>
+<li><strong>The problem</strong>, as a quotation.</li>
+<li><strong>How to fix</strong>: a <code>diff</code> of the line before and after, when a safe rewrite exists; otherwise <strong>In your code</strong> shows the line. Then the fix in words.</li>
+<li><strong>Actions</strong>: the gold <strong>Apply fix</strong> button (when a rewrite exists), <strong>Go to code</strong>, <strong>Rule details</strong> (opens the rule in the knowledge database), <strong>WCAG docs</strong>, <strong>Ignore here</strong> and <strong>Copy reference</strong> (copies a one-line reference such as <code>WCAG 1.1.1 Non-text Content — src/index.html:12</code>).</li>
+<li><strong>Footer</strong>: the rule ID and detector version, for example <code>img-alt v1.2.0</code>.</li>
+</ol>
+<h2 id="apply-fix">Apply fix</h2>
+<p><strong>Apply fix</strong> replaces the flagged tag or declaration with a corrected version in one edit you can undo. It is offered only where a deterministic rewrite is safe:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>What Apply fix does</th></tr></thead>
+<tbody>
+<tr><td><code>img-alt</code></td><td>Adds <code>alt=&quot;&quot;</code> (marks the image as decorative; write a real description if it carries meaning)</td></tr>
+<tr><td><code>iframe-title</code></td><td>Adds <code>title=&quot;Describe this frame&quot;</code></td></tr>
+<tr><td><code>input-label</code></td><td>Adds <code>aria-label=&quot;Describe this field&quot;</code></td></tr>
+<tr><td><code>select-textarea-label</code></td><td>Adds <code>aria-label=&quot;Describe this field&quot;</code></td></tr>
+<tr><td><code>button-name</code></td><td>Adds <code>aria-label=&quot;Describe this action&quot;</code></td></tr>
+<tr><td><code>link-name</code></td><td>Adds <code>aria-label=&quot;Describe this link&quot;</code></td></tr>
+<tr><td><code>html-lang</code></td><td>Adds <code>lang=&quot;en&quot;</code></td></tr>
+<tr><td><code>aria-hidden-focusable</code></td><td>Adds <code>tabindex=&quot;-1&quot;</code></td></tr>
+<tr><td><code>positive-tabindex</code></td><td>Replaces the attribute with <code>tabindex=&quot;0&quot;</code></td></tr>
+<tr><td><code>accesskey</code></td><td>Removes the <code>accesskey</code> attribute</td></tr>
+<tr><td><code>text-spacing-important</code></td><td>Removes <code>!important</code> from the text-spacing declaration</td></tr>
+<tr><td><code>viewport-zoom</code>, <code>viewport-fixed-width</code></td><td>Sets the viewport&#39;s <code>content</code> to <code>width=device-width, initial-scale=1</code></td></tr>
+</tbody></table></div>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> The placeholder text such as <code>Describe this field</code> must be replaced with a real, meaningful label. An empty <code>alt=&quot;&quot;</code> is right only for purely decorative images. Judgement calls, such as alt-text quality or link purpose, are never applied automatically.</p>
+</blockquote>
+<h2 id="quick-fixes">Quick fixes</h2>
+<p>Put the cursor on a WCAG underline and press <code>Ctrl</code> + <code>.</code>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick fix</th><th>What it inserts</th></tr></thead>
+<tbody>
+<tr><td><strong>Ignore this WCAG 1.1.1 finding here</strong></td><td><code>auric-disable-next-line 1.1.1</code> on the line above</td></tr>
+<tr><td><strong>Ignore all accessibility findings in this file</strong></td><td><code>auric-disable-file a11y</code> at the top of the file</td></tr>
+</tbody></table></div>
+<p><strong>Ignore here</strong> in the hover inserts <code>auric-disable-next-line</code> with the rule ID instead, so only that rule is silenced. See <a href="../../docs/suppression-and-branding.html">Suppression and branding</a>.</p>
+<h2 id="the-status-bar">The status bar</h2>
+<p><strong>Auric: N in this file</strong> shows how many contrast and accessibility findings the active file has, for example <code>Auric: 5 in this file</code>; its tooltip splits them into contrast and accessibility. Select it to open the Project Issues view. It hides when the file is clean.</p>
+<h2 id="settings-that-affect-linting">Settings that affect linting</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>auricA11y.a11y.enabled</code></td><td><code>true</code></td><td>Turns WCAG diagnostics in the editor on or off. Project scans still grade WCAG findings.</td></tr>
+<tr><td><code>auricA11y.a11y.profile</code></td><td><code>2.2</code></td><td>Which WCAG versions&#39; rules run. See <a href="audit-profiles-and-contrast.html">Audit profiles and contrast</a>.</td></tr>
+<tr><td><code>auricA11y.branding.enabled</code></td><td><code>true</code></td><td>Honours branding marks in the editor.</td></tr>
+<tr><td><code>auricA11y.contrast.*</code></td><td>see <a href="reference.html">Reference</a></td><td>Contrast checks.</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="check-space.html"><span>Previous</span>The Check space: Findings and Preview</a><a href="inspect.html"><span>Next</span>Inspect</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#supported-languages">Supported languages</a></li><li><a href="#diagnostics">Diagnostics</a></li><li><a href="#the-issue-hover">The issue hover</a></li><li><a href="#apply-fix">Apply fix</a></li><li><a href="#quick-fixes">Quick fixes</a></li><li><a href="#the-status-bar">The status bar</a></li><li><a href="#settings-that-affect-linting">Settings that affect linting</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

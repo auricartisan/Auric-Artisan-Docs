@@ -1,0 +1,89 @@
+==============================================================================
+TROUBLESHOOTING THE GAMUT LAB
+==============================================================================
+Fixes for common problems in the Gamut Lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+  Symptom:        A space I picked earlier disappeared from the diagram
+  Why it happens: The diagram draws up to five spaces; adding a sixth drops
+                  the oldest
+  What to do:     Tick Show all library spaces, or pick the space again
+
+  Symptom:        Choosing Custom shows nothing
+  Why it happens: The custom space does not exist until you solve it
+  What to do:     Enter primaries and white, then select Solve from primaries
+
+  Symptom:        My custom space vanished after reloading
+  Why it happens: A solved Custom space is not saved
+  What to do:     Export it (This space, JSON) and import it with Add to the
+                  library
+
+  Symptom:        Import says "Invalid JSON"
+  Why it happens: The pasted object has no `name` or no `primaries`
+  What to do:     Use the format in Define a custom colour space
+                  [define-a-custom-space.txt]
+
+  Symptom:        Import says "Parse error: …"
+  Why it happens: The text is not valid JSON
+  What to do:     Check quotes, commas and brackets
+
+  Symptom:        Choosing the 10° observer changes nothing
+  Why it happens: Only the CIE 1931 2° observer is used
+  What to do:     Expected
+
+  Symptom:        The OKLab slice does not move with Level
+  Why it happens: In the current version the OKLab slice is fixed at L = 0.5;
+                  only the label changes
+  What to do:     Use Constant L* (CIELAB) to move through lightness
+
+  Symptom:        In the u′v′ diagram, the vertex readout colour and
+                  membership look wrong
+  Why it happens: The readout treats the clicked coordinates as CIE 1931 x, y
+  What to do:     Switch Diagram mode to CIE 1931 xy before probing
+
+  Symptom:        The vertex readout always shows L* 100
+  Why it happens: The probe takes the chromaticity at Y = 1, the brightest
+                  colour of that chromaticity
+  What to do:     Expected; it describes chromaticity, not a particular
+                  lightness
+
+  Symptom:        The WebGL fill does nothing
+  Why it happens: The browser or device does not support WebGL 2, or it is
+                  disabled
+  What to do:     Leave the fill off; the diagram works without it
+
+  Symptom:        The wireframe cannot be rotated
+  Why it happens: It is drawn at a fixed viewing angle
+  What to do:     Expected
+
+  Symptom:        A share of "> 100%" appears
+  Why it happens: The space's primaries lie outside the spectral locus
+  What to do:     Expected for ACES AP0 and ProPhoto RGB; read the volume
+                  instead
+
+  Symptom:        Percentages differ from other tools
+  Why it happens: Other tools often divide by a different locus area, and
+                  often in xy
+  What to do:     See Compare colour spaces [compare-colour-spaces.txt]
+
+  Symptom:        Volume figures change between runs
+  Why it happens: They are sampled estimates
+  What to do:     Raise Samples on the Compare tab; the ± spread shrinks
+
+  Symptom:        The equation box shows an odd power-law form for Rec. 2020,
+                  Adobe RGB or ProPhoto
+  Why it happens: The box simplifies those curves
+  What to do:     Use the Transfer tab or Reference › Formulas
+
+  Symptom:        The comparison export has fewer rows than spaces
+  Why it happens: It covers only the spaces drawn on the diagram
+  What to do:     Draw the spaces you want first
+
+  Symptom:        A long link warning appears
+  Why it happens: Links over about 1,800 characters may be cut off by some
+                  apps
+  What to do:     Send the link as a file or shorten the view (fewer spaces)
+
+  Symptom:        Copy to clipboard is missing
+  Why it happens: It is hidden for PNG and link choices
+  What to do:     Use Download, or Copy the link for links

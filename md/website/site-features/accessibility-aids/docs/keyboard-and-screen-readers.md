@@ -1,0 +1,38 @@
+---
+title: Accessibility aids — Keyboard and screen readers
+description: How the site supports keyboard-only use and screen readers, from the skip link to dialogs and announcements.
+product: Website › Site features › Accessibility aids
+updated: 2026-09-25
+---
+
+# Keyboard and screen readers
+
+## Keyboard access
+
+- **Skip link.** On every page, the first `Tab` reveals **Skip to main content**. Press `Enter` to jump past the header.
+- **Menus.** The header menus open with `Enter`, `Space` or the arrow keys and close with `Esc`, returning focus to their button.
+- **Panels and dialogs.** Settings, Spotlight, the guide, the right-click menu, the recorder and the kits all open and close from the keyboard. When a panel closes, focus returns to what you used to open it.
+- **Focus stays inside** modal dialogs such as the guide, a guided tour and the Settings reset confirmation, so `Tab` cannot wander behind them.
+- **Shortcuts.** The most common actions have shortcuts (`Ctrl` + `K` search, `Ctrl` + `,` settings, `?` guide, `Alt` + `R` reading mode and more). Letter shortcuts with `Alt` are ignored while you type in a field. See [Keyboard shortcuts](../../keyboard-shortcuts/README.md).
+- **Tooltips** appear when a control receives keyboard focus, not only on hover.
+- **Date fields.** Where the site shows its calendar for a date field, arrows move by day and week, `Page Up` and `Page Down` by month, `Shift` with them by year, `Home` and `End` to the start and end of the week, `Enter` or `Space` to choose, and `Esc` to close.
+
+## Screen reader support
+
+- Buttons that show only an icon have a spoken name, such as "Open guide" or "Switch language between English and Hindi".
+- Panels and dialogs have names, for example "User settings", "Search" and "Page actions".
+- Confirmation messages ("Settings exported", "Page URL copied") are announced without moving focus.
+- The clock strip's time is not announced every second; its date, day and zone are announced only when they change.
+- In Hindi, the page is marked as Hindi so screen readers use a Hindi voice.
+- The language buttons are written in their own languages and are never translated, so you can always find yours.
+- The custom cursor and decorative effects are hidden from assistive technology.
+
+## Respecting your device settings
+
+- **Colour scheme:** with the theme on **System**, the site follows your device's light or dark mode.
+- **Reduced motion:** the site turns off the custom cursor and animated effects when your device asks for less motion.
+- **Pointer type:** on touch screens the custom cursor is never shown.
+
+## Reporting a barrier
+
+If something on the site is hard to use with your assistive technology, use the **Report a bug** form (see [Feedback](../../feedback/README.md)) or the contact details in the Accessibility statement at https://auricartisan.com/company/accessibility/.

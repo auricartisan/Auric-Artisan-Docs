@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the contrast audit measures, how precise it is, and what Auric Artisan Theme does not do.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Theme</a>
+<h2>Auric Artisan Theme: other information</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts and commands</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related extensions and tools</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Theme</a> &rsaquo; <a href="README.html">Auric Artisan Theme: other information</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Theme</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the contrast audit measures, how precise it is, and what Auric Artisan Theme does not do.</p>
+<h2 id="what-the-contrast-audit-measures">What the contrast audit measures</h2>
+<ul>
+<li>The audit covers 81 defined foreground and background pairs per theme: editor text, 26 syntax roles, 14 text-bearing ANSI colours, source control decorations, and text and borders of common controls.</li>
+<li>Ratios use the WCAG 2 relative-luminance formula on sRGB colours. Transparent colours are composited onto the surface they sit on before measuring.</li>
+<li>APCA Lc values are shown for guidance. APCA is part of draft WCAG 3 work and is not yet a conformance requirement.</li>
+<li>Each pair has its own minimum. Text is held to your <strong>Minimum contrast</strong> setting; control borders are held to 3:1; decorative washes are held to less than text.</li>
+</ul>
+<h2 id="what-the-audit-does-not-tell-you">What the audit does not tell you</h2>
+<ul>
+<li>It does not check every colour VS Code can draw, or colours added by other extensions.</li>
+<li>It does not check your font, font size, font weight or display.</li>
+<li>It does not replace testing with real users. Contrast checks are guidance, not a guarantee that every possible customisation meets accessibility requirements.</li>
+<li>A pair marked <strong>Missing</strong> could not be measured because a colour it depends on is missing.</li>
+</ul>
+<h2 id="how-the-contrast-guard-changes-colours">How the contrast guard changes colours</h2>
+<p>The guard moves a colour along its OKLCH lightness until the pair clears the minimum, keeping hue and chroma. Very saturated or unusual colours may shift visibly. The guard applies to text and syntax colours, not decorative washes.</p>
+<h2 id="what-the-extension-does-not-do">What the extension does not do</h2>
+<ul>
+<li>Theme edits apply live. There is no dry-run or &quot;apply later&quot; mode, and the Preview tab is an illustrative specimen, not a full editor.</li>
+<li>There is no undo history, cloud preset gallery or multi-device preset service.</li>
+<li>It does not extract palettes from images.</li>
+<li>Recent colours in the picker last only for the current panel session.</li>
+<li>Settings change colours only. They cannot change VS Code&#39;s layout.</li>
+<li>Customisations apply only while an Auric Artisan theme is active.</li>
+<li>Colour overrides are per variant and are not shared between variants automatically.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-contrast-audit-measures">What the contrast audit measures</a></li><li><a href="#what-the-audit-does-not-tell-you">What the audit does not tell you</a></li><li><a href="#how-the-contrast-guard-changes-colours">How the contrast guard changes colours</a></li><li><a href="#what-the-extension-does-not-do">What the extension does not do</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

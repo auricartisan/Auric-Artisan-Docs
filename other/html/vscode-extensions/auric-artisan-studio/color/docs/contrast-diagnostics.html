@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrast diagnostics — Auric Artisan Docs</title>
+<meta name="description" content="How Auric Color finds low-contrast text as you type, what its messages mean, and how to fix one pair or a whole file.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html" aria-current="page">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="reference.html">Auric Color reference</a></li>
+<li><a href="troubleshooting.html">Auric Color troubleshooting</a></li>
+<li><a href="faq.html">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Contrast diagnostics</h1>
+<p class="lede">How Auric Color finds low-contrast text as you type, what its messages mean, and how to fix one pair or a whole file.</p>
+<p>Auric Color checks the text and background colours in your stylesheets, markup and components as you type, and underlines text that does not meet your contrast target.</p>
+<p>When Auric Accessibility is installed too, it publishes these contrast diagnostics instead, with the same behaviour and its own <code>auricA11y.contrast.*</code> settings. Only one extension ever publishes them, so you never see a pair twice.</p>
+<h2 id="where-contrast-is-checked">Where contrast is checked</h2>
+<p>CSS, SCSS, Sass, Less, PostCSS, Stylus, HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript, TypeScript, JSX, TSX and Markdown files, up to 1 MB each.</p>
+<p>The checker pairs a text colour with its background from:</p>
+<ul>
+<li>CSS rules and <code>&lt;style&gt;</code> blocks;</li>
+<li>inline <code>style=&quot;…&quot;</code> attributes;</li>
+<li>JSX style objects: <code>style={{…}}</code>, <code>sx={{…}}</code>, <code>css={{…}}</code>;</li>
+<li>styled-components, Emotion and Linaria tagged templates (<code>styled.x`…`</code>, <code>css`…`</code>, <code>createGlobalStyle</code>);</li>
+<li>Vue, Angular and Svelte style bindings (<code>:style=&quot;{…}&quot;</code>, <code>[ngStyle]=&quot;{…}&quot;</code>, <code>style:color</code>).</li>
+</ul>
+<p>It follows CSS custom properties (<code>color: var(--ink)</code> over <code>background: var(--surface)</code>), including fallbacks and chains, and grades dark themes separately. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a> for exactly how pairs are resolved and what cannot be seen.</p>
+<h2 id="contrast-standards">Contrast standards</h2>
+<p><code>auricColor.contrast.standard</code> chooses the model:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Studio label</th><th>What is flagged</th></tr></thead>
+<tbody>
+<tr><td><code>wcag2</code> (default)</td><td>WCAG 2.x ratios</td><td>Pairs below <code>contrast.threshold</code></td></tr>
+<tr><td><code>apca</code></td><td>APCA (WCAG 3 draft)</td><td>Pairs whose APCA lightness contrast is below <code>contrast.apcaThreshold</code></td></tr>
+<tr><td><code>both</code></td><td>WCAG 2.x + APCA</td><td>WCAG failures first, then APCA shortfalls on pairs that pass WCAG</td></tr>
+</tbody></table></div>
+<p>With Auric Accessibility installed and its audit profile set to <strong>WCAG 3.0 draft</strong>, <code>wcag2</code> behaves like <code>both</code>.</p>
+<h3 id="targets">Targets</h3>
+<ul>
+<li><code>contrast.threshold</code> (default 4.5, range 1–21): 4.5 is WCAG AA for body text, 7 is AAA, 3 is AA for large text and UI parts.</li>
+<li>Large text (24 px, or 18.66 px and bold) gets a lower target: 3:1 when your threshold is 4.5, or 4.5:1 when it is 7.</li>
+<li><code>contrast.apcaThreshold</code> (default 60, range 15–106): 90 is roughly AAA, 75 body text, 60 large or medium text, 45 large bold text, 30 non-text UI. APCA is experimental; meeting it is not a WCAG 3 conformance claim.</li>
+</ul>
+<h2 id="what-the-diagnostics-say">What the diagnostics say</h2>
+<p>All appear in the Problems panel with the source <code>auric-artisan</code> and a violet wavy underline in the editor.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Finding</th><th>Example message</th><th>Severity</th></tr></thead>
+<tbody>
+<tr><td>Low contrast</td><td><code>Low contrast 2.32:1 — #AAAAAA on #FFFFFF (need 4.5:1, APCA Lc 46). [WCAG 1.4.3]</code></td><td><code>contrast.severity</code> (warning)</td></tr>
+<tr><td>Low contrast, large text</td><td><code>… (need 3:1 (large text), …)</code></td><td>Same</td></tr>
+<tr><td>Low contrast, dark theme</td><td><code>Low contrast in the dark theme 3.10:1 — …</code></td><td>Same</td></tr>
+<tr><td>Possible low contrast</td><td><code>Possible low contrast 3.25:1 — #8A8F99 on the page background #FFFFFF … Verify the real background.</code></td><td>Information</td></tr>
+<tr><td>Low APCA contrast</td><td><code>Low APCA contrast Lc 55 — #999999 on #FFFFFF (need Lc 60; large bold ≥ 24px). [WCAG 3 draft]</code></td><td><code>contrast.severity</code></td></tr>
+<tr><td>Colour-vision risk</td><td><code>Contrast relies on hue — &lt;text&gt; on &lt;background&gt; drops to &lt;ratio&gt;:1 under color-vision deficiency. [WCAG 1.4.1]</code></td><td>Hint</td></tr>
+<tr><td>Branding</td><td><code>Branding — #D3AF37 on #FFFFFF (2.11:1, APCA Lc 41). Classified as intentional branding …</code></td><td>Information</td></tr>
+</tbody></table></div>
+<p>The criterion is <code>1.4.3</code> when your threshold is below 7 and <code>1.4.6</code> (Contrast, Enhanced) when it is 7 or more.</p>
+<ul>
+<li><strong>Possible low contrast</strong> appears when a rule sets only a text colour and the background was taken from the page background declared on <code>body</code>, <code>html</code> or <code>:root</code> in the same file (<code>contrast.checkPageBackground</code>, on by default). It is softer because the real surface might differ.</li>
+<li><strong>Colour-vision risk</strong> appears when a pair passes for typical vision but its contrast under protanopia, deuteranopia or tritanopia falls below the target (<code>contrast.flagCvdRisk</code>, on by default).</li>
+<li><strong>Branding</strong> replaces a finding on a line marked with <code>auric-brand-…</code>. See <a href="../../docs/suppression-and-branding.html">Suppression and branding</a>.</li>
+</ul>
+<h2 id="the-contrast-hover">The contrast hover</h2>
+<p>Hover an underlined colour for a card that reads, top to bottom:</p>
+<ol>
+<li><strong>Auric Artisan · Contrast</strong> (or <strong>APCA contrast</strong>).</li>
+<li>The verdict, for example <code>2.32 : 1 — fails WCAG AA for normal text</code>, or for APCA <code>Lc 55 — below the APCA target of Lc 60</code>.</li>
+<li>The pair as an <strong>Aa</strong> sample, its values, the other model&#39;s figure, and the token it reads, for example <code>from --muted · used in 12 places</code>.</li>
+<li>A note when the background was assumed from the page.</li>
+<li><strong>Nearest passing, same hue:</strong> the colour, its ratio and level, and <strong>reuse --token</strong> when an existing token fits. If no colour of that hue can pass, it says so.</li>
+<li>Actions: the gold <strong>Apply to --token</strong> (changes the token&#39;s definition, so every use follows) or <strong>Apply fix</strong>, <strong>Open in Contrast Studio</strong> and <strong>Intentional branding</strong>.</li>
+<li>Smaller links: <strong>Apply only here</strong>, <strong>Go to code</strong>, the WCAG criterion, and <strong>Copy reference</strong> (copies a one-line description for a commit or ticket).</li>
+</ol>
+<p><strong>Apply to --token</strong> appears when the text colour comes from a custom property defined in the same file.</p>
+<h2 id="quick-fixes">Quick fixes</h2>
+<p>Put the cursor on the underline and press <code>Ctrl</code> + <code>.</code>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick fix</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Fix contrast → #767676 (4.54:1)</strong> (preferred)</td><td>Replaces the colour with the nearest passing colour of the same hue</td></tr>
+<tr><td><strong>Fix APCA contrast → #hex (Lc N)</strong></td><td>For APCA findings: raises contrast until the APCA target is met</td></tr>
+<tr><td><strong>Open in Auric Artisan Studio</strong></td><td>Opens the pair in the Contrast Studio, linked to this line</td></tr>
+<tr><td><strong>Open in the Contrast Studio</strong></td><td>Offered instead of a fix for mixes, relative colours, faded text and shared dark-theme values</td></tr>
+</tbody></table></div>
+<p>Those values are left for the Contrast Studio because a one-click rewrite could change more than this text. A one-click fix rewrites a value only when the whole value is one colour, one <code>var()</code>, or one side of <code>light-dark()</code>.</p>
+<h2 id="fix-every-pair-in-a-file">Fix every pair in a file</h2>
+<ol>
+<li>Open the file and run <strong>Auric Artisan: Fix All Contrast Issues in File</strong> (or <strong>Fix all contrast in file</strong> in the Command Center, <strong>Fix N in this file</strong> on the Overview, or <strong>Fix all in file</strong> on the suggestion).</li>
+<li>A dialog lists the changes, up to six as <code>before → after</code> and <strong>… and N more</strong>, and explains that this is a single undoable edit.</li>
+<li>Select <strong>Apply fixes</strong>.</li>
+<li>A message confirms <strong>Auric Artisan: fixed N contrast pair(s). Undo with Ctrl+Z (Cmd+Z) to revert all at once.</strong></li>
+</ol>
+<p>Only pairs that can be fixed with one rewrite are included; each keeps its hue and chroma and reaches its WCAG 2.x target. Other messages you may see:</p>
+<ul>
+<li><strong>no failing contrast pairs in this file.</strong></li>
+<li><strong>nothing to change — failing pairs are already at their best-effort fix.</strong> (when no colour of that hue can pass)</li>
+</ul>
+<h2 id="refresh">Refresh</h2>
+<p><strong>Auric Artisan: Refresh Contrast Diagnostics</strong> re-checks every open file. You rarely need it: files are re-checked as you type and whenever you change a setting.</p>
+<h2 id="settings">Settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricColor.contrast.enabled</code></td><td><code>true</code></td><td>Turns contrast diagnostics in the editor on or off</td></tr>
+<tr><td><code>auricColor.contrast.standard</code></td><td><code>wcag2</code></td><td><code>wcag2</code>, <code>apca</code> or <code>both</code></td></tr>
+<tr><td><code>auricColor.contrast.threshold</code></td><td><code>4.5</code></td><td>WCAG 2.x target (1–21)</td></tr>
+<tr><td><code>auricColor.contrast.apcaThreshold</code></td><td><code>60</code></td><td>APCA target (15–106)</td></tr>
+<tr><td><code>auricColor.contrast.severity</code></td><td><code>warning</code></td><td><code>error</code>, <code>warning</code>, <code>information</code> or <code>hint</code> for failures</td></tr>
+<tr><td><code>auricColor.contrast.flagCvdRisk</code></td><td><code>true</code></td><td>Adds colour-vision risk hints</td></tr>
+<tr><td><code>auricColor.contrast.checkPageBackground</code></td><td><code>true</code></td><td>Grades colour-only rules against the page background</td></tr>
+<tr><td><code>auricColor.branding.enabled</code></td><td><code>true</code></td><td>Honours branding marks in the editor</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../../docs/contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="../../docs/scores-and-grades.html">Scores and grades</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="colour-vision.html"><span>Previous</span>Colour vision</a><a href="hover-and-swatches.html"><span>Next</span>Hover and swatches</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#where-contrast-is-checked">Where contrast is checked</a></li><li><a href="#contrast-standards">Contrast standards</a></li><li><a href="#what-the-diagnostics-say">What the diagnostics say</a></li><li><a href="#the-contrast-hover">The contrast hover</a></li><li><a href="#quick-fixes">Quick fixes</a></li><li><a href="#fix-every-pair-in-a-file">Fix every pair in a file</a></li><li><a href="#refresh">Refresh</a></li><li><a href="#settings">Settings</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

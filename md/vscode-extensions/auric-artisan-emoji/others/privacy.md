@@ -1,0 +1,28 @@
+---
+title: Auric Artisan Emoji — Privacy
+description: What Auric Artisan Emoji stores, where, and confirmation that it makes no network requests.
+product: VS Code extensions › Auric Artisan Emoji
+updated: 2026-09-25
+---
+
+# Privacy
+
+The emoji catalog and Studio are bundled. The extension has no telemetry, no account requirement and no runtime package dependencies. It does not run workspace code or fetch remote content for its interface. Website links open in your browser only when you select them.
+
+## What is stored
+
+| Data | Where |
+| --- | --- |
+| Favorites, recents and last emoji | VS Code's extension storage on this machine. |
+| Preferences | Your VS Code settings under `auricEmoji.*`. |
+| Studio interface state and sequences | The Studio's saved state in VS Code. |
+
+Document contents are not stored as history.
+
+## Hover actions
+
+When you hover over a shortcode, the extension briefly keeps that shortcode and its document position in memory so it can check your explicit edit. Hover links allow only the extension's insertion command, with single-use tickets and document version checks. Nothing is written to disk or sent anywhere.
+
+## Security
+
+The Studio uses a restrictive content security policy and builds its interface without executing imported content.

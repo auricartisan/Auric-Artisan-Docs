@@ -1,0 +1,24 @@
+---
+title: Gamut Lab — Release notes
+description: User-facing changes to the Gamut Lab.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Gamut Lab release notes
+
+## Current version (2026 workbench rebuild)
+
+- Tabs are now **Lab**, **Transfer**, **Compare**, **Data**, **Export** and **Reference**.
+- Three transfer curves now match their standards: Rec. 2020 runs the BT.2020 curve (it previously ran the sRGB curve), ProPhoto runs ROMM with its linear toe, and Adobe RGB uses 563/256 rather than 2.2. HLG is labelled as the inverse OETF.
+- The new **Transfer** tab plots every distinct curve, with PQ on its own absolute axis, and tags each as Exact, Partial or Corrected.
+- Volume is measured with Halton sampling in a box fitted to each space, and quoted with a spread against a half-size run. Overlap is measured in u′v′.
+- Shares of the spectral locus are quoted in u′v′, with xy kept as a legacy option, and "> 100%" is shown for spaces with imaginary primaries.
+- The spectral locus is computed from the observer data and stops at 715 nm.
+- The MacAdam ellipse overlay is labelled as a stand-in.
+- Export now previews the exact payload and names the file before you download it; the library, import and export sit together on the Export tab.
+- Citations were checked and several corrected; corrected entries are marked in Reference.
+
+## May 2026
+
+The Gamut Lab User Guide was published in the site's Documentation library, describing the earlier version.

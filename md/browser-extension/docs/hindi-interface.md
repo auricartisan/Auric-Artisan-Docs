@@ -1,0 +1,54 @@
+---
+title: Browser extension — Hindi interface
+description: Switch the extension's interface to Hindi (हिन्दी), what is translated, what stays as it is and why, and how the browser's own texts follow its language.
+product: Browser extension
+updated: 2026-09-25
+---
+
+# Hindi interface
+
+Auric Artisan speaks **English** and **हिन्दी** (Hindi). The whole interface switches together, including what it draws on websites and every accessibility finding.
+
+## Switch the language
+
+1. Open **Settings** › **Appearance**.
+2. Under **Language**, choose **हिन्दी**.
+
+Each option is written in its own language, so you can always find your way back. You can also search for "language", "hindi" or "भाषा".
+
+- Switching to Hindi applies at once. Open tabs follow without a reload.
+- Switching back to English reloads the popup.
+- Once Hindi is chosen, the popup opens in Hindi straight away; it never shows English first.
+
+## What changes
+
+- the popup, the side panel and the separate window;
+- Settings, search results, toasts and the tour;
+- the website pickers, including the calendar's month and day names;
+- the custom right-click menu;
+- the element inspector's cards and bar;
+- every accessibility finding, including messages built from live values, such as "8 failing";
+- the entries in the browser's own right-click menu.
+
+Search works in both languages: a Hindi interface finds tools by their Hindi or English names.
+
+## What stays as it is
+
+Some text is deliberately never translated, because translating it would misreport what the page or the standard says:
+
+- values read from the page, such as `display: block`, `#f0f0f0`, `15px` or a font name like `Manrope`;
+- format names and code, such as `oklch()`, JSON and CSS;
+- the names of standards and scales, such as WCAG AA, AAA, APCA Lc 75, sRGB, Tailwind 50–950 and `@theme`;
+- CSS colour names and the AMD abbreviation in Vision;
+- the brand name Auric Artisan.
+
+The extension never translates the website you are visiting. Only its own panels change language.
+
+## The browser's own texts
+
+A few texts are shown by the browser, not by the extension: the store description, the toolbar tooltip, the shortcut names on the browser's shortcuts page and the sidebar title in Firefox. These follow your **browser's** language setting, not the extension's. A browser set to Hindi shows them in Hindi even while the extension's interface is English.
+
+## Related pages
+
+- [Appearance settings](settings/appearance.md)
+- [Glossary](../others/glossary.md)

@@ -1,0 +1,37 @@
+---
+title: Tonal Steps — Limits and accuracy
+description: What the Tonal Steps figures rest on, how precise they are, and what the tool does not claim.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Tonal Steps limits and accuracy
+
+## Standard values
+
+- **WCAG 2.2 ratios and ratings** use relative luminance from linear sRGB with the BT.709 weights, exactly as WCAG defines.
+- **APCA Lc** runs APCA-W3 0.1.9 as published: a plain 2.4 power, separate exponent pairs for each polarity, the soft clamp below Y 0.022 and the ±0.027 low-clip offset. APCA itself is a working draft, not a ratified requirement.
+- **OKLab** uses Ottosson's matrices on linear sRGB.
+- **CIELAB** follows CIE 015:2018 against D65.
+
+## This tool's own
+
+- **The ramp engines** are the tool's own constructions. Equal luminance searches HSL lightness at the base's hue and saturation for each target luminance; the first and last steps are exactly white and black.
+- **The key sets** borrow Tailwind and Material key names only. Nothing here is a Tailwind or Material colour.
+- **Evenness** is the tool's own measure: the largest deviation of a step size from the mean step size, as a percentage.
+
+## Precision
+
+- All colours are 8-bit sRGB; HEX values are rounded to the nearest code value, so luminance and contrast figures reflect the rounded colour.
+- OKLab L is shown to three or four decimals, WCAG ratios to two, APCA Lc to one.
+
+## Current-version caveats
+
+- **sRGB linear** mixing produces the same result as OKLab.
+- The **Metric** choice on the Contrast tab does not change the table.
+- The contrast table export lists contrast against white and black only, not the base.
+- **Install a table** on the Data tab does not load files.
+
+## Not a substitute for
+
+Testing real text at real sizes on real screens. Contrast figures describe colour pairs, not legibility of a particular font, weight or size.

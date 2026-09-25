@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Code Health release notes — Auric Artisan Docs</title>
+<meta name="description" content="Auric Code Health's version history, taken from the Studio changelog.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health: other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Auric Code Health shortcuts</a></li>
+<li><a href="glossary.html">Auric Code Health glossary</a></li>
+<li><a href="limits-and-accuracy.html">Auric Code Health limits and accuracy</a></li>
+<li><a href="privacy.html">Auric Code Health privacy</a></li>
+<li><a href="release-notes.html" aria-current="page">Auric Code Health release notes</a></li>
+<li><a href="related.html">Related to Auric Code Health</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health: other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Auric Code Health release notes</h1>
+<p class="lede">Auric Code Health's version history, taken from the Studio changelog.</p>
+<p>Auric Code Health shares one version number and one changelog with the other Studio extensions. This page lists the entries that concern code health. The complete history is in the <a href="../../others/release-notes.html">Studio release notes</a>.</p>
+<h2 id="unreleased">Unreleased</h2>
+<p>Listed under <strong>Unreleased</strong> in the changelog, as upcoming entries for the next numbered release (detector 1.2.0):</p>
+<ul>
+<li>Accuracy measured on a labelled set, including a held-out set: precision 1.00 in every category; recall 1.00 except secrets, 0.96 (up from 0.53).</li>
+<li>Secret detection now covers JSON, PHP, typed and Go assignments, prefixed names such as <code>MYSQL_PASSWORD</code>, unquoted <code>.env</code>, YAML and INI values, OpenAI <code>sk-proj-</code> keys, Google keys ending in <code>-</code>, and Azure and ADO.NET connection strings.</li>
+<li>False positives removed: placeholders such as <code>CHANGE_ME</code>, <code>{{API_KEY}}</code>, <code>$VAR</code> and SOPS <code>ENC[…]</code>; translation labels, autocomplete tokens and key-file paths; <code>redis.eval</code> and <code>model.eval()</code>; tagged SQL templates; phone masks read as <code>XXX</code> markers; Markdown underlines read as merge markers.</li>
+<li>One credential is one finding.</li>
+<li>Secret bytes no longer leak through task-marker messages or security evidence into SARIF or <code>health.json</code>.</li>
+<li>Calls whose arguments cannot be read are reported at medium confidence instead of being passed.</li>
+<li>A mention of <code>auric-disable-file</code> in prose or a string no longer silences a whole file.</li>
+<li>Task markers, <code>debugger</code> and breakpoints are recognised only where they belong in each language.</li>
+<li>The underline covers the finding&#39;s real span.</li>
+<li>Worst-case inputs scan in 5–30 ms.</li>
+<li>Findings are fingerprinted by detector 1.2.0, so a baseline written by 1.1.0 may list some findings as new once.</li>
+<li><strong>Generate Project Health Report</strong> also writes a printable <code>project-health.html</code>, with <strong>Open in Browser</strong>.</li>
+</ul>
+<h2 id="010-initial-studio-release">0.1.0 — Initial Studio release</h2>
+<ul>
+<li>Checks for exposed secrets, injection risks, unsafe APIs, merge markers, debug code, task markers, oversized files and maintainability problems.</li>
+<li>Secret evidence redacted before it reaches diagnostics, reports or the Studio.</li>
+<li>Project health records, JSON and SARIF 2.1.0 output, stable fingerprints, baselines, trend history and an offline command-line scanner.</li>
+<li>A versioned local knowledge base covering rules, policies, glossary entries, sources and remediation guidance.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="privacy.html"><span>Previous</span>Auric Code Health privacy</a><a href="related.html"><span>Next</span>Related to Auric Code Health</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#unreleased">Unreleased</a></li><li><a href="#010-initial-studio-release">0.1.0 — Initial Studio release</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

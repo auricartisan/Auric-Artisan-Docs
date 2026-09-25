@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common problems with Auric Artisan Emoji.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Emoji</a>
+<h2>Auric Artisan Emoji guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Emoji</a></li>
+<li><a href="emoji-studio.html">Use Emoji Studio</a></li>
+<li><a href="insert-from-the-editor.html">Insert from the editor</a></li>
+<li><a href="inspector-tones-and-formats.html">Inspector, skin tones and output formats</a></li>
+<li><a href="interface-language.html">Interface language (English and हिन्दी)</a></li>
+<li><a href="sequences.html">Compose a sequence</a></li>
+<li><a href="reference.html">Auric Artisan Emoji reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Emoji</a> &rsaquo; <a href="README.html">Auric Artisan Emoji guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Emoji</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common problems with Auric Artisan Emoji.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>No hover action on a shortcode.</td><td>The shortcode is incomplete or not in the catalog, or hovers are off.</td><td>Use a complete shortcode with both colons, such as <code>:rocket:</code>. Check VS Code&#39;s editor hover setting and <code>auricEmoji.hover.enabled</code>.</td></tr>
+<tr><td>A hover no longer inserts.</td><td>The document changed, or the action was already used.</td><td>Keep the editor visible and writable, then hover again.</td></tr>
+<tr><td>The Studio copied instead of inserting.</td><td>No writable editor was available, or your click action is Copy.</td><td>Open a writable editor and place the cursor, then return to the Studio. Check <strong>Workspace overview</strong> for the target, and <code>auricEmoji.clickAction</code>.</td></tr>
+<tr><td>No suggestions after typing <code>:</code>.</td><td>Completions are off, or VS Code&#39;s suggestions are disabled for this language.</td><td>Turn on <code>auricEmoji.completions.enabled</code>.</td></tr>
+<tr><td>Emoji look different or appear as boxes.</td><td>Emoji are drawn by your system&#39;s emoji font; older fonts lack newer emoji.</td><td>Update your operating system&#39;s emoji font, or choose an older emoji.</td></tr>
+<tr><td>Extra spaces appear around inserted emoji.</td><td><code>insertSpacing</code> is <code>auto</code> or <code>space</code>.</td><td>Set <code>auricEmoji.insertSpacing</code> to <code>none</code>.</td></tr>
+<tr><td>A JavaScript escape breaks my JSON.</td><td><code>\u{…}</code> code-point escapes are JavaScript syntax, not JSON.</td><td>Use the emoji character or a JSON-compatible escape.</td></tr>
+<tr><td>Command titles are English although the Studio is Hindi.</td><td>Native VS Code labels follow VS Code&#39;s display language.</td><td>Run <strong>Configure Display Language</strong> if you want Hindi commands.</td></tr>
+<tr><td>Remote or virtual file cannot be edited.</td><td>Editing depends on the file system provider and the document being writable.</td><td>Check that the file is writable; use Copy instead.</td></tr>
+<tr><td>The <strong>Emoji</strong> status bar button is missing.</td><td>It is turned off.</td><td>Turn on <code>auricEmoji.statusBar.enabled</code>.</td></tr>
+</tbody></table></div>
+<p>If the problem continues, note your VS Code version, the extension version (0.2.0) and the steps to reproduce, then contact support at <a href="https://auricartisan.com/company/contact/" rel="noopener">https://auricartisan.com/company/contact/</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Auric Artisan Emoji reference</a><a href="faq.html"><span>Next</span>Frequently asked questions</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charts, benchmark and Compare — Auric Artisan Docs</title>
+<meta name="description" content="The measurements, charts and benchmark in the Analysis tab, and the character set comparison in the Compare tab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ASCII Art Generator</a>
+<h2>ASCII Art Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ASCII Art Generator</a></li>
+<li><a href="charts-and-compare.html" aria-current="page">Charts, benchmark and Compare</a></li>
+<li><a href="export.html">Copy, export and batch</a></li>
+<li><a href="fine-tuning.html">Fine tuning</a></li>
+<li><a href="looks-colour-and-detail.html">Looks, colour and detail</a></li>
+<li><a href="render-modes.html">Render modes and full screen</a></li>
+<li><a href="sources.html">Choose a source</a></li>
+<li><a href="reference.html">ASCII Art Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">ASCII Art Generator</a> &rsaquo; <a href="README.html">ASCII Art Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Charts, benchmark and Compare</h1>
+<p class="lede">The measurements, charts and benchmark in the Analysis tab, and the character set comparison in the Compare tab.</p>
+<p>The <strong>Analysis</strong> and <strong>Compare</strong> tabs explain why the art looks the way it does. You do not need them to make art; they help when a result bands, looks flat or converts slowly.</p>
+<h2 id="the-analysis-tab">The Analysis tab</h2>
+<h3 id="this-render">This render</h3>
+<p>The left column repeats the facts of the last conversion:</p>
+<ul>
+<li><strong>Grid</strong>, <strong>Characters</strong> and <strong>Render</strong> (time in milliseconds);</li>
+<li><strong>Character set</strong>, and <strong>Ramp</strong> (the number of glyphs, for example <strong>10 glyphs</strong>);</li>
+<li><strong>Sampler</strong> and <strong>Dithering</strong>.</li>
+</ul>
+<h3 id="benchmark">Benchmark</h3>
+<p><strong>Run benchmark</strong> converts the current source ten times with the current settings and reports the average, for example <strong>Avg: 18.4 ms (10 runs)</strong>, and the <strong>Min</strong>, <strong>Max</strong> and <strong>Spread</strong>. Use it to see which setting makes conversion slow. With the Image source and no picture loaded, it reads <strong>Load an image first</strong>.</p>
+<h3 id="the-charts">The charts</h3>
+<p>Six charts. Each has a <strong>⛶</strong> button, and you can also double-click a chart, to open it full screen. Close the full-screen chart with <strong>×</strong>, <code>Esc</code>, or by selecting the dark background.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Chart</th><th>What it shows</th><th>What to look for</th></tr></thead>
+<tbody>
+<tr><td><strong>Glyph density calibration</strong></td><td>The ink of each character in the current set, measured by drawing it at 32 × 32 pixels, sorted light to dark.</td><td>A smooth rise. Big jumps or flat runs mean some tones have no matching character.</td></tr>
+<tr><td><strong>Character frequency</strong></td><td>How often each character appears in the latest output.</td><td>A spike at one end means gamma or contrast is crushing the mid-tones.</td></tr>
+<tr><td><strong>Top character distribution</strong></td><td>The twelve most frequent characters as a ring, with the rest grouped as one slice.</td><td>Whether a few characters dominate the art.</td></tr>
+<tr><td><strong>Sobel edge field</strong></td><td>The strength of edges in the source picture; bright means a strong edge.</td><td>Where edge-aware glyph selection can act. Where it is dark, <strong>Edge weight</strong> has nothing to work on.</td></tr>
+<tr><td><strong>Sampling comparison</strong></td><td>The same source through area averaging, bilinear and point sampling.</td><td>Point sampling breaking fine detail into noise.</td></tr>
+<tr><td><strong>Render timeline</strong></td><td>Conversion time for the last hundred conversions.</td><td>Where live updates stop keeping up with the sliders.</td></tr>
+</tbody></table></div>
+<p>The charts redraw after every conversion and when you open the tab.</p>
+<h2 id="the-compare-tab">The Compare tab</h2>
+<p><strong>Measure all sets</strong> draws every character of all seven sets at 32 × 32 pixels, measures how much ink each one has, and fills a table:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Charset</td><td>The set: standard, detailed, blocks, minimal, symbols, lines or braille.</td></tr>
+<tr><td>Glyphs</td><td>The number of characters, including the space.</td></tr>
+<tr><td>Min density</td><td>The ink of the lightest character, from 0 to 1.</td></tr>
+<tr><td>Max density</td><td>The ink of the darkest character.</td></tr>
+<tr><td>Range</td><td>Max minus min. A wider range carries more contrast.</td></tr>
+<tr><td>Monotonic</td><td><strong>✓</strong> if every character has at least as much ink as the one before it, in the set&#39;s own order; <strong>✗</strong> if not.</td></tr>
+</tbody></table></div>
+<p>A set that is not monotonic has at least one character darker than the one after it, and a smooth gradient drawn with it shows bands. More glyphs carry more detail; a wider range carries more contrast. They are not the same thing.</p>
+<p>The measurement uses the fonts on your device, so results can differ slightly between computers. Your custom ramp is not in the table; when it is in use, its densities show in the <strong>Glyph density calibration</strong> chart.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="fine-tuning.html">Fine tuning</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="../others/glossary.html">Glossary</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the ASCII Art Generator</a><a href="export.html"><span>Next</span>Copy, export and batch</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-analysis-tab">The Analysis tab</a></li><li><a href="#the-compare-tab">The Compare tab</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+---
+title: Auric Artisan Emoji — Release notes
+description: User-facing history of Auric Artisan Emoji.
+product: VS Code extensions › Auric Artisan Emoji
+updated: 2026-09-25
+---
+
+# Release notes
+
+## 0.2.0 — 18 September 2026
+
+The current Marketplace version: a connected workspace from search to code.
+
+### Redesigned workspace
+
+- Compact brand bar, sticky tabs and consistent cards in the Studio and sidebar.
+- Search and the library first; a collapsible **Workspace overview** holds active-file details, quick tools and statistics.
+- **Library**, **For you**, **Favorites** and **Recent** views, category chips, tone swatches, quick filters, grid and list layouts and density controls.
+- A compact sidebar with visible card actions; hover and focus actions in the full Studio.
+- Native scrolling, visible focus, light, dark and high-contrast support, and reduced motion.
+
+### Direct editor insertion
+
+- Hover over a complete shortcode such as `:rocket:` to insert the emoji, a JavaScript escape or an HTML entity, in one undo step.
+- New setting `auricEmoji.hover.enabled`.
+- Workspace overview shows the insertion target, cursor details and preferences, with last-emoji insertion, shortcode replacement and history tools.
+
+### Inspector and sequences
+
+- A rebuilt inspector with a large preview, tone variants, a default-tone control, keywords and related emoji.
+- JavaScript and CSS escapes added, making six formats; the ledger previews exact output and can set the default copy format.
+- Sequences: add with `Space`, `Shift`-click or Compose mode; insert or copy together; restored after a reload.
+- A keyboard map, search shortcuts, grid navigation and favorite and inspector keys.
+
+### English and Hindi
+
+- **Auto / English / हिन्दी** controls, `auricEmoji.interfaceLanguage` and **Choose Interface Language…**.
+- Localised Studio, Hindi manifest, settings and notifications.
+- Hindi search terms such as `दिल`, `रॉकेट` and `धन्यवाद`.
+- Language changes keep your search, filters and sequence.
+
+## 0.1.0 — 8 August 2026
+
+- Preview release numbering set to 0.1.0.
+- Corrected preview images and added an animated product preview.
+
+## Earlier recorded versions
+
+These labels predate the move to 0.1.0 and are kept as history.
+
+### 1.1.0 — 2 August 2026
+
+- Studio and sidebar refresh with labelled category, tone and density selectors.
+- All, For you, Favorites and Recent scopes, refreshable suggestions and explicit card actions.
+- The inspector as an on-demand sheet in narrow sidebars.
+- Yellow restored as the default tone.
+
+### 1.0.0 — 2 August 2026
+
+- The first Activity Bar gallery and full Studio with 1,914 emoji in nine categories.
+- Favorites, ranked recents, last-emoji recall and six tone choices.
+- Insertion, clipboard formats, multi-cursor edits, automatic spacing, Quick Pick and status bar access.
+- Colon-triggered completion and shortcode replacement.

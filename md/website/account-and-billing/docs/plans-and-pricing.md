@@ -1,0 +1,219 @@
+---
+title: Plans and pricing
+description: Every Auric Artisan plan with its prices in US dollars and rupees, monthly and annual terms, token and API allowances, the full comparison table, add-ons, and what is not built yet.
+product: Website › Account and billing
+updated: 2026-09-25
+---
+
+# Plans and pricing
+
+This page restates the pricing page at https://auricartisan.com/company/pricing/ as of the date above. The pricing page is authoritative: if a figure here and there ever differ, the pricing page and the checkout are what you are charged by.
+
+## The model in one paragraph
+
+Every tool is free on every plan. Paid plans add conveniences and scale — ad-free browsing, watermark-free exports, a monthly token allowance for server-backed work, higher limits and, from Specialist, the REST API. A paid plan is a one-time pass for one month or twelve months: it does not auto-renew, and there is nothing to cancel. Plan purchases carry a 7-day money-back window, and an account is required before any payment.
+
+## The four plans
+
+| Plan | Who it is for (pricing page) | Availability |
+| --- | --- | --- |
+| **Apprentice** | "Every tool, free forever. No account needed to start creating." | Free, always |
+| **Artisan** | "For creators who want ad-free browsing, watermark-free exports, and higher limits." | **Available now** |
+| **Specialist** | "For power users — automate with the API and ship branded WCAG reports." | **Coming soon** — not on sale |
+| **Industrial Pro** | "For labs, agencies, and organizations that need scale, security, and white-label." | **Coming soon** — not on sale |
+
+The buttons on the plan cards read **Get Started Free** (Apprentice), **Get Artisan** (Artisan) and **Coming soon** (Specialist and Industrial Pro, which cannot be selected). If you are signed in, your own plan's button reads **Current Plan**.
+
+## Prices
+
+### In US dollars
+
+| Plan | Monthly term | Annual term, shown per month | Annual term, billed once |
+| --- | --- | --- | --- |
+| Apprentice | $0 forever | $0 | — |
+| Artisan | $12 / month | $10 / month | $120 / year |
+| Specialist | $29 / month | $24 / month | $290 / year |
+| Industrial Pro | $79 / month | $66 / month | $790 / year |
+
+### In Indian rupees
+
+| Plan | Monthly term | Annual term, shown per month | Annual term, billed once |
+| --- | --- | --- | --- |
+| Apprentice | ₹0 forever | ₹0 | — |
+| Artisan | ₹999 / month | ₹832 / month | ₹9,990 / year |
+| Specialist | ₹2,399 / month | ₹1,999 / month | ₹23,990 / year |
+| Industrial Pro | ₹6,499 / month | ₹5,416 / month | ₹64,990 / year |
+
+### Monthly or annual
+
+- Use the **Monthly** / **Annual** switch above the plan cards. The badge beside it reads **Save 17%**.
+- A 12-month term costs ten times the monthly price — the pricing page calls it "a 16.7% saving (two months free)".
+- In annual mode the large figure is the effective monthly price, and a line under it shows the real charge, for example "Billed annually at $120/yr".
+- Either term is a single payment. Neither renews.
+
+### Currency
+
+- Select **USD $** or **INR ₹** above the plan cards.
+- On your first visit the page picks one for you: rupees if your device's time zone is India or your browser's language is an Indian locale, US dollars otherwise. Your choice is remembered in this browser.
+- You are charged in the currency shown. The pricing page says payment is taken by Razorpay "for a business based in India", in US dollars outside India and rupees within it. Your bank may add its own foreign-transaction fee.
+
+## What each plan includes
+
+These are the plan-card lists, word for word where possible. Select **What's included** on a card to expand or collapse its list; the number beside it is how many items it has.
+
+### Apprentice — free
+
+- Every tool, unlocked — LUT Lab, ICC Parser, Science Lab, Industrial and more
+- 100 fixed starter tokens — no monthly renewal
+- Clinical and medical vision simulations
+- Unlimited local use — no login required
+- 20 saved projects · 25 palettes · 20 URL analyses / month
+- Standard PNG and SVG exports
+- Sponsored slots (ads) support the free tools
+- Community support
+
+### Artisan
+
+Everything free, plus:
+
+- 250 tokens / month (about $25 value)
+- Ad-free browsing and ad controls
+- Cloud sync across all your devices — coming soon
+- Version history and one-click restore — coming soon
+- Watermark-free Pro exports (PDF, ASE)
+- Whole-site accessibility crawls — up to 24 pages a run
+- 500 saved projects
+- 250 pages analysed a month — unlimited vision simulations
+- Email support
+
+### Specialist (coming soon)
+
+Everything in Artisan, plus:
+
+- 1,000 tokens / month (about $100 value)
+- Batch processing and bulk export — coming soon
+- Full API access
+- 1,000,000 API credits / month — 1 credit = 1 standard request, pooled across your keys
+- 2,500 saved projects
+- Branded WCAG accessibility reports
+- Team workspace — up to 5 seats — coming soon
+- Priority support (24h)
+
+### Industrial Pro (coming soon)
+
+Everything in Specialist, plus:
+
+- 2,500 tokens / month (about $250 value)
+- 10,000 saved projects
+- 10,000,000 API credits / month — ten times Specialist, at 3,000 requests / min
+- High-volume tool limits — 10,000 URL analyses / month
+- White-label embedding and widget SDK — coming soon
+- SSO / SAML, audit logs and IP allowlisting — coming soon
+- 5 team seats included · scale up to 500 — coming soon
+- Custom data-retention and 99.9% SLA — coming soon
+
+The pricing page adds that Industrial Pro pricing "can be customized based on team size, usage, and feature needs" through **Talk to us**.
+
+## Compare all features
+
+The comparison table on the pricing page, section by section.
+
+### Every tool — always free
+
+| Feature | Apprentice | Artisan | Specialist | Industrial Pro |
+| --- | --- | --- | --- | --- |
+| Core colour and layout tools | Yes | Yes | Yes | Yes |
+| LUT Lab · ICC Profile Parser | Yes | Yes | Yes | Yes |
+| Color Science Lab · Gamut · HDR | Yes | Yes | Yes | Yes |
+| Vision sims — clinical and medical | Yes | Yes | Yes | Yes |
+| Industrial dye and material tools | Yes | Yes | Yes | Yes |
+| Research and psychophysical engine | Yes | Yes | Yes | Yes |
+
+### Tokens and metered usage
+
+| Feature | Apprentice | Artisan | Specialist | Industrial Pro |
+| --- | --- | --- | --- | --- |
+| Included token allowance | 100 fixed | 250 / month | 1,000 / month | 2,500 / month |
+| Pay-as-you-go top-ups | Not on sale — tokens come with a plan | | | |
+
+### Experience, saving and cloud
+
+| Feature | Apprentice | Artisan | Specialist | Industrial Pro |
+| --- | --- | --- | --- | --- |
+| Ad-free browsing and ad controls | — | Yes | Yes | Yes |
+| Local saves | Yes | Yes | Yes | Yes |
+| Cloud sync across devices | Coming soon — Artisan and above at launch | | | |
+| Version history | Coming soon — 7 / 90 / 365 days by tier at launch | | | |
+| Watermark-free exports | — | Yes | Yes | Yes |
+| Export formats | PNG, SVG | + PDF, ASE | + WCAG reports | All + custom |
+
+### Power and scale
+
+| Feature | Apprentice | Artisan | Specialist | Industrial Pro |
+| --- | --- | --- | --- | --- |
+| Batch processing and bulk export | Coming soon — Specialist and Industrial at launch | | | |
+| API access | — | — | Included | Included |
+| API credits / month | — | — | 1,000,000 | 10,000,000 |
+| API rate limit | — | — | 300 / min | 3,000 / min |
+| Prepaid API overage (opt-in, off by default) | — | — | $1 / 100,000 credits | $1 / 100,000 credits |
+| Plugins (Figma, Sketch, Penpot, VS Code) | Yes | Yes | Yes | Yes |
+| Saved projects | 20 | 500 | 2,500 | 10,000 |
+| URL analyses / month | 20 | 250 | 1,000 | 2,500 |
+| Vision sims / day | 25 | Unlimited | Unlimited | Unlimited |
+
+### Team, support and security
+
+| Feature | Apprentice | Artisan | Specialist | Industrial Pro |
+| --- | --- | --- | --- | --- |
+| Team seats (multi-user accounts) | Planned — every account is single-user today | | | |
+| Support | Community | Email | Priority email | Priority email · direct contact |
+| White-label embedding | Planned — scoped case by case | | | |
+| SSO / SAML · compliance reports | Planned — 2FA and account activity logs ship today | | | |
+| Uptime SLA | No contractual SLA yet — best-effort operations | | | |
+
+The pricing page's note under the table: rows marked Planned, and the cloud-sync, version-history and storage figures, "describe what a plan will include as those systems ship — today the platform syncs account settings and saves your work locally. Everything else in this table is live now."
+
+> **Note:** Two figures differ between the plan cards and the table: the Industrial Pro card lists 10,000 URL analyses a month where the table lists 2,500, and the Apprentice card mentions 25 palettes, which the table does not list. Industrial Pro is not on sale yet. Ask through the contact page if a figure matters to a purchase.
+
+## Tokens and API credits
+
+Two separate meters, explained in full on their own pages:
+
+- **Tokens** pay for server-backed work you start in a website tool: 100 once on Apprentice, then 250, 1,000 or 2,500 a month. One token is sized at a reference rate of about $0.10. See [Tokens](tokens.md).
+- **API credits** pay for REST API calls: 1,000,000 a month on Specialist, 10,000,000 on Industrial Pro, none on Apprentice or Artisan. One credit is one standard request; heavier endpoints cost more. See [API credits and spend controls](api-credits-and-spend.md).
+
+Neither pays for the other and nothing converts between them.
+
+## Optional add-ons
+
+The **Optional add-ons** section of the pricing page lists:
+
+| Add-on | Status on the pricing page |
+| --- | --- |
+| **Color Science Lab** | Free for everyone |
+| **Image Optimization** — batch compress, convert and resize images (WebP, AVIF, responsive sets) | Contact us |
+| **PDF Tools** — generate, merge, split and watermark PDFs; accessible PDF reports | Contact us |
+| **Vision Simulation** | Free for everyone |
+| **API Access** | Included from Specialist |
+| **White-Label Studio** | Not built yet — "Planned — talk to us" |
+| **Team Collaboration** | Accounts are single-user today — "Planned — talk to us" |
+| **Security and Compliance** | 2FA free for everyone; SSO/SAML, IP allowlisting and formal compliance reports not built yet |
+| **Editor and app plugins** | Free for everyone |
+
+## Token estimator
+
+The **Tokens — what each plan includes** section has a small estimator. Type how many tokens you expect to use a month (or use **−** and **+**, or select a plan tile). It names the smallest plan whose allowance covers that number, for example "Specialist includes 1,000 tokens every billing month — 300 fits inside that allowance." Above the largest allowance it suggests **Talk to us**. Top-ups are not on sale: "Tokens come with a plan today — we don't sell them separately."
+
+## Trials, discounts and custom deals
+
+- **Free trial** — there is no trial of paid plans. The free Apprentice plan is the trial, and the 7-day money-back window covers a paid plan that is not right for you.
+- **Nonprofit and student discounts** — arranged by hand, not with a code (there is no discount field at checkout). Write to Auric Artisan through the contact page with proof of eligibility before you buy. The pricing page says the price is then agreed, and either you pay the normal price and the difference is refunded through Razorpay, or the plan is activated without a charge.
+- **Volume, custom rate limits or a contract** — use **Talk to us** on the pricing page.
+- **Switching plans** — an upgrade starts when the payment clears. There is no downgrade to arrange: a pass runs for its term and stops. Automatic proration is not available; contact Auric Artisan if a change leaves a real difference in your favour.
+
+## Related
+
+- [Buy a plan](buy-a-plan.md)
+- [Plan terms, renewal and cancelling](plan-terms-and-cancelling.md)
+- [Refunds](refunds.md)
+- [Subscription and Billing Policy summary](../../company-and-legal/docs/subscription-and-billing-policy.md)

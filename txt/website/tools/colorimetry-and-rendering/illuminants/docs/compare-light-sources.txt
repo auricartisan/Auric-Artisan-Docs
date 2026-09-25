@@ -1,0 +1,83 @@
+==============================================================================
+COMPARE TWO LIGHT SOURCES
+==============================================================================
+Overlay two illuminants, read their CCT, CRI and white points side by side,
+and judge metamerism risk with the surface samples.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+Use this when you need to explain why a product, print or swatch looks
+different in two places — for example daylight at a window against tungsten at
+home, or a D50 viewing booth against a D65 screen.
+
+BEFORE YOU START
+================
+
+  - Metamerism is when two surfaces match under one light and differ under
+    another. The lab estimates the risk between two lights with a metamerism
+    index: the average CIEDE2000 colour difference of 14 test samples rendered
+    under each light. Bigger means more risk.
+  - CRI (colour rendering index) scores how faithfully a light renders test
+    colours compared with a reference light of the same CCT (a blackbody below
+    5,000 K, CIE daylight at or above). Ra is the mean of the first eight
+    scores; R9 is saturated red.
+  - In this lab the test samples are approximations of the CIE 13.3 set, not
+    the published reflectances. CRI and the metamerism index are therefore
+    indicative. See Limits and accuracy [../others/limits-and-accuracy.txt].
+
+STEPS
+=====
+
+  1. Open the Lab tab.
+  2. Under Illuminant, choose the first light, for example CIE D65 (6504 K) —
+     Daylight, sRGB.
+  3. Under Comparison illuminant, tick Enable comparison.
+  4. Open the comparison list and choose the second light. The choices are CIE
+     A, D50, D55, D65, D75, equal-energy E, F2, F7 and F11. The default is CIE
+     A (2856 K).
+  5. Look at the SPD chart. The gold curve is your first light and the blue
+     curve is the comparison light. Both are drawn on one relative scale.
+  6. Scroll to Illuminant comparison. The table shows, for each light:
+     - CCT in kelvin;
+     - CRI Ra;
+     - CIE x, y;
+     - and, across both, Metamerism Index (avg ΔE₀₀).
+  7. Under Surface reflectance samples, turn on the surfaces you care about.
+     The choices are White, Gray, Red, Green, Blue, Skin, Yellow and Cyan.
+     White, Gray, Red, Green and Skin are on by default.
+  8. Read Surface appearance — D65 reference vs test illuminant. Each row
+     shows two swatches (under D65, then under your first light after
+     adaptation), both HEX values and a ΔE₀₀ figure.
+  9. Check the CRI chart for the first light. Look at R9 separately; Ra can
+     hide weak red rendering.
+
+READING THE RESULT
+==================
+
+  - A metamerism index below about 0.5 suggests very low risk; 0.5 to 2 is
+    moderate; 2 to 4 is high; above 4 means a visible shift is almost certain.
+    These bands come from the lab's own research notes (Reference › Research
+    notes) and are a rule of thumb, not a standard.
+  - The surface rows answer a slightly different question: after your eye has
+    adapted to the light, how far does each surface's colour move compared
+    with how it looks in daylight?
+  - A light can have a similar white point to D65 and still render surfaces
+    differently. That is the spectrum at work, and it is why the lab shows the
+    spectrum and not only the white.
+
+TIPS
+====
+
+  - To study a fluorescent source, choose F2, F7 or F11 as the first light and
+    D65 as the comparison. Remember that the fluorescent spectra are
+    stand-ins; the chart labels them so.
+  - To see the full list of 18 illuminants side by side, open Export and
+    select Generate comparison table. It lists CCT, x, y, CRI Ra and a white
+    swatch for each.
+  - To compare many lights by x, y, CCT, Duv, efficacy or spectral spread, use
+    the query console [query-console.txt].
+
+RESULT
+======
+
+You have a side-by-side table of two lights, a metamerism index, and a row of
+surface swatches showing how much each material shifts between them.

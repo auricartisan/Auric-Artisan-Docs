@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Artisan Studio does with your code and data, what it writes to disk, and when anything uses the network.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html" aria-current="page">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Privacy</h1>
+<p class="lede">What Auric Artisan Studio does with your code and data, what it writes to disk, and when anything uses the network.</p>
+<p>Auric Artisan Studio analyses your code entirely on your machine.</p>
+<h2 id="what-never-leaves-your-machine">What never leaves your machine</h2>
+<ul>
+<li>Your source code, colours, scan results, findings and reports.</li>
+<li>Telemetry: the extensions collect none.</li>
+<li>There is no account, sign-in, API key or licence server.</li>
+</ul>
+<p>The extensions contain no network code. Their build is checked so that any code that could make a network request fails the build. The command-line scanner makes no network requests either.</p>
+<h2 id="when-the-network-is-used">When the network is used</h2>
+<p>Only when you choose to open a link:</p>
+<ul>
+<li><strong>auricartisan.com</strong>, from the Auric Artisan marks and links in the Overview, the Studio and hovers. The Studio&#39;s screens will only open links to that one site.</li>
+<li><strong>W3C documentation</strong>, from <strong>WCAG docs</strong> and <strong>Open WCAG Documentation</strong> links on findings, and links inside knowledge-database entries to official sources.</li>
+</ul>
+<p>These open in your browser. Installing or updating the extensions from the Marketplace is handled by VS Code.</p>
+<h2 id="the-remediation-plan-and-ai">The remediation plan and &quot;AI&quot;</h2>
+<p><strong>Generate Agent-Ready Remediation Plan</strong> calls no AI model and sends nothing anywhere. It writes a plan, including a prompt template, to your workspace. If you choose to give that prompt to a coding agent, that agent&#39;s own privacy terms apply.</p>
+<h2 id="what-is-written-to-your-disk">What is written to your disk</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>What</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><code>.auric-artisan/</code> in your workspace</td><td>Scan cache, settings copy, health record, SARIF, history, reports, remediation plan, knowledge database and overrides, a README and a <code>.gitignore</code></td><td>When you scan, generate outputs or save Studio settings; see <a href="../docs/scanning.html#the-auric-artisan-folder">The .auric-artisan folder</a></td></tr>
+<tr><td>Your VS Code user settings</td><td>The accent colour; colour picker mode switches; <code>editor.colorDecorators</code> when Auric Color manages VS Code&#39;s colour decorators</td><td>When you change them</td></tr>
+<tr><td>Your workspace&#39;s VS Code settings</td><td>Values saved from Studio › Settings</td><td>When you select <strong>Save settings</strong></td></tr>
+<tr><td>VS Code&#39;s storage for the extension</td><td>Recent colours, dismissed suggestions, the Project Issues grouping, which Studio sections you left open, whether you answered the colour picker prompt, and small colour icons for the Project Issues view</td><td>As you use the Studio</td></tr>
+<tr><td>Files you choose</td><td>Palette, shade, brand and Markdown exports</td><td>When you export through a save dialog</td></tr>
+</tbody></table></div>
+<p>To stop the Studio writing to your workspace, turn off <strong>Store workspace data locally</strong> (<code>data.enabled</code>). To remove everything, delete the <code>.auric-artisan</code> folder and uninstall the extensions.</p>
+<h2 id="secrets">Secrets</h2>
+<p>Code Health never stores a detected secret. The secret&#39;s text is replaced by a note such as <code>[redacted secret; 40 characters]</code> everywhere it could appear: diagnostics, the Studio, reports, <code>health.json</code>, SARIF, the history, the scan cache and remediation tasks. See <a href="../code-health/docs/secrets-and-redaction.html">Secrets and redaction</a>.</p>
+<h2 id="sharing-reports">Sharing reports</h2>
+<p>Reports and records are ordinary files. They contain file paths, line numbers, colour values and messages from your project, but never secret values. Review them before sharing outside your team.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="../docs/faq.html">FAQ</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="limits-and-accuracy.html"><span>Previous</span>Limits and accuracy</a><a href="release-notes.html"><span>Next</span>Release notes</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-never-leaves-your-machine">What never leaves your machine</a></li><li><a href="#when-the-network-is-used">When the network is used</a></li><li><a href="#the-remediation-plan-and-ai">The remediation plan and &quot;AI&quot;</a></li><li><a href="#what-is-written-to-your-disk">What is written to your disk</a></li><li><a href="#secrets">Secrets</a></li><li><a href="#sharing-reports">Sharing reports</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

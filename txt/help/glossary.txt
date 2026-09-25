@@ -1,0 +1,226 @@
+==============================================================================
+GLOSSARY
+==============================================================================
+Plain-language definitions of the general, accessibility and colour-science
+terms used across Auric Artisan's tools and documentation.
+Area: Help   Updated: 2026-09-25
+
+Terms used across the website, the extensions and these docs. Tool-specific
+terms are defined again in each tool's own glossary. Account and billing terms
+are in Account and billing glossary
+[../website/account-and-billing/others/glossary.txt]; legal terms are in
+Company and legal glossary [../website/company-and-legal/others/glossary.txt].
+
+GENERAL AND SITE TERMS
+======================
+
+Accent colour — The highlight colour the site uses for buttons and marks.
+Auric gold by default; you can change it in Settings.
+
+API — Application programming interface: a way for your own code to use Auric
+Artisan's functions over the internet. The REST API is metered in API credits.
+
+Cache — Copies of pages and files your browser keeps so they load faster or
+work offline.
+
+Collection — A named group of saved items in your library.
+
+Design tokens — Named values (colours, sizes, spacing) exported in a format a
+build system reads, such as JSON, so a design system can be shared between
+design and code.
+
+CSS custom properties — Variables in CSS, written like `--color-primary`, that
+design tokens are often exported as.
+
+Export — Saving a result out of a tool as a file (PNG, SVG, PDF, JSON, CSS and
+so on) or as copied text.
+
+Kit — A floating panel that opens over any page, such as the Library Kit.
+
+My Library — Your saved palettes, gradients, reports and exports, kept in your
+browser.
+
+PWA — Progressive web app: a website your browser can install like an app and
+keep available offline.
+
+Service worker — The part of a website that runs in the background of your
+browser to manage the offline cache.
+
+Token (tool token) — The unit that pays for server-backed work you start in a
+website tool, such as a whole-site crawl. Not the same as a design token.
+
+ACCESSIBILITY TERMS
+===================
+
+AA and AAA — WCAG conformance levels. For text contrast, AA requires 4.5:1 for
+normal text and 3:1 for large text; AAA requires 7:1 and 4.5:1.
+
+APCA — Accessible Perceptual Contrast Algorithm: a newer contrast measure that
+reports a lightness contrast value (Lc) and accounts for text size and
+polarity (dark on light versus light on dark) better than the WCAG ratio.
+
+ARIA — Accessible Rich Internet Applications: attributes that tell assistive
+technology what an interactive element is and what state it is in.
+
+Assistive technology — Tools such as screen readers, magnifiers and switch
+devices that help people use computers.
+
+Contrast ratio — The WCAG measure of how different two colours are in
+brightness, from 1:1 (identical) to 21:1 (black on white), calculated from
+their relative luminance.
+
+Focus indicator — The visible outline that shows which element the keyboard is
+on.
+
+Large text — In WCAG, text at least 18 point, or 14 point bold.
+
+Screen reader — Software that reads the screen aloud or to a braille display.
+
+Touch target — The area you tap. WCAG 2.2 asks for at least 24 by 24 CSS
+pixels; its enhanced level asks for 44 by 44.
+
+WCAG — Web Content Accessibility Guidelines, the W3C's standard for accessible
+web content. Versions 2.1 and 2.2 are referred to across the site.
+
+COLOUR VISION
+=============
+
+Achromatopsia — Absence of working cone cells, leaving vision without colour.
+
+Anomalous trichromacy — All three cone types are present but one responds
+abnormally, weakening some colour distinctions. Protanomaly, deuteranomaly and
+tritanomaly affect the long-, medium- and short-wavelength cones.
+
+Colour vision deficiency (CVD) — Reduced ability to tell some colours apart;
+often called colour blindness.
+
+Cone cells — The light-sensitive cells in the eye that see colour. There are
+three kinds: L (long wavelength, reddish), M (medium, greenish) and S (short,
+bluish).
+
+Dichromacy — One cone type is missing. Protanopia (no L cones), deuteranopia
+(no M cones) and tritanopia (no S cones).
+
+Ishihara plate — A pattern of coloured dots hiding a number, used to screen
+for colour-vision deficiency. Auric Artisan's generator makes Ishihara-style
+plates for learning only.
+
+Vision simulation — A model that shows approximately how an image looks with a
+given colour-vision deficiency or eye condition. Auric Artisan uses the Viénot
+1999, Brettel 1997 and Machado 2009 models.
+
+COLOUR SCIENCE
+==============
+
+Chroma — How colourful a colour is compared with a grey of the same lightness.
+
+Chromatic adaptation — The eye's adjustment to the colour of the light, so a
+white page looks white under warm or cool light. Transforms such as Von Kries,
+Bradford, CIECAT02 and CAT16 model it.
+
+CIE — The International Commission on Illumination, which publishes the
+standards behind most colour science.
+
+CIE XYZ — The 1931 colour space derived from human colour-matching
+experiments; the reference most other spaces are defined from.
+
+CIELAB (L*a*b*) — A colour space designed so that equal distances look roughly
+equally different: L* is lightness, a* runs green to red, b* runs blue to
+yellow.
+
+CIELUV — A related uniform space often used for light sources and displays.
+
+CMYK — Cyan, magenta, yellow and black ink; the colour model of print.
+Conversions from screen colours are approximations.
+
+Colour space — A system of numbers for describing colours, such as sRGB,
+Display P3 or CIELAB.
+
+Delta E (ΔE) — A number for how different two colours look. Formulas include
+CIE76, CIE94, CIEDE2000 (ΔE00, the current standard) and CMC l:c. As a rough
+guide, a ΔE00 under 1 is not noticeable.
+
+Display P3 — A wide-gamut colour space used by many modern screens; it holds
+more saturated colours than sRGB.
+
+Gamut — The range of colours a device or colour space can show.
+
+Gamut mapping — Bringing colours that are outside a target gamut into it while
+keeping them looking as close as possible.
+
+HDR — High dynamic range: images and displays with a wider range of brightness
+than standard.
+
+HSL, HSV (HSB), HWB — Cylindrical ways of writing sRGB colours by hue plus
+saturation and lightness, value (brightness), or whiteness and blackness. Easy
+to use, but not perceptually uniform.
+
+Hue — The attribute that makes a colour red, yellow, green, blue and so on,
+often given as an angle.
+
+ICC profile — A standard file that describes how a device or colour space
+reproduces colour, used by colour management.
+
+Illuminant — A standard description of a light source's spectrum. D65 is
+average daylight; D50 is used in print; A is incandescent light; F2 and F11
+are fluorescent lights.
+
+LCH / OKLCH — The polar forms of CIELAB and Oklab: lightness, chroma and hue.
+
+Lightness — How light a colour looks, independent of its hue.
+
+LUT — Look-up table: a file (commonly `.cube`) that maps input colours to
+output colours, used for colour grading.
+
+Luminance (relative) — How bright a colour is, weighted by the eye's
+sensitivity; the basis of the WCAG contrast ratio.
+
+Metamerism — Two colours that match under one light but not under another,
+because their spectra differ.
+
+Munsell system — A colour-order system describing colours by hue, value and
+chroma, used as a physical reference.
+
+Oklab — A modern perceptually uniform colour space (Björn Ottosson, 2020) with
+steadier hue as lightness changes; used for smooth palettes and scales.
+
+Perceptually uniform — A colour space in which equal numeric steps look like
+equal visual steps.
+
+Rendering intent — The rule used when gamut mapping, for example keeping
+colours exact where possible or keeping their relationships.
+
+Spectral power distribution — How much light a source or surface gives off at
+each wavelength.
+
+sRGB — The standard colour space of the web and most consumer screens.
+
+Standard observer — The CIE's average human colour-matching response, measured
+for a 2° or 10° field of view.
+
+Tonal scale (ramp) — A series of tints and shades of one colour, such as steps
+50 to 950, ideally spaced evenly to the eye.
+
+Tone mapping — Compressing HDR brightness into the range a standard display
+can show.
+
+White point — The colour a space or device treats as white, such as D65.
+
+COLOUR HARMONY
+==============
+
+Analogous — Colours next to each other on the colour wheel.
+
+Complementary — Colours opposite each other on the wheel.
+
+Split-complementary — A colour plus the two neighbours of its complement.
+
+Triadic — Three colours evenly spaced around the wheel.
+
+Tetradic (square) — Four colours in two complementary pairs, or evenly spaced.
+
+PERCEPTION RESEARCH
+===================
+
+Psychophysics — Measuring how physical stimuli (such as colour differences)
+relate to what people perceive, usually through controlled experiments.

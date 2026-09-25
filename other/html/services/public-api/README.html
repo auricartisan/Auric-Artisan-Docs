@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Artisan REST API — Auric Artisan Docs</title>
+<meta name="description" content="What the Auric Artisan REST API is, who it is for, where to find it, and how to make a first call.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Services</a>
+<h2>Auric Artisan REST API</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Public API documentation &rsaquo;</a></li>
+<li><a href="others/README.html">Other material &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">Services</a> &rsaquo; <a href="README.html">Auric Artisan REST API</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Auric Artisan REST API</h1>
+<p class="lede">What the Auric Artisan REST API is, who it is for, where to find it, and how to make a first call.</p>
+<p>The Auric Artisan REST API exposes the platform&#39;s colour-science toolkit as JSON over HTTPS: colour conversions across 63 colour spaces, palettes, harmonies, gradients, shade scales and design tokens, WCAG and APCA accessibility checks, colour-vision deficiency simulation, Ishihara plates, a URL analyzer, and large browsable collections of colours, palettes, harmonies, gradients, shade scales and accessible colour pairs. Every endpoint lives under <code>/v1</code>.</p>
+<p>You authenticate with an API key you create in your Auric Artisan account dashboard. Usage is metered in <strong>credits</strong>: one credit for a standard request, more for heavier work such as rendering images. API access is included from the <strong>Specialist</strong> plan upward, with a monthly credit allowance, a per-minute rate limit and optional prepaid overage. Discovery endpoints, such as the index, the catalogue and the OpenAPI document, are open to everyone so you can evaluate the API before buying.</p>
+<p>The API is documented on the site at <a href="https://auricartisan.com/library/documentation/api/" rel="noopener">https://auricartisan.com/library/documentation/api/</a>, with a separate guide to the analyzer endpoints at <a href="https://auricartisan.com/library/documentation/api/analyzer/" rel="noopener">https://auricartisan.com/library/documentation/api/analyzer/</a>. The API also serves its own interactive reference and OpenAPI 3.1 document.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li><strong>Developers</strong> building colour or accessibility features into products, design tools, CMSs or build pipelines.</li>
+<li><strong>Design-system teams</strong> generating and checking tokens, scales and palettes automatically.</li>
+<li><strong>Accessibility and QA teams</strong> checking colour pairs and watching many pages for metadata, security-header and markup regressions.</li>
+<li><strong>Data and research users</strong> browsing the colour, palette and contrast collections with citable record ids.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>What</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>Base URL</td><td><a href="https://api.auricartisan.com" rel="noopener">https://api.auricartisan.com</a></td></tr>
+<tr><td>Documentation</td><td><a href="https://auricartisan.com/library/documentation/api/" rel="noopener">https://auricartisan.com/library/documentation/api/</a></td></tr>
+<tr><td>Analyzer API guide</td><td><a href="https://auricartisan.com/library/documentation/api/analyzer/" rel="noopener">https://auricartisan.com/library/documentation/api/analyzer/</a></td></tr>
+<tr><td>Interactive reference</td><td><a href="https://api.auricartisan.com/v1/docs" rel="noopener">https://api.auricartisan.com/v1/docs</a></td></tr>
+<tr><td>OpenAPI 3.1 document</td><td><a href="https://api.auricartisan.com/v1/openapi.yaml" rel="noopener">https://api.auricartisan.com/v1/openapi.yaml</a></td></tr>
+<tr><td>API keys</td><td>Your account dashboard, <a href="https://auricartisan.com/auth/dashboard/" rel="noopener">https://auricartisan.com/auth/dashboard/</a></td></tr>
+</tbody></table></div>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li><p>Make sure your account is on a plan that includes API access: <strong>Specialist</strong> or <strong>Industrial Pro</strong>.</p>
+</li>
+<li><p>Open your dashboard, find <strong>Your API Keys</strong>, and choose <strong>Create your first key</strong> (or <strong>Create key</strong>).</p>
+</li>
+<li><p>Name the key, for example &quot;CI pipeline&quot;, and choose <strong>Create</strong>.</p>
+</li>
+<li><p>Copy the key straight away. &quot;This is the only time the full key is shown.&quot;</p>
+</li>
+<li><p>Send it in the <code>x-api-key</code> header with a request:</p>
+<pre class="code" data-lang="bash"><code>curl -X POST https://api.auricartisan.com/v1/color/convert \
+  -H &quot;x-api-key: aa_YOUR_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;color&quot;: &quot;#d3af37&quot;, &quot;to&quot;: &quot;oklch&quot;}'</code></pre>
+</li>
+<li><p>Read the JSON response, and the <code>x-credits-cost</code> and <code>x-quota-remaining</code> headers that say what the call cost and what you have left.</p>
+</li>
+<li><p>Call <code>GET /v1</code> or <code>GET /v1/catalog</code> to see everything else the API can do.</p>
+</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Convert colours between common spaces, or any of 63 registry spaces with white-point control.</li>
+<li>Measure perceptual colour difference (CIEDE2000, CIE94, CIE76, CMC) and correlated colour temperature.</li>
+<li>Generate, score and export palettes, harmonies, gradients and shade scales, and render them as PNG.</li>
+<li>Turn one seed colour into a complete, contrast-checked design-token system and export it for ten platforms.</li>
+<li>Check foreground and background pairs against WCAG 2.2 and APCA, get the nearest accessible alternative, map where accessible colours lie on a background, and audit a palette.</li>
+<li>Simulate colour-vision deficiencies for colours, palettes and images, and find pairs that stop being distinguishable.</li>
+<li>Generate Ishihara test plates.</li>
+<li>Audit a web page&#39;s markup for SEO, metadata, security headers, sitemap and responsive signals, and render the report as HTML or PDF.</li>
+<li>Browse the colour atlas and the palette, harmony, gradient, shade and accessibility collections.</li>
+<li>Track usage, run long jobs asynchronously, subscribe to webhooks, and query everything through GraphQL.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a><ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/authentication.html">Authentication</a></li>
+<li><a href="docs/plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="docs/endpoints/README.html">Endpoints</a></li>
+<li><a href="docs/examples.html">Request examples</a></li>
+<li><a href="docs/errors.html">Errors</a></li>
+<li><a href="docs/sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a><ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../icon-cdn/others/related.html"><span>Previous</span>Related</a><a href="docs/README.html"><span>Next</span>Public API documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

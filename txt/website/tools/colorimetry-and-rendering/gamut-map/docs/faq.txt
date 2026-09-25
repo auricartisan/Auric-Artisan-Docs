@@ -1,0 +1,61 @@
+==============================================================================
+GAMUT MAPPING FAQ
+==============================================================================
+Short answers to common questions about the Gamut Mapping lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+ARE THESE THE ICC RENDERING INTENTS?
+====================================
+
+No. ICC perceptual and saturation intents are lookup tables that a profile
+author builds for a particular device, so no general algorithm can reproduce
+them. The lab's four methods are named for what they do. Adapt white, then
+clip has the shape of ICC relative colorimetric; Clip in target RGB (no white
+adaptation) resembles absolute colorimetric clipping.
+
+WHICH METHOD SHOULD I USE?
+==========================
+
+For photographs, chroma compression usually looks most natural because it
+keeps lightness and hue. For logos and spot colours that must match exactly
+where they can, clipping keeps in-gamut colours untouched. The lab does not
+rank methods, because there is no agreed reference set of correct mappings; it
+reports what each does.
+
+WHY IS THE SLICE PAINTED IN SRGB?
+=================================
+
+Most screens and browsers show sRGB reliably. The geometry (which colours are
+in each gamut) is computed exactly; only the painting is limited to what your
+screen can show.
+
+WHY DOES PROPHOTO RGB LOOK LOPSIDED?
+====================================
+
+ProPhoto RGB is defined against D50 and includes colours outside human vision.
+The lab adapts it onto the Lab plane's white with Bradford before testing its
+boundary, and its chroma can run past the ±128 range the slice draws.
+
+WHY DO THE AREAS IN THE STATISTICS LINE DIFFER FROM PERCENTAGES I SEE ELSEWHERE?
+==============================================================================
+
+They are areas of the ab slice at one lightness, not the "percentage of the
+spectral locus" often quoted from the xy diagram. For total size, use the
+volume on the Boundary tab.
+
+IS A ΔE₀₀ OF 2 ACCEPTABLE?
+==========================
+
+For critical work an average below 2 is a common target, and the lab's
+research notes suggest the same. It depends on your application.
+
+CAN I LOAD AN ICC PROFILE?
+==========================
+
+No. The Data tab shows an Install a table area, but it does not load files in
+the current version.
+
+IS ANYTHING UPLOADED?
+=====================
+
+No. All mapping runs in your browser.

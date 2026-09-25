@@ -1,0 +1,86 @@
+==============================================================================
+TROUBLESHOOTING CHROMATIC ADAPTATION
+==============================================================================
+Fixes for common problems in the Chromatic Adaptation lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+  Symptom:        The image area is dark and says "No image yet"
+  Why it happens: No image has been loaded
+  What to do:     Select Generate the sample sweep or Choose an image
+
+  Symptom:        Nothing changes when I move a slider
+  Why it happens: Live is off, or no image is loaded
+  What to do:     Tick Live, or select Run after changes
+
+  Symptom:        The image hardly changes at 0 s
+  Why it happens: Adaptation starts at 0.1 and grows with time
+  What to do:     Move Time (scrubber) towards 5 s
+
+  Symptom:        The image is only partly adapted even at 5 s and D = 1
+  Why it happens: The measured slow phase has a 30 s half-life, so at 5 s
+                  about 55% of the change has happened
+  What to do:     Expected. The Matrix tab shows the matrix at the D you set;
+                  the Dynamics tab shows when 90% is reached
+
+  Symptom:        Display Gamma, the per-pixel scales, Local radius, Local
+                  strength, Mix, Tile factor or Target FPS change nothing
+  Why it happens: These controls are not applied in the current version; they
+                  are only recorded in the JSON export
+  What to do:     See Reference [reference.txt]
+
+  Symptom:        The GPU box (or `G`) changes nothing
+  Why it happens: Processing always runs on the CPU
+  What to do:     Expected
+
+  Symptom:        The state map is a flat grey
+  Why it happens: The per-pixel model has no effect in the current version, so
+                  every pixel has the same adaptation
+  What to do:     Expected. Its brightness equals the adaptation in use
+
+  Symptom:        The SPD overlay says "No spectrum held"
+  Why it happens: B, C, F2, F7 and F11 spectra are not held
+  What to do:     The adaptation is still correct, because it uses the
+                  tabulated white point
+
+  Symptom:        Bright colours clip after a large shift such as D65 to A
+  Why it happens: Adapted values exceed the sRGB range and are clipped
+  What to do:     Tick HDR Tonemap to compress highlights first, or choose a
+                  smaller shift
+
+  Symptom:        My photo looks smaller or softer
+  Why it happens: Images are scaled to fit 480 × 320 for processing
+  What to do:     Expected. The exported PNG is at the processing size
+
+  Symptom:        Run Batch says "Enter valid hex values"
+  Why it happens: No six-digit HEX lines were found
+  What to do:     Enter values such as `#735244` or `735244`, one per line
+
+  Symptom:        Only 50 of my colours appear
+  Why it happens: The batch is capped at 50
+  What to do:     Split the list and run it in parts
+
+  Symptom:        The share link opens without my image
+  Why it happens: Links carry settings only
+  What to do:     Send the image separately
+
+  Symptom:        Copy Link gave a link without my settings
+  Why it happens: Copy Link copies the page's current address
+  What to do:     Use Generate under Share URL instead
+
+  Symptom:        Copying fails with "Copy failed"
+  Why it happens: The browser blocked clipboard access
+  What to do:     Allow clipboard access, or copy the text from the field
+                  manually
+
+  Symptom:        Dropping a file on Install a table does nothing
+  Why it happens: The drop area is not active in the current version
+  What to do:     No workaround; the lab uses its built-in tables
+
+  Symptom:        Space, R, C or G does nothing
+  Why it happens: The focus is in a text box, slider or list
+  What to do:     Click an empty part of the page first
+
+  Symptom:        A chart is too small to read
+  Why it happens: —
+  What to do:     Double-click it, or select its Fullscreen button; `Esc`
+                  closes

@@ -1,0 +1,83 @@
+==============================================================================
+PERCEPTION AND VISION FAQ
+==============================================================================
+Short answers to common questions about Perception Vision.
+Area: Website › Tools › Perception and spectral › Perception and Vision   Updated: 2026-09-25
+
+CAN I USE THIS TO DIAGNOSE COLOUR BLINDNESS?
+============================================
+
+No. It simulates how an image might appear to someone with a condition; it
+does not test anyone's vision. The settings file and CSV carry `clinical:
+false` and "not a clinical measurement".
+
+WHICH COLOUR VISION SIMULATION DOES IT USE?
+===========================================
+
+The Viénot, Brettel and Mollon (1999) projection, applied in cone space: sRGB
+is decoded, converted to CIE XYZ and then to cone signals with the
+Hunt-Pointer-Estévez matrix, projected, and converted back. The Simulation tab
+shows every matrix.
+
+DOES A SEVERITY OF 0.5 SIMULATE ANOMALOUS TRICHROMACY?
+======================================================
+
+Not as a physiological model. Between 0 and 1 the page blends linearly between
+normal vision and full dichromacy. The Machado, Oliveira and Fernandes (2009)
+model would be needed for anomalous trichromacy, and the page does not
+implement it. The Mild deuteranomaly preset uses this blend at 0.40.
+
+WHY DOES WHITE STAY WHITE UNDER PROTANOPIA?
+===========================================
+
+Because it should: people with a colour vision deficiency see neutrals as
+neutral. The grey ramp under the frame checks this for every change.
+
+WHAT IS DALTONISING?
+====================
+
+A recolouring that moves information from a colour axis a dichromat cannot see
+into one they can. Tick Daltonise instead of simulate to preview it. It
+changes colours for everyone, so it is a preview of a correction filter, not a
+design fix.
+
+HOW ACCURATE ARE THE NIGHT-VISION, LENS, CATARACT AND ACUITY SIMULATIONS?
+=========================================================================
+
+They show that an effect exists and its direction, not its size for any
+person. Their constants are the tool's own; see Limits and accuracy
+[../others/limits-and-accuracy.txt].
+
+WHY IS THERE NO CONTRAST SENSITIVITY MODE?
+==========================================
+
+An earlier "CSF overlay" mode applied a contrast sensitivity curve to the
+distance from the image centre instead of to spatial frequency, and at its own
+defaults produced a black frame. It was withdrawn. The Modes tab shows what it
+did and what a real one would need.
+
+CAN I CHECK A WHOLE PALETTE AT ONCE?
+====================================
+
+Yes. Paste the hex colours into the Export tab. Rows whose Simulated hex
+values match or nearly match are colours the simulated viewer cannot tell
+apart. See Check a palette and export [check-a-palette-and-export.txt].
+
+DOES MY IMAGE GET UPLOADED?
+===========================
+
+No. The image is read and processed in your browser. See Privacy
+[../others/privacy.txt].
+
+WHY DOES THE CAMERA OPTION NOT WORK?
+====================================
+
+The site does not currently allow its pages to use the camera. Use a
+screenshot or photo instead.
+
+GPU OR CPU: WHICH SHOULD I USE?
+===============================
+
+Either. The colour calculation is the same, and the page checks the two
+against each other. The GPU is faster; the CPU is used automatically without
+WebGL2.

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tone Mapping — Auric Artisan Docs</title>
+<meta name="description" content="What the Tone Mapping lab does, who it is for, where to find it and how to map your first frame.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Colorimetry and rendering tools</a>
+<h2>Tone Mapping</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Tone Mapping documentation &rsaquo;</a></li>
+<li><a href="others/README.html">Tone Mapping: supporting pages &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="README.html">Tone Mapping</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Tone Mapping</h1>
+<p class="lede">What the Tone Mapping lab does, who it is for, where to find it and how to map your first frame.</p>
+<p>A real scene can hold far more light than any display can show: a sunlit window may be thousands of times brighter than the shadows in the room. <strong>Tone mapping</strong> is the curve that squeezes that range into the display&#39;s range while deciding what to keep — shadow detail, mid-tones, or colour in the highlights.</p>
+<p>The Tone Mapping lab runs a frame through an eleven-step pipeline you control: decode the source, convert it to a working space with white-point adaptation, set exposure, apply an optional low-level operator, apply the tone curve, grade it, convert to the target display space with gamut mapping, and encode it for output. It offers seven working tone curves — clipping, Reinhard, Uchimura (Gran Turismo), Hable filmic, the Narkowicz fit of the ACES look, a soft log curve and your own three-point curve — and shows two retired operators on the Operators tab for comparison.</p>
+<p>You can work on built-in test scenes or your own image, read the result on a histogram, waveform, vectorscope and false-colour map, compare two versions side by side, and export the tone curve as a 1D <code>.cube</code> or CSV, or the whole pipeline as a 3D <code>.cube</code> LUT.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Game, 3D and VFX artists choosing a tone curve for renders.</li>
+<li>Colourists and video editors who want a LUT that matches a preview.</li>
+<li>Developers implementing tone mapping in a renderer.</li>
+<li>Students learning scene-referred and display-referred imaging.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li>Address: <a href="https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/</a></li>
+<li>In the tool collection (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) under <strong>Gamut &amp; Rendering</strong>, as <strong>Tone Mapping</strong>.</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open <a href="https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/</a>. The HDR test scene is mapped with the Hable filmic curve.</li>
+<li>Move <strong>Exposure</strong> up and down to see which part of the curve the scene lands on.</li>
+<li>Under <strong>Tone curve</strong>, try <strong>Reinhard</strong>, <strong>Narkowicz fit</strong> and <strong>None (clip)</strong>. Watch the highlights.</li>
+<li>Read the statistics: where mid-grey 0.18 lands, and the input at which the scene reaches display white.</li>
+<li>Open <strong>Scopes</strong> to read the histogram, waveform and vectorscope.</li>
+<li>Open <strong>Operators</strong> to compare every curve on one set of inputs.</li>
+<li>Open <strong>Export</strong>, choose <strong>The tone curve</strong> as <strong>.cube</strong>, and select the download button.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Tone-map three built-in test scenes or your own image.</li>
+<li>Declare the source&#39;s encoding (linear, sRGB, PQ, HLG, gamma 2.2 or 2.4), primaries and white.</li>
+<li>Set exposure in stops, choose one of seven tone curves or shape your own.</li>
+<li>Apply a low-level operator and a grade (contrast, saturation, lift, gamma, gain, temperature, tint, hue, vibrance).</li>
+<li>Choose working and target spaces, target white, gamut mapping and output encoding; mark out-of-gamut pixels; dither.</li>
+<li>Compare operators numerically and on one chart.</li>
+<li>Read histogram, waveform, vectorscope and a false-colour exposure map; store two frames and split the view.</li>
+<li>Export a 1D <code>.cube</code> or CSV of the curve, a 3D <code>.cube</code> of the pipeline, or a link.</li>
+<li>Map a list of HEX colours through the pipeline.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the lab<ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/map-a-frame.html">Map a frame</a></li>
+<li><a href="docs/compare-operators.html">Compare operators</a></li>
+<li><a href="docs/read-the-scopes.html">Read the scopes</a></li>
+<li><a href="docs/export-a-lut.html">Export a LUT</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background and supporting pages<ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/shortcuts.html">Shortcuts</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related tools</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../tonal-steps/others/related.html"><span>Previous</span>Related to Tonal Steps</a><a href="docs/README.html"><span>Next</span>Tone Mapping documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

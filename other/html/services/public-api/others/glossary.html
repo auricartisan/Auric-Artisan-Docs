@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary — Auric Artisan Docs</title>
+<meta name="description" content="Definitions of the API, colour-science and accessibility terms used in the public API documentation.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Other material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="glossary.html" aria-current="page">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Other material</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Glossary</h1>
+<p class="lede">Definitions of the API, colour-science and accessibility terms used in the public API documentation.</p>
+<h2 id="api-terms">API terms</h2>
+<p><strong>API key.</strong> A secret string, starting <code>aa_</code>, that identifies your account on each request. Created in the dashboard and shown once.</p>
+<p><strong>Async job.</strong> Work that takes too long for one request. You queue it, receive an id, then poll it or follow it over SSE.</p>
+<p><strong>Credit.</strong> The unit your monthly quota is counted in. A standard call costs 1; heavier calls cost more.</p>
+<p><strong>Cursor.</strong> A position in a scanned collection. Pass <code>next_cursor</code> back as <code>cursor</code> to continue.</p>
+<p><strong>Discovery endpoint.</strong> A public, unmetered endpoint that describes the API, such as <code>/v1/catalog</code>.</p>
+<p><strong>GraphQL.</strong> A query language that lets one request ask several questions at once, through <code>/v1/graphql</code>.</p>
+<p><strong>Hard ceiling.</strong> The absolute monthly limit, ten times the included allowance, that stops runaway usage.</p>
+<p><strong>OpenAPI.</strong> A standard, machine-readable description of an HTTP API, served at <code>/v1/openapi.yaml</code>.</p>
+<p><strong>Overage.</strong> Usage beyond the included credits, paid from a prepaid credit balance, and only if you turn it on.</p>
+<p><strong>Quota.</strong> Your included credits for the month.</p>
+<p><strong>Rate limit.</strong> How many requests you may make per minute.</p>
+<p><strong>Scope and stage.</strong> In the analyzer, a stage is one group of checks; <code>scope</code> is the list of stages you ask for.</p>
+<p><strong>Server-Sent Events (SSE).</strong> A way for a server to push a stream of events over one HTTP connection, used by the usage and job streams.</p>
+<p><strong>Spend cap.</strong> A monthly limit, in money, you set on overage.</p>
+<p><strong>Truncated.</strong> A scanned-collection response whose scan budget ran out before the page filled; it does not mean nothing matches.</p>
+<p><strong>Webhook.</strong> A URL you register to receive signed event notifications, such as <code>job.succeeded</code>.</p>
+<h2 id="colour-science">Colour science</h2>
+<p><strong>CCT and Duv.</strong> Correlated colour temperature, in kelvin, describes a near-white light by the temperature of the closest black-body colour. Duv is how far the colour sits from that black-body curve (the Planckian locus); beyond about ±0.05 a temperature no longer describes it.</p>
+<p><strong>CIEDE2000, CIE94, CIE76, CMC.</strong> Formulae for Delta E, the perceptual difference between two colours. CIEDE2000 is the most accurate and the API&#39;s headline figure.</p>
+<p><strong>Colour space.</strong> A system for describing colours with numbers. The API&#39;s registry has 63.</p>
+<p><strong>Illuminant.</strong> A standard reference light, such as D65 (average daylight), used to define white.</p>
+<p><strong>OKLab and OKLCH.</strong> Perceptual colour spaces in which equal numeric steps look like equal visual steps. OKLCH writes OKLab as lightness, chroma and hue.</p>
+<p><strong>Planckian locus.</strong> The curve of colours a black body glows at different temperatures.</p>
+<p><strong>White point.</strong> The colour a space treats as white, such as D65.</p>
+<h2 id="accessibility">Accessibility</h2>
+<p><strong>APCA.</strong> The Accessible Perceptual Contrast Algorithm from the WCAG 3 drafts, which scores contrast as Lc with polarity.</p>
+<p><strong>Auric SD.</strong> Auric Artisan&#39;s own contrast grading, with Flexible and Strict variants and grades from A+ to F.</p>
+<p><strong>Banding.</strong> Visible steps in a gradient that should look smooth.</p>
+<p><strong>Colour-vision deficiency (CVD).</strong> Reduced ability to tell some colours apart, such as protanopia or deuteranopia.</p>
+<p><strong>Contrast ratio.</strong> WCAG&#39;s measure of the difference in luminance between two colours, from 1:1 to 21:1. Body text needs 4.5:1 at level AA.</p>
+<p><strong>Polarity.</strong> Whether text is dark on light (BoW) or light on dark (WoB).</p>
+<p><strong>WCAG.</strong> The Web Content Accessibility Guidelines.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Other material</a><a href="limits-and-accuracy.html"><span>Next</span>Limits and accuracy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#api-terms">API terms</a></li><li><a href="#colour-science">Colour science</a></li><li><a href="#accessibility">Accessibility</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

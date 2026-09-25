@@ -1,0 +1,52 @@
+---
+title: M-Gradient Palette — Compare routes and easings
+description: Use the Spaces tab to build all thirty route and easing combinations for your two colours and find the evenest.
+product: Website › Tools › Image and file tools › M-Gradient Palette
+updated: 2026-09-25
+---
+
+# Compare routes and easings
+
+The **Spaces** tab answers: which route and easing give the evenest ramp between these two colours? Every row is built at your two ends and your step count and then measured; nothing is predicted from a model of the space.
+
+## Read the table
+
+1. Set the ends and **Steps** on the **Ramp** tab.
+2. Open the **Spaces** tab. The note beside the heading repeats your ends and step count, for example **#0B3D5C → #F2B134 · 12 steps**.
+
+The table has thirty rows: six routes by five easings.
+
+| Column | Meaning |
+|---|---|
+| **Route** | One of the six routes |
+| **Easing** | One of the five easings |
+| **Mean ΔE₀₀** | Average difference between neighbouring steps |
+| **Min** | Smallest difference between neighbouring steps |
+| **Max** | Largest difference between neighbouring steps |
+| **Evenness** | Standard deviation of the differences; lower is more even |
+| **What happens** | **the evenest of the thirty**, or how many steps were moved to fit sRGB |
+
+The evenest row is highlighted and marked **the evenest of the thirty**. It is marked only when one row is strictly evenest; if two or more tie, none is marked, and the note under the table says so.
+
+For the default ends at 12 steps, the evenest row is **OKLCH, short hue** with **linear** easing, at an evenness of 0.69.
+
+## What to look for
+
+The note under the table points out two patterns you will usually see:
+
+- **The mean barely changes between routes.** At linear easing, a ramp between the same two colours covers much the same perceptual distance whichever way it goes, so the mean alone cannot choose a route. The spread between rows in **Evenness** is what separates them.
+- **Easing changes the evenness, not the mean.** The five rows for one route are the same colours spaced differently, so their means are close while their evenness varies.
+
+A route marked as moving steps to fit sRGB is still a valid ramp, but those steps sit on the edge of sRGB rather than at the colourfulness the route asked for.
+
+## The desaturated middle, drawn
+
+Under **The desaturated middle, drawn**, three ramps are drawn at your two ends with linear easing: **sRGB**, **Linear RGB** and **OKLCH, short hue**. Each heading gives its evenness, and each card gives the chroma of its **least chromatic step**, measured in OKLCH so all three are on one scale.
+
+A much lower figure for sRGB or Linear RGB than for OKLCH means the straight-line blend passes near grey, the "muddy middle" that polar spaces avoid. For the default ends, the least chromatic step has a chroma of 0.030 in sRGB, 0.013 in Linear RGB and 0.074 in OKLCH.
+
+The drawn ramps follow the **Show it as seen by** setting.
+
+## Use the result
+
+The table does not change your ramp. To use the evenest row, go back to the **Ramp** tab and select that route and easing.

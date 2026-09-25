@@ -1,0 +1,85 @@
+==============================================================================
+TROUBLESHOOTING TONE MAPPING
+==============================================================================
+Fixes for common problems in the Tone Mapping lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+  Symptom:        My photo looks flat or unchanged by the curve
+  Why it happens: An 8-bit PNG or JPEG stops at 1.0, so there are no
+                  highlights above white for the curve to compress
+  What to do:     Raise Exposure, or use the built-in HDR test scene to
+                  compare curves
+
+  Symptom:        My photo looks too dark or washed out
+  Why it happens: The source encoding does not match the file
+  What to do:     For ordinary images choose sRGB encoding and Rec.709
+                  primaries
+
+  Symptom:        Changing Display peak or Source peak changes nothing
+  Why it happens: The seven working curves do not use the peaks
+  What to do:     Expected. The peaks affect the retired operators and the
+                  false-colour map
+
+  Symptom:        Soft compress looks exactly like Clip
+  Why it happens: In the current version the two give the same result
+  What to do:     Use Preserve hue to keep channel ratios in out-of-gamut
+                  colours
+
+  Symptom:        The HDR 1000 preset looks pale and washed out on my screen
+  Why it happens: PQ output is an HDR encoding (a display value of 1.0 is
+                  encoded as 10,000 nits), and an ordinary screen shows PQ
+                  code values as if they were sRGB
+  What to do:     Use sRGB output for viewing on a standard display; use PQ
+                  only when exporting for HDR
+
+  Symptom:        Linear axis, Log axis or Film stops does not change the
+                  chart
+  Why it happens: They set the custom curve's knee, mid and shoulder
+  What to do:     Tick Use the custom curve instead to see their effect
+
+  Symptom:        The custom curve fields do nothing
+  Why it happens: The custom curve is used only when its box is ticked or
+                  Custom 1D curve is selected
+  What to do:     Tick Use the custom curve instead
+
+  Symptom:        The low-level operator does nothing
+  Why it happens: Parameters a and b start at 0
+  What to do:     Enter a positive a
+
+  Symptom:        Gamma-domain scale or Scaled Reinhard are not in the list
+  Why it happens: They are not tone curves and are no longer offered
+  What to do:     See them on the Operators tab
+
+  Symptom:        The false-colour note and the map disagree
+  Why it happens: The note uses the Source peak; the map uses the Display peak
+  What to do:     Set both peaks to the same value when reading the map
+
+  Symptom:        The split view shows only one version
+  Why it happens: Both A and B must be stored
+  What to do:     Select Store A and Store B, then tick Split the viewport
+
+  Symptom:        Analyse says "No valid hex colours found."
+  Why it happens: Only six-digit HEX colours are read, although the box's
+                  example shows numbers
+  What to do:     Enter values such as `#FF8800`
+
+  Symptom:        Download the result says "Run batch first"
+  Why it happens: No analysis has been run
+  What to do:     Select Analyse first
+
+  Symptom:        The link does not restore my grade
+  Why it happens: The link records operator, exposure, source encoding,
+                  display peak, output and target primaries only
+  What to do:     Re-enter the grade, or export the pipeline `.cube`
+
+  Symptom:        A LUT looks different from the preview in another program
+  Why it happens: A curve export carries only step 5
+  What to do:     Export The whole pipeline as `.cube`
+
+  Symptom:        Copy fails
+  Why it happens: The browser blocked clipboard access
+  What to do:     The text is in the preview; select and copy it
+
+  Symptom:        Reset cleared everything
+  Why it happens: It reloads the lab with defaults
+  What to do:     Use a stored link to return to a setup

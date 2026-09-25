@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect the icon CDN — Auric Artisan Docs</title>
+<meta name="description" content="How Icon Hub's Insert connects your HTML and web-framework files to the Auric icon CDN, what file it creates, and what your site needs.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Icon Hub</a>
+<h2>Icon Hub guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Icon Hub</a></li>
+<li><a href="browse-and-refine.html">Browse and refine</a></li>
+<li><a href="catalog-updates.html">Catalog metadata updates</a></li>
+<li><a href="cdn-insertion.html" aria-current="page">Connect the icon CDN</a></li>
+<li><a href="collect-and-export.html">Collect and export</a></li>
+<li><a href="insert-copy-and-save.html">Insert, copy and save</a></li>
+<li><a href="shape-the-output.html">Shape the output</a></li>
+<li><a href="reference.html">Icon Hub reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Icon Hub</a> &rsaquo; <a href="README.html">Icon Hub guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Icon Hub</p>
+<h1>Connect the icon CDN</h1>
+<p class="lede">How Icon Hub's Insert connects your HTML and web-framework files to the Auric icon CDN, what file it creates, and what your site needs.</p>
+<p>In HTML and supported web-framework files, <strong>Insert</strong> places an icon placeholder that is drawn at runtime by the Auric icon CDN script, <code>https://icons.auricartisan.com/icon-cdn.js</code>. This works for all seven collections, including Material, whose glyphs load their matching font from the CDN.</p>
+<p>A <strong>CDN</strong> (content delivery network) is a web service that serves files, here icon data and fonts, to your pages.</p>
+<h2 id="what-happens-on-your-first-insert">What happens on your first Insert</h2>
+<ol>
+<li>Icon Hub checks the target file. It must be saved, local or in a VS Code remote workspace, and the workspace must be trusted.</li>
+<li>It creates a small file called <code>icons.auricartisan.com.js</code> next to your source file and saves it. This <strong>bridge</strong> contains loader logic only: no fonts, no embedded font data and no icon catalog.</li>
+<li>It connects the bridge to your file:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>File type</th><th>Connection added</th></tr></thead>
+<tbody>
+<tr><td>HTML</td><td><code>&lt;script src=&quot;./icons.auricartisan.com.js&quot; defer data-auric-icons=&quot;cdn&quot;&gt;&lt;/script&gt;</code> after <code>&lt;head&gt;</code></td></tr>
+<tr><td>JavaScript, TypeScript, React JSX and TSX</td><td><code>import &quot;./icons.auricartisan.com.js&quot;;</code> at the top, after any directives such as <code>&quot;use client&quot;</code></td></tr>
+<tr><td>Vue, Svelte</td><td>An import inside the component&#39;s <code>&lt;script&gt;</code> block (a block is added if there is none)</td></tr>
+<tr><td>Astro</td><td>A browser-side <code>&lt;script&gt;</code> with the import at the end of the file (not a server-only frontmatter import)</td></tr>
+</tbody></table></div>
+<ol start="4">
+<li>It inserts the icon placeholder at your cursors. The whole change is one edit labelled &quot;Insert Auric icon and local CDN support&quot;.</li>
+<li>The message ends &quot;CDN bridge connected.&quot;</li>
+</ol>
+<p>On later inserts, an existing matching bridge and connection are reused. If a different file already uses the bridge name, a second name with a short hash is used; existing files are never overwritten.</p>
+<p>Only the bridge is saved automatically. Save your source file yourself.</p>
+<h2 id="at-runtime">At runtime</h2>
+<p>The bridge loads the CDN script once, renders every icon placeholder on the page, and also renders icons added later or whose attributes change.</p>
+<h2 id="requirements-and-limits">Requirements and limits</h2>
+<ul>
+<li>Pages need network access to show CDN icons.</li>
+<li>Your site&#39;s content security policy must allow the CDN for scripts, data requests and fonts, and the loader&#39;s generated font styles.</li>
+<li>Serve the bridge file with your application.</li>
+<li>JavaScript imports need module-aware tooling or a module script. Server-rendered frameworks need the bridge in a browser (client) entry.</li>
+<li>An HTML file that uses a <code>&lt;base&gt;</code> URL, or a Vue or Svelte component that uses an external script, is refused with an explanation; connect the bridge yourself or use Copy.</li>
+<li>If a selection overlaps the place where the loader connection goes, Insert asks you to place the cursor inside the page content.</li>
+<li>If the editor changes while Insert prepares, it asks you to try again.</li>
+<li>Browsing, searching, previewing, <strong>Copy</strong> and <strong>Save</strong> never create project files.</li>
+</ul>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> At the time of the 0.1.0 release, the published README noted that cross-origin access to the CDN&#39;s catalog files and fonts had not yet been enabled for other sites. Until it is, pages served from other origins may show blank icons even with a correct bridge. For fully self-contained artwork, use <strong>Copy</strong> as SVG or export SVG files. Material is font-backed and has no SVG form.</p>
+</blockquote>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Save this file locally or in your remote workspace before inserting CDN icons. Copy is still available.</td><td>The file is untitled or on an unsupported file system.</td></tr>
+<tr><td>Trust this workspace before generating CDN support files. SVG insertion and Copy are still available.</td><td>The workspace is in Restricted Mode.</td></tr>
+<tr><td>CDN insertion requires an HTML or web-framework source file. Use Copy for other output formats.</td><td>The file type is not supported for CDN insertion.</td></tr>
+<tr><td>The CDN support filenames are already used by different files. No files were overwritten.</td><td>Both bridge names are taken by other content.</td></tr>
+<tr><td>Icon inserted, but its new CDN bridge could not be saved. Save the support file before previewing the page.</td><td>Save the bridge file manually.</td></tr>
+</tbody></table></div>
+<h2 id="result">Result</h2>
+<p>Your page references the Auric icon CDN through a small local bridge, and each inserted placeholder renders as the chosen icon when the page loads.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="catalog-updates.html"><span>Previous</span>Catalog metadata updates</a><a href="collect-and-export.html"><span>Next</span>Collect and export</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-happens-on-your-first-insert">What happens on your first Insert</a></li><li><a href="#at-runtime">At runtime</a></li><li><a href="#requirements-and-limits">Requirements and limits</a></li><li><a href="#messages">Messages</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

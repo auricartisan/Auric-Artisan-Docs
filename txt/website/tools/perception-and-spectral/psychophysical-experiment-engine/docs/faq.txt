@@ -1,0 +1,86 @@
+==============================================================================
+PSYCHOPHYSICS BENCH FAQ
+==============================================================================
+Short answers to common questions about the Psychophysics Bench.
+Area: Website › Tools › Perception and spectral › Psychophysical Experiment Engine   Updated: 2026-09-25
+
+IS THIS A VISION TEST?
+======================
+
+No. It measures a contrast threshold on your screen under your conditions, as
+a teaching and exploration instrument. It is not calibrated, not clinical and
+not a diagnosis.
+
+WHICH STAIRCASE SHOULD I USE?
+=============================
+
+1-up / 2-down — 70.7% for most purposes: it is the standard transformed
+up-down rule and converges at a stated percentage. 3-down / 1-up — 79.4%
+converges higher and takes longer. The other three are the tool's own or not
+adaptive.
+
+WHY DOES THE THRESHOLD COME WITH A PERCENTAGE?
+==============================================
+
+Because the probability of a correct answer rises gradually with contrast. A
+threshold is the contrast at a chosen point on that curve, so it means nothing
+without the point.
+
+IS THE BAYESIAN TRACKER QUEST?
+==============================
+
+No. It works on a log scale with a stated prior, like QUEST, but its slope,
+lapse rate and prior width are the tool's choices rather than estimated or
+taken from previous measurements, so it carries its own name.
+
+IS THE ACCELERATED STAIRCASE PEST?
+==================================
+
+No. PEST is a sequential procedure driven by a statistical test; the
+accelerated staircase simply halves its step at reversals and doubles it after
+three moves in one direction.
+
+DOES IT FIT A PSYCHOMETRIC FUNCTION, COMPUTE D′ OR GIVE A CONFIDENCE INTERVAL?
+==============================================================================
+
+Not on screen in the current version. The Data register describes a logistic
+fit with guess and lapse rates, d′ and criterion for yes/no sessions, and a
+trial bootstrap, but no readout shows them. Export the session (when the
+Export tab opens) and fit the data in your own software.
+
+WHY IS MY THRESHOLD DIFFERENT EVERY RUN?
+========================================
+
+Staircase estimates vary from run to run; attention, fatigue, lighting and
+viewing distance add more. Average several runs under the same conditions.
+
+CAN I USE A DIFFERENT NUMBER OF ALTERNATIVES, SAME/DIFFERENT OR ODD-ONE-OUT?
+============================================================================
+
+No. Those tasks were withdrawn because they could not score trials correctly.
+The Paradigms tab says what each would need.
+
+WHY DOES THE PAGE ASK FOR MY VIEWING DISTANCE AND PIXEL PITCH?
+==============================================================
+
+Spatial frequency in cycles per degree and an envelope size in degrees depend
+on both. Without them the frequency would change with every screen and seat.
+
+DOES IT MEASURE MY SCREEN'S GAMMA?
+==================================
+
+No. It assumes the sRGB standard curve, and every export says so. The Drop a
+measured gamma table area on the Data tab is not active in the current
+version.
+
+WHY CAN I NOT DOWNLOAD MY RESULTS?
+==================================
+
+At the time of writing the Export tab does not open. See Export your data
+[export-your-data.txt] for workarounds.
+
+IS ANYTHING I DO SENT ANYWHERE?
+===============================
+
+No. Trials are run and stored in the page until you leave or start another
+run. See Privacy [../others/privacy.txt].

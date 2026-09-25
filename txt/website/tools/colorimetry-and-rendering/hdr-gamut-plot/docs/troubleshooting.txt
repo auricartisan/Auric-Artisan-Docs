@@ -1,0 +1,79 @@
+==============================================================================
+TROUBLESHOOTING THE HDR GAMUT PLOT
+==============================================================================
+Fixes for common problems in the HDR Gamut Plot.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+  Symptom:        Changing Working colour space changes nothing
+  Why it happens: The control is not applied in the current version
+  What to do:     Use Overlay gamuts to choose which spaces are drawn
+
+  Symptom:        Choosing the 2015 10° observer changes nothing
+  Why it happens: The locus is always the CIE 1931 2° observer's
+  What to do:     Expected
+
+  Symptom:        ICtCp marker draws nothing
+  Why it happens: Not applied in the current version
+  What to do:     No workaround
+
+  Symptom:        The Tone mapping operator menu changes nothing
+  Why it happens: Not applied in the current version
+  What to do:     Use the Tone Mapping [../../tone-mapping/README.txt] lab
+
+  Symptom:        PQ does not change when I move Peak brightness
+  Why it happens: PQ is absolute; the peak does not scale it
+  What to do:     Expected. Choose HLG or a gamma curve to see the peak's
+                  effect
+
+  Symptom:        The HLG reading is marked Adjusted
+  Why it happens: Dim or bright surround applies this tool's own factor
+  What to do:     Choose Reference dark for BT.2100's value
+
+  Symptom:        The EOTF comparison chart does not follow my settings
+  Why it happens: It is drawn once when the page loads
+  What to do:     Use Tone curve output for your settings
+
+  Symptom:        My image does not appear on the diagram
+  Why it happens: The current version reports the image's occupancy as text
+                  under the drop area; it does not scatter the pixels on the
+                  diagram
+  What to do:     Read the results under Plot an image on it
+
+  Symptom:        The image readout shows no nits
+  Why it happens: A PNG or JPEG does not record absolute luminance
+  What to do:     Expected; the tool will not invent one
+
+  Symptom:        Every image shows 100% of pixels inside all three gamuts
+  Why it happens: Untagged images are read as sRGB, which sits inside P3 and
+                  Rec.2020
+  What to do:     Read the occupancy figures, which do vary
+
+  Symptom:        Large images look squashed in the analysis
+  Why it happens: The image is reduced to at most 1,024 pixels on each side,
+                  which can change its proportions
+  What to do:     Proportions do not affect chromaticity occupancy
+
+  Symptom:        Convert to ICtCp says "No valid hex colours found."
+  Why it happens: Only six-digit HEX values are read
+  What to do:     Use values such as `#FF0000`
+
+  Symptom:        Download the result did not download a file
+  Why it happens: It copies the CSV to your clipboard
+  What to do:     Paste it into a spreadsheet or text file
+
+  Symptom:        Copying failed
+  Why it happens: The browser blocked clipboard access
+  What to do:     Allow clipboard access, or select the table and copy
+                  manually
+
+  Symptom:        Pressing 1–4 or A does nothing
+  Why it happens: The focus is in a text box, slider or list
+  What to do:     Click an empty area of the page first
+
+  Symptom:        My shared link opens with different overlays
+  Why it happens: Links carry axes, peak, curve and plane only
+  What to do:     Set the other controls again
+
+  Symptom:        Shares differ from published figures
+  Why it happens: The tool divides by its own drawn locus area
+  What to do:     See Compare broadcast gamuts [compare-broadcast-gamuts.txt]

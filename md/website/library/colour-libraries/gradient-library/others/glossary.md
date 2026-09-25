@@ -1,0 +1,26 @@
+---
+title: Gradient Library — Glossary
+description: Definitions of the terms used in the Gradient Library.
+product: Website › Library › Colour libraries › Gradient Library
+updated: 2026-09-25
+---
+
+# Gradient Library glossary
+
+| Term | Meaning |
+| --- | --- |
+| Achromatopsia | Complete colour blindness: only shades of grey are seen. |
+| Angle | The direction of a linear gradient, in degrees, as in CSS: `0deg` runs bottom to top, `90deg` left to right. |
+| Banding | Visible steps or edges in a gradient that should look smooth. |
+| Complexity | **Simple**, **Detailed** or **Extreme**: how elaborate a gradient is, backed by a complexity score. |
+| Contrast ratio | The WCAG 2 measure of the lightness difference between two colours, from 1:1 to 21:1. |
+| Design tokens | Named values in a format a design system or platform reads. |
+| Easing | The curve controlling how fast a blend moves between two stops. |
+| Interpolation space | The colour space in which in-between colours are calculated: for example sRGB, linear RGB, LCH, OKLab or OKLCH. "Short" and "long" say which way round the hue circle the blend travels. |
+| OKLab, OKLCH | A modern perceptual colour space, and its lightness–chroma–hue form. Equal distances in it look roughly equally different, which is why the banding check measures in OKLab. |
+| Scheme | The colour family a gradient belongs to, such as Aurora, Thermal or Terrain. |
+| Score | A quality score from 0 to 1 recorded for each gradient. |
+| sRGB | The standard colour space of the web. Plain CSS gradients blend in it. |
+| Step ratio | The largest colour change between neighbouring samples divided by the average change. 1 is perfectly even; the check calls 3.2 and above compression and 5.5 and above a step. |
+| Stop | One colour at one position along a gradient. |
+| WCAG | Web Content Accessibility Guidelines. AA text needs 4.5:1 contrast (3:1 for large text); AAA needs 7:1. |

@@ -1,0 +1,158 @@
+==============================================================================
+READ THE RESULTS
+==============================================================================
+Understand the threshold readouts, the staircase trace and the explanation
+tabs of the Psychophysics Bench.
+Area: Website › Tools › Perception and spectral › Psychophysical Experiment Engine   Updated: 2026-09-25
+
+THE READOUTS
+============
+
+  Readout:           Threshold, Michelson
+  What it tells you: Your threshold contrast, four decimals; highlighted when
+                     there is not yet an estimate
+
+  Readout:           At what percentage
+  What it tells you: The proportion correct the threshold belongs to
+
+  Readout:           Reversals used
+  What it tells you: How many reversals went into the estimate, out of how
+                     many occurred
+
+  Readout:           Delivered / asked
+  What it tells you: The contrast the screen could show divided by the
+                     contrast the staircase asked for; 1.00 means nothing was
+                     capped
+
+  Readout:           Trials run
+  What it tells you: Trials completed and scored
+
+  Readout:           Proportion correct
+  What it tells you: Correct trials divided by trials run, three decimals
+
+  Readout:           Degrees per pixel
+  What it tells you: The angle one pixel covers at your geometry
+
+  Readout:           Nyquist limit of the grid
+  What it tells you: The finest frequency your screen can show at your
+                     geometry; highlighted when the stimulus is above it
+
+How the threshold is worked out
+-------------------------------
+
+1-up / 2-down, 3-down / 1-up and Accelerated. The first two reversals are a
+warm-up and are discarded. Of the rest, an even number is used (if an odd
+number remain, the earliest is dropped too), because up-runs and down-runs of
+a transformed staircase are not symmetric around the threshold. The threshold
+is the geometric mean of those reversal contrasts, because the staircase steps
+by ratios. Reversals used reads, for example, 10 of 12; before there are two
+usable reversals it reads fewer than two reversals after the warm-up and the
+threshold shows —.
+
+Bayesian tracker. The threshold is the tracker's current estimate (the mean of
+its distribution on a log scale), and Reversals used reads, for example, 80
+trials, posterior mean.
+
+Constant stimuli. There is no threshold estimate; Threshold, Michelson and
+Reversals used show —. Read Proportion correct: it is your score at the
+starting contrast.
+
+What the percentage means
+-------------------------
+
+  Procedure                     | At what percentage
+  ------------------------------+---------------------------------------
+  1-up / 2-down                 | 70.7%
+  3-down / 1-up                 | 79.4%
+  Bayesian tracker              | 80.3% (two-interval) or 61.9% (yes/no)
+  Accelerated, Constant stimuli | not defined for this ladder
+
+A threshold from the accelerated staircase is a contrast near your threshold,
+but not a threshold at a stated percentage, and should not be compared
+directly with one.
+
+What is a normal value?
+-----------------------
+
+For a Gabor at about 4 c/deg in a dim room, detection thresholds typically
+fall roughly between 0.005 and 0.02 Michelson contrast on a well-behaved
+display. A bright room, an uncalibrated screen, glare or inattention all raise
+it. At such low contrasts the stripes differ from the background by only a few
+screen code values, so screen quality matters.
+
+THE STAIRCASE TRACE
+===================
+
+The staircase plots the contrast on every trial (horizontal axis: trial
+number; vertical axis: contrast on a logarithmic scale, labelled on the left).
+The note above it names the procedure.
+
+  - Grey dots — the first two reversals, the warm-up, discarded.
+  - Red dots — the reversals the estimate uses.
+  - Dashed gold line — the threshold, with its value on the right.
+
+A good run falls from the starting contrast, then zig-zags in a narrowing
+band. The trace is drawn for the three staircases that have reversals (1-up /
+2-down, 3-down / 1-up, Accelerated). For the Bayesian tracker and Constant
+stimuli it stays empty with the text The trace appears here once the run
+starts; read the numbers instead.
+
+Double-click the trace or the stimulus to see it enlarged; press `Esc` to
+close.
+
+WARNINGS UNDER THE READOUTS
+===========================
+
+  - Above the pixel grid's Nyquist limit. — the frequency is too fine for your
+    screen at your geometry; what you see is an alias.
+  - The contrast asked for does not fit about this background. — the staircase
+    asked for more contrast than fits; Delivered / asked is below 1.00. A
+    threshold measured while this shows is a threshold for a different
+    stimulus. Choose a darker background.
+
+WHAT THE PAGE DOES NOT SHOW
+===========================
+
+The bench computes more than it displays. A psychometric function fit (a
+logistic with the task's guess rate and a fitted lapse rate), d′ and criterion
+for yes/no sessions, and a bootstrap interval are described in the Data
+register, but no readout on the page shows them in the current version. The
+session file records every trial, so you can fit them in your own analysis
+software.
+
+THE EXPLANATION TABS
+====================
+
+When the tabs open (see Troubleshooting [troubleshooting.txt]), they hold the
+following.
+
+Method has three views:
+
+  - The contrast chain — the steps from Contrast asked through Mean luminance,
+    L × (1 ± m) and the sRGB OETF to Code values, and a table of what an
+    earlier version delivered for contrasts of 0.02 to 1 (Contrast asked,
+    Codes sent, Luminance reached, Contrast delivered, Error).
+  - The frequency axis — a table of your current viewing distance, pixel
+    pitch, degrees per pixel, cycles per pixel at your frequency, and the
+    Nyquist limit, with where each comes from.
+  - What each ladder estimates — each procedure and the percentage it
+    converges at, and notes on the multiplicative step, the even reversal
+    count and why the fit carries a guess rate.
+
+Paradigms lists the five tasks the menu once offered: the two that score
+(tagged Scores) and three withdrawn ones (tagged Never correct), each with
+what it would take to bring back.
+
+Data lists 13 entries with a status each: Verbatim (3: sRGB transfer, Levitt's
+rules, the 1/2N extreme-proportion correction), Computed (5: Michelson
+contrast in luminance, viewing geometry, signal-detection formulae, inverse
+normal, bootstrap), Stand-in (3: Bayesian tracker, psychometric fit,
+accelerated staircase) and Absent (2: Weibull fit, ROC curve). Its Calibrate
+the display area (Drop a measured gamma table) is not active in the current
+version.
+
+Reference lists eleven sources, from Levitt (1971) to Abramowitz and Stegun
+(1964), each with what it is used for and a tag: Runs, Stand-in or Withdrawn.
+
+You should now be able to say what your threshold is a threshold of, and how
+much to trust it.

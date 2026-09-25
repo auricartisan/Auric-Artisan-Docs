@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use the loader — Auric Artisan Docs</title>
+<meta name="description" content="Render Icon CDN icons with the icon-cdn.js placeholders and the AuricIcons JavaScript API, including icons added after the page loads.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Icon CDN</a>
+<h2>Icon CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="embed-an-icon.html">Embed an icon</a></li>
+<li><a href="export-and-self-host.html">Export and self-host</a></li>
+<li><a href="style-size-and-colour.html">Style, size and colour</a></li>
+<li><a href="use-the-loader.html" aria-current="page">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Icon CDN</a> &rsaquo; <a href="README.html">Icon CDN documentation</a></nav>
+<p class="kicker">Services › Icon CDN</p>
+<h1>Use the loader</h1>
+<p class="lede">Render Icon CDN icons with the icon-cdn.js placeholders and the AuricIcons JavaScript API, including icons added after the page loads.</p>
+<p><code>icon-cdn.js</code> is a small script with no dependencies. It fills <code>data-icon</code> placeholders with inline SVG, returns any icon&#39;s markup to your code, and searches the catalogue. It creates a global object, <code>AuricIcons</code> (also available as <code>AuricIconLoader</code>).</p>
+<h2 id="placeholders">Placeholders</h2>
+<pre class="code" data-lang="html"><code>&lt;script src=&quot;https://icons.auricartisan.com/icon-cdn.js&quot;&gt;&lt;/script&gt;
+
+&lt;i data-icon=&quot;lucide:house&quot;&gt;&lt;/i&gt;
+&lt;i data-icon=&quot;phosphor:heart&quot; data-style=&quot;fill&quot; data-size=&quot;32&quot;
+   data-color=&quot;#e11&quot; data-stroke=&quot;1.5&quot;&gt;&lt;/i&gt;</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Attribute</th><th>What it does</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><code>data-icon</code></td><td>The icon to show (required): <code>set:name</code>, <code>set-name</code> or <code>name</code></td><td><code>tabler:home</code></td></tr>
+<tr><td><code>data-style</code></td><td>One of the set&#39;s styles; otherwise the set&#39;s default</td><td><code>fill</code>, <code>outline</code>, <code>24/solid</code></td></tr>
+<tr><td><code>data-size</code></td><td>Width and height. A number is treated as pixels; a value with a unit is used as written.</td><td><code>24</code>, <code>1.5em</code></td></tr>
+<tr><td><code>data-color</code></td><td>The icon&#39;s colour; otherwise the text colour</td><td><code>#e11</code>, <code>rebeccapurple</code></td></tr>
+<tr><td><code>data-stroke</code></td><td>Stroke width, for stroke-drawn icons</td><td><code>1.5</code></td></tr>
+</tbody></table></div>
+<p>When the page has finished loading (or at once, if it already has), the loader replaces the contents of every element with <code>data-icon</code> and marks it with a <code>data-icon-done</code> attribute. An element marked done is not processed again. If the icon cannot be found, the element is left as it was.</p>
+<p>Any element works, not only <code>&lt;i&gt;</code>: <code>&lt;span data-icon=&quot;…&quot;&gt;</code> is fine.</p>
+<h2 id="icons-added-later">Icons added later</h2>
+<p>Placeholders added after the page loads, for example by your framework, are not filled automatically. Call <code>inject()</code> after adding them:</p>
+<pre class="code" data-lang="js"><code>await AuricIcons.inject();              // the whole document
+await AuricIcons.inject(myContainer);   // only inside one element</code></pre>
+<p>It returns the number of placeholders it found.</p>
+<h2 id="get-an-icons-markup">Get an icon&#39;s markup</h2>
+<pre class="code" data-lang="js"><code>const svg = await AuricIcons.svg('tabler:home', { size: 24, color: 'red' });
+element.innerHTML = svg;</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>style</code></td><td>One of the set&#39;s styles</td></tr>
+<tr><td><code>size</code></td><td>Width and height, as for <code>data-size</code></td></tr>
+<tr><td><code>color</code></td><td>The colour</td></tr>
+<tr><td><code>stroke</code></td><td>The stroke width</td></tr>
+</tbody></table></div>
+<p><code>svg()</code> returns a string: SVG markup for SVG sets, or a <code>&lt;span&gt;</code> in the Material webfont for Material icons. It returns an empty string when there is no such icon.</p>
+<h2 id="find-icons">Find icons</h2>
+<pre class="code" data-lang="js"><code>const hits = await AuricIcons.search('arrow', { set: 'lucide', limit: 50 });
+const rec  = await AuricIcons.get('feather:activity');
+const sets = await AuricIcons.sets();</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>search(query, { set, limit })</code></td><td>Records whose name, id or search terms contain the query, optionally in one set and limited in number</td></tr>
+<tr><td><code>get(name)</code> or <code>resolve(name)</code></td><td>The icon&#39;s record (its set, id, name and available styles), or <code>null</code></td></tr>
+<tr><td><code>list()</code></td><td>Every icon record</td></tr>
+<tr><td><code>sets()</code></td><td>The metadata of the seven sets</td></tr>
+</tbody></table></div>
+<p>The first call to any of these downloads the catalogue index, which is large; reuse the results.</p>
+<h2 id="how-names-are-resolved">How names are resolved</h2>
+<ol>
+<li>With a set prefix (<code>tabler:home</code> or <code>tabler-home</code>), the loader looks for that icon in that set.</li>
+<li>If that set has no such icon, or there is no prefix, it takes the first set that has an icon with that name, in the order Lucide, Phosphor, Tabler, Remix, Heroicons, Feather, Material.</li>
+<li>Finally it tries an exact id or name.</li>
+</ol>
+<p>Because of step 2, a name that a set does not have can quietly come from another set. For example, Lucide&#39;s house icon is <code>house</code>, so <code>lucide:home</code> shows another set&#39;s <code>home</code> icon. Copy names from the Icon Library to be sure.</p>
+<h2 id="where-it-loads-from">Where it loads from</h2>
+<p>By default the loader loads its data from the address it was loaded from. To use a self-hosted copy, set one of these (the first found wins):</p>
+<ol>
+<li><code>data-base</code> on the script tag;</li>
+<li><code>window.AURIC_ICON_BASE</code> (or <code>window.AURIC_ICON_ASSET_BASE</code>), set before the script loads;</li>
+<li><code>&lt;meta name=&quot;auric-icon-base&quot; content=&quot;…&quot;&gt;</code> in the page.</li>
+</ol>
+<p>You can also set <code>AuricIcons.base</code> from JavaScript.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="style-size-and-colour.html">Style, size and colour</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="../others/privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="style-size-and-colour.html"><span>Previous</span>Style, size and colour</a><a href="reference.html"><span>Next</span>Reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#placeholders">Placeholders</a></li><li><a href="#icons-added-later">Icons added later</a></li><li><a href="#get-an-icons-markup">Get an icon's markup</a></li><li><a href="#find-icons">Find icons</a></li><li><a href="#how-names-are-resolved">How names are resolved</a></li><li><a href="#where-it-loads-from">Where it loads from</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,373 @@
+==============================================================================
+REFERENCE: COMMANDS, KEYS AND SETTINGS
+==============================================================================
+Every Auric Artisan Font Hub command, keyboard shortcut, menu entry, panel
+control and setting, with types, defaults and ranges.
+Area: VS Code extensions › Auric Artisan Font Hub   Updated: 2026-09-25
+
+This page covers Auric Artisan Font Hub 0.1.0: 16 commands, 2 keyboard
+shortcuts, one Activity Bar view and 13 settings. Command and setting IDs use
+the `auricFontLib` prefix, kept from the extension's earlier name.
+
+COMMANDS
+========
+
+Fifteen commands appear under Auric Artisan Font Hub: in the Command Palette;
+Show Logs appears under Auric Font Hub:.
+
+  Command:      Open Font Hub
+  ID:           `auricFontLib.openStudio`
+  Keys:         `Ctrl` + `Alt` + `F`
+  What it does: Open the full studio in an editor tab
+
+  Command:      Quick Pick Font
+  ID:           `auricFontLib.quickPick`
+  Keys:         `Ctrl` + `Alt` + `T`
+  What it does: Choose a family, then an action
+
+  Command:      Add Font to Code
+  ID:           `auricFontLib.insertEmbed`
+  Keys:         —
+  What it does: Choose a family and add it to the active file in the default
+                format
+
+  Command:      Copy Font Embed As…
+  ID:           `auricFontLib.copyEmbed`
+  Keys:         —
+  What it does: Choose a family and a format, and copy the snippet
+
+  Command:      Pick from Favorite Fonts
+  ID:           `auricFontLib.showFavorites`
+  Keys:         —
+  What it does: Quick Pick limited to favourites
+
+  Command:      Pick from Recent Fonts
+  ID:           `auricFontLib.showRecents`
+  Keys:         —
+  What it does: Quick Pick limited to recent fonts
+
+  Command:      Compare Selected Fonts
+  ID:           `auricFontLib.compareSelected`
+  Keys:         —
+  What it does: Compare up to four selected families
+
+  Command:      Download Self-hosting Font Kit
+  ID:           `auricFontLib.downloadKit`
+  Keys:         —
+  What it does: Export a ZIP kit for chosen families
+
+  Command:      Refresh Font Catalog from Auric CDN
+  ID:           `auricFontLib.refreshCatalog`
+  Keys:         —
+  What it does: Refresh catalogue data now
+
+  Command:      Clear Favorites, Recents, and Selection
+  ID:           `auricFontLib.clearPersonalization`
+  Keys:         —
+  What it does: Clear all three, after confirmation
+
+  Command:      Clear Downloaded Font Cache
+  ID:           `auricFontLib.clearCache`
+  Keys:         —
+  What it does: Empty the cache; the bundled catalogue stays
+
+  Command:      Explore Fonts on AuricArtisan.com
+  ID:           `auricFontLib.openWeb`
+  Keys:         —
+  What it does: Open https://auricartisan.com/tool/font/
+
+  Command:      Focus Font Search
+  ID:           `auricFontLib.focusSearch`
+  Keys:         —
+  What it does: Move focus to the search box
+
+  Command:      Show Logs
+  ID:           `auricFontLib.showLogs`
+  Keys:         —
+  What it does: Open the Font Hub log
+
+  Command:      Preview Font Insertion
+  ID:           `auricFontLib.previewInsert`
+  Keys:         —
+  What it does: Show the proposed change as a diff, with Apply and Cancel
+
+  Command:      Check Font CDN and Browser CORS
+  ID:           `auricFontLib.checkCdn`
+  Keys:         —
+  What it does: Run the CDN delivery check
+
+On macOS the two shortcuts are `Cmd` + `Alt` + `F` and `Cmd` + `Alt` + `T`.
+
+WHERE COMMANDS APPEAR
+=====================
+
+  Place:   Activity Bar
+  Entries: Auric Font Hub, with the Font Hub view
+
+  Place:   Font Hub view title bar
+  Entries: Open Font Hub, Focus Font Search, Refresh Font Catalog from Auric
+           CDN
+
+  Place:   Editor context menu › Auric Fonts
+  Entries: Quick Pick Font, Add Font to Code, Preview Font Insertion, Copy
+           Font Embed As…, Open Font Hub
+
+  Place:   Status bar
+  Entries: Fonts (opens Font Hub); hide with `auricFontLib.statusBar.enabled`
+
+Quick Pick Font actions
+-----------------------
+
+After you choose a family: Add font to code, Preview CDN insertion, Copy embed
+as…, Inspect in Font Hub, Download self-hosting kit, Toggle favorite.
+
+PANEL CONTROLS
+==============
+
+  Control:      Search
+  Where:        Controls
+  What it does: Search family, designer, script, feature and licence
+
+  Control:      Category
+  Where:        Controls
+  What it does: Filter by category
+
+  Control:      Sort
+  Where:        Controls
+  What it does: Ten orders, from Alphabetical to Variable first
+
+  Control:      Preview text
+  Where:        Controls
+  What it does: Sample text on cards (up to 240 characters)
+
+  Control:      Size
+  Where:        Controls
+  What it does: Sample size, 18–96 px
+
+  Control:      More filters
+  Where:        Controls
+  What it does: Show Properties, Weights, OpenType, Scripts, License, Source
+                chips
+
+  Control:      Scopes
+  Where:        Above results
+  What it does: All, For you, Favorites, Recent, Variable, Selected
+
+  Control:      Find your font
+  Where:        Above results
+  What it does: Design intent, industry, colour palette, Prioritize
+                accessibility, Prefer variable fonts, Rank fonts
+
+  Control:      Density
+  Where:        Above results
+  What it does: Compact, comfortable, showcase
+
+  Control:      Collections & recommendations
+  Where:        Above results
+  What it does: Featured collections and recommendations
+
+  Control:      Show more
+  Where:        Below results
+  What it does: Load the next batch
+
+  Control:      Check CDN health, CDN diagnostics, Run a live check
+  Where:        Card, footer, help
+  What it does: Run the CDN check
+
+  Control:      ↻, ↗, ⚙
+  Where:        Header
+  What it does: Refresh catalogue, open the web library, open settings
+
+  Control:      Open studio ↗
+  Where:        Sidebar header
+  What it does: Open the full studio
+
+  Control:      Card: heart, select
+  Where:        Each card
+  What it does: Favourite, add to selection
+
+  Control:      Card: Add to code, Preview
+  Where:        Each card
+  What it does: Automatic insertion, with or without a diff preview
+
+  Control:      Tray: Copy embed, Insert, Compare, Download
+  Where:        Selected tray
+  What it does: Act on the whole selection
+
+  Control:      Details: Favorite, Select
+  Where:        Details header
+  What it does: Favourite or select the open family
+
+  Control:      Details tabs
+  Where:        Details
+  What it does: Specimen, Waterfall, Suitability, Pairings, Features, Develop,
+                Glyphs, Charset, Styles, About, License, Use & Embed
+
+  Control:      Details: Copy, Insert, Save
+  Where:        Develop, Use & Embed
+  What it does: Use the chosen format
+
+  Control:      Details: Download kit
+  Where:        Styles, Use & Embed
+  What it does: Export a kit for this family
+
+  Control:      Details: Load full license text
+  Where:        License
+  What it does: Show the full licence
+
+KEYS INSIDE FONT HUB
+====================
+
+  Keys:         `/` (outside a text field) or `Ctrl` + `K`
+  What they do: Focus and select the search box
+
+  Keys:         `Escape`
+  What they do: Close the comparison, details or tray; otherwise clear the
+                search
+
+  Keys:         Arrow keys on a card
+  What they do: Move between cards
+
+  Keys:         `Tab`
+  What they do: Stays within an open details panel, tray or comparison
+
+SETTINGS
+========
+
+  Setting:         `auricFontLib.defaultFormat`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `link`, `import`, `family`, `fontFace`, `loader`,
+                   `tailwind`, `scss`, `tokens`, `name`
+  What it does:    Format used by Add Font to Code; `auto` adds the CDN
+                   stylesheet and a class
+
+  Setting:         `auricFontLib.previewText`
+  Type:            string
+  Default:         `The quick brown fox jumps over the lazy dog`
+  Values or range: —
+  What it does:    Default sample text on cards
+
+  Setting:         `auricFontLib.previewSize`
+  Type:            number
+  Default:         `36`
+  Values or range: 18–96
+  What it does:    Default sample size in pixels
+
+  Setting:         `auricFontLib.density`
+  Type:            string
+  Default:         `comfortable`
+  Values or range: `compact`, `comfortable`, `showcase`
+  What it does:    Card density in the sidebar and studio
+
+  Setting:         `auricFontLib.pageSize`
+  Type:            integer
+  Default:         `48`
+  Values or range: 24–144
+  What it does:    Families shown per batch
+
+  Setting:         `auricFontLib.recommendations.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: —
+  What it does:    Show recommendations from role scores, style intent and
+                   local use
+
+  Setting:         `auricFontLib.network.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: —
+  What it does:    Allow requests to fonts.auricartisan.com for metadata,
+                   previews and downloads
+
+  Setting:         `auricFontLib.catalogRefresh`
+  Type:            string
+  Default:         `daily`
+  Values or range: `manual`, `daily`, `always`
+  What it does:    When to refresh the catalogue from the CDN
+
+  Setting:         `auricFontLib.cache.maxAgeHours`
+  Type:            integer
+  Default:         `24`
+  Values or range: 1–720
+  What it does:    How long cached CDN metadata counts as fresh
+
+  Setting:         `auricFontLib.cache.maxMB`
+  Type:            integer
+  Default:         `512`
+  Values or range: 64–4096
+  What it does:    Disk space in MiB for the cache; oldest items removed first
+
+  Setting:         `auricFontLib.download.maxFamilies`
+  Type:            integer
+  Default:         `6`
+  Values or range: 1–12
+  What it does:    Most families in one self-hosting kit
+
+  Setting:         `auricFontLib.statusBar.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: —
+  What it does:    Show the Fonts status bar item
+
+  Setting:         `auricFontLib.includeSystemFonts`
+  Type:            boolean
+  Default:         `false`
+  Values or range: —
+  What it does:    Include system-font metadata; previews depend on installed
+                   fonts
+
+Format values
+-------------
+
+  Value:  `auto`
+  Label:  Automatic
+  Output: CDN stylesheet plus `.auric-font-<id>` class, placed by file type
+
+  Value:  `link`
+  Label:  HTML stylesheet link
+  Output: `<link rel="stylesheet" href="…/css/<id>.css">`
+
+  Value:  `import`
+  Label:  CSS @import
+  Output: `@import url('…/css/<id>.css');`
+
+  Value:  `family`
+  Label:  CSS font-family
+  Output: `font-family: '<Family>', <fallback>;`
+
+  Value:  `fontFace`
+  Label:  @font-face
+  Output: `@font-face` rules per style
+
+  Value:  `loader`
+  Label:  AuricFonts loader
+  Output: A script that loads the Auric font loader for the family
+
+  Value:  `tailwind`
+  Label:  Tailwind config
+  Output: A `fontFamily` entry
+
+  Value:  `scss`
+  Label:  SCSS variable
+  Output: `$font-<role>: '<Family>', <fallback>;`
+
+  Value:  `tokens`
+  Label:  Design tokens JSON
+  Output: A typography token with family, fallback and CSS address
+
+  Value:  `name`
+  Label:  Family name
+  Output: The family name only
+
+FILES FONT HUB WRITES
+=====================
+
+  File                    | When
+  ------------------------+----------------------------------------------
+  The active document     | Add to code, Insert, Apply (left unsaved)
+  A snippet file you name | Save in the details panel
+  A ZIP kit you name      | Download kit and related commands
+  Cache                   | VS Code's extension storage, not your project
+
+Output channel: Auric Font Hub.

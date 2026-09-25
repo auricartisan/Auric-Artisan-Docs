@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map a list of colours — Auric Artisan Docs</title>
+<meta name="description" content="Map up to 50 HEX colours at once and export images, settings and a link.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Mapping</a>
+<h2>Gamut Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Gamut Mapping</a></li>
+<li><a href="compare-spaces-and-methods.html">Compare spaces and methods</a></li>
+<li><a href="map-a-colour-list.html" aria-current="page">Map a list of colours</a></li>
+<li><a href="map-a-colour.html">Map a colour into a smaller gamut</a></li>
+<li><a href="reference.html">Gamut Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Gamut Mapping</a></li>
+<li><a href="faq.html">Gamut Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Mapping</a> &rsaquo; <a href="README.html">Gamut Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Map a list of colours</h1>
+<p class="lede">Map up to 50 HEX colours at once and export images, settings and a link.</p>
+<h2 id="map-the-list">Map the list</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, set the <strong>Source</strong> and <strong>Target</strong> spaces, the <strong>Method</strong> and, for chroma compression, the <strong>Compression Strength</strong>. The list goes through the same settings.</li>
+<li>Open the <strong>Export</strong> tab and find <strong>Map a list of colours at once</strong>.</li>
+<li>Enter HEX values, one per line (commas also separate them). Three-digit (<code>#F0A</code>) and six-digit (<code>#FF00AA</code>) forms are accepted, with or without <code>#</code>. Up to 50 are used.</li>
+<li>Select <strong>Run the list</strong>.</li>
+<li>Read the table:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Input</strong></td><td>Your colour and its swatch</td></tr>
+<tr><td><strong>Output</strong></td><td>The mapped colour, converted to sRGB HEX for display on screen</td></tr>
+<tr><td><strong>OOG</strong></td><td><strong>Yes</strong> if the input was outside the target gamut, otherwise <strong>No</strong></td></tr>
+<tr><td><strong>ΔE₀₀</strong></td><td>The colour change caused by mapping</td></tr>
+<tr><td><strong>Lab</strong></td><td>The input&#39;s L*, a*, b*</td></tr>
+</tbody></table></div>
+<p>A summary line gives the number processed, how many were out of gamut and the average ΔE₀₀. If no valid HEX is found, the panel says &quot;No valid hex values found.&quot;</p>
+<p>The <strong>Output</strong> HEX is an sRGB value for your screen. When the target is wider than sRGB (for example Rec. 2020), it is not the target-space code value.</p>
+<h2 id="export">Export</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><strong>Source slice, PNG</strong></td><td><code>gamut-map-gm-canvas-src.png</code>: the source slice at its drawn size, on the dark background, with outlines</td></tr>
+<tr><td><strong>Mapped slice, PNG</strong></td><td><code>gamut-map-gm-canvas-dst.png</code>: the mapped slice</td></tr>
+<tr><td><strong>Everything as JSON</strong></td><td><code>gamut-map-config.json</code>: source space, target space, method, strength, L*, resolution, sampler and a timestamp</td></tr>
+<tr><td><strong>Link</strong>, then <strong>Copy</strong></td><td>A link that reopens this state</td></tr>
+</tbody></table></div>
+<p>The link records the source and target spaces, the method, L*, resolution, sampler, strength and base colour. Overlays and the ΔE Playground colours are not included. The JSON file holds settings only, not the figures on screen.</p>
+<h2 id="result">Result</h2>
+<p>You have every colour in your list mapped with its out-of-gamut flag and ΔE₀₀, and files or a link to share the setup.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-spaces-and-methods.html"><span>Previous</span>Compare spaces and methods</a><a href="map-a-colour.html"><span>Next</span>Map a colour into a smaller gamut</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#map-the-list">Map the list</a></li><li><a href="#export">Export</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

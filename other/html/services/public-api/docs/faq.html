@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the Auric Artisan REST API.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html" aria-current="page">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>FAQ</h1>
+<p class="lede">Short answers to common questions about the Auric Artisan REST API.</p>
+<h3 id="which-plans-include-the-api">Which plans include the API?</h3>
+<p>Specialist and Industrial Pro. Apprentice (free) and Artisan do not include it.</p>
+<h3 id="can-i-try-it-before-buying">Can I try it before buying?</h3>
+<p>Yes, partly. The discovery endpoints are open without a key: <code>GET /v1</code>, <code>GET /v1/catalog</code>, <code>GET /v1/openapi.yaml</code>, <code>GET /v1/docs</code>, <code>GET /v1/tiers</code>, <code>GET /v1/health</code> and <code>GET /v1/webhooks/events</code>.</p>
+<h3 id="how-many-keys-can-i-have">How many keys can I have?</h3>
+<p>Up to 10 active keys. They share one allowance, because limits are pooled per account.</p>
+<h3 id="what-is-a-credit">What is a credit?</h3>
+<p>The unit the monthly quota is counted in. A standard request costs 1 credit; heavier work costs more, up to 25 for an async job. Each response says what it cost in <code>x-credits-cost</code>.</p>
+<h3 id="what-happens-when-i-run-out">What happens when I run out?</h3>
+<p>Calls return <code>429 QUOTA_EXCEEDED</code> until the monthly reset, and nothing is charged, unless you turned on prepaid overage.</p>
+<h3 id="can-i-be-billed-unexpectedly">Can I be billed unexpectedly?</h3>
+<p>No. Overage is off by default, spends only credits bought in advance, stops at a spend cap you set, and stops unconditionally at ten times your included allowance. Nothing is invoiced after the fact.</p>
+<h3 id="do-purchased-credits-expire">Do purchased credits expire?</h3>
+<p>Purchased credits do not expire at period end. Full terms are in the Subscription &amp; Billing Policy.</p>
+<h3 id="is-the-api-the-same-as-the-website-tools">Is the API the same as the website tools?</h3>
+<p>It uses the same engines where it can, but some things differ. The analyzer endpoints read a page&#39;s source and refuse checks that need a browser, such as contrast; the website&#39;s Analyzer runs pages in your browser. API credits and the website&#39;s tool tokens are separate balances.</p>
+<h3 id="why-does-the-analyzer-return-no-overall-score">Why does the analyzer return no overall score?</h3>
+<p>Because a markup-only run cannot measure every category, and averaging a subset would give a misleading number. You get the measured categories in <code>category_scores</code> and a list of <code>unscored_categories</code>.</p>
+<h3 id="which-standards-does-the-accessibility-check-support">Which standards does the accessibility check support?</h3>
+<p><code>/v1/accessibility/check</code> accepts <code>WCAG 2.1</code>, <code>WCAG 2.2</code>, <code>WCAG 3.0</code>, <code>Auric SD Flexible</code>, <code>Auric SD Strict</code>, or <code>all</code>, the default.</p>
+<h3 id="is-there-a-client-library">Is there a client library?</h3>
+<p>The documentation lists a JavaScript package (<code>@auric-artisan/api</code>), a Python package (<code>auric-artisan</code>), a CLI (<code>@auric-artisan/cli</code>), an MCP server, a Postman collection and GraphQL. See <a href="sdks-and-tooling.html">SDKs and tooling</a>.</p>
+<h3 id="can-i-call-the-api-from-a-web-page">Can I call the API from a web page?</h3>
+<p>Only with care: a key in front-end code is visible to anyone. Call the API from your server and keep the key secret.</p>
+<h3 id="how-do-i-cite-a-colour-pair-or-palette">How do I cite a colour pair or palette?</h3>
+<p>Use its record id, such as <code>acc_2j</code> or <code>pal_1z</code>. Records are derived from a published seed, so anyone can recover the same record with the matching <code>/:id</code> endpoint.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting</a><a href="endpoints/README.html"><span>Next</span>Endpoints</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Right-click menu — Auric Artisan Docs</title>
+<meta name="description" content="The extension's optional right-click menu for websites — turning it on, scenes and their actions, the header, quick bar, filter, submenus, pinning, the gear, keys, and stepping aside.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>On websites</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="browser-menu-items.html">Browser menu items</a></li>
+<li><a href="colour-picker-on-pages.html">Colour picker on pages</a></li>
+<li><a href="for-site-owners.html">For site owners</a></li>
+<li><a href="right-click-menu.html" aria-current="page">Right-click menu</a></li>
+<li><a href="website-pickers.html">Website pickers</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">On websites</a></nav>
+<p class="kicker">Browser extension › On websites</p>
+<h1>Right-click menu</h1>
+<p class="lede">The extension's optional right-click menu for websites — turning it on, scenes and their actions, the header, quick bar, filter, submenus, pinning, the gear, keys, and stepping aside.</p>
+<p>The custom right-click menu replaces the browser&#39;s menu on websites with one built around what you clicked. It puts that thing&#39;s own actions first, spelled out, and folds everything else into a few rows that open submenus, so the menu fits on one screen. It adds actions browsers bury or lack: QR codes, screenshots, read aloud, searching a selection on six engines, copying as Markdown, reopening a closed tab, and the extension&#39;s own tools.</p>
+<p>It is <strong>off</strong> by default.</p>
+<h2 id="turn-it-on">Turn it on</h2>
+<ol>
+<li>Open <strong>Settings</strong> › <strong>Right-click</strong>.</li>
+<li>Turn on <strong>Custom right-click menu</strong>.</li>
+<li>The browser asks for three optional permissions: reading the clipboard (for <strong>Paste</strong>), downloads (for <strong>Save as</strong>) and sessions (for <strong>Reopen closed tab</strong>). Accept to finish.</li>
+</ol>
+<p>If you decline, the switch turns itself off again and the message says &quot;Permission declined — custom menu stays off&quot;. You can grant a single permission later from Settings › Right-click › <strong>Permissions</strong>.</p>
+<p><strong>Shift</strong> + right-click always opens the browser&#39;s own menu, even with the custom menu on.</p>
+<h2 id="anatomy">Anatomy</h2>
+<p>From top to bottom:</p>
+<ol>
+<li><strong>The header</strong> names what you right-clicked, with the detail that matters.</li>
+<li><strong>The quick bar</strong>: one-click buttons you choose.</li>
+<li><strong>The filter field</strong> (&quot;Type to filter N actions&quot;). It has focus when the menu opens.</li>
+<li><strong>The context section</strong>: the clicked thing&#39;s own actions, spelled out.</li>
+<li><strong>One row per other group</strong>, each opening a submenu: <strong>Auric tools</strong>, <strong>Page</strong>, <strong>Tab &amp; window</strong> and <strong>View</strong>.</li>
+<li><strong>Browser&#39;s own menu</strong>, the last row.</li>
+<li><strong>The footer</strong>: key hints, confirmations and the gear.</li>
+</ol>
+<h2 id="scenes">Scenes</h2>
+<p>What you right-click decides the header and the context section. Each scene below lists what the header shows and the actions in the context section.</p>
+<h3 id="an-element">An element</h3>
+<ul>
+<li><strong>Header:</strong> its tag and size, such as <code>div.card · 1180 × 64</code>.</li>
+<li><strong>Actions (Auric tools):</strong> Inspect element; Copy selector (CSS, JavaScript, Playwright or XPath, each previewed); Copy computed styles; Pick colour; Check contrast on page; Simulate colour vision.</li>
+</ul>
+<h3 id="selected-text">Selected text</h3>
+<ul>
+<li><strong>Header:</strong> the text, with its word and character count.</li>
+<li><strong>Actions:</strong> Copy; Copy as plain text; Search the web; Translate; Read aloud; QR code; Share… (where the browser supports sharing).</li>
+</ul>
+<h3 id="a-selected-colour-value">A selected colour value</h3>
+<p>When the selection is a colour such as <code>#1a73e8</code>:</p>
+<ul>
+<li><strong>Header:</strong> the colour, a swatch and its <code>rgb()</code> value.</li>
+<li><strong>Actions:</strong> Copy HEX, Copy RGB, Copy HSL and Copy OKLCH (each value shown); Copy; Search the web.</li>
+</ul>
+<h3 id="a-link">A link</h3>
+<ul>
+<li><strong>Header:</strong> its address, and <strong>This site</strong> or <strong>Another site</strong>.</li>
+<li><strong>Actions:</strong> Open link in new tab; Open link in new window; Open link in private window; Copy link address; Copy link text; Copy link as Markdown; QR code for link; Save link as….</li>
+</ul>
+<h3 id="an-image">An image</h3>
+<ul>
+<li><strong>Header:</strong> its file name, pixel size and file type.</li>
+<li><strong>Actions:</strong> Open image in new tab; Copy image; Copy image address; Copy alt text (shown, or &quot;None&quot;); Copy its palette (four swatches shown, when the image allows it); Pick colour from image; QR code for image; Save image as….</li>
+<li>An image inside a link also offers Open link in new tab and Copy link address.</li>
+</ul>
+<h3 id="a-video-or-audio">A video or audio</h3>
+<ul>
+<li><strong>Header:</strong> <strong>Video</strong> or <strong>Audio</strong>, and its length.</li>
+<li><strong>Actions:</strong> Play or Pause; Mute or Unmute; Loop; Playback speed (0.5×, 1× (normal), 1.25×, 1.5×, 2×); Picture-in-picture (videos); Full screen; Copy media address; Save media as… (not for streams).</li>
+</ul>
+<h3 id="a-text-field">A text field</h3>
+<ul>
+<li><strong>Header:</strong> its name or label, and its type.</li>
+<li><strong>Actions:</strong> Undo; Redo; Cut; Copy; Paste; Delete; Select all; Clear field.</li>
+</ul>
+<h3 id="the-page-itself">The page itself</h3>
+<ul>
+<li><strong>Header:</strong> the page title and site.</li>
+<li><strong>Actions (Page):</strong> Copy page URL; Copy page title; Copy as Markdown link; QR code for this page; View page source; Save page as…; Print…; Translate page.</li>
+</ul>
+<h2 id="the-groups">The groups</h2>
+<ul>
+<li><strong>Auric tools</strong>: As in the element scene above, when it is not already the context</li>
+<li><strong>Page</strong>: As in the page scene above</li>
+<li><strong>Tab &amp; window</strong>: New tab; Duplicate tab; Pin or unpin tab; Mute or unmute tab; Save screenshot; Copy screenshot; Reopen closed tab; Close tab</li>
+<li><strong>View</strong>: Scroll to top; Scroll to bottom; Zoom in; Zoom out; Actual size; Full screen; Read page aloud (Stop reading while it reads); Hard reload</li>
+</ul>
+<p>Rows show the matching browser keyboard shortcut where there is one, such as <code>Ctrl</code> + <code>U</code> for View page source.</p>
+<h3 id="submenus-inside-submenus">Submenus inside submenus</h3>
+<p>Some rows inside a group open their own submenu:</p>
+<ul>
+<li><strong>Copy selector</strong> previews each form: the CSS selector, <code>querySelector(…)</code>, <code>locator(…)</code> and the XPath.</li>
+<li><strong>Search the web</strong> lists Google, Bing, DuckDuckGo, Wikipedia, YouTube and Google Images. Press <code>1</code> to <code>6</code> to choose one.</li>
+<li><strong>Simulate colour vision</strong> lists <strong>Colour blindness</strong> (protanopia, deuteranopia, tritanopia, achromatopsia) and <strong>Weaker forms</strong> (the four anomalies), each with a preview of how four everyday colours look to someone with it. <strong>Side by side</strong> filters half the page, and <strong>Reset simulation</strong> clears it.</li>
+</ul>
+<h2 id="the-quick-bar">The quick bar</h2>
+<p>The quick bar holds up to six one-click actions. It starts with <strong>Back</strong>, <strong>Forward</strong>, <strong>Reload</strong>, <strong>Copy page URL</strong> and <strong>Capture</strong> (Copy screenshot).</p>
+<p>To pin any action:</p>
+<ol>
+<li>Point at its row and choose its star, or press <code>Right</code> to reach the star and then <code>Enter</code>.</li>
+<li>The footer confirms &quot;Pinned to the quick bar&quot;. Do the same again to unpin it.</li>
+</ol>
+<p>If the bar is full, the footer says &quot;The quick bar holds 6: unpin one first&quot;.</p>
+<h2 id="filter">Filter</h2>
+<p>Start typing as soon as the menu opens. The list shows every matching action, including the ones inside groups, with the group&#39;s name beside each result. <code>Enter</code> runs the first result. <code>Esc</code> clears the filter.</p>
+<h2 id="the-gear">The gear</h2>
+<p>The gear in the footer opens the menu&#39;s own settings:</p>
+<ul>
+<li><strong>Quick bar</strong>: the pinned actions, each removable, and <strong>Reset</strong>.</li>
+<li><strong>Layout</strong>: <strong>Focused</strong> (the default) shows what you clicked, then one row per group; <strong>Everything</strong> opens every group in one list.</li>
+<li><strong>Row height</strong>: <strong>Standard</strong> or <strong>Compact</strong>.</li>
+</ul>
+<p>Choose <strong>Done</strong> to go back. The same settings, and more, are in Settings › Right-click.</p>
+<h2 id="keys">Keys</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Type</td><td>Filter the actions</td></tr>
+<tr><td><code>Up</code> / <code>Down</code></td><td>Move between the quick bar and the rows</td></tr>
+<tr><td><code>Right</code></td><td>Open a group, or reach a row&#39;s star</td></tr>
+<tr><td><code>Left</code></td><td>Close a group, or go back from the star</td></tr>
+<tr><td><code>Enter</code></td><td>Run the row (in the field: the first result)</td></tr>
+<tr><td><code>1</code> to <code>6</code></td><td>Choose a search engine in its submenu</td></tr>
+<tr><td><code>Esc</code></td><td>Clear the filter, then close a submenu, then close the menu</td></tr>
+</tbody></table></div>
+<p>While the menu has focus, the site&#39;s own keyboard shortcuts do not fire.</p>
+<h2 id="actions-that-need-a-permission">Actions that need a permission</h2>
+<p><strong>Paste</strong>, the <strong>Save</strong> actions and <strong>Reopen closed tab</strong> need the three optional permissions. Until one is granted, its rows show an <strong>Allow</strong> chip. Grant it in Settings › Right-click › <strong>Permissions</strong>.</p>
+<h2 id="when-the-browsers-menu-appears-instead">When the browser&#39;s menu appears instead</h2>
+<ul>
+<li><strong>Shift</strong> + right-click, always.</li>
+<li><strong>Browser&#39;s own menu</strong>: the next right-click goes to the browser, for spellcheck, the dictionary and writing direction. The footer says &quot;Right-click again for the browser&#39;s menu&quot;.</li>
+<li><strong>Sites with their own menu.</strong> With <strong>Step aside for a site&#39;s own menu</strong> on (the default), a page that shows its own right-click menu, such as Figma or Google Docs, keeps it. The extension&#39;s menu still opens everywhere else on that page. Turn the setting off to take every right-click.</li>
+<li><strong>Sites on the Never on list</strong> in Settings › Right-click (up to 100; subdomains included).</li>
+<li><strong>auricartisan.com</strong>, always, and sites that opt out; see <a href="for-site-owners.html">For site owners</a>.</li>
+</ul>
+<h2 id="messages-you-may-see">Messages you may see</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>&quot;Clipboard blocked — press Ctrl+V to paste.&quot;</td><td>The browser refused to let the page read the clipboard</td></tr>
+<tr><td>&quot;Cross-origin image — copied its URL instead&quot;</td><td>The image&#39;s site does not allow copying its pixels</td></tr>
+<tr><td>&quot;Screenshot needs a permitted, visible tab&quot;</td><td>The tab cannot be captured</td></tr>
+<tr><td>&quot;Enable &quot;Allow in Incognito&quot; for the extension&quot;</td><td>Opening a private window needs the extension allowed in private browsing</td></tr>
+<tr><td>&quot;That text is too long for a QR code&quot;</td><td>The text exceeds what a QR code can hold</td></tr>
+<tr><td>&quot;Eyedropper needs Chromium — use the toolbar picker instead.&quot;</td><td>Pick colour in Firefox</td></tr>
+</tbody></table></div>
+<p>QR codes open in a small panel with <strong>Download</strong>, <strong>Copy</strong> and <strong>Close</strong>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../settings/right-click.html">Right-click settings</a></li>
+<li><a href="browser-menu-items.html">Browser menu items</a></li>
+<li><a href="../permissions.html">Permissions</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="for-site-owners.html"><span>Previous</span>For site owners</a><a href="website-pickers.html"><span>Next</span>Website pickers</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#turn-it-on">Turn it on</a></li><li><a href="#anatomy">Anatomy</a></li><li><a href="#scenes">Scenes</a></li><li><a href="#the-groups">The groups</a></li><li><a href="#the-quick-bar">The quick bar</a></li><li><a href="#filter">Filter</a></li><li><a href="#the-gear">The gear</a></li><li><a href="#keys">Keys</a></li><li><a href="#actions-that-need-a-permission">Actions that need a permission</a></li><li><a href="#when-the-browsers-menu-appears-instead">When the browser's menu appears instead</a></li><li><a href="#messages-you-may-see">Messages you may see</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

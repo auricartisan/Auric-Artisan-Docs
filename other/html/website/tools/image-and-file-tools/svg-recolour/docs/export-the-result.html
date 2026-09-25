@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export the result — Auric Artisan Docs</title>
+<meta name="description" content="Save or copy the recoloured SVG, copy the new palette as CSS custom properties, and save a JSON report of every change.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; SVG Recolour</a>
+<h2>SVG Recolour documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with SVG Recolour</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="export-the-result.html" aria-current="page">Export the result</a></li>
+<li><a href="recolour-an-svg.html">Recolour an SVG</a></li>
+<li><a href="use-a-harmony.html">Recolour from a harmony</a></li>
+<li><a href="reference.html">SVG Recolour reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting SVG Recolour</a></li>
+<li><a href="faq.html">SVG Recolour FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">SVG Recolour</a> &rsaquo; <a href="README.html">SVG Recolour documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › SVG Recolour</p>
+<h1>Export the result</h1>
+<p class="lede">Save or copy the recoloured SVG, copy the new palette as CSS custom properties, and save a JSON report of every change.</p>
+<p>All exports are on the <strong>Export</strong> tab, under <strong>Take it away</strong>. They always use the true colours, whatever <strong>Show it as seen by</strong> is set to.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><strong>Save the recoloured SVG</strong></td><td>Your file with the colour values replaced, downloaded as <code>recoloured.svg</code></td></tr>
+<tr><td><strong>Copy the markup</strong></td><td>The same SVG markup, copied to the clipboard</td></tr>
+<tr><td><strong>Copy the custom properties</strong></td><td>The file&#39;s colours as CSS custom properties</td></tr>
+<tr><td><strong>Save the report</strong></td><td>A JSON record of every mapping, downloaded as <code>recolour-report.json</code></td></tr>
+</tbody></table></div>
+<p>The table under <strong>What leaves this page</strong> gives the size of each for your file and what it is good for.</p>
+<h2 id="the-recoloured-svg">The recoloured SVG</h2>
+<p>The exported file is your file with the colour values replaced, and nothing else changed on purpose:</p>
+<ul>
+<li>Structure, ids, gradients, filters, titles, comments and any markup the tool does not understand are carried across.</li>
+<li>Only occurrences you changed are rewritten, in the style chosen under <strong>Write colours as</strong>.</li>
+<li>In style sheets, only the changed declarations are rewritten.</li>
+</ul>
+<p>The message confirms, for example <strong>Saved · 3 occurrences written</strong>. If nothing is loaded, it reads <strong>Nothing loaded.</strong></p>
+<p>Things to know about the file:</p>
+<ul>
+<li>It is rewritten from your original, not from the preview, so any scripts, event handlers or <code>javascript:</code> links in the original are still there. The previews on this page have them removed; the file does not.</li>
+<li>The browser writes the markup back out, so small formatting details, such as the quote marks around attribute values, may differ from your original.</li>
+<li>Only the <code>&lt;svg&gt;</code> element and its contents are written. An XML declaration, a DOCTYPE or a comment placed before the <code>&lt;svg&gt;</code> tag is not carried across.</li>
+</ul>
+<h2 id="the-custom-properties">The custom properties</h2>
+<p><strong>Copy the custom properties</strong> copies one line per colour the tool can change, in the order of the colour list, with the colour each ends up as and its CSS name or nearest name:</p>
+<pre class="code" data-lang="css"><code>--colour-01: #E5484D;  /* near indianred */
+--colour-02: #3E63DD;  /* near royalblue */
+--colour-03: #00AA00;  /* near limegreen */
+--colour-04: #AABBCC;  /* near lightsteelblue */
+--colour-05: #30A46C;  /* near mediumseagreen */</code></pre>
+<p>This is the sample file with <code>red</code> changed to <code>#00AA00</code>. The preview under <strong>The palette as custom properties</strong> shows the same text. Paste the lines inside a rule such as <code>:root { … }</code> to keep a stylesheet in step with the artwork. An exact CSS name is given as itself; any other colour gets the nearest name, prefixed &quot;near&quot;.</p>
+<h2 id="the-report">The report</h2>
+<p><strong>Save the report</strong> downloads <code>recolour-report.json</code>, also shown under <strong>The report that goes with it</strong>:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;tool&quot;: &quot;Auric Artisan — SVG recolour&quot;,
+  &quot;source&quot;: { &quot;elements&quot;: 9, &quot;occurrences&quot;: 6, &quot;colours&quot;: 5 },
+  &quot;writeStyle&quot;: &quot;hex&quot;,
+  &quot;mapped&quot;: [
+    {
+      &quot;from&quot;: &quot;#FF0000&quot;, &quot;to&quot;: &quot;#00AA00&quot;,
+      &quot;occurrences&quot;: 1, &quot;written&quot;: 1, &quot;writtenAs&quot;: [&quot;named&quot;]
+    }
+  ],
+  &quot;notWritten&quot;: [
+    { &quot;value&quot;: &quot;currentcolor&quot;, &quot;occurrences&quot;: 1, &quot;why&quot;: &quot;resolves from CSS outside this file&quot; }
+  ],
+  &quot;measured&quot;: {
+    &quot;deltaE00Method&quot;: &quot;ISO/CIE 11664-6&quot;,
+    &quot;contrast&quot;: { &quot;wcag&quot;: &quot;2.2&quot;, &quot;apca&quot;: &quot;APCA-W3 0.1.9&quot; },
+    &quot;colourVision&quot;: &quot;Machado, Oliveira &amp; Fernandes (2009), severity 1.0&quot;
+  },
+  &quot;notHeld&quot;: [&quot;what currentColor resolves to&quot;, &quot;colour inside embedded raster art&quot;],
+  &quot;bytes&quot;: 512
+}</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>source</code></td><td>Elements, occurrences and distinct colours in the original</td></tr>
+<tr><td><code>writeStyle</code></td><td><code>hex</code> or <code>keep</code></td></tr>
+<tr><td><code>mapped</code></td><td>Each changed colour: from, to, how many places use it, how many were written, and the forms it was written in</td></tr>
+<tr><td><code>notWritten</code></td><td>Each value left alone, with its count and the reason</td></tr>
+<tr><td><code>measured</code></td><td>The methods behind the figures</td></tr>
+<tr><td><code>notHeld</code></td><td>What the tool cannot know</td></tr>
+<tr><td><code>bytes</code></td><td>The size of the recoloured SVG</td></tr>
+</tbody></table></div>
+<p>The written count in the report is the same number the colour list and the <strong>Mapping</strong> tab show, and the same number of changes the file carries. The example shows the sample with <code>red</code> changed to <code>#00AA00</code>; the <code>bytes</code> value is illustrative.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="check-contrast-and-colour-vision.html"><span>Previous</span>Check contrast and colour vision</a><a href="recolour-an-svg.html"><span>Next</span>Recolour an SVG</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-recoloured-svg">The recoloured SVG</a></li><li><a href="#the-custom-properties">The custom properties</a></li><li><a href="#the-report">The report</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

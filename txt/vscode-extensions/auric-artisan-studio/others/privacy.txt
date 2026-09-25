@@ -1,0 +1,97 @@
+==============================================================================
+PRIVACY
+==============================================================================
+What Auric Artisan Studio does with your code and data, what it writes to
+disk, and when anything uses the network.
+Area: VS Code extensions › Auric Artisan Studio   Updated: 2026-09-25
+
+Auric Artisan Studio analyses your code entirely on your machine.
+
+WHAT NEVER LEAVES YOUR MACHINE
+==============================
+
+  - Your source code, colours, scan results, findings and reports.
+  - Telemetry: the extensions collect none.
+  - There is no account, sign-in, API key or licence server.
+
+The extensions contain no network code. Their build is checked so that any
+code that could make a network request fails the build. The command-line
+scanner makes no network requests either.
+
+WHEN THE NETWORK IS USED
+========================
+
+Only when you choose to open a link:
+
+  - auricartisan.com, from the Auric Artisan marks and links in the Overview,
+    the Studio and hovers. The Studio's screens will only open links to that
+    one site.
+  - W3C documentation, from WCAG docs and Open WCAG Documentation links on
+    findings, and links inside knowledge-database entries to official sources.
+
+These open in your browser. Installing or updating the extensions from the
+Marketplace is handled by VS Code.
+
+THE REMEDIATION PLAN AND "AI"
+=============================
+
+Generate Agent-Ready Remediation Plan calls no AI model and sends nothing
+anywhere. It writes a plan, including a prompt template, to your workspace. If
+you choose to give that prompt to a coding agent, that agent's own privacy
+terms apply.
+
+WHAT IS WRITTEN TO YOUR DISK
+============================
+
+  Where: `.auric-artisan/` in your workspace
+  What:  Scan cache, settings copy, health record, SARIF, history, reports,
+         remediation plan, knowledge database and overrides, a README and a
+         `.gitignore`
+  When:  When you scan, generate outputs or save Studio settings; see The
+         .auric-artisan folder [../docs/scanning.txt]
+
+  Where: Your VS Code user settings
+  What:  The accent colour; colour picker mode switches;
+         `editor.colorDecorators` when Auric Color manages VS Code's colour
+         decorators
+  When:  When you change them
+
+  Where: Your workspace's VS Code settings
+  What:  Values saved from Studio › Settings
+  When:  When you select Save settings
+
+  Where: VS Code's storage for the extension
+  What:  Recent colours, dismissed suggestions, the Project Issues grouping,
+         which Studio sections you left open, whether you answered the colour
+         picker prompt, and small colour icons for the Project Issues view
+  When:  As you use the Studio
+
+  Where: Files you choose
+  What:  Palette, shade, brand and Markdown exports
+  When:  When you export through a save dialog
+
+To stop the Studio writing to your workspace, turn off Store workspace data
+locally (`data.enabled`). To remove everything, delete the `.auric-artisan`
+folder and uninstall the extensions.
+
+SECRETS
+=======
+
+Code Health never stores a detected secret. The secret's text is replaced by a
+note such as `[redacted secret; 40 characters]` everywhere it could appear:
+diagnostics, the Studio, reports, `health.json`, SARIF, the history, the scan
+cache and remediation tasks. See Secrets and redaction
+[../code-health/docs/secrets-and-redaction.txt].
+
+SHARING REPORTS
+===============
+
+Reports and records are ordinary files. They contain file paths, line numbers,
+colour values and messages from your project, but never secret values. Review
+them before sharing outside your team.
+
+RELATED
+=======
+
+  - Limits and accuracy [limits-and-accuracy.txt]
+  - FAQ [../docs/faq.txt]

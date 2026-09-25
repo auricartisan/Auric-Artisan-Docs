@@ -1,0 +1,61 @@
+---
+title: Font Library — Getting started
+description: Open the Font Library, learn its layout, and find, test and keep your first family.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Getting started with the Font Library
+
+## Open the page
+
+Go to https://auricartisan.com/tool/font/. The masthead reads *Two thousand faces, set in their own.* Its labels give the live counts of families, font files, variable fonts and scripts.
+
+The catalogue loads from the Font CDN. If it cannot be reached, a notice explains that the library is temporarily unavailable; see [Troubleshooting](troubleshooting.md).
+
+## The layout
+
+Three views sit in a row at the top: **Specimens** (with the number of families shown), **Collections** (6) and **Selected** (the number you have starred).
+
+The **Specimens** view has two columns:
+
+- **The rail** on the left, which stays in view as you scroll:
+  - **Find**: the search box, the sort menu, **Filters**, **Recommend**, and the number of matching families;
+  - **Applied**: what is switched on, when anything is;
+  - **Category**: **All**, **Serif**, **Sans Serif**, **Handwriting**, **Monospace** and **Display**, with counts;
+  - **Narrow it**: six groups of filter chips;
+  - at the foot, **Reset all filters** and, once you have starred something, **Download selected**.
+- **The stage** on the right: the preview text box with **Shuffle**, **Grid** and **List**, the **Size** slider, and the grid of cards, which loads more as you scroll.
+
+Once you have opened a family, a **Recently viewed** strip appears under the three views.
+
+On screens narrower than about 1,180 pixels the rail sits above the grid, and its filter groups start folded.
+
+## A card
+
+Each card shows the family name, the designer and the number of styles, a star to select it, a specimen in the family's own face, and badges: the category, **⚡ Variable** if it is a variable font, the computed accessibility score, the licence, and **Installed** for families that are listed but not served (see [Limits and accuracy](../others/limits-and-accuracy.md)).
+
+Select a card, or focus it and press `Enter`, to open the family.
+
+## Your first family
+
+1. In *Type to preview every family…*, type the headline you want to set, for example *Harbour Street Bakery*.
+2. Under **Category**, select **Serif**.
+3. Open **Filters** if the chips are hidden, and under **Properties** select **⚡ Variable**.
+4. Select a card you like. The panel opens on the right on the **Specimen** tab, with your text.
+5. Drag the **Weight** axis slider, then open **Pairings** to see body fonts that suit it.
+6. Select **＋ Select** in the panel. The **Your kit** button appears in the bottom-right corner with a count of 1.
+7. Open **Use & Embed** and select **Copy** to copy a stylesheet link.
+
+Result: a chosen family, a suggested partner, and the code to use it on a web page.
+
+## Next steps
+
+- [Browse, search and filter](browse-and-filter.md)
+- [The specimen panel](specimen-panel.md)
+- [Your kit, compare and download](kit-compare-and-download.md)
+
+## Related
+
+- [Font Library overview](../README.md)
+- [Shortcuts](../others/shortcuts.md)

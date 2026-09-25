@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspect a scale — Auric Artisan Docs</title>
+<meta name="description" content="Read the Inspect tab: token strip, shade summary, token contrast ladder and each token's values.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Shade Library</a>
+<h2>Shade Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="analyse-the-collection.html">Analyse the collection</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="copy-export-and-share.html">Copy, export and share</a></li>
+<li><a href="inspect-a-scale.html" aria-current="page">Inspect a scale</a></li>
+<li><a href="save-scales.html">Save scales</a></li>
+<li><a href="reference.html">Shade Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Shade Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Shade Library</a> &rsaquo; <a href="README.html">Shade Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Shade Library</p>
+<h1>Inspect a scale</h1>
+<p class="lede">Read the Inspect tab: token strip, shade summary, token contrast ladder and each token's values.</p>
+<p>Open a scale with <strong>Inspect</strong>, by selecting the card, with <code>Enter</code> or <code>Space</code> on a focused swatch, with <strong>Open a random scale</strong>, or from a share link. Until then the tab shows <strong>No shade system selected</strong>.</p>
+<h2 id="the-token-strip">The token strip</h2>
+<p>One column per token, labelled with the token name and a descriptive colour name — for example <strong>500 - soft vivid orange</strong> — and the hex code. Select a column to copy its hex.</p>
+<h2 id="shade-summary">Shade summary</h2>
+<p>The badge gives the scale&#39;s profile:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Badge</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Neutral</strong></td><td>Average chroma below 0.035.</td></tr>
+<tr><td><strong>Hue Shift</strong></td><td>Its hues span more than 35°.</td></tr>
+<tr><td><strong>Light</strong></td><td>Average lightness above 0.72.</td></tr>
+<tr><td><strong>Deep</strong></td><td>Average lightness below 0.38.</td></tr>
+<tr><td><strong>Balanced</strong></td><td>Anything else.</td></tr>
+</tbody></table></div>
+<p>The badges are checked in that order, so a scale is <strong>Neutral</strong> before it can be <strong>Hue Shift</strong>, and so on.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Shade ID</strong></td><td>For example <code>shade_000000</code>.</td></tr>
+<tr><td><strong>Global index</strong></td><td>The scale&#39;s number.</td></tr>
+<tr><td><strong>Method</strong></td><td>For example <strong>Material Like</strong>.</td></tr>
+<tr><td><strong>Base</strong></td><td>The base colour the scale is built around.</td></tr>
+<tr><td><strong>Tokens</strong></td><td>Number of steps.</td></tr>
+<tr><td><strong>Avg L (OKLCH)</strong></td><td>Average lightness, 0 to 1.</td></tr>
+<tr><td><strong>Avg chroma</strong></td><td>Average OKLCH chroma.</td></tr>
+<tr><td><strong>Hue span</strong></td><td>Widest hue difference between two tokens.</td></tr>
+<tr><td><strong>Score</strong></td><td>The quality score recorded for the scale.</td></tr>
+<tr><td><strong>Auto AA tokens</strong></td><td>How many tokens reach 4.5:1 with automatic text (near-black on light tokens, white on dark ones), for example <strong>4 / 7</strong>. All tokens is good; 70% or more is a warning; less is poor.</td></tr>
+<tr><td><strong>Min adjacent contrast</strong></td><td>The lowest contrast between two neighbouring tokens — how close the two most similar steps are.</td></tr>
+</tbody></table></div>
+<h2 id="token-contrast-ladder">Token contrast ladder</h2>
+<p>Each token with its hex and its contrast with automatic text, for example <strong>500 #FF724C 2.71 : 1 auto text</strong>. Automatic text is near-black (<code>#111111</code>) on tokens whose luminance is above 0.5, and white otherwise. Use the ladder to decide which steps can hold body text (4.5:1 or more), large text (3:1 or more), or should be used only as fills.</p>
+<h2 id="quick-export">Quick export</h2>
+<p><strong>Copy HEX</strong>, <strong>Copy CSS vars</strong>, <strong>Copy SCSS</strong>, <strong>Copy Tailwind</strong>, <strong>Download JSON</strong>, <strong>Download SVG</strong>, <strong>Download PNG</strong>, <strong>Save to library</strong> / <strong>Unsave</strong>, <strong>Copy share link</strong> and <strong>Design tokens…</strong>. See <a href="copy-export-and-share.html">Copy, export and share</a>.</p>
+<h2 id="one-card-per-token">One card per token</h2>
+<p>Headed <strong>Token</strong> and the name and hex, for example <strong>Token 500 - #FF724C</strong>, with a badge of its contrast on white and on black. Rows: <strong>HEX</strong>, <strong>RGB</strong>, <strong>OKLCH</strong>, <strong>CIE L*a*b*</strong>, <strong>WCAG vs white</strong>, <strong>WCAG vs black</strong>, and buttons to copy the hex and <code>rgb()</code> value.</p>
+<h2 id="example">Example</h2>
+<p>The first scale, <strong>Material Like #FF724C #00001</strong>, has seven tokens: <code>50</code>, <code>100</code>, <code>300</code>, <code>500</code>, <code>700</code>, <code>900</code> and <code>950</code>. Its ladder shows <code>50</code>, <code>100</code>, <code>900</code> and <code>950</code> well above 4.5:1 with automatic text, while <code>300</code>, <code>500</code> and <code>700</code> fall below it — those middle steps are for fills, borders and large accents, not body text.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="copy-export-and-share.html"><span>Previous</span>Copy, export and share</a><a href="save-scales.html"><span>Next</span>Save scales</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-token-strip">The token strip</a></li><li><a href="#shade-summary">Shade summary</a></li><li><a href="#token-contrast-ladder">Token contrast ladder</a></li><li><a href="#quick-export">Quick export</a></li><li><a href="#one-card-per-token">One card per token</a></li><li><a href="#example">Example</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

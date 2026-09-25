@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit — Auric Artisan Docs</title>
+<meta name="description" content="Audit the current page against WCAG 2.2 A and AA, read the contrast results, outline problems on the page, and export the results.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Check tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="all-findings.html">Findings</a></li>
+<li><a href="audit-rules.html">Audit rules</a></li>
+<li><a href="audit.html" aria-current="page">Audit</a></li>
+<li><a href="contrast.html">Contrast</a></li>
+<li><a href="vision.html">Vision</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Check tools</a></nav>
+<p class="kicker">Browser extension › Check</p>
+<h1>Audit</h1>
+<p class="lede">Audit the current page against WCAG 2.2 A and AA, read the contrast results, outline problems on the page, and export the results.</p>
+<p>Audit (the Page audit) checks the current tab&#39;s colours and accessibility against WCAG 2.2. One run does two things:</p>
+<ul>
+<li>a <strong>contrast scan</strong> of the page&#39;s text, shown in the Audit tool itself;</li>
+<li>an <strong>accessibility audit</strong> by an 80-rule engine, run at level AA, so the 78 rules that test levels A and AA apply. Its findings go to <a href="all-findings.html">Findings</a>.</li>
+</ul>
+<p>Everything runs in your browser. Nothing is sent anywhere, and results are kept only while the popup or side panel is open.</p>
+<h2 id="run-an-audit">Run an audit</h2>
+<ol>
+<li>Open the page you want to check and wait for it to finish loading.</li>
+<li>Open Check › <strong>Audit</strong> and choose <strong>Run the audit</strong>. (Home › <strong>Audit</strong> opens it and starts at once.)</li>
+<li>The button reads <strong>Auditing…</strong> while it works. Large pages take longer; the page stays responsive.</li>
+</ol>
+<p>When it finishes, the button reads <strong>Run audit</strong>, so you can run it again after you change the page.</p>
+<h2 id="read-the-contrast-results">Read the contrast results</h2>
+<p>Four counts sit at the top:</p>
+<ul>
+<li><strong>Tested</strong>: Pieces of text the scan measured</li>
+<li><strong>Failing</strong>: Text below its WCAG AA threshold: 4.5:1, or 3:1 for large text</li>
+<li><strong>Borderline</strong>: Text that passes, but by less than 1.5 (for example 5.2:1 against 4.5:1)</li>
+<li><strong>Review</strong>: Text over a background image, gradient or text shadow, where the true contrast cannot be measured exactly; check these by eye</li>
+</ul>
+<p>Below, each flagged piece of text is a row:</p>
+<ul>
+<li>two swatches: the text colour and the background it sits on;</li>
+<li>the tag and whether the text counts as <strong>large</strong> or <strong>body</strong>, with its font size, and <strong>review</strong> when it needs a manual check;</li>
+<li>an excerpt of the text, in quotes;</li>
+<li>a CSS selector for the element;</li>
+<li>the measured ratio and the ratio it needs.</li>
+</ul>
+<p>Choose a row to load its colour pair into <a href="contrast.html">Contrast</a>, where <strong>Fix text</strong> finds the nearest passing colour. If nothing fails, the list says &quot;No contrast issues found.&quot;</p>
+<p>The background used for each piece of text is the colour actually behind it, found by walking up through its parent elements. Translucent layers are combined.</p>
+<h2 id="outline-problems-on-the-page">Outline problems on the page</h2>
+<p>Choose <strong>Outline on page</strong>. Each failing piece of text on the page gets a red outline, each borderline one an amber outline, and each carries a label such as <code>3.12:1 needs 4.5:1</code>. The outlines clear after 15 seconds; choose the button again to redraw them.</p>
+<p>To outline automatically after every audit, turn on Settings › Tools › <strong>Outline issues after an audit</strong>.</p>
+<h2 id="the-accessibility-audit">The accessibility audit</h2>
+<p>The rule engine checks ARIA, accessible names, structure, forms, media, keyboard access, contrast and page-level criteria such as language, title and zoom. Its findings are not listed in the Audit tool itself. Open Check › <strong>Findings</strong> to see them, sorted by severity, with the contrast findings; the Findings chip shows how many are open. See <a href="all-findings.html">Findings</a> and <a href="audit-rules.html">Audit rules</a>.</p>
+<p>The engine also calculates a score from 0 to 100 and totals by severity. They are included in the JSON export and announced to screen readers.</p>
+<h2 id="export">Export</h2>
+<ul>
+<li><strong>Export JSON</strong>: The whole result: the contrast scan (counts and every flagged item) and the accessibility audit (score, totals, results by WCAG criterion, every finding with its rule, impact, criteria, message and selector, the time taken and whether limits were reached)</li>
+<li><strong>Export CSV</strong>: The contrast findings, one per row, with the columns <code>tag</code>, <code>selector</code>, <code>text</code>, <code>fg</code>, <code>bg</code>, <code>ratio</code>, <code>threshold</code>, <code>severity</code> and <code>manualReview</code></li>
+</ul>
+<p>Paste the result into a file, a ticket or a spreadsheet.</p>
+<h2 id="limits">Limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Contrast scan</th></tr></thead>
+<tbody>
+<tr><td>Settings › Tools › <strong>Deep page audit</strong> on (the default)</td><td>Up to 3 500 elements and 160 issues</td></tr>
+<tr><td><strong>Deep page audit</strong> off</td><td>Up to 1 800 elements and 80 issues</td></tr>
+</tbody></table></div>
+<p>The rule engine has its own limits: up to 25 000 elements and 250 issues per rule, and 30 seconds in all. What cannot be checked automatically:</p>
+<ul>
+<li>text inside embedded frames, images and canvas;</li>
+<li>text coloured with some modern colour functions, which the contrast check skips rather than reporting;</li>
+<li>anything that needs human judgement, such as whether alt text is accurate.</li>
+</ul>
+<p>An automated audit finds many problems but cannot prove a page accessible. See <a href="../../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="other-ways-to-audit">Other ways to audit</h2>
+<ul>
+<li><strong>Audit contrast on page</strong> in the browser&#39;s own right-click menu outlines the contrast problems and opens the popup at Audit.</li>
+<li>The <strong>Run a full accessibility audit</strong> shortcut, once you assign a key in the browser, opens the popup at Audit and runs it.</li>
+<li><strong>Check contrast on page</strong> in the custom right-click menu runs the contrast outlines.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="all-findings.html">Findings</a></li>
+<li><a href="audit-rules.html">Audit rules</a></li>
+<li><a href="../workflows/audit-a-page-and-fix-contrast.html">Audit a page and fix contrast</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="audit-rules.html"><span>Previous</span>Audit rules</a><a href="contrast.html"><span>Next</span>Contrast</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#run-an-audit">Run an audit</a></li><li><a href="#read-the-contrast-results">Read the contrast results</a></li><li><a href="#outline-problems-on-the-page">Outline problems on the page</a></li><li><a href="#the-accessibility-audit">The accessibility audit</a></li><li><a href="#export">Export</a></li><li><a href="#limits">Limits</a></li><li><a href="#other-ways-to-audit">Other ways to audit</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

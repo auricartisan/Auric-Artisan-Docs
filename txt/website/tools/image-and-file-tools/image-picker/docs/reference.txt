@@ -1,0 +1,247 @@
+==============================================================================
+IMAGE PICKER REFERENCE
+==============================================================================
+Every tab, control, readout, export format and keyboard key in the Image
+Picker, with ranges and starting values.
+Area: Website › Tools › Image and file tools › Image Picker   Updated: 2026-09-25
+
+Address: https://auricartisan.com/tool/general/tools/image-picker/
+
+ABOVE THE TABS
+==============
+
+  Element:      Read the API reference →
+  What it does: Opens the site's API documentation
+
+  Element:      Automate this line
+  What it does: The REST endpoint and its cost in API credits; API docs opens
+                its documentation; × hides the line
+
+TABS
+====
+
+  Tab:      Workbench
+  Contents: Loading, extraction settings, preview and eyedropper, palette,
+            tone bands, contrast pairs, harmony, pins, quick exports
+
+  Tab:      Analysis
+  Contents: Four charts of the current palette; the label shows 4
+
+  Tab:      Actions
+  Contents: JSON and CSV downloads, Copy page link, batch colour analysis
+
+WORKBENCH — THE IMAGE
+=====================
+
+  Control:      Drop area (middle panel, before loading)
+  What it does: Loads a dropped image, or opens a file chooser when selected
+  Accepts:      Any image type; PNG, JPEG, WEBP, GIF, BMP named
+
+  Control:      Replace
+  What it does: Opens a file chooser to load a different picture
+  Accepts:      As above
+
+  Control:      Address field
+  What it does: The web address of an image
+  Accepts:      `https://…`
+
+  Control:      Load URL
+  What it does: Loads the address in the field; `Enter` in the field does the
+                same
+  Accepts:      Images whose server allows cross-origin reading
+
+  Control:      File name and size line
+  What it does: The name, and original size → working size
+  Accepts:      —
+
+Pictures are scaled down to fit 800 × 500 pixels, never up.
+
+WORKBENCH — EXTRACTION
+======================
+
+  Control:        Clusters
+  Values:         2 to 12 on the slider
+  Starting value: 16 when the page opens
+
+  Control:        Quality
+  Values:         Fast (every 10th pixel), Quick (6th), Balanced (4th),
+                  Detailed (2nd), Max detail (every pixel)
+  Starting value: Detailed
+
+  Control:        Merge threshold
+  Values:         0 to 100, RGB distance
+  Starting value: 0
+
+  Control:        Ignore dark
+  Values:         Skips pixels with relative luminance below 0.03
+  Starting value: Off
+
+  Control:        Ignore light
+  Values:         Skips pixels with relative luminance above 0.97
+  Starting value: Off
+
+Sampling is capped at about 50,000 pixels by widening the grid. Pixels that
+are nearly transparent are skipped. Each change re-runs the extraction when
+the slider is released or the switch changes.
+
+WORKBENCH — RUN AND HISTORY
+===========================
+
+  Control:      Re-extract
+  What it does: Runs the extraction again
+  Key:          `E`
+
+  Control:      Reset
+  What it does: Clears the picture, palette and pins, and shows the drop area
+                again; settings are kept
+  Key:          `R`
+
+  Control:      Extractions
+  What it does: The number of extractions in this session
+  Key:          —
+
+WORKBENCH — PREVIEW AND PALETTE
+===============================
+
+  Element:               Preview
+  What it shows or does: The working copy of the picture. Hover to read a
+                         pixel; click to pin it
+
+  Element:               Eyedropper readout
+  What it shows or does: Hex, RGB, HSL, relative luminance and pixel position
+                         under the pointer
+
+  Element:               Pin
+  What it shows or does: Pins the colour under the pointer, if there is one
+
+  Element:               Extracted palette
+  What it shows or does: Swatches largest share first: share, hex, HSL,
+                         relative luminance. Select to copy the hex
+
+  Element:               Palette heading
+  What it shows or does: Number of clusters and number of samples
+
+  Element:               Tone bands
+  What it shows or does: Shadows (below 0.18), Midtones (below 0.65),
+                         Highlights (0.65 and above)
+
+WORKBENCH — READOUTS
+====================
+
+  Panel:    Keyboard (before loading)
+  Contents: `E` Re-extract, `H` Copy hex list, `J` Copy JSON, `R` Reset
+
+  Panel:    Pairs that carry text
+  Contents: The eight highest-contrast pairs: swatches, ratio, rating (AAA,
+            AA, AA-lg, Fail), hex values
+
+  Panel:    Harmony
+  Contents: Up to 12 pairs at classic hue angles: Analogous, Tetradic,
+            Triadic, Split-Complementary, Complementary
+
+  Panel:    Pinned
+  Contents: Up to 24 pinned colours; select one to copy its hex
+
+  Panel:    Take it with you
+  Contents: Hex, CSS, JSON (copy) and SVG (download)
+
+Contrast ratings
+----------------
+
+  Rating | Contrast ratio
+  -------+---------------
+  AAA    | 7:1 or more
+  AA     | 4.5:1 or more
+  AA-lg  | 3:1 or more
+  Fail   | Below 3:1
+
+Harmony angles
+--------------
+
+  Relationship        | HSL hue difference
+  --------------------+-------------------
+  Analogous           | 25° to 45°
+  Tetradic            | 80° to 100°
+  Triadic             | 110° to 130°
+  Split-Complementary | 140° to 165°
+  Complementary       | 165° to 180°
+
+ANALYSIS TAB
+============
+
+  Element:  Charting panel
+  Contents: File name, working size and pixel count
+
+  Element:  Cluster population
+  Contents: Bar chart of each cluster's share
+
+  Element:  Colour distribution
+  Contents: Ring chart of shares, leading share in the middle
+
+  Element:  Hue vs saturation
+  Contents: Scatter of hue (0° to 360°) against saturation (0% to 100%)
+
+  Element:  Relative luminance
+  Contents: Bars from darkest to lightest, 0 to 1
+
+  Element:  ⛶ button or double-click
+  Contents: Opens the chart full screen; close with ×, `Escape` or a click
+            outside
+
+ACTIONS TAB
+===========
+
+  Control        | What it does
+  ---------------+----------------------------------------------------------------------
+  JSON           | Downloads `palette-analysis.json`
+  CSV            | Downloads `palette.csv`
+  Copy page link | Copies the page address; no picture or palette is included
+  Hex box        | One hex colour per line, or separated by commas, semicolons or spaces
+  Run batch      | Analyses the colours in the box
+
+EXPORT FORMATS
+==============
+
+  Export:            Hex
+  File or clipboard: Clipboard
+  Format:            `#RRGGBB` values, comma and space separated
+
+  Export:            CSS
+  File or clipboard: Clipboard
+  Format:            `:root { --palette-01: #RRGGBB; … }`
+
+  Export:            JSON
+  File or clipboard: Clipboard, or `palette-analysis.json`
+  Format:            `image`, `settings`, `sampleCount`, `palette`, `picks`,
+                     `exportedAt`
+
+  Export:            SVG
+  File or clipboard: `palette.svg`
+  Format:            60 × 60 swatches, 4 px apart, hex labels underneath
+
+  Export:            CSV
+  File or clipboard: `palette.csv`
+  Format:            `#,Hex,R,G,B,H,S,L,Luminance,Population%,Count`
+
+Hex values are written in capitals. Pins appear only in the JSON. For field
+details, see Export and share [export-and-share.txt].
+
+BATCH RESULTS
+=============
+
+Columns: #, Swatch, Hex, RGB, HSL, Lab, LCH, Lum, Tone. CIELAB is calculated
+for a D65 white. See Analyse a list of hex colours [batch-analysis.txt].
+
+KEYBOARD
+========
+
+  Key      | Action
+  ---------+--------------------------
+  `E`      | Re-extract
+  `H`      | Copy the hex list
+  `J`      | Copy the JSON
+  `R`      | Reset
+  `Escape` | Close a full-screen chart
+
+The letter keys work when focus is not in a text field, slider, switch or
+menu.

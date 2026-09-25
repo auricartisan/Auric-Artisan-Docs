@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and safeguards — Auric Artisan Docs</title>
+<meta name="description" content="The built-in limits of Auric Artisan Live, why they exist, which ones you can change, and how to read its measurements.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and safeguards</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Limits and safeguards</h1>
+<p class="lede">The built-in limits of Auric Artisan Live, why they exist, which ones you can change, and how to read its measurements.</p>
+<p>Auric Live keeps memory bounded and protects your data by design. Most limits can be changed; the safeguards around privacy and workspace trust are deliberate.</p>
+<h2 id="built-in-limits">Built-in limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Limit</th><th>Default</th><th>Change it with</th></tr></thead>
+<tbody>
+<tr><td>Requests kept by the inspector</td><td>500</td><td><code>auricLive.inspector.maxEntries</code> (20–10000)</td></tr>
+<tr><td>Requests shown in the control panel</td><td>Newest 200</td><td>—</td></tr>
+<tr><td>Body captured per request or response</td><td>256 KiB</td><td><code>auricLive.inspector.maxBodyBytes</code> (0–8388608)</td></tr>
+<tr><td>Incoming request body</td><td>8 MiB; larger bodies get 413; <code>0</code> rejects all non-empty bodies</td><td><code>auricLive.maxRequestBodyBytes</code></td></tr>
+<tr><td>Time to receive a request body</td><td>30 seconds; stalled bodies get 408; <code>0</code> disables it</td><td><code>auricLive.requestBodyTimeoutMs</code></td></tr>
+<tr><td>Console capture</td><td>Off; when on, 200 entries, 2,000 characters per message, 20 messages per second</td><td><code>auricLive.console.*</code></td></tr>
+<tr><td>Session records</td><td>On; 200 request summaries, 12 sessions, about 5 MiB per session</td><td><code>auricLive.records.*</code></td></tr>
+<tr><td>Reloads before storm protection</td><td>3 in 10 seconds</td><td><code>auricLive.liveReload.stormLimit</code>, <code>auricLive.liveReload.stormWindowMs</code></td></tr>
+<tr><td>Dev server restarts</td><td>5</td><td><code>auricLive.devServer.maxRestarts</code> (0–50)</td></tr>
+<tr><td>Wait for a starting backend</td><td>25 seconds</td><td><code>auricLive.upstream.waitTimeoutMs</code></td></tr>
+<tr><td>Proxy request timeout</td><td>30 seconds per rule</td><td><code>timeoutMs</code> in a proxy rule</td></tr>
+<tr><td>CGI script run time</td><td>30 seconds</td><td><code>cgi.timeoutMs</code> in the project file</td></tr>
+</tbody></table></div>
+<h2 id="deliberate-boundaries">Deliberate boundaries</h2>
+<ul>
+<li><strong>Development only.</strong> Auric Live is not public or production hosting.</li>
+<li><strong>Virtual workspaces are not supported.</strong> It needs files on disk and a local port.</li>
+<li><strong>Runtimes are not installed for you.</strong> Executables and framework packages must already be installed. Diagnostics report what is missing without installing or running anything.</li>
+<li><strong>Detection suggests, it does not certify.</strong> A detected run target is based on files in the folder. It does not guarantee every framework configuration will work.</li>
+<li><strong>Workspace trust.</strong> Untrusted project files cannot turn on running commands, proxying, CGI, file-backed mocks, custom certificates or listening on your network.</li>
+<li><strong>Symbolic links.</strong> Links or junctions that lead outside the served folder are not followed.</li>
+<li><strong>Certificates.</strong> Generating or importing a certificate never installs trust on a device.</li>
+<li><strong>Platform coverage.</strong> Automated tests do not certify every operating system, framework or VS Code installation.</li>
+</ul>
+<h2 id="network-simulation-accuracy">Network simulation accuracy</h2>
+<ul>
+<li>Latency and bandwidth are applied per transfer, not as a shared budget across all connections.</li>
+<li>There is no packet loss and no packet-level emulation.</li>
+<li>WebSocket messages are not bandwidth-shaped.</li>
+<li>Treat results as an approximation of a slow connection, not a measurement of a real network.</li>
+</ul>
+<h2 id="reading-the-measurements">Reading the measurements</h2>
+<ul>
+<li><strong>p95 latency</strong> in the control panel is calculated from the recent requests shown (up to 200), not from the whole session. Inspector totals count everything captured since the inspector was cleared.</li>
+<li><strong>Dashboard metrics</strong> come from browser APIs. A browser that does not provide one shows <strong>Unavailable</strong>, not an estimate.</li>
+<li><strong>Cache results</strong> in the dashboard are labelled either as the browser&#39;s estimate (<strong>Likely cached</strong>) or as confirmed by the server (304 or cached responses).</li>
+<li><strong>Storage figures</strong> are sizes and counts reported by the browser; stored values are never read.</li>
+<li><strong>Frame rate and timings</strong> are sampled while the dashboard is open and the tab is visible, so they describe that moment, not the page&#39;s lifetime.</li>
+</ul>
+<h2 id="redaction">Redaction</h2>
+<p>Credential headers are always masked. Common sensitive query parameters and JSON or form fields are redacted by default, and you can add your own field names. Redaction is not a general personal-data detector: names, addresses and free text in bodies may still be sensitive. Review exports before sharing them.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#built-in-limits">Built-in limits</a></li><li><a href="#deliberate-boundaries">Deliberate boundaries</a></li><li><a href="#network-simulation-accuracy">Network simulation accuracy</a></li><li><a href="#reading-the-measurements">Reading the measurements</a></li><li><a href="#redaction">Redaction</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

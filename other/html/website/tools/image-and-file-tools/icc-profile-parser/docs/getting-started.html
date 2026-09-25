@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with the ICC Profile Parser — Auric Artisan Docs</title>
+<meta name="description" content="Open the ICC Profile Parser, find your way around its tabs, and read a first profile.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ICC Profile Parser</a>
+<h2>ICC Profile Parser documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with the ICC Profile Parser</a></li>
+<li><a href="check-conformance.html">Check conformance</a></li>
+<li><a href="export-a-reading.html">Export a reading</a></li>
+<li><a href="identify-and-gamut.html">Identify a profile and read its gamut</a></li>
+<li><a href="understand-icc-profiles.html">Understand ICC profiles</a></li>
+<li><a href="reference.html">ICC Profile Parser reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the ICC Profile Parser</a></li>
+<li><a href="faq.html">ICC Profile Parser FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">ICC Profile Parser</a> &rsaquo; <a href="README.html">ICC Profile Parser documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › ICC Profile Parser</p>
+<h1>Getting started with the ICC Profile Parser</h1>
+<p class="lede">Open the ICC Profile Parser, find your way around its tabs, and read a first profile.</p>
+<h2 id="open-the-tool">Open the tool</h2>
+<p>Go to <a href="https://auricartisan.com/tool/general/tools/icc-profile-parser/" rel="noopener">https://auricartisan.com/tool/general/tools/icc-profile-parser/</a>. The page opens on the <strong>Lab</strong> tab. Until you load a file, the main panel reads <strong>Nothing loaded yet</strong> and explains what the tool will and will not tell you.</p>
+<p>A note under the heading explains what the numbers on the page are measurements of. It has no close button on purpose.</p>
+<h2 id="find-a-profile-to-read">Find a profile to read</h2>
+<p>An ICC profile is a file ending in <code>.icc</code> or <code>.icm</code> that describes how a device or colour space reproduces colour. Your computer already has some:</p>
+<ul>
+<li><strong>Windows:</strong> <code>C:\Windows\System32\spool\drivers\color\</code></li>
+<li><strong>macOS:</strong> <code>/Library/ColorSync/Profiles/</code>, <code>~/Library/ColorSync/Profiles/</code> and <code>/System/Library/ColorSync/Profiles/</code></li>
+</ul>
+<p>Monitor calibration software, printer drivers and paper manufacturers also supply profiles.</p>
+<p>The tool reads standalone profile files. A profile embedded inside a JPEG, PNG, TIFF or PDF must first be saved out as its own file by another application.</p>
+<h2 id="the-screen-at-a-glance">The screen at a glance</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>Load a profile; read the header, verdict, diagrams, figures, findings and tag table</td></tr>
+<tr><td><strong>Method</strong></td><td>How each figure is derived, in five sections</td></tr>
+<tr><td><strong>Conformance</strong></td><td>The rules the check runs, filtered by severity, with the clause each one enforces</td></tr>
+<tr><td><strong>Data</strong></td><td>Every figure and what it rests on; the tab shows the number of entries (20)</td></tr>
+<tr><td><strong>Export</strong></td><td>What the JSON reading contains, and a preview of it</td></tr>
+<tr><td><strong>Reference</strong></td><td>The published sources, marked by whether they run in the tool</td></tr>
+</tbody></table></div>
+<h3 id="the-lab-tab">The Lab tab</h3>
+<ul>
+<li><strong>The left-hand panel</strong> holds <strong>The profile</strong> (the drop box), <strong>What the header says</strong> (the header fields), <strong>Compare against</strong> (a menu of six reference spaces), and <strong>Take it away</strong> (four buttons: <strong>Save the reading</strong>, <strong>Copy it</strong>, <strong>Tag table, CSV</strong> and <strong>Clear</strong>).</li>
+<li><strong>The right-hand panel</strong> shows, once a profile is loaded, <strong>What this profile is</strong>: the verdict, the ranking table <strong>How close, and to what</strong>, the chromaticity diagram and tone-curve plot, six figure cards, the <strong>Findings</strong> list and <strong>The tag table</strong>.</li>
+</ul>
+<h2 id="read-a-first-profile">Read a first profile</h2>
+<ol>
+<li>Drop a profile on the <strong>Drop a profile</strong> box, or select the box (or press <code>Enter</code> or <code>Space</code> while it has focus) to open a file chooser. The chooser offers <code>.icc</code> and <code>.icm</code> files.</li>
+<li>A message confirms <strong>Read</strong> followed by the file name.</li>
+<li>Read the verdict at the top of the right-hand panel. For a standard sRGB profile it reads &quot;An sRGB profile, matrix/TRC, ICC v2.1.0&quot;, followed by how far its colorants sit from sRGB&#39;s primaries, how well its tone curve fits, and whether it is conformant.</li>
+<li>In <strong>What the header says</strong>, check <strong>version</strong>, <strong>class</strong>, <strong>data space</strong>, <strong>PCS</strong> and <strong>intent</strong>. The <strong>profile ID</strong> line says <strong>not carried</strong>, <strong>matches</strong> or <strong>does NOT match</strong>.</li>
+<li>Look at the cards under the diagrams. <strong>conformance</strong> reads <strong>clean</strong> when no rule raised anything, <strong>no errors</strong> when only warnings or notes were raised, or the number of errors.</li>
+<li>Scroll to <strong>Findings</strong> to see any rule the profile does not meet, each with its severity and clause.</li>
+<li>Scroll to <strong>The tag table</strong> to see every tag the file contains.</li>
+<li>Select <strong>Save the reading</strong> to download the full reading as a JSON file.</li>
+</ol>
+<p>You should now know what kind of profile it is, which colour space it describes, and whether anything in it breaks the specification.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li>If the terms on the page are unfamiliar, read <a href="understand-icc-profiles.html">Understand ICC profiles</a>.</li>
+<li>To interpret the ranking, the diagram and the area figures, read <a href="identify-and-gamut.html">Identify a profile and read its gamut</a>.</li>
+<li>To understand a finding, read <a href="check-conformance.html">Check conformance</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>ICC Profile Parser documentation</a><a href="check-conformance.html"><span>Next</span>Check conformance</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-tool">Open the tool</a></li><li><a href="#find-a-profile-to-read">Find a profile to read</a></li><li><a href="#the-screen-at-a-glance">The screen at a glance</a></li><li><a href="#read-a-first-profile">Read a first profile</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

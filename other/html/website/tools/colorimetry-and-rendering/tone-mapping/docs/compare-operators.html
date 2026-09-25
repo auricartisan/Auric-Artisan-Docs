@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare operators — Auric Artisan Docs</title>
+<meta name="description" content="Compare all nine operators by what they return for chosen inputs, where they reach white, and how their curves look.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tone Mapping</a>
+<h2>Tone Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tone Mapping</a></li>
+<li><a href="compare-operators.html" aria-current="page">Compare operators</a></li>
+<li><a href="export-a-lut.html">Export a LUT</a></li>
+<li><a href="map-a-frame.html">Map a frame</a></li>
+<li><a href="read-the-scopes.html">Read the scopes</a></li>
+<li><a href="reference.html">Tone Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tone Mapping</a></li>
+<li><a href="faq.html">Tone Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tone Mapping</a> &rsaquo; <a href="README.html">Tone Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Compare operators</h1>
+<p class="lede">Compare all nine operators by what they return for chosen inputs, where they reach white, and how their curves look.</p>
+<h2 id="the-nine-operators">The nine operators</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Operator</th><th>Source</th><th>Formula or shape</th><th>Offered in the Lab</th></tr></thead>
+<tbody>
+<tr><td>None (clip)</td><td>—</td><td>Clamps to 0–1</td><td>Yes</td></tr>
+<tr><td>Reinhard</td><td>Reinhard et al. 2002</td><td>L ÷ (1 + L); approaches 1 but never reaches it</td><td>Yes</td></tr>
+<tr><td>Uchimura / Gran Turismo</td><td>Uchimura 2017</td><td>A toe, a linear section and a shoulder blended together</td><td>Yes</td></tr>
+<tr><td>Hable filmic</td><td>Hable 2010 (Uncharted 2)</td><td>A filmic curve with six constants, exposure bias 2.0, white point 11.2</td><td>Yes</td></tr>
+<tr><td>Narkowicz fit</td><td>Narkowicz 2016</td><td>(x(2.51x + 0.03)) ÷ (x(2.43x + 0.59) + 0.14), clamped. Approximates the look of ACES; it is not the Academy&#39;s transform</td><td>Yes</td></tr>
+<tr><td>Log (soft)</td><td>This tool</td><td>log2(1 + v) ÷ log2(11)</td><td>Yes</td></tr>
+<tr><td>Custom 1D curve</td><td>This tool</td><td>Knee, mid and shoulder</td><td>Yes</td></tr>
+<tr><td>Gamma-domain scale</td><td>This tool; formerly labelled &quot;BT.2446 Method A&quot;</td><td>Y × k^2.4, a constant multiplication (about 0.004 at the default peaks) that turns mid-grey nearly black</td><td>No</td></tr>
+<tr><td>Scaled Reinhard</td><td>This tool; formerly labelled &quot;BT.2446 Method C&quot;</td><td>reinhard(Y × r) ÷ r, which can never exceed 1 ÷ r (0.1 at the default ratio of 10)</td><td>No</td></tr>
+</tbody></table></div>
+<p>The last two are not tone curves and do not implement ITU-R BT.2446. They are shown so that old links still open and so you can see what they did.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Set the <strong>Display peak</strong> and <strong>Source peak</strong> on the Lab tab. They only affect the two retired operators.</li>
+<li>Open the <strong>Operators</strong> tab.</li>
+<li>Under <strong>Compare</strong>, choose <strong>All nine</strong> or <strong>The seven that work</strong>.</li>
+<li>Under <strong>Read out at</strong>, choose the inputs:<ul>
+<li><strong>Mid-grey 0.18</strong> — 0.18, 1, 4 and 12;</li>
+<li><strong>Scene white</strong> — 1, 4, 12 and 32;</li>
+<li><strong>Both</strong> — 0.18, 1, 2, 4, 8 and 16.</li>
+</ul>
+</li>
+<li>Read the table:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Operator</td><td>The name, and its source (or &quot;was: …&quot; for a retired operator)</td></tr>
+<tr><td>One column per input</td><td>The output value; values above 1 are highlighted</td></tr>
+<tr><td>White at</td><td>The input where the curve reaches display white, or &quot;never&quot;</td></tr>
+<tr><td>Output</td><td>A grey strip of the operator&#39;s output across the domain, as a display would show it</td></tr>
+<tr><td>Tag</td><td><strong>runs</strong>, <strong>exceeds 1</strong> (the curve passes 1.0, so it clips at the end of the pipeline) or <strong>not a curve</strong></td></tr>
+</tbody></table></div>
+<ol start="6">
+<li>Under <strong>Curve domain</strong>, choose <strong>0 – 1</strong> or <strong>0 – 12</strong> (default) for the chart. Scene values run past 1, so the wider domain shows how each curve treats highlights.</li>
+<li>Read the chart: every operator on one pair of axes, with a dashed line at display white and a line at mid-grey 0.18. Retired operators are dashed and labelled in red. Select <strong>Redraw the curves</strong> if the chart looks out of date.</li>
+</ol>
+<h2 id="reading-the-result">Reading the result</h2>
+<ul>
+<li>Mid-grey is where a tone map is judged. An operator that moves 0.18 a long way has changed the picture&#39;s exposure, not just its highlights.</li>
+<li>A curve that reaches white at a modest input (Narkowicz fit, None) clips everything above it. A curve that never reaches white (Reinhard) keeps compressing highlights but never shows pure white.</li>
+<li>The table&#39;s notes under the chart explain what the two retired operators computed and what the real BT.2446 methods involve.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>You can see, for the same inputs, how each curve treats mid-grey, white and highlights, and which ones are not really tone curves.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Tone Mapping</a><a href="export-a-lut.html"><span>Next</span>Export a LUT</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-nine-operators">The nine operators</a></li><li><a href="#steps">Steps</a></li><li><a href="#reading-the-result">Reading the result</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

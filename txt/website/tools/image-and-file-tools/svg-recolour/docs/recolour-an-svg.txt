@@ -1,0 +1,237 @@
+==============================================================================
+RECOLOUR AN SVG
+==============================================================================
+Load an SVG, understand what colours the tool finds and where, remap and swap
+colours, choose how they are written, and read the Mapping tab.
+Area: Website › Tools › Image and file tools › SVG Recolour   Updated: 2026-09-25
+
+LOAD A FILE
+===========
+
+On the Recolour tab, under The file, use any of these:
+
+  Method: Drop
+  How:    Drop an `.svg` file on Drop an SVG
+
+  Method: Choose
+  How:    Select Drop an SVG (or press `Enter` or `Space` while it has focus)
+          and choose an `.svg` file
+
+  Method: Paste
+  How:    Paste SVG markup into the box under Or paste the markup, then select
+          Read the markup
+
+  Method: Sample
+  How:    Select Load the sample; its markup also appears in the paste box
+
+A message confirms, for example Loaded logo.svg or Loaded the pasted markup.
+Loading a new file replaces the previous one and resets every mapping.
+
+If the file will not parse
+--------------------------
+
+The file must be well-formed XML. If it is not, nothing is changed, the
+message reads That file will not parse as SVG, so nothing was changed., and a
+warning under the paste box gives the parser's own complaint. A file is never
+half-recoloured.
+
+Active content in the preview
+-----------------------------
+
+An SVG can carry scripts, event handlers and `javascript:` links. Before
+drawing the previews, the tool removes `script`, `foreignObject` and `handler`
+elements, every attribute starting with `on`, and any `href` or `xlink:href`
+that starts with `javascript:`. If anything was removed, a notice above the
+previews lists it, for example `1 <script>, 2 onclick handlers`.
+
+This applies to the previews only. The exported file is rewritten from your
+original file and still contains whatever it contained. See Privacy
+[../others/privacy.txt].
+
+WHAT THE TOOL FINDS
+===================
+
+The tool looks for colours in eight paint properties:
+
+`fill`, `stroke`, `stop-color`, `flood-color`, `lighting-color`, `color`,
+`solid-color`, `text-decoration-color`
+
+It looks in three places:
+
+  - presentation attributes, such as `fill="#E5484D"`;
+  - style attributes, one declaration at a time, such as `style="fill: red;
+    stroke: #000"`;
+  - style sheets inside `<style>` elements, one colour-valued declaration at a
+    time.
+
+Each place a colour appears is one occurrence. The tool reads these colour
+forms:
+
+  Form                 | Examples
+  ---------------------+--------------------------------------------
+  Six-digit hex        | `#E5484D`
+  Three-digit hex      | `#ABC`
+  Hex with alpha       | `#E5484D80`, `#ABC8`
+  `rgb()` and `rgba()` | `rgb(62, 99, 221)`, `rgba(62 99 221 / 0.5)`
+  `hsl()` and `hsla()` | `hsl(220, 70%, 55%)`
+  CSS colour names     | `red`, `rebeccapurple` and all 148 names
+
+Some values are paint but not a colour the tool can change. They are listed,
+counted and left alone:
+
+  Value:    `none`, `transparent`
+  Shown as: No paint
+
+  Value:    `currentColor`
+  Shown as: Resolves from CSS outside this file
+
+  Value:    `inherit`, `initial`, `unset`, `revert`, `context-fill`,
+            `context-stroke`
+  Shown as: Resolves from outside this file
+
+  Value:    `url(#gradient)`
+  Shown as: A reference, not a colour
+
+Colours written in other forms, such as `oklch()`, `lab()` or `var(--brand)`,
+are not recognised, and are neither counted nor changed.
+
+THE COLOUR LIST
+===============
+
+Every colour in the file has one row per distinct colour, however many ways it
+is written, most-used first. `#F00`, `#ff0000`, `rgb(255,0,0)` and `red` are
+the same row.
+
+  Part of the row: Left swatch
+  Meaning:         The colour as it is now
+
+  Part of the row: Hex and note
+  Meaning:         The colour, with its CSS name or the nearest name prefixed
+                   "near", and how many places use it
+
+  Part of the row: Right swatch
+  Meaning:         What it should become; select it to choose
+
+  Part of the row: Right-hand hex and note
+  Meaning:         The target colour, and unchanged or written in N places
+
+  Part of the row: Count
+  Meaning:         How many places were actually written, or — when unchanged
+
+Rows greyed out are values with no colour to change: they read left alone,
+with the reason, and not held.
+
+REMAP A COLOUR
+==============
+
+  1. Select the right-hand swatch in the row.
+  2. Choose the new colour in the colour picker.
+  3. The After preview and the row update at once. Setting a colour back to
+     its original value marks the row unchanged.
+
+Every occurrence of that colour, in every form and every place, is rewritten.
+The heading of the After preview reads, for example, 4 of 5 written:
+occurrences written out of those that can be written.
+
+Swap two colours
+----------------
+
+Set colour A's target to colour B, and colour B's target to colour A. The tool
+plans every change from the original file before writing anything, so the two
+colours trade places cleanly.
+
+Undo your changes
+-----------------
+
+Put every colour back, under Recolour from a harmony, returns every target to
+its original colour. The message reads Every colour back to what it was.
+
+CHOOSE HOW COLOURS ARE WRITTEN
+==============================
+
+Under Write colours as:
+
+  Option:          Write hex (default)
+  What is written: Every changed colour as six-digit hex in lower case, for
+                   example `#00aa00`
+
+  Option:          Keep the source form
+  What is written: Each changed colour in the form it was found in, as far as
+                   possible
+
+With Keep the source form:
+
+  - a colour written as a name is written as a name if the new colour has an
+    exact CSS name, and as hex if it does not;
+  - `rgb()` stays `rgb()`, and `rgba()` keeps its alpha;
+  - `hsl()` stays `hsl()`, and `hsla()` keeps its alpha;
+  - hex written in capitals stays in capitals;
+  - a three-digit shorthand is written as full six-digit hex, because very few
+    colours have a three-digit form.
+
+In both styles, a hex colour with an alpha part, such as `#E5484D80`, is
+written as six-digit hex, so its transparency is lost when you change it. Only
+changed occurrences are rewritten; everything else in the file is left exactly
+as it was.
+
+WHAT THE FILE HOLDS
+===================
+
+  Card:    elements
+  Meaning: Elements in the parsed document, including the root
+
+  Card:    occurrences
+  Meaning: Places a colour value is written
+
+  Card:    colours
+  Meaning: Distinct colours the tool can change
+
+  Card:    left alone
+  Meaning: Values with no colour to change
+
+  Card:    written
+  Meaning: Occurrences the export will carry as changed
+
+  Card:    closest pair
+  Meaning: The smallest CIEDE2000 difference between any two colours under the
+           three colour-vision simulations; highlighted below 8
+
+The note above the previews repeats elements, occurrences and colours.
+
+THE MAPPING TAB
+===============
+
+The Mapping tab lists every colour with what will happen to it:
+
+  Column:  Swatch
+  Meaning: The original colour
+
+  Column:  In the file
+  Meaning: The hex value, or the keyword for a value left alone
+
+  Column:  Used
+  Meaning: Number of occurrences
+
+  Column:  Becomes
+  Meaning: The target, or unchanged or left alone
+
+  Column:  Written
+  Meaning: Occurrences written; highlighted when it equals Used
+
+  Column:  Where, and what happened
+  Meaning: How many are attributes, in a style attribute or in a style sheet,
+           and the forms they were written in
+
+The note under the table adds up the file: how many occurrences were written,
+how many left because nothing was asked of them, and how many could not be
+written, by keyword. The three always add up to the total.
+
+Below it, Two colours trading places and What the count used to mean show,
+with measured examples, why an earlier version of the tool could not swap
+colours and miscounted them.
+
+WHAT YOU SHOULD SEE
+===================
+
+The After preview shows your new colours, each row reports written in N
+places, and the written count matches the number you expect.

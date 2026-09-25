@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run a sweep and read the results — Auric Artisan Docs</title>
+<meta name="description" content="Start, stop and repeat sweeps, follow their progress, and read The run panel and the Overview tab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Personalization Generator</a>
+<h2>Personalization Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Personalization Generator</a></li>
+<li><a href="brand-studio.html">Brand Studio</a></li>
+<li><a href="build-the-pool.html">Build your colour pool</a></li>
+<li><a href="design-tokens.html">Design tokens</a></li>
+<li><a href="export-and-save.html">Export, save and share</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="result-tabs.html">Palettes, gradients, typography, UI pairs and posters</a></li>
+<li><a href="run-a-sweep.html" aria-current="page">Run a sweep and read the results</a></li>
+<li><a href="tune-the-sweep.html">Tune the sweep</a></li>
+<li><a href="reference.html">Personalization Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Personalization Generator</a> &rsaquo; <a href="README.html">Personalization Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Run a sweep and read the results</h1>
+<p class="lede">Start, stop and repeat sweeps, follow their progress, and read The run panel and the Overview tab.</p>
+<p>A sweep samples a set number of candidate palettes (the <strong>Search depth</strong>), scores every one, and keeps the best (<strong>Keep top</strong>). From the kept palettes the generator then builds the gradients, typography, UI pairs, posters, tokens and Studio.</p>
+<h2 id="start-a-sweep">Start a sweep</h2>
+<p>Do any one of these:</p>
+<ul>
+<li>select <strong>Generate</strong> under the brief;</li>
+<li>press <code>Enter</code> in the brief box;</li>
+<li>select <strong>Run sweep</strong> in <strong>Tune</strong>.</li>
+</ul>
+<p>While it runs, <strong>Generate</strong> reads <strong>Generating…</strong>, the status line reads, for example, <strong>Generating (320)…</strong>, and the progress bar appears at the top of <strong>The run</strong> with a label such as <strong>Sweep #3 — 320 candidates</strong>, then <strong>Sampling… 45%</strong> and a line like <strong>144/320 · 139 kept · ETA 0.4s</strong>. The count of kept candidates there is everything that has survived so far, before the final cut.</p>
+<p>The sweep works in small batches and lets the page redraw between them, so you can scroll, switch tabs and read results while it runs.</p>
+<p>A new sweep replaces the previous results. To add to them instead, use <strong>Endless</strong>.</p>
+<h2 id="stop-a-sweep">Stop a sweep</h2>
+<p>Select <strong>Stop</strong> under the brief, or <strong>Cancel</strong> beside the progress bar. The sweep stops at the end of the current batch and keeps the best of what it had already found. The status reads, for example, <strong>Cancelled after 192/320 (140ms).</strong></p>
+<h2 id="endless-mode">Endless mode</h2>
+<p>Select <strong>Endless</strong> to keep sweeping. The button reads <strong>Endless ✓</strong> while it is on. A new sweep starts about two seconds after each one finishes, and each sweep&#39;s best palettes are merged into the existing results rather than replacing them. Duplicates are removed, and the list is capped at the 96 highest-scoring palettes.</p>
+<p>Select <strong>Endless</strong> again, or <strong>Stop</strong>, to end it.</p>
+<h2 id="when-it-finishes">When it finishes</h2>
+<p>The status reads, for example, <strong>Done · 24 kept · 812ms</strong>. The tab counts update, and the leader (the highest-scoring palette) becomes the first card in <strong>Palettes</strong>, the source of the <strong>Tokens</strong> tab, and the palette shown in <strong>Studio</strong>.</p>
+<h2 id="the-run-panel">The run panel</h2>
+<p>The right-hand column explains the last sweep.</p>
+<h3 id="where-the-sweep-went">Where the sweep went</h3>
+<p>Four bars:</p>
+<ul>
+<li><strong>sampled</strong>: the candidates generated (the search depth);</li>
+<li><strong>repeats</strong>: candidates thrown out because they repeated one already seen (only when <strong>Unique</strong> is on);</li>
+<li><strong>ranked</strong>: the candidates that were scored;</li>
+<li><strong>kept</strong>: those that made the cut.</li>
+</ul>
+<p>A note under the bars explains that contrast and colour-vision are weights in the score, not filters: a candidate that reads badly is ranked down, never discarded.</p>
+<h3 id="score-distribution">Score distribution</h3>
+<p>A histogram of every ranked candidate&#39;s score, from the lowest on the left to the highest on the right, with the kept bars highlighted and the cut-off score marked. The line under it reads, for example, <strong>24 of 318 ranked candidates cleared the cut.</strong>, and says so if the sweep was cancelled.</p>
+<h3 id="the-leader-checked">The leader, checked</h3>
+<p>The leader&#39;s swatches, its name and score, and three WCAG contrast checks between its own colours, each against the 4.5:1 bar for body text:</p>
+<ul>
+<li><strong>Lightest on darkest</strong></li>
+<li><strong>Mid on darkest</strong></li>
+<li><strong>Darkest on lightest</strong></li>
+</ul>
+<p>Each shows an <em>Ag</em> sample and the ratio. This is measured directly from the colours, so it is a quick check of whether the leader can carry text at all.</p>
+<h2 id="the-overview-tab">The Overview tab</h2>
+<p><strong>Overview</strong> summarises the current results:</p>
+<ul>
+<li>five tiles: <strong>Top score</strong> (with the number of sweeps run), <strong>Pool</strong> (up to 14 swatches, the pool target and the selected styles), <strong>Search space</strong> (depth, keep, last sweep time and the total number of candidates sampled since the page opened), <strong>Output</strong> (counts of palettes, gradients, posters and type combos, and the use case) and <strong>Avg score</strong> (with the peak);</li>
+<li><strong>Top palette preview</strong>: the leader&#39;s swatches (select one to copy its HEX), its relationship and source, <strong>Copy hex list</strong>, <strong>Open in Studio</strong>, <strong>Add to pool</strong> and <strong>Save</strong>, and a <strong>Score breakdown</strong> of <strong>Preference</strong>, <strong>Harmony</strong>, <strong>Contrast</strong> and <strong>CVD / UI</strong>;</li>
+<li><strong>Sweep diagnostics</strong>: the average of those four scores across all kept palettes, plus <strong>Intent</strong>, <strong>Mode</strong>, <strong>CVD-safe</strong> and <strong>Unique</strong>;</li>
+<li><strong>Recent palettes</strong>: the top six by name and score. Select one to open it in the Studio.</li>
+</ul>
+<h2 id="filter-the-results">Filter the results</h2>
+<p>Type in <strong>Search results</strong> above the tabs to show only the cards in the open tab that match, for example a palette name, a HEX value, a relationship such as <em>Triadic</em>, a gradient style or a font name. <strong>Clear</strong> empties the box. The filter applies to the tab you are on; switching tabs applies it to the new tab.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="result-tabs.html">Palettes, gradients, typography, UI pairs and posters</a></li>
+<li><a href="tune-the-sweep.html">Tune the sweep</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="result-tabs.html"><span>Previous</span>Palettes, gradients, typography, UI pairs and posters</a><a href="tune-the-sweep.html"><span>Next</span>Tune the sweep</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#start-a-sweep">Start a sweep</a></li><li><a href="#stop-a-sweep">Stop a sweep</a></li><li><a href="#endless-mode">Endless mode</a></li><li><a href="#when-it-finishes">When it finishes</a></li><li><a href="#the-run-panel">The run panel</a></li><li><a href="#the-overview-tab">The Overview tab</a></li><li><a href="#filter-the-results">Filter the results</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

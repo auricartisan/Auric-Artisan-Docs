@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common problems with Auric Artisan Icon Hub.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Icon Hub</a>
+<h2>Icon Hub guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Icon Hub</a></li>
+<li><a href="browse-and-refine.html">Browse and refine</a></li>
+<li><a href="catalog-updates.html">Catalog metadata updates</a></li>
+<li><a href="cdn-insertion.html">Connect the icon CDN</a></li>
+<li><a href="collect-and-export.html">Collect and export</a></li>
+<li><a href="insert-copy-and-save.html">Insert, copy and save</a></li>
+<li><a href="shape-the-output.html">Shape the output</a></li>
+<li><a href="reference.html">Icon Hub reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Icon Hub</a> &rsaquo; <a href="README.html">Icon Hub guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Icon Hub</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common problems with Auric Artisan Icon Hub.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The catalog gained no new icons after <strong>Refresh</strong>.</td><td>Refresh updates compatible metadata only.</td><td>Install an extension update for new artwork.</td></tr>
+<tr><td>The badge says <strong>Offline · using local catalog</strong>.</td><td>The metadata check could not reach or validate the website.</td><td>Local browsing still works. Check your connection or try <strong>Refresh</strong> later; automatic retries wait for the interval.</td></tr>
+<tr><td>Material names such as <code>4k_plus</code> appear as text on my page.</td><td>The Material font is not loaded, often from an older insertion that used a local font.</td><td>Reinsert the icon with the current version so it uses a CDN placeholder, save the source, and reload the page with network access. Old spans are not rewritten automatically.</td></tr>
+<tr><td>CDN icons appear blank on my site.</td><td>The page has no network access, your content security policy blocks the CDN, the bridge file is not served, or the CDN does not yet allow cross-origin access to its catalog and fonts.</td><td>Check network access, CSP and that the bridge is deployed. For self-contained artwork, use <strong>Copy</strong> as SVG or <strong>Export ZIP</strong>.</td></tr>
+<tr><td>Insert says the workspace must be trusted.</td><td>Creating the CDN bridge needs a trusted workspace.</td><td>Trust the workspace, or use <strong>Copy</strong>.</td></tr>
+<tr><td>Insert says to save the file first.</td><td>CDN insertion needs a saved local or remote file.</td><td>Save the file, then insert again.</td></tr>
+<tr><td>Insert refuses because of a <code>&lt;base&gt;</code> URL or an external component script.</td><td>The bridge path could be wrong in those files.</td><td>Connect the bridge yourself, or use <strong>Copy</strong>.</td></tr>
+<tr><td>Insert cannot use the editor.</td><td>No writable editor, or the editor is read-only.</td><td>Focus a writable text file, then return to the Hub. <strong>Copy</strong> is always available.</td></tr>
+<tr><td>A Material icon cannot be inserted into my file.</td><td>Material insertion needs HTML or a web-framework file.</td><td>Use <strong>Copy</strong> with HTML, JSX, React component, CSS or CDN format.</td></tr>
+<tr><td>Stroke has no effect.</td><td>The icon is filled, not stroke-based.</td><td>This is expected; choose an outline style.</td></tr>
+<tr><td><strong>Export ZIP</strong> includes a text list instead of Material SVGs.</td><td>Material icons are font-backed.</td><td>This is expected; they are listed in <code>MATERIAL_ICONS.txt</code>.</td></tr>
+<tr><td>I also have Icon Studio. Which should I use?</td><td>They are separate products with separate settings and views.</td><td>Icon Hub: seven open-source sets, colour tools, sprite and ZIP export, CDN insertion. Icon Studio: Auric artwork, emoji and open-source sets, fully offline.</td></tr>
+</tbody></table></div>
+<p>If the problem continues, note your VS Code version, the Hub version (0.1.0), the icon ID and the steps to reproduce, remove private code from screenshots, and contact support at <a href="https://auricartisan.com/company/contact/" rel="noopener">https://auricartisan.com/company/contact/</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Icon Hub reference</a><a href="faq.html"><span>Next</span>Frequently asked questions</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read the contrast map — Auric Artisan Docs</title>
+<meta name="description" content="Choose a ground and a target, explore the contrast map by pointer or keyboard, and read the ratio, APCA value, vision margin and distance to the line.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Accessibility Library</a>
+<h2>Accessibility Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="check-your-own-colours.html">Check your own colours</a></li>
+<li><a href="look-up-and-browse-the-index.html">Look up and browse the index</a></li>
+<li><a href="read-the-contrast-map.html" aria-current="page">Read the contrast map</a></li>
+<li><a href="use-the-picks.html">Use the picks</a></li>
+<li><a href="reference.html">Accessibility Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Accessibility Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Accessibility Library</a> &rsaquo; <a href="README.html">Accessibility Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Accessibility Library</p>
+<h1>Read the contrast map</h1>
+<p class="lede">Choose a ground and a target, explore the contrast map by pointer or keyboard, and read the ratio, APCA value, vision margin and distance to the line.</p>
+<h2 id="what-the-map-shows">What the map shows</h2>
+<ul>
+<li><strong>Across:</strong> hue, from 0° (red) through 60° (yellow), 120° (green), 180° (cyan), 240° (blue) and 300° (magenta) to 360°.</li>
+<li><strong>Up:</strong> OKLCH lightness, from 0 (black) at the bottom to 1.0 (white) at the top.</li>
+<li><strong>Each point:</strong> the most colourful colour your screen&#39;s sRGB range can show at that hue and lightness.</li>
+<li><strong>Three lines:</strong> where contrast against the ground reaches <strong>3:1</strong> (dashed amber), <strong>4.5:1 body</strong> (solid green) and <strong>7:1 AAA</strong> (dashed pale blue).</li>
+<li><strong>Dimmed area:</strong> the part of the map that fails your chosen target.</li>
+</ul>
+<p>On a dark ground the passing region is above the line (lighter colours); on a light ground it is below (darker colours). Notice that the line is not flat: yellows and greens pass at lower lightness than blues and purples, because they carry more luminance.</p>
+<h2 id="choose-a-ground">Choose a ground</h2>
+<p>A <strong>ground</strong> is the background your text will sit on.</p>
+<ol>
+<li>Select one of the preset swatches: <code>#0D0D0D</code> (near-black), <code>#1D2A3E</code> (dark navy, the default), <code>#FFFCF7</code> (warm off-white) or <code>#1B4D3E</code> (dark green).</li>
+<li>Or use the colour picker beside them to choose any ground.</li>
+</ol>
+<p>The lines, the dimmed area, <strong>Territory</strong> and the picks all update for the new ground.</p>
+<h2 id="choose-a-target">Choose a target</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Target</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>3:1</strong></td><td>Large text and user-interface components such as icons and borders (WCAG AA).</td></tr>
+<tr><td><strong>4.5:1</strong></td><td>Body text (WCAG AA). The default.</td></tr>
+<tr><td><strong>7:1</strong></td><td>Body text at WCAG AAA.</td></tr>
+</tbody></table></div>
+<p><strong>Territory</strong> shows what share of the map clears the chosen target on this ground — a quick measure of how much freedom the ground leaves you. Near-black leaves most of the colour space usable; a mid-tone leaves a sliver.</p>
+<h2 id="explore">Explore</h2>
+<ul>
+<li><strong>Pointer:</strong> press and drag anywhere on the map. The caret follows, and the readout updates.</li>
+<li><strong>Keyboard:</strong> select the map (or tab to it) and use the arrow keys:</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>Left</code> / <code>Right</code></td><td>Hue down or up by 5°.</td></tr>
+<tr><td><code>Up</code> / <code>Down</code></td><td>Lightness up or down by 0.02.</td></tr>
+<tr><td><code>Shift</code> with an arrow</td><td>Five times the step (25° or 0.10).</td></tr>
+<tr><td><code>Home</code></td><td>Lightness to 1 (white end).</td></tr>
+<tr><td><code>End</code></td><td>Lightness to 0 (black end).</td></tr>
+</tbody></table></div>
+<p>Screen readers announce the current foreground, ground, ratio and whether it passes.</p>
+<h2 id="the-readout">The readout</h2>
+<p>The specimen shows &quot;Readable at a glance&quot; and a paragraph in your foreground on the ground.</p>
+<p>Under it, the ratio, for example <strong>7.84:1</strong>, and a verdict:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Ratio</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>7:1 or more</td><td><strong>clears AAA for body text</strong></td></tr>
+<tr><td>4.5:1 to 7:1</td><td><strong>clears AA for body text</strong></td></tr>
+<tr><td>3:1 to 4.5:1</td><td><strong>large text and UI only</strong></td></tr>
+<tr><td>Below 3:1</td><td><strong>fails every text threshold</strong></td></tr>
+</tbody></table></div>
+<p>Then the figures:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Foreground</strong></td><td>The colour under the caret, in hex.</td></tr>
+<tr><td><strong>Ground</strong></td><td>The background, in hex.</td></tr>
+<tr><td><strong>Lightness</strong></td><td>The foreground&#39;s OKLCH lightness, three decimals.</td></tr>
+<tr><td><strong>Hue</strong></td><td>The foreground&#39;s hue in degrees.</td></tr>
+<tr><td><strong>APCA</strong></td><td>The APCA lightness contrast value (Lc), rounded. Negative values mean light text on a dark ground.</td></tr>
+<tr><td><strong>Vision margin</strong></td><td>How far apart the two colours stay under ten simulated conditions (eight colour vision deficiencies, cataracts and low vision), taking the worst case, on a scale from 0 (identical) to 1.</td></tr>
+<tr><td><strong>To the line</strong></td><td>How far the caret is from your target&#39;s line at this hue, as a percentage of lightness: positive inside the passing region, negative outside, or <strong>unreachable at this hue</strong>.</td></tr>
+</tbody></table></div>
+<p>Finally, a sentence of advice:</p>
+<ul>
+<li>Inside: <strong>Inside the territory with N% of lightness to spare — room for a later tweak before it drops out.</strong></li>
+<li>Outside: <strong>Outside by N% of lightness. The line sits above/below you at this hue, so moving straight up/down the column is the shortest way in.</strong></li>
+<li>No passing lightness at this hue: <strong>No lightness at this hue reaches the target against this ground. Either the ground has to move or the hue does.</strong></li>
+</ul>
+<h2 id="swap-foreground-and-ground">Swap foreground and ground</h2>
+<p>Select <strong>Swap</strong> to put the current foreground on the ground and move the caret to the old ground colour. Use it to ask the question the other way round — for example, &quot;what backgrounds can hold this brand colour as text?&quot;</p>
+<h2 id="result">Result</h2>
+<p>You know which foreground colours pass on your ground at your target, how close any colour is to the line, and which way to move it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="look-up-and-browse-the-index.html"><span>Previous</span>Look up and browse the index</a><a href="use-the-picks.html"><span>Next</span>Use the picks</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-map-shows">What the map shows</a></li><li><a href="#choose-a-ground">Choose a ground</a></li><li><a href="#choose-a-target">Choose a target</a></li><li><a href="#explore">Explore</a></li><li><a href="#the-readout">The readout</a></li><li><a href="#swap-foreground-and-ground">Swap foreground and ground</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,94 @@
+==============================================================================
+CATALOGUE COMPARE AND ANALYTICS
+==============================================================================
+Preview up to eight tools on a six-colour test palette, and explore the lab's
+heat map, mind map, statistics and catalogue, with JSON and CSV export.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+Two entries in the Catalogue's domain list are not domains. Compare previews
+several tools side by side before you open any, and Analytics maps the whole
+lab. (This Compare is different from the top-level Compare view, which
+measures two colours.)
+
+COMPARE (IN THE CATALOGUE)
+==========================
+
+Choose Compare in the domain list, or press `C` when the cursor is not in a
+text box.
+
+Select tools
+------------
+
+The left column, Select tools, lists the tools that match the current level
+and search, each marked F (Basic / Foundation) or R (Advanced / Research).
+Tick the ones to compare. Buttons: Basic (select all Foundation tools),
+Advanced (all Research tools), Filtered (everything listed) and Clear. The
+first four tools selected at the start are CIE XYZ and Lab Workbench, Bradford
+Adaptation, Blackbody Radiation and 40+ Color Space Atlas.
+
+The matrix
+----------
+
+The matrix shows up to eight selected tools as columns and six test colours as
+rows: Auric gold (#D3AF37), Signal red (#D84444), Cyan blue (#2FA7D8), Forest
+green (#3C8D5A), Violet (#7C5CE2) and Skin tone (#C98E69). The Reference
+column shows the original colour. Each tool cell shows that tool's preview of
+the colour, its HEX code and its ΔE 76 from the reference. Each column header
+has Open to open that tool as a panel.
+
+With nothing selected, it shows No tools selected and ⚡ Quick Start: Core Lab,
+which selects six tools covering colorimetry, adaptation, spectral, colour
+spaces, theory and gamut.
+
+The matrix previews are quick approximations of each domain's typical effect,
+for scanning; open a tool for its full readout.
+
+ANALYTICS
+=========
+
+Choose Analytics in the domain list, or press `A`. The header, Color Lab
+Intelligence, shows the number of visible tools, domains and open panels, with
+four buttons:
+
+  Button        | What it does
+  --------------+-------------------------------------------------------------
+  ⚡ Random tool | Opens a random tool from those currently visible (also `R`).
+  JSON          | Downloads the catalogue as JSON.
+  CSV           | Downloads the catalogue as CSV.
+  ?             | Shows the keyboard shortcuts.
+
+Four tabs:
+
+  - Heat Map: one row per domain; each tool is a cell coloured by an analysis
+    depth score from 1 to 10 (green to orange), from Basic / Foundation to
+    Advanced / Research. The score is the lab's own rating of model complexity
+    and breadth, not a measurement. Select a cell to open the tool.
+  - Mind Map: Unified model map: the lab at the centre, the eight domains
+    around it, and up to four tools per domain as small nodes. Select a small
+    node to open that tool.
+  - Stats: Total, Categories, Basic, Advanced, Avg Score, Favorites and Open;
+    then Highest Analysis Depth (top eight tools), Domain Balance (average
+    score and count per domain) and Recently Opened (your last tools, up to
+    ten remembered).
+  - Catalog: three figures (Color spaces 63, Theory models 24, White points
+    13), the Color Space Registry table (space, family, white, transfer,
+    standard, gamut with approximate sRGB coverage) and the Theory and Model
+    Registry (name, family, author, era, summary). The search box filters
+    both.
+
+Exports
+-------
+
+  - JSON: `color-science-lab-catalog-YYYY-MM-DD.json` with counts, every
+    colour space, theory and white point, and every tool with its domain,
+    level, summary, tags, defaults and score.
+  - CSV: `color-science-lab-catalog-YYYY-MM-DD.csv` with one row per tool,
+    colour space and theory, and the columns `type, slug, name, category,
+    depth_or_family, score_or_white, model_or_transfer, space_or_gamut,
+    theory_or_author, tags_or_summary, summary_or_era`.
+
+RELATED
+=======
+
+  - The Catalogue and its panels [catalogue-and-panels.txt]
+  - Shortcuts [../others/shortcuts.txt]

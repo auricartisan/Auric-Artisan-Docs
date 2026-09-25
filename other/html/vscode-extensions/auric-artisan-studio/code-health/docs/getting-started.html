@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Auric Code Health — Auric Artisan Docs</title>
+<meta name="description" content="Install Auric Code Health, read your first finding, grade the repository and write your first CI record.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Auric Code Health</a></li>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="code-health-studio.html">The Code Health Studio</a></li>
+<li><a href="health-records.html">Health records</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="reference.html">Auric Code Health reference</a></li>
+<li><a href="troubleshooting.html">Auric Code Health troubleshooting</a></li>
+<li><a href="faq.html">Auric Code Health FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Getting started with Auric Code Health</h1>
+<p class="lede">Install Auric Code Health, read your first finding, grade the repository and write your first CI record.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li>Open the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>).</li>
+<li>Search for <code>auric-artisan.auric-codehealth</code> and select <strong>Install</strong>. Or run <code>code --install-extension auric-artisan.auric-codehealth</code>.</li>
+</ol>
+<p>It starts when VS Code finishes loading. You need VS Code 1.74 or newer. All seven categories are on by default.</p>
+<h2 id="your-first-finding">Your first finding</h2>
+<ol>
+<li>Open any source file, in any of the 40+ supported languages.</li>
+<li>Findings are underlined and listed in the Problems panel with the source <code>auric-artisan</code> and a code such as <code>code-health:debug</code>. For example:</li>
+</ol>
+<pre class="code" data-lang="text"><code>Leftover debug statement (console.).  —  Remove before committing, or route through a real logger.</code></pre>
+<ol start="3">
+<li>Hover the underline. The card shows the signature&#39;s title (for example <strong>Console debug output</strong>), a severity pill, the category (for example <strong>Debug leftovers</strong>), the confidence, a priority, the location, requirement tags such as <code>CWE-798</code> or <code>OWASP-A05:2025</code> where they apply, the line of code, the fix, and actions: <strong>Go to code</strong>, <strong>Rule details</strong>, <strong>Ignore here</strong> and <strong>Copy reference</strong>. The footer shows the signature ID and detector version, such as <code>ch-debug-console v1.2.0</code>.</li>
+<li>Press <code>Ctrl</code> + <code>.</code> for <strong>Ignore this debug finding here</strong> (inserts <code>auric-disable-next-line debug</code> above) or <strong>Ignore all debug findings in this file</strong>.</li>
+</ol>
+<p>Secret findings never show the secret itself; the evidence reads, for example, <code>[redacted secret; 40 characters]</code>. See <a href="secrets-and-redaction.html">Secrets and redaction</a>.</p>
+<h2 id="grade-the-repository">Grade the repository</h2>
+<ol>
+<li>Select the <strong>Auric Code Health</strong> icon in the Activity Bar. The <strong>Overview</strong> shows a <strong>Code health</strong> ring (empty until the first grade) and seven chips: <strong>Secrets</strong>, <strong>Security</strong>, <strong>Risky APIs</strong>, <strong>Debug</strong>, <strong>TODOs</strong>, <strong>Conflicts</strong> and <strong>Large files</strong>.</li>
+<li>Select <strong>Report</strong>. The Studio scans the workspace (or reuses a fresh cache) and writes the project health report to <code>.auric-artisan</code>.</li>
+<li>The ring shows the code-health score and grade, and each chip its count. The status bar shows, for example, <code>Health 88 B</code>.</li>
+<li>In the message that appears, select <strong>Open in Browser</strong> to read the printable report.</li>
+</ol>
+<p>See <a href="../../docs/scores-and-grades.html#the-code-health-score">Scores and grades</a> for how the score is calculated.</p>
+<h2 id="explore-the-findings">Explore the findings</h2>
+<p>Run <strong>Auric Artisan: Open Code Health Studio</strong> (or <strong>Studio</strong> on the Overview, or the status-bar item). The <strong>Health</strong> space shows the score, the seven categories as filters, confidence filters, a search box and every finding. See <a href="code-health-studio.html">The Code Health Studio</a>.</p>
+<h2 id="write-the-ci-records">Write the CI records</h2>
+<p>Select <strong>health.json + SARIF</strong> on the Overview, or run <strong>Auric Artisan: Write Health Record (health.json + SARIF)</strong>. The Studio writes <code>health.json</code>, <code>health.sarif</code> and <code>health-history.json</code> to <code>.auric-artisan</code> and opens <code>health.json</code>. See <a href="health-records.html">Health records</a> and <a href="../../docs/ci-gate.html">The CI gate</a>.</p>
+<h2 id="where-auric-code-health-appears">Where Auric Code Health appears</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Place</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td>Editor</td><td>Code-health underlines, hovers and ignore quick fixes</td></tr>
+<tr><td>Activity Bar, <strong>Auric Code Health</strong></td><td><strong>Overview</strong> (the code-health layout)</td></tr>
+<tr><td>Status bar</td><td><code>Health</code> and the score, when it is the only Studio extension</td></tr>
+<tr><td>Studio (<strong>Open Code Health Studio</strong>)</td><td><strong>Health</strong> and <strong>Settings</strong></td></tr>
+<tr><td>Command Center (<code>Ctrl</code> + <code>Alt</code> + <code>.</code>)</td><td>Project health report, health record, data folder, remediation plan, worst findings, written files</td></tr>
+</tbody></table></div>
+<h2 id="with-the-other-studio-extensions">With the other Studio extensions</h2>
+<p>When Auric Accessibility or Auric Color is installed, one of them hosts the Workstation. Auric Code Health hides its own views, adds its <strong>Health</strong> space, <strong>Report</strong>, <strong>SARIF</strong> and the CI gate card to the host, and keeps publishing code-health underlines. See <a href="../../docs/workstation.html">The Workstation</a>.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="../../docs/remediation-plan.html">The remediation plan</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Auric Code Health docs</a><a href="categories-and-signatures.html"><span>Next</span>Categories and signatures</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#install">Install</a></li><li><a href="#your-first-finding">Your first finding</a></li><li><a href="#grade-the-repository">Grade the repository</a></li><li><a href="#explore-the-findings">Explore the findings</a></li><li><a href="#write-the-ci-records">Write the CI records</a></li><li><a href="#where-auric-code-health-appears">Where Auric Code Health appears</a></li><li><a href="#with-the-other-studio-extensions">With the other Studio extensions</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

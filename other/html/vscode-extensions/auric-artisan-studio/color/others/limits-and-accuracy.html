@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Color limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Color's colour engine and contrast checks measure, how accurate they are, and what they cannot see.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color: other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Auric Color shortcuts</a></li>
+<li><a href="glossary.html">Auric Color glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Auric Color limits and accuracy</a></li>
+<li><a href="privacy.html">Auric Color privacy</a></li>
+<li><a href="release-notes.html">Auric Color release notes</a></li>
+<li><a href="related.html">Related to Auric Color</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color: other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Auric Color limits and accuracy</h1>
+<p class="lede">What Auric Color's colour engine and contrast checks measure, how accurate they are, and what they cannot see.</p>
+<h2 id="what-is-accurate">What is accurate</h2>
+<ul>
+<li><strong>Colour conversions</strong> read every CSS Color 4 and 5 syntax and write back to exactly the same colour in the token&#39;s own format.</li>
+<li><strong>Contrast ratios</strong> use the WCAG 2.x formula; verdicts use the exact ratio, and a ratio just under a target is never shown rounded up to it.</li>
+<li><strong>APCA</strong> uses APCA-W3 0.0.98G and matches that algorithm&#39;s published test values.</li>
+<li><strong>Colour difference</strong> (CIEDE2000) matches all 34 published Sharma test pairs.</li>
+<li><strong>Colour-vision simulation</strong> uses the Brettel 1997 method in linear light.</li>
+<li><strong>Translucent colours</strong> are blended the way browsers blend them (8-bit alpha).</li>
+<li><strong>Contrast scanning</strong> agrees with Chromium&#39;s rendering in 62 of 68 cases on the audit set used in development; the other six are deliberately skipped.</li>
+</ul>
+<h2 id="what-it-cannot-see">What it cannot see</h2>
+<ul>
+<li>Colours set by JavaScript at runtime, or by classes defined in another file.</li>
+<li>Which rule wins between two different selectors, inherited or computed values, pseudo-elements and component states.</li>
+<li>Text over images or gradients, gradient-clipped text and <code>currentColor</code> backgrounds.</li>
+<li>The rendered font size, so verdicts name the WCAG check rather than a size.</li>
+<li>Tailwind utility classes, integer colour literals such as <code>0xFF00FF</code>, and colours built from variables in other languages.</li>
+</ul>
+<h2 id="what-it-is-not">What it is not</h2>
+<ul>
+<li>Colour-vision simulations are previews for design decisions, not a diagnosis.</li>
+<li>APCA results are experimental and not a WCAG 3 conformance claim.</li>
+<li>A clean contrast check does not mean the page is accessible; many criteria need manual review.</li>
+</ul>
+<h2 id="size-limits">Size limits</h2>
+<ul>
+<li>Files larger than 1 MB are not decorated or checked.</li>
+<li>Up to 5,000 colours per file get swatches.</li>
+</ul>
+<p>For the full engine description, see the <a href="../../others/limits-and-accuracy.html">Studio limits and accuracy page</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Auric Color glossary</a><a href="privacy.html"><span>Next</span>Auric Color privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-accurate">What is accurate</a></li><li><a href="#what-it-cannot-see">What it cannot see</a></li><li><a href="#what-it-is-not">What it is not</a></li><li><a href="#size-limits">Size limits</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

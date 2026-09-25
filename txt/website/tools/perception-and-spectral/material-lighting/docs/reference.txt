@@ -1,0 +1,285 @@
+==============================================================================
+MATERIAL UNDER LIGHT REFERENCE
+==============================================================================
+Every tab, control, readout, message and file format in Material Under Light,
+with ranges and defaults.
+Area: Website › Tools › Perception and spectral › Material Lighting   Updated: 2026-09-25
+
+Address:
+https://auricartisan.com/tool/general/spectral-tools/material-lighting/
+
+TABS
+====
+
+  Tab:      Lab
+  Contents: Light, material, surface and geometry controls; the spectrum plot;
+            the sample sphere and lobe cards; readouts; the reference
+            comparison
+
+  Tab:      Method
+  Contents: Four explanation views
+
+  Tab:      Metrics
+  Contents: The sensitivity sweep and the two withdrawn rendering indices
+
+  Tab:      Data
+  Contents: The register of 17 tables and formulas, filterable by status; the
+            tab label shows the count; reflectance loader
+
+  Tab:      Export
+  Contents: Spectrum CSV, scene JSON and link
+
+  Tab:      Reference
+  Contents: Fourteen sources, filterable
+
+Links in the page text (for example Metrics or Data) switch to that tab.
+
+LAB TAB — THE LIGHT
+===================
+
+  Control:         Illuminant
+  Values or range: D65 — daylight, 6504 K, D50 — daylight, 5003 K, D55 —
+                   daylight, 5503 K, D75 — daylight, 7504 K, A — a blackbody
+                   at 2856 K, E — equal energy, Blackbody at a temperature you
+                   choose, Daylight at a temperature you choose
+  Default:         D65
+
+  Control:         Temperature
+  Values or range: 1800–10000 K, step 50; enabled only for the last two
+                   options; daylight is raised to at least 4000 K
+  Default:         2700 K
+
+LAB TAB — THE MATERIAL AND SURFACE
+==================================
+
+  Control:         Material
+  Values or range: White, Gray, Black, Red, Green, Blue, Yellow, Cyan,
+                   Magenta, Skin, Leaf, Ocean, Concrete, Wood, Sky, Gold,
+                   Copper, Silver, Ceramic, Rubber; or one measured file
+  Default:         Gold
+
+  Control:         Dielectric / Conductor
+  Values or range: Surface type
+  Default:         Dielectric
+
+  Control:         Refractive index
+  Values or range: 1.00–3.00, step 0.01; disabled for Conductor
+  Default:         1.50
+
+  Control:         Roughness
+  Values or range: 0.02–1.00, step 0.01
+  Default:         0.40
+
+LAB TAB — THE GEOMETRY
+======================
+
+  Control      | Range and step | Default
+  -------------+----------------+--------
+  Light from   | 0–89°, step 1  | 30°
+  Seen from    | 0–89°, step 1  | 20°
+  Between them | 0–180°, step 1 | 0°
+
+LAB TAB — BUTTONS
+=================
+
+  Button:       Save the spectrum
+  What it does: Saves `material-under-light-spectrum.csv`
+
+  Button:       Reset the scene
+  What it does: Restores D65, 2700 K, Gold (if the presets are loaded),
+                Dielectric, 1.50, GGX, 0.40, 30°, 20°, 0°, and clears the
+                sweep
+
+LAB TAB — LOBE CARDS
+====================
+
+  Card              | Source
+  ------------------+----------------------------
+  GGX (default)     | Walter et al. 2007
+  Beckmann          | Beckmann & Spizzichino 1963
+  Ward              | Ward 1992
+  Ashikhmin-Shirley | Ashikhmin & Shirley 2000
+  Oren-Nayar        | Oren & Nayar 1994
+
+LAB TAB — SPECTRUM AND SAMPLE
+=============================
+
+  Element:     Spectrum plot
+  Description: Illuminant (dashed), Reflectance and What leaves the surface
+               (filled), each scaled to its own maximum, 380–780 nm
+
+  Element:     Legend
+  Description: The illuminant's name; the material with "synthesised" or the
+               file name with "measured"; "their product, times the lobe"
+
+  Element:     Sample
+  Description: A 232 × 232 sphere, seen head-on, lit from the Light from angle
+
+  Element:     Exposure note
+  Description: scaled so a white card here would read Y = 1
+
+  Element:     clipped to sRGB
+  Description: Shown when the swatch or the sphere had to be clipped
+
+  Element:     Drop and click
+  Description: Drop a reflectance file on the plot, or click it to choose one
+
+LAB TAB — READOUTS
+==================
+
+  Readout: sRGB
+  Meaning: Un-adapted colour at the chosen geometry
+  Format:  Hex
+
+  Readout: CIE L*
+  Meaning: Lightness against the light's own white
+  Format:  One decimal
+
+  Readout: a*, b*
+  Meaning: Opponent coordinates against the light's own white
+  Format:  One decimal each
+
+  Readout: Jz
+  Meaning: JzAzBz lightness
+  Format:  Four decimals
+
+  Readout: Measured temperature
+  Meaning: CCT of the illuminant with its error band; highlighted above 7000 K
+  Format:  Nearest 10 K
+
+  Readout: Reference for it
+  Meaning: daylight N K or blackbody N K
+  Format:  Nearest 10 K
+
+  Readout: Reflectance
+  Meaning: synthesised (highlighted) or measured — and the file name
+  Format:  —
+
+  Readout: Inside sRGB
+  Meaning: yes, no or the highlight is not (last two highlighted)
+  Format:  —
+
+LAB TAB — AGAINST THE REFERENCE THE STANDARD NAMES
+==================================================
+
+  Element             | Description
+  --------------------+---------------------------------------------------
+  Under your source   | Swatch, captioned with the illuminant
+  ΔE₀₀                | CIEDE2000 difference between the two, two decimals
+  Under its reference | Swatch, captioned D or BB and the temperature
+  Note                | The reason for the reference choice
+
+METHOD TAB
+==========
+
+  Control: Method
+  Values:  From spectrum to colour, Choosing the reference, The five lobes,
+           Two white points
+  Default: From spectrum to colour
+
+METRICS TAB
+===========
+
+  Control            | Range and step                                       | Default
+  -------------------+------------------------------------------------------+--------
+  Perturbation       | ±0.005–0.1, step 0.005                               | ±0.02
+  Correlation length | 0–120 nm, step 5 (0 is independent)                  | 40 nm
+  Draws              | 100–2000, step 100                                   | 500
+  Run the sweep      | Shows Median, 95th percentile and Worst draw in ΔE₀₀ | —
+
+Below: CIE colour rendering index and TM-30 Rf and Rg, each marked Withdrawn,
+with tables and What it would take.
+
+DATA TAB
+========
+
+  Control:      Status
+  What it does: All (17), Verbatim (8), Computed (5), Stand-in (2), Absent (2)
+
+  Control:      Register row
+  What it does: Select, or press `Enter` or `Space`, to expand its note and
+                what it would take
+
+  Control:      Drop a reflectance file
+  What it does: Loads a measured reflectance; click or `Enter`/`Space` opens a
+                file chooser
+
+  Control:      Go back to the presets
+  What it does: Shown after loading; restores the twenty presets
+
+Entries: CIE 1931 2° standard observer, CIE D-series eigenvector basis, sRGB
+primaries and transfer curve, CIEDE2000 colour difference, JzAzBz, Planck's
+radiation law, GGX / Trowbridge-Reitz microfacet distribution, The other four
+reflectance lobes (Verbatim); Correlated colour temperature, The reference
+illuminant for a source, Rendering shift, Exposure normalisation, Illumination
+and view geometry (Computed); The twenty pigment reflectances, The sensitivity
+sweep (Stand-in); CIE colour rendering index (Ra), IES TM-30 fidelity and
+gamut (Rf, Rg) (Absent).
+
+EXPORT TAB
+==========
+
+  Control                   | What it does
+  --------------------------+--------------------------------------------------------
+  What to take              | Preview The spectrum, The whole scene or A link to this
+  Download the spectrum     | Saves `material-under-light-spectrum.csv` (81 rows)
+  Download the scene        | Saves `material-under-light-scene.json`
+  Copy a link to this scene | Copies a link
+
+REFERENCE TAB
+=============
+
+  Control   | Values
+  ----------+---------------------------------------------------------
+  Reference | All (14), Colorimetry (6), Reflectance (6), Not held (2)
+
+MESSAGES
+========
+
+  Message: Scene reset
+  Meaning: Defaults restored
+
+  Message: Swept N perturbations in M ms
+  Meaning: The sweep finished
+
+  Message: N rows accepted — the register now says verbatim (with , read as
+           percent when applicable)
+  Meaning: A reflectance file was loaded
+
+  Message: No two-column numeric rows in that file
+  Meaning: The file had no usable rows
+
+  Message: Not installed: fewer than eight rows / fewer than eight usable rows
+  Meaning: Too few rows
+
+  Message: Not installed: covers X to Y nm; at least 420 to 680 is needed …
+  Meaning: The file does not span 420–680 nm
+
+  Message: Back to the twenty synthesised presets
+  Meaning: The loaded file was removed
+
+  Message: Link copied
+  Meaning: The link is on the clipboard
+
+FILE FORMATS
+============
+
+  File:     `material-under-light-spectrum.csv`
+  Format:   CSV with `#` header lines
+  Contents: `wavelength_nm,illuminant_relative,reflectance,radiance_relative,observer_xbar,observer_ybar,observer_zbar`
+
+  File:     `material-under-light-scene.json`
+  Format:   JSON
+  Contents: See Export and share [export-and-share.txt]
+
+  File:     Reflectance (input)
+  Format:   `.csv`, `.tsv` or `.txt`
+  Contents: Two columns: wavelength (nm), reflectance (0–1 or percent); at
+            least 8 rows spanning 420–680 nm
+
+LINK PARAMETERS
+===============
+
+`illuminant`, `cct`, `material`, `ior`, `roughness`, `thetaL`, `thetaV`,
+`phi`, `lobe`, `metal`. Values are listed in Export and share
+[export-and-share.txt].

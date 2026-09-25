@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: commands, keys and settings — Auric Artisan Docs</title>
+<meta name="description" content="Every Auric Artisan File System command grouped as the product groups them, every keyboard shortcut, menu and setting, with types, defaults and ranges.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html" aria-current="page">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Reference: commands, keys and settings</h1>
+<p class="lede">Every Auric Artisan File System command grouped as the product groups them, every keyboard shortcut, menu and setting, with types, defaults and ranges.</p>
+<p>This page covers Auric Artisan File System 0.1.0: 81 commands, 69 keyboard shortcut declarations, one Explorer view and 48 settings. Commands appear in the Command Palette with the <strong>Auric Files:</strong> prefix.</p>
+<h2 id="commands">Commands</h2>
+<p>Commands are grouped as the workspace panel groups them. The <strong>Keys</strong> column gives Windows and Linux keys. <strong>(Explorer)</strong> keys work whenever the Explorer has focus. <strong>(deck)</strong> keys need <code>auricFiles.keyboard.enableDefaultShortcuts</code>. On macOS, <code>Cmd</code> replaces <code>Ctrl</code> in every shortcut, except <strong>Redo File Operation</strong>, which is <code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>Z</code>. &quot;Then&quot; means press the first combination, release, then press the second.</p>
+<p>Commands marked &quot;not in the Command Palette&quot; act on a selection and run from the panel, context menus or shortcuts.</p>
+<h3 id="create">Create</h3>
+<p>Files, folders and complete structures.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files: New File…</strong></td><td><code>auricFiles.newFile</code></td><td><code>Ctrl</code> + <code>N</code> (Explorer); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Ctrl</code> + <code>N</code> (deck)</td><td>Create a file: choose the folder, type a name (a trailing / makes a folder), optionally pick a template</td></tr>
+<tr><td><strong>Auric Files: New Folder…</strong></td><td><code>auricFiles.newFolder</code></td><td><code>Ctrl</code> + <code>Shift</code> + <code>N</code> (Explorer); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Ctrl</code> + <code>Shift</code> + <code>N</code> (deck)</td><td>Create a folder, including nested paths</td></tr>
+<tr><td><strong>Auric Files: New File from Template…</strong></td><td><code>auricFiles.newFromTemplate</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>T</code> (deck)</td><td>Create a file from a built-in, workspace or global template, filling in its variables</td></tr>
+<tr><td><strong>Auric Files: New from Framework Preset…</strong></td><td><code>auricFiles.newFromPreset</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>P</code> (deck)</td><td>Create files from a framework preset (React, Vue, Angular and more) or a custom generator</td></tr>
+<tr><td><strong>Auric Files: New Sibling File</strong></td><td><code>auricFiles.newSibling</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>N</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>N</code> (deck)</td><td>Create a file next to the selected file</td></tr>
+<tr><td><strong>Auric Files: New Child File</strong></td><td><code>auricFiles.newChild</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>N</code> (deck)</td><td>Create a file inside the selected folder</td></tr>
+<tr><td><strong>Auric Files: Create Related Files…</strong></td><td><code>auricFiles.newRelated</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>R</code> (deck)</td><td>Create companion files (test, style, story and so on) for the selected file</td></tr>
+<tr><td><strong>Auric Files: Batch Structure…</strong></td><td><code>auricFiles.batchCreate</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>B</code> (Explorer); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>B</code> (deck)</td><td>Type a whole structure of files and folders in one line; braces and ranges expand</td></tr>
+<tr><td><strong>Auric Files: Batch Create Files…</strong></td><td><code>auricFiles.batchCreateFiles</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>F</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>F</code> (deck)</td><td>Create many files at once from comma-separated paths with brace expansion</td></tr>
+<tr><td><strong>Auric Files: Batch Create Folders…</strong></td><td><code>auricFiles.batchCreateFolders</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>N</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>F</code> (deck)</td><td>Create many folders at once from comma-separated paths with brace expansion</td></tr>
+</tbody></table></div>
+<h3 id="inspect-navigate">Inspect &amp; navigate</h3>
+<p>Properties, comparisons and companion files.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files: File Properties</strong></td><td><code>auricFiles.showMetadata</code></td><td><code>Alt</code> + <code>Enter</code> (Explorer)</td><td>Open Properties for the selected resource</td></tr>
+<tr><td><strong>Auric Files: Quick Open in Auric Files…</strong></td><td><code>auricFiles.quickOpen</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>O</code> (deck)</td><td>Focus the Explorer and search indexed files by name or path</td></tr>
+<tr><td><strong>Auric Files: Compare Selected Files</strong></td><td><code>auricFiles.compareSelected</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>D</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>C</code> (deck)</td><td>Open two selected files in VS Code&#39;s diff editor</td></tr>
+<tr><td><strong>Auric Files: Merge Selected Files</strong></td><td><code>auricFiles.mergeSelected</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>G</code> (deck)</td><td>Open two files, or a base plus two inputs, in VS Code&#39;s merge editor</td></tr>
+<tr><td><strong>Auric Files: Export Selected Items…</strong></td><td><code>auricFiles.exportSelection</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>X</code> (deck)</td><td>Save a JSON manifest of the selected items&#39; paths and metadata</td></tr>
+<tr><td><strong>Auric Files: Go to Related File…</strong></td><td><code>auricFiles.goToRelated</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>R</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>O</code> (deck)</td><td>Pick and open any companion of the current file</td></tr>
+<tr><td><strong>Auric Files: Open Matching Test</strong></td><td><code>auricFiles.goToTest</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Q</code> (deck)</td><td>Open the current file&#39;s test</td></tr>
+<tr><td><strong>Auric Files: Open Matching Style</strong></td><td><code>auricFiles.goToStyle</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>S</code> (deck)</td><td>Open the current file&#39;s stylesheet</td></tr>
+<tr><td><strong>Auric Files: Open Matching Story</strong></td><td><code>auricFiles.goToStory</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>W</code> (deck)</td><td>Open the current file&#39;s story</td></tr>
+<tr><td><strong>Auric Files: Open Matching Component</strong></td><td><code>auricFiles.goToComponent</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>I</code> (deck)</td><td>Open the component a test, style or story belongs to</td></tr>
+<tr><td><strong>Auric Files: Open Matching Documentation</strong></td><td><code>auricFiles.goToDocs</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>D</code> (deck)</td><td>Open the current file&#39;s documentation</td></tr>
+<tr><td><strong>Auric Files: Show Related File Group</strong></td><td><code>auricFiles.showRelatedGroup</code></td><td>—</td><td>List the file&#39;s related group, including missing companions; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Generate Missing Companion Files</strong></td><td><code>auricFiles.generateMissingRelated</code></td><td>—</td><td>Create the companion files that do not exist yet</td></tr>
+<tr><td><strong>Auric Files: Reveal in File Manager</strong></td><td><code>auricFiles.revealInExplorer</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>V</code> (deck)</td><td>Show the file in your operating system&#39;s file manager</td></tr>
+<tr><td><strong>Auric Files: Reveal in VS Code Explorer</strong></td><td><code>auricFiles.revealInVsCodeExplorer</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>V</code> (deck)</td><td>Select the file in the VS Code Explorer</td></tr>
+<tr><td><strong>Auric Files: Copy Relative Path</strong></td><td><code>auricFiles.copyRelativePath</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>C</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>L</code> (deck)</td><td>Copy the workspace-relative path</td></tr>
+<tr><td><strong>Auric Files: Copy Absolute Path</strong></td><td><code>auricFiles.copyAbsolutePath</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>A</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>A</code> (deck)</td><td>Copy the full path</td></tr>
+<tr><td><strong>Auric Files: Copy File URI</strong></td><td><code>auricFiles.copyUri</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>U</code> (deck)</td><td>Copy the file&#39;s URI</td></tr>
+</tbody></table></div>
+<h3 id="edit-batch">Edit &amp; batch</h3>
+<p>Rename, duplicate and transform a selection.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files: Rename…</strong></td><td><code>auricFiles.rename</code></td><td>—</td><td>Rename the selected item with collision checks and history; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Move…</strong></td><td><code>auricFiles.move</code></td><td>—</td><td>Move the selected items to another folder; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Copy To…</strong></td><td><code>auricFiles.copyTo</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>C</code> (deck)</td><td>Copy the selected items to another folder; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Duplicate</strong></td><td><code>auricFiles.duplicate</code></td><td>—</td><td>Make a copy beside the original with a non-clashing name; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Batch Rename…</strong></td><td><code>auricFiles.batchRename</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>R</code> (deck)</td><td>Rename many files by find and replace, regular expression, pattern, sequence, case or extension, with a preview</td></tr>
+<tr><td><strong>Auric Files: Batch Move…</strong></td><td><code>auricFiles.batchMove</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>M</code> (deck)</td><td>Move many items to one folder, with collision planning</td></tr>
+<tr><td><strong>Auric Files: Convert Extension…</strong></td><td><code>auricFiles.convertExtension</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>X</code> (deck)</td><td>Change the extension of the selected files, with a preview</td></tr>
+</tbody></table></div>
+<h3 id="organise">Organise</h3>
+<p>Tags, groups and personal workspace views.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files: Tag Files…</strong></td><td><code>auricFiles.tagFiles</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>G</code> (deck)</td><td>Assign or remove tags on the selected items; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Manage Tags…</strong></td><td><code>auricFiles.manageTags</code></td><td>—</td><td>Create, rename or delete tags</td></tr>
+<tr><td><strong>Auric Files: Add to Group…</strong></td><td><code>auricFiles.addToCollection</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>K</code> (deck)</td><td>Add the selected items to a group, or create a new one; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Create Workspace from Selection</strong></td><td><code>auricFiles.createWorkspace</code></td><td>—</td><td>Create a group (virtual workspace) from the current selection</td></tr>
+<tr><td><strong>Auric Files: Manage Groups…</strong></td><td><code>auricFiles.manageCollections</code></td><td>—</td><td>Rename, delete or open members of groups and virtual folders</td></tr>
+<tr><td><strong>Auric Files: New Virtual Folder…</strong></td><td><code>auricFiles.newVirtualFolder</code></td><td>—</td><td>Create a virtual folder that gathers items without moving them; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Toggle Favorite</strong></td><td><code>auricFiles.toggleFavorite</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>1</code> (deck)</td><td>Mark or unmark as a favourite (★ in the Explorer); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Toggle Pinned</strong></td><td><code>auricFiles.togglePinned</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>2</code> (deck)</td><td>Pin or unpin (P in the Explorer); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Toggle Native Explorer Exclusion</strong></td><td><code>auricFiles.toggleHidden</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>3</code> (deck)</td><td>Add or remove the item from VS Code&#39;s files.exclude for this workspace; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Toggle Highlight</strong></td><td><code>auricFiles.toggleHighlight</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>4</code> (deck)</td><td>Highlight or unhighlight (● in the Explorer); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Toggle Focus Mode</strong></td><td><code>auricFiles.toggleFocusMode</code></td><td>—</td><td>Limit Auric&#39;s indexed file lists to chosen paths, or switch focus mode off</td></tr>
+<tr><td><strong>Auric Files: Switch Workspace Profile…</strong></td><td><code>auricFiles.switchProfile</code></td><td>—</td><td>Apply a saved workspace profile</td></tr>
+<tr><td><strong>Auric Files: Save Workspace Profile…</strong></td><td><code>auricFiles.saveProfile</code></td><td>—</td><td>Save the current view preferences as a named profile</td></tr>
+</tbody></table></div>
+<h3 id="find-filter">Find &amp; filter</h3>
+<p>Search, duplicates and a quieter Explorer.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files: Search Files…</strong></td><td><code>auricFiles.search</code></td><td>—</td><td>Search indexed files by name or path and open one</td></tr>
+<tr><td><strong>Auric Files: Apply Filter…</strong></td><td><code>auricFiles.applyFilter</code></td><td>—</td><td>Build a filter from text, kinds, tags, extensions, globs, size, dates, flags and Git state</td></tr>
+<tr><td><strong>Auric Files: Save Current Filter…</strong></td><td><code>auricFiles.saveFilter</code></td><td>—</td><td>Save the current filter under a name</td></tr>
+<tr><td><strong>Auric Files: Clear Filter</strong></td><td><code>auricFiles.clearFilter</code></td><td>—</td><td>Remove the active filter</td></tr>
+<tr><td><strong>Auric Files: Find Duplicate Files</strong></td><td><code>auricFiles.findDuplicates</code></td><td>—</td><td>Find duplicate files and choose copies to move to the workspace trash</td></tr>
+<tr><td><strong>Auric Files: Find Empty Files</strong></td><td><code>auricFiles.findEmptyFiles</code></td><td>—</td><td>Find empty files and folders and choose which to move to the workspace trash</td></tr>
+<tr><td><strong>Auric Files: Sort</strong></td><td><code>auricFiles.setSort</code></td><td><code>Alt</code> + <code>S</code> (Explorer)</td><td>Cycle the native Explorer sort between name, type and date modified</td></tr>
+<tr><td><strong>Auric Files: Sort by Name</strong></td><td><code>auricFiles.sortName</code></td><td>—</td><td>Sort the native Explorer by name</td></tr>
+<tr><td><strong>Auric Files: Sort by Type</strong></td><td><code>auricFiles.sortType</code></td><td>—</td><td>Sort the native Explorer by type</td></tr>
+<tr><td><strong>Auric Files: Sort by Date Modified</strong></td><td><code>auricFiles.sortModified</code></td><td>—</td><td>Sort the native Explorer by date modified</td></tr>
+<tr><td><strong>Auric Files: Sort Ascending</strong></td><td><code>auricFiles.sortAscending</code></td><td>—</td><td>Sort the native Explorer ascending</td></tr>
+<tr><td><strong>Auric Files: Sort Descending</strong></td><td><code>auricFiles.sortDescending</code></td><td>—</td><td>Sort the native Explorer descending</td></tr>
+<tr><td><strong>Auric Files: Group Indexed Files…</strong></td><td><code>auricFiles.setGrouping</code></td><td>—</td><td>Choose the headings used by the indexed file list; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Collapse All</strong></td><td><code>auricFiles.collapseAll</code></td><td>—</td><td>Collapse every folder in the Explorer</td></tr>
+<tr><td><strong>Auric Files: Expand All</strong></td><td><code>auricFiles.expandAll</code></td><td>—</td><td>Expand the Explorer tree</td></tr>
+</tbody></table></div>
+<h3 id="history-recovery">History &amp; recovery</h3>
+<p>Review operations and recover workspace trash.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files: Undo Last File Operation</strong></td><td><code>auricFiles.undo</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Z</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Z</code> (deck)</td><td>Undo the last Auric file operation</td></tr>
+<tr><td><strong>Auric Files: Redo File Operation</strong></td><td><code>auricFiles.redo</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Y</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Y</code> (deck)</td><td>Redo an undone Auric file operation</td></tr>
+<tr><td><strong>Auric Files: Show Operation History</strong></td><td><code>auricFiles.showHistory</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>H</code> (deck)</td><td>List recent Auric operations and undo back to one</td></tr>
+<tr><td><strong>Auric Files: Open Workspace Trash</strong></td><td><code>auricFiles.openTrash</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>T</code> (deck)</td><td>Browse the workspace trash; restore an entry or empty it</td></tr>
+<tr><td><strong>Auric Files: Restore from Trash…</strong></td><td><code>auricFiles.restoreFromTrash</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>U</code> (deck)</td><td>Restore an entry from the workspace trash to its original place</td></tr>
+<tr><td><strong>Auric Files: Delete (Workspace Trash)</strong></td><td><code>auricFiles.delete</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>Backspace</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Backspace</code> (deck)</td><td>Move the selected items to the workspace trash; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Delete Permanently</strong></td><td><code>auricFiles.deletePermanent</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>Backspace</code> (deck)</td><td>Delete the selected items permanently, after confirmation; not in the Command Palette</td></tr>
+<tr><td><strong>Auric Files: Empty Workspace Trash</strong></td><td><code>auricFiles.emptyTrash</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>Delete</code> (deck)</td><td>Permanently delete everything in the workspace trash</td></tr>
+</tbody></table></div>
+<h3 id="workspace">Workspace</h3>
+<p>Native Explorer and extension preferences.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files: Focus VS Code Explorer</strong></td><td><code>auricFiles.focus</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>E</code> (deck)</td><td>Focus the native VS Code Explorer</td></tr>
+<tr><td><strong>Auric Files: Refresh</strong></td><td><code>auricFiles.refresh</code></td><td>—</td><td>Rebuild the workspace index</td></tr>
+<tr><td><strong>Auric Files: Open Settings</strong></td><td><code>auricFiles.openSettings</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>S</code> (deck)</td><td>Open the Settings editor filtered to Auric Files</td></tr>
+<tr><td><strong>Auric Files: Show Log</strong></td><td><code>auricFiles.showLog</code></td><td>—</td><td>Show the Auric Artisan File System output channel</td></tr>
+</tbody></table></div>
+<h3 id="editor-and-global-commands">Editor and global commands</h3>
+<p>Commands outside the workspace groups.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files: Rename Current File</strong></td><td><code>auricFiles.renameCurrent</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>R</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>E</code> (deck)</td><td>Rename the file open in the editor</td></tr>
+<tr><td><strong>Auric Files: Move Current File</strong></td><td><code>auricFiles.moveCurrent</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>M</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>M</code> (deck)</td><td>Move the file open in the editor</td></tr>
+<tr><td><strong>Auric Files: Duplicate Current File</strong></td><td><code>auricFiles.duplicateCurrent</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>D</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>D</code> (deck)</td><td>Duplicate the file open in the editor</td></tr>
+<tr><td><strong>Auric Files: Toggle File Metadata</strong></td><td><code>auricFiles.toggleMetadata</code></td><td><code>Ctrl</code> + <code>Shift</code> + <code>M</code> (Explorer)</td><td>Switch the compact Explorer hover summaries on or off</td></tr>
+<tr><td><strong>Auric Files: Open File Workspace</strong></td><td><code>auricFiles.openMenu</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>E</code> (deck); <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>E</code> (deck)</td><td>Open the Auric Files workspace in an editor tab</td></tr>
+<tr><td><strong>Auric Files: Quick Actions…</strong></td><td><code>auricFiles.quickActions</code></td><td>—</td><td>Open a keyboard-first list of file-system actions</td></tr>
+</tbody></table></div>
+<h2 id="where-commands-appear">Where commands appear</h2>
+<ul>
+<li>Explorer title bar: <strong>Batch Structure…</strong>, the <strong>Sort</strong> menu, <strong>Open File Workspace</strong>; <strong>…</strong> menu: <strong>Quick Actions…</strong></li>
+<li>Explorer context menu: <strong>File Properties</strong> at the top; the <strong>Auric Files</strong> submenu</li>
+<li>Editor and editor tab context menus: The <strong>Auric Files</strong> submenu (not for untitled files)</li>
+<li><strong>Auric Files</strong> submenu: <strong>File Properties</strong>, <strong>Create</strong>, <strong>Edit and Batch</strong>, <strong>Navigate and Paths</strong>, <strong>Organize</strong>, <strong>Safety and History</strong>, <strong>Sort</strong>, <strong>Open File Workspace</strong>, <strong>Open Settings</strong></li>
+<li><strong>Create</strong>: <strong>New File…</strong>, <strong>New Folder…</strong>, <strong>New Sibling File</strong> (files) or <strong>New Child File</strong> (folders), <strong>Batch Create Files…</strong>, <strong>Batch Create Folders…</strong>, <strong>Batch Structure…</strong>, <strong>New File from Template…</strong>, <strong>New from Framework Preset…</strong>, <strong>Create Related Files…</strong> (files)</li>
+<li><strong>Edit and Batch</strong>: <strong>Rename Current File</strong>, <strong>Duplicate</strong>, <strong>Move Current File</strong>, <strong>Copy To…</strong>, <strong>Batch Rename…</strong>, <strong>Batch Move…</strong>, <strong>Convert Extension…</strong></li>
+<li><strong>Navigate and Paths</strong>: <strong>File Properties</strong>, <strong>Compare Selected Files</strong>, <strong>Merge Selected Files</strong>, <strong>Export Selected Items…</strong>, <strong>Go to Related File…</strong>, <strong>Open Matching Test</strong>, <strong>Style</strong>, <strong>Story</strong>, <strong>Component</strong> and <strong>Documentation</strong>, <strong>Reveal in VS Code Explorer</strong>, <strong>Reveal in File Manager</strong>, <strong>Copy Relative Path</strong>, <strong>Copy Absolute Path</strong>, <strong>Copy File URI</strong></li>
+<li><strong>Organize</strong>: <strong>Create Workspace from Selection</strong>, <strong>Tag Files…</strong>, <strong>Add to Group…</strong>, <strong>Toggle Favorite</strong>, <strong>Toggle Pinned</strong>, <strong>Toggle Native Explorer Exclusion</strong>, <strong>Toggle Highlight</strong></li>
+<li><strong>Safety and History</strong>: <strong>Delete (Workspace Trash)</strong>, <strong>Delete Permanently</strong>, <strong>Undo Last File Operation</strong>, <strong>Redo File Operation</strong>, <strong>Show Operation History</strong>, <strong>Open Workspace Trash</strong>, <strong>Restore from Trash…</strong>, <strong>Empty Workspace Trash</strong></li>
+<li><strong>Sort</strong>: <strong>Sort by Name</strong>, <strong>Sort by Type</strong>, <strong>Sort by Date Modified</strong>, <strong>Sort Ascending</strong>, <strong>Sort Descending</strong></li>
+<li><strong>Auric Files</strong> view title: <strong>Open File Workspace</strong></li>
+</ul>
+<h2 id="views-and-panels">Views and panels</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Surface</th><th>Where</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Files</strong></td><td>A section of the Explorer</td><td>The compact workspace: summary, selection, <strong>01 Actions</strong>, <strong>02 Properties</strong></td></tr>
+<tr><td><strong>Auric Files</strong> panel</td><td>An editor tab</td><td>The same workspace at full size</td></tr>
+</tbody></table></div>
+<p>Output channel: <strong>Auric Artisan File System</strong>.</p>
+<h2 id="explorer-badges">Explorer badges</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Badge</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>●</strong></td><td>Highlighted</td></tr>
+<tr><td><strong>★</strong></td><td>Favourite</td></tr>
+<tr><td><strong>P</strong></td><td>Pinned</td></tr>
+<tr><td><strong>H</strong></td><td>Hidden (excluded from the native Explorer)</td></tr>
+<tr><td>Two letters</td><td>The first two letters of the item&#39;s first tag</td></tr>
+<tr><td><strong>W</strong></td><td>A member of a group</td></tr>
+</tbody></table></div>
+<p>When an item has several marks, the first in this list is shown.</p>
+<h2 id="settings">Settings</h2>
+<p>All 48 settings, grouped by area. They can be set in user or workspace settings.</p>
+<h3 id="explorer-sorting-and-indexing">Explorer, sorting and indexing</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.explorer.sort</code></td><td>string</td><td><code>name</code></td><td><code>name</code>, <code>path</code>, <code>type</code>, <code>size</code>, <code>modified</code>, <code>created</code>, <code>extension</code>, <code>status</code>, <code>custom</code></td><td>Primary order for Auric&#39;s indexed pickers. Orders VS Code supports are also applied to its Explorer.</td></tr>
+<tr><td><code>auricFiles.explorer.sortDirection</code></td><td>string</td><td><code>asc</code></td><td><code>asc</code>, <code>desc</code></td><td>Direction the chosen sort runs in — ascending puts A, the smallest and the oldest first.</td></tr>
+<tr><td><code>auricFiles.explorer.secondarySort</code></td><td>string</td><td><code>none</code></td><td><code>none</code>, <code>name</code>, <code>path</code>, <code>type</code>, <code>size</code>, <code>modified</code>, <code>created</code>, <code>extension</code>, <code>status</code>, <code>custom</code></td><td>Optional second sort key used when two entries have the same primary value.</td></tr>
+<tr><td><code>auricFiles.explorer.secondarySortDirection</code></td><td>string</td><td><code>asc</code></td><td><code>asc</code>, <code>desc</code></td><td>Direction for the secondary sort key.</td></tr>
+<tr><td><code>auricFiles.explorer.grouping</code></td><td>string</td><td><code>none</code></td><td><code>none</code>, <code>type</code>, <code>extension</code>, <code>folder</code>, <code>tag</code>, <code>modified</code>, <code>status</code></td><td>Headings used by Auric&#39;s indexed grouped-file picker.</td></tr>
+<tr><td><code>auricFiles.explorer.foldersFirst</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep directories above files no matter which sort is active.</td></tr>
+<tr><td><code>auricFiles.explorer.showHiddenFiles</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Include dot-files and metadata-hidden entries in Auric search and filter results.</td></tr>
+<tr><td><code>auricFiles.explorer.showFileSize</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Show a size beside each file in Auric&#39;s file lists. Costs one file check per entry on large trees.</td></tr>
+<tr><td><code>auricFiles.explorer.showGitStatus</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Read Git state for filtering and Git-aware safety warnings.</td></tr>
+<tr><td><code>auricFiles.explorer.previewOnSingleClick</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Open a single click in a reusable preview tab. Off, a double click is needed to open anything.</td></tr>
+<tr><td><code>auricFiles.explorer.maxNodes</code></td><td>number</td><td><code>20000</code></td><td>500–200000</td><td>Most entries held in one scan. Reaching it stops the scan and marks the index as truncated.</td></tr>
+<tr><td><code>auricFiles.explorer.excludePatterns</code></td><td>array</td><td>see &quot;Long default values&quot;</td><td></td><td>Globs skipped while scanning. Matches are never indexed, searched, compared or batch-processed.</td></tr>
+<tr><td><code>auricFiles.explorer.respectGitignore</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Read the workspace .gitignore and skip whatever it excludes, on top of the patterns above.</td></tr>
+</tbody></table></div>
+<h3 id="creating-files">Creating files</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.create.defaultTemplate</code></td><td>string</td><td>empty</td><td></td><td>Template id applied by New File when you do not pick one. Leave empty to create a blank file.</td></tr>
+<tr><td><code>auricFiles.create.openAfterCreate</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Open a new file in the editor, with the cursor at the template&#39;s cursor marker.</td></tr>
+<tr><td><code>auricFiles.create.createIntermediateDirs</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Create missing folders in a path such as <code>src/lib/util/index.ts</code> instead of refusing.</td></tr>
+<tr><td><code>auricFiles.create.expandBraces</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Treat braces and ranges as several targets, so <code>src/{Button,Card}/index.ts</code> makes two files.</td></tr>
+<tr><td><code>auricFiles.create.preset</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>react</code>, <code>vue</code>, <code>angular</code>, <code>svelte</code>, <code>node</code>, <code>python</code>, <code>java</code>, <code>go</code>, <code>rust</code>, <code>generic</code></td><td>Which framework&#39;s templates and relation rules are offered. <code>auto</code> picks from the workspace&#39;s files.</td></tr>
+<tr><td><code>auricFiles.create.componentStyleLanguage</code></td><td>string</td><td><code>css</code></td><td><code>css</code>, <code>scss</code>, <code>less</code>, <code>styled</code>, <code>module-css</code>, <code>module-scss</code></td><td>Stylesheet flavour for a component&#39;s companion style file, and the extension relation rules look for.</td></tr>
+<tr><td><code>auricFiles.create.testFramework</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>jest</code>, <code>vitest</code>, <code>mocha</code>, <code>node</code>, <code>pytest</code>, <code>junit</code>, <code>gotest</code>, <code>cargo</code></td><td>Test style and imports for generated test files. <code>auto</code> reads the workspace&#39;s dependencies and scripts.</td></tr>
+<tr><td><code>auricFiles.create.indent</code></td><td>string</td><td><code>space2</code></td><td><code>space2</code>, <code>space4</code>, <code>tab</code></td><td>Indentation written into generated file bodies.</td></tr>
+<tr><td><code>auricFiles.create.generatorProfiles</code></td><td>array</td><td><code>[]</code></td><td></td><td>Custom generators shown beside the framework presets. Each can create any number of companion files.</td></tr>
+</tbody></table></div>
+<h3 id="safety-trash-and-history">Safety, trash and history</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.safety.confirmDelete</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Ask before anything is deleted, listing what goes and where it lands.</td></tr>
+<tr><td><code>auricFiles.safety.confirmBulk</code></td><td>number</td><td><code>5</code></td><td>0–no maximum</td><td>Ask for confirmation once an operation touches this many paths. <code>0</code> asks every time.</td></tr>
+<tr><td><code>auricFiles.safety.useWorkspaceTrash</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Move deleted items to <code>.auric/trash</code> in the workspace so they can be restored.</td></tr>
+<tr><td><code>auricFiles.safety.trashRetentionDays</code></td><td>number</td><td><code>14</code></td><td>1–365</td><td>How long a trashed entry survives before it is purged automatically.</td></tr>
+<tr><td><code>auricFiles.safety.trashMaxBytes</code></td><td>number</td><td><code>268435456</code></td><td>0–no maximum</td><td>Size limit for the workspace trash in bytes (256 MiB). The oldest entries are purged first.</td></tr>
+<tr><td><code>auricFiles.safety.protectedPaths</code></td><td>array</td><td>see &quot;Long default values&quot;</td><td></td><td>Globs no Auric operation may rename, move or delete. A plan touching one is blocked before any change.</td></tr>
+<tr><td><code>auricFiles.safety.warnOnGitTracked</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Warn when a file about to be deleted or moved is tracked by Git.</td></tr>
+<tr><td><code>auricFiles.safety.warnOnUncommittedChanges</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Warn when a file about to be deleted or moved has uncommitted edits.</td></tr>
+<tr><td><code>auricFiles.safety.previewBeforeApply</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Show the full before-and-after list of a batch rename or move, with conflicts, and require approval.</td></tr>
+<tr><td><code>auricFiles.safety.historyLimit</code></td><td>number</td><td><code>200</code></td><td>10–2000</td><td>How many past operations stay undoable. Older entries drop off the end of the stack.</td></tr>
+</tbody></table></div>
+<h3 id="related-files">Related files</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.related.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Resolve companions for the active file: test, style, story, component, docs and types.</td></tr>
+<tr><td><code>auricFiles.related.rules</code></td><td>array</td><td><code>[]</code></td><td></td><td>Extra file relationships for conventions the built-in presets do not know.</td></tr>
+<tr><td><code>auricFiles.related.testDirectories</code></td><td>array</td><td><code>[&quot;__tests__&quot;,&quot;tests&quot;,&quot;test&quot;,&quot;spec&quot;]</code></td><td></td><td>Folder names searched when tests live in a separate folder rather than beside each file.</td></tr>
+<tr><td><code>auricFiles.related.storyExtensions</code></td><td>array</td><td>see &quot;Long default values&quot;</td><td></td><td>Suffixes recognised as a component&#39;s story file, in the order they are tried.</td></tr>
+</tbody></table></div>
+<h3 id="templates">Templates</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.templates.directories</code></td><td>array</td><td><code>[&quot;.auric/templates&quot;,&quot;.vscode/templates&quot;]</code></td><td></td><td>Workspace folders scanned for templates. A workspace template replaces a built-in one with the same id.</td></tr>
+<tr><td><code>auricFiles.templates.global</code></td><td>array</td><td><code>[]</code></td><td></td><td>Absolute folders of templates shared across every workspace, for conventions you carry between projects.</td></tr>
+<tr><td><code>auricFiles.templates.variables</code></td><td>object</td><td><code>{}</code></td><td></td><td>Values available in every template, such as an author or licence header. Prompted values win.</td></tr>
+</tbody></table></div>
+<h3 id="search-and-duplicates">Search and duplicates</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.search.defaultMode</code></td><td>string</td><td><code>glob</code></td><td><code>glob</code>, <code>regex</code>, <code>fuzzy</code></td><td>How a filter&#39;s search text is read: <code>glob</code> wildcards, <code>regex</code> regular expression, or <code>fuzzy</code> matching.</td></tr>
+<tr><td><code>auricFiles.search.caseSensitive</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Match letter case exactly. Off, a search for button also finds Button.tsx.</td></tr>
+<tr><td><code>auricFiles.search.maxResults</code></td><td>number</td><td><code>2000</code></td><td>50–50000</td><td>Matches kept by one search before it stops and reports a partial result.</td></tr>
+<tr><td><code>auricFiles.search.duplicateStrategy</code></td><td>string</td><td><code>content</code></td><td><code>content</code>, <code>name</code>, <code>size</code></td><td>What counts as a duplicate: <code>content</code> (same bytes), <code>name</code> (same file name) or <code>size</code> (same length).</td></tr>
+</tbody></table></div>
+<h3 id="performance">Performance</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.performance.watchWorkspace</code></td><td>boolean</td><td><code>true</code></td><td></td><td>After the first indexed command, follow file changes and update the index. Turn off on slow network shares.</td></tr>
+<tr><td><code>auricFiles.performance.scanConcurrency</code></td><td>number</td><td><code>8</code></td><td>1–64</td><td>Folders read at once while indexing. Raise on a fast local disk, lower on a remote file system.</td></tr>
+<tr><td><code>auricFiles.performance.debounceMs</code></td><td>number</td><td><code>120</code></td><td>0–2000</td><td>Quiet period after the last file change before the index updates.</td></tr>
+</tbody></table></div>
+<h3 id="keyboard-and-logging">Keyboard and logging</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.keyboard.enableDefaultShortcuts</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Turn on the full shortcut deck of <code>Ctrl</code> + <code>Alt</code> (<code>Cmd</code> + <code>Alt</code>) combinations. Off by default.</td></tr>
+<tr><td><code>auricFiles.logLevel</code></td><td>string</td><td><code>warn</code></td><td><code>off</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code></td><td>Detail written to the output channel. Paths are logged workspace-relative; file contents never.</td></tr>
+</tbody></table></div>
+<h3 id="long-default-values">Long default values</h3>
+<p><code>auricFiles.explorer.excludePatterns</code>:</p>
+<pre class="code" data-lang="json"><code>[&quot;**/node_modules/**&quot;, &quot;**/.git/**&quot;, &quot;**/dist/**&quot;, &quot;**/out/**&quot;, &quot;**/.next/**&quot;, &quot;**/__pycache__/**&quot;, &quot;**/target/**&quot;, &quot;**/vendor/**&quot;]</code></pre>
+<p><code>auricFiles.safety.protectedPaths</code>:</p>
+<pre class="code" data-lang="json"><code>[&quot;**/.git/**&quot;, &quot;**/node_modules/**&quot;, &quot;**/.env&quot;, &quot;**/.env.*&quot;, &quot;**/*.pem&quot;, &quot;**/*.key&quot;, &quot;**/package-lock.json&quot;, &quot;**/yarn.lock&quot;, &quot;**/pnpm-lock.yaml&quot;]</code></pre>
+<p><code>auricFiles.related.storyExtensions</code>:</p>
+<pre class="code" data-lang="json"><code>[&quot;.stories.tsx&quot;, &quot;.stories.jsx&quot;, &quot;.stories.ts&quot;, &quot;.stories.js&quot;, &quot;.stories.svelte&quot;, &quot;.stories.mdx&quot;]</code></pre>
+<h3 id="enumerated-values-explained">Enumerated values explained</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Value</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>name</code></td><td>Alphabetical, natural order, so <code>file10</code> follows <code>file9</code></td></tr>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>path</code></td><td>By the full workspace-relative path</td></tr>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>type</code></td><td>Folders, files and links in that order, then by name</td></tr>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>size</code></td><td>Largest first when descending; folders keep name order</td></tr>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>modified</code></td><td>Most recently written first when descending</td></tr>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>created</code></td><td>Creation time, where recorded</td></tr>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>extension</code></td><td>By extension, then by name</td></tr>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>status</code></td><td>Conflicts and changed Git files first, then clean and ignored</td></tr>
+<tr><td><code>auricFiles.explorer.sort</code></td><td><code>custom</code></td><td>A stored custom rank; unranked items follow by name</td></tr>
+<tr><td><code>auricFiles.explorer.grouping</code></td><td><code>none</code></td><td>One continuous list</td></tr>
+<tr><td><code>auricFiles.explorer.grouping</code></td><td><code>type</code></td><td>Folders, files and links under separate headings</td></tr>
+<tr><td><code>auricFiles.explorer.grouping</code></td><td><code>extension</code></td><td>One heading per extension</td></tr>
+<tr><td><code>auricFiles.explorer.grouping</code></td><td><code>folder</code></td><td>One heading per parent folder</td></tr>
+<tr><td><code>auricFiles.explorer.grouping</code></td><td><code>tag</code></td><td>One heading per tag; untagged last</td></tr>
+<tr><td><code>auricFiles.explorer.grouping</code></td><td><code>modified</code></td><td>Today, this week, this month and older</td></tr>
+<tr><td><code>auricFiles.explorer.grouping</code></td><td><code>status</code></td><td>Changed, untracked, conflicted, clean and ignored</td></tr>
+<tr><td><code>auricFiles.search.defaultMode</code></td><td><code>glob</code></td><td>Wildcards over the path</td></tr>
+<tr><td><code>auricFiles.search.defaultMode</code></td><td><code>regex</code></td><td>A regular expression tested against the path</td></tr>
+<tr><td><code>auricFiles.search.defaultMode</code></td><td><code>fuzzy</code></td><td>Loose matching ranking the closest paths first</td></tr>
+<tr><td><code>auricFiles.search.duplicateStrategy</code></td><td><code>content</code></td><td>Same bytes; files are bucketed by size first</td></tr>
+<tr><td><code>auricFiles.search.duplicateStrategy</code></td><td><code>name</code></td><td>Same file name in different folders</td></tr>
+<tr><td><code>auricFiles.search.duplicateStrategy</code></td><td><code>size</code></td><td>Same length; fastest and loosest</td></tr>
+<tr><td><code>auricFiles.logLevel</code></td><td><code>off</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code></td><td>Nothing, failures, skips too, one line per operation, per-step detail</td></tr>
+</tbody></table></div>
+<h3 id="settings-restricted-in-untrusted-workspaces">Settings restricted in untrusted workspaces</h3>
+<p>Workspace values of these settings are ignored until you trust the folder: <code>auricFiles.safety.confirmDelete</code>, <code>auricFiles.safety.confirmBulk</code>, <code>auricFiles.safety.useWorkspaceTrash</code>, <code>auricFiles.safety.protectedPaths</code>, <code>auricFiles.safety.warnOnGitTracked</code>, <code>auricFiles.safety.warnOnUncommittedChanges</code>, <code>auricFiles.safety.previewBeforeApply</code>, <code>auricFiles.related.rules</code>, <code>auricFiles.templates.directories</code>, <code>auricFiles.templates.global</code> and <code>auricFiles.templates.variables</code>.</p>
+<h2 id="files-and-settings-auric-files-writes">Files and settings Auric Files writes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>What</th><th>Where</th><th>Written by</th></tr></thead>
+<tbody>
+<tr><td>Workspace trash</td><td><code>.auric/trash/</code> in the workspace folder, with <code>index.json</code></td><td><strong>Delete (Workspace Trash)</strong></td></tr>
+<tr><td>Workspace templates</td><td><code>.auric/templates/</code>, <code>.vscode/templates/</code> (read, not written)</td><td>You</td></tr>
+<tr><td>Selection manifest</td><td>Where you choose; default <code>auric-selection.json</code></td><td><strong>Export Selected Items…</strong></td></tr>
+<tr><td><code>files.exclude</code></td><td>Workspace or folder settings</td><td><strong>Toggle Native Explorer Exclusion</strong></td></tr>
+<tr><td><code>explorer.sortOrder</code> and its direction</td><td>Workspace settings</td><td>The <strong>Sort</strong> commands</td></tr>
+<tr><td>Tags, groups, virtual folders, flags, filters, profiles, history</td><td>VS Code&#39;s storage for this workspace</td><td>The <strong>Organise</strong>, <strong>Find &amp; filter</strong> and history commands</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="templates-and-generators.html"><span>Previous</span>Templates and generators</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#commands">Commands</a></li><li><a href="#where-commands-appear">Where commands appear</a></li><li><a href="#views-and-panels">Views and panels</a></li><li><a href="#explorer-badges">Explorer badges</a></li><li><a href="#settings">Settings</a></li><li><a href="#files-and-settings-auric-files-writes">Files and settings Auric Files writes</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

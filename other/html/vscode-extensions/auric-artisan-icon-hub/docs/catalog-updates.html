@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog metadata updates — Auric Artisan Docs</title>
+<meta name="description" content="How Icon Hub checks icons.auricartisan.com for updated catalog metadata, how to refresh manually, and how to turn checks off.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Icon Hub</a>
+<h2>Icon Hub guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Icon Hub</a></li>
+<li><a href="browse-and-refine.html">Browse and refine</a></li>
+<li><a href="catalog-updates.html" aria-current="page">Catalog metadata updates</a></li>
+<li><a href="cdn-insertion.html">Connect the icon CDN</a></li>
+<li><a href="collect-and-export.html">Collect and export</a></li>
+<li><a href="insert-copy-and-save.html">Insert, copy and save</a></li>
+<li><a href="shape-the-output.html">Shape the output</a></li>
+<li><a href="reference.html">Icon Hub reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Icon Hub</a> &rsaquo; <a href="README.html">Icon Hub guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Icon Hub</p>
+<h1>Catalog metadata updates</h1>
+<p class="lede">How Icon Hub checks icons.auricartisan.com for updated catalog metadata, how to refresh manually, and how to turn checks off.</p>
+<p>Icon Hub ships with a complete catalog. It can also check <a href="https://icons.auricartisan.com" rel="noopener">https://icons.auricartisan.com</a> for compatible updates to the catalog&#39;s <strong>metadata</strong> (search terms, counts and similar data).</p>
+<h2 id="what-is-checked">What is checked</h2>
+<ul>
+<li>Only five public JSON files under <code>/data/</code>: <code>meta.json</code>, <code>sets.json</code>, <code>stats.json</code>, <code>index.json</code> and <code>material.json</code>.</li>
+<li>Requests are time-limited (15 seconds), size-limited, send no credentials and reject redirects.</li>
+<li>Downloaded metadata must match the bundled icon IDs, sets, styles and font mappings before it replaces the cache.</li>
+<li>Updates can improve search metadata. They <strong>never</strong> download new artwork or add icon sets; new artwork arrives with extension updates.</li>
+</ul>
+<h2 id="automatic-checks">Automatic checks</h2>
+<p>With <code>auricIconLib.remoteRefresh.onStartup</code> on (the default), Icon Hub checks when it activates, at most once per <code>auricIconLib.remoteRefresh.intervalHours</code> (24 hours by default, 1 to 168). Failed attempts also wait for the interval. There is no continuous timer.</p>
+<p>Background failures never show pop-ups. The Hub&#39;s badge shows the state:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Badge</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Bundled catalog · offline ready</td><td>Using the catalog shipped with the extension.</td></tr>
+<tr><td>Checking metadata…</td><td>A check is running.</td></tr>
+<tr><td>Metadata up to date</td><td>Compatible metadata was downloaded.</td></tr>
+<tr><td>Offline · using local catalog</td><td>The check failed; the local catalog is in use.</td></tr>
+</tbody></table></div>
+<h2 id="check-now">Check now</h2>
+<p>Select <strong>Refresh</strong> in the Hub header, or run <strong>Auric Icon Hub: Refresh Icon Catalog</strong>. This ignores the interval. You see &quot;Catalog metadata updated. Shipped artwork remains available offline.&quot; or &quot;Using offline catalog: …&quot;. Your search and selection are kept.</p>
+<h2 id="return-to-the-bundled-catalog">Return to the bundled catalog</h2>
+<p>Run <strong>Auric Icon Hub: Clear Downloaded Icon Catalog</strong>. You see &quot;Cache cleared; bundled catalog restored.&quot;</p>
+<h2 id="turn-checks-off">Turn checks off</h2>
+<p>Stop automatic checks only:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;auricIconLib.remoteRefresh.onStartup&quot;: false
+}</code></pre>
+<p>Disable all catalog network checks, including <strong>Refresh</strong>:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;auricIconLib.remoteRefresh.enabled&quot;: false
+}</code></pre>
+<p>With checks disabled, <strong>Refresh</strong> says &quot;Remote catalog refresh is disabled.&quot;</p>
+<h2 id="result">Result</h2>
+<p>Your catalog stays current when you want it to, and everything keeps working offline when you do not.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="browse-and-refine.html"><span>Previous</span>Browse and refine</a><a href="cdn-insertion.html"><span>Next</span>Connect the icon CDN</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-checked">What is checked</a></li><li><a href="#automatic-checks">Automatic checks</a></li><li><a href="#check-now">Check now</a></li><li><a href="#return-to-the-bundled-catalog">Return to the bundled catalog</a></li><li><a href="#turn-checks-off">Turn checks off</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

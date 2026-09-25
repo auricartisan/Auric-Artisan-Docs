@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instant answers — Auric Artisan Docs</title>
+<meta name="description" content="The colour, contrast-pair and tool cards that lead the Auric Artisan search results, what each value means and how to use them.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Search and the Search Console</a>
+<h2>Search documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with search</a></li>
+<li><a href="console-reports.html">Read the console reports</a></li>
+<li><a href="instant-answers.html" aria-current="page">Instant answers</a></li>
+<li><a href="manage-your-sites.html">Manage your sites</a></li>
+<li><a href="query-syntax.html">Query syntax</a></li>
+<li><a href="request-a-crawl.html">Request a crawl</a></li>
+<li><a href="search-console.html">Set up the Search Console</a></li>
+<li><a href="search-the-web.html">Search the web</a></li>
+<li><a href="search-this-site.html">Search this site</a></li>
+<li><a href="understand-the-ranking.html">Understand the ranking</a></li>
+<li><a href="reference.html">Search reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Search FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Search and the Search Console</a> &rsaquo; <a href="README.html">Search documentation</a></nav>
+<p class="kicker">Website › Search</p>
+<h1>Instant answers</h1>
+<p class="lede">The colour, contrast-pair and tool cards that lead the Auric Artisan search results, what each value means and how to use them.</p>
+<p>For some queries the search page answers the question itself, in a card above the results. There are three kinds. Answer cards appear in site search only, not in web search.</p>
+<h2 id="the-colour-card">The colour card</h2>
+<p>Type one hex code, for example <code>#d3af37</code>. Hex codes work with or without <code>#</code>, in three-digit or six-digit form.</p>
+<p>The card is headed <strong>Colour</strong> and <strong>read from your query · sRGB</strong>. It shows:</p>
+<ul>
+<li>A large swatch of the colour, labelled with its OKLCH value.</li>
+<li><strong>On black</strong> — the colour as text on black, with the contrast ratio and a grade.</li>
+<li><strong>On white</strong> — the same on white.</li>
+<li><strong>Hex</strong>, <strong>RGB</strong> and <strong>OKLCH</strong> values.</li>
+</ul>
+<p>Two buttons follow:</p>
+<ul>
+<li><strong>Check it against a background</strong> opens the Contrast Checker with this colour as the text colour.</li>
+<li><strong>Palettes with it</strong> opens the Palette Library. The library opens at its usual view; to find palettes that contain the colour, type the hex code into the library&#39;s search field.</li>
+</ul>
+<h3 id="example">Example</h3>
+<p><code>#d3af37</code> gives:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Hex</td><td>#D3AF37</td></tr>
+<tr><td>RGB</td><td>rgb(211 175 55)</td></tr>
+<tr><td>OKLCH</td><td>oklch(76.6% 0.138 91.6)</td></tr>
+<tr><td>On black</td><td>9.96:1, AAA</td></tr>
+<tr><td>On white</td><td>2.11:1, FAILS</td></tr>
+</tbody></table></div>
+<h3 id="grades">Grades</h3>
+<p>The grade is for body text at that ratio, following WCAG 2.1:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Grade</th><th>Ratio</th></tr></thead>
+<tbody>
+<tr><td>AAA</td><td>7:1 or more</td></tr>
+<tr><td>AA</td><td>4.5:1 or more</td></tr>
+<tr><td>AA LARGE</td><td>3:1 or more; enough for large text only</td></tr>
+<tr><td>FAILS</td><td>Below 3:1</td></tr>
+</tbody></table></div>
+<h2 id="the-contrast-pair-card">The contrast-pair card</h2>
+<p>Type two hex codes separated by a space, text colour first, then background: <code>#d3af37 #0d0d0d</code>. If you type more than two, the first two are used.</p>
+<p>The card is headed <strong>Contrast pair</strong> and <strong>WCAG 2.1 · relative luminance</strong>. It shows:</p>
+<ul>
+<li>A sample sentence in the text colour on the background, at the 16 px body size the ratio is judged at, and the same pair reversed. Reversing a pair does not change its ratio.</li>
+<li>The contrast ratio, for example <strong>9.22:1</strong>, and a sentence saying what it means.</li>
+<li>A table of results, described below.</li>
+<li><strong>ΔL</strong> — the difference in OKLCH lightness between the two colours, in percentage points. It is negative when the text is darker than the background.</li>
+<li><strong>Foreground</strong> and <strong>Background</strong> rows, each with a swatch, the hex code and the OKLCH value.</li>
+</ul>
+<p>The table has a row for each WCAG level and a column for body and large text. Each cell shows the threshold and is marked ✓ when the pair reaches it and ✕ when it does not:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Level</th><th>Body</th><th>Large</th></tr></thead>
+<tbody>
+<tr><td>AA</td><td>4.5</td><td>3.0</td></tr>
+<tr><td>AAA</td><td>7.0</td><td>4.5</td></tr>
+</tbody></table></div>
+<p>Buttons:</p>
+<ul>
+<li><strong>Open the checker</strong> opens the Contrast Checker with both colours.</li>
+<li><strong>Swap them</strong> runs the search again with the colours the other way round.</li>
+</ul>
+<h3 id="the-sentences">The sentences</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Ratio</th><th>Sentence</th></tr></thead>
+<tbody>
+<tr><td>7 or more</td><td>Clears every WCAG threshold, including AAA for body text at 7:1.</td></tr>
+<tr><td>4.5 to 7</td><td>Passes AA at any size and AAA for large text, but not AAA for body copy.</td></tr>
+<tr><td>3 to 4.5</td><td>Large text only — body copy at this ratio does not reach AA.</td></tr>
+<tr><td>Below 3</td><td>Below every WCAG threshold, at every text size.</td></tr>
+</tbody></table></div>
+<p>The results use the exact ratio, not the rounded one. For example, <code>#777777 #ffffff</code> shows <strong>4.48:1</strong> and fails AA for body text, even though it looks close to 4.5.</p>
+<h2 id="the-tool-card">The tool card</h2>
+<p>When the whole query is the name of one of these tools, a <strong>Tool</strong> card marked <strong>ready to use</strong> leads the page, with a description and <strong>Open the tool</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Query</th><th>Tool</th></tr></thead>
+<tbody>
+<tr><td><code>contrast</code> or <code>contrast checker</code></td><td>Contrast Checker</td></tr>
+<tr><td><code>palette</code></td><td>Palette Library</td></tr>
+<tr><td><code>gradient</code></td><td>Gradient Library</td></tr>
+<tr><td><code>image picker</code></td><td>Image Picker</td></tr>
+<tr><td><code>analyzer</code></td><td>URL Analyzer</td></tr>
+</tbody></table></div>
+<p>The card appears only for the exact query. <code>contrast in charts</code>, or any query with a filter, phrase or exclusion, shows ordinary results instead.</p>
+<h2 id="accuracy">Accuracy</h2>
+<p>The ratios use the WCAG 2.1 relative luminance formula on sRGB values. They agree with the standard reference values: white on black is 21:1, and <code>#767676</code> on white is 4.54:1. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="console-reports.html"><span>Previous</span>Read the console reports</a><a href="manage-your-sites.html"><span>Next</span>Manage your sites</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-colour-card">The colour card</a></li><li><a href="#the-contrast-pair-card">The contrast-pair card</a></li><li><a href="#the-tool-card">The tool card</a></li><li><a href="#accuracy">Accuracy</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

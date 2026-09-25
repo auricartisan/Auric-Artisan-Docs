@@ -1,0 +1,160 @@
+==============================================================================
+ADVANCED KIT REFERENCE
+==============================================================================
+Every control, card, button and message in the Advanced Kit.
+Area: Website › Kits › Advanced Kit   Updated: 2026-09-25
+
+LAUNCHER
+========
+
+  Control:      Advanced launcher (slider icon)
+  What it does: Opens or closes the kit. Announces itself as Open Advanced Kit
+                or Close Advanced Kit
+  Default:      Closed
+
+  Control:      `Ctrl` + `Shift` + `A`
+  What it does: Same as the launcher
+  Default:      —
+
+  Control:      Tooltip
+  What it does: "Choose Basic, Advanced, or Everything tool visibility."
+  Default:      —
+
+TITLE BAR
+=========
+
+  Control:      Advanced Kit title
+  What it does: Drag the title bar to move the kit
+  Values:       —
+  Default:      Bottom-left corner
+
+  Control:      Focus mode
+  What it does: Keeps the kit open across pages and when other kits open
+  Values:       On or off; remembered
+  Default:      Off
+
+  Control:      Theme
+  What it does: Switches the kit between light and dark
+  Values:       Light or dark; remembered
+  Default:      Follows the site
+
+  Control:      Resize
+  What it does: Normal (480 px wide) or expanded (up to 720 px wide)
+  Values:       Remembered
+  Default:      Normal
+
+  Control:      Minimize
+  What it does: Collapses the kit to its title bar
+  Values:       —
+  Default:      —
+
+  Control:      Close
+  What it does: Closes the kit ("Close the Advanced Kit panel.")
+  Values:       —
+  Default:      —
+
+BODY
+====
+
+  Element:               Tool visibility
+  What it shows or does: Heading, with "Choose which tools stay visible by
+                         default."
+
+  Element:               Current mode badge
+  What it shows or does: Basic, Advanced, Everything or Custom
+
+  Element:               Mode summary
+  What it shows or does: Illustration, title and description for the current
+                         mode, and switch buttons
+
+  Element:               Default visibility cards
+  What it shows or does: Four selectable cards; a tick marks the current one.
+                         The Basic card is tagged Recommended. Each card's
+                         tooltip repeats its description
+
+  Element:               Choose your tools
+  What it shows or does: The Custom checklist; shown only in Custom mode
+
+  Element:               Quick cards
+  What it shows or does: Example tools for the current mode
+
+Mode cards
+----------
+
+  Card:         Basic
+  Description:  Beginner-friendly tools stay visible while deeper scientific
+                tools are hidden.
+  Value stored: Default for new visitors
+
+  Card:         Advanced
+  Description:  Scientific, diagnostic, and power-user tools stay visible
+                while simple tools are hidden.
+  Value stored: —
+
+  Card:         Everything
+  Description:  Every tool stays available, including removed or not-yet-used
+                cards.
+  Value stored: —
+
+  Card:         Custom
+  Description:  Turn individual tools on or off — your picks apply across the
+                whole site.
+  Value stored: —
+
+Mode summary
+------------
+
+  Mode       | Title                          | Buttons
+  -----------+--------------------------------+------------------------
+  Basic      | Advanced tools are hidden      | Switch to Advanced
+  Advanced   | Advanced tools are on          | Show everything
+  Everything | Everything is available        | Use Basic, Use Advanced
+  Custom     | Your custom tool set is active | Show everything
+
+Custom checklist
+----------------
+
+  Control           | What it does
+  ------------------+-----------------------------------------------------------------
+  Enable all        | Ticks every tool
+  Disable all       | Unticks every tool
+  Reset             | Forgets your custom choices; every tool is ticked
+  Filter tools…     | Hides rows whose name does not contain your text
+  Category headings | Group the rows; hidden when none of their rows match the filter
+  Tool checkboxes   | Ticked shows the tool while Custom mode is on; unticked hides it
+
+Quick cards
+-----------
+
+  Card:     Analyze URLs — "Audit color, contrast, accessibility, SEO, and
+            page structure."
+  Opens:    https://auricartisan.com/tool/analyzer/
+  Shown in: Every mode
+
+  Card:     Image Color Picker — "Pull colors and build palettes from any
+            image."
+  Opens:    https://auricartisan.com/tool/general/tools/image-picker/
+  Shown in: Basic, Everything, Custom
+
+  Card:     Generate Ishihara Plates — "Create vision-screening plates and
+            teaching examples."
+  Opens:    https://auricartisan.com/tool/ishihara-plate-generation/
+  Shown in: Advanced, Everything, Custom
+
+MESSAGES
+========
+
+  Message         | When
+  ----------------+------------------------------------
+  Loading tools…  | The Custom checklist is being built
+  No tools found. | The tool list could not be loaded
+
+KEYBOARD
+========
+
+  Key                    | What it does
+  -----------------------+---------------------------------------------------------
+  `Ctrl` + `Shift` + `A` | Opens or closes the kit
+  `Esc`                  | Closes the kit
+  `Tab`                  | Moves between cards, buttons and checkboxes
+  `Enter` or `Space`     | Selects the focused card or toggles the focused checkbox

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use an extension in Hindi — Auric Artisan Docs</title>
+<meta name="description" content="Switch Auric Artisan Live, Auric Artisan Theme and Auric Artisan Emoji to Hindi, and understand which labels follow VS Code's own display language.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html" aria-current="page">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html">Install from the command line</a></li>
+<li><a href="install-from-vsix.html">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Use an extension in Hindi</h1>
+<p class="lede">Switch Auric Artisan Live, Auric Artisan Theme and Auric Artisan Emoji to Hindi, and understand which labels follow VS Code's own display language.</p>
+<p>Three Auric Artisan extensions include Hindi in the extension itself, with no separate download and no translation service: <strong>Auric Artisan Live</strong>, <strong>Auric Artisan Theme</strong> and <strong>Auric Artisan Emoji</strong>. The other fourteen extensions use English.</p>
+<p>Two separate things decide the language you see:</p>
+<ul>
+<li><strong>The extension&#39;s interface language.</strong> This controls the extension&#39;s own panels, such as the Auric Live control panel, Theme Studio or Emoji Studio. Each of the three extensions has its own switch and setting.</li>
+<li><strong>VS Code&#39;s display language.</strong> This controls native VS Code labels: Command Palette titles, sidebar view names, the Settings editor and VS Code&#39;s own notifications. Change it with the VS Code command <strong>Configure Display Language</strong>.</li>
+</ul>
+<h2 id="the-interface-language-setting">The interface-language setting</h2>
+<p>Each of the three extensions has a setting with the same three values.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Extension</th><th>Setting</th><th>Values</th><th>Default</th><th>What it changes</th></tr></thead>
+<tbody>
+<tr><td>Auric Artisan Live</td><td><code>auricLive.interfaceLanguage</code></td><td><code>auto</code>, <code>en</code>, <code>hi</code></td><td><code>auto</code></td><td>The Auric Live control panel, quick settings, Phone QR guidance, preview toolbar and common messages</td></tr>
+<tr><td>Auric Artisan Theme</td><td><code>auricTheme.interfaceLanguage</code></td><td><code>auto</code>, <code>en</code>, <code>hi</code></td><td><code>auto</code></td><td>Theme Studio and the Theme sidebar</td></tr>
+<tr><td>Auric Artisan Emoji</td><td><code>auricEmoji.interfaceLanguage</code></td><td><code>auto</code>, <code>en</code>, <code>hi</code></td><td><code>auto</code></td><td>Emoji Studio</td></tr>
+</tbody></table></div>
+<ul>
+<li><code>auto</code> follows VS Code&#39;s display language: Hindi locales, including regional Hindi locales, use Hindi; every other locale uses English.</li>
+<li><code>en</code> always uses English.</li>
+<li><code>hi</code> always uses Hindi.</li>
+</ul>
+<p>The Theme and Emoji settings have <strong>application</strong> scope, so they can only be set in user settings. The Live setting can also be set per workspace.</p>
+<h2 id="switch-auric-artisan-live-to-hindi">Switch Auric Artisan Live to Hindi</h2>
+<ol>
+<li>Open the Auric Live control panel: run <strong>Auric Live: Open Control Panel</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>I</code>).</li>
+<li>In the panel header, choose <strong>हिन्दी</strong>. The other choices are <strong>Auto</strong> and <strong>English</strong>.</li>
+</ol>
+<p>The choice is saved in <code>auricLive.interfaceLanguage</code>. Switching does not restart the server, and the panel keeps its current section and request filters.</p>
+<p>What changes and what does not:</p>
+<ul>
+<li>The control panel, quick settings, request controls, inline Phone QR guidance and common extension messages appear in Hindi.</li>
+<li>New preview tabs use the selected language. Close and reopen an existing preview tab to update its toolbar.</li>
+<li>Technical setting descriptions, detailed diagnostics and messages without a Hindi translation stay in English.</li>
+<li>The in-page browser dashboard (opened with <code>Alt</code> + <code>Shift</code> + <code>D</code> inside a served page) and the website being served are not translated.</li>
+<li>URLs, request and response content, commands and configuration values are never rewritten.</li>
+</ul>
+<h2 id="switch-auric-artisan-theme-to-hindi">Switch Auric Artisan Theme to Hindi</h2>
+<p>Use the <strong>Auto · English · हिन्दी</strong> control in Theme Studio or the Theme sidebar, or run <strong>Auric Theme: Choose Interface Language…</strong>. The switch changes both Theme panels at once, without a reload, and needs no language pack. It does not change VS Code&#39;s own display language.</p>
+<h2 id="switch-auric-artisan-emoji-to-hindi">Switch Auric Artisan Emoji to Hindi</h2>
+<p>Use the <strong>Auto / English / हिन्दी</strong> switch in Emoji Studio, run <strong>Auric Artisan Emoji: Choose Interface Language…</strong>, or set <code>auricEmoji.interfaceLanguage</code>. Switching keeps your search, filters and sequence. Emoji names, shortcodes and code points keep their catalogue spelling, but common Hindi words also find emoji when you search.</p>
+<h2 id="command-titles-and-view-names-in-hindi">Command titles and view names in Hindi</h2>
+<p>Command Palette titles, sidebar view names and Settings descriptions come from VS Code, which shows them in its display language.</p>
+<ol>
+<li>Open the Command Palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code>).</li>
+<li>Run <strong>Configure Display Language</strong>.</li>
+<li>Choose a Hindi display language if your VS Code offers one, and restart VS Code when asked.</li>
+</ol>
+<p>With a Hindi display language:</p>
+<ul>
+<li>Auric Artisan Live shows all 54 command titles and its three sidebar view names (<strong>Servers</strong>, <strong>Requests</strong>, <strong>Routes and Mocks</strong>) in Hindi.</li>
+<li>Auric Artisan Theme and Auric Artisan Emoji show their command titles in Hindi.</li>
+<li>With <code>interfaceLanguage</code> set to <code>auto</code>, the three extensions&#39; panels also switch to Hindi.</li>
+</ul>
+<p>If Hindi is not available as a VS Code display language on your installation, set the extension&#39;s <code>interfaceLanguage</code> to <code>hi</code>. The extension&#39;s panels then use Hindi while VS Code&#39;s own labels stay in English.</p>
+<h2 id="extensions-without-hindi">Extensions without Hindi</h2>
+<p>Auric Artisan File System, Font Hub, Formatter, File Icons, Icon Studio, Icon Hub, Auric Icons: Modern, Drawn and Playful, Auric Color, Auric Accessibility and Auric Code Health currently use English only.</p>
+<p>After switching, the panel&#39;s headings and buttons appear in Hindi straight away.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Install an extension from the Extensions view</a><a href="extension-packs.html"><span>Next</span>The two extension packs</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-interface-language-setting">The interface-language setting</a></li><li><a href="#switch-auric-artisan-live-to-hindi">Switch Auric Artisan Live to Hindi</a></li><li><a href="#switch-auric-artisan-theme-to-hindi">Switch Auric Artisan Theme to Hindi</a></li><li><a href="#switch-auric-artisan-emoji-to-hindi">Switch Auric Artisan Emoji to Hindi</a></li><li><a href="#command-titles-and-view-names-in-hindi">Command titles and view names in Hindi</a></li><li><a href="#extensions-without-hindi">Extensions without Hindi</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

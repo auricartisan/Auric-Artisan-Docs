@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Workstation — Auric Artisan Docs</title>
+<meta name="description" content="How co-installed Studio extensions elect one host, hide duplicate views and present one Command Center and one Studio.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html" aria-current="page">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>The Workstation</h1>
+<p class="lede">How co-installed Studio extensions elect one host, hide duplicate views and present one Command Center and one Studio.</p>
+<p>A <strong>Workstation</strong> is what you get when two or three Studio extensions are installed together. Instead of three sidebars, three dashboards and three copies of every finding, the extensions agree on one <strong>host</strong> that presents a single sidebar, one Command Center and one Studio covering every installed capability. A <strong>capability</strong> here means one extension&#39;s area: colour, accessibility or code health.</p>
+<h2 id="how-the-host-is-chosen">How the host is chosen</h2>
+<p>The host is the first installed extension in this fixed order:</p>
+<ol>
+<li>Auric Accessibility</li>
+<li>Auric Color</li>
+<li>Auric Code Health</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Installed</th><th>Host</th><th>Sidebar title</th></tr></thead>
+<tbody>
+<tr><td>All three (the Full Pack)</td><td>Auric Accessibility</td><td>Auric Accessibility</td></tr>
+<tr><td>Accessibility and Color</td><td>Auric Accessibility</td><td>Auric Accessibility</td></tr>
+<tr><td>Accessibility and Code Health</td><td>Auric Accessibility</td><td>Auric Accessibility</td></tr>
+<tr><td>Color and Code Health</td><td>Auric Color</td><td>Auric Color</td></tr>
+<tr><td>One extension</td><td>That extension</td><td>Its own name</td></tr>
+</tbody></table></div>
+<p>Every extension works out the same answer from the list of installed extensions, so there is nothing to configure.</p>
+<h2 id="what-the-host-shows">What the host shows</h2>
+<ul>
+<li><strong>One sidebar.</strong> The host&#39;s Activity Bar container keeps its views. When Auric Color is installed and Auric Accessibility hosts, the host&#39;s sidebar also shows the docked <strong>Color Picker</strong> view.</li>
+<li><strong>One Overview.</strong> The host&#39;s Overview shows a row for every installed capability: for example, an Accessibility host with Code Health installed adds a <strong>Code health</strong> row and <strong>Report</strong> and <strong>SARIF</strong> buttons. See <a href="overview-view.html">The Overview view</a>.</li>
+<li><strong>One Studio.</strong> The host&#39;s Studio shows the union of the installed capabilities&#39; tools. Its tab title changes to <strong>Auric Artisan — Workstation Studio</strong>. See <a href="studio.html">The Studio</a>.</li>
+<li><strong>One Command Center.</strong> <code>Ctrl</code> + <code>Alt</code> + <code>.</code> opens the host&#39;s Command Center, which lists actions for every installed capability and runs each one through the extension that owns it. See <a href="command-center.html">The Command Center</a>.</li>
+<li><strong>One knowledge database.</strong> The Rulebook combines the rules, policies and articles of every installed capability. See <a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a>.</li>
+</ul>
+<h2 id="what-the-other-extensions-do">What the other extensions do</h2>
+<p>The extensions that are not the host are <strong>suppressed</strong>:</p>
+<ul>
+<li>Their Activity Bar views are hidden.</li>
+<li>Their <code>Ctrl</code> + <code>Alt</code> + <code>.</code> shortcut is switched off, so the shortcut always reaches the host.</li>
+<li>Their Studio commands, such as <strong>Open Color Studio</strong>, open the host&#39;s Studio instead. Commands that target one tool, such as <strong>Generate Accessible Palette</strong>, open that tool in the host&#39;s Studio.</li>
+<li>They keep doing the work they own. For example, Auric Code Health still publishes code-health underlines and Auric Color still draws swatches and colour hovers. See <a href="choosing-an-install.html">Choose what to install</a> for the ownership table.</li>
+</ul>
+<h2 id="changes-apply-without-a-reload">Changes apply without a reload</h2>
+<p>When you install or uninstall a Studio extension, the Workstation re-elects its host straight away. Views appear or hide, an open Studio tab is rebuilt with the new set of spaces (or closed, if its extension is no longer the host), the Overview is redrawn, and diagnostics are handed to the new owner. You do not need to reload the window.</p>
+<h2 id="one-shared-data-folder">One shared data folder</h2>
+<p>All installed extensions read and write one <code>.auric-artisan</code> folder in your workspace. To keep that folder consistent:</p>
+<ul>
+<li>Only one extension runs automatic background scans: the one that owns the status-bar score.</li>
+<li>Settings that shape the shared folder are read the same way by every extension. See <a href="reference.html#shared-settings">Shared settings</a>.</li>
+<li>Writes are atomic, so two extensions can never leave a half-written file.</li>
+</ul>
+<p>See <a href="scanning.html">Scanning</a> for the folder&#39;s contents.</p>
+<h2 id="things-to-know">Things to know</h2>
+<ul>
+<li><strong>Duplicate Command Palette titles.</strong> With several extensions installed, some titles appear more than once in the Command Palette, one per extension, for example three entries named <strong>Auric Artisan: Workstation: Command Center</strong>. Each runs in its own extension. The keyboard shortcut always opens the host&#39;s version, which lists every capability.</li>
+<li><strong>Settings stay per extension.</strong> Each extension has its own settings namespace (<code>auricColor.</code>, <code>auricA11y.</code>, <code>auricCodeHealth.</code>). The host&#39;s Studio <strong>Settings</strong> space writes each value to the extension that owns it.</li>
+<li><strong>Removing the host.</strong> If you uninstall Auric Accessibility from a Full Pack install, Auric Color becomes the host and its views reappear.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="suppression-and-branding.html"><span>Previous</span>Suppression and branding</a><a href="reference.html"><span>Next</span>Reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-the-host-is-chosen">How the host is chosen</a></li><li><a href="#what-the-host-shows">What the host shows</a></li><li><a href="#what-the-other-extensions-do">What the other extensions do</a></li><li><a href="#changes-apply-without-a-reload">Changes apply without a reload</a></li><li><a href="#one-shared-data-folder">One shared data folder</a></li><li><a href="#things-to-know">Things to know</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

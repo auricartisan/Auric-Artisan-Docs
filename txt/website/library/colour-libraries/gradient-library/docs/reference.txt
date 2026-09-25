@@ -1,0 +1,311 @@
+==============================================================================
+GRADIENT LIBRARY REFERENCE
+==============================================================================
+Every control, filter, sort order, tab, output, file name and message in the
+Gradient Library.
+Area: Website › Library › Colour libraries › Gradient Library   Updated: 2026-09-25
+
+Everything on https://auricartisan.com/library/gradient/.
+
+HEADING
+=======
+
+  Item:    Kicker
+  Content: Auric Artisan · Gradient
+
+  Item:    Headline
+  Content: Eight thousand ramps, and which of them band.
+
+  Item:    Facts
+  Content: Collection 8,192, Smooth 77%, Measured in OKLab
+
+  Item:    Read the API guide →
+  Content: Opens the Gradient Library API guide.
+
+  Item:    Automate this note
+  Content: 3 API credits per call to GET /v1/gradient/library; API docs; ×
+           dismisses.
+
+WILL YOUR GRADIENT BAND?
+========================
+
+  Control:      Stop swatch
+  What it does: Opens a colour picker for the stop.
+  Values:       Any colour
+  Default:      —
+
+  Control:      Stop text field
+  What it does: Takes any CSS colour.
+  Values:       Hex, `rgb()`, `hsl()`, `hwb()`, `lab()`, `lch()`, `oklab()`,
+                `oklch()`, `color()`, names
+  Default:      `#000000`, `#0B3D91`, `#FFFFFF`
+
+  Control:      ×
+  What it does: Removes the stop. Hidden when two stops remain.
+  Values:       —
+  Default:      —
+
+  Control:      Add a stop
+  What it does: Adds a stop at the end, halfway between the last two.
+  Values:       Up to 12 stops
+  Default:      —
+
+  Control:      Measure it
+  What it does: Measures again.
+  Values:       —
+  Default:      —
+
+  Output:  Preview strip and marker
+  Meaning: The ramp, evenly spaced, with the worst step marked.
+
+  Output:  Verdict
+  Meaning: Smooth (ratio below 3.2), Some compression (3.2 to below 5.5), It
+           will step (5.5 or more).
+
+  Output:  step ratio
+  Meaning: Largest step divided by the mean step.
+
+  Output:  Mean step, Largest step
+  Meaning: OKLab distances between neighbouring samples, five decimals.
+
+  Output:  Worst transition at
+  Meaning: Percentage along the ramp.
+
+  Output:  Sampled
+  Meaning: 96 steps, sRGB.
+
+BROWSE CONTROLS
+===============
+
+  Control:      Search by name, hex or scheme…
+  What it does: Every word must match name, type, angle, a stop hex, scheme,
+                method, complexity, interpolation, easing or banding.
+
+  Control:      Shuffle
+  What it does: Sort Random.
+
+  Control:      Open a random gradient
+  What it does: Opens any gradient on Inspect.
+
+  Control:      Filter inside results (name, hex, scheme…)
+  What it does: Second search, combined.
+
+  Control:      Clear
+  What it does: Empties the second search.
+
+TABS
+====
+
+Library (badge: matches), Inspect, Vision, Accessibility, Pair, Tags, Stats,
+Export, Saved (badge: saved count).
+
+FILTERS
+=======
+
+  Filter:  Method
+  Options: All methods, Analogous, Aurora, Chaotic, Complementary, Duotone,
+           Golden, Monochrome, Nebula, Prismatic, Spectral, Terrain, Thermal
+
+  Filter:  Scheme
+  Options: All schemes and the same twelve
+
+  Filter:  Complexity
+  Options: Any complexity, Simple, Detailed, Extreme
+
+  Filter:  Stops
+  Options: Any stops, 2 to 4 stops, 5 to 8 stops, 9 to 16 stops, 17 to 32
+           stops, 33+ stops
+
+  Filter:  Interpolation
+  Options: Any interpolation, Lch Short, Linear Rgb, Oklab, Oklch Long, Oklch
+           Short
+
+  Filter:  Easing
+  Options: Any easing, Cubic In Out, Linear, Quart In Out, Sine In Out,
+           Smootherstep
+
+  Filter:  Score
+  Options: Any score, Top quality (≥ 0.70), Balanced+ (≥ 0.55), Wild /
+           experimental (< 0.55)
+
+  Filter:  Banding
+  Options: Any banding, Low banding risk (smooth), Medium banding risk (subtle
+           compression), High banding risk (visible step risk)
+
+SORT BY
+=======
+
+Sort: original (default), Score high to low, Complexity high to low, Stops
+high to low, Stops low to high, Dominant hue, Random.
+
+LIBRARY TAB BUTTONS
+===================
+
+  Control        | What it does
+  ---------------+---------------------------------------------
+  Reset          | Clears searches and filters; Sort: original.
+  Export visible | Opens Export.
+  Back to top    | Scrolls to the first card.
+  Counter        | `first–last of total`, or Nothing to show.
+
+CARD
+====
+
+  Part         | Action
+  -------------+-------------------------------------------------
+  Preview      | Name, "scheme / space", score.
+  Stop strip   | Up to 18 stops.
+  Chips        | Banding (Smooth, Compresses, Steps), stop count.
+  CSS          | Copy CSS.
+  Save / Saved | Save or unsave.
+  Card         | Select, `Enter` or `Space`: open on Inspect.
+
+INSPECT TAB
+===========
+
+  Block:    Preview
+  Contents: Name; "scheme / space / easing"; Copy CSS.
+
+  Block:    Quick facts
+  Contents: Type, Angle, Stops, Method, Complexity, Score, Space, Easing,
+            Banding, White min, Black min, Hue
+
+  Block:    CSS
+  Contents: The CSS value; Copy CSS, Download CSS, Download SVG.
+
+  Block:    Color Stops
+  Contents: Number, swatch, hex (select to copy), position.
+
+  Block:    Generator Metrics
+  Contents: Scheme, Interpolation, Easing, Sample Count, Complexity Score,
+            DeltaE Mean, Uniformity, Banding, Seed
+
+  Block:    Quick Export
+  Contents: Download JSON, Download Tailwind, Download PNG, Copy share link,
+            Design tokens…, Save gradient / Remove saved
+
+VISION, ACCESSIBILITY, PAIR
+===========================
+
+  Tab:      Vision
+  Contents: Normal, Deuteranopia, Protanopia, Tritanopia, Achromatopsia, Low
+            Vision previews.
+
+  Tab:      Accessibility
+  Contents: Contrast Summary (White text min, Black text min, Auto text min,
+            Best sampled max, Adjacent stop min, AA-safe samples); Sampled
+            Stops (17); Reading Guidance.
+
+  Tab:      Pair
+  Contents: Text color picker and hex field; White, Black, Gold; preview; Pair
+            Result (Minimum contrast, Average contrast, Text color, Status)
+            and a CSS snippet.
+
+Pair text colour default: white. Gold is `#D3AF37`; Black is `#111111`.
+
+TAGS AND STATS
+==============
+
+  Tab:   Tags
+  Cards: Methods, Schemes, Complexity, Interpolation, Easing, Banding
+         (whole-collection counts).
+
+  Tab:   Stats
+  Cards: Banding, Methods, Complexity, Stop Counts, Interpolation, Easing,
+         Score Bands (matching set).
+
+EXPORT TAB
+==========
+
+  Card:    Active Gradient
+  Buttons: Copy CSS gradient, Download CSS class, Download JSON, Download SVG,
+           Download Tailwind token, Download PNG preview, Copy share link,
+           Design tokens…
+
+  Card:    Visible Set
+  Buttons: JSON with metadata, Minified JSON, CSS classes, CSV index, Tailwind
+           tokens
+
+  Card:    Current CSS
+  Buttons: The open gradient's CSS.
+
+FILES
+=====
+
+  Output: CSS class
+  Name:   `<name>.css`
+  Detail: `.aa-gradient-<name> { background: … }`
+
+  Output: JSON
+  Name:   `<name>.json`
+  Detail: Full gradient.
+
+  Output: SVG
+  Name:   `<name>.svg`
+  Detail: 1440 × 900.
+
+  Output: Tailwind token
+  Name:   `<name>.tailwind.txt`
+  Detail: `"<name>": "<css>"`
+
+  Output: PNG
+  Name:   `<name>.png`
+  Detail: 1600 × 1000.
+
+  Output: Bulk
+  Name:   `gradient-library-<count>-<date>.<ext>`
+  Detail: `json`, `css`, `csv`, `txt`.
+
+MESSAGES
+========
+
+  Message: Loading gradient library...
+  When:    While loading.
+
+  Message: Could not load gradient library
+  When:    Loading failed.
+
+  Message: No gradients match
+  When:    Nothing matches the filters.
+
+  Message: No gradient selected
+  When:    Inspect before opening a gradient.
+
+  Message: Select a gradient
+  When:    Vision, Accessibility or Pair before opening a gradient.
+
+  Message: No saved gradients
+  When:    Nothing saved.
+
+  Message: CSS copied, Copied
+  When:    After copying.
+
+  Message: Gradient saved, Gradient removed
+  When:    After saving or unsaving.
+
+  Message: Select a gradient first
+  When:    An export with no gradient open.
+
+  Message: Nothing to export
+  When:    A bulk export with no matches.
+
+  Message: PNG export failed
+  When:    The browser could not make the PNG.
+
+  Message: Shared gradient not in current library
+  When:    A share link's gradient could not be found.
+
+  Message: Two stops at least.
+  When:    The checker has fewer than two stops.
+
+  Message: Stop N is not a colour yet
+  When:    A checker field holds text that is not a colour.
+
+KEYBOARD
+========
+
+  Key               | Action
+  ------------------+-----------------------------------------
+  `/`               | Focus the search box.
+  `Enter` / `Space` | Open the focused card.
+  `Escape`          | Close the share or design tokens dialog.

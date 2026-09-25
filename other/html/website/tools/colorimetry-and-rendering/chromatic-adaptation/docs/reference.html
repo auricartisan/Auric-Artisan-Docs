@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chromatic Adaptation reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, readout, option and export in the Chromatic Adaptation lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Chromatic Adaptation</a>
+<h2>Chromatic Adaptation documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Chromatic Adaptation</a></li>
+<li><a href="adapt-a-colour-list.html">Adapt a list of colours</a></li>
+<li><a href="adapt-an-image.html">Adapt an image to a new light</a></li>
+<li><a href="compare-transforms-and-copy-matrices.html">Compare transforms and copy a matrix</a></li>
+<li><a href="explore-the-time-course.html">Explore the adaptation time course</a></li>
+<li><a href="reference.html" aria-current="page">Chromatic Adaptation reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Chromatic Adaptation</a></li>
+<li><a href="faq.html">Chromatic Adaptation FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Chromatic Adaptation</a> &rsaquo; <a href="README.html">Chromatic Adaptation documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Chromatic Adaptation reference</h1>
+<p class="lede">Every control, readout, option and export in the Chromatic Adaptation lab.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/colorimetry/chromatic-adaptation-dynamic/" rel="noopener">https://auricartisan.com/tool/general/colorimetry/chromatic-adaptation-dynamic/</a></p>
+<h2 id="lab-tab">Lab tab</h2>
+<h3 id="image-source">Image Source</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Choose image</strong></td><td>Opens a file picker for an image</td><td>Any image type the browser can decode</td><td>—</td></tr>
+<tr><td>File name</td><td>Shows the chosen file</td><td>—</td><td>&quot;No file chosen&quot;</td></tr>
+<tr><td><strong>Sample</strong></td><td>Generates a synthetic HSL sweep (a test target, not a photograph)</td><td>360 × 240 pixels</td><td>—</td></tr>
+<tr><td><strong>Generate the sample sweep</strong>, <strong>Choose an image</strong></td><td>The same two actions, offered in the empty state before any image is loaded</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p>Loaded images are scaled to fit within 480 × 320 pixels (never enlarged).</p>
+<h3 id="illuminants-and-transform">Illuminants and transform</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Source illuminant</strong></td><td>The original viewing white point</td><td>12 illuminants, below</td><td>CIE D65 (6504 K) — sRGB daylight</td></tr>
+<tr><td><strong>Swap</strong></td><td>Exchanges source and destination</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Destination illuminant</strong></td><td>The target white point</td><td>12 illuminants</td><td>CIE D50 (5003 K) — ICC PCS / printing</td></tr>
+<tr><td><strong>CAT Method</strong></td><td>The chromatic adaptation transform</td><td>Bradford (Lam 1985); Von Kries (Hunt–Pointer–Estévez); CAT02 (CIE 159:2004); CAT16 (Li et al. 2017); Sharp (Finlayson &amp; Süsstrunk 2000); CMCCAT2000 (Li et al. 2002); HPE (Hunt–Pointer–Estévez); XYZ scaling (null case)</td><td>Bradford</td></tr>
+</tbody></table></div>
+<p>The 12 illuminants and their white points (CIE xy):</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>x</th><th>y</th><th>Spectrum drawn?</th></tr></thead>
+<tbody>
+<tr><td>CIE D65 (6504 K) — sRGB daylight</td><td>0.3127</td><td>0.3290</td><td>Yes, reconstructed from the daylight basis</td></tr>
+<tr><td>CIE D50 (5003 K) — ICC PCS / printing</td><td>0.3457</td><td>0.3585</td><td>Yes</td></tr>
+<tr><td>CIE D55 (5503 K)</td><td>0.3324</td><td>0.3474</td><td>Yes</td></tr>
+<tr><td>CIE D60 (6000 K) — ACES</td><td>0.32168</td><td>0.33767</td><td>Yes</td></tr>
+<tr><td>CIE D75 (7504 K) — north sky</td><td>0.2990</td><td>0.3149</td><td>Yes</td></tr>
+<tr><td>CIE A (2856 K) — tungsten</td><td>0.4476</td><td>0.4074</td><td>Yes, Planck at 2848 K with the 1931 constant</td></tr>
+<tr><td>CIE B (4874 K) — noon sun</td><td>0.3484</td><td>0.3516</td><td>No, table not held</td></tr>
+<tr><td>CIE C (6774 K) — average daylight</td><td>0.3101</td><td>0.3162</td><td>No, table not held</td></tr>
+<tr><td>Equal-energy E</td><td>0.3333</td><td>0.3333</td><td>Yes, flat</td></tr>
+<tr><td>FL F2 (4230 K) — cool white</td><td>0.3721</td><td>0.3751</td><td>No, table not held</td></tr>
+<tr><td>FL F7 (6500 K) — broadband</td><td>0.3129</td><td>0.3292</td><td>No, table not held</td></tr>
+<tr><td>FL F11 (4000 K) — narrow tri</td><td>0.3805</td><td>0.3769</td><td>No, table not held</td></tr>
+</tbody></table></div>
+<p>Adaptation needs only the white point, so all 12 adapt correctly whether or not a spectrum is drawn.</p>
+<h3 id="adaptation-and-timing-controls">Adaptation and timing controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Degree of adaptation D</strong></td><td>The final degree of adaptation the timeline moves towards</td><td>0 to 1, step 0.01</td><td>1.00</td></tr>
+<tr><td><strong>Time (scrubber)</strong></td><td>The moment after the light changes</td><td>0 to 5 s, step 0.01</td><td>0 s</td></tr>
+<tr><td><strong>Run</strong></td><td>Re-renders the image now</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Animate</strong></td><td>Plays the timeline from 0 to 5 s in real time, then stops</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Pause</strong></td><td>Stops the animation at the current time</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Reset</strong></td><td>Stops and returns to 0 s</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Live</strong></td><td>Re-renders after every change</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>HDR Tonemap</strong></td><td>Compresses values above white with a Reinhard curve before clipping</td><td>On or off</td><td>Off</td></tr>
+</tbody></table></div>
+<p>The adaptation applied at time t is 0.1 + (D − 0.1) × fraction(t), where fraction(t) follows the two-phase time course with the published defaults (see <a href="explore-the-time-course.html">Explore the adaptation time course</a>). The starting value 0.1 can only be changed through the <code>init</code> value of a share link.</p>
+<h3 id="controls-with-no-visible-effect-in-the-current-version">Controls with no visible effect in the current version</h3>
+<p>These controls are on the page and their values are recorded in the JSON export, but they do not change the rendered result:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>Current behaviour</th></tr></thead>
+<tbody>
+<tr><td><strong>Display Gamma</strong></td><td>1.8 to 2.6</td><td>2.2</td><td>The image is always decoded and encoded with the sRGB transfer function</td></tr>
+<tr><td><strong>τ luminance scale</strong></td><td>0 to 1</td><td>0.0</td><td>Intended to slow adaptation in dark pixels; the current time course does not use it</td></tr>
+<tr><td><strong>Delay luminance scale</strong></td><td>0 to 1</td><td>0.0</td><td>As above</td></tr>
+<tr><td><strong>Local radius</strong></td><td>0 to 256 px</td><td>64 px</td><td>Not applied</td></tr>
+<tr><td><strong>Local strength</strong></td><td>0 to 1</td><td>0.60</td><td>Not applied</td></tr>
+<tr><td><strong>Mix (global ↔ local)</strong></td><td>0 to 1</td><td>0.50</td><td>Has no effect while the per-pixel scales have none</td></tr>
+<tr><td><strong>Tile factor</strong></td><td>1× to 8×</td><td>2×</td><td>Not applied</td></tr>
+<tr><td><strong>Target FPS</strong></td><td>8 to 120</td><td>60</td><td>The animation runs at the browser&#39;s frame rate</td></tr>
+<tr><td><strong>GPU</strong></td><td>On or off</td><td>Off</td><td>Processing always runs on the CPU</td></tr>
+</tbody></table></div>
+<p>Because the per-pixel settings have no effect, the <strong>Per-Pixel Adaptation State Map</strong> is a uniform grey whose brightness is the adaptation in use.</p>
+<h3 id="readouts">Readouts</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Status chip</td><td>Ready, Image loaded (size), Sample loaded (360×240), Animating..., Paused at t = …, Reset</td></tr>
+<tr><td>Model chip</td><td>&quot;two components · t = … s · D = …&quot;, the adaptation in use</td></tr>
+<tr><td><strong>Original Image</strong></td><td>The loaded or generated image</td></tr>
+<tr><td><strong>Adapted Image</strong></td><td>The result at the current time</td></tr>
+<tr><td><strong>RGB Histogram (Adapted)</strong></td><td>Red, green and blue distributions of the result</td></tr>
+<tr><td><strong>Adaptation Curve A(t)</strong></td><td>The applied adaptation over 0 to 5 s, with the current point labelled</td></tr>
+<tr><td><strong>Per-Pixel Adaptation State Map</strong></td><td>Adaptation per pixel as grey (white = adapted)</td></tr>
+<tr><td><strong>LMS Cone-Channel Analysis</strong></td><td>Source white (light bars) and destination white (dark bars) in L, M and S, with each channel&#39;s scale factor</td></tr>
+<tr><td><strong>SPD Spectral Overlay (Source vs Dest)</strong></td><td>The two spectra from 380 to 780 nm with a line naming how each was obtained, or a message when a spectrum is not held</td></tr>
+</tbody></table></div>
+<p>Every chart can be opened full screen with its <strong>Fullscreen</strong> button or by double-clicking it.</p>
+<h2 id="dynamics-tab">Dynamics tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Model</strong></td><td><strong>Two components</strong> (measured) or <strong>Single exponential</strong> (the page&#39;s former curve)</td><td>—</td><td>Two components</td></tr>
+<tr><td><strong>τ1</strong></td><td>Fast-phase time constant</td><td>0.2 to 4 s, step 0.1</td><td>1.0 s</td></tr>
+<tr><td><strong>w1</strong></td><td>Share of adaptation in the fast phase</td><td>0 to 1, step 0.05</td><td>0.50</td></tr>
+<tr><td><strong>t½</strong></td><td>Slow-phase half-life</td><td>5 to 120 s, step 1</td><td>30 s</td></tr>
+<tr><td><strong>Playhead</strong></td><td>Time to read</td><td>0 to 120 s, step 0.5</td><td>12.0 s</td></tr>
+</tbody></table></div>
+<p>Readouts: the chart (both curves, 0–120 s), <strong>D at t = …</strong>, <strong>Half-adapted at</strong>, <strong>90% at</strong>, <strong>Legacy 90% at</strong>, and a note explaining the two curves. These settings do not change the Lab tab.</p>
+<h2 id="matrix-tab">Matrix tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control or readout</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Decimals</strong></td><td>Precision of the matrices shown</td><td>4, 6, 9</td><td>6</td></tr>
+<tr><td><strong>Copy as</strong></td><td>Copies the transform&#39;s M matrix</td><td>NumPy, JSON, CSS matrix3d, GLSL mat3</td><td>—</td></tr>
+<tr><td><strong>Round trip</strong></td><td>Largest error of M⁻¹ × M against the identity</td><td>—</td><td>—</td></tr>
+<tr><td>Matrices</td><td><strong>M — XYZ to cone-like</strong>, <strong>diag(d)</strong>, <strong>Full adaptation matrix</strong>, at the D set on the Lab tab</td><td>—</td><td>—</td></tr>
+<tr><td><strong>All eight on this pair</strong></td><td>Transform, ΔE vs Bradford, cond(M), Source, Status</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Status</strong> chips</td><td>Filter the register: <strong>All</strong>, <strong>Verbatim</strong>, <strong>Computed</strong>, <strong>Absent</strong> (a <strong>Stand-in</strong> chip appears only when a stand-in exists)</td></tr>
+<tr><td>Rows</td><td>Expand to read the note and, for absent data, <strong>What it would take</strong></td></tr>
+<tr><td><strong>Install a table</strong></td><td>A drop area labelled &quot;Drop a CSV or JSON here&quot;. It does not load files in the current version</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Dataset</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Illuminant white points, CIE xy</td><td>Verbatim</td></tr>
+<tr><td>Chromatic adaptation matrices, 8</td><td>Verbatim</td></tr>
+<tr><td>sRGB primaries and transfer function</td><td>Verbatim</td></tr>
+<tr><td>Daylight eigenvectors S0 S1 S2</td><td>Computed</td></tr>
+<tr><td>Planckian radiators</td><td>Computed</td></tr>
+<tr><td>Adaptation time constants</td><td>Computed</td></tr>
+<tr><td>CIEDE2000 colour difference</td><td>Computed</td></tr>
+<tr><td>Illuminants B and C spectra</td><td>Absent</td></tr>
+<tr><td>Fluorescent F2 F7 F11 spectra</td><td>Absent</td></tr>
+<tr><td>Corresponding-colour data sets</td><td>Absent</td></tr>
+<tr><td>Colour matching functions, 10°</td><td>Absent</td></tr>
+</tbody></table></div>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Export JSON</strong></td><td>Downloads the settings and the adaptation at the current time</td><td><code>cad-&lt;method&gt;-&lt;source&gt;-&lt;destination&gt;.json</code></td></tr>
+<tr><td><strong>Export Frame (PNG)</strong></td><td>Downloads the adapted image</td><td><code>cad-frame-t&lt;time&gt;.png</code></td></tr>
+<tr><td><strong>Copy Link</strong></td><td>Copies the page&#39;s current address</td><td>Text</td></tr>
+<tr><td><strong>Share URL</strong> field and <strong>Generate</strong></td><td>Builds a link to the current settings, shows it and copies it</td><td>A URL</td></tr>
+<tr><td><strong>Copy</strong></td><td>Copies the link in the field</td><td>Text</td></tr>
+<tr><td><strong>Compare All Methods</strong></td><td>Runs all eight transforms on eight test colours at the current adaptation</td><td>Bar chart and table</td></tr>
+<tr><td><strong>Batch Colour Analysis</strong>, <strong>Run Batch</strong></td><td>Adapts up to 50 HEX colours</td><td>Table</td></tr>
+</tbody></table></div>
+<p>The JSON file contains: <code>srcIllum</code>, <code>dstIllum</code>, <code>catMethod</code>, <code>gamma</code>, <code>delay</code>, <code>tau</code>, <code>strength</code> (the D setting), <code>initAdapt</code>, <code>tauLocal</code>, <code>delayLocal</code>, <code>radius</code>, <code>localStrength</code>, <code>mix</code>, <code>tile</code>, <code>time</code>, <code>fps</code>, <code>hdr</code>, <code>matrix</code> (the full 3 × 3 adaptation matrix as nine numbers, row by row), <code>srcLMS</code>, <code>dstLMS</code>, <code>scale</code> (the three cone gains) and <code>det</code> (its determinant). <code>delay</code> and <code>tau</code> belong to the former single-exponential model.</p>
+<p>The share link carries <code>src</code>, <code>dst</code>, <code>cat</code>, <code>tau</code>, <code>delay</code>, <code>str</code> (D), <code>init</code> (initial adaptation) and <code>t</code> (time). It does not carry the image.</p>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Standards</strong>, <strong>Formulas</strong>, <strong>Citations</strong>, <strong>Research notes</strong></td><td>Switch sections; each shows a count</td></tr>
+<tr><td><strong>Filter</strong></td><td>Searches all four sections; <code>Esc</code> clears it</td></tr>
+<tr><td><strong>Where it is used</strong> chips (Citations)</td><td><strong>All</strong>, <strong>Runs here</strong>, <strong>Corrected</strong>, <strong>Context only</strong></td></tr>
+</tbody></table></div>
+<p>Standards covers CIE 160:2004, CIE 159:2004 (CIECAM02), CAM16/CAT16, ICC.1:2022, Fairchild and Reniff (1995), Brainard and Wandell (1992), Foster (2011) and CIE 15:2018. Formulas covers the adaptation models, von Kries diagonal adaptation, the eight matrices, sRGB conversion, CIELAB, ΔE, spectrum generation and the spatial model. Some background prose predates the current time-course model; the figures the lab uses are those on the Dynamics tab.</p>
+<h2 id="save-to-library">Save to Library</h2>
+<p>The floating <strong>Save to Library</strong> button stores a preset of the current form settings in your Library.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="explore-the-time-course.html"><span>Previous</span>Explore the adaptation time course</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting Chromatic Adaptation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#lab-tab">Lab tab</a></li><li><a href="#dynamics-tab">Dynamics tab</a></li><li><a href="#matrix-tab">Matrix tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#save-to-library">Save to Library</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create files and structures — Auric Artisan Docs</title>
+<meta name="description" content="Create single files and folders, sibling and child files, and whole nested structures in one line with braces and ranges.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html" aria-current="page">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Create files and structures</h1>
+<p class="lede">Create single files and folders, sibling and child files, and whole nested structures in one line with braces and ranges.</p>
+<p>All creation commands are in the <strong>Create</strong> group of the workspace panel, the <strong>Auric Files</strong> › <strong>Create</strong> submenu and the Command Palette. They need a trusted workspace.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Use it to</th></tr></thead>
+<tbody>
+<tr><td><strong>New File…</strong></td><td>Create one file (or a folder, with a trailing <code>/</code>)</td></tr>
+<tr><td><strong>New Folder…</strong></td><td>Create one folder, including nested paths</td></tr>
+<tr><td><strong>New Sibling File</strong></td><td>Create a file next to the selected file</td></tr>
+<tr><td><strong>New Child File</strong></td><td>Create a file inside the selected folder</td></tr>
+<tr><td><strong>Batch Create Files…</strong></td><td>Create many files from comma-separated paths</td></tr>
+<tr><td><strong>Batch Create Folders…</strong></td><td>Create many folders from comma-separated paths</td></tr>
+<tr><td><strong>Batch Structure…</strong></td><td>Type a mixed structure of files and folders</td></tr>
+<tr><td><strong>New File from Template…</strong></td><td>Create from a template. See <a href="templates-and-generators.html">Templates and generators</a></td></tr>
+<tr><td><strong>New from Framework Preset…</strong></td><td>Create from a preset or custom generator. See <a href="templates-and-generators.html">Templates and generators</a></td></tr>
+<tr><td><strong>Create Related Files…</strong></td><td>Create a file&#39;s test, style, story and other companions. See <a href="related-files.html">Related files</a></td></tr>
+</tbody></table></div>
+<p>For creation directly in the root of a single-folder workspace, use the native Explorer&#39;s <strong>New File</strong> and <strong>New Folder</strong>; the panel&#39;s target actions need a file or subfolder as their target.</p>
+<h2 id="new-file-or-folder">New file or folder</h2>
+<ol>
+<li>Run <strong>Auric Files: New File…</strong> (<code>Ctrl</code> + <code>N</code> with the Explorer focused) or <strong>New Folder…</strong> (<code>Ctrl</code> + <code>Shift</code> + <code>N</code>).</li>
+<li><strong>Choose the destination folder.</strong> The first entry is the current target; the rest are folders in the workspace.</li>
+<li>Type the name. For <strong>New File…</strong>, a trailing <code>/</code> creates a folder. Nested paths such as <code>components/ui/Button.tsx</code> create the missing folders too (turn this off with <code>auricFiles.create.createIntermediateDirs</code>).</li>
+<li>If <code>auricFiles.create.defaultTemplate</code> names a template, the new file is filled from it; otherwise it is empty.</li>
+<li>The file opens in the editor (<code>auricFiles.create.openAfterCreate</code>), with the cursor at the template&#39;s cursor marker if it has one.</li>
+</ol>
+<p>These are Auric&#39;s versions of the Explorer shortcuts while the Explorer has focus. VS Code&#39;s own <strong>New File</strong> and <strong>New Folder</strong> buttons in the Explorer title bar are unchanged.</p>
+<h2 id="sibling-and-child-files">Sibling and child files</h2>
+<ul>
+<li><strong>New Sibling File</strong> creates a file in the same folder as the selected file. It is offered for files.</li>
+<li><strong>New Child File</strong> creates a file inside the selected folder. It is offered for folders.</li>
+</ul>
+<h2 id="batch-creation">Batch creation</h2>
+<p>Batch creation turns one line of text into many paths.</p>
+<ol>
+<li>Run <strong>Batch Create Files…</strong>, <strong>Batch Create Folders…</strong> or <strong>Batch Structure…</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>B</code> with the Explorer focused).</li>
+<li>Choose the destination folder.</li>
+<li>Type the paths (see the syntax below). Mistakes are reported as you type.</li>
+<li>For files, <strong>Choose the content used for every new file</strong>: <strong>Empty files</strong>, the configured default template, or any template.</li>
+<li>Review the preview. It lists every path as <strong>Ready to create</strong> or <strong>Already exists — the configured conflict policy will apply</strong>, with a summary such as <strong>6 items planned · 1 conflict</strong>. Untick anything to skip and press <code>Enter</code>.</li>
+<li>If the operation touches at least <code>auricFiles.safety.confirmBulk</code> paths (5 by default), confirm <strong>Create <em>N</em> items?</strong>.</li>
+</ol>
+<h3 id="syntax">Syntax</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>You type</th><th>You get</th></tr></thead>
+<tbody>
+<tr><td><code>a.ts, b.ts</code></td><td>Two files; commas separate targets</td></tr>
+<tr><td><code>src/lib/util.ts</code></td><td>A nested path; missing folders are created</td></tr>
+<tr><td><code>docs/</code></td><td>A folder (trailing slash)</td></tr>
+<tr><td><code>folder:assets</code></td><td>A folder, stated explicitly</td></tr>
+<tr><td><code>file:LICENSE</code></td><td>A file, stated explicitly</td></tr>
+<tr><td><code>src/{Button,Card}/index.ts</code></td><td><code>src/Button/index.ts</code> and <code>src/Card/index.ts</code></td></tr>
+<tr><td><code>src/{Button,Card}/{index.ts,styles.css}</code></td><td>Four files: every combination</td></tr>
+<tr><td><code>tests/case-{1..3}.ts</code></td><td><code>case-1.ts</code>, <code>case-2.ts</code>, <code>case-3.ts</code></td></tr>
+<tr><td><code>tests/case-{01..03}.ts</code></td><td><code>case-01.ts</code>, <code>case-02.ts</code>, <code>case-03.ts</code> (leading zeros keep the width)</td></tr>
+<tr><td><code>step-{0..10..5}.md</code></td><td><code>step-0.md</code>, <code>step-5.md</code>, <code>step-10.md</code> (a step size)</td></tr>
+<tr><td><code>section-{a..c}.md</code></td><td><code>section-a.md</code>, <code>section-b.md</code>, <code>section-c.md</code> (letters)</td></tr>
+<tr><td><code>a\{1\}.ts</code></td><td>A file literally named <code>a{1}.ts</code>; a backslash before a brace or comma makes it literal</td></tr>
+<tr><td><code>src\components\Button.tsx</code></td><td>Backslashes elsewhere are treated as folder separators, so Windows paths work</td></tr>
+</tbody></table></div>
+<p>Each line can hold several comma-separated targets, and you can type several lines. Braces that are neither a list nor a range, such as <code>{png}</code>, are kept literally.</p>
+<p>To take the input literally, with no brace expansion, turn off <code>auricFiles.create.expandBraces</code>.</p>
+<h3 id="limits">Limits</h3>
+<ul>
+<li>One target may expand to at most 1,000 paths; beyond that it is rejected with <strong>expands to more than 1000 paths</strong>.</li>
+<li>One batch creates at most 2,000 paths; it stops with <strong>Stopped after 2000 paths; narrow the input and try again</strong>.</li>
+<li>Duplicate paths in the input are created once.</li>
+<li>Invalid names (for example characters Windows does not allow) are reported and skipped.</li>
+</ul>
+<h2 id="what-happens-to-existing-files">What happens to existing files</h2>
+<p>A path that already exists is a <em>conflict</em>. The preview marks it, and the configured conflict policy decides the outcome; nothing is overwritten silently. Paths matching <code>auricFiles.safety.protectedPaths</code> cannot be touched at all.</p>
+<p>Every creation is recorded in the operation history, so <strong>Undo Last File Operation</strong> can reverse it.</p>
+<p>When a batch finishes, the new folders and files appear in the Explorer and the first new file opens in the editor.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Auric Artisan File System</a><a href="history-and-workspace-trash.html"><span>Next</span>History, undo and the workspace trash</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#new-file-or-folder">New file or folder</a></li><li><a href="#sibling-and-child-files">Sibling and child files</a></li><li><a href="#batch-creation">Batch creation</a></li><li><a href="#what-happens-to-existing-files">What happens to existing files</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

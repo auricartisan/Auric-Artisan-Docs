@@ -1,0 +1,87 @@
+---
+title: Advertise — Create a campaign
+description: A step-by-step guide to the six-step AdsSense campaign builder on the Auric Artisan advertise page.
+product: Website › Advertise
+updated: 2026-09-25
+---
+
+# Create a campaign
+
+The campaign builder is under **Create your campaign** on https://auricartisan.com/advertise/. It has six steps: **Basics**, **Format**, **Creative**, **Audience**, **Budget** and **Review**. The quote panel beside it shows the step you are on, for example **Step 2/6**, and updates the price with every choice.
+
+## Moving between steps
+
+- **Continue →** checks the current step and moves on. If something is missing, a message under the buttons says what, for example **Add a campaign name to continue.**
+- On the fifth step the button reads **Review campaign →**.
+- **← Back** returns to the previous step.
+- The numbered step chips at the top open any step you have already reached.
+
+Your draft is saved in this browser automatically, with the note **Draft saved locally**. If you come back later, the builder picks up where you left off. A start date that has passed is moved to tomorrow.
+
+## Step 1: Basics
+
+**Start with the campaign basics.**
+
+| Field | What to enter | Limit |
+| --- | --- | --- |
+| **Campaign name** | A name for your own reference. Only you see it. | 2 to 80 characters |
+| **Brand / company** | Who is running the campaign. | 2 to 80 characters |
+| **Destination URL** | Where every click lands. A bare domain is completed with `https://` when you leave the field. | Up to 500 characters in the field |
+
+Below these, **Destination & tracking** builds the final click address, with auto-tagging, custom parameters and tracking macros. See [Destination and tracking](destination-and-tracking.md).
+
+Then choose a goal under **What should this campaign do?**: **Brand awareness**, **Site traffic** or **Product launch**. Each recommends a format, zone and share of voice, and choosing one applies them. See [Formats and placements](formats-and-placements.md).
+
+## Step 2: Format
+
+**Choose how your campaign appears.** Four cards show each format with its size, a short description and its **from** price per day. The format your goal recommends has a **Recommended** badge. Select a card to choose it.
+
+## Step 3: Creative
+
+**Make the creative yours.** Choose a **Creative source**:
+
+- **Design it here** — the built-in creative studio.
+- **Choose a file** — upload finished artwork.
+
+The **Live preview** shows the result at the exact ratio of your format, with the **Sponsored** label. See [Design your creative](design-your-creative.md).
+
+To continue, you need either a studio design or an uploaded file. Otherwise the message is **Choose an artwork file or switch to the creative studio.**
+
+## Step 4: Audience
+
+**Choose the right context.** Auric Artisan places campaigns by page context, not by cross-site profiles.
+
+- **Where it runs** — choose one zone. Each shows its estimated daily views.
+- **Creative context (guidance only — never personal tracking)** — choose up to three groups: **Designers**, **Developers**, **Color scientists**, **Educators**, **Studios & teams**. These guide the creative review. They do not identify or follow individual visitors. Choosing none is shown as **Everyone** in the review.
+- **Frequency cap** — how many times one visitor can see your ad in a browsing session: **1 / session** (gentle), **2 / session** (balanced) or **3 / session** (assertive).
+
+## Step 5: Budget
+
+**Set the flight and budget.**
+
+- **Flight length** — **1 week** (standard rate), **2 weeks** (save 5%), **1 month** (save 15%) or **3 months** (save 28%).
+- **Start date** — the earliest is tomorrow. Campaigns start at 00:00 IST on the day you choose, after creative approval.
+- **Share of voice** — the fraction of eligible ad renders reserved for your campaign: **25% share**, **50% share** or **100% takeover**.
+- **Currency** — **INR ₹** or **USD $**.
+- **Promo code** — type a code if you have one. A valid code shows a tick and its offer; an invalid one shows **unknown code**.
+
+See [Pricing and booking](pricing-and-booking.md) for how these change the price.
+
+## Step 6: Review
+
+**Review and send.**
+
+- **Campaign summary** — a thumbnail of the creative and every choice: campaign, brand, objective, format, creative, where it runs, audiences, frequency cap, flight, share of voice, the final destination address, tracking, promo and total.
+- **Billing contact** — your **Billing email**. Receipts and campaign updates are sent here.
+- Three assurances: **Clearly labelled Sponsored**, **No cross-site tracking** and **Creative reviewed before launch**.
+- A checkbox to accept the creative and acceptable-use policy and the refund policy, confirming that your ad will be clearly labelled "Sponsored". The policy names link to https://auricartisan.com/legal/acceptable-use-policy/ and https://auricartisan.com/legal/refund/.
+
+## Send the request
+
+The button at the foot of the quote panel reads **Complete campaign to request booking** until every step is complete. Then it reads **Request campaign** with the total, for example **Request campaign — ₹3,493 (pay on approval)**. Select it to send.
+
+- While sending: **Sending booking request…**
+- When it arrives: **Request received. We confirm availability and send a Razorpay payment link within 1 business day — your campaign goes live after payment.** A **Campaign submitted** panel shows a reference beginning **REQ-** and a summary of the campaign. Keep the reference.
+- If it cannot be sent: **Could not send the request — please email ads@auricartisan.com with your campaign details.**
+
+Sending books nothing and charges nothing. See [Pricing and booking](pricing-and-booking.md) for what happens next.

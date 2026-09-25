@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profiles — Auric Artisan Docs</title>
+<meta name="description" content="Apply a built-in icon profile, save your own, and move profiles between machines as JSON.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File Icons</a>
+<h2>Auric Artisan File Icons guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File Icons</a></li>
+<li><a href="assign-icons.html">Assign icons to files and folders</a></li>
+<li><a href="choose-a-style.html">Choose a style</a></li>
+<li><a href="customise-the-explorer.html">Customise the Explorer</a></li>
+<li><a href="insert-icons-into-code.html">Insert icons into code</a></li>
+<li><a href="modern-and-legacy.html">Modern and older Playful settings</a></li>
+<li><a href="profiles.html" aria-current="page">Profiles</a></li>
+<li><a href="smart-detection.html">Smart detection</a></li>
+<li><a href="reference.html">Auric Artisan File Icons reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File Icons</a> &rsaquo; <a href="README.html">Auric Artisan File Icons guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File Icons</p>
+<h1>Profiles</h1>
+<p class="lede">Apply a built-in icon profile, save your own, and move profiles between machines as JSON.</p>
+<p>A <strong>profile</strong> is a named, portable set of appearance settings, associations and smart detection settings.</p>
+<h2 id="apply-a-profile">Apply a profile</h2>
+<ol>
+<li>Run <strong>Auric Artisan File Icons: Apply Icon Profile</strong>, or <strong>Apply profile…</strong> on the <strong>Workspace</strong> tab.</li>
+<li>Choose a profile. Built-in profiles are marked <strong>Built-in</strong>; your saved profiles follow.</li>
+<li>Select <strong>Reload</strong> when asked.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Built-in profile</th><th>Description</th><th>Key values</th></tr></thead>
+<tbody>
+<tr><td>Classic Facet</td><td>Balanced original colours and full smart decorations.</td><td>Default colours, 1 / 1 / 1, badge and colour</td></tr>
+<tr><td>Vivid Studio</td><td>Brighter, richer colour for large project explorers.</td><td>Saturation 1.35, brightness 1.08</td></tr>
+<tr><td>Focused Explorer</td><td>Blue folders, softer files, hidden arrows and badge-only smart matches.</td><td>Files <code>#718096</code>, folders <code>#4AA3DF</code>, opacity 0.88</td></tr>
+<tr><td>Graphite Mono</td><td>Near-monochrome files and folders with semantic smart colours.</td><td><code>#7B8796</code>, saturation 0.18, colour only</td></tr>
+<tr><td>High Visibility</td><td>Maximum opacity, extra brightness and propagated badges.</td><td>Folders <code>#E0A82E</code>, saturation 1.2, brightness 1.18</td></tr>
+<tr><td>Minimal</td><td>Muted monochrome artwork with tooltip-only smart explanations.</td><td><code>#8993A1</code>, saturation 0, opacity 0.72, arrows hidden</td></tr>
+</tbody></table></div>
+<p>Built-in profiles keep your custom associations and smart rules. Applying a saved or imported profile replaces them with the profile&#39;s own.</p>
+<h2 id="save-your-current-set-up">Save your current set-up</h2>
+<ol>
+<li>Run <strong>Save Current Icon Profile</strong>, or <strong>Save current…</strong> on the Workspace tab.</li>
+<li>Enter a name (up to 80 characters).</li>
+<li>VS Code confirms &quot;Saved icon profile &quot;…&quot;.&quot;</li>
+</ol>
+<p>The Workspace tab&#39;s <strong>Profiles</strong> panel shows how many profiles are available and their names.</p>
+<h2 id="delete-a-saved-profile">Delete a saved profile</h2>
+<p>Run <strong>Delete Saved Icon Profile</strong> (or <strong>Delete saved…</strong>), choose the profile and confirm with <strong>Delete</strong>. Built-in profiles cannot be deleted.</p>
+<h2 id="export-and-import">Export and import</h2>
+<ul>
+<li><strong>Export Icon Profile to Clipboard</strong> (or <strong>Export</strong>) copies your current settings as profile JSON. VS Code confirms &quot;Current icon profile copied to the clipboard.&quot;</li>
+<li><strong>Import Icon Profile from Clipboard</strong> (or <strong>Import…</strong>) reads profile JSON from the clipboard, then asks &quot;Import &quot;…&quot;?&quot; with <strong>Apply</strong> or <strong>Apply and Save</strong>.</li>
+</ul>
+<p>Imports are checked first:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>The clipboard does not contain an icon profile.</td><td>The clipboard is empty.</td></tr>
+<tr><td>The clipboard profile is larger than the 256 KiB safety limit.</td><td>Profiles must be under 256 KiB.</td></tr>
+<tr><td>The clipboard does not contain valid JSON.</td><td>The text is not JSON.</td></tr>
+<tr><td>Unsupported icon profile schema: …</td><td>The profile came from an unknown source.</td></tr>
+<tr><td>Invalid icon profile: …</td><td>A value failed validation.</td></tr>
+</tbody></table></div>
+<p>Profiles exported from the older standalone Playful extension can be imported. Values are bounded and sanitised before they are written, and icon IDs that do not exist are dropped.</p>
+<h2 id="result">Result</h2>
+<p>You can switch between complete Explorer looks in two steps and carry them to other machines.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="modern-and-legacy.html"><span>Previous</span>Modern and older Playful settings</a><a href="smart-detection.html"><span>Next</span>Smart detection</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#apply-a-profile">Apply a profile</a></li><li><a href="#save-your-current-set-up">Save your current set-up</a></li><li><a href="#delete-a-saved-profile">Delete a saved profile</a></li><li><a href="#export-and-import">Export and import</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

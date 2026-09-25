@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Artisan Live — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Artisan Live does, who it is for, how to install it and where to find every guide.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; VS Code extensions</a>
+<h2>Auric Artisan Live</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Auric Artisan Live guides &rsaquo;</a></li>
+<li><a href="others/README.html">Supporting material &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">VS Code extensions</a> &rsaquo; <a href="README.html">Auric Artisan Live</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Auric Artisan Live</h1>
+<p class="lede">What Auric Artisan Live does, who it is for, how to install it and where to find every guide.</p>
+<p>Auric Artisan Live (full name <strong>Auric Artisan Live — Live Server &amp; Preview</strong>) is a local development server inside VS Code. Run <strong>Go Live</strong> and it serves your project folder over a real HTTP server on your own machine, opens it in your browser or in a preview beside your code, and updates connected pages when you save. It works for plain HTML, CSS and JavaScript, and it can also run or connect to a backend: PHP, Python, Ruby, Go, Java, Node.js and more.</p>
+<p>Around the server it gives you the tools you normally need a second terminal or a browser extension for: HTTPS with a generated certificate, an API proxy so your page and your backend share one origin, mock endpoints and a JSON-file REST database for APIs that do not exist yet, a request inspector with curl and fetch copies and HAR export, slow-network simulation, a phone QR code for testing on a real device, and an in-page developer dashboard (<code>Alt</code> + <code>Shift</code> + <code>D</code>) showing page health, network, storage and server state.</p>
+<p>Everything runs locally. The extension has no runtime npm dependencies and no telemetry. It is a development server, not production hosting.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Front-end developers who want live reload and a quick preview while editing HTML, CSS and JavaScript.</li>
+<li>Full-stack developers who run a framework dev server or a backend and want one address for the page and its API.</li>
+<li>PHP developers who want <code>.php</code> pages to run instead of download.</li>
+<li>Anyone testing a site on a phone, over HTTPS, or on a slow connection.</li>
+<li>Developers debugging requests: which rule answered, how long it took, what was sent.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li><p>Marketplace ID: <code>auric-artisan.auric-artisan-live</code></p>
+</li>
+<li><p>Marketplace page: <a href="https://marketplace.visualstudio.com/items?itemName=auric-artisan.auric-artisan-live" rel="noopener">https://marketplace.visualstudio.com/items?itemName=auric-artisan.auric-artisan-live</a></p>
+</li>
+<li><p>Install from a terminal:</p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-live</code></pre>
+</li>
+<li><p>Requires VS Code 1.95 or newer and a folder on disk. Version 0.2.1 at the time of writing.</p>
+</li>
+<li><p>Interface in English and Hindi. See <a href="../install-and-setup/docs/display-language-hindi.html">Use an extension in Hindi</a>.</p>
+</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Install the extension and open your website folder in VS Code (<strong>File</strong> › <strong>Open Folder…</strong>).</li>
+<li>Run <strong>Auric Live: Go Live</strong> from the Command Palette, press <code>Ctrl</code> + <code>Alt</code> + <code>L</code> (<code>Cmd</code> + <code>Alt</code> + <code>L</code> on macOS), or select <strong>Go Live</strong> in the status bar.</li>
+<li>Your default browser opens at <code>http://localhost:5500</code> (or the next free port). A notification offers <strong>Open</strong>, <strong>Preview</strong> and <strong>Phone QR</strong>.</li>
+<li>Edit an HTML, CSS or image file and save it. Connected pages update: stylesheets and images swap in place, HTML reloads.</li>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>K</code> to open a preview beside your editor, and pick a device size.</li>
+<li>Open the <strong>Auric Live</strong> icon in the Activity Bar to see the <strong>Servers</strong>, <strong>Requests</strong> and <strong>Routes and Mocks</strong> views.</li>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>I</code> to open the control panel for requests, run targets, routing and session settings.</li>
+<li>Stop with <strong>Auric Live: Stop Server</strong>, or stop every server with <code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>L</code>.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Serve a folder, a subfolder or a build output (<code>dist</code>, <code>public</code>) with live reload on save.</li>
+<li>Swap changed CSS and images without a full reload, and restore scroll position after one.</li>
+<li>Preview beside your code at responsive, phone, tablet, laptop and desktop sizes, with rotation.</li>
+<li>Open the site on your phone with a locally generated QR code.</li>
+<li>Serve over HTTPS with a generated or imported certificate.</li>
+<li>Run a detected backend or framework dev server (PHP, Python, Ruby, Go, Java, Node.js, Deno, Bun, .NET, Rust, Elixir, Hugo, Jekyll and more), or your own command, and forward to it.</li>
+<li>Connect to a backend that is already running, and wait for it while it starts.</li>
+<li>Proxy API paths to a backend, including WebSockets.</li>
+<li>Answer mock endpoints and a full REST API from a JSON file.</li>
+<li>Run PHP through <code>php-cgi</code>.</li>
+<li>Inspect, filter, sort, replay and export requests as HAR; copy any request as curl or fetch.</li>
+<li>Simulate slow 3G, 3G, 4G, cable or custom networks for every client, including a phone.</li>
+<li>Open an in-page developer dashboard with health, network, server, storage, environment, request and console tabs.</li>
+<li>Keep the setup with the repository in <code>auric.live.json</code> and <code>.auricignore-live</code>.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — task guides and the full reference.<ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="docs/preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="docs/run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="docs/php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="docs/api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="docs/inspect-requests.html">Inspect requests</a></li>
+<li><a href="docs/browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="docs/https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="docs/network-simulation.html">Simulate a slow network</a></li>
+<li><a href="docs/project-configuration.html">Project configuration</a></li>
+<li><a href="docs/reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — supporting material.<ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/shortcuts.html">Shortcuts</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and safeguards</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+<li><a href="others/related.html">Related</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../auric-artisan-icon-hub/others/related.html"><span>Previous</span>Related extensions and comparison</a><a href="docs/README.html"><span>Next</span>Auric Artisan Live guides</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

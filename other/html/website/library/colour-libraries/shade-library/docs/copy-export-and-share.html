@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copy, export and share — Auric Artisan Docs</title>
+<meta name="description" content="Copy a shade scale as hex, token-named CSS, SCSS or Tailwind, download JSON, SVG or PNG, export design tokens, share a link, and export many scales.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Shade Library</a>
+<h2>Shade Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="analyse-the-collection.html">Analyse the collection</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="copy-export-and-share.html" aria-current="page">Copy, export and share</a></li>
+<li><a href="inspect-a-scale.html">Inspect a scale</a></li>
+<li><a href="save-scales.html">Save scales</a></li>
+<li><a href="reference.html">Shade Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Shade Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Shade Library</a> &rsaquo; <a href="README.html">Shade Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Shade Library</p>
+<h1>Copy, export and share</h1>
+<p class="lede">Copy a shade scale as hex, token-named CSS, SCSS or Tailwind, download JSON, SVG or PNG, export design tokens, share a link, and export many scales.</p>
+<h2 id="one-scale">One scale</h2>
+<p>Open the scale on <strong>Inspect</strong>. Use <strong>Quick export</strong>, or the <strong>Selection</strong> card on the <strong>Export</strong> tab (headed <strong>Selection -</strong> and the id). With nothing open, the <strong>Export</strong> tab says <strong>No shade system selected. Click Inspect on any card in the Library tab to enable selection exports.</strong></p>
+<p>Names in the output come from the scale&#39;s name with the hex codes removed, in lower case with dashes: <strong>Material Like #FF724C #00001</strong> becomes <code>material-like-00001</code>. Each variable ends in the token name.</p>
+<h3 id="copy-formats">Copy formats</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick export</th><th>Export tab</th><th>What is copied</th><th>Message</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy HEX</strong></td><td><strong>HEX list</strong></td><td>All hex codes, comma-separated.</td><td><strong>HEX list copied</strong></td></tr>
+<tr><td><strong>Copy CSS vars</strong></td><td><strong>CSS variables</strong></td><td>A CSS class holding one custom property per token.</td><td><strong>CSS variables copied</strong></td></tr>
+<tr><td><strong>Copy SCSS</strong></td><td><strong>SCSS variables</strong></td><td>One Sass variable per token.</td><td><strong>SCSS copied</strong></td></tr>
+<tr><td><strong>Copy Tailwind</strong></td><td><strong>Tailwind config</strong></td><td>A colour group keyed by token.</td><td><strong>Tailwind copied</strong></td></tr>
+</tbody></table></div>
+<p>For the first scale in the collection:</p>
+<pre class="code" data-lang="css"><code>.aa-shade-material-like-00001 {
+  --material-like-00001-50: #fff0ec;
+  --material-like-00001-100: #ffdfd7;
+  --material-like-00001-300: #ff886b;
+  --material-like-00001-500: #ff724c;
+  --material-like-00001-700: #cd5531;
+  --material-like-00001-900: #4b1200;
+  --material-like-00001-950: #1e0400;
+}</code></pre>
+<pre class="code" data-lang="text"><code>$material-like-00001-50: #fff0ec;
+$material-like-00001-100: #ffdfd7;
+...
+$material-like-00001-950: #1e0400;</code></pre>
+<pre class="code" data-lang="text"><code>&quot;material-like-00001&quot;: {
+  &quot;50&quot;: &quot;#fff0ec&quot;,
+  &quot;100&quot;: &quot;#ffdfd7&quot;,
+  ...
+  &quot;950&quot;: &quot;#1e0400&quot;
+}</code></pre>
+<blockquote class="callout callout-tip">
+<p><strong>Tip:</strong> The CSS variables are declared on a class, not on <code>:root</code>. Either add that class to an element, or change the selector to <code>:root</code> after pasting. Rename the prefix to something meaningful in your project, such as <code>--brand-500</code>.</p>
+</blockquote>
+<h3 id="downloads">Downloads</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick export</th><th>Export tab</th><th>File</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Download JSON</strong></td><td><strong>JSON</strong></td><td><code>shade-000000.json</code></td><td>Id, name, base, method, token names, each token&#39;s hex and contrast on white and black, and score, average lightness, average chroma and auto-AA count.</td></tr>
+<tr><td><strong>Download SVG</strong></td><td><strong>SVG strip</strong></td><td><code>shade-000000.svg</code></td><td>A 1200 × 260 strip of the tokens; hovering a band shows its token and hex.</td></tr>
+<tr><td><strong>Download PNG</strong></td><td><strong>PNG strip</strong></td><td><code>shade-000000.png</code></td><td>A 1600 × 420 strip.</td></tr>
+</tbody></table></div>
+<h2 id="design-tokens">Design tokens</h2>
+<p>Select <strong>Design tokens…</strong>. The dialog is titled with the scale&#39;s name. <strong>Token prefix</strong> starts as <code>color</code>, and every token keeps its step name: <code>color-50</code>, <code>color-100</code> … <code>color-950</code>. Choose <strong>W3C Design Tokens</strong>, <strong>CSS Variables</strong>, <strong>SCSS</strong>, <strong>Tailwind Config</strong>, <strong>Style Dictionary</strong>, <strong>Material UI Theme</strong>, <strong>iOS (SwiftUI)</strong> or <strong>Android colors.xml</strong>, then <strong>Copy</strong>, <strong>Download</strong>, or <strong>Download all</strong> for a ZIP such as <code>shade-shade-000000.zip</code>.</p>
+<h2 id="share-a-link">Share a link</h2>
+<p>Select <strong>Copy share link</strong>. The <strong>Share link</strong> dialog offers <strong>Copy</strong>, <strong>Share via…</strong> where available, <strong>Open in new tab</strong> and <strong>Close</strong>. The link opens the scale on <strong>Inspect</strong>; if it cannot be found, the page says <strong>Shared shade not in current library</strong>.</p>
+<h2 id="many-scales">Many scales</h2>
+<p>The <strong>Visible page</strong> card on the <strong>Export</strong> tab exports every scale matching your search and filters (all 8,192 with none set). Its badge shows the number.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>File</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Download JSON (visible page)</strong></td><td><code>shade-library-&lt;count&gt;-&lt;date&gt;.json</code></td><td>Every scale in full.</td></tr>
+<tr><td><strong>Download CSV (visible page)</strong></td><td><code>…csv</code></td><td><code>id,name,base,method,tokens,score,avg_lightness,avg_chroma,auto_aa,colors</code>, with colours separated by vertical bars.</td></tr>
+<tr><td><strong>Download CSS variables</strong></td><td><code>…css</code></td><td>One class per scale.</td></tr>
+<tr><td><strong>Download SCSS variables</strong></td><td><code>…scss</code></td><td>Sass variables per scale.</td></tr>
+<tr><td><strong>Download compact JSON</strong></td><td><code>…json</code></td><td>Id and hex codes per scale.</td></tr>
+<tr><td><strong>Download .txt hex list</strong></td><td><code>…txt</code></td><td>One line per scale: its id, a colon and its hex codes.</td></tr>
+<tr><td><strong>Download tailwind.config.js fragment</strong></td><td><code>…txt</code></td><td>One Tailwind colour group per scale, inside braces.</td></tr>
+</tbody></table></div>
+<p>If nothing matches, the bulk buttons do nothing.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="browse-search-and-filter.html"><span>Previous</span>Browse, search and filter</a><a href="inspect-a-scale.html"><span>Next</span>Inspect a scale</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#one-scale">One scale</a></li><li><a href="#design-tokens">Design tokens</a></li><li><a href="#share-a-link">Share a link</a></li><li><a href="#many-scales">Many scales</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

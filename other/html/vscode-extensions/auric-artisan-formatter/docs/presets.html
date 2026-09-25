@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presets — Auric Artisan Docs</title>
+<meta name="description" content="The 13 Auric Artisan Formatter presets, what each is for and which options each sets.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html" aria-current="page">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Presets</h1>
+<p class="lede">The 13 Auric Artisan Formatter presets, what each is for and which options each sets.</p>
+<p>A <em>preset</em> is a named starting point: a coherent set of option values. Choose the one closest to how your team already writes code, then override the few things you disagree with. Anything you set yourself wins over the preset; options you do not mention keep the preset&#39;s value. The default preset is <code>auric</code>.</p>
+<h2 id="set-a-preset">Set a preset</h2>
+<ul>
+<li><strong>Auric Formatter: Switch Formatting Preset</strong> — pick from the list; it saves <code>auricFormatter.preset</code> and re-runs the workspace scan.</li>
+<li>In a configuration file: <code>&quot;preset&quot;: &quot;prettier&quot;</code>. This wins over the VS Code setting.</li>
+<li>In VS Code settings: <code>&quot;auricFormatter.preset&quot;: &quot;prettier&quot;</code>.</li>
+<li>For one file: a leading comment with <code>@auric-preset compact</code>.</li>
+<li>On the command line: <code>--preset prettier</code>.</li>
+<li>In Formatter Studio: the <strong>Preset</strong> drop-down, to compare presets on your own file before choosing.</li>
+</ul>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;prettier&quot;,
+  &quot;printWidth&quot;: 100
+}</code></pre>
+<p>This gives Prettier&#39;s exact behaviour at 100 columns instead of 80.</p>
+<h2 id="the-13-presets">The 13 presets</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Preset</th><th>Builds on</th><th>Options it sets</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>auric</code></td><td>—</td><td>50</td><td>The Auric house style: Prettier&#39;s layout plus the Auric enhancements.</td></tr>
+<tr><td><code>prettier</code></td><td>—</td><td>281</td><td>Byte-compatible with Prettier 3 at its own defaults, with every Auric-only enhancement switched off.</td></tr>
+<tr><td><code>standard</code></td><td><code>prettier</code></td><td>14</td><td>StandardJS: no semicolons, single quotes, and a space before every function parameter list.</td></tr>
+<tr><td><code>google</code></td><td><code>prettier</code></td><td>18</td><td>The Google style guide: single quotes, tight object braces, and maintained documentation blocks.</td></tr>
+<tr><td><code>airbnb</code></td><td><code>prettier</code></td><td>19</td><td>The Airbnb style guide: single quotes, wider lines, grouped imports, and concise arrow bodies.</td></tr>
+<tr><td><code>compact</code></td><td><code>auric</code></td><td>35</td><td>Minimise vertical space: wider lines, collapsed collections, and no decorative blank lines.</td></tr>
+<tr><td><code>expanded</code></td><td><code>auric</code></td><td>28</td><td>Maximise readability and diff granularity: one item per line almost everywhere.</td></tr>
+<tr><td><code>legacy-tabs</code></td><td>—</td><td>25</td><td>Tabs, four columns, CRLF line endings and Allman braces, for codebases that were here first.</td></tr>
+<tr><td><code>minimal-diff</code></td><td>—</td><td>143</td><td>Change as little as possible: preserve the author&#39;s layout everywhere it is legal to do so.</td></tr>
+<tr><td><code>aligned</code></td><td><code>auric</code></td><td>29</td><td>Turn the column alignment engine on everywhere it is safe, for code that reads like a table.</td></tr>
+<tr><td><code>sorted</code></td><td><code>auric</code></td><td>30</td><td>Turn on every ordering rule the safety gate can verify, from import groups to stylesheet declarations.</td></tr>
+<tr><td><code>docs</code></td><td><code>auric</code></td><td>19</td><td>Tuned for prose: reflowed paragraphs, generated tables of contents and maintained documentation blocks.</td></tr>
+<tr><td><code>verified</code></td><td><code>auric</code></td><td>11</td><td>Run every safety check, re-format to prove idempotency, and fail the run rather than emit unverified output.</td></tr>
+</tbody></table></div>
+<h2 id="which-preset">Which preset</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>If you</th><th>Choose</th></tr></thead>
+<tbody>
+<tr><td>Want the house style this formatter was designed around</td><td><code>auric</code></td></tr>
+<tr><td>Are moving from Prettier and want identical output on day one</td><td><code>prettier</code></td></tr>
+<tr><td>Follow StandardJS</td><td><code>standard</code></td></tr>
+<tr><td>Follow the Google style guides</td><td><code>google</code></td></tr>
+<tr><td>Follow the Airbnb JavaScript style guide</td><td><code>airbnb</code></td></tr>
+<tr><td>Want more code on screen</td><td><code>compact</code></td></tr>
+<tr><td>Want maximum readability in review, one thing per line</td><td><code>expanded</code></td></tr>
+<tr><td>Have a tab-indented codebase that is staying that way</td><td><code>legacy-tabs</code></td></tr>
+<tr><td>Are formatting an existing codebase and want the smallest diff</td><td><code>minimal-diff</code></td></tr>
+<tr><td>Like code aligned into columns</td><td><code>aligned</code></td></tr>
+<tr><td>Want imports, keys and members sorted</td><td><code>sorted</code></td></tr>
+<tr><td>Mostly write documentation and comments</td><td><code>docs</code></td></tr>
+<tr><td>Want every safety check and a hard failure on anything unverified</td><td><code>verified</code></td></tr>
+</tbody></table></div>
+<h2 id="what-each-preset-sets">What each preset sets</h2>
+<h3 id="auric">auric</h3>
+<p>The Auric house style: Prettier&#39;s layout plus the Auric enhancements.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;auric&quot;,
+  &quot;printWidth&quot;: 100,
+  &quot;endOfLine&quot;: &quot;lf&quot;,
+  &quot;insertFinalNewline&quot;: true,
+  &quot;trimTrailingWhitespace&quot;: true,
+  &quot;objectWrap&quot;: &quot;preserve&quot;,
+  &quot;preserveObjectShape&quot;: true,
+  &quot;preserveArrayFormatting&quot;: true,
+  &quot;singleLineIfStatement&quot;: &quot;fit&quot;,
+  &quot;lastArgumentHugging&quot;: true,
+  &quot;firstArgumentHugging&quot;: true,
+  &quot;blankLineAfterImports&quot;: &quot;always&quot;,
+  &quot;blankLineAfterDirectives&quot;: true,
+  &quot;blankLineBetweenMethods&quot;: &quot;always&quot;,
+  &quot;maxBlankLinesAtStart&quot;: 0,
+  &quot;maxBlankLinesAtEnd&quot;: 0,
+  &quot;collapseEmptyBlockBlankLines&quot;: true,
+  &quot;commentSpacing&quot;: &quot;always&quot;,
+  &quot;blockCommentStarAlign&quot;: true,
+  &quot;blockCommentStarPad&quot;: true,
+  &quot;preserveBannerComment&quot;: true,
+  &quot;jsdocAlign&quot;: true,
+  &quot;jsdocNormalizeTags&quot;: true,
+  &quot;jsdocTagOrder&quot;: [
+    &quot;@module&quot;,
+    &quot;@description&quot;,
+    &quot;@template&quot;,
+    &quot;@typedef&quot;,
+    &quot;@property&quot;,
+    &quot;@param&quot;,
+    &quot;@returns&quot;,
+    &quot;@yields&quot;,
+    &quot;@throws&quot;,
+    &quot;@example&quot;,
+    &quot;@remarks&quot;,
+    &quot;@see&quot;,
+    &quot;@link&quot;,
+    &quot;@since&quot;,
+    &quot;@version&quot;,
+    &quot;@author&quot;,
+    &quot;@deprecated&quot;,
+    &quot;@internal&quot;
+  ],
+  &quot;alignTrailingComments&quot;: true,
+  &quot;alignmentBreakOnBlankLine&quot;: true,
+  &quot;alignmentMaxPadding&quot;: 24,
+  &quot;alignmentUseSpacesOnly&quot;: true,
+  &quot;blankLineBetweenRules&quot;: 1,
+  &quot;nestedRuleBlankLine&quot;: true,
+  &quot;atRuleBlankLine&quot;: true,
+  &quot;propertyCase&quot;: &quot;lower&quot;,
+  &quot;valueKeywordCase&quot;: &quot;lower&quot;,
+  &quot;unitCase&quot;: &quot;lower&quot;,
+  &quot;atRuleCase&quot;: &quot;lower&quot;,
+  &quot;keyframeSelectorCase&quot;: &quot;lower&quot;,
+  &quot;hexCase&quot;: &quot;lower&quot;,
+  &quot;mdOrderedNumbering&quot;: &quot;one&quot;,
+  &quot;mdEmphasisMarker&quot;: &quot;asterisk&quot;,
+  &quot;mdStrongMarker&quot;: &quot;asterisk&quot;,
+  &quot;mdTableAlign&quot;: true,
+  &quot;mdFormatCodeBlocks&quot;: true,
+  &quot;mdFrontmatterFormat&quot;: &quot;format&quot;,
+  &quot;jsonPackageJsonOrder&quot;: true,
+  &quot;yamlCommentIndent&quot;: &quot;align&quot;,
+  &quot;safetyTokenCheck&quot;: true,
+  &quot;safetyReparse&quot;: true,
+  &quot;safetyCommentPreservation&quot;: true,
+  &quot;safetyStringLiterals&quot;: true,
+  &quot;safetyNumericLiterals&quot;: true,
+  &quot;safetyOnFailure&quot;: &quot;preserve&quot;
+}</code></pre>
+<h3 id="prettier">prettier</h3>
+<p>Byte-compatible with Prettier 3 at its own defaults, with every Auric-only enhancement switched off.</p>
+<p>It sets 281 options, too many to list usefully here. Choose it in Formatter Studio&#39;s <strong>Preset</strong> drop-down and use the <strong>Diff</strong> view to see what it changes in your own files.</p>
+<h3 id="standard">standard</h3>
+<p>StandardJS: no semicolons, single quotes, and a space before every function parameter list. It builds on <code>prettier</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;standard&quot;,
+  &quot;semi&quot;: false,
+  &quot;singleQuote&quot;: true,
+  &quot;jsxSingleQuote&quot;: true,
+  &quot;quoteProps&quot;: &quot;as-needed&quot;,
+  &quot;trailingComma&quot;: &quot;none&quot;,
+  &quot;arrowParens&quot;: &quot;avoid&quot;,
+  &quot;spaceBeforeFunctionParen&quot;: &quot;always&quot;,
+  &quot;spaceBeforeBlocks&quot;: true,
+  &quot;spaceAfterKeyword&quot;: true,
+  &quot;semiColonBeforeIIFE&quot;: true,
+  &quot;curlyBraces&quot;: &quot;multi-line&quot;,
+  &quot;objectWrap&quot;: &quot;preserve&quot;,
+  &quot;printWidth&quot;: 80,
+  &quot;commentSpacing&quot;: &quot;always&quot;
+}</code></pre>
+<h3 id="google">google</h3>
+<p>The Google style guide: single quotes, tight object braces, and maintained documentation blocks. It builds on <code>prettier</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;google&quot;,
+  &quot;printWidth&quot;: 80,
+  &quot;tabWidth&quot;: 2,
+  &quot;singleQuote&quot;: true,
+  &quot;quoteProps&quot;: &quot;consistent&quot;,
+  &quot;trailingComma&quot;: &quot;all&quot;,
+  &quot;bracketSpacing&quot;: false,
+  &quot;arrowParens&quot;: &quot;always&quot;,
+  &quot;semi&quot;: true,
+  &quot;curlyBraces&quot;: &quot;all&quot;,
+  &quot;blankLineBetweenMethods&quot;: &quot;always&quot;,
+  &quot;jsdocWrap&quot;: &quot;always&quot;,
+  &quot;jsdocNormalizeTags&quot;: true,
+  &quot;jsdocTagOrder&quot;: [
+    &quot;@module&quot;,
+    &quot;@description&quot;,
+    &quot;@template&quot;,
+    &quot;@typedef&quot;,
+    &quot;@property&quot;,
+    &quot;@param&quot;,
+    &quot;@returns&quot;,
+    &quot;@yields&quot;,
+    &quot;@throws&quot;,
+    &quot;@example&quot;,
+    &quot;@remarks&quot;,
+    &quot;@see&quot;,
+    &quot;@link&quot;,
+    &quot;@since&quot;,
+    &quot;@version&quot;,
+    &quot;@author&quot;,
+    &quot;@deprecated&quot;,
+    &quot;@internal&quot;
+  ],
+  &quot;commentSpacing&quot;: &quot;always&quot;,
+  &quot;htmlQuoteAttributes&quot;: &quot;double&quot;,
+  &quot;propertyCase&quot;: &quot;lower&quot;,
+  &quot;unitCase&quot;: &quot;lower&quot;,
+  &quot;hexCase&quot;: &quot;lower&quot;
+}</code></pre>
+<h3 id="airbnb">airbnb</h3>
+<p>The Airbnb style guide: single quotes, wider lines, grouped imports, and concise arrow bodies. It builds on <code>prettier</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;airbnb&quot;,
+  &quot;printWidth&quot;: 100,
+  &quot;singleQuote&quot;: true,
+  &quot;semi&quot;: true,
+  &quot;trailingComma&quot;: &quot;all&quot;,
+  &quot;arrowParens&quot;: &quot;always&quot;,
+  &quot;arrowBodyStyle&quot;: &quot;as-needed&quot;,
+  &quot;bracketSpacing&quot;: true,
+  &quot;arrayBracketSpacing&quot;: false,
+  &quot;spaceBeforeBlocks&quot;: true,
+  &quot;spaceInParens&quot;: false,
+  &quot;objectWrap&quot;: &quot;preserve&quot;,
+  &quot;maxBlankLines&quot;: 1,
+  &quot;blankLineAfterImports&quot;: &quot;always&quot;,
+  &quot;sortImports&quot;: true,
+  &quot;importOrder&quot;: [
+    &quot;&lt;BUILTIN_MODULES&gt;&quot;,
+    &quot;&lt;THIRD_PARTY_MODULES&gt;&quot;,
+    &quot;^@/&quot;,
+    &quot;^~/&quot;,
+    &quot;^[.][.]/&quot;,
+    &quot;^[.]/&quot;
+  ],
+  &quot;importOrderSeparation&quot;: true,
+  &quot;importOrderSortSpecifiers&quot;: true,
+  &quot;importOrderCaseInsensitive&quot;: true,
+  &quot;commentSpacing&quot;: &quot;always&quot;
+}</code></pre>
+<h3 id="compact">compact</h3>
+<p>Minimise vertical space: wider lines, collapsed collections, and no decorative blank lines. It builds on <code>auric</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;compact&quot;,
+  &quot;printWidth&quot;: 120,
+  &quot;objectWrap&quot;: &quot;collapse&quot;,
+  &quot;preserveObjectShape&quot;: false,
+  &quot;preserveArrayFormatting&quot;: false,
+  &quot;shortArrayThreshold&quot;: 8,
+  &quot;jsonSingleLineArrays&quot;: true,
+  &quot;arrowBodyStyle&quot;: &quot;as-needed&quot;,
+  &quot;singleLineArrowBody&quot;: true,
+  &quot;singleLineIfStatement&quot;: &quot;fit&quot;,
+  &quot;curlyBraces&quot;: &quot;multi-line&quot;,
+  &quot;emptyBlockStyle&quot;: &quot;collapse&quot;,
+  &quot;preserveEnumOneLine&quot;: true,
+  &quot;maxBlankLines&quot;: 1,
+  &quot;maxBlankLinesInsideBlocks&quot;: 0,
+  &quot;blankLineBetweenMethods&quot;: &quot;never&quot;,
+  &quot;blankLineAfterImports&quot;: &quot;preserve&quot;,
+  &quot;blankLineAfterDirectives&quot;: false,
+  &quot;padClassBody&quot;: false,
+  &quot;padFunctionBody&quot;: false,
+  &quot;padBlocks&quot;: false,
+  &quot;blankLineBetweenRules&quot;: 0,
+  &quot;nestedRuleBlankLine&quot;: false,
+  &quot;atRuleBlankLine&quot;: false,
+  &quot;singleLineRuleThreshold&quot;: 1,
+  &quot;selectorSeparator&quot;: &quot;space&quot;,
+  &quot;mediaQueryFormat&quot;: &quot;compact&quot;,
+  &quot;scssMapFormat&quot;: &quot;compact&quot;,
+  &quot;htmlBlankLineBetweenBlocks&quot;: 0,
+  &quot;htmlAttributeWrap&quot;: &quot;auto&quot;,
+  &quot;singleAttributePerLine&quot;: false,
+  &quot;mdListItemBlankLine&quot;: &quot;tight&quot;,
+  &quot;mdTableCompact&quot;: true,
+  &quot;graphqlSeparateOperations&quot;: 0,
+  &quot;tomlTableBlankLine&quot;: 0,
+  &quot;iniSectionBlankLine&quot;: 0
+}</code></pre>
+<h3 id="expanded">expanded</h3>
+<p>Maximise readability and diff granularity: one item per line almost everywhere. It builds on <code>auric</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;expanded&quot;,
+  &quot;printWidth&quot;: 80,
+  &quot;objectPropertyNewline&quot;: &quot;always&quot;,
+  &quot;objectDestructuringNewline&quot;: &quot;always&quot;,
+  &quot;functionParameterNewline&quot;: &quot;always&quot;,
+  &quot;typeParameterNewline&quot;: &quot;always&quot;,
+  &quot;arrayElementsPerLine&quot;: 1,
+  &quot;jsonExpandArrayThreshold&quot;: 2,
+  &quot;jsonSingleLineArrays&quot;: false,
+  &quot;unionFormat&quot;: &quot;expanded&quot;,
+  &quot;intersectionFormat&quot;: &quot;expanded&quot;,
+  &quot;mappedTypeFormat&quot;: &quot;expanded&quot;,
+  &quot;emptyBlockStyle&quot;: &quot;expand&quot;,
+  &quot;switchCaseBlankLine&quot;: &quot;always&quot;,
+  &quot;blankLineBetweenMethods&quot;: &quot;always&quot;,
+  &quot;blankLineBeforeReturn&quot;: &quot;always&quot;,
+  &quot;blankLineBetweenTopLevel&quot;: &quot;always&quot;,
+  &quot;singleAttributePerLine&quot;: true,
+  &quot;htmlAttributeWrap&quot;: &quot;always&quot;,
+  &quot;jsxSingleAttributeSameLine&quot;: false,
+  &quot;selectorSeparator&quot;: &quot;newline&quot;,
+  &quot;blankLineBetweenRules&quot;: 1,
+  &quot;nestedRuleBlankLine&quot;: true,
+  &quot;atRuleBlankLine&quot;: true,
+  &quot;mediaQueryFormat&quot;: &quot;expanded&quot;,
+  &quot;scssMapFormat&quot;: &quot;expanded&quot;,
+  &quot;mdListItemBlankLine&quot;: &quot;loose&quot;,
+  &quot;graphqlArgumentWrap&quot;: &quot;always&quot;,
+  &quot;tomlArrayWrap&quot;: &quot;always&quot;
+}</code></pre>
+<h3 id="legacy-tabs">legacy-tabs</h3>
+<p>Tabs, four columns, CRLF line endings and Allman braces, for codebases that were here first.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;legacy-tabs&quot;,
+  &quot;useTabs&quot;: true,
+  &quot;tabWidth&quot;: 4,
+  &quot;printWidth&quot;: 120,
+  &quot;endOfLine&quot;: &quot;crlf&quot;,
+  &quot;insertFinalNewline&quot;: true,
+  &quot;trimTrailingWhitespace&quot;: true,
+  &quot;alignmentUseSpacesOnly&quot;: false,
+  &quot;semi&quot;: true,
+  &quot;singleQuote&quot;: false,
+  &quot;trailingComma&quot;: &quot;none&quot;,
+  &quot;bracketSpacing&quot;: true,
+  &quot;curlyBraces&quot;: &quot;all&quot;,
+  &quot;elsePosition&quot;: &quot;new-line&quot;,
+  &quot;catchPosition&quot;: &quot;new-line&quot;,
+  &quot;doWhilePosition&quot;: &quot;new-line&quot;,
+  &quot;switchCaseIndent&quot;: true,
+  &quot;universalBraceStyle&quot;: &quot;next-line&quot;,
+  &quot;universalIndentSize&quot;: 4,
+  &quot;universalContinuationIndent&quot;: 4,
+  &quot;universalCaseIndent&quot;: true,
+  &quot;cPointerAlignment&quot;: &quot;left&quot;,
+  &quot;javaAnnotationPosition&quot;: &quot;above&quot;,
+  &quot;maxBlankLines&quot;: 2,
+  &quot;commentSpacing&quot;: &quot;always&quot;,
+  &quot;blockCommentStarAlign&quot;: true
+}</code></pre>
+<h3 id="minimal-diff">minimal-diff</h3>
+<p>Change as little as possible: preserve the author&#39;s layout everywhere it is legal to do so.</p>
+<p>It sets 143 options, too many to list usefully here. Choose it in Formatter Studio&#39;s <strong>Preset</strong> drop-down and use the <strong>Diff</strong> view to see what it changes in your own files.</p>
+<h3 id="aligned">aligned</h3>
+<p>Turn the column alignment engine on everywhere it is safe, for code that reads like a table. It builds on <code>auric</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;aligned&quot;,
+  &quot;alignObjectValues&quot;: true,
+  &quot;alignAssignments&quot;: &quot;consecutive&quot;,
+  &quot;alignConsecutiveDeclarations&quot;: true,
+  &quot;alignTrailingComments&quot;: true,
+  &quot;alignTernaryBranches&quot;: true,
+  &quot;alignEnumValues&quot;: true,
+  &quot;alignTypeMembers&quot;: true,
+  &quot;alignImportSpecifiers&quot;: true,
+  &quot;alignmentMaxPadding&quot;: 40,
+  &quot;alignmentMinGroupSize&quot;: 2,
+  &quot;alignmentBreakOnBlankLine&quot;: true,
+  &quot;alignmentUseSpacesOnly&quot;: true,
+  &quot;propertyValueAlign&quot;: true,
+  &quot;vendorPrefixAlign&quot;: true,
+  &quot;gridTemplateAlign&quot;: true,
+  &quot;yamlAlignValues&quot;: true,
+  &quot;tomlAlignValues&quot;: true,
+  &quot;iniAlignValues&quot;: true,
+  &quot;graphqlFieldAlign&quot;: true,
+  &quot;jsdocAlign&quot;: true,
+  &quot;universalAlignAssignments&quot;: true,
+  &quot;universalAlignTrailingComments&quot;: true,
+  &quot;universalAlignConsecutive&quot;: true,
+  &quot;goAlignStructTags&quot;: true,
+  &quot;goAlignComments&quot;: true,
+  &quot;rustAlignMatchArms&quot;: true,
+  &quot;rustAlignStructFields&quot;: true,
+  &quot;sqlAlignSelectColumns&quot;: true,
+  &quot;pythonAlignDictValues&quot;: true
+}</code></pre>
+<h3 id="sorted">sorted</h3>
+<p>Turn on every ordering rule the safety gate can verify, from import groups to stylesheet declarations. It builds on <code>auric</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;sorted&quot;,
+  &quot;sortImports&quot;: true,
+  &quot;importOrder&quot;: [
+    &quot;&lt;BUILTIN_MODULES&gt;&quot;,
+    &quot;&lt;THIRD_PARTY_MODULES&gt;&quot;,
+    &quot;^@/&quot;,
+    &quot;^~/&quot;,
+    &quot;^[.][.]/&quot;,
+    &quot;^[.]/&quot;
+  ],
+  &quot;importOrderSeparation&quot;: true,
+  &quot;importOrderSortSpecifiers&quot;: true,
+  &quot;importOrderCaseInsensitive&quot;: true,
+  &quot;importOrderGroupNamespaceSpecifiers&quot;: true,
+  &quot;importOrderSideEffectsFirst&quot;: true,
+  &quot;importOrderTypeImports&quot;: &quot;last&quot;,
+  &quot;exportOrder&quot;: &quot;alphabetical&quot;,
+  &quot;sortObjectKeys&quot;: true,
+  &quot;sortUnionMembers&quot;: true,
+  &quot;sortInterfaceMembers&quot;: true,
+  &quot;sortClassMembers&quot;: true,
+  &quot;classMemberOrder&quot;: [
+    &quot;static-field&quot;,
+    &quot;field&quot;,
+    &quot;constructor&quot;,
+    &quot;static-method&quot;,
+    &quot;method&quot;,
+    &quot;getter&quot;,
+    &quot;setter&quot;
+  ],
+  &quot;sortCaseSensitivity&quot;: &quot;insensitive&quot;,
+  &quot;sortNaturalNumeric&quot;: true,
+  &quot;sortPreserveComments&quot;: true,
+  &quot;sortRespectBlankLineGroups&quot;: true,
+  &quot;jsxSortProps&quot;: true,
+  &quot;htmlSortAttributes&quot;: true,
+  &quot;xmlSortAttributes&quot;: true,
+  &quot;declarationOrder&quot;: &quot;grouped&quot;,
+  &quot;yamlKeySort&quot;: true,
+  &quot;jsonSortKeys&quot;: true,
+  &quot;jsonPackageJsonOrder&quot;: true,
+  &quot;tomlSortKeys&quot;: true,
+  &quot;graphqlSortDefinitions&quot;: true,
+  &quot;graphqlSortFields&quot;: true,
+  &quot;jsdocTagOrder&quot;: [
+    &quot;@module&quot;,
+    &quot;@description&quot;,
+    &quot;@template&quot;,
+    &quot;@typedef&quot;,
+    &quot;@property&quot;,
+    &quot;@param&quot;,
+    &quot;@returns&quot;,
+    &quot;@yields&quot;,
+    &quot;@throws&quot;,
+    &quot;@example&quot;,
+    &quot;@remarks&quot;,
+    &quot;@see&quot;,
+    &quot;@link&quot;,
+    &quot;@since&quot;,
+    &quot;@version&quot;,
+    &quot;@author&quot;,
+    &quot;@deprecated&quot;,
+    &quot;@internal&quot;
+  ],
+  &quot;jsdocNormalizeTags&quot;: true
+}</code></pre>
+<h3 id="docs">docs</h3>
+<p>Tuned for prose: reflowed paragraphs, generated tables of contents and maintained documentation blocks. It builds on <code>auric</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;docs&quot;,
+  &quot;printWidth&quot;: 80,
+  &quot;proseWrap&quot;: &quot;always&quot;,
+  &quot;commentWrap&quot;: &quot;always&quot;,
+  &quot;commentWrapWidth&quot;: 80,
+  &quot;commentSpacing&quot;: &quot;always&quot;,
+  &quot;jsdocWrap&quot;: &quot;always&quot;,
+  &quot;jsdocAlign&quot;: true,
+  &quot;jsdocNormalizeTags&quot;: true,
+  &quot;jsdocTagOrder&quot;: [
+    &quot;@module&quot;,
+    &quot;@description&quot;,
+    &quot;@template&quot;,
+    &quot;@typedef&quot;,
+    &quot;@property&quot;,
+    &quot;@param&quot;,
+    &quot;@returns&quot;,
+    &quot;@yields&quot;,
+    &quot;@throws&quot;,
+    &quot;@example&quot;,
+    &quot;@remarks&quot;,
+    &quot;@see&quot;,
+    &quot;@link&quot;,
+    &quot;@since&quot;,
+    &quot;@version&quot;,
+    &quot;@author&quot;,
+    &quot;@deprecated&quot;,
+    &quot;@internal&quot;
+  ],
+  &quot;jsdocBlankLineAfterDescription&quot;: true,
+  &quot;mdTocGenerate&quot;: true,
+  &quot;mdTocMaxDepth&quot;: 3,
+  &quot;mdHeadingBlankLines&quot;: 1,
+  &quot;mdTableAlign&quot;: true,
+  &quot;mdLinkStyle&quot;: &quot;inline&quot;,
+  &quot;mdFormatCodeBlocks&quot;: true,
+  &quot;mdEscapeSpecial&quot;: true,
+  &quot;mdFrontmatterFormat&quot;: &quot;format&quot;,
+  &quot;experimentalCommentReflow&quot;: true
+}</code></pre>
+<h3 id="verified">verified</h3>
+<p>Run every safety check, re-format to prove idempotency, and fail the run rather than emit unverified output. It builds on <code>auric</code>.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;preset&quot;: &quot;verified&quot;,
+  &quot;safetyTokenCheck&quot;: true,
+  &quot;safetyTokenCheckComments&quot;: true,
+  &quot;safetyIdempotency&quot;: true,
+  &quot;safetyIdempotencyPasses&quot;: 2,
+  &quot;safetyReparse&quot;: true,
+  &quot;safetyCommentPreservation&quot;: true,
+  &quot;safetyStringLiterals&quot;: true,
+  &quot;safetyNumericLiterals&quot;: true,
+  &quot;safetyOnFailure&quot;: &quot;throw&quot;,
+  &quot;maxFileSizeKb&quot;: 8192,
+  &quot;parseTimeoutMs&quot;: 15000
+}</code></pre>
+
+<nav class="pager" aria-label="Previous and next"><a href="options-reference.html"><span>Previous</span>Options reference</a><a href="preview-diff.html"><span>Next</span>Preview formatting as a diff</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#set-a-preset">Set a preset</a></li><li><a href="#the-13-presets">The 13 presets</a></li><li><a href="#which-preset">Which preset</a></li><li><a href="#what-each-preset-sets">What each preset sets</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+---
+title: Icon Library — Sets, collections and Find your icon
+description: The Sets view, the featured collections, the Find your icon panel and the Recently viewed strip.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Sets, collections and Find your icon
+
+## The Sets view
+
+Open **Sets** at the top. *Seven sets, each a shortcut past the alphabet.* A card for each set shows its name, **Open set** and its number of icons. Select a card to choose that set and go back to the **Icons** view.
+
+| Set | Icons | Styles | Licence | Author |
+| --- | --- | --- | --- | --- |
+| Phosphor | 1,512 | 6 | MIT | Phosphor Icons |
+| Tabler | 5,093 | 2 | MIT | Paweł Kuna |
+| Lucide | 1,714 | 1 | ISC | Lucide Contributors |
+| Remix | 1,690 | 2 | Remix v1.0 | Remix Design |
+| Heroicons | 324 | 4 | MIT | Tailwind Labs |
+| Feather | 287 | 1 | MIT | Cole Bemis |
+| Material | 2,276 | 5 | Apache-2.0 | Google |
+
+Material icons are a webfont rather than SVG files, which changes what you can copy; see [The icon panel](icon-panel.md).
+
+### Featured collections
+
+Under the set cards, **Featured collections** (*Fast starts, just like the font library.*) has two rows:
+
+- **Icon sets** (*Browse complete families*): a card per set with its count and licence. Selecting one chooses the set, clears the search and category, and scrolls to the icons.
+- **Popular categories** (*Jump straight into a use case*): the ten largest categories, such as **System**, **Design**, **Arrows**, **Brand** and **Devices**, with their counts. Selecting one switches to **All** sets, filters to that category, and scrolls to the icons.
+
+Featured collections are hidden while a search, a set other than **All**, a filter or **Find your icon** is active. The set cards above them are always there.
+
+## Find your icon
+
+Select **Recommend** in the rail (or choose **Find your icon** from the command palette) to open **Find your icon** above the grid: *Filter the catalogue by set, category, and words from your brief.*
+
+1. **Set**: **Any set** or one of the seven.
+2. **Category**: **Any category** or a category from the list.
+3. **Brief** (*name or keyword*): a word such as *arrow*, *brand*, *user* or *chart*.
+4. Select **Recommend icons**.
+
+Up to twelve results appear, each with its rank, name, set and category. Select one to open the icon. The note beside the buttons gives the number found, for example *12 strong starting points*, or *No matches yet* with the suggestion *Try a broader set or simpler keyword.*
+
+**Reset** clears the fields; **×** closes the panel.
+
+Find your icon filters rather than ranks: it lists the first twelve icons, in catalogue order, that match all three fields. The **match** figure on each card only reflects its place in the list, from 96 for the first down to 72, not a measured fit. Keywords and categories exist only for Tabler and Remix icons, so a category or brief finds most in those two sets.
+
+## Recently viewed
+
+Every icon you open is added to **Recently viewed**, under the two views; it keeps the last twelve. Selecting a name types it into the search box, so icons with that name, from every set shown, come up in the grid. **Clear** empties the list.
+
+## Related
+
+- [Browse, search and filter](browse-and-filter.md)
+- [The icon panel](icon-panel.md)
+- [Limits and accuracy](../others/limits-and-accuracy.md)

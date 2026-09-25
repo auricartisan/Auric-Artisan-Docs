@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Accessibility release notes — Auric Artisan Docs</title>
+<meta name="description" content="Auric Accessibility's version history, taken from the Studio changelog.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility: other resources</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Auric Accessibility shortcuts</a></li>
+<li><a href="glossary.html">Auric Accessibility glossary</a></li>
+<li><a href="limits-and-accuracy.html">Auric Accessibility limits and accuracy</a></li>
+<li><a href="privacy.html">Auric Accessibility privacy</a></li>
+<li><a href="release-notes.html" aria-current="page">Auric Accessibility release notes</a></li>
+<li><a href="related.html">Related to Auric Accessibility</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility: other resources</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>Auric Accessibility release notes</h1>
+<p class="lede">Auric Accessibility's version history, taken from the Studio changelog.</p>
+<p>Auric Accessibility shares one version number and one changelog with the other Studio extensions. This page lists the entries that concern accessibility. The complete history is in the <a href="../../others/release-notes.html">Studio release notes</a>.</p>
+<h2 id="unreleased">Unreleased</h2>
+<p>Listed under <strong>Unreleased</strong> in the changelog, as upcoming entries for the next numbered release (detector 1.2.0):</p>
+<ul>
+<li>The rules were checked against axe-core on rendered HTML: on a 264-case regression suite, false positives fell from 132 to 0 and false negatives from 21 to 0; 80 of 83 rendered cases agree with axe.</li>
+<li>One tag reader for every rule: a JSX <code>=&gt;</code> or a Vue <code>v-if=&quot;n &gt; 0&quot;</code> no longer cuts a tag short; attributes are whole names; bound values are respected.</li>
+<li>Components such as <code>&lt;Input&gt;</code>, <code>&lt;Button&gt;</code> and <code>&lt;Form&gt;</code> are no longer judged as native elements.</li>
+<li>Correct markup no longer fails: required owned roles on <code>&lt;ul role=&quot;list&quot;&gt;</code>, radio groups and table rows; required context in component files; <code>aria-selected</code> on <code>option</code>; <code>lang</code> on <code>&lt;style lang=&quot;scss&quot;&gt;</code>; image alt with <code>aria-label</code> or spreads; Razor, Material and shadcn labels; unnamed forms; duplicate IDs inside <code>&lt;template&gt;</code>.</li>
+<li>Accessible names now come from labelled <code>svg</code> and <code>img</code> children, template output and <code>v-text</code>; <code>aria-hidden</code> text no longer counts.</li>
+<li><code>focus-outline-none</code>: one <code>:focus-visible</code> rule no longer exempts a whole file.</li>
+<li><code>interactive-keyboard</code> understands <code>tabIndex={0}</code> and catches Vue, Angular and Svelte click handlers.</li>
+<li>New rule <code>input-placeholder-label</code> (3.3.2, advisory).</li>
+<li>Six rules became best-practice hints, weighted at half: <code>accesskey</code>, <code>autofocus</code>, <code>heading-skip</code>, <code>positive-tabindex</code>, <code>tiny-font</code>, <code>text-spacing-important</code>.</li>
+<li>Performance: a case that never finished (60,000 links) now takes 0.28 s; 2,930 real markup files scan in 6.2 s instead of 7.6 s.</li>
+<li>The contrast scanner, hovers and Contrast Studio changes listed in the Studio notes also apply, because Auric Accessibility publishes contrast diagnostics.</li>
+<li>The Studio&#39;s new Home and Check spaces, and the <strong>pattern-rule</strong> suggestion now opening <strong>Check › Findings</strong>.</li>
+</ul>
+<h2 id="010-initial-studio-release">0.1.0 — Initial Studio release</h2>
+<ul>
+<li>A specification-backed WCAG 2.2 engine with structural, semantic, ARIA, language, form, media, focus, motion and contrast checks.</li>
+<li>Inspect for element-level names, roles, colours, contrast, colour-vision impact, issues and fixes.</li>
+<li>Workspace scans, grouped findings, score summaries, suppressions, quick fixes, remediation plans and rule documentation.</li>
+<li>Framework and template awareness, so comments, runtime bindings and inert source are not reported.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="privacy.html"><span>Previous</span>Auric Accessibility privacy</a><a href="related.html"><span>Next</span>Related to Auric Accessibility</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#unreleased">Unreleased</a></li><li><a href="#010-initial-studio-release">0.1.0 — Initial Studio release</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

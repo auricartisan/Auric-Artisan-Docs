@@ -1,0 +1,336 @@
+==============================================================================
+AURIC ACCESSIBILITY REFERENCE
+==============================================================================
+Every command, keybinding, setting, view, menu entry and theme colour Auric
+Accessibility contributes.
+Area: VS Code extensions › Auric Artisan Studio › Auric Accessibility   Updated: 2026-09-25
+
+Facts for Auric Accessibility 0.1.0 (`auric-artisan.auric-a11y`). It needs VS
+Code 1.74 or newer and starts when VS Code finishes loading. Categories:
+Linters, Programming Languages, Other.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows, Linux): `Ctrl` + `Alt` + `.`
+  Keys (macOS):          `Cmd` + `Alt` + `.`
+  Command:               Workstation: Command Center
+  Active when:           Auric Accessibility is not suppressed (it is always
+                         the host when installed)
+
+  Keys (Windows, Linux): `Ctrl` + `Alt` + `A`
+  Keys (macOS):          `Cmd` + `Alt` + `A`
+  Command:               Inspect Accessibility of Element
+  Active when:           The editor has focus
+
+COMMANDS
+========
+
+All titles appear in the Command Palette after `Auric Artisan:`, except the
+two marked row action.
+
+  Title:        Open Accessibility Studio
+  Command ID:   `auricA11y.openStudio`
+  What it does: Opens the Studio on Home
+
+  Title:        Workstation: Command Center
+  Command ID:   `auricA11y.commandCenter`
+  What it does: Opens the Command Center list
+
+  Title:        Open Rulebook & Knowledge Database
+  Command ID:   `auricA11y.openKnowledgeBase`
+  What it does: Searches rules, WCAG criteria, manual checks, policies and
+                articles
+
+  Title:        Build Workspace Knowledge Database (JSON + Markdown)
+  Command ID:   `auricA11y.writeKnowledgeDatabase`
+  What it does: Writes `knowledge.json`, `rulebook.md` and an overrides
+                template
+
+  Title:        Open Unified Icon Studio
+  Command ID:   `auricA11y.openIconStudio`
+  What it does: Opens the combined Auric icon library
+
+  Title:        Scan Project for Accessibility (Use Cache)
+  Command ID:   `auricA11y.scanProject`
+  What it does: Scans the project, reusing a fresh cache
+
+  Title:        Force Rescan Project and Refresh Cache
+  Command ID:   `auricA11y.rescanProject`
+  What it does: Re-reads the project and rewrites the cache
+
+  Title:        Generate Agent-Ready Remediation Plan
+  Command ID:   `auricA11y.generateAiPlan`
+  What it does: Writes the local remediation plan
+
+  Title:        Clear Workspace Scan Cache
+  Command ID:   `auricA11y.clearScanCache`
+  What it does: Deletes `scan-cache.json`
+
+  Title:        Search Accessibility Issues
+  Command ID:   `auricA11y.searchIssues`
+  What it does: Filters the Project Issues view
+
+  Title:        Group Accessibility Issues (Type / File / Severity)
+  Command ID:   `auricA11y.groupIssues`
+  What it does: Groups the Project Issues view
+
+  Title:        Open WCAG Documentation
+  Command ID:   `auricA11y.openIssueDocs`
+  What it does: Row action: opens the criterion's Understanding page
+
+  Title:        Open Issue in Contrast Studio
+  Command ID:   `auricA11y.openIssueInStudio`
+  What it does: Row action: opens a contrast or colour-vision finding in the
+                Contrast Studio
+
+  Title:        Clear Accessibility Issue Search
+  Command ID:   `auricA11y.clearIssueSearch`
+  What it does: Removes the Project Issues filter
+
+  Title:        Check Contrast of Selection
+  Command ID:   `auricA11y.checkContrast`
+  What it does: Opens the Contrast Studio with the selected colour as text
+
+  Title:        Inspect Accessibility of Element
+  Command ID:   `auricA11y.inspectAccessibility`
+  What it does: Shows the Inspect card at the cursor
+
+  Title:        Mark Line as Intentional Branding (Toggle)
+  Command ID:   `auricA11y.markBranding`
+  What it does: Adds or removes `auric-brand-line` on the current lines
+
+VIEWS
+=====
+
+  View:  Overview
+  ID:    `auricA11yHome`
+  Notes: In the Auric Accessibility Activity Bar container; the accessibility
+         dashboard
+
+  View:  Project Issues
+  ID:    `auricA11yIssues`
+  Notes: The findings tree, with a badge
+
+  View:  Color Picker
+  ID:    `auricA11yPickerView`
+  Notes: Only when Auric Color is installed; collapsed by default
+
+MENUS
+=====
+
+  Menu:    Editor right-click
+  Entries: Inspect Accessibility of Element (Inspect languages); Check
+           Contrast of Selection (with a selection); Mark Line as Intentional
+           Branding (Toggle) (Inspect languages and Markdown)
+
+  Menu:    Project Issues title bar
+  Entries: Search, Group, Scan, Open Accessibility Studio, Collapse All;
+           Generate Agent-Ready Remediation Plan in …
+
+  Menu:    Project Issues rows
+  Entries: Open WCAG Documentation (WCAG rows); Open Issue in Contrast Studio
+           (contrast and colour-vision rows)
+
+Inspect languages: HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript,
+TypeScript, JSX, TSX, CSS, SCSS, Less, Sass, PostCSS and Stylus.
+
+SETTINGS
+========
+
+Auric Accessibility has 24 settings. Search `auricA11y` in File › Preferences
+› Settings. Many can also be changed in Studio › Settings.
+
+  Setting:      `auricA11y.appearance.accent`
+  Type:         string
+  Default:      `gold`
+  What it does: The Studio's accent: a preset ID or a hex colour. Stored in
+                user settings. See Appearance [../../docs/appearance.txt].
+
+  Setting:      `auricA11y.inspect.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Turns Inspect (hover card and command) on or off.
+
+  Setting:      `auricA11y.inspect.onHover`
+  Type:         boolean
+  Default:      `true`
+  What it does: Shows the Inspect card automatically on hover; when off, only
+                through the command.
+
+  Setting:      `auricA11y.contrast.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Flags text and background pairs below the target.
+
+  Setting:      `auricA11y.contrast.standard`
+  Type:         `wcag2`, `apca`, `both`
+  Default:      `wcag2`
+  What it does: The contrast model.
+
+  Setting:      `auricA11y.contrast.apcaThreshold`
+  Type:         number, 15–106
+  Default:      `60`
+  What it does: Minimum APCA Lc when APCA is used.
+
+  Setting:      `auricA11y.contrast.threshold`
+  Type:         number, 1–21
+  Default:      `4.5`
+  What it does: Minimum WCAG 2.x ratio.
+
+  Setting:      `auricA11y.contrast.severity`
+  Type:         `error`, `warning`, `information`, `hint`
+  Default:      `warning`
+  What it does: Problems severity for failing contrast.
+
+  Setting:      `auricA11y.contrast.flagCvdRisk`
+  Type:         boolean
+  Default:      `true`
+  What it does: Adds colour-vision risk hints.
+
+  Setting:      `auricA11y.contrast.checkPageBackground`
+  Type:         boolean
+  Default:      `true`
+  What it does: Grades colour-only rules against the page background, as
+                softer hints.
+
+  Setting:      `auricA11y.a11y.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Turns WCAG diagnostics in the editor on or off.
+
+  Setting:      `auricA11y.a11y.profile`
+  Type:         `2.0`, `2.1`, `2.2`, `3.0-draft`
+  Default:      `2.2`
+  What it does: The audit profile. Rescan after changing it.
+
+  Setting:      `auricA11y.branding.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Honours `auric-brand-…` marks in the editor.
+
+  Setting:      `auricA11y.data.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Creates and uses the `.auric-artisan` folder. Shared.
+
+  Setting:      `auricA11y.data.folderName`
+  Type:         string
+  Default:      `.auric-artisan`
+  What it does: The data folder's name, relative to the workspace. Shared.
+
+  Setting:      `auricA11y.scan.cache.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Reuses the scan cache instead of rescanning. Shared.
+
+  Setting:      `auricA11y.scan.cache.maxAgeMinutes`
+  Type:         number, 0 or more
+  Default:      `1440`
+  What it does: Maximum cache age; `0` keeps it until a forced or automatic
+                scan. Shared.
+
+  Setting:      `auricA11y.scan.live`
+  Type:         boolean
+  Default:      `true`
+  What it does: Re-grades the project as you type, from memory.
+
+  Setting:      `auricA11y.scan.liveDelayMs`
+  Type:         number, 200–5000
+  Default:      `700`
+  What it does: Wait after the last keystroke before a live re-grade.
+
+  Setting:      `auricA11y.scan.autoScan`
+  Type:         boolean
+  Default:      `false`
+  What it does: Rescans from disk after file changes. Shared.
+
+  Setting:      `auricA11y.scan.autoScanOnStartup`
+  Type:         boolean
+  Default:      `false`
+  What it does: With auto scan on, also rescans soon after the workspace
+                opens. Shared.
+
+  Setting:      `auricA11y.scan.autoScanDelayMs`
+  Type:         number, 250–60000
+  Default:      `1800`
+  What it does: Wait after a file change before an automatic scan. Shared.
+
+  Setting:      `auricA11y.scan.maxFiles`
+  Type:         number
+  Default:      `4000`
+  What it does: Most files one scan reads. Shared.
+
+  Setting:      `auricA11y.scan.exclude`
+  Type:         glob
+  Default:      see below
+  What it does: Paths to skip in scans. Shared.
+
+The default of `scan.exclude` is
+`**/{node_modules,dist,build,out,.git,vendor,coverage,.auric-artisan}/**`.
+"Shared" means the value is read suite-wide when other Studio extensions are
+installed; see Shared settings [../../docs/reference.txt].
+
+THEME COLOURS
+=============
+
+  Colour ID:           `auricA11y.branding.foreground`
+  Dark:                `#F06595`
+  Light:               `#C2255C`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+  Colour ID:           `auricA11y.branding.background`
+  Dark:                `#F0659522`
+  Light:               `#C2255C1A`
+  High contrast:       transparent
+  High contrast light: transparent
+
+  Colour ID:           `auricA11y.branding.border`
+  Dark:                `#F0659580`
+  Light:               `#C2255C80`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+  Colour ID:           `auricA11y.branding.icon`
+  Dark:                `#F06595`
+  Light:               `#C2255C`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+`auricA11y.branding.icon` colours the Branding group in the Project Issues
+view.
+
+STUDIO SPACES
+=============
+
+On its own: Home, Check (Findings, Contrast, Preview) and Settings
+(Appearance, Project data, Scan engine, Scope, Accessibility audit, Contrast).
+As a Workstation host, it adds the spaces of the other installed extensions.
+
+DIAGNOSTICS CODES
+=================
+
+  Code:    `WCAG 1.1.1` and so on
+  Meaning: A WCAG rule finding, linked to the criterion
+
+  Code:    `low-contrast`, `apca-low`, `cvd-risk`
+  Meaning: Contrast findings
+
+  Code:    `branding:contrast`, `branding:apca`, `branding:cvd`
+  Meaning: Classified as branding
+
+FILES IT WRITES
+===============
+
+`.auric-artisan/scan-cache.json`, `settings.json`, the health record
+(`health.json`, `health.sarif`, `health-history.json`) after scans,
+`ai-remediation-plan.md` and `.json`, and the knowledge files. See The
+.auric-artisan folder [../../docs/scanning.txt].
+
+RELATED
+=======
+
+  - Rules [rules.txt]
+  - Studio reference [../../docs/reference.txt]
+  - Shortcuts [../others/shortcuts.txt]

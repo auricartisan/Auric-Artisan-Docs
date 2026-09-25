@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build and edit a collage — Auric Artisan Docs</title>
+<meta name="description" content="Add pictures, set up the canvas, select and edit pictures, use the layers list, and undo or redo any step.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Collage Maker</a>
+<h2>Collage Maker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Collage Maker</a></li>
+<li><a href="arrange-in-a-grid.html">Arrange pictures in a grid</a></li>
+<li><a href="build-a-collage.html" aria-current="page">Build and edit a collage</a></li>
+<li><a href="export-and-sessions.html">Export, copy and save sessions</a></li>
+<li><a href="read-the-measurements.html">Read the measurements</a></li>
+<li><a href="reference.html">Collage Maker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Collage Maker</a></li>
+<li><a href="faq.html">Collage Maker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Collage Maker</a> &rsaquo; <a href="README.html">Collage Maker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Collage Maker</p>
+<h1>Build and edit a collage</h1>
+<p class="lede">Add pictures, set up the canvas, select and edit pictures, use the layers list, and undo or redo any step.</p>
+<p>Everything in this guide happens on the <strong>Studio</strong> tab.</p>
+<h2 id="add-pictures">Add pictures</h2>
+<ol>
+<li>Drop one or more image files onto the <strong>Drop pictures</strong> box in the left-hand panel. You can also drop them straight onto the canvas, or select the box (or press <code>Enter</code> or <code>Space</code> while it has focus) to open a file chooser that accepts several files at once.</li>
+<li>Wait for the message at the bottom of the screen. It reads <strong>Added</strong> followed by the file name, or <strong>Added 4 pictures</strong> for a batch.</li>
+</ol>
+<p>What happens to each picture:</p>
+<ul>
+<li>It is centred on the canvas.</li>
+<li>It keeps its own pixels. If it is larger than 42% of the canvas width or height, it is scaled down to fit inside that box; a smaller picture stays at 100%.</li>
+<li>It is added on top of the others and becomes the selected picture.</li>
+<li>It appears at the top of the <strong>Layers · top first</strong> list, with a thumbnail, its file name, its size in pixels and its current scale.</li>
+</ul>
+<p>Any image type your browser can open is accepted; the box names JPG, PNG, WebP and GIF. Files that are not images are ignored. If a file cannot be decoded, a message reads <strong>Could not read</strong> followed by its name, and the other files in the batch are still added. Adding a batch is one history step.</p>
+<h2 id="set-up-the-canvas">Set up the canvas</h2>
+<p>The controls under <strong>The canvas</strong> apply to the whole collage.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Shape</strong></td><td>Sets the canvas size. Every shape is 1200 pixels wide</td><td>4 : 3, 1 : 1, 3 : 2, 16 : 9, 9 : 16, 2 : 3</td><td>4 : 3 — 1200 × 900</td></tr>
+<tr><td><strong>Padding</strong></td><td>The margin between the canvas edge and the block of grid cells. Used only when arranging in a grid</td><td>0 to 120 px</td><td>24 px</td></tr>
+<tr><td><strong>Gap</strong></td><td>The space between grid cells. Used only when arranging in a grid</td><td>0 to 80 px</td><td>8 px</td></tr>
+<tr><td><strong>Corner radius</strong></td><td>Rounds the corners of the canvas. The export is clipped to the rounded shape</td><td>0 to 80 px</td><td>18 px</td></tr>
+<tr><td><strong>Transparent background</strong></td><td>When ticked, empty areas are transparent. When cleared, the background is white</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Centre and rule-of-thirds guides</strong></td><td>Shows thirds lines on the canvas, and dashed lines through the centre of the selected picture</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Snap to a 10 px grid</strong></td><td>While dragging, the picture&#39;s centre lands on a multiple of 10 px</td><td>On or off</td><td>On</td></tr>
+</tbody></table></div>
+<p>Above these controls, <strong>size</strong> and <strong>background</strong> repeat the current canvas size and background (transparent, or the colour in use).</p>
+<p>Changing the shape does not move or resize any picture. Pictures that were near the edge of a larger canvas can end up partly outside a smaller one; the <strong>outside the canvas</strong> card tells you when that happens.</p>
+<p>The guides are drawn only on screen. They never appear in an export.</p>
+<h2 id="select-a-picture">Select a picture</h2>
+<ul>
+<li>Click a picture on the canvas. Where pictures overlap, the click selects the one on top.</li>
+<li>Or select a row in the <strong>Layers · top first</strong> list. This is the only way to select a hidden picture, because hidden pictures cannot be clicked on the canvas.</li>
+<li>Click an empty part of the canvas to clear the selection.</li>
+</ul>
+<p>The selected picture has a gold outline and four square corner handles. Its controls appear under <strong>The selected picture</strong>; when nothing is selected that area reads <strong>nothing selected</strong>.</p>
+<h2 id="move-resize-and-nudge">Move, resize and nudge</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>How</th></tr></thead>
+<tbody>
+<tr><td>Move</td><td>Drag the picture. With snapping on, its centre lands on a multiple of 10 px</td></tr>
+<tr><td>Resize</td><td>Drag a corner handle; the picture scales around its centre, keeping its proportions, from 2% to 800%</td></tr>
+<tr><td>Nudge 1 px</td><td>Click the canvas so it has keyboard focus, then press an arrow key</td></tr>
+<tr><td>Nudge 10 px</td><td>Hold <code>Shift</code> and press an arrow key</td></tr>
+<tr><td>Remove</td><td>Press <code>Delete</code> or <code>Backspace</code> while the canvas has focus, or select <strong>Remove</strong></td></tr>
+</tbody></table></div>
+<p>Each drag is one history step, recorded when you let go. Each arrow-key press is one step. Arrow-key nudges are exact and are not snapped to the grid.</p>
+<h2 id="change-the-selected-picture">Change the selected picture</h2>
+<p>The controls under <strong>The selected picture</strong> change only the selected picture.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Range</th></tr></thead>
+<tbody>
+<tr><td><strong>Scale</strong></td><td>Size relative to the picture&#39;s own pixels</td><td>2% to 400%</td></tr>
+<tr><td><strong>Rotation</strong></td><td>Turns the picture about its centre</td><td>−180° to 180°</td></tr>
+<tr><td><strong>Opacity</strong></td><td>How see-through the picture is</td><td>0% to 100%</td></tr>
+<tr><td><strong>Bring to front</strong></td><td>Moves it to the top of the stack</td><td>—</td></tr>
+<tr><td><strong>Send to back</strong></td><td>Moves it to the bottom of the stack</td><td>—</td></tr>
+<tr><td><strong>Centre</strong></td><td>Moves its centre to the centre of the canvas</td><td>—</td></tr>
+<tr><td><strong>Duplicate</strong></td><td>Adds a copy 24 px to the right and 24 px down, and selects the copy</td><td>—</td></tr>
+<tr><td><strong>Flip across</strong></td><td>Mirrors it left to right; select again to undo the flip</td><td>—</td></tr>
+<tr><td><strong>Flip down</strong></td><td>Mirrors it top to bottom</td><td>—</td></tr>
+<tr><td><strong>Hide</strong></td><td>Hides it from the canvas, the measurements and the export. The button then reads <strong>Show</strong></td><td>—</td></tr>
+<tr><td><strong>Remove</strong></td><td>Takes it off the canvas. Undo brings it back</td><td>—</td></tr>
+</tbody></table></div>
+<p>Sliders show the value as you drag. The history step is recorded when you release the slider.</p>
+<h2 id="the-layers-list">The layers list</h2>
+<p><strong>Layers · top first</strong> lists every picture in the order it is painted, with the top of the stack first. Each row shows:</p>
+<ul>
+<li>a thumbnail;</li>
+<li>the file name (hover to see the full name);</li>
+<li>the picture&#39;s own size and its current scale, for example <code>3024×4032 · 12%</code>;</li>
+<li>a dot, or <strong>hidden</strong> for a hidden picture.</li>
+</ul>
+<p>Select a row to select that picture.</p>
+<h2 id="arrange-in-a-grid-or-start-again">Arrange in a grid, or start again</h2>
+<ul>
+<li><strong>Arrange in a grid</strong> tries every number of columns for the visible pictures, measures each arrangement, and applies the one that covers the most canvas. It uses the fitting choices on the <strong>Layout</strong> tab. A message reports the grid and its coverage, for example <strong>Arranged 2 × 2 — 88.1% covered. Undo puts them back.</strong> See <a href="arrange-in-a-grid.html">Arrange pictures in a grid</a> to choose an arrangement yourself.</li>
+<li><strong>Clear the canvas</strong> removes every picture. It is one history step, so <strong>Undo</strong> brings them all back.</li>
+</ul>
+<h2 id="undo-and-redo">Undo and redo</h2>
+<p>The <strong>History</strong> group has <strong>← Undo</strong> and <strong>Redo →</strong>. The note under them says how many steps you can go back, for example <strong>5 steps back, to the start.</strong></p>
+<ul>
+<li>Every change is recorded: adding pictures, moving, resizing, each slider release, every button, changing the shape, padding, gap, corner radius or background, arranging, clearing, removing and loading a session.</li>
+<li>A removed picture comes back with the step that removed it.</li>
+<li>The history holds up to 60 steps. Older steps are dropped once you pass that.</li>
+<li>Making a new change after undoing clears the redo steps.</li>
+<li>Keyboard: <code>Ctrl</code> + <code>Z</code> undoes; <code>Ctrl</code> + <code>Shift</code> + <code>Z</code> or <code>Ctrl</code> + <code>Y</code> redoes. On a Mac, <code>Cmd</code> works in place of <code>Ctrl</code>. The shortcuts do nothing while a slider, menu or text box has focus.</li>
+</ul>
+<blockquote class="callout callout-tip">
+<p><strong>Tip:</strong> When the canvas itself has keyboard focus, one press of the undo or redo shortcut can move two steps. If you want exactly one step, use the <strong>Undo</strong> and <strong>Redo</strong> buttons, or click outside the canvas before using the keyboard.</p>
+</blockquote>
+<p>Switching <strong>Centre and rule-of-thirds guides</strong> and <strong>Snap to a 10 px grid</strong> is not recorded, because neither changes the collage.</p>
+<h2 id="what-you-should-see">What you should see</h2>
+<p>After these steps your pictures sit where you want them, the layers list shows their order, and the <strong>canvas covered</strong>, <strong>overlapping</strong> and <strong>outside the canvas</strong> cards describe the collage exactly as it will export. To export it, see <a href="export-and-sessions.html">Export, copy and save sessions</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="arrange-in-a-grid.html"><span>Previous</span>Arrange pictures in a grid</a><a href="export-and-sessions.html"><span>Next</span>Export, copy and save sessions</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#add-pictures">Add pictures</a></li><li><a href="#set-up-the-canvas">Set up the canvas</a></li><li><a href="#select-a-picture">Select a picture</a></li><li><a href="#move-resize-and-nudge">Move, resize and nudge</a></li><li><a href="#change-the-selected-picture">Change the selected picture</a></li><li><a href="#the-layers-list">The layers list</a></li><li><a href="#arrange-in-a-grid-or-start-again">Arrange in a grid, or start again</a></li><li><a href="#undo-and-redo">Undo and redo</a></li><li><a href="#what-you-should-see">What you should see</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

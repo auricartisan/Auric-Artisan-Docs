@@ -1,0 +1,103 @@
+==============================================================================
+BROWSE, SEARCH AND FILTER
+==============================================================================
+Search and filter 8,192 shade scales by base hue, chroma, lightness and
+method, and sort the results.
+Area: Website › Library › Colour libraries › Shade Library   Updated: 2026-09-25
+
+SEARCH
+======
+
+Search by id, hex, token or method… filters as you type. Every word must
+appear in the scale's id, its name, its base colour, its method, its base hue
+name (red, orange, yellow, green, cyan, blue, purple, pink), its token names,
+or any of its hex codes. The Filter inside results box adds more words; Clear
+empties it. Press `/` outside a text field to jump to the search box.
+
+Examples:
+
+  - `ff724c` — scales based on, or containing, that colour.
+  - `tailwind blue` — Tailwind-like scales with a blue base.
+  - `950` — scales that have a `950` token.
+
+FILTERS
+=======
+
+  Filter:  Base hue
+  Options: All hues, Red, Orange, Yellow, Green, Cyan, Blue, Purple, Pink
+  Meaning: The OKLCH hue of the scale's base colour.
+
+  Filter:  Chroma
+  Options: Any chroma, Muted (< 0.07)**, **Balanced** (0.07 to 0.15), **Vivid
+           (> 0.15)
+  Meaning: Average OKLCH chroma of the tokens.
+
+  Filter:  Lightness
+  Options: Any lightness, Dark (below 0.40), Mid (0.40 to 0.70), Light (above
+           0.70)
+  Meaning: Average OKLCH lightness of the tokens.
+
+  Filter:  Method
+  Options: All methods, Accessible Ui, Brand System, Duotone Shift, Ink Paper,
+           Material Like, Neutral System, Oklch Ramp, Tailwind Like,
+           Temperature Shift, Vivid Product
+  Meaning: How the scale was generated.
+
+All filters and searches combine.
+
+  Method            | Scales
+  ------------------+-------
+  Brand System      | 1,418
+  Accessible Ui     | 1,287
+  Tailwind Like     | 1,148
+  Oklch Ramp        | 1,020
+  Material Like     | 847
+  Vivid Product     | 700
+  Neutral System    | 571
+  Temperature Shift | 515
+  Duotone Shift     | 414
+  Ink Paper         | 272
+
+SORT BY
+=======
+
+  Option                        | Order
+  ------------------------------+--------------------------------------
+  Sort: original                | Collection order (default).
+  Lightness up / Lightness down | Average OKLCH lightness.
+  Chroma up / Chroma down       | Average OKLCH chroma.
+  Hue (rainbow)                 | Base colour's hue from 0°.
+  Score high to low             | Highest recorded quality score first.
+  Tokens high to low            | Most tokens first.
+  Random                        | Shuffled.
+
+BUTTONS
+=======
+
+  - Shuffle — sort Random.
+  - Open a random scale — opens any scale on Inspect.
+  - Reset — clears searches, filters and sort.
+  - Export visible — opens Export.
+  - Back to top — scrolls to the first card.
+
+THE GRID
+========
+
+The counter reads, for example, 1–24 of 1,148 scales, or Nothing to show; the
+grid then says No shade systems match — Try clearing a filter, or searching a
+broader method, hex or token.
+
+Cards: select a swatch to copy its hex; Copy copies all hex codes,
+comma-separated (Shade hexes copied); Save saves or unsaves (Shade saved /
+Shade removed); Inspect, or anywhere else on the card, opens it. With the
+keyboard, `Enter` or `Space` on a focused swatch opens the scale.
+
+A NOTE ON EVENNESS
+==================
+
+The page's introduction points to evenness — whether a scale's steps are
+equally spaced — as the property that matters most, and reports that 8.2% of
+scales are genuinely even. The current filter row does not include an evenness
+filter. To judge evenness for one scale, open it on Inspect and read Min
+adjacent contrast and the Token contrast ladder: large jumps between
+neighbouring steps show up there.

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Command Center — Auric Artisan Docs</title>
+<meta name="description" content="Open the Command Center with one shortcut, understand each of its sections, and learn the six deterministic rules behind its suggestions.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html" aria-current="page">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>The Command Center</h1>
+<p class="lede">Open the Command Center with one shortcut, understand each of its sections, and learn the six deterministic rules behind its suggestions.</p>
+<p>The <strong>Command Center</strong> is a searchable list of everything the installed Studio extensions can do right now: suggested next steps, actions, recent colours, the worst findings and the files the Studio has written. It is a native VS Code quick pick, so it looks and behaves like the Command Palette.</p>
+<h2 id="open-it">Open it</h2>
+<ul>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>.</code> (<code>Cmd</code> + <code>Alt</code> + <code>.</code> on macOS). The shortcut works anywhere in VS Code.</li>
+<li>Or run <strong>Auric Artisan: Workstation: Command Center</strong> from the Command Palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code>).</li>
+</ul>
+<p>The list is titled <strong>Auric Artisan — Command Center</strong>. Type to filter; the filter matches titles and their descriptions. Press <code>Enter</code> to run the highlighted item, or <code>Escape</code> to close.</p>
+<p>When several Studio extensions are installed, the shortcut opens the host&#39;s Command Center, which covers every installed capability. See <a href="workstation.html">The Workstation</a>.</p>
+<h2 id="sections">Sections</h2>
+<p>Sections appear in this order, and only when they have something in them.</p>
+<h3 id="suggested">Suggested</h3>
+<p>The same deterministic suggestions the Overview shows, up to three. Each shows its title and, as its description, the reason it fired. See <a href="#the-suggestion-rules">The suggestion rules</a>.</p>
+<h3 id="actions">Actions</h3>
+<p>Only actions for installed capabilities are listed.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Description shown</th><th>Needs</th></tr></thead>
+<tbody>
+<tr><td><strong>Scan project</strong></td><td>WCAG + contrast + CVD (uses cache)</td><td>Auric Accessibility</td></tr>
+<tr><td><strong>Rescan project</strong></td><td>force-refresh the scan cache</td><td>Auric Accessibility</td></tr>
+<tr><td><strong>Open Studio: …</strong></td><td>none; one entry per Studio tool (listed below)</td><td>The tool&#39;s extension</td></tr>
+<tr><td><strong>Open rulebook &amp; knowledge database</strong></td><td>rules, standards, manual checks, policies, and articles</td><td>Any</td></tr>
+<tr><td><strong>Build workspace knowledge database</strong></td><td>knowledge.json + rulebook.md + validated team overrides</td><td>Any</td></tr>
+<tr><td><strong>Open unified Icon Studio</strong></td><td>how many icon collections are installed and through which provider, or install an Auric Icons provider to enable the combined library</td><td>Any</td></tr>
+<tr><td><strong>Pick / edit color</strong></td><td>inline picker on the token under the cursor</td><td>Auric Color</td></tr>
+<tr><td><strong>Check contrast of selection</strong></td><td></td><td>Auric Color</td></tr>
+<tr><td><strong>Fix all contrast in file</strong></td><td>recolor every failing pair (one undo)</td><td>Auric Color</td></tr>
+<tr><td><strong>Project health report</strong></td><td>Markdown + JSON, written locally</td><td>Auric Code Health</td></tr>
+<tr><td><strong>Write health record</strong></td><td>health.json + SARIF for CI</td><td>Auric Code Health</td></tr>
+<tr><td><strong>Open data folder</strong></td><td>.auric-artisan workspace store</td><td>Auric Code Health</td></tr>
+<tr><td><strong>Generate AI remediation plan</strong></td><td>agent-ready fix plan with a design-token draft</td><td>Auric Accessibility or Auric Code Health</td></tr>
+</tbody></table></div>
+<p>The <strong>Open Studio</strong> entries are, in order and for installed capabilities only: <strong>Scan</strong> (the Studio&#39;s <strong>Home</strong> space), <strong>Code Health</strong>, <strong>Preview</strong>, <strong>Contrast</strong>, <strong>Brand</strong>, <strong>Palette</strong>, <strong>Shades</strong>, <strong>Vision</strong> and <strong>Settings</strong>.</p>
+<h3 id="recent-colors">Recent colors</h3>
+<p>Up to eight colours you applied recently with a Studio picker (Auric Color). Select one to open the colour picker on that value. If an editor is open, a colour you then apply from the picker is inserted at the cursor.</p>
+<h3 id="findings">Findings</h3>
+<p>Up to eight of the worst findings from the last scan, each with its file name and line. Select one to open the file at that line. Contrast rows read like <code>#999999 on #FFFFFF · 2.32:1</code>; other rows show the finding&#39;s message.</p>
+<h3 id="artifacts">Artifacts</h3>
+<p>Files the Studio has written to the workspace&#39;s <code>.auric-artisan</code> folder. Only files that exist are listed.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Description shown</th></tr></thead>
+<tbody>
+<tr><td><code>health.json</code> (or the name set in <code>health.fileName</code>)</td><td>unified health record</td></tr>
+<tr><td><code>knowledge.json</code></td><td>searchable rules and guidance database</td></tr>
+<tr><td><code>rulebook.md</code></td><td>generated engineering rulebooks</td></tr>
+<tr><td><code>knowledge-overrides.json</code></td><td>reviewed workspace knowledge overrides</td></tr>
+<tr><td><code>ai-remediation-plan.md</code></td><td>agent-ready remediation plan</td></tr>
+<tr><td><code>project-health.md</code></td><td>project health report</td></tr>
+</tbody></table></div>
+<h2 id="the-suggestion-rules">The suggestion rules</h2>
+<p>Suggestions are produced by a fixed set of six rules. They are <strong>not</strong> generated by AI or machine learning, and nothing is sent anywhere: each rule checks one fact from your last scan or your open file. Rules are checked in the order below, at most three suggestions are shown, and a suggestion you dismiss is never offered again.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Suggestion</th><th>Pill</th><th>Shown when</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>N possible secrets detected</strong></td><td>Critical</td><td>The last scan found at least one possible hardcoded secret</td><td><strong>Open health report</strong> (with Auric Code Health), otherwise <strong>Review in Studio</strong></td></tr>
+<tr><td>2</td><td><strong>N fixable contrast pairs in this file</strong></td><td>High</td><td>Auric Color is installed and the active file has at least two contrast pairs that can be fixed automatically</td><td><strong>Fix all in file</strong>, plus <strong>Review</strong>, which opens the first pair in the Contrast Studio</td></tr>
+<tr><td>3</td><td><strong>&quot;rule-id&quot; appears in N files</strong></td><td>High</td><td>Auric Accessibility is installed and one WCAG rule fires in three or more files</td><td><strong>Open the findings</strong> (Check › Findings)</td></tr>
+<tr><td>4</td><td><strong>Scan is N hours old</strong></td><td>Workflow</td><td>Auric Accessibility is installed and the loaded scan is older than <code>scan.cache.maxAgeMinutes</code></td><td><strong>Rescan</strong></td></tr>
+<tr><td>5</td><td><strong>Scanned X of Y files</strong></td><td>Workflow</td><td>Auric Accessibility or Auric Color is installed and the last scan stopped at the <code>scan.maxFiles</code> limit</td><td><strong>Scan settings</strong> (Studio › Settings)</td></tr>
+<tr><td>6</td><td><strong>N color values repeat 4+ times</strong></td><td>Tip</td><td>At least six colour values are each used four or more times, and Auric Accessibility or Auric Code Health is installed</td><td><strong>Draft tokens</strong> (generates the remediation plan, which includes a design-token draft)</td></tr>
+</tbody></table></div>
+<p>Each suggestion states a detected fact in its title and gives a one-line reason, for example <strong>the code-health scan found hardcoded credentials</strong> or <strong>one rule firing across files usually shares a single fix</strong>.</p>
+<h3 id="dismissing-suggestions">Dismissing suggestions</h3>
+<ul>
+<li>In the Overview, select <strong>✕</strong> on a suggestion card. It disappears and is not offered again, even after later scans.</li>
+<li>VS Code remembers the dismissal across sessions. The Studio keeps the 40 most recent dismissals.</li>
+<li>There is no command to bring a dismissed suggestion back.</li>
+</ul>
+<p>The Colour workbench layout of the Overview shows only suggestion 2, because it has no project score. The Command Center itself always evaluates all six rules for the installed capabilities.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="reference.html">Reference</a> for every command.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="ci-gate.html"><span>Previous</span>The CI gate</a><a href="contrast-studio.html"><span>Next</span>The Contrast Studio</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#sections">Sections</a></li><li><a href="#the-suggestion-rules">The suggestion rules</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

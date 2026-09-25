@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with the Image Picker — Auric Artisan Docs</title>
+<meta name="description" content="Open the Image Picker, find your way around its three tabs, and take a first palette from a picture.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="extract-a-palette.html">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html">Image Picker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Getting started with the Image Picker</h1>
+<p class="lede">Open the Image Picker, find your way around its three tabs, and take a first palette from a picture.</p>
+<h2 id="open-the-tool">Open the tool</h2>
+<p>Go to <a href="https://auricartisan.com/tool/general/tools/image-picker/" rel="noopener">https://auricartisan.com/tool/general/tools/image-picker/</a>. The page opens on the <strong>Workbench</strong> tab with a large empty panel that reads <strong>Drop an image anywhere in here</strong>.</p>
+<p>Under the page heading there may be a short line that begins <strong>Automate this</strong>. It says the same job is available through the site&#39;s REST API, what one call costs in API credits, and links to the API documentation. You can close it with <strong>×</strong>; it stays closed in that browser. You do not need the API to use the tool.</p>
+<h2 id="the-screen-at-a-glance">The screen at a glance</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><strong>Workbench</strong></td><td>Load a picture, set the extraction, see the preview, the palette, the tone bands and the readouts</td></tr>
+<tr><td><strong>Analysis</strong></td><td>Four charts of the current palette; the tab label shows <strong>4</strong></td></tr>
+<tr><td><strong>Actions</strong></td><td>Download JSON or CSV, copy the page link, and analyse a list of hex colours</td></tr>
+</tbody></table></div>
+<h3 id="the-workbench-tab">The Workbench tab</h3>
+<p>The <strong>Workbench</strong> has three columns.</p>
+<ul>
+<li><strong>Left:</strong> <strong>The image</strong> (file name, size, and the <strong>Replace</strong> and <strong>Load URL</strong> buttons with a web address field), <strong>Extraction</strong> (the <strong>Clusters</strong>, <strong>Quality</strong> and <strong>Merge threshold</strong> sliders and the <strong>Ignore dark</strong> and <strong>Ignore light</strong> switches), <strong>Run</strong> (<strong>Re-extract</strong> and <strong>Reset</strong>), and <strong>History</strong> (how many extractions you have run).</li>
+<li><strong>Middle:</strong> before a picture is loaded, the drop area. After, the <strong>Preview</strong> with the eyedropper readout and <strong>Pin</strong> button, the <strong>Extracted palette</strong> swatches, and the <strong>Tone bands</strong>.</li>
+<li><strong>Right:</strong> before a picture is loaded, the keyboard keys and a note of what comes back. After, <strong>Pairs that carry text</strong>, <strong>Harmony</strong>, <strong>Pinned</strong> and <strong>Take it with you</strong>.</li>
+</ul>
+<h2 id="take-a-first-palette">Take a first palette</h2>
+<ol>
+<li>Drop an image onto the middle panel, or select the panel to choose a file. PNG, JPEG, WEBP, GIF and BMP are all accepted.</li>
+<li>The picture appears under <strong>Preview</strong>, and the file name and sizes appear on the left, for example <code>4032 × 3024 → 667 × 500 | harbour.jpg</code>. Large pictures are shrunk to fit an 800 × 500 working area; the first size is the original.</li>
+<li>Under <strong>Extracted palette</strong>, the swatches appear largest share first. Each shows its share of the picture, its hex value, its HSL values and its relative luminance. The heading says how many clusters and samples were used.</li>
+<li>Move <strong>Clusters</strong> to 6 and release it. The palette is extracted again with six colours.</li>
+<li>Hover the preview. The readout under it shows the colour under the pointer. Click to pin that exact colour; it appears under <strong>Pinned</strong> on the right.</li>
+<li>Under <strong>Take it with you</strong>, select <strong>CSS</strong>. The palette is copied as CSS custom properties. Paste it into your stylesheet:</li>
+</ol>
+<pre class="code" data-lang="css"><code>:root {
+  --palette-01: #2E4A5C;
+  --palette-02: #D9C7A8;
+  --palette-03: #8A6A4F;
+}</code></pre>
+<p>The values above are an example; you get the colours of your picture.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li>To tune the palette, see <a href="extract-a-palette.html">Extract a palette</a>.</li>
+<li>To keep exact pixels, see <a href="pick-exact-colours.html">Pick exact colours</a>.</li>
+<li>To check which colours work together as text and background, see <a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a>.</li>
+<li>For every export, see <a href="export-and-share.html">Export and share</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Image Picker documentation</a><a href="batch-analysis.html"><span>Next</span>Analyse a list of hex colours</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-tool">Open the tool</a></li><li><a href="#the-screen-at-a-glance">The screen at a glance</a></li><li><a href="#take-a-first-palette">Take a first palette</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

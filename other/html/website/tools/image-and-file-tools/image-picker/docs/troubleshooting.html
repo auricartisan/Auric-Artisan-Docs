@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the Image Picker — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms you may meet in the Image Picker, why they happen, and what to do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="extract-a-palette.html">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html">Image Picker reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Troubleshooting the Image Picker</h1>
+<p class="lede">Symptoms you may meet in the Image Picker, why they happen, and what to do.</p>
+<p>The Image Picker does not show pop-up messages, so when something fails, the usual sign is that nothing changes. This page lists the common causes.</p>
+<h2 id="loading-pictures">Loading pictures</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Nothing happens after dropping or choosing a file</td><td>The file is not an image, or your browser cannot decode it</td><td>Save it as PNG or JPEG and try again. Some formats, such as HEIC or camera RAW, are not opened by every browser</td></tr>
+<tr><td>Dropping a second picture on the preview opens it in the browser instead</td><td>The drop area is only active before a picture is loaded</td><td>Use <strong>Replace</strong>, or select <strong>Reset</strong> first to bring the drop area back</td></tr>
+<tr><td><strong>Load URL</strong> does nothing</td><td>The address is not an image, cannot be reached, or the server does not allow other sites to read its pixels</td><td>Download the image and load it with <strong>Replace</strong></td></tr>
+<tr><td>After <strong>Load URL</strong> the middle panel goes blank</td><td>The picture loaded, but its server does not allow its pixels to be read (cross-origin protection)</td><td>Download the image and load it as a file</td></tr>
+<tr><td>The size line shows a much smaller working size</td><td>Pictures are shrunk to fit 800 × 500 for analysis</td><td>This is expected; the palette still covers the whole picture</td></tr>
+</tbody></table></div>
+<h2 id="the-palette">The palette</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The <strong>Clusters</strong> label says 16 but the slider will not go past 12</td><td>The page starts at 16; the slider covers 2 to 12</td><td>Move the slider to choose 2 to 12, or leave it untouched to keep 16</td></tr>
+<tr><td>Fewer colours than the cluster count</td><td>Merging combined some, or the picture has fewer distinct colours</td><td>Lower <strong>Merge threshold</strong>, or accept it: flat artwork keeps its exact colours</td></tr>
+<tr><td>Several near-identical shades</td><td>Clusters that are close are kept apart when merging is off</td><td>Raise <strong>Merge threshold</strong></td></tr>
+<tr><td>A white background or black border dominates</td><td>Those pixels are part of the picture</td><td>Turn on <strong>Ignore light</strong> or <strong>Ignore dark</strong></td></tr>
+<tr><td>The palette changes slightly each time</td><td>k-means++ starts from random colours</td><td>Select <strong>Re-extract</strong> until you are happy, then export</td></tr>
+<tr><td>A small but important colour is missing</td><td>It covers too few pixels to form a cluster</td><td>Raise <strong>Quality</strong> or <strong>Clusters</strong>, or pin it with the eyedropper</td></tr>
+</tbody></table></div>
+<h2 id="eyedropper-and-pins">Eyedropper and pins</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>Pin</strong> does nothing</td><td>Moving the pointer onto the button clears the colour under it</td><td>Click directly on the preview to pin</td></tr>
+<tr><td>A click does not add a pin</td><td>The colour is already pinned, or the pixel is transparent</td><td>Check <strong>Pinned</strong>; pick an opaque pixel</td></tr>
+<tr><td>The oldest pin disappeared</td><td>Pins are capped at 24</td><td>Copy the JSON before pinning more</td></tr>
+<tr><td>Pins are missing from my CSS or hex copy</td><td>Only the JSON export includes pins</td><td>Copy or download the JSON</td></tr>
+</tbody></table></div>
+<h2 id="copying-and-exports">Copying and exports</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>No sign that anything was copied</td><td>The page shows no confirmation</td><td>Paste to check</td></tr>
+<tr><td>Nothing is copied</td><td>Your browser blocked clipboard access</td><td>Allow clipboard access for the site, or use the downloads on the <strong>Actions</strong> tab</td></tr>
+<tr><td>The shortcut keys do nothing</td><td>Focus is in a text field, slider, switch or menu</td><td>Click an empty part of the page first</td></tr>
+<tr><td>The page reset unexpectedly</td><td><code>R</code> resets the workbench when focus is not in a control</td><td>Load the picture again; your settings are kept</td></tr>
+<tr><td>The copied page link opens an empty tool</td><td>The link does not carry the picture or palette</td><td>Share the JSON, CSS or SVG instead</td></tr>
+</tbody></table></div>
+<h2 id="batch-analysis">Batch analysis</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>No valid hex colours found.</strong></td><td>Nothing in the box is a hex value</td><td>Enter values such as <code>#D3AF37</code> or <code>D3AF37</code></td></tr>
+<tr><td>A colour&#39;s figures look wrong</td><td>It was entered with an alpha part (four or eight digits)</td><td>Use three or six digits</td></tr>
+</tbody></table></div>
+<h2 id="charts">Charts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>Nothing charted yet</strong></td><td>No picture is loaded</td><td>Load a picture on the <strong>Workbench</strong></td></tr>
+<tr><td>Bar labels are missing</td><td>There are too many clusters for the labels to fit</td><td>Open the chart full screen, or read the shares on the swatches</td></tr>
+</tbody></table></div>
+<p>For help with the site in general, see <a href="../../../../../help/README.html">Help</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Image Picker reference</a><a href="faq.html"><span>Next</span>Image Picker FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#loading-pictures">Loading pictures</a></li><li><a href="#the-palette">The palette</a></li><li><a href="#eyedropper-and-pins">Eyedropper and pins</a></li><li><a href="#copying-and-exports">Copying and exports</a></li><li><a href="#batch-analysis">Batch analysis</a></li><li><a href="#charts">Charts</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

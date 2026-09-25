@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design tokens and personalisation — Auric Artisan Docs</title>
+<meta name="description" content="Generate a contrast-checked design-token system from one colour, export it for ten platforms, and run the brief-driven palette search and design-system generator.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html" aria-current="page">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Design tokens and personalisation</h1>
+<p class="lede">Generate a contrast-checked design-token system from one colour, export it for ten platforms, and run the brief-driven palette search and design-system generator.</p>
+<h2 id="design-tokens">Design tokens</h2>
+<h3 id="post-v1tokensgenerate">POST /v1/tokens/generate</h3>
+<p>Turn one seed colour into a complete, contrast-checked token system. 2–4 credits. Ramps are stepped in OKLCH so every hue is perceptually even, chroma follows a gamut-aware envelope so the light and dark ends stay distinct, and foreground roles are measured: <code>--color-on-primary</code> is whichever of white or ink actually clears 4.5:1.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>seed</code></td><td>colour</td><td>Yes</td><td>The seed colour</td></tr>
+<tr><td><code>name</code></td><td>string</td><td>No</td><td>System name used in file headers</td></tr>
+<tr><td><code>harmony</code></td><td>string</td><td>No</td><td><code>analogous</code> (default), <code>complementary</code>, <code>triadic</code> or <code>mono</code></td></tr>
+<tr><td><code>include</code></td><td>string array</td><td>No</td><td>Any of <code>color</code>, <code>space</code>, <code>radius</code>, <code>type</code>. Default all.</td></tr>
+<tr><td><code>dark</code></td><td>boolean</td><td>No</td><td>Include dark-mode roles. Default <code>true</code>.</td></tr>
+</tbody></table></div>
+<p>Returns <code>meta</code>, <code>contrast</code>, <code>out_of_gamut</code> and <code>tokens</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/tokens/generate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;seed&quot;:&quot;#c9a227&quot;,&quot;name&quot;:&quot;Auric&quot;,&quot;harmony&quot;:&quot;analogous&quot;}'</code></pre>
+<h3 id="post-v1tokensexport">POST /v1/tokens/export</h3>
+<p>Render a token deck for a platform. There are ten targets, from CSS custom properties to Jetpack Compose.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>tokens</code></td><td>array</td><td>Yes</td><td>Objects of <code>{ name, value, group? }</code>: the <code>tokens</code> array from generate, or your own</td></tr>
+<tr><td><code>format</code></td><td>string</td><td>Yes</td><td>See <code>/v1/tokens/formats</code></td></tr>
+<tr><td><code>name</code></td><td>string</td><td>No</td><td>System name for the file header</td></tr>
+<tr><td><code>raw</code></td><td>boolean</td><td>No</td><td><code>true</code> returns the file itself, as a download, instead of a JSON envelope</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/tokens/export&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;format&quot;:&quot;css&quot;,&quot;tokens&quot;:[{&quot;name&quot;:&quot;--color-primary&quot;,&quot;value&quot;:&quot;#c9a227&quot;}]}'</code></pre>
+<h3 id="get-v1tokensformats">GET /v1/tokens/formats</h3>
+<p>The ten token export targets.</p>
+<h2 id="personalisation">Personalisation</h2>
+<p>These endpoints drive the palette search behind the website&#39;s personalisation generator. A <strong>brief</strong> combines seed colours, style keys, an intent and weights.</p>
+<h3 id="get-v1personalizevocabulary">GET /v1/personalize/vocabulary</h3>
+<p>Everything a brief may name, with the ranges the engine really applies: the 18 style profiles with their chroma, lightness and saturation windows, the five intents, the 19 hue relationships and their offsets, the 17 type systems, and the gradient and poster catalogues. Read it before writing a brief. Returns <code>styles</code>, <code>intents</code>, <code>relationships</code>, <code>type_systems</code> and <code>limits</code>.</p>
+<h3 id="get-v1personalizepresets">GET /v1/personalize/presets</h3>
+<p>The 17 briefs the tool ships, in request shape; each can be posted straight to the endpoints below. Returns <code>count</code> and <code>presets</code>.</p>
+<h3 id="post-v1personalizepool">POST /v1/personalize/pool</h3>
+<p>Grow a working set of colours from seeds and a brief. The search works within this pool. The response also returns the brief resolved to numbers.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code></td><td>string array</td><td>No</td><td>Seed colours, up to 64. Defaults to the tool&#39;s own eight.</td></tr>
+<tr><td><code>styles</code></td><td>string array</td><td>No</td><td>Style keys from the vocabulary</td></tr>
+<tr><td><code>intent</code></td><td>string</td><td>No</td><td><code>ui</code> (default), <code>brand</code>, <code>poster</code>, <code>editorial</code> or <code>dashboard</code></td></tr>
+<tr><td><code>target</code></td><td>integer</td><td>No</td><td>Pool size, 1–240. Default 64.</td></tr>
+<tr><td><code>warmth</code></td><td>number</td><td>No</td><td>0–100. Default 52.</td></tr>
+<tr><td><code>seed</code></td><td>integer</td><td>No</td><td>Omit for a random one; it is always returned</td></tr>
+</tbody></table></div>
+<p>Returns <code>brief</code>, <code>pool</code> and <code>profile</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/personalize/pool&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;colors&quot;:[&quot;#0F172A&quot;,&quot;#D3AF37&quot;],&quot;styles&quot;:[&quot;luxe&quot;,&quot;editorial&quot;],&quot;target&quot;:24}'</code></pre>
+<h3 id="post-v1personalizescore">POST /v1/personalize/score</h3>
+<p>Rank a palette you already have on the search&#39;s six scores: preference, harmony, diversity, contrast, style fit and accessibility. Omit <code>relationship</code> and every hue geometry is tried, with the best fit reported.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>palette</code></td><td>string array</td><td>Yes</td><td>2–12 colours</td></tr>
+<tr><td><code>relationship</code></td><td>string</td><td>No</td><td>A relationship id to measure against</td></tr>
+<tr><td><code>styles</code></td><td>string array</td><td>No</td><td>The brief it is judged for</td></tr>
+<tr><td><code>intent</code></td><td>string</td><td>No</td><td>One of the five intents</td></tr>
+<tr><td><code>accessibility</code></td><td>number</td><td>No</td><td>0–100, how hard accessibility is weighted. Default 72.</td></tr>
+</tbody></table></div>
+<p>Returns <code>score</code>, <code>measured_as</code>, <code>best_pair</code> and <code>alternatives</code>.</p>
+<h3 id="post-v1personalizepalettes">POST /v1/personalize/palettes</h3>
+<p>Search: N candidates in, the best K out, each with its breakdown. The response reports what the sweep did: how many candidates were sampled, how many survived de-duplication and where the cut fell. Contrast and colour vision are weights in the score, not filters, so a candidate that reads badly is ranked down rather than removed.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code>, <code>styles</code>, <code>intent</code></td><td>—</td><td>No</td><td>The brief</td></tr>
+<tr><td><code>note</code></td><td>string</td><td>No</td><td>Free text, matched against curated colour memories</td></tr>
+<tr><td><code>depth</code></td><td>integer</td><td>No</td><td>Candidates to sample, 8–1200. Default 320.</td></tr>
+<tr><td><code>keep</code></td><td>integer</td><td>No</td><td>How many to return, 1–120. Default 24.</td></tr>
+<tr><td><code>palette_size</code></td><td>integer</td><td>No</td><td>Colours per palette, 5–12. Default 6.</td></tr>
+<tr><td><code>diversity</code></td><td>number</td><td>No</td><td>0–100. Default 68.</td></tr>
+<tr><td><code>accessibility</code></td><td>number</td><td>No</td><td>0–100. Default 72.</td></tr>
+<tr><td><code>cvd_safe</code></td><td>boolean</td><td>No</td><td>Weight colour-vision separation. Default <code>true</code>.</td></tr>
+<tr><td><code>unique</code></td><td>boolean</td><td>No</td><td>Drop repeated signatures. Default <code>true</code>.</td></tr>
+<tr><td><code>seed</code></td><td>integer</td><td>No</td><td>The same seed and brief always give the same result</td></tr>
+</tbody></table></div>
+<p>Returns <code>brief</code>, <code>sweep</code> and <code>palettes</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/personalize/palettes&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;colors&quot;:[&quot;#0F172A&quot;,&quot;#D3AF37&quot;],&quot;styles&quot;:[&quot;luxe&quot;,&quot;editorial&quot;],&quot;intent&quot;:&quot;brand&quot;,&quot;depth&quot;:400,&quot;keep&quot;:12}'</code></pre>
+<h3 id="post-v1personalizesystem">POST /v1/personalize/system</h3>
+<p>One brief in, a design system out: the sweep, then from its leading palette, gradients, type pairings, UI colour pairs with WCAG and APCA measured, poster compositions, and a token deck with tonal ramps, light, dark and high-contrast themes and a contrast matrix. <code>include</code> trims both the response and the work.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code>, <code>styles</code>, <code>intent</code></td><td>—</td><td>No</td><td>The brief</td></tr>
+<tr><td><code>include</code></td><td>string array</td><td>No</td><td>Any of <code>palettes</code>, <code>gradients</code>, <code>typography</code>, <code>ui_pairs</code>, <code>posters</code>, <code>tokens</code>. Default all.</td></tr>
+<tr><td><code>derived</code></td><td>integer</td><td>No</td><td>Palettes each derived section covers, 1–24. Default 8.</td></tr>
+<tr><td><code>depth</code></td><td>integer</td><td>No</td><td>Candidates to sample, 8–1200. Default 320.</td></tr>
+<tr><td><code>keep</code></td><td>integer</td><td>No</td><td>Palettes to keep, 1–120. Default 24.</td></tr>
+<tr><td><code>seed</code></td><td>integer</td><td>No</td><td>Omit for a random one; it is always returned</td></tr>
+</tbody></table></div>
+<p>Returns <code>leader</code>, <code>palettes</code>, <code>gradients</code>, <code>typography</code>, <code>ui_pairs</code>, <code>posters</code> and <code>tokens</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/personalize/system&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;colors&quot;:[&quot;#0F172A&quot;,&quot;#D3AF37&quot;],&quot;styles&quot;:[&quot;tech&quot;,&quot;minimal&quot;],&quot;intent&quot;:&quot;ui&quot;,&quot;include&quot;:[&quot;tokens&quot;,&quot;ui_pairs&quot;]}'</code></pre>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="palettes-harmonies-gradients-shades.html"><span>Previous</span>Palettes, harmonies, gradients and shades</a><a href="usage-jobs-webhooks-graphql.html"><span>Next</span>Usage, jobs, webhooks and GraphQL</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#design-tokens">Design tokens</a></li><li><a href="#personalisation">Personalisation</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,88 @@
+==============================================================================
+ICC PROFILE PARSER FAQ
+==============================================================================
+Short answers to common questions about the ICC Profile Parser.
+Area: Website › Tools › Image and file tools › ICC Profile Parser   Updated: 2026-09-25
+
+IS MY PROFILE UPLOADED?
+=======================
+
+No. The file is read in the page and never sent anywhere. See Privacy
+[../others/privacy.txt].
+
+WHICH FILES CAN I OPEN?
+=======================
+
+Standalone ICC profiles, usually ending `.icc` or `.icm`, of version 2 or
+version 4. A profile embedded in an image or PDF must be saved out as its own
+file first. A version other than 2 or 4 is still read, with a warning.
+
+CAN I COMPARE TWO PROFILES SIDE BY SIDE?
+========================================
+
+Not on one page. The tool holds one profile at a time. To compare, save a
+reading of each and compare the JSON files, or open the tool in two browser
+tabs.
+
+WHY DOES MY MONITOR PROFILE SAY "SRGB" WHEN I CALIBRATED A WIDE-GAMUT SCREEN?
+=============================================================================
+
+The verdict names the closest of six reference spaces. Check the Primaries
+Δu′v′ column: if the first row's distance is large, the match is loose. Also
+check whether the menu under Compare against shows the space you expect.
+
+WHAT DOES "MATRIX/TRC" MEAN?
+============================
+
+The profile describes an RGB device with three colorants (a matrix) and three
+tone response curves (TRCs). See Understand ICC profiles
+[understand-icc-profiles.txt].
+
+WHY ARE THE STORED COLORANTS AND THE PRIMARIES DIFFERENT TRIANGLES?
+===================================================================
+
+Colorants are stored after adaptation to D50, the connection-space white. The
+primaries of the space the profile describes are recovered by reversing that
+adaptation. The diagram shows both so you can see the difference.
+
+IS "136% SRGB" COVERAGE?
+========================
+
+No. That kind of figure is an area ratio. The tool gives both: area, u′v′ is
+the area ratio, and covers of it is the true share of the reference space
+inside the profile's gamut, which cannot exceed 100%.
+
+DOES A CLEAN RESULT MEAN MY COLOURS ARE RIGHT?
+==============================================
+
+It means the file is well formed. It says nothing about whether the device
+still behaves as the profile describes; that needs a measuring instrument and
+the device.
+
+WHY IS THERE NO SCORE OUT OF 100?
+=================================
+
+A profile either meets the specification or it does not, and where it does
+not, each finding names the clause. Averaging unlike rules into one number
+hides which rule mattered.
+
+CAN THE TOOL FIX OR EDIT A PROFILE?
+===================================
+
+No. It reads profiles and reports on them. It does not write or modify profile
+files.
+
+CAN IT CONVERT COLOURS USING THE PROFILE?
+=========================================
+
+No. It reads tone curves and, for CMYK and similar profiles, walks the A2B
+table to draw the gamut, but it does not offer colour conversion through the
+profile.
+
+WHY IS A NAMED-COLOUR PROFILE NEARLY EMPTY?
+===========================================
+
+A named-colour profile is little more than its list of named colours, and the
+tool does not resolve those names to colours or list them on the page. For
+that class of profile you get the header, the tag table and the conformance
+findings: the shape of the data, not its content.

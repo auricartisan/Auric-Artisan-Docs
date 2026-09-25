@@ -1,0 +1,143 @@
+==============================================================================
+EXPORT AND SHARE
+==============================================================================
+Download the 81-row spectrum CSV and the whole-scene JSON, and copy a link
+that rebuilds the scene.
+Area: Website › Tools › Perception and spectral › Material Lighting   Updated: 2026-09-25
+
+Nothing leaves the page until you press a button. Save the spectrum on the Lab
+tab and Download the spectrum on the Export tab save the same file.
+
+On the Export tab, What to take switches the preview between The spectrum (the
+first lines of the CSV), The whole scene (the first part of the JSON) and A
+link to this; the note above it gives the row count.
+
+  Button: Download the spectrum
+  Result: Saves `material-under-light-spectrum.csv`
+
+  Button: Download the scene
+  Result: Saves `material-under-light-scene.json`
+
+  Button: Copy a link to this scene
+  Result: Copies a link; Link copied confirms it, or the link is shown if the
+          clipboard is unavailable
+
+THE SPECTRUM CSV
+================
+
+The file starts with `#` header lines:
+
+  Line:     `sampling`
+  Contents: 380–780 nm at 5 nm, 81 samples
+
+  Line:     `observer`
+  Contents: CIE 1931 2°, published at 10 nm, interpolated to 5
+
+  Line:     `illuminant`
+  Contents: The light and its definition
+
+  Line:     `measured_cct`
+  Contents: The measured colour temperature and its error band
+
+  Line:     `reference`
+  Contents: The reference light's kind, temperature and the reason
+
+  Line:     `material`, `reflectance`
+  Contents: The material, and whether its curve is MEASURED (with the file
+            name) or SYNTHESISED
+
+  Line:     `surface`
+  Contents: Conductor, or dielectric with its refractive index; the lobe; the
+            roughness
+
+  Line:     `geometry`
+  Contents: Light, view and azimuth angles
+
+  Line:     `exposure`
+  Contents: The scale that makes a white diffuser read Y = 1
+
+  Line:     `swatch_white`, `lab_white`
+  Contents: That the swatch is un-adapted and L*a*b* uses the light's own
+            white
+
+  Line:     `rendering_shift`
+  Contents: ΔE₀₀ for this sample between the source and its reference
+
+  Line:     `NOT_A_RENDERING_INDEX`
+  Contents: That this is one sample, and that CRI and TM-30 are withdrawn
+
+  Line:     `sensitivity`
+  Contents: The sweep's median and 95th percentile, if you ran one
+
+Then 81 rows:
+
+  Column:  `wavelength_nm`
+  Meaning: 380 to 780 in steps of 5
+
+  Column:  `illuminant_relative`
+  Meaning: The illuminant's power, scaled to peak at 1
+
+  Column:  `reflectance`
+  Meaning: The material's reflectance
+
+  Column:  `radiance_relative`
+  Meaning: The light leaving the surface at your geometry, scaled by the
+           exposure
+
+  Column:  `observer_xbar`, `observer_ybar`, `observer_zbar`
+  Meaning: The CIE 1931 2° colour-matching functions
+
+THE SCENE JSON
+==============
+
+  Field:    `tool`, `generated`
+  Contents: The tool name and time
+
+  Field:    `sampling`, `observer`
+  Contents: The grid, and the observer's published and used steps with a note
+            on interpolation
+
+  Field:    `illuminant`, `measured_cct`, `reference`
+  Contents: The light, its measured temperature and band, and the reference
+            chosen
+
+  Field:    `material`
+  Contents: Its id, reflectance status and source, conductor flag and
+            refractive index
+
+  Field:    `surface`, `geometry`, `exposure`
+  Contents: Lobe and roughness; the three angles; the exposure scale
+
+  Field:    `colour`
+  Contents: sRGB hex (un-adapted), L*a*b*, the white used, JzAzBz, gamut flag
+
+  Field:    `rendering_shift`
+  Contents: ΔE₀₀, marked `is_rendering_index: false`
+
+  Field:    `withdrawn`
+  Contents: CRI and TM-30, each with why and what it would take
+
+  Field:    `sensitivity`
+  Contents: The sweep result, or `null`
+
+  Field:    `spectrum`
+  Contents: Wavelength, illuminant, reflectance and radiance arrays
+
+  Field:    `register`
+  Contents: Every Data register entry with its source and status
+
+LINKS
+=====
+
+A link rebuilds the scene with these parameters: `illuminant` (`d65`, `d50`,
+`d55`, `d75`, `a`, `e`, `planck`, `daylight`), `cct`, `material` (for example
+`gold`), `ior`, `roughness`, `thetaL`, `thetaV`, `phi`, `lobe` (`ggx`,
+`beckmann`, `ward`, `ashikhmin-shirley`, `oren-nayar`) and `metal` (`1` for
+conductor, `0` for dielectric). For example:
+
+    https://auricartisan.com/tool/general/spectral-tools/material-lighting/?illuminant=a&cct=2700&material=skin&ior=1.5&roughness=0.4&thetaL=30&thetaV=20&phi=0&lobe=ggx&metal=0
+
+A link does not carry a measured reflectance file or the sweep settings.
+
+You should now have a file that records the light, the material's provenance
+and the geometry along with the numbers.

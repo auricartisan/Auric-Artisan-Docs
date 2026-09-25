@@ -1,0 +1,925 @@
+==============================================================================
+REFERENCE
+==============================================================================
+Every command, keybinding, view, menu entry, setting, theme colour and
+workspace file contributed by the four Studio extensions, in one place.
+Area: VS Code extensions › Auric Artisan Studio   Updated: 2026-09-25
+
+This page lists everything the Studio extensions add to VS Code, across all
+four extensions. Each extension's own reference page describes its commands
+and settings in more detail:
+
+  - Auric Color reference [../color/docs/reference.txt]
+  - Auric Accessibility reference [../accessibility/docs/reference.txt]
+  - Auric Code Health reference [../code-health/docs/reference.txt]
+  - Full Pack reference [../full-pack/docs/reference.txt]
+
+The facts on this page are for version 0.1.0.
+
+EXTENSIONS
+==========
+
+  Display name:    Auric Color — Picker, Palettes & Contrast
+  ID:              `auric-artisan.auric-color`
+  Settings prefix: `auricColor.`
+  Categories:      Visualization, Programming Languages, Other
+
+  Display name:    Auric Accessibility — WCAG 2.2 Linter
+  ID:              `auric-artisan.auric-a11y`
+  Settings prefix: `auricA11y.`
+  Categories:      Linters, Programming Languages, Other
+
+  Display name:    Auric Code Health — Secrets, TODOs & Risk
+  ID:              `auric-artisan.auric-codehealth`
+  Settings prefix: `auricCodeHealth.`
+  Categories:      Linters, Other
+
+  Display name:    Auric Artisan Studio — Full Pack
+  ID:              `auric-artisan.auric-artisan`
+  Settings prefix: none
+  Categories:      Extension Packs, Linters, Visualization, Other
+
+All need VS Code 1.74 or newer. The three code extensions start when VS Code
+finishes loading.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows, Linux): `Ctrl` + `Alt` + `.`
+  Keys (macOS):          `Cmd` + `Alt` + `.`
+  Command:               Workstation: Command Center
+  Extensions:            All three
+  Active when:           The extension is not suppressed by a Workstation host
+
+  Keys (Windows, Linux): `Ctrl` + `Alt` + `C`
+  Keys (macOS):          `Cmd` + `Alt` + `C`
+  Command:               Pick / edit color
+  Extensions:            Auric Color
+  Active when:           The editor has focus
+
+  Keys (Windows, Linux): `Ctrl` + `Alt` + `A`
+  Keys (macOS):          `Cmd` + `Alt` + `A`
+  Command:               Inspect Accessibility of Element
+  Extensions:            Auric Accessibility
+  Active when:           The editor has focus
+
+To rebind them, open File › Preferences › Keyboard Shortcuts and search for
+the command title.
+
+COMMANDS
+========
+
+Every command appears in the Command Palette under the Auric Artisan category,
+so its full palette title starts with `Auric Artisan:`. The command ID's
+prefix depends on the extension: `auricColor.`, `auricA11y.` or
+`auricCodeHealth.`.
+
+  Palette title (after `Auric Artisan:`):Workstation: Command Center
+  ID suffix:               `commandCenter`
+  Color:                   yes
+  A11y:                    yes
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Open Color Studio
+  ID suffix:               `openStudio`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Open Accessibility Studio
+  ID suffix:               `openStudio`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Open Code Health Studio
+  ID suffix:               `openStudio`
+  Color:                   -
+  A11y:                    -
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Open Rulebook & Knowledge Database
+  ID suffix:               `openKnowledgeBase`
+  Color:                   yes
+  A11y:                    yes
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Build Workspace Knowledge Database
+                           (JSON + Markdown)
+  ID suffix:               `writeKnowledgeDatabase`
+  Color:                   yes
+  A11y:                    yes
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Open Unified Icon Studio
+  ID suffix:               `openIconStudio`
+  Color:                   yes
+  A11y:                    yes
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Pick / edit color
+  ID suffix:               `pickColor`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Generate Accessible Palette
+  ID suffix:               `generatePalette`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Check Contrast of Selection
+  ID suffix:               `checkContrast`
+  Color:                   yes
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Fix All Contrast Issues in File
+  ID suffix:               `fixAllContrast`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Choose Color Picker Mode
+  ID suffix:               `chooseColorPickerMode`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Disable native color picker (use
+                           Auric Artisan)
+  ID suffix:               `disableNativeColorPicker`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Restore native color picker (use VS
+                           Code's)
+  ID suffix:               `restoreNativeColorPicker`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Refresh Contrast Diagnostics
+  ID suffix:               `refreshDiagnostics`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Change Accent Color (Theme the
+                           Studio)
+  ID suffix:               `chooseAccent`
+  Color:                   yes
+  A11y:                    -
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Mark Line as Intentional Branding
+                           (Toggle)
+  ID suffix:               `markBranding`
+  Color:                   yes
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Inspect Accessibility of Element
+  ID suffix:               `inspectAccessibility`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Scan Project for Accessibility (Use
+                           Cache)
+  ID suffix:               `scanProject`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Force Rescan Project and Refresh
+                           Cache
+  ID suffix:               `rescanProject`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Generate Agent-Ready Remediation Plan
+  ID suffix:               `generateAiPlan`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Clear Workspace Scan Cache
+  ID suffix:               `clearScanCache`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Search Accessibility Issues
+  ID suffix:               `searchIssues`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Group Accessibility Issues (Type /
+                           File / Severity)
+  ID suffix:               `groupIssues`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Clear Accessibility Issue Search
+  ID suffix:               `clearIssueSearch`
+  Color:                   -
+  A11y:                    yes
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Open WCAG Documentation
+  ID suffix:               `openIssueDocs`
+  Color:                   -
+  A11y:                    row action only
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Open Issue in Contrast Studio
+  ID suffix:               `openIssueInStudio`
+  Color:                   -
+  A11y:                    row action only
+  Code Health:             -
+
+  Palette title (after `Auric Artisan:`):Generate Project Health Report
+                           (Color, A11y & Code Health)
+  ID suffix:               `projectHealthReport`
+  Color:                   -
+  A11y:                    -
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Write Health Record (health.json +
+                           SARIF)
+  ID suffix:               `writeHealthReport`
+  Color:                   -
+  A11y:                    -
+  Code Health:             yes
+
+  Palette title (after `Auric Artisan:`):Open Workspace Data Folder
+  ID suffix:               `openDataFolder`
+  Color:                   -
+  A11y:                    -
+  Code Health:             yes
+
+Auric Color contributes 15 commands, Auric Accessibility 17 and Auric Code
+Health 10. Open WCAG Documentation and Open Issue in Contrast Studio are
+hidden from the Command Palette; they appear as buttons on rows of the Project
+Issues view.
+
+What each command does:
+
+  Command:      Workstation: Command Center
+  What it does: Opens the Command Center list. See The Command Center
+                [command-center.txt].
+
+  Command:      Open … Studio
+  What it does: Opens the Studio tab, or the Workstation host's Studio. See
+                The Studio [studio.txt].
+
+  Command:      Open Rulebook & Knowledge Database
+  What it does: Searches the local knowledge database.
+
+  Command:      Build Workspace Knowledge Database (JSON + Markdown)
+  What it does: Writes `knowledge.json`, `rulebook.md` and an overrides
+                template.
+
+  Command:      Open Unified Icon Studio
+  What it does: Opens the combined Auric icon library.
+
+  Command:      Pick / edit color
+  What it does: Opens the colour picker on the colour under the cursor, or
+                inserts a new colour.
+
+  Command:      Generate Accessible Palette
+  What it does: Opens Studio › Color › Palette seeded with the selected
+                colour.
+
+  Command:      Check Contrast of Selection
+  What it does: Opens the Contrast Studio with the selected colour as the text
+                colour.
+
+  Command:      Fix All Contrast Issues in File
+  What it does: Previews and applies a fix for every failing pair in the file,
+                as one undoable edit.
+
+  Command:      Choose Color Picker Mode
+  What it does: Chooses between the Auric picker and VS Code's native picker.
+
+  Command:      Disable native color picker (use Auric Artisan)
+  What it does: Switches to the Auric picker and turns VS Code's colour
+                decorators off.
+
+  Command:      Restore native color picker (use VS Code's)
+  What it does: Hands colour picking back to VS Code's native picker.
+
+  Command:      Refresh Contrast Diagnostics
+  What it does: Re-checks every open file.
+
+  Command:      Change Accent Color (Theme the Studio)
+  What it does: Picks the Studio's accent colour.
+
+  Command:      Mark Line as Intentional Branding (Toggle)
+  What it does: Adds or removes an `auric-brand-line` comment on the current
+                lines.
+
+  Command:      Inspect Accessibility of Element
+  What it does: Shows the Inspect card for the element or CSS rule at the
+                cursor.
+
+  Command:      Scan Project for Accessibility (Use Cache)
+  What it does: Scans the workspace, reusing a fresh cache.
+
+  Command:      Force Rescan Project and Refresh Cache
+  What it does: Scans the workspace from disk and rewrites the cache.
+
+  Command:      Generate Agent-Ready Remediation Plan
+  What it does: Writes the local, deterministic remediation plan.
+
+  Command:      Clear Workspace Scan Cache
+  What it does: Deletes `scan-cache.json`.
+
+  Command:      Search Accessibility Issues
+  What it does: Filters the Project Issues view by text.
+
+  Command:      Group Accessibility Issues (Type / File / Severity)
+  What it does: Changes how the Project Issues view is grouped.
+
+  Command:      Clear Accessibility Issue Search
+  What it does: Removes the Project Issues filter.
+
+  Command:      Open WCAG Documentation
+  What it does: Opens the W3C Understanding page for a finding's success
+                criterion.
+
+  Command:      Open Issue in Contrast Studio
+  What it does: Opens a contrast or colour-vision finding in the Contrast
+                Studio, linked to its line.
+
+  Command:      Generate Project Health Report (Color, A11y & Code Health)
+  What it does: Writes the Markdown, JSON and HTML project health report.
+
+  Command:      Write Health Record (health.json + SARIF)
+  What it does: Writes `health.json`, SARIF and history.
+
+  Command:      Open Workspace Data Folder
+  What it does: Shows the `.auric-artisan` folder in your file manager.
+
+VIEWS
+=====
+
+  View:      Overview
+  View ID:   `auricColorHome`
+  Extension: Auric Color
+  Notes:     Activity Bar container Auric Color
+
+  View:      Color Picker
+  View ID:   `auricColorPickerView`
+  Extension: Auric Color
+  Notes:     Collapsed by default
+
+  View:      Overview
+  View ID:   `auricA11yHome`
+  Extension: Auric Accessibility
+  Notes:     Activity Bar container Auric Accessibility
+
+  View:      Project Issues
+  View ID:   `auricA11yIssues`
+  Extension: Auric Accessibility
+  Notes:     Tree view with a badge count
+
+  View:      Color Picker
+  View ID:   `auricA11yPickerView`
+  Extension: Auric Accessibility
+  Notes:     Shown only when Auric Color is installed; collapsed by default
+
+  View:      Overview
+  View ID:   `auricCodeHealthHome`
+  Extension: Auric Code Health
+  Notes:     Activity Bar container Auric Code Health
+
+Views of a suppressed extension are hidden while another extension hosts the
+Workstation. VS Code also creates a focus command for each view, for example
+`auricA11yIssues.focus`, which you can bind to a key.
+
+MENUS
+=====
+
+Editor right-click menu
+-----------------------
+
+  Entry:      Inspect Accessibility of Element
+  Extension:  Auric Accessibility
+  Shown when: HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JS, TS, JSX, TSX
+              and CSS-family files
+
+  Entry:      Pick / edit color
+  Extension:  Auric Color
+  Shown when: Always
+
+  Entry:      Generate Accessible Palette
+  Extension:  Auric Color
+  Shown when: Text is selected
+
+  Entry:      Check Contrast of Selection
+  Extension:  Auric Color, Auric Accessibility
+  Shown when: Text is selected
+
+  Entry:      Choose Color Picker Mode
+  Extension:  Auric Color
+  Shown when: Always
+
+  Entry:      Mark Line as Intentional Branding (Toggle)
+  Extension:  Auric Color, Auric Accessibility
+  Shown when: The Inspect languages above, plus Markdown
+
+Project Issues view title bar
+-----------------------------
+
+Search Accessibility Issues, Group Accessibility Issues, Scan Project for
+Accessibility, Open Accessibility Studio and Collapse All, with Generate
+Agent-Ready Remediation Plan in the … menu.
+
+Project Issues rows
+-------------------
+
+Open WCAG Documentation on WCAG rows; Open Issue in Contrast Studio on
+contrast and colour-vision rows.
+
+SETTINGS
+========
+
+The table lists each setting's key after its prefix, and which extensions
+declare it. Give the full key in `settings.json`, for example
+`auricA11y.contrast.threshold`.
+
+  Key:         `appearance.accent`
+  Type:        string
+  Default:     `gold`
+  Color:       yes
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `hover.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       yes
+  A11y:        -
+  Code Health: -
+
+  Key:         `colorPicker.mode`
+  Type:        `auric` or `decorators`
+  Default:     `auric`
+  Color:       yes
+  A11y:        -
+  Code Health: -
+
+  Key:         `colorPicker.nativeHoverPicker`
+  Type:        boolean
+  Default:     `false`
+  Color:       yes
+  A11y:        -
+  Code Health: -
+
+  Key:         `colorPicker.swatches`
+  Type:        boolean
+  Default:     `true`
+  Color:       yes
+  A11y:        -
+  Code Health: -
+
+  Key:         `colorPicker.clickAction`
+  Type:        `inlinePicker`, `fullEditor`, `off`
+  Default:     `inlinePicker`
+  Color:       yes
+  A11y:        -
+  Code Health: -
+
+  Key:         `colorPicker.autoOpen`
+  Type:        boolean
+  Default:     `false`
+  Color:       yes
+  A11y:        -
+  Code Health: -
+
+  Key:         `colorPicker.inlineSwatches`
+  Type:        boolean
+  Default:     `false`
+  Color:       yes
+  A11y:        -
+  Code Health: -
+
+  Key:         `inspect.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        yes
+  Code Health: -
+
+  Key:         `inspect.onHover`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        yes
+  Code Health: -
+
+  Key:         `contrast.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       yes
+  A11y:        yes
+  Code Health: -
+
+  Key:         `contrast.standard`
+  Type:        `wcag2`, `apca`, `both`
+  Default:     `wcag2`
+  Color:       yes
+  A11y:        yes
+  Code Health: -
+
+  Key:         `contrast.threshold`
+  Type:        number, 1–21
+  Default:     `4.5`
+  Color:       yes
+  A11y:        yes
+  Code Health: -
+
+  Key:         `contrast.apcaThreshold`
+  Type:        number, 15–106
+  Default:     `60`
+  Color:       yes
+  A11y:        yes
+  Code Health: -
+
+  Key:         `contrast.severity`
+  Type:        `error`, `warning`, `information`, `hint`
+  Default:     `warning`
+  Color:       yes
+  A11y:        yes
+  Code Health: -
+
+  Key:         `contrast.flagCvdRisk`
+  Type:        boolean
+  Default:     `true`
+  Color:       yes
+  A11y:        yes
+  Code Health: -
+
+  Key:         `contrast.checkPageBackground`
+  Type:        boolean
+  Default:     `true`
+  Color:       yes
+  A11y:        yes
+  Code Health: -
+
+  Key:         `branding.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       yes
+  A11y:        yes
+  Code Health: -
+
+  Key:         `a11y.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        yes
+  Code Health: -
+
+  Key:         `a11y.profile`
+  Type:        `2.0`, `2.1`, `2.2`, `3.0-draft`
+  Default:     `2.2`
+  Color:       -
+  A11y:        yes
+  Code Health: -
+
+  Key:         `codeHealth.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.diagnostics`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.todo`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.debug`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.secret`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.conflict`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.risk`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.security`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.customSecretPatterns`
+  Type:        array of strings
+  Default:     `[]`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `codeHealth.size`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `health.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `health.writeOnScan`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `health.formats`
+  Type:        array of `json`, `sarif`, `history`
+  Default:     all three
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `health.fileName`
+  Type:        string
+  Default:     `health.json`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `health.maxIssues`
+  Type:        number, 100–100000
+  Default:     `5000`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `health.historyLimit`
+  Type:        number, 10–5000
+  Default:     `200`
+  Color:       -
+  A11y:        -
+  Code Health: yes
+
+  Key:         `data.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `data.folderName`
+  Type:        string
+  Default:     `.auric-artisan`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.cache.enabled`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.cache.maxAgeMinutes`
+  Type:        number, 0 or more
+  Default:     `1440`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.live`
+  Type:        boolean
+  Default:     `true`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.liveDelayMs`
+  Type:        number, 200–5000
+  Default:     `700`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.autoScan`
+  Type:        boolean
+  Default:     `false`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.autoScanOnStartup`
+  Type:        boolean
+  Default:     `false`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.autoScanDelayMs`
+  Type:        number, 250–60000
+  Default:     `1800`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.maxFiles`
+  Type:        number
+  Default:     `4000`
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+  Key:         `scan.exclude`
+  Type:        glob string
+  Default:     see below
+  Color:       -
+  A11y:        yes
+  Code Health: yes
+
+The default of `scan.exclude` is
+`**/{node_modules,dist,build,out,.git,vendor,coverage,.auric-artisan}/**`. The
+default of `health.formats` is `["json","sarif","history"]`.
+
+Auric Color declares 16 settings, Auric Accessibility 24 and Auric Code Health
+28.
+
+Shared settings
+---------------
+
+The installed extensions share one `.auric-artisan` folder, so settings that
+shape it must mean the same thing to every extension. For these keys, each
+extension reads the first value it finds set (in any scope: user, workspace or
+folder), looking first under `auricCodeHealth.`, then `auricA11y.`, then
+`auricColor.`:
+
+  - `data.enabled`, `data.folderName`
+  - `scan.cache.enabled`, `scan.cache.maxAgeMinutes`, `scan.autoScan`,
+    `scan.autoScanOnStartup`, `scan.autoScanDelayMs`, `scan.maxFiles`,
+    `scan.exclude`, `scan.live`
+  - every `codeHealth.` key
+  - `health.formats`, `health.fileName`, `health.historyLimit`,
+    `health.writeOnScan`
+
+The simplest approach is to set each of these once, under one prefix. The
+Studio's Settings space writes a shared key to wherever its current value is
+set, so its edits always take effect.
+
+The other settings are read by the extension that owns the feature: colour
+picker and hover settings by Auric Color; Inspect and profile settings by
+Auric Accessibility; contrast settings by Auric Accessibility when it is
+installed, otherwise by Auric Color; and the accent by the extension that
+hosts the Studio.
+
+In a multi-root workspace, scan and data settings can be set per workspace
+folder; the accent is always stored in your user settings.
+
+THEME COLOURS
+=============
+
+Both Auric Color and Auric Accessibility contribute four colours for the
+Branding group. Override them in `workbench.colorCustomizations`, for example
+`"auricA11y.branding.icon": "#FF4FA0"`.
+
+  Colour ID suffix:    `branding.foreground`
+  Used for:            Foreground of Branding findings
+  Dark:                `#F06595`
+  Light:               `#C2255C`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+  Colour ID suffix:    `branding.background`
+  Used for:            Soft wash behind Branding rows and badges
+  Dark:                `#F0659522`
+  Light:               `#C2255C1A`
+  High contrast:       transparent
+  High contrast light: transparent
+
+  Colour ID suffix:    `branding.border`
+  Used for:            Border or underline for Branding findings
+  Dark:                `#F0659580`
+  Light:               `#C2255C80`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+  Colour ID suffix:    `branding.icon`
+  Used for:            Icon tint of the Branding group in the Issues view
+  Dark:                `#F06595`
+  Light:               `#C2255C`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+The full IDs are `auricColor.branding.foreground` and so on, and
+`auricA11y.branding.foreground` and so on.
+
+STATUS-BAR ITEMS
+================
+
+  Item:      Score, for example `A11y 82 B` (or `Health 90 A` for Auric Code
+             Health alone)
+  Shown:     Always, by one extension
+  Select to: Open the Studio
+
+  Item:      Auric: N in this file
+  Shown:     When the active file has contrast or accessibility findings
+  Select to: Open the Project Issues view, or the Contrast Studio without
+             Auric Accessibility
+
+DIAGNOSTICS
+===========
+
+All findings in the Problems panel have the source `auric-artisan`.
+
+  Finding:           Low contrast
+  Problems severity: `contrast.severity` (warning by default); information
+                     when the background was assumed
+  Code shown:        `low-contrast`
+
+  Finding:           Low APCA contrast
+  Problems severity: Same as low contrast
+  Code shown:        `apca-low`
+
+  Finding:           Colour-vision risk
+  Problems severity: Hint
+  Code shown:        `cvd-risk`
+
+  Finding:           Branding
+  Problems severity: Information
+  Code shown:        `branding:contrast`, `branding:apca` or `branding:cvd`
+
+  Finding:           WCAG, critical or serious
+  Problems severity: Warning
+  Code shown:        `WCAG 1.1.1` (linked to the Understanding page)
+
+  Finding:           WCAG, moderate
+  Problems severity: Information
+  Code shown:        Same
+
+  Finding:           WCAG, minor, and best-practice hints
+  Problems severity: Hint
+  Code shown:        Same
+
+  Finding:           Code health
+  Problems severity: By category: merge markers error; secrets, security and
+                     risky APIs warning; debug information; task markers and
+                     oversized hint
+  Code shown:        `code-health:secret` and so on
+
+WORKSPACE FILES
+===============
+
+See The .auric-artisan folder [scanning.txt] for every file the Studio writes,
+and Exports and health records [exports-and-records.txt] for their formats.
+
+COMMAND-LINE SCANNER
+====================
+
+See The CI gate [ci-gate.txt] for every option and exit code of
+`auric-artisan`.

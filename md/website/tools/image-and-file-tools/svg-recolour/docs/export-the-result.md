@@ -1,0 +1,89 @@
+---
+title: SVG Recolour — Export the result
+description: Save or copy the recoloured SVG, copy the new palette as CSS custom properties, and save a JSON report of every change.
+product: Website › Tools › Image and file tools › SVG Recolour
+updated: 2026-09-25
+---
+
+# Export the result
+
+All exports are on the **Export** tab, under **Take it away**. They always use the true colours, whatever **Show it as seen by** is set to.
+
+| Button | What you get |
+|---|---|
+| **Save the recoloured SVG** | Your file with the colour values replaced, downloaded as `recoloured.svg` |
+| **Copy the markup** | The same SVG markup, copied to the clipboard |
+| **Copy the custom properties** | The file's colours as CSS custom properties |
+| **Save the report** | A JSON record of every mapping, downloaded as `recolour-report.json` |
+
+The table under **What leaves this page** gives the size of each for your file and what it is good for.
+
+## The recoloured SVG
+
+The exported file is your file with the colour values replaced, and nothing else changed on purpose:
+
+- Structure, ids, gradients, filters, titles, comments and any markup the tool does not understand are carried across.
+- Only occurrences you changed are rewritten, in the style chosen under **Write colours as**.
+- In style sheets, only the changed declarations are rewritten.
+
+The message confirms, for example **Saved · 3 occurrences written**. If nothing is loaded, it reads **Nothing loaded.**
+
+Things to know about the file:
+
+- It is rewritten from your original, not from the preview, so any scripts, event handlers or `javascript:` links in the original are still there. The previews on this page have them removed; the file does not.
+- The browser writes the markup back out, so small formatting details, such as the quote marks around attribute values, may differ from your original.
+- Only the `<svg>` element and its contents are written. An XML declaration, a DOCTYPE or a comment placed before the `<svg>` tag is not carried across.
+
+## The custom properties
+
+**Copy the custom properties** copies one line per colour the tool can change, in the order of the colour list, with the colour each ends up as and its CSS name or nearest name:
+
+```css
+--colour-01: #E5484D;  /* near indianred */
+--colour-02: #3E63DD;  /* near royalblue */
+--colour-03: #00AA00;  /* near limegreen */
+--colour-04: #AABBCC;  /* near lightsteelblue */
+--colour-05: #30A46C;  /* near mediumseagreen */
+```
+
+This is the sample file with `red` changed to `#00AA00`. The preview under **The palette as custom properties** shows the same text. Paste the lines inside a rule such as `:root { … }` to keep a stylesheet in step with the artwork. An exact CSS name is given as itself; any other colour gets the nearest name, prefixed "near".
+
+## The report
+
+**Save the report** downloads `recolour-report.json`, also shown under **The report that goes with it**:
+
+```json
+{
+  "tool": "Auric Artisan — SVG recolour",
+  "source": { "elements": 9, "occurrences": 6, "colours": 5 },
+  "writeStyle": "hex",
+  "mapped": [
+    {
+      "from": "#FF0000", "to": "#00AA00",
+      "occurrences": 1, "written": 1, "writtenAs": ["named"]
+    }
+  ],
+  "notWritten": [
+    { "value": "currentcolor", "occurrences": 1, "why": "resolves from CSS outside this file" }
+  ],
+  "measured": {
+    "deltaE00Method": "ISO/CIE 11664-6",
+    "contrast": { "wcag": "2.2", "apca": "APCA-W3 0.1.9" },
+    "colourVision": "Machado, Oliveira & Fernandes (2009), severity 1.0"
+  },
+  "notHeld": ["what currentColor resolves to", "colour inside embedded raster art"],
+  "bytes": 512
+}
+```
+
+| Field | Contents |
+|---|---|
+| `source` | Elements, occurrences and distinct colours in the original |
+| `writeStyle` | `hex` or `keep` |
+| `mapped` | Each changed colour: from, to, how many places use it, how many were written, and the forms it was written in |
+| `notWritten` | Each value left alone, with its count and the reason |
+| `measured` | The methods behind the figures |
+| `notHeld` | What the tool cannot know |
+| `bytes` | The size of the recoloured SVG |
+
+The written count in the report is the same number the colour list and the **Mapping** tab show, and the same number of changes the file carries. The example shows the sample with `red` changed to `#00AA00`; the `bytes` value is illustrative.

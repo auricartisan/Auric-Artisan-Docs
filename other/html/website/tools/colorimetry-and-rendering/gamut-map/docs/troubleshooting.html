@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting Gamut Mapping — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for common problems in the Gamut Mapping lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Mapping</a>
+<h2>Gamut Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Gamut Mapping</a></li>
+<li><a href="compare-spaces-and-methods.html">Compare spaces and methods</a></li>
+<li><a href="map-a-colour-list.html">Map a list of colours</a></li>
+<li><a href="map-a-colour.html">Map a colour into a smaller gamut</a></li>
+<li><a href="reference.html">Gamut Mapping reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting Gamut Mapping</a></li>
+<li><a href="faq.html">Gamut Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Mapping</a> &rsaquo; <a href="README.html">Gamut Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Troubleshooting Gamut Mapping</h1>
+<p class="lede">Fixes for common problems in the Gamut Mapping lab.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The Mapped to Target slice does not change when I change method or strength</td><td>In the current version that slice is always drawn with chroma compression to the boundary</td><td>Judge methods with <strong>Before / After</strong>, the <strong>Methods</strong> tab or the batch list, which use your method and strength</td></tr>
+<tr><td>Changing Compression Strength has no effect</td><td>Strength only applies to <strong>Chroma compression</strong>, and never changes a colour that is already in gamut</td><td>Choose Chroma compression and use an out-of-gamut colour</td></tr>
+<tr><td><strong>Adapt white, then clip</strong> gives the same result as <strong>Clip in target RGB</strong></td><td>Both spaces share the D65 white, so there is nothing to adapt</td><td>Use ProPhoto RGB (D50) as one of the spaces to see a difference</td></tr>
+<tr><td>The slice looks dull or clipped at the edges</td><td>Slices are painted in sRGB so your screen can show them; wider colours are displayed clipped</td><td>Expected. Use the probe and figures, not the painted colour, for wide-gamut values</td></tr>
+<tr><td>The slice looks grainy or speckled</td><td>A low <strong>Resolution</strong>, or the <strong>Stratified</strong> sampler, which places points at random</td><td>Raise Resolution, or choose <strong>Uniform grid</strong> or <strong>Halton</strong></td></tr>
+<tr><td>The page is slow after raising Resolution</td><td>512 × 512 samples per slice is a lot of work</td><td>Lower Resolution</td></tr>
+<tr><td>My base colour&#39;s ring is not on the coloured area</td><td>The slice is at a different lightness from the colour</td><td>Set L* to the colour&#39;s L* shown in Base Colour Info</td></tr>
+<tr><td><strong>Adaptive edge refinement</strong> or <strong>Axes &amp; labels</strong> does nothing</td><td>These controls are not applied in the current version</td><td>No workaround needed</td></tr>
+<tr><td>The ΔE formula menu does not change the result</td><td>All three formulas are always shown</td><td>Read the one you need from the result line</td></tr>
+<tr><td>A HEX typed into the ΔE Playground is ignored</td><td>The field needs a full <code>#RRGGBB</code> value, applied when you press Enter or leave the field</td><td>Type a six-digit value with <code>#</code></td></tr>
+<tr><td>Volume figures change each time</td><td>They are Monte Carlo estimates</td><td>Raise <strong>Volume samples</strong> to shrink the standard error</td></tr>
+<tr><td>The batch says &quot;No valid hex values found.&quot;</td><td>No line was a 3- or 6-digit HEX</td><td>Put one colour per line, for example <code>#FF00AA</code></td></tr>
+<tr><td>Batch Output for Rec. 2020 looks the same as for P3</td><td>Output HEX is converted to sRGB for display</td><td>Use OOG and ΔE₀₀ to compare; the HEX is a screen preview</td></tr>
+<tr><td>The JSON file has no numbers from the screen</td><td><strong>Everything as JSON</strong> saves the settings only</td><td>Use the batch table or PNG images for figures</td></tr>
+<tr><td>The link field stays empty</td><td>The link is built only when you select <strong>Link</strong></td><td>Select <strong>Link</strong>, then <strong>Copy</strong></td></tr>
+<tr><td>Dropping a file on <strong>Install a table</strong> does nothing</td><td>The area is not active in the current version</td><td>No workaround</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Gamut Mapping reference</a><a href="faq.html"><span>Next</span>Gamut Mapping FAQ</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

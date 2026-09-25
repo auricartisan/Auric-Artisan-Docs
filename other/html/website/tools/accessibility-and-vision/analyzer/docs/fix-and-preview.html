@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fix and preview — Auric Artisan Docs</title>
+<meta name="description" content="Turn findings into code with the Fixes panel, try changes live in the Playground, add your own checks in Rules, and let your site be previewed with CSP Setup.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html" aria-current="page">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Fix and preview</h1>
+<p class="lede">Turn findings into code with the Fixes panel, try changes live in the Playground, add your own checks in Rules, and let your site be previewed with CSP Setup.</p>
+<p>Four sections help you act on what the audit found. <strong>Fixes</strong> gives you the code. <strong>Playground</strong> lets you try colour changes on the page and watch the score move. <strong>Rules</strong> adds your own checks to every audit. <strong>CSP Setup</strong> explains how to let the Analyzer preview a site you own.</p>
+<p><strong>Fixes</strong> is available in both modes; the other three are Advanced only. For the accessibility engine&#39;s own patches (the ready-to-paste CSS and per-element suggestions), see the Fixes view in <a href="accessibility-engine.html">The accessibility engine</a>.</p>
+<h2 id="fixes">Fixes</h2>
+<p>The developer hand-off: every actionable fix for the page, grouped by type.</p>
+<h3 id="parts-of-the-section">Parts of the section</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>How to use this</strong></td><td>Explains that colour fixes give exact CSS values and structural fixes describe the HTML to change</td></tr>
+<tr><td><strong>Total</strong></td><td>The number of actionable fixes</td></tr>
+<tr><td><strong>Fix This First</strong></td><td>The top fixes, numbered, each with its reason and an impact label such as &quot;Low impact&quot;</td></tr>
+<tr><td><strong>Fix Mode</strong></td><td><strong>Safe fixes</strong> or <strong>Aggressive fixes</strong> (below)</td></tr>
+<tr><td><strong>Heuristic Auto-Fix</strong></td><td>Four buttons that apply or export the generated fix stylesheet (below)</td></tr>
+<tr><td><strong>Fix Details</strong></td><td><strong>Color Fixes (High Priority)</strong> with a <strong>Copy fix</strong> button on each, and <strong>Structural &amp; Semantic Fixes</strong></td></tr>
+</tbody></table></div>
+<h3 id="fix-mode">Fix Mode</h3>
+<ul>
+<li><strong>Safe fixes</strong> favours brand-safe contrast changes and structural recommendations. This is the default.</li>
+<li><strong>Aggressive fixes</strong> also includes broader CSS normalisation.</li>
+</ul>
+<p>Changing the mode rebuilds the generated stylesheet. Your choice is remembered in this browser.</p>
+<h3 id="heuristic-auto-fix">Heuristic Auto-Fix</h3>
+<p>The generated stylesheet contains safe visual fixes: focus rings, media sizing, motion reduction and generated contrast colours.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Apply in Playground</strong></td><td>Applies the stylesheet to the Playground preview only, and updates its live score. Nothing on your site changes.</td></tr>
+<tr><td><strong>Copy Batch CSS</strong></td><td>Copies the whole stylesheet to the clipboard</td></tr>
+<tr><td><strong>Diff View</strong></td><td>Shows the affected rules as they are now beside the fixed version</td></tr>
+<tr><td><strong>Export Fix CSS</strong></td><td>Downloads the stylesheet as <code>auric-analyzer-fixes.css</code></td></tr>
+</tbody></table></div>
+<p>If the Playground preview is not open yet, <strong>Apply in Playground</strong> opens it first. If it still cannot apply, it says &quot;Open the Playground preview first, then apply heuristic fixes.&quot;</p>
+<h3 id="a-safe-way-to-apply-fixes">A safe way to apply fixes</h3>
+<ol>
+<li>Copy a small group of fixes, not all of them.</li>
+<li>Apply them in your code.</li>
+<li>Re-run the audit and check <strong>Before / After</strong> and <strong>Compare</strong>.</li>
+<li>Repeat, then export the final report.</li>
+</ol>
+<h2 id="playground">Playground</h2>
+<p>An editor over the analysed page. Select any element in the preview, change its colours, and watch the score change live. It also holds a palette generator and a design lab that map a palette onto the page&#39;s elements.</p>
+<h3 id="palette-generator">Palette Generator</h3>
+<p>Open the <strong>Palette Generator</strong> bar to show it.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Range or options</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Undo, redo, save, reverse</td><td>Step through palette history, save a version, reverse the order</td><td>Buttons</td><td>—</td></tr>
+<tr><td>Colour slots</td><td>Each colour has a picker, a lock (kept when regenerating) and a remove button; <strong>+</strong> adds a slot</td><td>—</td><td>5 slots</td></tr>
+<tr><td><strong>Size</strong></td><td>Number of colours</td><td>2 to 12</td><td>5</td></tr>
+<tr><td><strong>Base hue</strong></td><td>Starting hue in degrees</td><td>0 to 360</td><td>220°</td></tr>
+<tr><td><strong>Seed</strong></td><td>Text that makes seeded palettes repeatable</td><td>Any text</td><td><code>auric</code></td></tr>
+<tr><td>Generation mode</td><td>How the next palette is built</td><td>Ten modes (below)</td><td>—</td></tr>
+</tbody></table></div>
+<p>The generation modes are <strong>Random</strong>, <strong>Seeded</strong>, <strong>Harmony</strong>, <strong>Gradient</strong>, <strong>Contrast</strong>, <strong>WCAG-friendly</strong>, <strong>CVD-safe</strong>, <strong>Accessible</strong>, <strong>Compliant</strong> and <strong>Comparable</strong>.</p>
+<h3 id="score-comparison">Score Comparison</h3>
+<p>Shows <strong>Original Score</strong> and <strong>Live Score</strong> side by side, or &quot;No changes yet&quot; before you edit anything.</p>
+<h3 id="filter-rules">Filter &amp; Rules</h3>
+<ul>
+<li>An element filter: <strong>All Elements</strong>, <strong>Images (img)</strong>, <strong>Buttons</strong>, <strong>Links (a)</strong>, <strong>Headings (h1-h6)</strong>, <strong>Forms &amp; Inputs</strong>, <strong>Text Elements</strong>, <strong>Interactive</strong>.</li>
+<li>A rule set for the live score: <strong>WCAG 2.1 AA</strong>, <strong>WCAG 2.2</strong>, <strong>Core Web Vitals</strong>, <strong>WCAG 3 (Preview)</strong>, <strong>All Rules</strong>.</li>
+</ul>
+<h3 id="element-editor">Element Editor</h3>
+<p>Select any text or element in the <strong>Live Preview</strong>. The editor then lets you change its text colour and background and shows accessible alternatives straight away. Every change is logged and counted in the live score.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Export CSS Fixes</strong></td><td>Downloads your element edits as <code>accessibility-fixes.css</code></td></tr>
+<tr><td><strong>Export Palette</strong></td><td>Downloads the fixed palette as <code>fixed-palette.css</code></td></tr>
+<tr><td><strong>Reset All</strong></td><td>Removes every edit</td></tr>
+</tbody></table></div>
+<h3 id="design-lab-editor">Design Lab Editor</h3>
+<p>Maps each kind of element to a slot in your palette, and applies the result live.</p>
+<ul>
+<li><strong>Element Mapping</strong> has one menu each for <strong>Backgrounds</strong>, <strong>Text</strong>, <strong>Headings</strong>, <strong>Buttons</strong>, <strong>Button text</strong>, <strong>Cards</strong>, <strong>Sections</strong>, <strong>Borders</strong>, <strong>Accent / Links</strong>, <strong>Shadows</strong> and <strong>Form fields</strong>. Each can be set to a palette slot or <strong>(unset)</strong>.</li>
+<li><strong>Live Audit Warnings</strong> flags pairs that are hard to read or not safe for colour-vision deficiencies. When all is well it says &quot;No accessibility warnings — palette looks readable and CVD-friendly.&quot;</li>
+<li><strong>Detected Site Colors → Suggestions</strong> lists the page&#39;s own colours with a suggested replacement and an <strong>Apply</strong> button.</li>
+<li><strong>Generated CSS</strong> shows the stylesheet for the mapping, with these buttons:</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>File</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy CSS</strong></td><td>Copies it to the clipboard</td></tr>
+<tr><td><strong>Download .css</strong></td><td><code>auric-design-lab.css</code></td></tr>
+<tr><td><strong>Theme tokens (JSON)</strong></td><td><code>auric-design-tokens.json</code></td></tr>
+<tr><td><strong>Runtime JS</strong></td><td><code>auric-design-lab.js</code>, a small script that applies the palette to a live page</td></tr>
+<tr><td><strong>Palette JSON</strong></td><td><code>auric-palette.json</code></td></tr>
+</tbody></table></div>
+<p><strong>Optional Runtime JS</strong> shows the script before you download it.</p>
+<h3 id="when-the-page-will-not-load-in-the-preview">When the page will not load in the preview</h3>
+<p>The Playground needs to load the page in a frame. If the site blocks embedding, the preview shows <strong>Couldn&#39;t embed this page</strong> with <strong>Run in browser</strong>, <strong>Open in new tab</strong>, <strong>Try again</strong> and <strong>View CSP setup</strong>. See <a href="colour-contrast-and-vision.html">Colour, contrast and vision</a> for what each does.</p>
+<h2 id="rules">Rules</h2>
+<p>Create your own selector-based checks without writing JSON. Each rule becomes part of the next analysis and can check that something exists, count it, or require an attribute. Custom rule results appear in the report under <strong>Custom Rules</strong>.</p>
+<h3 id="pre-built-templates">Pre-built templates</h3>
+<p>Select a template to fill in the form below, then adjust and save it.</p>
+<ul>
+<li><strong>SEO</strong> (10): SEO title exists; Meta description exists; Canonical link present; Open Graph title; Open Graph image; H1 heading present; Single H1 per page; HTML lang attribute; No accidental noindex; Viewport meta tag.</li>
+<li><strong>A11Y</strong> (9): Buttons have names; Images have alt text; Inputs have labels; Links have descriptive text; Skip navigation link; Main landmark present; Nav landmark present; No outline:none on focused elements; Tables have header cells.</li>
+<li><strong>UX</strong> (5): No hidden priority content; 404 page has search or nav; No positive tabindex values; Print stylesheet present; No links pointing to #.</li>
+<li><strong>Performance</strong> (6): Lazy-load non-critical images; Scripts defer or async; Preconnect to font origins; No <code>&lt;style&gt;</code> blocks in body; Images declare width/height; No autoplay videos without muted.</li>
+<li><strong>Security</strong> (5): No inline handlers; External links use rel noopener; No mixed-content resources; Meta charset declared; Password fields allow autocomplete.</li>
+</ul>
+<h3 id="add-a-rule">Add a rule</h3>
+<ol>
+<li>Enter a <strong>Rule name</strong>, for example &quot;Primary CTA has label&quot;.</li>
+<li>Enter a <strong>CSS selector</strong>, for example <code>.cta-primary, #signup-btn</code>.</li>
+<li>Choose a <strong>Check type</strong>: <strong>Element exists</strong>, <strong>Element must not exist</strong>, <strong>Minimum count</strong>, <strong>Maximum count</strong> or <strong>Attribute required</strong>.</li>
+<li>Fill in <strong>Min</strong>, <strong>Max</strong> or <strong>Attribute</strong> (for example <code>aria-label</code>) if the check type needs it.</li>
+<li>Choose a <strong>Severity</strong>: <strong>Medium</strong> (default), <strong>Critical</strong> or <strong>Minor</strong>.</li>
+<li>Write an <strong>Issue message</strong> and a <strong>Fix suggestion</strong>.</li>
+<li>Select <strong>Add Rule</strong>.</li>
+<li>Select <strong>Save and re-run</strong> to audit the page again with your rule.</li>
+</ol>
+<p>The result: your rule appears under <strong>Rule Results</strong> and in <strong>Latest Results</strong> as passed or failed, with the number of matches.</p>
+<h3 id="manage-rules">Manage rules</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Filter Rules</td><td>Show <strong>All Checks</strong>, or only <strong>Critical</strong>, <strong>Medium</strong> or <strong>Minor</strong> rules</td></tr>
+<tr><td><strong>Advanced JSON editor</strong></td><td>Edit every rule as JSON directly</td></tr>
+<tr><td><strong>Save and re-run</strong></td><td>Saves the rules and runs the audit again</td></tr>
+<tr><td><strong>Reset defaults</strong></td><td>Restores the two starting rules</td></tr>
+<tr><td><strong>Export rules</strong></td><td>Downloads your rules as <code>analyzer-custom-rules.json</code></td></tr>
+<tr><td><strong>Disable</strong> / <strong>Remove</strong></td><td>On each rule in <strong>Rule Results</strong></td></tr>
+</tbody></table></div>
+<p>The Analyzer starts with two rules: <strong>Main landmark</strong> (a <code>main</code> element or <code>role=&quot;main&quot;</code> must exist, Medium) and <strong>Primary heading</strong> (at least one <code>h1</code>, Critical). Your rules are stored in this browser.</p>
+<h2 id="csp-setup">CSP Setup</h2>
+<p><strong>CSP &amp; Access Setup</strong> explains how to configure a server you own so the Analyzer can load its pages in the <strong>Simulation</strong>, <strong>Device Preview</strong>, <strong>Before / After</strong> and <strong>Playground</strong> sections. It is a guide to your own server&#39;s headers; it does not change anything by itself.</p>
+<h3 id="what-it-covers">What it covers</h3>
+<ul>
+<li><strong>Why pages are blocked</strong>: <code>X-Frame-Options: DENY</code> or <code>SAMEORIGIN</code>, CSP <code>frame-ancestors &#39;none&#39;</code>, and CORS restrictions, with the solution: add the Auric Artisan origin to <code>frame-ancestors</code> and remove <code>X-Frame-Options</code>.</li>
+<li><strong>Minimum required</strong>: the header to add to every page you want to preview (shown below), and removing or updating <code>X-Frame-Options</code>, which overrides CSP in some browsers.</li>
+<li><strong>Current page detection</strong>: the analysed URL, its origin, and the CSP it sent.</li>
+<li><strong>Server Config Snippets</strong> with a <strong>Copy</strong> button each, for <strong>Nginx</strong>, <strong>Apache (.htaccess)</strong>, <strong>Express / Node.js</strong>, <strong>Cloudflare (Transform Rules)</strong>, <strong>Netlify (_headers file)</strong>, <strong>Vercel (vercel.json)</strong>, <strong>HTML Meta Tag (limited)</strong> and <strong>CORS Headers (full set)</strong>.</li>
+<li><strong>Verification Checklist</strong>: check the headers in your browser&#39;s developer tools, confirm <code>X-Frame-Options</code> is gone, re-analyse your URL, check the console for CSP errors, and review the <strong>Security</strong> section. <strong>→ Open Security Tab</strong> takes you there.</li>
+<li><strong>How to Remove / Delete These Rules</strong>: snippets that undo the change for each platform, and <strong>Removal Verification Steps</strong>.</li>
+</ul>
+<p>The minimum header is:</p>
+<pre class="code" data-lang="text"><code>Content-Security-Policy: frame-ancestors 'self' https://auricartisan.com https://www.auricartisan.com</code></pre>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> In some of the platform snippets the header value repeats the header name, as in <code>&quot;Content-Security-Policy: frame-ancestors …&quot;</code> inside a <code>Content-Security-Policy</code> header. Before you deploy, make sure the value starts with <code>frame-ancestors</code>, exactly as in the <strong>Minimum required</strong> line above. A duplicated name makes the header invalid.</p>
+</blockquote>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> <code>frame-ancestors</code> cannot be set with a <code>&lt;meta&gt;</code> tag. It only works as an HTTP response header.</p>
+</blockquote>
+<p>Only allow embedding on sites you control, and remove the rule when you no longer need it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-and-share.html"><span>Previous</span>Export and share</a><a href="performance-seo-and-page-health.html"><span>Next</span>Performance, SEO and page health</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#fixes">Fixes</a></li><li><a href="#playground">Playground</a></li><li><a href="#rules">Rules</a></li><li><a href="#csp-setup">CSP Setup</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

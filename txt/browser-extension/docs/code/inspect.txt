@@ -1,0 +1,125 @@
+==============================================================================
+INSPECT
+==============================================================================
+Select an element on the page and read its full snapshot in the popup — box
+model, styles, matched rules, accessibility, DOM, locators — and try CSS on it
+live.
+Area: Browser extension › Code   Updated: 2026-09-25
+
+Code › Inspect (Inspect Element) is the in-depth view of one element. You
+select the element on the page with the element inspector
+[../surfaces/inspector.txt], and the extension shows its full snapshot,
+including every computed style and the rules that set them, and a Live CSS
+editor that changes the element on the page reversibly.
+
+SELECT AN ELEMENT
+=================
+
+  1. Open Code › Inspect. The panel explains: "Pick an element on the page to
+     read its rules, box model and accessibility, then try CSS on it live."
+  2. Choose Select element. The status reads "Selection mode active · click an
+     element on the page".
+  3. Hover the page and click the element you want.
+  4. In the side panel or the separate window, the snapshot appears as soon as
+     you click. In the popup, clicking the page closes the popup; open it
+     again and Code › Inspect shows the element.
+
+The side panel is the most comfortable place to inspect, because it stays open
+while you click around the page.
+
+Until you select one, the panel says No element selected and lists the
+inspector's keys: `P` pin, `C` copy CSS, `S` selector and `J` JSON. Stop ends
+inspecting and undoes any Live CSS previews.
+
+THE HEADER
+==========
+
+  - Swatches for the text colour and background colour.
+  - The element's name and its size.
+  - Its contrast.
+  - Breadcrumbs: the path of ancestors down to the element. Choose one to jump
+    to that ancestor.
+  - Parent, Child, Prev and Next move the selection.
+  - Show on page highlights the element, Selector copies its CSS selector and
+    JSON copies the whole snapshot as JSON.
+
+THE FIVE VIEWS
+==============
+
+Overview
+--------
+
+  - Box model: a diagram of margin, border, padding and content, with the
+    element's size.
+  - Layout: display, flex and grid details, position, offsets, overflow and
+    z-index.
+  - Colors: text, background, border and background image.
+  - Typography: family, size and weight, line height, letter spacing, text
+    alignment and text transform.
+  - Effects: radius, shadow, transform, filter, backdrop filter, transition,
+    opacity and cursor.
+  - Page metrics: bounding rectangle, content, client, scroll and offset
+    sizes, number of children, and its index among its siblings.
+  - Use text colour and Use background send the element's colours to Contrast.
+
+Styles
+------
+
+  - Filter properties or values… narrows the lists as you type, with a count.
+  - Matched rules: the CSS rules that apply to the element, in cascade order,
+    with the rule count.
+  - Computed: every computed property.
+
+Stylesheets from another site that the browser does not let the page read are
+noted, for example "2 cross-origin stylesheets could not be read. Their
+computed values are still shown below."
+
+A11y (Accessibility)
+--------------------
+
+  - A summary of the element's accessibility: its role, accessible name,
+    states and contrast, with any problems found.
+  - ARIA attributes: every `aria-*` attribute on the element.
+
+DOM
+---
+
+  - Attributes: every attribute and its value, with a count.
+  - Copy locator: CSS (the selector), JavaScript (`document.querySelector(…)`)
+    or Playwright (`page.locator(…)`).
+  - Pseudo-elements: `::before` and `::after`, when the element has them.
+  - Markup: the element's HTML, up to 12 KB, with Copy HTML. Larger markup is
+    cut off and the panel says so.
+
+Live CSS
+--------
+
+Edit CSS for this element and see it on the page.
+
+  1. Type or change declarations in the editor. It starts with the element's
+     current CSS.
+  2. Choose Apply to page. The declarations apply to this element only.
+  3. Choose Reset to restore the element's own styles, or Stop in the header
+     to end inspecting and undo every preview.
+
+The panel calls this a Reversible page preview: "Declarations apply to this
+element only. Reset or Stop restores what the inspector changed without
+touching anything else on the page." Changes are never saved to the site;
+reloading the page also removes them.
+
+Copy CSS copies the editor's contents and Save snippet saves them to Snippets.
+
+FINDINGS FROM INSPECTION
+========================
+
+If the element's text fails contrast, a finding is added to Findings
+[../check/all-findings.txt], with Show on page, Copy selector and Check
+contrast. Text on an image or gradient is added as a warning, to be verified
+by eye.
+
+RELATED PAGES
+=============
+
+  - Element inspector [../surfaces/inspector.txt]
+  - Contrast [../check/contrast.txt]
+  - Snippets [snippets.txt]

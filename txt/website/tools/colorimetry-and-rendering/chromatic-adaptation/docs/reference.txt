@@ -1,0 +1,427 @@
+==============================================================================
+CHROMATIC ADAPTATION REFERENCE
+==============================================================================
+Every control, readout, option and export in the Chromatic Adaptation lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+Address:
+https://auricartisan.com/tool/general/colorimetry/chromatic-adaptation-dynamic/
+
+LAB TAB
+=======
+
+Image Source
+------------
+
+  Control:      Choose image
+  What it does: Opens a file picker for an image
+  Values:       Any image type the browser can decode
+  Default:      —
+
+  Control:      File name
+  What it does: Shows the chosen file
+  Values:       —
+  Default:      "No file chosen"
+
+  Control:      Sample
+  What it does: Generates a synthetic HSL sweep (a test target, not a
+                photograph)
+  Values:       360 × 240 pixels
+  Default:      —
+
+  Control:      Generate the sample sweep, Choose an image
+  What it does: The same two actions, offered in the empty state before any
+                image is loaded
+  Values:       —
+  Default:      —
+
+Loaded images are scaled to fit within 480 × 320 pixels (never enlarged).
+
+Illuminants and transform
+-------------------------
+
+  Control:      Source illuminant
+  What it does: The original viewing white point
+  Values:       12 illuminants, below
+  Default:      CIE D65 (6504 K) — sRGB daylight
+
+  Control:      Swap
+  What it does: Exchanges source and destination
+  Values:       Button
+  Default:      —
+
+  Control:      Destination illuminant
+  What it does: The target white point
+  Values:       12 illuminants
+  Default:      CIE D50 (5003 K) — ICC PCS / printing
+
+  Control:      CAT Method
+  What it does: The chromatic adaptation transform
+  Values:       Bradford (Lam 1985); Von Kries (Hunt–Pointer–Estévez); CAT02
+                (CIE 159:2004); CAT16 (Li et al. 2017); Sharp (Finlayson &
+                Süsstrunk 2000); CMCCAT2000 (Li et al. 2002); HPE
+                (Hunt–Pointer–Estévez); XYZ scaling (null case)
+  Default:      Bradford
+
+The 12 illuminants and their white points (CIE xy):
+
+  Choice:          CIE D65 (6504 K) — sRGB daylight
+  x:               0.3127
+  y:               0.3290
+  Spectrum drawn?: Yes, reconstructed from the daylight basis
+
+  Choice:          CIE D50 (5003 K) — ICC PCS / printing
+  x:               0.3457
+  y:               0.3585
+  Spectrum drawn?: Yes
+
+  Choice:          CIE D55 (5503 K)
+  x:               0.3324
+  y:               0.3474
+  Spectrum drawn?: Yes
+
+  Choice:          CIE D60 (6000 K) — ACES
+  x:               0.32168
+  y:               0.33767
+  Spectrum drawn?: Yes
+
+  Choice:          CIE D75 (7504 K) — north sky
+  x:               0.2990
+  y:               0.3149
+  Spectrum drawn?: Yes
+
+  Choice:          CIE A (2856 K) — tungsten
+  x:               0.4476
+  y:               0.4074
+  Spectrum drawn?: Yes, Planck at 2848 K with the 1931 constant
+
+  Choice:          CIE B (4874 K) — noon sun
+  x:               0.3484
+  y:               0.3516
+  Spectrum drawn?: No, table not held
+
+  Choice:          CIE C (6774 K) — average daylight
+  x:               0.3101
+  y:               0.3162
+  Spectrum drawn?: No, table not held
+
+  Choice:          Equal-energy E
+  x:               0.3333
+  y:               0.3333
+  Spectrum drawn?: Yes, flat
+
+  Choice:          FL F2 (4230 K) — cool white
+  x:               0.3721
+  y:               0.3751
+  Spectrum drawn?: No, table not held
+
+  Choice:          FL F7 (6500 K) — broadband
+  x:               0.3129
+  y:               0.3292
+  Spectrum drawn?: No, table not held
+
+  Choice:          FL F11 (4000 K) — narrow tri
+  x:               0.3805
+  y:               0.3769
+  Spectrum drawn?: No, table not held
+
+Adaptation needs only the white point, so all 12 adapt correctly whether or
+not a spectrum is drawn.
+
+Adaptation and timing controls
+------------------------------
+
+  Control:      Degree of adaptation D
+  What it does: The final degree of adaptation the timeline moves towards
+  Range:        0 to 1, step 0.01
+  Default:      1.00
+
+  Control:      Time (scrubber)
+  What it does: The moment after the light changes
+  Range:        0 to 5 s, step 0.01
+  Default:      0 s
+
+  Control:      Run
+  What it does: Re-renders the image now
+  Range:        Button
+  Default:      —
+
+  Control:      Animate
+  What it does: Plays the timeline from 0 to 5 s in real time, then stops
+  Range:        Button
+  Default:      —
+
+  Control:      Pause
+  What it does: Stops the animation at the current time
+  Range:        Button
+  Default:      —
+
+  Control:      Reset
+  What it does: Stops and returns to 0 s
+  Range:        Button
+  Default:      —
+
+  Control:      Live
+  What it does: Re-renders after every change
+  Range:        On or off
+  Default:      On
+
+  Control:      HDR Tonemap
+  What it does: Compresses values above white with a Reinhard curve before
+                clipping
+  Range:        On or off
+  Default:      Off
+
+The adaptation applied at time t is 0.1 + (D − 0.1) × fraction(t), where
+fraction(t) follows the two-phase time course with the published defaults (see
+Explore the adaptation time course [explore-the-time-course.txt]). The
+starting value 0.1 can only be changed through the `init` value of a share
+link.
+
+Controls with no visible effect in the current version
+------------------------------------------------------
+
+These controls are on the page and their values are recorded in the JSON
+export, but they do not change the rendered result:
+
+  Control:           Display Gamma
+  Range:             1.8 to 2.6
+  Default:           2.2
+  Current behaviour: The image is always decoded and encoded with the sRGB
+                     transfer function
+
+  Control:           τ luminance scale
+  Range:             0 to 1
+  Default:           0.0
+  Current behaviour: Intended to slow adaptation in dark pixels; the current
+                     time course does not use it
+
+  Control:           Delay luminance scale
+  Range:             0 to 1
+  Default:           0.0
+  Current behaviour: As above
+
+  Control:           Local radius
+  Range:             0 to 256 px
+  Default:           64 px
+  Current behaviour: Not applied
+
+  Control:           Local strength
+  Range:             0 to 1
+  Default:           0.60
+  Current behaviour: Not applied
+
+  Control:           Mix (global ↔ local)
+  Range:             0 to 1
+  Default:           0.50
+  Current behaviour: Has no effect while the per-pixel scales have none
+
+  Control:           Tile factor
+  Range:             1× to 8×
+  Default:           2×
+  Current behaviour: Not applied
+
+  Control:           Target FPS
+  Range:             8 to 120
+  Default:           60
+  Current behaviour: The animation runs at the browser's frame rate
+
+  Control:           GPU
+  Range:             On or off
+  Default:           Off
+  Current behaviour: Processing always runs on the CPU
+
+Because the per-pixel settings have no effect, the Per-Pixel Adaptation State
+Map is a uniform grey whose brightness is the adaptation in use.
+
+Readouts
+--------
+
+  Readout:       Status chip
+  What it shows: Ready, Image loaded (size), Sample loaded (360×240),
+                 Animating..., Paused at t = …, Reset
+
+  Readout:       Model chip
+  What it shows: "two components · t = … s · D = …", the adaptation in use
+
+  Readout:       Original Image
+  What it shows: The loaded or generated image
+
+  Readout:       Adapted Image
+  What it shows: The result at the current time
+
+  Readout:       RGB Histogram (Adapted)
+  What it shows: Red, green and blue distributions of the result
+
+  Readout:       Adaptation Curve A(t)
+  What it shows: The applied adaptation over 0 to 5 s, with the current point
+                 labelled
+
+  Readout:       Per-Pixel Adaptation State Map
+  What it shows: Adaptation per pixel as grey (white = adapted)
+
+  Readout:       LMS Cone-Channel Analysis
+  What it shows: Source white (light bars) and destination white (dark bars)
+                 in L, M and S, with each channel's scale factor
+
+  Readout:       SPD Spectral Overlay (Source vs Dest)
+  What it shows: The two spectra from 380 to 780 nm with a line naming how
+                 each was obtained, or a message when a spectrum is not held
+
+Every chart can be opened full screen with its Fullscreen button or by
+double-clicking it.
+
+DYNAMICS TAB
+============
+
+  Control:      Model
+  What it does: Two components (measured) or Single exponential (the page's
+                former curve)
+  Range:        —
+  Default:      Two components
+
+  Control:      τ1
+  What it does: Fast-phase time constant
+  Range:        0.2 to 4 s, step 0.1
+  Default:      1.0 s
+
+  Control:      w1
+  What it does: Share of adaptation in the fast phase
+  Range:        0 to 1, step 0.05
+  Default:      0.50
+
+  Control:      t½
+  What it does: Slow-phase half-life
+  Range:        5 to 120 s, step 1
+  Default:      30 s
+
+  Control:      Playhead
+  What it does: Time to read
+  Range:        0 to 120 s, step 0.5
+  Default:      12.0 s
+
+Readouts: the chart (both curves, 0–120 s), D at t = …, Half-adapted at, 90%
+at, Legacy 90% at, and a note explaining the two curves. These settings do not
+change the Lab tab.
+
+MATRIX TAB
+==========
+
+  Control or readout: Decimals
+  What it does:       Precision of the matrices shown
+  Values:             4, 6, 9
+  Default:            6
+
+  Control or readout: Copy as
+  What it does:       Copies the transform's M matrix
+  Values:             NumPy, JSON, CSS matrix3d, GLSL mat3
+  Default:            —
+
+  Control or readout: Round trip
+  What it does:       Largest error of M⁻¹ × M against the identity
+  Values:             —
+  Default:            —
+
+  Control or readout: Matrices
+  What it does:       M — XYZ to cone-like, diag(d), Full adaptation matrix,
+                      at the D set on the Lab tab
+  Values:             —
+  Default:            —
+
+  Control or readout: All eight on this pair
+  What it does:       Transform, ΔE vs Bradford, cond(M), Source, Status
+  Values:             —
+  Default:            —
+
+DATA TAB
+========
+
+  Control:      Status chips
+  What it does: Filter the register: All, Verbatim, Computed, Absent (a
+                Stand-in chip appears only when a stand-in exists)
+
+  Control:      Rows
+  What it does: Expand to read the note and, for absent data, What it would
+                take
+
+  Control:      Install a table
+  What it does: A drop area labelled "Drop a CSV or JSON here". It does not
+                load files in the current version
+
+  Dataset                              | Status
+  -------------------------------------+---------
+  Illuminant white points, CIE xy      | Verbatim
+  Chromatic adaptation matrices, 8     | Verbatim
+  sRGB primaries and transfer function | Verbatim
+  Daylight eigenvectors S0 S1 S2       | Computed
+  Planckian radiators                  | Computed
+  Adaptation time constants            | Computed
+  CIEDE2000 colour difference          | Computed
+  Illuminants B and C spectra          | Absent
+  Fluorescent F2 F7 F11 spectra        | Absent
+  Corresponding-colour data sets       | Absent
+  Colour matching functions, 10°       | Absent
+
+EXPORT TAB
+==========
+
+  Control:      Export JSON
+  What it does: Downloads the settings and the adaptation at the current time
+  Output:       `cad-<method>-<source>-<destination>.json`
+
+  Control:      Export Frame (PNG)
+  What it does: Downloads the adapted image
+  Output:       `cad-frame-t<time>.png`
+
+  Control:      Copy Link
+  What it does: Copies the page's current address
+  Output:       Text
+
+  Control:      Share URL field and Generate
+  What it does: Builds a link to the current settings, shows it and copies it
+  Output:       A URL
+
+  Control:      Copy
+  What it does: Copies the link in the field
+  Output:       Text
+
+  Control:      Compare All Methods
+  What it does: Runs all eight transforms on eight test colours at the current
+                adaptation
+  Output:       Bar chart and table
+
+  Control:      Batch Colour Analysis, Run Batch
+  What it does: Adapts up to 50 HEX colours
+  Output:       Table
+
+The JSON file contains: `srcIllum`, `dstIllum`, `catMethod`, `gamma`, `delay`,
+`tau`, `strength` (the D setting), `initAdapt`, `tauLocal`, `delayLocal`,
+`radius`, `localStrength`, `mix`, `tile`, `time`, `fps`, `hdr`, `matrix` (the
+full 3 × 3 adaptation matrix as nine numbers, row by row), `srcLMS`, `dstLMS`,
+`scale` (the three cone gains) and `det` (its determinant). `delay` and `tau`
+belong to the former single-exponential model.
+
+The share link carries `src`, `dst`, `cat`, `tau`, `delay`, `str` (D), `init`
+(initial adaptation) and `t` (time). It does not carry the image.
+
+REFERENCE TAB
+=============
+
+  Control                                        | What it does
+  -----------------------------------------------+--------------------------------------------
+  Standards, Formulas, Citations, Research notes | Switch sections; each shows a count
+  Filter                                         | Searches all four sections; `Esc` clears it
+  Where it is used chips (Citations)             | All, Runs here, Corrected, Context only
+
+Standards covers CIE 160:2004, CIE 159:2004 (CIECAM02), CAM16/CAT16,
+ICC.1:2022, Fairchild and Reniff (1995), Brainard and Wandell (1992), Foster
+(2011) and CIE 15:2018. Formulas covers the adaptation models, von Kries
+diagonal adaptation, the eight matrices, sRGB conversion, CIELAB, ΔE, spectrum
+generation and the spatial model. Some background prose predates the current
+time-course model; the figures the lab uses are those on the Dynamics tab.
+
+SAVE TO LIBRARY
+===============
+
+The floating Save to Library button stores a preset of the current form
+settings in your Library.

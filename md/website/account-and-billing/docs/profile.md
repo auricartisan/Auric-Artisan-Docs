@@ -1,0 +1,101 @@
+---
+title: Dashboard — Profile section
+description: Edit your Auric Artisan display name, username, bio, website, location and profile photo, choose an avatar from the gallery, and reach your public portfolio.
+product: Website › Account and billing
+updated: 2026-09-25
+---
+
+# Profile section
+
+The **Profile** section (https://auricartisan.com/auth/dashboard/#identity) holds who you are on the site: the name that signs anything you publish, and the username your public page lives at. The panel is headed **Who you are**.
+
+## The fields
+
+| Field | What it is | Rules |
+| --- | --- | --- |
+| **Profile photo** | Your photo, shown in the header, the dashboard and your portfolio | PNG, JPG or GIF, up to 2 MB. It is cropped to a square. |
+| **Display name** | The name shown on your profile and anything you publish | Up to 64 characters |
+| **Username** | Your handle, typed after the **@**. Your public page lives at this address, and you can sign in with it. | 3–30 characters: letters, numbers and underscores. It can be changed once every 30 days. |
+| **Bio** | "A line or two about what you make." | Up to 500 characters |
+| **Email address** | The address you sign in with | Read-only. Hover over it: "Email changes are not supported yet — contact support." |
+| **Website** | A link to your own site | Up to 200 characters, a full `http://` or `https://` address |
+| **Location** | City and country, or anything you like | Up to 120 characters |
+
+## Edit your profile
+
+1. Open the dashboard and select **Profile**.
+2. Change any of the fields.
+3. Watch the **How you appear** card on the right: it previews the header of your public page as you type — photo, name, **@handle**, bio, website and location.
+4. Select **Save changes**.
+
+Result: "Profile saved." appears under the button. The note beside the button explains that the details are "Saved to your account, and used anywhere you publish."
+
+If something is wrong, the message names it, for example "Bio must be 500 characters or fewer." or "Website must be a valid http(s) URL."
+
+## Change your username
+
+1. Type the new handle in **Username**.
+2. After a short pause the line under the field reports availability: "Checking…", then "@name is available." or a reason, such as "That username is taken.", with up to three suggestions ("Try: …").
+3. Select **Save changes**.
+
+Result: "@name is yours." The username is saved before the other fields, so if the handle is refused, your other edits are not lost and the message says why.
+
+Rules and limits:
+
+- You can change your username once every 30 days. Before that, the message says "You can change your username again in N days."
+- A username someone has just given up is held for 30 days before anyone else can take it ("That username was recently released and is not yet available.").
+- Reserved words are refused, and so are names too close to an existing one ("That username is too similar to one in use.").
+- Changing the username changes the address of your public portfolio.
+
+## Change your photo
+
+### From the Profile form
+
+1. Double-click the **Profile photo** strip (or focus it and press `Enter` or `Space`).
+2. Choose an image file.
+3. The strip shows the file name with "will upload on Save", and the preview updates.
+4. Select **Save changes**.
+
+"That image is over 2 MB" or "Please choose an image file" appears if the file cannot be used. The photo is resized to a small square before it is uploaded.
+
+### From the photo viewer
+
+Double-click your photo in the dashboard masthead to open the photo viewer. It shows the photo large, with your name and email, and three buttons. Changes here save straight away — there is no **Save changes** step.
+
+| Button | What it does |
+| --- | --- |
+| **Change photo** | Choose an image file; it is uploaded at once ("Photo updated.") |
+| **Gallery** | Opens the Auric avatar gallery (below) |
+| **Remove** | Removes the photo ("Photo removed."); your initial is shown instead |
+
+Close the viewer with the **×** button, by clicking outside it, or with `Esc`.
+
+## The Auric avatar gallery
+
+Instead of a photo you can pick a drawn character avatar. Open the photo viewer and select **Gallery**.
+
+- The header reads **Auric avatars** — "540 designs · 9 categories · 3 formats".
+- Two tabs: **Free** (120 designs) and **Paid** (420 designs).
+- Filters: **All**, **Companions**, **Wildlife**, **Farm**, **Ocean**, **Fantasy**, **Future**, **Botanical**, **Cosmic**, **Signature**, **3D** and **Animated**. A filter is greyed out when the open tab has nothing in it.
+- The **Paid** tab opens with a featured signature character, **Auric Muse**, marked **3D** and **Animated**.
+- Select a design to use it. It is applied immediately ("Avatar updated.").
+
+On the free plan, paid designs are shown locked; selecting one opens an upgrade dialog explaining that "The premium avatar studio — 420 sculpted 3D and animated designs — is included with any paid plan." On a paid plan every design is available and the header chip reads "All 540 included". A chosen avatar is saved as an ordinary image, so it stays yours if your plan changes.
+
+## Public portfolio card
+
+Below the form, the **Public portfolio** card is the doorway to your portfolio page. The portfolio is built on its own page, the Portfolio Builder.
+
+| Card heading | Meaning | Buttons |
+| --- | --- | --- |
+| **Portfolio builder** | Shown while the dashboard checks, or if it cannot tell | **Open the builder** |
+| **Live** | "Published at auricartisan.com/p/yourhandle", with the number of views so far | **View page**, **Open the builder** |
+| **Not published** | Nobody can see it yet. If you have sections saved in this browser, the card says how many. | **Open the builder** |
+
+See [Portfolio](../../portfolio/README.md) for building and publishing.
+
+## Related
+
+- [Getting started with the dashboard](getting-started.md)
+- [Overview section](dashboard-overview.md) — the **Finish setting up** checklist
+- [Reference](reference.md#profile-section)

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about Auric Artisan Formatter.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html" aria-current="page">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>FAQ</h1>
+<p class="lede">Short answers to common questions about Auric Artisan Formatter.</p>
+<h2 id="will-it-rewrite-my-repository-when-i-install-it">Will it rewrite my repository when I install it?</h2>
+<p>No. The startup scan only formats in memory and reports a count. Files are written only when you format them: on save (if you turn it on), with a Format command, with <strong>Apply</strong>, or with <strong>Format selected</strong> or <strong>Format all files</strong>.</p>
+<h2 id="can-it-produce-exactly-the-same-output-as-prettier">Can it produce exactly the same output as Prettier?</h2>
+<p>The <code>prettier</code> preset is byte-compatible with Prettier 3 at its own defaults, with every Auric-only enhancement off. A project with only a Prettier configuration gets that preset automatically.</p>
+<h2 id="how-do-i-keep-git-blame-useful">How do I keep <code>git blame</code> useful?</h2>
+<p>Set <code>auricFormatter.formatOnSaveMode</code> to <code>modifications</code> so format on save only touches lines you changed, or use the <code>minimal-diff</code> preset. When you do format everything, use the Workspace tab to take a folder at a time.</p>
+<h2 id="could-it-break-my-code">Could it break my code?</h2>
+<p>Every result passes the safety gate: tokens, comments, strings and a reparse are checked before anything is written, and on failure your original text is kept. The universal engine can only change whitespace. Keep using version control as usual.</p>
+<h2 id="which-languages-does-it-support">Which languages does it support?</h2>
+<p>253 languages: 31 native modes plus 220 on the universal tier. See <a href="supported-languages.html">Supported languages</a>.</p>
+<h2 id="does-it-format-jsx">Does it format JSX?</h2>
+<p>In version 0.1.0, files containing JSX elements are indented and spaced by the universal tier but not pretty-printed.</p>
+<h2 id="where-do-i-put-my-settings">Where do I put my settings?</h2>
+<p>In a <code>.auricformatrc</code> at the project root, so everyone gets the same result. VS Code settings work too. See <a href="configuration.html">Configuration</a>.</p>
+<h2 id="how-do-i-find-the-option-i-want">How do I find the option I want?</h2>
+<p>Open Formatter Studio, load your file and choose <strong>Find what matters</strong>. It lists only the options that would change that file.</p>
+<h2 id="can-i-use-it-in-ci">Can I use it in CI?</h2>
+<p>Yes. Run the command-line check, which exits with code 1 when files need formatting. See <a href="command-line.html">Command line and CI</a>.</p>
+<h2 id="does-it-send-my-code-anywhere">Does it send my code anywhere?</h2>
+<p>No. Formatting runs locally with no network requests and no runtime dependencies.</p>
+<h2 id="is-the-interface-available-in-hindi">Is the interface available in Hindi?</h2>
+<p>Not at present; the interface is in English.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting</a><a href="../others/README.html"><span>Next</span>Supporting material</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#will-it-rewrite-my-repository-when-i-install-it">Will it rewrite my repository when I install it?</a></li><li><a href="#can-it-produce-exactly-the-same-output-as-prettier">Can it produce exactly the same output as Prettier?</a></li><li><a href="#how-do-i-keep-git-blame-useful">How do I keep git blame useful?</a></li><li><a href="#could-it-break-my-code">Could it break my code?</a></li><li><a href="#which-languages-does-it-support">Which languages does it support?</a></li><li><a href="#does-it-format-jsx">Does it format JSX?</a></li><li><a href="#where-do-i-put-my-settings">Where do I put my settings?</a></li><li><a href="#how-do-i-find-the-option-i-want">How do I find the option I want?</a></li><li><a href="#can-i-use-it-in-ci">Can I use it in CI?</a></li><li><a href="#does-it-send-my-code-anywhere">Does it send my code anywhere?</a></li><li><a href="#is-the-interface-available-in-hindi">Is the interface available in Hindi?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

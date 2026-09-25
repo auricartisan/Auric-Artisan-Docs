@@ -1,0 +1,188 @@
+==============================================================================
+AURIC ICONS: PLAYFUL REFERENCE
+==============================================================================
+Every command, keybinding, setting, view, category and library control in
+Auric Icons: Playful 0.12.1.
+Area: VS Code extensions › Auric Icons: Playful   Updated: 2026-09-25
+
+This reference describes version 0.12.1 as published on the Visual Studio
+Marketplace.
+
+COMMANDS
+========
+
+Category in the Command Palette: Auric Icons: Playful.
+
+  Command:      Open Icon Library
+  ID:           `auricIconsPlayful.library.openExplorer`
+  What it does: Opens the Icon Studio — Library editor tab.
+
+  Command:      Search Icons
+  ID:           `auricIconsPlayful.library.searchIcons`
+  What it does: Choose an icon, then an action.
+
+  Command:      Insert SVG at Cursor
+  ID:           `auricIconsPlayful.library.insertSvg`
+  What it does: Choose an icon and insert it.
+
+  Command:      Smart Insert Icon (matches active language)
+  ID:           `auricIconsPlayful.library.smartInsert`
+  What it does: Choose an icon and insert with language-aware output.
+
+  Command:      Copy Icon As… (JSX, CSS, Markdown, Data URI, Image tag)
+  ID:           `auricIconsPlayful.library.copyAs`
+  What it does: Choose an icon and one of nine formats.
+
+  Command:      Insert from Likes
+  ID:           `auricIconsPlayful.library.showFavorites`
+  What it does: Choose a liked icon and insert.
+
+  Command:      Insert from Recent
+  ID:           `auricIconsPlayful.library.showRecents`
+  What it does: Choose a recent icon and insert.
+
+  Command:      Toggle Like for an Icon
+  ID:           `auricIconsPlayful.library.toggleFavorite`
+  What it does: Like or unlike an icon.
+
+  Command:      Clear Likes, Recents and Learned Recommendations
+  ID:           `auricIconsPlayful.library.resetPersonalization`
+  What it does: Confirm, then reset personalisation.
+
+  Command:      Copy SVG
+  ID:           `auricIconsPlayful.library.copySvg`
+  What it does: Choose an icon and copy raw SVG.
+
+  Command:      Save SVG As…
+  ID:           `auricIconsPlayful.library.saveSvg`
+  What it does: Choose an icon and save it as a file.
+
+  Command:      Open SVG Source
+  ID:           `auricIconsPlayful.library.openSource`
+  What it does: Choose an icon and open its SVG.
+
+These commands are hidden from the Command Palette while another extension
+hosts the shared library; from keybindings they forward to the host.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows and Linux):`Ctrl` + `Alt` + `I`
+  Keys (macOS):            `Cmd` + `Alt` + `I`
+  Command:                 Smart Insert Icon
+  When:                    Editor focused and Playful hosts the library
+
+  Keys (Windows and Linux):`Ctrl` + `Alt` + `R`
+  Keys (macOS):            `Cmd` + `Alt` + `R`
+  Command:                 Insert from Recent
+  When:                    Editor focused and Playful hosts the library
+
+In the view: `/` focuses search, `Escape` clears it or closes a dropdown,
+arrow keys move between dropdown options.
+
+SETTINGS
+========
+
+  Setting:         `auricIconsPlayful.library.defaultVariant`
+  Type:            string
+  Values or range: `auto`, `color`, `outline`, `filled`, `small`
+  Default:         `auto`
+  What it does:    Variant for Command Palette actions; `auto` follows the
+                   file.
+
+  Setting:         `auricIconsPlayful.library.pageSize`
+  Type:            number
+  Values or range: 24 to 240
+  Default:         72
+  What it does:    Cards streamed per batch.
+
+  Setting:         `auricIconsPlayful.library.smartInsert`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Language-aware output for Insert.
+
+  Setting:         `auricIconsPlayful.library.recommendations.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Recommendations for the file you are editing.
+
+  Setting:         `auricIconsPlayful.library.recommendations.limit`
+  Type:            number
+  Values or range: 4 to 24
+  Default:         12
+  What it does:    Icons in the recommendation rail.
+
+  Setting:         `auricIconsPlayful.library.showGuide`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Smart guide tips.
+
+  Setting:         `auricIconsPlayful.library.density`
+  Type:            string
+  Values or range: `comfortable`, `compact`
+  Default:         `comfortable`
+  What it does:    Card size.
+
+  Setting:         `auricIconsPlayful.library.hoverPreview`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Hover previews for icon IDs.
+
+VIEWS AND MENUS
+===============
+
+  Place:    Activity Bar
+  Contents: Auric Icons: Playful container with the Icon Library view (hidden
+            while another extension hosts).
+
+  Place:    View title bar
+  Contents: Open Icon Library, Smart Insert Icon, Insert from Likes; … menu:
+            Clear Likes, Recents and Learned Recommendations.
+
+  Place:    Editor tab
+  Contents: Icon Studio — Library.
+
+Playful contributes no file icon theme.
+
+LIBRARY CONTENTS
+================
+
+  Item       | Value
+  -----------+------------------------------
+  Icons      | 1,225
+  Variants   | Color, Outline, Filled, Small
+  Categories | 24
+
+Categories: Lifestyle; Accessibility; Accounts; Actions; Admin Panel;
+Artificial Intelligence; Blog and Publishing; Business; Calendar and Time;
+Communication; Dashboard; Developer and Technology; Devices and Hardware;
+Navigation; E-commerce; Files; Folders; Form Elements; Location and Travel;
+Media; Reactions; Security and Privacy; Settings; Status.
+
+LIBRARY CONTROLS
+================
+
+  Control         | Options
+  ----------------+--------------------------------------------------------------------
+  Search          | Free text, synonyms, fuzzy ranking.
+  Library         | All libraries or one collection (only when merged).
+  Category        | All categories or one of 24.
+  Style           | All styles or Playful.
+  Variant         | Auto, Color, Outline, Filled, Small.
+  Preview surface | Auto, Light, Dark.
+  Chips           | All, ✦ For you, ♥ Likes, ↺ Recent.
+  Card buttons    | Artwork (open source), heart, Insert, Copy, Save, JSX, URI, Source.
+
+LIMITS
+======
+
+  Item               | Limit
+  -------------------+------------------------------------
+  Recent icons       | 60
+  Liked icons        | 500
+  Quick Pick results | 200 with a search term; 400 without
+  Smart guide tips   | Up to 4

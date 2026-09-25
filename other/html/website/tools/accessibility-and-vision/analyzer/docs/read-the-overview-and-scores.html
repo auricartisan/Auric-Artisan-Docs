@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read the Overview and scores — Auric Artisan Docs</title>
+<meta name="description" content="Understand the overall score, the grade bands, how categories are weighted, and how to work through the issue cards.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html" aria-current="page">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Read the Overview and scores</h1>
+<p class="lede">Understand the overall score, the grade bands, how categories are weighted, and how to work through the issue cards.</p>
+<p>The <strong>Overview</strong> panel is the summary of a run: one score, the categories behind it, and the issues ranked by how much fixing them is worth. This guide explains each part and how the numbers are made.</p>
+<h2 id="the-score">The score</h2>
+<p>The large number at the top is the <strong>Overall Audit Score</strong>, from 0 to 100, with a letter grade beside it. Under it, a line names the categories it was weighted from. If some checks were switched off, the line says so, for example &quot;Scored on 4 of 10 categories — performance, reliability, security, media, colour and palette, rendered DOM were not scanned for this run and were excluded rather than counted as zero.&quot;</p>
+<p>A page that could not be measured (a bot-challenge page or an almost empty page) gets no score at all, rather than a misleading one. See <a href="run-an-analysis.html">Run an analysis</a>.</p>
+<h3 id="grade-bands">Grade bands</h3>
+<p>The overall score and each section&#39;s own score use the same bands:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Grade</th><th>Tier</th><th>Range</th><th>Meaning shown</th></tr></thead>
+<tbody>
+<tr><td>A+</td><td>Excellent</td><td>90–100</td><td>Production-ready; meets or exceeds best practices.</td></tr>
+<tr><td>A</td><td>Strong</td><td>80–89</td><td>Solid foundations with only minor refinements left.</td></tr>
+<tr><td>B</td><td>Good</td><td>70–79</td><td>Generally healthy, with a few clear gaps to close.</td></tr>
+<tr><td>C</td><td>Fair</td><td>55–69</td><td>Usable, but several material issues should be addressed.</td></tr>
+<tr><td>D</td><td>Weak</td><td>40–54</td><td>Significant issues are affecting real users.</td></tr>
+<tr><td>F</td><td>Critical</td><td>0–39</td><td>Serious, widespread problems need urgent attention.</td></tr>
+</tbody></table></div>
+<p>The accessibility engine in the <strong>A11y+</strong> panel uses its own, stricter letter scale. See <a href="accessibility-engine.html">The accessibility engine</a>.</p>
+<h3 id="why-this-score">Why this score?</h3>
+<p>Open <strong>Why this score?</strong> under the score. It shows:</p>
+<ul>
+<li>the tier, its meaning, and how many points you need to reach the next tier, for example &quot;To reach Excellent (A+), gain about 6 more points.&quot;;</li>
+<li><strong>How it&#39;s calculated</strong> — a one-line formula;</li>
+<li><strong>Category weights &amp; impact</strong> — each category&#39;s share and how many points it cost;</li>
+<li><strong>Checks</strong> — how many failed, how many items and pages were analysed, and a <strong>Confidence</strong> level;</li>
+<li><strong>What moved the score</strong> — the categories that cost the most;</li>
+<li><strong>Top recommendations</strong> — the first fixes to make.</li>
+</ul>
+<p>Every section&#39;s panel has its own <strong>Why this score?</strong> box built the same way.</p>
+<h2 id="how-the-overall-score-is-made">How the overall score is made</h2>
+<p>The overall score is a weighted average of up to ten category scores. The <strong>Report</strong> panel&#39;s table <strong>How Your Score Was Calculated</strong> shows the exact weights, contributions and points lost for your run.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Category</th><th>Base weight</th><th>Comes from</th></tr></thead>
+<tbody>
+<tr><td>Accessibility</td><td>20%</td><td>The accessibility engine&#39;s score, when it ran</td></tr>
+<tr><td>Colour contrast</td><td>16%</td><td>The Contrast audit</td></tr>
+<tr><td>Performance</td><td>13%</td><td>The Performance audit, capped by measured Core Web Vitals</td></tr>
+<tr><td>Deep analysis</td><td>10%</td><td>The Deep DOM comparison</td></tr>
+<tr><td>Metadata</td><td>9%</td><td>The SEO and metadata check</td></tr>
+<tr><td>Responsive</td><td>8%</td><td>The Responsive behaviour check</td></tr>
+<tr><td>Visual quality</td><td>8%</td><td>What is painted on screen, sampled from the rendered page</td></tr>
+<tr><td>Reliability</td><td>7%</td><td>Whether the links that were checked resolved</td></tr>
+<tr><td>Security</td><td>7%</td><td>Whether the expected protective headers are declared</td></tr>
+<tr><td>Media</td><td>2%</td><td>Images, video and audio alternatives</td></tr>
+</tbody></table></div>
+<p>Two rules keep the number honest:</p>
+<ul>
+<li><strong>A category with nothing to measure is excluded</strong>, and the remaining weights are scaled up to fill the gap. A page with no images is not penalised for media, and a check you switched off does not count as zero or as 100. Excluded rows show <strong>Not scored</strong>.</li>
+<li><strong>SEO and A11y+ are shown but not counted</strong> in the overall score. The SEO score is reported for its own sake; the A11y+ score is the same engine result that already feeds Accessibility.</li>
+</ul>
+<p>A score can go down after you improve a page. Fixing a component so that content becomes visible can expose text that was never checked before. That is the report becoming more accurate, not the page getting worse.</p>
+<h2 id="the-rest-of-the-overview">The rest of the Overview</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>What is this?</strong></td><td>A short explanation of the score for first-time readers</td></tr>
+<tr><td><strong>Human Summary</strong></td><td>Score, strong and weak areas, confidence, the previous run, and the estimated score after top fixes</td></tr>
+<tr><td><strong>Category Scores</strong></td><td>Every category&#39;s score, including SEO and A11yPlus</td></tr>
+<tr><td><strong>Score Weight Transparency</strong></td><td>The categories that cost points, with their weight and point impact</td></tr>
+<tr><td><strong>Analysis Context</strong></td><td><strong>Environment</strong>, <strong>Performance context</strong> and <strong>Template inference</strong> (shared header and footer)</td></tr>
+<tr><td><strong>Canvas / GPU / Non-DOM Layer (hyper-detail)</strong></td><td>Canvas layers, pixels sampled, low-contrast regions, unreadable and unnamed canvases</td></tr>
+<tr><td><strong>Statistics</strong></td><td>Counts of Critical, Medium and Minor issues, colours, contrast pairs and elements</td></tr>
+<tr><td><strong>Summary</strong></td><td>A plain count, for example &quot;Your site has 8 issues.&quot; with a line per severity</td></tr>
+<tr><td><strong>Issue Details</strong></td><td>The issue cards, described below</td></tr>
+</tbody></table></div>
+<p>For a whole-site scan, the Overview adds <strong>Full-Site Scan</strong> and <strong>Page-By-Page Breakdown</strong>. See <a href="scan-a-whole-site.html">Scan a whole site</a>.</p>
+<h2 id="work-through-the-issue-cards">Work through the issue cards</h2>
+<h3 id="top-3-things-to-improve-score">Top 3 Things To Improve Score</h3>
+<p>The first block under <strong>Issue Details</strong> is the three fixes worth the most. Each shows the estimated points it would add, the category, <strong>Why</strong> it matters, the <strong>Fix</strong>, and a <strong>Fix first</strong> label.</p>
+<h3 id="issue-classification">Issue Classification</h3>
+<p>A row of badges separates <strong>Real issues</strong> from <strong>Branding-related</strong> and <strong>Dev/temporary</strong> ones, so that, for example, a finding caused by a development server is not mixed with real defects.</p>
+<h3 id="the-issue-list">The issue list</h3>
+<p>Issues are grouped by severity: <strong>Critical</strong>, <strong>Important</strong> and <strong>Low Impact</strong>. Each card shows:</p>
+<ul>
+<li>the issue title and its current status;</li>
+<li>tags such as the metric it affects (for example LCP) and its area;</li>
+<li><strong>Fix:</strong> <strong>Safe</strong> or <strong>Medium</strong>, which says how risky the change is, and an estimated score gain;</li>
+<li><strong>Cause chain</strong>, a disclosure that explains what <strong>caused by</strong>, <strong>blocked by</strong> and <strong>affects</strong> — the chain from the defect to the user;</li>
+<li><strong>Why</strong> and <strong>Fix</strong> lines;</li>
+<li>four status buttons.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Open</strong></td><td>The default status: still to do</td></tr>
+<tr><td><strong>Fixed</strong></td><td>Marks the issue as fixed</td></tr>
+<tr><td><strong>Ignore</strong></td><td>Marks the issue as accepted and out of scope</td></tr>
+<tr><td><strong>Recheck</strong></td><td>Marks the issue for checking and re-runs the audit straight away</td></tr>
+</tbody></table></div>
+<p>Statuses are remembered in this browser. <strong>Recheck</strong> starts a new run, which is metered like any other run.</p>
+<p>If nothing was found, the list says &quot;No issues detected — your page passed all checks.&quot;</p>
+<h2 id="use-the-score-well">Use the score well</h2>
+<ul>
+<li>Watch it as a trend on the same page, not as a target. Hiding an element from assistive technology can remove a finding and make the page worse.</li>
+<li>Count causes, not findings. One button component used in twelve places produces twelve findings and needs one fix.</li>
+<li>Use <strong>Compare</strong> after a fix to see exactly what changed. See <a href="save-reopen-and-compare.html">Save, reopen and compare</a>.</li>
+<li>A good score is not a legal conformance claim. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="performance-seo-and-page-health.html"><span>Previous</span>Performance, SEO and page health</a><a href="run-an-analysis.html"><span>Next</span>Run an analysis</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-score">The score</a></li><li><a href="#how-the-overall-score-is-made">How the overall score is made</a></li><li><a href="#the-rest-of-the-overview">The rest of the Overview</a></li><li><a href="#work-through-the-issue-cards">Work through the issue cards</a></li><li><a href="#use-the-score-well">Use the score well</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

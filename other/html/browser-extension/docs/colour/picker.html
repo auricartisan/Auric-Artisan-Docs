@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Picker — Auric Artisan Docs</title>
+<meta name="description" content="Sample a colour from the screen or set one by hand, read it in twelve formats, and use the Picker's Specs, Harmony, Scale, Contrast, Vision and Code panes.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Colour tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="convert.html">Convert</a></li>
+<li><a href="gradient.html">Gradient</a></li>
+<li><a href="harmony.html">Harmony</a></li>
+<li><a href="image.html">Image</a></li>
+<li><a href="mix.html">Mix</a></li>
+<li><a href="page-palette.html">Page palette</a></li>
+<li><a href="picker.html" aria-current="page">Picker</a></li>
+<li><a href="scale.html">Scale</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Colour tools</a></nav>
+<p class="kicker">Browser extension › Colour</p>
+<h1>Picker</h1>
+<p class="lede">Sample a colour from the screen or set one by hand, read it in twelve formats, and use the Picker's Specs, Harmony, Scale, Contrast, Vision and Code panes.</p>
+<p>The Picker is the same colour picker auricartisan.com uses, with extra panes for accessibility and code. Open it from Colour › <strong>Picker</strong>, from Home › <strong>Pick a colour</strong>, from the colour of the day, or by choosing any colour swatch in Recent, History, Page palette, Image, Scale or Harmony.</p>
+<h2 id="the-colour-core">The colour core</h2>
+<ul>
+<li>Spectrum (<strong>Saturation and brightness</strong>): Drag to set saturation and brightness</li>
+<li><strong>Hue</strong> slider: Drag to set the hue</li>
+<li><strong>Opacity</strong> slider: Sets transparency. The opacity is carried into every value you copy.</li>
+<li>Value field and <strong>Colour format</strong> menu: Shows the colour in one of twelve formats. Every field is editable. The format menu searches as you type (type &quot;ok&quot; for OKLAB and OKLCH).</li>
+<li>Copy button (<strong>Copy the CSS value</strong>): Copies the ready-to-paste CSS value in the current format</li>
+</ul>
+<p>The twelve formats are <strong>HEX</strong>, <strong>RGB</strong>, <strong>HSL</strong>, <strong>HSV</strong>, <strong>HWB</strong>, <strong>CMYK</strong>, <strong>LAB</strong>, <strong>LCH</strong>, <strong>OKLAB</strong>, <strong>OKLCH</strong>, <strong>XYZ</strong> and <strong>P3</strong> (Display P3). The Picker starts in the format chosen in Settings › Tools › <strong>Copy colours as</strong> (HEX, RGB, HSL or OKLCH).</p>
+<h2 id="actions">Actions</h2>
+<ul>
+<li><strong>Pick from page</strong>: Starts the screen eyedropper. Click any pixel on the screen; press <code>Esc</code> to cancel. The colour loads into the Picker and joins your history.</li>
+<li><strong>Save to library</strong> (the bookmark): Adds the colour to Saved › Library, or says it is already there</li>
+<li><strong>Check as text</strong>: Opens Contrast with this colour as the text colour</li>
+<li><strong>Check as background</strong>: Opens Contrast with this colour as the background</li>
+</ul>
+<h3 id="when-the-eyedropper-is-not-available">When the eyedropper is not available</h3>
+<p>The screen eyedropper relies on a browser feature that Chromium browsers have and Firefox does not. The Picker first uses its own eyedropper, then asks the page to run one. Where neither exists, it shows: &quot;This browser has no screen eyedropper. The Page palette tool reads every colour the page uses instead.&quot; Use <a href="page-palette.html">Page palette</a>, then choose a colour from it.</p>
+<h2 id="the-detail-panes">The detail panes</h2>
+<p>In the popup the Picker is split: the core on the left and six tabbed panes on the right. In the side panel and the separate window it is one column, and the panes are sections one below another. The pane you last opened is remembered.</p>
+<ul>
+<li><strong>Specs</strong> (Specifications): Luminance; contrast against white and black; WCAG pass levels; APCA on white and black; hue family; nearest CSS colour name; <strong>Chroma room sRGB</strong> and <strong>Chroma room P3</strong> (how much more saturated the colour can go before it leaves each gamut); CSS values. Click any value to copy it. <strong>Copy as CSS variables</strong> copies them as a block. <strong>Open the converter →</strong> opens Convert.</li>
+<li><strong>Harmony</strong> (Harmonies): Complementary, analogous, split complementary, triadic and tetradic partners. <strong>Rotate hue in</strong> HSL (like most tools) or OKLCH (every partner keeps the same perceived lightness). Click a swatch to use it. <strong>Open the full harmony builder →</strong> opens Harmony.</li>
+<li><strong>Scale</strong> (Tints &amp; shades): An 11-step scale from 50 to 950, built in OKLCH so each step is an even perceptual jump and the hue does not drift. The step nearest your colour is marked. Click a step to use it. <strong>Open the scale generator →</strong> opens Scale.</li>
+<li><strong>Contrast</strong>: How readable the colour is as text on <strong>White</strong>, <strong>Black</strong> or <strong>Page</strong> (the current page&#39;s background): the WCAG 2 ratio and the APCA score. If it fails AA, the closest colour that passes is one click away.</li>
+<li><strong>Vision</strong> (Colour vision): The colour as people with the four main colour-vision deficiencies see it (protanopia, deuteranopia, tritanopia and achromatopsia), each with ΔE, the perceptual distance from what you picked. Under about 2 the difference is hard to notice.</li>
+<li><strong>Code</strong>: Ready-to-paste code (see below)</li>
+<li><strong>Page</strong> (On this page): The colours the current page uses, most frequent first (up to twelve). Click one to pick it. Side panel and window only.</li>
+<li><strong>Recent</strong>: Colours you picked recently, kept in the extension. Side panel and window only.</li>
+</ul>
+<h3 id="code-formats">Code formats</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Example output for a colour</th></tr></thead>
+<tbody>
+<tr><td><strong>CSS</strong></td><td><code>--brand: #d3af37;</code></td></tr>
+<tr><td><strong>CSS · wide gamut</strong></td><td><code>--brand: oklch(…);</code></td></tr>
+<tr><td><strong>Tailwind v4</strong></td><td><code>@theme { --color-brand: oklch(…); }</code></td></tr>
+<tr><td><strong>SwiftUI</strong></td><td><code>Color(red: 0.827, green: 0.686, blue: 0.216)</code>, with <code>opacity:</code> when the colour is transparent</td></tr>
+<tr><td><strong>Jetpack Compose</strong></td><td><code>Color(0xFFD3AF37)</code> (alpha first)</td></tr>
+<tr><td><strong>Android XML</strong></td><td><code>&lt;color name=&quot;brand&quot;&gt;#FFD3AF37&lt;/color&gt;</code></td></tr>
+</tbody></table></div>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>Every colour you finish choosing is added to your history, unless Settings › Tools › <strong>Keep a colour history</strong> is off.</li>
+<li><strong>Sound on pick</strong> in Settings › Tools plays a short tick when a pick or copy lands.</li>
+<li>Colours are also sampled in the right-click menu (<strong>Pick colour</strong>, <strong>Pick colour from image</strong>) and copied straight to the clipboard; see <a href="../on-websites/right-click-menu.html">Right-click menu</a>.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../check/contrast.html">Contrast</a></li>
+<li><a href="harmony.html">Harmony</a>, <a href="scale.html">Scale</a>, <a href="convert.html">Convert</a></li>
+<li><a href="../code/code-export.html">Code export formats</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="page-palette.html"><span>Previous</span>Page palette</a><a href="scale.html"><span>Next</span>Scale</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-colour-core">The colour core</a></li><li><a href="#actions">Actions</a></li><li><a href="#the-detail-panes">The detail panes</a></li><li><a href="#tips">Tips</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

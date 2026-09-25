@@ -1,0 +1,372 @@
+==============================================================================
+VISUAL PATHWAY REFERENCE
+==============================================================================
+Every tab, control, readout, message and file format in the Visual Pathway,
+with ranges and defaults.
+Area: Website › Tools › Perception and spectral › Neuroscience   Updated: 2026-09-25
+
+Address:
+https://auricartisan.com/tool/general/perception-and-neuroscience/neuroscience/
+
+TABS
+====
+
+  Tab:      Lab
+  Contents: Stimulus, geometry and stage controls; stimulus and map canvases;
+            scale bar; cone figure; readouts; save and link buttons
+
+  Tab:      Pipeline
+  Contents: The colour chain, the opponent-axis table of seven colours and the
+            sensitivity table, with an earlier-version comparison
+
+  Tab:      Cells
+  Contents: Previews of every stage over one stimulus, and the list of
+            controls from an earlier version
+
+  Tab:      Data
+  Contents: The register of nine datasets and transforms, filterable by
+            status; the tab label shows the count (9); cone-table installer
+
+  Tab:      Export
+  Contents: Colour list, CSV, clipboard, settings JSON and link
+
+  Tab:      Reference
+  Contents: Standards, formulas, citations and research notes, with a search
+            box
+
+Links in the page text (for example Data or Cells in a hint) switch to that
+tab.
+
+LAB TAB — STIMULUS
+==================
+
+  Control:         Stimulus
+  What it does:    Chooses the source
+  Values or range: Grating, Test card
+  Default:         Grating
+
+  Control:         Base colour
+  What it does:    The colour the grating is built from (grating only)
+  Values or range: Any colour from the picker
+  Default:         `#3A8CFF`
+
+  Control:         Carrier
+  What it does:    What the grating modulates (grating only)
+  Values or range: Chromatic, Luminance
+  Default:         Chromatic
+
+LAB TAB — GEOMETRY, FREQUENCY AND CONTRAST
+==========================================
+
+  Control:        Viewing distance
+  What it does:   Eye-to-screen distance used for every frequency
+  Range and step: 20–200 cm, step 1
+  Default:        57 cm
+
+  Control:        Pixel pitch
+  What it does:   Physical size of one pixel
+  Range and step: 0.05–0.6 mm, step 0.001
+  Default:        0.248 mm
+
+  Control:        Spatial frequency
+  What it does:   Grating frequency
+  Range and step: 0.2–30 c/deg, step 0.1
+  Default:        4.0 c/deg
+
+  Control:        Contrast
+  What it does:   Grating swing either side of its mean
+  Range and step: 0–100%, step 1
+  Default:        25%
+
+  Control:        Pupil
+  What it does:   Shown only; does not change any output in this version
+  Range and step: 2–8 mm, step 0.1
+  Default:        3.0 mm
+
+LAB TAB — STAGES
+================
+
+  Checkbox                 | Stage                                         | Default
+  -------------------------+-----------------------------------------------+--------
+  Retina — centre-surround | Difference-of-Gaussians on and off maps       | On
+  LGN — opponent channels  | L − M, S − (L+M)/2 and L + M maps             | On
+  V1 — Gabor bank          | Complex-cell energy and preferred orientation | On
+  V2 — boundary signal     | Normalised gradient of V1 energy; needs V1    | On
+  V4 — colour cell         | Projection onto a preferred colour direction  | On
+
+LAB TAB — SHOW
+==============
+
+  Control: Map menu
+  Values:  Retina, on-centre; Retina, off-centre; LGN, L − M; LGN, S −
+           (L+M)/2; LGN, L + M; V1, complex-cell energy; V1, preferred
+           orientation; V2, boundary signal; V4, colour cell
+  Default: Retina, on-centre
+
+  Control: Colourmap menu
+  Values:  Viridis, Inferno, Grayscale
+  Default: Viridis
+
+  Control: Show the scale
+  Values:  Shows or hides the scale bar
+  Default: On
+
+LAB TAB — STAGE SETTINGS
+========================
+
+Shown only while the stage is on.
+
+  Control                  | Range and step                           | Default | Unit
+  -------------------------+------------------------------------------+---------+-------
+  Centre σ (Retina)        | 0.5–6, step 0.1                          | 1.5     | pixels
+  Surround σ (Retina)      | 1–14, step 0.1                           | 4.0     | pixels
+  Surround weight (Retina) | 0–1.5, step 0.01                         | 0.75    | none
+  Gabor frequency (V1)     | 0.2–30, step 0.1                         | 4.0     | c/deg
+  Orientations (V1)        | 2–16, step 1                             | 8       | count
+  Kernel size (V1)         | 9–51, step 2                             | 31      | pixels
+  Envelope σ (V1)          | 1–16, step 0.1                           | 6.0     | pixels
+  V4 preferred direction   | Red, Green, Blue, Yellow, Orange, Purple | Red     | —
+
+LAB TAB — COLOUR VISION
+=======================
+
+  Control: Colour vision
+  Values:  Typical, Protanopia, Deuteranopia, Tritanopia (Viénot, Brettel and
+           Mollon 1999, full strength)
+  Default: Typical
+
+LAB TAB — CANVASES, SCALE BAR AND FIGURE
+========================================
+
+  Element:     Stimulus canvas
+  Description: 256 × 256; the frame the stages see, after any colour vision
+               simulation
+
+  Element:     Map canvas
+  Description: 256 × 256; the selected map, named underneath, with — stage off
+               when its stage is off
+
+  Element:     Header note
+  Description: `256 × 256 · N° per pixel` at the stated geometry
+
+  Element:     Scale bar
+  Description: Minimum, colour ramp, maximum and label: response, this map's
+               own range; flat — this stage found no variation in this
+               stimulus; or 0°–180° preferred orientation
+
+  Element:     Cone figure
+  Description: L, M and S curves 390–730 nm with dashed lines at the published
+               peaks (442, 541, 567 nm) and a note
+
+LAB TAB — READOUTS
+==================
+
+  Readout: L − M peak gap
+  Meaning: Distance between the L and M peaks of the held cone table;
+           highlighted below 5 nm
+  Format:  nm
+
+  Readout: Published gap
+  Meaning: Fixed reference value
+  Format:  25 nm
+
+  Readout: Neutral off-axis
+  Meaning: Worst chromatic departure of a nine-step grey ramp; highlighted
+           above 0.001
+  Format:  Scientific notation
+
+  Readout: Contrast achieved
+  Meaning: Contrast drawn after any sRGB cap; highlighted when capped
+  Format:  %
+
+  Readout: Sensitivity at this frequency
+  Meaning: The tool's log-Gaussian weighting (peak 4 c/deg, 1.6 octaves) at
+           the stimulus frequency
+  Format:  0–1, three decimals
+
+  Readout: The curve's peak
+  Meaning: Peak of that weighting
+  Format:  4.0 c/deg
+
+  Readout: Frame RMS contrast
+  Meaning: Root-mean-square spread of relative luminance over the stimulus
+           frame
+  Format:  Four decimals
+
+  Readout: Nyquist limit of the grid
+  Meaning: Half a cycle per pixel at the stated geometry
+  Format:  c/deg, one decimal
+
+LAB TAB — NOTES AND BUTTONS
+===========================
+
+  Element:                 Above the pixel grid's Nyquist limit.
+  When it appears or what it does:Spatial frequency is above the Nyquist
+                           limit; the drawn grating is an alias
+
+  Element:                 The contrast you asked for does not fit in sRGB.
+  When it appears or what it does:The requested swing does not fit both
+                           phases; the contrast was reduced
+
+  Element:                 Save the map
+  When it appears or what it does:Saves the map canvas as
+                           `visual-pathway-<map>.png`
+
+  Element:                 Copy a link to this view
+  When it appears or what it does:Copies a link with the current settings
+
+PIPELINE TAB
+============
+
+  Control | Values                                              | Default
+  --------+-----------------------------------------------------+------------
+  Show    | The chain, The opponent axes, The sensitivity curve | The chain
+  Against | What it was, Hide                                   | What it was
+
+Outputs: the chain of seven steps; a table of `#000000`, `#404040`, `#808080`,
+`#C0C0C0`, `#FFFFFF`, `#3A8CFF` and `#E03131` with L − M and S − (L+M)/2 (plus
+as shipped columns with What it was); or a table of Pupil (2, 3, 5, 8 mm),
+Peak, as shipped, Peak now and Published photopic peak.
+
+CELLS TAB
+=========
+
+  Control: Show
+  Values:  Everything (eight stage cards plus two withdrawn panels), The five
+           that run
+  Default: Everything
+
+  Control: Contrast
+  Values:  10%, 25%, 100%
+  Default: 25%
+
+Cards: Stimulus, Retina — centre-surround, LGN — L − M, LGN — S − (L+M)/2, V1
+— Gabor energy, V1 — hypercolumn, V2 — boundary signal, V4 — colour cell;
+withdrawn: Spike raster, Detection %. Each card is 96 × 96 with a tag:
+pass-through, units noted, space fixed, units fixed, runs, stand-in, inherits
+or withdrawn. The list Controls that were read and never used has six rows
+marked removed or wired up.
+
+DATA TAB
+========
+
+  Control:      Status
+  What it does: Filters the register: All (9), Verbatim (2), Computed (2),
+                Stand-in (4), Absent (1)
+
+  Control:      Register row
+  What it does: Select (or press `Enter` or `Space`) to expand its note and
+                What it would take
+
+  Control:      Drop a CSV or JSON
+  What it does: Installs a cone table: wavelength, L, M, S; see Cones,
+                opponent channels and the cone table
+                [cones-and-opponent-channels.txt]
+
+Register entries: sRGB transfer and primaries (Verbatim), Dichromacy
+projection (Verbatim), Cone transform (Computed), Spectral sensitivity table
+(Stand-in), Opponent axes (Stand-in), Spatial sensitivity (Stand-in), Cortical
+stage models (Stand-in), Viewing geometry (Computed), Spike raster (Absent).
+
+EXPORT TAB
+==========
+
+  Control:      What to take
+  What it does: A list of colours, The active map (saves the PNG), The
+                settings (downloads the JSON), A link to this view (copies the
+                link)
+
+  Control:      Colours
+  What it does: Hex colours, one per line; commas and semicolons also separate
+
+  Control:      Run them
+  What it does: Redraws the table (it also updates as you type)
+
+  Control:      Download the CSV
+  What it does: Saves `cones-opponent.csv`
+
+  Control:      Copy to clipboard
+  What it does: Copies a tab-separated table
+
+  Control:      Download the settings
+  What it does: Saves `visual-pathway-settings.json`
+
+Table columns: Input, L, M, S, L − M, S − (L+M)/2, L + M.
+
+REFERENCE TAB
+=============
+
+  Control: Reference
+  Values:  Standards (5), Formulas (12), Citations (13, default), Research
+           notes (7)
+
+  Control: Filter
+  Values:  Searches all four groups at once; shows Nothing in the reference
+           matches that. when empty
+
+A ● before a citation marks one the current version corrected. Each entry
+carries a tag such as runs, not held, re-named, form only, stand-in, context
+or measured.
+
+MESSAGES
+========
+
+  Message: Cone table installed — L peaks at N nm
+  Meaning: A dropped table was accepted
+
+  Message: Not installed: too few rows
+  Meaning: Fewer than eight rows
+
+  Message: Not installed: row N has fewer than 4 columns / row N is not
+           numeric
+  Meaning: A malformed row
+
+  Message: Not installed: wavelengths must increase
+  Meaning: Rows out of order
+
+  Message: Not installed: L and M peak N nm apart, which is not a cone table
+  Meaning: L and M peaks closer than 5 nm
+
+  Message: CSV saved, PNG saved, Settings exported, Copied, Link copied
+  Meaning: The action succeeded
+
+  Message: Copy blocked
+  Meaning: The browser refused clipboard access
+
+  Message: No colours to write / No colours to copy
+  Meaning: The colour list is empty
+
+FILE FORMATS
+============
+
+  File:     `cones-opponent.csv`
+  Format:   CSV with `#` comment lines
+  Contents: Chain, cone table and peaks, axes, geometry, reportable flag;
+            columns `Input,L,M,S,RG,BY,Lum`
+
+  File:     Clipboard table
+  Format:   Tab-separated text
+  Contents: `Input`, `L`, `M`, `S`, `RG`, `BY`, `Lum`, four decimals
+
+  File:     `visual-pathway-<map>.png`
+  Format:   PNG, 256 × 256
+  Contents: The selected map without its scale bar
+
+  File:     `visual-pathway-settings.json`
+  Format:   JSON
+  Contents: See Export and share [export-and-share.txt]
+
+  File:     Cone table (input)
+  Format:   CSV or JSON
+  Contents: Four columns: wavelength (nm), L, M, S; at least eight rows,
+            increasing wavelengths
+
+LINK PARAMETERS
+===============
+
+`source`, `baseHex`, `carrier`, `cpd`, `contrast`, `distanceCm`, `pitchMm`,
+`nOrient`, `rfSize`, `gaborCpd`, `gaborSigma`, `dogCenter`, `dogSurround`,
+`dogWeight`, `v4Preset` (`red`, `green`, `blue`, `yellow`, `orange`,
+`purple`), `cvdType` (`none`, `protan`, `deutan`, `tritan`), `colormap`
+(`viridis`, `inferno`, `grayscale`), `viewMap` (`retina-on`, `retina-off`,
+`lgn-rg`, `lgn-by`, `lgn-lum`, `v1`, `v1-orient`, `v2`, `v4`).

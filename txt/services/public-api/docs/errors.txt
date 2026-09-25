@@ -1,0 +1,160 @@
+==============================================================================
+ERRORS
+==============================================================================
+The Auric Artisan API's error format, every error code with its HTTP status,
+what each means, and how to respond.
+Area: Services › Public API   Updated: 2026-09-25
+
+Errors are JSON with a stable `code` and a human-readable `message`. Most
+include a `request_id`; quote it when you contact support about a specific
+call.
+
+    {
+      "error": {
+        "code": "INVALID_INPUT",
+        "message": "seed: not a number"
+      },
+      "request_id": "daebcbed-508b-4d4d-91ef-87ee99d32f03"
+    }
+
+ERROR CODES
+===========
+
+  Status:                 400
+  Code:                   `INVALID_INPUT`
+  Meaning and what to do: A parameter is missing or malformed; the message
+                          names the field
+
+  Status:                 400
+  Code:                   `INVALID_JSON`
+  Meaning and what to do: The body is not valid JSON
+
+  Status:                 401
+  Code:                   `UNAUTHORIZED` or `UNAUTHENTICATED`
+  Meaning and what to do: No key, or a missing, invalid or revoked key
+
+  Status:                 402
+  Code:                   `PLAN_UPGRADE_REQUIRED`
+  Meaning and what to do: A valid key on a plan without API access; included
+                          from Specialist upward
+
+  Status:                 402
+  Code:                   `INSUFFICIENT_CREDITS`
+  Meaning and what to do: Overage is on but the prepaid balance will not cover
+                          the call. Top up.
+
+  Status:                 402
+  Code:                   `SPEND_CAP_REACHED`
+  Meaning and what to do: Your monthly overage spend cap was reached. Raise it
+                          in the dashboard.
+
+  Status:                 402
+  Code:                   `CREDIT_DEBIT_FAILED`
+  Meaning and what to do: The balance could not be debited, so the request was
+                          not served and nothing was charged. Retry.
+
+  Status:                 403
+  Code:                   `FORBIDDEN`
+  Meaning and what to do: A valid key without rights for this route
+
+  Status:                 404
+  Code:                   `NOT_FOUND`
+  Meaning and what to do: Unknown endpoint or resource id. `GET /v1` lists
+                          every endpoint.
+
+  Status:                 405
+  Code:                   `METHOD_NOT_ALLOWED`
+  Meaning and what to do: Right path, wrong method; the `Allow` header lists
+                          what is accepted
+
+  Status:                 413
+  Code:                   `PAYLOAD_TOO_LARGE`
+  Meaning and what to do: The body is over the limit (4 MB for image
+                          endpoints)
+
+  Status:                 429
+  Code:                   `RATE_LIMITED`
+  Meaning and what to do: Per-minute rate exceeded. Wait for `Retry-After`.
+
+  Status:                 429
+  Code:                   `IP_RATE_LIMITED`
+  Meaning and what to do: Too many requests from one address, whatever the key
+
+  Status:                 429
+  Code:                   `QUOTA_EXCEEDED`
+  Meaning and what to do: Included monthly credits used up and overage off.
+                          Enable it, or wait for the reset.
+
+  Status:                 429
+  Code:                   `HARD_CEILING_REACHED`
+  Meaning and what to do: Ten times the included allowance was reached this
+                          month; contact support
+
+  Status:                 500
+  Code:                   `INTERNAL`
+  Meaning and what to do: An unexpected server error. Quote the `request_id`.
+
+  Status:                 503
+  Code:                   `NOT_CONFIGURED`
+  Meaning and what to do: An optional part of the service is not enabled
+
+  Status:                 503
+  Code:                   `ENFORCEMENT_UNAVAILABLE`
+  Meaning and what to do: Limits could not be checked, so nothing was
+                          executed. Retry later.
+
+The API reference lists the 401 code as both `UNAUTHENTICATED` (in the
+endpoint tables) and `UNAUTHORIZED` (in the errors section); handle 401 by
+status rather than by code.
+
+Some endpoints have their own codes, such as `UNKNOWN_SPACE` (404) for
+`/v1/science/spaces/:key`, `UNKNOWN_CONDITION` for
+`/v1/vision/conditions/:slug`, `VALIDATION_ERROR` for an unknown collection
+id, and the analyzer's codes on Analyzer [endpoints/analyzer.txt].
+
+429 OR 402: WHICH IS WHICH
+==========================
+
+The split is by what you should do:
+
+  - 429 means back off and retry. The condition resets on its own, at the time
+    in `retry-after` and `details.resets_at`. Official SDKs already retry on
+    it.
+  - 402 means only a money decision unblocks it: a top-up, a raised spend cap
+    or a plan upgrade. Retrying without one is pointless.
+
+Every refusal names its remedy in `details.remedy`: `enable_overage`,
+`buy_credits`, `raise_spend_cap` or `contact_support`, alongside
+`credits_used`, `credits_included`, `credits_this_request` and `resets_at`.
+
+    {
+      "error": {
+        "code": "INSUFFICIENT_CREDITS",
+        "message": "Pay-as-you-go is on, but the prepaid credit balance is empty. Top up to continue — nothing is billed after the fact.",
+        "details": {
+          "tier": "pro",
+          "credits_used": 1000010,
+          "credits_included": 1000000,
+          "credits_this_request": 10,
+          "resets_at": "2026-09-01T00:00:00.000Z",
+          "remedy": "buy_credits",
+          "credits_needed": 10
+        }
+      },
+      "request_id": "daebcbed-508b-4d4d-91ef-87ee99d32f03"
+    }
+
+HANDLING ERRORS WELL
+====================
+
+  - Branch on `error.code`, not on `message`, which may change.
+  - On 429, wait for `retry-after` before retrying; do not retry in a tight
+    loop.
+  - On 402, log `details.remedy` so someone can act on it.
+  - Watch `x-quota-remaining` to slow down before you run out.
+
+RELATED PAGES
+=============
+
+  - Plans, credits and quotas [plans-credits-and-quotas.txt]
+  - Troubleshooting [troubleshooting.txt]

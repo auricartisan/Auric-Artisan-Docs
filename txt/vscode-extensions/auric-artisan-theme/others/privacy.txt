@@ -1,0 +1,56 @@
+==============================================================================
+PRIVACY
+==============================================================================
+What Auric Artisan Theme stores, where it stores it and what, if anything,
+uses the network.
+Area: VS Code extensions › Auric Artisan Theme   Updated: 2026-09-25
+
+Auric Artisan Theme works entirely inside VS Code. It has no account, no
+telemetry and no runtime package dependencies, and it does not contact a
+server.
+
+WHAT IS STORED AND WHERE
+========================
+
+  Data:               Dial values and interface language
+  Where it is stored: Your VS Code user settings, under `auricTheme.*`.
+
+  Data:               Theme-scoped colour customisations
+  Where it is stored: Your VS Code user settings, in the colour, token and
+                      semantic-token customisation blocks for the Auric theme
+                      names. Unrelated blocks are left alone. An untouched
+                      set-up writes nothing.
+
+  Data:               Colour slot overrides (per variant) and presets
+  Where it is stored: The extension's local storage in VS Code on this
+                      machine.
+
+  Data:               Studio view state (tab, scroll, open groups, searches)
+  Where it is stored: The panel's own saved state in VS Code.
+
+  Data:               Recent colours in the picker
+  Where it is stored: Memory only, for the current panel session.
+
+"Local" does not mean read-only: customising the theme writes to your user
+settings.
+
+WHAT USES THE NETWORK
+=====================
+
+Nothing, automatically. The links to auricartisan.com in the Studio and
+sidebar open your browser only when you select them.
+
+CLIPBOARD AND FILES
+===================
+
+  - The clipboard is read only when you run Apply Customisation from
+    Clipboard, and written only when you copy.
+  - Files are written only when you run Export as Theme File… and choose a
+    location.
+
+SECURITY
+========
+
+The Studio and sidebar load only files packaged with the extension and use a
+restrictive content security policy. Imported JSON is validated before it is
+applied and is never executed.

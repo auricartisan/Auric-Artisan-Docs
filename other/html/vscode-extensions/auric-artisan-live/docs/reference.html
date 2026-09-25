@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: commands, keys and settings — Auric Artisan Docs</title>
+<meta name="description" content="Every Auric Artisan Live command, keyboard shortcut, menu entry, view and setting, with types, defaults and ranges.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html" aria-current="page">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Reference: commands, keys and settings</h1>
+<p class="lede">Every Auric Artisan Live command, keyboard shortcut, menu entry, view and setting, with types, defaults and ranges.</p>
+<p>This page lists everything Auric Artisan Live 0.2.1 contributes to VS Code: 54 commands, 7 keyboard shortcuts, 3 sidebar views and 103 settings. Command titles appear in the Command Palette with the <strong>Auric Live:</strong> prefix.</p>
+<h2 id="commands">Commands</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Live: Select Active Server</strong></td><td><code>auricLive.selectServer</code></td><td>—</td><td>Choose which workspace folder&#39;s server the panel and commands act on</td></tr>
+<tr><td><strong>Auric Live: Toggle Browser Console Capture</strong></td><td><code>auricLive.toggleConsole</code></td><td>—</td><td>Turn browser console capture on or off for this session</td></tr>
+<tr><td><strong>Auric Live: Use HTTPS Certificate and Key</strong></td><td><code>auricLive.configureCertificate</code></td><td>—</td><td>Import and validate a PEM certificate and matching private key, then turn HTTPS on</td></tr>
+<tr><td><strong>Auric Live: Diagnose Project and Runtime</strong></td><td><code>auricLive.diagnose</code></td><td>—</td><td>Open a local report on configuration, run targets and prerequisites, with credentials redacted</td></tr>
+<tr><td><strong>Auric Live: Go Live</strong></td><td><code>auricLive.goLive</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>L</code> (macOS <code>Cmd</code> + <code>Alt</code> + <code>L</code>)</td><td>Start serving the workspace folder, or reopen a server that is already running</td></tr>
+<tr><td><strong>Auric Live: Stop Server</strong></td><td><code>auricLive.stop</code></td><td>—</td><td>Stop the active server</td></tr>
+<tr><td><strong>Auric Live: Stop All Servers</strong></td><td><code>auricLive.stopAll</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>L</code> (macOS <code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>L</code>)</td><td>Stop every Auric Live server</td></tr>
+<tr><td><strong>Auric Live: Restart Server</strong></td><td><code>auricLive.restart</code></td><td>—</td><td>Restart the active server</td></tr>
+<tr><td><strong>Auric Live: Serve This Folder</strong></td><td><code>auricLive.startHere</code></td><td>—</td><td>Serve the folder you right-clicked (Explorer only); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Live: Open with Auric Live</strong></td><td><code>auricLive.openWithLive</code></td><td>—</td><td>Start the server if needed and open this file&#39;s address</td></tr>
+<tr><td><strong>Auric Live: Open in Default Browser</strong></td><td><code>auricLive.openInBrowser</code></td><td>—</td><td>Open the server&#39;s address in your default browser</td></tr>
+<tr><td><strong>Auric Live: Open Preview Beside</strong></td><td><code>auricLive.openPreview</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>K</code> (macOS <code>Cmd</code> + <code>Alt</code> + <code>K</code>)</td><td>Open the preview beside the editor</td></tr>
+<tr><td><strong>Auric Live: Copy Local URL</strong></td><td><code>auricLive.copyUrl</code></td><td>—</td><td>Copy the localhost address</td></tr>
+<tr><td><strong>Auric Live: Copy Network URL</strong></td><td><code>auricLive.copyNetworkUrl</code></td><td>—</td><td>Copy an address other devices on your network can use</td></tr>
+<tr><td><strong>Auric Live: Show Phone QR Code</strong></td><td><code>auricLive.showQrCode</code></td><td>—</td><td>Show a locally generated QR code for opening the site on a phone</td></tr>
+<tr><td><strong>Auric Live: Open Control Panel</strong></td><td><code>auricLive.openControlPanel</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>I</code> (macOS <code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>I</code>)</td><td>Open the Auric Live control panel</td></tr>
+<tr><td><strong>Auric Live: Open Request Inspector</strong></td><td><code>auricLive.openInspector</code></td><td>—</td><td>Open the control panel at its Requests section</td></tr>
+<tr><td><strong>Auric Live: Clear Request Log</strong></td><td><code>auricLive.clearRequests</code></td><td>—</td><td>Empty the request inspector</td></tr>
+<tr><td><strong>Auric Live: Export Requests as HAR</strong></td><td><code>auricLive.exportHar</code></td><td>—</td><td>Save captured requests as a HAR file</td></tr>
+<tr><td><strong>Auric Live: Copy Request as curl</strong></td><td><code>auricLive.copyAsCurl</code></td><td>—</td><td>Copy a captured request as a curl command (Requests view); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Live: Copy Request as fetch</strong></td><td><code>auricLive.copyAsFetch</code></td><td>—</td><td>Copy a captured request as a fetch() call (Requests view); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Live: Replay Request</strong></td><td><code>auricLive.replayRequest</code></td><td>—</td><td>Send a captured request again (Requests view); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Live: Show Request Detail</strong></td><td><code>auricLive.showRequestDetail</code></td><td>—</td><td>Show a captured request&#39;s details (Requests view); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Live: Create Project Config File</strong></td><td><code>auricLive.createConfigFile</code></td><td>—</td><td>Write a starter auric.live.json and open it</td></tr>
+<tr><td><strong>Auric Live: Open Project Config File</strong></td><td><code>auricLive.openConfigFile</code></td><td>—</td><td>Open auric.live.json, or offer to create it</td></tr>
+<tr><td><strong>Auric Live: Open .auricignore-live</strong></td><td><code>auricLive.openIgnoreFile</code></td><td>—</td><td>Open .auricignore-live, creating a starter if needed</td></tr>
+<tr><td><strong>Auric Live: Open Recorded Live Session</strong></td><td><code>auricLive.openRuntimeRecords</code></td><td>—</td><td>Open the latest session record, .auric-live/latest.json</td></tr>
+<tr><td><strong>Auric Live: Reload Configuration</strong></td><td><code>auricLive.reloadConfig</code></td><td>—</td><td>Re-read settings and the project file</td></tr>
+<tr><td><strong>Auric Live: Change Port…</strong></td><td><code>auricLive.changePort</code></td><td>—</td><td>Set the port for this session (0 chooses a free one)</td></tr>
+<tr><td><strong>Auric Live: Change Served Folder…</strong></td><td><code>auricLive.setRoot</code></td><td>—</td><td>Pick the folder to serve for this session</td></tr>
+<tr><td><strong>Auric Live: Toggle Live Reload</strong></td><td><code>auricLive.toggleLiveReload</code></td><td>—</td><td>Turn live reload on or off for this session</td></tr>
+<tr><td><strong>Auric Live: Toggle Mock API</strong></td><td><code>auricLive.toggleMocks</code></td><td>—</td><td>Turn mock answering on or off for this session</td></tr>
+<tr><td><strong>Auric Live: Toggle HTTPS</strong></td><td><code>auricLive.toggleHttps</code></td><td>—</td><td>Turn HTTPS on (with a generated certificate) or off for this session</td></tr>
+<tr><td><strong>Auric Live: Simulate Network Profile…</strong></td><td><code>auricLive.setThrottle</code></td><td>—</td><td>Choose a network profile for this session</td></tr>
+<tr><td><strong>Auric Live: Reveal Development Certificate</strong></td><td><code>auricLive.revealCertificate</code></td><td>—</td><td>Show the generated certificate file in your file manager</td></tr>
+<tr><td><strong>Auric Live: Open Settings</strong></td><td><code>auricLive.openSettings</code></td><td>—</td><td>Open the Settings editor filtered to Auric Live</td></tr>
+<tr><td><strong>Auric Live: Show Log</strong></td><td><code>auricLive.showLog</code></td><td>—</td><td>Show the Auric Artisan Live output channel</td></tr>
+<tr><td><strong>Auric Live: Reload Connected Pages</strong></td><td><code>auricLive.reloadBrowsers</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>U</code> (macOS <code>Cmd</code> + <code>Alt</code> + <code>U</code>)</td><td>Reload every connected page now</td></tr>
+<tr><td><strong>Auric Live: Resume Live Reload</strong></td><td><code>auricLive.resumeLiveReload</code></td><td>—</td><td>Resume live reload after reload-storm protection paused it</td></tr>
+<tr><td><strong>Auric Live: Start Framework Dev Server…</strong></td><td><code>auricLive.startDevServer</code></td><td>—</td><td>Detect the framework dev server, start it and forward to it; trusted workspaces only</td></tr>
+<tr><td><strong>Auric Live: Stop Framework Dev Server</strong></td><td><code>auricLive.stopDevServer</code></td><td>—</td><td>Stop the dev server and remove the forwarding it added; trusted workspaces only</td></tr>
+<tr><td><strong>Auric Live: Restart Framework Dev Server</strong></td><td><code>auricLive.restartDevServer</code></td><td>—</td><td>Restart the dev server or run target; trusted workspaces only</td></tr>
+<tr><td><strong>Auric Live: Show Dev Server Output</strong></td><td><code>auricLive.showDevServerLog</code></td><td>—</td><td>Show the run target&#39;s output</td></tr>
+<tr><td><strong>Auric Live: Find a Running Backend</strong></td><td><code>auricLive.detectBackendPort</code></td><td>—</td><td>Scan common ports for a running backend and offer to forward to it</td></tr>
+<tr><td><strong>Auric Live: Select Run Target…</strong></td><td><code>auricLive.selectRunTarget</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>J</code> (macOS <code>Cmd</code> + <code>Alt</code> + <code>J</code>)</td><td>Choose what serves the site: static files, a detected runtime or your own command</td></tr>
+<tr><td><strong>Auric Live: Add Custom Run Command…</strong></td><td><code>auricLive.addRunProfile</code></td><td>—</td><td>Save a command (with any leading environment variables) as a run target</td></tr>
+<tr><td><strong>Auric Live: Edit Saved Run Commands</strong></td><td><code>auricLive.editRunProfiles</code></td><td>—</td><td>Open the auricLive.runProfiles setting</td></tr>
+<tr><td><strong>Auric Live: Show Detected Run Targets</strong></td><td><code>auricLive.showRunTargets</code></td><td>—</td><td>List every run target for the folder, with the reason for each, in the log</td></tr>
+<tr><td><strong>Auric Live: Add API Proxy Route…</strong></td><td><code>auricLive.addProxyRoute</code></td><td>—</td><td>Forward a path prefix to a backend for this session</td></tr>
+<tr><td><strong>Auric Live: Add Mock API Route…</strong></td><td><code>auricLive.addMockRoute</code></td><td>—</td><td>Answer a method and path with a JSON body for this session</td></tr>
+<tr><td><strong>Auric Live: Open Mock Database</strong></td><td><code>auricLive.openMockDatabase</code></td><td>—</td><td>Open the REST database file, or create a sample</td></tr>
+<tr><td><strong>Auric Live: Refresh</strong></td><td><code>auricLive.refresh</code></td><td>—</td><td>Refresh the Servers view (view menu only); not in the Command Palette</td></tr>
+<tr><td><strong>Auric Live: Open Live Menu</strong></td><td><code>auricLive.openMenu</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>K</code> (macOS <code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>K</code>)</td><td>Open the Auric Live quick menu</td></tr>
+<tr><td><strong>Auric Live: Focus Auric Live</strong></td><td><code>auricLive.focus</code></td><td>—</td><td>Show the Auric Live sidebar</td></tr>
+</tbody></table></div>
+<p>Commands marked &quot;not in the Command Palette&quot; run from the context menus of the <strong>Servers</strong> and <strong>Requests</strong> views, the Explorer or a view&#39;s title bar. Most other commands appear in the Command Palette only when a folder is open; <strong>Open with Auric Live</strong> appears when an editor is open.</p>
+<h2 id="keyboard-shortcuts">Keyboard shortcuts</h2>
+<p>All seven shortcuts work whenever a folder is open. On macOS, <code>Cmd</code> replaces <code>Ctrl</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys (Windows and Linux)</th><th>Keys (macOS)</th><th>Command</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>L</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>L</code></td><td><strong>Go Live</strong></td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>L</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>L</code></td><td><strong>Stop All Servers</strong></td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>K</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>K</code></td><td><strong>Open Preview Beside</strong></td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>K</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>K</code></td><td><strong>Open Live Menu</strong></td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>J</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>J</code></td><td><strong>Select Run Target…</strong></td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>U</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>U</code></td><td><strong>Reload Connected Pages</strong></td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>I</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>Shift</code> + <code>I</code></td><td><strong>Open Control Panel</strong></td></tr>
+</tbody></table></div>
+<p>Inside other surfaces:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>Keys</th><th>What they do</th></tr></thead>
+<tbody>
+<tr><td>A served page</td><td><code>Alt</code> + <code>Shift</code> + <code>D</code> (set by <code>auricLive.dashboard.shortcut</code>)</td><td>Open the in-page dashboard</td></tr>
+<tr><td>Control panel, Requests section</td><td><code>Ctrl</code> + <code>F</code> (<code>Cmd</code> + <code>F</code> on macOS)</td><td>Focus the request search</td></tr>
+<tr><td>Control panel</td><td><code>Escape</code></td><td>Close request details or an open menu</td></tr>
+<tr><td>Dashboard tabs</td><td>Arrow keys, <code>Home</code>, <code>End</code></td><td>Move between tabs</td></tr>
+<tr><td>Dashboard content</td><td>Arrow keys, <code>Page Up</code>, <code>Page Down</code>, <code>Home</code>, <code>End</code>, <code>Space</code>, <code>Shift</code> + <code>Space</code></td><td>Scroll</td></tr>
+</tbody></table></div>
+<h2 id="where-commands-appear">Where commands appear</h2>
+<ul>
+<li>Status bar: <strong>Go Live</strong> when stopped; the port (opens the Live menu) when running</li>
+<li><strong>Servers</strong> view title: <strong>Go Live</strong>, <strong>Select Run Target…</strong>, <strong>Stop All Servers</strong>, <strong>Open Control Panel</strong>; <strong>…</strong> menu: <strong>Refresh</strong>, <strong>Open Settings</strong>, <strong>Show Log</strong></li>
+<li>A running server in <strong>Servers</strong>: Inline: <strong>Open in Default Browser</strong>, <strong>Stop Server</strong>. Right-click: <strong>Restart Server</strong>, <strong>Open Preview Beside</strong>, <strong>Copy Local URL</strong>, <strong>Copy Network URL</strong>, <strong>Show Phone QR Code</strong></li>
+<li>A stopped server in <strong>Servers</strong>: Inline: <strong>Go Live</strong></li>
+<li><strong>Requests</strong> view title: <strong>Clear Request Log</strong>, <strong>Export Requests as HAR</strong></li>
+<li>A request in <strong>Requests</strong>: Inline: <strong>Show Request Detail</strong>. Right-click: <strong>Replay Request</strong>, <strong>Copy Request as curl</strong>, <strong>Copy Request as fetch</strong></li>
+<li><strong>Routes and Mocks</strong> view title: <strong>Add API Proxy Route…</strong>, <strong>Add Mock API Route…</strong>, <strong>Find a Running Backend</strong>; <strong>…</strong> menu: <strong>Open Mock Database</strong>, <strong>Open Project Config File</strong>, <strong>Restart Framework Dev Server</strong>, <strong>Show Dev Server Output</strong></li>
+<li>Explorer, on a folder: <strong>Serve This Folder</strong>, and the <strong>Auric Live</strong> submenu</li>
+<li>Explorer, on <code>.html</code>, <code>.htm</code>, <code>.php</code>, <code>.xhtml</code> or <code>.md</code>: <strong>Open with Auric Live</strong></li>
+<li>Editor and editor tab, for <code>.html</code>, <code>.htm</code>, <code>.php</code> or <code>.xhtml</code>: <strong>Open with Auric Live</strong></li>
+<li>Editor title <strong>Run</strong> menu › <strong>Auric Live</strong>: <strong>Go Live</strong>, <strong>Select Run Target…</strong>, <strong>Add Custom Run Command…</strong>, <strong>Open Preview Beside</strong>, <strong>Open in Default Browser</strong>, <strong>Show Phone QR Code</strong>, <strong>Restart Framework Dev Server</strong>, <strong>Stop Server</strong>, <strong>Open Live Menu</strong></li>
+</ul>
+<h3 id="the-auric-live-menu">The Auric Live menu</h3>
+<p><strong>Open Live Menu</strong> lists, when a server is running: <strong>Open in browser</strong>, <strong>Open preview beside</strong>, <strong>Show phone QR code</strong>, <strong>Reload connected pages</strong>, <strong>Open control panel</strong>, <strong>Restart server</strong> and <strong>Stop server</strong>. When stopped: <strong>Go Live</strong> and <strong>Open control panel</strong>. Then always: <strong>Add an API proxy route</strong>, <strong>Add a mock API route</strong>, <strong>Open the mock database</strong>, <strong>Change the run target…</strong>, <strong>Add a custom command…</strong>, the run target&#39;s <strong>Restart the run target</strong>, <strong>Show its output</strong> and <strong>Stop it</strong> (or <strong>Start the framework dev server</strong> when none is running), <strong>Find a backend that is already running</strong>, <strong>Simulate a network profile</strong>, <strong>Select active server</strong>, <strong>Toggle browser console capture</strong>, <strong>Diagnose configuration and runtimes</strong>, <strong>Import an HTTPS certificate</strong>, <strong>Toggle HTTPS</strong>, <strong>Toggle live reload</strong>, <strong>Change the port</strong>, <strong>Change the served folder</strong>, <strong>Open the project config file</strong>, <strong>Open .auricignore-live</strong>, <strong>Open recorded session</strong>, <strong>Export requests as HAR</strong>, <strong>Open settings</strong> and <strong>Show log</strong>. Each shows its current value where it has one.</p>
+<h2 id="views">Views</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>View</th><th>Where</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Servers</strong></td><td>Auric Live sidebar</td><td>One entry per workspace folder; expand for root, run target, dev server, upstreams, addresses, live reload, requests, certificate and config file</td></tr>
+<tr><td><strong>Requests</strong></td><td>Auric Live sidebar</td><td>Recent requests with status, handler and time</td></tr>
+<tr><td><strong>Routes and Mocks</strong></td><td>Auric Live sidebar</td><td>Proxy rules, mock routes, REST collections and CGI handlers</td></tr>
+<tr><td>Control panel</td><td>Editor tab</td><td>Overview, Requests, Runtime, Routing, Settings</td></tr>
+<tr><td><strong>Auric Live Preview</strong></td><td>Editor tab beside the code</td><td>The served site at a chosen device size</td></tr>
+</tbody></table></div>
+<p>Output channels: <strong>Auric Artisan Live</strong> (server log) and <strong>Auric Live: Run Target</strong> (run target output).</p>
+<h2 id="settings">Settings</h2>
+<p>All 103 settings, grouped by area. A project file sets the same values with the names shown here minus the <code>auricLive.</code> prefix. &quot;Values or range&quot; lists the allowed values, or the minimum and maximum for numbers.</p>
+<h3 id="server-and-address">Server and address</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.root</code></td><td>string</td><td>empty</td><td></td><td>Folder to serve, relative to the workspace folder. Empty serves the workspace folder; use <code>dist</code> or <code>public</code> for a build output.</td></tr>
+<tr><td><code>auricLive.port</code></td><td>number</td><td><code>5500</code></td><td>0–65535</td><td>Port to listen on. Set 0 to let the operating system pick a free one, which is useful when several projects run at once.</td></tr>
+<tr><td><code>auricLive.portStrategy</code></td><td>string</td><td><code>increment</code></td><td><code>increment</code>, <code>fail</code>, <code>random</code></td><td>What to do when the chosen port is already in use.</td></tr>
+<tr><td><code>auricLive.host</code></td><td>string</td><td><code>0.0.0.0</code></td><td></td><td>Address to bind. <code>0.0.0.0</code> also answers devices on your network (phone testing); <code>127.0.0.1</code> keeps it on this machine.</td></tr>
+<tr><td><code>auricLive.open</code></td><td>string</td><td><code>default</code></td><td><code>default</code>, <code>preview</code>, <code>none</code></td><td>What to open once the server starts.</td></tr>
+<tr><td><code>auricLive.openPath</code></td><td>string</td><td>empty</td><td></td><td>Path appended to the URL that is opened, for a site whose entry point is not the root — /docs/index.html, for example.</td></tr>
+<tr><td><code>auricLive.startOnOpen</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Start the server automatically when a folder is opened.</td></tr>
+<tr><td><code>auricLive.showStatusBar</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Show the Go Live control in the status bar.</td></tr>
+<tr><td><code>auricLive.suggestFrameworkSetup</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Once per folder, offer the matching setup when the project is a framework with its own dev server, or a PHP site.</td></tr>
+<tr><td><code>auricLive.configFile</code></td><td>string</td><td><code>auric.live.json</code></td><td></td><td>Name of the project file, looked for in the workspace folder, then <code>.auric/</code>. It overrides these settings.</td></tr>
+<tr><td><code>auricLive.interfaceLanguage</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>en</code>, <code>hi</code></td><td>Language of the Auric Live panel and supported messages. <code>auto</code> follows VS Code. Changing it does not restart servers.</td></tr>
+</tbody></table></div>
+<h3 id="https">HTTPS</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.https.enabled</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Serve over HTTPS, which service workers, clipboard, camera, microphone and geolocation need on a phone.</td></tr>
+<tr><td><code>auricLive.https.certPath</code></td><td>string</td><td>empty</td><td></td><td>Certificate file. Empty generates and reuses a self-signed one for <code>localhost</code> and your network addresses.</td></tr>
+<tr><td><code>auricLive.https.keyPath</code></td><td>string</td><td>empty</td><td></td><td>Private key matching <code>auricLive.https.certPath</code>.</td></tr>
+</tbody></table></div>
+<h3 id="static-files-and-responses">Static files and responses</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.index</code></td><td>array</td><td><code>[&quot;index.html&quot;,&quot;index.htm&quot;]</code></td><td></td><td>File names tried, in order, when a directory is requested.</td></tr>
+<tr><td><code>auricLive.directoryListing</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Render a browsable index for a directory that has no index file.</td></tr>
+<tr><td><code>auricLive.cleanUrls</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Serve /about from about.html, so links can drop the extension the way most static hosts do.</td></tr>
+<tr><td><code>auricLive.dotfiles</code></td><td>string</td><td><code>ignore</code></td><td><code>ignore</code>, <code>allow</code>, <code>deny</code></td><td>How paths with a dot-file or dot-folder are treated. The default hides them, keeping <code>.env</code> and <code>.git</code> unserved.</td></tr>
+<tr><td><code>auricLive.notFoundPage</code></td><td>string</td><td>empty</td><td></td><td>Page served for a missing file, relative to the served root. Leave empty for the built-in 404.</td></tr>
+<tr><td><code>auricLive.spa.enabled</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Answer unknown paths with the fallback document, so a client-side router keeps working on a deep link and a hard refresh.</td></tr>
+<tr><td><code>auricLive.spa.fallback</code></td><td>string</td><td><code>/index.html</code></td><td></td><td>Document served for unknown paths when the single-page fallback is on.</td></tr>
+<tr><td><code>auricLive.spa.ignore</code></td><td>array</td><td><code>[&quot;/api/**&quot;,&quot;**/*.*&quot;]</code></td><td></td><td>Paths the fallback must not answer. The default keeps <code>/api</code> and anything with a file extension returning honest 404s.</td></tr>
+<tr><td><code>auricLive.compression</code></td><td>string</td><td><code>auto</code></td><td><code>auto</code>, <code>gzip</code>, <code>brotli</code>, <code>off</code></td><td>Compression for text responses over one kilobyte. Turn it off when measuring uncompressed transfer sizes.</td></tr>
+<tr><td><code>auricLive.cache</code></td><td>string</td><td><code>no-store</code></td><td><code>no-store</code>, <code>no-cache</code>, <code>short</code>, <code>immutable-assets</code></td><td>Caching policy sent with served files.</td></tr>
+<tr><td><code>auricLive.etag</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Send a validator so an unchanged file can answer 304 instead of being sent again.</td></tr>
+<tr><td><code>auricLive.mimeTypes</code></td><td>object</td><td><code>{}</code></td><td></td><td>Extra content types, keyed by extension — <code>{ &quot;.data&quot;: &quot;application/json&quot; }</code>. Overrides the built-in table.</td></tr>
+<tr><td><code>auricLive.headers</code></td><td>array</td><td><code>[]</code></td><td></td><td>Extra response headers, applied to the paths each rule matches.</td></tr>
+</tbody></table></div>
+<h3 id="cross-origin-and-access">Cross-origin and access</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.cors.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Answer cross-origin requests, so a page served from another port can call this one during development.</td></tr>
+<tr><td><code>auricLive.cors.origin</code></td><td>string</td><td><code>*</code></td><td></td><td>Origin allowed by the CORS headers. Use a specific origin when credentials are involved.</td></tr>
+<tr><td><code>auricLive.cors.credentials</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Allow cookies and authorization headers on cross-origin requests.</td></tr>
+<tr><td><code>auricLive.crossOriginIsolation</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Send COOP and COEP headers, needed for <code>SharedArrayBuffer</code>, WebAssembly threads and precise timers.</td></tr>
+<tr><td><code>auricLive.auth.enabled</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Require a username and password before anything is served. Useful when bound to a shared network.</td></tr>
+<tr><td><code>auricLive.auth.username</code></td><td>string</td><td>empty</td><td></td><td>Username for basic authentication.</td></tr>
+<tr><td><code>auricLive.auth.password</code></td><td>string</td><td>empty</td><td></td><td>Password for basic authentication. Stored in plain settings; a development convenience, not a secret store.</td></tr>
+</tbody></table></div>
+<h3 id="request-limits">Request limits</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.maxRequestBodyBytes</code></td><td>number</td><td><code>8388608</code></td><td>0–1073741824</td><td>Maximum buffered request size in bytes. Larger bodies receive HTTP 413. Zero rejects all non-empty bodies.</td></tr>
+<tr><td><code>auricLive.requestBodyTimeoutMs</code></td><td>number</td><td><code>30000</code></td><td>0–3600000</td><td>Deadline for receiving a request body; 0 disables it. Simulated transfer time is excluded.</td></tr>
+</tbody></table></div>
+<h3 id="network-simulation">Network simulation</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.throttle.profile</code></td><td>string</td><td><code>off</code></td><td><code>off</code>, <code>slow-3g</code>, <code>3g</code>, <code>4g</code>, <code>cable</code>, <code>custom</code></td><td>Simulate a slower network for every client, including a phone on your LAN where browser devtools are not available.</td></tr>
+<tr><td><code>auricLive.throttle.latencyMs</code></td><td>number</td><td><code>0</code></td><td>0–60000</td><td>Delay added before each response when the custom profile is selected.</td></tr>
+<tr><td><code>auricLive.throttle.downloadKbps</code></td><td>number</td><td><code>0</code></td><td>0–no maximum</td><td>Download ceiling in kilobits per second when the custom profile is selected. 0 means unlimited.</td></tr>
+<tr><td><code>auricLive.throttle.uploadKbps</code></td><td>number</td><td><code>0</code></td><td>0–1000000</td><td>Upload bandwidth in kilobits per second; 0 uses unlimited bandwidth.</td></tr>
+</tbody></table></div>
+<h3 id="live-reload-and-watching">Live reload and watching</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.liveReload.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Inject the reload client into served HTML and update open pages when the configured save/change trigger fires.</td></tr>
+<tr><td><code>auricLive.liveReload.reloadOnSave</code></td><td>string</td><td><code>save</code></td><td><code>save</code>, <code>change</code>, <code>off</code></td><td>What may refresh the page: <code>save</code> (explicit VS Code saves), <code>change</code> (any file change) or <code>off</code> (manual only).</td></tr>
+<tr><td><code>auricLive.liveReload.injectTo</code></td><td>string</td><td><code>body</code></td><td><code>body</code>, <code>head</code></td><td>Where the reload client is inserted: end of <code>body</code> (out of the critical path) or <code>head</code> (earlier).</td></tr>
+<tr><td><code>auricLive.liveReload.cssHotSwap</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Swap a changed stylesheet in place, keeping scroll position, open dialogs and filled forms.</td></tr>
+<tr><td><code>auricLive.liveReload.imageHotSwap</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Refresh a changed image in place instead of reloading the page.</td></tr>
+<tr><td><code>auricLive.liveReload.preserveScroll</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Restore scroll position and open disclosure elements after a full reload.</td></tr>
+<tr><td><code>auricLive.liveReload.overlay</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Show an overlay in the page when a proxied request or a CGI handler fails, instead of leaving the failure in the log.</td></tr>
+<tr><td><code>auricLive.liveReload.ignore</code></td><td>array</td><td>see &quot;Default reload exclusions&quot;</td><td></td><td>Paths that never trigger a reload. Dot-paths such as <code>.next/</code>, <code>.vite/</code> and <code>.git/</code> are always excluded as well.</td></tr>
+<tr><td><code>auricLive.liveReload.stormLimit</code></td><td>number</td><td><code>3</code></td><td>2–200</td><td>Reloads allowed within the storm window before Auric Live stops reloading and reports the files responsible.</td></tr>
+<tr><td><code>auricLive.liveReload.stormWindowMs</code></td><td>number</td><td><code>10000</code></td><td>1000–120000</td><td>The window the reload limit is measured over.</td></tr>
+<tr><td><code>auricLive.liveReload.debounceMs</code></td><td>number</td><td><code>350</code></td><td>0–5000</td><td>Quiet period after the last file change before pages are told, so a multi-file build causes one update.</td></tr>
+<tr><td><code>auricLive.watch.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Watch the served folder for changes. Turning this off leaves live reload to the Reload Connected Pages command.</td></tr>
+<tr><td><code>auricLive.watch.pollIntervalMs</code></td><td>number</td><td><code>0</code></td><td>0–60000</td><td>Poll for changes at this interval instead of file system events (for network shares and VMs). <code>0</code> uses events.</td></tr>
+</tbody></table></div>
+<h3 id="browser-dashboard-and-console">Browser dashboard and console</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.dashboard.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Inject the in-page developer dashboard with live health, performance, cache, network, storage and server diagnostics.</td></tr>
+<tr><td><code>auricLive.dashboard.independent</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Inject the dashboard even when Auric live reload is off. Framework run targets turn this on.</td></tr>
+<tr><td><code>auricLive.dashboard.shortcut</code></td><td>string</td><td><code>Alt+Shift+D</code></td><td></td><td>Keys inside a served page that open the dashboard, joined with <code>+</code>, for example <code>Alt+Shift+D</code>.</td></tr>
+<tr><td><code>auricLive.dashboard.customCursor</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Show the Auric pointer on served pages. Touch, coarse-pointer and forced-colour setups keep the native cursor.</td></tr>
+<tr><td><code>auricLive.dashboard.sampleIntervalMs</code></td><td>number</td><td><code>1000</code></td><td>500–10000</td><td>How often an open dashboard asks for server state, in milliseconds.</td></tr>
+<tr><td><code>auricLive.console.enabled</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Capture browser console messages into the dashboard and the extension log, redacted and rate-limited.</td></tr>
+<tr><td><code>auricLive.console.levels</code></td><td>array</td><td><code>[&quot;error&quot;,&quot;warn&quot;,&quot;info&quot;,&quot;log&quot;,&quot;debug&quot;]</code></td><td></td><td>Console levels to capture.</td></tr>
+<tr><td><code>auricLive.console.maxEntries</code></td><td>number</td><td><code>200</code></td><td>20–2000</td><td>Maximum console entries retained in each page.</td></tr>
+<tr><td><code>auricLive.console.maxMessageLength</code></td><td>number</td><td><code>2000</code></td><td>100–10000</td><td>Maximum characters captured from one console call.</td></tr>
+<tr><td><code>auricLive.console.rateLimit</code></td><td>number</td><td><code>20</code></td><td>1–100</td><td>Maximum console messages sent per second from each page.</td></tr>
+</tbody></table></div>
+<h3 id="session-records">Session records</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.records.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep a bounded local session record under <code>.auric-live/</code>. It never stores queries, headers, bodies or cookies.</td></tr>
+<tr><td><code>auricLive.records.maxRequests</code></td><td>number</td><td><code>200</code></td><td>20–5000</td><td>Maximum sanitized request summaries retained in one recorded session.</td></tr>
+<tr><td><code>auricLive.records.maxSessionBytes</code></td><td>number</td><td><code>5242880</code></td><td>65536–104857600</td><td>Maximum approximate size in bytes of one <code>.auric-live</code> session snapshot. Older request summaries are removed first.</td></tr>
+<tr><td><code>auricLive.records.maxSessions</code></td><td>number</td><td><code>12</code></td><td>1–100</td><td>Number of recent recorded sessions retained under <code>.auric-live/sessions/</code>.</td></tr>
+<tr><td><code>auricLive.records.flushIntervalMs</code></td><td>number</td><td><code>1000</code></td><td>250–60000</td><td>Minimum interval between atomic diagnostic snapshot writes.</td></tr>
+<tr><td><code>auricLive.records.telemetryIntervalMs</code></td><td>number</td><td><code>5000</code></td><td>1000–60000</td><td>How often a served page sends its bounded performance summary to the local session record.</td></tr>
+</tbody></table></div>
+<h3 id="proxy-and-backend-readiness">Proxy and backend readiness</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.proxy</code></td><td>array</td><td><code>[]</code></td><td></td><td>Paths forwarded to another server, so the page and its API share one origin. Each rule has a <code>path</code> and a <code>target</code>.</td></tr>
+<tr><td><code>auricLive.upstream.wait</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Hold a request while a proxied backend is still starting, instead of answering 502 at once.</td></tr>
+<tr><td><code>auricLive.upstream.waitTimeoutMs</code></td><td>number</td><td><code>25000</code></td><td>0–600000</td><td>How long a request waits for the backend before the waiting page is shown; that page reloads until it answers.</td></tr>
+<tr><td><code>auricLive.upstream.pollIntervalMs</code></td><td>number</td><td><code>400</code></td><td>50–10000</td><td>How often a backend that is not answering is checked. Once it is up, checks drop to one every few seconds.</td></tr>
+<tr><td><code>auricLive.upstream.reloadOnRecover</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Reload every connected page when a backend comes back.</td></tr>
+<tr><td><code>auricLive.upstream.autoDetectPort</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Adopt the port a supervised dev server prints when it differs from the configured one.</td></tr>
+<tr><td><code>auricLive.upstream.candidatePorts</code></td><td>array</td><td><code>[]</code></td><td></td><td>Ports searched by Find a Running Backend. Leave empty to use the built-in list of ports these tools normally choose.</td></tr>
+</tbody></table></div>
+<h3 id="run-targets-and-dev-servers">Run targets and dev servers</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.runProfiles</code></td><td>array</td><td><code>[]</code></td><td></td><td>Named ways to run the project, shown in the run-target list. Environment assignments before a command are read.</td></tr>
+<tr><td><code>auricLive.devServer.autoStart</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Start the detected framework dev server automatically when Go Live runs on a project that has one, instead of offering it.</td></tr>
+<tr><td><code>auricLive.devServer.autoRestart</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Restart a supervised dev server when it exits unexpectedly, with a growing delay between attempts.</td></tr>
+<tr><td><code>auricLive.devServer.maxRestarts</code></td><td>number</td><td><code>5</code></td><td>0–50</td><td>How many times a dev server may be restarted before Auric Live stops and reports it.</td></tr>
+<tr><td><code>auricLive.devServer.command</code></td><td>string</td><td>empty</td><td></td><td>Command used to start the dev server. Leave empty to use the one detected from the project, such as npm run dev.</td></tr>
+<tr><td><code>auricLive.devServer.useTerminal</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Run the dev server in a VS Code terminal. Allows typed input, but loses port adoption and restart supervision.</td></tr>
+<tr><td><code>auricLive.autoRestart.onConfigChange</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Apply setting and project-file changes to a running server. Only port, host, root, mount or TLS changes rebind it.</td></tr>
+<tr><td><code>auricLive.autoRestart.reloadBrowsers</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Reload connected pages after a configuration change is applied.</td></tr>
+</tbody></table></div>
+<h3 id="mock-api-and-rest-database">Mock API and REST database</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.mock.enabled</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Answer the declared mock routes. They are matched before the proxy, so one endpoint can be overridden.</td></tr>
+<tr><td><code>auricLive.mock.routes</code></td><td>array</td><td><code>[]</code></td><td></td><td>Endpoints answered by the server itself. Bodies can use placeholders such as <code>{{params.id}}</code> and <code>{{uuid}}</code>.</td></tr>
+<tr><td><code>auricLive.mock.delayMs</code></td><td>number</td><td><code>0</code></td><td>0–60000</td><td>Latency applied to every mock and REST response, on top of any per-route delay.</td></tr>
+<tr><td><code>auricLive.mock.rest.enabled</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Serve a full REST backend from a JSON file, with filtering, sorting, pagination and relationships.</td></tr>
+<tr><td><code>auricLive.mock.rest.base</code></td><td>string</td><td><code>/api</code></td><td></td><td>Prefix the REST collections are mounted under. Other paths fall through to the proxy, then to static files.</td></tr>
+<tr><td><code>auricLive.mock.rest.database</code></td><td>string</td><td><code>db.json</code></td><td></td><td>JSON file holding the collections, relative to the served root, shaped like <code>{ &quot;users&quot;: [ … ] }</code>.</td></tr>
+<tr><td><code>auricLive.mock.rest.persist</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Write changes back to the database file. Off by default so a restart returns to a known fixture.</td></tr>
+</tbody></table></div>
+<h3 id="php-and-cgi">PHP and CGI</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.cgi.enabled</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Run matching files through a CGI handler instead of serving them as downloads. With <code>php-cgi</code>, PHP sites run.</td></tr>
+<tr><td><code>auricLive.cgi.handlers</code></td><td>object</td><td><code>{&quot;.php&quot;:&quot;php-cgi&quot;}</code></td><td></td><td>Handler command per extension, such as <code>{ &quot;.php&quot;: &quot;php-cgi&quot; }</code>. It must be on your PATH or a full path.</td></tr>
+<tr><td><code>auricLive.cgi.indexes</code></td><td>array</td><td><code>[&quot;index.php&quot;]</code></td><td></td><td>Additional index file names tried for a directory when CGI is enabled.</td></tr>
+</tbody></table></div>
+<h3 id="request-inspector">Request inspector</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.inspector.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Record requests so the Requests view shows which rule answered each one.</td></tr>
+<tr><td><code>auricLive.inspector.maxEntries</code></td><td>number</td><td><code>500</code></td><td>20–10000</td><td>How many requests are kept before the oldest are dropped.</td></tr>
+<tr><td><code>auricLive.inspector.captureBodies</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Keep request and response bodies for inspection and HAR export. Credential headers are always masked.</td></tr>
+<tr><td><code>auricLive.inspector.maxBodyBytes</code></td><td>number</td><td><code>262144</code></td><td>0–8388608</td><td>Maximum bytes captured per request or response body.</td></tr>
+<tr><td><code>auricLive.inspector.redactSensitive</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Redact common credential fields in captured query strings and JSON/form bodies. Credential headers are always redacted.</td></tr>
+<tr><td><code>auricLive.inspector.sensitiveFields</code></td><td>array</td><td><code>[]</code></td><td></td><td>Additional field and header names to redact, case insensitive.</td></tr>
+<tr><td><code>auricLive.inspector.harIncludeBodies</code></td><td>boolean</td><td><code>false</code></td><td></td><td>Include captured bodies in HAR exports. Disabled by default because arbitrary application data can be sensitive.</td></tr>
+</tbody></table></div>
+<h3 id="logging">Logging</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.logLevel</code></td><td>string</td><td><code>info</code></td><td><code>off</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code></td><td>How much detail reaches the Auric Artisan Live output channel. Credential-like values are masked.</td></tr>
+<tr><td><code>auricLive.requestLogging</code></td><td>boolean</td><td><code>true</code></td><td></td><td>Write one line per request to the output channel, at debug level for successes and higher for failures.</td></tr>
+</tbody></table></div>
+<h3 id="default-reload-exclusions">Default reload exclusions</h3>
+<p>The default value of <code>auricLive.liveReload.ignore</code>:</p>
+<pre class="code" data-lang="json"><code>[
+  &quot;**/node_modules/**&quot;, &quot;**/dist/**&quot;, &quot;**/out/**&quot;, &quot;**/build/**&quot;, &quot;**/coverage/**&quot;,
+  &quot;**/target/**&quot;, &quot;**/vendor/**&quot;, &quot;**/bin/**&quot;, &quot;**/obj/**&quot;, &quot;**/__pycache__/**&quot;,
+  &quot;**/venv/**&quot;, &quot;**/tmp/**&quot;, &quot;**/temp/**&quot;, &quot;**/*.log&quot;, &quot;**/*.tmp&quot;, &quot;**/*.temp&quot;,
+  &quot;**/*.swp&quot;, &quot;**/*.swx&quot;, &quot;**/*~&quot;, &quot;**/*.pyc&quot;, &quot;**/*.class&quot;, &quot;**/*.o&quot;, &quot;**/*.obj&quot;,
+  &quot;**/*.pdb&quot;, &quot;**/*.crdownload&quot;, &quot;**/*.partial&quot;, &quot;**/*-journal&quot;, &quot;**/*.sqlite*&quot;,
+  &quot;**/~$*&quot;, &quot;**/.~lock.*&quot;, &quot;**/Thumbs.db&quot;, &quot;**/desktop.ini&quot;, &quot;**/.DS_Store&quot;
+]</code></pre>
+<h3 id="enumerated-values-explained">Enumerated values explained</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Value</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.portStrategy</code></td><td><code>increment</code></td><td>Walk upward from the chosen port until one is free</td></tr>
+<tr><td><code>auricLive.portStrategy</code></td><td><code>fail</code></td><td>Report the conflict instead of moving</td></tr>
+<tr><td><code>auricLive.portStrategy</code></td><td><code>random</code></td><td>Choose a free port between 20000 and 40000</td></tr>
+<tr><td><code>auricLive.open</code></td><td><code>default</code></td><td>Open the default browser when the server starts</td></tr>
+<tr><td><code>auricLive.open</code></td><td><code>preview</code></td><td>Open the preview beside the editor</td></tr>
+<tr><td><code>auricLive.open</code></td><td><code>none</code></td><td>Open nothing</td></tr>
+<tr><td><code>auricLive.dotfiles</code></td><td><code>ignore</code>, <code>allow</code>, <code>deny</code></td><td>Hide, serve or refuse paths with a dot-file or dot-folder</td></tr>
+<tr><td><code>auricLive.cache</code></td><td><code>no-store</code></td><td>Never cache, so a stale file never survives a reload</td></tr>
+<tr><td><code>auricLive.cache</code></td><td><code>no-cache</code></td><td>Keep a copy but check it on every request</td></tr>
+<tr><td><code>auricLive.cache</code></td><td><code>short</code></td><td>A short freshness window, for measuring repeat visits</td></tr>
+<tr><td><code>auricLive.cache</code></td><td><code>immutable-assets</code></td><td>Fonts and images immutable for a year; everything else uncached</td></tr>
+<tr><td><code>auricLive.throttle.profile</code></td><td><code>off</code>, <code>slow-3g</code>, <code>3g</code>, <code>4g</code>, <code>cable</code>, <code>custom</code></td><td>See <a href="network-simulation.html">Simulate a slow network</a></td></tr>
+<tr><td><code>auricLive.liveReload.reloadOnSave</code></td><td><code>save</code></td><td>Reload once per explicit VS Code save</td></tr>
+<tr><td><code>auricLive.liveReload.reloadOnSave</code></td><td><code>change</code></td><td>Watch the whole served folder</td></tr>
+<tr><td><code>auricLive.liveReload.reloadOnSave</code></td><td><code>off</code></td><td>Never reload automatically</td></tr>
+<tr><td><code>auricLive.liveReload.injectTo</code></td><td><code>body</code>, <code>head</code></td><td>Where the reload script is inserted</td></tr>
+<tr><td><code>auricLive.logLevel</code></td><td><code>off</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code></td><td>Detail written to the output channel</td></tr>
+<tr><td><code>auricLive.interfaceLanguage</code></td><td><code>auto</code>, <code>en</code>, <code>hi</code></td><td>Follow VS Code, English, or Hindi</td></tr>
+</tbody></table></div>
+<h3 id="settings-restricted-in-untrusted-workspaces">Settings restricted in untrusted workspaces</h3>
+<p><code>auricLive.cgi.enabled</code>, <code>auricLive.cgi.handlers</code>, <code>auricLive.cgi.indexes</code>, <code>auricLive.proxy</code>, <code>auricLive.host</code>, <code>auricLive.auth.username</code>, <code>auricLive.auth.password</code>, <code>auricLive.https.certPath</code>, <code>auricLive.https.keyPath</code> and <code>auricLive.mock.rest.persist</code> are ignored until you trust the workspace, whether they come from settings or the project file.</p>
+<h3 id="setting-scope">Setting scope</h3>
+<p>Most settings have <strong>resource</strong> scope, so each folder of a multi-root workspace can differ. <code>auricLive.showStatusBar</code>, <code>auricLive.etag</code>, <code>auricLive.inspector.enabled</code>, <code>auricLive.inspector.maxEntries</code>, <code>auricLive.inspector.captureBodies</code>, <code>auricLive.logLevel</code>, <code>auricLive.requestLogging</code> and <code>auricLive.interfaceLanguage</code> have <strong>window</strong> scope: they can be set for the user or the workspace, but not per folder.</p>
+<h2 id="files-auric-live-reads-and-writes">Files Auric Live reads and writes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Written by</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>auric.live.json</code> (or the name in <code>auricLive.configFile</code>), in the workspace folder or <code>.auric/</code></td><td>You, <strong>Create Project Config File</strong> or <strong>Save to config file</strong></td><td>Project configuration</td></tr>
+<tr><td><code>.auricignore-live</code>, in the served folder</td><td>You, <strong>Open .auricignore-live</strong> or <strong>Ignore <em>folder</em>/</strong></td><td>Paths never served, watched or recorded</td></tr>
+<tr><td><code>.auric-live/latest.json</code> and <code>.auric-live/sessions/</code></td><td>Auric Live</td><td>Local session records</td></tr>
+<tr><td><code>db.json</code> (or <code>auricLive.mock.rest.database</code>)</td><td>You, or <strong>Open Mock Database</strong> › <strong>Create</strong></td><td>REST database; written back only with <code>mock.rest.persist</code></td></tr>
+<tr><td>A <code>.har</code> file</td><td><strong>Export Requests as HAR</strong></td><td>Request export</td></tr>
+<tr><td>Generated certificate</td><td>Auric Live, in its own extension storage</td><td>Self-signed HTTPS certificate</td></tr>
+<tr><td>Workspace settings</td><td><strong>Add Custom Run Command…</strong></td><td>Saves <code>auricLive.runProfiles</code></td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="serve-and-live-reload.html"><span>Previous</span>Serve a folder with live reload</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#commands">Commands</a></li><li><a href="#keyboard-shortcuts">Keyboard shortcuts</a></li><li><a href="#where-commands-appear">Where commands appear</a></li><li><a href="#views">Views</a></li><li><a href="#settings">Settings</a></li><li><a href="#files-auric-live-reads-and-writes">Files Auric Live reads and writes</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

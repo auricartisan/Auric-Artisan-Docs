@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for problems in the Palette Library.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Palette Library</a>
+<h2>Palette Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="analyse-the-collection.html">Analyse the collection</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="copy-export-and-share.html">Copy, export and share</a></li>
+<li><a href="inspect-a-palette.html">Inspect a palette</a></li>
+<li><a href="save-palettes.html">Save palettes</a></li>
+<li><a href="reference.html">Palette Library reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Palette Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Palette Library</a> &rsaquo; <a href="README.html">Palette Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Palette Library</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for problems in the Palette Library.</p>
+<h2 id="could-not-load-palette-database">&quot;Could not load palette database&quot;</h2>
+<p><strong>Why:</strong> The page could not download the short description of the collection it needs to work out palettes, usually because of a dropped connection or a content blocker.</p>
+<p><strong>What to do:</strong> Check your connection, allow auricartisan.com in any content blocker, and reload.</p>
+<h2 id="a-filter-shows-nothing-matched-yet">A filter shows &quot;Nothing matched yet&quot;</h2>
+<p><strong>Why:</strong> A filter starts a scan from the beginning of the collection. A rare combination, such as <strong>Dark</strong> lightness with <strong>Vivid</strong> chroma and one method, may need to look through many palettes before the first match.</p>
+<p><strong>What to do:</strong> Scroll down to let the scan continue, or widen the filter. Watch the counter: <strong>N matches from M derived</strong> shows how far it has looked.</p>
+<h2 id="filtering-feels-slow">Filtering feels slow</h2>
+<p><strong>Why:</strong> Every palette the scan looks at is worked out on the spot. The page does this in small steps so it stays responsive, but a rare filter can mean a lot of work.</p>
+<p><strong>What to do:</strong> Remove a filter you do not need, or use the search box to jump straight to a known id.</p>
+<h2 id="the-scrollbar-stops-before-the-end-of-the-collection">The scrollbar stops before the end of the collection</h2>
+<p><strong>Why:</strong> No browser can make a page tall enough for five million palettes. The counter says <strong>scroll reaches N; search an id for the rest</strong>.</p>
+<p><strong>What to do:</strong> Type the id or number of the palette you want into <strong>Search by id or hex…</strong>. Every palette can be reached this way.</p>
+<h2 id="a-sort-does-not-seem-to-cover-the-whole-collection">A sort does not seem to cover the whole collection</h2>
+<p><strong>Why:</strong> Sorting needs the whole set in hand, and five million palettes cannot be ordered in a browser. Any sort other than <strong>Sort: original</strong> orders only a first stretch of the collection, and the sorted grid does not grow as you scroll.</p>
+<p><strong>What to do:</strong> Combine the sort with filters so the stretch it orders is the one you care about. For a full, streaming browse, use <strong>Sort: original</strong>.</p>
+<h2 id="filters-seem-to-be-ignored">Filters seem to be ignored</h2>
+<p><strong>Why:</strong> The search box contains an id or a plain number. An id always wins, and the grid shows only that palette (<strong>1 palette, by id</strong>).</p>
+<p><strong>What to do:</strong> Remove the id or number from both search boxes.</p>
+<h2 id="the-palettes-method-does-not-match-its-colours">The palette&#39;s method does not match its colours</h2>
+<p><strong>Why:</strong> The <strong>Method</strong> is a label each palette carries in the collection. The badge on <strong>Palette summary</strong> (<strong>Neutral</strong>, <strong>Triadic</strong>, <strong>Analogous</strong>, <strong>Monochrome</strong>) is measured from the actual colours, and the two can disagree.</p>
+<p><strong>What to do:</strong> When the relationship between hues matters, judge by the badge and the <strong>Hue span</strong>, not the method label. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="export-visible-exported-more-palettes-than-i-can-see">&quot;Export visible&quot; exported more palettes than I can see</h2>
+<p><strong>Why:</strong> The <strong>Visible page</strong> export uses the same sample as the analysis tabs: up to 2,000 palettes, not only the cards on screen.</p>
+<p><strong>What to do:</strong> To export one palette, open it on <strong>Inspect</strong> and use the <strong>Selection</strong> card or <strong>Quick export</strong>.</p>
+<h2 id="a-share-link-opens-the-page-but-not-the-palette">A share link opens the page but not the palette</h2>
+<p><strong>Why:</strong> The link may have been cut short when it was pasted, or edited.</p>
+<p><strong>What to do:</strong> Ask for the link again, or ask for the palette id and search for it. If the page says <strong>Shared palette not found in current dataset</strong>, the id in the link is not valid.</p>
+<h2 id="the-ase-file-will-not-open">The ASE file will not open</h2>
+<p><strong>Why:</strong> ASE files are read by Adobe apps and some other design tools; not every app supports them.</p>
+<p><strong>What to do:</strong> Import it through your app&#39;s swatches or palette panel rather than opening it as a document. If your app does not read ASE, use the JSON, CSS or design-token exports instead.</p>
+<h2 id="saved-palettes-have-gone">Saved palettes have gone</h2>
+<p><strong>Why:</strong> Saved palettes live in this browser only; clearing site data, a private window, or another browser or device will not show them. The <strong>Saved</strong> tab also keeps only the latest 500.</p>
+<p><strong>What to do:</strong> Save them again, or keep their ids — an id always gives the same palette.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Palette Library reference</a><a href="faq.html"><span>Next</span>Palette Library FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#could-not-load-palette-database">&quot;Could not load palette database&quot;</a></li><li><a href="#a-filter-shows-nothing-matched-yet">A filter shows &quot;Nothing matched yet&quot;</a></li><li><a href="#filtering-feels-slow">Filtering feels slow</a></li><li><a href="#the-scrollbar-stops-before-the-end-of-the-collection">The scrollbar stops before the end of the collection</a></li><li><a href="#a-sort-does-not-seem-to-cover-the-whole-collection">A sort does not seem to cover the whole collection</a></li><li><a href="#filters-seem-to-be-ignored">Filters seem to be ignored</a></li><li><a href="#the-palettes-method-does-not-match-its-colours">The palette's method does not match its colours</a></li><li><a href="#export-visible-exported-more-palettes-than-i-can-see">&quot;Export visible&quot; exported more palettes than I can see</a></li><li><a href="#a-share-link-opens-the-page-but-not-the-palette">A share link opens the page but not the palette</a></li><li><a href="#the-ase-file-will-not-open">The ASE file will not open</a></li><li><a href="#saved-palettes-have-gone">Saved palettes have gone</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

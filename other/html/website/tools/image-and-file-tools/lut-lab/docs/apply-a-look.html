@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply a look — Auric Artisan Docs</title>
+<meta name="description" content="Choose a test scene or your own picture, apply one of the six built-in looks, and set its strength and exposure.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with LUT Lab</a></li>
+<li><a href="apply-a-look.html" aria-current="page">Apply a look</a></li>
+<li><a href="load-a-cube-file.html">Load a .cube file</a></li>
+<li><a href="lut-concepts.html">LUT concepts</a></li>
+<li><a href="read-what-it-moved.html">Read what a transform moved</a></li>
+<li><a href="write-a-cube-file.html">Write a .cube file</a></li>
+<li><a href="reference.html">LUT Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting LUT Lab</a></li>
+<li><a href="faq.html">LUT Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>Apply a look</h1>
+<p class="lede">Choose a test scene or your own picture, apply one of the six built-in looks, and set its strength and exposure.</p>
+<h2 id="choose-what-to-test-on">Choose what to test on</h2>
+<p>Under <strong>The scene</strong> on the <strong>Lab</strong> tab, select one of four drawn scenes. Each is 320 × 180 pixels.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Scene</th><th>What it contains</th><th>Good for spotting</th></tr></thead>
+<tbody>
+<tr><td><strong>Neutral wedge</strong></td><td>A 16-step grey ramp above 16-step red, green and blue ramps</td><td>Banding, contrast changes and colour casts in greys</td></tr>
+<tr><td><strong>Colour patches</strong></td><td>24 flat patches: six hues at four lightness levels</td><td>Hue and saturation shifts across the colour wheel</td></tr>
+<tr><td><strong>Skin tones</strong></td><td>Six skin-like tones from dark to light on a mid-grey surround</td><td>What a look does to faces</td></tr>
+<tr><td><strong>Saturation field</strong></td><td>Hue across, from grey at the bottom to strong colour at the top</td><td>Hue twists and clipping in saturated colours</td></tr>
+</tbody></table></div>
+<p>The scenes are drawings, not photographs. They show the shape of a transform evenly, but they have no grain, lens flare or real-camera colour.</p>
+<h3 id="use-your-own-picture">Use your own picture</h3>
+<ol>
+<li>Drop an image on <strong>Drop an image</strong>, or select the box to choose one.</li>
+<li>The picture is scaled to fit 480 × 270, keeping its proportions (it is never enlarged), and becomes the scene. A message confirms the size, for example <strong>Loaded beach.jpg at 480×270</strong>.</li>
+<li>A fifth button with your file name appears among the scenes, selected.</li>
+<li>To go back, select <strong>Back to the drawn scenes</strong>, or any of the four scene buttons.</li>
+</ol>
+<p>Every figure on the page is then computed from your picture, and the <strong>Data</strong> tab marks the scene as your own file.</p>
+<h2 id="choose-a-look">Choose a look</h2>
+<p>Open the menu under <strong>The look</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Look</th><th>Kind</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>None</strong></td><td>—</td><td>Leaves the image unchanged</td></tr>
+<tr><td><strong>Teal and orange</strong></td><td>Stylisation</td><td>Warms the highlights and cools the shadows. The look shown when the page opens</td></tr>
+<tr><td><strong>Bleach bypass</strong></td><td>Stylisation</td><td>Pulls colours towards grey and raises contrast. Named after a film process it does not simulate</td></tr>
+<tr><td><strong>Film soft</strong></td><td>Stylisation</td><td>Lifts the black point and lowers the white point, with a slight warm cast. Not based on a measured film stock</td></tr>
+<tr><td><strong>Mono contrast</strong></td><td>Stylisation</td><td>Black and white from Rec. 709 luminance in linear light, then an S-shaped contrast curve</td></tr>
+<tr><td><strong>Log-ish lift</strong></td><td>Stylisation</td><td>A 0.45 power curve with a lift and a gain, which brightens the image, lifting the shadows most</td></tr>
+<tr><td><strong>Reinhard tone-map</strong></td><td>Transform</td><td>The Reinhard photographic tone-mapping operator, applied in linear light</td></tr>
+</tbody></table></div>
+<p>The label above the pair names the transform in force.</p>
+<h2 id="set-the-strength">Set the strength</h2>
+<p><strong>Strength</strong>, from 0% to 100% (default 100%), blends the look with the original. At 50%, each channel of each pixel is halfway between its original value and the look&#39;s value. <strong>Strength</strong> applies to the looks only, not to a loaded <code>.cube</code> file.</p>
+<h2 id="set-the-tone-map-exposure">Set the tone-map exposure</h2>
+<p><strong>Tone-map exposure</strong>, from 0.25× to 8× (default 2.00×), is active only for <strong>Reinhard tone-map</strong>; it is greyed out for every other look and for a loaded file.</p>
+<p>The tone-map works in linear light: it decodes the sRGB value to light, multiplies it by the exposure, compresses it with Reinhard&#39;s formula L ÷ (1 + L), and encodes it back to sRGB. Higher exposure brightens the picture and compresses the highlights more; lower exposure darkens it. An 8-bit picture carries no record of how bright the original scene was, so the exposure is a choice rather than a measured value.</p>
+<h2 id="compare-looks-on-the-looks-tab">Compare looks on the Looks tab</h2>
+<p>The <strong>Looks</strong> tab has a card for each look except <strong>None</strong>. The heading note counts them: five stylisations and one transform, plus two withdrawn.</p>
+<p>Each card shows:</p>
+<ul>
+<li>the look&#39;s name and a badge, <strong>Stylisation</strong> or <strong>Transform</strong>;</li>
+<li>a strip of 18 test colours, a 12-step grey wedge and the six pure primaries and secondaries, before (top) and after (bottom);</li>
+<li>a sentence on what the look is;</li>
+<li><strong>mean ΔE₀₀</strong>, <strong>max hue</strong> and <strong>clipped</strong> on the 72-colour hue ring (see <a href="read-what-it-moved.html">Read what a transform moved</a>);</li>
+<li><strong>Show it on the pair</strong>, which applies the look and returns you to the <strong>Lab</strong> tab.</li>
+</ul>
+<p>Under <strong>Withdrawn</strong>, two former features are explained: an ACEScct to ACEScg conversion, which an 8-bit canvas cannot hold, and a 32-bit float export. A table shows what the ACEScct decode produces for several input codes, and how many of the 256 codes would come out pure white.</p>
+<h2 id="show-what-the-transform-crushed">Show what the transform crushed</h2>
+<p>The <strong>What the transform crushed</strong> switch under <strong>Show</strong> (on by default) hatches the pixels the transform drove to white in pink and those driven to black in blue, on the right-hand image. See <a href="read-what-it-moved.html">Read what a transform moved</a>.</p>
+<h2 id="what-you-should-see">What you should see</h2>
+<p>The right-hand image shows your scene with the look at the strength you chose, and the figures under the pair describe exactly that combination.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with LUT Lab</a><a href="load-a-cube-file.html"><span>Next</span>Load a .cube file</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#choose-what-to-test-on">Choose what to test on</a></li><li><a href="#choose-a-look">Choose a look</a></li><li><a href="#set-the-strength">Set the strength</a></li><li><a href="#set-the-tone-map-exposure">Set the tone-map exposure</a></li><li><a href="#compare-looks-on-the-looks-tab">Compare looks on the Looks tab</a></li><li><a href="#show-what-the-transform-crushed">Show what the transform crushed</a></li><li><a href="#what-you-should-see">What you should see</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut Lab reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, readout, option and export in the Gamut Lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Lab</a>
+<h2>Gamut Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Gamut Lab</a></li>
+<li><a href="compare-colour-spaces.html">Compare colour spaces</a></li>
+<li><a href="define-a-custom-space.html">Define a custom colour space</a></li>
+<li><a href="inspect-transfer-functions.html">Inspect transfer functions</a></li>
+<li><a href="reference.html" aria-current="page">Gamut Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Gamut Lab</a></li>
+<li><a href="faq.html">Gamut Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Lab</a> &rsaquo; <a href="README.html">Gamut Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Gamut Lab reference</h1>
+<p class="lede">Every control, readout, option and export in the Gamut Lab.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/gamut-and-rendering/gamut/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/gamut/</a></p>
+<h2 id="the-13-standard-spaces">The 13 standard spaces</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Space</th><th>Red (x, y)</th><th>Green (x, y)</th><th>Blue (x, y)</th><th>White (x, y)</th><th>Transfer</th></tr></thead>
+<tbody>
+<tr><td>sRGB / BT.709</td><td>0.64, 0.33</td><td>0.30, 0.60</td><td>0.15, 0.06</td><td>0.3127, 0.329</td><td>sRGB</td></tr>
+<tr><td>Display P3</td><td>0.68, 0.32</td><td>0.265, 0.69</td><td>0.15, 0.06</td><td>0.3127, 0.329</td><td>sRGB</td></tr>
+<tr><td>DCI-P3</td><td>0.68, 0.32</td><td>0.265, 0.69</td><td>0.15, 0.06</td><td>0.314, 0.351</td><td>Gamma 2.6</td></tr>
+<tr><td>Rec. 2020</td><td>0.708, 0.292</td><td>0.17, 0.797</td><td>0.131, 0.046</td><td>0.3127, 0.329</td><td>BT.2020</td></tr>
+<tr><td>Rec. 2100 PQ</td><td>as Rec. 2020</td><td>as Rec. 2020</td><td>as Rec. 2020</td><td>0.3127, 0.329</td><td>PQ</td></tr>
+<tr><td>Rec. 2100 HLG</td><td>as Rec. 2020</td><td>as Rec. 2020</td><td>as Rec. 2020</td><td>0.3127, 0.329</td><td>HLG (inverse OETF)</td></tr>
+<tr><td>Adobe RGB</td><td>0.64, 0.33</td><td>0.21, 0.71</td><td>0.15, 0.06</td><td>0.3127, 0.329</td><td>γ 563/256</td></tr>
+<tr><td>ProPhoto RGB</td><td>0.7347, 0.2653</td><td>0.1596, 0.8404</td><td>0.0366, 0.0001</td><td>0.3457, 0.3585</td><td>ROMM</td></tr>
+<tr><td>Adobe Wide Gamut</td><td>0.7347, 0.2653</td><td>0.1152, 0.8264</td><td>0.1566, 0.0177</td><td>0.3457, 0.3585</td><td>Gamma 2.2</td></tr>
+<tr><td>ACES 2065-1 (AP0)</td><td>0.7347, 0.2653</td><td>0.0, 1.0</td><td>0.0001, −0.077</td><td>0.32168, 0.33767</td><td>Linear</td></tr>
+<tr><td>ACEScg (AP1)</td><td>0.713, 0.293</td><td>0.165, 0.83</td><td>0.128, 0.044</td><td>0.32168, 0.33767</td><td>Linear</td></tr>
+<tr><td>NTSC 1953</td><td>0.67, 0.33</td><td>0.21, 0.71</td><td>0.14, 0.08</td><td>0.31, 0.316</td><td>Gamma 2.2</td></tr>
+<tr><td>PAL/SECAM</td><td>0.64, 0.33</td><td>0.29, 0.60</td><td>0.15, 0.06</td><td>0.3127, 0.329</td><td>Gamma 2.8</td></tr>
+</tbody></table></div>
+<p><strong>Custom</strong> is a 14th option whose primaries you enter.</p>
+<h2 id="lab-tab">Lab tab</h2>
+<h3 id="controls">Controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Working color space</strong></td><td>Chooses the space shown in the panel and adds it to the diagram (up to five drawn)</td><td>The 13 spaces and Custom</td><td>sRGB / BT.709</td></tr>
+<tr><td><strong>Diagram mode</strong></td><td>How the main canvas draws</td><td>CIE 1931 xy; CIE 1976 u′v′; 3-D Wireframe (Lab)</td><td>CIE 1931 xy</td></tr>
+<tr><td><strong>Standard observer</strong></td><td>Shown with two options, but only the CIE 1931 2° observer is used</td><td>CIE 1931 2°; CIE 1964 10°</td><td>CIE 1931 2°</td></tr>
+<tr><td><strong>Spectral locus</strong></td><td>Draws the locus</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Grid</strong></td><td>Draws the grid</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>MacAdam ellipses</strong></td><td>Draws 24 illustrative ellipses (a stand-in, see Limits)</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>λ labels</strong></td><td>Labels wavelengths on the locus</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Show all library spaces</strong></td><td>Draws every space, including imported ones</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>WebGL chromaticity fill</strong></td><td>Fills the locus with approximate colours using WebGL 2</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Reset view</strong></td><td>Returns to CIE 1931 xy, default overlays, no probe</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Export PNG</strong></td><td>Downloads the diagram as <code>gamut-&lt;mode&gt;.png</code></td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Export SVG</strong></td><td>Downloads the diagram as <code>gamut-&lt;mode&gt;.svg</code></td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Primaries (xy)</strong> R, G, B, W</td><td>The working space&#39;s primaries and white; editable for Custom</td><td>Numbers, 4 decimals</td><td>From the space</td></tr>
+<tr><td><strong>White point XYZ</strong></td><td>The white as X, Y, Z with Y = 1</td><td>—</td><td>From the space</td></tr>
+<tr><td><strong>Solve from primaries</strong></td><td>Builds the Custom space from the fields and derives its matrices</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Transfer function</strong></td><td>Curve shown on the EOTF / OETF canvas</td><td>sRGB, Display P3, Rec. 2020, PQ (ST 2084), HLG, Adobe RGB (γ 563/256), ProPhoto (ROMM)</td><td>sRGB</td></tr>
+<tr><td><strong>Volume comparison</strong> first list</td><td>Reference space</td><td>sRGB, Display P3, Rec. 2020, ACEScg</td><td>sRGB</td></tr>
+<tr><td><strong>Volume comparison</strong> second list</td><td>Space to compare</td><td>Active space, sRGB, Display P3, Rec. 2020, ACEScg</td><td>Active space</td></tr>
+<tr><td><strong>Compute volume</strong></td><td>Measures both volumes and their overlap</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Gamut slice</strong> mode</td><td>Slice space</td><td>Constant L* (CIELAB); Constant L (OKLab)</td><td>Constant L*</td></tr>
+<tr><td><strong>Level</strong></td><td>Slice lightness</td><td>0 to 100</td><td>50</td></tr>
+</tbody></table></div>
+<h3 id="readouts">Readouts</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Chromaticity diagram</strong></td><td>Drawn spaces as triangles, the locus, overlays and the probe marker with its coordinates. Click or drag to probe</td></tr>
+<tr><td><strong>Vertex readout</strong></td><td>x, y, Y, a chip with sRGB HEX, CIELAB (L*, a*, b*) and a tick or cross per drawn space</td></tr>
+<tr><td><strong>RGB ↔ XYZ matrices</strong></td><td>RGB → XYZ, XYZ → RGB, Area (xy) and Area % sRGB</td></tr>
+<tr><td><strong>EOTF / OETF curve</strong></td><td>The chosen transfer curve, its defining document and an equation</td></tr>
+<tr><td><strong>Volume metrics</strong></td><td>Both volumes (Lab³) with spread and box, overlap of A and of B in u′v′, and Jaccard</td></tr>
+<tr><td><strong>Gamut slice — Lab / OKLab</strong></td><td>Up to five drawn spaces outlined at the slice level</td></tr>
+<tr><td><strong>3-D gamut wireframe</strong></td><td>Wireframes of the drawn spaces in CIELAB, at a fixed viewing angle</td></tr>
+</tbody></table></div>
+<h2 id="transfer-tab">Transfer tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Plot</strong></td><td>Which curves and axis</td><td>Relative, 0 to 1; Absolute, cd/m² (PQ, log scale 1 to 10,000)</td><td>Relative</td></tr>
+<tr><td><strong>Fidelity</strong></td><td>Filters the rows</td><td>All, Exact, Partial, Corrected (with counts)</td><td>All</td></tr>
+</tbody></table></div>
+<p>Rows give each distinct curve, the spaces that use it, a fidelity tag, the defining document and, where relevant, what it used to be or why it is partial.</p>
+<h2 id="compare-tab">Compare tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Measure in</strong></td><td>The share column&#39;s plane</td><td>u′v′ share; xy share (legacy)</td><td>u′v′ share</td></tr>
+<tr><td><strong>Samples</strong> (n)</td><td>Halton samples per space</td><td>5,000 to 200,000, step 5,000</td><td>40k</td></tr>
+<tr><td><strong>Measure them all</strong></td><td>Measures every space</td><td>Button</td><td>—</td></tr>
+</tbody></table></div>
+<p>Table columns: Space, White, Lab volume ± spread, vs sRGB, share.</p>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Dataset</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Primaries and white points, 13 spaces</td><td>Verbatim</td></tr>
+<tr><td>Transfer functions, 10 distinct curves</td><td>Computed</td></tr>
+<tr><td>HLG opto-electronic transfer</td><td>Synthesised (stand-in): inverse OETF only</td></tr>
+<tr><td>Colour matching functions, 2°</td><td>Verbatim</td></tr>
+<tr><td>Spectral locus</td><td>Computed, 380–715 nm</td></tr>
+<tr><td>RGB ↔ XYZ matrices</td><td>Computed</td></tr>
+<tr><td>Gamut volume in CIELAB</td><td>Computed, Halton sampling</td></tr>
+<tr><td>MacAdam ellipses</td><td>Synthesised (stand-in)</td></tr>
+</tbody></table></div>
+<p><strong>Status</strong> chips filter the list. <strong>Install a table</strong> (&quot;Drop a CSV or JSON&quot;) does not load files in the current version.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>What to take</strong></td><td><strong>This space</strong>, <strong>Every space</strong>, <strong>The comparison</strong>, <strong>The diagram</strong>, <strong>A link to this view</strong></td></tr>
+<tr><td><strong>As</strong></td><td>Formats that fit the choice: JSON; JSON; CSV or JSON; SVG or PNG; Link</td></tr>
+<tr><td><strong>Download</strong> (names the file) or <strong>Copy the link</strong></td><td>Saves the file, or copies the link</td></tr>
+<tr><td><strong>Copy to clipboard</strong></td><td>Copies text payloads (hidden for PNG and link)</td></tr>
+<tr><td><strong>Exactly what you will get</strong></td><td>Previews the payload and its size</td></tr>
+<tr><td><strong>Bring one in</strong>, <strong>Add to the library</strong></td><td>Imports a space from JSON</td></tr>
+<tr><td>Library table</td><td>Name, Type (Standard or Custom), White, Transfer, and <strong>Load</strong> / <strong>Del</strong></td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>File</th></tr></thead>
+<tbody>
+<tr><td>This space, JSON</td><td><code>gamut-lab-&lt;space&gt;.json</code></td></tr>
+<tr><td>Every space, JSON</td><td><code>gamut-lab-spaces.json</code></td></tr>
+<tr><td>The comparison, CSV</td><td><code>gamut-comparison.csv</code> with Name, Area (xy), Area % sRGB, Volume (Lab³), Transfer, White Point</td></tr>
+<tr><td>The comparison, JSON</td><td><code>gamut-comparison.json</code> with area, area %, volume, spread, box, u′v′ share, transfer and white per drawn space</td></tr>
+<tr><td>The diagram, SVG</td><td><code>gamut-diagram.svg</code></td></tr>
+<tr><td>The diagram, PNG</td><td><code>gamut-diagram.png</code>, at the canvas size</td></tr>
+<tr><td>A link to this view</td><td>A URL encoding the drawn spaces, diagram mode, overlays and other view settings</td></tr>
+</tbody></table></div>
+<p>The comparison covers only the spaces currently drawn on the diagram, not the whole library. A link longer than about 1,800 characters shows a warning that some clients truncate long links.</p>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Standards</strong>, <strong>Formulas</strong>, <strong>Citations</strong>, <strong>Research notes</strong></td><td>Switch sections</td></tr>
+<tr><td><strong>Filter</strong></td><td>Searches all four; <code>Esc</code> clears it</td></tr>
+</tbody></table></div>
+<p>Standards are grouped as display and broadcast, cinema and VFX, photography and print, legacy, and colorimetry foundations. Formulas cover xy and u′v′, matrix derivation, the sRGB, PQ and HLG curves, shoelace area, CIELAB volume and overlap. Citations list 22 references. Research notes include a computed table of each space&#39;s area in xy and u′v′, % of sRGB and % of the locus.</p>
+<h2 id="save-to-library">Save to Library</h2>
+<p>The floating <strong>Save to Library</strong> button stores a snapshot of the diagram in your Auric Artisan Library.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="inspect-transfer-functions.html"><span>Previous</span>Inspect transfer functions</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting the Gamut Lab</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-13-standard-spaces">The 13 standard spaces</a></li><li><a href="#lab-tab">Lab tab</a></li><li><a href="#transfer-tab">Transfer tab</a></li><li><a href="#compare-tab">Compare tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#save-to-library">Save to Library</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

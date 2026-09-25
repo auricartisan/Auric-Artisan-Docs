@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Auric Accessibility — Auric Artisan Docs</title>
+<meta name="description" content="Install Auric Accessibility, read your first WCAG finding, inspect an element, scan the project and find everything it adds to VS Code.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html">Manual evidence</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="reference.html">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>Getting started with Auric Accessibility</h1>
+<p class="lede">Install Auric Accessibility, read your first WCAG finding, inspect an element, scan the project and find everything it adds to VS Code.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li>Open the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>).</li>
+<li>Search for <code>auric-artisan.auric-a11y</code> and select <strong>Install</strong>. Or run <code>code --install-extension auric-artisan.auric-a11y</code>.</li>
+</ol>
+<p>It starts when VS Code finishes loading. You need VS Code 1.74 or newer. Nothing needs configuring: the default audit profile is WCAG 2.2 and the default contrast target is 4.5:1.</p>
+<h2 id="your-first-finding">Your first finding</h2>
+<ol>
+<li>Open an HTML file, or a JSX, TSX, Vue, Svelte, Astro or PHP component.</li>
+<li>Problems are underlined with a violet wavy line and listed in the Problems panel (<code>Ctrl</code> + <code>Shift</code> + <code>M</code>) with the source <code>auric-artisan</code>. For example, an <code>&lt;img&gt;</code> without <code>alt</code> shows:</li>
+</ol>
+<pre class="code" data-lang="text"><code>Image has no alt attribute.  —  WCAG 1.1.1 Non-text Content (Level A, WCAG 2.0). Add alt=&quot;description&quot; (or alt=&quot;&quot; for purely decorative images).</code></pre>
+<ol start="3">
+<li>Hover the underline. The card shows the criterion, a severity pill such as <strong>CRITICAL</strong>, the level and WCAG version, a priority such as <strong>Priority 94/100 · fix now</strong>, the file and line, the problem, the fix, and a before-and-after when a safe rewrite exists.</li>
+<li>Select <strong>Apply fix</strong> to apply the rewrite, or press <code>Ctrl</code> + <code>.</code> for <strong>Ignore this WCAG 1.1.1 finding here</strong> and <strong>Ignore all accessibility findings in this file</strong>.</li>
+</ol>
+<p>See <a href="editor-linting.html">Editor linting</a>.</p>
+<h2 id="inspect-an-element">Inspect an element</h2>
+<ol>
+<li>Put the cursor inside an element, such as a <code>&lt;button&gt;</code>, or inside a CSS rule.</li>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>A</code> (<code>Cmd</code> + <code>Alt</code> + <code>A</code> on macOS), or hover it.</li>
+<li>The <strong>Inspect</strong> card shows its role and accessible name (or <strong>No accessible name</strong>), the colours that apply with contrast, APCA and a colour-vision check, a before-and-after preview, and the WCAG issues found there.</li>
+</ol>
+<p>See <a href="inspect.html">Inspect</a>.</p>
+<h2 id="scan-the-project">Scan the project</h2>
+<ol>
+<li>Select the <strong>Auric Accessibility</strong> icon in the Activity Bar.</li>
+<li>In the <strong>Overview</strong>, select <strong>Scan project</strong>.</li>
+<li>When the scan finishes, a message reports the score, for example <code>Accessibility 82/100 (B) — 12 contrast + 30 WCAG issue(s) across 214 files (scanned).</code>, with <strong>Open Studio</strong>, <strong>Show Issues</strong> and <strong>Force Rescan</strong>.</li>
+<li>The status bar now shows <code>A11y 82 B</code>, and <strong>Project Issues</strong> lists every finding.</li>
+</ol>
+<p>See <a href="project-scans.html">Project scans</a> and <a href="project-issues-view.html">The Project Issues view</a>.</p>
+<h2 id="where-auric-accessibility-appears">Where Auric Accessibility appears</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Place</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td>Editor</td><td>WCAG and contrast underlines, issue hovers, Inspect cards, quick fixes</td></tr>
+<tr><td>Activity Bar, <strong>Auric Accessibility</strong></td><td><strong>Overview</strong> (the accessibility dashboard), <strong>Project Issues</strong>, and <strong>Color Picker</strong> when Auric Color is installed</td></tr>
+<tr><td>Status bar</td><td>The score item, and <strong>Auric: N in this file</strong></td></tr>
+<tr><td>Editor right-click menu</td><td><strong>Inspect Accessibility of Element</strong>, <strong>Check Contrast of Selection</strong> (with a selection), <strong>Mark Line as Intentional Branding (Toggle)</strong></td></tr>
+<tr><td>Studio (<strong>Auric Artisan: Open Accessibility Studio</strong>)</td><td><strong>Home</strong>, <strong>Check</strong> (Findings, Contrast, Preview) and <strong>Settings</strong></td></tr>
+<tr><td>Command Center (<code>Ctrl</code> + <code>Alt</code> + <code>.</code>)</td><td>Scan, rescan, Studio tools, rulebook, remediation plan, worst findings</td></tr>
+</tbody></table></div>
+<h2 id="with-the-other-studio-extensions">With the other Studio extensions</h2>
+<p>Auric Accessibility has the highest priority, so when it is installed with Auric Color or Auric Code Health it hosts the shared Workstation: its sidebar, Overview, Studio and Command Center include every installed capability. See <a href="../../docs/workstation.html">The Workstation</a>.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="rules.html">Rules</a>: what each rule checks.</li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast</a>: choose WCAG 2.0, 2.1, 2.2 or the 3.0 draft.</li>
+<li><a href="manual-evidence.html">Manual evidence</a>: what to test by hand.</li>
+<li><a href="../../docs/remediation-plan.html">The remediation plan</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Auric Accessibility docs</a><a href="audit-profiles-and-contrast.html"><span>Next</span>Audit profiles and contrast standards</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#install">Install</a></li><li><a href="#your-first-finding">Your first finding</a></li><li><a href="#inspect-an-element">Inspect an element</a></li><li><a href="#scan-the-project">Scan the project</a></li><li><a href="#where-auric-accessibility-appears">Where Auric Accessibility appears</a></li><li><a href="#with-the-other-studio-extensions">With the other Studio extensions</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

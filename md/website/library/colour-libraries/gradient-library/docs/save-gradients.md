@@ -1,0 +1,34 @@
+---
+title: Gradient Library — Save gradients
+description: Save gradients, find them on the Saved tab, and reach them from your Library.
+product: Website › Library › Colour libraries › Gradient Library
+updated: 2026-09-25
+---
+
+# Save gradients
+
+## Save a gradient
+
+- Select **Save** on a card (it changes to **Saved**), or
+- open the gradient on **Inspect** and select **Save gradient** under **Quick Export** (it changes to **Remove saved**).
+
+The page confirms **Gradient saved**, and the **Saved** tab's badge goes up by one.
+
+## See saved gradients
+
+Select the **Saved** tab. Your gradients appear as cards, most recently saved first. They work like cards in the grid: select one to inspect it, **CSS** to copy its CSS, **Saved** to unsave it.
+
+A note says they are **Also saved to your Library workspace with image previews**. With nothing saved, the tab says **No saved gradients**.
+
+## Remove a gradient
+
+Select **Saved** on its card, or **Remove saved** on **Inspect**. The page confirms **Gradient removed**, and the gradient also leaves your Library.
+
+## In your Library
+
+Each saved gradient is also added to your Library under its name (for example **Aurora Simple #00001**), described by its scheme, number of stops and interpolation space, with a preview image. Open your Library from any page with `Ctrl` + `Shift` + `L`. See the [Library Kit docs](../../../../kits/library-kit/README.md).
+
+## Limits
+
+- The **Saved** tab keeps up to 240 gradients; saving more drops the oldest.
+- Saves are kept in this browser, not in your account. Clearing this site's data removes them.

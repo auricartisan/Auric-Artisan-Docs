@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website pickers — Auric Artisan Docs</title>
+<meta name="description" content="Give a website's form controls Auric pickers — colour, select, multi-select, suggestions, dates, times, number, range, file, checkbox and radio — and control where they apply.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>On websites</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="browser-menu-items.html">Browser menu items</a></li>
+<li><a href="colour-picker-on-pages.html">Colour picker on pages</a></li>
+<li><a href="for-site-owners.html">For site owners</a></li>
+<li><a href="right-click-menu.html">Right-click menu</a></li>
+<li><a href="website-pickers.html" aria-current="page">Website pickers</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">On websites</a></nav>
+<p class="kicker">Browser extension › On websites</p>
+<h1>Website pickers</h1>
+<p class="lede">Give a website's form controls Auric pickers — colour, select, multi-select, suggestions, dates, times, number, range, file, checkbox and radio — and control where they apply.</p>
+<p>With the website pickers on, a page&#39;s own form controls open Auric panels instead of the browser&#39;s. The page&#39;s native control stays in place for form submission, and the site&#39;s code receives every value through the same <code>input</code> and <code>change</code> events it always does, so forms built with frameworks keep working.</p>
+<h2 id="turn-them-on">Turn them on</h2>
+<ol>
+<li>Open <strong>Settings</strong> › <strong>Pickers</strong>.</li>
+<li>Turn on <strong>Auric pickers on websites</strong> (&quot;Colour, date, select and ten more open Auric panels instead of the browser&#39;s own.&quot;).</li>
+<li>Reload any page that was already open.</li>
+</ol>
+<h2 id="controls">Controls</h2>
+<p>Each type has its own chip under <strong>Picker types</strong>, all on by default. The heading shows how many are on, for example &quot;13 of 13 on&quot;.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Chip</th><th>Enhances</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><strong>Colour</strong></td><td>Colour inputs</td><td>The compact colour picker; see <a href="colour-picker-on-pages.html">Colour picker on pages</a></td></tr>
+<tr><td><strong>Select</strong></td><td>Drop-down lists</td><td>A dropdown. Lists with more than 7 options open with a search field.</td></tr>
+<tr><td><strong>Multi-select</strong></td><td>Lists that allow several choices</td><td>A dropdown with checkboxes, chips for what is chosen, an &quot;N/M chosen&quot; count, <strong>Select all</strong> and <strong>Clear</strong></td></tr>
+<tr><td><strong>Suggestions</strong></td><td>Text fields with a suggestion list</td><td>A searchable suggestion list</td></tr>
+<tr><td><strong>Date</strong></td><td>Date fields</td><td>A calendar in your interface language</td></tr>
+<tr><td><strong>Date &amp; time</strong></td><td>Date-and-time fields</td><td>Calendar and time panels</td></tr>
+<tr><td><strong>Month</strong></td><td>Month fields</td><td>A month panel</td></tr>
+<tr><td><strong>Week</strong></td><td>Week fields</td><td>A week panel</td></tr>
+<tr><td><strong>Time</strong></td><td>Time fields</td><td>A time panel</td></tr>
+<tr><td><strong>Number</strong></td><td>Number fields</td><td>A stepper whose buttons switch off at the minimum and maximum</td></tr>
+<tr><td><strong>Range</strong></td><td>Sliders</td><td>A slider with an editable value beside it</td></tr>
+<tr><td><strong>File</strong></td><td>File fields</td><td>A themed button with the chosen file&#39;s name. The browser&#39;s own file dialog still opens.</td></tr>
+<tr><td><strong>Checkbox &amp; radio</strong></td><td>Checkboxes and radio buttons</td><td>Themed marks; the native control still handles the keyboard and the form</td></tr>
+</tbody></table></div>
+<h2 id="search-in-long-lists">Search in long lists</h2>
+<p>Dropdowns with <strong>more than 7 options</strong> open with a search field:</p>
+<ul>
+<li>typing filters the list and underlines the matching text;</li>
+<li>groups keep their headings;</li>
+<li>when nothing matches, &quot;No options match&quot; offers to clear the search.</li>
+</ul>
+<p>Shorter lists stay plain, and typing a letter jumps to the first match. In a multi-select with a search typed, <strong>Select all</strong> selects only the matches.</p>
+<h2 id="theme">Theme</h2>
+<ul>
+<li>With the theme set to <strong>Dark</strong> or <strong>Light</strong> (Settings › Appearance), every picker uses that theme.</li>
+<li>On <strong>System</strong>, pickers match the page they are on: dark on a dark site, light on a light one.</li>
+</ul>
+<p>Pickers also use your accent colour.</p>
+<h2 id="where-pickers-stay-native">Where pickers stay native</h2>
+<ul>
+<li><strong>auricartisan.com</strong>, always. The site ships its own pickers; it appears locked at the top of the <strong>Never on</strong> list.</li>
+<li><strong>Sites on the Never on list.</strong> In Settings › Pickers › <strong>Never on</strong>, type a site such as <code>example.com</code> and choose <strong>Add</strong>. Subdomains are included, and a leading <code>www.</code> is ignored. Remove a site with its <strong>✕</strong>. The list holds up to 100 sites.</li>
+<li><strong>Types you switch off</strong> under <strong>Picker types</strong>.</li>
+<li><strong>Controls the site designed</strong>, while <strong>Leave designed controls alone</strong> is on (the default): &quot;If a site already styles a control, it keeps its own.&quot; A control the site restyled, or hid behind its own widget, is left exactly as it is. Colour inputs are the exception: they are replaced unless hidden, disabled or read-only.</li>
+<li><strong>Controls the site opted out</strong>; see <a href="for-site-owners.html">For site owners</a>.</li>
+<li><strong>Frames inside a page</strong>, which the extension does not reach.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="colour-picker-on-pages.html">Colour picker on pages</a></li>
+<li><a href="../settings/pickers.html">Pickers settings</a></li>
+<li><a href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="right-click-menu.html"><span>Previous</span>Right-click menu</a><a href="../saved/README.html"><span>Next</span>Saved</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#turn-them-on">Turn them on</a></li><li><a href="#controls">Controls</a></li><li><a href="#search-in-long-lists">Search in long lists</a></li><li><a href="#theme">Theme</a></li><li><a href="#where-pickers-stay-native">Where pickers stay native</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

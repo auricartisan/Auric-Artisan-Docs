@@ -1,0 +1,74 @@
+---
+title: Gradient Library — Test vision, contrast and text
+description: Use the Vision, Accessibility and Pair tabs to see a gradient under colour vision deficiencies, measure its contrast along the ramp, and test a text colour on it.
+product: Website › Library › Colour libraries › Gradient Library
+updated: 2026-09-25
+---
+
+# Test vision, contrast and text
+
+These three tabs work on the gradient you have open. If none is open, each says **Select a gradient** and asks you to pick one first.
+
+## Vision tab
+
+The **Color Vision Preview** card shows the gradient six times:
+
+| Preview | What it simulates |
+| --- | --- |
+| **Normal** | The original. |
+| **Deuteranopia** | No working green-sensitive cones. |
+| **Protanopia** | No working red-sensitive cones. |
+| **Tritanopia** | No working blue-sensitive cones. |
+| **Achromatopsia** | No colour vision: greys only. |
+| **Low Vision** | Blurred, with reduced saturation. |
+
+Use it to check that a gradient carrying meaning — for example a heat-map scale from cool to hot — still reads in order for colour-blind viewers. The previews are approximate screen filters; see [Limits and accuracy](../others/limits-and-accuracy.md).
+
+## Accessibility tab
+
+A gradient can pass contrast in one region and fail in another, so this tab samples the whole ramp.
+
+### Contrast Summary
+
+| Row | Meaning |
+| --- | --- |
+| **White text min** | Lowest contrast of white text anywhere on the 17 samples. |
+| **Black text min** | Lowest contrast of black text. |
+| **Auto text min** | Lowest contrast if each region used whichever of near-white or near-black reads better there. |
+| **Best sampled max** | The highest contrast of white or black text anywhere. |
+| **Adjacent stop min** | The lowest contrast between two neighbouring stops. |
+| **AA-safe samples** | How many of the 17 samples reach 4.5:1 with the better text colour. |
+
+### Sampled Stops
+
+17 evenly spaced samples, from 0% to 100%, each with its colour, hex code and the best contrast it can give white or black text.
+
+### Reading Guidance
+
+A reminder of the thresholds — **AA normal text: 4.5:1**, **AAA normal text: 7:1**, **AA large text: 3:1** — and advice to use the **Pair** tab for real copy.
+
+## Pair tab
+
+1. Open the **Pair** tab. The text colour starts as white.
+2. Choose a text colour: use the colour picker, type a six-digit hex into the text field, or select **White**, **Black** or **Gold**.
+3. Read the preview: the gradient's name and a sentence written in your colour on top of the gradient.
+4. Read **Pair Result**:
+
+| Row | Meaning |
+| --- | --- |
+| **Minimum contrast** | The lowest contrast of your text colour across 33 samples. |
+| **Average contrast** | The average across those samples. |
+| **Text color** | Your colour in hex. |
+| **Status** | One of three verdicts, below. |
+
+| Status | When |
+| --- | --- |
+| **Passes AA in every sampled region** | Minimum contrast 4.5:1 or more. |
+| **Large text only in weakest regions** | Minimum between 3:1 and 4.5:1. |
+| **Needs overlay, shadow, or different text color** | Minimum below 3:1. |
+
+The card also shows a ready-to-copy CSS snippet with the `background` and `color` declarations.
+
+**Result:** you know whether your text colour is readable across the entire gradient, not only in the middle.
+
+> **Tip:** When no single text colour passes everywhere, place text only over the part of the gradient that passes, add a semi-transparent overlay behind the text, or choose a gradient with a smaller lightness range.

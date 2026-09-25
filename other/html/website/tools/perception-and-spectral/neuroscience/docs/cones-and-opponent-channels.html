@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cones, opponent channels and the cone table — Auric Artisan Docs</title>
+<meta name="description" content="How the Visual Pathway turns a screen colour into cone signals and opponent channels, how to read the Pipeline tab and the cone figure, and how to install your own cone table.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Neuroscience (Visual Pathway)</a>
+<h2>Using the Visual Pathway</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Visual Pathway</a></li>
+<li><a href="cones-and-opponent-channels.html" aria-current="page">Cones, opponent channels and the cone table</a></li>
+<li><a href="explore-the-stages.html">Explore the five stages</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="reference.html">Visual Pathway reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Visual Pathway</a></li>
+<li><a href="faq.html">Visual Pathway FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Neuroscience (Visual Pathway)</a> &rsaquo; <a href="README.html">Using the Visual Pathway</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Neuroscience</p>
+<h1>Cones, opponent channels and the cone table</h1>
+<p class="lede">How the Visual Pathway turns a screen colour into cone signals and opponent channels, how to read the Pipeline tab and the cone figure, and how to install your own cone table.</p>
+<h2 id="the-idea-in-brief">The idea in brief</h2>
+<p>Your retina has three kinds of cone. The <strong>L</strong> (long-wavelength) cones respond most to yellowish-red light, the <strong>M</strong> (medium) cones to green light and the <strong>S</strong> (short) cones to violet-blue light. Their sensitivities overlap heavily: in the published CIE 2006 fundamentals the L and M cones peak at 566.8 nm and 541.2 nm, only about 25 nm apart, and the S cones at 441.8 nm. A colour you see is summarised by three numbers, the <strong>cone signals</strong>, one per type.</p>
+<p>Early in the visual pathway these three signals are recombined into <strong>opponent channels</strong>: one that compares L with M (red against green), one that compares S with the sum of L and M (blue against yellow), and one that adds L and M (roughly, lightness). A neutral grey drives neither chromatic channel, which is why you never see a &quot;reddish green&quot; or a &quot;bluish yellow&quot;.</p>
+<h2 id="how-the-tool-gets-from-a-hex-colour-to-opponent-values">How the tool gets from a hex colour to opponent values</h2>
+<p>The <strong>Pipeline</strong> tab draws the chain as a row of steps:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Step</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td><strong>sRGB</strong></td><td>The 8-bit, gamma-encoded screen value</td></tr>
+<tr><td><strong>linear</strong></td><td>Decoded through the sRGB transfer curve (IEC 61966-2-1)</td></tr>
+<tr><td><strong>XYZ</strong></td><td>Converted to CIE XYZ with the sRGB primaries at D65</td></tr>
+<tr><td><strong>LMS</strong></td><td>Converted to cone signals with the Hunt-Pointer-Estévez matrix</td></tr>
+<tr><td><strong>cone contrast</strong></td><td>Marked <strong>not held</strong>: the tool has no adapting white to express cone contrast against</td></tr>
+<tr><td><strong>opponent</strong></td><td>L − M, S − (L+M)/2 and L + M</td></tr>
+<tr><td><strong>stages</strong></td><td>The retina-to-V4 stages read these values</td></tr>
+</tbody></table></div>
+<p>The Hunt-Pointer-Estévez matrix is published for XYZ and is scaled so that the D65 white point gives equal L, M and S signals. That is what puts every neutral grey at zero on both chromatic channels. The <strong>Neutral off-axis</strong> readout on the Lab tab checks it: the largest departure of a nine-step grey ramp from zero is about 2.2 × 10⁻⁴, which is the rounding of the published four-decimal matrix.</p>
+<h3 id="these-axes-are-not-dkl">These axes are not DKL</h3>
+<p>The opponent space of Derrington, Krauskopf and Lennie (DKL), used widely in vision science, is built on cone <strong>contrast</strong> relative to a stated adapting white, with its chromatic axes scaled so they carry no luminance change. The tool&#39;s axes are plain differences of absolute cone signals, and its luminance channel gives L and M equal weight, where their published contribution to luminance is closer to two to one. They are useful axes and they are the tool&#39;s own. Nothing on the page is reported in cone-contrast units.</p>
+<h2 id="use-the-pipeline-tab">Use the Pipeline tab</h2>
+<p>The rail has two groups of buttons.</p>
+<p><strong>Show</strong></p>
+<ul>
+<li><strong>The chain</strong> — the step row above and a table of seven colours (<code>#000000</code>, <code>#404040</code>, <code>#808080</code>, <code>#C0C0C0</code>, <code>#FFFFFF</code>, <code>#3A8CFF</code>, <code>#E03131</code>) with their <strong>L − M</strong> and <strong>S − (L+M)/2</strong> values to four decimals. Greys are highlighted when they sit at zero.</li>
+<li><strong>The opponent axes</strong> — the same table, with a note giving the worst neutral departure.</li>
+<li><strong>The sensitivity curve</strong> — a table of pupil sizes (2, 3, 5 and 8 mm) against the peak of the tool&#39;s sensitivity curve (always 4.0 c/deg) and the published photopic peak range (2–6 c/deg).</li>
+</ul>
+<p><strong>Against</strong></p>
+<ul>
+<li><strong>What it was</strong> (default) — adds columns showing the values an earlier version of this page produced, marked <strong>as shipped</strong>, so you can see how large each correction was.</li>
+<li><strong>Hide</strong> — shows the current values only.</li>
+</ul>
+<p>Try it: with <strong>The chain</strong> and <strong>What it was</strong> selected, compare the white row. The current columns read 0.0000; the &quot;as shipped&quot; columns do not.</p>
+<h2 id="read-the-cone-figure">Read the cone figure</h2>
+<p>On the Lab tab, <strong>The front end: where the two cone curves actually sit</strong> plots three curves from 390 to 730 nm: L in red, M in green and S in blue, each scaled to peak at 1. Dashed vertical lines mark the published peaks, labelled 442, 541 and 567 nm. The note under the figure explains what you are seeing.</p>
+<p>The built-in curves are the tool&#39;s own. They are smooth and plausibly shaped, but both the L and M curves peak at 590 nm, on top of each other, where the published curves peak 25 nm apart. That is why <strong>L − M peak gap</strong> reads 0 nm and is highlighted. These curves draw the figure and nothing else: every cone signal the stages use comes from the matrix described above, not from this table.</p>
+<h2 id="install-your-own-cone-table">Install your own cone table</h2>
+<p>You can replace the figure&#39;s curves with a published table, for example the CIE 170-1:2006 2° cone fundamentals, which the page does not include.</p>
+<ol>
+<li>Prepare a CSV or JSON file with four columns in this order: wavelength in nm, L, M, S.<ul>
+<li>CSV: one row per line, values separated by commas, semicolons, tabs or spaces. Lines that begin with <code>#</code> or a letter (such as a header row) are skipped.</li>
+<li>JSON: an array of four-number rows, or an object with a <code>rows</code> array.</li>
+</ul>
+</li>
+<li>Open the <strong>Data</strong> tab.</li>
+<li>Drop the file on <strong>Drop a CSV or JSON</strong> under <strong>Install a cone table</strong>, or select that area to choose the file.</li>
+<li>Read the message at the top of the page: <strong>Cone table installed — L peaks at N nm</strong>, or <strong>Not installed:</strong> followed by the reason.</li>
+</ol>
+<p>The table is refused when it has fewer than eight rows, when a row has fewer than four columns or a non-numeric value, when the wavelengths do not increase, or when its L and M curves peak less than 5 nm apart.</p>
+<p>Once installed, the cone figure, the curve labels, <strong>L − M peak gap</strong> and the note under the figure change to the new table, and the settings file and CSV record the file name as the cone table with <code>reportable</code> set to <code>true</code>. The stages do not change, because they never used the table. The installed table lasts until you reload the page.</p>
+<h2 id="simulate-a-colour-vision-deficiency">Simulate a colour vision deficiency</h2>
+<p><strong>Colour vision</strong> on the Lab rail applies a dichromacy simulation to the stimulus before the stages: <strong>Protanopia</strong> (no L cones), <strong>Deuteranopia</strong> (no M cones) or <strong>Tritanopia</strong> (no S cones). The tool uses the three projection matrices of Viénot, Brettel and Mollon (1999), applied in cone space as they are defined, at full strength. Try <strong>Protanopia</strong> with the default blue grating, then with a red base colour, and watch the <strong>LGN, L − M</strong> map. For a fuller set of simulations over your own images, use <a href="../../perception-and-vision/README.html">Perception and Vision</a>.</p>
+<h2 id="take-the-numbers-away">Take the numbers away</h2>
+<p>The <strong>Export</strong> tab runs any list of hex colours through the same front end and gives L, M, S and the three opponent values; see <a href="export-and-share.html">Export and share</a>. Put a grey in the list: its two chromatic values should read zero.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Visual Pathway</a><a href="explore-the-stages.html"><span>Next</span>Explore the five stages</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-idea-in-brief">The idea in brief</a></li><li><a href="#how-the-tool-gets-from-a-hex-colour-to-opponent-values">How the tool gets from a hex colour to opponent values</a></li><li><a href="#use-the-pipeline-tab">Use the Pipeline tab</a></li><li><a href="#read-the-cone-figure">Read the cone figure</a></li><li><a href="#install-your-own-cone-table">Install your own cone table</a></li><li><a href="#simulate-a-colour-vision-deficiency">Simulate a colour vision deficiency</a></li><li><a href="#take-the-numbers-away">Take the numbers away</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

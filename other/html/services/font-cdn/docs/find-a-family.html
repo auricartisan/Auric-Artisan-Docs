@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find a family — Auric Artisan Docs</title>
+<meta name="description" content="Find a family and its id for the Font CDN, on the Font Library page or from JavaScript, and read what the catalogue records about it.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font CDN</a>
+<h2>Font CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="embed-a-family.html">Embed a family</a></li>
+<li><a href="find-a-family.html" aria-current="page">Find a family</a></li>
+<li><a href="self-host-a-family.html">Self-host a family</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Font CDN</a> &rsaquo; <a href="README.html">Font CDN documentation</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Find a family</h1>
+<p class="lede">Find a family and its id for the Font CDN, on the Font Library page or from JavaScript, and read what the catalogue records about it.</p>
+<h2 id="on-the-font-library-page">On the Font Library page</h2>
+<p>The Font Library at <a href="https://auricartisan.com/tool/font/" rel="noopener">https://auricartisan.com/tool/font/</a> is the catalogue&#39;s front end. It renders every family in itself, lets you set your own words in it, and gives the embed code and kit for the ones you keep. Its main controls are:</p>
+<ul>
+<li><strong>Search fonts</strong> (&quot;Family, designer or foundry&quot;);</li>
+<li>sorting by Alphabetical, Accessibility score, UI score, Readability score, Most weights, Most glyphs, Variable first, or Surprise me;</li>
+<li>category tabs and filters;</li>
+<li><strong>Recommend</strong>, a recommender for a brief;</li>
+<li><strong>Collections</strong>, curated sets;</li>
+<li><strong>Selected</strong>, the families you have gathered for a combined embed or kit.</li>
+</ul>
+<p>Each family opens with tabs including <strong>Specimen</strong>, <strong>Suitability</strong>, <strong>Pairings</strong>, <strong>Glyphs</strong>, <strong>Features</strong>, <strong>Styles</strong>, <strong>About</strong>, <strong>License</strong>, <strong>Charset</strong>, <strong>Develop</strong> and <strong>Use &amp; Embed</strong>. The page itself is documented with the website tools; see <a href="../others/related.html">Related</a>.</p>
+<h2 id="from-javascript">From JavaScript</h2>
+<p>The loader can search the catalogue:</p>
+<pre class="code" data-lang="js"><code>const hits = await AuricFonts.search('mono');   // name, designer or category
+const all  = await AuricFonts.list();</code></pre>
+<p>Each record in the catalogue includes, among other fields, the family&#39;s <code>id</code>, <code>name</code>, <code>group</code>, <code>category</code>, <code>weights</code>, whether it is <code>variable</code> and its <code>axes</code>, whether it has italics, whether it is monospace, its <code>license</code> key, <code>designer</code>, the scripts it covers and its character count.</p>
+<p>For everything about one family, use <code>get()</code>:</p>
+<pre class="code" data-lang="js"><code>const meta = await AuricFonts.get('Alegreya');   // or the id, 'alegreya'</code></pre>
+<p>It returns the family&#39;s full metadata, including its styles and files, or <code>null</code> if there is no such family.</p>
+<h2 id="categories">Categories</h2>
+<p>Families are sorted into five categories: sans-serif, serif, display, handwriting and monospace. Categories are worked out from the fonts&#39; own data and outlines, so a few families may sit in a category you would not choose; see <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="embed-a-family.html"><span>Previous</span>Embed a family</a><a href="self-host-a-family.html"><span>Next</span>Self-host a family</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#on-the-font-library-page">On the Font Library page</a></li><li><a href="#from-javascript">From JavaScript</a></li><li><a href="#categories">Categories</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore the adaptation time course — Auric Artisan Docs</title>
+<meta name="description" content="Use the Dynamics tab to see how quickly the eye adapts to a new light, with the two-phase model and its single-exponential predecessor side by side.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Chromatic Adaptation</a>
+<h2>Chromatic Adaptation documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Chromatic Adaptation</a></li>
+<li><a href="adapt-a-colour-list.html">Adapt a list of colours</a></li>
+<li><a href="adapt-an-image.html">Adapt an image to a new light</a></li>
+<li><a href="compare-transforms-and-copy-matrices.html">Compare transforms and copy a matrix</a></li>
+<li><a href="explore-the-time-course.html" aria-current="page">Explore the adaptation time course</a></li>
+<li><a href="reference.html">Chromatic Adaptation reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Chromatic Adaptation</a></li>
+<li><a href="faq.html">Chromatic Adaptation FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Chromatic Adaptation</a> &rsaquo; <a href="README.html">Chromatic Adaptation documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Explore the adaptation time course</h1>
+<p class="lede">Use the Dynamics tab to see how quickly the eye adapts to a new light, with the two-phase model and its single-exponential predecessor side by side.</p>
+<p>Adaptation is not instant. Fairchild and Reniff (1995) measured it for colour-appearance judgements and found two components: a <strong>fast phase</strong>, completing about half the adaptation within roughly a second, and a <strong>slow phase</strong> with a half-life near 30 seconds. The <strong>Dynamics</strong> tab plots that model over two minutes.</p>
+<h2 id="the-model">The model</h2>
+<p>The fraction of adaptation completed t seconds after the light changes is:</p>
+<pre class="code" data-lang="text"><code>fraction(t) = w1 × (1 − e^(−t / τ1)) + (1 − w1) × (1 − e^(−t / τ2))
+τ2 = t½ ÷ ln 2</code></pre>
+<ul>
+<li><strong>τ1</strong> is the fast time constant (default 1.0 s).</li>
+<li><strong>w1</strong> is the share of adaptation in the fast phase (default 0.50).</li>
+<li><strong>t½</strong> is the half-life of the slow phase (default 30 s, which is τ2 ≈ 43 s).</li>
+</ul>
+<p>The defaults come from the paper. For comparison the chart also draws the single exponential the page used before (time constant 0.6 s after a 0.4 s delay), which reaches 90% within two seconds.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Choose your illuminants and transform on the <strong>Lab</strong> tab. The Dynamics heading shows the pair, for example &quot;D65 → A&quot;.</li>
+<li>Open the <strong>Dynamics</strong> tab.</li>
+<li>Under <strong>Model</strong>, keep <strong>Two components</strong> selected. (<strong>Single exponential</strong> hides the fast and slow controls and reads the playhead value from the older curve; the half-adapted and 90% figures still describe the two-component model.)</li>
+<li>Adjust <strong>τ1</strong> (0.2 to 4 s), <strong>w1</strong> (0 to 1) and <strong>t½</strong> (5 to 120 s).</li>
+<li>Move the <strong>Playhead</strong> (0 to 120 s) to a moment of interest.</li>
+<li>Read the statistics under the chart:<ul>
+<li><strong>D at t = …</strong> — the fraction adapted at the playhead;</li>
+<li><strong>Half-adapted at</strong> — when the fraction reaches 0.5;</li>
+<li><strong>90% at</strong> — when it reaches 0.9;</li>
+<li><strong>Legacy 90% at</strong> — the same point for the old single exponential, for contrast.</li>
+</ul>
+</li>
+</ol>
+<h2 id="reading-the-chart">Reading the chart</h2>
+<ul>
+<li>The solid gold curve is the two-component model with your settings. The dashed red curve is the single exponential, always drawn so the difference stays visible.</li>
+<li>The vertical line and dot mark the playhead.</li>
+<li>With the defaults, the curve rises steeply for the first few seconds and then creeps up over the next minute or two.</li>
+</ul>
+<h2 id="how-this-relates-to-the-lab-tab">How this relates to the Lab tab</h2>
+<p>The Dynamics controls are for exploring the time course. The Lab tab&#39;s image timeline (0 to 5 s) always uses the published defaults (τ1 = 1 s, w1 = 0.5, t½ = 30 s), starts from an initial adaptation of 0.1, and scales the result towards the <strong>Degree of adaptation D</strong> you set.</p>
+<h2 id="result">Result</h2>
+<p>You can see how long adaptation to a new light takes under the measured model, and how different that is from a one-second exponential.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-transforms-and-copy-matrices.html"><span>Previous</span>Compare transforms and copy a matrix</a><a href="reference.html"><span>Next</span>Chromatic Adaptation reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-model">The model</a></li><li><a href="#steps">Steps</a></li><li><a href="#reading-the-chart">Reading the chart</a></li><li><a href="#how-this-relates-to-the-lab-tab">How this relates to the Lab tab</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

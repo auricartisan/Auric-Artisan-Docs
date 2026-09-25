@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Check space: Findings and Preview — Auric Artisan Docs</title>
+<meta name="description" content="Filter every finding in the Studio's Findings tool, and preview failing contrast next to its accessible repair in the Preview tool.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html" aria-current="page">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html">Manual evidence</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="reference.html">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>The Check space: Findings and Preview</h1>
+<p class="lede">Filter every finding in the Studio's Findings tool, and preview failing contrast next to its accessible repair in the Preview tool.</p>
+<p>The Studio&#39;s <strong>Check</strong> space holds three tools. <strong>Findings</strong> and <strong>Preview</strong> come with Auric Accessibility; <strong>Contrast</strong> is the <a href="../../docs/contrast-studio.html">Contrast Studio</a>. Switch between them with the tab row under the space header.</p>
+<h2 id="findings">Findings</h2>
+<p><strong>Findings</strong> lists every WCAG finding, failing contrast pair and colour-vision risk from the last scan. Its tab shows the total count.</p>
+<p>Before a scan it says <strong>No scan yet</strong> and offers <strong>Scan project</strong>.</p>
+<h3 id="header-actions">Header actions</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Export WCAG</strong></td><td>Saves <code>wcag-report.md</code>, a Markdown summary by criterion with every finding. See <a href="../../docs/exports-and-records.html#studio-markdown-exports">Exports and health records</a>.</td></tr>
+<tr><td><strong>Fix plan for an agent</strong> (gold)</td><td>Generates the <a href="../../docs/remediation-plan.html">remediation plan</a></td></tr>
+</tbody></table></div>
+<h3 id="wcag-accessibility">WCAG accessibility</h3>
+<p>A section titled <strong>WCAG accessibility</strong> with the number of issues and files. It shows:</p>
+<ul>
+<li>badges for the accessibility sub-score (<code>a11y 97</code>), counts by level (<code>A 3 · AA 1 · AAA 0</code>) and counts by WCAG version;</li>
+<li>a badge for every success criterion found, such as <code>1.1.1 ×4</code>; select one to show only that criterion, and again to clear it;</li>
+<li>impact filters: <strong>All</strong>, <strong>Critical</strong>, <strong>Serious</strong>, <strong>Moderate</strong> and <strong>Minor</strong>, each with its count;</li>
+<li>a search box, <strong>Filter by text, file, SC…</strong>, that matches the message, criterion title and number, file path, evidence and level;</li>
+<li>a count such as <code>12 of 40 shown</code>, and the list, up to 200 rows at a time.</li>
+</ul>
+<p>Each row shows the criterion, its title, the message, and the file, line and level (or <strong>best practice</strong>). Hover a row for the fix; select it (or press <code>Enter</code>) to open the file at that line.</p>
+<p>Press <code>/</code> to jump to the search box, and <code>Escape</code> to clear it.</p>
+<h3 id="failing-contrast">Failing contrast</h3>
+<p>Every failing pair, worst first (up to 200 rows), with the pair, its ratio, what it needs (for example <code>needs 4.5:1</code>, or <code>large text, needs 3:1</code>), <code>dark theme</code> when it applies, and its location. The section&#39;s subtitle shows your target and the large-text target.</p>
+<h3 id="color-vision-risk">Color-vision risk</h3>
+<p>Pairs that pass for typical vision but weaken under colour-vision simulation (up to 80), shown as <code>2.9:1 → 1.8:1 CVD</code>. Collapsed at first.</p>
+<h3 id="branding">Branding</h3>
+<p>Pairs classified as intentional branding, each with a <strong>♥ branding</strong> badge, its ratio and kind. A note explains the classification and how many structural findings had a branding mark that was ignored. Collapsed at first.</p>
+<h3 id="confusable-hues">Confusable hues</h3>
+<p>Pairs of project colours that look different normally but merge under colour-vision simulation, with the colour difference before and after. Select one to copy both hex values. Collapsed at first.</p>
+<p>Sections remember whether you left them open or closed.</p>
+<h2 id="preview">Preview</h2>
+<p><strong>Preview</strong> draws the same content twice, with your original colours and with an accessible repair, so you can judge legibility on real text rather than a swatch.</p>
+<h3 id="controls">Controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Text</strong>, <strong>Background</strong></td><td>Any colour; <strong>⇄</strong> swaps them</td><td>The pair to preview</td></tr>
+<tr><td><strong>WCAG target</strong></td><td>AA Large / UI · 3:1, AA body · 4.5:1, AAA · 7:1</td><td>The ratio the repair aims for</td></tr>
+<tr><td><strong>Fix by</strong></td><td>Recolor text, Recolor background</td><td>Which colour the repair changes</td></tr>
+<tr><td><strong>Vision</strong></td><td>Typical vision, Protanopia, Deuteranopia, Tritanopia, Achromatopsia</td><td>Shows both surfaces through a colour-vision deficiency</td></tr>
+</tbody></table></div>
+<h3 id="interactive-pair">Interactive pair</h3>
+<p>Two surfaces side by side, <strong>Original</strong> and <strong>After WCAG</strong>. Each has a heading, body text, a caption, a <strong>Primary action</strong> button and a sample link, and below it the WCAG ratio, APCA Lc and <strong>AA</strong>, <strong>AAA</strong> and <strong>UI 3:1</strong> badges. A strip shows what changed (<code>text #999999 → #767676</code>), the ratio before and after, and <strong>✓ meets 4.5:1</strong> or <strong>best effort</strong> when the hue cannot reach the target.</p>
+<p>Buttons: <strong>Copy</strong> the repaired colour, <strong>Insert fix</strong> (replaces the editor selection with it) and <strong>Open in Contrast →</strong> (loads the repaired pair into the Contrast Studio).</p>
+<p>The Original surface deliberately shows failing contrast, so it is hidden from screen readers; its numeric verdict below is read instead.</p>
+<h3 id="project-failures">Project failures</h3>
+<p>After a scan, every failing pair from the project appears as its own before-and-after, up to the first 24 (the first three open), each with <strong>Open file:line</strong>. Before a scan, the section offers <strong>Scan project</strong>.</p>
+<p>Open Preview on a specific pair with <strong>Open in Preview</strong> in an Inspect card.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../../docs/studio.html">The Studio</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="../../color/docs/contrast-diagnostics.html">Contrast diagnostics</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="audit-profiles-and-contrast.html"><span>Previous</span>Audit profiles and contrast standards</a><a href="editor-linting.html"><span>Next</span>Editor linting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#findings">Findings</a></li><li><a href="#preview">Preview</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

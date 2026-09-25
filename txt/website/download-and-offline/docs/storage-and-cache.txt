@@ -1,0 +1,114 @@
+==============================================================================
+STORAGE AND CACHE
+==============================================================================
+Read the readiness checks and live metrics, and audit, repair or reset the
+offline copy.
+Area: Website › Download and offline   Updated: 2026-09-25
+
+The Download page reads its figures from your browser itself: the offline
+store, the storage estimate and the browser's capabilities. Open it on the
+device you care about.
+
+READINESS CHECKS
+================
+
+Select Check readiness to refresh them.
+
+  Check:           Shell
+  Possible states: "Service worker shell is preparing." / "Service worker
+                   shell is ready for cached navigation."
+
+  Check:           Full cache
+  Possible states: "Full offline cache is not warmed yet." / "Run prepare
+                   offline version to warm every core route." / "Offline cache
+                   has warmed this device profile."
+
+  Check:           Persistent storage
+  Possible states: "Persistent storage is active for this browser." / "Storage
+                   is best-effort until the browser grants persistence."
+
+  Check:           Local capabilities
+  Possible states: The number of CPU threads available for local work
+
+  Check:           Install
+  Possible states: Checking / available / not offered by this browser yet /
+                   installed and running standalone / accepted / dismissed /
+                   could not be opened
+
+  Check:           Update
+  Possible states: See Updates [updates.txt]
+
+The badge sums it up: Checking, Preparing, Shell ready (the core is stored) or
+Offline ready (your profile is complete).
+
+LIVE METRICS
+============
+
+  Metric:        Cache entries
+  What it shows: How many files are stored
+
+  Metric:        Storage used
+  What it shows: Space used by the site, and the browser's quota for it
+                 (persistent or best effort)
+
+  Metric:        Local CPU
+  What it shows: Processor threads, and approximate device memory where
+                 reported
+
+  Metric:        Graphics
+  What it shows: WebGL 2, WebGL 1 or Canvas, and the graphics processor where
+                 reported
+
+  Metric:        Offline profile
+  What it shows: The profile in effect, for example "Auto selected Full for
+                 this device."
+
+  Metric:        Cache target
+  What it shows: How many files the profile holds
+
+  Metric:        Missing assets
+  What it shows: Files of the profile not yet stored (after an audit)
+
+  Metric:        PWA version
+  What it shows: The version of the site in your browser
+
+Browser capabilities lists each feature as Ready or Limited: Service worker,
+Cache API, Persistent storage, IndexedDB, File access, Clipboard, Share,
+Camera input, EyeDropper, Workers, Graphics and Offline privacy (a secure
+connection). Select Check local hardware to refresh them.
+
+AUDIT THE OFFLINE COPY
+======================
+
+Select Audit cache. The site compares your store with the profile ("Auditing
+Balanced cache coverage...") and reports:
+
+  - "Cache audit passed. Offline profile is complete." with Missing assets at
+    0; or
+  - "Cache audit found missing assets. Repair cache can retry them." with the
+    count and the first missing file.
+
+REPAIR IT
+=========
+
+Select Repair cache. The site fetches any missing files of the profile
+("Repairing the Balanced cache profile..."), then reports "Cache repair
+finished: A/B assets ready." and re-runs the audit. You need to be online.
+
+RESET IT
+========
+
+Select Reset cache to delete the site's offline store and rebuild the app
+shell: "Resetting browser PWA caches and rebuilding the shell..." then "PWA
+caches reset. Shell cache rebuilt." Use it if the offline copy seems out of
+date or damaged. Prepare the offline version again afterwards.
+
+Reset cache does not delete your library, settings or recordings, which are
+kept separately in your browser.
+
+HOW MUCH SPACE IT TAKES
+=======================
+
+Storage depends on your profile. Lite is small; Balanced and Full can take
+from tens to more than a hundred megabytes. Storage used shows the real figure
+on your device.

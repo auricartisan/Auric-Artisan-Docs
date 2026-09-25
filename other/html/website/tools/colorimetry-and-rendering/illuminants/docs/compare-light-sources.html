@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare two light sources — Auric Artisan Docs</title>
+<meta name="description" content="Overlay two illuminants, read their CCT, CRI and white points side by side, and judge metamerism risk with the surface samples.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Illuminants</a>
+<h2>Illuminants documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Illuminants</a></li>
+<li><a href="adapt-between-white-points.html">Adapt colours between white points</a></li>
+<li><a href="compare-light-sources.html" aria-current="page">Compare two light sources</a></li>
+<li><a href="estimate-uncertainty.html">Estimate measurement uncertainty</a></li>
+<li><a href="query-console.html">Query many illuminants at once</a></li>
+<li><a href="reference.html">Illuminants reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Illuminants</a></li>
+<li><a href="faq.html">Illuminants FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Illuminants</a> &rsaquo; <a href="README.html">Illuminants documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Compare two light sources</h1>
+<p class="lede">Overlay two illuminants, read their CCT, CRI and white points side by side, and judge metamerism risk with the surface samples.</p>
+<p>Use this when you need to explain why a product, print or swatch looks different in two places — for example daylight at a window against tungsten at home, or a D50 viewing booth against a D65 screen.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li><strong>Metamerism</strong> is when two surfaces match under one light and differ under another. The lab estimates the risk between two lights with a <strong>metamerism index</strong>: the average CIEDE2000 colour difference of 14 test samples rendered under each light. Bigger means more risk.</li>
+<li><strong>CRI (colour rendering index)</strong> scores how faithfully a light renders test colours compared with a reference light of the same CCT (a blackbody below 5,000 K, CIE daylight at or above). <strong>Ra</strong> is the mean of the first eight scores; R9 is saturated red.</li>
+<li>In this lab the test samples are approximations of the CIE 13.3 set, not the published reflectances. CRI and the metamerism index are therefore indicative. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</li>
+</ul>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Open the <strong>Lab</strong> tab.</li>
+<li>Under <strong>Illuminant</strong>, choose the first light, for example <strong>CIE D65 (6504 K) — Daylight, sRGB</strong>.</li>
+<li>Under <strong>Comparison illuminant</strong>, tick <strong>Enable comparison</strong>.</li>
+<li>Open the comparison list and choose the second light. The choices are CIE A, D50, D55, D65, D75, equal-energy E, F2, F7 and F11. The default is <strong>CIE A (2856 K)</strong>.</li>
+<li>Look at the SPD chart. The gold curve is your first light and the blue curve is the comparison light. Both are drawn on one relative scale.</li>
+<li>Scroll to <strong>Illuminant comparison</strong>. The table shows, for each light:<ul>
+<li><strong>CCT</strong> in kelvin;</li>
+<li><strong>CRI Ra</strong>;</li>
+<li><strong>CIE x, y</strong>;</li>
+<li>and, across both, <strong>Metamerism Index (avg ΔE₀₀)</strong>.</li>
+</ul>
+</li>
+<li>Under <strong>Surface reflectance samples</strong>, turn on the surfaces you care about. The choices are White, Gray, Red, Green, Blue, Skin, Yellow and Cyan. White, Gray, Red, Green and Skin are on by default.</li>
+<li>Read <strong>Surface appearance — D65 reference vs test illuminant</strong>. Each row shows two swatches (under D65, then under your first light after adaptation), both HEX values and a ΔE₀₀ figure.</li>
+<li>Check the <strong>CRI</strong> chart for the first light. Look at R9 separately; Ra can hide weak red rendering.</li>
+</ol>
+<h2 id="reading-the-result">Reading the result</h2>
+<ul>
+<li>A metamerism index below about 0.5 suggests very low risk; 0.5 to 2 is moderate; 2 to 4 is high; above 4 means a visible shift is almost certain. These bands come from the lab&#39;s own research notes (Reference › Research notes) and are a rule of thumb, not a standard.</li>
+<li>The surface rows answer a slightly different question: after your eye has adapted to the light, how far does each surface&#39;s colour move compared with how it looks in daylight?</li>
+<li>A light can have a similar white point to D65 and still render surfaces differently. That is the spectrum at work, and it is why the lab shows the spectrum and not only the white.</li>
+</ul>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>To study a fluorescent source, choose <strong>F2</strong>, <strong>F7</strong> or <strong>F11</strong> as the first light and D65 as the comparison. Remember that the fluorescent spectra are stand-ins; the chart labels them so.</li>
+<li>To see the full list of 18 illuminants side by side, open <strong>Export</strong> and select <strong>Generate comparison table</strong>. It lists CCT, x, y, CRI Ra and a white swatch for each.</li>
+<li>To compare many lights by x, y, CCT, Duv, efficacy or spectral spread, use the <a href="query-console.html">query console</a>.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>You have a side-by-side table of two lights, a metamerism index, and a row of surface swatches showing how much each material shifts between them.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="adapt-between-white-points.html"><span>Previous</span>Adapt colours between white points</a><a href="estimate-uncertainty.html"><span>Next</span>Estimate measurement uncertainty</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-you-start">Before you start</a></li><li><a href="#steps">Steps</a></li><li><a href="#reading-the-result">Reading the result</a></li><li><a href="#tips">Tips</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

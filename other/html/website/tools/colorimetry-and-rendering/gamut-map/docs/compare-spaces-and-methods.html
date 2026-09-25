@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare spaces and methods — Auric Artisan Docs</title>
+<meta name="description" content="Use the Boundary and Methods tabs and the ΔE Playground to compare colour spaces, gamut volumes, mapping methods and colour differences.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Mapping</a>
+<h2>Gamut Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Gamut Mapping</a></li>
+<li><a href="compare-spaces-and-methods.html" aria-current="page">Compare spaces and methods</a></li>
+<li><a href="map-a-colour-list.html">Map a list of colours</a></li>
+<li><a href="map-a-colour.html">Map a colour into a smaller gamut</a></li>
+<li><a href="reference.html">Gamut Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Gamut Mapping</a></li>
+<li><a href="faq.html">Gamut Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Mapping</a> &rsaquo; <a href="README.html">Gamut Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Compare spaces and methods</h1>
+<p class="lede">Use the Boundary and Methods tabs and the ΔE Playground to compare colour spaces, gamut volumes, mapping methods and colour differences.</p>
+<h2 id="compare-boundaries-up-the-lightness-axis">Compare boundaries up the lightness axis</h2>
+<ol>
+<li>Open the <strong>Boundary</strong> tab.</li>
+<li>Under <strong>Spaces on the plot</strong>, select the spaces to draw. Each chip toggles one space; sRGB and Display P3 are on at first.</li>
+<li>Read <strong>The boundary up the lightness axis</strong>: five tiles at L* 20, 40, 65, 80 and 90. All tiles share one scale (shown in the note, for example &quot;one scale, ±150&quot;), so sizes can be compared directly. The source space from the Lab tab is drawn with a thicker line.</li>
+</ol>
+<p>What to look for: at low and high lightness all gamuts shrink towards the grey axis; the biggest differences are in the middle; yellows keep chroma at high lightness and blues at low lightness.</p>
+<h2 id="measure-gamut-volumes">Measure gamut volumes</h2>
+<ol>
+<li>On the <strong>Boundary</strong> tab, set <strong>Volume samples</strong> (<strong>n</strong>) from 5,000 to 200,000 in steps of 5,000. The default is 20k.</li>
+<li>Select <strong>Measure the five</strong>. The button reads &quot;Measuring…&quot; while it works.</li>
+<li>Read <strong>The five spaces, measured</strong>, sorted from smallest to largest:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Space</td><td>The space and its colour swatch</td></tr>
+<tr><td>White</td><td>The white point the space is defined against (D65, or D50 for ProPhoto)</td></tr>
+<tr><td>Lab volume ± 1 SE</td><td>The volume in CIELAB units cubed, and its standard error</td></tr>
+<tr><td>vs sRGB</td><td>The volume as a multiple of sRGB&#39;s</td></tr>
+<tr><td>Sample box</td><td>The a*, b* half-width of the sampling box, fitted to each space</td></tr>
+</tbody></table></div>
+<p>The volume is estimated by random (Monte Carlo) sampling in a box fitted to each space. Raising the sample count shrinks the standard error. The results change slightly on each run.</p>
+<p>Volume in CIELAB is a more meaningful size than the area of a triangle on the xy chromaticity diagram, which ignores lightness and overstates green. The lab no longer shows the xy area percentage.</p>
+<h2 id="compare-the-four-methods">Compare the four methods</h2>
+<ol>
+<li>Open the <strong>Methods</strong> tab.</li>
+<li>Under <strong>Compare on</strong>, choose <strong>The base colour</strong> or <strong>12 probe colours</strong>. The probe set is fixed (#FF0000, #00FF00, #0000FF, #FFFF00, #FF00FF, #00FFFF, #FF7F00, #7F00FF, #00FF7F, #BF4040, #4080BF and #808080), so the comparison means the same thing whatever base colour you pick.</li>
+<li>Open each method&#39;s row to read its description and three figures:<ul>
+<li><strong>mean ΔE₀₀</strong> — average colour change caused by mapping;</li>
+<li><strong>max ΔE₀₀</strong> — the largest change;</li>
+<li><strong>out of gamut</strong> — how many of the colours were outside the target.</li>
+</ul>
+</li>
+<li><strong>Provenance</strong> in the rail counts published intents (0) and this tool&#39;s methods (4).</li>
+</ol>
+<p>The figures use the source, target and strength set on the Lab tab. The method selected on the Lab tab opens by default.</p>
+<h2 id="compare-two-colours-with-the-e-playground">Compare two colours with the ΔE Playground</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, find <strong>ΔE Playground</strong>.</li>
+<li>Set colour <strong>A</strong> and colour <strong>B</strong> with the pickers, or type a six-digit HEX in each field and press <code>Enter</code> or move focus away.</li>
+<li>Read the result line: <strong>ΔE₀₀</strong> with a verbal band (Imperceptible, Barely perceptible, Noticeable, Significant or Very different), <strong>ΔE*₉₄</strong> and <strong>ΔE*₇₆</strong>.</li>
+</ol>
+<p>The formula menu beside the result does not change the readout in the current version; all three figures are always shown.</p>
+<h2 id="result">Result</h2>
+<p>You can see how the five spaces differ in shape and size, and how differently the four methods treat the same colours.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Gamut Mapping</a><a href="map-a-colour-list.html"><span>Next</span>Map a list of colours</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#compare-boundaries-up-the-lightness-axis">Compare boundaries up the lightness axis</a></li><li><a href="#measure-gamut-volumes">Measure gamut volumes</a></li><li><a href="#compare-the-four-methods">Compare the four methods</a></li><li><a href="#compare-two-colours-with-the-e-playground">Compare two colours with the ΔE Playground</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

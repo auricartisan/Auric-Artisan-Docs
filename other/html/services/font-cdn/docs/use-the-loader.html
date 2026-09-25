@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use the loader — Auric Artisan Docs</title>
+<meta name="description" content="Load Font CDN families with the font-cdn.js script tag or its AuricFonts JavaScript API, and configure where it loads from.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font CDN</a>
+<h2>Font CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="embed-a-family.html">Embed a family</a></li>
+<li><a href="find-a-family.html">Find a family</a></li>
+<li><a href="self-host-a-family.html">Self-host a family</a></li>
+<li><a href="use-the-loader.html" aria-current="page">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Font CDN</a> &rsaquo; <a href="README.html">Font CDN documentation</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Use the loader</h1>
+<p class="lede">Load Font CDN families with the font-cdn.js script tag or its AuricFonts JavaScript API, and configure where it loads from.</p>
+<p><code>font-cdn.js</code> is a small script with no dependencies. It adds family stylesheets to your page, waits until fonts are ready, registers single font faces, and lets you search the catalogue. It creates a global object, <code>AuricFonts</code> (also available as <code>AuricFontLoader</code>).</p>
+<h2 id="declarative-one-script-tag">Declarative: one script tag</h2>
+<pre class="code" data-lang="html"><code>&lt;script src=&quot;https://fonts.auricartisan.com/font-cdn.js&quot;
+        data-families=&quot;Alegreya|Roboto Slab|Open Sans:wght@400;700&quot;&gt;&lt;/script&gt;</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Attribute</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>data-families</code></td><td>The families to load, separated by a vertical bar; each can carry a weight list (see <a href="#family-specs">Family specs</a>)</td></tr>
+<tr><td><code>data-fonts</code></td><td>Another name for <code>data-families</code></td></tr>
+<tr><td><code>data-display</code></td><td>The <code>font-display</code> value for faces added with <code>AuricFonts.face()</code>. Default <code>swap</code>.</td></tr>
+<tr><td><code>data-base</code></td><td>Load stylesheets and data from another address; see <a href="#where-it-loads-from">Where it loads from</a></td></tr>
+</tbody></table></div>
+<p>For each family, the loader adds a <code>&lt;link rel=&quot;stylesheet&quot;&gt;</code> for its CDN stylesheet to the page&#39;s <code>&lt;head&gt;</code>, once.</p>
+<h2 id="programmatic-auricfonts">Programmatic: AuricFonts</h2>
+<p>Include the script without <code>data-families</code>, then call the API:</p>
+<pre class="code" data-lang="html"><code>&lt;script src=&quot;https://fonts.auricartisan.com/font-cdn.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  AuricFonts.load('Alegreya').then(() =&gt; {
+    document.body.style.fontFamily = &quot;'Alegreya', serif&quot;;
+  });
+&lt;/script&gt;</code></pre>
+<h3 id="load-families">Load families</h3>
+<pre class="code" data-lang="js"><code>await AuricFonts.load('Alegreya');                 // one family
+await AuricFonts.load(['Inter:400,700', 'Lora']);  // several at once</code></pre>
+<p><code>load()</code> adds the family&#39;s stylesheet and resolves, with <code>{ id, family }</code> (an array of them for several), once the browser reports the requested weights are ready. Use it to avoid a flash of the fallback font before you measure or draw text.</p>
+<h3 id="register-one-face-from-any-file">Register one face from any file</h3>
+<pre class="code" data-lang="js"><code>AuricFonts.face({ family: 'Demo', url: 'https://example.com/Foo.ttf', weight: 400 });</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Default</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>family</code></td><td>—</td><td>The family name to register</td></tr>
+<tr><td><code>url</code></td><td>—</td><td>The font file&#39;s URL</td></tr>
+<tr><td><code>local</code></td><td>—</td><td>A locally installed font name to try first</td></tr>
+<tr><td><code>weight</code></td><td><code>400</code></td><td>The weight</td></tr>
+<tr><td><code>style</code></td><td><code>normal</code></td><td><code>normal</code> or <code>italic</code></td></tr>
+<tr><td><code>display</code></td><td><code>swap</code> (or <code>data-display</code>)</td><td>The <code>font-display</code> value</td></tr>
+<tr><td><code>stretch</code></td><td>—</td><td>The <code>font-stretch</code> value</td></tr>
+</tbody></table></div>
+<p>It resolves with the family name, and does not reject if the file fails to load.</p>
+<h3 id="other-methods">Other methods</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Returns</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td><code>AuricFonts.cssUrl(spec)</code> or <code>AuricFonts.css(spec)</code></td><td>The stylesheet URL for a family</td><td>Build your own link or <code>@import</code></td></tr>
+<tr><td><code>AuricFonts.injectCss(cssText, id)</code></td><td>The added <code>&lt;style&gt;</code> element</td><td>Add raw <code>@font-face</code> or <code>@import</code> CSS</td></tr>
+<tr><td><code>AuricFonts.whenReady(family, weights)</code></td><td>A promise</td><td>Wait for a family you added another way</td></tr>
+<tr><td><code>AuricFonts.list()</code></td><td>A promise of every family record</td><td>Build your own picker</td></tr>
+<tr><td><code>AuricFonts.search(query)</code></td><td>A promise of matching family records</td><td>Match on name, designer or category</td></tr>
+<tr><td><code>AuricFonts.get(idOrName)</code></td><td>A promise of the family&#39;s full metadata, or <code>null</code></td><td>Read styles, axes, licence and more</td></tr>
+<tr><td><code>AuricFonts.slugify(name)</code></td><td>The family id</td><td>Turn a name into its id</td></tr>
+<tr><td><code>AuricFonts.base</code></td><td>The address it loads from</td><td>Read or change it</td></tr>
+<tr><td><code>AuricFonts.index</code></td><td>The catalogue, once loaded</td><td>Inspect what <code>list()</code> fetched</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="js"><code>const mono = await AuricFonts.search('mono');
+const meta = await AuricFonts.get('alegreya');</code></pre>
+<p><code>list()</code>, <code>search()</code> and <code>get()</code> download catalogue data from the CDN the first time you call them: the index is large, so call them only when you need them.</p>
+<h2 id="family-specs">Family specs</h2>
+<p>Anywhere the loader takes a family, you can write:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Spec</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>Alegreya</code></td><td>The whole family</td></tr>
+<tr><td><code>Open Sans:wght@400;700</code></td><td>The family, waiting for weights 400 and 700</td></tr>
+<tr><td><code>Roboto:400,700i</code></td><td>Weights 400 and 700; the <code>i</code> marks italics</td></tr>
+<tr><td><code>{ family: &#39;Inter&#39;, weights: [400, 700] }</code></td><td>The same as an object; <code>id</code> can be given instead of <code>family</code></td></tr>
+</tbody></table></div>
+<p>The weights tell the loader what to wait for. The stylesheet it adds always declares the whole family.</p>
+<h2 id="where-it-loads-from">Where it loads from</h2>
+<p>By default the loader loads stylesheets and data from the address it was itself loaded from. To point it elsewhere, for example at a self-hosted copy, set one of these (the first found wins):</p>
+<ol>
+<li><code>data-base</code> on the script tag;</li>
+<li><code>window.AURIC_FONT_BASE</code> (or <code>window.AURIC_FONT_ASSET_BASE</code>), set before the script loads;</li>
+<li><code>&lt;meta name=&quot;auric-font-base&quot; content=&quot;…&quot;&gt;</code> in the page.</li>
+</ol>
+<p>You can also set <code>AuricFonts.base</code> from JavaScript before calling <code>load()</code>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="embed-a-family.html">Embed a family</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="../others/privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="self-host-a-family.html"><span>Previous</span>Self-host a family</a><a href="reference.html"><span>Next</span>Reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#declarative-one-script-tag">Declarative: one script tag</a></li><li><a href="#programmatic-auricfonts">Programmatic: AuricFonts</a></li><li><a href="#family-specs">Family specs</a></li><li><a href="#where-it-loads-from">Where it loads from</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

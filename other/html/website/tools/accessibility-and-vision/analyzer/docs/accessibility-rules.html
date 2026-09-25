@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility rules — Auric Artisan Docs</title>
+<meta name="description" content="Every one of the 126 accessibility rules the Analyzer checks, grouped by category, with its impact, WCAG mapping and what it looks for.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html" aria-current="page">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Accessibility rules</h1>
+<p class="lede">Every one of the 126 accessibility rules the Analyzer checks, grouped by category, with its impact, WCAG mapping and what it looks for.</p>
+<p>The accessibility engine in the <strong>A11y+</strong> panel checks 126 rules. This page lists every one, grouped into the 15 categories the panel uses for its <strong>Area</strong> filter and its <strong>Where the problems are</strong> bars. For how to read the results, see <a href="accessibility-engine.html">The accessibility engine</a>.</p>
+<h2 id="how-to-read-the-tables">How to read the tables</h2>
+<ul>
+<li><strong>Rule</strong> is the title the Issues view shows.</li>
+<li><strong>ID</strong> is the rule&#39;s identifier, shown in each rule&#39;s details and used in the exports.</li>
+<li><strong>Impact</strong> is how badly a failure affects people: critical, serious, moderate or minor.</li>
+<li><strong>WCAG</strong> lists the success criteria the rule maps to. &quot;Best practice&quot; means the rule maps to no criterion: it is good advice, but not part of conformance.</li>
+<li>The <strong>Level</strong> filter in the Issues view uses the lowest level among a rule&#39;s criteria. A rule mapped to a Level A criterion is filtered as <strong>WCAG A</strong>.</li>
+</ul>
+<p>Rules that map to WCAG 2.0 Level A or AA criteria also carry a <strong>Section 508</strong> badge, and rules that map to WCAG 2.0 or 2.1 Level A or AA criteria carry an <strong>EN 301 549</strong> badge.</p>
+<p>Across the catalogue, 18 rules are critical, 61 serious, 30 moderate and 17 minor. By level, 81 are filtered as Level A, 20 as Level AA, 5 as Level AAA and 20 as best practice.</p>
+<h3 id="what-every-rule-has-in-common">What every rule has in common</h3>
+<ul>
+<li>Rules only judge what is actually exposed. Elements hidden from assistive technology are skipped, apart from a few rules that exist to check hidden content, such as <code>aria-hidden</code> misuse, <code>&lt;meta&gt;</code> tags and image-map areas.</li>
+<li>Rules that need the page&#39;s layout or computed styles (contrast, reflow, target size, focus order) report <strong>needs review</strong> instead of guessing when those are unavailable.</li>
+<li>Content inside open shadow roots (web components) is checked too.</li>
+</ul>
+<h2 id="text-alternatives-12-rules">Text alternatives (12 rules)</h2>
+<p>Images and other non-text content need a text equivalent that a screen reader can announce.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Images must have an alt attribute</td><td><code>image-alt</code></td><td>critical</td><td>1.1.1</td><td><code>&lt;img&gt;</code> with no <code>alt</code>, no ARIA name and no presentational role</td></tr>
+<tr><td>Alt text must not be a file name</td><td><code>image-alt-filename</code></td><td>serious</td><td>1.1.1</td><td>Alt text such as <code>hero_banner.jpg</code></td></tr>
+<tr><td>Alt text must be meaningful</td><td><code>image-alt-placeholder</code></td><td>serious</td><td>1.1.1</td><td>Placeholder alt such as &quot;image&quot;, &quot;photo&quot;, &quot;logo&quot; or &quot;icon&quot;</td></tr>
+<tr><td>Alt text should not duplicate adjacent text</td><td><code>image-alt-redundant</code></td><td>minor</td><td>Best practice</td><td>Alt that repeats the text of its link or figure, so it is announced twice</td></tr>
+<tr><td>Alt text should be concise</td><td><code>image-alt-long</code></td><td>minor</td><td>Best practice</td><td>Alt text longer than about 150 characters</td></tr>
+<tr><td>Image buttons must have alternative text</td><td><code>input-image-alt</code></td><td>critical</td><td>1.1.1, 4.1.2</td><td><code>&lt;input type=&quot;image&quot;&gt;</code> with no text</td></tr>
+<tr><td>Image map areas must have alternative text</td><td><code>area-alt</code></td><td>critical</td><td>1.1.1, 2.4.4</td><td>Clickable image-map regions with no name</td></tr>
+<tr><td>Embedded objects must have alternative text</td><td><code>object-alt</code></td><td>serious</td><td>1.1.1</td><td><code>&lt;object&gt;</code> with no text alternative</td></tr>
+<tr><td>Elements with role=&quot;img&quot; must have an accessible name</td><td><code>role-img-alt</code></td><td>serious</td><td>1.1.1</td><td><code>role=&quot;img&quot;</code> with no name</td></tr>
+<tr><td>Informative SVGs must have an accessible name</td><td><code>svg-img-alt</code></td><td>serious</td><td>1.1.1</td><td>Meaningful inline SVG with no <code>&lt;title&gt;</code>, <code>aria-label</code> or <code>aria-labelledby</code></td></tr>
+<tr><td>Canvas elements need a text alternative</td><td><code>canvas-fallback</code></td><td>serious</td><td>1.1.1</td><td><code>&lt;canvas&gt;</code> with no fallback content or ARIA name</td></tr>
+<tr><td>Server-side image maps must not be used</td><td><code>server-side-image-map</code></td><td>minor</td><td>1.1.1, 2.1.1</td><td>Image maps that need a mouse</td></tr>
+</tbody></table></div>
+<h2 id="audio-video-4-rules">Audio &amp; video (4 rules)</h2>
+<p>People who cannot hear or see media need captions, descriptions and transcripts, and nobody should be surprised by sound.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Video must have captions</td><td><code>video-caption</code></td><td>critical</td><td>1.2.2</td><td>Prerecorded video with no captions track</td></tr>
+<tr><td>Video should provide audio description</td><td><code>video-description</code></td><td>serious</td><td>1.2.3, 1.2.5</td><td>Video with no description track or text alternative</td></tr>
+<tr><td>Audio needs a transcript</td><td><code>audio-transcript</code></td><td>serious</td><td>1.2.1</td><td>Audio-only content with no transcript</td></tr>
+<tr><td>Audio must not autoplay for more than 3 seconds without a control</td><td><code>no-autoplay-audio</code></td><td>serious</td><td>1.4.2</td><td>Sound that starts by itself with no pause control</td></tr>
+</tbody></table></div>
+<h2 id="structure-semantics-12-rules">Structure &amp; semantics (12 rules)</h2>
+<p>Screen-reader users move through a page by its headings, lists and frames. The structure has to be real markup, not just styling.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Heading levels must not skip</td><td><code>heading-order</code></td><td>moderate</td><td>1.3.1, 2.4.6</td><td>A jump such as <code>h2</code> straight to <code>h4</code></td></tr>
+<tr><td>Headings must not be empty</td><td><code>empty-heading</code></td><td>moderate</td><td>1.3.1, 2.4.6</td><td>Headings with no text</td></tr>
+<tr><td>Page must contain a level-one heading</td><td><code>page-has-heading-one</code></td><td>moderate</td><td>Best practice</td><td>A page with no <code>h1</code></td></tr>
+<tr><td>Lists may only contain list items</td><td><code>list-structure</code></td><td>serious</td><td>1.3.1</td><td>Other content placed directly inside <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code></td></tr>
+<tr><td>List items must be inside a list</td><td><code>listitem-parent</code></td><td>serious</td><td>1.3.1</td><td>An <code>&lt;li&gt;</code> outside a list</td></tr>
+<tr><td>Definition lists must be structured correctly</td><td><code>definition-list</code></td><td>serious</td><td>1.3.1</td><td>A <code>&lt;dl&gt;</code> with anything other than <code>dt</code>/<code>dd</code> pairs</td></tr>
+<tr><td>dt and dd must be inside a definition list</td><td><code>dlitem-parent</code></td><td>serious</td><td>1.3.1</td><td><code>&lt;dt&gt;</code> or <code>&lt;dd&gt;</code> outside a <code>&lt;dl&gt;</code></td></tr>
+<tr><td>Styled paragraphs must not be used as headings</td><td><code>p-as-heading</code></td><td>moderate</td><td>1.3.1</td><td>Bold, oversized paragraphs that look like headings</td></tr>
+<tr><td>Frames must have a title</td><td><code>frame-title</code></td><td>serious</td><td>2.4.1, 4.1.2</td><td>Frames announced only as &quot;frame&quot;</td></tr>
+<tr><td>Frame titles must be unique</td><td><code>frame-title-unique</code></td><td>serious</td><td>4.1.2</td><td>Two frames with the same title</td></tr>
+<tr><td>IDs on interactive elements must be unique</td><td><code>duplicate-id-active</code></td><td>serious</td><td>4.1.2</td><td>Duplicate IDs that break labels and ARIA references</td></tr>
+<tr><td>Hidden content should be reviewed</td><td><code>hidden-content</code></td><td>minor</td><td>Best practice</td><td>Hidden content that scripts may reveal later; check it is exposed properly when shown</td></tr>
+</tbody></table></div>
+<h2 id="tables-9-rules">Tables (9 rules)</h2>
+<p>Data tables must tell screen-reader users which header each cell belongs to.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Table headers must reference data cells</td><td><code>th-has-data-cells</code></td><td>serious</td><td>1.3.1</td><td>Header cells with no data cells, often a layout table marked as data</td></tr>
+<tr><td>Data tables must have header cells</td><td><code>table-headers</code></td><td>serious</td><td>1.3.1</td><td>Data tables with no <code>&lt;th&gt;</code></td></tr>
+<tr><td>scope attribute must be valid and on a header cell</td><td><code>scope-attr-valid</code></td><td>moderate</td><td>1.3.1</td><td>Invalid or misplaced <code>scope</code> values</td></tr>
+<tr><td>headers attribute must reference cells in the same table</td><td><code>td-headers-attr</code></td><td>serious</td><td>1.3.1</td><td>Broken <code>headers</code> references</td></tr>
+<tr><td>Data tables should have a caption</td><td><code>table-caption</code></td><td>minor</td><td>Best practice</td><td>Data tables with no <code>&lt;caption&gt;</code></td></tr>
+<tr><td>Table header cells must not be empty</td><td><code>empty-table-header</code></td><td>minor</td><td>Best practice</td><td>Header cells with no name</td></tr>
+<tr><td>Do not fake a caption with a full-width first-row cell</td><td><code>table-fake-caption</code></td><td>serious</td><td>1.3.1</td><td>A spanning first row used as a visual title instead of <code>&lt;caption&gt;</code></td></tr>
+<tr><td>Table caption and aria-label must not be identical</td><td><code>table-duplicate-name</code></td><td>minor</td><td>Best practice</td><td>A caption repeated in <code>aria-label</code> or <code>title</code></td></tr>
+<tr><td>Data cells in large tables must be associated with a header</td><td><code>td-has-header</code></td><td>serious</td><td>1.3.1</td><td>In tables of 3 or more rows and columns, data cells no header reaches</td></tr>
+</tbody></table></div>
+<h2 id="forms-labels-15-rules">Forms &amp; labels (15 rules)</h2>
+<p>Every field and button needs a name a screen reader can announce and a speech-input user can say.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Radio and checkbox groups need a group label</td><td><code>fieldset-legend</code></td><td>moderate</td><td>1.3.1, 3.3.2</td><td>Related radios or checkboxes with no <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code></td></tr>
+<tr><td>Form fields must not have multiple label elements</td><td><code>form-field-multiple-labels</code></td><td>moderate</td><td>1.3.1, 4.1.2</td><td>A field with more than one <code>&lt;label&gt;</code></td></tr>
+<tr><td>autocomplete attribute must use valid tokens</td><td><code>autocomplete-valid</code></td><td>serious</td><td>1.3.5</td><td>Invalid <code>autocomplete</code> values</td></tr>
+<tr><td>Fields collecting user data should declare their purpose</td><td><code>identify-input-purpose</code></td><td>moderate</td><td>1.3.5</td><td>Personal-data fields (name, email, phone, address) with no <code>autocomplete</code></td></tr>
+<tr><td>Accessible name must contain the visible label</td><td><code>label-in-name</code></td><td>serious</td><td>2.5.3</td><td>An <code>aria-label</code> that replaces the visible text with something different</td></tr>
+<tr><td>Changing a control must not automatically change context</td><td><code>no-onchange-submit</code></td><td>serious</td><td>3.2.2</td><td>A select that navigates as soon as its value changes</td></tr>
+<tr><td>autofocus should not be used</td><td><code>no-autofocus</code></td><td>moderate</td><td>Best practice</td><td><code>autofocus</code>, which drops users into the middle of the page</td></tr>
+<tr><td>Form elements must have labels</td><td><code>form-field-label</code></td><td>critical</td><td>1.3.1, 3.3.2, 4.1.2</td><td>Fields with no programmatic label</td></tr>
+<tr><td>Placeholder text must not be the only label</td><td><code>label-placeholder-only</code></td><td>serious</td><td>3.3.2</td><td>Fields labelled only by placeholder text</td></tr>
+<tr><td>Required fields must be programmatically marked</td><td><code>required-field-indicated</code></td><td>moderate</td><td>3.3.2</td><td>Fields marked required visually but not with <code>required</code> or <code>aria-required</code></td></tr>
+<tr><td>Invalid fields must describe the error in text</td><td><code>error-identification</code></td><td>serious</td><td>3.3.1, 3.3.3</td><td><code>aria-invalid</code> with no linked error message</td></tr>
+<tr><td>Authentication must not depend on a cognitive test</td><td><code>accessible-authentication</code></td><td>serious</td><td>3.3.8</td><td>Login flows that block paste or require memorising or transcribing</td></tr>
+<tr><td>Forms need an explicit submit control</td><td><code>form-submit-control</code></td><td>moderate</td><td>3.2.2</td><td>Forms with no submit button</td></tr>
+<tr><td>Buttons must have discernible text</td><td><code>button-name</code></td><td>critical</td><td>4.1.2</td><td>Buttons announced only as &quot;button&quot;</td></tr>
+<tr><td>Select elements must have an accessible name</td><td><code>select-name</code></td><td>critical</td><td>4.1.2</td><td>Selects announced only as a combo box</td></tr>
+</tbody></table></div>
+<h2 id="zoom-reflow-motion-6-rules">Zoom, reflow &amp; motion (6 rules)</h2>
+<p>People who zoom, enlarge text or change spacing must still be able to use the page.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Content must not be locked to one orientation</td><td><code>css-orientation-lock</code></td><td>serious</td><td>1.3.4</td><td>Media-query transforms that lock portrait or landscape</td></tr>
+<tr><td>Zooming and scaling must not be disabled</td><td><code>meta-viewport</code></td><td>critical</td><td>1.4.4</td><td><code>user-scalable=no</code> or a maximum scale below 2</td></tr>
+<tr><td>Text spacing must be overridable</td><td><code>avoid-inline-spacing</code></td><td>serious</td><td>1.4.12</td><td>Inline <code>!important</code> spacing that user styles cannot override</td></tr>
+<tr><td>Content must reflow at 320 CSS pixels</td><td><code>reflow-fixed-width</code></td><td>serious</td><td>1.4.10</td><td>Declared fixed widths that force two-way scrolling at 320px</td></tr>
+<tr><td>Hover content must be dismissible, hoverable and persistent</td><td><code>content-on-hover</code></td><td>moderate</td><td>1.4.13</td><td>Native <code>title</code> tooltips, which fail all three</td></tr>
+<tr><td>Users should be able to zoom to at least 500%</td><td><code>meta-viewport-large</code></td><td>minor</td><td>1.4.4</td><td>A maximum scale below 5</td></tr>
+</tbody></table></div>
+<h2 id="colour-contrast-4-rules">Colour &amp; contrast (4 rules)</h2>
+<p>Text and controls must stand out from what is behind them, and colour must not be the only cue.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Text must meet the minimum contrast ratio</td><td><code>color-contrast</code></td><td>serious</td><td>1.4.3</td><td>Body text under 4.5:1, or large text under 3:1</td></tr>
+<tr><td>Text should meet the enhanced contrast ratio</td><td><code>color-contrast-enhanced</code></td><td>moderate</td><td>1.4.6</td><td>Body text under 7:1, or large text under 4.5:1 (Level AAA)</td></tr>
+<tr><td>Links in body text must not rely on colour alone</td><td><code>link-in-text-block</code></td><td>serious</td><td>1.4.1</td><td>Links in prose with no underline and under 3:1 against the surrounding text</td></tr>
+<tr><td>UI component boundaries need 3:1 contrast</td><td><code>non-text-contrast</code></td><td>serious</td><td>1.4.11</td><td>Controls whose visible boundary is under 3:1, or that have no boundary at all</td></tr>
+</tbody></table></div>
+<p>Contrast is measured from what the page actually paints. Semi-transparent colours are blended with what sits behind them first. Text over a gradient, photograph or video has no single background colour, so it is reported as needs review. Each failing pair comes with a suggested colour that keeps the hue and adjusts only the lightness. See <a href="colour-contrast-and-vision.html">Colour, contrast and vision</a>.</p>
+<h2 id="keyboard-focus-12-rules">Keyboard &amp; focus (12 rules)</h2>
+<p>Everything must work with a keyboard alone, and the user must always see where focus is.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Click handlers must be on focusable, named elements</td><td><code>keyboard-handler-focusable</code></td><td>critical</td><td>2.1.1, 4.1.2</td><td>A <code>div</code> or <code>span</code> with a click handler that keyboard users cannot reach</td></tr>
+<tr><td>Interactive controls must not be nested</td><td><code>nested-interactive</code></td><td>serious</td><td>4.1.2</td><td>A button inside a link, or the reverse</td></tr>
+<tr><td>accesskey values must be unique</td><td><code>accesskeys-unique</code></td><td>minor</td><td>Best practice</td><td>Duplicate <code>accesskey</code> values</td></tr>
+<tr><td>Single-character shortcuts must be remappable or scoped</td><td><code>character-key-shortcuts</code></td><td>serious</td><td>2.1.4</td><td>Single-key shortcuts that fire while someone is dictating</td></tr>
+<tr><td>Positive tabindex must not be used</td><td><code>tabindex-positive</code></td><td>serious</td><td>2.4.3</td><td><code>tabindex</code> above 0</td></tr>
+<tr><td>Tab order must follow the visual reading order</td><td><code>focus-order-visual</code></td><td>serious</td><td>2.4.3</td><td>CSS reordering that makes the tab sequence jump around</td></tr>
+<tr><td>Focused elements must show a visible focus indicator</td><td><code>focus-visible</code></td><td>serious</td><td>2.4.7</td><td>Outlines removed with nothing to replace them</td></tr>
+<tr><td>Focus indicator must be large enough and contrast enough</td><td><code>focus-appearance</code></td><td>moderate</td><td>2.4.13, 1.4.11</td><td>Focus indicators thinner than 2 CSS pixels or under 3:1</td></tr>
+<tr><td>Focused elements must not be hidden behind sticky UI</td><td><code>focus-not-obscured</code></td><td>serious</td><td>2.4.11</td><td>Sticky headers, cookie bars or chat widgets covering the focused element</td></tr>
+<tr><td>Scrollable regions must be keyboard-accessible</td><td><code>scrollable-region-focusable</code></td><td>serious</td><td>2.1.1</td><td>Scrolling areas that neither take focus nor contain anything focusable</td></tr>
+<tr><td>Frames removed from the tab order must not contain focusable content</td><td><code>frame-focusable-content</code></td><td>serious</td><td>2.1.1</td><td>An <code>&lt;iframe&gt;</code> with <code>tabindex=&quot;-1&quot;</code>; usually needs a manual check</td></tr>
+<tr><td>Focusable elements should convey a role</td><td><code>focus-order-semantics</code></td><td>moderate</td><td>Best practice</td><td>Elements put in the tab order with no role</td></tr>
+</tbody></table></div>
+<h2 id="timing-animation-3-rules">Timing &amp; animation (3 rules)</h2>
+<p>Moving, blinking and refreshing content must be under the user&#39;s control.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Pages must not auto-refresh or redirect on a timer</td><td><code>meta-refresh</code></td><td>critical</td><td>2.2.1</td><td>A timed <code>&lt;meta&gt;</code> refresh or redirect</td></tr>
+<tr><td>Blinking and scrolling content must be stoppable</td><td><code>blink-marquee</code></td><td>serious</td><td>2.2.2</td><td><code>&lt;blink&gt;</code> and <code>&lt;marquee&gt;</code></td></tr>
+<tr><td>Long or infinite animation must respect reduced-motion</td><td><code>animation-pausable</code></td><td>serious</td><td>2.2.2, 2.3.3</td><td>Animation over five seconds, or motion that ignores the reduced-motion setting</td></tr>
+</tbody></table></div>
+<h2 id="navigation-9-rules">Navigation (9 rules)</h2>
+<p>People need to skip repeated blocks, know where a link goes, and find pages more than one way.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Page must offer a way to skip repeated blocks</td><td><code>bypass</code></td><td>serious</td><td>2.4.1</td><td>No skip link, <code>&lt;main&gt;</code> landmark or heading structure</td></tr>
+<tr><td>Page must have a descriptive title</td><td><code>document-title</code></td><td>serious</td><td>2.4.2</td><td>A missing or empty page title</td></tr>
+<tr><td>Links must have discernible text</td><td><code>link-name</code></td><td>critical</td><td>2.4.4, 4.1.2</td><td>Links announced only as &quot;link&quot;, often icon-only links</td></tr>
+<tr><td>Link text must describe the destination</td><td><code>link-name-generic</code></td><td>moderate</td><td>2.4.4, 2.4.9</td><td>Generic text such as &quot;click here&quot;, &quot;read more&quot; or &quot;learn more&quot;</td></tr>
+<tr><td>Links with the same name must go to the same place</td><td><code>identical-links-same-purpose</code></td><td>minor</td><td>2.4.9</td><td>Two links with the same name and different destinations</td></tr>
+<tr><td>Site should offer more than one way to find pages</td><td><code>multiple-ways</code></td><td>moderate</td><td>2.4.5</td><td>No search, sitemap or index alongside the navigation</td></tr>
+<tr><td>Links opening a new window should say so</td><td><code>link-new-window</code></td><td>minor</td><td>Best practice</td><td>Links that open a new tab without warning</td></tr>
+<tr><td>Help mechanisms must appear in a consistent place</td><td><code>consistent-help</code></td><td>minor</td><td>3.2.6</td><td>Help and contact links that move between pages</td></tr>
+<tr><td>Skip links must point at an existing target</td><td><code>skip-link</code></td><td>moderate</td><td>Best practice</td><td>A skip link whose target ID is not on the page</td></tr>
+</tbody></table></div>
+<h2 id="safe-linking-1-rule">Safe linking (1 rule)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>target=&quot;_blank&quot; should carry rel=&quot;noopener&quot;</td><td><code>target-blank-noopener</code></td><td>minor</td><td>Best practice</td><td>New-tab links that let the opened page control the original tab</td></tr>
+</tbody></table></div>
+<h2 id="pointer-touch-4-rules">Pointer &amp; touch (4 rules)</h2>
+<p>Targets must be big enough to hit, and gestures need simple alternatives.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Touch targets must be at least 24×24 CSS pixels</td><td><code>target-size-minimum</code></td><td>serious</td><td>2.5.8</td><td>Targets under 24×24px that are not inline and lack 24px of clear space</td></tr>
+<tr><td>Touch targets should be at least 44×44 CSS pixels</td><td><code>target-size-enhanced</code></td><td>moderate</td><td>2.5.5</td><td>Targets under 44×44px (Level AAA)</td></tr>
+<tr><td>Path-based and multipoint gestures need a single-pointer alternative</td><td><code>pointer-gestures</code></td><td>moderate</td><td>2.5.1</td><td>Swipe, pinch or drag with no tap or click equivalent</td></tr>
+<tr><td>Drag interactions need a non-dragging alternative</td><td><code>dragging-movements</code></td><td>moderate</td><td>2.5.7</td><td>Drag-and-drop with no click alternative</td></tr>
+</tbody></table></div>
+<h2 id="language-readability-5-rules">Language &amp; readability (5 rules)</h2>
+<p>The page&#39;s language drives the screen reader&#39;s voice, and plain prose helps everyone.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td><code>&lt;html&gt;</code> must have a lang attribute</td><td><code>html-has-lang</code></td><td>serious</td><td>3.1.1</td><td>A page with no language</td></tr>
+<tr><td>lang attribute must be a valid BCP 47 tag</td><td><code>html-lang-valid</code></td><td>serious</td><td>3.1.1</td><td>An invalid language tag</td></tr>
+<tr><td>lang attributes on page parts must be valid</td><td><code>valid-lang</code></td><td>serious</td><td>3.1.2</td><td>Invalid <code>lang</code> on passages in another language</td></tr>
+<tr><td>Text should be readable at lower-secondary level</td><td><code>reading-level</code></td><td>minor</td><td>3.1.5</td><td>Prose harder than lower-secondary level (Level AAA)</td></tr>
+<tr><td>Abbreviations should be expanded</td><td><code>abbr-expansion</code></td><td>minor</td><td>3.1.4</td><td>Abbreviations with no expansion (Level AAA)</td></tr>
+</tbody></table></div>
+<h2 id="aria-correctness-24-rules">ARIA correctness (24 rules)</h2>
+<p>ARIA adds roles, states and names for assistive technology. Used wrongly, it silently breaks them.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>role attribute must contain a valid, non-abstract role</td><td><code>aria-role-valid</code></td><td>critical</td><td>4.1.2</td><td>Unknown or abstract roles, which browsers drop</td></tr>
+<tr><td>role must be allowed on the element it is placed on</td><td><code>aria-allowed-role</code></td><td>moderate</td><td>4.1.2</td><td>A role the element may not carry</td></tr>
+<tr><td>ARIA attributes must be spelled correctly</td><td><code>aria-attr-valid</code></td><td>critical</td><td>4.1.2</td><td>Misspelt <code>aria-*</code> attributes, such as <code>aria-labeledby</code></td></tr>
+<tr><td>ARIA attribute values must be valid</td><td><code>aria-attr-value-valid</code></td><td>critical</td><td>4.1.2</td><td>Out-of-range tokens, non-numbers and broken ID references</td></tr>
+<tr><td>ARIA attributes must be allowed on the element&#39;s role</td><td><code>aria-allowed-attr</code></td><td>serious</td><td>4.1.2</td><td>States and properties the role does not support</td></tr>
+<tr><td>Roles must carry their required ARIA attributes</td><td><code>aria-required-attr</code></td><td>critical</td><td>4.1.2</td><td>For example <code>role=&quot;checkbox&quot;</code> with no <code>aria-checked</code></td></tr>
+<tr><td>Composite roles must own the right child roles</td><td><code>aria-required-children</code></td><td>critical</td><td>1.3.1, 4.1.2</td><td>For example a <code>tablist</code> that does not own <code>tab</code> elements</td></tr>
+<tr><td>Roles must sit inside their required parent role</td><td><code>aria-required-parent</code></td><td>critical</td><td>1.3.1, 4.1.2</td><td>For example an <code>option</code> outside a <code>listbox</code></td></tr>
+<tr><td>aria-hidden elements must not contain focusable content</td><td><code>aria-hidden-focus</code></td><td>serious</td><td>1.3.1, 4.1.2</td><td>Focusable elements inside <code>aria-hidden</code></td></tr>
+<tr><td>aria-hidden must not be on <code>&lt;body&gt;</code></td><td><code>aria-hidden-body</code></td><td>critical</td><td>4.1.2</td><td>The whole page hidden from assistive technology</td></tr>
+<tr><td>Naming attributes must not be used on roles that prohibit names</td><td><code>aria-prohibited-attr</code></td><td>serious</td><td>4.1.2</td><td><code>aria-label</code> on roles such as generic, paragraph or code</td></tr>
+<tr><td>Deprecated ARIA attributes should be removed</td><td><code>aria-deprecated-attr</code></td><td>minor</td><td>Best practice</td><td>ARIA drag-and-drop attributes, which nothing supports</td></tr>
+<tr><td>Dialogs must have an accessible name</td><td><code>aria-dialog-name</code></td><td>serious</td><td>4.1.2</td><td>Dialogs announced only as &quot;dialog&quot;</td></tr>
+<tr><td>ARIA commands must have an accessible name</td><td><code>aria-command-name</code></td><td>serious</td><td>4.1.2</td><td>Elements with a widget role and no name</td></tr>
+<tr><td>ARIA input fields must have an accessible name</td><td><code>aria-input-field-name</code></td><td>serious</td><td>4.1.2</td><td>Custom input widgets with no name</td></tr>
+<tr><td>Meters and progress bars must have an accessible name</td><td><code>aria-meter-progress-name</code></td><td>serious</td><td>4.1.2</td><td>Meters and progress bars announced as a bare number</td></tr>
+<tr><td>Tooltips must have an accessible name</td><td><code>aria-tooltip-name</code></td><td>serious</td><td>4.1.2</td><td>Empty tooltips</td></tr>
+<tr><td>role=presentation must not be combined with ARIA or focus</td><td><code>presentation-role-conflict</code></td><td>moderate</td><td>4.1.2</td><td>Presentational elements that are focusable or carry global ARIA</td></tr>
+<tr><td>ARIA ID references must resolve</td><td><code>aria-reference-valid</code></td><td>serious</td><td>1.3.1, 4.1.2</td><td><code>aria-labelledby</code> and similar pointing at missing IDs</td></tr>
+<tr><td>Status messages must be exposed to assistive technology</td><td><code>status-messages</code></td><td>moderate</td><td>4.1.3</td><td>Toasts, cart counts or errors that appear with no live region</td></tr>
+<tr><td>Live regions must be configured correctly</td><td><code>aria-live-valid</code></td><td>moderate</td><td>4.1.3</td><td>Misconfigured or over-assertive live regions</td></tr>
+<tr><td>Conditional ARIA state must match the element&#39;s native state</td><td><code>aria-conditional-attr</code></td><td>serious</td><td>4.1.2</td><td>An <code>aria-checked</code> that disagrees with a native checkbox</td></tr>
+<tr><td>aria-roledescription must be on an element with a semantic role</td><td><code>aria-roledescription</code></td><td>serious</td><td>4.1.2</td><td><code>aria-roledescription</code> on an element with no role</td></tr>
+<tr><td>role=&quot;text&quot; must not contain focusable descendants</td><td><code>aria-text</code></td><td>serious</td><td>4.1.2</td><td>Links or fields inside <code>role=&quot;text&quot;</code>, which disappear from the tree</td></tr>
+</tbody></table></div>
+<h2 id="landmarks-regions-6-rules">Landmarks &amp; regions (6 rules)</h2>
+<p>Landmarks let people jump straight to the main content, the navigation or the footer.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Rule</th><th>ID</th><th>Impact</th><th>WCAG</th><th>Looks for</th></tr></thead>
+<tbody>
+<tr><td>Page must have exactly one main landmark</td><td><code>landmark-one-main</code></td><td>moderate</td><td>Best practice</td><td>No <code>&lt;main&gt;</code>, or more than one</td></tr>
+<tr><td>banner and contentinfo landmarks must be unique</td><td><code>landmark-no-duplicate</code></td><td>moderate</td><td>Best practice</td><td>More than one top-level header or footer landmark</td></tr>
+<tr><td>Landmarks of the same type must have distinct names</td><td><code>landmark-unique</code></td><td>moderate</td><td>Best practice</td><td>Two <code>&lt;nav&gt;</code> landmarks both announced as &quot;navigation&quot;</td></tr>
+<tr><td>Top-level landmarks must not be nested inside another landmark</td><td><code>landmark-top-level</code></td><td>moderate</td><td>Best practice</td><td>A banner, main or contentinfo landmark inside another landmark</td></tr>
+<tr><td>All page content should be inside a landmark</td><td><code>region</code></td><td>moderate</td><td>Best practice</td><td>Content outside every landmark</td></tr>
+<tr><td>Form landmarks should be named</td><td><code>form-landmark-name</code></td><td>minor</td><td>Best practice</td><td>Several unnamed form landmarks</td></tr>
+</tbody></table></div>
+<h2 id="aria-widget-patterns">ARIA widget patterns</h2>
+<p>In addition to the 126 rules, the <strong>Widgets</strong> view checks eight composite widget patterns: Tabs, Disclosure / Accordion, Combobox, Dialog (modal), Menu / Menubar, Tree view, Slider and Carousel. Its findings are reported under the category <strong>ARIA widget patterns</strong> and count in the score like any other rule. When a widget finding repeats a rule that has already failed (for example an unnamed dialog), it is reported once, not twice.</p>
+<h2 id="wcag-criteria-the-engine-knows">WCAG criteria the engine knows</h2>
+<p>The Conformance view lists 60 WCAG success criteria. Eleven of them are never checked by any rule, because software cannot judge them. They always appear as untested and need a person:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Criterion</th><th>Name</th><th>Level</th></tr></thead>
+<tbody>
+<tr><td>1.3.2</td><td>Meaningful Sequence</td><td>A</td></tr>
+<tr><td>1.3.3</td><td>Sensory Characteristics</td><td>A</td></tr>
+<tr><td>1.4.5</td><td>Images of Text</td><td>AA</td></tr>
+<tr><td>2.1.2</td><td>No Keyboard Trap</td><td>A</td></tr>
+<tr><td>2.3.1</td><td>Three Flashes or Below Threshold</td><td>A</td></tr>
+<tr><td>2.5.2</td><td>Pointer Cancellation</td><td>A</td></tr>
+<tr><td>2.5.4</td><td>Motion Actuation</td><td>A</td></tr>
+<tr><td>3.2.1</td><td>On Focus</td><td>A</td></tr>
+<tr><td>3.2.3</td><td>Consistent Navigation</td><td>AA</td></tr>
+<tr><td>3.2.4</td><td>Consistent Identification</td><td>AA</td></tr>
+<tr><td>3.3.7</td><td>Redundant Entry</td><td>A</td></tr>
+</tbody></table></div>
+<p>A criterion can also show as untested on a particular page when none of its rules found anything to check, for example the captions criteria on a page with no video.</p>
+<p>The other 49 criteria are covered by at least one rule: 1.1.1, 1.2.1, 1.2.2, 1.2.3, 1.2.5, 1.3.1, 1.3.4, 1.3.5, 1.4.1, 1.4.2, 1.4.3, 1.4.4, 1.4.6, 1.4.10, 1.4.11, 1.4.12, 1.4.13, 2.1.1, 2.1.4, 2.2.1, 2.2.2, 2.3.3, 2.4.1, 2.4.2, 2.4.3, 2.4.4, 2.4.5, 2.4.6, 2.4.7, 2.4.9, 2.4.11, 2.4.13, 2.5.1, 2.5.3, 2.5.5, 2.5.7, 2.5.8, 3.1.1, 3.1.2, 3.1.4, 3.1.5, 3.2.2, 3.2.6, 3.3.1, 3.3.2, 3.3.3, 3.3.8, 4.1.2 and 4.1.3.</p>
+<p>To check the untested criteria yourself, work through the <a href="../../accessibility-checklist/README.html">Accessibility Checklist</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="accessibility-engine.html"><span>Previous</span>The accessibility engine (A11y+)</a><a href="arrange-the-workspace.html"><span>Next</span>Arrange the workspace</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-to-read-the-tables">How to read the tables</a></li><li><a href="#text-alternatives-12-rules">Text alternatives (12 rules)</a></li><li><a href="#audio-video-4-rules">Audio &amp; video (4 rules)</a></li><li><a href="#structure-semantics-12-rules">Structure &amp; semantics (12 rules)</a></li><li><a href="#tables-9-rules">Tables (9 rules)</a></li><li><a href="#forms-labels-15-rules">Forms &amp; labels (15 rules)</a></li><li><a href="#zoom-reflow-motion-6-rules">Zoom, reflow &amp; motion (6 rules)</a></li><li><a href="#colour-contrast-4-rules">Colour &amp; contrast (4 rules)</a></li><li><a href="#keyboard-focus-12-rules">Keyboard &amp; focus (12 rules)</a></li><li><a href="#timing-animation-3-rules">Timing &amp; animation (3 rules)</a></li><li><a href="#navigation-9-rules">Navigation (9 rules)</a></li><li><a href="#safe-linking-1-rule">Safe linking (1 rule)</a></li><li><a href="#pointer-touch-4-rules">Pointer &amp; touch (4 rules)</a></li><li><a href="#language-readability-5-rules">Language &amp; readability (5 rules)</a></li><li><a href="#aria-correctness-24-rules">ARIA correctness (24 rules)</a></li><li><a href="#landmarks-regions-6-rules">Landmarks &amp; regions (6 rules)</a></li><li><a href="#aria-widget-patterns">ARIA widget patterns</a></li><li><a href="#wcag-criteria-the-engine-knows">WCAG criteria the engine knows</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

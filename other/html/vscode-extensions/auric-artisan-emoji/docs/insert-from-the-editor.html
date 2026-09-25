@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert from the editor — Auric Artisan Docs</title>
+<meta name="description" content="Insert emoji without opening the Studio, using Quick Insert, shortcode completions, code hovers, shortcode replacement and the recent and favorite pickers.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Emoji</a>
+<h2>Auric Artisan Emoji guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Emoji</a></li>
+<li><a href="emoji-studio.html">Use Emoji Studio</a></li>
+<li><a href="insert-from-the-editor.html" aria-current="page">Insert from the editor</a></li>
+<li><a href="inspector-tones-and-formats.html">Inspector, skin tones and output formats</a></li>
+<li><a href="interface-language.html">Interface language (English and हिन्दी)</a></li>
+<li><a href="sequences.html">Compose a sequence</a></li>
+<li><a href="reference.html">Auric Artisan Emoji reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Emoji</a> &rsaquo; <a href="README.html">Auric Artisan Emoji guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Emoji</p>
+<h1>Insert from the editor</h1>
+<p class="lede">Insert emoji without opening the Studio, using Quick Insert, shortcode completions, code hovers, shortcode replacement and the recent and favorite pickers.</p>
+<h2 id="quick-insert">Quick Insert</h2>
+<ol>
+<li>Place the cursor (or several cursors) in a text file.</li>
+<li>Press <code>Ctrl</code> + <code>Alt</code> + <code>J</code> (<code>Cmd</code> + <code>Alt</code> + <code>J</code>), run <strong>Auric Artisan Emoji: Quick Insert Emoji</strong>, or right-click › <strong>Quick Insert Emoji</strong>.</li>
+<li>Search names, shortcodes, categories or Unicode, and choose an emoji.</li>
+</ol>
+<p>Quick Insert uses your preferred skin tone and spacing.</p>
+<h2 id="shortcode-completions">Shortcode completions</h2>
+<p>Type <code>:</code> followed by part of a name. Suggestions appear:</p>
+<pre class="code" data-lang="text"><code>:spa      → sparkles     :sparkles:
+:rock     → rocket       :rocket:
+:thinking → thinking face :thinking_face:</code></pre>
+<p>Accept a suggestion to insert the emoji. Turn completions off with <code>auricEmoji.completions.enabled</code>.</p>
+<h2 id="hover-over-a-shortcode">Hover over a shortcode</h2>
+<ol>
+<li>Write a complete shortcode with both colons, such as <code>:rocket:</code> or <code>:waving_hand:</code>.</li>
+<li>Hover over it. The hover shows a preview.</li>
+<li>Choose <strong>Insert emoji</strong>, <strong>JavaScript</strong> or <strong>HTML</strong>.</li>
+</ol>
+<pre class="code" data-lang="js"><code>// Before: hover over :rocket: inside the string
+const launch = &quot;:rocket:&quot;;
+
+// After choosing Insert emoji
+const launch = &quot;(the rocket emoji character)&quot;;</code></pre>
+<ul>
+<li>Only the hovered shortcode is replaced, in one undo step. Quotes, other cursors and surrounding code are untouched, and no whitespace is added.</li>
+<li>The emoji uses the skin tone shown in the preview.</li>
+<li>If the document changes before you click, hover again for a fresh action. An action cannot be reused after it has inserted.</li>
+<li>Unlike Studio insertion, a failed hover edit does not fall back to the clipboard.</li>
+<li>Needs VS Code&#39;s editor hovers and <code>auricEmoji.hover.enabled</code> to be on.</li>
+</ul>
+<h2 id="replace-several-shortcodes">Replace several shortcodes</h2>
+<ol>
+<li>Select text containing shortcodes. With no selection, the current line is used.</li>
+<li>Run <strong>Auric Artisan Emoji: Replace Emoji Shortcodes in Selection</strong>, or right-click › <strong>Replace Emoji Shortcodes in Selection</strong> (shown when text is selected).</li>
+</ol>
+<pre class="code" data-lang="text"><code>Before: Ready to ship :rocket: :sparkles:
+After:  Ready to ship (rocket emoji) (sparkles emoji)</code></pre>
+<p>Unknown tokens are left unchanged. If none are recognised, you see &quot;No recognized :emoji_shortcodes: were found.&quot; Without an editor you see &quot;Open a text editor before replacing emoji shortcodes.&quot;</p>
+<h2 id="recent-favorite-and-last-emoji">Recent, favorite and last emoji</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Insert Recent Emoji</strong></td><td>Pick from your recent emoji and insert.</td></tr>
+<tr><td><strong>Insert Favorite Emoji</strong></td><td>Pick from your favorites and insert.</td></tr>
+<tr><td><strong>Copy Last Emoji Again</strong></td><td>Copy the last emoji you used. If none, &quot;Use an emoji first, then Copy Last Emoji Again.&quot;</td></tr>
+</tbody></table></div>
+<p>If a list is empty you see &quot;…: no saved emoji yet.&quot;</p>
+<h2 id="spacing">Spacing</h2>
+<p><code>auricEmoji.insertSpacing</code> controls editor insertion:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Behaviour</th></tr></thead>
+<tbody>
+<tr><td><code>auto</code> (default)</td><td>Adds a space only when adjacent text would touch the emoji.</td></tr>
+<tr><td><code>space</code></td><td>Appends one space.</td></tr>
+<tr><td><code>none</code></td><td>Inserts only the emoji, for exact string contents.</td></tr>
+</tbody></table></div>
+<p>Hover replacement leaves surrounding whitespace unchanged whatever this setting says.</p>
+<h2 id="result">Result</h2>
+<p>You can add emoji anywhere you type without leaving the editor.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="emoji-studio.html"><span>Previous</span>Use Emoji Studio</a><a href="inspector-tones-and-formats.html"><span>Next</span>Inspector, skin tones and output formats</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#quick-insert">Quick Insert</a></li><li><a href="#shortcode-completions">Shortcode completions</a></li><li><a href="#hover-over-a-shortcode">Hover over a shortcode</a></li><li><a href="#replace-several-shortcodes">Replace several shortcodes</a></li><li><a href="#recent-favorite-and-last-emoji">Recent, favorite and last emoji</a></li><li><a href="#spacing">Spacing</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,150 @@
+==============================================================================
+TROUBLESHOOTING THE COLLAGE MAKER
+==============================================================================
+Symptoms you may meet in the Collage Maker, why they happen, and what to do.
+Area: Website › Tools › Image and file tools › Collage Maker   Updated: 2026-09-25
+
+PICTURES WILL NOT LOAD
+======================
+
+  Symptom:    Nothing happens after dropping a file
+  Why:        The file is not an image type, so it is ignored
+  What to do: Convert it to JPG, PNG, WebP or GIF and try again
+
+  Symptom:    Could not read followed by a file name
+  Why:        Your browser could not decode that file
+  What to do: Save it again as JPG or PNG in another program; HEIC and camera
+              RAW files are not opened by every browser
+
+  Symptom:    The page slows down with many pictures
+  Why:        Every change is measured from pixels, once per picture for the
+              overlap figure
+  What to do: Use fewer or smaller pictures, or resize very large photographs
+              before adding them
+
+A PICTURE IS IN THE WRONG PLACE OR MISSING
+==========================================
+
+  Symptom:    A picture cannot be clicked
+  Why:        It is hidden, or another picture is on top of it
+  What to do: Select it in the Layers · top first list; use Show or Bring to
+              front
+
+  Symptom:    A picture moved partly off the canvas after changing Shape
+  Why:        Changing the shape does not move pictures
+  What to do: Use Arrange in a grid, Centre, or drag it back; watch the
+              outside the canvas card
+
+  Symptom:    Dragging jumps in steps
+  Why:        Snap to a 10 px grid is on
+  What to do: Clear the switch, or use the arrow keys for 1 px nudges
+
+  Symptom:    Arrow keys scroll the page instead of nudging
+  Why:        The canvas does not have keyboard focus
+  What to do: Click the canvas once, then use the arrow keys
+
+GRID ARRANGEMENTS
+=================
+
+  Symptom:    No arrangement fits at this padding and gap.
+  Why:        Padding and gap leave no room for any grid
+  What to do: Reduce Padding or Gap on the Studio tab
+
+  Symptom:    A row in the Layout table reads refused
+  Why:        That grid's cells come out at zero or less
+  What to do: Reduce padding or gap, or choose a grid with fewer columns or
+              rows
+
+  Symptom:    Every row shows the same Covered figure
+  Why:        No picture is larger than its cell, so each keeps its own size
+  What to do: Switch on Enlarge a small picture to fill its cell, or use
+              larger pictures
+
+  Symptom:    Pictures overlap after applying a grid
+  Why:        Fill the cell, crop scales pictures past their cells without
+              trimming them
+  What to do: Use Fit inside the cell, or check the Overlap column first
+
+  Symptom:    Rotated pictures became straight
+  Why:        Applying an arrangement sets every picture's rotation to 0°
+  What to do: Rotate again afterwards, or undo
+
+UNDO AND REDO
+=============
+
+  Symptom:    One key press undid two steps
+  Why:        With the canvas focused, the shortcut can be handled twice
+  What to do: Use the Undo and Redo buttons, or click outside the canvas
+              before pressing the shortcut
+
+  Symptom:    `Ctrl` + `Z` does nothing
+  Why:        A slider, menu or text box has focus
+  What to do: Click an empty part of the page, or use the Undo button
+
+  Symptom:    Early steps can no longer be undone
+  Why:        The history keeps 60 steps
+  What to do: Save a session file at points you may want to return to
+
+  Symptom:    A picture in that step is no longer loaded.
+  Why:        The step refers to a picture whose image the page no longer
+              holds
+  What to do: Add the picture again
+
+EXPORTS
+=======
+
+  Symptom:    The JPEG has dark or unexpected empty areas or corners
+  Why:        JPEG cannot store transparency
+  What to do: Clear Transparent background before saving a JPEG, or save a PNG
+
+  Symptom:    Part of a picture is missing from the export
+  Why:        It lies outside the canvas, or the rounded corners clip it
+  What to do: Check outside the canvas; reduce Corner radius
+
+  Symptom:    A picture looks soft in a large export
+  Why:        It was scaled above its own size, or the export scale enlarges
+              it
+  What to do: Use a larger original, or a lower Scale
+
+  Symptom:    The browser could not encode that.
+  Why:        The image was too large for the browser, or encoding failed
+  What to do: Lower Scale and try again
+
+  Symptom:    Nothing on the canvas yet.
+  Why:        There are no pictures
+  What to do: Add pictures first
+
+  Symptom:    This browser will not take an image from the clipboard.
+  Why:        The browser cannot copy images
+  What to do: Use Save the PNG instead
+
+  Symptom:    The browser refused the clipboard.
+  Why:        Clipboard permission was blocked
+  What to do: Allow clipboard access for the site, or save the file
+
+SESSIONS
+========
+
+  Symptom:    That is not a session file this page wrote.
+  Why:        The file is not JSON, or lacks the canvas and picture lists
+  What to do: Choose a `collage-session.json` saved by this tool
+
+  Symptom:    Loading a session changed only the canvas
+  Why:        No pictures were loaded when the session was read
+  What to do: Add the pictures, then load the session again
+
+  Symptom:    Pictures took each other's positions
+  Why:        They were added in a different order from the original
+  What to do: Clear the canvas, add the pictures in their original order, and
+              load the session again
+
+  Symptom:    The session reopened without the pictures
+  Why:        A session never contains image data
+  What to do: Keep the original picture files with the session
+
+STILL STUCK
+===========
+
+Reload the page to start fresh; nothing you loaded was stored, so reloading
+clears the canvas and history. For help with the site in general, see the help
+pages at Help [../../../../../help/README.txt].

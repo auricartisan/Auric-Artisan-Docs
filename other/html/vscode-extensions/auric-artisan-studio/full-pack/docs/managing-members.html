@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manage the pack's members — Auric Artisan Docs</title>
+<meta name="description" content="Enable, disable, update and uninstall the extensions the Full Pack installs, and see what the Workstation does in each case.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio — Full Pack</a>
+<h2>Full Pack docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Full Pack</a></li>
+<li><a href="managing-members.html" aria-current="page">Manage the pack's members</a></li>
+<li><a href="reference.html">Full Pack reference</a></li>
+<li><a href="troubleshooting.html">Full Pack troubleshooting</a></li>
+<li><a href="faq.html">Full Pack FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Artisan Studio — Full Pack</a> &rsaquo; <a href="README.html">Full Pack docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Full Pack</p>
+<h1>Manage the pack&#39;s members</h1>
+<p class="lede">Enable, disable, update and uninstall the extensions the Full Pack installs, and see what the Workstation does in each case.</p>
+<p>The Full Pack is a convenience bundle, not a single product. Its three members are ordinary extensions, so VS Code&#39;s usual controls work on each one separately.</p>
+<h2 id="disable-a-member">Disable a member</h2>
+<ol>
+<li>Open the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>).</li>
+<li>Find the member, for example <strong>Auric Code Health — Secrets, TODOs &amp; Risk</strong>.</li>
+<li>Select the gear icon, then <strong>Disable</strong> (for all workspaces) or <strong>Disable (Workspace)</strong> (for this workspace only).</li>
+<li>If VS Code asks you to restart extensions or reload the window, do so.</li>
+</ol>
+<p>The other members keep working. To turn it back on, choose <strong>Enable</strong> or <strong>Enable (Workspace)</strong> in the same menu.</p>
+<h2 id="uninstall-a-member">Uninstall a member</h2>
+<ol>
+<li>In the Extensions view, select the gear icon on the member.</li>
+<li>Select <strong>Uninstall</strong>.</li>
+</ol>
+<p>The pack and the other members stay installed. To get the member back, install it again by its ID, or reinstall the pack.</p>
+<h2 id="update-members">Update members</h2>
+<p>Members update like any other extension, automatically if you have auto-update on, or from the Extensions view. All Studio extensions share one version number, so keeping them on the same version avoids surprises in the shared <code>.auric-artisan</code> folder.</p>
+<h2 id="what-the-workstation-does-when-members-change">What the Workstation does when members change</h2>
+<p>The Workstation re-elects its host as soon as the set of installed or enabled members changes, without a reload. Views appear or hide, an open Studio tab rebuilds with the new spaces, and diagnostics move to their new owner.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Members left</th><th>Host</th><th>What you lose</th></tr></thead>
+<tbody>
+<tr><td>All three</td><td>Auric Accessibility</td><td>Nothing</td></tr>
+<tr><td>Accessibility and Color</td><td>Auric Accessibility</td><td>Code-health underlines, the Health space, <strong>Report</strong>, <strong>SARIF</strong>, the CI gate card; project scans still list code-health findings</td></tr>
+<tr><td>Accessibility and Code Health</td><td>Auric Accessibility</td><td>Colour hovers, swatches and pickers, <strong>Fix All Contrast Issues in File</strong>, the Color and Brand spaces, recent colours</td></tr>
+<tr><td>Color and Code Health</td><td>Auric Color</td><td>WCAG diagnostics, Inspect, the Project Issues view, <strong>Scan project</strong>, the Home space; the Overview becomes the colour workbench</td></tr>
+<tr><td>Accessibility only</td><td>Auric Accessibility</td><td>Everything colour-specific and code-health underlines</td></tr>
+<tr><td>Color only</td><td>Auric Color</td><td>Everything accessibility- and code-health-specific</td></tr>
+<tr><td>Code Health only</td><td>Auric Code Health</td><td>Everything colour- and accessibility-specific</td></tr>
+</tbody></table></div>
+<p>Contrast diagnostics move to Auric Color when Auric Accessibility is removed, and back when it returns.</p>
+<h2 id="uninstall-the-pack">Uninstall the pack</h2>
+<p>Select the gear icon on <strong>Auric Artisan Studio — Full Pack</strong> and choose <strong>Uninstall</strong>. Afterwards, check the <strong>Installed</strong> list in the Extensions view to see which members remain, and uninstall any you no longer want.</p>
+<p>Uninstalling extensions does not delete the <code>.auric-artisan</code> folder from your workspaces. Delete it yourself if you no longer need it.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../../docs/workstation.html">The Workstation</a></li>
+<li><a href="../../docs/choosing-an-install.html">Choose what to install</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Full Pack</a><a href="reference.html"><span>Next</span>Full Pack reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#disable-a-member">Disable a member</a></li><li><a href="#uninstall-a-member">Uninstall a member</a></li><li><a href="#update-members">Update members</a></li><li><a href="#what-the-workstation-does-when-members-change">What the Workstation does when members change</a></li><li><a href="#uninstall-the-pack">Uninstall the pack</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

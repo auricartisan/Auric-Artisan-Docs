@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tone Mapping reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, readout, option and export in the Tone Mapping lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tone Mapping</a>
+<h2>Tone Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tone Mapping</a></li>
+<li><a href="compare-operators.html">Compare operators</a></li>
+<li><a href="export-a-lut.html">Export a LUT</a></li>
+<li><a href="map-a-frame.html">Map a frame</a></li>
+<li><a href="read-the-scopes.html">Read the scopes</a></li>
+<li><a href="reference.html" aria-current="page">Tone Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tone Mapping</a></li>
+<li><a href="faq.html">Tone Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tone Mapping</a> &rsaquo; <a href="README.html">Tone Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Tone Mapping reference</h1>
+<p class="lede">Every control, readout, option and export in the Tone Mapping lab.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/tone-mapping/</a></p>
+<h2 id="lab-tab">Lab tab</h2>
+<h3 id="source">Source</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Source</strong></td><td>The frame to map</td><td>HDR test scene; Exposure gradient; ColorChecker patches; Uploaded image</td><td>HDR test scene</td></tr>
+<tr><td><strong>Choose a file</strong></td><td>Picks an image (shown for Uploaded image)</td><td>Image files</td><td>&quot;no file&quot;</td></tr>
+<tr><td>Source encoding</td><td>How the source values are decoded (step 1)</td><td>Linear (scene); sRGB; PQ (ST 2084); HLG (inverse OETF); Gamma 2.2; Gamma 2.4</td><td>Linear (scene)</td></tr>
+<tr><td>Source primaries</td><td>The source&#39;s RGB space</td><td>Rec.709; Display P3; Rec.2020; ACEScg AP1</td><td>Rec.709</td></tr>
+<tr><td>Source white</td><td>The source&#39;s white point</td><td>D65; D60; D50</td><td>D65</td></tr>
+</tbody></table></div>
+<h3 id="exposure-and-curve">Exposure and curve</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Exposure</strong></td><td>Multiplies by 2^EV before the curve (step 3)</td><td>−6 to +6 EV, step 0.1</td><td>0.0 EV</td></tr>
+<tr><td><strong>Tone curve</strong></td><td>The operator (step 5)</td><td>None (clip); Reinhard; Uchimura / Gran Turismo; Hable filmic; Narkowicz fit; Log (soft); Custom 1D curve</td><td>Hable filmic</td></tr>
+<tr><td><strong>Use the custom curve instead</strong></td><td>Uses the knee / mid / shoulder curve whatever is selected</td><td>On or off</td><td>Off</td></tr>
+<tr><td>Custom curve knee, mid, shoulder</td><td>The three points of the custom curve</td><td>0 to 1 each</td><td>0.15, 0.5, 0.85</td></tr>
+<tr><td><strong>Low-level operator</strong></td><td>A per-channel function before the curve (step 4)</td><td>None; Add; Multiply; Soft clip; Power; Sigmoid; Exp; Log; Tanh</td><td>None</td></tr>
+<tr><td>Parameters a, b</td><td>Values for the low-level operator</td><td>Numbers, step 0.1</td><td>0, 0</td></tr>
+</tbody></table></div>
+<h3 id="grade-steps-68">Grade (steps 6–8)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Contrast</td><td>0 to 3</td><td>1</td></tr>
+<tr><td>Saturation</td><td>0 to 3</td><td>1</td></tr>
+<tr><td>Lift</td><td>Any</td><td>0</td></tr>
+<tr><td>Gamma</td><td>0.1 to 4</td><td>1</td></tr>
+<tr><td>Gain</td><td>0 to 4</td><td>1</td></tr>
+<tr><td>Temperature</td><td>Any</td><td>0</td></tr>
+<tr><td>Tint</td><td>Any</td><td>0</td></tr>
+<tr><td>Hue rotation</td><td>−180 to 180°</td><td>0</td></tr>
+<tr><td>Vibrance</td><td>0 to 3</td><td>1</td></tr>
+</tbody></table></div>
+<p>The fields appear as one row in this order. See <a href="map-a-frame.html">Map a frame</a> for what each does.</p>
+<h3 id="working-target-steps-2-911">Working → target (steps 2, 9–11)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Working space</td><td>The space the curve and grade run in</td><td>ACEScg AP1 (D60); Rec.709 (D65); Display P3 (D65); Rec.2020 (D65)</td><td>ACEScg AP1 (D60)</td></tr>
+<tr><td>Target primaries</td><td>The display&#39;s RGB space</td><td>sRGB / Rec.709; Display P3; Rec.2020</td><td>sRGB / Rec.709</td></tr>
+<tr><td>Target white</td><td>The display&#39;s white; Bradford adapts between whites</td><td>D65; D60; D50</td><td>D65</td></tr>
+<tr><td>Gamut mapping</td><td>What happens to out-of-gamut colours</td><td>Soft compress; Clip; Preserve hue</td><td>Soft compress</td></tr>
+<tr><td>Output OETF</td><td>How the result is encoded</td><td>sRGB; Gamma 2.2; Gamma 2.4; PQ; Linear</td><td>sRGB</td></tr>
+<tr><td><strong>Mark out-of-gamut pixels</strong></td><td>Paints pixels that left the target gamut in magenta</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Dither the 8-bit output</strong></td><td>Adds noise of up to half a code value</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Display peak</strong></td><td>Display peak luminance</td><td>80 to 4,000 nits, step 10</td><td>100</td></tr>
+<tr><td><strong>Source peak</strong></td><td>Source peak luminance</td><td>100 to 10,000 nits, step 50</td><td>1,000</td></tr>
+</tbody></table></div>
+<p>The two peaks change only the two retired operators, the false-colour map (display peak) and the false-colour note (source peak). The seven working curves do not depend on them.</p>
+<h3 id="presets">Presets</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Sets</th></tr></thead>
+<tbody>
+<tr><td><strong>SDR 100</strong></td><td>Hable filmic, sRGB / Rec.709 target, 100 nits, sRGB output, sRGB source</td></tr>
+<tr><td><strong>P3 600</strong></td><td>Hable filmic, Display P3 target, 600 nits, sRGB output, sRGB source</td></tr>
+<tr><td><strong>HDR 1000</strong></td><td>Narkowicz fit, Rec.2020 target, 1,000 nits, PQ output, linear source</td></tr>
+<tr><td><strong>Reset</strong></td><td>Reloads the lab with defaults</td></tr>
+</tbody></table></div>
+<h3 id="readouts">Readouts</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>The mapped frame</strong></td><td>The result, with its resolution</td></tr>
+<tr><td>Frame chips</td><td>Working → target, curve and processing time; Scene-referred or Display-referred; Photographic or Display; &quot;out of gamut&quot; when any pixel left the target</td></tr>
+<tr><td><strong>The curve, and where the scene sits on it</strong></td><td>The tone curve over a histogram of the scene</td></tr>
+<tr><td><strong>Linear axis</strong>, <strong>Log axis</strong>, <strong>Film stops</strong></td><td>Fill the custom curve with presets (0.33 / 0.5 / 0.66; 0.05 / 0.35 / 0.7; 0.15 / 0.5 / 0.85)</td></tr>
+<tr><td>Statistics</td><td>Mid-grey, curve; Scene white at; Working luma; Display peak</td></tr>
+<tr><td>Behaviour label</td><td>A short description of the curve, such as Photographic or Filmic shoulder</td></tr>
+<tr><td>Note</td><td>What mid-grey becomes, where white is reached, or why a curve clips</td></tr>
+</tbody></table></div>
+<h2 id="operators-tab">Operators tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Compare</strong></td><td>Rows shown</td><td>All nine; The seven that work</td><td>All nine</td></tr>
+<tr><td><strong>Read out at</strong></td><td>Input columns</td><td>Mid-grey 0.18 (0.18, 1, 4, 12); Scene white (1, 4, 12, 32); Both (0.18, 1, 2, 4, 8, 16)</td><td>Mid-grey 0.18</td></tr>
+<tr><td><strong>Curve domain</strong></td><td>Chart range</td><td>0 – 1; 0 – 12</td><td>0 – 12</td></tr>
+<tr><td><strong>Redraw the curves</strong></td><td>Redraws the chart</td><td>Button</td><td>—</td></tr>
+</tbody></table></div>
+<p>Table columns: Operator, one column per input, White at, Output strip, tag (runs, exceeds 1, not a curve).</p>
+<h2 id="scopes-tab">Scopes tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Show the exposure map</strong></td><td>Replaces the frame with false colour</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Store A</strong>, <strong>Store B</strong></td><td>Stores the current frame</td><td>Buttons</td><td>—</td></tr>
+<tr><td><strong>Split the viewport</strong></td><td>Shows A left and B right</td><td>On or off</td><td>Off</td></tr>
+<tr><td>Split position</td><td>Where the split falls</td><td>0 to 1, step 0.01</td><td>0.5</td></tr>
+<tr><td><strong>Time a pass</strong></td><td>Average of 20 full passes, in ms per frame</td><td>Button</td><td>—</td></tr>
+<tr><td><strong>Time the curve</strong></td><td>Average of 5 full passes</td><td>Button</td><td>—</td></tr>
+</tbody></table></div>
+<p>Readouts: <strong>Histogram — output, 256 bins</strong>; <strong>Waveform — output luma by column</strong>; <strong>Vectorscope — output chroma</strong>; the false-colour key and note; <strong>Controls that were read and never used</strong>.</p>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Dataset</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>sRGB, PQ and HLG transfer</td><td>Verbatim</td></tr>
+<tr><td>Primaries and white points, 4 spaces</td><td>Verbatim</td></tr>
+<tr><td>Bradford adaptation</td><td>Verbatim</td></tr>
+<tr><td>Tone-mapping operators</td><td>Computed: seven of nine do what they are named for</td></tr>
+<tr><td>Working-space luminance</td><td>Computed from each space&#39;s own matrix</td></tr>
+<tr><td>Hue rotation</td><td>Computed</td></tr>
+<tr><td>BT.2446 Method A and Method C</td><td>Absent: the names were held, the methods were not</td></tr>
+<tr><td>Absolute scene luminance</td><td>Absent: the generated scenes carry none</td></tr>
+</tbody></table></div>
+<p><strong>Status</strong> chips filter the list. <strong>Install a table</strong> (&quot;Drop a CSV or JSON&quot;) does not load files in the current version.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>What to take</strong></td><td>The tone curve; The whole pipeline; A link to this view</td></tr>
+<tr><td><strong>As</strong></td><td>.cube or CSV (curve); .cube (pipeline); URL (link)</td></tr>
+<tr><td><strong>Input domain</strong></td><td>0 – 1 or 0 – 12 for the curve export (default 0 – 1)</td></tr>
+<tr><td>Download button</td><td>Names and saves the file; <strong>Copy the link</strong> for links</td></tr>
+<tr><td><strong>Copy to clipboard</strong></td><td>Copies the payload</td></tr>
+<tr><td><strong>Exactly what you will get</strong></td><td>Preview, bytes and lines</td></tr>
+<tr><td><strong>What this file carries</strong></td><td>Which of the eleven steps the file includes</td></tr>
+<tr><td><strong>Analyse a list</strong>, <strong>Analyse</strong>, <strong>Download the result</strong></td><td>Maps HEX colours; saves <code>tone-map-batch.csv</code></td></tr>
+</tbody></table></div>
+<p>Link parameters: <code>op</code>, <code>exp</code>, <code>src</code> (source encoding), <code>peak</code> (display peak), <code>oetf</code>, <code>tp</code> (target primaries).</p>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Standards</strong>, <strong>Formulas</strong>, <strong>Citations</strong>, <strong>Research notes</strong></td><td>Switch sections</td></tr>
+<tr><td><strong>Filter</strong></td><td>Searches all four</td></tr>
+</tbody></table></div>
+<p>Standards include IEC 61966-2-1, SMPTE ST 2084, ARIB STD-B67 / BT.2100, BT.709, BT.2020, Academy S-2014-004 (ACEScg), BT.2446-1 (not implemented), BT.2408 and the Adobe Cube LUT Specification 1.0. Formulas give each operator, the transfer curves, working luminance, hue rotation, Bradford adaptation and the out-of-gamut test.</p>
+<h2 id="save-to-library">Save to Library</h2>
+<p>The floating <strong>Save to Library</strong> button stores an image of the mapped frame in your Auric Artisan Library.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="read-the-scopes.html"><span>Previous</span>Read the scopes</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting Tone Mapping</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#lab-tab">Lab tab</a></li><li><a href="#operators-tab">Operators tab</a></li><li><a href="#scopes-tab">Scopes tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#save-to-library">Save to Library</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

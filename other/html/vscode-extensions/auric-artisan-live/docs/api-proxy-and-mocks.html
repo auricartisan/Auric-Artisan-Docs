@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proxy an API, mock endpoints and a REST database — Auric Artisan Docs</title>
+<meta name="description" content="Forward API paths to a backend, answer endpoints that do not exist yet, and serve a full REST API from a JSON file with Auric Live.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html" aria-current="page">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Proxy an API, mock endpoints and a REST database</h1>
+<p class="lede">Forward API paths to a backend, answer endpoints that do not exist yet, and serve a full REST API from a JSON file with Auric Live.</p>
+<p>Auric Live can answer a request in several ways. For each request it tries, in order: a <strong>mock route</strong>, the <strong>REST database</strong>, a <strong>proxy rule</strong>, then <strong>static files</strong> (or a CGI handler). So you can forward a whole API to a real backend and still override one endpoint with a mock.</p>
+<h2 id="proxy-an-api-path-to-a-backend">Proxy an API path to a backend</h2>
+<p>A <em>proxy</em> forwards requests for a path to another server and passes the answer back. With <code>/api</code> proxied to your backend, the page and its API share one origin: no CORS workaround, no hard-coded backend address in your front-end code, and cookies behave as they will in production.</p>
+<h3 id="add-a-rule-from-vs-code">Add a rule from VS Code</h3>
+<ol>
+<li>Run <strong>Auric Live: Add API Proxy Route…</strong>, or select the arrows button in the <strong>Routes and Mocks</strong> view title bar.</li>
+<li><strong>Proxy route (1 of 2):</strong> enter the path prefix to forward, for example <code>/api</code>. It must start with <code>/</code>.</li>
+<li><strong>Proxy route (2 of 2):</strong> enter where it should go, for example <code>http://localhost:3000</code>. It must start with <code>http://</code> or <code>https://</code>.</li>
+<li>Auric Live says <strong>Auric Live now forwards /api to <a href="http://localhost:3000" rel="noopener">http://localhost:3000</a>. This lasts for the session.</strong> Choose <strong>Save to config file</strong> to keep it in <code>auric.live.json</code>.</li>
+</ol>
+<p>Rules added this way forward WebSockets and rewrite the <code>Host</code> header to the target.</p>
+<h3 id="write-rules-in-the-project-file">Write rules in the project file</h3>
+<p>The short form maps a prefix to a target:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;proxy&quot;: { &quot;/api&quot;: &quot;http://localhost:3000&quot; }
+}</code></pre>
+<p>The full form is a list of rules:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;proxy&quot;: [
+    {
+      &quot;path&quot;: &quot;/api&quot;,
+      &quot;target&quot;: &quot;http://localhost:3000&quot;,
+      &quot;changeOrigin&quot;: true,
+      &quot;ws&quot;: true
+    }
+  ]
+}</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Default</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>path</code></td><td>—</td><td>Path prefix to forward (also accepted as <code>context</code>)</td></tr>
+<tr><td><code>target</code></td><td>—</td><td>Backend address; must be <code>http://</code> or <code>https://</code></td></tr>
+<tr><td><code>pathRewrite</code></td><td>none</td><td>Rewrites as pattern–replacement pairs, for example <code>{ &quot;^/api&quot;: &quot;&quot; }</code>; each pattern is a regular expression</td></tr>
+<tr><td><code>stripPrefix</code></td><td><code>false</code></td><td>Remove the matched prefix before forwarding</td></tr>
+<tr><td><code>changeOrigin</code></td><td><code>true</code></td><td>Send the target&#39;s host as the <code>Host</code> header</td></tr>
+<tr><td><code>secure</code></td><td><code>false</code></td><td>Verify the target&#39;s HTTPS certificate</td></tr>
+<tr><td><code>ws</code></td><td><code>true</code></td><td>Forward WebSocket connections</td></tr>
+<tr><td><code>headers</code></td><td>none</td><td>Extra request headers to send to the target</td></tr>
+<tr><td><code>cookieDomainRewrite</code></td><td><code>true</code></td><td>Rewrite cookie domains so cookies from the backend work on the Auric Live address</td></tr>
+<tr><td><code>healthPath</code></td><td>none</td><td>An absolute path that must answer 200–399 before the target counts as ready</td></tr>
+<tr><td><code>timeoutMs</code></td><td><code>30000</code></td><td>How long to wait for the target (100 to 600000)</td></tr>
+</tbody></table></div>
+<p>The <strong>Routes and Mocks</strong> view lists each rule as <code>/api →</code> with its target. Rules can also be set in the <code>auricLive.proxy</code> setting. Proxy rules need a trusted workspace.</p>
+<p>While the backend starts, requests wait instead of failing. See &quot;Waiting for a backend&quot; in <a href="run-targets-and-backends.html">Run a backend or framework dev server</a>.</p>
+<p>A few details that keep a proxied site working:</p>
+<ul>
+<li>When rules overlap, the longest matching prefix wins.</li>
+<li>A redirect from the backend is pulled back to the Auric Live address, so a login redirect does not send you to the backend&#39;s own port.</li>
+<li>Cookies lose their <code>Domain</code> and, over plain HTTP, their <code>Secure</code> flag, so the browser keeps the session cookie.</li>
+<li>HTML pages that come through the proxy get the Auric script injected like static pages, so the developer dashboard works on a proxied site too.</li>
+</ul>
+<h2 id="mock-endpoints">Mock endpoints</h2>
+<p>A <em>mock route</em> is an endpoint Auric Live answers itself, with the status, headers, delay and body you declare. Use it to build a front end against an API that does not exist yet.</p>
+<h3 id="add-one-from-vs-code">Add one from VS Code</h3>
+<ol>
+<li>Run <strong>Auric Live: Add Mock API Route…</strong>, or select the beaker button in the <strong>Routes and Mocks</strong> view title bar.</li>
+<li><strong>Mock route (1 of 3):</strong> choose the method: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code> or <code>DELETE</code>.</li>
+<li><strong>Mock route (2 of 3):</strong> enter the path. Named parameters (<code>:id</code>) and wildcards (<code>*</code>) are supported.</li>
+<li><strong>Mock route (3 of 3):</strong> enter the JSON body. It must be valid JSON.</li>
+<li>Auric Live turns mocks on and says <strong>Auric Live now answers <em>GET /api/example</em>.</strong> Choose <strong>Save to config file</strong> to keep it.</li>
+</ol>
+<p>The status is 201 for <code>POST</code> and 200 otherwise.</p>
+<h3 id="write-routes-in-the-project-file">Write routes in the project file</h3>
+<pre class="code" data-lang="json"><code>{
+  &quot;mock&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;delayMs&quot;: 0,
+    &quot;routes&quot;: [
+      {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/health&quot;,
+        &quot;status&quot;: 200,
+        &quot;body&quot;: { &quot;ok&quot;: true }
+      },
+      {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/session&quot;,
+        &quot;status&quot;: 201,
+        &quot;delayMs&quot;: 250,
+        &quot;body&quot;: { &quot;id&quot;: &quot;{{uuid}}&quot;, &quot;user&quot;: &quot;{{body.user}}&quot;, &quot;issued&quot;: &quot;{{now}}&quot; }
+      }
+    ]
+  }
+}</code></pre>
+<p>A short form maps <code>&quot;METHOD /path&quot;</code> to a body: <code>{ &quot;GET /api/users&quot;: [ … ] }</code>. Without a method, <code>GET</code> is assumed.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Default</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>method</code></td><td><code>GET</code></td><td>HTTP method, or <code>*</code> for any</td></tr>
+<tr><td><code>path</code></td><td>—</td><td>Route pattern; must start with <code>/</code></td></tr>
+<tr><td><code>status</code></td><td><code>200</code></td><td>Status code, 100–599</td></tr>
+<tr><td><code>headers</code></td><td>none</td><td>Response headers</td></tr>
+<tr><td><code>body</code></td><td>—</td><td>Response body (JSON or text)</td></tr>
+<tr><td><code>file</code></td><td>—</td><td>A file to send as the body instead (needs a trusted workspace)</td></tr>
+<tr><td><code>delayMs</code></td><td><code>0</code></td><td>Delay before answering, up to 60000; also accepted as <code>delay</code></td></tr>
+<tr><td><code>id</code></td><td><code>route-N</code></td><td>A name for the route</td></tr>
+<tr><td><code>description</code></td><td>empty</td><td>Shown as the tooltip in the <strong>Routes and Mocks</strong> view</td></tr>
+<tr><td><code>disabled</code></td><td><code>false</code></td><td>Keep the route but do not answer it</td></tr>
+</tbody></table></div>
+<p>A route needs at least a <code>body</code>, a <code>file</code> or a <code>status</code>.</p>
+<h3 id="route-patterns">Route patterns</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Pattern</th><th>Matches</th></tr></thead>
+<tbody>
+<tr><td><code>/users/:id</code></td><td><code>/users/42</code>, captured as <code>params.id</code></td></tr>
+<tr><td><code>/files/:name?</code></td><td><code>/files</code> and <code>/files/report</code>, with an optional segment</td></tr>
+<tr><td><code>/assets/*</code></td><td>one path segment, captured as <code>params.0</code></td></tr>
+<tr><td><code>/docs/**</code></td><td>the rest of the path, including slashes</td></tr>
+</tbody></table></div>
+<p>A pattern without a wildcard matches only that exact path: <code>/api</code> does not answer <code>/api/users</code> unless you write <code>/api/**</code>. This keeps a mock from swallowing requests meant for the proxy.</p>
+<h3 id="placeholders-in-bodies">Placeholders in bodies</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Placeholder</th><th>Replaced with</th></tr></thead>
+<tbody>
+<tr><td><code>{{params.id}}</code></td><td>A route parameter</td></tr>
+<tr><td><code>{{query.page}}</code></td><td>A query-string value</td></tr>
+<tr><td><code>{{body.email}}</code></td><td>A field of the parsed request body</td></tr>
+<tr><td><code>{{headers.origin}}</code></td><td>A request header</td></tr>
+<tr><td><code>{{uuid}}</code></td><td>A fresh random identifier</td></tr>
+<tr><td><code>{{now}}</code></td><td>The current time in ISO 8601</td></tr>
+<tr><td><code>{{timestamp}}</code></td><td>The current time in milliseconds since 1970</td></tr>
+<tr><td><code>{{method}}</code>, <code>{{path}}</code></td><td>The request&#39;s method and path</td></tr>
+<tr><td><code>{{counter}}</code></td><td>A number that goes up by one per response</td></tr>
+<tr><td><code>{{random}}</code></td><td>A random number from 0 up to 1</td></tr>
+</tbody></table></div>
+<p>A string that is exactly one placeholder keeps the value&#39;s type, so <code>&quot;id&quot;: &quot;{{counter}}&quot;</code> gives a number. Placeholders are substitution only; no code runs.</p>
+<h3 id="turn-mocks-on-and-off">Turn mocks on and off</h3>
+<ul>
+<li><strong>Auric Live: Toggle Mock API</strong> switches mock answering on or off for the session.</li>
+<li>The control panel&#39;s <strong>Overview</strong> has <strong>Answer mock routes</strong>.</li>
+<li><code>auricLive.mock.delayMs</code> adds latency to every mock and REST response, on top of each route&#39;s own delay.</li>
+</ul>
+<h2 id="a-full-rest-api-from-a-json-file">A full REST API from a JSON file</h2>
+<p>The <em>REST database</em> turns a JSON file into a working REST backend: lists, reads, creates, replaces, updates and deletes, with filtering, sorting, pagination and relationships. Forms submit, lists paginate and deleted rows stay deleted.</p>
+<h3 id="set-it-up">Set it up</h3>
+<ol>
+<li>Run <strong>Auric Live: Open Mock Database</strong>, or choose <strong>Open mock database</strong> in the <strong>Routes and Mocks</strong> view&#39;s <strong>…</strong> menu.</li>
+<li>If <code>db.json</code> does not exist, Auric Live offers <strong>Create</strong>. It writes a sample with <code>users</code>, <code>posts</code> and a <code>profile</code> object, and turns on mocks and the REST database for the session.</li>
+<li>Edit the file. Each top-level key holding an array is a <em>collection</em>; a key holding an object is a single resource.</li>
+</ol>
+<pre class="code" data-lang="json"><code>{
+  &quot;users&quot;: [ { &quot;id&quot;: 1, &quot;name&quot;: &quot;Ada Lovelace&quot; } ],
+  &quot;posts&quot;: [ { &quot;id&quot;: 1, &quot;userId&quot;: 1, &quot;title&quot;: &quot;First post&quot; } ],
+  &quot;profile&quot;: { &quot;theme&quot;: &quot;dark&quot; }
+}</code></pre>
+<p>To keep it on, put this in <code>auric.live.json</code>:</p>
+<pre class="code" data-lang="json"><code>{ &quot;mock&quot;: { &quot;enabled&quot;: true, &quot;rest&quot;: { &quot;enabled&quot;: true, &quot;base&quot;: &quot;/api&quot;, &quot;database&quot;: &quot;db.json&quot; } } }</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.mock.rest.enabled</code></td><td><code>false</code></td><td>Serve the REST database (mocks must also be enabled)</td></tr>
+<tr><td><code>auricLive.mock.rest.base</code></td><td><code>/api</code></td><td>Prefix the collections are mounted under</td></tr>
+<tr><td><code>auricLive.mock.rest.database</code></td><td><code>db.json</code></td><td>The file, relative to the served root</td></tr>
+<tr><td><code>auricLive.mock.rest.persist</code></td><td><code>false</code></td><td>Write changes back to the file. Off, a restart returns to the original data</td></tr>
+</tbody></table></div>
+<p>Changes to unrelated settings keep the in-memory data. The <strong>Routes and Mocks</strong> view lists each collection with its record count.</p>
+<h3 id="routes">Routes</h3>
+<p>For a collection <code>users</code> under <code>/api</code>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Request</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>GET /api/users</code></td><td>List records</td></tr>
+<tr><td><code>GET /api/users/1</code></td><td>Read one record</td></tr>
+<tr><td><code>POST /api/users</code></td><td>Create a record</td></tr>
+<tr><td><code>PUT /api/users/1</code></td><td>Replace a record</td></tr>
+<tr><td><code>PATCH /api/users/1</code></td><td>Merge fields into a record</td></tr>
+<tr><td><code>DELETE /api/users/1</code></td><td>Delete a record</td></tr>
+</tbody></table></div>
+<h3 id="query-options">Query options</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Query</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>?_page=2&amp;_limit=20</code></td><td>Pagination, with <code>X-Total-Count</code> and <code>Link</code> headers</td></tr>
+<tr><td><code>?_start=10&amp;_end=20</code></td><td>Slice the list</td></tr>
+<tr><td><code>?_sort=name&amp;_order=desc</code></td><td>Sort; separate several keys with commas</td></tr>
+<tr><td><code>?_q=ada</code></td><td>Search every field</td></tr>
+<tr><td><code>?status=active</code></td><td>Exact match on a field</td></tr>
+<tr><td><code>?views_gte=100</code></td><td>Operators: <code>_ne</code>, <code>_lt</code>, <code>_lte</code>, <code>_gt</code>, <code>_gte</code>, <code>_like</code>, <code>_in</code>, <code>_nin</code></td></tr>
+<tr><td><code>?_embed=posts</code></td><td>Include child records that point at this one</td></tr>
+<tr><td><code>?_expand=user</code></td><td>Include the parent record this one points at</td></tr>
+</tbody></table></div>
+<p>Relationships follow the singular-name convention: a post with <code>userId</code> belongs to a user.</p>
+<p>A path outside the base, or a collection the file does not contain, falls through to the proxy and then to static files.</p>
+<p>When this is working, the <strong>Routes and Mocks</strong> view lists your proxy rules, mock routes with hit counts, and REST collections, and the <strong>Requests</strong> view shows <code>proxy</code>, <code>mock</code> or <code>rest</code> as the handler for each answered request.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Auric Artisan Live</a><a href="browser-dashboard.html"><span>Next</span>Use the in-page browser dashboard</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#proxy-an-api-path-to-a-backend">Proxy an API path to a backend</a></li><li><a href="#mock-endpoints">Mock endpoints</a></li><li><a href="#a-full-rest-api-from-a-json-file">A full REST API from a JSON file</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

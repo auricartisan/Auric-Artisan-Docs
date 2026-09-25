@@ -1,0 +1,55 @@
+==============================================================================
+LIMITS AND ACCURACY
+==============================================================================
+What the Font CDN's catalogue data — categories, scores, licences, script
+coverage — can and cannot tell you, and the CDN's practical limits.
+Area: Services › Font CDN   Updated: 2026-09-25
+
+CATALOGUE DATA
+==============
+
+  - Metadata comes from the font files themselves: names, designers, versions,
+    weights, axes, character coverage, OpenType features and embedding flags
+    are read from each font's internal tables. If a font's own data is wrong
+    or missing, the catalogue is too.
+  - Categories are computed, not curated. Serif or sans is worked out from the
+    outlines of letters such as I, H and L when a font does not declare it. A
+    few families, such as rounded sans-serifs, can land in the wrong category.
+  - Scores (accessibility, UI, readability, developer and editorial) are
+    calculated from measurable features such as x-height and how distinct
+    confusable characters like I, l and 1 are. They are a starting point for
+    choosing, not a verdict, and a few display fonts score higher than they
+    should.
+  - Licences are detected from the licence files bundled with each family and
+    from the font's name data. A family with no licence text found is marked
+    Unspecified; check it yourself.
+  - Script coverage lists the Unicode blocks a font has characters in. Having
+    characters in a block does not guarantee complete or correct support for a
+    language.
+
+SERVING
+=======
+
+  - Stylesheets declare the whole family; there is no per-weight or
+    per-character subsetting in the URL.
+  - Files are served in the formats the fonts were distributed in, such as
+    TrueType and OpenType; the Styles tab lists each file with its size.
+  - System fonts marked Installed are listed but not served.
+  - The catalogue changes only when it is rebuilt; the current build is from 2
+    June 2026.
+
+THE LOADER
+==========
+
+  - `list()`, `search()` and `get()` download catalogue data (the index is
+    large) on first use.
+  - `load()` waits only for the weights you name, or for weight 400 if you
+    name none.
+  - `face()` does not report a failed download as an error; check that the
+    font appears.
+
+RELATED PAGES
+=============
+
+  - Licences [licences.txt]
+  - Reference [../docs/reference.txt]

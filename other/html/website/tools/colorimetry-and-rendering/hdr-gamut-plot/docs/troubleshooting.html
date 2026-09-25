@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the HDR Gamut Plot — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for common problems in the HDR Gamut Plot.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; HDR Gamut Plot</a>
+<h2>HDR Gamut Plot documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the HDR Gamut Plot</a></li>
+<li><a href="compare-broadcast-gamuts.html">Compare broadcast gamuts</a></li>
+<li><a href="explore-perceptual-planes.html">Explore ICtCp and Jzazbz planes</a></li>
+<li><a href="read-hdr-curves.html">Read HDR transfer curves</a></li>
+<li><a href="reference.html">HDR Gamut Plot reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the HDR Gamut Plot</a></li>
+<li><a href="faq.html">HDR Gamut Plot FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">HDR Gamut Plot</a> &rsaquo; <a href="README.html">HDR Gamut Plot documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Troubleshooting the HDR Gamut Plot</h1>
+<p class="lede">Fixes for common problems in the HDR Gamut Plot.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Changing <strong>Working colour space</strong> changes nothing</td><td>The control is not applied in the current version</td><td>Use <strong>Overlay gamuts</strong> to choose which spaces are drawn</td></tr>
+<tr><td>Choosing the 2015 10° observer changes nothing</td><td>The locus is always the CIE 1931 2° observer&#39;s</td><td>Expected</td></tr>
+<tr><td><strong>ICtCp marker</strong> draws nothing</td><td>Not applied in the current version</td><td>No workaround</td></tr>
+<tr><td>The <strong>Tone mapping operator</strong> menu changes nothing</td><td>Not applied in the current version</td><td>Use the <a href="../../tone-mapping/README.html">Tone Mapping</a> lab</td></tr>
+<tr><td>PQ does not change when I move <strong>Peak brightness</strong></td><td>PQ is absolute; the peak does not scale it</td><td>Expected. Choose HLG or a gamma curve to see the peak&#39;s effect</td></tr>
+<tr><td>The HLG reading is marked <strong>Adjusted</strong></td><td>Dim or bright surround applies this tool&#39;s own factor</td><td>Choose <strong>Reference dark</strong> for BT.2100&#39;s value</td></tr>
+<tr><td>The EOTF comparison chart does not follow my settings</td><td>It is drawn once when the page loads</td><td>Use <strong>Tone curve output</strong> for your settings</td></tr>
+<tr><td>My image does not appear on the diagram</td><td>The current version reports the image&#39;s occupancy as text under the drop area; it does not scatter the pixels on the diagram</td><td>Read the results under <strong>Plot an image on it</strong></td></tr>
+<tr><td>The image readout shows no nits</td><td>A PNG or JPEG does not record absolute luminance</td><td>Expected; the tool will not invent one</td></tr>
+<tr><td>Every image shows 100% of pixels inside all three gamuts</td><td>Untagged images are read as sRGB, which sits inside P3 and Rec.2020</td><td>Read the occupancy figures, which do vary</td></tr>
+<tr><td>Large images look squashed in the analysis</td><td>The image is reduced to at most 1,024 pixels on each side, which can change its proportions</td><td>Proportions do not affect chromaticity occupancy</td></tr>
+<tr><td><strong>Convert to ICtCp</strong> says &quot;No valid hex colours found.&quot;</td><td>Only six-digit HEX values are read</td><td>Use values such as <code>#FF0000</code></td></tr>
+<tr><td><strong>Download the result</strong> did not download a file</td><td>It copies the CSV to your clipboard</td><td>Paste it into a spreadsheet or text file</td></tr>
+<tr><td>Copying failed</td><td>The browser blocked clipboard access</td><td>Allow clipboard access, or select the table and copy manually</td></tr>
+<tr><td>Pressing 1–4 or A does nothing</td><td>The focus is in a text box, slider or list</td><td>Click an empty area of the page first</td></tr>
+<tr><td>My shared link opens with different overlays</td><td>Links carry axes, peak, curve and plane only</td><td>Set the other controls again</td></tr>
+<tr><td>Shares differ from published figures</td><td>The tool divides by its own drawn locus area</td><td>See <a href="compare-broadcast-gamuts.html">Compare broadcast gamuts</a></td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>HDR Gamut Plot reference</a><a href="faq.html"><span>Next</span>HDR Gamut Plot FAQ</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

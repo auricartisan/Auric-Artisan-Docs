@@ -1,0 +1,78 @@
+==============================================================================
+THEME REFERENCE
+==============================================================================
+Every theme control, the values it sets, and how the controls interact.
+Area: Website › Site features › Theme   Updated: 2026-09-25
+
+CONTROLS
+========
+
+  Control:      Header sun/moon button
+  Values:       Toggles light and dark
+  Sets System?: No (fixes the opposite of what you see)
+  Scope:        Whole site
+
+  Control:      Settings › Appearance › Theme
+  Values:       Light, Dark, System
+  Sets System?: Yes
+  Scope:        Whole site
+
+  Control:      Drawer › Preferences › Theme
+  Values:       Auto, Light, Dark
+  Sets System?: Yes (Auto)
+  Scope:        Whole site
+
+  Control:      `Alt` + `T`
+  Values:       Light → Dark → System → Light
+  Sets System?: Yes
+  Scope:        Whole site
+
+  Control:      Right-click › View › Switch theme
+  Values:       Toggles light and dark
+  Sets System?: No
+  Scope:        Whole site
+
+  Control:      Spotlight › Toggle light and dark
+  Values:       Toggles light and dark
+  Sets System?: No
+  Scope:        Whole site
+
+  Control:      Card menu › System › Theme
+  Values:       Toggles light and dark
+  Sets System?: No
+  Scope:        Whole site
+
+  Control:      Kit title-bar theme button
+  Values:       Light, dark
+  Sets System?: —
+  Scope:        That kit only
+
+  Control:      Split-view pane › Theme
+  Values:       Auto, Light, Dark
+  Sets System?: —
+  Scope:        That pane only
+
+DEFAULTS AND STORAGE
+====================
+
+  Item                             | Value
+  ---------------------------------+-----------------------------------------
+  Default mode                     | System
+  Where it is kept                 | This browser
+  Shared across tabs               | Yes, open tabs update when you change it
+  Applied before the page is drawn | Yes
+  In the settings export file      | Yes, as `themeMode`
+
+HOW THE STORED CHOICE IS READ
+=============================
+
+When a page loads, the site uses, in order: the mode chosen in Settings (or
+the drawer, or `Alt` + `T`); otherwise the last choice made with a light/dark
+toggle; otherwise your device's setting.
+
+MESSAGES
+========
+
+  Message                                    | When
+  -------------------------------------------+------------------
+  Theme: Light / Theme: Dark / Theme: System | After `Alt` + `T`

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Artisan File System keeps on your machine and what, if anything, uses the network.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html" aria-current="page">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Privacy</h1>
+<p class="lede">What Auric Artisan File System keeps on your machine and what, if anything, uses the network.</p>
+<h2 id="everything-runs-locally">Everything runs locally</h2>
+<ul>
+<li>File operations, the index, search, filters, duplicate review and Properties all run on your machine (or next to the workspace, in a remote setup).</li>
+<li>No Auric Artisan account is needed.</li>
+<li>Properties reads file-system metadata only, never file contents. Duplicate review reads contents only to compare files by hash when the <code>content</code> strategy is used, and only for files that share a size.</li>
+</ul>
+<h2 id="where-data-is-kept">Where data is kept</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Data</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>Tags, groups, virtual folders, flags, saved filters, profiles, operation history</td><td>VS Code&#39;s storage for this workspace, on your machine. Not written into the project and not copied by Settings Sync</td></tr>
+<tr><td>Workspace trash</td><td><code>.auric/trash/</code> inside the workspace folder</td></tr>
+<tr><td>Native Explorer exclusions</td><td>The workspace&#39;s <code>files.exclude</code> setting</td></tr>
+<tr><td>Explorer sort order</td><td>The workspace&#39;s <code>explorer.sortOrder</code> setting</td></tr>
+<tr><td>Selection manifests</td><td>Wherever you save them</td></tr>
+</tbody></table></div>
+<h2 id="logging">Logging</h2>
+<p>The <strong>Auric Artisan File System</strong> output channel logs paths relative to the workspace and never writes file contents. <code>auricFiles.logLevel</code> controls how much is written (default <code>warn</code>).</p>
+<h2 id="network">Network</h2>
+<p>The extension&#39;s own features do not use the network. The workspace panel loads its scripts and styles from the extension itself. Opening the auricartisan.com link, support links or Marketplace images uses your browser and the network.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="limits-and-accuracy.html"><span>Previous</span>Limits and accuracy</a><a href="release-notes.html"><span>Next</span>Release notes</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#everything-runs-locally">Everything runs locally</a></li><li><a href="#where-data-is-kept">Where data is kept</a></li><li><a href="#logging">Logging</a></li><li><a href="#network">Network</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

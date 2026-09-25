@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request examples — Auric Artisan Docs</title>
+<meta name="description" content="Ready-to-run requests for common tasks with the Auric Artisan API.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="examples.html" aria-current="page">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Request examples</h1>
+<p class="lede">Ready-to-run requests for common tasks with the Auric Artisan API.</p>
+<p>Replace <code>aa_YOUR_KEY</code> with your key, or set <code>AURIC_API_KEY</code> in your shell and use <code>$AURIC_API_KEY</code>.</p>
+<h2 id="convert-a-colour-to-oklch">Convert a colour to OKLCH</h2>
+<pre class="code" data-lang="bash"><code>curl -X POST https://api.auricartisan.com/v1/color/convert \
+  -H &quot;x-api-key: aa_YOUR_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;color&quot;: &quot;#d3af37&quot;, &quot;to&quot;: &quot;oklch&quot;}'
+# → {&quot;input&quot;:{&quot;rgb&quot;:[211,175,55],&quot;hex&quot;:&quot;#d3af37&quot;},&quot;to&quot;:&quot;oklch&quot;,
+#    &quot;value&quot;:[0.7655,0.1384,91.55]}</code></pre>
+<h2 id="check-contrast">Check contrast</h2>
+<pre class="code" data-lang="bash"><code>curl -X POST https://api.auricartisan.com/v1/color/contrast \
+  -H &quot;x-api-key: aa_YOUR_KEY&quot; -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;fg&quot;: &quot;#1a1712&quot;, &quot;bg&quot;: &quot;#d3af37&quot;}'</code></pre>
+<p>For WCAG 2.2 and APCA together:</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/accessibility/check&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;fg&quot;:&quot;#767676&quot;,&quot;bg&quot;:&quot;#ffffff&quot;}'</code></pre>
+<h2 id="fix-a-failing-pair">Fix a failing pair</h2>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/accessibility/recommend&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;fg&quot;:&quot;#c9a227&quot;,&quot;bg&quot;:&quot;#ffffff&quot;,&quot;target&quot;:&quot;foreground&quot;,&quot;minRatio&quot;:4.5}'</code></pre>
+<h2 id="generate-a-palette">Generate a palette</h2>
+<pre class="code" data-lang="bash"><code>curl -X POST https://api.auricartisan.com/v1/palette/generate \
+  -H &quot;x-api-key: aa_YOUR_KEY&quot; -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;method&quot;: &quot;analogous&quot;, &quot;count&quot;: 5, &quot;hue&quot;: 45}'</code></pre>
+<h2 id="simulate-colour-vision-deficiency">Simulate colour-vision deficiency</h2>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/vision/simulate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;color&quot;:&quot;#c9a227&quot;,&quot;model&quot;:&quot;brettel-deutan&quot;,&quot;severity&quot;:1}'</code></pre>
+<p><code>model</code> takes a model id from <code>GET /v1/vision/models</code>. To work with condition names such as <code>protanopia</code>, use <code>/v1/vision/palette</code>:</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/vision/palette&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;colors&quot;:[&quot;#D3AF37&quot;,&quot;#2E8B57&quot;],&quot;conditions&quot;:[&quot;deuteranopia&quot;,&quot;tritanopia&quot;]}'</code></pre>
+<h2 id="build-a-token-system-and-export-it">Build a token system and export it</h2>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/tokens/generate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;seed&quot;:&quot;#c9a227&quot;,&quot;name&quot;:&quot;Auric&quot;,&quot;harmony&quot;:&quot;analogous&quot;}'
+
+curl -X POST &quot;https://api.auricartisan.com/v1/tokens/export&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;format&quot;:&quot;css&quot;,&quot;tokens&quot;:[{&quot;name&quot;:&quot;--color-primary&quot;,&quot;value&quot;:&quot;#c9a227&quot;}]}'</code></pre>
+<h2 id="audit-a-pages-metadata">Audit a page&#39;s metadata</h2>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/analyzer/inspect&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{ &quot;url&quot;: &quot;https://example.com/&quot;, &quot;scope&quot;: [&quot;seo&quot;] }'</code></pre>
+<h2 id="check-your-usage">Check your usage</h2>
+<pre class="code" data-lang="bash"><code>curl https://api.auricartisan.com/v1/usage/me -H &quot;x-api-key: aa_YOUR_KEY&quot;
+# → {&quot;tier&quot;:&quot;pro&quot;,&quot;plan&quot;:&quot;specialist&quot;,&quot;auth_type&quot;:&quot;api_key&quot;,
+#    &quot;limits&quot;:{&quot;rate_per_minute&quot;:300,&quot;monthly_quota&quot;:1000000},
+#    &quot;this_month&quot;:{&quot;slot&quot;:&quot;2026-08&quot;,&quot;used&quot;:412}}
+#
+# `used` counts credits, not calls.</code></pre>
+<h2 id="from-javascript">From JavaScript</h2>
+<pre class="code" data-lang="js"><code>const res = await fetch(&quot;https://api.auricartisan.com/v1/color/contrast&quot;, {
+  method: &quot;POST&quot;,
+  headers: { &quot;x-api-key&quot;: process.env.AURIC_API_KEY, &quot;content-type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({ fg: &quot;#767676&quot;, bg: &quot;#ffffff&quot; }),
+});
+if (!res.ok) throw new Error((await res.json()).error.code);
+const { ratio, aa, aaa, aa_large } = await res.json();
+console.log(ratio, aa, aaa, aa_large, res.headers.get(&quot;x-credits-cost&quot;));</code></pre>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="endpoints/README.html">Endpoints</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="errors.html"><span>Previous</span>Errors</a><a href="plans-credits-and-quotas.html"><span>Next</span>Plans, credits and quotas</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#convert-a-colour-to-oklch">Convert a colour to OKLCH</a></li><li><a href="#check-contrast">Check contrast</a></li><li><a href="#fix-a-failing-pair">Fix a failing pair</a></li><li><a href="#generate-a-palette">Generate a palette</a></li><li><a href="#simulate-colour-vision-deficiency">Simulate colour-vision deficiency</a></li><li><a href="#build-a-token-system-and-export-it">Build a token system and export it</a></li><li><a href="#audit-a-pages-metadata">Audit a page's metadata</a></li><li><a href="#check-your-usage">Check your usage</a></li><li><a href="#from-javascript">From JavaScript</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

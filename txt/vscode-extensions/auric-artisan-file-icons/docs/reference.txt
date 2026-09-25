@@ -1,0 +1,447 @@
+==============================================================================
+AURIC ARTISAN FILE ICONS REFERENCE
+==============================================================================
+Every command, setting, menu, view, theme, colour and Studio control in Auric
+Artisan File Icons 0.1.1.
+Area: VS Code extensions › Auric Artisan File Icons   Updated: 2026-09-25
+
+This reference describes version 0.1.1 as published on the Visual Studio
+Marketplace.
+
+FILE ICON THEMES
+================
+
+  Theme name                        | Theme ID                           | Artwork
+  ----------------------------------+------------------------------------+---------
+  Auric Artisan File Icons: Facet   | `auric-artisan-file-icons-facet`   | 500 SVGs
+  Auric Artisan File Icons: Playful | `auric-artisan-file-icons-playful` | 500 SVGs
+  Auric Artisan File Icons: Modern  | `auric-artisan-modern-icon`        | 464 SVGs
+
+COMMANDS
+========
+
+Category in the Command Palette: Auric Artisan File Icons.
+
+  Command:      Activate Facet Icon Theme
+  ID:           `auricFileIcons.activate`
+  What it does: Sets Facet as the file icon theme.
+
+  Command:      Activate Playful Icon Theme
+  ID:           `auricFileIcons.activatePlayful`
+  What it does: Sets Playful as the file icon theme.
+
+  Command:      Activate Modern Icon Theme
+  ID:           `auricFileIcons.activateModern`
+  What it does: Sets Modern as the file icon theme.
+
+  Command:      Open File Icon Studio
+  ID:           `auricFileIcons.openStudio`
+  What it does: Opens the Studio editor tab beside the editor.
+
+  Command:      Open File Icon Studio Settings
+  ID:           `auricFileIcons.configure`
+  What it does: The Configure Auric Artisan File Icons menu.
+
+  Command:      Choose Folder Color
+  ID:           `auricFileIcons.pickFolderColor`
+  What it does: Folder colour presets or a custom hex.
+
+  Command:      Toggle Explorer Arrows
+  ID:           `auricFileIcons.toggleExplorerArrows`
+  What it does: Shows or hides the Explorer chevrons.
+
+  Command:      Insert Icon into Code…
+  ID:           `auricFileIcons.quickInsert`
+  What it does: Picker of icons in the active style; inserts in
+                `insertFormat`.
+
+  Command:      Set File or Folder Icon
+  ID:           `auricFileIcons.assignResourceIcon`
+  What it does: Assigns an icon to the selected Explorer resource.
+
+  Command:      Clear Custom File or Folder Icon
+  ID:           `auricFileIcons.clearResourceIcon`
+  What it does: Removes that assignment.
+
+  Command:      Configure Smart Icon Detection
+  ID:           `auricFileIcons.smart.configure`
+  What it does: Smart detection menu.
+
+  Command:      Refresh Smart Icon Matches
+  ID:           `auricFileIcons.smart.refresh`
+  What it does: Clears cached matches.
+
+  Command:      Explain Smart Icon Match
+  ID:           `auricFileIcons.smart.inspect`
+  What it does: Explains the match for the selected resource.
+
+  Command:      Toggle Smart Icon Detection
+  ID:           `auricFileIcons.smart.toggle`
+  What it does: Turns smart detection on or off.
+
+  Command:      Apply Detected Folder Icon
+  ID:           `auricFileIcons.smart.applyDetectedFolderIcon`
+  What it does: Saves the detected folder icon as an association.
+
+  Command:      Scan Workspace for Folder Icons
+  ID:           `auricFileIcons.smart.scanWorkspace`
+  What it does: Scans first-level folders and assigns detected icons.
+
+  Command:      Restore Icon Defaults
+  ID:           `auricFileIcons.restoreDefaults`
+  What it does: Confirms, then clears appearance, associations and smart
+                settings.
+
+  Command:      Apply Icon Profile
+  ID:           `auricFileIcons.profiles.apply`
+  What it does: Applies a built-in or saved profile.
+
+  Command:      Save Current Icon Profile
+  ID:           `auricFileIcons.profiles.save`
+  What it does: Saves your current set-up as a profile.
+
+  Command:      Delete Saved Icon Profile
+  ID:           `auricFileIcons.profiles.delete`
+  What it does: Deletes a saved profile.
+
+  Command:      Export Icon Profile to Clipboard
+  ID:           `auricFileIcons.profiles.export`
+  What it does: Copies the current profile JSON.
+
+  Command:      Import Icon Profile from Clipboard
+  ID:           `auricFileIcons.profiles.import`
+  What it does: Imports profile JSON.
+
+  Command:      Show Icon Theme Diagnostics
+  ID:           `auricFileIcons.diagnostics`
+  What it does: Writes a report to the Auric Artisan File Icons output
+                channel.
+
+  Command:      Import Legacy Playful Settings…
+  ID:           `auricFileIcons.migratePlayful`
+  What it does: Copies missing settings from the old Playful extension.
+
+  Command:      Import Modern File Icon Settings…
+  ID:           `auricFileIcons.migrateModern`
+  What it does: Copies missing Modern file-theme settings.
+
+There are no default keybindings. Assign your own in Keyboard Shortcuts.
+
+MENUS
+=====
+
+  Menu:       Explorer right-click › Auric File Icons
+  Item:       Open File Icon Studio
+  When shown: Always
+
+  Menu:       Explorer right-click › Auric File Icons
+  Item:       Explain Smart Icon Match
+  When shown: An Auric file icon theme is active
+
+  Menu:       Explorer right-click › Auric File Icons
+  Item:       Apply Detected Folder Icon
+  When shown: On folders, with an Auric theme active
+
+  Menu:       Explorer right-click › Auric File Icons
+  Item:       Set File or Folder Icon
+  When shown: An Auric file icon theme is active
+
+  Menu:       Explorer right-click › Auric File Icons
+  Item:       Clear Custom File or Folder Icon
+  When shown: An Auric file icon theme is active
+
+  Menu:       Editor right-click
+  Item:       Insert Icon into Code…
+  When shown: A writable editor has focus
+
+VIEWS
+=====
+
+  Place        | Contents
+  -------------+-----------------------------------------------------------
+  Activity Bar | Auric File Icons container with the File Icon Studio view.
+  Editor tab   | File Icon Studio, opened beside the active editor.
+  Output       | Auric Artisan File Icons channel for diagnostics.
+
+SETTINGS
+========
+
+  Setting:         `auricFileIcons.fileColor`
+  Type:            string
+  Values or range: `default`, `#rgb`, `#rrggbb`
+  Default:         `default`
+  What it does:    Recolours every file icon.
+
+  Setting:         `auricFileIcons.folderColor`
+  Type:            string
+  Values or range: `default`, `#rgb`, `#rrggbb`
+  Default:         `default`
+  What it does:    Recolours every folder pair.
+
+  Setting:         `auricFileIcons.saturation`
+  Type:            number
+  Values or range: 0 to 2
+  Default:         1
+  What it does:    Saturation multiplier; 0 is greyscale.
+
+  Setting:         `auricFileIcons.brightness`
+  Type:            number
+  Values or range: 0.5 to 1.5
+  Default:         1
+  What it does:    Brightness multiplier.
+
+  Setting:         `auricFileIcons.opacity`
+  Type:            number
+  Values or range: 0.2 to 1
+  Default:         1
+  What it does:    Icon opacity.
+
+  Setting:         `auricFileIcons.hidesExplorerArrows`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `false`
+  What it does:    Hides Explorer chevrons.
+
+  Setting:         `auricFileIcons.files.associations`
+  Type:            object
+  Values or range: `*.ext`, `parent/*.ext`, filename or `parent/name` to icon
+                   ID
+  Default:         `{}`
+  What it does:    File associations; `none` removes a match.
+
+  Setting:         `auricFileIcons.folders.associations`
+  Type:            object
+  Values or range: folder or `parent/folder` to icon ID
+  Default:         `{}`
+  What it does:    Folder associations.
+
+  Setting:         `auricFileIcons.folders.rootAssociations`
+  Type:            object
+  Values or range: root name to icon ID
+  Default:         `{}`
+  What it does:    Workspace-root associations.
+
+  Setting:         `auricFileIcons.smart.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Smart decorations on or off.
+
+  Setting:         `auricFileIcons.smart.folders`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Classify folders.
+
+  Setting:         `auricFileIcons.smart.files`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Classify small text files.
+
+  Setting:         `auricFileIcons.smart.style`
+  Type:            string
+  Values or range: `badgeAndColor`, `badge`, `color`, `tooltip`
+  Default:         `badgeAndColor`
+  What it does:    Decoration style.
+
+  Setting:         `auricFileIcons.smart.propagate`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `false`
+  What it does:    Propagate child decorations to parents.
+
+  Setting:         `auricFileIcons.smart.watch`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Watch project markers and refresh.
+
+  Setting:         `auricFileIcons.smart.maxFileSize`
+  Type:            integer
+  Values or range: 1024 to 262144
+  Default:         65536
+  What it does:    Largest file inspected, in bytes.
+
+  Setting:         `auricFileIcons.smart.maxFolderEntries`
+  Type:            integer
+  Values or range: 25 to 2000
+  Default:         250
+  What it does:    Child names considered per folder.
+
+  Setting:         `auricFileIcons.smart.cacheSeconds`
+  Type:            integer
+  Values or range: 1 to 3600
+  Default:         15
+  What it does:    Cache duration.
+
+  Setting:         `auricFileIcons.smart.scanLimit`
+  Type:            integer
+  Values or range: 1 to 250
+  Default:         80
+  What it does:    Folders checked by the workspace scan.
+
+  Setting:         `auricFileIcons.smart.exclusions`
+  Type:            array
+  Values or range: folder names or wildcards
+  Default:         13 common folders
+  What it does:    Never inspected.
+
+  Setting:         `auricFileIcons.smart.rules`
+  Type:            array
+  Values or range: rule objects
+  Default:         `[]`
+  What it does:    Custom rules, run before built-ins.
+
+  Setting:         `auricFileIcons.hover.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Code hovers for icon tokens.
+
+  Setting:         `auricFileIcons.insertFormat`
+  Type:            string
+  Values or range: `svg`, `jsx`, `img`, `css`
+  Default:         `svg`
+  What it does:    Default code format.
+
+  Setting:         `auricFileIcons.modernPack`
+  Type:            string
+  Values or range: `none`, `angular`, `nest`, `react`, `vue`
+  Default:         `none`
+  What it does:    Modern framework associations.
+
+Default exclusions: `.git`, `node_modules`, `vendor`, `dist`, `build`, `out`,
+`coverage`, `.next`, `.nuxt`, `.cache`, `.turbo`, `target`, `__pycache__`.
+
+THEME COLOURS
+=============
+
+Ten colours for smart decorations can be changed in
+`workbench.colorCustomizations`: `auricFileIcons.smart.auric`, `.framework`,
+`.language`, `.infrastructure`, `.test`, `.docs`, `.data`, `.generated`,
+`.security` and `.custom`. See Smart detection [smart-detection.txt] for their
+defaults.
+
+FILE ICON STUDIO CONTROLS
+=========================
+
+  Tab:               Library
+  Control:           Search icons
+  Options or action: Free text, up to 150 characters.
+
+  Tab:               Library
+  Control:           Artwork style
+  Options or action: Facet, Playful, Modern.
+
+  Tab:               Library
+  Control:           Show
+  Options or action: Files & folders, Files, Folders.
+
+  Tab:               Library
+  Control:           Code format
+  Options or action: Inline SVG, JSX, HTML image, CSS background.
+
+  Tab:               Library
+  Control:           Open folder artwork
+  Options or action: Shows folders in their open state.
+
+  Tab:               Library
+  Control:           Use … in Explorer
+  Options or action: Activates the chosen style.
+
+  Tab:               Library
+  Control:           Card
+  Options or action: Insert, Copy, inspector; Load more icons.
+
+  Tab:               Appearance
+  Control:           Modern framework pack
+  Options or action: No framework pack, Angular, NestJS, React, Vue.
+
+  Tab:               Appearance
+  Control:           File color, Folder color
+  Options or action: Swatch, hex field, Reset.
+
+  Tab:               Appearance
+  Control:           Saturation, Brightness, Opacity
+  Options or action: Sliders.
+
+  Tab:               Appearance
+  Control:           Hide Explorer arrows
+  Options or action: Check box.
+
+  Tab:               Appearance
+  Control:           Buttons
+  Options or action: Apply appearance, Restore defaults….
+
+  Tab:               Workspace
+  Control:           Smart Explorer matches
+  Options or action: Enable smart detection, Configure, Refresh, Scan
+                     folders….
+
+  Tab:               Workspace
+  Control:           Profiles
+  Options or action: Apply profile…, Save current…, Export, Import…, Delete
+                     saved….
+
+  Tab:               Workspace
+  Control:           Insert from a code hover
+  Options or action: Enable code hovers.
+
+  Tab:               Workspace
+  Control:           Import existing file settings
+  Options or action: Import Modern file settings, Import legacy settings…,
+                     Diagnostics.
+
+  Tab:               Inspector
+  Control:           Buttons
+  Options or action: Insert into code, Copy code, Copy hover token.
+
+  Tab:               Header
+  Control:           Buttons
+  Options or action: auricartisan.com ↗, ↗ (open in editor tab), ⚙ (all
+                     extension settings).
+
+Keys: `/` focuses search; dropdown pickers support arrow keys, `Home`, `End`
+and `Escape`.
+
+ARTWORK AND MAPPINGS
+====================
+
+  Item:    SVG assets
+  Facet:   500
+  Playful: 500
+  Modern:  464
+
+  Item:    File designs
+  Facet:   200
+  Playful: 200
+  Modern:  219
+
+  Item:    Folder pairs
+  Facet:   150
+  Playful: 150
+  Modern:  114
+
+  Item:    Mappings
+  Facet:   270 extensions, 453 filenames, 84 language IDs, 357 folder aliases
+  Playful: Same as Facet
+  Modern:  Its own mappings and 4 framework packs
+
+DIAGNOSTICS REPORT
+==================
+
+Show Icon Theme Diagnostics lists the version, active theme, workspace trust,
+remote host, folder count, asset counts, your appearance values, association
+counts, smart detection settings and limits, the number of custom rules and
+saved profiles. It omits filenames and file contents.
+
+LIMITS
+======
+
+  Item           | Limit
+  ---------------+---------------
+  Search text    | 150 characters
+  Smart badge    | 2 characters
+  Profile import | 256 KiB
+  Profile name   | 80 characters

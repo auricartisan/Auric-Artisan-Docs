@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Templates and generators — Auric Artisan Docs</title>
+<meta name="description" content="Create files from templates, use the ten framework presets, and write your own templates and generators with variables, filters and conditions.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html" aria-current="page">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Templates and generators</h1>
+<p class="lede">Create files from templates, use the ten framework presets, and write your own templates and generators with variables, filters and conditions.</p>
+<p>A <em>template</em> is a file pattern: a file name and a body with placeholders that are filled in when you create a file. A <em>framework preset</em> is a ready-made set of templates and file relationships for one ecosystem. A <em>generator</em> is a template that can also create companion files in the same step.</p>
+<h2 id="create-from-a-template">Create from a template</h2>
+<ol>
+<li>Run <strong>Auric Files: New File from Template…</strong> (<strong>Create</strong> group, or <code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>T</code> with the shortcut deck).</li>
+<li><strong>Choose a template.</strong> The list includes the active preset&#39;s built-in templates, your generators and any templates in your template folders.</li>
+<li><strong>Choose the destination folder.</strong></li>
+<li>Answer the template&#39;s questions, such as the name.</li>
+<li>The file (and any companions the template defines) is created, and the first file opens with the cursor where the template placed it.</li>
+</ol>
+<h2 id="create-from-a-framework-preset">Create from a framework preset</h2>
+<ol>
+<li>Run <strong>Auric Files: New from Framework Preset…</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>P</code> with the deck).</li>
+<li><strong>Choose a framework preset or custom generator.</strong></li>
+<li><strong>Choose what to create</strong> from that preset&#39;s templates.</li>
+<li><strong>Choose the destination folder</strong> and answer its questions.</li>
+</ol>
+<h3 id="the-ten-presets">The ten presets</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Preset</th><th>What it covers</th></tr></thead>
+<tbody>
+<tr><td><strong>React</strong></td><td>Components, hooks, contexts, tests, styles and stories</td></tr>
+<tr><td><strong>Vue</strong></td><td>Single file components, composables, Pinia stores and specs</td></tr>
+<tr><td><strong>Angular</strong></td><td>Standalone components with their template, style and spec</td></tr>
+<tr><td><strong>Svelte</strong></td><td>Runes components, stores, tests and stories</td></tr>
+<tr><td><strong>Node.js</strong></td><td>CommonJS and ES modules, CLI entry points, tests and declarations</td></tr>
+<tr><td><strong>Python</strong></td><td>Dataclass modules, pytest suites, package markers and CLI entry points</td></tr>
+<tr><td><strong>Java</strong></td><td>Classes, records, interfaces and JUnit 5 tests with derived packages</td></tr>
+<tr><td><strong>Go</strong></td><td>Package files, table tests, command entry points and doc comments</td></tr>
+<tr><td><strong>Rust</strong></td><td>Modules with inline test blocks, crate roots and error types</td></tr>
+<tr><td><strong>Generic</strong></td><td>Plain modules, documents and data files for any workspace</td></tr>
+</tbody></table></div>
+<p>The templates in each preset:</p>
+<ul>
+<li><strong>React:</strong> React Component, React Component (JavaScript), React Hook, React Context Provider, React Component Test, Component Stylesheet, Storybook Story, Barrel Index, Component Types.</li>
+<li><strong>Vue:</strong> Vue Single File Component, Vue Composable, Pinia Store, Vue Component Test, Component Stylesheet, Storybook Story, Barrel Index, Component Types.</li>
+<li><strong>Angular:</strong> Angular Component, Component Template, Component Stylesheet, Component Spec, Angular Service, Barrel Index, Model.</li>
+<li><strong>Svelte:</strong> Svelte Component, Svelte Store, Svelte Component Test, Component Stylesheet, Storybook Story, Barrel Index, Component Types.</li>
+<li><strong>Node.js:</strong> CommonJS Module, ES Module, TypeScript Module, Module Test, CLI Entry Point, Barrel Index, Type Declarations.</li>
+<li><strong>Python:</strong> Python Module, Pytest Test, Package Init, Python CLI, Python Types.</li>
+<li><strong>Java:</strong> Java Class, Java Record, Java Interface, JUnit Test, Package Info.</li>
+<li><strong>Go:</strong> Go Source File, Go Test, Go Main, Package Documentation, Go Interfaces.</li>
+<li><strong>Rust:</strong> Rust Module, Rust Integration Test, Module Index, Crate Root, Error Type.</li>
+<li><strong>Generic:</strong> JavaScript Module, Module Test, Stylesheet, Barrel Index, Type Declarations, Markdown Document, Documentation Page, JSON File, YAML File, Text File.</li>
+</ul>
+<h3 id="choosing-the-preset">Choosing the preset</h3>
+<p><code>auricFiles.create.preset</code> is <code>auto</code> by default: Auric Files reads the workspace&#39;s dependencies and configuration files and picks the best match. Set it to <code>react</code>, <code>vue</code>, <code>angular</code>, <code>svelte</code>, <code>node</code>, <code>python</code>, <code>java</code>, <code>go</code>, <code>rust</code> or <code>generic</code> to fix it.</p>
+<p>Three settings shape what the presets generate:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><code>auricFiles.create.componentStyleLanguage</code></td><td><code>css</code></td><td><code>css</code>, <code>scss</code>, <code>less</code>, <code>styled</code>, <code>module-css</code>, <code>module-scss</code></td></tr>
+<tr><td><code>auricFiles.create.testFramework</code></td><td><code>auto</code></td><td><code>auto</code>, <code>jest</code>, <code>vitest</code>, <code>mocha</code>, <code>node</code>, <code>pytest</code>, <code>junit</code>, <code>gotest</code>, <code>cargo</code></td></tr>
+<tr><td><code>auricFiles.create.indent</code></td><td><code>space2</code></td><td><code>space2</code>, <code>space4</code>, <code>tab</code></td></tr>
+</tbody></table></div>
+<p>Java and Kotlin templates derive the package from the folder, recognising source roots such as <code>src/main/java</code>.</p>
+<h2 id="write-your-own-templates">Write your own templates</h2>
+<h3 id="where-templates-live">Where templates live</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Scope</th><th>Where</th><th>Setting</th></tr></thead>
+<tbody>
+<tr><td>Workspace</td><td><code>.auric/templates</code> and <code>.vscode/templates</code> in each workspace folder</td><td><code>auricFiles.templates.directories</code></td></tr>
+<tr><td>Global</td><td>Absolute folders you choose, shared across all workspaces</td><td><code>auricFiles.templates.global</code></td></tr>
+<tr><td>Generator</td><td>Defined in settings</td><td><code>auricFiles.create.generatorProfiles</code></td></tr>
+<tr><td>Built-in</td><td>The active preset</td><td><code>auricFiles.create.preset</code></td></tr>
+</tbody></table></div>
+<p>Every file in a template folder is read as one template. When two templates share an id, a workspace template replaces a global one, which replaces a generator, which replaces a built-in template. So you can override a built-in template by giving yours the same id.</p>
+<p>Template folders are workspace configuration, so they only apply in a trusted workspace.</p>
+<h3 id="the-file-format">The file format</h3>
+<p>A template file has optional <em>front matter</em> between two <code>---</code> lines, followed by the body:</p>
+<pre class="code" data-lang="text"><code>---
+id: react-card
+label: Card component
+description: A card with an optional stylesheet
+filename: &quot;{{name|pascal}}/{{name|pascal}}.tsx&quot;
+variables: [{&quot;name&quot;: &quot;withStyles&quot;, &quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;label&quot;: &quot;Include styles&quot;}]
+companions: [{&quot;when&quot;: &quot;{{withStyles}}&quot;, &quot;filename&quot;: &quot;{{name|pascal}}/{{name|pascal}}.css&quot;, &quot;body&quot;: &quot;.{{name|kebab}} {}\n&quot;}]
+---
+export function {{name|pascal}}() {
+  return &lt;div className=&quot;{{name|kebab}}&quot;&gt;$CURSOR&lt;/div&gt;;
+}</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>Required</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>Defaults to the file name</td><td>Letters and numbers, with <code>.</code>, <code>_</code> or <code>-</code> between them</td></tr>
+<tr><td><code>label</code></td><td>Defaults from the id</td><td>Name shown in the template list</td></tr>
+<tr><td><code>description</code></td><td>No</td><td>Extra text in the list</td></tr>
+<tr><td><code>filename</code></td><td>Defaults to <code>{{name}}</code></td><td>Output path, with placeholders; may include folders</td></tr>
+<tr><td><code>variables</code></td><td>No</td><td>Questions to ask, as inline JSON (see below)</td></tr>
+<tr><td><code>companions</code></td><td>No</td><td>Extra files, as inline JSON: <code>when</code>, <code>filename</code>, <code>body</code></td></tr>
+<tr><td><code>match</code></td><td>No</td><td>Globs that narrow where the template is offered</td></tr>
+<tr><td><code>preset</code></td><td>No</td><td>The ecosystem the template belongs to</td></tr>
+</tbody></table></div>
+<p>Front matter lines are <code>key: value</code>. A key with a list below it uses <code>- item</code> lines. Anything nested (<code>variables</code>, <code>companions</code>) is written as inline JSON on one line. The whole front matter can also be a single JSON object.</p>
+<h3 id="variables-you-define">Variables you define</h3>
+<p>Each variable has a <code>name</code> and optionally:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>label</code></td><td>The question shown</td></tr>
+<tr><td><code>description</code></td><td>Extra help</td></tr>
+<tr><td><code>type</code></td><td><code>string</code> (default), <code>boolean</code>, <code>number</code> or <code>choice</code></td></tr>
+<tr><td><code>choices</code></td><td>The options for a <code>choice</code> variable</td></tr>
+<tr><td><code>default</code></td><td>The pre-filled answer</td></tr>
+<tr><td><code>required</code></td><td><code>true</code> to insist on an answer</td></tr>
+</tbody></table></div>
+<p><code>auricFiles.templates.variables</code> supplies values to every template, such as an author or a licence header. An answer you type wins over it.</p>
+<h3 id="built-in-variables">Built-in variables</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Variable</th><th>Value for <code>src/components/Button.test.tsx</code></th></tr></thead>
+<tbody>
+<tr><td><code>name</code>, <code>basename</code></td><td><code>Button</code> (compound extensions such as <code>.test.tsx</code> removed)</td></tr>
+<tr><td><code>fileName</code></td><td><code>Button.test.tsx</code></td></tr>
+<tr><td><code>stem</code></td><td>the file name without its last extension</td></tr>
+<tr><td><code>ext</code></td><td>the extension</td></tr>
+<tr><td><code>dir</code></td><td><code>src/components</code></td></tr>
+<tr><td><code>parentDir</code></td><td><code>components</code></td></tr>
+<tr><td><code>relativePath</code></td><td><code>src/components/Button.test.tsx</code></td></tr>
+<tr><td><code>absolutePath</code></td><td>the full path on disk</td></tr>
+<tr><td><code>workspace</code></td><td>the workspace name</td></tr>
+<tr><td><code>date</code>, <code>time</code>, <code>year</code>, <code>isoDate</code></td><td>the current local date, time, year and ISO timestamp</td></tr>
+<tr><td><code>uuid</code></td><td>a new random identifier</td></tr>
+<tr><td><code>className</code>, <code>pascalName</code></td><td><code>Button</code></td></tr>
+<tr><td><code>camelName</code>, <code>kebabName</code>, <code>snakeName</code>, <code>upperName</code></td><td><code>button</code>, <code>button</code>, <code>button</code>, <code>BUTTON</code></td></tr>
+<tr><td><code>indent</code></td><td>the indentation from <code>auricFiles.create.indent</code></td></tr>
+<tr><td><code>javaPackage</code>, <code>pythonPackage</code></td><td>the package derived from the folder</td></tr>
+<tr><td><code>goPackage</code></td><td>the package name from the parent folder, or <code>main</code></td></tr>
+</tbody></table></div>
+<h3 id="template-language">Template language</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Syntax</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>{{name}}</code></td><td>Insert a value; an unknown name inserts nothing</td></tr>
+<tr><td><code>{{#if withStyles}} … {{else}} … {{/if}}</code></td><td>Include text when a value is true (non-empty, not <code>false</code>, not <code>0</code>)</td></tr>
+<tr><td><code>{{#unless flag}} … {{/unless}}</code></td><td>Include text when a value is false</td></tr>
+<tr><td><code>{{#each items}} … {{/each}}</code></td><td>Repeat for each item; inside, use <code>{{this}}</code>, <code>{{@index}}</code> and <code>{{@key}}</code></td></tr>
+<tr><td><code>{{&gt; other-template-id}}</code></td><td>Insert another template (a partial), up to 8 levels deep</td></tr>
+<tr><td><code>$CURSOR</code></td><td>Where the cursor goes when the file opens</td></tr>
+</tbody></table></div>
+<p>To apply a <em>filter</em>, write a vertical bar and the filter name after the value inside the braces: <code>{{name|pascal}}</code> turns <code>my button</code> into <code>MyButton</code>. Filters can be chained, as in <code>{{name|kebab|upper}}</code>.</p>
+<p><code>{{#each}}</code> also accepts a comma-separated string.</p>
+<p>Filters: <code>upper</code>, <code>lower</code>, <code>kebab</code>, <code>camel</code>, <code>pascal</code>, <code>snake</code>, <code>title</code>, <code>trim</code>, <code>basename</code>, <code>dirname</code>, <code>stem</code>, <code>ext</code>, <code>plural</code>, <code>singular</code>, <code>date</code>, <code>isoDate</code>, <code>year</code>. An unknown filter does nothing, and template validation reports it.</p>
+<p>The language is deliberately small: there is no code execution. A broken template renders nothing rather than running anything.</p>
+<h2 id="generator-profiles">Generator profiles</h2>
+<p>A generator is a template defined in settings, shown beside the framework presets. Add them to <code>auricFiles.create.generatorProfiles</code>:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;auricFiles.create.generatorProfiles&quot;: [
+    {
+      &quot;id&quot;: &quot;repository&quot;,
+      &quot;label&quot;: &quot;Repository class&quot;,
+      &quot;description&quot;: &quot;Data access class with its test&quot;,
+      &quot;match&quot;: [&quot;src/**&quot;],
+      &quot;filename&quot;: &quot;src/data/{{name|pascal}}Repository.ts&quot;,
+      &quot;body&quot;: &quot;export class {{name|pascal}}Repository {\n  $CURSOR\n}\n&quot;,
+      &quot;variables&quot;: [{ &quot;name&quot;: &quot;name&quot;, &quot;label&quot;: &quot;Entity name&quot;, &quot;required&quot;: true }],
+      &quot;companions&quot;: [
+        {
+          &quot;filename&quot;: &quot;src/data/{{name|pascal}}Repository.test.ts&quot;,
+          &quot;body&quot;: &quot;import { {{name|pascal}}Repository } from './{{name|pascal}}Repository';\n&quot;
+        }
+      ]
+    }
+  ]
+}</code></pre>
+<p>Required fields are <code>id</code>, <code>label</code>, <code>filename</code> and <code>body</code>. A companion is created only when its <code>when</code> expression renders to something true; leave <code>when</code> out to always create it.</p>
+<p>When a template runs, the files it describes appear in the Explorer, and the first opens with the cursor at <code>$CURSOR</code>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="search-filter-and-duplicates.html"><span>Previous</span>Search, filters and duplicates</a><a href="reference.html"><span>Next</span>Reference: commands, keys and settings</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#create-from-a-template">Create from a template</a></li><li><a href="#create-from-a-framework-preset">Create from a framework preset</a></li><li><a href="#write-your-own-templates">Write your own templates</a></li><li><a href="#generator-profiles">Generator profiles</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspect — Auric Artisan Docs</title>
+<meta name="description" content="Select an element on the page and read its full snapshot in the popup — box model, styles, matched rules, accessibility, DOM, locators — and try CSS on it live.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Code tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="code-export.html">Code export formats</a></li>
+<li><a href="inspect.html" aria-current="page">Inspect</a></li>
+<li><a href="snippets.html">Snippets</a></li>
+<li><a href="tokens.html">Tokens</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Code tools</a></nav>
+<p class="kicker">Browser extension › Code</p>
+<h1>Inspect</h1>
+<p class="lede">Select an element on the page and read its full snapshot in the popup — box model, styles, matched rules, accessibility, DOM, locators — and try CSS on it live.</p>
+<p>Code › <strong>Inspect</strong> (Inspect Element) is the in-depth view of one element. You select the element on the page with the <a href="../surfaces/inspector.html">element inspector</a>, and the extension shows its full snapshot, including every computed style and the rules that set them, and a Live CSS editor that changes the element on the page reversibly.</p>
+<h2 id="select-an-element">Select an element</h2>
+<ol>
+<li>Open Code › <strong>Inspect</strong>. The panel explains: &quot;Pick an element on the page to read its rules, box model and accessibility, then try CSS on it live.&quot;</li>
+<li>Choose <strong>Select element</strong>. The status reads &quot;Selection mode active · click an element on the page&quot;.</li>
+<li>Hover the page and click the element you want.</li>
+<li>In the side panel or the separate window, the snapshot appears as soon as you click. In the popup, clicking the page closes the popup; open it again and Code › Inspect shows the element.</li>
+</ol>
+<p>The side panel is the most comfortable place to inspect, because it stays open while you click around the page.</p>
+<p>Until you select one, the panel says <strong>No element selected</strong> and lists the inspector&#39;s keys: <code>P</code> pin, <code>C</code> copy CSS, <code>S</code> selector and <code>J</code> JSON. <strong>Stop</strong> ends inspecting and undoes any Live CSS previews.</p>
+<h2 id="the-header">The header</h2>
+<ul>
+<li>Swatches for the text colour and background colour.</li>
+<li>The element&#39;s name and its size.</li>
+<li>Its contrast.</li>
+<li><strong>Breadcrumbs</strong>: the path of ancestors down to the element. Choose one to jump to that ancestor.</li>
+<li><strong>Parent</strong>, <strong>Child</strong>, <strong>Prev</strong> and <strong>Next</strong> move the selection.</li>
+<li><strong>Show on page</strong> highlights the element, <strong>Selector</strong> copies its CSS selector and <strong>JSON</strong> copies the whole snapshot as JSON.</li>
+</ul>
+<h2 id="the-five-views">The five views</h2>
+<h3 id="overview">Overview</h3>
+<ul>
+<li><strong>Box model</strong>: a diagram of margin, border, padding and content, with the element&#39;s size.</li>
+<li><strong>Layout</strong>: display, flex and grid details, position, offsets, overflow and z-index.</li>
+<li><strong>Colors</strong>: text, background, border and background image.</li>
+<li><strong>Typography</strong>: family, size and weight, line height, letter spacing, text alignment and text transform.</li>
+<li><strong>Effects</strong>: radius, shadow, transform, filter, backdrop filter, transition, opacity and cursor.</li>
+<li><strong>Page metrics</strong>: bounding rectangle, content, client, scroll and offset sizes, number of children, and its index among its siblings.</li>
+<li><strong>Use text colour</strong> and <strong>Use background</strong> send the element&#39;s colours to Contrast.</li>
+</ul>
+<h3 id="styles">Styles</h3>
+<ul>
+<li><strong>Filter properties or values…</strong> narrows the lists as you type, with a count.</li>
+<li><strong>Matched rules</strong>: the CSS rules that apply to the element, in cascade order, with the rule count.</li>
+<li><strong>Computed</strong>: every computed property.</li>
+</ul>
+<p>Stylesheets from another site that the browser does not let the page read are noted, for example &quot;2 cross-origin stylesheets could not be read. Their computed values are still shown below.&quot;</p>
+<h3 id="a11y-accessibility">A11y (Accessibility)</h3>
+<ul>
+<li>A summary of the element&#39;s accessibility: its role, accessible name, states and contrast, with any problems found.</li>
+<li><strong>ARIA attributes</strong>: every <code>aria-*</code> attribute on the element.</li>
+</ul>
+<h3 id="dom">DOM</h3>
+<ul>
+<li><strong>Attributes</strong>: every attribute and its value, with a count.</li>
+<li><strong>Copy locator</strong>: <strong>CSS</strong> (the selector), <strong>JavaScript</strong> (<code>document.querySelector(…)</code>) or <strong>Playwright</strong> (<code>page.locator(…)</code>).</li>
+<li><strong>Pseudo-elements</strong>: <code>::before</code> and <code>::after</code>, when the element has them.</li>
+<li><strong>Markup</strong>: the element&#39;s HTML, up to 12 KB, with <strong>Copy HTML</strong>. Larger markup is cut off and the panel says so.</li>
+</ul>
+<h3 id="live-css">Live CSS</h3>
+<p>Edit CSS for this element and see it on the page.</p>
+<ol>
+<li>Type or change declarations in the editor. It starts with the element&#39;s current CSS.</li>
+<li>Choose <strong>Apply to page</strong>. The declarations apply to this element only.</li>
+<li>Choose <strong>Reset</strong> to restore the element&#39;s own styles, or <strong>Stop</strong> in the header to end inspecting and undo every preview.</li>
+</ol>
+<p>The panel calls this a <strong>Reversible page preview</strong>: &quot;Declarations apply to this element only. Reset or Stop restores what the inspector changed without touching anything else on the page.&quot; Changes are never saved to the site; reloading the page also removes them.</p>
+<p><strong>Copy CSS</strong> copies the editor&#39;s contents and <strong>Save snippet</strong> saves them to Snippets.</p>
+<h2 id="findings-from-inspection">Findings from inspection</h2>
+<p>If the element&#39;s text fails contrast, a finding is added to <a href="../check/all-findings.html">Findings</a>, with <strong>Show on page</strong>, <strong>Copy selector</strong> and <strong>Check contrast</strong>. Text on an image or gradient is added as a warning, to be verified by eye.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../surfaces/inspector.html">Element inspector</a></li>
+<li><a href="../check/contrast.html">Contrast</a></li>
+<li><a href="snippets.html">Snippets</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="code-export.html"><span>Previous</span>Code export formats</a><a href="snippets.html"><span>Next</span>Snippets</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#select-an-element">Select an element</a></li><li><a href="#the-header">The header</a></li><li><a href="#the-five-views">The five views</a></li><li><a href="#findings-from-inspection">Findings from inspection</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

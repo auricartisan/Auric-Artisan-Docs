@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run a session — Auric Artisan Docs</title>
+<meta name="description" content="Practise, run a measured session, respond with keys or buttons, and understand when and how a run stops.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Psychophysical Experiment Engine</a>
+<h2>Using the Psychophysics Bench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Psychophysics Bench</a></li>
+<li><a href="design-an-experiment.html">Design an experiment</a></li>
+<li><a href="export-your-data.html">Export your data</a></li>
+<li><a href="read-the-results.html">Read the results</a></li>
+<li><a href="run-a-session.html" aria-current="page">Run a session</a></li>
+<li><a href="reference.html">Psychophysics Bench reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Psychophysics Bench</a></li>
+<li><a href="faq.html">Psychophysics Bench FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Psychophysical Experiment Engine</a> &rsaquo; <a href="README.html">Using the Psychophysics Bench</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Psychophysical Experiment Engine</p>
+<h1>Run a session</h1>
+<p class="lede">Practise, run a measured session, respond with keys or buttons, and understand when and how a run stops.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li>Sit at the <strong>Viewing distance</strong> you entered and keep your head still.</li>
+<li>Dim the room and turn off automatic brightness, night-light or colour-shifting modes on your screen. Keep brightness fixed for the whole session.</li>
+<li>Look at the centre of the stage throughout.</li>
+<li>Close other busy windows; a slow computer can delay intervals.</li>
+</ul>
+<h2 id="practise">Practise</h2>
+<p>Select <strong>Practice</strong>. A practice run shows up to 12 trials (fewer if <strong>Trial ceiling</strong> is lower) and does not stop on reversals. Its answers appear in the readouts while you practise, and are cleared when you start a measured run. A message confirms <strong>Practice — arrow keys respond, Esc stops</strong>, and the run state reads <strong>practice</strong>.</p>
+<h2 id="run">Run</h2>
+<p>Select <strong>Run</strong>. The message <strong>Running — arrow keys respond, Esc stops</strong> appears, the run state reads <strong>running</strong>, <strong>Run</strong> and <strong>Practice</strong> are disabled, and <strong>Stop</strong> appears.</p>
+<h3 id="what-one-trial-looks-like">What one trial looks like</h3>
+<p><strong>Two-interval forced choice</strong></p>
+<ol>
+<li>A fixation cross on the background grey, for 240 ms.</li>
+<li><strong>Interval 1</strong> lights and the stage shows either the patch or a blank patch of the background, for the <strong>Stimulus</strong> duration.</li>
+<li>A 300 ms blank.</li>
+<li><strong>Interval 2</strong> lights and shows the other one.</li>
+<li>The stage returns to the background and waits for your answer.</li>
+</ol>
+<p><strong>Yes / no detection</strong></p>
+<ol>
+<li>A fixation cross for 240 ms.</li>
+<li>One interval: the patch on about half of trials, a blank on the rest, for the <strong>Stimulus</strong> duration.</li>
+<li>The stage returns to the background and waits for your answer.</li>
+</ol>
+<h3 id="answering">Answering</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Task</th><th>Left</th><th>Right</th></tr></thead>
+<tbody>
+<tr><td>Two-interval forced choice</td><td><code>←</code> or <strong>First interval</strong></td><td><code>→</code> or <strong>Second interval</strong></td></tr>
+<tr><td>Yes / no detection</td><td><code>←</code> or <strong>Yes, I saw it</strong></td><td><code>→</code> or <strong>No, I did not</strong></td></tr>
+</tbody></table></div>
+<p>Answers count only after the intervals have finished. There is no time limit, but answer promptly: the page records your response time. When you are unsure in the two-interval task, guess. The method assumes you will be guessing near threshold, and waiting to be certain biases the result upwards.</p>
+<p>After each answer the page scores the trial, updates the staircase and the readouts, waits for the <strong>Between trials</strong> pause, and starts the next trial.</p>
+<h2 id="when-a-run-stops">When a run stops</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Procedure</th><th>Stops at</th></tr></thead>
+<tbody>
+<tr><td><strong>1-up / 2-down</strong>, <strong>3-down / 1-up</strong>, <strong>Accelerated</strong></td><td>The <strong>Stop after</strong> reversal count, or the <strong>Trial ceiling</strong>, whichever comes first</td></tr>
+<tr><td><strong>Bayesian tracker</strong>, <strong>Constant stimuli</strong></td><td>The <strong>Trial ceiling</strong></td></tr>
+</tbody></table></div>
+<p>The run state then reads <strong>done — N trials</strong> and the stage shows the background.</p>
+<p>To stop early, press <code>Esc</code> while the page is waiting for your answer, or select <strong>Stop</strong>. <strong>Stop</strong> takes effect at the end of the current interval; if the page is already waiting for your answer, the run ends when you next press <code>Esc</code>, a response key or a response button, and that last answer is not recorded. The state then reads <strong>stopped</strong>, and the trials completed so far remain in the readouts.</p>
+<p>A normal session is 60 to 120 trials. Starting a new run clears the previous one&#39;s trials.</p>
+<h2 id="good-practice">Good practice</h2>
+<ul>
+<li>Run <strong>Practice</strong> once before every measured session.</li>
+<li>Measure more than once and compare; single runs vary.</li>
+<li>Keep the geometry, background and room lighting the same between runs you want to compare.</li>
+<li>If the trace climbs to the top and stays there, you could not see the patch at any contrast: check the frequency against the Nyquist limit, the background, and the <strong>Delivered / asked</strong> readout.</li>
+</ul>
+<p>You should now have a completed run with a threshold on the Lab tab; <a href="read-the-results.html">Read the results</a> explains it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="read-the-results.html"><span>Previous</span>Read the results</a><a href="reference.html"><span>Next</span>Psychophysics Bench reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-you-start">Before you start</a></li><li><a href="#practise">Practise</a></li><li><a href="#run">Run</a></li><li><a href="#when-a-run-stops">When a run stops</a></li><li><a href="#good-practice">Good practice</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+==============================================================================
+LIMITS AND ACCURACY
+==============================================================================
+What the Psychophysics Bench takes from published sources, what is its own,
+the limits of an uncalibrated screen, and what it does not show.
+Area: Website › Tools › Perception and spectral › Psychophysical Experiment Engine   Updated: 2026-09-25
+
+WHAT THE BENCH IS
+=================
+
+An educational instrument for measuring a contrast detection threshold in a
+browser. It is not a calibrated laboratory system and not a clinical test.
+Results depend on your screen, your room and your attention as much as on your
+vision.
+
+THE DATA REGISTER, IN PLAIN TERMS
+=================================
+
+  Entry:                 sRGB transfer and primaries
+  Status:                Verbatim
+  What it means for you: Contrast is converted to screen values with the
+                         standard sRGB curve, which is a standard, not a
+                         measurement of your screen
+
+  Entry:                 Transformed up-down rules
+  Status:                Verbatim
+  What it means for you: 1-up / 2-down and 3-down / 1-up follow Levitt (1971),
+                         including averaging an even number of reversals
+
+  Entry:                 Extreme-proportion correction
+  Status:                Verbatim
+  What it means for you: The 1/2N rule of Macmillan and Kaplan (1985) for hit
+                         rates of 1 or false-alarm rates of 0
+
+  Entry:                 Michelson contrast in luminance
+  Status:                Computed
+  What it means for you: Every contrast is placed symmetrically around the
+                         background's luminance, so the contrast asked for is
+                         the contrast drawn, unless capped
+
+  Entry:                 Viewing geometry
+  Status:                Computed
+  What it means for you: Degrees per pixel and the Nyquist limit follow
+                         exactly from the distance and pitch you enter
+
+  Entry:                 Signal-detection formulae
+  Status:                Computed
+  What it means for you: d′, criterion and β as in Macmillan and Creelman
+                         (2005), for yes/no only
+
+  Entry:                 Inverse normal CDF
+  Status:                Computed
+  What it means for you: An approximation accurate to 4.5 × 10⁻⁴; it caps any
+                         d′ at about 6.18
+
+  Entry:                 Nonparametric bootstrap
+  Status:                Computed
+  What it means for you: A trial bootstrap; it gives intervals that are too
+                         narrow for adaptively sampled data
+
+  Entry:                 Bayesian adaptive staircase
+  Status:                Stand-in
+  What it means for you: The tool's own tracker, not QUEST; its slope and
+                         lapse rate are assumed
+
+  Entry:                 Psychometric function fit
+  Status:                Stand-in
+  What it means for you: A logistic with the task's guess rate and a fitted
+                         lapse rate; search and binning are the tool's own
+
+  Entry:                 Accelerated staircase
+  Status:                Stand-in
+  What it means for you: The tool's own; not PEST, and no stated target
+                         percentage
+
+  Entry:                 Weibull fit
+  Status:                Absent
+  What it means for you: No Weibull function is ever fitted to data
+
+  Entry:                 ROC curve and its area
+  Status:                Absent
+  What it means for you: A single yes/no criterion gives one point, not a
+                         curve
+
+Because the fit is a stand-in, exports carry `reportable: false`.
+
+LIMITS OF A SCREEN
+==================
+
+  - No calibration. The page assumes the sRGB curve. Real screens differ, and
+    brightness, contrast and colour settings change the light that reaches
+    you. A measured display calibration cannot be loaded in the current
+    version.
+  - 8-bit steps. Near threshold, a stripe pattern may differ from the
+    background by only one or two screen code values, so the smallest
+    contrasts the page can draw are coarse. The page does not dither.
+  - Capped contrast. A bright background cannot hold high contrast; the page
+    caps it and says so.
+  - Geometry you enter. The frequency and envelope in degrees are only as
+    accurate as the distance and pixel pitch you give, and assume you stay
+    put.
+  - Timing. Durations are timed by the browser and shown on the screen's
+    refresh; background load can delay them.
+
+WHAT THE BENCH DOES NOT SHOW
+============================
+
+In the current version no readout displays the psychometric fit, d′,
+criterion, β or bootstrap interval, although the register describes them. The
+threshold shown comes from the staircase itself: the reversal average or the
+Bayesian tracker's estimate.
+
+WHAT IT DOES NOT DO
+===================
+
+  - Only two tasks run: two-interval forced choice and yes/no. m-alternative,
+    same/different and odd-one-out are withdrawn.
+  - Constant stimuli tests only the starting contrast.
+  - At the time of writing, only the Lab tab opens, so exports cannot be made.

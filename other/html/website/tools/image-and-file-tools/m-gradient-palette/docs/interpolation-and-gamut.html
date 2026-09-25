@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interpolation and gamut — Auric Artisan Docs</title>
+<meta name="description" content="How the four colour spaces blend two colours differently, what short and long hue routes and easing do, how evenness is measured, and how out-of-gamut steps are brought back.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; M-Gradient Palette</a>
+<h2>M-Gradient Palette documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the M-Gradient Palette</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="compare-routes.html">Compare routes and easings</a></li>
+<li><a href="export-a-ramp.html">Export a ramp</a></li>
+<li><a href="interpolation-and-gamut.html" aria-current="page">Interpolation and gamut</a></li>
+<li><a href="reference.html">M-Gradient Palette reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the M-Gradient Palette</a></li>
+<li><a href="faq.html">M-Gradient Palette FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">M-Gradient Palette</a> &rsaquo; <a href="README.html">M-Gradient Palette documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › M-Gradient Palette</p>
+<h1>Interpolation and gamut</h1>
+<p class="lede">How the four colour spaces blend two colours differently, what short and long hue routes and easing do, how evenness is measured, and how out-of-gamut steps are brought back.</p>
+<p>A ramp is made by <strong>interpolation</strong>: choosing colours part of the way between the two ends. What &quot;part of the way&quot; means depends on the colour space the blending happens in, so the same two colours give different ramps in different spaces.</p>
+<h2 id="the-four-spaces">The four spaces</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Space</th><th>What is blended</th><th>Character of the ramp</th></tr></thead>
+<tbody>
+<tr><td><strong>sRGB</strong></td><td>The red, green and blue values as stored in a web colour</td><td>The browser&#39;s default. Middles between very different colours can turn dull or dark</td></tr>
+<tr><td><strong>Linear RGB</strong></td><td>Red, green and blue as amounts of light, before the sRGB curve is applied</td><td>Physically like mixing light. Middles tend to look too light, and the dark end changes quickly</td></tr>
+<tr><td><strong>HSL</strong></td><td>Hue, saturation and lightness, a cylinder built from sRGB</td><td>Keeps colours saturated, but HSL lightness is not perceived lightness, so brightness can bulge in the middle</td></tr>
+<tr><td><strong>OKLCH</strong></td><td>Lightness, chroma and hue in OKLab</td><td>Designed so equal steps look equal. Keeps colourfulness through the middle. The default</td></tr>
+</tbody></table></div>
+<h3 id="oklab-and-oklch">OKLab and OKLCH</h3>
+<p>OKLab is a perceptual colour space published by Björn Ottosson in 2020. It has a lightness axis, L, and two colour axes, a and b, arranged so that equal distances look roughly equally different. OKLCH is the same space in polar form: <strong>L</strong> for lightness, <strong>C</strong> for chroma (how colourful, the distance from grey), and <strong>H</strong> for hue (an angle, 0° to 360°). Blending lightness, chroma and hue separately gives ramps whose steps look even and whose middle stays colourful.</p>
+<h3 id="srgb-and-linear-rgb">sRGB and linear RGB</h3>
+<p>sRGB values are encoded with a curve that spends more of the 0 to 255 range on dark tones, roughly matching how eyes see. Blending the encoded values is quick and familiar; it is what CSS gradients do by default. Linear RGB undoes that curve first, so the blend is proportional to light. Neither is designed to make equal steps look equal.</p>
+<h3 id="hsl">HSL</h3>
+<p>HSL rearranges sRGB into hue, saturation and lightness. It is easy to reason about, but its lightness is a simple average of the largest and smallest channel, not a perceptual measure: fully saturated yellow and fully saturated blue have the same HSL lightness and look very different.</p>
+<h2 id="short-and-long-hue-routes">Short and long hue routes</h2>
+<p>In the two polar spaces, OKLCH and HSL, hue is an angle, and there are two ways round the circle from one hue to another.</p>
+<ul>
+<li><strong>Short hue</strong> takes the smaller arc, never more than 180°.</li>
+<li><strong>Long hue</strong> goes the other way round, through the hues the short route skips.</li>
+</ul>
+<p>This is a choice of route, not a different space, which is why the tool offers four spaces but six routes. The long route covers much more distance when the two hues are close together; when they are nearly opposite, the two routes are similar in length.</p>
+<p>sRGB and linear RGB have no hue angle, so they have one route each.</p>
+<h2 id="easing">Easing</h2>
+<p>Easing decides where along the way each step lands. The tool uses the familiar CSS timing curves:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Easing</th><th>Where the steps land</th></tr></thead>
+<tbody>
+<tr><td><strong>linear</strong></td><td>Evenly spaced along the route</td></tr>
+<tr><td><strong>ease-in</strong></td><td>Bunched near the start, spreading out towards the end</td></tr>
+<tr><td><strong>ease-out</strong></td><td>Spread out at the start, bunched near the end</td></tr>
+<tr><td><strong>ease-in-out</strong></td><td>Bunched at both ends, spread in the middle</td></tr>
+<tr><td><strong>step</strong></td><td>Only five distinct positions (0, ¼, ½, ¾ and the end), so neighbouring steps repeat colours</td></tr>
+</tbody></table></div>
+<p>Easing changes where the steps land, not the path the ramp takes. That is why it barely changes the average difference between steps but can change how even they are a great deal.</p>
+<h2 id="measuring-a-ramp">Measuring a ramp</h2>
+<ul>
+<li><strong>ΔE₀₀</strong> is the CIEDE2000 colour difference, the CIE&#39;s standard formula for how different two colours look. The tool measures it between each step and the next.</li>
+<li><strong>mean ΔE₀₀</strong> is the average of those differences: how far apart the steps are.</li>
+<li><strong>evenness</strong> is the standard deviation of those differences: how much they vary. Zero would mean every step is exactly as far from the next. Lower is more even.</li>
+<li><strong>largest jump</strong> is the biggest single difference, and where it is.</li>
+</ul>
+<p>The mean and the evenness answer different questions and move independently. A ramp is usually being asked the evenness question.</p>
+<h2 id="gamut-and-gamut-mapping">Gamut and gamut mapping</h2>
+<p>A <strong>gamut</strong> is the range of colours a device or colour space can show. sRGB, the gamut of ordinary screens and web colours, cannot hold every colour OKLCH can describe. Blending in OKLCH between two saturated colours often asks for a middle step more colourful than sRGB allows.</p>
+<p>There are two ways to bring such a colour back:</p>
+<ul>
+<li><strong>Clipping</strong> each channel to 0 to 255 is simple, but it changes the hue and lightness as well as the colourfulness.</li>
+<li><strong>Gamut mapping by chroma</strong>, which this tool uses, keeps the lightness and hue you asked for and reduces only the chroma, until the colour just fits. The result sits on the edge of sRGB at the right lightness and hue.</li>
+</ul>
+<p>The tool finds the edge by halving the search twenty times, which is far finer than one step of an 8-bit channel. Steps that were brought back this way are marked with a gold underline in the ramp and outlined in amber on the hue circle, and <strong>moved to fit sRGB</strong> counts them.</p>
+<p>Only the OKLCH routes can leave sRGB. Blends in sRGB, linear RGB and HSL always stay inside it.</p>
+<h2 id="the-desaturated-middle">The desaturated middle</h2>
+<p>A ramp between two colours on opposite sides of the colour wheel, blended in sRGB or linear RGB, passes close to grey in the middle, because the straight line between them crosses the neutral axis. Blending in OKLCH goes round the hue circle instead and stays colourful. The <strong>Spaces</strong> tab draws the same two ends in <strong>sRGB</strong>, <strong>Linear RGB</strong> and <strong>OKLCH, short hue</strong> and gives the chroma of the least colourful step of each, measured in OKLCH, so the three can be compared on one scale.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-a-ramp.html"><span>Previous</span>Export a ramp</a><a href="reference.html"><span>Next</span>M-Gradient Palette reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-four-spaces">The four spaces</a></li><li><a href="#short-and-long-hue-routes">Short and long hue routes</a></li><li><a href="#easing">Easing</a></li><li><a href="#measuring-a-ramp">Measuring a ramp</a></li><li><a href="#gamut-and-gamut-mapping">Gamut and gamut mapping</a></li><li><a href="#the-desaturated-middle">The desaturated middle</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

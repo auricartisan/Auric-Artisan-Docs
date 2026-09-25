@@ -1,0 +1,76 @@
+==============================================================================
+CATALOG METADATA UPDATES
+==============================================================================
+How Icon Hub checks icons.auricartisan.com for updated catalog metadata, how
+to refresh manually, and how to turn checks off.
+Area: VS Code extensions › Auric Artisan Icon Hub   Updated: 2026-09-25
+
+Icon Hub ships with a complete catalog. It can also check
+https://icons.auricartisan.com for compatible updates to the catalog's
+metadata (search terms, counts and similar data).
+
+WHAT IS CHECKED
+===============
+
+  - Only five public JSON files under `/data/`: `meta.json`, `sets.json`,
+    `stats.json`, `index.json` and `material.json`.
+  - Requests are time-limited (15 seconds), size-limited, send no credentials
+    and reject redirects.
+  - Downloaded metadata must match the bundled icon IDs, sets, styles and font
+    mappings before it replaces the cache.
+  - Updates can improve search metadata. They never download new artwork or
+    add icon sets; new artwork arrives with extension updates.
+
+AUTOMATIC CHECKS
+================
+
+With `auricIconLib.remoteRefresh.onStartup` on (the default), Icon Hub checks
+when it activates, at most once per `auricIconLib.remoteRefresh.intervalHours`
+(24 hours by default, 1 to 168). Failed attempts also wait for the interval.
+There is no continuous timer.
+
+Background failures never show pop-ups. The Hub's badge shows the state:
+
+  Badge                           | Meaning
+  --------------------------------+-----------------------------------------------
+  Bundled catalog · offline ready | Using the catalog shipped with the extension.
+  Checking metadata…              | A check is running.
+  Metadata up to date             | Compatible metadata was downloaded.
+  Offline · using local catalog   | The check failed; the local catalog is in use.
+
+CHECK NOW
+=========
+
+Select Refresh in the Hub header, or run Auric Icon Hub: Refresh Icon Catalog.
+This ignores the interval. You see "Catalog metadata updated. Shipped artwork
+remains available offline." or "Using offline catalog: …". Your search and
+selection are kept.
+
+RETURN TO THE BUNDLED CATALOG
+=============================
+
+Run Auric Icon Hub: Clear Downloaded Icon Catalog. You see "Cache cleared;
+bundled catalog restored."
+
+TURN CHECKS OFF
+===============
+
+Stop automatic checks only:
+
+    {
+      "auricIconLib.remoteRefresh.onStartup": false
+    }
+
+Disable all catalog network checks, including Refresh:
+
+    {
+      "auricIconLib.remoteRefresh.enabled": false
+    }
+
+With checks disabled, Refresh says "Remote catalog refresh is disabled."
+
+RESULT
+======
+
+Your catalog stays current when you want it to, and everything keeps working
+offline when you do not.

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert, copy and save — Auric Artisan Docs</title>
+<meta name="description" content="Insert icons with smart, language-aware output, copy them in an explicit format, save SVG files and preview Auric icon IDs on hover.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Icon Studio</a>
+<h2>Icon Studio guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Icon Studio</a></li>
+<li><a href="auric-collections.html">Work with the Auric collection extensions</a></li>
+<li><a href="commands-and-keybindings.html">Commands and keybindings</a></li>
+<li><a href="insert-copy-and-save.html" aria-current="page">Insert, copy and save</a></li>
+<li><a href="search-and-browse.html">Search and browse</a></li>
+<li><a href="reference.html">Icon Studio reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Icon Studio</a> &rsaquo; <a href="README.html">Icon Studio guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Icon Studio</p>
+<h1>Insert, copy and save</h1>
+<p class="lede">Insert icons with smart, language-aware output, copy them in an explicit format, save SVG files and preview Auric icon IDs on hover.</p>
+<p>Every card has three main actions and three quick format buttons.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Insert</strong> (or select the artwork)</td><td>Inserts into the editor. With smart insert on, the format follows the file&#39;s language.</td></tr>
+<tr><td><strong>Copy</strong></td><td>Copies the plain format: SVG markup for SVG artwork, an HTML span for Material, the character for emoji.</td></tr>
+<tr><td><strong>As…</strong></td><td>Opens a list of every format for that icon; the plain format is marked <strong>default</strong>.</td></tr>
+<tr><td>Quick buttons</td><td>SVG artwork: <strong>JSX</strong>, <strong>URI</strong> (data URI), <strong>CSS</strong>. Material: <strong>JSX</strong>, <strong>CSS</strong>, <strong>HTML</strong>. Emoji: <strong>Code</strong> (shortcode), <strong>U+</strong> (code points), <strong>HTML</strong> (entities).</td></tr>
+</tbody></table></div>
+<p>After each action, a status message confirms what happened, for example &quot;Rocket copied as data uri.&quot;</p>
+<h2 id="insert-into-your-file">Insert into your file</h2>
+<ol>
+<li>Open a writable file and place one or more cursors, or select text to replace.</li>
+<li>In Icon Studio, select <strong>Insert</strong> on a card.</li>
+<li>The output is inserted at every cursor. Selected text is replaced. If the output has several lines, each continuation line gets the same indentation as the cursor&#39;s line.</li>
+</ol>
+<p>Icon Studio inserts into the active editor or, if you clicked into the Studio, the last text editor you used. If no editor is available, the output is copied instead.</p>
+<h3 id="smart-insert">Smart insert</h3>
+<p>Smart insert is on by default (<code>auricIconStudio.smartInsert</code>). It picks the format from the editor&#39;s language:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Editing in</th><th>SVG artwork becomes</th></tr></thead>
+<tbody>
+<tr><td>React JSX or TSX, MDX</td><td>A JSX element</td></tr>
+<tr><td>JavaScript, TypeScript</td><td>A JavaScript string constant</td></tr>
+<tr><td>HTML, Vue, Svelte, Astro, PHP, Handlebars, Razor, ERB, Django templates, Jinja, Blade, XML, SVG</td><td>SVG markup</td></tr>
+<tr><td>CSS, SCSS, Sass, Less, Stylus, PostCSS</td><td>A CSS background</td></tr>
+<tr><td>Markdown</td><td>A Markdown image</td></tr>
+<tr><td>JSON, JSONC, YAML, TOML, Python</td><td>A data URI</td></tr>
+<tr><td>Any other language</td><td>SVG markup</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Material</strong> glyphs become a JSX span in React, a string constant in JavaScript or TypeScript, CSS declarations in stylesheets, and an HTML span elsewhere.</li>
+<li><strong>Emoji</strong> are always inserted as the character.</li>
+</ul>
+<p>Turn smart insert off to always insert the plain format. The <strong>Smart Insert Icon</strong> command always uses smart output.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Smart insert chooses a format. It does not configure your application or guarantee valid syntax at every cursor position. Check quotes, surrounding code and accessibility labels.</p>
+</blockquote>
+<h2 id="copy-in-an-explicit-format">Copy in an explicit format</h2>
+<ol>
+<li>Select <strong>As…</strong> on a card, or run <strong>Auric Icon Studio: Copy Icon As…</strong>.</li>
+<li>Choose a format from the list.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Icon type</th><th>Formats</th></tr></thead>
+<tbody>
+<tr><td>SVG artwork</td><td>SVG markup, JSX element, React component, JavaScript string constant, Image tag (self-contained), Markdown image, CSS background, Data URI, Icon ID</td></tr>
+<tr><td>Material glyph</td><td>HTML span, JSX span, React component, JavaScript string constant, CSS declarations, Ligature name</td></tr>
+<tr><td>Emoji</td><td>Emoji character, Shortcode, Unicode code points, HTML entities</td></tr>
+</tbody></table></div>
+<p>Material icons never export as SVG. Material markup needs the matching Material font in your application; the Studio&#39;s preview font is not added to your project.</p>
+<h2 id="control-the-output">Control the output</h2>
+<p>These settings shape SVG and font output:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>auricIconStudio.size</code></td><td>Width and height written into the output. <code>0</code> (default) keeps the native size: 64 for Auric artwork, 24 for most open-source sets. Range 0 to 512.</td></tr>
+<tr><td><code>auricIconStudio.color</code></td><td><code>currentColor</code> (default, follows the text colour where it is used) or a six-digit hex colour for monochrome output.</td></tr>
+<tr><td><code>auricIconStudio.strokeWidth</code></td><td>Stroke width for stroke-based sets (Tabler, Lucide, Feather). Auric artwork keeps its drawn strokes. Range 0.5 to 4, default 2.</td></tr>
+<tr><td><code>auricIconStudio.emojiSkinTone</code></td><td>Default skin tone for emoji that support one.</td></tr>
+</tbody></table></div>
+<p>SVG output gets <code>role=&quot;img&quot;</code> and an <code>aria-label</code> with the icon name when the artwork has no accessible name of its own. Review the label and change it if the icon is decorative or needs a better description.</p>
+<h2 id="save-an-svg-file">Save an SVG file</h2>
+<ol>
+<li>Run <strong>Auric Icon Studio: Save Icon as SVG…</strong> and choose an icon, or choose <strong>Save as SVG…</strong> in the <strong>Search All Icons…</strong> action list.</li>
+<li>A save dialog opens with the name <code>&lt;icon-id&gt;.svg</code> in your first workspace folder (or your home folder).</li>
+<li>Choose a location and select <strong>Save icon</strong>.</li>
+</ol>
+<p>Only SVG artwork can be saved. Emoji are characters and Material icons are font glyphs, so they have no SVG file to save.</p>
+<h2 id="hover-previews-in-code">Hover previews in code</h2>
+<p>Hover over a recognised Auric icon ID, such as <code>files-blank-document-drawn-0001</code>, in any file. The hover shows a 48-pixel preview, the icon name and description, its ID, collection and category, and an <strong>Open in Icon Studio</strong> link.</p>
+<ul>
+<li>If the Auric extension that owns that collection (Modern, Drawn or Playful) is installed, Icon Studio leaves the hover to it, so you never see two previews.</li>
+<li>A hover only previews; it never changes your file.</li>
+<li>Turn previews off with <code>auricIconStudio.hoverPreview</code>.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>The icon is in your file (or on your clipboard, or saved as an <code>.svg</code> file) in the format you need, and it appears under <strong>Recent</strong>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="commands-and-keybindings.html"><span>Previous</span>Commands and keybindings</a><a href="search-and-browse.html"><span>Next</span>Search and browse</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#insert-into-your-file">Insert into your file</a></li><li><a href="#copy-in-an-explicit-format">Copy in an explicit format</a></li><li><a href="#control-the-output">Control the output</a></li><li><a href="#save-an-svg-file">Save an SVG file</a></li><li><a href="#hover-previews-in-code">Hover previews in code</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

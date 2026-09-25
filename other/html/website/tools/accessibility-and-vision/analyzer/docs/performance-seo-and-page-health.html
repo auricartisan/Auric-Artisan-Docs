@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance, SEO and page health — Auric Artisan Docs</title>
+<meta name="description" content="What the Performance, SEO, Media, Deep, Devices, Security, Project, Site Map and Insights sections measure, and how to read them.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html" aria-current="page">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Performance, SEO and page health</h1>
+<p class="lede">What the Performance, SEO, Media, Deep, Devices, Security, Project, Site Map and Insights sections measure, and how to read them.</p>
+<p>Beyond accessibility and colour, the Analyzer checks how fast the page is, how search engines see it, what JavaScript changes, how it copes with small screens, which security headers it sends, and how it fits into the rest of the site. This guide covers each of those sections. Most are available in Advanced mode only; <strong>Project</strong>, <strong>Site Map</strong> and <strong>Insights</strong> are also in Simple mode.</p>
+<p>Every scored section has a <strong>Why this score?</strong> box, built like the one in the Overview, that explains its formula, what moved the score and the top recommendations. See <a href="read-the-overview-and-scores.html">Read the Overview and scores</a>.</p>
+<h2 id="performance">Performance</h2>
+<p>A Lighthouse-style audit built from the page&#39;s HTML, CSS, JavaScript, assets, DOM size and layout stability, and from real browser timing when it is available.</p>
+<h3 id="what-it-shows">What it shows</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Score and one-line verdict</td><td>For example &quot;Fast, stable, and well within most budgets.&quot;</td></tr>
+<tr><td><strong>Data Source</strong></td><td>Whether scores use real browser timing or estimates</td></tr>
+<tr><td><strong>Performance Context</strong></td><td>Critical performance issues, acceptable architecture patterns, and the real-world load time</td></tr>
+<tr><td><strong>Quick Wins</strong></td><td>The first changes to make</td></tr>
+<tr><td>Sub-scores</td><td><strong>Loading</strong>, <strong>Interactivity</strong>, <strong>Visual Stability</strong>, <strong>Asset Weight</strong>, <strong>Maintainability</strong></td></tr>
+<tr><td><strong>Browser Timing</strong></td><td>DOM content loaded, load event, transfer size and number of resources</td></tr>
+<tr><td><strong>Top Performance Priorities</strong></td><td>Ranked issues with impact and fix</td></tr>
+<tr><td>Page totals</td><td>Weights, scripts, stylesheets, CSS rules, DOM nodes and depth, images, iframes, third-party origins</td></tr>
+<tr><td><strong>File-Level Assets</strong></td><td>Every script and stylesheet: blocking or not, origin, format, size, impact and fix</td></tr>
+<tr><td><strong>Performance Budgets</strong></td><td>Pass or fail against fixed budgets (below)</td></tr>
+<tr><td><strong>Performance Findings</strong></td><td>Each finding with why and fix</td></tr>
+<tr><td><strong>Loading Timeline / Waterfall</strong></td><td>An estimated load order marking TTFB, FCP, LCP and page complete; red bars block rendering</td></tr>
+<tr><td><strong>Asset Dependency Graph</strong></td><td>Every asset, grouped by type and origin</td></tr>
+<tr><td><strong>Structural Analysis</strong></td><td>Repeated templates, template inconsistencies, z-index conflicts and layout-break risks</td></tr>
+<tr><td><strong>Generated Performance CSS</strong></td><td>A small stylesheet of safe improvements, such as a visible focus style and responsive images</td></tr>
+</tbody></table></div>
+<h3 id="performance-budgets">Performance budgets</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Budget</th><th>Limit</th></tr></thead>
+<tbody>
+<tr><td>HTML weight</td><td>250 KB</td></tr>
+<tr><td>CSS weight</td><td>160 KB</td></tr>
+<tr><td>Inline JS</td><td>120 KB</td></tr>
+<tr><td>DOM size</td><td>1,500 nodes</td></tr>
+<tr><td>DOM depth</td><td>32 levels</td></tr>
+<tr><td>Blocking scripts</td><td>2</td></tr>
+<tr><td>Image dimensions</td><td>0 missing</td></tr>
+<tr><td>Third-party origins</td><td>8</td></tr>
+</tbody></table></div>
+<h3 id="core-web-vitals">Core Web Vitals</h3>
+<p>Core Web Vitals are Google&#39;s measures of loading, visual stability and responsiveness. The Analyzer reports six metrics. They are shown in the <strong>Insights</strong> section, in a card headed <strong>Core Web Vitals</strong> followed by where the numbers came from: &quot;(measured · lab)&quot; when your browser measured them, &quot;(measured · backend lab)&quot; when a server browser did, or &quot;(lab estimates)&quot; when they were estimated from the page&#39;s size and structure.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Good</th><th>Needs improvement</th><th>Poor</th></tr></thead>
+<tbody>
+<tr><td>Largest Contentful Paint (LCP)</td><td>up to 2,500 ms</td><td>up to 4,000 ms</td><td>over 4,000 ms</td></tr>
+<tr><td>Cumulative Layout Shift (CLS)</td><td>up to 0.10</td><td>up to 0.25</td><td>over 0.25</td></tr>
+<tr><td>Interaction to Next Paint (INP)</td><td>up to 200 ms</td><td>up to 500 ms</td><td>over 500 ms</td></tr>
+<tr><td>First Contentful Paint (FCP)</td><td>up to 1,800 ms</td><td>up to 3,000 ms</td><td>over 3,000 ms</td></tr>
+<tr><td>Time to First Byte (TTFB)</td><td>up to 800 ms</td><td>up to 1,800 ms</td><td>over 1,800 ms</td></tr>
+<tr><td>Total Blocking Time (TBT)</td><td>up to 200 ms</td><td>up to 600 ms</td><td>over 600 ms</td></tr>
+</tbody></table></div>
+<p>The card&#39;s score is the share of metrics in the good range. Where it can, it names the element responsible (for example the LCP image) and the likely causes. When vitals are measured, the Performance score is capped by them, so a page cannot score 100 while its vitals are poor.</p>
+<p><strong>Network Simulation</strong> lets you re-estimate the numbers for <strong>Fast 4G</strong>, <strong>Slow 4G</strong>, <strong>Fast 3G</strong>, <strong>Slow 3G</strong> or <strong>Offline</strong>. It changes estimated values only, not measured ones, and your choice is remembered in this browser.</p>
+<p>All of these are lab numbers from one load, not data from real visitors.</p>
+<h2 id="seo">SEO</h2>
+<p>Search-engine readiness: meta tags, headings, structured data, indexing, links, content depth and keyword distribution.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Score</td><td>100 minus weighted deductions per failed check (critical −14, medium −7, minor −3)</td></tr>
+<tr><td><strong>Indexability</strong></td><td>Robots meta, whether the page is indexable and followable, and the canonical URL</td></tr>
+<tr><td><strong>Content</strong></td><td>Word count, title length and meta description length</td></tr>
+<tr><td><strong>Deep SEO Analysis — Raw + Rendered</strong></td><td>Raw and rendered SEO scores, <strong>SEO Delta Score</strong>, <strong>Crawler Confidence</strong>, <strong>Dynamic SEO Risk</strong></td></tr>
+<tr><td><strong>Dynamic SEO Detection</strong> and <strong>Dynamic SEO Flags</strong></td><td>Whether the title, description, canonical, robots, Open Graph tags, JSON-LD or H1 only appear after JavaScript runs</td></tr>
+<tr><td><strong>Raw vs Rendered SEO</strong></td><td>Each field before and after rendering, marked stable or changed</td></tr>
+<tr><td><strong>Raw/Rendered Check Matrix</strong></td><td>Around 27 checks, each pass or fail in the raw HTML and the rendered page</td></tr>
+<tr><td><strong>SEO Checks</strong></td><td>15 pass-or-fail checks, listed below the table</td></tr>
+<tr><td><strong>Top SEO Priorities</strong></td><td>Ranked fixes</td></tr>
+<tr><td><strong>Sitemap &amp; Robots Discovery (hyper-detailed)</strong></td><td>robots.txt rules, every sitemap found, and <strong>All discovered URLs</strong>; <strong>Re-probe</strong> checks again</td></tr>
+<tr><td><strong>Structured Data (JSON-LD)</strong></td><td>Blocks found, valid and invalid, and schema types</td></tr>
+<tr><td><strong>Top Keywords (content density)</strong></td><td>The most frequent terms with counts and share</td></tr>
+<tr><td><strong>SEO Findings</strong></td><td>Each finding with its fix</td></tr>
+<tr><td><strong>SEO vs Competitor Archetypes</strong></td><td>Your SEO, performance and accessibility scores beside reference averages by site type</td></tr>
+<tr><td><strong>Technical SEO</strong></td><td>Title, meta description, canonical, viewport, language, charset, robots</td></tr>
+<tr><td><strong>Asset SEO</strong></td><td>Images, missing alt, decorative images, bad file names, heavy formats, below-the-fold images not lazy-loaded</td></tr>
+<tr><td><strong>URL Quality</strong></td><td>Slug, slug length, lowercase, hyphens, path segments, query parameters</td></tr>
+<tr><td><strong>Content Quality</strong></td><td>Word count, sentences, average words per sentence</td></tr>
+<tr><td><strong>Schema (JSON-LD) Validation</strong></td><td>Types found, errors, and recommended types that are missing</td></tr>
+<tr><td><strong>Crawl Quality</strong></td><td>Internal and external links, broken anchors, malformed links, H1 count, URL depth, duplicate headings, indexability</td></tr>
+</tbody></table></div>
+<p>The 15 <strong>SEO Checks</strong> are: title present, title length 30–65, meta description, canonical URL, lang attribute, viewport meta, Open Graph title, Open Graph image, robots not noindex, single H1, heading order, structured data (JSON-LD), internal links, content depth (at least 300 words) and descriptive link anchors.</p>
+<p>Sitemap discovery reads robots.txt (user agents, allow and disallow rules, crawl delay and sitemap references) and every sitemap and sitemap index it finds, then lists every URL with a filter.</p>
+<p>The competitor archetypes are fixed reference figures that the panel describes as industry averages based on HTTP Archive data. They are for orientation, not a live ranking.</p>
+<h2 id="media">Media</h2>
+<p>Element-level detail for every image, video and audio file.</p>
+<ul>
+<li>Counts of <strong>Images</strong>, <strong>Videos</strong> and <strong>Audio</strong>.</li>
+<li><strong>Media Interpretation</strong>: priority and LCP candidates, decorative images, and the alt-text model (missing alt is a real problem; empty alt is treated as decorative when the image is not content).</li>
+<li><strong>Media Checks</strong>: images have alt decisions, images reserve layout space, autoplay control, visible controls, captions for video, audio transcripts.</li>
+<li>For each item: source URL, file size, dimensions, loading behaviour, alt text or captions, selector, parent, DOM path and layout impact.</li>
+<li><strong>Top Media Priorities</strong>.</li>
+</ul>
+<p>A page with no media says &quot;No media assets detected&quot; and is not scored for media.</p>
+<h2 id="deep">Deep</h2>
+<p>The <strong>Deep Analyzer</strong> compares the raw HTML the server sends with the DOM after JavaScript has run. Use it to find content, metadata or links that only exist after rendering, which some crawlers and assistive technologies may miss.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Headline</td><td>Score, rendering classification (for example &quot;Static HTML / progressively enhanced&quot;) and detected framework</td></tr>
+<tr><td><strong>Rendering</strong></td><td>Mode, confidence, framework, DOM delta, whether content and SEO are in the raw HTML</td></tr>
+<tr><td><strong>Page Size</strong></td><td>Raw HTML against rendered DOM: size, nodes, words, scripts and media</td></tr>
+<tr><td><strong>SEO Generation</strong></td><td>How metadata is produced, and the canonical</td></tr>
+<tr><td><strong>Accessibility Signals</strong></td><td>Live regions, dialogs, canvases with no fallback, hidden focusable elements</td></tr>
+<tr><td><strong>Raw HTML Summary (Pre-JS)</strong></td><td>Metadata, social tags, schema, semantics, forms, media, scripts, fonts and hydration signals</td></tr>
+<tr><td>Completeness checks</td><td>13 raw SEO, 11 raw accessibility and 20 deep HTML quality checks, each with a fix</td></tr>
+<tr><td><strong>Rendered DOM Analysis (Post-JS)</strong></td><td>Rendered SEO fields, headings, links, controls, media, hydrated content and a text sample</td></tr>
+<tr><td><strong>Framework Detection</strong></td><td>The detected framework with evidence and confidence</td></tr>
+<tr><td><strong>Detected Script Tools</strong></td><td>Analytics, tag managers, ads, chat, replay, A/B testing, consent, bundles, routers and more</td></tr>
+<tr><td><strong>Execution Risks</strong></td><td>Large bundles, inline event handlers, suspicious script URLs, mixed-content scripts</td></tr>
+<tr><td><strong>Third-Party Hosts</strong> and <strong>Script Loading Order</strong></td><td>Where scripts come from, and loading-order warnings</td></tr>
+</tbody></table></div>
+<h2 id="devices">Devices</h2>
+<p>The <strong>Responsive Design Analyzer</strong> checks viewport metadata, fixed-width risk, image dimensions and interactive density across common device profiles. This section never opens by itself after a run; open it from the Sections picker.</p>
+<h3 id="device-profiles">Device profiles</h3>
+<p>Each profile gets a score and a risk level. Select one to test it in the Device Lab.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Profile</th><th>Size (CSS pixels)</th><th>Profile</th><th>Size (CSS pixels)</th></tr></thead>
+<tbody>
+<tr><td>Small phone</td><td>320 × 568</td><td>iPad landscape</td><td>1024 × 768</td></tr>
+<tr><td>Android small</td><td>360 × 640</td><td>iPad Pro portrait</td><td>1024 × 1366</td></tr>
+<tr><td>iPhone SE</td><td>375 × 667</td><td>iPad Air landscape</td><td>1180 × 820</td></tr>
+<tr><td>iPhone 12/13</td><td>390 × 844</td><td>HD laptop</td><td>1280 × 720</td></tr>
+<tr><td>Android large</td><td>412 × 915</td><td>Laptop</td><td>1366 × 768</td></tr>
+<tr><td>Phone Max</td><td>428 × 926</td><td>Desktop</td><td>1440 × 900</td></tr>
+<tr><td>Fold compact</td><td>540 × 720</td><td>Wide desktop</td><td>1536 × 864</td></tr>
+<tr><td>Small tablet</td><td>600 × 960</td><td>MacBook Pro</td><td>1728 × 1117</td></tr>
+<tr><td>iPad portrait</td><td>768 × 1024</td><td>Full HD</td><td>1920 × 1080</td></tr>
+<tr><td>iPad Air portrait</td><td>820 × 1180</td><td>QHD monitor</td><td>2560 × 1440</td></tr>
+</tbody></table></div>
+<p>The headline names the most broken device, for example &quot;Most broken device: Small phone at 320 x 568. Risk: Low.&quot;</p>
+<h3 id="device-lab">Device Lab</h3>
+<p>The Device Lab shows the page at the chosen size, with <strong>Auto</strong>, <strong>Live</strong>, <strong>Screenshot</strong>, <strong>Rotate</strong> and <strong>Fullscreen</strong> buttons, and the usual preview controls. If the site blocks embedding, the same <strong>Couldn&#39;t embed this page</strong> overlay appears as in Simulation.</p>
+<p><strong>Live custom CSS</strong> lets you type CSS that is applied to the preview as you type, with no reload. Use <strong>Import page CSS</strong>, <strong>Format</strong>, <strong>Clear</strong>, <strong>Copy</strong> and <strong>Export</strong> (downloads <code>device-custom.css</code>). The text is stored locally for the session, and the last edit is re-applied.</p>
+<h3 id="device-screenshot-wall">Device Screenshot Wall</h3>
+<p><strong>Capture all devices</strong> renders the page in a real headless browser on Auric Artisan&#39;s servers at every device size, with full-page captures and measured overflow, tap-target and text-size checks. It works even when the site blocks embedding. Capturing another site needs you to be signed in, and server captures are metered in tokens.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> On a page that blocks embedding, the Device Lab starts server-rendered captures by itself a few seconds after it opens. That is why the Devices section is never opened for you automatically.</p>
+</blockquote>
+<p><strong>Responsive Signals</strong> sums up: viewport meta, touch target inventory, fixed-width risk, image dimensions and render-blocking scripts.</p>
+<h2 id="security">Security</h2>
+<p>The <strong>Security Policy</strong> section checks HTTPS, the Content-Security-Policy, framing, referrer and permissions policies, MIME sniffing, link reliability and server timing.</p>
+<p>It shows a <strong>Security</strong> score, a <strong>Reliability</strong> score and the number of <strong>Broken Links</strong>, then these checks, each ticked or crossed with a fix:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Check</th><th>What passes</th></tr></thead>
+<tbody>
+<tr><td>HTTPS</td><td>The page is served over HTTPS</td></tr>
+<tr><td>Strict Transport Security</td><td>An HSTS header is sent</td></tr>
+<tr><td>Content Security Policy</td><td>A CSP header is sent</td></tr>
+<tr><td>CSP default source</td><td>The CSP includes <code>default-src</code></td></tr>
+<tr><td>CSP object restriction</td><td>The CSP includes <code>object-src &#39;none&#39;</code></td></tr>
+<tr><td>Frame protection</td><td>CSP <code>frame-ancestors</code> or <code>X-Frame-Options</code> is set</td></tr>
+<tr><td>Referrer policy</td><td>A referrer policy is set</td></tr>
+<tr><td>Permissions policy</td><td>A permissions policy is set</td></tr>
+<tr><td>MIME sniffing protection</td><td><code>X-Content-Type-Options: nosniff</code> is sent</td></tr>
+<tr><td>Cross-origin isolation policy</td><td>COOP, CORP or COEP is set where compatible</td></tr>
+<tr><td>No mixed content</td><td>No insecure resources on a secure page</td></tr>
+<tr><td>Safe new-tab links</td><td>New-tab links carry <code>rel=&quot;noopener&quot;</code></td></tr>
+<tr><td>Secure forms</td><td>Forms submit securely</td></tr>
+<tr><td>Inline script surface</td><td>Inline script use is limited</td></tr>
+</tbody></table></div>
+<p><strong>Environment-Aware Scoring</strong> notes when the page is on a local development server; HTTPS and deployment-only headers are then scored more gently, and the raw score is shown beside the adjusted one. <strong>Code-Level vs Server-Level</strong> separates findings you fix in your code from those you fix in server configuration. <strong>Reliability &amp; Stability</strong> lists links checked, internal and external links, broken links and wall time. <strong>Detected Policy</strong> shows the Content-Security-Policy, Permissions-Policy and Referrer-Policy the page actually sent.</p>
+<p>The security score checks whether protective headers are present, not how good they are.</p>
+<h2 id="project">Project</h2>
+<p>The <strong>Unified Project Model</strong> is one shared model for every section: pages, links and the sitemap are discovered once and reused, so totals stay consistent and shared files are counted once.</p>
+<ul>
+<li><strong>Project</strong>: URL, origin, source, pages in the model and when it was scanned. <strong>Export project model JSON</strong> downloads it as <code>project-model-&lt;date&gt;.json</code>.</li>
+<li><strong>Shared Entities</strong>: tiles for pages, stylesheets, scripts, fonts, images, media items, colours, contrast pairs, schema objects, classes, IDs and dependencies. Select a tile to open the section that owns it.</li>
+<li><strong>Page Discovery vs Scan</strong>: discovered, scanned (completed), failed, not yet scanned, and duplicate URLs removed.</li>
+<li><strong>Findings by Module</strong> and <strong>Unified Findings (cross-linked)</strong>: every finding with the section it belongs to.</li>
+</ul>
+<h2 id="site-map">Site Map</h2>
+<p>The <strong>Full Site Map</strong> crawls the site, builds a project tree, and shows which CSS and JavaScript files connect to which pages, with each shared file listed once and a &quot;used on N pages&quot; count.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Crawl &amp; Map</strong></td><td><strong>Crawl Full Site</strong>, <strong>Cancel</strong>, <strong>Pages</strong> (1 to 500, default 60) and <strong>Workers</strong> (1 to 8, default 4)</td></tr>
+<tr><td><strong>Resources (deduped)</strong></td><td>Unique stylesheets, scripts, font files, images and external files; duplicate references collapsed</td></tr>
+<tr><td><strong>Design tokens (deduped)</strong></td><td>Unique colours, font families, classes, and IDs reused across pages</td></tr>
+<tr><td><strong>Export map JSON</strong></td><td>Downloads the map as <code>site-map-&lt;date&gt;.json</code></td></tr>
+<tr><td><strong>Project Tree</strong> and <strong>Page Map</strong></td><td>Files and pages as folders</td></tr>
+<tr><td><strong>Dependency Graph</strong></td><td>An interactive graph of pages and files (controls below the table)</td></tr>
+<tr><td><strong>Page → CSS &amp; JS Connections</strong></td><td>Each page with its stylesheets and scripts</td></tr>
+<tr><td><strong>Dependency Chains</strong></td><td>Full CSS <code>@import</code> and JavaScript import trees, filled in by a crawl</td></tr>
+<tr><td><strong>Stylesheets → Pages &amp; imports</strong>, <strong>Scripts → Pages &amp; imports</strong>, <strong>Images → Pages</strong></td><td>Each file with the pages that use it</td></tr>
+<tr><td><strong>Site-wide Findings (merged)</strong></td><td>Findings that repeat across pages, with the pages they appear on</td></tr>
+</tbody></table></div>
+<p>The <strong>Dependency Graph</strong> has three layouts, <strong>Radial</strong>, <strong>Force</strong> and <strong>Grouped</strong>; check boxes to show or hide <strong>Pages</strong>, <strong>CSS</strong>, <strong>JS</strong>, <strong>Fonts</strong> and <strong>All labels</strong>; a search field (&quot;Find a file or page…&quot;); and zoom in, zoom out, <strong>Fit</strong>, <strong>Reset</strong> and full-screen buttons. Select a node to highlight what connects to it, drag nodes to rearrange them, and scroll to zoom.</p>
+<p><strong>Crawl Full Site</strong> is available when the audited page is on auricartisan.com, or when the run used Auric Artisan&#39;s servers. For another website otherwise, the button is disabled with the hint &quot;Cross-origin page — use Scan Site (backend) instead&quot;. The token meter prices a site-map crawl at one token for the whole job, not per page.</p>
+<h2 id="insights">Insights</h2>
+<p><strong>Smart Insights</strong> is an overview of the whole report written for decision-makers: a summary, prioritised fixes, a fix simulator, a benchmark percentile and progress over time.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Block</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Health</td><td>A health score, a tier, a percentile (&quot;Better than N% of audited sites&quot;) and a UX score</td></tr>
+<tr><td><strong>Headlines</strong></td><td>Two or three plain sentences about the result</td></tr>
+<tr><td><strong>Benchmark Breakdown</strong></td><td>Your percentile per category against a reference median</td></tr>
+<tr><td><strong>vs. Competitor Archetypes</strong></td><td>Reference scores by site type, each marked &quot;you beat this&quot; or &quot;below this&quot;</td></tr>
+<tr><td><strong>Share Report</strong></td><td><strong>Copy share link</strong> and <strong>Email</strong></td></tr>
+<tr><td><strong>Top 5 Things to Fix First</strong></td><td>Each with <strong>Plain language</strong>, <strong>Developer view</strong>, <strong>Suggested fix</strong> and an estimated score gain</td></tr>
+<tr><td><strong>Priority Engine</strong></td><td>A ranked table: issue, severity, impact, effort, business impact, UX and revenue</td></tr>
+<tr><td><strong>Core Web Vitals</strong></td><td>The six vitals (see Performance above) and <strong>Network Simulation</strong></td></tr>
+<tr><td><strong>Fix Simulator</strong></td><td>Tick fixes to see the projected score change as you go</td></tr>
+<tr><td><strong>Progress Over Time</strong></td><td>Your past runs of this URL</td></tr>
+</tbody></table></div>
+<p>The benchmark and archetype figures are fixed reference values for orientation. They are not a live comparison with other sites.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="fix-and-preview.html"><span>Previous</span>Fix and preview</a><a href="read-the-overview-and-scores.html"><span>Next</span>Read the Overview and scores</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#performance">Performance</a></li><li><a href="#seo">SEO</a></li><li><a href="#media">Media</a></li><li><a href="#deep">Deep</a></li><li><a href="#devices">Devices</a></li><li><a href="#security">Security</a></li><li><a href="#project">Project</a></li><li><a href="#site-map">Site Map</a></li><li><a href="#insights">Insights</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

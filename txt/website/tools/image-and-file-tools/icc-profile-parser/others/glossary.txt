@@ -1,0 +1,135 @@
+==============================================================================
+ICC PROFILE PARSER GLOSSARY
+==============================================================================
+Definitions of the terms used in the ICC Profile Parser.
+Area: Website › Tools › Image and file tools › ICC Profile Parser   Updated: 2026-09-25
+
+  Term:    A2B / B2A table
+  Meaning: Tables converting device values to the PCS (A2B) or back (B2A); 0,
+           1, 2 are perceptual, colorimetric, saturation
+
+  Term:    Area ratio
+  Meaning: The area of one gamut triangle divided by another's; can exceed
+           100%
+
+  Term:    Bradford transform
+  Meaning: The standard chromatic adaptation method, from Lam (1985), carried
+           by the `chad` tag
+
+  Term:    `chad` tag
+  Meaning: A 3×3 matrix recording how the colorants were adapted to D50
+
+  Term:    Chromatic adaptation
+  Meaning: Converting colour values from one white point to another
+
+  Term:    Chromaticity diagram
+  Meaning: A plot of colour without brightness; the tool uses CIE 1931 xy for
+           drawing
+
+  Term:    CIE 1976 u′v′
+  Meaning: A chromaticity diagram in which equal distances look more nearly
+           equal than in xy
+
+  Term:    CIELAB
+  Meaning: A colour space with lightness L* and two colour axes, a* (green to
+           red) and b* (blue to yellow)
+
+  Term:    Clause
+  Meaning: A numbered section of ICC.1:2010 that a conformance rule enforces
+
+  Term:    CLUT
+  Meaning: Colour lookup table: a grid of output values sampled at points
+           across the input
+
+  Term:    CMM
+  Meaning: Colour management module, the software that performs conversions;
+           named in the header
+
+  Term:    Colorant
+  Meaning: The stored XYZ value of a primary, already adapted to D50
+
+  Term:    Conformant
+  Meaning: Breaking no rule graded as an error
+
+  Term:    Coverage
+  Meaning: The share of a reference gamut that lies inside the profile's
+           gamut; at most 100%
+
+  Term:    D50 / D65
+  Meaning: Standard daylight whites at about 5000 K and 6500 K; D50 is the ICC
+           connection-space white
+
+  Term:    Data colour space
+  Meaning: The colour space of the device values, such as RGB or CMYK
+
+  Term:    Device class
+  Meaning: What the profile describes: Input, Display, Output, DeviceLink,
+           ColorSpace, Abstract or NamedColor
+
+  Term:    Finding
+  Meaning: A rule that did not hold for the loaded profile, with severity,
+           clause and detail
+
+  Term:    Gamut
+  Meaning: The range of colours a device or colour space can reproduce
+
+  Term:    Header
+  Meaning: The first 128 bytes of a profile, describing its kind
+
+  Term:    House preference
+  Meaning: A rule the tool applies that no clause requires
+
+  Term:    ICC profile
+  Meaning: A file, defined by the International Color Consortium, describing
+           how a device or space reproduces colour
+
+  Term:    Matrix/TRC
+  Meaning: A profile built from three colorants and three tone response curves
+
+  Term:    Media white point
+  Meaning: The white of the display or paper, in the `wtpt` tag
+
+  Term:    MD5
+  Meaning: A checksum algorithm (RFC 1321) used for the profile ID
+
+  Term:    PCS
+  Meaning: Profile connection space: CIE XYZ or CIELAB at D50, through which
+           profiles are joined
+
+  Term:    Primaries
+  Meaning: The red, green and blue chromaticities that define an RGB colour
+           space
+
+  Term:    Profile ID
+  Meaning: An MD5 checksum of the profile, stored in bytes 84 to 99 of the
+           header
+
+  Term:    Rendering intent
+  Meaning: The strategy for out-of-gamut colours: perceptual, media-relative,
+           saturation or absolute
+
+  Term:    Spectral locus
+  Meaning: The horseshoe outline of pure spectral colours on a chromaticity
+           diagram
+
+  Term:    Tag
+  Meaning: A four-character signature pointing to a block of data in the
+           profile
+
+  Term:    Tag type
+  Meaning: The four-character code at the start of a tag's data that says how
+           to read it
+
+  Term:    TRC
+  Meaning: Tone response curve: how a channel's values map to linear light
+
+  Term:    Transfer function
+  Meaning: The published curve relating encoded values to light for a colour
+           space
+
+  Term:    XYZ
+  Meaning: The CIE 1931 tristimulus values, the basis of colorimetry
+
+  Term:    XYZ scaling
+  Meaning: A simple adaptation that scales X, Y and Z directly; used by some
+           older profiles

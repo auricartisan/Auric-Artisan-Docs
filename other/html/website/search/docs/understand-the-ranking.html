@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Understand the ranking — Auric Artisan Docs</title>
+<meta name="description" content="How site search orders results, the &quot;Why it ranks here&quot; panel, the field weights and the option to show a score on every result.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Search and the Search Console</a>
+<h2>Search documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with search</a></li>
+<li><a href="console-reports.html">Read the console reports</a></li>
+<li><a href="instant-answers.html">Instant answers</a></li>
+<li><a href="manage-your-sites.html">Manage your sites</a></li>
+<li><a href="query-syntax.html">Query syntax</a></li>
+<li><a href="request-a-crawl.html">Request a crawl</a></li>
+<li><a href="search-console.html">Set up the Search Console</a></li>
+<li><a href="search-the-web.html">Search the web</a></li>
+<li><a href="search-this-site.html">Search this site</a></li>
+<li><a href="understand-the-ranking.html" aria-current="page">Understand the ranking</a></li>
+<li><a href="reference.html">Search reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Search FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Search and the Search Console</a> &rsaquo; <a href="README.html">Search documentation</a></nav>
+<p class="kicker">Website › Search</p>
+<h1>Understand the ranking</h1>
+<p class="lede">How site search orders results, the &quot;Why it ranks here&quot; panel, the field weights and the option to show a score on every result.</p>
+<p>Site search orders results by relevance, and it shows its working. You can see why any result sits where it does, and switch on a score for every row.</p>
+<h2 id="how-results-are-scored">How results are scored</h2>
+<p>The page uses a ranking method called BM25F. Each page is split into six fields, and a match in a heavier field counts for more:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Weight</th></tr></thead>
+<tbody>
+<tr><td>Title</td><td>×6</td></tr>
+<tr><td>Tags</td><td>×4</td></tr>
+<tr><td>Description</td><td>×3</td></tr>
+<tr><td>Category</td><td>×2</td></tr>
+<tr><td>URL</td><td>×1.5</td></tr>
+<tr><td>Content</td><td>×1</td></tr>
+</tbody></table></div>
+<p>On top of that:</p>
+<ul>
+<li>Rare words count for more than common ones.</li>
+<li>Pages that contain more of your words, and have them close together, rank higher.</li>
+<li>Partial words (such as <code>grad</code> for &quot;gradient&quot;) and corrected typos count, but less than exact words.</li>
+<li>Related words, shown dashed under the field, count at half weight.</li>
+<li>Pages you have opened from search before are nudged up, in this browser only.</li>
+</ul>
+<p>The same table is printed on the page: open <strong>Tools</strong> at the end of the tab row and look under <strong>Ranking</strong>. It also shows the two tuning values, <strong>k1 / b</strong>, as <strong>1.2 / 0.4</strong>.</p>
+<h2 id="why-it-ranks-here">Why it ranks here</h2>
+<p>Hover a result, or highlight it with the arrow keys, and a panel opens above the list. It shows:</p>
+<ul>
+<li>The kind of page and its title, address and description.</li>
+<li><strong>Why it ranks here</strong> — the <strong>BM25F score</strong>, then each field that matched, with its weight and how many times your words appear in it.</li>
+<li><strong>Matched on</strong> — the words that matched, with related words shown dashed.</li>
+<li><strong>Open the page</strong>.</li>
+</ul>
+<p>When a query produces an answer card, the card and the panel share the space above the list.</p>
+<h2 id="show-the-score-on-every-result">Show the score on every result</h2>
+<p>Open <strong>Tools</strong> and tick <strong>Show the score on every result</strong>. Each result then shows:</p>
+<ul>
+<li>A bar for its score relative to the top result.</li>
+<li>The score as a number.</li>
+<li>Up to three fields it matched in, with the count for each. Heavier fields are emphasised.</li>
+</ul>
+<p>This setting is remembered in this browser. Untick it to hide the scores again.</p>
+<h2 id="why-a-result-you-expected-is-missing">Why a result you expected is missing</h2>
+<ul>
+<li>The page may use a different word. Try a synonym, or a shorter form of the word.</li>
+<li>An operator may be ruling it out. The <strong>Worth trying</strong> list on the no-results screen names it.</li>
+<li>The page may be newer than the index in your browser. See <a href="troubleshooting.html">Troubleshooting</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="search-this-site.html"><span>Previous</span>Search this site</a><a href="reference.html"><span>Next</span>Search reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-results-are-scored">How results are scored</a></li><li><a href="#why-it-ranks-here">Why it ranks here</a></li><li><a href="#show-the-score-on-every-result">Show the score on every result</a></li><li><a href="#why-a-result-you-expected-is-missing">Why a result you expected is missing</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+---
+title: Auric Artisan Theme — Compare and preview
+description: Use the Preview tab to compare the shipped palette with your current colours and copy the palette as CSS custom properties.
+product: VS Code extensions › Auric Artisan Theme
+updated: 2026-09-25
+---
+
+# Compare and preview
+
+The **Preview** tab shows the shipped palette of the active variant next to your current palette, so you can see exactly what your changes did.
+
+## Compare palettes
+
+1. Open Theme Studio and select **Preview** (or press `6`).
+2. Open the **Comparison view** dropdown and choose:
+   - **Side by side** — both palettes (the default).
+   - **As shipped** — only the variant's original palette.
+   - **Your palette** — only your current colours.
+3. Each specimen shows a title bar, a short syntax colour sample (a comment, keyword, variable, properties, a string, a number, a constant and a function call) and six palette chips: `bg.base`, `fg.default`, `accent.base`, `syntax.string`, `syntax.keyword` and `syntax.fn`, each with its hex value.
+4. Below the specimens, a line reads "{count} colour slots differ from the shipped variant. Theme edits apply live."
+
+The specimen is an illustration drawn from the theme engine's colours. It is not a full VS Code editor, and it is not a "try before you apply" mode: every edit you make on other tabs is already live in your editor.
+
+## Copy the palette as CSS
+
+1. On the Preview tab, select **Copy palette as CSS**.
+2. The full resolved palette is copied to the clipboard as CSS custom properties inside a `:root` block. Each slot becomes a property named `--auric-` followed by the slot path with dots replaced by hyphens.
+
+Example: for an uncustomised Obsidian Gold, the copied block includes lines like these.
+
+```css
+:root {
+  --auric-bg-base: #0C0C0E;
+  --auric-fg-default: #E8E4DA;
+  --auric-accent-base: #D3AF37;
+  --auric-syntax-string: #C3D9A5;
+}
+```
+
+Your copy contains the current values of all 107 slots.
+
+This exports the palette. It does not convert VS Code's interface into CSS.
+
+## Result
+
+You can see which slots changed, compare them against the shipped variant and reuse the palette in a web project.

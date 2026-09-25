@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common Auric Artisan Live problems, from pages that do not update to phones that cannot connect.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common Auric Artisan Live problems, from pages that do not update to phones that cannot connect.</p>
+<p>For anything not listed, run <strong>Auric Live: Diagnose Project and Runtime</strong> and <strong>Auric Live: Show Log</strong>, then see <a href="../../install-and-setup/docs/get-support.html">Get support</a>.</p>
+<h2 id="starting">Starting</h2>
+<h3 id="auric-live-needs-an-open-folder-to-serve">&quot;Auric Live needs an open folder to serve.&quot;</h3>
+<ul>
+<li><strong>Why:</strong> no folder is open. Auric Live serves folders, not single files.</li>
+<li><strong>Fix:</strong> open the folder with <strong>File</strong> › <strong>Open Folder…</strong>, then go live.</li>
+</ul>
+<h3 id="auric-live-could-not-start">&quot;Auric Live could not start&quot;</h3>
+<ul>
+<li><strong>Why:</strong> usually the port is taken and <code>auricLive.portStrategy</code> is <code>fail</code>, or the address cannot be bound.</li>
+<li><strong>Fix:</strong> choose <strong>Change Port</strong> in the message, set the port to <code>0</code> for a free one, or set the strategy back to <code>increment</code>. <strong>Show Log</strong> has the exact reason.</li>
+</ul>
+<h3 id="the-status-bar-has-no-go-live-item">The status bar has no Go Live item</h3>
+<ul>
+<li><strong>Why:</strong> <code>auricLive.showStatusBar</code> is off, or no folder is open.</li>
+<li><strong>Fix:</strong> turn the setting on, or use <strong>Auric Live: Go Live</strong> from the Command Palette.</li>
+</ul>
+<h3 id="commands-for-dev-servers-are-missing-from-the-command-palette">Commands for dev servers are missing from the Command Palette</h3>
+<ul>
+<li><strong>Why:</strong> <strong>Start</strong>, <strong>Stop</strong> and <strong>Restart Framework Dev Server</strong> only appear in trusted workspaces.</li>
+<li><strong>Fix:</strong> run <strong>Workspaces: Manage Workspace Trust</strong> and trust the folder.</li>
+</ul>
+<h2 id="live-reload">Live reload</h2>
+<h3 id="saving-does-not-update-the-page">Saving does not update the page</h3>
+<ul>
+<li><strong>Why:</strong> live reload is off, the trigger does not match how you work, the file is excluded, or the page was opened before the server started.</li>
+<li><strong>Fix:</strong><ol>
+<li>Check the <strong>Servers</strong> view: <strong>Live reload</strong> should show a number of connected pages, not <strong>off</strong>.</li>
+<li>If files are written by a build tool rather than saved in VS Code, set <code>auricLive.liveReload.reloadOnSave</code> to <code>change</code>.</li>
+<li>Check <code>auricLive.liveReload.ignore</code> and <code>.auricignore-live</code> for a pattern matching the file.</li>
+<li>Reload the page once by hand, or run <strong>Reload Connected Pages</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>U</code>).</li>
+<li>On a network share or in a virtual machine, set <code>auricLive.watch.pollIntervalMs</code>.</li>
+</ol>
+</li>
+</ul>
+<h3 id="the-page-reloads-over-and-over">The page reloads over and over</h3>
+<ul>
+<li><strong>Why:</strong> something keeps writing files in the served folder.</li>
+<li><strong>Fix:</strong> keep the default <code>save</code> trigger. When <strong>Auric Live paused live reload — files kept changing</strong> appears, choose <strong>Ignore <em>folder</em>/</strong> to exclude the folder responsible.</li>
+</ul>
+<h3 id="live-reload-stopped-and-did-not-come-back">Live reload stopped and did not come back</h3>
+<ul>
+<li><strong>Why:</strong> reload-storm protection paused it.</li>
+<li><strong>Fix:</strong> run <strong>Auric Live: Resume Live Reload</strong>, or choose <strong>Resume</strong> in the message.</li>
+</ul>
+<h3 id="a-framework-project-shows-a-blank-page-and-module-errors">A framework project shows a blank page and module errors</h3>
+<ul>
+<li><strong>Why:</strong> the project needs its own dev server (for example Vite or Next.js) but is being served as plain files.</li>
+<li><strong>Fix:</strong> choose the framework&#39;s dev server in <strong>Select Run Target…</strong>, or run <strong>Start Framework Dev Server…</strong>. See <a href="run-targets-and-backends.html">Run a backend or framework dev server</a>.</li>
+</ul>
+<h3 id="a-session-change-reverted">A session change reverted</h3>
+<ul>
+<li><strong>Why:</strong> changes made in the panel or by commands last only until the window closes or reloads.</li>
+<li><strong>Fix:</strong> put the value in <code>auric.live.json</code> or VS Code settings.</li>
+</ul>
+<h2 id="backends-and-proxies">Backends and proxies</h2>
+<h3 id="502-or-the-waiting-page-for-a-proxied-path">502 or the waiting page for a proxied path</h3>
+<ul>
+<li><strong>Why:</strong> the backend is not running, is still starting, or is on a different port.</li>
+<li><strong>Fix:</strong> check the <strong>Upstream</strong> row in the <strong>Servers</strong> view; select <strong>Find it</strong> to scan for the backend; run <strong>Show Dev Server Output</strong>. If the backend has a health endpoint, set <code>healthPath</code>. Readiness checks do not follow redirects, so point <code>healthPath</code> at a path that answers directly.</li>
+</ul>
+<h3 id="keeps-failing-after-starting-a-run-target">&quot;keeps failing&quot; after starting a run target</h3>
+<ul>
+<li><strong>Why:</strong> the process exits straight away, often from a missing dependency or a syntax error. Auric Live stops restarting it after <code>auricLive.devServer.maxRestarts</code> attempts.</li>
+<li><strong>Fix:</strong> choose <strong>Show output</strong>, fix the error, then <strong>Try again</strong>.</li>
+</ul>
+<h3 id="command-was-not-found-on-path-or-in-the-project">&quot;<em>command</em> was not found on PATH or in the project&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the runtime is not installed or not on your <code>PATH</code>. Auric Live never installs runtimes.</li>
+<li><strong>Fix:</strong> install it, or use the full path to the executable in the run profile.</li>
+</ul>
+<h3 id="nothing-was-found-by-find-a-running-backend">Nothing was found by Find a Running Backend</h3>
+<ul>
+<li><strong>Why:</strong> the backend uses a port that is not in the list Auric Live scans.</li>
+<li><strong>Fix:</strong> set <code>auricLive.upstream.candidatePorts</code> to the ports you use, or add a URL-only run profile.</li>
+</ul>
+<h3 id="trust-this-workspace-before-running-cgi-commands-or-proxy-profiles">&quot;Trust this workspace before running CGI, commands, or proxy profiles.&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the folder is in Restricted Mode.</li>
+<li><strong>Fix:</strong> trust the folder if you trust its contents.</li>
+</ul>
+<h2 id="php">PHP</h2>
+<h3 id="php-pages-download-instead-of-running"><code>.php</code> pages download instead of running</h3>
+<ul>
+<li><strong>Why:</strong> CGI is off, or <code>php-cgi</code> is not found.</li>
+<li><strong>Fix:</strong> choose <strong>Enable PHP</strong> when offered, or choose <strong>PHP through CGI</strong> as the run target. Make sure <code>php-cgi</code> is on your <code>PATH</code>, or set its full path in <code>auricLive.cgi.handlers</code>.</li>
+</ul>
+<h3 id="a-php-page-times-out">A PHP page times out</h3>
+<ul>
+<li><strong>Why:</strong> the script ran longer than the CGI time limit (30 seconds by default).</li>
+<li><strong>Fix:</strong> set <code>cgi.timeoutMs</code> in <code>auric.live.json</code>.</li>
+</ul>
+<h2 id="phones-and-other-devices">Phones and other devices</h2>
+<h3 id="the-phone-cannot-connect">The phone cannot connect</h3>
+<ul>
+<li><strong>Why:</strong> the server is bound to this machine only, the devices are on different networks, the firewall blocks VS Code, or the address belongs to a virtual adapter.</li>
+<li><strong>Fix:</strong> keep <code>auricLive.host</code> at <code>0.0.0.0</code> (or choose <strong>Bind to the network</strong>), put both devices on the same network, allow VS Code through the firewall, and pick a physical adapter&#39;s address.</li>
+</ul>
+<h3 id="the-phone-warns-about-the-certificate">The phone warns about the certificate</h3>
+<ul>
+<li><strong>Why:</strong> HTTPS is encrypted but the phone does not trust the certificate.</li>
+<li><strong>Fix:</strong> install and trust the certificate on the phone, or use one it already trusts. See <a href="https-and-certificates.html">Serve over HTTPS</a>.</li>
+</ul>
+<h3 id="that-url-is-too-long-to-encode">&quot;that URL is too long to encode&quot;</h3>
+<ul>
+<li><strong>Why:</strong> the address is too long for a QR code.</li>
+<li><strong>Fix:</strong> use <strong>Copy Network URL</strong> and send the address to the phone another way.</li>
+</ul>
+<h2 id="requests">Requests</h2>
+<h3 id="request-details-are-empty-or-expired">Request details are empty or expired</h3>
+<ul>
+<li><strong>Why:</strong> the request has dropped out of the inspector (500 kept by default), body capture is off, or the body was larger than the capture limit.</li>
+<li><strong>Fix:</strong> make the request again. Raise <code>auricLive.inspector.maxEntries</code> or <code>auricLive.inspector.maxBodyBytes</code> if needed.</li>
+</ul>
+<h3 id="replay-is-refused">Replay is refused</h3>
+<ul>
+<li><strong>Why:</strong> the capture was redacted, truncated, omitted or binary, so replaying it would send something different.</li>
+<li><strong>Fix:</strong> use <strong>Copy curl</strong> or <strong>Copy fetch</strong> and fill in the missing values.</li>
+</ul>
+<h3 id="uploads-fail-with-413-or-408">Uploads fail with 413 or 408</h3>
+<ul>
+<li><strong>Why:</strong> the request body is larger than <code>auricLive.maxRequestBodyBytes</code> (8 MiB by default; <code>0</code> rejects every non-empty body), or it arrived slower than <code>auricLive.requestBodyTimeoutMs</code> (30 seconds).</li>
+<li><strong>Fix:</strong> raise the limit or the timeout for your test.</li>
+</ul>
+<h2 id="preview-and-dashboard">Preview and dashboard</h2>
+<h3 id="the-preview-toolbar-is-in-the-wrong-language">The preview toolbar is in the wrong language</h3>
+<ul>
+<li><strong>Why:</strong> an open preview keeps the language it opened with.</li>
+<li><strong>Fix:</strong> close and reopen the preview.</li>
+</ul>
+<h3 id="the-dashboard-does-not-open">The dashboard does not open</h3>
+<ul>
+<li><strong>Why:</strong> the dashboard is off, the page was not served by Auric Live, or another script uses the same keys.</li>
+<li><strong>Fix:</strong> check <code>auricLive.dashboard.enabled</code>, open the page through the Auric Live address, or change <code>auricLive.dashboard.shortcut</code>.</li>
+</ul>
+<h3 id="the-console-tab-is-empty">The console tab is empty</h3>
+<ul>
+<li><strong>Why:</strong> console capture is off by default, or the page was open before you turned it on.</li>
+<li><strong>Fix:</strong> run <strong>Toggle Browser Console Capture</strong>, then reload the page.</li>
+</ul>
+<h3 id="some-dashboard-figures-say-unavailable">Some dashboard figures say Unavailable</h3>
+<ul>
+<li><strong>Why:</strong> the browser does not provide that measurement.</li>
+<li><strong>Fix:</strong> none needed; the dashboard shows only what the browser reports.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Reference: commands, keys and settings</a><a href="faq.html"><span>Next</span>FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#starting">Starting</a></li><li><a href="#live-reload">Live reload</a></li><li><a href="#backends-and-proxies">Backends and proxies</a></li><li><a href="#php">PHP</a></li><li><a href="#phones-and-other-devices">Phones and other devices</a></li><li><a href="#requests">Requests</a></li><li><a href="#preview-and-dashboard">Preview and dashboard</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut Lab limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="How far the Gamut Lab's diagrams, curves, areas and volumes can be trusted.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Lab</a>
+<h2>Gamut Lab: supporting pages</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Gamut Lab shortcuts</a></li>
+<li><a href="glossary.html">Gamut Lab glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Gamut Lab limits and accuracy</a></li>
+<li><a href="privacy.html">Gamut Lab privacy</a></li>
+<li><a href="release-notes.html">Gamut Lab release notes</a></li>
+<li><a href="related.html">Related to the Gamut Lab</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Lab</a> &rsaquo; <a href="README.html">Gamut Lab: supporting pages</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Gamut Lab limits and accuracy</h1>
+<p class="lede">How far the Gamut Lab's diagrams, curves, areas and volumes can be trusted.</p>
+<h2 id="exact">Exact</h2>
+<ul>
+<li><strong>Primaries and white points</strong> of the 13 spaces are the published chromaticities.</li>
+<li><strong>Matrices</strong> are derived from the primaries and white by the standard construction.</li>
+<li><strong>Transfer curves</strong> run as their standards define them, except HLG (see below). The BT.2020, ROMM and Adobe RGB curves were corrected in the current version and are marked so on the Transfer tab.</li>
+<li><strong>Areas</strong> are computed by the shoelace formula in the named plane.</li>
+</ul>
+<h2 id="computed-with-stated-limits">Computed with stated limits</h2>
+<ul>
+<li><strong>Spectral locus</strong> — built from the CIE 1931 2° colour matching functions at 5 nm and four decimals, from 380 to 715 nm. Beyond 715 nm the published values are too small to give a reliable chromaticity.</li>
+<li><strong>Share of the locus</strong> — divided by the lab&#39;s own locus area in the same plane. Published shares divided by other locus areas differ (for Rec. 2020: 63.4% of the xy locus here against the often-quoted 75.8%).</li>
+<li><strong>Volume</strong> — Halton quasi-random sampling in a box fitted to each space. The ± is the spread against a half-size run, not a confidence interval.</li>
+<li><strong>Overlap</strong> — sampled in u′v′ with point-in-triangle tests.</li>
+</ul>
+<h2 id="stand-ins">Stand-ins</h2>
+<ul>
+<li><strong>HLG</strong> — the lab draws the inverse OETF only. The full HLG EOTF needs a display peak luminance and a surround the lab does not ask for.</li>
+<li><strong>MacAdam ellipses</strong> — 24 hand-rounded ellipses approximating the published figure, drawn at a fixed exaggeration. MacAdam published 25 as coefficient triples; those are not held. Do not read thresholds from the overlay.</li>
+</ul>
+<h2 id="not-done">Not done</h2>
+<ul>
+<li>The CIE 1964 10° observer (the option has no effect).</li>
+<li>The CIE 170-1 cone-fundamental chromaticity diagram.</li>
+<li>Colour conversion or gamut mapping between spaces.</li>
+<li>Loading tables through the Data tab&#39;s install area.</li>
+</ul>
+<h2 id="current-version-caveats">Current-version caveats</h2>
+<ul>
+<li>The OKLab slice stays at L = 0.5 whatever the Level slider shows.</li>
+<li>The vertex readout treats clicks as CIE 1931 x, y, so its colour and membership are only correct in the xy diagram mode.</li>
+<li>The 3-D wireframe is a fixed projection.</li>
+<li>The WebGL fill&#39;s colours are an approximate sRGB rendering of each chromaticity.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Gamut Lab glossary</a><a href="privacy.html"><span>Next</span>Gamut Lab privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#exact">Exact</a></li><li><a href="#computed-with-stated-limits">Computed with stated limits</a></li><li><a href="#stand-ins">Stand-ins</a></li><li><a href="#not-done">Not done</a></li><li><a href="#current-version-caveats">Current-version caveats</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

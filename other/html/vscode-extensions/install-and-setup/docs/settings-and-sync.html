@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings, sync and workspace trust — Auric Artisan Docs</title>
+<meta name="description" content="Where Auric Artisan extension settings live, how to share them with a team, what Settings Sync carries between machines, and what each extension does in an untrusted folder.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Install and set up the Auric Artisan VS Code extensions</a>
+<h2>Install and setup guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Install an extension from the Extensions view</a></li>
+<li><a href="display-language-hindi.html">Use an extension in Hindi</a></li>
+<li><a href="extension-packs.html">The two extension packs</a></li>
+<li><a href="forks-and-other-editors.html">Cursor, Windsurf, VSCodium and other editors</a></li>
+<li><a href="get-support.html">Get support</a></li>
+<li><a href="install-from-command-line.html">Install from the command line</a></li>
+<li><a href="install-from-vsix.html">Install from a VSIX file</a></li>
+<li><a href="settings-and-sync.html" aria-current="page">Settings, sync and workspace trust</a></li>
+<li><a href="update-disable-uninstall.html">Update, disable and uninstall</a></li>
+<li><a href="reference.html">Reference: extension IDs and requirements</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Install and set up the Auric Artisan VS Code extensions</a> &rsaquo; <a href="README.html">Install and setup guides</a></nav>
+<p class="kicker">VS Code extensions › Install and setup</p>
+<h1>Settings, sync and workspace trust</h1>
+<p class="lede">Where Auric Artisan extension settings live, how to share them with a team, what Settings Sync carries between machines, and what each extension does in an untrusted folder.</p>
+<p>Every Auric Artisan extension is configured through normal VS Code settings, and three of them also read a project file you can commit to a repository. This page explains where each kind of setting lives and how they combine.</p>
+<h2 id="user-settings-and-workspace-settings">User settings and workspace settings</h2>
+<p>VS Code keeps settings at several levels. A value at a more specific level wins.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Level</th><th>Where it is stored</th><th>Applies to</th></tr></thead>
+<tbody>
+<tr><td>Default</td><td>Inside the extension</td><td>Everyone, until changed</td></tr>
+<tr><td>User</td><td>Your personal <code>settings.json</code></td><td>Every window you open, in the current profile</td></tr>
+<tr><td>Workspace</td><td><code>.vscode/settings.json</code> in the open folder, or the <code>.code-workspace</code> file</td><td>Only that folder or workspace</td></tr>
+<tr><td>Folder</td><td><code>.vscode/settings.json</code> in one folder of a multi-root workspace</td><td>Only that folder</td></tr>
+</tbody></table></div>
+<p>To edit them:</p>
+<ol>
+<li>Open <strong>File</strong> › <strong>Preferences</strong> › <strong>Settings</strong> (<code>Ctrl</code> + <code>,</code>).</li>
+<li>Choose the <strong>User</strong> or <strong>Workspace</strong> tab at the top.</li>
+<li>Search for the extension&#39;s settings prefix, for example <code>auricLive</code>, or type <code>@ext:auric-artisan.auric-artisan-live</code> to show only that extension&#39;s settings.</li>
+<li>To edit the JSON directly, run <strong>Preferences: Open User Settings (JSON)</strong> or <strong>Preferences: Open Workspace Settings (JSON)</strong>.</li>
+</ol>
+<h3 id="setting-scope">Setting scope</h3>
+<p>Each setting declares a <em>scope</em>, which limits the levels where it can be set:</p>
+<ul>
+<li><strong>application</strong> — user settings only. It applies to every window. Examples: all Auric Artisan Theme settings and the Emoji <code>auricEmoji.interfaceLanguage</code> setting.</li>
+<li><strong>window</strong> — user or workspace settings. Most File System, Font Hub, icon-library and Studio settings use this scope, as do a few Live settings such as <code>auricLive.interfaceLanguage</code>.</li>
+<li><strong>resource</strong> — user, workspace or folder settings, so each folder in a multi-root workspace can differ. Almost all Live settings and every Formatter setting use this scope.</li>
+</ul>
+<p>The Settings editor only shows a setting under the tabs where it is allowed.</p>
+<h2 id="project-configuration-files">Project configuration files</h2>
+<p>Three extensions also read a file in the project, so a repository can carry its own setup. A project file wins over VS Code settings for that project.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Extension</th><th>Project files</th><th>Details</th></tr></thead>
+<tbody>
+<tr><td>Auric Artisan Live</td><td><code>auric.live.json</code> (name set by <code>auricLive.configFile</code>), <code>.auricignore-live</code></td><td>Keys are the setting names without the <code>auricLive.</code> prefix; comments and trailing commas are allowed</td></tr>
+<tr><td>Auric Artisan Formatter</td><td><code>.auricformatrc</code> (several forms), <code>auric.format.json</code>, an <code>auricFormatter</code> key in <code>package.json</code>, <code>.auricformatignore</code>; also reads Prettier files and <code>.editorconfig</code></td><td>See the Formatter&#39;s configuration guide</td></tr>
+<tr><td>Auric Artisan File System</td><td>Template folders, <code>.auric/templates</code> and <code>.vscode/templates</code> by default</td><td>Relationship rules and generator profiles live in settings</td></tr>
+</tbody></table></div>
+<h2 id="sharing-a-setup-with-a-team">Sharing a setup with a team</h2>
+<ol>
+<li>Commit <code>.vscode/settings.json</code> with the workspace-level values you agree on.</li>
+<li>Commit the project files above where they apply.</li>
+<li>Recommend the extensions: create <code>.vscode/extensions.json</code> with their IDs. VS Code then offers to install them when someone opens the folder.</li>
+</ol>
+<pre class="code" data-lang="json"><code>{
+  &quot;recommendations&quot;: [
+    &quot;auric-artisan.auric-artisan-formatter&quot;,
+    &quot;auric-artisan.auric-artisan-live&quot;
+  ]
+}</code></pre>
+<p>Settings with <strong>application</strong> scope cannot be shared this way; each person sets them in their own user settings.</p>
+<h2 id="settings-sync">Settings Sync</h2>
+<p>VS Code Settings Sync copies your user-level setup between machines through your Microsoft or GitHub account. It is part of VS Code, not of the Auric extensions.</p>
+<ol>
+<li>Select the Accounts icon in the Activity Bar and choose <strong>Backup and Sync Settings…</strong> (older versions say <strong>Turn on Settings Sync…</strong>).</li>
+<li>Tick what to sync. <strong>Extensions</strong> and <strong>Settings</strong> matter here.</li>
+<li>Sign in.</li>
+</ol>
+<p>What happens to Auric Artisan extensions:</p>
+<ul>
+<li><strong>Installed extensions</strong> sync, including whether each one is enabled or disabled.</li>
+<li><strong>User settings</strong> sync, including every <code>auricLive.*</code>, <code>auricFormatter.*</code> and other Auric user-level value.</li>
+<li><strong>Workspace settings and project files do not sync.</strong> They travel with the repository instead.</li>
+<li><strong>Stored extension data does not sync.</strong> Favourites, recents, selections, likes, tags, groups, operation history and similar data that an extension keeps in VS Code&#39;s extension storage stay on the machine where you created them. The Auric extensions do not register any of this data for Settings Sync.</li>
+</ul>
+<p>To stop one Auric setting from syncing, add its ID to the VS Code setting <code>settingsSync.ignoredSettings</code>. To stop one extension from syncing, add its ID to <code>settingsSync.ignoredExtensions</code>.</p>
+<h2 id="workspace-trust">Workspace trust</h2>
+<p>When you open a folder for the first time, VS Code may ask whether you trust its authors. In an untrusted folder, VS Code runs in <em>Restricted Mode</em>, and extensions that run code or read project configuration can limit themselves. You can change your answer later with <strong>Workspaces: Manage Workspace Trust</strong>.</p>
+<ul>
+<li><strong>Auric Artisan Live</strong> — static serving, live reload and request inspection still work, on this machine only. Running commands, CGI (PHP), proxying, file-backed mocks, custom certificates and listening on your network need trust, even when a project file turns them on.</li>
+<li><strong>Auric Artisan File System</strong> — browsing, search, filtering and related-file navigation still work. Creating, renaming, moving, duplicating and deleting files are disabled until you trust the folder.</li>
+<li><strong>Auric Artisan Formatter</strong> — configuration files are read, but JavaScript configuration files and formatter plugins are not run.</li>
+<li><strong>Auric Artisan Font Hub</strong> — fully supported. It only writes files after an explicit save or editor command.</li>
+<li><strong>Auric Artisan Theme, File Icons, Emoji, Icon Studio and Icon Hub</strong> — fully supported.</li>
+</ul>
+<p>For the other extensions, the <strong>Manage Workspace Trust</strong> page lists which installed extensions are limited or disabled in Restricted Mode.</p>
+<h2 id="remote-and-virtual-workspaces">Remote and virtual workspaces</h2>
+<ul>
+<li>Auric Artisan Live needs a real file system and a local port. It does not support virtual workspaces (folders opened from a remote repository without a local copy).</li>
+<li>Auric Artisan File System works in virtual workspaces with limits: revealing in the operating system&#39;s file manager, content hashing for duplicate detection and the native trash are not available there.</li>
+<li>Auric Artisan Formatter supports virtual workspaces.</li>
+</ul>
+<p>After configuring, your values appear in the Settings editor under the tab you chose, and the extension uses them the next time it acts.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="install-from-vsix.html"><span>Previous</span>Install from a VSIX file</a><a href="update-disable-uninstall.html"><span>Next</span>Update, disable and uninstall</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#user-settings-and-workspace-settings">User settings and workspace settings</a></li><li><a href="#project-configuration-files">Project configuration files</a></li><li><a href="#sharing-a-setup-with-a-team">Sharing a setup with a team</a></li><li><a href="#settings-sync">Settings Sync</a></li><li><a href="#workspace-trust">Workspace trust</a></li><li><a href="#remote-and-virtual-workspaces">Remote and virtual workspaces</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

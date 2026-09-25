@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export a LUT — Auric Artisan Docs</title>
+<meta name="description" content="Export the tone curve as a 1D .cube or CSV, the whole pipeline as a 3D .cube, a link to the view, and map a list of colours.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tone Mapping</a>
+<h2>Tone Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tone Mapping</a></li>
+<li><a href="compare-operators.html">Compare operators</a></li>
+<li><a href="export-a-lut.html" aria-current="page">Export a LUT</a></li>
+<li><a href="map-a-frame.html">Map a frame</a></li>
+<li><a href="read-the-scopes.html">Read the scopes</a></li>
+<li><a href="reference.html">Tone Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tone Mapping</a></li>
+<li><a href="faq.html">Tone Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tone Mapping</a> &rsaquo; <a href="README.html">Tone Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Export a LUT</h1>
+<p class="lede">Export the tone curve as a 1D .cube or CSV, the whole pipeline as a 3D .cube, a link to the view, and map a list of colours.</p>
+<p>A <strong>LUT (lookup table)</strong> stores a colour transform as a table so another program — a grading application, a game engine, a video tool — can apply it. A <strong>1D LUT</strong> maps each channel on its own; a <strong>3D LUT</strong> maps every RGB combination and can carry cross-channel steps such as saturation, hue and gamut conversion. The <code>.cube</code> format is the Adobe Cube LUT specification.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Set up the frame on the <strong>Lab</strong> tab.</li>
+<li>Open <strong>Export</strong>.</li>
+<li>Under <strong>What to take</strong>, choose:<ul>
+<li><strong>The tone curve</strong> — step 5 of the pipeline only;</li>
+<li><strong>The whole pipeline</strong> — all eleven steps;</li>
+<li><strong>A link to this view</strong>.</li>
+</ul>
+</li>
+<li>Under <strong>As</strong>, choose a format: <strong>.cube</strong> or <strong>CSV</strong> for the curve; <strong>.cube</strong> for the pipeline; <strong>URL</strong> for the link.</li>
+<li>For the tone curve, choose the <strong>Input domain</strong>: <strong>0 – 1</strong> (default) or <strong>0 – 12</strong>. It is written into the file as DOMAIN_MIN and DOMAIN_MAX (or, in the CSV, as the input range).</li>
+<li>Check <strong>Exactly what you will get</strong>: a preview (long files show the start and end), the size in bytes and the number of lines.</li>
+<li>Read <strong>What this file carries, of the eleven steps the viewport ran</strong>: a tick or cross for each step. A curve export carries only step 5.</li>
+<li>Select the download button (it names the file) or <strong>Copy to clipboard</strong>. For a link, the button reads <strong>Copy the link</strong>.</li>
+</ol>
+<h2 id="the-files">The files</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>File</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Tone curve, .cube</td><td><code>tone-&lt;operator&gt;-curve.cube</code></td><td><code>TITLE &quot;Auric Artisan tone curve&quot;</code>, comments naming the operator, spaces and exposure and listing the steps not included, <code>LUT_1D_SIZE 33</code>, <code>DOMAIN_MIN 0.0 0.0 0.0</code>, <code>DOMAIN_MAX</code> 1.0 or 12.0</td></tr>
+<tr><td>Tone curve, CSV</td><td><code>tone-&lt;operator&gt;-curve.csv</code></td><td>A comment line, <code>input,output</code>, then 1,024 rows across the domain</td></tr>
+<tr><td>Whole pipeline, .cube</td><td><code>tone-&lt;operator&gt;-pipeline.cube</code></td><td><code>TITLE &quot;Auric Artisan tone map&quot;</code>, comments, <code>LUT_3D_SIZE 17</code>, domain 0 to 1, then 4,913 entries each run through all eleven steps</td></tr>
+</tbody></table></div>
+<p><code>&lt;operator&gt;</code> is the operator&#39;s short name, for example <code>hable</code>, <code>reinhard</code>, <code>aces</code> (the Narkowicz fit), <code>uchimura</code>, <code>log</code>, <code>none</code> or <code>custom</code>.</p>
+<p>Use the pipeline cube when you want the file to reproduce the preview: it includes the colour-space conversion, white-point adaptation, gamut mapping and grade. Use the curve when you only want the tone shape.</p>
+<h2 id="the-link">The link</h2>
+<p>The page keeps its address up to date as you work. <strong>A link to this view</strong> copies that address, which records the operator, exposure, source encoding, display peak, output encoding and target primaries. Other settings (the grade, working space, custom curve and source peak) are not in the link.</p>
+<h2 id="map-a-list-of-colours">Map a list of colours</h2>
+<ol>
+<li>Under <strong>Analyse a list</strong>, enter six-digit HEX colours, one per line or separated by commas. (The box&#39;s example shows numbers, but only HEX colours are read.)</li>
+<li>Select <strong>Analyse</strong>. Each colour is treated as a source pixel, decoded with the source encoding you set, and run through the whole pipeline. The table lists <strong>#</strong>, <strong>Source</strong>, <strong>Mapped</strong> and <strong>OOG</strong> (a warning sign if the colour left the target gamut, a tick if not).</li>
+<li>Select <strong>Download the result</strong> to save <code>tone-map-batch.csv</code> with Index, Source, Mapped and OOG. Run the analysis first, or a message asks you to.</li>
+</ol>
+<p>If no HEX values are found, the panel says &quot;No valid hex colours found.&quot;</p>
+<h2 id="result">Result</h2>
+<p>You have a <code>.cube</code> or CSV file that another application can load, clearly labelled with which pipeline steps it contains.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-operators.html"><span>Previous</span>Compare operators</a><a href="map-a-frame.html"><span>Next</span>Map a frame</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#steps">Steps</a></li><li><a href="#the-files">The files</a></li><li><a href="#the-link">The link</a></li><li><a href="#map-a-list-of-colours">Map a list of colours</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endpoints — Auric Artisan Docs</title>
+<meta name="description" content="The groups of endpoints in the Auric Artisan REST API, with a page for each group.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Endpoints</h1>
+<p class="lede">The groups of endpoints in the Auric Artisan REST API, with a page for each group.</p>
+<p>Everything lives under <code>/v1</code> on <a href="https://api.auricartisan.com" rel="noopener">https://api.auricartisan.com</a>. Each page below covers one group of endpoints: what each does, its parameters, what it returns and an example. The <a href="../reference.html">Reference</a> lists them all in one table.</p>
+<h2 id="conventions">Conventions</h2>
+<ul>
+<li><strong>Colours</strong> in request bodies can be written as <code>#rrggbb</code>, <code>#rgb</code>, <code>rgb(r,g,b)</code>, an array <code>[r,g,b]</code> or an object <code>{r,g,b}</code>, unless a field says otherwise.</li>
+<li><strong>Tool endpoints</strong> take JSON through <code>POST</code>, with <code>content-type: application/json</code>.</li>
+<li><strong>Collection endpoints</strong> take query parameters through <code>GET</code> and page with <code>offset</code> and <code>next_offset</code>, or with <code>cursor</code> and <code>next_cursor</code> for the scanned collections.</li>
+<li><strong>Path parameters</strong> are written <code>:name</code>, for example <code>/v1/science/spaces/:key</code>.</li>
+<li>Examples use <code>$AURIC_API_KEY</code> for your key.</li>
+<li><strong>Auth</strong> &quot;None&quot; means the endpoint is public and unmetered. Everything else needs a key; see <a href="../authentication.html">Authentication</a>.</li>
+</ul>
+<h2 id="pages">Pages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Page</th><th>Endpoints</th></tr></thead>
+<tbody>
+<tr><td><a href="discovery.html">Discovery</a></td><td>Index, health, readiness, methods, formats, tiers, status, metrics, catalogue, docs, OpenAPI</td></tr>
+<tr><td><a href="colour-and-science.html">Colour and colour science</a></td><td>Convert, contrast, the 63-space registry, dossier, Delta E, colour temperature, illuminants, metrics</td></tr>
+<tr><td><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></td><td>Generate, evaluate, classify, analyse, export and render</td></tr>
+<tr><td><a href="collections.html">Collections</a></td><td>The colour atlas, nearest colour, and the palette, harmony, gradient and shade libraries</td></tr>
+<tr><td><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></td><td>Token systems and exports; brief-driven palette search and design systems</td></tr>
+<tr><td><a href="accessibility.html">Accessibility</a></td><td>WCAG and APCA checks, recommendations, image audits, maps, picks, palette audits, the contrast corpus</td></tr>
+<tr><td><a href="vision-and-ishihara.html">Vision and Ishihara</a></td><td>Colour-vision models, conditions, matrices, simulations and audits; Ishihara plates</td></tr>
+<tr><td><a href="analyzer.html">Analyzer</a></td><td>Stages, markup-only page audits, and rendering reports to HTML or PDF</td></tr>
+<tr><td><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></td><td>Usage history and live feed, async jobs, webhooks, GraphQL</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="../faq.html"><span>Previous</span>FAQ</a><a href="accessibility.html"><span>Next</span>Accessibility</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#conventions">Conventions</a></li><li><a href="#pages">Pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

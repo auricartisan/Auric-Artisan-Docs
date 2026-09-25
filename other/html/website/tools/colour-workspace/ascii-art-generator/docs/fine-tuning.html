@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fine tuning — Auric Artisan Docs</title>
+<meta name="description" content="Every setting behind the Fine tuning button — character set and custom ramp, shape, tone, sampling and dithering, edges, type, filters and advanced options.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ASCII Art Generator</a>
+<h2>ASCII Art Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ASCII Art Generator</a></li>
+<li><a href="charts-and-compare.html">Charts, benchmark and Compare</a></li>
+<li><a href="export.html">Copy, export and batch</a></li>
+<li><a href="fine-tuning.html" aria-current="page">Fine tuning</a></li>
+<li><a href="looks-colour-and-detail.html">Looks, colour and detail</a></li>
+<li><a href="render-modes.html">Render modes and full screen</a></li>
+<li><a href="sources.html">Choose a source</a></li>
+<li><a href="reference.html">ASCII Art Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">ASCII Art Generator</a> &rsaquo; <a href="README.html">ASCII Art Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Fine tuning</h1>
+<p class="lede">Every setting behind the Fine tuning button — character set and custom ramp, shape, tone, sampling and dithering, edges, type, filters and advanced options.</p>
+<p>Select <strong>Fine tuning</strong> at the bottom of the rail to open eight more groups. Each starts folded; select a group&#39;s heading to open it. Every change re-converts the art a moment later.</p>
+<p>Changing anything here clears the highlight on the <strong>Look</strong> buttons, since the art no longer matches a named look.</p>
+<h2 id="character-set">Character set</h2>
+<p>A menu of seven sets, each listed light to dark:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Set</th><th>Characters</th><th>Count</th></tr></thead>
+<tbody>
+<tr><td><strong>Standard</strong></td><td>space <code>.:-=+*#%@</code></td><td>10</td></tr>
+<tr><td><strong>Detailed</strong></td><td>space and 69 punctuation marks, letters and digits</td><td>70</td></tr>
+<tr><td><strong>Blocks</strong></td><td>space <code>░▒▓█</code></td><td>5</td></tr>
+<tr><td><strong>Minimal</strong></td><td>space <code>.:#@</code></td><td>5</td></tr>
+<tr><td><strong>Symbols</strong></td><td>space <code>·•●◉⬤</code></td><td>6</td></tr>
+<tr><td><strong>Lines</strong></td><td>space and box-drawing characters <code>─│┌┐└┘</code> and more</td><td>23</td></tr>
+<tr><td><strong>Braille</strong></td><td>space and all 255 Braille patterns</td><td>256</td></tr>
+</tbody></table></div>
+<p><strong>Custom ramp</strong> lets you type your own characters, lightest first and darkest last, up to 200. It needs at least two characters; with fewer, the set chosen in the menu is used. Start with a space so the lightest areas stay empty, for example <code> .oO@</code>.</p>
+<p>The <strong>Look</strong> strip in the rail always shows the set actually in use, custom ramp included.</p>
+<h2 id="shape">Shape</h2>
+<p>Character cells are taller than they are wide, so without correction the art comes out stretched.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Match the output font</strong></td><td>on or off</td><td>on</td><td>Measures the output font and sets <strong>Cell aspect</strong> to match it.</td></tr>
+<tr><td><strong>Cell aspect</strong></td><td>0.2 to 1.2</td><td>set by the font</td><td>Width of a cell divided by its height. Lower values give fewer rows.</td></tr>
+<tr><td><strong>Lock row count</strong></td><td>on or off</td><td>off</td><td>Fixes the number of rows instead of working it out from the picture.</td></tr>
+<tr><td>Rows</td><td>10 to 300</td><td>50</td><td>The fixed row count, when locked.</td></tr>
+</tbody></table></div>
+<p>Moving <strong>Cell aspect</strong> by hand works best with <strong>Match the output font</strong> off; while it is on, choosing another output font measures it again.</p>
+<h2 id="tone">Tone</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Brightness model</td><td><strong>Luminosity (Rec.601)</strong>, <strong>Average</strong>, <strong>Lightness (HSL)</strong></td><td>Luminosity</td><td>How a pixel&#39;s colour becomes a single brightness. Luminosity weights green most, as the eye does.</td></tr>
+<tr><td><strong>Gamma</strong></td><td>0.2 to 3.0</td><td>1.0</td><td>Above 1 lifts the mid-tones (lighter); below 1 deepens them.</td></tr>
+<tr><td><strong>Contrast</strong></td><td>0 to 1</td><td>0</td><td>Stretches the picture&#39;s contrast before conversion.</td></tr>
+<tr><td><strong>Saturation</strong></td><td>0 to 2</td><td>0</td><td>Boosts colour before conversion. Mainly affects <strong>From image</strong> colour.</td></tr>
+</tbody></table></div>
+<h2 id="sampling">Sampling</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Options</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Sampling method</td><td><strong>Area average (SAT)</strong>, <strong>Bilinear</strong>, <strong>Point / Nearest</strong></td><td>Area average</td><td>How the pixels under each cell become one value. Area averaging uses every pixel and is the most faithful; point sampling is fastest but can shimmer on fine detail.</td></tr>
+<tr><td>Dithering</td><td><strong>None</strong>, <strong>Floyd-Steinberg</strong>, <strong>Ordered (Bayer)</strong></td><td>None</td><td>Spreads the rounding error between neighbouring cells so smooth gradients show as texture instead of bands.</td></tr>
+<tr><td>Bayer matrix</td><td><strong>Bayer 4×4</strong>, <strong>Bayer 8×8</strong></td><td>8×8</td><td>The pattern size for ordered dithering.</td></tr>
+</tbody></table></div>
+<p>Floyd–Steinberg gives an organic, grainy texture; ordered dithering gives a regular cross-hatch.</p>
+<h2 id="edges">Edges</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Sobel glyph selection</strong></td><td>on or off</td><td>on</td><td>Finds edges in the picture and, at strong edges, swaps in a thin line character of similar brightness.</td></tr>
+<tr><td><strong>Edge weight</strong></td><td>0 to 1</td><td>0.65</td><td>How strongly edges steer the choice of character.</td></tr>
+</tbody></table></div>
+<p>The line characters it can use are the backtick, <code>-</code>, <code>/</code>, <code>|</code> and the backslash, and only those present in the current set. So it has most effect with <strong>Detailed</strong>, a little with <strong>Standard</strong> (which has <code>-</code>), and none with Blocks, Minimal, Symbols, Lines or Braille. The character is chosen by brightness, not by the direction of the edge.</p>
+<p>The <strong>Sobel edge field</strong> chart in <strong>Analysis</strong> shows where the edges are.</p>
+<h2 id="type">Type</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Output font</td><td>monospace, Courier New, Consolas, Monaco</td><td>monospace</td><td>Font of the HTML, Canvas and SVG renders and of downloads.</td></tr>
+<tr><td>Size</td><td>6 to 32 pixels</td><td>12</td><td>Character size for the Canvas and SVG renders and downloads.</td></tr>
+<tr><td><strong>Line height</strong></td><td>0.8 to 2.0</td><td>1.0</td><td>Row spacing.</td></tr>
+<tr><td><strong>Kerning</strong></td><td>−2 to 4</td><td>0</td><td>Extra space between characters, in pixels.</td></tr>
+<tr><td>Render mode</td><td><strong>Text (plain)</strong>, <strong>HTML (color spans)</strong>, <strong>Canvas (rasterised)</strong>, <strong>SVG (vector)</strong></td><td>Text</td><td>The same choice as the <strong>Render</strong> chips above the art.</td></tr>
+</tbody></table></div>
+<p>On screen, the Text and HTML renders are scaled to fit the stage whatever size you choose.</p>
+<h2 id="filters">Filters</h2>
+<p>Eight check boxes, applied to the finished characters:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Filter</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><strong>Flip X</strong></td><td>Mirrors left to right.</td></tr>
+<tr><td><strong>Flip Y</strong></td><td>Mirrors top to bottom.</td></tr>
+<tr><td><strong>Rotate 90°</strong></td><td>Turns the art a quarter turn clockwise.</td></tr>
+<tr><td><strong>Border</strong></td><td>Surrounds the art with <code>#</code>.</td></tr>
+<tr><td><strong>Frame</strong></td><td>Surrounds the art with a double-line box.</td></tr>
+<tr><td><strong>Brighten</strong></td><td>Moves each Standard-set character one step towards <code>@</code>.</td></tr>
+<tr><td><strong>Darken</strong></td><td>Moves each Standard-set character one step towards a space.</td></tr>
+<tr><td><strong>Noise</strong></td><td>Replaces a share of the characters with random Standard-set characters.</td></tr>
+</tbody></table></div>
+<p><strong>Noise amount</strong> (0 to 1, default 0.1) sets that share.</p>
+<p>Filters work on the characters, not the picture, so:</p>
+<ul>
+<li><strong>Brighten</strong>, <strong>Darken</strong> and <strong>Noise</strong> use the Standard characters; with other sets, Brighten and Darken leave characters they do not know unchanged, and Noise mixes Standard characters in;</li>
+<li>the <strong>HTML</strong> render does not show filters at all, although <strong>Copy</strong> and the TXT download include them;</li>
+<li>with <strong>From image</strong> colour, shape-changing filters (<strong>Rotate 90°</strong>, <strong>Border</strong>, <strong>Frame</strong>) make the Canvas and SVG renders fall back to one colour, and the flips can leave colours in their original places.</li>
+</ul>
+<h2 id="advanced">Advanced</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Thin out</strong></td><td>0 to 0.95</td><td>0</td><td>Drops characters from runs of the same character. Lines become shorter, so the picture skews; use it for effect, not to save space.</td></tr>
+<tr><td><strong>Seed</strong></td><td>a whole number</td><td>2654435769</td><td>Fixes the random choices of <strong>Noise</strong> and the position of the ordered-dither pattern, so the same seed gives the same result.</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="looks-colour-and-detail.html">Looks, colour and detail</a></li>
+<li><a href="charts-and-compare.html">Charts, benchmark and Compare</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="export.html"><span>Previous</span>Copy, export and batch</a><a href="looks-colour-and-detail.html"><span>Next</span>Looks, colour and detail</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#character-set">Character set</a></li><li><a href="#shape">Shape</a></li><li><a href="#tone">Tone</a></li><li><a href="#sampling">Sampling</a></li><li><a href="#edges">Edges</a></li><li><a href="#type">Type</a></li><li><a href="#filters">Filters</a></li><li><a href="#advanced">Advanced</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,155 @@
+==============================================================================
+SCORES AND GRADES
+==============================================================================
+How the overall, contrast, accessibility and code-health scores and their
+letter grades are calculated, with a worked example.
+Area: VS Code extensions › Auric Artisan Studio   Updated: 2026-09-25
+
+Every score in the Studio is a number from 0 to 100, where 100 means nothing
+was found. The formulas are fixed, so two projects with the same score are
+comparable on what was scanned. Scores are a way to prioritise work and track
+progress. They are not an accessibility certification: static checks cover
+only part of WCAG, and manual testing is still needed.
+
+THE LETTER GRADE
+================
+
+  Grade | Score
+  ------+-----------
+  A+    | 95 or more
+  A     | 90 to 94
+  B     | 80 to 89
+  C     | 70 to 79
+  D     | 55 to 69
+  F     | below 55
+
+The same scale is used for the overall score, the code-health score and the
+brand audit.
+
+THE OVERALL SCORE
+=================
+
+The overall score is the one shown in the status bar, the Overview ring and
+the Studio's Home.
+
+  - When the project has both resolvable contrast pairs and markup or CSS
+    files, the overall score is the average of the contrast and accessibility
+    sub-scores, rounded.
+  - When only one of them applies, the overall score is that one.
+  - When neither applies, there is no score and the grade shows `—`.
+
+Code health is scored separately and does not change the overall score.
+
+THE CONTRAST SUB-SCORE
+======================
+
+Every contrast pair the scanner resolved earns credit, measured against its
+own target (3:1 for large text and 4.5:1 otherwise, or 4.5:1 and 7:1 at the
+AAA threshold):
+
+  The pair…                            | Credit
+  -------------------------------------+-----------------
+  meets AAA for its text size          | 1.00
+  meets the selected target            | 0.95
+  is below the target but at least 3:1 | 0.55
+  is below 3:1                         | ratio ÷ 3 × 0.35
+
+A pair graded against an assumed page background (the rule sets only `color:`
+and the background was taken from `body`, `html` or `:root`) counts half,
+because it is an inference rather than a reading. Every other pair counts
+fully.
+
+The contrast sub-score is the weighted average credit × 100, minus a
+colour-vision penalty: the share of pairs that pass for typical vision but
+weaken under colour-vision deficiency, × 25, capped at 10 points. Pairs
+classified as intentional branding are left out entirely. If there are no
+resolvable pairs, the contrast sub-score is omitted.
+
+THE ACCESSIBILITY (WCAG) SUB-SCORE
+==================================
+
+Each WCAG finding adds a penalty:
+
+  Factor             | Values
+  -------------------+---------------------------------------------
+  Impact             | critical 6, serious 4, moderate 2, minor 0.7
+  Confidence         | high × 1, medium × 0.65, low × 0.35
+  Automation         | automated × 1, assisted × 0.55, manual × 0
+  Best-practice hint | × 0.5
+
+The penalties are added up and divided by the square root of the number of
+markup and CSS files scanned, so a large project is not punished merely for
+its size. The sub-score is 100 minus that result, never below 0. A project
+with no findings scores 100. If no markup or CSS files were scanned, the
+sub-score is omitted.
+
+Every finding counts, including repeats of the same success criterion.
+Suppressed findings are removed before scoring. Branding marks never remove
+WCAG findings.
+
+THE CODE-HEALTH SCORE
+=====================
+
+Each code-health finding adds a penalty by category, scaled by confidence:
+
+  Category         | Weight
+  -----------------+-------
+  Possible secrets | 14
+  Security risks   | 12
+  Merge markers    | 10
+  Risky APIs       | 4
+  Debug leftovers  | 2
+  Oversized        | 0.5
+  Task markers     | 0.25
+
+  Confidence | Multiplier
+  -----------+-----------
+  high       | 1
+  medium     | 0.75
+  low        | 0.4
+
+The total is divided by the number of files scanned, multiplied by 16, and
+subtracted from 100 (never below 0). The code-health score uses the same
+letter grades.
+
+A WORKED EXAMPLE
+================
+
+A project has 10 contrast pairs and 5 markup files.
+
+  1. Contrast: 6 pairs meet AAA (6 × 1.00), 2 meet AA (2 × 0.95), 1 is 3.2:1
+     (0.55) and 1 is 2.1:1 (2.1 ÷ 3 × 0.35 = 0.245). The average credit is
+     8.695 ÷ 10, so 86.95. One pair of the ten is a colour-vision risk: 0.1 ×
+     25 = 2.5 points off. The contrast sub-score is 84.
+  2. Accessibility: one serious, high-confidence, automated finding (4), two
+     minor findings (0.7 each) and one best-practice hint (0.7 × 0.35 × 0.55 ×
+     0.5, about 0.07). The total is about 5.47. Divided by √5 (about 2.24)
+     that is about 2.45, so the sub-score is 98.
+  3. Overall: (84 + 98) ÷ 2 = 91, grade A.
+
+COLOURS USED FOR SCORES
+=======================
+
+  - Status bar: the score item uses the theme's warning background below 90
+    and its error background below 70.
+  - Studio: scores of 90 and above use the theme's pass colour, 70 to 89 the
+    warning colour, and below 70 the fail colour. Every score is also written
+    as a number and grade, so colour is never the only signal.
+
+PRIORITY IN HOVERS
+==================
+
+Issue hovers show Priority N/100 with a segmented meter and one of four pieces
+of advice: fix now (78 or more), fix soon (55 to 77), worth fixing (30 to 54)
+or low urgency (below 30). Priority is not part of any score. It starts from
+the finding's impact (critical 94, serious 78, moderate 56, minor 32), is
+scaled by confidence, and for contrast findings by how far the pair falls
+short of its target. Branding findings always show a low priority because they
+are outside the score.
+
+RELATED
+=======
+
+  - Scanning [scanning.txt]
+  - Suppression and branding [suppression-and-branding.txt]
+  - Limits and accuracy [../others/limits-and-accuracy.txt]

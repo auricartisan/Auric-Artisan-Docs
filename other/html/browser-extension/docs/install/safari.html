@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Safari — Auric Artisan Docs</title>
+<meta name="description" content="Auric Artisan is not published for Safari; how to convert the Chromium package yourself on macOS, and what to expect.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Install the extension</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="chrome-and-chromium.html">Install on Chrome and Chromium browsers</a></li>
+<li><a href="edge.html">Install on Microsoft Edge</a></li>
+<li><a href="firefox.html">Install on Firefox</a></li>
+<li><a href="load-from-a-zip.html">Load from a ZIP</a></li>
+<li><a href="opera.html">Install on Opera</a></li>
+<li><a href="safari.html" aria-current="page">Safari</a></li>
+<li><a href="update-and-remove.html">Update and remove</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Install the extension</a></nav>
+<p class="kicker">Browser extension › Install</p>
+<h1>Safari</h1>
+<p class="lede">Auric Artisan is not published for Safari; how to convert the Chromium package yourself on macOS, and what to expect.</p>
+<p>Auric Artisan is not published for Safari, and there is no Safari listing. Safari takes web extensions through an Xcode project rather than a ZIP, so you can build a copy yourself on a Mac from the Chromium package. This route is for people comfortable with Apple&#39;s developer tools.</p>
+<h2 id="what-you-need">What you need</h2>
+<ul>
+<li>A Mac with Xcode installed.</li>
+<li>The Chromium package from <a href="https://auricartisan.com/extension" rel="noopener">https://auricartisan.com/extension</a> (its name starts with <code>auric-suite-chrome-</code>).</li>
+</ul>
+<h2 id="convert-and-run-it">Convert and run it</h2>
+<ol>
+<li><p>Unzip the Chromium package.</p>
+</li>
+<li><p>Open Terminal and run Apple&#39;s converter against the unzipped folder. Replace the folder name with the one you unzipped:</p>
+<pre class="code" data-lang="bash"><code>xcrun safari-web-extension-converter ./auric-suite-chrome-1.0.2</code></pre>
+</li>
+<li><p>The converter creates an Xcode project. Open it, then build and run it.</p>
+</li>
+<li><p>In Safari, enable the extension in Safari&#39;s extension settings.</p>
+</li>
+</ol>
+<p>The product page has a <strong>Copy command</strong> button that copies the converter command for the package version it offers.</p>
+<h2 id="what-to-expect">What to expect</h2>
+<ul>
+<li><strong>There is no side panel.</strong> Safari has no equivalent of the Chromium side panel or the Firefox sidebar, so the workspace is available only as the popup.</li>
+<li><strong>The build is yours.</strong> Auric Artisan does not build, test or support a Safari version. Features that rely on Chromium or Firefox interfaces may not work.</li>
+<li><strong>Updates are manual.</strong> To update, convert the newer package and build again.</li>
+</ul>
+<p>If you need the full feature set, use a Chromium browser or Firefox. See <a href="README.html">Install</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="opera.html"><span>Previous</span>Install on Opera</a><a href="update-and-remove.html"><span>Next</span>Update and remove</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-you-need">What you need</a></li><li><a href="#convert-and-run-it">Convert and run it</a></li><li><a href="#what-to-expect">What to expect</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

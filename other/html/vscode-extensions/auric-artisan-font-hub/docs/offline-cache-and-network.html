@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline use, cache and network — Auric Artisan Docs</title>
+<meta name="description" content="What Font Hub can do offline, how it refreshes and caches catalogue data and fonts, and how to switch its network use off.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Font Hub</a>
+<h2>Auric Artisan Font Hub guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Font Hub</a></li>
+<li><a href="add-fonts-to-code.html">Add a font to your code</a></li>
+<li><a href="cdn-and-browser-delivery.html">Check CDN and browser delivery</a></li>
+<li><a href="find-and-compare-fonts.html">Find and compare fonts</a></li>
+<li><a href="font-details.html">Font details</a></li>
+<li><a href="moving-from-font-library.html">Moving from Font Library</a></li>
+<li><a href="offline-cache-and-network.html" aria-current="page">Offline use, cache and network</a></li>
+<li><a href="self-hosting-kit.html">Export a self-hosting kit</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Font Hub</a> &rsaquo; <a href="README.html">Auric Artisan Font Hub guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Font Hub</p>
+<h1>Offline use, cache and network</h1>
+<p class="lede">What Font Hub can do offline, how it refreshes and caches catalogue data and fonts, and how to switch its network use off.</p>
+<h2 id="what-works-offline">What works offline</h2>
+<p>The extension includes a snapshot of the catalogue: every family&#39;s details and the licence notices. Without a network connection you can:</p>
+<ul>
+<li>search, filter, sort and browse every family;</li>
+<li>open details, including styles, charset, about and licence information;</li>
+<li>use favourites, recents, selection and the recommender;</li>
+<li>copy and insert embeds (the page that uses them still needs the CDN when it loads).</li>
+</ul>
+<p>Font previews and self-hosting downloads need the font files. Previews you have already seen stay available from the cache where possible; others need the network.</p>
+<h2 id="what-uses-the-network">What uses the network</h2>
+<p>Only one address is ever contacted: <code>https://fonts.auricartisan.com</code>. Font Hub validates every address before requesting it, and the Font Hub panels themselves cannot make network requests; all fetching goes through VS Code.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Activity</th><th>When</th></tr></thead>
+<tbody>
+<tr><td>Catalogue refresh</td><td>On the schedule in <code>auricFontLib.catalogRefresh</code>, or when you run <strong>Refresh Font Catalog from Auric CDN</strong></td></tr>
+<tr><td>Font previews</td><td>When a card or detail panel needs a font that is not cached</td></tr>
+<tr><td>Licence text</td><td>When you select <strong>Load full license text</strong> or build a kit</td></tr>
+<tr><td>Self-hosting downloads</td><td>When you download a kit</td></tr>
+<tr><td>CDN check</td><td>When you run <strong>Check Font CDN and Browser CORS</strong></td></tr>
+</tbody></table></div>
+<p>Search queries, your source code, favourites and usage history are not sent. The CDN still receives the ordinary information any web request carries, including your IP address.</p>
+<h2 id="switch-the-network-off">Switch the network off</h2>
+<p>Set <code>auricFontLib.network.enabled</code> to <code>false</code>. Font Hub then works from the bundled snapshot and the cache only. Previews that are not cached are unavailable, the CDN check is refused, and kits cannot be downloaded.</p>
+<h2 id="catalogue-refresh">Catalogue refresh</h2>
+<div class="table-wrap"><table>
+<thead><tr><th><code>auricFontLib.catalogRefresh</code></th><th>Behaviour</th></tr></thead>
+<tbody>
+<tr><td><code>manual</code></td><td>Only when you run <strong>Refresh Font Catalog from Auric CDN</strong> (or select <strong>↻</strong>)</td></tr>
+<tr><td><code>daily</code> (default)</td><td>Automatically, once the last refresh is older than <code>auricFontLib.cache.maxAgeHours</code> (24 hours by default)</td></tr>
+<tr><td><code>always</code></td><td>Automatically every time Font Hub checks, without waiting for the cache to age</td></tr>
+</tbody></table></div>
+<p>After a refresh: <strong>Auric Font Hub refreshed <em>N</em> families.</strong> If the refresh fails or is rejected, Font Hub keeps what it had: <strong>Auric Font Hub kept cached data: <em>reason</em>.</strong> The bundled snapshot always remains available. Refreshed identities and licence data are validated; a family the extension does not recognise may need an extension update.</p>
+<p>The status bar <strong>Fonts</strong> item&#39;s tooltip shows the number of families and whether the <strong>CDN catalog</strong>, a <strong>Cached catalog</strong> or the <strong>Bundled catalog</strong> is in use. Turn the item off with <code>auricFontLib.statusBar.enabled</code>.</p>
+<h2 id="cache">Cache</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Range</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>auricFontLib.cache.maxAgeHours</code></td><td>24</td><td>1–720</td><td>How long cached CDN metadata counts as fresh</td></tr>
+<tr><td><code>auricFontLib.cache.maxMB</code></td><td>512</td><td>64–4096</td><td>Disk space for previews, font files and refreshed metadata; the oldest items are removed first</td></tr>
+</tbody></table></div>
+<p>The cache lives in VS Code&#39;s storage for the extension, not in your project. <strong>Auric Artisan Font Hub: Clear Downloaded Font Cache</strong> empties it: <strong>Auric Font Hub cache cleared. Bundled catalog data remains available offline.</strong></p>
+<h2 id="system-fonts">System fonts</h2>
+<p>With <code>auricFontLib.includeSystemFonts</code> on, metadata for common system fonts captured when the catalogue was built appears in the list. Their previews depend on the font being installed on your computer.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="moving-from-font-library.html"><span>Previous</span>Moving from Font Library</a><a href="self-hosting-kit.html"><span>Next</span>Export a self-hosting kit</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-works-offline">What works offline</a></li><li><a href="#what-uses-the-network">What uses the network</a></li><li><a href="#switch-the-network-off">Switch the network off</a></li><li><a href="#catalogue-refresh">Catalogue refresh</a></li><li><a href="#cache">Cache</a></li><li><a href="#system-fonts">System fonts</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

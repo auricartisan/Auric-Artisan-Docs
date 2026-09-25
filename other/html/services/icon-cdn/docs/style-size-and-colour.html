@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style, size and colour — Auric Artisan Docs</title>
+<meta name="description" content="Choose an icon's style, give it a size, colour it and change its stroke width, with the loader, CSS or the Icon Library.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Icon CDN</a>
+<h2>Icon CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="embed-an-icon.html">Embed an icon</a></li>
+<li><a href="export-and-self-host.html">Export and self-host</a></li>
+<li><a href="style-size-and-colour.html" aria-current="page">Style, size and colour</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Icon CDN</a> &rsaquo; <a href="README.html">Icon CDN documentation</a></nav>
+<p class="kicker">Services › Icon CDN</p>
+<h1>Style, size and colour</h1>
+<p class="lede">Choose an icon's style, give it a size, colour it and change its stroke width, with the loader, CSS or the Icon Library.</p>
+<h2 id="style">Style</h2>
+<p>Many icons come in several styles: Phosphor&#39;s <code>thin</code>, <code>light</code>, <code>regular</code>, <code>bold</code>, <code>fill</code> and <code>duotone</code>; Tabler&#39;s <code>outline</code> and <code>filled</code>; Remix&#39;s <code>line</code> and <code>fill</code>; Heroicons&#39; <code>24/outline</code>, <code>24/solid</code>, <code>20/solid</code> and <code>16/solid</code>; Material&#39;s <code>outlined</code>, <code>round</code>, <code>sharp</code>, <code>regular</code> and <code>twotone</code>. See <a href="collections.html">Collections</a>.</p>
+<ul>
+<li>With the loader, set <code>data-style=&quot;fill&quot;</code> or pass <code>{ style: &#39;fill&#39; }</code> to <code>svg()</code>.</li>
+<li>If you ask for a style the icon does not have, the loader uses the set&#39;s default style, or else the icon&#39;s first style.</li>
+<li>In the Icon Library, the <strong>Style</strong> buttons in an icon&#39;s panel switch between its styles, and the copied code follows.</li>
+</ul>
+<h2 id="size">Size</h2>
+<p>Served icons have no width or height of their own, only a <code>viewBox</code>, so always size them.</p>
+<p>With the loader:</p>
+<pre class="code" data-lang="html"><code>&lt;i data-icon=&quot;lucide:house&quot; data-size=&quot;24&quot;&gt;&lt;/i&gt;     &lt;!-- 24 px --&gt;
+&lt;i data-icon=&quot;lucide:house&quot; data-size=&quot;1.25em&quot;&gt;&lt;/i&gt; &lt;!-- scales with text --&gt;</code></pre>
+<p>With CSS, for every icon at once:</p>
+<pre class="code" data-lang="css"><code>[data-icon] svg { width: 1em; height: 1em; vertical-align: -0.125em; }</code></pre>
+<p>Sizing in <code>em</code> makes icons follow the surrounding font size. Material icons are font glyphs and follow <code>data-size</code> or the font size.</p>
+<p>Icons are drawn on a grid: 24 units for most sets, 256 for Phosphor, and 20 or 16 for some Heroicons styles.</p>
+<p>In the Icon Library, the <strong>Size</strong> slider runs from 16 to 160 px and sets the size of the copied <code>&lt;img&gt;</code> code.</p>
+<h2 id="colour">Colour</h2>
+<p>Icons are drawn with <code>currentColor</code>: by default they take the text colour of the element they are in.</p>
+<ul>
+<li>To match your text, do nothing, or set <code>color</code> on the parent in CSS.</li>
+<li>To set a colour with the loader, use <code>data-color=&quot;#e11&quot;</code> or <code>{ color: &#39;#e11&#39; }</code>.</li>
+<li>With CSS: <code>.danger [data-icon] { color: #b00020; }</code>.</li>
+</ul>
+<p>A linked SVG file or a data-URI image cannot inherit the page&#39;s colour. Choose the colour in the Icon Library before you copy, or recolour the file yourself. In the Icon Library, <strong>Colour</strong> sets a colour and the <strong>currentColor</strong> button goes back to inheriting.</p>
+<h2 id="stroke-width">Stroke width</h2>
+<p>Stroke-drawn icons (Lucide, Tabler, Feather, and Heroicons&#39; outline style) can be made thinner or bolder:</p>
+<ul>
+<li>with the loader, <code>data-stroke=&quot;1.5&quot;</code> or <code>{ stroke: 1.5 }</code>;</li>
+<li>with CSS, <code>[data-icon] svg { stroke-width: 1.5; }</code>.</li>
+</ul>
+<p>In the Icon Library, the <strong>Stroke</strong> slider runs from 0.5 to 3 in steps of 0.25, or <strong>auto</strong> for the set&#39;s own width. Fill-drawn sets, such as Phosphor and Remix, ignore stroke width; choose a lighter or heavier style instead.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-and-self-host.html"><span>Previous</span>Export and self-host</a><a href="use-the-loader.html"><span>Next</span>Use the loader</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#style">Style</a></li><li><a href="#size">Size</a></li><li><a href="#colour">Colour</a></li><li><a href="#stroke-width">Stroke width</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

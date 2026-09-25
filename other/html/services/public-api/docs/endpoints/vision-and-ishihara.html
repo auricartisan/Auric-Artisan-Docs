@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vision and Ishihara — Auric Artisan Docs</title>
+<meta name="description" content="Simulate colour-vision deficiencies for a colour, a palette or an image, find pairs that become indistinguishable, and generate Ishihara plates.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html" aria-current="page">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Vision and Ishihara</h1>
+<p class="lede">Simulate colour-vision deficiencies for a colour, a palette or an image, find pairs that become indistinguishable, and generate Ishihara plates.</p>
+<p>The vision endpoints distinguish two kinds of identifier:</p>
+<ul>
+<li><strong>Models</strong> are simulation engines, such as <code>brettel-deutan</code>. List them with <code>GET /v1/vision/models</code>.</li>
+<li><strong>Conditions</strong> are documented vision conditions, such as <code>deuteranopia</code> or <code>glaucoma</code>. List them with <code>GET /v1/vision/conditions</code>.</li>
+</ul>
+<p><code>/v1/vision/simulate</code> takes a model. The palette and audit endpoints take conditions.</p>
+<h2 id="get-v1visionmodels">GET /v1/vision/models</h2>
+<p>The colour-vision deficiency models available.</p>
+<h2 id="get-v1visionconditions">GET /v1/vision/conditions</h2>
+<p>Every documented vision condition, and what can simulate it.</p>
+<h2 id="get-v1visionconditionsslug">GET /v1/vision/conditions/:slug</h2>
+<p>One condition, with its severity, prevalence and a worked example. <code>:slug</code> is a condition slug such as <code>deuteranopia</code> or <code>glaucoma</code>. An unknown slug returns <code>UNKNOWN_CONDITION</code>.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/vision/conditions/deuteranopia&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="get-v1visionmatrices">GET /v1/vision/matrices</h2>
+<p>The colour-vision deficiency matrices, for applying the transform yourself.</p>
+<h2 id="post-v1visionsimulate">POST /v1/vision/simulate</h2>
+<p>How one colour appears under a vision deficiency. 1 credit.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>colour</td><td>Yes</td><td>The colour</td></tr>
+<tr><td><code>model</code></td><td>string</td><td>Yes</td><td>A model id such as <code>brettel-deutan</code>; see <code>/v1/vision/models</code></td></tr>
+<tr><td><code>severity</code></td><td>number</td><td>No</td><td>0–1, for anomalous trichromacy</td></tr>
+</tbody></table></div>
+<p>A condition slug such as <code>deuteranopia</code> is refused here; the error names the model it maps to. To work with conditions, use <code>POST /v1/vision/palette</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/vision/simulate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;color&quot;:&quot;#c9a227&quot;,&quot;model&quot;:&quot;brettel-deutan&quot;,&quot;severity&quot;:1}'</code></pre>
+<h2 id="post-v1visionpalette">POST /v1/vision/palette</h2>
+<p>Run a whole palette through many conditions in one call.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code></td><td>array</td><td>Yes</td><td>Up to 64 colours</td></tr>
+<tr><td><code>conditions</code></td><td>array</td><td>No</td><td>Condition slugs. Omit for all 17 colour conditions. Spatial conditions are listed under <code>refused</code>.</td></tr>
+<tr><td><code>severity</code></td><td>number</td><td>No</td><td>0–1, overriding each condition&#39;s default</td></tr>
+<tr><td><code>passes</code></td><td>number</td><td>No</td><td>1–8; repeats the transform</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/vision/palette&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;colors&quot;:[&quot;#D3AF37&quot;,&quot;#2E8B57&quot;],&quot;conditions&quot;:[&quot;deuteranopia&quot;,&quot;tritanopia&quot;]}'</code></pre>
+<h2 id="post-v1visionaudit">POST /v1/vision/audit</h2>
+<p>Find which pairs in a palette stop being distinguishable under each condition.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>colors</code></td><td>array</td><td>Yes</td><td>At least 2, up to 64</td></tr>
+<tr><td><code>conditions</code></td><td>array</td><td>No</td><td>Omit for all 17 colour conditions</td></tr>
+<tr><td><code>threshold</code></td><td>number</td><td>No</td><td>CIEDE2000 difference below which a pair counts as collapsed. Default 5.</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/vision/audit&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;colors&quot;:[&quot;#B22222&quot;,&quot;#228B22&quot;],&quot;conditions&quot;:[&quot;deuteranopia&quot;]}'</code></pre>
+<h2 id="post-v1visionsimulate-image">POST /v1/vision/simulate-image</h2>
+<p>Simulate a vision deficiency across a whole image. 10–12 credits. Returns <code>image/png</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>image</code></td><td>string</td><td>Yes</td><td>Base64 or a data URL (up to 4 MB)</td></tr>
+<tr><td><code>model</code></td><td>string</td><td>Yes</td><td>The deficiency to simulate</td></tr>
+</tbody></table></div>
+<h2 id="post-v1ishiharaplate">POST /v1/ishihara/plate</h2>
+<p>Generate an Ishihara test plate as structured data.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>figure</code></td><td>string</td><td>Yes</td><td>Digits to hide in the plate, for example <code>74</code></td></tr>
+<tr><td><code>axis</code></td><td>string</td><td>No</td><td>Deficiency to discriminate: <code>protan</code>, <code>deutan</code> (default) or <code>tritan</code></td></tr>
+<tr><td><code>size</code></td><td>integer</td><td>No</td><td>Plate size in pixels, 64–1024. Default 400.</td></tr>
+<tr><td><code>dots</code></td><td>integer</td><td>No</td><td>Dot count, 50–5000. Default 800.</td></tr>
+<tr><td><code>seed</code></td><td>integer</td><td>No</td><td>For a repeatable plate</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/ishihara/plate&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;figure&quot;:&quot;74&quot;,&quot;axis&quot;:&quot;deutan&quot;,&quot;size&quot;:400}'</code></pre>
+<h2 id="post-v1ishiharapng">POST /v1/ishihara/png</h2>
+<p>Render an Ishihara plate as a PNG. 10–12 credits. Returns <code>image/png</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>value</code></td><td>string</td><td>No</td><td>Digits to hide in the plate</td></tr>
+</tbody></table></div>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Generated plates are for design, teaching and demonstration. They are not a clinical colour-vision test.</p>
+</blockquote>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="../../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="usage-jobs-webhooks-graphql.html"><span>Previous</span>Usage, jobs, webhooks and GraphQL</a><a href="../../others/README.html"><span>Next</span>Other material</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#get-v1visionmodels">GET /v1/vision/models</a></li><li><a href="#get-v1visionconditions">GET /v1/vision/conditions</a></li><li><a href="#get-v1visionconditionsslug">GET /v1/vision/conditions/:slug</a></li><li><a href="#get-v1visionmatrices">GET /v1/vision/matrices</a></li><li><a href="#post-v1visionsimulate">POST /v1/vision/simulate</a></li><li><a href="#post-v1visionpalette">POST /v1/vision/palette</a></li><li><a href="#post-v1visionaudit">POST /v1/vision/audit</a></li><li><a href="#post-v1visionsimulate-image">POST /v1/vision/simulate-image</a></li><li><a href="#post-v1ishiharaplate">POST /v1/ishihara/plate</a></li><li><a href="#post-v1ishiharapng">POST /v1/ishihara/png</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

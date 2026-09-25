@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with the M-Gradient Palette — Auric Artisan Docs</title>
+<meta name="description" content="Open the M-Gradient Palette, find your way around its six tabs, and build a first ramp.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; M-Gradient Palette</a>
+<h2>M-Gradient Palette documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with the M-Gradient Palette</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="compare-routes.html">Compare routes and easings</a></li>
+<li><a href="export-a-ramp.html">Export a ramp</a></li>
+<li><a href="interpolation-and-gamut.html">Interpolation and gamut</a></li>
+<li><a href="reference.html">M-Gradient Palette reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the M-Gradient Palette</a></li>
+<li><a href="faq.html">M-Gradient Palette FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">M-Gradient Palette</a> &rsaquo; <a href="README.html">M-Gradient Palette documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › M-Gradient Palette</p>
+<h1>Getting started with the M-Gradient Palette</h1>
+<p class="lede">Open the M-Gradient Palette, find your way around its six tabs, and build a first ramp.</p>
+<h2 id="open-the-tool">Open the tool</h2>
+<p>Go to <a href="https://auricartisan.com/tool/general/tools/m-gradient-palette/" rel="noopener">https://auricartisan.com/tool/general/tools/m-gradient-palette/</a>. The page, titled <strong>Gradient Ramp</strong>, opens on the <strong>Ramp</strong> tab with a 12-step ramp from a deep blue, <code>#0B3D5C</code>, to a gold, <code>#F2B134</code>.</p>
+<p>A note under the heading explains what the numbers on the page are measurements of. It has no close button on purpose.</p>
+<h2 id="the-screen-at-a-glance">The screen at a glance</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><strong>Ramp</strong></td><td>The controls, the ramp, the step-by-step differences, the figures and the hue circle</td></tr>
+<tr><td><strong>Spaces</strong></td><td>All six routes by five easings, built and measured, and three ramps drawn side by side</td></tr>
+<tr><td><strong>Contrast</strong></td><td>A text colour, and every step checked as a background with WCAG 2.2 and APCA</td></tr>
+<tr><td><strong>Data</strong></td><td>Every figure and what it rests on; the tab shows the number of entries (15)</td></tr>
+<tr><td><strong>Export</strong></td><td>Copy and save buttons, previews and the JSON reading</td></tr>
+<tr><td><strong>Reference</strong></td><td>The published sources and the arithmetic</td></tr>
+</tbody></table></div>
+<h3 id="the-ramp-tab">The Ramp tab</h3>
+<ul>
+<li><strong>The left-hand panel</strong> holds <strong>The two ends</strong> (a swatch and a hex box for each, <strong>Swap the ends</strong>, and <strong>A starting point</strong>), <strong>Interpolate in</strong> (six route buttons), <strong>Shape</strong> (<strong>Steps</strong> and the <strong>Easing</strong> buttons), and <strong>Show it as seen by</strong> (four vision buttons).</li>
+<li><strong>The right-hand panel</strong> holds <strong>The ramp</strong> (one button per step), the bars of <strong>ΔE₀₀ between adjacent steps</strong>, the cards under <strong>What the ramp measures</strong>, and the circle under <strong>Where the ramp goes in hue and chroma</strong>.</li>
+</ul>
+<h2 id="build-a-first-ramp">Build a first ramp</h2>
+<ol>
+<li>Under <strong>A starting point</strong>, choose <strong>Ocean</strong>. The ends become <code>#0B3D5C</code> and <code>#69D2E7</code>, and the ramp redraws.</li>
+<li>Move <strong>Steps</strong> to 9. The ramp now has nine steps.</li>
+<li>Under <strong>Interpolate in</strong>, select <strong>sRGB</strong>, then <strong>OKLCH, short hue</strong>. Watch the bars under <strong>ΔE₀₀ between adjacent steps</strong>: the flatter they are, the more evenly the steps are spaced to the eye.</li>
+<li>Read <strong>evenness</strong> under <strong>What the ramp measures</strong>. Lower is more even.</li>
+<li>Select a step in the ramp to copy its hex value.</li>
+<li>Open the <strong>Export</strong> tab and select <strong>Copy the custom properties</strong>. Paste the result into your stylesheet:</li>
+</ol>
+<pre class="code" data-lang="css"><code>--ramp-01: #0B3D5C;
+--ramp-02: #164E6D;
+--ramp-03: #215F7F;
+--ramp-04: #2B7190;
+--ramp-05: #3784A2;
+--ramp-06: #4397B3;
+--ramp-07: #4FAAC5;
+--ramp-08: #5CBED6;
+--ramp-09: #69D2E7;</code></pre>
+<p>These are the nine steps of <strong>Ocean</strong> in <strong>OKLCH, short hue</strong> with <strong>linear</strong> easing. Here <strong>evenness</strong> reads 0.61, against 0.80 for the same ramp in <strong>sRGB</strong>.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li>To understand why routes differ, read <a href="interpolation-and-gamut.html">Interpolation and gamut</a>.</li>
+<li>To find the evenest combination for your two colours, see <a href="compare-routes.html">Compare routes and easings</a>.</li>
+<li>To check text on your ramp, see <a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>M-Gradient Palette documentation</a><a href="build-a-ramp.html"><span>Next</span>Build a ramp</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-tool">Open the tool</a></li><li><a href="#the-screen-at-a-glance">The screen at a glance</a></li><li><a href="#build-a-first-ramp">Build a first ramp</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

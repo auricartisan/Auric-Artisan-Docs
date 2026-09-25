@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrast Checker reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, input, threshold, output, message and keyboard behaviour of the Contrast Checker.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Contrast Checker</a>
+<h2>Contrast Checker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Contrast Checker</a></li>
+<li><a href="check-a-colour-pair.html">Check a colour pair</a></li>
+<li><a href="make-a-pair-pass.html">Make a pair pass</a></li>
+<li><a href="share-a-pair.html">Share a pair</a></li>
+<li><a href="reference.html" aria-current="page">Contrast Checker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Contrast Checker</a></li>
+<li><a href="faq.html">Contrast Checker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Contrast Checker</a> &rsaquo; <a href="README.html">Contrast Checker documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Contrast Checker reference</h1>
+<p class="lede">Every control, input, threshold, output, message and keyboard behaviour of the Contrast Checker.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Text colour</strong> swatch</td><td>Opens the system colour picker; writes uppercase hex into the field</td><td>Any colour</td><td><code>#1a1400</code></td></tr>
+<tr><td><strong>Text colour</strong> hex field</td><td>Typed or pasted text colour</td><td>3- or 6-digit hex, with or without <code>#</code></td><td><code>#1A1400</code></td></tr>
+<tr><td>Swap button</td><td>Exchanges text and background</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Background colour</strong> swatch</td><td>Opens the system colour picker</td><td>Any colour</td><td><code>#f7f3e6</code></td></tr>
+<tr><td><strong>Background colour</strong> hex field</td><td>Typed or pasted background colour</td><td>3- or 6-digit hex, with or without <code>#</code></td><td><code>#F7F3E6</code></td></tr>
+<tr><td><strong>Make it pass AA</strong></td><td>Moves the text colour to the nearest value that reaches 4.5:1</td><td>Shown only when body text fails AA</td><td>—</td></tr>
+<tr><td><strong>Copy link</strong></td><td>Copies the address, which carries both colours</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p>The swatches are your browser&#39;s own colour input, not the site&#39;s custom colour picker, so the swatch always shows the value that is being graded.</p>
+<h2 id="outputs">Outputs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Output</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Contrast ratio</strong></td><td>The WCAG 2.1 ratio to two decimals, from 1.00:1 to 21.00:1. Shows a dash until the first grading.</td></tr>
+<tr><td>Grade badges</td><td><strong>Pass</strong> or <strong>Fail</strong> for each of the five thresholds below</td></tr>
+<tr><td>Status line</td><td>The result of <strong>Make it pass AA</strong> or <strong>Copy link</strong></td></tr>
+<tr><td>Preview</td><td>Your pair as large text, a body-text paragraph and an &quot;Interface element&quot; chip</td></tr>
+</tbody></table></div>
+<h2 id="thresholds">Thresholds</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Threshold</th></tr></thead>
+<tbody>
+<tr><td><strong>Body text · AA</strong></td><td>4.5:1</td></tr>
+<tr><td><strong>Body text · AAA</strong></td><td>7:1</td></tr>
+<tr><td><strong>Large text · AA</strong></td><td>3:1</td></tr>
+<tr><td><strong>Large text · AAA</strong></td><td>4.5:1</td></tr>
+<tr><td><strong>UI &amp; graphics</strong></td><td>3:1</td></tr>
+</tbody></table></div>
+<p>A ratio equal to a threshold passes. Badges use the exact ratio; the display is rounded to two decimals. Large text means at least 18.66px bold or 24px regular.</p>
+<h2 id="status-messages">Status messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>When</th></tr></thead>
+<tbody>
+<tr><td>&quot;Adjusted text to #RRGGBB (N.NN:1).&quot;</td><td>After <strong>Make it pass AA</strong></td></tr>
+<tr><td>&quot;Share link copied.&quot;</td><td>After <strong>Copy link</strong>, when the clipboard accepted it</td></tr>
+<tr><td>The full address</td><td>After <strong>Copy link</strong>, when the clipboard is unavailable</td></tr>
+</tbody></table></div>
+<h2 id="address-parameters">Address parameters</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><code>fg</code></td><td>Text colour, hex without <code>#</code></td><td><code>fg=1A1400</code></td></tr>
+<tr><td><code>bg</code></td><td>Background colour, hex without <code>#</code></td><td><code>bg=F7F3E6</code></td></tr>
+</tbody></table></div>
+<p>Invalid values are ignored and the default is used for that colour. The address updates shortly after each change, replacing the current history entry.</p>
+<h2 id="keyboard-and-screen-readers">Keyboard and screen readers</h2>
+<ul>
+<li><code>Tab</code> order: text swatch, text hex field, swap button, background swatch, background hex field, then the action buttons.</li>
+<li>The focus ring is drawn around the whole hex row, so you can always see which field you are in.</li>
+<li>The ratio is a polite live region: a screen reader reads the new ratio after a change without interrupting.</li>
+<li>The status line is a status region, so the outcome of both buttons is announced.</li>
+<li>The swap button is labelled &quot;Swap text and background colours&quot;.</li>
+<li>The questions under <strong>Questions people actually ask</strong> are native disclosures: press <code>Enter</code> or <code>Space</code> to open one.</li>
+</ul>
+<p>There are no custom keyboard shortcuts on this page.</p>
+<h2 id="layout">Layout</h2>
+<ul>
+<li>Wide screens: controls and result side by side, preview across the full width below.</li>
+<li>Under 720 pixels: one column (controls, result, preview), with the swap button turned a quarter turn.</li>
+<li>The page follows the site&#39;s light or dark theme. The preview always shows your own two colours.</li>
+</ul>
+<h2 id="content-below-the-tool">Content below the tool</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>What the numbers mean</strong></td><td>4.5:1, 3:1, 7:1 and the definition of large text</td></tr>
+<tr><td><strong>Questions people actually ask</strong></td><td>Four questions: the ratio you need, large text, readability, and disabled controls and logos</td></tr>
+<tr><td><strong>Next</strong></td><td><strong>Check a whole page</strong> (the Analyzer), <strong>Build a palette</strong> (Basic tools) and <strong>Learn the rules</strong> (the Learn library)</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="share-a-pair.html"><span>Previous</span>Share a pair</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting the Contrast Checker</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#controls">Controls</a></li><li><a href="#outputs">Outputs</a></li><li><a href="#thresholds">Thresholds</a></li><li><a href="#status-messages">Status messages</a></li><li><a href="#address-parameters">Address parameters</a></li><li><a href="#keyboard-and-screen-readers">Keyboard and screen readers</a></li><li><a href="#layout">Layout</a></li><li><a href="#content-below-the-tool">Content below the tool</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

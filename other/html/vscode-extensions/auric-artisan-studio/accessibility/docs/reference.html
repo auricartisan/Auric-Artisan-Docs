@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Accessibility reference — Auric Artisan Docs</title>
+<meta name="description" content="Every command, keybinding, setting, view, menu entry and theme colour Auric Accessibility contributes.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html">Manual evidence</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="reference.html" aria-current="page">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>Auric Accessibility reference</h1>
+<p class="lede">Every command, keybinding, setting, view, menu entry and theme colour Auric Accessibility contributes.</p>
+<p>Facts for Auric Accessibility 0.1.0 (<code>auric-artisan.auric-a11y</code>). It needs VS Code 1.74 or newer and starts when VS Code finishes loading. Categories: Linters, Programming Languages, Other.</p>
+<h2 id="keybindings">Keybindings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys (Windows, Linux)</th><th>Keys (macOS)</th><th>Command</th><th>Active when</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>.</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>.</code></td><td>Workstation: Command Center</td><td>Auric Accessibility is not suppressed (it is always the host when installed)</td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>A</code></td><td>Inspect Accessibility of Element</td><td>The editor has focus</td></tr>
+</tbody></table></div>
+<h2 id="commands">Commands</h2>
+<p>All titles appear in the Command Palette after <code>Auric Artisan:</code>, except the two marked row action.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Title</th><th>Command ID</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Open Accessibility Studio</td><td><code>auricA11y.openStudio</code></td><td>Opens the Studio on Home</td></tr>
+<tr><td>Workstation: Command Center</td><td><code>auricA11y.commandCenter</code></td><td>Opens the Command Center list</td></tr>
+<tr><td>Open Rulebook &amp; Knowledge Database</td><td><code>auricA11y.openKnowledgeBase</code></td><td>Searches rules, WCAG criteria, manual checks, policies and articles</td></tr>
+<tr><td>Build Workspace Knowledge Database (JSON + Markdown)</td><td><code>auricA11y.writeKnowledgeDatabase</code></td><td>Writes <code>knowledge.json</code>, <code>rulebook.md</code> and an overrides template</td></tr>
+<tr><td>Open Unified Icon Studio</td><td><code>auricA11y.openIconStudio</code></td><td>Opens the combined Auric icon library</td></tr>
+<tr><td>Scan Project for Accessibility (Use Cache)</td><td><code>auricA11y.scanProject</code></td><td>Scans the project, reusing a fresh cache</td></tr>
+<tr><td>Force Rescan Project and Refresh Cache</td><td><code>auricA11y.rescanProject</code></td><td>Re-reads the project and rewrites the cache</td></tr>
+<tr><td>Generate Agent-Ready Remediation Plan</td><td><code>auricA11y.generateAiPlan</code></td><td>Writes the local remediation plan</td></tr>
+<tr><td>Clear Workspace Scan Cache</td><td><code>auricA11y.clearScanCache</code></td><td>Deletes <code>scan-cache.json</code></td></tr>
+<tr><td>Search Accessibility Issues</td><td><code>auricA11y.searchIssues</code></td><td>Filters the Project Issues view</td></tr>
+<tr><td>Group Accessibility Issues (Type / File / Severity)</td><td><code>auricA11y.groupIssues</code></td><td>Groups the Project Issues view</td></tr>
+<tr><td>Open WCAG Documentation</td><td><code>auricA11y.openIssueDocs</code></td><td>Row action: opens the criterion&#39;s Understanding page</td></tr>
+<tr><td>Open Issue in Contrast Studio</td><td><code>auricA11y.openIssueInStudio</code></td><td>Row action: opens a contrast or colour-vision finding in the Contrast Studio</td></tr>
+<tr><td>Clear Accessibility Issue Search</td><td><code>auricA11y.clearIssueSearch</code></td><td>Removes the Project Issues filter</td></tr>
+<tr><td>Check Contrast of Selection</td><td><code>auricA11y.checkContrast</code></td><td>Opens the Contrast Studio with the selected colour as text</td></tr>
+<tr><td>Inspect Accessibility of Element</td><td><code>auricA11y.inspectAccessibility</code></td><td>Shows the Inspect card at the cursor</td></tr>
+<tr><td>Mark Line as Intentional Branding (Toggle)</td><td><code>auricA11y.markBranding</code></td><td>Adds or removes <code>auric-brand-line</code> on the current lines</td></tr>
+</tbody></table></div>
+<h2 id="views">Views</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>View</th><th>ID</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Overview</td><td><code>auricA11yHome</code></td><td>In the <strong>Auric Accessibility</strong> Activity Bar container; the accessibility dashboard</td></tr>
+<tr><td>Project Issues</td><td><code>auricA11yIssues</code></td><td>The findings tree, with a badge</td></tr>
+<tr><td>Color Picker</td><td><code>auricA11yPickerView</code></td><td>Only when Auric Color is installed; collapsed by default</td></tr>
+</tbody></table></div>
+<h2 id="menus">Menus</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Menu</th><th>Entries</th></tr></thead>
+<tbody>
+<tr><td>Editor right-click</td><td><strong>Inspect Accessibility of Element</strong> (Inspect languages); <strong>Check Contrast of Selection</strong> (with a selection); <strong>Mark Line as Intentional Branding (Toggle)</strong> (Inspect languages and Markdown)</td></tr>
+<tr><td>Project Issues title bar</td><td><strong>Search</strong>, <strong>Group</strong>, <strong>Scan</strong>, <strong>Open Accessibility Studio</strong>, <strong>Collapse All</strong>; <strong>Generate Agent-Ready Remediation Plan</strong> in <strong>…</strong></td></tr>
+<tr><td>Project Issues rows</td><td><strong>Open WCAG Documentation</strong> (WCAG rows); <strong>Open Issue in Contrast Studio</strong> (contrast and colour-vision rows)</td></tr>
+</tbody></table></div>
+<p>Inspect languages: HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript, TypeScript, JSX, TSX, CSS, SCSS, Less, Sass, PostCSS and Stylus.</p>
+<h2 id="settings">Settings</h2>
+<p>Auric Accessibility has 24 settings. Search <code>auricA11y</code> in <strong>File › Preferences › Settings</strong>. Many can also be changed in Studio › Settings.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricA11y.appearance.accent</code></td><td>string</td><td><code>gold</code></td><td>The Studio&#39;s accent: a preset ID or a hex colour. Stored in user settings. See <a href="../../docs/appearance.html">Appearance</a>.</td></tr>
+<tr><td><code>auricA11y.inspect.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Turns Inspect (hover card and command) on or off.</td></tr>
+<tr><td><code>auricA11y.inspect.onHover</code></td><td>boolean</td><td><code>true</code></td><td>Shows the Inspect card automatically on hover; when off, only through the command.</td></tr>
+<tr><td><code>auricA11y.contrast.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Flags text and background pairs below the target.</td></tr>
+<tr><td><code>auricA11y.contrast.standard</code></td><td><code>wcag2</code>, <code>apca</code>, <code>both</code></td><td><code>wcag2</code></td><td>The contrast model.</td></tr>
+<tr><td><code>auricA11y.contrast.apcaThreshold</code></td><td>number, 15–106</td><td><code>60</code></td><td>Minimum APCA Lc when APCA is used.</td></tr>
+<tr><td><code>auricA11y.contrast.threshold</code></td><td>number, 1–21</td><td><code>4.5</code></td><td>Minimum WCAG 2.x ratio.</td></tr>
+<tr><td><code>auricA11y.contrast.severity</code></td><td><code>error</code>, <code>warning</code>, <code>information</code>, <code>hint</code></td><td><code>warning</code></td><td>Problems severity for failing contrast.</td></tr>
+<tr><td><code>auricA11y.contrast.flagCvdRisk</code></td><td>boolean</td><td><code>true</code></td><td>Adds colour-vision risk hints.</td></tr>
+<tr><td><code>auricA11y.contrast.checkPageBackground</code></td><td>boolean</td><td><code>true</code></td><td>Grades colour-only rules against the page background, as softer hints.</td></tr>
+<tr><td><code>auricA11y.a11y.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Turns WCAG diagnostics in the editor on or off.</td></tr>
+<tr><td><code>auricA11y.a11y.profile</code></td><td><code>2.0</code>, <code>2.1</code>, <code>2.2</code>, <code>3.0-draft</code></td><td><code>2.2</code></td><td>The audit profile. Rescan after changing it.</td></tr>
+<tr><td><code>auricA11y.branding.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Honours <code>auric-brand-…</code> marks in the editor.</td></tr>
+<tr><td><code>auricA11y.data.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Creates and uses the <code>.auric-artisan</code> folder. Shared.</td></tr>
+<tr><td><code>auricA11y.data.folderName</code></td><td>string</td><td><code>.auric-artisan</code></td><td>The data folder&#39;s name, relative to the workspace. Shared.</td></tr>
+<tr><td><code>auricA11y.scan.cache.enabled</code></td><td>boolean</td><td><code>true</code></td><td>Reuses the scan cache instead of rescanning. Shared.</td></tr>
+<tr><td><code>auricA11y.scan.cache.maxAgeMinutes</code></td><td>number, 0 or more</td><td><code>1440</code></td><td>Maximum cache age; <code>0</code> keeps it until a forced or automatic scan. Shared.</td></tr>
+<tr><td><code>auricA11y.scan.live</code></td><td>boolean</td><td><code>true</code></td><td>Re-grades the project as you type, from memory.</td></tr>
+<tr><td><code>auricA11y.scan.liveDelayMs</code></td><td>number, 200–5000</td><td><code>700</code></td><td>Wait after the last keystroke before a live re-grade.</td></tr>
+<tr><td><code>auricA11y.scan.autoScan</code></td><td>boolean</td><td><code>false</code></td><td>Rescans from disk after file changes. Shared.</td></tr>
+<tr><td><code>auricA11y.scan.autoScanOnStartup</code></td><td>boolean</td><td><code>false</code></td><td>With auto scan on, also rescans soon after the workspace opens. Shared.</td></tr>
+<tr><td><code>auricA11y.scan.autoScanDelayMs</code></td><td>number, 250–60000</td><td><code>1800</code></td><td>Wait after a file change before an automatic scan. Shared.</td></tr>
+<tr><td><code>auricA11y.scan.maxFiles</code></td><td>number</td><td><code>4000</code></td><td>Most files one scan reads. Shared.</td></tr>
+<tr><td><code>auricA11y.scan.exclude</code></td><td>glob</td><td>see below</td><td>Paths to skip in scans. Shared.</td></tr>
+</tbody></table></div>
+<p>The default of <code>scan.exclude</code> is <code>**/{node_modules,dist,build,out,.git,vendor,coverage,.auric-artisan}/**</code>. &quot;Shared&quot; means the value is read suite-wide when other Studio extensions are installed; see <a href="../../docs/reference.html#shared-settings">Shared settings</a>.</p>
+<h2 id="theme-colours">Theme colours</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Colour ID</th><th>Dark</th><th>Light</th><th>High contrast</th><th>High contrast light</th></tr></thead>
+<tbody>
+<tr><td><code>auricA11y.branding.foreground</code></td><td><code>#F06595</code></td><td><code>#C2255C</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+<tr><td><code>auricA11y.branding.background</code></td><td><code>#F0659522</code></td><td><code>#C2255C1A</code></td><td>transparent</td><td>transparent</td></tr>
+<tr><td><code>auricA11y.branding.border</code></td><td><code>#F0659580</code></td><td><code>#C2255C80</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+<tr><td><code>auricA11y.branding.icon</code></td><td><code>#F06595</code></td><td><code>#C2255C</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+</tbody></table></div>
+<p><code>auricA11y.branding.icon</code> colours the Branding group in the Project Issues view.</p>
+<h2 id="studio-spaces">Studio spaces</h2>
+<p>On its own: <strong>Home</strong>, <strong>Check</strong> (Findings, Contrast, Preview) and <strong>Settings</strong> (Appearance, Project data, Scan engine, Scope, Accessibility audit, Contrast). As a Workstation host, it adds the spaces of the other installed extensions.</p>
+<h2 id="diagnostics-codes">Diagnostics codes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>WCAG 1.1.1</code> and so on</td><td>A WCAG rule finding, linked to the criterion</td></tr>
+<tr><td><code>low-contrast</code>, <code>apca-low</code>, <code>cvd-risk</code></td><td>Contrast findings</td></tr>
+<tr><td><code>branding:contrast</code>, <code>branding:apca</code>, <code>branding:cvd</code></td><td>Classified as branding</td></tr>
+</tbody></table></div>
+<h2 id="files-it-writes">Files it writes</h2>
+<p><code>.auric-artisan/scan-cache.json</code>, <code>settings.json</code>, the health record (<code>health.json</code>, <code>health.sarif</code>, <code>health-history.json</code>) after scans, <code>ai-remediation-plan.md</code> and <code>.json</code>, and the knowledge files. See <a href="../../docs/scanning.html#the-auric-artisan-folder">The .auric-artisan folder</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="../../docs/reference.html">Studio reference</a></li>
+<li><a href="../others/shortcuts.html">Shortcuts</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="rules.html"><span>Previous</span>Rules</a><a href="troubleshooting.html"><span>Next</span>Auric Accessibility troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#keybindings">Keybindings</a></li><li><a href="#commands">Commands</a></li><li><a href="#views">Views</a></li><li><a href="#menus">Menus</a></li><li><a href="#settings">Settings</a></li><li><a href="#theme-colours">Theme colours</a></li><li><a href="#studio-spaces">Studio spaces</a></li><li><a href="#diagnostics-codes">Diagnostics codes</a></li><li><a href="#files-it-writes">Files it writes</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

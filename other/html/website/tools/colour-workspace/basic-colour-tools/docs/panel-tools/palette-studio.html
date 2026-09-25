@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palette Studio — Auric Artisan Docs</title>
+<meta name="description" content="Generate palettes from harmony, WCAG and accessibility modes, lock and edit colours, extract colours from an image, check contrast and colour-vision behaviour, and export.">
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../../index.html">Home</a><a href="../../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Basic Color Tools documentation</a>
+<h2>Panel tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="collage-maker.html">Collage Maker (panel)</a></li>
+<li><a href="colour-battle.html">Color Battle</a></li>
+<li><a href="colour-picker.html">Color Picker</a></li>
+<li><a href="gradient-maker.html">Gradient Maker</a></li>
+<li><a href="palette-remix.html">Palette Remix</a></li>
+<li><a href="palette-studio.html" aria-current="page">Palette Studio</a></li>
+<li><a href="quick-converter.html">Quick Converter</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../../README.html">The website</a> &rsaquo; <a href="../../../../README.html">Website tools</a> &rsaquo; <a href="../../../README.html">Colour workspace</a> &rsaquo; <a href="../../README.html">Basic Color Tools</a> &rsaquo; <a href="../README.html">Basic Color Tools documentation</a> &rsaquo; <a href="README.html">Panel tools</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Palette Studio</h1>
+<p class="lede">Generate palettes from harmony, WCAG and accessibility modes, lock and edit colours, extract colours from an image, check contrast and colour-vision behaviour, and export.</p>
+<p>Palette Studio is a live palette generator. It shows your palette as tall colour strips that you can regenerate, lock, reorder, edit and remove. Around the strips are analysis tabs for contrast, lightness and chroma curves, colour-vision previews and colour details, and a set of export buttons.</p>
+<p>It has thirteen generation modes. Ten are colour-harmony shapes. Three build <strong>role palettes</strong> designed for accessible interfaces: each colour has a job (page canvas, body ink, primary surface, text on the primary surface, focus ring and so on) and the tool picks lightness so the pairs meet a contrast target.</p>
+<p>Palette Studio is in the <strong>Generate</strong> category at the <strong>Basic</strong> level.</p>
+<h2 id="open-it">Open it</h2>
+<p>In the Workspace view, select <strong>Palette Studio</strong> in <strong>Open a tool</strong>. In the Catalogue, select its card. It opens with five colours generated in <strong>Random</strong> mode.</p>
+<h2 id="screen-tour">Screen tour</h2>
+<h3 id="sidebar">Sidebar</h3>
+<ul>
+<li><strong>Harmony</strong>: the generation mode. Changing it regenerates the palette straight away.</li>
+<li><strong>Generate</strong>, <strong>+ Add</strong> and <strong>From Image</strong>.</li>
+<li><strong>Accessibility Generate</strong>: three shortcut buttons, <strong>WCAG AA</strong>, <strong>WCAG AAA</strong> and <strong>Accessibility</strong>, that switch the mode and generate in one step.</li>
+<li><strong>CVD Preview</strong>: shows the strips as they may appear with a colour-vision deficiency.</li>
+<li><strong>Export</strong>: <strong>Share</strong>, <strong>CSS</strong>, <strong>SCSS</strong>, <strong>TW</strong>, <strong>JSON</strong>, <strong>SVG</strong>, <strong>PNG</strong> and <strong>ASE</strong>.</li>
+</ul>
+<h3 id="main-area-tabs">Main area tabs</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Palette</strong></td><td>The colour strips, and a hint line: <em>Space generate · Click options · Click hex edit · Drag reorder</em>.</td></tr>
+<tr><td><strong>Contrast Matrix</strong></td><td>The WCAG contrast ratio of every pair of colours.</td></tr>
+<tr><td><strong>WCAG Pairs</strong></td><td>Text-and-background pairs with their ratio, level and pass or fail.</td></tr>
+<tr><td><strong>Curves</strong></td><td>OKLCH lightness and chroma across the palette, a hue wheel, and a CIE 1931 chromaticity diagram.</td></tr>
+<tr><td><strong>CVD Comparison</strong></td><td>The palette under normal vision and four colour-vision deficiencies, one row each.</td></tr>
+<tr><td><strong>Color Info</strong></td><td>Every colour&#39;s values in several colour spaces.</td></tr>
+</tbody></table></div>
+<h3 id="a-colour-strip">A colour strip</h3>
+<p>Each strip shows its HEX code near the bottom and, under it, a small detail: the colour&#39;s role in a role palette, the simulation name while a CVD preview is on, or <strong>OKLCh</strong> otherwise. Hover over a strip (or tap it on a touch screen) to show its buttons, stacked at the top:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Tooltip</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Padlock</td><td><strong>Lock</strong> / <strong>Unlock</strong></td><td>Keeps the colour when you generate again. Locked strips always show their buttons.</td></tr>
+<tr><td>Copy</td><td><strong>Copy hex</strong></td><td>Copies the HEX code.</td></tr>
+<tr><td>Gear</td><td><strong>Adjust</strong></td><td>Opens the <strong>Adjust OKLCh</strong> sliders for this colour.</td></tr>
+<tr><td><strong>✕</strong></td><td><strong>Remove</strong></td><td>Removes the colour. Only shown while the palette has more than two colours.</td></tr>
+</tbody></table></div>
+<p>The strip under your pointer widens slightly so you can see it better.</p>
+<h2 id="generation-modes">Generation modes</h2>
+<p>All modes pick colours in OKLCH, a colour space where equal steps look roughly equally different, and add a little random variation so each press of <strong>Generate</strong> gives a fresh result. Each press starts from a new random base hue.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Mode</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><strong>Random</strong></td><td>Unrelated colours of medium lightness and moderate chroma.</td></tr>
+<tr><td><strong>Analogous</strong></td><td>Neighbouring hues about 30 degrees apart, getting lighter across the palette.</td></tr>
+<tr><td><strong>Complementary</strong></td><td>Colours alternating between a base hue and its opposite.</td></tr>
+<tr><td><strong>Triadic</strong></td><td>Colours from three hues 120 degrees apart.</td></tr>
+<tr><td><strong>Monochromatic</strong></td><td>One hue, from dark to light.</td></tr>
+<tr><td><strong>Split complementary</strong></td><td>A base hue and the two hues either side of its opposite (150 and 210 degrees away).</td></tr>
+<tr><td><strong>Tetradic</strong></td><td>Four hues 90 degrees apart.</td></tr>
+<tr><td><strong>Compound</strong></td><td>A base hue, a neighbour 30 degrees away, and the opposites of both.</td></tr>
+<tr><td><strong>Shades</strong></td><td>One hue, lightness rising from very dark, low chroma.</td></tr>
+<tr><td><strong>Tints</strong></td><td>One hue, from medium to very light, with chroma fading as the colours get lighter.</td></tr>
+<tr><td><strong>WCAG AA palette</strong></td><td>A role palette whose text pairs reach 4.5:1.</td></tr>
+<tr><td><strong>WCAG AAA palette</strong></td><td>A stricter role palette whose text pairs reach 7:1.</td></tr>
+<tr><td><strong>Accessibility palette</strong></td><td>A low-chroma canvas, near-black ink, and blue, orange, green and purple surfaces spread apart for colour-vision differences, each with a readable ink.</td></tr>
+</tbody></table></div>
+<h3 id="role-palettes">Role palettes</h3>
+<p>The two WCAG modes produce these roles, in this order: <strong>Canvas</strong>, <strong>Ink</strong>, <strong>Primary</strong>, <strong>Primary ink</strong>, <strong>Focus</strong>, <strong>Secondary</strong>, <strong>Secondary ink</strong>, <strong>Success</strong>, <strong>Success ink</strong>. The <strong>Accessibility</strong> mode produces <strong>Canvas</strong>, <strong>Ink</strong>, then <strong>CVD blue</strong>, <strong>CVD blue ink</strong>, <strong>CVD orange</strong>, <strong>CVD orange ink</strong>, <strong>CVD green</strong> and <strong>CVD green ink</strong>.</p>
+<p>The palette keeps its current number of colours, so a five-colour palette gets the first five roles. To get every role, add colours with <strong>+ Add</strong> (up to nine) and generate again.</p>
+<p>The targets the generator aims for:</p>
+<ul>
+<li>Text roles (the <em>ink</em> colours) aim for 4.5:1 against their surface in <strong>WCAG AA</strong> and <strong>Accessibility</strong> mode, and 7:1 in <strong>WCAG AAA</strong> mode.</li>
+<li>Coloured surfaces aim for at least 3:1 against the canvas (4.5:1 in <strong>Accessibility</strong> mode) so they stand out as UI shapes.</li>
+<li><strong>Focus</strong> aims for 3:1, the WCAG 2.2 contrast for non-text focus indicators.</li>
+</ul>
+<p>The generator searches for a lightness that meets the targets. The <strong>WCAG Pairs</strong> tab shows whether each pair actually passes, so check it rather than assuming.</p>
+<h2 id="tasks">Tasks</h2>
+<h3 id="generate-a-palette-you-like">Generate a palette you like</h3>
+<ol>
+<li>Choose a mode in <strong>Harmony</strong>.</li>
+<li>Select <strong>Generate</strong>, or press <code>Space</code> while the panel is focused and the cursor is not in a text box or list.</li>
+<li>Lock the colours you want to keep. Generate again until the rest fit.</li>
+<li>Drag a strip onto another strip&#39;s position to reorder the palette.</li>
+</ol>
+<p>Result: a palette of two to nine colours in the order you want, with the locked colours unchanged.</p>
+<h3 id="fine-tune-one-colour">Fine-tune one colour</h3>
+<ol>
+<li>Hover over the strip and select <strong>Adjust</strong>. The <strong>Adjust OKLCh</strong> box opens over the strip with three sliders: <strong>L</strong> (lightness, 0 to 1), <strong>C</strong> (chroma, 0 to 0.4) and <strong>H</strong> (hue, 0 to 360 degrees).</li>
+<li>Move the sliders. The strip previews the change as you go.</li>
+<li>Select <strong>Apply</strong> to keep it, or <strong>Cancel</strong> (or select anywhere outside the box) to discard it.</li>
+</ol>
+<p>Alternatively, select the HEX code on the strip to open the site&#39;s colour picker, choose a colour, and confirm it. The strip updates as you pick.</p>
+<p>Result: the colour changes to exactly the value you set; other colours are untouched.</p>
+<h3 id="build-an-accessible-role-palette">Build an accessible role palette</h3>
+<ol>
+<li>Select <strong>+ Add</strong> until the palette has nine colours.</li>
+<li>Select <strong>WCAG AA</strong> under <strong>Accessibility Generate</strong>. The strips show role names such as <strong>Canvas</strong> and <strong>Primary ink</strong>.</li>
+<li>Open the <strong>WCAG Pairs</strong> tab. Read the four figures at the top: <strong>Min pair</strong> (the lowest ratio among the pairs), <strong>AA normal</strong> and <strong>AAA normal</strong> (how many pairs reach 4.5:1 and 7:1), and <strong>CVD min dE</strong> (the smallest colour difference between any two colours under simulated colour-vision deficiency).</li>
+<li>Check the table: each row names a pair (for example <strong>Primary ink on Primary</strong>), shows both colours, the ratio, the WCAG level for normal text (<strong>AAA</strong>, <strong>AA</strong> or <strong>Fail</strong>) and whether the pair meets its own target (<strong>Pass</strong> or <strong>Fail</strong>).</li>
+<li>If a pair fails, select <strong>WCAG AA</strong> again for a new attempt, or lock the colours that pass and regenerate.</li>
+</ol>
+<p>Result: a nine-role palette with a table proving which text and surface pairs pass.</p>
+<h3 id="extract-a-palette-from-an-image">Extract a palette from an image</h3>
+<ol>
+<li>Select <strong>From Image</strong> and choose an image file from your device.</li>
+<li>Wait a moment. The palette is replaced by the image&#39;s dominant colours, most common first, and a message such as <strong>Extracted 5 colors</strong> appears.</li>
+</ol>
+<p>The tool extracts as many colours as the palette currently has (five if it is empty). To extract more, add colours first. The image is scaled down to at most 400 pixels on its longest side for analysis, transparent pixels are ignored, and the colours are found by clustering similar pixels (k-means). The result can differ slightly between runs. Extracted colours are unlocked.</p>
+<p>Result: a palette taken from your picture, ready to lock, edit and export.</p>
+<h2 id="analysis-tabs-in-detail">Analysis tabs in detail</h2>
+<h3 id="contrast-matrix">Contrast Matrix</h3>
+<p>A table with your colours as both rows and columns. Each cell is the WCAG 2.x contrast ratio between the two colours; the diagonal shows a dash. Cells are tinted green for 4.5:1 and above, amber for 3:1 to 4.5:1, and red below 3:1. The note under the table lists the thresholds: 7.0 AAA, 4.5 AA, 3.0 AA Large, below 3.0 Fail.</p>
+<h3 id="wcag-pairs">WCAG Pairs</h3>
+<p>For role palettes the tool pairs each colour with the colour it is meant to sit on. Ink pairs use a 4.5:1 target (7:1 for AAA roles); surface and focus pairs use 3:1. For palettes without roles, each row is <strong>Best text on Color N</strong>: the tool picks whichever of four near-black and near-white inks (#111111, #000000, #FFFFFF, #F8FAFC) gives the highest contrast on that colour, with a 4.5:1 target. The footnote reads: <em>WCAG normal text targets use 4.5:1 for AA and 7:1 for AAA. Focus and non-text UI pairs use 3:1.</em></p>
+<h3 id="curves">Curves</h3>
+<ul>
+<li><strong>Lightness (OKLCh L) across palette</strong>: a line from the first colour to the last, scale 0 to 1.</li>
+<li><strong>Chroma (OKLCh C) across palette</strong>: scale 0 to 0.4.</li>
+<li><strong>Hue distribution — Hue wheel</strong>: each colour marked on a hue ring.</li>
+<li><strong>CIE 1931 chromaticity positions</strong>: each colour on the chromaticity diagram, with the sRGB triangle drawn as a dashed gold line.</li>
+</ul>
+<p>A smooth lightness line usually means an even ramp; a jagged one means some colours may be hard to tell apart in greyscale.</p>
+<h3 id="cvd-comparison">CVD Comparison</h3>
+<p>Five rows: <strong>Normal vision</strong>, then <strong>deuteranopia</strong>, <strong>protanopia</strong>, <strong>tritanopia</strong> and <strong>achromatopsia</strong>, each showing the whole palette as simulated with HEX labels. Use it to spot colours that merge for some viewers.</p>
+<h3 id="color-info">Color Info</h3>
+<p>One card per colour with <strong>HEX</strong>, <strong>RGB</strong>, <strong>HSL</strong>, <strong>OKLCh</strong> (lightness as 0 to 100, chroma, hue), <strong>Lab</strong>, <strong>Luminance</strong> (WCAG relative luminance, 0 to 1), and for role palettes <strong>Role</strong> and <strong>Target</strong>.</p>
+<h2 id="cvd-preview">CVD Preview</h2>
+<p>The <strong>CVD Preview</strong> list recolours the strips to simulate <strong>Deuteranopia</strong>, <strong>Protanopia</strong>, <strong>Tritanopia</strong> or <strong>Achromatopsia</strong>. It changes only what you see: the HEX codes, the exports and the analysis tabs keep the real colours. Choose <strong>Normal vision</strong> to turn it off.</p>
+<h2 id="export">Export</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Tooltip</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Share</strong></td><td>Copy share URL</td><td>Copies a link to Basic Color Tools that records the palette&#39;s HEX codes, for example <code>https://auricartisan.com/tool/basic-tools/#palette=D3AF37-1A1A2E-F5DEB3</code>.</td></tr>
+<tr><td><strong>CSS</strong></td><td>Copy CSS vars</td><td>Copies <code>:root { --color-1: #…; … }</code>.</td></tr>
+<tr><td><strong>SCSS</strong></td><td>Copy SCSS</td><td>Copies one <code>$color-1: #…;</code> line per colour.</td></tr>
+<tr><td><strong>TW</strong></td><td>Copy Tailwind</td><td>Copies a Tailwind <code>extend</code> snippet with <code>palette-1</code>, <code>palette-2</code> … keys.</td></tr>
+<tr><td><strong>JSON</strong></td><td>Copy JSON</td><td>Copies an array with each colour&#39;s HEX, role details, RGB, OKLCH, Lab, luminance, best text colour and lock state.</td></tr>
+<tr><td><strong>SVG</strong></td><td>Download SVG</td><td>Downloads <code>palette.svg</code>, 1200 by 240 pixels, equal stripes with HEX labels.</td></tr>
+<tr><td><strong>PNG</strong></td><td>Download PNG</td><td>Downloads <code>palette.png</code>, 1200 by 240 pixels, equal stripes with HEX labels.</td></tr>
+<tr><td><strong>ASE</strong></td><td>Copy ASE-style txt</td><td>Copies plain text, one line per colour: <code>Color 1</code>, the HEX code and <code>RGB(r, g, b)</code>, separated by tabs.</td></tr>
+</tbody></table></div>
+<p>The <strong>ASE</strong> button copies text in a tab-separated layout, not a binary Adobe Swatch Exchange file. Paste it into a text file or spreadsheet.</p>
+<p>The share link stores the codes in the part of the address after <code>#</code>. Opening the link opens Basic Color Tools; the palette is not rebuilt from the link automatically, so treat it as a record of the codes you can copy back into a tool such as Palette Remix.</p>
+<p>Examples of the copied code are in <a href="../import-export-and-library.html">Import, export and the Library</a>.</p>
+<h2 id="save-to-and-restore-from-the-library">Save to and restore from the Library</h2>
+<p>With Palette Studio focused, select <strong>Save to Library</strong> to save the palette with its harmony mode and CVD preview setting. When you open a saved palette in Basic Color Tools later, it reopens in Palette Studio and a message such as <strong>Loaded 5 colors from library</strong> appears.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Harmony</strong></td><td>Sets the generation mode and regenerates.</td><td>13 modes (see above)</td><td><strong>Random</strong></td></tr>
+<tr><td><strong>Generate</strong></td><td>Replaces every unlocked colour.</td><td>—</td><td>—</td></tr>
+<tr><td><code>Space</code></td><td>Same as <strong>Generate</strong> when the panel is focused.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>+ Add</strong></td><td>Adds a random colour at the end.</td><td>Up to 9 colours; message <strong>Max 9</strong></td><td>—</td></tr>
+<tr><td><strong>From Image</strong></td><td>Extracts the palette from an image file.</td><td>Any image type the browser can open</td><td>—</td></tr>
+<tr><td><strong>WCAG AA</strong></td><td>Switches to <strong>WCAG AA palette</strong> and generates.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>WCAG AAA</strong></td><td>Switches to <strong>WCAG AAA palette</strong> and generates.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Accessibility</strong></td><td>Switches to <strong>Accessibility palette</strong> and generates.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>CVD Preview</strong></td><td>Simulates colour-vision deficiency on the strips.</td><td>Normal vision, Deuteranopia, Protanopia, Tritanopia, Achromatopsia</td><td>Normal vision</td></tr>
+<tr><td>Lock</td><td>Keeps a colour when generating.</td><td>On or off</td><td>Off</td></tr>
+<tr><td>Copy hex</td><td>Copies one colour&#39;s HEX code.</td><td>—</td><td>—</td></tr>
+<tr><td>Adjust</td><td>Opens OKLCH sliders for one colour.</td><td>L 0–1 (step 0.005), C 0–0.4 (step 0.005), H 0–360 (step 1)</td><td>The colour&#39;s current values</td></tr>
+<tr><td>Remove</td><td>Removes one colour.</td><td>At least 2 colours remain; message <strong>Min 2 swatches</strong></td><td>—</td></tr>
+<tr><td>HEX label</td><td>Opens the site colour picker for that colour.</td><td>Any colour</td><td>—</td></tr>
+<tr><td>Drag a strip</td><td>Reorders the palette.</td><td>—</td><td>—</td></tr>
+<tr><td>Export buttons</td><td>Copy or download the palette.</td><td>See the Export table</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="accuracy-and-limits">Accuracy and limits</h2>
+<ul>
+<li>Contrast ratios use the WCAG 2.x relative-luminance formula on sRGB values.</li>
+<li>Colour-vision previews use simple simulation matrices. They show the general effect, not exactly what any individual sees.</li>
+<li>The WCAG and accessibility modes aim for their targets but are not guaranteed to reach every one; the <strong>WCAG Pairs</strong> tab is the check.</li>
+<li>OKLCH values outside the sRGB range are clipped to the nearest displayable colour, so a requested chroma may not be reached.</li>
+<li>Image extraction samples a scaled-down copy of the image and uses random starting points, so results can vary slightly.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="README.html">Panel tools</a></li>
+<li><a href="palette-remix.html">Palette Remix</a> for variations of a palette you already have</li>
+<li><a href="colour-battle.html">Color Battle</a> to compare two palettes</li>
+<li><a href="../colour-tools/harmony-studio.html">Harmony Studio</a> in the Colour Tools workbench</li>
+<li><a href="../import-export-and-library.html">Import, export and the Library</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="palette-remix.html"><span>Previous</span>Palette Remix</a><a href="quick-converter.html"><span>Next</span>Quick Converter</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#screen-tour">Screen tour</a></li><li><a href="#generation-modes">Generation modes</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#analysis-tabs-in-detail">Analysis tabs in detail</a></li><li><a href="#cvd-preview">CVD Preview</a></li><li><a href="#export">Export</a></li><li><a href="#save-to-and-restore-from-the-library">Save to and restore from the Library</a></li><li><a href="#controls">Controls</a></li><li><a href="#accuracy-and-limits">Accuracy and limits</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

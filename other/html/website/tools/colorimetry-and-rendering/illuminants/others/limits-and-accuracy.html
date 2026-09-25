@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Illuminants limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="Which Illuminants readings are standard values, which rest on stand-ins, and what the lab does not compute.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Illuminants</a>
+<h2>Illuminants: supporting pages</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Illuminants shortcuts</a></li>
+<li><a href="glossary.html">Illuminants glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Illuminants limits and accuracy</a></li>
+<li><a href="privacy.html">Illuminants privacy</a></li>
+<li><a href="release-notes.html">Illuminants release notes</a></li>
+<li><a href="related.html">Related to Illuminants</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Illuminants</a> &rsaquo; <a href="README.html">Illuminants: supporting pages</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Illuminants limits and accuracy</h1>
+<p class="lede">Which Illuminants readings are standard values, which rest on stand-ins, and what the lab does not compute.</p>
+<p>The lab is a reference calculator that runs in your browser. It is not calibrated measurement software and not a substitute for official CIE or IES tools. This page says what each kind of reading rests on.</p>
+<h2 id="standard-values-you-can-rely-on">Standard values you can rely on</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Reading</th><th>Rests on</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>x, y, XYZ of A, D50, D55, D65, D75, E and blackbody sources</td><td>CIE 1931 2° colour matching functions (verbatim, 5 nm, 380–780 nm)</td><td>The D series is reconstructed from the verbatim daylight basis and lands on the published chromaticities to better than 0.0003</td></tr>
+<tr><td>CCT and Duv</td><td>Ohno&#39;s method over a Planckian locus computed through the same observer</td><td>Reported as valid only for 1,000–100,000 K and Duv within ±0.05</td></tr>
+<tr><td>Chromaticity in xy, u′v′ and uv</td><td>Exact conversions</td><td>—</td></tr>
+<tr><td>Chromatic adaptation matrices</td><td>Published Bradford, CAT02, CAT16, HPE and Sharp matrices</td><td>XYZ scaling is included as the simplest case, not as a model of vision</td></tr>
+<tr><td>Dominant wavelength and purity</td><td>The spectral locus of the 2° observer, from the D65 white</td><td>Undefined (shown as a dash) when the light is almost white</td></tr>
+<tr><td>Monte Carlo uncertainty</td><td>JCGM 101:2008 method</td><td>Only as good as the budget you enter; inputs are treated as uncorrelated</td></tr>
+</tbody></table></div>
+<h2 id="readings-that-rest-on-stand-ins">Readings that rest on stand-ins</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Reading</th><th>Why it is not a standard value</th></tr></thead>
+<tbody>
+<tr><td>Anything for F1 to F12 (spectrum, x, y, CCT, CRI)</td><td>The CIE fluorescent tables are not held; the spectra are smooth stand-ins and the mercury lines are not in the right places</td></tr>
+<tr><td>CRI Ra and R1 to R14</td><td>The 14 CIE 13.3 test colour samples are approximations</td></tr>
+<tr><td>Metamerism index</td><td>Uses the same approximate test samples</td></tr>
+<tr><td>Surface appearance</td><td>Uses eight simple educational reflectance curves, not measured materials</td></tr>
+</tbody></table></div>
+<p>The lab labels these wherever they appear (&quot;stand-in&quot;, &quot;not a standard value&quot;).</p>
+<h2 id="not-computed-at-all">Not computed at all</h2>
+<ul>
+<li><strong>IES TM-30</strong> (Rf, Rg and the colour vector graphic): the 99 colour evaluation samples are not held.</li>
+<li><strong>CIE S 026 α-opic quantities</strong> (melanopic EDI and related ratios): the action spectra are not held.</li>
+<li><strong>The CIE 1964 10° observer</strong>: its colour matching functions are not held.</li>
+<li><strong>MacAdam ellipses</strong>: the measured ellipse parameters are not held.</li>
+<li><strong>CIE FL3, HP and LED illuminant families</strong>: their tables are not held.</li>
+</ul>
+<h2 id="precision-notes">Precision notes</h2>
+<ul>
+<li>The Lab tab integrates at 5 nm over 380–780 nm. The source tables are tabulated at 5 nm (the daylight basis at 10 nm), so choosing 1 nm on the Methods tab does not add information; the Methods tab shows the deltas so you can see this.</li>
+<li>The sRGB swatches and HEX values are display previews. A white point shown as a swatch is not a calibrated target.</li>
+<li>Summary figures are rounded for display (CCT to the nearest kelvin, x and y to five decimals, Duv to five decimals).</li>
+<li>The kelvin values in the illuminant list are nominal labels; the computed CCT can differ slightly.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Illuminants glossary</a><a href="privacy.html"><span>Next</span>Illuminants privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#standard-values-you-can-rely-on">Standard values you can rely on</a></li><li><a href="#readings-that-rest-on-stand-ins">Readings that rest on stand-ins</a></li><li><a href="#not-computed-at-all">Not computed at all</a></li><li><a href="#precision-notes">Precision notes</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

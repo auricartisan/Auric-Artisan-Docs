@@ -1,0 +1,67 @@
+==============================================================================
+PALETTE LIBRARY FAQ
+==============================================================================
+Short answers to common questions about the Palette Library.
+Area: Website › Library › Colour libraries › Palette Library   Updated: 2026-09-25
+
+ARE THERE REALLY FIVE MILLION PALETTES?
+=======================================
+
+Yes. Each of the 5,000,000 palettes is defined by its number and worked out
+when you view it. The same id always gives the same five colours.
+
+WHY NOT STORE THEM?
+===================
+
+Written out in full, the collection was 3.9 GB. Working palettes out as you
+scroll keeps the page fast and the download tiny.
+
+HOW DO I GET BACK TO A PALETTE I FOUND?
+=======================================
+
+Note its id (for example `pal_abc`) and type it into the search box, save it,
+or copy a share link.
+
+WHY DOES A FILTER SAY "DERIVED"?
+================================
+
+Because the page has to work out palettes to test them. 96 matches from 1,500
+derived means it has looked at 1,500 palettes and 96 passed.
+
+CAN EVERY COLOUR IN A PALETTE BE USED AS TEXT ON EVERY OTHER?
+=============================================================
+
+No — not in this library or any other. There is only room for three lightness
+levels that are all 4.5:1 apart, so at most three colours can all be legible
+on each other, and in practice palettes here offer two. Use Pair-by-pair WCAG
+contrast on Inspect to find the pairs that work. See Analyse the collection
+[analyse-the-collection.txt].
+
+WHAT DO THE METHOD NAMES MEAN?
+==============================
+
+They are the palette's generation-method labels: `complementary`, `triadic`,
+`analogous`, `tetradic`, `golden_ratio`, `random` and `monochromatic`. The
+badge on Inspect measures the hue relationship the colours actually have.
+
+WHICH EXPORT SHOULD I USE?
+==========================
+
+  - Pasting into CSS: Copy CSS vars.
+  - A Tailwind project: Copy Tailwind, or Design tokens… › Tailwind Config.
+  - Adobe apps: Download ASE.
+  - A design system or native app: Design tokens….
+  - A presentation or mood board: Download PNG or Download SVG.
+
+DO I NEED AN ACCOUNT?
+=====================
+
+No. Saving keeps palettes in this browser and in your Library without signing
+in.
+
+IS THERE AN API?
+================
+
+Yes. The heading links to the Palette Library API guide, and the Automate this
+note names the call (GET /v1/palette/library, 3 API credits per call). See
+Public API [../../../../../services/public-api/README.txt].

@@ -1,0 +1,1327 @@
+==============================================================================
+REFERENCE: COMMANDS, KEYS AND SETTINGS
+==============================================================================
+Every Auric Artisan Live command, keyboard shortcut, menu entry, view and
+setting, with types, defaults and ranges.
+Area: VS Code extensions › Auric Artisan Live   Updated: 2026-09-25
+
+This page lists everything Auric Artisan Live 0.2.1 contributes to VS Code: 54
+commands, 7 keyboard shortcuts, 3 sidebar views and 103 settings. Command
+titles appear in the Command Palette with the Auric Live: prefix.
+
+COMMANDS
+========
+
+  Command:      Auric Live: Select Active Server
+  ID:           `auricLive.selectServer`
+  Keys:         —
+  What it does: Choose which workspace folder's server the panel and commands
+                act on
+
+  Command:      Auric Live: Toggle Browser Console Capture
+  ID:           `auricLive.toggleConsole`
+  Keys:         —
+  What it does: Turn browser console capture on or off for this session
+
+  Command:      Auric Live: Use HTTPS Certificate and Key
+  ID:           `auricLive.configureCertificate`
+  Keys:         —
+  What it does: Import and validate a PEM certificate and matching private
+                key, then turn HTTPS on
+
+  Command:      Auric Live: Diagnose Project and Runtime
+  ID:           `auricLive.diagnose`
+  Keys:         —
+  What it does: Open a local report on configuration, run targets and
+                prerequisites, with credentials redacted
+
+  Command:      Auric Live: Go Live
+  ID:           `auricLive.goLive`
+  Keys:         `Ctrl` + `Alt` + `L` (macOS `Cmd` + `Alt` + `L`)
+  What it does: Start serving the workspace folder, or reopen a server that is
+                already running
+
+  Command:      Auric Live: Stop Server
+  ID:           `auricLive.stop`
+  Keys:         —
+  What it does: Stop the active server
+
+  Command:      Auric Live: Stop All Servers
+  ID:           `auricLive.stopAll`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `L` (macOS `Cmd` + `Alt` + `Shift`
+                + `L`)
+  What it does: Stop every Auric Live server
+
+  Command:      Auric Live: Restart Server
+  ID:           `auricLive.restart`
+  Keys:         —
+  What it does: Restart the active server
+
+  Command:      Auric Live: Serve This Folder
+  ID:           `auricLive.startHere`
+  Keys:         —
+  What it does: Serve the folder you right-clicked (Explorer only); not in the
+                Command Palette
+
+  Command:      Auric Live: Open with Auric Live
+  ID:           `auricLive.openWithLive`
+  Keys:         —
+  What it does: Start the server if needed and open this file's address
+
+  Command:      Auric Live: Open in Default Browser
+  ID:           `auricLive.openInBrowser`
+  Keys:         —
+  What it does: Open the server's address in your default browser
+
+  Command:      Auric Live: Open Preview Beside
+  ID:           `auricLive.openPreview`
+  Keys:         `Ctrl` + `Alt` + `K` (macOS `Cmd` + `Alt` + `K`)
+  What it does: Open the preview beside the editor
+
+  Command:      Auric Live: Copy Local URL
+  ID:           `auricLive.copyUrl`
+  Keys:         —
+  What it does: Copy the localhost address
+
+  Command:      Auric Live: Copy Network URL
+  ID:           `auricLive.copyNetworkUrl`
+  Keys:         —
+  What it does: Copy an address other devices on your network can use
+
+  Command:      Auric Live: Show Phone QR Code
+  ID:           `auricLive.showQrCode`
+  Keys:         —
+  What it does: Show a locally generated QR code for opening the site on a
+                phone
+
+  Command:      Auric Live: Open Control Panel
+  ID:           `auricLive.openControlPanel`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `I` (macOS `Cmd` + `Alt` + `Shift`
+                + `I`)
+  What it does: Open the Auric Live control panel
+
+  Command:      Auric Live: Open Request Inspector
+  ID:           `auricLive.openInspector`
+  Keys:         —
+  What it does: Open the control panel at its Requests section
+
+  Command:      Auric Live: Clear Request Log
+  ID:           `auricLive.clearRequests`
+  Keys:         —
+  What it does: Empty the request inspector
+
+  Command:      Auric Live: Export Requests as HAR
+  ID:           `auricLive.exportHar`
+  Keys:         —
+  What it does: Save captured requests as a HAR file
+
+  Command:      Auric Live: Copy Request as curl
+  ID:           `auricLive.copyAsCurl`
+  Keys:         —
+  What it does: Copy a captured request as a curl command (Requests view); not
+                in the Command Palette
+
+  Command:      Auric Live: Copy Request as fetch
+  ID:           `auricLive.copyAsFetch`
+  Keys:         —
+  What it does: Copy a captured request as a fetch() call (Requests view); not
+                in the Command Palette
+
+  Command:      Auric Live: Replay Request
+  ID:           `auricLive.replayRequest`
+  Keys:         —
+  What it does: Send a captured request again (Requests view); not in the
+                Command Palette
+
+  Command:      Auric Live: Show Request Detail
+  ID:           `auricLive.showRequestDetail`
+  Keys:         —
+  What it does: Show a captured request's details (Requests view); not in the
+                Command Palette
+
+  Command:      Auric Live: Create Project Config File
+  ID:           `auricLive.createConfigFile`
+  Keys:         —
+  What it does: Write a starter auric.live.json and open it
+
+  Command:      Auric Live: Open Project Config File
+  ID:           `auricLive.openConfigFile`
+  Keys:         —
+  What it does: Open auric.live.json, or offer to create it
+
+  Command:      Auric Live: Open .auricignore-live
+  ID:           `auricLive.openIgnoreFile`
+  Keys:         —
+  What it does: Open .auricignore-live, creating a starter if needed
+
+  Command:      Auric Live: Open Recorded Live Session
+  ID:           `auricLive.openRuntimeRecords`
+  Keys:         —
+  What it does: Open the latest session record, .auric-live/latest.json
+
+  Command:      Auric Live: Reload Configuration
+  ID:           `auricLive.reloadConfig`
+  Keys:         —
+  What it does: Re-read settings and the project file
+
+  Command:      Auric Live: Change Port…
+  ID:           `auricLive.changePort`
+  Keys:         —
+  What it does: Set the port for this session (0 chooses a free one)
+
+  Command:      Auric Live: Change Served Folder…
+  ID:           `auricLive.setRoot`
+  Keys:         —
+  What it does: Pick the folder to serve for this session
+
+  Command:      Auric Live: Toggle Live Reload
+  ID:           `auricLive.toggleLiveReload`
+  Keys:         —
+  What it does: Turn live reload on or off for this session
+
+  Command:      Auric Live: Toggle Mock API
+  ID:           `auricLive.toggleMocks`
+  Keys:         —
+  What it does: Turn mock answering on or off for this session
+
+  Command:      Auric Live: Toggle HTTPS
+  ID:           `auricLive.toggleHttps`
+  Keys:         —
+  What it does: Turn HTTPS on (with a generated certificate) or off for this
+                session
+
+  Command:      Auric Live: Simulate Network Profile…
+  ID:           `auricLive.setThrottle`
+  Keys:         —
+  What it does: Choose a network profile for this session
+
+  Command:      Auric Live: Reveal Development Certificate
+  ID:           `auricLive.revealCertificate`
+  Keys:         —
+  What it does: Show the generated certificate file in your file manager
+
+  Command:      Auric Live: Open Settings
+  ID:           `auricLive.openSettings`
+  Keys:         —
+  What it does: Open the Settings editor filtered to Auric Live
+
+  Command:      Auric Live: Show Log
+  ID:           `auricLive.showLog`
+  Keys:         —
+  What it does: Show the Auric Artisan Live output channel
+
+  Command:      Auric Live: Reload Connected Pages
+  ID:           `auricLive.reloadBrowsers`
+  Keys:         `Ctrl` + `Alt` + `U` (macOS `Cmd` + `Alt` + `U`)
+  What it does: Reload every connected page now
+
+  Command:      Auric Live: Resume Live Reload
+  ID:           `auricLive.resumeLiveReload`
+  Keys:         —
+  What it does: Resume live reload after reload-storm protection paused it
+
+  Command:      Auric Live: Start Framework Dev Server…
+  ID:           `auricLive.startDevServer`
+  Keys:         —
+  What it does: Detect the framework dev server, start it and forward to it;
+                trusted workspaces only
+
+  Command:      Auric Live: Stop Framework Dev Server
+  ID:           `auricLive.stopDevServer`
+  Keys:         —
+  What it does: Stop the dev server and remove the forwarding it added;
+                trusted workspaces only
+
+  Command:      Auric Live: Restart Framework Dev Server
+  ID:           `auricLive.restartDevServer`
+  Keys:         —
+  What it does: Restart the dev server or run target; trusted workspaces only
+
+  Command:      Auric Live: Show Dev Server Output
+  ID:           `auricLive.showDevServerLog`
+  Keys:         —
+  What it does: Show the run target's output
+
+  Command:      Auric Live: Find a Running Backend
+  ID:           `auricLive.detectBackendPort`
+  Keys:         —
+  What it does: Scan common ports for a running backend and offer to forward
+                to it
+
+  Command:      Auric Live: Select Run Target…
+  ID:           `auricLive.selectRunTarget`
+  Keys:         `Ctrl` + `Alt` + `J` (macOS `Cmd` + `Alt` + `J`)
+  What it does: Choose what serves the site: static files, a detected runtime
+                or your own command
+
+  Command:      Auric Live: Add Custom Run Command…
+  ID:           `auricLive.addRunProfile`
+  Keys:         —
+  What it does: Save a command (with any leading environment variables) as a
+                run target
+
+  Command:      Auric Live: Edit Saved Run Commands
+  ID:           `auricLive.editRunProfiles`
+  Keys:         —
+  What it does: Open the auricLive.runProfiles setting
+
+  Command:      Auric Live: Show Detected Run Targets
+  ID:           `auricLive.showRunTargets`
+  Keys:         —
+  What it does: List every run target for the folder, with the reason for
+                each, in the log
+
+  Command:      Auric Live: Add API Proxy Route…
+  ID:           `auricLive.addProxyRoute`
+  Keys:         —
+  What it does: Forward a path prefix to a backend for this session
+
+  Command:      Auric Live: Add Mock API Route…
+  ID:           `auricLive.addMockRoute`
+  Keys:         —
+  What it does: Answer a method and path with a JSON body for this session
+
+  Command:      Auric Live: Open Mock Database
+  ID:           `auricLive.openMockDatabase`
+  Keys:         —
+  What it does: Open the REST database file, or create a sample
+
+  Command:      Auric Live: Refresh
+  ID:           `auricLive.refresh`
+  Keys:         —
+  What it does: Refresh the Servers view (view menu only); not in the Command
+                Palette
+
+  Command:      Auric Live: Open Live Menu
+  ID:           `auricLive.openMenu`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `K` (macOS `Cmd` + `Alt` + `Shift`
+                + `K`)
+  What it does: Open the Auric Live quick menu
+
+  Command:      Auric Live: Focus Auric Live
+  ID:           `auricLive.focus`
+  Keys:         —
+  What it does: Show the Auric Live sidebar
+
+Commands marked "not in the Command Palette" run from the context menus of the
+Servers and Requests views, the Explorer or a view's title bar. Most other
+commands appear in the Command Palette only when a folder is open; Open with
+Auric Live appears when an editor is open.
+
+KEYBOARD SHORTCUTS
+==================
+
+All seven shortcuts work whenever a folder is open. On macOS, `Cmd` replaces
+`Ctrl`.
+
+  Keys (Windows and Linux)       | Keys (macOS)                  | Command
+  -------------------------------+-------------------------------+-----------------------
+  `Ctrl` + `Alt` + `L`           | `Cmd` + `Alt` + `L`           | Go Live
+  `Ctrl` + `Alt` + `Shift` + `L` | `Cmd` + `Alt` + `Shift` + `L` | Stop All Servers
+  `Ctrl` + `Alt` + `K`           | `Cmd` + `Alt` + `K`           | Open Preview Beside
+  `Ctrl` + `Alt` + `Shift` + `K` | `Cmd` + `Alt` + `Shift` + `K` | Open Live Menu
+  `Ctrl` + `Alt` + `J`           | `Cmd` + `Alt` + `J`           | Select Run Target…
+  `Ctrl` + `Alt` + `U`           | `Cmd` + `Alt` + `U`           | Reload Connected Pages
+  `Ctrl` + `Alt` + `Shift` + `I` | `Cmd` + `Alt` + `Shift` + `I` | Open Control Panel
+
+Inside other surfaces:
+
+  Where:        A served page
+  Keys:         `Alt` + `Shift` + `D` (set by `auricLive.dashboard.shortcut`)
+  What they do: Open the in-page dashboard
+
+  Where:        Control panel, Requests section
+  Keys:         `Ctrl` + `F` (`Cmd` + `F` on macOS)
+  What they do: Focus the request search
+
+  Where:        Control panel
+  Keys:         `Escape`
+  What they do: Close request details or an open menu
+
+  Where:        Dashboard tabs
+  Keys:         Arrow keys, `Home`, `End`
+  What they do: Move between tabs
+
+  Where:        Dashboard content
+  Keys:         Arrow keys, `Page Up`, `Page Down`, `Home`, `End`, `Space`,
+                `Shift` + `Space`
+  What they do: Scroll
+
+WHERE COMMANDS APPEAR
+=====================
+
+  - Status bar: Go Live when stopped; the port (opens the Live menu) when
+    running
+  - Servers view title: Go Live, Select Run Target…, Stop All Servers, Open
+    Control Panel; … menu: Refresh, Open Settings, Show Log
+  - A running server in Servers: Inline: Open in Default Browser, Stop Server.
+    Right-click: Restart Server, Open Preview Beside, Copy Local URL, Copy
+    Network URL, Show Phone QR Code
+  - A stopped server in Servers: Inline: Go Live
+  - Requests view title: Clear Request Log, Export Requests as HAR
+  - A request in Requests: Inline: Show Request Detail. Right-click: Replay
+    Request, Copy Request as curl, Copy Request as fetch
+  - Routes and Mocks view title: Add API Proxy Route…, Add Mock API Route…,
+    Find a Running Backend; … menu: Open Mock Database, Open Project Config
+    File, Restart Framework Dev Server, Show Dev Server Output
+  - Explorer, on a folder: Serve This Folder, and the Auric Live submenu
+  - Explorer, on `.html`, `.htm`, `.php`, `.xhtml` or `.md`: Open with Auric
+    Live
+  - Editor and editor tab, for `.html`, `.htm`, `.php` or `.xhtml`: Open with
+    Auric Live
+  - Editor title Run menu › Auric Live: Go Live, Select Run Target…, Add
+    Custom Run Command…, Open Preview Beside, Open in Default Browser, Show
+    Phone QR Code, Restart Framework Dev Server, Stop Server, Open Live Menu
+
+The Auric Live menu
+-------------------
+
+Open Live Menu lists, when a server is running: Open in browser, Open preview
+beside, Show phone QR code, Reload connected pages, Open control panel,
+Restart server and Stop server. When stopped: Go Live and Open control panel.
+Then always: Add an API proxy route, Add a mock API route, Open the mock
+database, Change the run target…, Add a custom command…, the run target's
+Restart the run target, Show its output and Stop it (or Start the framework
+dev server when none is running), Find a backend that is already running,
+Simulate a network profile, Select active server, Toggle browser console
+capture, Diagnose configuration and runtimes, Import an HTTPS certificate,
+Toggle HTTPS, Toggle live reload, Change the port, Change the served folder,
+Open the project config file, Open .auricignore-live, Open recorded session,
+Export requests as HAR, Open settings and Show log. Each shows its current
+value where it has one.
+
+VIEWS
+=====
+
+  View:     Servers
+  Where:    Auric Live sidebar
+  Contents: One entry per workspace folder; expand for root, run target, dev
+            server, upstreams, addresses, live reload, requests, certificate
+            and config file
+
+  View:     Requests
+  Where:    Auric Live sidebar
+  Contents: Recent requests with status, handler and time
+
+  View:     Routes and Mocks
+  Where:    Auric Live sidebar
+  Contents: Proxy rules, mock routes, REST collections and CGI handlers
+
+  View:     Control panel
+  Where:    Editor tab
+  Contents: Overview, Requests, Runtime, Routing, Settings
+
+  View:     Auric Live Preview
+  Where:    Editor tab beside the code
+  Contents: The served site at a chosen device size
+
+Output channels: Auric Artisan Live (server log) and Auric Live: Run Target
+(run target output).
+
+SETTINGS
+========
+
+All 103 settings, grouped by area. A project file sets the same values with
+the names shown here minus the `auricLive.` prefix. "Values or range" lists
+the allowed values, or the minimum and maximum for numbers.
+
+Server and address
+------------------
+
+  Setting:         `auricLive.root`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Folder to serve, relative to the workspace folder. Empty
+                   serves the workspace folder; use `dist` or `public` for a
+                   build output.
+
+  Setting:         `auricLive.port`
+  Type:            number
+  Default:         `5500`
+  Values or range: 0–65535
+  What it does:    Port to listen on. Set 0 to let the operating system pick a
+                   free one, which is useful when several projects run at
+                   once.
+
+  Setting:         `auricLive.portStrategy`
+  Type:            string
+  Default:         `increment`
+  Values or range: `increment`, `fail`, `random`
+  What it does:    What to do when the chosen port is already in use.
+
+  Setting:         `auricLive.host`
+  Type:            string
+  Default:         `0.0.0.0`
+  Values or range: -
+  What it does:    Address to bind. `0.0.0.0` also answers devices on your
+                   network (phone testing); `127.0.0.1` keeps it on this
+                   machine.
+
+  Setting:         `auricLive.open`
+  Type:            string
+  Default:         `default`
+  Values or range: `default`, `preview`, `none`
+  What it does:    What to open once the server starts.
+
+  Setting:         `auricLive.openPath`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Path appended to the URL that is opened, for a site whose
+                   entry point is not the root — /docs/index.html, for
+                   example.
+
+  Setting:         `auricLive.startOnOpen`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Start the server automatically when a folder is opened.
+
+  Setting:         `auricLive.showStatusBar`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Show the Go Live control in the status bar.
+
+  Setting:         `auricLive.suggestFrameworkSetup`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Once per folder, offer the matching setup when the project
+                   is a framework with its own dev server, or a PHP site.
+
+  Setting:         `auricLive.configFile`
+  Type:            string
+  Default:         `auric.live.json`
+  Values or range: -
+  What it does:    Name of the project file, looked for in the workspace
+                   folder, then `.auric/`. It overrides these settings.
+
+  Setting:         `auricLive.interfaceLanguage`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `en`, `hi`
+  What it does:    Language of the Auric Live panel and supported messages.
+                   `auto` follows VS Code. Changing it does not restart
+                   servers.
+
+HTTPS
+-----
+
+  Setting:         `auricLive.https.enabled`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Serve over HTTPS, which service workers, clipboard, camera,
+                   microphone and geolocation need on a phone.
+
+  Setting:         `auricLive.https.certPath`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Certificate file. Empty generates and reuses a self-signed
+                   one for `localhost` and your network addresses.
+
+  Setting:         `auricLive.https.keyPath`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Private key matching `auricLive.https.certPath`.
+
+Static files and responses
+--------------------------
+
+  Setting:         `auricLive.index`
+  Type:            array
+  Default:         `["index.html","index.htm"]`
+  Values or range: -
+  What it does:    File names tried, in order, when a directory is requested.
+
+  Setting:         `auricLive.directoryListing`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Render a browsable index for a directory that has no index
+                   file.
+
+  Setting:         `auricLive.cleanUrls`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Serve /about from about.html, so links can drop the
+                   extension the way most static hosts do.
+
+  Setting:         `auricLive.dotfiles`
+  Type:            string
+  Default:         `ignore`
+  Values or range: `ignore`, `allow`, `deny`
+  What it does:    How paths with a dot-file or dot-folder are treated. The
+                   default hides them, keeping `.env` and `.git` unserved.
+
+  Setting:         `auricLive.notFoundPage`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Page served for a missing file, relative to the served
+                   root. Leave empty for the built-in 404.
+
+  Setting:         `auricLive.spa.enabled`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Answer unknown paths with the fallback document, so a
+                   client-side router keeps working on a deep link and a hard
+                   refresh.
+
+  Setting:         `auricLive.spa.fallback`
+  Type:            string
+  Default:         `/index.html`
+  Values or range: -
+  What it does:    Document served for unknown paths when the single-page
+                   fallback is on.
+
+  Setting:         `auricLive.spa.ignore`
+  Type:            array
+  Default:         `["/api/**","**/*.*"]`
+  Values or range: -
+  What it does:    Paths the fallback must not answer. The default keeps
+                   `/api` and anything with a file extension returning honest
+                   404s.
+
+  Setting:         `auricLive.compression`
+  Type:            string
+  Default:         `auto`
+  Values or range: `auto`, `gzip`, `brotli`, `off`
+  What it does:    Compression for text responses over one kilobyte. Turn it
+                   off when measuring uncompressed transfer sizes.
+
+  Setting:         `auricLive.cache`
+  Type:            string
+  Default:         `no-store`
+  Values or range: `no-store`, `no-cache`, `short`, `immutable-assets`
+  What it does:    Caching policy sent with served files.
+
+  Setting:         `auricLive.etag`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Send a validator so an unchanged file can answer 304
+                   instead of being sent again.
+
+  Setting:         `auricLive.mimeTypes`
+  Type:            object
+  Default:         `{}`
+  Values or range: -
+  What it does:    Extra content types, keyed by extension — `{ ".data":
+                   "application/json" }`. Overrides the built-in table.
+
+  Setting:         `auricLive.headers`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Extra response headers, applied to the paths each rule
+                   matches.
+
+Cross-origin and access
+-----------------------
+
+  Setting:         `auricLive.cors.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Answer cross-origin requests, so a page served from another
+                   port can call this one during development.
+
+  Setting:         `auricLive.cors.origin`
+  Type:            string
+  Default:         `*`
+  Values or range: -
+  What it does:    Origin allowed by the CORS headers. Use a specific origin
+                   when credentials are involved.
+
+  Setting:         `auricLive.cors.credentials`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Allow cookies and authorization headers on cross-origin
+                   requests.
+
+  Setting:         `auricLive.crossOriginIsolation`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Send COOP and COEP headers, needed for `SharedArrayBuffer`,
+                   WebAssembly threads and precise timers.
+
+  Setting:         `auricLive.auth.enabled`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Require a username and password before anything is served.
+                   Useful when bound to a shared network.
+
+  Setting:         `auricLive.auth.username`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Username for basic authentication.
+
+  Setting:         `auricLive.auth.password`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Password for basic authentication. Stored in plain
+                   settings; a development convenience, not a secret store.
+
+Request limits
+--------------
+
+  Setting:         `auricLive.maxRequestBodyBytes`
+  Type:            number
+  Default:         `8388608`
+  Values or range: 0–1073741824
+  What it does:    Maximum buffered request size in bytes. Larger bodies
+                   receive HTTP 413. Zero rejects all non-empty bodies.
+
+  Setting:         `auricLive.requestBodyTimeoutMs`
+  Type:            number
+  Default:         `30000`
+  Values or range: 0–3600000
+  What it does:    Deadline for receiving a request body; 0 disables it.
+                   Simulated transfer time is excluded.
+
+Network simulation
+------------------
+
+  Setting:         `auricLive.throttle.profile`
+  Type:            string
+  Default:         `off`
+  Values or range: `off`, `slow-3g`, `3g`, `4g`, `cable`, `custom`
+  What it does:    Simulate a slower network for every client, including a
+                   phone on your LAN where browser devtools are not available.
+
+  Setting:         `auricLive.throttle.latencyMs`
+  Type:            number
+  Default:         `0`
+  Values or range: 0–60000
+  What it does:    Delay added before each response when the custom profile is
+                   selected.
+
+  Setting:         `auricLive.throttle.downloadKbps`
+  Type:            number
+  Default:         `0`
+  Values or range: 0–no maximum
+  What it does:    Download ceiling in kilobits per second when the custom
+                   profile is selected. 0 means unlimited.
+
+  Setting:         `auricLive.throttle.uploadKbps`
+  Type:            number
+  Default:         `0`
+  Values or range: 0–1000000
+  What it does:    Upload bandwidth in kilobits per second; 0 uses unlimited
+                   bandwidth.
+
+Live reload and watching
+------------------------
+
+  Setting:         `auricLive.liveReload.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Inject the reload client into served HTML and update open
+                   pages when the configured save/change trigger fires.
+
+  Setting:         `auricLive.liveReload.reloadOnSave`
+  Type:            string
+  Default:         `save`
+  Values or range: `save`, `change`, `off`
+  What it does:    What may refresh the page: `save` (explicit VS Code saves),
+                   `change` (any file change) or `off` (manual only).
+
+  Setting:         `auricLive.liveReload.injectTo`
+  Type:            string
+  Default:         `body`
+  Values or range: `body`, `head`
+  What it does:    Where the reload client is inserted: end of `body` (out of
+                   the critical path) or `head` (earlier).
+
+  Setting:         `auricLive.liveReload.cssHotSwap`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Swap a changed stylesheet in place, keeping scroll
+                   position, open dialogs and filled forms.
+
+  Setting:         `auricLive.liveReload.imageHotSwap`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Refresh a changed image in place instead of reloading the
+                   page.
+
+  Setting:         `auricLive.liveReload.preserveScroll`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Restore scroll position and open disclosure elements after
+                   a full reload.
+
+  Setting:         `auricLive.liveReload.overlay`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Show an overlay in the page when a proxied request or a CGI
+                   handler fails, instead of leaving the failure in the log.
+
+  Setting:         `auricLive.liveReload.ignore`
+  Type:            array
+  Default:         see "Default reload exclusions"
+  Values or range: -
+  What it does:    Paths that never trigger a reload. Dot-paths such as
+                   `.next/`, `.vite/` and `.git/` are always excluded as well.
+
+  Setting:         `auricLive.liveReload.stormLimit`
+  Type:            number
+  Default:         `3`
+  Values or range: 2–200
+  What it does:    Reloads allowed within the storm window before Auric Live
+                   stops reloading and reports the files responsible.
+
+  Setting:         `auricLive.liveReload.stormWindowMs`
+  Type:            number
+  Default:         `10000`
+  Values or range: 1000–120000
+  What it does:    The window the reload limit is measured over.
+
+  Setting:         `auricLive.liveReload.debounceMs`
+  Type:            number
+  Default:         `350`
+  Values or range: 0–5000
+  What it does:    Quiet period after the last file change before pages are
+                   told, so a multi-file build causes one update.
+
+  Setting:         `auricLive.watch.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Watch the served folder for changes. Turning this off
+                   leaves live reload to the Reload Connected Pages command.
+
+  Setting:         `auricLive.watch.pollIntervalMs`
+  Type:            number
+  Default:         `0`
+  Values or range: 0–60000
+  What it does:    Poll for changes at this interval instead of file system
+                   events (for network shares and VMs). `0` uses events.
+
+Browser dashboard and console
+-----------------------------
+
+  Setting:         `auricLive.dashboard.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Inject the in-page developer dashboard with live health,
+                   performance, cache, network, storage and server
+                   diagnostics.
+
+  Setting:         `auricLive.dashboard.independent`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Inject the dashboard even when Auric live reload is off.
+                   Framework run targets turn this on.
+
+  Setting:         `auricLive.dashboard.shortcut`
+  Type:            string
+  Default:         `Alt+Shift+D`
+  Values or range: -
+  What it does:    Keys inside a served page that open the dashboard, joined
+                   with `+`, for example `Alt+Shift+D`.
+
+  Setting:         `auricLive.dashboard.customCursor`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Show the Auric pointer on served pages. Touch,
+                   coarse-pointer and forced-colour setups keep the native
+                   cursor.
+
+  Setting:         `auricLive.dashboard.sampleIntervalMs`
+  Type:            number
+  Default:         `1000`
+  Values or range: 500–10000
+  What it does:    How often an open dashboard asks for server state, in
+                   milliseconds.
+
+  Setting:         `auricLive.console.enabled`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Capture browser console messages into the dashboard and the
+                   extension log, redacted and rate-limited.
+
+  Setting:         `auricLive.console.levels`
+  Type:            array
+  Default:         `["error","warn","info","log","debug"]`
+  Values or range: -
+  What it does:    Console levels to capture.
+
+  Setting:         `auricLive.console.maxEntries`
+  Type:            number
+  Default:         `200`
+  Values or range: 20–2000
+  What it does:    Maximum console entries retained in each page.
+
+  Setting:         `auricLive.console.maxMessageLength`
+  Type:            number
+  Default:         `2000`
+  Values or range: 100–10000
+  What it does:    Maximum characters captured from one console call.
+
+  Setting:         `auricLive.console.rateLimit`
+  Type:            number
+  Default:         `20`
+  Values or range: 1–100
+  What it does:    Maximum console messages sent per second from each page.
+
+Session records
+---------------
+
+  Setting:         `auricLive.records.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep a bounded local session record under `.auric-live/`.
+                   It never stores queries, headers, bodies or cookies.
+
+  Setting:         `auricLive.records.maxRequests`
+  Type:            number
+  Default:         `200`
+  Values or range: 20–5000
+  What it does:    Maximum sanitized request summaries retained in one
+                   recorded session.
+
+  Setting:         `auricLive.records.maxSessionBytes`
+  Type:            number
+  Default:         `5242880`
+  Values or range: 65536–104857600
+  What it does:    Maximum approximate size in bytes of one `.auric-live`
+                   session snapshot. Older request summaries are removed
+                   first.
+
+  Setting:         `auricLive.records.maxSessions`
+  Type:            number
+  Default:         `12`
+  Values or range: 1–100
+  What it does:    Number of recent recorded sessions retained under
+                   `.auric-live/sessions/`.
+
+  Setting:         `auricLive.records.flushIntervalMs`
+  Type:            number
+  Default:         `1000`
+  Values or range: 250–60000
+  What it does:    Minimum interval between atomic diagnostic snapshot writes.
+
+  Setting:         `auricLive.records.telemetryIntervalMs`
+  Type:            number
+  Default:         `5000`
+  Values or range: 1000–60000
+  What it does:    How often a served page sends its bounded performance
+                   summary to the local session record.
+
+Proxy and backend readiness
+---------------------------
+
+  Setting:         `auricLive.proxy`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Paths forwarded to another server, so the page and its API
+                   share one origin. Each rule has a `path` and a `target`.
+
+  Setting:         `auricLive.upstream.wait`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Hold a request while a proxied backend is still starting,
+                   instead of answering 502 at once.
+
+  Setting:         `auricLive.upstream.waitTimeoutMs`
+  Type:            number
+  Default:         `25000`
+  Values or range: 0–600000
+  What it does:    How long a request waits for the backend before the waiting
+                   page is shown; that page reloads until it answers.
+
+  Setting:         `auricLive.upstream.pollIntervalMs`
+  Type:            number
+  Default:         `400`
+  Values or range: 50–10000
+  What it does:    How often a backend that is not answering is checked. Once
+                   it is up, checks drop to one every few seconds.
+
+  Setting:         `auricLive.upstream.reloadOnRecover`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Reload every connected page when a backend comes back.
+
+  Setting:         `auricLive.upstream.autoDetectPort`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Adopt the port a supervised dev server prints when it
+                   differs from the configured one.
+
+  Setting:         `auricLive.upstream.candidatePorts`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Ports searched by Find a Running Backend. Leave empty to
+                   use the built-in list of ports these tools normally choose.
+
+Run targets and dev servers
+---------------------------
+
+  Setting:         `auricLive.runProfiles`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Named ways to run the project, shown in the run-target
+                   list. Environment assignments before a command are read.
+
+  Setting:         `auricLive.devServer.autoStart`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Start the detected framework dev server automatically when
+                   Go Live runs on a project that has one, instead of offering
+                   it.
+
+  Setting:         `auricLive.devServer.autoRestart`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Restart a supervised dev server when it exits unexpectedly,
+                   with a growing delay between attempts.
+
+  Setting:         `auricLive.devServer.maxRestarts`
+  Type:            number
+  Default:         `5`
+  Values or range: 0–50
+  What it does:    How many times a dev server may be restarted before Auric
+                   Live stops and reports it.
+
+  Setting:         `auricLive.devServer.command`
+  Type:            string
+  Default:         empty
+  Values or range: -
+  What it does:    Command used to start the dev server. Leave empty to use
+                   the one detected from the project, such as npm run dev.
+
+  Setting:         `auricLive.devServer.useTerminal`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Run the dev server in a VS Code terminal. Allows typed
+                   input, but loses port adoption and restart supervision.
+
+  Setting:         `auricLive.autoRestart.onConfigChange`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Apply setting and project-file changes to a running server.
+                   Only port, host, root, mount or TLS changes rebind it.
+
+  Setting:         `auricLive.autoRestart.reloadBrowsers`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Reload connected pages after a configuration change is
+                   applied.
+
+Mock API and REST database
+--------------------------
+
+  Setting:         `auricLive.mock.enabled`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Answer the declared mock routes. They are matched before
+                   the proxy, so one endpoint can be overridden.
+
+  Setting:         `auricLive.mock.routes`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Endpoints answered by the server itself. Bodies can use
+                   placeholders such as `{{params.id}}` and `{{uuid}}`.
+
+  Setting:         `auricLive.mock.delayMs`
+  Type:            number
+  Default:         `0`
+  Values or range: 0–60000
+  What it does:    Latency applied to every mock and REST response, on top of
+                   any per-route delay.
+
+  Setting:         `auricLive.mock.rest.enabled`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Serve a full REST backend from a JSON file, with filtering,
+                   sorting, pagination and relationships.
+
+  Setting:         `auricLive.mock.rest.base`
+  Type:            string
+  Default:         `/api`
+  Values or range: -
+  What it does:    Prefix the REST collections are mounted under. Other paths
+                   fall through to the proxy, then to static files.
+
+  Setting:         `auricLive.mock.rest.database`
+  Type:            string
+  Default:         `db.json`
+  Values or range: -
+  What it does:    JSON file holding the collections, relative to the served
+                   root, shaped like `{ "users": [ … ] }`.
+
+  Setting:         `auricLive.mock.rest.persist`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Write changes back to the database file. Off by default so
+                   a restart returns to a known fixture.
+
+PHP and CGI
+-----------
+
+  Setting:         `auricLive.cgi.enabled`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Run matching files through a CGI handler instead of serving
+                   them as downloads. With `php-cgi`, PHP sites run.
+
+  Setting:         `auricLive.cgi.handlers`
+  Type:            object
+  Default:         `{".php":"php-cgi"}`
+  Values or range: -
+  What it does:    Handler command per extension, such as `{ ".php": "php-cgi"
+                   }`. It must be on your PATH or a full path.
+
+  Setting:         `auricLive.cgi.indexes`
+  Type:            array
+  Default:         `["index.php"]`
+  Values or range: -
+  What it does:    Additional index file names tried for a directory when CGI
+                   is enabled.
+
+Request inspector
+-----------------
+
+  Setting:         `auricLive.inspector.enabled`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Record requests so the Requests view shows which rule
+                   answered each one.
+
+  Setting:         `auricLive.inspector.maxEntries`
+  Type:            number
+  Default:         `500`
+  Values or range: 20–10000
+  What it does:    How many requests are kept before the oldest are dropped.
+
+  Setting:         `auricLive.inspector.captureBodies`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Keep request and response bodies for inspection and HAR
+                   export. Credential headers are always masked.
+
+  Setting:         `auricLive.inspector.maxBodyBytes`
+  Type:            number
+  Default:         `262144`
+  Values or range: 0–8388608
+  What it does:    Maximum bytes captured per request or response body.
+
+  Setting:         `auricLive.inspector.redactSensitive`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Redact common credential fields in captured query strings
+                   and JSON/form bodies. Credential headers are always
+                   redacted.
+
+  Setting:         `auricLive.inspector.sensitiveFields`
+  Type:            array
+  Default:         `[]`
+  Values or range: -
+  What it does:    Additional field and header names to redact, case
+                   insensitive.
+
+  Setting:         `auricLive.inspector.harIncludeBodies`
+  Type:            boolean
+  Default:         `false`
+  Values or range: -
+  What it does:    Include captured bodies in HAR exports. Disabled by default
+                   because arbitrary application data can be sensitive.
+
+Logging
+-------
+
+  Setting:         `auricLive.logLevel`
+  Type:            string
+  Default:         `info`
+  Values or range: `off`, `error`, `warn`, `info`, `debug`
+  What it does:    How much detail reaches the Auric Artisan Live output
+                   channel. Credential-like values are masked.
+
+  Setting:         `auricLive.requestLogging`
+  Type:            boolean
+  Default:         `true`
+  Values or range: -
+  What it does:    Write one line per request to the output channel, at debug
+                   level for successes and higher for failures.
+
+Default reload exclusions
+-------------------------
+
+The default value of `auricLive.liveReload.ignore`:
+
+    [
+      "**/node_modules/**", "**/dist/**", "**/out/**", "**/build/**", "**/coverage/**",
+      "**/target/**", "**/vendor/**", "**/bin/**", "**/obj/**", "**/__pycache__/**",
+      "**/venv/**", "**/tmp/**", "**/temp/**", "**/*.log", "**/*.tmp", "**/*.temp",
+      "**/*.swp", "**/*.swx", "**/*~", "**/*.pyc", "**/*.class", "**/*.o", "**/*.obj",
+      "**/*.pdb", "**/*.crdownload", "**/*.partial", "**/*-journal", "**/*.sqlite*",
+      "**/~$*", "**/.~lock.*", "**/Thumbs.db", "**/desktop.ini", "**/.DS_Store"
+    ]
+
+Enumerated values explained
+---------------------------
+
+  Setting: `auricLive.portStrategy`
+  Value:   `increment`
+  Meaning: Walk upward from the chosen port until one is free
+
+  Setting: `auricLive.portStrategy`
+  Value:   `fail`
+  Meaning: Report the conflict instead of moving
+
+  Setting: `auricLive.portStrategy`
+  Value:   `random`
+  Meaning: Choose a free port between 20000 and 40000
+
+  Setting: `auricLive.open`
+  Value:   `default`
+  Meaning: Open the default browser when the server starts
+
+  Setting: `auricLive.open`
+  Value:   `preview`
+  Meaning: Open the preview beside the editor
+
+  Setting: `auricLive.open`
+  Value:   `none`
+  Meaning: Open nothing
+
+  Setting: `auricLive.dotfiles`
+  Value:   `ignore`, `allow`, `deny`
+  Meaning: Hide, serve or refuse paths with a dot-file or dot-folder
+
+  Setting: `auricLive.cache`
+  Value:   `no-store`
+  Meaning: Never cache, so a stale file never survives a reload
+
+  Setting: `auricLive.cache`
+  Value:   `no-cache`
+  Meaning: Keep a copy but check it on every request
+
+  Setting: `auricLive.cache`
+  Value:   `short`
+  Meaning: A short freshness window, for measuring repeat visits
+
+  Setting: `auricLive.cache`
+  Value:   `immutable-assets`
+  Meaning: Fonts and images immutable for a year; everything else uncached
+
+  Setting: `auricLive.throttle.profile`
+  Value:   `off`, `slow-3g`, `3g`, `4g`, `cable`, `custom`
+  Meaning: See Simulate a slow network [network-simulation.txt]
+
+  Setting: `auricLive.liveReload.reloadOnSave`
+  Value:   `save`
+  Meaning: Reload once per explicit VS Code save
+
+  Setting: `auricLive.liveReload.reloadOnSave`
+  Value:   `change`
+  Meaning: Watch the whole served folder
+
+  Setting: `auricLive.liveReload.reloadOnSave`
+  Value:   `off`
+  Meaning: Never reload automatically
+
+  Setting: `auricLive.liveReload.injectTo`
+  Value:   `body`, `head`
+  Meaning: Where the reload script is inserted
+
+  Setting: `auricLive.logLevel`
+  Value:   `off`, `error`, `warn`, `info`, `debug`
+  Meaning: Detail written to the output channel
+
+  Setting: `auricLive.interfaceLanguage`
+  Value:   `auto`, `en`, `hi`
+  Meaning: Follow VS Code, English, or Hindi
+
+Settings restricted in untrusted workspaces
+-------------------------------------------
+
+`auricLive.cgi.enabled`, `auricLive.cgi.handlers`, `auricLive.cgi.indexes`,
+`auricLive.proxy`, `auricLive.host`, `auricLive.auth.username`,
+`auricLive.auth.password`, `auricLive.https.certPath`,
+`auricLive.https.keyPath` and `auricLive.mock.rest.persist` are ignored until
+you trust the workspace, whether they come from settings or the project file.
+
+Setting scope
+-------------
+
+Most settings have resource scope, so each folder of a multi-root workspace
+can differ. `auricLive.showStatusBar`, `auricLive.etag`,
+`auricLive.inspector.enabled`, `auricLive.inspector.maxEntries`,
+`auricLive.inspector.captureBodies`, `auricLive.logLevel`,
+`auricLive.requestLogging` and `auricLive.interfaceLanguage` have window
+scope: they can be set for the user or the workspace, but not per folder.
+
+FILES AURIC LIVE READS AND WRITES
+=================================
+
+  File:       `auric.live.json` (or the name in `auricLive.configFile`), in
+              the workspace folder or `.auric/`
+  Written by: You, Create Project Config File or Save to config file
+  Purpose:    Project configuration
+
+  File:       `.auricignore-live`, in the served folder
+  Written by: You, Open .auricignore-live or Ignore folder/
+  Purpose:    Paths never served, watched or recorded
+
+  File:       `.auric-live/latest.json` and `.auric-live/sessions/`
+  Written by: Auric Live
+  Purpose:    Local session records
+
+  File:       `db.json` (or `auricLive.mock.rest.database`)
+  Written by: You, or Open Mock Database › Create
+  Purpose:    REST database; written back only with `mock.rest.persist`
+
+  File:       A `.har` file
+  Written by: Export Requests as HAR
+  Purpose:    Request export
+
+  File:       Generated certificate
+  Written by: Auric Live, in its own extension storage
+  Purpose:    Self-signed HTTPS certificate
+
+  File:       Workspace settings
+  Written by: Add Custom Run Command…
+  Purpose:    Saves `auricLive.runProfiles`

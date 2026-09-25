@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Code Health — Secrets, TODOs &amp; Risk — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Code Health does, who it is for, how to install it, and a quick start from first finding to CI record.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Code Health — Secrets, TODOs &amp; Risk</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Auric Code Health docs &rsaquo;</a></li>
+<li><a href="others/README.html">Auric Code Health: other resources &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Auric Code Health — Secrets, TODOs &amp; Risk</h1>
+<p class="lede">What Auric Code Health does, who it is for, how to install it, and a quick start from first finding to CI record.</p>
+<p>Auric Code Health is a language-agnostic hygiene scanner for every file in your repository. It finds hardcoded secrets and credentials in URLs, security footguns such as disabled TLS verification, weak hashing, unsafe deserialization, command and SQL injection patterns and XSS sinks, risky APIs such as <code>eval</code>, forgotten debug statements, task markers such as <code>TODO</code> and <code>FIXME</code>, unresolved merge-conflict markers, and oversized lines and files. It works in more than 40 languages.</p>
+<p>It reads source text with argument-aware analysis: it can tell a constant from a dynamic value, so <code>eval(&#39;use strict&#39;)</code> is downgraded while <code>eval(userInput)</code> is reported with high confidence. Every finding has a stable signature ID, a confidence level and a fix, and any secret it finds is redacted before it reaches the editor, the Studio, reports or files. Findings appear as you type, in a Code Health Studio with filters, and in <code>health.json</code> and SARIF 2.1.0 records for continuous integration (CI), with a bundled command-line scanner for pull-request gates.</p>
+<p>Auric Code Health is one of the four Auric Artisan Studio extensions. It works on its own and joins the others in one Workstation. Everything runs on your machine.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Developers in any language who want leftovers, secrets and risky patterns caught before they are committed.</li>
+<li>Reviewers and tech leads who want a repeatable hygiene score for a repository.</li>
+<li>Teams who want SARIF in GitHub code scanning and a CI gate that fails only on new issues.</li>
+</ul>
+<p>It is a high-signal heuristic linter, not a full security scanner. Use it alongside, not instead of, dedicated security tools where compliance requires them.</p>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li>Marketplace ID: <code>auric-artisan.auric-codehealth</code></li>
+<li>Marketplace page: <a href="https://marketplace.visualstudio.com/items?itemName=auric-artisan.auric-codehealth" rel="noopener">https://marketplace.visualstudio.com/items?itemName=auric-artisan.auric-codehealth</a></li>
+<li>Install: <code>code --install-extension auric-artisan.auric-codehealth</code></li>
+<li>Version 0.1.0; VS Code 1.74 or newer. Also installed by the <a href="../full-pack/README.html">Full Pack</a>.</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Install Auric Code Health from the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>).</li>
+<li>Open a project. Findings in open files are underlined and listed in the Problems panel with the source <code>auric-artisan</code>.</li>
+<li>Hover a finding for its title, category, confidence, priority and fix. Press <code>Ctrl</code> + <code>.</code> for <strong>Ignore this … finding here</strong>.</li>
+<li>Select the <strong>Auric Code Health</strong> icon in the Activity Bar. The Overview shows the code-health ring and seven category chips.</li>
+<li>Select <strong>Report</strong>. The Studio scans the project and writes the project health report; select <strong>Open in Browser</strong> to read the printable page.</li>
+<li>Run <strong>Auric Artisan: Open Code Health Studio</strong> to filter findings by category, confidence and text.</li>
+<li>Select <strong>health.json + SARIF</strong> to write the CI records to <code>.auric-artisan</code>.</li>
+<li>Read <a href="../docs/ci-gate.html">The CI gate</a> to fail pull requests on new issues.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Find 24 kinds of hardcoded secret, including AWS, GitHub, GitLab, Slack, Google, Stripe, OpenAI, Anthropic, npm, SendGrid and DigitalOcean credentials, private keys, JWTs, webhook URLs, credentials in URLs and connection strings, and secret-named assignments, and add your own patterns.</li>
+<li>Find disabled TLS verification, weak MD5 and SHA-1 hashing, unsafe deserialization, string timers, raw-HTML sinks, wildcard CORS, and command and SQL injection built from dynamic values.</li>
+<li>Find risky APIs, leftover debug statements, task markers, merge markers, lines over 240 characters and files over 800 lines.</li>
+<li>See confidence on every finding, and filter by it.</li>
+<li>Silence one finding, one category or one file with a comment, inserted for you in the right syntax.</li>
+<li>Score the repository from 0 to 100 with a letter grade.</li>
+<li>Write <code>health.json</code>, SARIF 2.1.0 and a trend history, and a Markdown, JSON and HTML project health report covering colour, accessibility and code health.</li>
+<li>Gate CI with the bundled scanner and a baseline, so only new issues fail a build.</li>
+<li>Generate a local remediation plan with secret and security tasks.</li>
+<li>Search the code-health rulebook, policies and official OWASP, CWE and NIST sources.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Folder or file</th><th>What it covers</th></tr></thead>
+<tbody>
+<tr><td><a href="docs/README.html">docs/</a></td><td>Guides and reference for Auric Code Health.</td></tr>
+<tr><td><a href="docs/getting-started.html">docs/getting-started.md</a></td><td>First run and a tour.</td></tr>
+<tr><td><a href="docs/categories-and-signatures.html">docs/categories-and-signatures.md</a></td><td>Every category and signature, what it detects and where.</td></tr>
+<tr><td><a href="docs/secrets-and-redaction.html">docs/secrets-and-redaction.md</a></td><td>How secrets are found, filtered, scored and redacted.</td></tr>
+<tr><td><a href="docs/code-health-studio.html">docs/code-health-studio.md</a></td><td>The Health space in the Studio and the Overview.</td></tr>
+<tr><td><a href="docs/health-records.html">docs/health-records.md</a></td><td><code>health.json</code>, SARIF, history, fingerprints and baselines.</td></tr>
+<tr><td><a href="docs/reference.html">docs/reference.md</a></td><td>Every command, keybinding, setting and view.</td></tr>
+<tr><td><a href="docs/troubleshooting.html">docs/troubleshooting.md</a></td><td>Symptoms and fixes.</td></tr>
+<tr><td><a href="docs/faq.html">docs/faq.md</a></td><td>Short answers.</td></tr>
+<tr><td><a href="others/README.html">others/</a></td><td>Glossary, shortcuts, limits and accuracy, related pages, release notes and privacy.</td></tr>
+</tbody></table></div>
+<p>Shared Studio features are in the <a href="../docs/README.html">Studio docs</a>.</p>
+<p>Back to the <a href="../README.html">Studio overview</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="../accessibility/others/related.html"><span>Previous</span>Related to Auric Accessibility</a><a href="docs/README.html"><span>Next</span>Auric Code Health docs</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

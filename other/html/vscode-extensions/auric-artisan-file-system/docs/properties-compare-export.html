@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Properties, compare and export — Auric Artisan Docs</title>
+<meta name="description" content="Inspect a file's properties, compare and merge files, copy paths, and export a JSON manifest of a selection.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html" aria-current="page">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Properties, compare and export</h1>
+<p class="lede">Inspect a file's properties, compare and merge files, copy paths, and export a JSON manifest of a selection.</p>
+<p>These commands are in the <strong>Inspect &amp; navigate</strong> group of the workspace panel and the <strong>Auric Files</strong> › <strong>Navigate and Paths</strong> submenu.</p>
+<h2 id="properties">Properties</h2>
+<p><strong>Properties</strong> shows the facts about a file or folder in one place: what the file system reports, plus what Auric Files knows about it. It reads metadata only, never the file&#39;s contents.</p>
+<h3 id="open-it">Open it</h3>
+<ul>
+<li>Right-click a file or folder in the Explorer and choose <strong>File Properties</strong> (the first entry in the menu).</li>
+<li>Press <code>Alt</code> + <code>Enter</code> with the Explorer focused.</li>
+<li>Run <strong>Auric Files: File Properties</strong>. If VS Code does not pass a selected file (some keyboard routes do not), a resource picker opens.</li>
+<li>In the workspace panel or the <strong>Auric Files</strong> sidebar, choose <strong>02 Properties</strong>.</li>
+</ul>
+<p>Properties opens inside the existing workspace panel or sidebar rather than a new tab.</p>
+<h3 id="what-it-shows">What it shows</h3>
+<p><strong>General</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>The file or folder name</td></tr>
+<tr><td><strong>Full path</strong></td><td>The complete path (or URI for remote and virtual files)</td></tr>
+<tr><td><strong>Type</strong></td><td>The extension in capitals (for example <code>TSX</code>), <strong>Folder</strong> or <strong>Symbolic link</strong></td></tr>
+<tr><td><strong>Size</strong></td><td>The reported size; folders show <strong>Folder</strong> (this is not a recursive disk-usage total)</td></tr>
+<tr><td><strong>Created</strong></td><td>Creation time, where the file system records one; otherwise <strong>Unavailable</strong></td></tr>
+<tr><td><strong>Modified</strong></td><td>Last modification time</td></tr>
+</tbody></table></div>
+<p><strong>Organisation</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Tags</strong></td><td>Tags assigned to the item, or <strong>None</strong></td></tr>
+<tr><td><strong>Group / workspace</strong></td><td>Groups and virtual folders it belongs to</td></tr>
+<tr><td><strong>Related files</strong></td><td>Up to six existing companions, such as its test or stylesheet. Before the index is built: <strong>Not indexed yet</strong></td></tr>
+</tbody></table></div>
+<p><strong>Access &amp; history</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Owner / creator</strong></td><td><strong>Not exposed by the VS Code file-system provider</strong>; never guessed</td></tr>
+<tr><td><strong>Permissions</strong></td><td><strong>Read-only</strong> if the file system reports it, otherwise <strong>No read-only flag reported</strong>; plus <strong>protected by Auric</strong> for protected paths</td></tr>
+<tr><td><strong>Git status</strong></td><td>The state from the last index, labelled as such, or <strong>Unavailable</strong></td></tr>
+<tr><td><strong>Version</strong></td><td>How many Auric operations touched the item and the latest one, or <strong>No Auric operation history</strong></td></tr>
+</tbody></table></div>
+<h3 id="buttons">Buttons</h3>
+<ul>
+<li><strong>Refresh</strong> — re-read the file-system facts. (To update related files and Git state, refresh the workspace index with <strong>Auric Files: Refresh</strong>.)</li>
+<li><strong>Copy path</strong> — copy the full path.</li>
+<li><strong>Edit tags…</strong> — assign or remove tags.</li>
+<li><strong>Add to group…</strong> — add the item to a group.</li>
+</ul>
+<p>A resource outside the open workspace can be inspected, but file actions on it are blocked: <strong>This resource is outside the workspace. Properties are available; choose an in-workspace resource to use file actions.</strong></p>
+<h2 id="compact-hovers-in-the-explorer">Compact hovers in the Explorer</h2>
+<p>Hovering an item in the Explorer shows a short summary: its name and size, and a reminder that Properties has the rest. Tagged, favourite, pinned, highlighted and hidden items say so in the hover.</p>
+<p>Switch the summaries off and on with <strong>Auric Files: Toggle File Metadata</strong> (<code>Ctrl</code> + <code>Shift</code> + <code>M</code> with the Explorer focused). When off, the hover says <strong>Metadata is hidden. Press Ctrl+Shift+M to show it.</strong></p>
+<h2 id="compare-two-files">Compare two files</h2>
+<ol>
+<li>Select exactly two files in the Explorer.</li>
+<li>Run <strong>Auric Files: Compare Selected Files</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>D</code> with the deck).</li>
+<li>VS Code&#39;s diff editor opens with the first file on the left and the second on the right.</li>
+</ol>
+<p>Selecting anything other than two files shows <strong>Select exactly two files in VS Code Explorer to compare.</strong></p>
+<h2 id="merge-files">Merge files</h2>
+<ol>
+<li>Select two files, or three: a base file followed by two inputs.</li>
+<li>Run <strong>Auric Files: Merge Selected Files</strong>.</li>
+<li>VS Code&#39;s merge editor opens. With three files, the first is the base and the result; with two, the first file is both base and result.</li>
+<li>Resolve the changes and save the merge editor. Nothing is written until you save.</li>
+</ol>
+<p>This needs a trusted workspace. Some VS Code-based editors do not provide the merge editor; you then see <strong>This VS Code-compatible editor does not expose the merge editor.</strong></p>
+<h2 id="copy-paths-and-reveal">Copy paths and reveal</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it copies or does</th><th>Deck shortcut</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy Relative Path</strong></td><td>The path from the workspace folder</td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>C</code></td></tr>
+<tr><td><strong>Copy Absolute Path</strong></td><td>The full path on disk</td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>A</code></td></tr>
+<tr><td><strong>Copy File URI</strong></td><td>The file&#39;s URI (<code>file:///…</code>)</td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>U</code></td></tr>
+<tr><td><strong>Reveal in File Manager</strong></td><td>Shows the file in your operating system&#39;s file manager</td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>V</code></td></tr>
+<tr><td><strong>Reveal in VS Code Explorer</strong></td><td>Selects the file in the Explorer</td><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>V</code></td></tr>
+</tbody></table></div>
+<p><strong>Reveal in File Manager</strong> is not available in virtual workspaces.</p>
+<h2 id="export-a-selection">Export a selection</h2>
+<p><strong>Export Selected Items…</strong> saves a JSON <em>manifest</em>: a list describing the selected items and their metadata. It is not an archive of the files&#39; contents.</p>
+<ol>
+<li>Select files and folders in the Explorer.</li>
+<li>Run <strong>Auric Files: Export Selected Items…</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>A</code>, then <code>Shift</code> + <code>X</code> with the deck).</li>
+<li>Choose where to save. The default name is <code>auric-selection.json</code>.</li>
+</ol>
+<p>The manifest looks like this:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;format&quot;: &quot;auric-artisan-selection&quot;,
+  &quot;version&quot;: 1,
+  &quot;workspace&quot;: &quot;my-project&quot;,
+  &quot;exportedAt&quot;: &quot;2026-09-25T10:00:00.000Z&quot;,
+  &quot;items&quot;: [
+    {
+      &quot;name&quot;: &quot;Button.tsx&quot;,
+      &quot;path&quot;: &quot;src/components/Button.tsx&quot;,
+      &quot;uri&quot;: &quot;file:///…/src/components/Button.tsx&quot;,
+      &quot;type&quot;: &quot;file&quot;,
+      &quot;extension&quot;: &quot;.tsx&quot;,
+      &quot;size&quot;: 1834,
+      &quot;created&quot;: &quot;2026-09-20T08:12:00.000Z&quot;,
+      &quot;modified&quot;: &quot;2026-09-24T16:40:00.000Z&quot;,
+      &quot;owner&quot;: null,
+      &quot;tags&quot;: [&quot;UI&quot;],
+      &quot;groups&quot;: [&quot;Checkout&quot;],
+      &quot;related&quot;: [&quot;src/components/Button.test.tsx&quot;],
+      &quot;versions&quot;: 2,
+      &quot;permissions&quot;: &quot;writable&quot;,
+      &quot;gitStatus&quot;: &quot;clean&quot;
+    }
+  ]
+}</code></pre>
+<p><code>owner</code> is always <code>null</code> because the file system does not report it. Values that are not available are <code>null</code>.</p>
+<p>When the export finishes, a message confirms how many items were exported and where.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="organise-tags-groups-profiles.html"><span>Previous</span>Tags, groups and profiles</a><a href="related-files.html"><span>Next</span>Related files</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#properties">Properties</a></li><li><a href="#compact-hovers-in-the-explorer">Compact hovers in the Explorer</a></li><li><a href="#compare-two-files">Compare two files</a></li><li><a href="#merge-files">Merge files</a></li><li><a href="#copy-paths-and-reveal">Copy paths and reveal</a></li><li><a href="#export-a-selection">Export a selection</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

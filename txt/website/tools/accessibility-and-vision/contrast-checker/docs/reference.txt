@@ -1,0 +1,142 @@
+==============================================================================
+CONTRAST CHECKER REFERENCE
+==============================================================================
+Every control, input, threshold, output, message and keyboard behaviour of the
+Contrast Checker.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+CONTROLS
+========
+
+  Control:      Text colour swatch
+  What it does: Opens the system colour picker; writes uppercase hex into the
+                field
+  Values:       Any colour
+  Default:      `#1a1400`
+
+  Control:      Text colour hex field
+  What it does: Typed or pasted text colour
+  Values:       3- or 6-digit hex, with or without `#`
+  Default:      `#1A1400`
+
+  Control:      Swap button
+  What it does: Exchanges text and background
+  Values:       —
+  Default:      —
+
+  Control:      Background colour swatch
+  What it does: Opens the system colour picker
+  Values:       Any colour
+  Default:      `#f7f3e6`
+
+  Control:      Background colour hex field
+  What it does: Typed or pasted background colour
+  Values:       3- or 6-digit hex, with or without `#`
+  Default:      `#F7F3E6`
+
+  Control:      Make it pass AA
+  What it does: Moves the text colour to the nearest value that reaches 4.5:1
+  Values:       Shown only when body text fails AA
+  Default:      —
+
+  Control:      Copy link
+  What it does: Copies the address, which carries both colours
+  Values:       —
+  Default:      —
+
+The swatches are your browser's own colour input, not the site's custom colour
+picker, so the swatch always shows the value that is being graded.
+
+OUTPUTS
+=======
+
+  Output:        Contrast ratio
+  What it shows: The WCAG 2.1 ratio to two decimals, from 1.00:1 to 21.00:1.
+                 Shows a dash until the first grading.
+
+  Output:        Grade badges
+  What it shows: Pass or Fail for each of the five thresholds below
+
+  Output:        Status line
+  What it shows: The result of Make it pass AA or Copy link
+
+  Output:        Preview
+  What it shows: Your pair as large text, a body-text paragraph and an
+                 "Interface element" chip
+
+THRESHOLDS
+==========
+
+  Row              | Threshold
+  -----------------+----------
+  Body text · AA   | 4.5:1
+  Body text · AAA  | 7:1
+  Large text · AA  | 3:1
+  Large text · AAA | 4.5:1
+  UI & graphics    | 3:1
+
+A ratio equal to a threshold passes. Badges use the exact ratio; the display
+is rounded to two decimals. Large text means at least 18.66px bold or 24px
+regular.
+
+STATUS MESSAGES
+===============
+
+  Message                              | When
+  -------------------------------------+---------------------------------------------------
+  "Adjusted text to #RRGGBB (N.NN:1)." | After Make it pass AA
+  "Share link copied."                 | After Copy link, when the clipboard accepted it
+  The full address                     | After Copy link, when the clipboard is unavailable
+
+ADDRESS PARAMETERS
+==================
+
+  Parameter | Meaning                            | Example
+  ----------+------------------------------------+------------
+  `fg`      | Text colour, hex without `#`       | `fg=1A1400`
+  `bg`      | Background colour, hex without `#` | `bg=F7F3E6`
+
+Invalid values are ignored and the default is used for that colour. The
+address updates shortly after each change, replacing the current history
+entry.
+
+KEYBOARD AND SCREEN READERS
+===========================
+
+  - `Tab` order: text swatch, text hex field, swap button, background swatch,
+    background hex field, then the action buttons.
+  - The focus ring is drawn around the whole hex row, so you can always see
+    which field you are in.
+  - The ratio is a polite live region: a screen reader reads the new ratio
+    after a change without interrupting.
+  - The status line is a status region, so the outcome of both buttons is
+    announced.
+  - The swap button is labelled "Swap text and background colours".
+  - The questions under Questions people actually ask are native disclosures:
+    press `Enter` or `Space` to open one.
+
+There are no custom keyboard shortcuts on this page.
+
+LAYOUT
+======
+
+  - Wide screens: controls and result side by side, preview across the full
+    width below.
+  - Under 720 pixels: one column (controls, result, preview), with the swap
+    button turned a quarter turn.
+  - The page follows the site's light or dark theme. The preview always shows
+    your own two colours.
+
+CONTENT BELOW THE TOOL
+======================
+
+  Section:  What the numbers mean
+  Contents: 4.5:1, 3:1, 7:1 and the definition of large text
+
+  Section:  Questions people actually ask
+  Contents: Four questions: the ratio you need, large text, readability, and
+            disabled controls and logos
+
+  Section:  Next
+  Contents: Check a whole page (the Analyzer), Build a palette (Basic tools)
+            and Learn the rules (the Learn library)

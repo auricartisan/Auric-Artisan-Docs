@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recolour from a harmony — Auric Artisan Docs</title>
+<meta name="description" content="Recolour every colour in an SVG at once from a colour harmony built on the file's main colour, and put the colours back.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; SVG Recolour</a>
+<h2>SVG Recolour documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with SVG Recolour</a></li>
+<li><a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a></li>
+<li><a href="export-the-result.html">Export the result</a></li>
+<li><a href="recolour-an-svg.html">Recolour an SVG</a></li>
+<li><a href="use-a-harmony.html" aria-current="page">Recolour from a harmony</a></li>
+<li><a href="reference.html">SVG Recolour reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting SVG Recolour</a></li>
+<li><a href="faq.html">SVG Recolour FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">SVG Recolour</a> &rsaquo; <a href="README.html">SVG Recolour documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › SVG Recolour</p>
+<h1>Recolour from a harmony</h1>
+<p class="lede">Recolour every colour in an SVG at once from a colour harmony built on the file's main colour, and put the colours back.</p>
+<p>A harmony is a set of colours at fixed angles round the colour wheel, such as opposite (complementary) or evenly spaced in threes (triadic). <strong>Recolour from a harmony</strong> builds one from your file&#39;s main colour and assigns it to every colour in the file in one step.</p>
+<h2 id="apply-a-harmony">Apply a harmony</h2>
+<ol>
+<li>Load an SVG on the <strong>Recolour</strong> tab.</li>
+<li>Under <strong>Recolour from a harmony</strong>, select one of the five buttons: <strong>complementary</strong>, <strong>analogous</strong>, <strong>triadic</strong>, <strong>tetradic</strong> or <strong>split complementary</strong>.</li>
+<li>Every colour in the file gets a new target, the <strong>After</strong> preview updates, and a message names the harmony and the base colour, for example <strong>A triadic palette from #E5484D.</strong></li>
+</ol>
+<p>If no file is loaded, the message reads <strong>Load an SVG first.</strong></p>
+<h2 id="how-the-harmony-is-built">How the harmony is built</h2>
+<ul>
+<li><strong>The base colour</strong> is the first row of <strong>Every colour in the file</strong>: the colour used in the most places. It keeps its own colour.</li>
+<li><strong>The angles</strong> are applied to the base colour&#39;s hue in OKLCH, a perceptual colour space, keeping its lightness and chroma. Rotating hue in OKLCH keeps colours looking equally light and colourful, which rotating in HSL does not.</li>
+<li><strong>Assignment</strong> goes down the colour list in order: the second row gets the second angle, and so on.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Harmony</th><th>Hue angles from the base</th></tr></thead>
+<tbody>
+<tr><td><strong>complementary</strong></td><td>0°, 180°</td></tr>
+<tr><td><strong>analogous</strong></td><td>0°, −30°, +30°</td></tr>
+<tr><td><strong>triadic</strong></td><td>0°, 120°, 240°</td></tr>
+<tr><td><strong>tetradic</strong></td><td>0°, 90°, 180°, 270°</td></tr>
+<tr><td><strong>split complementary</strong></td><td>0°, 150°, 210°</td></tr>
+</tbody></table></div>
+<p>When the file has more colours than the harmony has angles, the pattern repeats, turned a further 12° each time round, so later colours are close to, but not the same as, earlier ones.</p>
+<p>If a new colour would fall outside sRGB, its chroma is reduced, keeping its lightness and hue, until it fits.</p>
+<p>Colours left alone, such as <code>currentColor</code>, are not affected.</p>
+<h2 id="after-applying">After applying</h2>
+<ul>
+<li>Adjust any row by hand afterwards; the harmony only sets the starting targets.</li>
+<li><strong>Put every colour back</strong> returns every target to the original colour.</li>
+<li>Applying a harmony replaces any targets you set by hand.</li>
+</ul>
+<h2 id="things-to-know">Things to know</h2>
+<ul>
+<li>The five harmonies are a convention from colour-wheel teaching. They do not guarantee a pleasing or accessible result, and the <strong>Data</strong> tab lists them as this tool&#39;s choice.</li>
+<li>Because every generated colour shares the base colour&#39;s lightness, a harmony can make colours that differ in hue but are hard to tell apart for someone with a colour-vision deficiency, or too similar in lightness for text. Check the result on the <strong>Check</strong> tab; see <a href="check-contrast-and-colour-vision.html">Check contrast and colour vision</a>.</li>
+<li>A file whose main colour is a grey or near-grey has little chroma, so the harmony produces greys or near-greys too.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="recolour-an-svg.html"><span>Previous</span>Recolour an SVG</a><a href="reference.html"><span>Next</span>SVG Recolour reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#apply-a-harmony">Apply a harmony</a></li><li><a href="#how-the-harmony-is-built">How the harmony is built</a></li><li><a href="#after-applying">After applying</a></li><li><a href="#things-to-know">Things to know</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

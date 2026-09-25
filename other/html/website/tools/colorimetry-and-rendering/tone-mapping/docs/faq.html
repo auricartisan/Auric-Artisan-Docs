@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tone Mapping FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the Tone Mapping lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tone Mapping</a>
+<h2>Tone Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tone Mapping</a></li>
+<li><a href="compare-operators.html">Compare operators</a></li>
+<li><a href="export-a-lut.html">Export a LUT</a></li>
+<li><a href="map-a-frame.html">Map a frame</a></li>
+<li><a href="read-the-scopes.html">Read the scopes</a></li>
+<li><a href="reference.html">Tone Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tone Mapping</a></li>
+<li><a href="faq.html" aria-current="page">Tone Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tone Mapping</a> &rsaquo; <a href="README.html">Tone Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Tone Mapping FAQ</h1>
+<p class="lede">Short answers to common questions about the Tone Mapping lab.</p>
+<h2 id="which-curve-should-i-use">Which curve should I use?</h2>
+<p>For a photographic look with gentle highlight roll-off, Hable filmic or the Narkowicz fit are common choices. Reinhard is simple and never clips, but never reaches pure white. Compare them on the Operators tab at mid-grey and scene white before deciding.</p>
+<h2 id="is-narkowicz-fit-the-aces-tone-mapper">Is &quot;Narkowicz fit&quot; the ACES tone mapper?</h2>
+<p>No. It is Krzysztof Narkowicz&#39;s 2016 curve fit that approximates the look of the ACES output transforms. The Academy&#39;s own transforms are not implemented.</p>
+<h2 id="what-happened-to-the-bt2446-operators">What happened to the BT.2446 operators?</h2>
+<p>The two operators once labelled BT.2446 Method A and Method C did not implement ITU-R BT.2446. One multiplied by a small constant and turned the frame nearly black; the other could never exceed a 10% linear grey. They are renamed Gamma-domain scale and Scaled Reinhard, shown on the Operators tab, and no longer offered in the Lab.</p>
+<h2 id="what-is-the-difference-between-scene-referred-and-display-referred">What is the difference between scene-referred and display-referred?</h2>
+<p>Scene-referred values describe light in the scene and can exceed 1. Display-referred values are 0 to 1 of what the display can show. The lab treats a linear source as scene-referred and anything encoded (sRGB, PQ, HLG, gamma) as display-referred.</p>
+<h2 id="why-acescg-as-the-default-working-space">Why ACEScg as the default working space?</h2>
+<p>ACEScg is a wide, linear working space designed for rendering and compositing. Grading in it and converting to the display at the end is common practice. You can choose Rec.709, Display P3 or Rec.2020 instead.</p>
+<h2 id="which-export-reproduces-the-preview">Which export reproduces the preview?</h2>
+<p>The whole-pipeline 3D <code>.cube</code>. The curve export holds only the tone curve.</p>
+<h2 id="can-i-load-an-exr-or-hdr-file">Can I load an EXR or HDR file?</h2>
+<p>The lab reads images your browser can decode (such as PNG and JPEG), which are 8-bit. It does not read OpenEXR or Radiance HDR files.</p>
+<h2 id="can-i-save-and-reload-my-settings-as-a-file">Can I save and reload my settings as a file?</h2>
+<p>Not in the current version. Use the link, or the floating <strong>Save to Library</strong> button, which stores an image of the frame.</p>
+<h2 id="is-my-image-uploaded">Is my image uploaded?</h2>
+<p>No. It is decoded and processed in your browser.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting Tone Mapping</a><a href="../others/README.html"><span>Next</span>Tone Mapping: supporting pages</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#which-curve-should-i-use">Which curve should I use?</a></li><li><a href="#is-narkowicz-fit-the-aces-tone-mapper">Is &quot;Narkowicz fit&quot; the ACES tone mapper?</a></li><li><a href="#what-happened-to-the-bt2446-operators">What happened to the BT.2446 operators?</a></li><li><a href="#what-is-the-difference-between-scene-referred-and-display-referred">What is the difference between scene-referred and display-referred?</a></li><li><a href="#why-acescg-as-the-default-working-space">Why ACEScg as the default working space?</a></li><li><a href="#which-export-reproduces-the-preview">Which export reproduces the preview?</a></li><li><a href="#can-i-load-an-exr-or-hdr-file">Can I load an EXR or HDR file?</a></li><li><a href="#can-i-save-and-reload-my-settings-as-a-file">Can I save and reload my settings as a file?</a></li><li><a href="#is-my-image-uploaded">Is my image uploaded?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

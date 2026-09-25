@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What Font Hub's scores, recommendations, checks and insertion can and cannot guarantee, and its size limits.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Font Hub</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Font Hub</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Font Hub</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What Font Hub's scores, recommendations, checks and insertion can and cannot guarantee, and its size limits.</p>
+<h2 id="scores-and-recommendations">Scores and recommendations</h2>
+<ul>
+<li>Suitability and accessibility scores are catalogue estimates built from measured traits of the fonts, such as x-height and how distinct similar characters are. They are guidance for shortlisting, not guarantees.</li>
+<li>Categories are assigned automatically and can occasionally be wrong for unusual designs.</li>
+<li>Recommendations blend the chosen intent, industry, palette and your local use. They are a starting point.</li>
+<li>Always check your real text, languages, sizes and colour contrast in the finished product.</li>
+</ul>
+<h2 id="previews">Previews</h2>
+<ul>
+<li>Previews use the real font files, fetched through VS Code and cached. A family may show <strong>Preview unavailable</strong> when offline or when a file cannot be fetched.</li>
+<li>Variable-axis sliders and OpenType toggles only show what the preview font file supports.</li>
+<li>System-font previews depend on the font being installed on your computer.</li>
+</ul>
+<h2 id="automatic-insertion">Automatic insertion</h2>
+<ul>
+<li>Supports HTML files with a <code>&lt;head&gt;</code>, CSS, SCSS, Less, PostCSS, JavaScript and TypeScript. Other languages get a copied embed.</li>
+<li>Works on files up to 2 MiB.</li>
+<li>It is deliberately conservative, not a complete HTML, CSS or JavaScript parser. It skips <code>&lt;head&gt;</code> tags inside comments, scripts and styles, and it will not add a setup twice.</li>
+<li>Explicit formats insert at the cursor; they do not merge into framework configuration files.</li>
+<li>Up to 12 families can be inserted together.</li>
+</ul>
+<h2 id="cdn-check">CDN check</h2>
+<ul>
+<li>Checks one catalogue file, one stylesheet and one font file, with <code>HEAD</code> requests from the test address <code>http://localhost:5500</code>, with a 10-second timeout per request.</li>
+<li>It is a sample, not an audit of every family or of your production address.</li>
+<li>It reports what the CDN answers; it cannot change hosting settings or bypass browser security.</li>
+</ul>
+<h2 id="self-hosting-kits">Self-hosting kits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Limit</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Families per kit</td><td>6 by default, up to 12 (<code>auricFontLib.download.maxFamilies</code>)</td></tr>
+<tr><td>One font file</td><td>40 MB</td></tr>
+<tr><td>Whole kit</td><td>250 MB</td></tr>
+</tbody></table></div>
+<p>Kits are refused when redistribution permission or a required licence notice cannot be established. System fonts are never exported.</p>
+<h2 id="catalogue">Catalogue</h2>
+<ul>
+<li>2,023 library families, 547 variable, in the bundled snapshot.</li>
+<li>A refresh only accepts validated data; new families may need an extension update.</li>
+<li>The cache is limited to <code>auricFontLib.cache.maxMB</code> (512 MiB by default); the oldest items go first.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#scores-and-recommendations">Scores and recommendations</a></li><li><a href="#previews">Previews</a></li><li><a href="#automatic-insertion">Automatic insertion</a></li><li><a href="#cdn-check">CDN check</a></li><li><a href="#self-hosting-kits">Self-hosting kits</a></li><li><a href="#catalogue">Catalogue</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,139 @@
+==============================================================================
+BROWSE, SEARCH AND FILTER
+==============================================================================
+Narrow the 8,192-colour atlas with the two search boxes, eight filters and six
+sort orders, and move around the grid.
+Area: Website › Library › Colour libraries › Color Library   Updated: 2026-09-25
+
+The Browse the atlas section and the Library tab hold everything you need to
+narrow the atlas and scan it. This page covers each control in the order you
+meet it.
+
+SEARCH
+======
+
+The first search box reads Search by hex (#a6e223) or id….
+
+  1. Select the box, or press `/` anywhere on the page (outside a text field)
+     to jump to it.
+  2. Type part of a hex code, an atlas id, or a label. The grid updates a
+     moment after you stop typing.
+
+A colour matches when every word you type appears in at least one of these:
+its hex code, its atlas id, its emotion, its art movement, its mood or its
+design usage. Matching ignores case and accepts part-words, so `a6e` matches
+`#A6E223`, and `rom` matches both romantic and Romanticism.
+
+  | Note: Ids match as text, so typing `12` also finds ids such as `120`, `1203`
+  | and `4812`.
+
+FILTER INSIDE RESULTS
+=====================
+
+The second row, Filter inside results, has its own box (hex, emotion, mood,
+usage…) and a Clear button. It works exactly like the first search box; the
+words in both boxes are combined, and every word must match. Use it to add a
+narrowing word without editing the first search. Clear empties only this
+second box.
+
+THE EIGHT FILTERS
+=================
+
+The filters sit at the top of the Library tab. Each is a drop-down list;
+choose a value to keep only matching colours.
+
+  Filter:        Hue
+  Options:       All hues, Red, Orange, Yellow, Green, Cyan, Blue, Purple,
+                 Pink, Neutral / Gray
+  What it tests: The colour's HSL hue angle, in fixed ranges (see the
+                 Reference [reference.txt]). Neutral / Gray keeps colours with
+                 very low chroma, and the hue options skip them.
+
+  Filter:        Lightness
+  Options:       Any lightness, Dark (L < 35)**, **Mid (35–70)**, **Light (>
+                 70)
+  What it tests: The colour's CIE L* lightness, from 0 (black) to 100 (white).
+
+  Filter:        Chroma
+  Options:       Any chroma, Muted, Balanced, Vivid
+  What it tests: The colour's OKLCH chroma: Muted below 0.07, Balanced 0.07 to
+                 0.15, Vivid above 0.15.
+
+  Filter:        Emotion
+  Options:       All emotions and ten labels
+  What it tests: The colour's emotion label.
+
+  Filter:        Art movement
+  Options:       All movements and eight movements
+  What it tests: The art movement it is associated with.
+
+  Filter:        AI mood
+  Options:       All moods and ten moods
+  What it tests: The colour's mood label.
+
+  Filter:        Design usage
+  Options:       All usages and ten usages
+  What it tests: The use it was labelled for, such as `typography` or
+                 `ui-surface`.
+
+  Filter:        WCAG
+  Options:       Any WCAG, AA on white, AAA on white, AA on black, AAA on
+                 black
+  What it tests: The contrast ratio on white or black: AA is 4.5:1 or more,
+                 AAA is 7:1 or more.
+
+All filters combine with AND, and they also combine with the search boxes and
+the requirement chips.
+
+  | Note: The Chroma filter's bands are not the same as the Vivid and Muted
+  | requirement chips. The chip Vivid needs chroma 0.18 or more, the filter Vivid
+  | needs more than 0.15. Use whichever cut suits you.
+
+SORT
+====
+
+Sort by decides the order of the grid:
+
+  Option         | Order
+  ---------------+---------------------------------------------------
+  Sort: original | The atlas's own order, by id. This is the default.
+  Hue (rainbow)  | By HSL hue, from 0° (red) round to 360°.
+  Lightness ↑    | Darkest first, by OKLCH lightness.
+  Lightness ↓    | Lightest first.
+  Chroma ↓       | Most colourful first.
+  Luminance ↓    | Highest relative luminance first.
+  Random         | A random order.
+
+SHUFFLE, RANDOM AND RESET
+=========================
+
+  - Shuffle sets the sort to Random and reorders the grid. Select it again for
+    a new order.
+  - Open a random colour picks any one of the 8,192 colours, ignoring your
+    filters, and opens it on The colour tab.
+  - Reset empties both search boxes, sets every filter back to its "all" or
+    "any" option and the sort back to Sort: original. It does not clear the
+    requirement chips; select a highlighted chip to turn it off.
+  - Export visible switches to the Export tab, where you can download every
+    colour that currently matches. See Copy and export [copy-and-export.txt].
+
+MOVING AROUND THE GRID
+======================
+
+  - The grid scrolls continuously. There are no pages.
+  - Under the grid, a line such as 1–48 of 2,998 colours says which colours
+    you are looking at and how many match. When nothing matches it reads
+    Nothing to show, and the grid shows No colors match these filters with the
+    hint Try clearing the search or selecting "Any" on filters.
+  - Back to top returns to the first colour.
+  - The Library tab's badge shows the number of matching colours.
+  - Select a tile, or focus it and press `Enter` or `Space`, to open the
+    colour on The colour tab.
+  - Select the star on a tile to save or unsave it without opening it. See
+    Save colours [save-colours.txt].
+
+RESULT
+======
+
+The grid shows only the colours that match your chips, searches and filters,
+in the order you chose, and the counter under it tells you how many there are.

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security page — Auric Artisan Docs</title>
+<meta name="description" content="A plain-language summary of Auric Artisan's Security page — how requests are protected, encryption, authentication, payments, what it does not claim, and responsible disclosure.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Company and legal</a>
+<h2>Company and legal docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">How to read the policies</a></li>
+<li><a href="about.html">About Auric Artisan</a></li>
+<li><a href="acceptable-use-policy.html">Acceptable Use Policy</a></li>
+<li><a href="accessibility-statement.html">Accessibility statement</a></li>
+<li><a href="author.html">Author page</a></li>
+<li><a href="company-faq.html">FAQ page</a></li>
+<li><a href="contact.html">Contact page</a></li>
+<li><a href="content-and-ip-policy.html">Content and Intellectual Property Policy</a></li>
+<li><a href="cookie-policy.html">Cookie Policy</a></li>
+<li><a href="data-retention-and-deletion.html">Data Retention and Deletion Policy</a></li>
+<li><a href="extension-privacy-policy.html">Browser Extension Privacy Policy</a></li>
+<li><a href="legal-index.html">Legal index</a></li>
+<li><a href="licence-agreement.html">Licence Agreement</a></li>
+<li><a href="pricing-page.html">Pricing page</a></li>
+<li><a href="privacy-policy.html">Privacy Policy</a></li>
+<li><a href="refund-policy.html">Refund Policy</a></li>
+<li><a href="security-page.html" aria-current="page">Security page</a></li>
+<li><a href="security-policy.html">Security Policy</a></li>
+<li><a href="subscription-and-billing-policy.html">Subscription and Billing Policy</a></li>
+<li><a href="terms-of-service.html">Terms of Service</a></li>
+<li><a href="timeline.html">Timeline</a></li>
+<li><a href="transparency-and-ethics.html">Transparency and Ethics Policy</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Company and legal</a> &rsaquo; <a href="README.html">Company and legal docs</a></nav>
+<p class="kicker">Website › Company and legal</p>
+<h1>Security page</h1>
+<p class="lede">A plain-language summary of Auric Artisan's Security page — how requests are protected, encryption, authentication, payments, what it does not claim, and responsible disclosure.</p>
+<p>Official page: <a href="https://auricartisan.com/security/" rel="noopener">https://auricartisan.com/security/</a> — <strong>Security at Auric Artisan</strong> (last updated 23 May 2026, version 2.1). This is the trust page. It is separate from the legal Security Policy, summarised in <a href="security-policy.html">Security Policy</a>. The official page is authoritative.</p>
+<h2 id="the-overview">The overview</h2>
+<p>The page describes a layered (&quot;defence in depth&quot;) design and headlines four figures: 256-bit AES encryption, a 9-step security pipeline, more than 20 security modules and a 3-tier defence model.</p>
+<h2 id="defence-in-depth-architecture">Defence-in-depth architecture</h2>
+<p>Three tiers and a token layer work together: server-side checks that run before any request is handled; abuse detection that escalates from throttling to a challenge to a block; a behavioural check that scores signals such as pointer movement, typing cadence and timing without interactive challenges; and signed tokens verified on the server.</p>
+<h2 id="request-security-pipeline">Request security pipeline</h2>
+<p>Every request passes nine steps in order, and is rejected at the first one that fails: rate limiting, CSRF protection, request validation, session integrity, token verification, bot scoring, abuse analysis, escalating countermeasures (soft throttle, visual challenge, temporary block, permanent ban) and security logging.</p>
+<h2 id="encryption-and-data-protection">Encryption and data protection</h2>
+<ul>
+<li>TLS 1.3 in transit, with HSTS.</li>
+<li>Stored data encrypted at rest by Cloudflare; Auric Artisan does not run its own storage.</li>
+<li>API keys, signing secrets and database credentials kept in an encrypted secret store that cannot be read back.</li>
+<li>Two-factor secrets encrypted before storage under a separately held key.</li>
+</ul>
+<h2 id="authentication-and-access-control">Authentication and access control</h2>
+<ul>
+<li>Passwords hashed with PBKDF2-SHA256 at 600,000 iterations; they cannot be recovered, only replaced.</li>
+<li>API keys kept only as a SHA-256 hash plus a short prefix; shown once.</li>
+<li>TOTP two-factor authentication with backup codes.</li>
+<li>OAuth sign-in protected with PKCE and state checks.</li>
+<li>Device and session management: sessions rotate, expire on inactivity, have a maximum lifetime and can be revoked remotely.</li>
+</ul>
+<h2 id="infrastructure-security">Infrastructure security</h2>
+<p>Deployed on Cloudflare&#39;s edge network, with DDoS protection, a web application firewall and bot management; strict security headers on every response; HSTS with a one-year max-age, submitted for browser preload lists; each worker isolated in its own sandbox.</p>
+<h2 id="payments">Payments</h2>
+<ul>
+<li>Cards never reach Auric Artisan: payments go through Razorpay, a PCI-DSS compliant gateway.</li>
+<li>Orders are priced from Auric Artisan&#39;s own catalogue, so a modified browser cannot change what a purchase costs.</li>
+<li>Payment notifications are verified before they affect an account, and delivering one twice grants an entitlement once.</li>
+<li>Account erasure anonymises personal data rather than destroying financial records, because tax law requires invoices to be kept: &quot;the transaction remains and your identity does not.&quot;</li>
+</ul>
+<h2 id="what-we-do-not-claim">What we do not claim</h2>
+<p>The page lists its own limits:</p>
+<ul>
+<li><strong>No formal certification</strong> — not SOC 2, ISO 27001 or HIPAA certified.</li>
+<li><strong>No external penetration test</strong> — the measures are implemented and tested by Auric Artisan, not independently audited.</li>
+<li><strong>Operated by one person</strong> — fixes ship quickly, but there is no 24/7 on-call rotation and no separation of duties; response times are best effort.</li>
+<li><strong>Third-party dependencies</strong> — email through Resend, payments through Razorpay, hosting and storage through Cloudflare; their security practices are their own.</li>
+</ul>
+<h2 id="responsible-disclosure">Responsible disclosure</h2>
+<ul>
+<li>Send a detailed report to <a href="mailto:security@auricartisan.com" rel="noopener">security@auricartisan.com</a>: the vulnerability, steps to reproduce and any proof of concept.</li>
+<li>Or use the contact form, which opens with the Security queue selected: <a href="https://auricartisan.com/company/contact/?topic=security" rel="noopener">https://auricartisan.com/company/contact/?topic=security</a>.</li>
+<li>Do not disclose publicly until the issue has been investigated and patched.</li>
+<li>Stated aims: acknowledge within 24 hours, an initial assessment within 72 hours, and a fix for confirmed vulnerabilities within 30 days.</li>
+<li>&quot;Researchers acting in good faith will never face legal action.&quot;</li>
+</ul>
+<p>The contact form&#39;s Security topic asks you not to paste a working exploit into the form; send the location and impact, and a way to send the rest will follow.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="security-policy.html">Security Policy</a></li>
+<li><a href="../../account-and-billing/docs/two-step-verification.html">Two-step verification</a></li>
+<li><a href="../../../help/contact-and-support.html">Contact and support</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="refund-policy.html"><span>Previous</span>Refund Policy</a><a href="security-policy.html"><span>Next</span>Security Policy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-overview">The overview</a></li><li><a href="#defence-in-depth-architecture">Defence-in-depth architecture</a></li><li><a href="#request-security-pipeline">Request security pipeline</a></li><li><a href="#encryption-and-data-protection">Encryption and data protection</a></li><li><a href="#authentication-and-access-control">Authentication and access control</a></li><li><a href="#infrastructure-security">Infrastructure security</a></li><li><a href="#payments">Payments</a></li><li><a href="#what-we-do-not-claim">What we do not claim</a></li><li><a href="#responsible-disclosure">Responsible disclosure</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

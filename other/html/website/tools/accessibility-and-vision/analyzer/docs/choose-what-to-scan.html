@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choose what to scan — Auric Artisan Docs</title>
+<meta name="description" content="Pick which of the 13 checks run in Advanced mode, understand which sections each check fills, and read what a run costs in tokens.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html" aria-current="page">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Choose what to scan</h1>
+<p class="lede">Pick which of the 13 checks run in Advanced mode, understand which sections each check fills, and read what a run costs in tokens.</p>
+<p>A full audit runs every check the Analyzer has. You rarely need all of them. In Advanced mode you can switch checks off, which makes a run faster and can make it cheaper. In Simple mode the set of checks is fixed.</p>
+<h2 id="the-checks">The checks</h2>
+<p>One check, <strong>Page structure</strong>, always runs: it reads the page and its resources, and everything else is built on it. The other 13 can be switched on and off.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Check</th><th>What it does</th><th>Fills the section</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Project model</td><td>One deduplicated model of the page: resources, colours, media, schema, dependencies</td><td>Project</td><td>from Page structure</td></tr>
+<tr><td>Colour contrast</td><td>Every text pair measured against WCAG, with a passing colour to replace it</td><td>Contrast</td><td></td></tr>
+<tr><td>Before / After</td><td>The page as it is beside the page with the contrast fixes applied</td><td>Before / After</td><td>from Colour contrast</td></tr>
+<tr><td>Accessibility</td><td>The full rule engine: WCAG 2.1 and 2.2, the a11y tree, keyboard and screen-reader order</td><td>A11y+</td><td>slow</td></tr>
+<tr><td>Palette</td><td>Dominant colours and generated accessible palettes</td><td>Palette</td><td></td></tr>
+<tr><td>Vision simulation</td><td>The palette through colour-vision and low-vision filters</td><td>Simulation</td><td>from Palette</td></tr>
+<tr><td>SEO and metadata</td><td>Title, description, headings, schema, robots, canonical, keyword density</td><td>SEO</td><td></td></tr>
+<tr><td>Media</td><td>Every image, video and audio file: size, dimensions, alt text, captions, loading</td><td>Media</td><td></td></tr>
+<tr><td>Performance</td><td>Core Web Vitals measured in your browser, bundle weight, network simulation</td><td>Performance</td><td>slow</td></tr>
+<tr><td>Responsive behaviour</td><td>Viewport, breakpoints, tap-target sizes, fixed widths that will not fit a phone</td><td>Devices</td><td></td></tr>
+<tr><td>Deep DOM and framework</td><td>Rendered DOM against raw HTML, framework detection, what JavaScript wrote</td><td>Deep</td><td>slow</td></tr>
+<tr><td>Security and reliability</td><td>Security headers, broken links, server stability</td><td>Security</td><td></td></tr>
+<tr><td>Site map</td><td>Discovers the rest of the site from robots.txt and the whole sitemap tree</td><td>Site Map</td><td>slow</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>slow</strong> marks the checks that take noticeably longer.</li>
+<li><strong>from …</strong> marks a check that adds no measurement of its own and reads from another one. Ticking it turns its source on as well. Unticking the source turns off everything that reads from it.</li>
+</ul>
+<p>Eight sections are never switched on or off, because they present what the checks found or what you saved: <strong>Insights</strong>, <strong>Fixes</strong>, <strong>Playground</strong>, <strong>Rules</strong>, <strong>Workspace</strong>, <strong>Report</strong>, <strong>CSP Setup</strong> and <strong>Compare</strong>. The <strong>Overview</strong> always has something, because Page structure always runs.</p>
+<h2 id="what-simple-mode-runs">What Simple mode runs</h2>
+<p>Simple mode has no picker. It always runs Page structure plus: Project model, Colour contrast, SEO and metadata, Site map, Accessibility and Responsive behaviour. Responsive behaviour and Accessibility count towards the overall score even though Simple has no Devices or A11y+ section to show them.</p>
+<h2 id="use-the-picker-advanced">Use the picker (Advanced)</h2>
+<ol>
+<li>Select <strong>Advanced</strong> in the strip.</li>
+<li>Open the row under the strip that starts <strong>What to scan</strong>. Its heading shows how many checks are on and what they cost, for example &quot;What to scan · 13 of 13 · 4 tokens&quot;.</li>
+<li>Tick or untick checks. Ticking a check also opens its section in the workspace; unticking it closes that section.</li>
+<li>Or use a shortcut button at the foot of the list:<ul>
+<li><strong>Everything</strong> turns every check on.</li>
+<li><strong>The fast three</strong> keeps Page structure, Colour contrast and SEO and metadata, and turns the rest off.</li>
+</ul>
+</li>
+<li>Select <strong>Analyze</strong>.</li>
+</ol>
+<p>Your choice is remembered in this browser for the next visit.</p>
+<p>The notes at the foot of the picker repeat the rules: &quot;4 checks to a token, rounded up. A blocked page adds the cost of rendering it on a server.&quot;, which section always runs, and which sections are always available.</p>
+<h2 id="sections-whose-check-did-not-run">Sections whose check did not run</h2>
+<p>If you open a section whose check was switched off for the last run, it says that the check &quot;was switched off for this run, so there is nothing measured to show here&quot;, with a <strong>Turn it on and run again</strong> button. The Analyzer never shows &quot;no issues found&quot; for a check that did not run.</p>
+<p>Choosing such a section from the <strong>Sections</strong> picker has the same effect: its check is turned on and, if there is already a report, the audit runs again.</p>
+<p>Categories whose check was switched off are also left out of the overall score, rather than counted as zero or as 100. The Overview says which categories were excluded.</p>
+<h2 id="what-a-run-costs">What a run costs</h2>
+<p>Tokens pay for work done on Auric Artisan&#39;s servers, such as rendering a page from another website in a real browser, or crawling a site. The token meter in the run line quotes the next run before you start it.</p>
+<h3 id="the-quote">The quote</h3>
+<ul>
+<li>The chosen checks are priced at <strong>four checks to a token</strong>, rounded up, with a minimum of one token. Page structure is not counted.</li>
+<li>If the page blocks embedding and your checks need a live, rendered page, rendering it on a server adds <strong>2 tokens</strong>. The meter shows this as &quot;+2 more if the page blocks embedding&quot;.</li>
+<li>Checks that only read the page&#39;s HTML never need a server render. A run made only of Project model, SEO and metadata, Responsive behaviour, Security and reliability and Site map costs the same whatever the page does. The meter&#39;s note then says so.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>Checks counted</th><th>Quote</th></tr></thead>
+<tbody>
+<tr><td>Everything</td><td>13</td><td>4 tokens, +2 if the page blocks embedding</td></tr>
+<tr><td>Simple mode&#39;s fixed set</td><td>6</td><td>2 tokens, +2 if the page blocks embedding</td></tr>
+<tr><td>The fast three</td><td>2</td><td>1 token, +2 if the page blocks embedding</td></tr>
+</tbody></table></div>
+<p>The meter&#39;s <strong>Remaining</strong> figure is your balance. Signed-out visitors see &quot;Sign in to claim 100 free tokens.&quot; and a <strong>Sign in · 100 free tokens</strong> button; signed-in accounts that have not claimed them see <strong>Claim 100 free tokens</strong>; <strong>See plans</strong> links to the pricing page.</p>
+<h3 id="the-token-sheet">The token sheet</h3>
+<p>Select the token meter, or press <code>Enter</code> or <code>Space</code> while it has focus, to open a sheet that answers what the meter cannot. It has these parts:</p>
+<ul>
+<li><strong>Where you stand</strong> — your balance and what this run would leave.</li>
+<li><strong>Why</strong> followed by the cost — the lines that make up the price, such as &quot;Reading the page, once&quot; for one page, or &quot;Finding the pages&quot; plus a per-page line for a site scan. It notes that contrast, palette, media, accessibility and SEO run on your own machine and cost nothing, and that a token only ever buys work on a server. For a site scan it adds that tokens are &quot;Held, not spent: you are charged for the pages that come back and refunded the rest.&quot;</li>
+<li><strong>What would fit</strong> — what your balance still covers: another single page, a rendered snapshot, or a whole-site scan of a chosen size. A <strong>Pages</strong> stepper and a <strong>Pages that block embedding</strong> switch let you price a job before you run it. Pricing a job here does not change the run the <strong>Analyze</strong> button is about to make.</li>
+<li><strong>Lately</strong> — your recent token activity, such as free tokens claimed or a monthly allowance added.</li>
+</ul>
+<h3 id="monthly-analyses">Monthly analyses</h3>
+<p>Server-side URL analyses are also counted against a monthly allowance. The free Apprentice plan includes 20 URL analyses a month; the pricing page at <a href="https://auricartisan.com/company/pricing/" rel="noopener">https://auricartisan.com/company/pricing/</a> lists the allowance for each paid plan. When the allowance is used up, the Analyzer shows <strong>You have used this month&#39;s scans</strong>.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Auditing a page on auricartisan.com in your own browser does not need the server, so it works without an account. Vision simulations elsewhere on the site are not metered at all.</p>
+</blockquote>
+<p>For plans, allowances and top-ups, see the account and billing docs in <a href="../../../../account-and-billing/README.html">Account and billing</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="arrange-the-workspace.html"><span>Previous</span>Arrange the workspace</a><a href="colour-contrast-and-vision.html"><span>Next</span>Colour, contrast and vision</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-checks">The checks</a></li><li><a href="#what-simple-mode-runs">What Simple mode runs</a></li><li><a href="#use-the-picker-advanced">Use the picker (Advanced)</a></li><li><a href="#sections-whose-check-did-not-run">Sections whose check did not run</a></li><li><a href="#what-a-run-costs">What a run costs</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

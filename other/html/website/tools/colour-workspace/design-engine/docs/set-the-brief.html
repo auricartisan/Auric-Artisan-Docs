@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set the brief — Auric Artisan Docs</title>
+<meta name="description" content="What every input in the brief rail does: industry, style, contrast target, density, seed, harmony, colour mode, corner style, type ratio, ramp shape and token naming.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Design System Generator</a>
+<h2>Design System Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Design System Generator</a></li>
+<li><a href="compare.html">Compare styles and industries</a></li>
+<li><a href="component-playground.html">Use the component playground</a></li>
+<li><a href="contrast-audit.html">Check contrast with the audit</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="read-the-system.html">Read the system</a></li>
+<li><a href="set-the-brief.html" aria-current="page">Set the brief</a></li>
+<li><a href="share-save-and-connect.html">Share, save and connect</a></li>
+<li><a href="reference.html">Design System Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Design System Generator</a></li>
+<li><a href="faq.html">Design System Generator FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Design System Generator</a> &rsaquo; <a href="README.html">Design System Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Set the brief</h1>
+<p class="lede">What every input in the brief rail does: industry, style, contrast target, density, seed, harmony, colour mode, corner style, type ratio, ramp shape and token naming.</p>
+<p><strong>The brief</strong> is the left-hand column. It holds every input the system is built from. Each section shows a short note on the right that says what the choice resolved to, for example <em>auto → analogous</em> or <em>4.5:1 body text</em>. Any change regenerates the whole system immediately, and the audit shows what the change did.</p>
+<p>The first three inputs (industry, style and contrast target) decide most of the system. The rest are overrides.</p>
+<h2 id="industry">Industry</h2>
+<p>Industry sets the brand hue and how much colour (chroma) the system uses, plus a mood and a set of tags used to pick the font pairing and icon family. A coloured dot beside the list shows the industry&#39;s hue.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Industry</th><th>Hue</th><th>Mood</th></tr></thead>
+<tbody>
+<tr><td><strong>Auto</strong> (default)</td><td>250°</td><td>No vertical assumed; your seed decides.</td></tr>
+<tr><td><strong>Fintech</strong></td><td>258°</td><td>trustworthy, precise, secure</td></tr>
+<tr><td><strong>Healthcare</strong></td><td>192°</td><td>calm, clean, reassuring</td></tr>
+<tr><td><strong>SaaS / B2B</strong></td><td>264°</td><td>efficient, modern, focused</td></tr>
+<tr><td><strong>E-commerce</strong></td><td>22°</td><td>energetic, inviting, urgent</td></tr>
+<tr><td><strong>Education</strong></td><td>234°</td><td>approachable, clear, friendly</td></tr>
+<tr><td><strong>Creative / Agency</strong></td><td>320°</td><td>expressive, bold, original</td></tr>
+<tr><td><strong>Gaming</strong></td><td>282°</td><td>high-energy, immersive, sharp</td></tr>
+<tr><td><strong>Luxury</strong></td><td>44°</td><td>refined, exclusive, timeless</td></tr>
+<tr><td><strong>Food &amp; Drink</strong></td><td>18°</td><td>warm, appetizing, organic</td></tr>
+<tr><td><strong>Travel</strong></td><td>200°</td><td>open, adventurous, fresh</td></tr>
+<tr><td><strong>Real Estate</strong></td><td>168°</td><td>stable, premium, grounded</td></tr>
+<tr><td><strong>Non-profit</strong></td><td>148°</td><td>hopeful, human, honest</td></tr>
+<tr><td><strong>Crypto / Web3</strong></td><td>270°</td><td>futuristic, bold, technical</td></tr>
+<tr><td><strong>Wellness</strong></td><td>138°</td><td>serene, natural, balanced</td></tr>
+</tbody></table></div>
+<p><strong>Auto</strong> gives a balanced hue and a neutral tag set, so the font and icon choice is not nudged towards any vertical. When you set a seed colour, the seed decides the hue and chroma whichever industry you choose; the industry then only influences the font and icon choice.</p>
+<h2 id="style">Style</h2>
+<p>Style multiplies the industry&#39;s saturation and sets the shape and movement of the system.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Style</th><th>Saturation</th><th>Corners</th><th>Shadows</th><th>Heading weight</th><th>Type ratio</th><th>Motion</th></tr></thead>
+<tbody>
+<tr><td><strong>Modern</strong> (default)</td><td>× 1.00</td><td>Soft</td><td>Balanced</td><td>700</td><td>1.25</td><td>Smooth</td></tr>
+<tr><td><strong>Minimal</strong></td><td>× 0.62</td><td>Sharp</td><td>Subtle</td><td>600</td><td>1.2</td><td>Subtle</td></tr>
+<tr><td><strong>Classic</strong></td><td>× 0.82</td><td>Soft</td><td>Balanced</td><td>700</td><td>1.25</td><td>Smooth</td></tr>
+<tr><td><strong>Bold</strong></td><td>× 1.28</td><td>Rounded</td><td>Deep</td><td>800</td><td>1.333</td><td>Snappy</td></tr>
+<tr><td><strong>Playful</strong></td><td>× 1.22</td><td>Rounded</td><td>Deep</td><td>800</td><td>1.333</td><td>Bouncy</td></tr>
+<tr><td><strong>Elegant</strong></td><td>× 0.72</td><td>Soft</td><td>Subtle</td><td>600</td><td>1.414</td><td>Smooth</td></tr>
+<tr><td><strong>Corporate</strong></td><td>× 0.88</td><td>Soft</td><td>Balanced</td><td>700</td><td>1.2</td><td>Subtle</td></tr>
+<tr><td><strong>Brutalist</strong></td><td>× 1.15</td><td>Sharp</td><td>Hard</td><td>900</td><td>1.5</td><td>Snappy</td></tr>
+<tr><td><strong>Organic</strong></td><td>× 0.90</td><td>Rounded</td><td>Soft</td><td>700</td><td>1.25</td><td>Smooth</td></tr>
+<tr><td><strong>Futuristic</strong></td><td>× 1.20</td><td>Soft</td><td>Glow</td><td>700</td><td>1.333</td><td>Snappy</td></tr>
+</tbody></table></div>
+<p>The note beside <strong>Style</strong> shows the corner, shadow and motion character it applies.</p>
+<h2 id="contrast-target">Contrast target</h2>
+<p>The minimum contrast that text colours are chosen to meet. It changes which colour steps become text and fills; it is not a check applied afterwards.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Body text must reach</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><strong>AA Large</strong></td><td>3:1</td><td>Lightest text tiers, most brand colour kept.</td></tr>
+<tr><td><strong>AA</strong></td><td>4.5:1</td><td>The usual production choice.</td></tr>
+<tr><td><strong>AAA</strong> (default)</td><td>7:1</td><td>Darkest text; safest, least colourful.</td></tr>
+</tbody></table></div>
+<p>Whatever you choose, the primary fill is always picked so that a black or white button label reaches at least 4.5:1 on it.</p>
+<h2 id="density">Density</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Body size</th><th>Spacing unit</th><th>Spacing multiplier</th></tr></thead>
+<tbody>
+<tr><td><strong>Compact</strong></td><td>15 px</td><td>4 px</td><td>× 0.9</td></tr>
+<tr><td><strong>Comfort</strong> (default)</td><td>16 px</td><td>4 px</td><td>× 1.0</td></tr>
+<tr><td><strong>Spacious</strong></td><td>17 px</td><td>5 px</td><td>× 1.15</td></tr>
+</tbody></table></div>
+<h2 id="seed">Seed</h2>
+<p>The seed is the brand colour the whole palette is built around.</p>
+<ul>
+<li>The colour chip shows the current seed.</li>
+<li>The colour well and the HEX box set a seed. The well regenerates as you pick; the HEX box applies when you press <code>Enter</code> or leave it.</li>
+<li><strong>Auto</strong> returns to a seed derived from the industry (the HEX box then reads <em>auto</em>).</li>
+<li>Twelve hue buttons under the seed set a seed at 0°, 30°, 60° and so on round the hue circle, at the current system&#39;s chroma.</li>
+</ul>
+<p>The note reads <em>from the industry</em> or <em>overridden</em>. A seed&#39;s chroma is kept within a workable range, so a near-grey or an extremely vivid colour is adjusted to something a ramp can be built from.</p>
+<h2 id="harmony">Harmony</h2>
+<p>Where the secondary and accent hues sit relative to the primary.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Secondary</th><th>Accent</th></tr></thead>
+<tbody>
+<tr><td><strong>Auto</strong> (default)</td><td>Chosen by the style (see below)</td><td></td></tr>
+<tr><td><strong>Complementary</strong></td><td>+ 180°</td><td>+ 150°</td></tr>
+<tr><td><strong>Analogous</strong></td><td>+ 32°</td><td>− 32°</td></tr>
+<tr><td><strong>Triadic</strong></td><td>+ 120°</td><td>+ 240°</td></tr>
+<tr><td><strong>Split-complementary</strong></td><td>+ 150°</td><td>+ 210°</td></tr>
+<tr><td><strong>Tetradic</strong></td><td>+ 90°</td><td>+ 180°</td></tr>
+<tr><td><strong>Monochrome</strong></td><td>same hue, less chroma</td><td>same hue</td></tr>
+</tbody></table></div>
+<p>With <strong>Auto</strong>: Minimal uses monochrome; Bold and Brutalist use complementary; Playful uses triadic; Futuristic uses split-complementary; Modern, Classic, Elegant, Corporate and Organic use analogous. The note shows the result, for example <em>auto → analogous</em>; a chosen harmony shows <em>locked</em>.</p>
+<h2 id="colour-mode">Colour mode</h2>
+<p><strong>Light</strong>, <strong>Dark</strong> or <strong>Both</strong> (default). With <strong>Both</strong>, dark roles are generated alongside the light ones (<em>two blocks</em>). With <strong>Light</strong>, the dark role tokens are left out of the tokens and exports and the playground offers only a light theme; with <strong>Dark</strong>, the playground offers only a dark theme.</p>
+<h2 id="corner-style">Corner style</h2>
+<p><strong>Auto</strong> (default, from the style), <strong>Sharp</strong>, <strong>Soft</strong>, <strong>Rounded</strong> or <strong>Pill</strong>. It replaces the whole radius family:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Corner style</th><th>sm</th><th>md</th><th>lg</th><th>xl</th><th>2xl</th><th>3xl</th></tr></thead>
+<tbody>
+<tr><td>Sharp</td><td>1</td><td>2</td><td>3</td><td>4</td><td>6</td><td>8</td></tr>
+<tr><td>Soft</td><td>3</td><td>6</td><td>8</td><td>12</td><td>16</td><td>22</td></tr>
+<tr><td>Rounded</td><td>6</td><td>10</td><td>14</td><td>20</td><td>28</td><td>36</td></tr>
+<tr><td>Pill</td><td>8</td><td>14</td><td>22</td><td>32</td><td>full</td><td>full</td></tr>
+</tbody></table></div>
+<p>Values are pixels. Every family also has <strong>none</strong> (0) and <strong>pill</strong> (fully round).</p>
+<h2 id="type-ratio">Type ratio</h2>
+<p>The ratio between neighbouring font sizes. <strong>Auto</strong> (default) uses the style&#39;s ratio. The options are <strong>1.125 · minor second</strong>, <strong>1.2 · minor third</strong>, <strong>1.25 · major third</strong>, <strong>1.333 · perfect fourth</strong>, <strong>1.414 · augmented fourth</strong>, <strong>1.5 · perfect fifth</strong> and <strong>1.618 · golden ratio</strong>.</p>
+<h2 id="ramp-shape">Ramp shape</h2>
+<p>Two rows of three buttons that reshape the primary, secondary and accent ramps. The semantic colours (success, warning, danger, info) ignore them on purpose.</p>
+<ul>
+<li><strong>Span</strong>: <strong>Tight</strong>, <strong>Even</strong> (default) or <strong>Wide</strong>: how far each ramp travels from light to dark.</li>
+<li><strong>Peak</strong>: <strong>Flat</strong>, <strong>Natural</strong> (default) or <strong>Vivid</strong>: whether chroma stays level across the ramp or bulges in the middle steps.</li>
+</ul>
+<h2 id="token-naming">Token naming</h2>
+<p>Renames every token in every export, so the file matches your codebase.</p>
+<ul>
+<li><strong>Prefix</strong>: free text, for example <code>brand</code>, which turns <code>--color-primary-500</code> into <code>--brand-color-primary-500</code>. It applies after a short pause in typing.</li>
+<li><strong>Case</strong>: <strong>kebab</strong> (default), <strong>camel</strong>, <strong>snake</strong> or <strong>Pascal</strong>.</li>
+<li>A line under the controls shows two real token names in your chosen style, for example <code>--brandColorPrimary500  ·  --brandSpace4</code>.</li>
+</ul>
+<h2 id="compare-every-style">Compare every style</h2>
+<p>The button at the bottom of the brief, <strong>Compare every style →</strong>, opens the Compare view. See <a href="compare.html">Compare styles and industries</a>.</p>
+<h2 id="tasks">Tasks</h2>
+<h3 id="build-a-system-around-your-brand-colour">Build a system around your brand colour</h3>
+<ol>
+<li>Type your brand HEX code in the <strong>Seed</strong> box and press <code>Enter</code>.</li>
+<li>Choose the <strong>Industry</strong> that best fits your product, so the font and icon choice suits it.</li>
+<li>Choose a <strong>Style</strong> and a <strong>Contrast target</strong>.</li>
+<li>If the brand colour must appear as the primary button, check the <strong>Colour</strong> tab&#39;s <strong>Surfaces &amp; roles</strong> card: the primary fill is the ramp step that passes contrast, which may be lighter or darker than your seed.</li>
+</ol>
+<p>Result: ramps, roles and every scale built around your colour.</p>
+<h3 id="match-your-codebases-naming">Match your codebase&#39;s naming</h3>
+<ol>
+<li>Type your prefix under <strong>Token naming</strong>, for example <code>acme</code>.</li>
+<li>Choose the case your code uses.</li>
+<li>Check the example line, then export.</li>
+</ol>
+<p>Result: exported tokens that need no renaming.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="read-the-system.html">Read the system</a></li>
+<li><a href="contrast-audit.html">Check contrast with the audit</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="read-the-system.html"><span>Previous</span>Read the system</a><a href="share-save-and-connect.html"><span>Next</span>Share, save and connect</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#industry">Industry</a></li><li><a href="#style">Style</a></li><li><a href="#contrast-target">Contrast target</a></li><li><a href="#density">Density</a></li><li><a href="#seed">Seed</a></li><li><a href="#harmony">Harmony</a></li><li><a href="#colour-mode">Colour mode</a></li><li><a href="#corner-style">Corner style</a></li><li><a href="#type-ratio">Type ratio</a></li><li><a href="#ramp-shape">Ramp shape</a></li><li><a href="#token-naming">Token naming</a></li><li><a href="#compare-every-style">Compare every style</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

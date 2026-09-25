@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting the Gamut Lab — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for common problems in the Gamut Lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Lab</a>
+<h2>Gamut Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Gamut Lab</a></li>
+<li><a href="compare-colour-spaces.html">Compare colour spaces</a></li>
+<li><a href="define-a-custom-space.html">Define a custom colour space</a></li>
+<li><a href="inspect-transfer-functions.html">Inspect transfer functions</a></li>
+<li><a href="reference.html">Gamut Lab reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting the Gamut Lab</a></li>
+<li><a href="faq.html">Gamut Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Lab</a> &rsaquo; <a href="README.html">Gamut Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Troubleshooting the Gamut Lab</h1>
+<p class="lede">Fixes for common problems in the Gamut Lab.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>A space I picked earlier disappeared from the diagram</td><td>The diagram draws up to five spaces; adding a sixth drops the oldest</td><td>Tick <strong>Show all library spaces</strong>, or pick the space again</td></tr>
+<tr><td>Choosing <strong>Custom</strong> shows nothing</td><td>The custom space does not exist until you solve it</td><td>Enter primaries and white, then select <strong>Solve from primaries</strong></td></tr>
+<tr><td>My custom space vanished after reloading</td><td>A solved Custom space is not saved</td><td>Export it (<strong>This space</strong>, JSON) and import it with <strong>Add to the library</strong></td></tr>
+<tr><td>Import says &quot;Invalid JSON&quot;</td><td>The pasted object has no <code>name</code> or no <code>primaries</code></td><td>Use the format in <a href="define-a-custom-space.html">Define a custom colour space</a></td></tr>
+<tr><td>Import says &quot;Parse error: …&quot;</td><td>The text is not valid JSON</td><td>Check quotes, commas and brackets</td></tr>
+<tr><td>Choosing the 10° observer changes nothing</td><td>Only the CIE 1931 2° observer is used</td><td>Expected</td></tr>
+<tr><td>The OKLab slice does not move with <strong>Level</strong></td><td>In the current version the OKLab slice is fixed at L = 0.5; only the label changes</td><td>Use <strong>Constant L* (CIELAB)</strong> to move through lightness</td></tr>
+<tr><td>In the u′v′ diagram, the vertex readout colour and membership look wrong</td><td>The readout treats the clicked coordinates as CIE 1931 x, y</td><td>Switch <strong>Diagram mode</strong> to <strong>CIE 1931 xy</strong> before probing</td></tr>
+<tr><td>The vertex readout always shows L* 100</td><td>The probe takes the chromaticity at Y = 1, the brightest colour of that chromaticity</td><td>Expected; it describes chromaticity, not a particular lightness</td></tr>
+<tr><td>The WebGL fill does nothing</td><td>The browser or device does not support WebGL 2, or it is disabled</td><td>Leave the fill off; the diagram works without it</td></tr>
+<tr><td>The wireframe cannot be rotated</td><td>It is drawn at a fixed viewing angle</td><td>Expected</td></tr>
+<tr><td>A share of &quot;&gt; 100%&quot; appears</td><td>The space&#39;s primaries lie outside the spectral locus</td><td>Expected for ACES AP0 and ProPhoto RGB; read the volume instead</td></tr>
+<tr><td>Percentages differ from other tools</td><td>Other tools often divide by a different locus area, and often in xy</td><td>See <a href="compare-colour-spaces.html">Compare colour spaces</a></td></tr>
+<tr><td>Volume figures change between runs</td><td>They are sampled estimates</td><td>Raise <strong>Samples</strong> on the Compare tab; the ± spread shrinks</td></tr>
+<tr><td>The equation box shows an odd power-law form for Rec. 2020, Adobe RGB or ProPhoto</td><td>The box simplifies those curves</td><td>Use the Transfer tab or Reference › Formulas</td></tr>
+<tr><td>The comparison export has fewer rows than spaces</td><td>It covers only the spaces drawn on the diagram</td><td>Draw the spaces you want first</td></tr>
+<tr><td>A long link warning appears</td><td>Links over about 1,800 characters may be cut off by some apps</td><td>Send the link as a file or shorten the view (fewer spaces)</td></tr>
+<tr><td><strong>Copy to clipboard</strong> is missing</td><td>It is hidden for PNG and link choices</td><td>Use <strong>Download</strong>, or <strong>Copy the link</strong> for links</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Gamut Lab reference</a><a href="faq.html"><span>Next</span>Gamut Lab FAQ</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

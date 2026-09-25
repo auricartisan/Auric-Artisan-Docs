@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copy, export and share — Auric Artisan Docs</title>
+<meta name="description" content="Copy a palette as hex, CSS, SCSS or Tailwind, download it as JSON, ASE, SVG or PNG, export design tokens, share a link, and download many palettes at once.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Palette Library</a>
+<h2>Palette Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="analyse-the-collection.html">Analyse the collection</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="copy-export-and-share.html" aria-current="page">Copy, export and share</a></li>
+<li><a href="inspect-a-palette.html">Inspect a palette</a></li>
+<li><a href="save-palettes.html">Save palettes</a></li>
+<li><a href="reference.html">Palette Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Palette Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Palette Library</a> &rsaquo; <a href="README.html">Palette Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Palette Library</p>
+<h1>Copy, export and share</h1>
+<p class="lede">Copy a palette as hex, CSS, SCSS or Tailwind, download it as JSON, ASE, SVG or PNG, export design tokens, share a link, and download many palettes at once.</p>
+<h2 id="quick-copies-from-the-grid">Quick copies from the grid</h2>
+<ul>
+<li>Select one swatch to copy that colour&#39;s hex code.</li>
+<li>Select <strong>Copy</strong> on a card to copy all five hex codes separated by commas, for example <code>#28ACE4, #715ED2, #F84461, #6F30E7, #BBC8BA</code>.</li>
+</ul>
+<h2 id="export-one-palette">Export one palette</h2>
+<p>Open the palette on the <strong>Inspect</strong> tab (see <a href="inspect-a-palette.html">Inspect a palette</a>). You can then use either the <strong>Quick export</strong> row on <strong>Inspect</strong>, or the <strong>Selection</strong> card on the <strong>Export</strong> tab. They produce the same results.</p>
+<p>If no palette is open, the <strong>Export</strong> tab says <strong>No palette selected. Click Inspect on any card in the Library tab to enable selection exports.</strong></p>
+<h3 id="copy-formats">Copy formats</h3>
+<p>The examples use palette <code>pal_0</code>. Variable names are built from the palette id and the colour&#39;s position, 1 to 5.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick export</th><th>Export tab</th><th>What is copied</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy HEX</strong></td><td><strong>HEX list</strong></td><td>The five hex codes, one per line.</td></tr>
+<tr><td><strong>Copy CSS vars</strong></td><td><strong>CSS variables</strong></td><td>A <code>:root</code> block with one custom property per colour.</td></tr>
+<tr><td><strong>Copy SCSS</strong></td><td><strong>SCSS variables</strong></td><td>Five Sass variables.</td></tr>
+<tr><td><strong>Copy Tailwind</strong></td><td><strong>Tailwind config</strong></td><td>A colour object you can paste into <code>theme.extend.colors</code>.</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="css"><code>:root {
+  --pal_0-1: #28ACE4;
+  --pal_0-2: #715ED2;
+  --pal_0-3: #F84461;
+  --pal_0-4: #6F30E7;
+  --pal_0-5: #BBC8BA;
+}</code></pre>
+<pre class="code" data-lang="text"><code>$pal_0-1: #28ACE4;
+$pal_0-2: #715ED2;
+$pal_0-3: #F84461;
+$pal_0-4: #6F30E7;
+$pal_0-5: #BBC8BA;</code></pre>
+<pre class="code" data-lang="json"><code>{
+  &quot;pal_0&quot;: {
+    &quot;c1&quot;: &quot;#28ACE4&quot;,
+    &quot;c2&quot;: &quot;#715ED2&quot;,
+    &quot;c3&quot;: &quot;#F84461&quot;,
+    &quot;c4&quot;: &quot;#6F30E7&quot;,
+    &quot;c5&quot;: &quot;#BBC8BA&quot;
+  }
+}</code></pre>
+<p>These are the real colours of <code>pal_0</code>, which is labelled <code>complementary</code>.</p>
+<h3 id="downloads">Downloads</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Quick export</th><th>Export tab</th><th>File</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Download JSON</strong></td><td><strong>JSON</strong></td><td><code>pal_0.json</code></td><td>The id, each colour&#39;s hex, RGB, OKLCH and Lab, and the metadata: method, colour count, average ΔE, entropy and the full 5 × 5 contrast table.</td></tr>
+<tr><td><strong>Download ASE</strong></td><td><strong>Adobe ASE</strong></td><td><code>pal_0.ase</code></td><td>An Adobe Swatch Exchange file with five RGB swatches named <code>pal_0_1</code> to <code>pal_0_5</code>. Opens in Adobe Illustrator, Photoshop, InDesign and other apps that read ASE.</td></tr>
+<tr><td><strong>Download SVG</strong></td><td><strong>SVG strip</strong></td><td><code>pal_0.svg</code></td><td>A 600 × 220 strip of the five colours, each labelled with its hex code.</td></tr>
+<tr><td><strong>Download PNG</strong></td><td><strong>PNG strip</strong></td><td><code>pal_0.png</code></td><td>An 800 × 320 image of the same strip.</td></tr>
+</tbody></table></div>
+<p>The page confirms each download with <strong>Downloaded</strong> and the file name.</p>
+<h3 id="open-in-coolors">Open in Coolors</h3>
+<p><strong>Open in Coolors</strong> (on <strong>Inspect</strong>, and under <strong>External</strong> on the <strong>Export</strong> tab) opens the palette on coolors.co in a new tab, with the five colours already loaded. Coolors is a separate website; what you do there is governed by its own terms.</p>
+<h2 id="export-design-tokens">Export design tokens</h2>
+<p>Design tokens are named colour values in a format a design system or app platform understands.</p>
+<ol>
+<li>On <strong>Inspect</strong>, select <strong>Design tokens…</strong>. A dialog opens, titled with the palette id.</li>
+<li>In <strong>Token prefix</strong>, type the name your tokens should start with. The default is <code>brand</code>.</li>
+<li>Select a format tab. The preview shows the file, with a line above it giving the number of tokens, the file name and the file&#39;s length, for example <strong>5 tokens · tokens.css</strong> and a character count.</li>
+<li>Select <strong>Copy</strong> to copy the preview, <strong>Download</strong> to save that format, or <strong>Download all</strong> to save every format in one ZIP file.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Format tab</th><th>File name</th></tr></thead>
+<tbody>
+<tr><td><strong>W3C Design Tokens</strong></td><td><code>tokens.json</code></td></tr>
+<tr><td><strong>CSS Variables</strong></td><td><code>tokens.css</code></td></tr>
+<tr><td><strong>SCSS</strong></td><td><code>tokens.scss</code></td></tr>
+<tr><td><strong>Tailwind Config</strong></td><td><code>tailwind.config.js</code></td></tr>
+<tr><td><strong>Style Dictionary</strong></td><td><code>style-dictionary.tokens.json</code></td></tr>
+<tr><td><strong>Material UI Theme</strong></td><td><code>theme.ts</code></td></tr>
+<tr><td><strong>iOS (SwiftUI)</strong></td><td><code>Colors.swift</code></td></tr>
+<tr><td><strong>Android colors.xml</strong></td><td><code>colors.xml</code></td></tr>
+</tbody></table></div>
+<p><strong>Download all</strong> names the ZIP after the palette, for example <code>palette-pal-0.zip</code>. Close the dialog with ✕ or by selecting outside it.</p>
+<h2 id="share-a-link">Share a link</h2>
+<ol>
+<li>On <strong>Inspect</strong>, select <strong>Copy share link</strong>. The <strong>Share link</strong> dialog opens, titled with the palette id.</li>
+<li>The dialog explains: &quot;Anyone with this link can open a copy. State is encoded in the URL — no account needed.&quot;</li>
+<li>Select <strong>Copy</strong> (it changes to <strong>Copied!</strong>), <strong>Share via…</strong> (on devices that offer a system share sheet), or <strong>Open in new tab</strong>.</li>
+<li>Select <strong>Close</strong> when you are done.</li>
+</ol>
+<p>Anyone who opens the link lands on the Palette Library with the palette open on <strong>Inspect</strong>. The link carries the palette&#39;s id and colours; nothing is stored on a server. If the palette cannot be found, the page says <strong>Shared palette not found in current dataset</strong>.</p>
+<h2 id="export-many-palettes">Export many palettes</h2>
+<p>The <strong>Export</strong> tab&#39;s second card is headed <strong>Visible page</strong> and carries a badge with a number of palettes. It exports the same sample the analysis tabs measure (see <a href="analyse-the-collection.html">Analyse the collection</a>): with no filter, the first 2,000 palettes of the collection; with a filter, up to 2,000 matching palettes from the first 40,000 looked at.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Button</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Bulk download</strong></td><td><strong>Download JSON (visible page)</strong></td><td>Every palette in full, with export time, source and count.</td></tr>
+<tr><td></td><td><strong>Download CSV (visible page)</strong></td><td>One row per palette: <code>palette_id,method,c1,c2,c3,c4,c5</code>.</td></tr>
+<tr><td></td><td><strong>Download CSS variables</strong></td><td>One <code>:root</code> block with five variables per palette.</td></tr>
+<tr><td></td><td><strong>Download SCSS variables</strong></td><td>Five Sass variables per palette.</td></tr>
+<tr><td></td><td><strong>Download compact JSON</strong></td><td>The count and each palette&#39;s id and five hex codes.</td></tr>
+<tr><td><strong>Sample formats</strong></td><td><strong>Download .txt hex list</strong></td><td>Every hex code, one per line.</td></tr>
+<tr><td></td><td><strong>Download tailwind.config.js fragment</strong></td><td>A Tailwind configuration with one colour group per palette.</td></tr>
+</tbody></table></div>
+<p>Files are named <code>palette-page-</code> plus the number of palettes and the date, for example <code>palette-page-2000-2026-09-24.csv</code>. If the sample is empty, the page says <strong>Nothing to export</strong>.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> &quot;Visible page&quot; means the measured sample, not only the cards on your screen. To export exactly one palette, use the <strong>Selection</strong> card instead.</p>
+</blockquote>
+<h2 id="result">Result</h2>
+<p>The palette is on your clipboard, in a file your design tool or code can read, in a design-token format for your platform, or in a link someone else can open.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="browse-search-and-filter.html"><span>Previous</span>Browse, search and filter</a><a href="inspect-a-palette.html"><span>Next</span>Inspect a palette</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#quick-copies-from-the-grid">Quick copies from the grid</a></li><li><a href="#export-one-palette">Export one palette</a></li><li><a href="#export-design-tokens">Export design tokens</a></li><li><a href="#share-a-link">Share a link</a></li><li><a href="#export-many-palettes">Export many palettes</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

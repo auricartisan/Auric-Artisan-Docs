@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for problems in the Color Library.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Color Library</a>
+<h2>Color Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="choose-by-requirement.html">Choose colours by requirement</a></li>
+<li><a href="copy-and-export.html">Copy and export</a></li>
+<li><a href="find-nearest-colours.html">Find a colour's nearest neighbours</a></li>
+<li><a href="read-a-colour.html">Read a colour</a></li>
+<li><a href="read-the-statistics.html">Read the statistics</a></li>
+<li><a href="save-colours.html">Save colours</a></li>
+<li><a href="reference.html">Color Library reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Color Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Color Library</a> &rsaquo; <a href="README.html">Color Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Color Library</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for problems in the Color Library.</p>
+<h2 id="could-not-load-color-atlas">&quot;Could not load color atlas&quot;</h2>
+<p><strong>Why:</strong> The page downloads the atlas when it opens. The download failed — usually because the network connection dropped, a content blocker stopped it, or the site was opened from an old offline copy.</p>
+<p><strong>What to do:</strong> Check your connection, allow auricartisan.com in any content blocker, and reload the page.</p>
+<h2 id="not-a-colour-this-reads">&quot;Not a colour this reads.&quot;</h2>
+<p><strong>Why:</strong> The text in <strong>Start from a colour you already have</strong> is not a colour format the page understands.</p>
+<p><strong>What to do:</strong></p>
+<ul>
+<li>Check brackets and separators: <code>rgb(118 205 246)</code> or <code>rgb(118, 205, 246)</code>.</li>
+<li>Use one of the supported <code>color()</code> spaces: <code>srgb</code>, <code>srgb-linear</code> or <code>display-p3</code>.</li>
+<li>Replace a CSS variable such as <code>var(--brand)</code> with its actual value.</li>
+<li>Remove anything after the colour, such as a trailing semicolon or comment.</li>
+</ul>
+<h2 id="my-colour-shows-outside-srgb">My colour shows &quot;outside sRGB&quot;</h2>
+<p><strong>Why:</strong> The colour you entered, for example a strong <code>oklch()</code> or <code>display-p3</code> value, cannot be shown on a standard sRGB screen. The page brings it to the nearest displayable colour before matching.</p>
+<p><strong>What to do:</strong> Nothing is wrong. The matches are for the nearest displayable version of your colour. If you need a colour inside sRGB, use one of the neighbours.</p>
+<h2 id="no-colors-match-these-filters">&quot;No colors match these filters&quot;</h2>
+<p><strong>Why:</strong> Your requirement chips, search words and filters together exclude every colour. For example, <strong>Vivid</strong> and <strong>Muted</strong> together always leave nothing, and <strong>Neutral / Gray</strong> with <strong>Vivid</strong> chroma does too.</p>
+<p><strong>What to do:</strong> Select <strong>Reset</strong> to clear the searches and filters, then turn off the highlighted requirement chips one at a time until colours return. The count on each chip shows what turning it off would give you.</p>
+<h2 id="the-wcag-filter-aa-on-white-shows-no-colours">The WCAG filter &quot;AA on white&quot; shows no colours</h2>
+<p><strong>Why:</strong> On the current page, this option can return no colours even though thousands of colours reach 4.5:1 on white.</p>
+<p><strong>What to do:</strong> Set <strong>WCAG</strong> back to <strong>Any WCAG</strong> and select the <strong>Readable on white</strong> requirement chip instead. It applies the same 4.5:1 threshold. <strong>AAA on white</strong>, <strong>AA on black</strong> and <strong>AAA on black</strong> work as described.</p>
+<h2 id="csv-flat-does-not-download">CSV (flat) does not download</h2>
+<p><strong>Why:</strong> On the current page, the <strong>CSV (flat)</strong> bulk export may produce no file.</p>
+<p><strong>What to do:</strong> Use <strong>JSON (all metadata)</strong> for the full set of fields, or <strong>.txt (one hex per line)</strong> for a plain list, and convert it in your spreadsheet or code.</p>
+<h2 id="the-copy-and-save-buttons-on-the-colour-tab-do-nothing">The Copy and Save buttons on The colour tab do nothing</h2>
+<p><strong>Why:</strong> On the current page these two buttons may not respond.</p>
+<p><strong>What to do:</strong> To copy the colour, open the <strong>Export</strong> tab and use the <strong>Copy formats</strong> buttons under <strong>Selection</strong>. To save it, select the star on its tile in the grid.</p>
+<h2 id="the-nearest-colours-on-the-colour-tab-cannot-be-opened">The nearest colours on The colour tab cannot be opened</h2>
+<p><strong>Why:</strong> The five cells under <strong>Nearest in the atlas</strong> on <strong>The colour</strong> tab show values only.</p>
+<p><strong>What to do:</strong> Copy the hex code into <strong>Start from a colour you already have</strong>; the cells there open the colour when selected. Or search for the hex code in <strong>Search by hex (#a6e223) or id…</strong>.</p>
+<h2 id="the-stats-tab-does-not-reflect-my-latest-filter">The Stats tab does not reflect my latest filter</h2>
+<p><strong>Why:</strong> The histograms are drawn when the tab is opened.</p>
+<p><strong>What to do:</strong> Select the <strong>Stats</strong> tab again to redraw them.</p>
+<h2 id="searching-for-an-id-finds-many-colours">Searching for an id finds many colours</h2>
+<p><strong>Why:</strong> Ids are matched as text, so <code>12</code> also matches <code>120</code>, <code>312</code>, <code>4812</code> and so on.</p>
+<p><strong>What to do:</strong> Scroll to the colour whose id you want, or add a second word such as part of its hex code.</p>
+<h2 id="my-saved-colours-have-disappeared">My saved colours have disappeared</h2>
+<p><strong>Why:</strong> Saved colours are kept in this browser only. They are lost if you clear this site&#39;s data, use a private window, or switch browser or device.</p>
+<p><strong>What to do:</strong> Save them again. To keep a permanent copy, export them: filter the grid down to them and use <strong>Export visible</strong>, or keep them in your Library.</p>
+<h2 id="copy-does-not-reach-the-clipboard">Copy does not reach the clipboard</h2>
+<p><strong>Why:</strong> Some browsers block clipboard access on pages that are not in focus, or when a permission is denied.</p>
+<p><strong>What to do:</strong> Click inside the page and try again. If your browser asks for clipboard permission, allow it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Color Library reference</a><a href="faq.html"><span>Next</span>Color Library FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#could-not-load-color-atlas">&quot;Could not load color atlas&quot;</a></li><li><a href="#not-a-colour-this-reads">&quot;Not a colour this reads.&quot;</a></li><li><a href="#my-colour-shows-outside-srgb">My colour shows &quot;outside sRGB&quot;</a></li><li><a href="#no-colors-match-these-filters">&quot;No colors match these filters&quot;</a></li><li><a href="#the-wcag-filter-aa-on-white-shows-no-colours">The WCAG filter &quot;AA on white&quot; shows no colours</a></li><li><a href="#csv-flat-does-not-download">CSV (flat) does not download</a></li><li><a href="#the-copy-and-save-buttons-on-the-colour-tab-do-nothing">The Copy and Save buttons on The colour tab do nothing</a></li><li><a href="#the-nearest-colours-on-the-colour-tab-cannot-be-opened">The nearest colours on The colour tab cannot be opened</a></li><li><a href="#the-stats-tab-does-not-reflect-my-latest-filter">The Stats tab does not reflect my latest filter</a></li><li><a href="#searching-for-an-id-finds-many-colours">Searching for an id finds many colours</a></li><li><a href="#my-saved-colours-have-disappeared">My saved colours have disappeared</a></li><li><a href="#copy-does-not-reach-the-clipboard">Copy does not reach the clipboard</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

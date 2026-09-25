@@ -1,0 +1,12 @@
+---
+title: Language — Privacy
+description: What is stored about your language choice and what switching downloads.
+product: Website › Site features › Language
+updated: 2026-09-25
+---
+
+# Language privacy
+
+- Your language choice is kept in this browser's local storage for auricartisan.com. The cookie policy lists it under **Functional** storage as the language and locale preference.
+- Switching to Hindi downloads the Hindi text for the pages you open, from auricartisan.com. No text from the page, and nothing you type, is sent anywhere to be translated: translation happens in your browser from those downloaded files.
+- Nothing about your language is sent to an account.

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started — Auric Artisan Docs</title>
+<meta name="description" content="How the Font CDN is organised — family ids, stylesheets and font files — and how to put a first family on a page.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font CDN</a>
+<h2>Font CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started</a></li>
+<li><a href="embed-a-family.html">Embed a family</a></li>
+<li><a href="find-a-family.html">Find a family</a></li>
+<li><a href="self-host-a-family.html">Self-host a family</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Font CDN</a> &rsaquo; <a href="README.html">Font CDN documentation</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Getting started</h1>
+<p class="lede">How the Font CDN is organised — family ids, stylesheets and font files — and how to put a first family on a page.</p>
+<h2 id="how-the-cdn-is-organised">How the CDN is organised</h2>
+<p>Everything is served from <a href="https://fonts.auricartisan.com" rel="noopener">https://fonts.auricartisan.com</a>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Path</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td><code>/css/&lt;family-id&gt;.css</code></td><td>One stylesheet per family, with an <code>@font-face</code> rule for each style</td></tr>
+<tr><td><code>/font/…</code></td><td>The font files the stylesheets point to</td></tr>
+<tr><td><code>/font-cdn.js</code></td><td>The loader script</td></tr>
+<tr><td><code>/data/index.json</code></td><td>The catalogue: one short record per family</td></tr>
+<tr><td><code>/data/detail/&lt;group&gt;.json</code></td><td>Full metadata for the families in a group (<code>A-F</code>, <code>G-L</code>, <code>M-R</code>, <code>S-Z</code>)</td></tr>
+<tr><td><code>/LICENSE.md</code></td><td>The licence reference for the collection</td></tr>
+</tbody></table></div>
+<p>You do not need to know the file paths inside <code>/font/</code>: the family stylesheet refers to them for you.</p>
+<h2 id="family-ids">Family ids</h2>
+<p>Every family has an <strong>id</strong>, used in its stylesheet URL. The id is the family name in lower case, with apostrophes and quotation marks removed and every run of other characters replaced by a hyphen:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Family</th><th>Id</th><th>Stylesheet</th></tr></thead>
+<tbody>
+<tr><td>Alegreya</td><td><code>alegreya</code></td><td><code>https://fonts.auricartisan.com/css/alegreya.css</code></td></tr>
+<tr><td>Roboto Slab</td><td><code>roboto-slab</code></td><td><code>https://fonts.auricartisan.com/css/roboto-slab.css</code></td></tr>
+<tr><td>Open Sans</td><td><code>open-sans</code></td><td><code>https://fonts.auricartisan.com/css/open-sans.css</code></td></tr>
+</tbody></table></div>
+<p>The Font Library&#39;s <strong>Use &amp; Embed</strong> tab always shows the exact URL for a family.</p>
+<h2 id="your-first-family">Your first family</h2>
+<ol>
+<li><p>Add the family&#39;s stylesheet to the <code>&lt;head&gt;</code> of your page:</p>
+<pre class="code" data-lang="html"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.auricartisan.com/css/alegreya.css&quot;&gt;</code></pre>
+</li>
+<li><p>Use the family in your CSS, with a fallback:</p>
+<pre class="code" data-lang="css"><code>body { font-family: 'Alegreya', serif; }</code></pre>
+</li>
+<li><p>Load the page. The text appears in Alegreya once the font file has downloaded. Until then the browser shows the fallback, because the stylesheets use <code>font-display: swap</code>.</p>
+</li>
+</ol>
+<h2 id="what-a-family-stylesheet-contains">What a family stylesheet contains</h2>
+<p>Each stylesheet starts with a comment naming the family, its licence and copyright, and how many files and weights it has, then one <code>@font-face</code> rule per file:</p>
+<pre class="code" data-lang="css"><code>/* Alegreya — Auric Artisan Font CDN
+ * SIL Open Font License 1.1 · Copyright 2011 The Alegreya Project Authors (https://github.com/huertatipografica/Alegreya)
+ * 2 file(s), weights 400 500 600 700 800 900, variable
+ */
+@font-face {
+  font-family: 'Alegreya';
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../font/A-F/ALEGREYA/Alegreya-Italic%5Bwght%5D.ttf') format('truetype-variations');
+}
+@font-face {
+  font-family: 'Alegreya';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../font/A-F/ALEGREYA/Alegreya%5Bwght%5D.ttf') format('truetype-variations');
+}</code></pre>
+<p>A variable family, like this one, covers a whole weight range with one file per style. A static family has one rule per weight and style.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="embed-a-family.html">Embed a family</a> for the other ways to embed.</li>
+<li><a href="use-the-loader.html">Use the loader</a> to load several families with one tag, or from JavaScript.</li>
+<li><a href="self-host-a-family.html">Self-host a family</a> to serve the files from your own site.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Font CDN documentation</a><a href="embed-a-family.html"><span>Next</span>Embed a family</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-the-cdn-is-organised">How the CDN is organised</a></li><li><a href="#family-ids">Family ids</a></li><li><a href="#your-first-family">Your first family</a></li><li><a href="#what-a-family-stylesheet-contains">What a family stylesheet contains</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color Science Lab reference — Auric Artisan Docs</title>
+<meta name="description" content="Every view, control, option, default, output and file of the Color Science Lab in one place.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Color Science Lab</a>
+<h2>Color Science Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Color Science Lab</a></li>
+<li><a href="arrange-link-save-export.html">Arrange, link, save and export panels</a></li>
+<li><a href="catalogue-and-panels.html">The Catalogue and its panels</a></li>
+<li><a href="catalogue-compare-and-analytics.html">Catalogue Compare and Analytics</a></li>
+<li><a href="compare-two-colours.html">Compare two colours</a></li>
+<li><a href="gamut-audit.html">Gamut audit</a></li>
+<li><a href="illuminants.html">Illuminants</a></li>
+<li><a href="tool-list.html">The 45 tools</a></li>
+<li><a href="workbench.html">The Workbench</a></li>
+<li><a href="reference.html" aria-current="page">Color Science Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Color Science Lab</a></li>
+<li><a href="faq.html">Color Science Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Color Science Lab</a> &rsaquo; <a href="README.html">Color Science Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Color Science Lab reference</h1>
+<p class="lede">Every view, control, option, default, output and file of the Color Science Lab in one place.</p>
+<h2 id="page">Page</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Address</td><td><a href="https://auricartisan.com/tool/color-science-lab/" rel="noopener">https://auricartisan.com/tool/color-science-lab/</a> (also /model)</td></tr>
+<tr><td>Views</td><td>Workbench, Catalogue, Compare, Gamut audit, Illuminants</td></tr>
+<tr><td>Tools</td><td>45 in 8 domains (20 Foundation, 25 Research)</td></tr>
+<tr><td>Colour spaces</td><td>63</td></tr>
+<tr><td>Theories and models</td><td>24</td></tr>
+<tr><td>White points (panels)</td><td>13</td></tr>
+<tr><td>Maximum open panels</td><td>5</td></tr>
+<tr><td>API equivalent</td><td>POST /v1/science/dossier, 5 API credits per call</td></tr>
+</tbody></table></div>
+<h2 id="workbench">Workbench</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Specimen HEX / colour well</td><td><code>#RRGGBB</code></td><td>#4F7FE0 (then remembered)</td></tr>
+<tr><td>Presets</td><td>#4F7FE0, #D3AF37, #2F6D3A, #C4562C, #8F3B22, #2B6F8F, #B0169A, #F0E6D2</td><td>—</td></tr>
+<tr><td>Observer</td><td>2° 1931, 10° 1964</td><td>2° 1931</td></tr>
+<tr><td>Illuminant</td><td>D65, D50, D55, C, A, F2, F11</td><td>D65</td></tr>
+<tr><td>Adaptation</td><td>Bradford, CAT02, CAT16</td><td>Bradford</td></tr>
+</tbody></table></div>
+<p>Outputs: CIE XYZ, CIE xyY, <code>CIE L*a*b*</code>, CIE LCh, Oklab, Oklch, sRGB, HSL, CMYK; xy plot with L, C and hue angle; gamut in sRGB, Display P3, Adobe RGB, Rec. 2020; ΔE 2000 under each other illuminant.</p>
+<h2 id="compare-view">Compare (view)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Reference (A)</td><td>The specimen</td></tr>
+<tr><td>Candidate (B)</td><td>#5A86D8</td></tr>
+</tbody></table></div>
+<p>Outputs: coordinates in CIE XYZ, Lab, LCh and Oklab for each; ΔE 2000, ΔE 1976, ΔE 1994, Oklab distance; Δ lightness, Δ chroma, Δ hue angle with a verdict sentence.</p>
+<h2 id="gamut-audit">Gamut audit</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Remove (×)</td><td>—</td><td>At least 1 colour</td></tr>
+<tr><td>Add to palette</td><td>Up to 16 colours</td><td>8 starting colours</td></tr>
+</tbody></table></div>
+<p>Outputs: per-colour sRGB margin or clip ΔE; per-space tightest headroom, in-gamut count and margin; verdict; ΔE 2000 cost of clipping.</p>
+<h2 id="illuminants">Illuminants</h2>
+<p>Seven illuminants (D65, D50, D55, C, A, F2, F11) with temperature and ΔE 2000 from D65, Bradford transform, 2° observer.</p>
+<h2 id="catalogue-filter-bar">Catalogue filter bar</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Search</td><td>Free text, applied after a short pause</td><td>Empty</td></tr>
+<tr><td>Domain list</td><td>All, Colorimetry, Chromatic Adaptation, Spectral Analysis, Appearance Models, Perceptual Spaces, Color Spaces, Theory and History, Gamut and Rendering, Favorites, Compare, Analytics, Open Panels</td><td>All (then remembered)</td></tr>
+<tr><td>Level</td><td>Basic, Advanced, Both</td><td>Both (shared with the site&#39;s complexity mode)</td></tr>
+<tr><td>Copy link, Quick start</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="panel-controls">Panel controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Sample color</td><td>Colour well, HEX, Random</td><td>#D3AF37</td></tr>
+<tr><td>Compare color</td><td>Colour well, HEX</td><td>#2FA7D8</td></tr>
+<tr><td>Model</td><td>Per domain (see <a href="catalogue-and-panels.html">catalogue-and-panels.md</a>)</td><td>Tool default</td></tr>
+<tr><td>Color space / standard</td><td>63 spaces</td><td>Tool default</td></tr>
+<tr><td>Theory / observer</td><td>24 entries</td><td>Tool default</td></tr>
+<tr><td>Source white / Target white</td><td>A, B, C, D50, D55, D60 / ACES, D65, D75, DCI, E (Equal Energy), F2, F7, F11</td><td>D65 / D50</td></tr>
+<tr><td>Experiment strength</td><td>0–100 %</td><td>72 %</td></tr>
+<tr><td>Color temperature</td><td>1800–12000 K, step 100</td><td>6500 K</td></tr>
+<tr><td>Show reference guides</td><td>On/off</td><td>On</td></tr>
+<tr><td>Apply adaptation preview</td><td>On/off</td><td>On</td></tr>
+</tbody></table></div>
+<p>Tabs: Experiment, Metrics, Chart, Graph, Diagram, Audit.</p>
+<p>Theories and models: Newton prism and color circle, Goethe theory of colors, Young-Helmholtz trichromacy, Hering opponent process, Grassmann color laws, Maxwell color triangle, Munsell color order, Ostwald color system, CIE 1931 standard observer, MacAdam ellipses, Judd-Vos correction, Von Kries coefficient law, Land Retinex, Hunt appearance model, Nayatani model, RLAB, LLAB, Fairchild color appearance, CIECAM02, CAM16, Image color appearance / iCAM, IPT hue linearity, Oklab modern uniformity, Basic color terms.</p>
+<h2 id="panel-windows">Panel windows</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Link, Duplicate, Pin, Minimize, Maximize, Close</td><td>See <a href="arrange-link-save-export.html">arrange-link-save-export.md</a></td></tr>
+<tr><td>Drag title bar / double-click</td><td>Move / maximise</td></tr>
+<tr><td>Corner handle</td><td>Resize (minimum 520 × 420)</td></tr>
+<tr><td><code>Escape</code></td><td>Restore if maximised, otherwise close</td></tr>
+</tbody></table></div>
+<h2 id="open-panels-toolbar-and-color-control">Open Panels toolbar and Color Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Open Panels</th><th>Color Control</th></tr></thead>
+<tbody>
+<tr><td>Tile, Cascade, Stack, Link all / Unlink all, Export image, Close unpinned</td><td>Grid, Split H, Split V, Cascade, Stack, Sync all, Minimize, Restore, Export, Close all; per panel Sync, Keep, Min / Open, Max, Copy, Close</td></tr>
+</tbody></table></div>
+<h2 id="catalogue-compare-and-analytics">Catalogue Compare and Analytics</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td>Compare selection buttons</td><td>Basic, Advanced, Filtered, Clear; Quick Start: Core Lab</td></tr>
+<tr><td>Compare columns</td><td>Up to 8 tools</td></tr>
+<tr><td>Test palette</td><td>Auric gold, Signal red, Cyan blue, Forest green, Violet, Skin tone</td></tr>
+<tr><td>Analytics tabs</td><td>Heat Map, Mind Map, Stats, Catalog</td></tr>
+<tr><td>Analytics buttons</td><td>Random tool, JSON, CSV, ?</td></tr>
+</tbody></table></div>
+<h2 id="files">Files</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>From</th></tr></thead>
+<tbody>
+<tr><td><code>color-science-lab-&lt;date-time&gt;.png</code></td><td>Export image / Export</td></tr>
+<tr><td><code>color-science-lab-catalog-YYYY-MM-DD.json</code></td><td>Analytics → JSON</td></tr>
+<tr><td><code>color-science-lab-catalog-YYYY-MM-DD.csv</code></td><td>Analytics → CSV</td></tr>
+</tbody></table></div>
+<h2 id="remembered-in-your-browser">Remembered in your browser</h2>
+<p>Last view, Workbench specimen, domain, level (site-wide), favourites, recently opened tools (10), quick-start note dismissal.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../others/shortcuts.html">Shortcuts</a></li>
+<li><a href="../others/glossary.html">Glossary</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="workbench.html"><span>Previous</span>The Workbench</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting the Color Science Lab</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#page">Page</a></li><li><a href="#workbench">Workbench</a></li><li><a href="#compare-view">Compare (view)</a></li><li><a href="#gamut-audit">Gamut audit</a></li><li><a href="#illuminants">Illuminants</a></li><li><a href="#catalogue-filter-bar">Catalogue filter bar</a></li><li><a href="#panel-controls">Panel controls</a></li><li><a href="#panel-windows">Panel windows</a></li><li><a href="#open-panels-toolbar-and-color-control">Open Panels toolbar and Color Control</a></li><li><a href="#catalogue-compare-and-analytics">Catalogue Compare and Analytics</a></li><li><a href="#files">Files</a></li><li><a href="#remembered-in-your-browser">Remembered in your browser</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

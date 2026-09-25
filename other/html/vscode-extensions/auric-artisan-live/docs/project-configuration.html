@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project configuration — Auric Artisan Docs</title>
+<meta name="description" content="Keep an Auric Live setup with your repository in auric.live.json, control exclusions with .auricignore-live, and understand how settings, project files and session changes combine.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html" aria-current="page">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Project configuration</h1>
+<p class="lede">Keep an Auric Live setup with your repository in auric.live.json, control exclusions with .auricignore-live, and understand how settings, project files and session changes combine.</p>
+<h2 id="where-settings-come-from">Where settings come from</h2>
+<p>Auric Live combines four layers. A later layer wins:</p>
+<ol>
+<li><strong>Built-in defaults.</strong></li>
+<li><strong>VS Code settings</strong> — user, workspace and folder settings with the <code>auricLive.</code> prefix.</li>
+<li><strong>The project file</strong> — <code>auric.live.json</code> in the workspace folder.</li>
+<li><strong>Session overrides</strong> — changes you make with commands, the Auric Live menu or the control panel. They last until you close or reload the VS Code window.</li>
+</ol>
+<p>So a repository can carry its own proxy, mock and CGI setup, and you can still try something for a moment without editing a file.</p>
+<h2 id="the-project-file-auriclivejson">The project file: auric.live.json</h2>
+<h3 id="create-it">Create it</h3>
+<ol>
+<li>Run <strong>Auric Live: Create Project Config File</strong>, or select <strong>Create a config file</strong> in the <strong>Servers</strong> view when nothing is running.</li>
+<li>Auric Live writes a starter <code>auric.live.json</code> in the workspace folder and opens it.</li>
+</ol>
+<p>The starter file:</p>
+<pre class="code" data-lang="json"><code>{
+  // Auric Artisan Live — project configuration.
+  // Every key is optional and overrides the matching auricLive.* setting.
+  &quot;port&quot;: 5500,
+  &quot;spa&quot;: { &quot;enabled&quot;: false, &quot;fallback&quot;: &quot;/index.html&quot; },
+  &quot;cleanUrls&quot;: false,
+
+  // Send /api to a backend you already run, so the front end talks to the
+  // real thing without a CORS shim.
+  &quot;proxy&quot;: [
+    {
+      &quot;path&quot;: &quot;/api&quot;,
+      &quot;target&quot;: &quot;http://localhost:3000&quot;,
+      &quot;changeOrigin&quot;: true,
+      &quot;ws&quot;: true
+    }
+  ],
+
+  // Or answer /api yourself while that backend does not exist yet.
+  &quot;mock&quot;: {
+    &quot;enabled&quot;: false,
+    &quot;routes&quot;: [
+      {
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;path&quot;: &quot;/api/health&quot;,
+        &quot;status&quot;: 200,
+        &quot;body&quot;: { &quot;ok&quot;: true, &quot;service&quot;: &quot;auric-live&quot; }
+      },
+      {
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;path&quot;: &quot;/api/session&quot;,
+        &quot;status&quot;: 201,
+        &quot;delayMs&quot;: 250,
+        &quot;body&quot;: { &quot;id&quot;: &quot;{{uuid}}&quot;, &quot;user&quot;: &quot;{{body.user}}&quot;, &quot;issued&quot;: &quot;{{now}}&quot; }
+      }
+    ],
+    &quot;rest&quot;: {
+      &quot;enabled&quot;: false,
+      &quot;base&quot;: &quot;/api&quot;,
+      &quot;database&quot;: &quot;db.json&quot;
+    }
+  },
+
+  &quot;headers&quot;: [
+    { &quot;match&quot;: [&quot;**/*.html&quot;], &quot;headers&quot;: { &quot;X-Frame-Options&quot;: &quot;SAMEORIGIN&quot; } }
+  ],
+
+  &quot;liveReload&quot;: { &quot;enabled&quot;: true, &quot;reloadOnSave&quot;: &quot;save&quot;, &quot;cssHotSwap&quot;: true, &quot;overlay&quot;: true },
+
+  // Alt+Shift+D opens the in-page developer dashboard. Diagnostics are saved
+  // locally under .auric-live/ without headers, bodies, queries or values.
+  &quot;dashboard&quot;: { &quot;enabled&quot;: true, &quot;customCursor&quot;: true },
+  &quot;records&quot;: { &quot;enabled&quot;: true, &quot;maxRequests&quot;: 200 }
+}</code></pre>
+<h3 id="rules-for-the-file">Rules for the file</h3>
+<ul>
+<li>Every key is optional. Keys are the setting names <strong>without</strong> the <code>auricLive.</code> prefix, nested as objects: the setting <code>auricLive.liveReload.cssHotSwap</code> is <code>&quot;liveReload&quot;: { &quot;cssHotSwap&quot;: … }</code>.</li>
+<li>Comments (<code>//</code> and <code>/* … */</code>) and trailing commas are allowed.</li>
+<li>A <code>$schema</code> key is ignored.</li>
+<li>The file is looked for in the workspace folder first, then in <code>.auric/</code>.</li>
+<li>Change the file name with the <code>auricLive.configFile</code> setting.</li>
+<li>If the file is not valid JSON, Auric Live shows <strong>Auric Live: auric.live.json is not valid JSON</strong> with the error, and ignores the file until it is fixed.</li>
+</ul>
+<h3 id="open-and-reload">Open and reload</h3>
+<ul>
+<li><strong>Auric Live: Open Project Config File</strong> opens it. If there is none, it offers <strong>Create it</strong>.</li>
+<li>Changes apply as soon as you save, while <code>auricLive.autoRestart.onConfigChange</code> is on (the default). <strong>Auric Live: Reload Configuration</strong> re-reads everything by hand.</li>
+<li>Several commands offer <strong>Save to config file</strong> after a session change: adding a proxy route or a mock route, and the <strong>Write config</strong> choice when a framework is detected.</li>
+</ul>
+<h3 id="a-fuller-example">A fuller example</h3>
+<pre class="code" data-lang="json"><code>{
+  &quot;host&quot;: &quot;127.0.0.1&quot;,
+  &quot;port&quot;: 5500,
+  &quot;open&quot;: &quot;none&quot;,
+  &quot;liveReload&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;reloadOnSave&quot;: &quot;save&quot;,
+    &quot;cssHotSwap&quot;: true,
+    &quot;preserveScroll&quot;: true
+  },
+  &quot;dashboard&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;independent&quot;: false
+  },
+  &quot;proxy&quot;: [
+    { &quot;path&quot;: &quot;/api&quot;, &quot;target&quot;: &quot;http://localhost:3000&quot; }
+  ],
+  &quot;inspector&quot;: {
+    &quot;sensitiveFields&quot;: [&quot;customerPin&quot;],
+    &quot;harIncludeBodies&quot;: false
+  },
+  &quot;console&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;levels&quot;: [&quot;error&quot;, &quot;warn&quot;, &quot;info&quot;]
+  },
+  &quot;throttle&quot;: {
+    &quot;profile&quot;: &quot;custom&quot;,
+    &quot;latencyMs&quot;: 150,
+    &quot;downloadKbps&quot;: 1600,
+    &quot;uploadKbps&quot;: 750
+  },
+  &quot;maxRequestBodyBytes&quot;: 16777216,
+  &quot;requestBodyTimeoutMs&quot;: 30000
+}</code></pre>
+<h3 id="additional-project-file-keys">Additional project-file keys</h3>
+<p>These keys have no VS Code setting of their own but are accepted in <code>auric.live.json</code>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>Default</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>mount</code></td><td><code>/</code></td><td>Serve the site under a sub-path, such as <code>/app</code></td></tr>
+<tr><td><code>trailingSlash</code></td><td><code>preserve</code></td><td><code>preserve</code>, <code>add</code> or <code>remove</code> a trailing slash, by redirect</td></tr>
+<tr><td><code>liveReload.fullReload</code></td><td><code>[]</code></td><td>Globs whose changes always cause a full reload instead of a hot swap</td></tr>
+<tr><td><code>watch.extraPaths</code></td><td><code>[]</code></td><td>Additional absolute paths to watch</td></tr>
+<tr><td><code>cors.methods</code></td><td><code>GET</code>, <code>HEAD</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code>, <code>OPTIONS</code></td><td>Methods allowed on cross-origin requests</td></tr>
+<tr><td><code>cors.headers</code></td><td><code>*</code></td><td>Request headers allowed on cross-origin requests</td></tr>
+<tr><td><code>cors.exposeHeaders</code></td><td><code>[]</code></td><td>Response headers exposed to cross-origin scripts</td></tr>
+<tr><td><code>cors.maxAge</code></td><td><code>600</code></td><td>Seconds a browser may cache a preflight answer</td></tr>
+<tr><td><code>auth.realm</code></td><td><code>Auric Live</code></td><td>Name shown in the browser&#39;s login prompt</td></tr>
+<tr><td><code>cgi.timeoutMs</code></td><td><code>30000</code></td><td>How long a CGI script may run</td></tr>
+<tr><td><code>mock.rest.pageSize</code></td><td><code>10</code> when unset</td><td>Page size when <code>_page</code> is given without <code>_limit</code></td></tr>
+<tr><td><code>maxPortAttempts</code></td><td><code>40</code></td><td>How many ports <code>increment</code> tries before giving up</td></tr>
+</tbody></table></div>
+<h2 id="workspace-trust-and-the-project-file">Workspace trust and the project file</h2>
+<p>In an untrusted workspace, a project file cannot switch on anything that runs code or opens the server to other devices. These keys are ignored until you trust the folder: <code>cgi.enabled</code>, <code>cgi.handlers</code>, <code>cgi.indexes</code>, <code>proxy</code>, <code>host</code>, <code>auth.username</code>, <code>auth.password</code>, <code>https.certPath</code>, <code>https.keyPath</code> and <code>mock.rest.persist</code>. Run commands, proxying, CGI, file-backed mocks, custom certificate files and listening on your network all need trust. Static serving, live reload and request inspection keep working on this machine.</p>
+<h2 id="exclusions-auricignore-live">Exclusions: .auricignore-live</h2>
+<p><code>.auricignore-live</code> lists paths Auric Live must leave completely alone. A matched path is never served, listed, watched, hot-swapped, reloaded or recorded.</p>
+<ol>
+<li>Run <strong>Auric Live: Open .auricignore-live</strong>. If the file does not exist, a commented starter is created in the served folder.</li>
+<li>Add one pattern per line, relative to the served folder.</li>
+<li>Save. The patterns apply straight away.</li>
+</ol>
+<pre class="code" data-lang="text"><code># Auric Artisan Live project exclusions
+# One glob per line, relative to the served root. Later !rules re-include a path.
+private/**
+generated/**
+!generated/preview/**</code></pre>
+<p>The syntax is a small, predictable part of the <code>.gitignore</code> syntax:</p>
+<ul>
+<li>blank lines and lines starting with <code>#</code> are ignored;</li>
+<li><code>*</code>, <code>**</code> and <code>?</code> are wildcards;</li>
+<li>a pattern ending in <code>/</code> matches a folder and everything inside it;</li>
+<li>a pattern starting with <code>/</code> is anchored to the served root;</li>
+<li>a later line starting with <code>!</code> re-includes something an earlier line excluded.</li>
+</ul>
+<p>Choosing <strong>Ignore <em>folder</em>/</strong> after a reload storm adds a line here for you.</p>
+<h2 id="session-records-auric-live">Session records: .auric-live/</h2>
+<p>Auric Live keeps a small local record of each development session under <code>.auric-live/</code> in the workspace folder: sanitised request summaries and the page&#39;s performance summary. It never stores query strings, headers, bodies, cookies, IP addresses, user agents or storage values, and the folder is never served.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Range</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.records.enabled</code></td><td><code>true</code></td><td>—</td><td>Keep session records</td></tr>
+<tr><td><code>auricLive.records.maxRequests</code></td><td>200</td><td>20–5000</td><td>Request summaries per session</td></tr>
+<tr><td><code>auricLive.records.maxSessionBytes</code></td><td>5242880 (about 5 MiB)</td><td>65536–104857600</td><td>Size of one session record; oldest summaries go first</td></tr>
+<tr><td><code>auricLive.records.maxSessions</code></td><td>12</td><td>1–100</td><td>Recent sessions kept under <code>.auric-live/sessions/</code></td></tr>
+<tr><td><code>auricLive.records.flushIntervalMs</code></td><td>1000</td><td>250–60000</td><td>Minimum time between writes</td></tr>
+<tr><td><code>auricLive.records.telemetryIntervalMs</code></td><td>5000</td><td>1000–60000</td><td>How often a served page sends its performance summary to the record</td></tr>
+</tbody></table></div>
+<p><strong>Auric Live: Open Recorded Live Session</strong> opens <code>.auric-live/latest.json</code>. If nothing has been recorded yet, it says to start the server and open a served page first. Browser console messages are never added to session records.</p>
+<p>You may want to add <code>.auric-live/</code> to your <code>.gitignore</code>.</p>
+<h2 id="multi-root-workspaces">Multi-root workspaces</h2>
+<p>Each workspace folder has its own server, settings, project file and ignore file. Settings with resource scope (almost all Auric Live settings) can differ per folder. Unrelated configuration changes keep API routes, session settings and in-memory REST data.</p>
+<p>When your configuration is in place, the <strong>Servers</strong> view shows a <strong>Config file</strong> row for the running server, and the settings apply every time you go live.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="preview-and-devices.html"><span>Previous</span>Preview, devices and phone testing</a><a href="run-targets-and-backends.html"><span>Next</span>Run a backend or framework dev server</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#where-settings-come-from">Where settings come from</a></li><li><a href="#the-project-file-auriclivejson">The project file: auric.live.json</a></li><li><a href="#workspace-trust-and-the-project-file">Workspace trust and the project file</a></li><li><a href="#exclusions-auricignore-live">Exclusions: .auricignore-live</a></li><li><a href="#session-records-auric-live">Session records: .auric-live/</a></li><li><a href="#multi-root-workspaces">Multi-root workspaces</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

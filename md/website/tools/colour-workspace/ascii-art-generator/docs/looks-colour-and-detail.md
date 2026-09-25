@@ -1,0 +1,75 @@
+---
+title: ASCII Art Generator — Looks, colour and detail
+description: The five named looks, mono or colour art, ink and paper, the Detail slider and Invert for dark paper.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Looks, colour and detail
+
+The three groups under **Source** are the ones most people need: **Look**, **Colour** and **Detail**.
+
+## Look
+
+Five buttons. Each sets a character set and a few tone and edge settings at once, then re-converts the art.
+
+| Look | Character set | What it sets |
+| --- | --- | --- |
+| **Classic** | Standard | Gamma 1, contrast 0.15, edge-aware on, edge weight 0.65 |
+| **Blocks** | Blocks | Gamma 1, contrast 0.2, edge-aware off |
+| **Fine** | Detailed | Gamma 1, contrast 0.1, edge-aware on, edge weight 0.5 |
+| **Bold** | Minimal | Gamma 0.9, contrast 0.45, edge-aware off |
+| **Line art** | Standard | Gamma 1.4, contrast 0.6, edge-aware on, edge weight 1 |
+
+**Classic** is highlighted when the page opens, but its contrast is not applied until you select it. If you change anything in **Fine tuning**, the highlight clears, because the art no longer matches a named look.
+
+Under the buttons, a strip shows the characters in use from **Light** to **Dark**, and the heading counts them, for example **10 glyphs**. Sets longer than 24 characters are shown as an even sample of 24.
+
+### Choosing a look
+
+- **Classic** suits most photos.
+- **Blocks** gives solid, graphic shading and works well at small sizes.
+- **Fine** uses a long ramp of 70 characters and keeps the most tonal detail at large widths.
+- **Bold** uses only four marks and a space, for strong, poster-like art.
+- **Line art** pushes contrast and edges, for logos, drawings and outlines.
+
+## Colour
+
+Two buttons:
+
+- **Mono**: every character in one colour. The **Ink** and **Paper** colour wells appear. The render switches to **Text**.
+- **From image**: each character takes the colour of the part of the picture it stands for. **Ink** and **Paper** are hidden, and the render switches to **HTML**, which can show colour.
+
+After choosing **From image** you can also switch to the **Canvas** or **SVG** render; both keep the colour. See [Render modes and full screen](render-modes.md).
+
+### Ink and paper
+
+**Ink** defaults to #f0f0f0 (near white) and **Paper** to #0f0e0c (near black).
+
+- **Paper** is the background of the **HTML**, **Canvas** and **SVG** renders, and of their downloads.
+- **Ink** is the character colour of the **Canvas** and **SVG** renders in Mono.
+- A PNG download made while the **Text** render is showing uses both.
+- The **Text** render on screen ignores them and uses the page's own colours, and a Mono **HTML** render uses the page's text colour on your paper.
+
+With **From image**, the paper colour is still used as the background.
+
+## Detail
+
+The **Detail** slider sets the width of the art in characters, from 20 to 300 (default 100); the heading shows it, for example **100 wide**. The number of rows follows from the picture's proportions and the cell shape, unless you lock the row count in **Fine tuning** (see [Fine tuning](fine-tuning.md)).
+
+- 60 to 120 columns suit a README, a chat message or a terminal window.
+- 150 to 300 columns keep more detail but need a small font or a wide screen to look right.
+
+On screen the art is scaled to fit the stage, so a wider setting shows smaller characters, not a larger picture.
+
+### Invert for dark paper
+
+The character sets run from the least ink (a space) to the most. On light paper, a dark part of the picture should get the most ink; on dark paper it should get the least. **Invert for dark paper** flips the mapping.
+
+The tool sets it for you: it turns on while **Paper** is dark and off while it is light. Once you select the box yourself, it stays as you set it.
+
+## Related
+
+- [Fine tuning](fine-tuning.md)
+- [Render modes and full screen](render-modes.md)
+- [Reference](reference.md)

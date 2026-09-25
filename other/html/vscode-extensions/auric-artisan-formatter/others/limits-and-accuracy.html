@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Artisan Formatter's safety gate guarantees, its known gaps in version 0.1.0, and its size and time limits.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What Auric Artisan Formatter's safety gate guarantees, its known gaps in version 0.1.0, and its size and time limits.</p>
+<h2 id="what-the-safety-gate-guarantees">What the safety gate guarantees</h2>
+<p>With the default settings, a result is written only if the output re-reads to the same significant tokens, keeps every comment and every string&#39;s content, and parses again. If any check fails, the original text is kept. The idempotency check (formatting twice gives the same bytes) is off by default because it doubles the work; the <code>verified</code> preset turns it on.</p>
+<p>The gate protects meaning, not taste: a result can pass every check and still not be the layout you want. Use Formatter Studio to tune it.</p>
+<h2 id="known-gaps-in-version-010">Known gaps in version 0.1.0</h2>
+<ul>
+<li><strong>JSX and TSX</strong> files containing JSX elements are formatted by the universal tier (indentation and spacing only), not pretty-printed.</li>
+<li><strong>Universal-tier languages</strong> only change whitespace. Some only change spacing or trailing whitespace. See <a href="../docs/supported-languages.html">Supported languages</a>.</li>
+<li><strong>Format Every File in the Workspace</strong> on a folder&#39;s context menu formats every pending file in the workspace, not only that folder.</li>
+<li><strong>The command line</strong> ships inside the extension and is not a separate npm package.</li>
+</ul>
+<h2 id="limits">Limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Limit</th><th>Default</th><th>Setting</th></tr></thead>
+<tbody>
+<tr><td>Largest file formatted</td><td>4096 KB (<code>0</code> removes the limit)</td><td><code>auricFormatter.maxFileSizeKb</code></td></tr>
+<tr><td>Parse time before a parse is abandoned</td><td>5000 ms (<code>0</code> waits indefinitely)</td><td><code>auricFormatter.parseTimeoutMs</code></td></tr>
+<tr><td>Files in one workspace scan</td><td>4000</td><td><code>auricFormatter.scanMaxFiles</code></td></tr>
+<tr><td>Formatter Studio preview</td><td>200,000 characters</td><td>—</td></tr>
+<tr><td>Open native previews</td><td>24</td><td>—</td></tr>
+<tr><td>Formatting options</td><td>391, in 17 categories</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="deterministic-output">Deterministic output</h2>
+<p>The engine uses no clock, no randomness and no locale-dependent ordering, so the same input and configuration give the same output on every machine and in CI. Line width is measured in display columns, so wide characters such as CJK text and emoji break lines where a person would expect.</p>
+<h2 id="what-it-is-not">What it is not</h2>
+<ul>
+<li>It is not a linter: it changes layout, not code behaviour, and does not report style errors beyond &quot;needs formatting&quot;.</li>
+<li>It is not a backup: the gate prevents corruption, but formatting many files is still a change you should commit or stash first.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-safety-gate-guarantees">What the safety gate guarantees</a></li><li><a href="#known-gaps-in-version-010">Known gaps in version 0.1.0</a></li><li><a href="#limits">Limits</a></li><li><a href="#deterministic-output">Deterministic output</a></li><li><a href="#what-it-is-not">What it is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

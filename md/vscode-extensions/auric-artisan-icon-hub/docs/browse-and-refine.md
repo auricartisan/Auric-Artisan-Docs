@@ -1,0 +1,80 @@
+---
+title: Auric Artisan Icon Hub — Browse and refine
+description: Search Icon Hub, switch between Library, Favorites, Recent and Selected, refine by set, style, category and licence, and use the Smart Finder.
+product: VS Code extensions › Auric Artisan Icon Hub
+updated: 2026-09-25
+---
+
+# Browse and refine
+
+## Search
+
+Type in **Search your library**. Press `Ctrl` + `K` (`Cmd` + `K`) anywhere in the Hub to jump there. Every word you type must appear in the icon's name, ID, category, search terms or set.
+
+## Views
+
+| View | Shows |
+| --- | --- |
+| **Library** | Every icon in the catalog. |
+| **Favorites** | Only icons you starred. |
+| **Recent** | Icons you used lately (up to `auricIconLib.maxRecents`, default 40). |
+| **Selected** | Only the current selection. |
+
+## Refine library
+
+Expand **Refine library** ("Collection, style, category and license").
+
+| Control | Options |
+| --- | --- |
+| Collection | **All sets**, Phosphor, Tabler, Lucide, Remix, Heroicons, Feather, Material |
+| Style | **All styles**, or a style such as Regular, Bold, Fill, Outline, Filled, Line, 24/outline, Round, Two-tone |
+| Category | **All categories** or one category |
+| License | **All licenses**, MIT, ISC, Remix v1.0, Apache-2.0 |
+| Sort | **Relevance**, **Name**, **Set** |
+
+**Reset filters** clears the search and refinements. It keeps your selection and the current view.
+
+The first time you open the Hub, the collection and style start from `auricIconLib.defaultSet` and `auricIconLib.defaultStyle`.
+
+## Collections
+
+| Collection | Icons | Styles | Default style | Licence |
+| --- | --- | --- | --- | --- |
+| Phosphor | 1,512 | Thin, Light, Regular, Bold, Fill, Duotone | Regular | MIT |
+| Tabler | 5,093 | Outline, Filled | Outline | MIT |
+| Lucide | 1,714 | Regular | Regular | ISC |
+| Remix | 1,689 | Line, Fill | Line | Remix v1.0 |
+| Heroicons | 324 | 24 Outline, 24 Solid, 20 Solid, 16 Solid | 24 Outline | MIT |
+| Feather | 287 | Regular | Regular | MIT |
+| Material | 2,276 | Outlined, Round, Sharp, Regular, Two-tone | Outlined | Apache-2.0 |
+
+The count is logical icons; style variants (32,802 in total) are indexed separately. The combined Remix sprite is left out because it is not a standalone icon. Material is font-backed and never exported as SVG.
+
+## Cards
+
+| Control | Action |
+| --- | --- |
+| Preview | Opens the inspector. |
+| Star | **Star this icon** (favorite). |
+| Check | **Add to the selection**. |
+| **Insert** | **Insert at the cursor**. |
+| **Copy** | **Copy to the clipboard** in your copy format. |
+
+Keyboard: arrow keys move between cards, `Enter` opens the inspector and `F` stars the focused card. Focus stays on the card when the grid updates.
+
+## Smart Finder
+
+Expand **SMART FINDER — Recently used & suggested**. It shows your recent icons and a rotating sample of the catalog under "Keep useful icons close." Select **Shuffle** to reshuffle. It is a local convenience, not a remote AI service. It is hidden when `auricIconLib.recommendations.enabled` is off.
+
+## Density and batch size
+
+| Setting | Values | Default |
+| --- | --- | --- |
+| `auricIconLib.density` | `compact`, `comfortable`, `showcase` | `comfortable` |
+| `auricIconLib.pageSize` | 24 to 240 | 72 |
+
+Select **Load more** to show the next batch.
+
+## Result
+
+The grid shows the icons you want, from the right collection and style, ready to shape and use.

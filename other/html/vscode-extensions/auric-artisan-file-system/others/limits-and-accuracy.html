@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What Auric Artisan File System reports and how precisely, its built-in limits, and what it deliberately does not do.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Supporting material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Supporting material</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What Auric Artisan File System reports and how precisely, its built-in limits, and what it deliberately does not do.</p>
+<h2 id="what-properties-can-report">What Properties can report</h2>
+<p>Properties shows what the file system reports through VS Code, and labels anything it cannot know.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Detail</th><th>Accuracy</th></tr></thead>
+<tbody>
+<tr><td>Name, path, type</td><td>Exact</td></tr>
+<tr><td>Size</td><td>As reported. Folders show <strong>Folder</strong>; a recursive disk-usage total is not calculated</td></tr>
+<tr><td>Created</td><td>Only where the file system records a creation time; otherwise <strong>Unavailable</strong></td></tr>
+<tr><td>Modified</td><td>As reported</td></tr>
+<tr><td>Owner / creator</td><td>Not available through VS Code; never guessed</td></tr>
+<tr><td>Permissions</td><td>Only the read-only flag. Its absence does not prove you can write the file. Full access-control lists are not available</td></tr>
+<tr><td>Git status</td><td>From the last index, and labelled so; refresh the index to update it</td></tr>
+<tr><td>Related files</td><td>Found through the index; before it is built, shown as not indexed</td></tr>
+<tr><td>Version</td><td>Counts Auric operations only</td></tr>
+</tbody></table></div>
+<h2 id="built-in-limits">Built-in limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Limit</th><th>Default</th><th>Setting</th></tr></thead>
+<tbody>
+<tr><td>Entries per index scan</td><td>20,000 (500–200,000)</td><td><code>auricFiles.explorer.maxNodes</code></td></tr>
+<tr><td>Matches per search</td><td>2,000 (50–50,000)</td><td><code>auricFiles.search.maxResults</code></td></tr>
+<tr><td>Paths from one brace expression</td><td>1,000</td><td>—</td></tr>
+<tr><td>Paths in one batch creation</td><td>2,000</td><td>—</td></tr>
+<tr><td>Operations kept for undo</td><td>200 (10–2,000)</td><td><code>auricFiles.safety.historyLimit</code></td></tr>
+<tr><td>Workspace trash size</td><td>256 MiB</td><td><code>auricFiles.safety.trashMaxBytes</code></td></tr>
+<tr><td>Workspace trash retention</td><td>14 days (1–365)</td><td><code>auricFiles.safety.trashRetentionDays</code></td></tr>
+<tr><td>Folders read at once while indexing</td><td>8 (1–64)</td><td><code>auricFiles.performance.scanConcurrency</code></td></tr>
+<tr><td>Regular expression length in batch rename</td><td>512 characters</td><td>—</td></tr>
+</tbody></table></div>
+<p>When the index reaches its limit, it stops and marks itself as truncated, and counts say so, rather than stalling VS Code.</p>
+<h2 id="deliberate-boundaries">Deliberate boundaries</h2>
+<ul>
+<li>The <strong>Auric Files</strong> sidebar is a companion, not a second file tree. VS Code owns the Explorer&#39;s rows, sorting and drag-and-drop.</li>
+<li>VS Code&#39;s Explorer supports sorting by name, type and date modified only. Auric&#39;s other sort and grouping options apply to its own indexed lists.</li>
+<li>The operation history records Auric operations only. It does not record editor edits or native Explorer actions, and it does not keep old copies of file contents.</li>
+<li>Duplicate review never deletes by itself; you choose every file.</li>
+<li>Selection export is a JSON manifest, not an archive of file contents.</li>
+<li>Template expressions are substitution only; templates cannot run code.</li>
+<li>File-changing operations require a trusted workspace.</li>
+<li>Remote and virtual file systems offer different capabilities. In virtual workspaces, revealing in the operating system&#39;s file manager, content hashing and the native trash are unavailable.</li>
+<li>The interface is in English.</li>
+<li>The icon tools only work with the Auric Artisan File Icons Facet or Playful theme. Icon menu entries added by those themes are managed by that extension.</li>
+</ul>
+<h2 id="keeping-your-work-safe">Keeping your work safe</h2>
+<p>Protected paths, confirmations, previews, history and the workspace trash are safeguards, not a backup. Keep using version control and normal backups.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-properties-can-report">What Properties can report</a></li><li><a href="#built-in-limits">Built-in limits</a></li><li><a href="#deliberate-boundaries">Deliberate boundaries</a></li><li><a href="#keeping-your-work-safe">Keeping your work safe</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

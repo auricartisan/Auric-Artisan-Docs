@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for problems that affect the Studio as a whole, from missing views to scans that skip files.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for problems that affect the Studio as a whole, from missing views to scans that skip files.</p>
+<p>This page covers problems shared by all Studio extensions. Problems specific to one extension are in its own troubleshooting page: <a href="../color/docs/troubleshooting.html">Auric Color</a>, <a href="../accessibility/docs/troubleshooting.html">Auric Accessibility</a>, <a href="../code-health/docs/troubleshooting.html">Auric Code Health</a> and <a href="../full-pack/docs/troubleshooting.html">the Full Pack</a>.</p>
+<h2 id="views-and-screens">Views and screens</h2>
+<h3 id="i-installed-several-studio-extensions-but-see-only-one-auric-icon">I installed several Studio extensions but see only one Auric icon</h3>
+<p><strong>Why:</strong> This is intended. Installed together, the extensions form one Workstation. The host (Auric Accessibility, else Auric Color, else Auric Code Health) keeps its views; the others hide theirs.</p>
+<p><strong>What to do:</strong> Use the host&#39;s sidebar. Its Overview, Command Center and Studio include every installed extension. See <a href="workstation.html">The Workstation</a>.</p>
+<h3 id="the-color-picker-view-is-missing">The Color Picker view is missing</h3>
+<p><strong>Why:</strong> It is collapsed by default, and in a Workstation hosted by Auric Accessibility it appears only when Auric Color is installed.</p>
+<p><strong>What to do:</strong> Expand <strong>Color Picker</strong> at the bottom of the sidebar, or run <strong>Auric Artisan: Pick / edit color</strong>.</p>
+<h3 id="the-command-palette-lists-the-same-command-two-or-three-times">The Command Palette lists the same command two or three times</h3>
+<p><strong>Why:</strong> Each installed extension contributes its own copy of shared commands such as <strong>Workstation: Command Center</strong> and <strong>Open Rulebook &amp; Knowledge Database</strong>.</p>
+<p><strong>What to do:</strong> Either works. For the Command Center, use <code>Ctrl</code> + <code>Alt</code> + <code>.</code>, which always opens the host&#39;s version covering every capability.</p>
+<h3 id="ctrl-alt-does-nothing">Ctrl + Alt + . does nothing</h3>
+<p><strong>Why:</strong> Another extension or your operating system uses the same keys, or your keyboard layout treats <code>Ctrl</code> + <code>Alt</code> as <code>AltGr</code> and types a character instead.</p>
+<p><strong>What to do:</strong> Open <strong>File › Preferences › Keyboard Shortcuts</strong>, search for <strong>Workstation: Command Center</strong>, and check for conflicts or assign different keys. You can always run the command from the Command Palette.</p>
+<h3 id="the-studio-or-overview-does-not-appear-in-vs-code-for-the-web">The Studio or Overview does not appear in VS Code for the Web</h3>
+<p><strong>Why:</strong> The Studio extensions run as desktop (and remote workspace) extensions; they do not include a build for VS Code in the browser.</p>
+<p><strong>What to do:</strong> Use VS Code on the desktop.</p>
+<h2 id="scores-and-scans">Scores and scans</h2>
+<h3 id="the-status-bar-shows-a11y-with-no-number">The status bar shows &quot;A11y&quot; with no number</h3>
+<p><strong>Why:</strong> There is no scan result yet. The tooltip says <strong>Auric Artisan — run a project scan</strong>.</p>
+<p><strong>What to do:</strong> Select <strong>Scan project</strong> on the Overview or run <strong>Auric Artisan: Scan Project for Accessibility (Use Cache)</strong>. With Auric Color alone, the score appears after the Studio has re-graded the workspace in the background as you edit.</p>
+<h3 id="the-scan-says-no-colorbackground-pairs-found-to-evaluate">The scan says &quot;no color/background pairs found to evaluate&quot;</h3>
+<p><strong>Why:</strong> The scan found no text and background colours it could pair and no markup or CSS files to grade, so there is no score.</p>
+<p><strong>What to do:</strong> Check that your stylesheets and templates use file extensions the scan reads, and are not excluded. See <a href="scanning.html#what-is-read">What is read</a>.</p>
+<h3 id="i-changed-the-threshold-or-audit-profile-but-the-score-did-not-change">I changed the threshold or audit profile but the score did not change</h3>
+<p><strong>Why:</strong> The loaded score comes from the scan cache, which was graded with the old settings. (Changing the audit profile makes Auric Accessibility treat the old cache as stale, but other settings do not.)</p>
+<p><strong>What to do:</strong> Select <strong>Rescan</strong>, <strong>Force rescan</strong> in Studio Settings, or run <strong>Auric Artisan: Force Rescan Project and Refresh Cache</strong>. Editor underlines update immediately without a rescan.</p>
+<h3 id="some-files-were-not-scanned">Some files were not scanned</h3>
+<p><strong>Why:</strong> One of these applies:</p>
+<ul>
+<li>the file&#39;s extension is not in the scan list;</li>
+<li>it matches <code>scan.exclude</code> or a <code>.auricignore</code> rule;</li>
+<li>it is larger than 1 MB;</li>
+<li>the scan hit the <code>scan.maxFiles</code> limit (the status-bar tooltip says <strong>Scanned N of M files</strong>);</li>
+<li>it is a file named exactly <code>.env</code>, which the in-editor scan does not read.</li>
+</ul>
+<p><strong>What to do:</strong> Adjust <code>scan.exclude</code>, <code>.auricignore</code> or <code>scan.maxFiles</code> in Studio › Settings › <strong>Scope</strong>, then rescan. See <a href="scanning.html">Scanning</a>.</p>
+<h3 id="test-fixtures-or-generated-files-flood-the-results">Test fixtures or generated files flood the results</h3>
+<p><strong>What to do:</strong> Add them to <code>.auricignore</code> (for example <code>test/fixtures/</code> or <code>*.min.css</code>), or to <code>scan.exclude</code>, then rescan. For a single deliberate case, use a suppression directive. See <a href="suppression-and-branding.html">Suppression and branding</a>.</p>
+<h3 id="the-score-does-not-follow-my-edits">The score does not follow my edits</h3>
+<p><strong>Why:</strong> One of these applies:</p>
+<ul>
+<li><code>scan.live</code> is off;</li>
+<li>the workspace is too large for live re-grading (more than 1,500 files or about 12 MB of text);</li>
+<li>the file you are editing was not part of the last scan (for example a new file);</li>
+<li>another installed Studio extension owns live re-grading, and its views are the ones updating.</li>
+</ul>
+<p><strong>What to do:</strong> Turn on <strong>Continuous scan as you type</strong> in Studio Settings, or rescan after your edits. For large workspaces, consider <strong>Auto scan after file changes</strong>.</p>
+<h3 id="a-scan-failed">A scan failed</h3>
+<p><strong>What you see:</strong> <strong>Auric Artisan: project scan failed —</strong> followed by a reason, and <strong>Existing results are untouched.</strong> In the Studio, a toast starting <strong>Scan failed</strong>.</p>
+<p><strong>What to do:</strong> Your previous results are kept. Check that the workspace folder is readable and try <strong>Force Rescan</strong>. If a particular file causes the failure, add it to <code>.auricignore</code>.</p>
+<h3 id="the-scan-takes-a-long-time">The scan takes a long time</h3>
+<p><strong>Why:</strong> Large workspaces with many files take longer, and background scans after every save add work.</p>
+<p><strong>What to do:</strong> Keep <code>scan.cache.enabled</code> on so ordinary <strong>Scan project</strong> reuses the cache, exclude generated folders, lower <code>scan.maxFiles</code> if you only need part of the project, and leave <code>scan.autoScan</code> off unless you need it.</p>
+<h2 id="files-and-folders">Files and folders</h2>
+<h3 id="a-command-says-open-a-workspace-folder-before">A command says &quot;open a workspace folder before …&quot;</h3>
+<p><strong>Why:</strong> Reports, health records, the remediation plan and the knowledge database are written to <code>.auric-artisan</code> inside a workspace folder.</p>
+<p><strong>What to do:</strong> Open a folder with <strong>File › Open Folder…</strong> and run the command again.</p>
+<h3 id="a-auric-artisan-folder-appeared-in-my-project">A .auric-artisan folder appeared in my project</h3>
+<p><strong>Why:</strong> The Studio stores its scan cache and outputs there. It includes a <code>.gitignore</code> so regenerated files are not committed.</p>
+<p><strong>What to do:</strong> Keep it, rename it with <code>data.folderName</code>, or turn off <strong>Store workspace data locally</strong> (<code>data.enabled</code>) to stop writing workspace data. Deleting it is safe; it is recreated when needed.</p>
+<h3 id="write-health-record-says-health-report-is-disabled">Write Health Record says &quot;health report is disabled&quot;</h3>
+<p><strong>Why:</strong> <code>auricCodeHealth.health.enabled</code> is off.</p>
+<p><strong>What to do:</strong> Turn it back on to use <strong>Write Health Record</strong>.</p>
+<h3 id="knowledge-overrides-are-reported-as-invalid">Knowledge overrides are reported as invalid</h3>
+<p><strong>What you see:</strong> <strong>Auric Artisan: workspace knowledge overrides are invalid; using the built-in database.</strong> or <strong>could not build the knowledge database —</strong> with a list of problems.</p>
+<p><strong>What to do:</strong> Fix each listed problem in <code>.auric-artisan/knowledge-overrides.json</code>. The rules are in <a href="rulebook-and-knowledge.html#rules-for-entries">Rulebook and knowledge database</a>.</p>
+<h2 id="settings">Settings</h2>
+<h3 id="studio-settings-changes-do-not-stick">Studio Settings changes do not stick</h3>
+<p><strong>Why:</strong> The cards other than Appearance are saved only when you select <strong>Save settings</strong>. A value set in a narrower scope (for example a workspace folder setting) can also override what you changed.</p>
+<p><strong>What to do:</strong> Select <strong>Save settings</strong>, then check <strong>File › Preferences › Settings</strong> for the same key under <strong>Workspace</strong> or a folder.</p>
+<h3 id="i-changed-a-scan-setting-in-one-extension-but-another-ignores-it">I changed a scan setting in one extension but another ignores it</h3>
+<p><strong>Why:</strong> Shared scan and data settings are read from the first extension that has a value, checking Auric Code Health, then Auric Accessibility, then Auric Color.</p>
+<p><strong>What to do:</strong> Set shared keys under one prefix only, or give them the same value everywhere. See <a href="reference.html#shared-settings">Shared settings</a>.</p>
+<h3 id="the-accent-colour-did-not-change">The accent colour did not change</h3>
+<p><strong>Why:</strong> You changed the <code>appearance.accent</code> of an extension that is not hosting the Studio.</p>
+<p><strong>What to do:</strong> Use the Studio&#39;s <strong>Settings › Appearance</strong> card, which writes to the right extension. See <a href="appearance.html">Appearance</a>.</p>
+<h2 id="suggestions-and-the-contrast-studio">Suggestions and the Contrast Studio</h2>
+<h3 id="a-dismissed-suggestion-never-comes-back">A dismissed suggestion never comes back</h3>
+<p><strong>Why:</strong> Dismissals are permanent by design, and there is no command to undo them.</p>
+<p><strong>What to do:</strong> The same actions remain available in the Command Center&#39;s <strong>Actions</strong> section and in the Studio.</p>
+<h3 id="this-pair-is-no-longer-linked-to-its-file">&quot;This pair is no longer linked to its file&quot;</h3>
+<p><strong>Why:</strong> You opened another pair, or the Studio tab was closed and reopened, so the link to the original line was lost.</p>
+<p><strong>What to do:</strong> Open the pair again from its hover or quick fix. See <a href="contrast-studio.html">The Contrast Studio</a>.</p>
+<h3 id="the-source-line-changed-since-the-studio-opened-it">&quot;The source line changed since the Studio opened it&quot;</h3>
+<p><strong>Why:</strong> The line was edited after the pair was opened, so the Studio will not write to it.</p>
+<p><strong>What to do:</strong> Open the pair again from the editor.</p>
+<h2 id="still-stuck">Still stuck?</h2>
+<p>Check <a href="../others/limits-and-accuracy.html">Limits and accuracy</a> to see whether the behaviour is a known limit of static analysis, and the <a href="faq.html">FAQ</a>. You can report a problem through <a href="https://auricartisan.com" rel="noopener">https://auricartisan.com</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Reference</a><a href="faq.html"><span>Next</span>FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#views-and-screens">Views and screens</a></li><li><a href="#scores-and-scans">Scores and scans</a></li><li><a href="#files-and-folders">Files and folders</a></li><li><a href="#settings">Settings</a></li><li><a href="#suggestions-and-the-contrast-studio">Suggestions and the Contrast Studio</a></li><li><a href="#still-stuck">Still stuck?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

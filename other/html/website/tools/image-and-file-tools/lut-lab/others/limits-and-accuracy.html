@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="LUT Lab's 8-bit path, how its figures are measured, and what it does not hold.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab background material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="glossary.html">LUT Lab glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and reading</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab background material</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">LUT Lab's 8-bit path, how its figures are measured, and what it does not hold.</p>
+<h2 id="the-8-bit-path">The 8-bit path</h2>
+<p>Every value in LUT Lab travels as an 8-bit integer, because it comes from and returns to a canvas. This is a real limit:</p>
+<ul>
+<li>A loaded LUT&#39;s output is rounded to 8 bits when applied.</li>
+<li>An exported <code>.cube</code> holds only the 256 values k ÷ 255 per channel, written to six decimals. The header says so.</li>
+<li>A 1D export longer than 256 entries would only repeat values; the tool writes at most 65.</li>
+<li>At sizes where N − 1 does not divide 255 (including 17, 33 and 65), grid points in an exported file sit up to half an 8-bit step from the exact grid. An 8-bit image is unaffected; a program reading at higher precision is not.</li>
+</ul>
+<h2 id="what-is-measured-and-how">What is measured, and how</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Figure</th><th>Method</th></tr></thead>
+<tbody>
+<tr><td><strong>mean ΔE₀₀</strong>, <strong>95th percentile</strong>, <strong>largest</strong></td><td>CIEDE2000 between each pixel before and after, in CIELAB with a D65 white</td></tr>
+<tr><td><strong>clipped</strong></td><td>Pixels with a channel moved to 0 or 255 from somewhere else</td></tr>
+<tr><td><strong>the old test said</strong></td><td>Pixels with any output channel at 0 or 255; kept for comparison only</td></tr>
+<tr><td>Hue circle</td><td>72 colours at L* 60, C* 40 in CIELAB, every 5°; 13 are pulled inside sRGB first</td></tr>
+<tr><td>Hue shift</td><td>Change of CIELAB hue angle, not HSL hue</td></tr>
+<tr><td>Round trip</td><td>Values written and read back agree to the six decimals of the format</td></tr>
+</tbody></table></div>
+<p>The CIEDE2000 formula is checked against a second transcription of the standard and against published test data.</p>
+<h2 id="choices-the-tool-makes">Choices the tool makes</h2>
+<p>These are listed as <strong>Stand-in</strong> on the <strong>Data</strong> tab.</p>
+<ul>
+<li><strong>The five stylisations</strong> are hand-tuned curves. None imitates a measured film stock or a photochemical process, whatever its name.</li>
+<li><strong>The tone-map exposure</strong> defaults to 2×, a one-stop lift. An 8-bit sRGB picture has no record of the scene&#39;s true brightness.</li>
+<li><strong>The drawn scenes</strong> exercise a transform evenly but are not photographs: no grain, flare or real sensor colour. Load your own picture for a real test.</li>
+<li><strong>The 8-bit path</strong> itself.</li>
+</ul>
+<h2 id="what-the-tool-does-not-hold">What the tool does not hold</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Not held</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>ACEScct to ACEScg</td><td>Its output runs far above 1, which an 8-bit canvas cannot hold</td></tr>
+<tr><td>32-bit float export</td><td>There is no floating-point path to fill it</td></tr>
+<tr><td>PQ (SMPTE ST 2084), BT.2020, ACES primaries</td><td>Not implemented; the tool works in sRGB only</td></tr>
+<tr><td>LUT formats other than <code>.cube</code></td><td>Only <code>.cube</code> is read and written</td></tr>
+<tr><td>Input beyond 0 to 1</td><td>Pictures are 8-bit sRGB; wider domains are only partly reachable</td></tr>
+</tbody></table></div>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>Your picture is scaled to fit 480 × 270 for the analysis.</li>
+<li>Export sizes are 2 to 65, for 3D and 1D alike.</li>
+<li>A loaded file is applied at full strength only.</li>
+<li>Share links do not carry a loaded file or your picture.</li>
+<li>The tool does not store anything between visits.</li>
+</ul>
+<h2 id="what-it-is-not">What it is not</h2>
+<p>LUT Lab is a place to read, test and write <code>.cube</code> files for 8-bit sRGB work. It is not a grading application, and it does not handle log, HDR or wide-gamut footage.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>LUT Lab glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-8-bit-path">The 8-bit path</a></li><li><a href="#what-is-measured-and-how">What is measured, and how</a></li><li><a href="#choices-the-tool-makes">Choices the tool makes</a></li><li><a href="#what-the-tool-does-not-hold">What the tool does not hold</a></li><li><a href="#limits">Limits</a></li><li><a href="#what-it-is-not">What it is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

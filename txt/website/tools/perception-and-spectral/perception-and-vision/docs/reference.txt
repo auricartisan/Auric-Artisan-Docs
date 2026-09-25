@@ -1,0 +1,301 @@
+==============================================================================
+PERCEPTION AND VISION REFERENCE
+==============================================================================
+Every tab, control, readout, message and file format in Perception Vision,
+with ranges and defaults.
+Area: Website › Tools › Perception and spectral › Perception and Vision   Updated: 2026-09-25
+
+Address:
+https://auricartisan.com/tool/general/perception-and-neuroscience/perception-vision/
+
+TABS
+====
+
+  Tab:      Lab
+  Contents: Source, simulation, comparison, renderer, illuminant, adjustments
+            and presets; the frame, grey-ramp check and readouts
+
+  Tab:      Simulation
+  Contents: The colour vision chain, its matrices and a seven-colour table,
+            with an earlier-version comparison
+
+  Tab:      Modes
+  Contents: Previews of every simulation over one source, and the list of
+            controls from an earlier version
+
+  Tab:      Data
+  Contents: The register of nine datasets and transforms, filterable by
+            status; the tab label shows the count (9)
+
+  Tab:      Export
+  Contents: Colour list, CSV, clipboard, settings download and load, link
+
+  Tab:      Reference
+  Contents: Standards, formulas, citations and research notes, with a search
+            box
+
+LAB TAB — SOURCE
+================
+
+  Control: Source
+  Values:  Test card, Grey ramp only, Snellen chart, Uploaded image, Camera
+  Default: Test card
+
+  Control: Choose a file
+  Values:  Opens a file chooser for images (shown for Uploaded image); images
+           are fitted within 1200 × 900
+  Default: —
+
+  Control: Start or stop
+  Values:  Switches the camera (shown for Camera); status off, active or
+           unavailable
+  Default: off
+
+LAB TAB — SIMULATION
+====================
+
+  Control:         Simulation
+  Values or range: Colour vision, Scotopic, Mesopic, Lens yellowing, Cataract,
+                   Central loss, Light adaptation, Acuity, None
+  Default:         Colour vision
+  Shown for:       Always
+
+  Control:         Type
+  Values or range: Protan, Deutan, Tritan
+  Default:         Protan
+  Shown for:       Colour vision
+
+  Control:         Daltonise instead of simulate
+  Values or range: On or off
+  Default:         Off
+  Shown for:       Colour vision
+
+  Control:         Severity
+  Values or range: 0–1, step 0.01
+  Default:         1.00
+  Shown for:       Always
+
+  Control:         Adaptation level
+  Values or range: 0–1, step 0.01
+  Default:         0.50
+  Shown for:       Mesopic, Light adaptation
+
+  Control:         Age
+  Values or range: 20–80, step 1
+  Default:         40
+  Shown for:       Lens yellowing
+
+  Control:         Scotoma radius
+  Values or range: 0.02–0.45, step 0.01
+  Default:         0.15
+  Shown for:       Central loss
+
+  Control:         Cataract
+  Values or range: 0–1, step 0.01
+  Default:         0.50
+  Shown for:       Cataract
+
+  Control:         Acuity
+  Values or range: 20/20–20/200, step 5
+  Default:         20/20
+  Shown for:       Acuity
+
+LAB TAB — COMPARE AND RENDERER
+==============================
+
+  Control        | Values or range                                                 | Default
+  ---------------+-----------------------------------------------------------------+--------
+  Compare        | Split, Simulated only, Difference (absolute difference × 4)     | Split
+  Divider        | 0–100%, step 1%; also set by dragging on the frame (Split only) | 50%
+  Renderer       | GPU, CPU; GPU is disabled without WebGL2                        | GPU
+  Fixation cross | Draws a cross and ring at the frame centre                      | Off
+
+LAB TAB — BEFORE THE EYE
+========================
+
+  Control    | Values or range                      | Default
+  -----------+--------------------------------------+--------
+  Illuminant | D65 — as authored, D50, A — tungsten | D65
+  Adaptation | 0–1, step 0.01 (Bradford strength)   | 1.00
+
+LAB TAB — ADJUSTMENTS
+=====================
+
+  Control  | Range and step         | Default
+  ---------+------------------------+--------
+  Contrast | −0.9 to 0.9, step 0.01 | 0.00
+  Gamma    | 0.4 to 2.6, step 0.01  | 1.00
+  Blur     | 0 to 8, step 0.1       | 0.0
+  Glare    | 0 to 1, step 0.01      | 0.00
+  Noise    | 0 to 0.08, step 0.001  | 0.000
+
+LAB TAB — PRESETS
+=================
+
+  Control: Presets
+  Values:  —, Protanopia, Mild deuteranomaly, Tritanopia, Low light with
+           glare, Lens at 70, Cataract, Central loss, Acuity 20/80 (values in
+           Simulate a design or image [simulate-a-design.txt])
+
+  Control: Reset
+  Values:  Returns every control to its default and stops the camera
+
+LAB TAB — STAGE ELEMENTS
+========================
+
+  Element:     Caption
+  Description: The simulation, type and severity, or The frame, unchanged
+
+  Element:     Renderer note
+  Description: A dot (green when WebGL2 is available), GPU or CPU, and the
+               frame size
+
+  Element:     Frame
+  Description: The simulated view; in Split the halves are labelled Original
+               and the simulation's name; the line under it names the method's
+               source
+
+  Element:     No WebGL2 here.
+  Description: Shown when the browser has no WebGL2; the CPU is used
+
+  Element:     Grey-ramp strip
+  Description: Nine steps and the channel spread added to each, in code values
+
+  Element:     Save the frame
+  Description: Downloads `perception-<simulation>-<severity × 100>.png`
+
+  Element:     Copy a link to this view
+  Description: Copies a link to the current settings
+
+LAB TAB — READOUTS
+==================
+
+  Readout               | Format
+  ----------------------+-----------------------------------------------------
+  Neutral drift         | Code values, 0–255
+  Colours merged        | Percentage, one decimal; n/a for spatial simulations
+  Out of sRGB           | Percentage, one decimal; n/a for spatial simulations
+  GPU and CPU agree     | yes, N off, n/a — spatial or not run
+  Distinct colours left | N of M, or spatial mode
+  Largest channel shift | Code values; n/a for spatial simulations
+  Frame luminance, mean | Relative luminance, four decimals
+  min and max           | Relative luminance, four decimals
+
+Simulation identifiers used in file names and links: `none`, `cvd`,
+`scotopic`, `mesopic`, `age-yellowing`, `cataracts`, `macular-degeneration`
+(Central loss), `photopic-adaptation` (Light adaptation), `acuity`.
+
+SIMULATION TAB
+==============
+
+  Control | Values                            | Default
+  --------+-----------------------------------+------------
+  Show    | The chain, The matrices           | The chain
+  Against | What it was, Hide                 | What it was
+  Type    | Protan, Deutan, Tritan, All three | Protan
+
+Table columns: Input, Type, Through XYZ, and with What it was also On screen,
+In the file and Apart.
+
+MODES TAB
+=========
+
+  Control  | Values                              | Default
+  ---------+-------------------------------------+-----------
+  Show     | Everything, The eight that simulate | Everything
+  On       | Test card, Grey ramp, Snellen chart | Test card
+  Severity | 0.50, 1.00                          | 1.00
+
+DATA TAB
+========
+
+  Control:      Status
+  What it does: All (9), Verbatim (3), Computed (3), Stand-in (2), Absent (1)
+
+  Control:      Register row
+  What it does: Select, or press `Enter` or `Space`, to expand the note and
+                What it would take
+
+  Control:      Drop a CSV or JSON
+  What it does: Shown under Install a table; not active in the current version
+
+Entries: sRGB transfer and primaries, Hunt-Pointer-Estévez cone fundamentals,
+Bradford chromatic adaptation (Verbatim); Dichromacy projection, One
+implementation, two renderers, The shader's matrix literals (Computed); Rod
+spectral weighting, Lens, cataract, acuity and adaptation models (Stand-in);
+Contrast sensitivity function (Absent).
+
+EXPORT TAB
+==========
+
+  Control               | What it does
+  ----------------------+----------------------------------------------------------------
+  What to take          | A list of colours, The frame, The settings, A link to this view
+  Colours               | Hex colours, one per line; commas and semicolons also separate
+  Run them              | Redraws the table (it also updates as you type)
+  Download the CSV      | Saves `perception-<simulation>-<severity × 100>.csv`
+  Copy to clipboard     | Copies a tab-separated table
+  Download the settings | Saves `perception-vision-settings.json`
+  Load settings         | Applies a settings JSON file
+
+REFERENCE TAB
+=============
+
+  Control   | Values
+  ----------+----------------------------------------------------------------------------------
+  Reference | Standards (7), Formulas (11), Citations (13, default), Research notes (9)
+  Filter    | Searches all four groups; shows Nothing in the reference matches that. when empty
+
+MESSAGES
+========
+
+  Message: Preset: …
+  Meaning: A preset was applied
+
+  Message: Reset
+  Meaning: All controls returned to defaults
+
+  Message: Camera: …
+  Meaning: The camera could not start; the source returned to the test card
+
+  Message: PNG saved, CSV saved, Settings exported, Settings imported, Copied,
+           Link copied
+  Meaning: The action succeeded
+
+  Message: Import failed: …
+  Meaning: The settings file could not be read
+
+  Message: Copy blocked
+  Meaning: The browser refused clipboard access
+
+  Message: No colours to write / No colours to copy
+  Meaning: The colour list is empty
+
+FILE FORMATS
+============
+
+  File:     `perception-<simulation>-<severity>.png`
+  Format:   PNG
+  Contents: The frame at its own size, with the divider and fixation cross if
+            shown
+
+  File:     `perception-<simulation>-<severity>.csv`
+  Format:   CSV with `#` comment lines
+  Contents: `Input,Simulated,L,M,S,RG,BY,DeltaE00,InSRGB`
+
+  File:     Clipboard table
+  Format:   Tab-separated text
+  Contents: `Input`, `Simulated`, `L`, `M`, `S`, `DeltaE00`, `InSRGB`
+
+  File:     `perception-vision-settings.json`
+  Format:   JSON
+  Contents: See Check a palette and export [check-a-palette-and-export.txt]
+
+LINK PARAMETERS
+===============
+
+`simMode`, `cvdType` (`protan`, `deutan`, `tritan`), `severity`, `contrast`,
+`gamma`, `blur`, `noise`, `bloom` (glare), `adaptLevel`, `age`, `scotomaR`,
+`cataractLvl`, `acuity`, `illum` (`D65`, `D50`, `A`), `adaptStrength`,
+`compare` (`split`, `sim`, `diff`), `source` (`sample`, `ramp`, `snellen`,
+`upload`, `camera`), `renderer` (`gpu`, `cpu`).

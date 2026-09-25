@@ -1,0 +1,85 @@
+==============================================================================
+GLOSSARY
+==============================================================================
+Plain-language definitions of the terms used in the Auric Artisan Live
+documentation.
+Area: VS Code extensions › Auric Artisan Live   Updated: 2026-09-25
+
+Backend — the part of a site that runs on a server: an API, a PHP application,
+a framework dev server.
+
+CGI (Common Gateway Interface) — a standard way for a web server to run a
+program for each request and send back what it prints. Auric Live uses it to
+run PHP through `php-cgi`.
+
+CORS (cross-origin resource sharing) — the browser rules that decide whether a
+page from one address may call another. A proxy avoids CORS problems by
+putting the page and its API on one address.
+
+Cross-origin isolation — a pair of response headers that unlock features such
+as `SharedArrayBuffer`, at the cost of blocking cross-origin resources that do
+not opt in.
+
+Dev server — a framework's own development server, such as the one `npm run
+dev` starts for Vite or Next.js.
+
+Developer dashboard — the panel Auric Live places over a served page, opened
+with `Alt` + `Shift` + `D`.
+
+Handler — the part of Auric Live that answered a request: `static`, `proxy`,
+`mock`, `rest`, `cgi`, `listing`, `redirect`, `error`, `client` or
+`live-reload`.
+
+HAR (HTTP Archive) — a standard JSON file format for a list of requests and
+responses.
+
+Hot swap — replacing a changed stylesheet or image in a page without reloading
+it.
+
+Live reload — updating open pages automatically when files change.
+
+Loopback — addresses that only reach the same computer, such as `127.0.0.1`
+and `localhost`.
+
+Mock route — an endpoint Auric Live answers itself with a response you
+declare.
+
+Network profile — a preset latency and bandwidth used to simulate a slower
+connection.
+
+p95 latency — the time within which 95 per cent of the sampled requests were
+answered.
+
+Project file — `auric.live.json`, the configuration kept with your repository.
+
+Proxy — forwarding requests for a path to another server and passing its
+answers back.
+
+Reload storm — many reloads in a short time, usually caused by a tool writing
+files repeatedly. Auric Live pauses live reload when it detects one.
+
+REST database — a JSON file served as a full REST API with list, read, create,
+replace, update and delete.
+
+Run profile / run target — a named way to run the project: static files, a
+detected runtime or dev server, your own command, or an existing server's URL.
+
+Secure context — a page served over HTTPS (or from `localhost`), which
+browsers require for features such as service workers and the camera.
+
+Self-signed certificate — an HTTPS certificate not issued by an authority a
+device already trusts, so the device warns until you trust it.
+
+Session override — a change made with a command or the control panel that
+lasts until the VS Code window closes or reloads.
+
+SPA fallback — answering unknown paths with the app's main page so a
+client-side router can handle them.
+
+Upstream — the backend a proxy rule forwards to.
+
+URL-only profile — a run profile that forwards to a server you already run,
+without starting or stopping it.
+
+Workspace trust — your decision about whether VS Code and extensions may run
+code from a folder. Untrusted folders run in Restricted Mode.

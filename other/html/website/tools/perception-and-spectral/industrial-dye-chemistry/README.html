@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Industrial Dye Chemistry (Dye in Solution) — Auric Artisan Docs</title>
+<meta name="description" content="What the Dye in Solution tool does, who it is for, where to find it and how to watch a first pH indicator change colour.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and spectral tools</a>
+<h2>Industrial Dye Chemistry (Dye in Solution)</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Using Dye in Solution &rsaquo;</a></li>
+<li><a href="others/README.html">Dye in Solution background &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Perception and spectral tools</a> &rsaquo; <a href="README.html">Industrial Dye Chemistry (Dye in Solution)</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Industrial Dye Chemistry</p>
+<h1>Industrial Dye Chemistry (Dye in Solution)</h1>
+<p class="lede">What the Dye in Solution tool does, who it is for, where to find it and how to watch a first pH indicator change colour.</p>
+<p>The Industrial Dye Chemistry tool, whose page is titled <strong>Dye in solution</strong>, models a dye bath one wavelength at a time. You choose up to four dyes, their concentrations and the bath&#39;s pH and path length. The tool works out how much light the bath absorbs at each of 81 wavelengths from 380 to 780 nm, what colour that makes under a light source you name, and how far that colour moves under the other lights it holds.</p>
+<p>Each dye is modelled as two forms, an acid form and a base form, each with its own absorption band. The pH sets how much of the dye is in each form, so a pH indicator changes colour as the two bands trade places, and the curves for every pH cross at one wavelength, the isosbestic point. Absorbance follows the Beer–Lambert law, and the page flags when the bath is too strongly coloured for that law to hold. Colour is computed against the CIE 1931 standard observer under daylight D65 or D50, tungsten illuminant A, or equal-energy light E, and colour differences use CIEDE2000.</p>
+<p>The model is real; the dyes are not. The six preset dyes stand for classes of dye (for example &quot;the methyl-orange family&quot;) with constants chosen by the tool, and their bands are drawn as Gaussians. You can replace a band with a measured UV–Vis spectrum. The page holds no safety or toxicological data, does not perform colour-fastness tests and does not offer fluorescent illuminants such as F11. Everything runs in your browser.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Students of chemistry and colour science learning absorbance, indicators and isosbestic points.</li>
+<li>Textile and dye professionals who want to see, in principle, how concentration, path length, pH and the light source move a colour, and how far a colour shifts between lights.</li>
+<li>Colour enthusiasts curious about why a solution&#39;s colour depends on the lamp.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<p>Open <a href="https://auricartisan.com/tool/general/spectral-tools/industrial-dye-chemistry/" rel="noopener">https://auricartisan.com/tool/general/spectral-tools/industrial-dye-chemistry/</a> in a current browser. It is listed as <strong>Industrial Dye Chemistry</strong> on the Collections page (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) and in the site menu.</p>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open the tool. The bath holds one <strong>Weak-acid indicator</strong> at pH 3.50, in a 1.0 cm path, under D65.</li>
+<li>Look at the spectrum: two dashed bands (acid and base form), the filled curve you would measure, and a green circle at the isosbestic point.</li>
+<li>Select <strong>Run the titration</strong> and watch the pH sweep from 0 to 14 while the swatch and curves change.</li>
+<li>Drag <strong>pH</strong> back to 3.5 and raise <strong>Concentration</strong> until <strong>Beer–Lambert holds</strong> reads <strong>no</strong>.</li>
+<li>Change the light to <strong>A — a blackbody at 2856 K</strong> and compare the four swatches under <strong>The same bath under every light this tool holds</strong>.</li>
+<li>Add a second dye: pick one from the list under <strong>The components</strong> and select <strong>Add</strong>.</li>
+<li>Open <strong>Export</strong> and select <strong>Download the spectrum</strong> to save the 81-row CSV.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Build a bath of up to four dyes from six presets, and set each dye&#39;s pKa and concentration.</li>
+<li>Set pH (0–14) and path length (0.1–10 cm), and animate a titration.</li>
+<li>See both forms of the selected dye, their weighted sum and the isosbestic point.</li>
+<li>Read the colour as sRGB and CIE L<em>a</em>b*, the peak absorbance and its wavelength, the Beer–Lambert check, the dominant wavelength and excitation purity.</li>
+<li>Compare the bath under D65, D50, A and E as CIEDE2000 colour differences.</li>
+<li>Run a tolerance sweep over concentration, path length and molar absorptivity.</li>
+<li>Replace a dye band with your own measured spectrum.</li>
+<li>Export the spectrum as CSV, the whole bath as JSON, or a link.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the tool.<ul>
+<li><a href="docs/getting-started.html">Getting started</a> — open it, the screen tour, the first bath.</li>
+<li><a href="docs/build-a-bath.html">Build a bath</a> — dyes, concentration, path length and the Beer–Lambert law.</li>
+<li><a href="docs/run-a-titration.html">Run a titration</a> — pH, the two forms, the base fraction and the isosbestic point.</li>
+<li><a href="docs/compare-lights.html">Compare lights</a> — illuminants, L<em>a</em>b*, colour inconstancy, metamerism and dominant wavelength.</li>
+<li><a href="docs/run-a-tolerance-sweep.html">Run a tolerance sweep</a> — how far the colour moves when the recipe varies.</li>
+<li><a href="docs/use-a-measured-spectrum.html">Use a measured spectrum</a> — replace a drawn band with your own data.</li>
+<li><a href="docs/export-and-share.html">Export and share</a> — the spectrum CSV, the bath JSON and links.</li>
+<li><a href="docs/reference.html">Reference</a> — every control, readout, tab and file format.</li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a> — symptoms, causes and fixes.</li>
+<li><a href="docs/faq.html">FAQ</a> — short answers to common questions.</li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background material.<ul>
+<li><a href="others/glossary.html">Glossary</a> — terms used in this tool.</li>
+<li><a href="others/shortcuts.html">Shortcuts</a> — keyboard and pointer actions.</li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a> — what is published, what is the tool&#39;s own, what is not held, and safety.</li>
+<li><a href="others/related.html">Related</a> — related tools and Learn articles.</li>
+<li><a href="others/release-notes.html">Release notes</a> — user-facing history.</li>
+<li><a href="others/privacy.html">Privacy</a> — what stays in your browser.</li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../README.html"><span>Previous</span>Perception and spectral tools</a><a href="docs/README.html"><span>Next</span>Using Dye in Solution</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

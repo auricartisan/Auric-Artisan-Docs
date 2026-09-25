@@ -1,0 +1,140 @@
+==============================================================================
+COMPARE TWO ITEMS
+==============================================================================
+Compare two saved items in the Library Kit: palettes by colour difference and
+contrast, images side by side or as a heatmap, settings field by field, and
+audits by score.
+Area: Website › Kits › Library Kit   Updated: 2026-09-25
+
+The Compare tab puts two saved items side by side and shows exactly what
+changed between them. What you see depends on the kind of items you compare.
+
+OPEN A COMPARISON
+=================
+
+Any of these opens the Compare tab:
+
+  - Select the Compare tab.
+  - Right-click a tile and choose Compare with…. That item becomes Before.
+  - In multi-select, select two items, then type `>` and choose Compare items.
+    The first becomes Before and the second After.
+  - Right-click empty space in the panel and choose Compare items….
+
+The workspace is headed Comparison workspace — Compare saved assets, with the
+line "Choose a before and after asset to inspect exactly what changed."
+
+CHOOSE THE TWO ITEMS
+====================
+
+  1. In Before, choose an item from the list (— Choose an asset — means none).
+     Each entry shows a short type label in brackets and the name, newest
+     first. Archived items are included.
+  2. In After, choose the second item.
+  3. Select Swap sides to exchange them.
+
+Under the pickers, each side shows its type, tool, name, description and
+Updated date. Until both are chosen, the comparison area reads Pick assets on
+both sides to see the diff.
+
+PALETTES
+========
+
+When both items are palettes, or both carry colours, you see:
+
+Summary figures
+
+  Figure     | Meaning
+  -----------+------------------------------------------------------------------------------------
+  Swatches   | Number of colours before → after, and the change
+  Avg ΔE2000 | Average colour difference between matched colours, with a verbal rating
+  Max ΔE     | The largest difference between matched colours
+  Shifted    | How many matched colours differ by 2 or more, and how many by 10 or more (distinct)
+
+ΔE2000 is a standard measure of how different two colours look; about 1 is the
+smallest difference most people notice. The verbal ratings are:
+
+  ΔE2000         | Rating
+  ---------------+--------------
+  Under 1        | Imperceptible
+  1 to under 2   | Very close
+  2 to under 5   | Close
+  5 to under 10  | Noticeable
+  10 to under 20 | Distinct
+  20 or more     | Far
+
+Colour-by-colour table. Each row pairs a Left colour with its closest Right
+colour and shows the ΔE2000 and the Shift: how the lightness and hue moved.
+
+Unmatched colours. Colours present on only one side are listed as Removed
+(only in left) and Added (only in right).
+
+Weakest contrast pair. For each palette, the two colours with the lowest
+contrast ratio between them, shown as swatches and a ratio such as `1.42:1`,
+labelled Left palette and Right palette, plus the change (Δ worst-pair ratio).
+A higher ratio means the weakest pair is easier to tell apart.
+
+A gradient compared with a palette or another coloured item is treated the
+same way. If neither side has colours, you see Neither asset has any colors to
+compare.
+
+IMAGES AND PLATES
+=================
+
+When both items are images or plates, choose a view mode:
+
+  Mode:          Side
+  What it shows: Before and After next to each other
+
+  Mode:          Wipe
+  What it shows: The two images stacked, with a slider that reveals more of
+                 one or the other
+
+  Mode:          ΔE heatmap
+  What it shows: A map of where the images differ: differences under 2 show as
+                 a faint blue, 2 to 10 as yellow, and over 10 as pink ("Pink =
+                 where colors differ most (ΔE > 10)."). A line reports the
+                 number of pixels compared and the average and maximum ΔE
+
+The heatmap works on copies scaled down to at most 800 pixels on each side. If
+the images are different sizes, the heatmap compares the overlapping top-left
+area and says so. If one side has no image, it shows No image; if neither
+does, you see Neither asset has image data. An image that cannot be loaded is
+reported as "Couldn't load the left image" or "right image".
+
+PRESETS AND CONFIGURATIONS
+==========================
+
+When both items are presets or configurations, the comparison lists
+differences in two sections, Settings and Data fields, each with a count of
+changed, added, removed and identical fields. Changed fields show before →
+after; added fields are marked with + and removed ones with −. If there are
+none, the section says No differences.
+
+If either item came from the URL Analyzer, a strip at the top shows the URL of
+each, the Score before → after and the Issues count before → after, coloured
+by whether it improved.
+
+URL ANALYZER AUDITS
+===================
+
+When both items are saved analyses, you see each audit's score in a colour for
+its band (90 and above, 70 to 89, 50 to 69, below 50), its address, how many
+versions and issues it holds, and a sentence such as "the second scores 6
+higher". A What each holds table compares each section by name, marking
+sections one side lacks as not stored, and Colours on each page shows up to 12
+colours from each.
+
+DIFFERENT KINDS OF ITEM
+=======================
+
+When the two items are different types and do not both carry colours, the
+comparison explains that only shared signals are compared and shows Extracted
+colors (up to 12 from each) and their Tags.
+
+RELATED
+=======
+
+  - Restore and reuse [restore-and-reuse.txt]
+  - Limits and accuracy [../others/limits-and-accuracy.txt]
+  - The URL Analyzer's own comparison of runs: URL Analyzer
+    [../../../tools/accessibility-and-vision/analyzer/README.txt]

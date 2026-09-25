@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chromatic Adaptation FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the Chromatic Adaptation lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Chromatic Adaptation</a>
+<h2>Chromatic Adaptation documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Chromatic Adaptation</a></li>
+<li><a href="adapt-a-colour-list.html">Adapt a list of colours</a></li>
+<li><a href="adapt-an-image.html">Adapt an image to a new light</a></li>
+<li><a href="compare-transforms-and-copy-matrices.html">Compare transforms and copy a matrix</a></li>
+<li><a href="explore-the-time-course.html">Explore the adaptation time course</a></li>
+<li><a href="reference.html">Chromatic Adaptation reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Chromatic Adaptation</a></li>
+<li><a href="faq.html" aria-current="page">Chromatic Adaptation FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Chromatic Adaptation</a> &rsaquo; <a href="README.html">Chromatic Adaptation documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Chromatic Adaptation FAQ</h1>
+<p class="lede">Short answers to common questions about the Chromatic Adaptation lab.</p>
+<h2 id="which-transform-should-i-use">Which transform should I use?</h2>
+<p>For ICC colour management and D65 ↔ D50 conversions, Bradford is the common convention. CAT16 is the transform of the most recent CIE-lineage appearance model (CAM16). The lab does not rank them for accuracy, because that needs corresponding-colour data sets it does not hold; it shows what each one does on your pair.</p>
+<h2 id="why-do-von-kries-and-hpe-give-the-same-result">Why do Von Kries and HPE give the same result?</h2>
+<p>The lab&#39;s Von Kries matrix is the Hunt–Pointer–Estévez matrix normalised to D65. Normalising scales each row, and that scaling cancels out in M⁻¹ · diag(d) · M, so the two produce identical adaptations.</p>
+<h2 id="what-is-xyz-scaling-for">What is XYZ scaling for?</h2>
+<p>It is the simplest possible adaptation, scaling X, Y and Z directly. It is not a model of the eye and is kept as a baseline to compare the others against.</p>
+<h2 id="what-does-degree-of-adaptation-mean">What does &quot;degree of adaptation&quot; mean?</h2>
+<p>How complete the adaptation is. At D = 1 the source white maps exactly onto the destination white. Real viewers often adapt incompletely, especially in dim or complex scenes, so values below 1 are realistic in some situations.</p>
+<h2 id="how-long-does-adaptation-really-take">How long does adaptation really take?</h2>
+<p>The lab uses Fairchild and Reniff&#39;s (1995) measurements: about half the adaptation within a second or so, and the rest with a half-life of about 30 seconds. With the default settings, 90% adaptation takes about 70 seconds. The Dynamics tab computes the exact times.</p>
+<h2 id="why-does-the-time-course-prose-in-reference-quote-different-time-constants">Why does the time-course prose in Reference quote different time constants?</h2>
+<p>Some background text in the Reference section predates the current model. The time course the lab actually uses is the one on the Dynamics tab.</p>
+<h2 id="is-my-image-uploaded">Is my image uploaded?</h2>
+<p>No. The image is read and processed in your browser, and the exported PNG is created there too.</p>
+<h2 id="can-i-adapt-a-video">Can I adapt a video?</h2>
+<p>No. The lab adapts one still image (or the sample sweep) at a time.</p>
+<h2 id="can-i-get-the-full-adaptation-matrix-as-numbers">Can I get the full adaptation matrix as numbers?</h2>
+<p>Yes. The Matrix tab shows it at the D you set, and <strong>Export JSON</strong> includes it for the current moment of the timeline. The <strong>Copy as</strong> buttons copy the transform&#39;s cone matrix M.</p>
+<h2 id="does-the-lab-model-colour-appearance-ciecam02-or-cam16">Does the lab model colour appearance (CIECAM02 or CAM16)?</h2>
+<p>No. It applies the chromatic adaptation step only. The Reference notes explain how CIECAM02 would compute D from the adapting luminance and surround.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting Chromatic Adaptation</a><a href="../others/README.html"><span>Next</span>Chromatic Adaptation: supporting pages</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#which-transform-should-i-use">Which transform should I use?</a></li><li><a href="#why-do-von-kries-and-hpe-give-the-same-result">Why do Von Kries and HPE give the same result?</a></li><li><a href="#what-is-xyz-scaling-for">What is XYZ scaling for?</a></li><li><a href="#what-does-degree-of-adaptation-mean">What does &quot;degree of adaptation&quot; mean?</a></li><li><a href="#how-long-does-adaptation-really-take">How long does adaptation really take?</a></li><li><a href="#why-does-the-time-course-prose-in-reference-quote-different-time-constants">Why does the time-course prose in Reference quote different time constants?</a></li><li><a href="#is-my-image-uploaded">Is my image uploaded?</a></li><li><a href="#can-i-adapt-a-video">Can I adapt a video?</a></li><li><a href="#can-i-get-the-full-adaptation-matrix-as-numbers">Can I get the full adaptation matrix as numbers?</a></li><li><a href="#does-the-lab-model-colour-appearance-ciecam02-or-cam16">Does the lab model colour appearance (CIECAM02 or CAM16)?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

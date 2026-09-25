@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HDR Gamut Plot reference — Auric Artisan Docs</title>
+<meta name="description" content="Every control, readout, option and export in the HDR Gamut Plot.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; HDR Gamut Plot</a>
+<h2>HDR Gamut Plot documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the HDR Gamut Plot</a></li>
+<li><a href="compare-broadcast-gamuts.html">Compare broadcast gamuts</a></li>
+<li><a href="explore-perceptual-planes.html">Explore ICtCp and Jzazbz planes</a></li>
+<li><a href="read-hdr-curves.html">Read HDR transfer curves</a></li>
+<li><a href="reference.html" aria-current="page">HDR Gamut Plot reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the HDR Gamut Plot</a></li>
+<li><a href="faq.html">HDR Gamut Plot FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">HDR Gamut Plot</a> &rsaquo; <a href="README.html">HDR Gamut Plot documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>HDR Gamut Plot reference</h1>
+<p class="lede">Every control, readout, option and export in the HDR Gamut Plot.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/gamut-and-rendering/hdr-gamut-plot/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/hdr-gamut-plot/</a></p>
+<h2 id="lab-tab">Lab tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Working colour space</strong></td><td>Shown on the page, but in the current version it does not change the diagram or figures</td><td>sRGB / Rec.709 (BT.709); Display-P3 (D65); Rec.2020 (BT.2020)</td><td>Rec.2020</td></tr>
+<tr><td><strong>Overlay gamuts</strong></td><td>Shows or hides each triangle (also used by the Planes tab)</td><td>Rec.709 / sRGB, Display-P3, Rec.2020</td><td>All on</td></tr>
+<tr><td><strong>Spectral locus</strong></td><td>Draws the locus</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>Line of purples</strong></td><td>Draws the straight edge of the locus</td><td>On or off</td><td>On</td></tr>
+<tr><td><strong>ICtCp marker</strong></td><td>Shown, but draws nothing in the current version</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Chromaticity axes</strong></td><td>The diagram&#39;s plane</td><td>CIE 1931 xy; CIE 1976 u′v′</td><td>CIE 1931 xy</td></tr>
+<tr><td><strong>Standard observer</strong></td><td>Shown, but the locus is always the CIE 1931 2° observer&#39;s</td><td>CIE 1931 2° (Standard); CIE 2015 10° (Revised)</td><td>CIE 1931 2°</td></tr>
+<tr><td><strong>Drop a PNG or JPEG</strong></td><td>Opens a file picker and measures the image&#39;s gamut occupancy</td><td>Image files; reduced to at most 1,024 pixels a side</td><td>—</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Gamut chromaticity diagram</strong></td><td>The triangles, locus, purples line and D65 marker; the axis name is shown over it</td></tr>
+<tr><td>Hover line</td><td>Coordinates, XYZ at Y = 0.35, L*, and I, Ct, Cp at the PQ luminance of the Signal level</td></tr>
+<tr><td><strong>Gamut metrics</strong></td><td>Space, Primaries, White, Share of locus, Area, in the plane on screen</td></tr>
+<tr><td>Image results</td><td>Size analysed, pixels sampled, distinct chromaticities, occupancy of each gamut, and a note</td></tr>
+</tbody></table></div>
+<h2 id="curves-tab">Curves tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Peak brightness</strong></td><td>The display peak L_W: scales display-referred curves and sets HLG&#39;s system gamma; does not scale PQ</td><td>100 to 10,000 nits, step 50</td><td>1000</td></tr>
+<tr><td><strong>Tone curve</strong></td><td>The curve drawn and used for the Signal level</td><td>Gamma 2.2 (SDR); Gamma 2.4 (BT.1886, zero black); PQ (ST.2084); HLG (BT.2100)</td><td>PQ</td></tr>
+<tr><td><strong>HLG environment</strong></td><td>Surround factor for HLG&#39;s system gamma</td><td>Reference dark (×1); Dim surround (×0.95); Bright surround (×0.90)</td><td>Reference dark</td></tr>
+<tr><td><strong>Signal level</strong></td><td>A signal value to convert to absolute luminance</td><td>0 to 1, step 0.01</td><td>0.5</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>γsys</td><td>HLG system gamma at the current peak and surround</td></tr>
+<tr><td>Surround note</td><td>Whether the HLG reading is BT.2100&#39;s own or adjusted</td></tr>
+<tr><td><strong>I =</strong></td><td>The ICtCp intensity of the signal&#39;s absolute luminance</td></tr>
+<tr><td><strong>Tone curve output</strong></td><td>Signal against cd/m² (log), with a peak label</td></tr>
+<tr><td>Curve rows</td><td>One per curve, tagged Absolute, Display-referred or Adjusted, with its defining document and details</td></tr>
+<tr><td><strong>EOTF Comparison — PQ vs HLG vs sRGB</strong></td><td>All three on one log-nits axis, drawn at page load</td></tr>
+</tbody></table></div>
+<h2 id="planes-tab">Planes tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Perceptual plane</strong></td><td>The space for the plane and rings</td><td>ICtCp (Ct–Cp); JzAzBz (Az–Bz)</td><td>ICtCp</td></tr>
+<tr><td><strong>Tone mapping operator</strong></td><td>Shown, but does not change any plot in the current version</td><td>Reinhard; Hable (Filmic); ACES Filmic; Uchimura (Gran Turismo)</td><td>Reinhard</td></tr>
+<tr><td><strong>Boundary rings</strong></td><td>Key to the eight ring levels</td><td>0.1, 1, 10, 100, 500, 1k, 4k, 10k nits</td><td>—</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Plane</td><td>Gamut boundaries at the Signal level&#39;s absolute luminance</td></tr>
+<tr><td><strong>Boundary rings by luminance</strong></td><td>Boundaries at the eight levels for each gamut switched on in the Lab</td></tr>
+</tbody></table></div>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Dataset</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Primaries and white, 3 spaces</td><td>Verbatim</td></tr>
+<tr><td>Spectral locus (65 xy pairs, 380–700 nm)</td><td>Verbatim</td></tr>
+<tr><td>PQ transfer (ST 2084 constants as rationals)</td><td>Verbatim</td></tr>
+<tr><td>ICtCp matrices (BT.2100)</td><td>Verbatim</td></tr>
+<tr><td>HLG transfer (with the OOTF)</td><td>Computed</td></tr>
+<tr><td>JzAzBz (Safdar et al. 2017, own quantiser)</td><td>Computed</td></tr>
+<tr><td>Gamut area and share</td><td>Computed</td></tr>
+<tr><td>Tone-mapping operators (four curves)</td><td>Computed</td></tr>
+<tr><td>HLG surround factor</td><td>Synthesised (this tool&#39;s own)</td></tr>
+<tr><td>Image luminance</td><td>Absent: 8-bit PNG and JPEG carry none</td></tr>
+</tbody></table></div>
+<p><strong>Status</strong> chips filter the list. <strong>Install a table</strong> (&quot;Drop a CSV or JSON&quot;) does not load files in the current version.</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>What to take</strong></td><td><strong>The measurements</strong>, <strong>The curve</strong>, <strong>The diagram</strong>, <strong>The curve plot</strong>, <strong>The plane</strong>, <strong>A link to this view</strong></td></tr>
+<tr><td><strong>As</strong></td><td>Only the formats that fit (below)</td></tr>
+<tr><td><strong>Download</strong> (names the file)</td><td>Saves it; for the link, copies it</td></tr>
+<tr><td><strong>Copy to clipboard</strong></td><td>Copies text payloads</td></tr>
+<tr><td><strong>Exactly what you will get</strong></td><td>Preview of the payload and its size</td></tr>
+<tr><td><strong>Convert a list</strong>, <strong>Convert to ICtCp</strong>, <strong>Download the result</strong></td><td>HEX conversion; the last button copies the result as CSV</td></tr>
+<tr><td><strong>The three spaces, side by side</strong></td><td>Bar chart and table of Area, Share of locus and White</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>Format</th><th>File</th></tr></thead>
+<tbody>
+<tr><td>The measurements</td><td>CSV</td><td><code>hdr-gamut.csv</code>: Space, Plane, Red x, Red y, Green x, Green y, Blue x, Blue y, White x, White y, Area, Locus share %, plus a footer naming the locus area, plane and observer</td></tr>
+<tr><td>The measurements</td><td>JSON</td><td><code>hdr-gamut.json</code>: per space label, primaries, white point, plane, area and locus share, and a <code>_meta</code> block (axes, peak, curve, locus area, observer, locus points)</td></tr>
+<tr><td>The measurements</td><td>CSS</td><td><code>hdr-gamut.css</code>: custom properties such as <code>--gamut-rec2020-locus-share</code>, <code>--gamut-rec2020-area</code>, the R, G and B primaries, <code>--gamut-plane</code>, <code>--gamut-locus-area</code>, <code>--hdr-peak-nits</code> and <code>--hdr-curve-type</code></td></tr>
+<tr><td>The curve</td><td>CSV</td><td><code>hdr-curve-&lt;curve&gt;.csv</code>: 257 rows of signal and nits, with a footer</td></tr>
+<tr><td>The diagram</td><td>PNG</td><td><code>hdr-gamut-diagram.png</code></td></tr>
+<tr><td>The curve plot</td><td>PNG</td><td><code>hdr-tone-curve.png</code></td></tr>
+<tr><td>The plane</td><td>PNG</td><td><code>hdr-perceptual-plane.png</code></td></tr>
+<tr><td>A link to this view</td><td>Link</td><td>A URL with <code>axes</code>, <code>peak</code>, <code>curve</code> and <code>mode</code> (the perceptual plane)</td></tr>
+</tbody></table></div>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Standards</strong>, <strong>Formulas</strong>, <strong>Citations</strong>, <strong>Research notes</strong></td><td>Switch sections</td></tr>
+<tr><td><strong>Filter</strong></td><td>Searches all four; <code>Esc</code> clears it</td></tr>
+</tbody></table></div>
+<p>Standards: ITU-R BT.2020, BT.2100, SMPTE ST 2084, ARIB STD-B67, ICtCp, Jzazbz, BT.709 and sRGB, and Display P3. Formulas: PQ, HLG OETF and OOTF, ICtCp, Jzazbz, gamut area and locus share, four tone-mapping operators, and xy/u′v′ conversion. Citations: 17 references. Research notes explain why a file has no nits, occupancy against coverage, the single locus denominator, absolute against display-referred curves, the surround factor, the two quantisers, and what &quot;ACES&quot; means here.</p>
+<h2 id="save-to-library">Save to Library</h2>
+<p>The floating <strong>Save to Library</strong> button stores a snapshot of the diagram in your Auric Artisan Library.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="read-hdr-curves.html"><span>Previous</span>Read HDR transfer curves</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting the HDR Gamut Plot</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#lab-tab">Lab tab</a></li><li><a href="#curves-tab">Curves tab</a></li><li><a href="#planes-tab">Planes tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#save-to-library">Save to Library</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

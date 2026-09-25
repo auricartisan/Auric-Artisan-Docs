@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Font CDN's catalogue data — categories, scores, licences, script coverage — can and cannot tell you, and the CDN's practical limits.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font CDN</a>
+<h2>Other material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="licences.html">Licences</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Font CDN</a> &rsaquo; <a href="README.html">Other material</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What the Font CDN's catalogue data — categories, scores, licences, script coverage — can and cannot tell you, and the CDN's practical limits.</p>
+<h2 id="catalogue-data">Catalogue data</h2>
+<ul>
+<li><strong>Metadata comes from the font files themselves:</strong> names, designers, versions, weights, axes, character coverage, OpenType features and embedding flags are read from each font&#39;s internal tables. If a font&#39;s own data is wrong or missing, the catalogue is too.</li>
+<li><strong>Categories are computed, not curated.</strong> Serif or sans is worked out from the outlines of letters such as I, H and L when a font does not declare it. A few families, such as rounded sans-serifs, can land in the wrong category.</li>
+<li><strong>Scores</strong> (accessibility, UI, readability, developer and editorial) are calculated from measurable features such as x-height and how distinct confusable characters like I, l and 1 are. They are a starting point for choosing, not a verdict, and a few display fonts score higher than they should.</li>
+<li><strong>Licences</strong> are detected from the licence files bundled with each family and from the font&#39;s name data. A family with no licence text found is marked <strong>Unspecified</strong>; check it yourself.</li>
+<li><strong>Script coverage</strong> lists the Unicode blocks a font has characters in. Having characters in a block does not guarantee complete or correct support for a language.</li>
+</ul>
+<h2 id="serving">Serving</h2>
+<ul>
+<li>Stylesheets declare the whole family; there is no per-weight or per-character subsetting in the URL.</li>
+<li>Files are served in the formats the fonts were distributed in, such as TrueType and OpenType; the <strong>Styles</strong> tab lists each file with its size.</li>
+<li>System fonts marked <strong>Installed</strong> are listed but not served.</li>
+<li>The catalogue changes only when it is rebuilt; the current build is from 2 June 2026.</li>
+</ul>
+<h2 id="the-loader">The loader</h2>
+<ul>
+<li><code>list()</code>, <code>search()</code> and <code>get()</code> download catalogue data (the index is large) on first use.</li>
+<li><code>load()</code> waits only for the weights you name, or for weight 400 if you name none.</li>
+<li><code>face()</code> does not report a failed download as an error; check that the font appears.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="licences.html">Licences</a></li>
+<li><a href="../docs/reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#catalogue-data">Catalogue data</a></li><li><a href="#serving">Serving</a></li><li><a href="#the-loader">The loader</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

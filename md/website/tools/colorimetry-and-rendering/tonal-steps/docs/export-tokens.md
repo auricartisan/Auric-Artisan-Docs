@@ -1,0 +1,71 @@
+---
+title: Tonal Steps — Export tokens
+description: Export the ramp, key set or contrast table as CSS, SCSS, JSON or CSV, share a link, and analyse a list of colours.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Export tokens
+
+## Steps
+
+1. Build the ramp you want on the **Lab** tab.
+2. Open the **Export** tab.
+3. Under **What to take**, choose:
+   - **The ramp** — every step of the Lab's ramp;
+   - **The key set** — the 50–950 or 50–900 ladder chosen on the Ramps tab;
+   - **The contrast table** — the ramp with its contrast figures;
+   - **A link to this view**.
+4. Under **As**, choose a format. Only formats that fit are offered: CSS, SCSS, JSON or CSV for the ramp and key set; CSV or JSON for the contrast table; URL for the link.
+5. Check **Exactly what you will get**: the preview and its size in bytes.
+6. Select the download button, which names the file (for example **Download tonal-2563eb.css**), or **Copy to clipboard**. For a link the button reads **Copy the link**.
+
+## File names
+
+| Choice | File |
+| --- | --- |
+| The ramp | `tonal-<hex>.<ext>` |
+| The key set | `tonal-<hex>-50-950.<ext>` or `tonal-<hex>-50-900.<ext>` |
+| The contrast table | `tonal-<hex>-contrast.<ext>` |
+
+`<hex>` is your base colour without `#`, in lower case.
+
+## What each format contains
+
+Every file records how the ramp was made: the base, engine, mixing space, step count and gamma, and a footer stating that OKLab was fed linear sRGB, WCAG 2.2, APCA-W3 0.1.9 and the D65 white.
+
+**CSS** — custom properties in `:root`, one per step, with a comment giving OKLab L, WCAG ratio against white and APCA Lc against white. An abbreviated example:
+
+```css
+:root {
+  /* base #2563EB · engine HSL lightness · mixed in OKLab · 11 steps · gamma 1.00 */
+  --tonal-0:  #ffffff;  /* OKLab L 1.000  WCAG vs white  1.00:1  APCA    0.0 */
+  --tonal-1:  …
+}
+```
+
+HEX values in the files are lower case.
+
+**SCSS** — a map: `$tonal: (0: #ffffff, 1: …, …);` with the provenance as comments.
+
+**JSON** — a `provenance` object and a `steps` array. Each step has `index`, `hex`, `rgb`, `oklab_l`, `wcag_vs_white`, `wcag_vs_black`, `apca_on_white` and `apca_on_black`.
+
+**CSV** — two comment lines, then the columns `index, hex, r, g, b, oklab_l, wcag_vs_white, wcag_vs_black, apca_on_white, apca_on_black`.
+
+The contrast table uses the same JSON and CSV layouts, so it lists contrast against both white and black. It does not use the **Against** choice from the Contrast tab. Key-set properties are numbered from 0 like the ramp, not by key.
+
+## The link
+
+The link reopens the same ramp. It carries `hex`, `engine`, `steps`, `gamma` and `mode` (the mixing space). The read-only field on the Export tab always shows the current link.
+
+## Analyse a list of colours
+
+1. Under **Analyse a list**, enter six-digit HEX colours, one per line or separated by commas (the `#` is optional).
+2. Select **Analyse**. The table shows **Hex**, **L\***, **a\***, **b\***, **OKL** (OKLab L), **Y** (luminance), and the number of **Tints** and **Shades** built for it at the current step count.
+3. Select **Download the result** to copy the table as CSV (`hex, L*, a*, b*, okL, Y, tints, shades`) to your clipboard. Despite its label, the button copies rather than downloads.
+
+If nothing valid is found, the panel says "No valid hex colours found."
+
+## Result
+
+You have ramp or key-set tokens in the format your project uses, each carrying a record of how it was made, and a link that rebuilds the same ramp.

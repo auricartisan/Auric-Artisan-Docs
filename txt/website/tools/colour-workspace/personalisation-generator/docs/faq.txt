@@ -1,0 +1,101 @@
+==============================================================================
+FREQUENTLY ASKED QUESTIONS
+==============================================================================
+Short answers to common questions about the Personalization Generator.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+DO I NEED AN ACCOUNT?
+=====================
+
+No. The generator runs in your browser without signing in. Saving to your
+Library uses your Auric Artisan Library.
+
+IS THE BRIEF READ BY AN AI?
+===========================
+
+No. The brief is split into words, and each word is compared with the names of
+built-in reference palettes. A match makes that reference palette more likely
+to be drawn on. Your pool, style chips and use case steer the sweep far more.
+See Tune the sweep [tune-the-sweep.txt].
+
+WHERE DO THE GENERATED COLOURS COME FROM?
+=========================================
+
+From your pool, from built-in reference palettes that match your styles, use
+case and brief, and from small variations of both, arranged on a colour
+relationship such as Analogous or Triadic. Every candidate is then scored and
+only the best are kept.
+
+WILL I GET THE SAME RESULTS IF I RUN THE SAME SETTINGS AGAIN?
+=============================================================
+
+Usually not. Each sweep starts from a different random seed, so results vary
+from run to run. Save or download the results you like.
+
+ARE MY RESULTS SAVED?
+=====================
+
+Your pool and settings are remembered in your browser. The results are not:
+each visit starts with a fresh quick sweep. See Export, save and share
+[export-and-save.txt].
+
+CAN I LOAD A JSON SNAPSHOT BACK IN?
+===================================
+
+No. The JSON is a record of your settings and results for your own use. To
+carry a palette back in, save it to your Library and open it in the generator,
+or add its HEX values to the pool.
+
+WHAT DOES THE SCORE MEAN?
+=========================
+
+It is how well a palette fits your settings: closeness to your pool, harmony,
+fit with your styles, variety, contrast and colour-vision safety, weighted by
+your sliders. A score of 85 under one set of settings is not comparable with
+85 under another. See Palettes, gradients, typography, UI pairs and posters
+[result-tabs.txt].
+
+IS A HIGH-SCORING PALETTE GUARANTEED TO PASS WCAG?
+==================================================
+
+No. Contrast is part of the score, not a requirement. Check the contrast bars
+on each palette card, The leader, checked, the UI Pairs grades and the Tokens
+audit, and test your final colour pairs in your own designs.
+
+ARE THE DESIGN TOKENS READY TO USE IN CODE?
+===========================================
+
+They are ordinary CSS custom properties and JSON, and you can paste them into
+a project. Review them first: the roles are chosen automatically, and the
+status colours (success, warning, danger, info) are made up when the palette
+has no suitable colour.
+
+CAN I USE MY OWN FONTS IN THE TYPOGRAPHY TAB OR THE STUDIO?
+===========================================================
+
+No. The type systems are fixed. The page shows them with the fonts installed
+on your device.
+
+CAN I EXPORT THE POSTERS OR MOCKUPS AS IMAGES?
+==============================================
+
+No. You can copy their CSS and save their settings to your Library.
+
+CAN I AUTOMATE THE GENERATOR?
+=============================
+
+Yes. The Public API offers the same generation as POST /v1/personalize/system,
+at 14 API credits per call. See the Public API
+[../../../../../services/public-api/README.txt].
+
+DOES IT WORK ON A PHONE?
+========================
+
+Yes. The columns stack on narrow screens. Large sweeps take longer on slower
+devices; lower Search depth if it feels slow.
+
+RELATED
+=======
+
+  - Troubleshooting [troubleshooting.txt]
+  - Getting started [getting-started.txt]

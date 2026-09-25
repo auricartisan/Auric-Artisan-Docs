@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What Perception Vision takes from published sources, what is its own, how precise it is and what it is not.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and Vision</a>
+<h2>Perception and Vision background</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Perception and Vision shortcuts</a></li>
+<li><a href="glossary.html">Perception and Vision glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools and articles</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Perception and Vision</a> &rsaquo; <a href="README.html">Perception and Vision background</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Perception and Vision</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What Perception Vision takes from published sources, what is its own, how precise it is and what it is not.</p>
+<h2 id="what-the-tool-is">What the tool is</h2>
+<p>An educational and design-review simulator. It shows how an image may reach a viewer with a different visual system. It is not a clinical or diagnostic instrument and nothing it prints is a measurement of anyone&#39;s vision.</p>
+<h2 id="the-data-register-in-plain-terms">The data register, in plain terms</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entry</th><th>Status</th><th>What it means for you</th></tr></thead>
+<tbody>
+<tr><td>sRGB transfer and primaries</td><td>Verbatim</td><td>Colours are decoded and re-encoded with the published IEC 61966-2-1 curve and matrices</td></tr>
+<tr><td>Hunt-Pointer-Estévez cone fundamentals</td><td>Verbatim</td><td>Cone signals come from the published matrix, applied to CIE XYZ as it is defined</td></tr>
+<tr><td>Bradford chromatic adaptation</td><td>Verbatim</td><td>The D50 and A options relight the scene with the published Bradford transform and CIE chromaticities</td></tr>
+<tr><td>Dichromacy projection</td><td>Computed</td><td>Protan, deutan and tritan use the published Viénot, Brettel and Mollon (1999) matrices; the severity blend is the tool&#39;s convention</td></tr>
+<tr><td>One implementation, two renderers</td><td>Computed</td><td>GPU and CPU use one combined matrix and are checked against each other on 216 colours</td></tr>
+<tr><td>The shader&#39;s matrix literals</td><td>Computed</td><td>The GPU receives its matrices in the correct orientation; the grey ramp confirms it</td></tr>
+<tr><td>Rod spectral weighting</td><td>Stand-in</td><td>Scotopic and Mesopic use the tool&#39;s own rod weights (0.10, 0.59, 0.31), not the CIE scotopic curve; no scotopic luminance is reported</td></tr>
+<tr><td>Lens, cataract, acuity and adaptation models</td><td>Stand-in</td><td>Their constants are the tool&#39;s own; they show the direction of an effect, not its clinical size</td></tr>
+<tr><td>Contrast sensitivity function</td><td>Absent</td><td>There is no contrast-sensitivity simulation; nothing may be reported as a contrast-sensitivity result</td></tr>
+</tbody></table></div>
+<h2 id="what-is-and-is-not-modelled">What is and is not modelled</h2>
+<ul>
+<li><strong>Colour vision deficiency.</strong> Full dichromacy follows a published method. Partial severities are a linear blend towards it, not a model of anomalous trichromacy. The matrices describe a typical dichromat and are not individualised.</li>
+<li><strong>Night and twilight vision.</strong> A rod signal from the tool&#39;s own weights; the mesopic setting is a crossfade, not CIE mesopic photometry.</li>
+<li><strong>Lens yellowing and cataract.</strong> Direction from the ageing literature (Pokorny, Smith and Lutze 1987 for the lens); strengths are the tool&#39;s own.</li>
+<li><strong>Central loss.</strong> A disc of reduced luminance, not a model of any particular disease.</li>
+<li><strong>Acuity.</strong> A blur sized from the Snellen denominator with no viewing distance; it does not show what a person with that acuity sees at your screen distance.</li>
+<li><strong>Illuminant.</strong> A chromatic adaptation of the image as authored under D65; it is not a spectral relighting.</li>
+</ul>
+<h2 id="precision">Precision</h2>
+<ul>
+<li>Colours are 8-bit sRGB in and out and are computed in floating point.</li>
+<li>The GPU and CPU colour results agree within 2 code values on the 216-colour check when <strong>GPU and CPU agree</strong> reads <strong>yes</strong>. Blur-based effects use slightly different filters in the two renderers, so spatial simulations can look a little different between them.</li>
+<li><strong>Colours merged</strong>, <strong>Out of sRGB</strong>, <strong>Distinct colours left</strong> and <strong>Largest channel shift</strong> are measured on a 64 × 48 reduced copy of the source.</li>
+<li>Your screen is assumed to be sRGB. What you see also depends on your own display and your own eyes.</li>
+</ul>
+<h2 id="what-the-tool-does-not-do">What the tool does not do</h2>
+<ul>
+<li>It does not test vision, diagnose or measure a person.</li>
+<li>It does not model anomalous trichromacy physiologically, contrast sensitivity, eye movements, or the time course of adaptation.</li>
+<li>It does not use the camera on auricartisan.com at present.</li>
+<li>The <strong>Install a table</strong> area on the Data tab is not active.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Perception and Vision glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-the-tool-is">What the tool is</a></li><li><a href="#the-data-register-in-plain-terms">The data register, in plain terms</a></li><li><a href="#what-is-and-is-not-modelled">What is and is not modelled</a></li><li><a href="#precision">Precision</a></li><li><a href="#what-the-tool-does-not-do">What the tool does not do</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

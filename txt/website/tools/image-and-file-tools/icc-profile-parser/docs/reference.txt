@@ -1,0 +1,462 @@
+==============================================================================
+ICC PROFILE PARSER REFERENCE
+==============================================================================
+Every tab, control, header field, value table, tag type, readout, rule and
+export format in the ICC Profile Parser.
+Area: Website › Tools › Image and file tools › ICC Profile Parser   Updated: 2026-09-25
+
+Address: https://auricartisan.com/tool/general/tools/icc-profile-parser/
+
+TABS
+====
+
+  Tab:      Lab
+  Contents: The drop box, header fields, Compare against, export buttons, and
+            the full reading of the loaded profile
+
+  Tab:      Method
+  Contents: Five sections explaining how each figure is derived
+
+  Tab:      Conformance
+  Contents: All 23 rules, filterable by severity, with clauses and the two
+            withdrawn checks
+
+  Tab:      Data
+  Contents: The 20 entries that every figure rests on, filterable by status
+
+  Tab:      Export
+  Contents: The contents, size and file name of the reading, and a preview
+
+  Tab:      Reference
+  Contents: The nine published sources, filterable by whether they run in the
+            tool
+
+LAB TAB — CONTROLS
+==================
+
+  Control:      Drop a profile
+  What it does: Loads a profile by drag and drop, or opens a chooser when
+                selected or when `Enter` or `Space` is pressed
+  Values:       `.icc`, `.icm` or `application/vnd.iccprofile` in the chooser
+
+  Control:      Compare against
+  What it does: Chooses the reference space for the diagram, the tone curve
+                plot and the area cards
+  Values:       sRGB, Rec. 709, Display P3, Adobe RGB (1998), Rec. 2020,
+                ProPhoto RGB
+
+  Control:      Save the reading
+  What it does: Downloads the reading as JSON
+  Values:       —
+
+  Control:      Copy it
+  What it does: Copies the reading to the clipboard
+  Values:       —
+
+  Control:      Tag table, CSV
+  What it does: Downloads the tag table as CSV
+  Values:       —
+
+  Control:      Clear
+  What it does: Removes the loaded profile
+  Values:       —
+
+Only one profile is loaded at a time. Loading another replaces it.
+
+LAB TAB — WHAT THE HEADER SAYS
+==============================
+
+  Field:   file
+  Shows:   The file name
+  Example: `display.icc`
+
+  Field:   size
+  Shows:   The size declared in the header, in bytes
+  Example: 3,048 bytes
+
+  Field:   version
+  Shows:   Major.minor.bug-fix, from bytes 8 and 9
+  Example: 2.1.0
+
+  Field:   class
+  Shows:   Four-character code and class name
+  Example: mntr · display
+
+  Field:   data space
+  Shows:   Data colour space and channel count
+  Example: RGB · 3 ch
+
+  Field:   PCS
+  Shows:   Profile connection space
+  Example: nCIEXYZ
+
+  Field:   intent
+  Shows:   Rendering intent number and name
+  Example: 0 · perceptual
+
+  Field:   CMM
+  Shows:   Preferred colour management module signature, or none declared
+  Example: —
+
+  Field:   platform
+  Shows:   Primary platform
+  Example: Microsoft
+
+  Field:   created
+  Shows:   Creation date and time, or not a valid date
+  Example: 2024-03-18 09:30:00
+
+  Field:   tags
+  Shows:   Number of tags
+  Example: 17
+
+  Field:   profile ID
+  Shows:   not carried, matches or does NOT match
+  Example: not carried
+
+If the file cannot be read, the panel shows the file name and status:
+unreadable. Example values are illustrative.
+
+VALUE TABLES
+============
+
+Device classes
+--------------
+
+  Code   | Shown as
+  -------+-----------
+  `scnr` | Input
+  `mntr` | Display
+  `prtr` | Output
+  `link` | DeviceLink
+  `spac` | ColorSpace
+  `abst` | Abstract
+  `nmcl` | NamedColor
+
+Data colour spaces and the PCS
+------------------------------
+
+  Code             | Shown as              | Channels
+  -----------------+-----------------------+---------
+  `XYZ `           | nCIEXYZ               | 3
+  `Lab `           | CIELAB                | 3
+  `Luv `           | CIELUV                | 3
+  `YCbr`           | YCbCr                 | 3
+  `Yxy `           | CIEYxy                | 3
+  `RGB `           | RGB                   | 3
+  `GRAY`           | Grayscale             | 1
+  `HSV `           | HSV                   | 3
+  `HLS `           | HLS                   | 3
+  `CMYK`           | CMYK                  | 4
+  `CMY `           | CMY                   | 3
+  `2CLR` to `FCLR` | 2 colour to 15 colour | 2 to 15
+
+Rendering intents
+-----------------
+
+  Value | Shown as
+  ------+----------------------------
+  0     | Perceptual
+  1     | Media-relative colorimetric
+  2     | Saturation
+  3     | ICC-absolute colorimetric
+
+Platforms
+---------
+
+  Code      | Shown as
+  ----------+-----------------
+  `APPL`    | Apple
+  `MSFT`    | Microsoft
+  `SGI `    | Silicon Graphics
+  `SUNW`    | Sun Microsystems
+  All zeros | none declared
+
+TAG TYPES THE TOOL READS
+========================
+
+  Type:                 `text`
+  What it is:           Plain text
+  How the tool uses it: Read
+
+  Type:                 `desc`
+  What it is:           Version 2 description text
+  How the tool uses it: Read
+
+  Type:                 `mluc`
+  What it is:           Multi-language text (version 4)
+  How the tool uses it: Read, every language record
+
+  Type:                 `XYZ `
+  What it is:           One or more XYZ values
+  How the tool uses it: Colorants and white point
+
+  Type:                 `curv`
+  What it is:           Tone curve: identity, gamma or table
+  How the tool uses it: Tone curves and curve fit
+
+  Type:                 `para`
+  What it is:           Parametric tone curve, five function types
+  How the tool uses it: Tone curves and curve fit
+
+  Type:                 `sf32`
+  What it is:           Signed fixed-point array
+  How the tool uses it: The `chad` matrix
+
+  Type:                 `sig `
+  What it is:           A signature
+  How the tool uses it: Read
+
+  Type:                 `mft1`
+  What it is:           lut8 table
+  How the tool uses it: Gamut hull for profiles without colorants;
+                        completeness check
+
+  Type:                 `mft2`
+  What it is:           lut16 table
+  How the tool uses it: As above
+
+  Type:                 `mpet`
+  What it is:           Multi-process elements (version 4)
+  How the tool uses it: Structure only: element count and types; not evaluated
+
+  Type:                 `ncl2`
+  What it is:           Named colour list
+  How the tool uses it: Structure only: count and up to 64 names; no colour
+                        resolved
+
+Any other type is listed in the tag table with its type code and is not
+decoded. The page does not print the text of description or copyright tags.
+
+LAB TAB — THE READING
+=====================
+
+  Element:    Verdict
+  Shown when: A profile is loaded
+  Contents:   Heading, distances, gamut source, conformance sentence, optional
+              aside
+
+  Element:    How close, and to what
+  Shown when: The profile has RGB colorants
+  Contents:   Ranking of six spaces: Space, Primaries Δu′v′, Curve fit, White,
+              Verdict
+
+  Element:    Chromaticity diagram
+  Shown when: The profile has RGB colorants
+  Contents:   CIE 1931 xy, 2° observer: stored colorants, primaries, reference
+              space, white point
+
+  Element:    Gamut hull
+  Shown when: No colorants, with a readable A2B table
+  Contents:   CIELAB ab hull, rings every 20
+
+  Element:    Tone response
+  Shown when: The profile has RGB colorants
+  Contents:   Red, green, blue and grey curves against the reference transfer
+              function
+
+  Element:    Figure cards
+  Shown when: A profile is loaded
+  Contents:   version, conformance, tags, area, u′v′, covers of it, area, xy
+
+  Element:    Findings
+  Shown when: A profile is loaded
+  Contents:   One row per finding, or All 23 rules hold
+
+  Element:    The tag table
+  Shown when: A profile is loaded
+  Contents:   Tag, Type, Offset, Size, Anything notable
+
+The note beside Findings gives the tag count and how many tags share an
+element. The Anything notable column shows one of: outside the file, could not
+be decoded, shares this element with another tag, not 4-byte aligned, or a
+dash.
+
+REFERENCE SPACES
+================
+
+  Space:                   sRGB
+  Defined by:              IEC 61966-2-1:1999
+  White:                   D65
+  Transfer function used for the curve fit:Piecewise sRGB curve
+
+  Space:                   Rec. 709
+  Defined by:              ITU-R BT.709-6
+  White:                   D65
+  Transfer function used for the curve fit:2.4 power
+
+  Space:                   Display P3
+  Defined by:              SMPTE RP 431-2 primaries, sRGB transfer
+  White:                   D65
+  Transfer function used for the curve fit:Piecewise sRGB curve
+
+  Space:                   Adobe RGB (1998)
+  Defined by:              Adobe RGB (1998) Color Image Encoding
+  White:                   D65
+  Transfer function used for the curve fit:Power of 563/256
+
+  Space:                   Rec. 2020
+  Defined by:              ITU-R BT.2020-2
+  White:                   D65
+  Transfer function used for the curve fit:BT.2020 curve
+
+  Space:                   ProPhoto RGB
+  Defined by:              ISO 22028-2:2013 (ROMM RGB)
+  White:                   D50
+  Transfer function used for the curve fit:1.8 power with a linear toe
+
+sRGB and Rec. 709 share their primaries and white, so only the tone curve can
+tell them apart.
+
+CONFORMANCE RULES
+=================
+
+The 23 rules, with their severities and clauses, are listed in Check
+conformance [check-conformance.txt]. Summary: 11 errors, 8 warnings, 4 notes;
+2 rules are house preferences with no clause.
+
+METHOD TAB
+==========
+
+  Section:  The header
+  Contents: Bytes 8 to 11 of the loaded profile (or an example), and how the
+            version is read
+
+  Section:  Colorant vs primary
+  Contents: sRGB's stored colorants against its primaries, and the two
+            adaptation hypotheses
+
+  Section:  Identification
+  Contents: Why a raw white-point term cannot be part of the score, and the
+            order of the comparison
+
+  Section:  Gamut area
+  Contents: Each reference space as a percentage of sRGB in xy and u′v′, and
+            its coverage of sRGB
+
+  Section:  A profile with no colorants
+  Contents: How an A2B table becomes a CIELAB hull, with figures when such a
+            profile is loaded
+
+CONFORMANCE TAB
+===============
+
+  Element:  Rules buttons
+  Contents: All (23), Errors (11), Warnings (8), Notes (4)
+
+  Element:  Rail note
+  Contents: How many rules are shown, and how many cite no clause
+
+  Element:  Withdrawn
+  Contents: Two checks removed because they fired on correct files
+
+  Element:  The rules that stayed, and what each cites
+  Contents: Every rule with severity and clause, or house preference
+
+  Element:  What the old validator got right
+  Contents: The checks carried across unchanged
+
+DATA TAB
+========
+
+Status buttons: All (20), Verbatim (8), Computed (7), Stand-in (2), Absent
+(3). Select an entry to expand it; stand-in and absent entries add what it
+would take.
+
+  Status:  Verbatim
+  Meaning: A published table, clause or definition carried unaltered
+  Entries: Header, tag table rules, required tags, CIE 1931 observer, sRGB,
+           the other spaces, Bradford, MD5
+
+  Status:  Computed
+  Meaning: Derived here by stated arithmetic
+  Entries: Primaries, adaptation method, identification, area and coverage,
+           curve fit, profile ID, CLUT gamut
+
+  Status:  Stand-in
+  Meaning: The tool's own choice in place of something published
+  Entries: The list of six spaces; the severity each rule carries
+
+  Status:  Absent
+  Meaning: Named but not held
+  Entries: Evaluating `mpet` pipelines; resolving named colours; any
+           measurement of the device
+
+REFERENCE TAB
+=============
+
+Status buttons: All (9), Runs (7), Partly (1), Not held (1).
+
+  Source: ISO 15076-1:2010 / ICC.1:2010
+  Status: Runs
+
+  Source: IEC 61966-2-1:1999 (sRGB)
+  Status: Runs
+
+  Source: CIE 015:2018, Colorimetry
+  Status: Runs
+
+  Source: Lam (1985), the Bradford matrix
+  Status: Runs
+
+  Source: ITU-R BT.709-6, SMPTE RP 431-2:2011, Adobe RGB (1998), ITU-R
+          BT.2020-2, ISO 22028-2:2013
+  Status: Runs
+
+  Source: CIE 142-2001 (CIEDE2000)
+  Status: Runs
+
+  Source: RFC 1321 (MD5)
+  Status: Runs
+
+  Source: ICC.1:2010 §10.14, multiProcessElementsType
+  Status: Partly
+
+  Source: ICC.1:2010 §10.17, namedColor2Type
+  Status: Not held
+
+EXPORT FORMATS
+==============
+
+  File:     Reading
+  Name:     profile-name`-reading.json`
+  Contents: Header with clauses, tags, identity, gamut, conformance, register
+
+  File:     Tag table
+  Name:     profile-name`-tags.csv`
+  Contents: `signature,type,offset,size,aligned,in_bounds,shares_with`
+
+See Export a reading [export-a-reading.txt] for the fields.
+
+MESSAGES
+========
+
+  Message: Read followed by the file name
+  When:    A profile was read
+
+  Message: A profile is at least 132 bytes; this file is N.
+  When:    The file is too short to be a profile
+
+  Message: Bytes 36-39 are "…", not 'acsp' — this is not an ICC profile.
+  When:    The file lacks the profile signature
+
+  Message: The reader could not get through this file: followed by a reason
+  When:    Reading stopped unexpectedly
+
+  Message: That file could not be read
+  When:    The browser could not read the file
+
+  Message: Load a profile first
+  When:    An export was requested with nothing loaded
+
+  Message: Saved the reading / Copied the reading / Saved the tag table
+  When:    An export succeeded
+
+  Message: The clipboard refused
+  When:    Clipboard access was blocked
+
+  Message: Cleared
+  When:    Clear was selected
+
+When a file cannot be read, the verdict area turns red and reads This file
+could not be read, followed by the reason.

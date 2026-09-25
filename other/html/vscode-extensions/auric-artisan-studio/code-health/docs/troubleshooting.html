@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Code Health troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for Auric Code Health's findings, secrets, Studio and records.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Code Health — Secrets, TODOs &amp; Risk</a>
+<h2>Auric Code Health docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Code Health</a></li>
+<li><a href="categories-and-signatures.html">Categories and signatures</a></li>
+<li><a href="code-health-studio.html">The Code Health Studio</a></li>
+<li><a href="health-records.html">Health records</a></li>
+<li><a href="secrets-and-redaction.html">Secrets and redaction</a></li>
+<li><a href="reference.html">Auric Code Health reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Auric Code Health troubleshooting</a></li>
+<li><a href="faq.html">Auric Code Health FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Code Health — Secrets, TODOs &amp; Risk</a> &rsaquo; <a href="README.html">Auric Code Health docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Code Health</p>
+<h1>Auric Code Health troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for Auric Code Health's findings, secrets, Studio and records.</p>
+<p>For problems shared by all Studio extensions (scans, the data folder, settings), see the <a href="../../docs/troubleshooting.html">Studio troubleshooting page</a>.</p>
+<h2 id="findings-in-the-editor">Findings in the editor</h2>
+<h3 id="no-code-health-underlines-appear">No code-health underlines appear</h3>
+<p><strong>Why:</strong> One of these applies:</p>
+<ul>
+<li><code>codeHealth.enabled</code> or <code>codeHealth.diagnostics</code> is off;</li>
+<li>the category is turned off (for example <code>codeHealth.todo</code>);</li>
+<li>VS Code does not recognise the file&#39;s language, or the file is larger than 1 MB;</li>
+<li>a suppression comment covers the line or file.</li>
+</ul>
+<p><strong>What to do:</strong> Check the settings under <code>auricCodeHealth.codeHealth</code>, and look for <code>auric-disable</code> comments.</p>
+<h3 id="a-todo-in-my-code-is-not-reported">A TODO in my code is not reported</h3>
+<p><strong>Why:</strong> In languages the Studio can lex, task markers count only inside comments, so a <code>TODO</code> inside a string or identifier is ignored on purpose. Lower-case markers need <code>@todo</code>, <code>todo:</code> or <code>fixme:</code>.</p>
+<h3 id="consolelog-is-not-reported-in-a-python-or-go-file">console.log is not reported in a Python or Go file</h3>
+<p><strong>Why:</strong> Debug signatures are limited to the languages where they are debug hooks: <code>console.log</code> in web languages, <code>breakpoint()</code> in Python, a <code>DEBUG</code>-prefixed <code>fmt.Print</code> in Go, and so on. Normal output such as <code>print</code> or <code>fmt.Println</code> is never reported.</p>
+<h3 id="eval-is-reported-with-low-confidence">eval is reported with low confidence</h3>
+<p><strong>Why:</strong> Its argument is a constant, so the risk is lower; the message ends <strong>(constant argument — lower risk)</strong>. A dynamic argument is reported with high confidence.</p>
+<h3 id="innerhtml-is-not-reported">innerHTML is not reported</h3>
+<p><strong>Why:</strong> The assigned value is a constant string or passes through a sanitiser function, which is safe.</p>
+<h3 id="a-long-line-is-not-reported">A long line is not reported</h3>
+<p><strong>Why:</strong> The line is 240 characters or fewer, or starts with a URL. Large files (over 800 lines) are reported only by project scans, not in the editor.</p>
+<h3 id="unresolved-merge-conflict-marker-in-markdown">&quot;Unresolved merge-conflict marker&quot; in Markdown</h3>
+<p><strong>Why:</strong> A line starts with seven <code>&lt;</code> or <code>&gt;</code> characters. A lone <code>=======</code> heading underline is not reported.</p>
+<p><strong>What to do:</strong> Resolve the conflict, or suppress the line if the marker is intentional example text.</p>
+<h2 id="secrets">Secrets</h2>
+<h3 id="a-secret-is-reported-that-is-a-placeholder-or-test-value">A secret is reported that is a placeholder or test value</h3>
+<p><strong>Why:</strong> The value does not look like a placeholder to the filters, for example a realistic-looking test token.</p>
+<p><strong>What to do:</strong> Add <code>auric-disable-line secret</code> (or the signature ID) in a comment on that line. If it is a real credential, rotate it.</p>
+<h3 id="a-real-secret-is-not-reported">A real secret is not reported</h3>
+<p><strong>Why:</strong> It does not match a provider shape, and its name does not end in a credential word, or its value looks like a placeholder or reference.</p>
+<p><strong>What to do:</strong> Add a pattern for your token format to <code>codeHealth.customSecretPatterns</code>. Auric Code Health is not a full secret scanner; use a dedicated tool where coverage matters.</p>
+<h3 id="my-custom-pattern-does-nothing">My custom pattern does nothing</h3>
+<p><strong>Why:</strong> The regular expression is invalid (it is ignored silently), the matches look like placeholders, or you are running the command-line scanner, which does not read VS Code settings.</p>
+<p><strong>What to do:</strong> Test the expression, and remember the JSON string needs escaped backslashes.</p>
+<h3 id="i-cannot-see-which-secret-was-found">I cannot see which secret was found</h3>
+<p><strong>Why:</strong> Secrets are always redacted; only their length is shown.</p>
+<p><strong>What to do:</strong> Use <strong>Go to code</strong>; the underline covers the secret&#39;s position.</p>
+<h2 id="studio-reports-and-records">Studio, reports and records</h2>
+<h3 id="the-health-space-says-code-health-studio-with-a-scan-button">The Health space says &quot;Code Health Studio&quot; with a Scan button</h3>
+<p><strong>Why:</strong> There is no scan result yet.</p>
+<p><strong>What to do:</strong> Select <strong>Scan Code Health</strong>.</p>
+<h3 id="the-status-bar-shows-no-health-score">The status bar shows no Health score</h3>
+<p><strong>Why:</strong> The status-bar item shows <code>Health</code> only when Auric Code Health is the only Studio extension; otherwise it shows the accessibility score (<code>A11y</code>). Before a scan it has no number.</p>
+<p><strong>What to do:</strong> Select <strong>Report</strong> on the Overview, or use the Studio&#39;s <strong>Health</strong> space.</p>
+<h3 id="healthjson-was-not-updated-after-a-scan">health.json was not updated after a scan</h3>
+<p><strong>Why:</strong> <code>health.enabled</code> or <code>health.writeOnScan</code> is off, <code>health.formats</code> does not include <code>json</code>, or the scan was a live re-grade, which never writes files.</p>
+<h3 id="a-baseline-suddenly-reports-old-findings-as-new">A baseline suddenly reports old findings as new</h3>
+<p><strong>Why:</strong> Lines moved (fingerprints include the line), or the baseline was written by an earlier detector version.</p>
+<p><strong>What to do:</strong> Regenerate the baseline. See <a href="health-records.html#fingerprints-and-baselines">Health records</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Auric Code Health reference</a><a href="faq.html"><span>Next</span>Auric Code Health FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#findings-in-the-editor">Findings in the editor</a></li><li><a href="#secrets">Secrets</a></li><li><a href="#studio-reports-and-records">Studio, reports and records</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

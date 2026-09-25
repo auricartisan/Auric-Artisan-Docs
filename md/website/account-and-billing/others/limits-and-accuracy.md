@@ -1,0 +1,80 @@
+---
+title: Account and billing — limits
+description: Every rule, size limit, time window and count in the Auric Artisan account area, and what the dashboard's figures do and do not measure.
+product: Website › Account and billing
+updated: 2026-09-25
+---
+
+# Limits
+
+All the numbers in the account area in one place. Plan prices and allowances are on [Plans and pricing](../docs/plans-and-pricing.md); the pricing page at https://auricartisan.com/company/pricing/ is authoritative for them.
+
+## Identity
+
+| Item | Limit |
+| --- | --- |
+| Display name | 2–64 characters at sign-up; up to 64 in the profile |
+| Username | 3–30 characters; letters, numbers and underscores; reserved words and near-duplicates refused |
+| Username changes | Once every 30 days |
+| Released usernames | Held for 30 days before anyone else can claim them |
+| Bio | Up to 500 characters |
+| Website | Up to 200 characters; an `http://` or `https://` address |
+| Location | Up to 120 characters |
+| Profile photo | PNG, JPG or GIF, up to 2 MB before upload; cropped to a square and made smaller before it is saved |
+| Email address | Cannot be changed from the dashboard |
+
+## Passwords and sign-in
+
+| Item | Limit |
+| --- | --- |
+| Password length | 12–128 characters |
+| Password content | Upper and lower case, a number, a symbol; no character four times in a row; not a common password |
+| Session with **Remember me** | Up to 30 days; ends after seven days without use |
+| Session without **Remember me** | Until the browser closes; 24 hours at most |
+| Second-factor step | 10 minutes to enter the code |
+| Human check proof | Single use, tied to the email or username typed; expires after a short countdown |
+| Password reset link | One hour, single use |
+| Verification link | 24 hours, single use; a new one replaces the old |
+| Resend wait | 60 seconds by default between verification emails |
+
+## Two-step verification
+
+| Item | Limit |
+| --- | --- |
+| Code | Six digits, changing every 30 seconds |
+| Backup codes | Ten, each single use; replaced with a new ten when you set up again |
+
+## Dashboard
+
+| Item | Limit |
+| --- | --- |
+| Danger zone unlock | Five minutes, then it relocks |
+| **Sign out everywhere** confirmation | About six seconds to press again |
+| Sign-ins shown under **See all sign-ins** | Up to six |
+| Sign-in summary | The last 30 days |
+| Overview tiles | Up to 12 saved items |
+| Next suggestions | Up to three at a time |
+| Invoices per page | 25 |
+| Recent credit activity | The last eight movements |
+| **Finish setting up** panel after dismissal | Returns after a week if something is still missing |
+
+## API
+
+| Item | Limit |
+| --- | --- |
+| API keys per account | 10 |
+| Key name | Up to 64 characters |
+| Monthly spend cap | $0 to $10,000 |
+| Hard ceiling | Ten times the plan's included monthly credits |
+| Overage price | $1.00 (₹85) per 100,000 credits, prepaid |
+| Live feed | The last 100 calls; resets when the API is redeployed |
+
+## What the figures mean
+
+- **Usage meters** combine the account's own figures with counts recorded in the browser you are using, and show whichever is larger. Daily meters reset each day and monthly meters each calendar month, both in UTC.
+- **Projects**, **Your work** and the library counts come from the library saved in the browser you are using, not from the account.
+- **Usage & cost** in the API console measures the current calendar month (UTC) and needs one of your API keys to read the figures.
+- **Projected by period end** is a straight-line projection of your pace so far, not a forecast.
+- **Where** in the device list is the network address a sign-in came from, not a precise location.
+- Browser and system names in the device list are read from what each browser reports, and can be wrong for unusual browsers.
+- The token and credit balances shown are the account's records; purchased credits can take a few seconds to appear after payment.

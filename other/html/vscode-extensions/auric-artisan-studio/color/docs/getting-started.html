@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Auric Color — Auric Artisan Docs</title>
+<meta name="description" content="Install Auric Color, read and edit your first colour, fix your first contrast problem, and find every place Auric Color shows up.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="reference.html">Auric Color reference</a></li>
+<li><a href="troubleshooting.html">Auric Color troubleshooting</a></li>
+<li><a href="faq.html">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Getting started with Auric Color</h1>
+<p class="lede">Install Auric Color, read and edit your first colour, fix your first contrast problem, and find every place Auric Color shows up.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li>Open the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>).</li>
+<li>Search for <code>auric-artisan.auric-color</code> and select <strong>Install</strong>. Or run <code>code --install-extension auric-artisan.auric-color</code>.</li>
+</ol>
+<p>Auric Color starts when VS Code finishes loading. You need VS Code 1.74 or newer.</p>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> In its default mode, Auric Color replaces VS Code&#39;s own colour decorators (the small squares VS Code draws before colours in CSS) with its own swatches and picker. To do this it sets <code>editor.colorDecorators</code> to <code>false</code> in your user settings as soon as it starts, and sets it back to <code>false</code> if it is turned on again while this mode is active. To keep VS Code&#39;s own picker instead, run <strong>Auric Artisan: Restore native color picker (use VS Code&#39;s)</strong>. See <a href="picker-modes.html">Picker modes</a>.</p>
+</blockquote>
+<h2 id="read-a-colour">Read a colour</h2>
+<ol>
+<li>Open a file that contains a colour, such as a CSS file with <code>color: #1d4ed8;</code>.</li>
+<li>A small swatch appears before the colour value, and the value gets a faint tinted outline.</li>
+<li>Hover the value. The hover shows the colour&#39;s hex value, its nearest CSS name, its RGB, HSL, OKLCH and Display-P3 values, its contrast on white and on black, and how it looks with protanopia, deuteranopia and tritanopia.</li>
+</ol>
+<p>See <a href="hover-and-swatches.html">Hover and swatches</a> for every part of the hover.</p>
+<h2 id="change-a-colour">Change a colour</h2>
+<ol>
+<li>Hover the colour. The top of the hover is a picker: a <strong>Spectrum</strong> of shades at the colour&#39;s hue, a <strong>Hue</strong> strip, an <strong>Alpha</strong> strip, <strong>Shades</strong>, <strong>Fix</strong> (versions that pass AA and AAA on white and black), <strong>Brand</strong> and <strong>Recent</strong>.</li>
+<li>Select any tile. The value in your file changes, written in the same format it was in (hex stays hex, <code>oklch()</code> stays <code>oklch()</code>), and the hover reopens on the new colour.</li>
+<li>To type an exact value, select <strong>Type exact…</strong> at the top of the hover.</li>
+<li>For the full picker, select <strong>Spectrum picker</strong>, or press <code>Ctrl</code> + <code>Alt</code> + <code>C</code> (<code>Cmd</code> + <code>Alt</code> + <code>C</code> on macOS) with the cursor on the colour.</li>
+</ol>
+<p>See <a href="color-picker.html">The colour pickers</a>.</p>
+<h2 id="fix-a-contrast-problem">Fix a contrast problem</h2>
+<ol>
+<li>In a stylesheet or component, a text colour that is too faint for its background gets a violet wavy underline.</li>
+<li>Hover it. The card leads with the verdict, for example <code>2.32 : 1 — fails WCAG AA for normal text</code>, then shows the nearest passing colour of the same hue.</li>
+<li>Select <strong>Apply fix</strong>, or press <code>Ctrl</code> + <code>.</code> and choose <strong>Fix contrast → #767676 (4.54:1)</strong>.</li>
+</ol>
+<p>To fix every failing pair in the file, run <strong>Auric Artisan: Fix All Contrast Issues in File</strong>. See <a href="contrast-diagnostics.html">Contrast diagnostics</a>.</p>
+<h2 id="where-auric-color-appears">Where Auric Color appears</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Place</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td>Editor</td><td>Swatches, colour hovers with a picker, contrast underlines, quick fixes</td></tr>
+<tr><td>Activity Bar, <strong>Auric Color</strong></td><td><strong>Overview</strong> (the colour workbench) and a collapsed <strong>Color Picker</strong> view</td></tr>
+<tr><td>Status bar</td><td>A score item, which shows a score once the Studio has graded the workspace; <strong>Auric: N in this file</strong> when the open file has contrast findings</td></tr>
+<tr><td>Editor right-click menu</td><td><strong>Pick / edit color</strong>, <strong>Generate Accessible Palette</strong> and <strong>Check Contrast of Selection</strong> (with a selection), <strong>Choose Color Picker Mode</strong>, <strong>Mark Line as Intentional Branding (Toggle)</strong></td></tr>
+<tr><td>Studio (<strong>Auric Artisan: Open Color Studio</strong>)</td><td><strong>Color</strong> (Palette, Shades, Vision), <strong>Check</strong> (Contrast), <strong>Brand</strong> and <strong>Settings</strong></td></tr>
+<tr><td>Command Center (<code>Ctrl</code> + <code>Alt</code> + <code>.</code>)</td><td>Colour actions and your recent colours</td></tr>
+</tbody></table></div>
+<h3 id="the-overview-colour-workbench">The Overview (colour workbench)</h3>
+<p>The Overview shows the file you are editing and its findings, a suggestion when the file has two or more fixable pairs, a row of brand swatches, your recent colours, <strong>Open the color picker</strong>, and shortcuts to <strong>Contrast</strong>, <strong>Palette</strong>, <strong>Shades</strong>, <strong>Vision</strong>, <strong>Rulebook</strong> and <strong>Icon Studio</strong>. See <a href="../../docs/overview-view.html#the-colour-workbench">The Overview view</a>.</p>
+<h3 id="the-studio">The Studio</h3>
+<p><strong>Auric Artisan: Open Color Studio</strong> opens the Studio on <strong>Color › Palette</strong>. The other spaces are <strong>Check › Contrast</strong> (the <a href="../../docs/contrast-studio.html">Contrast Studio</a>), <strong>Brand</strong> and <strong>Settings</strong>. See <a href="../../docs/studio.html">The Studio</a>.</p>
+<h2 id="with-the-other-studio-extensions">With the other Studio extensions</h2>
+<p>When Auric Accessibility is installed too, it hosts the shared Workstation: Auric Color&#39;s own views are hidden and its tools appear in Auric Accessibility&#39;s sidebar and Studio. Auric Color still draws the swatches, colour hovers and pickers. Contrast underlines are then published by Auric Accessibility instead. See <a href="../../docs/workstation.html">The Workstation</a>.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Auric Color docs</a><a href="brand-audit.html"><span>Next</span>The brand audit</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#install">Install</a></li><li><a href="#read-a-colour">Read a colour</a></li><li><a href="#change-a-colour">Change a colour</a></li><li><a href="#fix-a-contrast-problem">Fix a contrast problem</a></li><li><a href="#where-auric-color-appears">Where Auric Color appears</a></li><li><a href="#with-the-other-studio-extensions">With the other Studio extensions</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Contrast Studio — Auric Artisan Docs</title>
+<meta name="description" content="Tune one text and background pair, choose a passing colour that keeps the hue, see where its token is used, and write the fix back to your code.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html" aria-current="page">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>The Contrast Studio</h1>
+<p class="lede">Tune one text and background pair, choose a passing colour that keeps the hue, see where its token is used, and write the fix back to your code.</p>
+<p>The <strong>Contrast Studio</strong> is the Studio&#39;s <strong>Check › Contrast</strong> tool. It shows one text colour on one background, grades the pair against WCAG, lists the nearest passing colours that keep the same hue, and, when the pair came from your code, writes the fix back to the file or to the design token the colour comes from. It is available with Auric Accessibility or Auric Color.</p>
+<p><strong>Contrast ratio</strong> is WCAG 2.x&#39;s measure of how far apart two colours are in brightness, from 1:1 (identical) to 21:1 (black on white). WCAG asks for at least 4.5:1 for normal text (level AA), 3:1 for large text and user-interface parts, and 7:1 for level AAA.</p>
+<h2 id="linked-and-unlinked-pairs">Linked and unlinked pairs</h2>
+<p>A pair is <strong>linked</strong> when you open it from a place in your code. The Studio remembers the file and position, shows where the pair lives, and can write a fix back. A pair is <strong>unlinked</strong> when you type colours in yourself or open the tool from a colour selection; you can still tune it and copy the result.</p>
+<p>Ways to open a <strong>linked</strong> pair:</p>
+<ul>
+<li><strong>Open in Contrast Studio</strong> in a contrast hover.</li>
+<li>The quick fix <strong>Open in Auric Artisan Studio</strong> (or <strong>Open in the Contrast Studio</strong> for values that cannot be rewritten in one click).</li>
+<li><strong>Open Issue in Contrast Studio</strong>, the inline action on a contrast or colour-vision row in the Project Issues view.</li>
+<li><strong>Contrast Studio</strong> on the Overview&#39;s <strong>This file</strong> card.</li>
+<li><strong>Review</strong> on the suggestion <strong>N fixable contrast pairs in this file</strong>.</li>
+</ul>
+<p>Ways to open an <strong>unlinked</strong> pair:</p>
+<ul>
+<li>Select a colour in the editor and run <strong>Auric Artisan: Check Contrast of Selection</strong> (also in the editor&#39;s right-click menu when text is selected). The selected colour becomes the text colour; if the selection is not a colour, the Studio starts from <code>#1A1A1A</code>.</li>
+<li>Open <strong>Check › Contrast</strong> in the Studio and edit the colours.</li>
+<li><strong>Open in Contrast →</strong> from the Preview tool, or <strong>Tune the pair</strong> in an issue hover.</li>
+</ul>
+<p>Linked pairs come from stylesheets and markup files: CSS, SCSS, Sass, Less, PostCSS, Stylus, HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript, TypeScript, JSX, TSX and Markdown.</p>
+<h2 id="the-header">The header</h2>
+<p>The kicker reads <strong>Contrast Studio</strong>. The title is <strong>Contrast checker</strong> for an unlinked pair, or <strong>Text on</strong> followed by the rule&#39;s selector or the element, for example <strong>Text on .card-meta</strong>, for a linked pair. A linked pair also shows its location, for example <code>styles.css:42</code>, and a <strong>Back to file</strong> button that selects the colour in the editor.</p>
+<h2 id="the-pair">The pair</h2>
+<ul>
+<li><strong>Sample.</strong> A <strong>Sample button</strong> and a line of body text drawn in the text colour on the background.</li>
+<li><strong>Ratio and APCA.</strong> The contrast ratio, for example <code>3.54 : 1</code>, and the APCA lightness contrast, for example <code>APCA Lc 61 · large/medium text ≥ 18px</code>. See <a href="../accessibility/docs/audit-profiles-and-contrast.html">Audit profiles and contrast standards</a> for what APCA means.</li>
+<li><strong>Verdict line.</strong> The ratio and whether it passes your target, for example <code>3.54 : 1 — fails WCAG AA for normal text (passes for large text)</code>. The Studio cannot see the font size of rendered text, so the verdict names the check rather than a pixel size.</li>
+<li><strong>Four checks.</strong> <strong>AA text · 4.5</strong>, <strong>AA large · 3</strong>, <strong>UI parts · 3</strong> and <strong>AAA text · 7</strong>, each marked <strong>✓ Pass</strong> or <strong>✕ Fail</strong>.</li>
+<li><strong>Text</strong> and <strong>Background</strong> fields. Each has a swatch button that opens the Studio&#39;s colour picker, a text box that accepts any CSS colour, and a copy button. <strong>⇄</strong> swaps the two colours.</li>
+<li><strong>Where the colour comes from</strong> (linked pairs): for example <code>The file&#39;s text color reads --muted (#8A8F99).</code> If the background was assumed from the page (the pair&#39;s rule sets only <code>color:</code>), a note asks you to check the real surface.</li>
+<li><strong>Adjust the text colour:</strong> <strong>Fix to AA (4.5:1)</strong>, <strong>AAA (7:1)</strong> and <strong>UI (3:1)</strong> change the text colour&#39;s lightness until it reaches that ratio, keeping its hue and chroma. <strong>Best text → black</strong> (or <strong>white</strong>) picks whichever of pure black or white reads better on the background.</li>
+</ul>
+<p>The target used for the verdict and the candidates is your <code>contrast.threshold</code> setting (4.5 by default). For a linked pair of large text (at least 24 px, or at least 18.66 px and bold), the target is 3:1, or 4.5:1 when your threshold is 7.</p>
+<h2 id="passing-colours-that-keep-the-hue">Passing colours that keep the hue</h2>
+<p>The candidates panel is titled <strong>Passing colors that keep the hue</strong>, or <strong>Stronger colors that keep the hue</strong> when the pair already passes (it then says <strong>no change is needed</strong>). It lists up to five colours, <strong>sorted by ΔE</strong>, the closest first.</p>
+<p>Each candidate shows:</p>
+<ul>
+<li>a swatch and its hex value;</li>
+<li>its ratio on the background and its level: <strong>AAA</strong>, <strong>AA</strong> or <strong>AA large</strong>;</li>
+<li><strong>ΔE</strong>, how different it looks from the original text colour (CIEDE2000; below about 1 is hard to see, larger numbers are bigger changes);</li>
+<li><strong>closest</strong> and <strong>◆ Recommended</strong> on the first candidate when a fix is needed;</li>
+<li><strong>reuse --token</strong> when the candidate is exactly the value of a custom property already defined in the same file, so you can reuse your design system instead of adding a new colour.</li>
+</ul>
+<p>How candidates are found:</p>
+<ol>
+<li>The Studio walks the text colour&#39;s lightness up and down until it reaches each rung of a ladder of targets (3, 4.5, 5.5, 7, 9, 12, 15 and 18 to 1) at or above your threshold. Hue and chroma are preserved.</li>
+<li>It adds any opaque colour token defined in the file that passes and keeps the hue: within 20 degrees of hue in OKLCH, and greys only match greys.</li>
+<li>It sorts them by ΔE from the original.</li>
+</ol>
+<p>If no colour of that hue can reach the target on that background, the panel says <strong>No color with this hue reaches 4.5 : 1 on this background. Try another background or hue.</strong></p>
+<p>Select a candidate to preview it. On a linked pair, the list stays computed from the file&#39;s original colour, so it does not reshuffle while you compare.</p>
+<h2 id="where-the-token-is-used">Where the token is used</h2>
+<p>When the linked text colour comes from a CSS custom property, for example <code>color: var(--muted)</code>, a <strong>Where --muted is used</strong> panel lists its definitions and uses, up to 40, with the file name, line number, <strong>defined</strong> on definition lines, and the line&#39;s code. Select a row to open it. The panel searches your open files and the files from the last scan; it does not read other files from disk. A note such as <strong>Showing 40 of 63.</strong> appears when there are more.</p>
+<h2 id="apply-the-fix">Apply the fix</h2>
+<p>The apply panel depends on the pair:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Situation</th><th>What you see</th></tr></thead>
+<tbody>
+<tr><td>Unlinked pair</td><td><strong>Use #hex as the text color</strong>, and the note <strong>Open a pair from an editor hover to write a fix back to its file.</strong></td></tr>
+<tr><td>Linked, but you changed the background</td><td><strong>The background differs from the file&#39;s #hex, so a fix can&#39;t be written back.</strong> and <strong>Restore the file&#39;s colors</strong>.</td></tr>
+<tr><td>Linked, colour from a token defined in the same file</td><td><strong>Apply #hex to --token</strong> (changes the definition; the note says how many uses follow), and <strong>Apply only at file:line</strong></td></tr>
+<tr><td>Linked, any other colour</td><td><strong>Apply #hex at file:line</strong></td></tr>
+<tr><td>Linked and failing</td><td><strong>Mark as intentional branding</strong> as well</td></tr>
+</tbody></table></div>
+<p>Every write is a single edit you can undo with <code>Ctrl</code> + <code>Z</code>. When you apply a reused token, the Studio writes <code>var(--token)</code> rather than a hex value. After a write, the Studio re-reads the pair from the file and shows the new verdict, and the status bar confirms the change, for example <code>Auric Artisan: --muted → #6B7079 (undo with Ctrl+Z)</code>.</p>
+<p>When a token is defined in several places, <strong>Apply to --token</strong> changes the light theme&#39;s root definition (in <code>:root</code>, <code>html</code>, <code>body</code>, <code>*</code> or <code>:host</code>), not a later dark-theme override.</p>
+<p><strong>Mark as intentional branding</strong> adds an <code>auric-brand-line</code> comment to the pair&#39;s line, so the pair moves to the Branding group and leaves the score. Selecting it again removes the mark. See <a href="suppression-and-branding.html">Suppression and branding</a>.</p>
+<p>At the bottom of the panel: <strong>Copy text #hex</strong>, <strong>Copy bg #hex</strong> and <strong>Insert text color</strong>, which replaces the editor selection with the text colour (or copies it to the clipboard when no editor is open). The panel ends with <strong>Computed on this machine. Nothing leaves it.</strong></p>
+<h2 id="safety-checks-on-write-back">Safety checks on write-back</h2>
+<p>The Studio re-reads the file before every write, so a fix can never land on the wrong text:</p>
+<ul>
+<li>If the line changed after you opened the pair: <strong>the source line changed since the Studio opened it — open the pair from the editor again.</strong></li>
+<li>If the token is defined in another file: <strong>this token is not defined in the same file, so only this use can be changed.</strong></li>
+<li>If the link was lost (for example you opened a different pair meanwhile): <strong>this pair is no longer linked to its file — open it from the editor again.</strong></li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../color/docs/contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="../accessibility/docs/check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="command-center.html"><span>Previous</span>The Command Center</a><a href="exports-and-records.html"><span>Next</span>Exports and health records</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#linked-and-unlinked-pairs">Linked and unlinked pairs</a></li><li><a href="#the-header">The header</a></li><li><a href="#the-pair">The pair</a></li><li><a href="#passing-colours-that-keep-the-hue">Passing colours that keep the hue</a></li><li><a href="#where-the-token-is-used">Where the token is used</a></li><li><a href="#apply-the-fix">Apply the fix</a></li><li><a href="#safety-checks-on-write-back">Safety checks on write-back</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

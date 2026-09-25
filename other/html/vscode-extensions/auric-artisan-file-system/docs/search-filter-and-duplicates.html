@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search, filters and duplicates — Auric Artisan Docs</title>
+<meta name="description" content="Search the workspace index, build and save filters, sort and group files, and review duplicate and empty files.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html" aria-current="page">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Search, filters and duplicates</h1>
+<p class="lede">Search the workspace index, build and save filters, sort and group files, and review duplicate and empty files.</p>
+<p>These commands are in the <strong>Find &amp; filter</strong> group of the workspace panel. They work on the <em>workspace index</em>: a list of the workspace&#39;s files and folders that Auric Files builds the first time you need it and keeps up to date. Searching and filtering work in untrusted workspaces too.</p>
+<h2 id="the-workspace-index">The workspace index</h2>
+<ul>
+<li>It is built on demand, the first time a command needs it. The panel shows <strong>Index builds when needed</strong> until then, and <strong>Workspace index ready</strong> after.</li>
+<li>Folders in <code>auricFiles.explorer.excludePatterns</code> (by default <code>node_modules</code>, <code>.git</code>, <code>dist</code>, <code>out</code>, <code>.next</code>, <code>__pycache__</code>, <code>target</code> and <code>vendor</code>) and anything your <code>.gitignore</code> excludes (<code>auricFiles.explorer.respectGitignore</code>) are never indexed, searched, compared or batch-processed.</li>
+<li>One scan holds at most <code>auricFiles.explorer.maxNodes</code> entries (default 20,000). A larger workspace is marked as truncated, and counts say so.</li>
+<li>After the first scan, changes are followed automatically (<code>auricFiles.performance.watchWorkspace</code>). Run <strong>Auric Files: Refresh</strong> to rebuild it by hand.</li>
+</ul>
+<h2 id="search">Search</h2>
+<ol>
+<li>Run <strong>Auric Files: Search Files…</strong>, or <strong>Quick Open in Auric Files…</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>O</code> with the deck), which focuses the Explorer first.</li>
+<li>Type part of a name or path. The title shows the default search mode.</li>
+<li>Choose a file to open it.</li>
+</ol>
+<p>The list holds up to <code>auricFiles.search.maxResults</code> files (default 2,000). With <code>auricFiles.explorer.showFileSize</code> on, each result shows its size.</p>
+<h2 id="filters">Filters</h2>
+<p>A <em>filter</em> narrows the indexed file list by several conditions at once.</p>
+<h3 id="build-a-filter">Build a filter</h3>
+<ol>
+<li>Run <strong>Auric Files: Apply Filter…</strong>.</li>
+<li>If you have saved filters, start from <strong>Current filter</strong> or one of the <strong>Saved filters</strong>.</li>
+<li>Answer each step. Every step is optional; press <code>Enter</code> to skip it.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Step</th><th>What you enter</th></tr></thead>
+<tbody>
+<tr><td>Search text</td><td>A glob, a regular expression or a fuzzy fragment</td></tr>
+<tr><td>How should the text be matched?</td><td><code>glob</code> wildcards (<code>src/**/*.tsx</code>), a <code>regex</code> regular expression, or <code>fuzzy</code> loose matching</td></tr>
+<tr><td>Restrict to kinds</td><td><code>file</code>, <code>folder</code>, <code>symlink</code></td></tr>
+<tr><td>Restrict to tags</td><td>Any of your tags</td></tr>
+<tr><td>Extensions</td><td>Comma-separated, such as <code>.ts, .tsx, .vue</code></td></tr>
+<tr><td>Path globs</td><td>Include patterns, then <code>!exclude</code> patterns, such as <code>src/**, packages/**, !**/generated/**</code></td></tr>
+<tr><td>Size range</td><td>Bytes as <code>min..max</code>, either side may be blank, such as <code>1024..1048576</code></td></tr>
+<tr><td>Modified-date range</td><td><code>YYYY-MM-DD..YYYY-MM-DD</code>, such as <code>2026-01-01..2026-12-31</code></td></tr>
+<tr><td>Flags</td><td><strong>Favorite</strong>, <strong>Pinned</strong>, <strong>Hidden</strong>, <strong>Highlighted</strong>, <strong>Empty files and folders only</strong>, <strong>Case-sensitive text</strong></td></tr>
+<tr><td>Git states</td><td><code>modified</code>, <code>added</code>, <code>deleted</code>, <code>untracked</code>, <code>ignored</code>, <code>conflict</code>, <code>clean</code></td></tr>
+</tbody></table></div>
+<ol start="4">
+<li>The results open as <strong>Filtered Files — <em>summary of the filter</em></strong>. Choose one to open it. If nothing matches: <strong>No files match the selected filter.</strong></li>
+</ol>
+<p>The default match mode is <code>auricFiles.search.defaultMode</code> (<code>glob</code>). Case is ignored unless you tick <strong>Case-sensitive text</strong> or turn on <code>auricFiles.search.caseSensitive</code>. Dot-files and hidden items are left out unless <code>auricFiles.explorer.showHiddenFiles</code> is on.</p>
+<h3 id="save-and-clear">Save and clear</h3>
+<ul>
+<li><strong>Save Current Filter…</strong> — type a <strong>Name for this filter</strong>. It then appears under <strong>Saved filters</strong> in <strong>Apply Filter…</strong>.</li>
+<li><strong>Clear Filter</strong> — remove the active filter (<strong>Filter cleared.</strong>).</li>
+</ul>
+<h2 id="sorting">Sorting</h2>
+<h3 id="vs-codes-explorer">VS Code&#39;s Explorer</h3>
+<p>Auric Files can set the sort order of VS Code&#39;s own Explorer. It writes the <code>explorer.sortOrder</code> setting, and its direction, for this workspace.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><strong>Sort</strong> (<code>Alt</code> + <code>S</code> with the Explorer focused)</td><td>Cycle between name, type and date modified</td></tr>
+<tr><td><strong>Sort by Name</strong></td><td>Alphabetical</td></tr>
+<tr><td><strong>Sort by Type</strong></td><td>By file type</td></tr>
+<tr><td><strong>Sort by Date Modified</strong></td><td>By last change</td></tr>
+<tr><td><strong>Sort Ascending</strong> / <strong>Sort Descending</strong></td><td>Direction</td></tr>
+</tbody></table></div>
+<p>The same commands are in the Explorer title bar&#39;s <strong>Sort</strong> menu and in <strong>Auric Files</strong> › <strong>Sort</strong>. VS Code&#39;s Explorer only supports these three orders.</p>
+<h3 id="aurics-indexed-lists">Auric&#39;s indexed lists</h3>
+<p>The indexed pickers can sort by more: <code>auricFiles.explorer.sort</code> is <code>name</code> (natural order, so <code>file10</code> follows <code>file9</code>), <code>path</code>, <code>type</code>, <code>size</code>, <code>modified</code>, <code>created</code>, <code>extension</code>, <code>status</code> (conflicts and changed Git files first) or <code>custom</code>. Add a tie-breaker with <code>auricFiles.explorer.secondarySort</code>, set directions with <code>auricFiles.explorer.sortDirection</code> and <code>auricFiles.explorer.secondarySortDirection</code>, and keep folders on top with <code>auricFiles.explorer.foldersFirst</code>.</p>
+<h2 id="grouping">Grouping</h2>
+<p><strong>Group Indexed Files…</strong> (in the panel&#39;s <strong>Find &amp; filter</strong> group) chooses the headings for the indexed file list:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>Headings</th></tr></thead>
+<tbody>
+<tr><td><strong>No grouping</strong></td><td>One sorted list</td></tr>
+<tr><td><strong>Files and folders</strong></td><td>Files and folders separately</td></tr>
+<tr><td><strong>Extension</strong></td><td>One heading per extension</td></tr>
+<tr><td><strong>Parent folder</strong></td><td>One heading per containing folder</td></tr>
+<tr><td><strong>Auric tag</strong></td><td>One heading per first tag; untagged items last</td></tr>
+<tr><td><strong>Modified time</strong></td><td>Today, this week, this month and older</td></tr>
+<tr><td><strong>Git status</strong></td><td>Changed, untracked, conflicted, clean and ignored</td></tr>
+</tbody></table></div>
+<p>The setting is <code>auricFiles.explorer.grouping</code>.</p>
+<h2 id="collapse-and-expand">Collapse and expand</h2>
+<p><strong>Collapse All</strong> and <strong>Expand All</strong> fold or unfold VS Code&#39;s Explorer tree.</p>
+<h2 id="duplicate-files">Duplicate files</h2>
+<ol>
+<li>Run <strong>Auric Files: Find Duplicate Files</strong>. A progress notification shows the scan; you can cancel it.</li>
+<li>The <strong>Duplicate Files</strong> list shows each group of matching files. In each group, the first file is kept and the other copies are ticked. Each row says why it matched and how much space the group would free.</li>
+<li>Adjust the ticks and press <code>Enter</code>.</li>
+<li>The ticked copies are moved to the workspace trash (with the usual confirmation), so you can restore them.</li>
+</ol>
+<p>What counts as a duplicate depends on <code>auricFiles.search.duplicateStrategy</code>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>content</code> (default)</td><td>Same bytes. Files are grouped by size first, so files with a unique size are never read</td></tr>
+<tr><td><code>name</code></td><td>The same file name in different folders</td></tr>
+<tr><td><code>size</code></td><td>The same length; the fastest and loosest</td></tr>
+</tbody></table></div>
+<p>In a virtual workspace, content hashing is not available, and Auric Files falls back to comparing by size with a warning.</p>
+<p>Nothing is deleted automatically: you choose every file.</p>
+<h2 id="empty-files-and-folders">Empty files and folders</h2>
+<p><strong>Auric Files: Find Empty Files</strong> lists empty files and folders, all ticked. Untick any to keep, press <code>Enter</code>, and the rest move to the workspace trash. If there are none: <strong>Auric Files found no empty files or folders.</strong></p>
+<p>After a filter, the results list shows only the files that meet every condition you set.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="rename-move-and-copy.html"><span>Previous</span>Rename, move and copy</a><a href="templates-and-generators.html"><span>Next</span>Templates and generators</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-workspace-index">The workspace index</a></li><li><a href="#search">Search</a></li><li><a href="#filters">Filters</a></li><li><a href="#sorting">Sorting</a></li><li><a href="#grouping">Grouping</a></li><li><a href="#collapse-and-expand">Collapse and expand</a></li><li><a href="#duplicate-files">Duplicate files</a></li><li><a href="#empty-files-and-folders">Empty files and folders</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

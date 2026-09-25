@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting Illuminants — Auric Artisan Docs</title>
+<meta name="description" content="What to do when a reading, chart, export or shortcut in the Standard Illuminants lab does not behave as expected.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Illuminants</a>
+<h2>Illuminants documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Illuminants</a></li>
+<li><a href="adapt-between-white-points.html">Adapt colours between white points</a></li>
+<li><a href="compare-light-sources.html">Compare two light sources</a></li>
+<li><a href="estimate-uncertainty.html">Estimate measurement uncertainty</a></li>
+<li><a href="query-console.html">Query many illuminants at once</a></li>
+<li><a href="reference.html">Illuminants reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting Illuminants</a></li>
+<li><a href="faq.html">Illuminants FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Illuminants</a> &rsaquo; <a href="README.html">Illuminants documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Troubleshooting Illuminants</h1>
+<p class="lede">What to do when a reading, chart, export or shortcut in the Standard Illuminants lab does not behave as expected.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Moving the CCT slider changed my illuminant to a blackbody</td><td>The CCT controls drive Blackbody mode, so touching them switches the source</td><td>Choose <strong>Standard</strong> under Source mode and pick the illuminant again, or select <strong>Reset to D65</strong></td></tr>
+<tr><td>The CCT box jumps back when I pick a standard illuminant</td><td><strong>Link to select</strong> copies the illuminant&#39;s nominal CCT into the box</td><td>Untick <strong>Link to select</strong> to keep your own CCT value</td></tr>
+<tr><td>The Illuminant comparison panel is empty</td><td>Comparison is off</td><td>Tick <strong>Enable comparison</strong></td></tr>
+<tr><td>CCT shows &quot;n/a&quot; or a validity warning</td><td>The light is too far from the blackbody curve (Duv beyond ±0.05) or outside 1,000–100,000 K, where CCT is not defined</td><td>Read Duv and x, y instead. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a></td></tr>
+<tr><td>The dominant wavelength shows a dash</td><td>The light is almost the same colour as the D65 reference white, so there is no direction to measure</td><td>Expected. Purity will read close to 0%</td></tr>
+<tr><td>The CRI of a fluorescent light looks wrong compared with a datasheet</td><td>The lab&#39;s test colour samples and fluorescent spectra are stand-ins, not the CIE tables</td><td>Treat CRI as indicative. Use a published or measured value for specifications</td></tr>
+<tr><td>I want TM-30 Rf and Rg</td><td>The 99 colour evaluation samples are not held, so TM-30 is not computed</td><td>The Methods tab shows the card as switched off. Use IES software for TM-30</td></tr>
+<tr><td>The 1964 10° observer button is greyed out</td><td>Its colour matching functions are not held</td><td>Only the 1931 2° observer is available</td></tr>
+<tr><td>The equal-energy E spectrum is a flat line</td><td>E has equal power at every wavelength by definition</td><td>Expected</td></tr>
+<tr><td>Changing interval or interpolation does not change the Lab summary</td><td>Those settings apply to the Chromaticity, Uncertainty, Console and Methods views; the Lab tab always works at 5 nm</td><td>Read the changed figures on those tabs</td></tr>
+<tr><td>Changing interval or interpolation changes nothing at all</td><td>The source tables are tabulated at 5 nm, so a finer grid adds no information; the Methods note says so</td><td>Expected. The deltas show as dashes</td></tr>
+<tr><td>The Uncertainty results change slightly each run</td><td>Monte Carlo sampling is random</td><td>Use <strong>20k</strong> trials for a steadier result</td></tr>
+<tr><td>Console CSV or JSON does nothing</td><td>No query has returned rows yet</td><td>Select <strong>Run</strong> first, then export</td></tr>
+<tr><td>Console says &quot;Nothing matched&quot;</td><td>A name was misspelt, or a range used an unknown prefix</td><td>Use names such as <code>D65</code> or <code>F1..F12</code></td></tr>
+<tr><td>Pressing S, R, C or E does nothing</td><td>The Lab rail shows these keys as a hint, but they are not active in the current version</td><td>Use <strong>Swap</strong>, <strong>Reset to D65</strong>, <strong>Enable comparison</strong> and <strong>Export SPD CSV</strong> instead</td></tr>
+<tr><td><strong>Copy white HEX</strong> or <strong>Copy</strong> gives no toast and nothing is copied</td><td>The browser blocked clipboard access (permissions, or a page not opened over https)</td><td>Allow clipboard access, or select the share field and copy it manually</td></tr>
+<tr><td>The share link opened without my surfaces or comparison</td><td>The link stores source, illuminant or CCT, and adaptation settings only</td><td>Re-tick the surfaces and comparison after opening</td></tr>
+<tr><td>The full-screen chart will not close</td><td>—</td><td>Press <code>Esc</code>, select the close button, or click outside the chart</td></tr>
+<tr><td>Charts look blurred after resizing the window</td><td>Some charts redraw only when their view changes</td><td>Switch tabs and back, or reload the page</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Illuminants reference</a><a href="faq.html"><span>Next</span>Illuminants FAQ</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

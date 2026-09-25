@@ -1,0 +1,95 @@
+==============================================================================
+EYE REST REFERENCE
+==============================================================================
+Every eye-rest control, value, default and message.
+Area: Website › Site features › Eye rest   Updated: 2026-09-25
+
+SETTINGS PANEL (COMFORT)
+========================
+
+  Control            | Values             | Default
+  -------------------+--------------------+--------
+  Eye-rest reminders | On, off            | Off
+  Reminder interval  | 20m, 35m, 45m, 60m | 20m
+
+REMINDER CARD
+=============
+
+  Element:        Title
+  Text or values: Time to look away
+
+  Element:        Sentence
+  Text or values: "You have been at this for N minutes. S seconds looking into
+                  the distance is enough."
+
+  Element:        Main actions
+  Text or values: Rest now, Later
+
+  Element:        Quiet actions
+  Text or values: Change, Not this session, Turn these off
+
+  Element:        Auto-dismiss
+  Text or values: 60 seconds, shown by an emptying bar
+
+TIMING VIEW (AFTER CHANGE)
+==========================
+
+  Element         | Values                                | Default
+  ----------------+---------------------------------------+-------------------------------
+  Title           | How often, and how long               | —
+  Remind me every | 20m, 35m, 45m, 60m                    | Your Reminder interval
+  Rest for        | 5s, 10s, 15s, 20s, 25s, 30s           | 30s (resets on each page load)
+  Actions         | Rest now; quiet Later, Turn these off | —
+  Auto-dismiss    | 60 seconds                            | —
+
+REST SCREEN
+===========
+
+  Element: Heading
+  Text:    Look past the screen
+
+  Element: Instruction
+  Text:    "Something about twenty feet away — a doorway, a window, the far
+           wall. The screen will brighten when the rest is over."
+
+  Element: Countdown
+  Text:    Seconds remaining
+
+  Element: Progress
+  Text:    Horizon line shrinking to the centre (still with reduced motion)
+
+  Element: Button
+  Text:    End early
+
+END SCREEN
+==========
+
+  Element  | Text
+  ---------+-----------------------------------------
+  Kicker   | Rest complete
+  Heading  | Welcome back
+  Line     | "Next reminder in N minutes."
+  Duration | About 2.6 seconds, then the page returns
+
+WHAT EACH WAY OF STOPPING DOES
+==============================
+
+  Action: Later
+  Effect: Closes the card; next reminder after a full interval
+  Lasts:  Until the next reminder
+
+  Action: End early
+  Effect: Stops the rest; next countdown starts
+  Lasts:  Until the next reminder
+
+  Action: Not this session
+  Effect: No reminders
+  Lasts:  Until this browser tab is closed
+
+  Action: Turn these off
+  Effect: No reminders
+  Lasts:  Until a setting change while the Settings switch is on
+
+  Action: Settings switch off
+  Effect: No reminders
+  Lasts:  Until you switch it on

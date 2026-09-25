@@ -1,0 +1,956 @@
+==============================================================================
+ACCESSIBILITY RULES
+==============================================================================
+Every one of the 126 accessibility rules the Analyzer checks, grouped by
+category, with its impact, WCAG mapping and what it looks for.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+The accessibility engine in the A11y+ panel checks 126 rules. This page lists
+every one, grouped into the 15 categories the panel uses for its Area filter
+and its Where the problems are bars. For how to read the results, see The
+accessibility engine [accessibility-engine.txt].
+
+HOW TO READ THE TABLES
+======================
+
+  - Rule is the title the Issues view shows.
+  - ID is the rule's identifier, shown in each rule's details and used in the
+    exports.
+  - Impact is how badly a failure affects people: critical, serious, moderate
+    or minor.
+  - WCAG lists the success criteria the rule maps to. "Best practice" means
+    the rule maps to no criterion: it is good advice, but not part of
+    conformance.
+  - The Level filter in the Issues view uses the lowest level among a rule's
+    criteria. A rule mapped to a Level A criterion is filtered as WCAG A.
+
+Rules that map to WCAG 2.0 Level A or AA criteria also carry a Section 508
+badge, and rules that map to WCAG 2.0 or 2.1 Level A or AA criteria carry an
+EN 301 549 badge.
+
+Across the catalogue, 18 rules are critical, 61 serious, 30 moderate and 17
+minor. By level, 81 are filtered as Level A, 20 as Level AA, 5 as Level AAA
+and 20 as best practice.
+
+What every rule has in common
+-----------------------------
+
+  - Rules only judge what is actually exposed. Elements hidden from assistive
+    technology are skipped, apart from a few rules that exist to check hidden
+    content, such as `aria-hidden` misuse, `<meta>` tags and image-map areas.
+  - Rules that need the page's layout or computed styles (contrast, reflow,
+    target size, focus order) report needs review instead of guessing when
+    those are unavailable.
+  - Content inside open shadow roots (web components) is checked too.
+
+TEXT ALTERNATIVES (12 RULES)
+============================
+
+Images and other non-text content need a text equivalent that a screen reader
+can announce.
+
+  Rule:      Images must have an alt attribute
+  ID:        `image-alt`
+  Impact:    critical
+  WCAG:      1.1.1
+  Looks for: `<img>` with no `alt`, no ARIA name and no presentational role
+
+  Rule:      Alt text must not be a file name
+  ID:        `image-alt-filename`
+  Impact:    serious
+  WCAG:      1.1.1
+  Looks for: Alt text such as `hero_banner.jpg`
+
+  Rule:      Alt text must be meaningful
+  ID:        `image-alt-placeholder`
+  Impact:    serious
+  WCAG:      1.1.1
+  Looks for: Placeholder alt such as "image", "photo", "logo" or "icon"
+
+  Rule:      Alt text should not duplicate adjacent text
+  ID:        `image-alt-redundant`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: Alt that repeats the text of its link or figure, so it is
+             announced twice
+
+  Rule:      Alt text should be concise
+  ID:        `image-alt-long`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: Alt text longer than about 150 characters
+
+  Rule:      Image buttons must have alternative text
+  ID:        `input-image-alt`
+  Impact:    critical
+  WCAG:      1.1.1, 4.1.2
+  Looks for: `<input type="image">` with no text
+
+  Rule:      Image map areas must have alternative text
+  ID:        `area-alt`
+  Impact:    critical
+  WCAG:      1.1.1, 2.4.4
+  Looks for: Clickable image-map regions with no name
+
+  Rule:      Embedded objects must have alternative text
+  ID:        `object-alt`
+  Impact:    serious
+  WCAG:      1.1.1
+  Looks for: `<object>` with no text alternative
+
+  Rule:      Elements with role="img" must have an accessible name
+  ID:        `role-img-alt`
+  Impact:    serious
+  WCAG:      1.1.1
+  Looks for: `role="img"` with no name
+
+  Rule:      Informative SVGs must have an accessible name
+  ID:        `svg-img-alt`
+  Impact:    serious
+  WCAG:      1.1.1
+  Looks for: Meaningful inline SVG with no `<title>`, `aria-label` or
+             `aria-labelledby`
+
+  Rule:      Canvas elements need a text alternative
+  ID:        `canvas-fallback`
+  Impact:    serious
+  WCAG:      1.1.1
+  Looks for: `<canvas>` with no fallback content or ARIA name
+
+  Rule:      Server-side image maps must not be used
+  ID:        `server-side-image-map`
+  Impact:    minor
+  WCAG:      1.1.1, 2.1.1
+  Looks for: Image maps that need a mouse
+
+AUDIO & VIDEO (4 RULES)
+=======================
+
+People who cannot hear or see media need captions, descriptions and
+transcripts, and nobody should be surprised by sound.
+
+  Rule:      Video must have captions
+  ID:        `video-caption`
+  Impact:    critical
+  WCAG:      1.2.2
+  Looks for: Prerecorded video with no captions track
+
+  Rule:      Video should provide audio description
+  ID:        `video-description`
+  Impact:    serious
+  WCAG:      1.2.3, 1.2.5
+  Looks for: Video with no description track or text alternative
+
+  Rule:      Audio needs a transcript
+  ID:        `audio-transcript`
+  Impact:    serious
+  WCAG:      1.2.1
+  Looks for: Audio-only content with no transcript
+
+  Rule:      Audio must not autoplay for more than 3 seconds without a control
+  ID:        `no-autoplay-audio`
+  Impact:    serious
+  WCAG:      1.4.2
+  Looks for: Sound that starts by itself with no pause control
+
+STRUCTURE & SEMANTICS (12 RULES)
+================================
+
+Screen-reader users move through a page by its headings, lists and frames. The
+structure has to be real markup, not just styling.
+
+  Rule:      Heading levels must not skip
+  ID:        `heading-order`
+  Impact:    moderate
+  WCAG:      1.3.1, 2.4.6
+  Looks for: A jump such as `h2` straight to `h4`
+
+  Rule:      Headings must not be empty
+  ID:        `empty-heading`
+  Impact:    moderate
+  WCAG:      1.3.1, 2.4.6
+  Looks for: Headings with no text
+
+  Rule:      Page must contain a level-one heading
+  ID:        `page-has-heading-one`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: A page with no `h1`
+
+  Rule:      Lists may only contain list items
+  ID:        `list-structure`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: Other content placed directly inside `<ul>` or `<ol>`
+
+  Rule:      List items must be inside a list
+  ID:        `listitem-parent`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: An `<li>` outside a list
+
+  Rule:      Definition lists must be structured correctly
+  ID:        `definition-list`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: A `<dl>` with anything other than `dt`/`dd` pairs
+
+  Rule:      dt and dd must be inside a definition list
+  ID:        `dlitem-parent`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: `<dt>` or `<dd>` outside a `<dl>`
+
+  Rule:      Styled paragraphs must not be used as headings
+  ID:        `p-as-heading`
+  Impact:    moderate
+  WCAG:      1.3.1
+  Looks for: Bold, oversized paragraphs that look like headings
+
+  Rule:      Frames must have a title
+  ID:        `frame-title`
+  Impact:    serious
+  WCAG:      2.4.1, 4.1.2
+  Looks for: Frames announced only as "frame"
+
+  Rule:      Frame titles must be unique
+  ID:        `frame-title-unique`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: Two frames with the same title
+
+  Rule:      IDs on interactive elements must be unique
+  ID:        `duplicate-id-active`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: Duplicate IDs that break labels and ARIA references
+
+  Rule:      Hidden content should be reviewed
+  ID:        `hidden-content`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: Hidden content that scripts may reveal later; check it is exposed
+             properly when shown
+
+TABLES (9 RULES)
+================
+
+Data tables must tell screen-reader users which header each cell belongs to.
+
+  Rule:      Table headers must reference data cells
+  ID:        `th-has-data-cells`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: Header cells with no data cells, often a layout table marked as
+             data
+
+  Rule:      Data tables must have header cells
+  ID:        `table-headers`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: Data tables with no `<th>`
+
+  Rule:      scope attribute must be valid and on a header cell
+  ID:        `scope-attr-valid`
+  Impact:    moderate
+  WCAG:      1.3.1
+  Looks for: Invalid or misplaced `scope` values
+
+  Rule:      headers attribute must reference cells in the same table
+  ID:        `td-headers-attr`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: Broken `headers` references
+
+  Rule:      Data tables should have a caption
+  ID:        `table-caption`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: Data tables with no `<caption>`
+
+  Rule:      Table header cells must not be empty
+  ID:        `empty-table-header`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: Header cells with no name
+
+  Rule:      Do not fake a caption with a full-width first-row cell
+  ID:        `table-fake-caption`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: A spanning first row used as a visual title instead of
+             `<caption>`
+
+  Rule:      Table caption and aria-label must not be identical
+  ID:        `table-duplicate-name`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: A caption repeated in `aria-label` or `title`
+
+  Rule:      Data cells in large tables must be associated with a header
+  ID:        `td-has-header`
+  Impact:    serious
+  WCAG:      1.3.1
+  Looks for: In tables of 3 or more rows and columns, data cells no header
+             reaches
+
+FORMS & LABELS (15 RULES)
+=========================
+
+Every field and button needs a name a screen reader can announce and a
+speech-input user can say.
+
+  Rule:      Radio and checkbox groups need a group label
+  ID:        `fieldset-legend`
+  Impact:    moderate
+  WCAG:      1.3.1, 3.3.2
+  Looks for: Related radios or checkboxes with no `<fieldset>` and `<legend>`
+
+  Rule:      Form fields must not have multiple label elements
+  ID:        `form-field-multiple-labels`
+  Impact:    moderate
+  WCAG:      1.3.1, 4.1.2
+  Looks for: A field with more than one `<label>`
+
+  Rule:      autocomplete attribute must use valid tokens
+  ID:        `autocomplete-valid`
+  Impact:    serious
+  WCAG:      1.3.5
+  Looks for: Invalid `autocomplete` values
+
+  Rule:      Fields collecting user data should declare their purpose
+  ID:        `identify-input-purpose`
+  Impact:    moderate
+  WCAG:      1.3.5
+  Looks for: Personal-data fields (name, email, phone, address) with no
+             `autocomplete`
+
+  Rule:      Accessible name must contain the visible label
+  ID:        `label-in-name`
+  Impact:    serious
+  WCAG:      2.5.3
+  Looks for: An `aria-label` that replaces the visible text with something
+             different
+
+  Rule:      Changing a control must not automatically change context
+  ID:        `no-onchange-submit`
+  Impact:    serious
+  WCAG:      3.2.2
+  Looks for: A select that navigates as soon as its value changes
+
+  Rule:      autofocus should not be used
+  ID:        `no-autofocus`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: `autofocus`, which drops users into the middle of the page
+
+  Rule:      Form elements must have labels
+  ID:        `form-field-label`
+  Impact:    critical
+  WCAG:      1.3.1, 3.3.2, 4.1.2
+  Looks for: Fields with no programmatic label
+
+  Rule:      Placeholder text must not be the only label
+  ID:        `label-placeholder-only`
+  Impact:    serious
+  WCAG:      3.3.2
+  Looks for: Fields labelled only by placeholder text
+
+  Rule:      Required fields must be programmatically marked
+  ID:        `required-field-indicated`
+  Impact:    moderate
+  WCAG:      3.3.2
+  Looks for: Fields marked required visually but not with `required` or
+             `aria-required`
+
+  Rule:      Invalid fields must describe the error in text
+  ID:        `error-identification`
+  Impact:    serious
+  WCAG:      3.3.1, 3.3.3
+  Looks for: `aria-invalid` with no linked error message
+
+  Rule:      Authentication must not depend on a cognitive test
+  ID:        `accessible-authentication`
+  Impact:    serious
+  WCAG:      3.3.8
+  Looks for: Login flows that block paste or require memorising or
+             transcribing
+
+  Rule:      Forms need an explicit submit control
+  ID:        `form-submit-control`
+  Impact:    moderate
+  WCAG:      3.2.2
+  Looks for: Forms with no submit button
+
+  Rule:      Buttons must have discernible text
+  ID:        `button-name`
+  Impact:    critical
+  WCAG:      4.1.2
+  Looks for: Buttons announced only as "button"
+
+  Rule:      Select elements must have an accessible name
+  ID:        `select-name`
+  Impact:    critical
+  WCAG:      4.1.2
+  Looks for: Selects announced only as a combo box
+
+ZOOM, REFLOW & MOTION (6 RULES)
+===============================
+
+People who zoom, enlarge text or change spacing must still be able to use the
+page.
+
+  Rule:      Content must not be locked to one orientation
+  ID:        `css-orientation-lock`
+  Impact:    serious
+  WCAG:      1.3.4
+  Looks for: Media-query transforms that lock portrait or landscape
+
+  Rule:      Zooming and scaling must not be disabled
+  ID:        `meta-viewport`
+  Impact:    critical
+  WCAG:      1.4.4
+  Looks for: `user-scalable=no` or a maximum scale below 2
+
+  Rule:      Text spacing must be overridable
+  ID:        `avoid-inline-spacing`
+  Impact:    serious
+  WCAG:      1.4.12
+  Looks for: Inline `!important` spacing that user styles cannot override
+
+  Rule:      Content must reflow at 320 CSS pixels
+  ID:        `reflow-fixed-width`
+  Impact:    serious
+  WCAG:      1.4.10
+  Looks for: Declared fixed widths that force two-way scrolling at 320px
+
+  Rule:      Hover content must be dismissible, hoverable and persistent
+  ID:        `content-on-hover`
+  Impact:    moderate
+  WCAG:      1.4.13
+  Looks for: Native `title` tooltips, which fail all three
+
+  Rule:      Users should be able to zoom to at least 500%
+  ID:        `meta-viewport-large`
+  Impact:    minor
+  WCAG:      1.4.4
+  Looks for: A maximum scale below 5
+
+COLOUR & CONTRAST (4 RULES)
+===========================
+
+Text and controls must stand out from what is behind them, and colour must not
+be the only cue.
+
+  Rule:      Text must meet the minimum contrast ratio
+  ID:        `color-contrast`
+  Impact:    serious
+  WCAG:      1.4.3
+  Looks for: Body text under 4.5:1, or large text under 3:1
+
+  Rule:      Text should meet the enhanced contrast ratio
+  ID:        `color-contrast-enhanced`
+  Impact:    moderate
+  WCAG:      1.4.6
+  Looks for: Body text under 7:1, or large text under 4.5:1 (Level AAA)
+
+  Rule:      Links in body text must not rely on colour alone
+  ID:        `link-in-text-block`
+  Impact:    serious
+  WCAG:      1.4.1
+  Looks for: Links in prose with no underline and under 3:1 against the
+             surrounding text
+
+  Rule:      UI component boundaries need 3:1 contrast
+  ID:        `non-text-contrast`
+  Impact:    serious
+  WCAG:      1.4.11
+  Looks for: Controls whose visible boundary is under 3:1, or that have no
+             boundary at all
+
+Contrast is measured from what the page actually paints. Semi-transparent
+colours are blended with what sits behind them first. Text over a gradient,
+photograph or video has no single background colour, so it is reported as
+needs review. Each failing pair comes with a suggested colour that keeps the
+hue and adjusts only the lightness. See Colour, contrast and vision
+[colour-contrast-and-vision.txt].
+
+KEYBOARD & FOCUS (12 RULES)
+===========================
+
+Everything must work with a keyboard alone, and the user must always see where
+focus is.
+
+  Rule:      Click handlers must be on focusable, named elements
+  ID:        `keyboard-handler-focusable`
+  Impact:    critical
+  WCAG:      2.1.1, 4.1.2
+  Looks for: A `div` or `span` with a click handler that keyboard users cannot
+             reach
+
+  Rule:      Interactive controls must not be nested
+  ID:        `nested-interactive`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: A button inside a link, or the reverse
+
+  Rule:      accesskey values must be unique
+  ID:        `accesskeys-unique`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: Duplicate `accesskey` values
+
+  Rule:      Single-character shortcuts must be remappable or scoped
+  ID:        `character-key-shortcuts`
+  Impact:    serious
+  WCAG:      2.1.4
+  Looks for: Single-key shortcuts that fire while someone is dictating
+
+  Rule:      Positive tabindex must not be used
+  ID:        `tabindex-positive`
+  Impact:    serious
+  WCAG:      2.4.3
+  Looks for: `tabindex` above 0
+
+  Rule:      Tab order must follow the visual reading order
+  ID:        `focus-order-visual`
+  Impact:    serious
+  WCAG:      2.4.3
+  Looks for: CSS reordering that makes the tab sequence jump around
+
+  Rule:      Focused elements must show a visible focus indicator
+  ID:        `focus-visible`
+  Impact:    serious
+  WCAG:      2.4.7
+  Looks for: Outlines removed with nothing to replace them
+
+  Rule:      Focus indicator must be large enough and contrast enough
+  ID:        `focus-appearance`
+  Impact:    moderate
+  WCAG:      2.4.13, 1.4.11
+  Looks for: Focus indicators thinner than 2 CSS pixels or under 3:1
+
+  Rule:      Focused elements must not be hidden behind sticky UI
+  ID:        `focus-not-obscured`
+  Impact:    serious
+  WCAG:      2.4.11
+  Looks for: Sticky headers, cookie bars or chat widgets covering the focused
+             element
+
+  Rule:      Scrollable regions must be keyboard-accessible
+  ID:        `scrollable-region-focusable`
+  Impact:    serious
+  WCAG:      2.1.1
+  Looks for: Scrolling areas that neither take focus nor contain anything
+             focusable
+
+  Rule:      Frames removed from the tab order must not contain focusable
+             content
+  ID:        `frame-focusable-content`
+  Impact:    serious
+  WCAG:      2.1.1
+  Looks for: An `<iframe>` with `tabindex="-1"`; usually needs a manual check
+
+  Rule:      Focusable elements should convey a role
+  ID:        `focus-order-semantics`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: Elements put in the tab order with no role
+
+TIMING & ANIMATION (3 RULES)
+============================
+
+Moving, blinking and refreshing content must be under the user's control.
+
+  Rule:      Pages must not auto-refresh or redirect on a timer
+  ID:        `meta-refresh`
+  Impact:    critical
+  WCAG:      2.2.1
+  Looks for: A timed `<meta>` refresh or redirect
+
+  Rule:      Blinking and scrolling content must be stoppable
+  ID:        `blink-marquee`
+  Impact:    serious
+  WCAG:      2.2.2
+  Looks for: `<blink>` and `<marquee>`
+
+  Rule:      Long or infinite animation must respect reduced-motion
+  ID:        `animation-pausable`
+  Impact:    serious
+  WCAG:      2.2.2, 2.3.3
+  Looks for: Animation over five seconds, or motion that ignores the
+             reduced-motion setting
+
+NAVIGATION (9 RULES)
+====================
+
+People need to skip repeated blocks, know where a link goes, and find pages
+more than one way.
+
+  Rule:      Page must offer a way to skip repeated blocks
+  ID:        `bypass`
+  Impact:    serious
+  WCAG:      2.4.1
+  Looks for: No skip link, `<main>` landmark or heading structure
+
+  Rule:      Page must have a descriptive title
+  ID:        `document-title`
+  Impact:    serious
+  WCAG:      2.4.2
+  Looks for: A missing or empty page title
+
+  Rule:      Links must have discernible text
+  ID:        `link-name`
+  Impact:    critical
+  WCAG:      2.4.4, 4.1.2
+  Looks for: Links announced only as "link", often icon-only links
+
+  Rule:      Link text must describe the destination
+  ID:        `link-name-generic`
+  Impact:    moderate
+  WCAG:      2.4.4, 2.4.9
+  Looks for: Generic text such as "click here", "read more" or "learn more"
+
+  Rule:      Links with the same name must go to the same place
+  ID:        `identical-links-same-purpose`
+  Impact:    minor
+  WCAG:      2.4.9
+  Looks for: Two links with the same name and different destinations
+
+  Rule:      Site should offer more than one way to find pages
+  ID:        `multiple-ways`
+  Impact:    moderate
+  WCAG:      2.4.5
+  Looks for: No search, sitemap or index alongside the navigation
+
+  Rule:      Links opening a new window should say so
+  ID:        `link-new-window`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: Links that open a new tab without warning
+
+  Rule:      Help mechanisms must appear in a consistent place
+  ID:        `consistent-help`
+  Impact:    minor
+  WCAG:      3.2.6
+  Looks for: Help and contact links that move between pages
+
+  Rule:      Skip links must point at an existing target
+  ID:        `skip-link`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: A skip link whose target ID is not on the page
+
+SAFE LINKING (1 RULE)
+=====================
+
+  Rule:      target="_blank" should carry rel="noopener"
+  ID:        `target-blank-noopener`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: New-tab links that let the opened page control the original tab
+
+POINTER & TOUCH (4 RULES)
+=========================
+
+Targets must be big enough to hit, and gestures need simple alternatives.
+
+  Rule:      Touch targets must be at least 24×24 CSS pixels
+  ID:        `target-size-minimum`
+  Impact:    serious
+  WCAG:      2.5.8
+  Looks for: Targets under 24×24px that are not inline and lack 24px of clear
+             space
+
+  Rule:      Touch targets should be at least 44×44 CSS pixels
+  ID:        `target-size-enhanced`
+  Impact:    moderate
+  WCAG:      2.5.5
+  Looks for: Targets under 44×44px (Level AAA)
+
+  Rule:      Path-based and multipoint gestures need a single-pointer
+             alternative
+  ID:        `pointer-gestures`
+  Impact:    moderate
+  WCAG:      2.5.1
+  Looks for: Swipe, pinch or drag with no tap or click equivalent
+
+  Rule:      Drag interactions need a non-dragging alternative
+  ID:        `dragging-movements`
+  Impact:    moderate
+  WCAG:      2.5.7
+  Looks for: Drag-and-drop with no click alternative
+
+LANGUAGE & READABILITY (5 RULES)
+================================
+
+The page's language drives the screen reader's voice, and plain prose helps
+everyone.
+
+  Rule:      `<html>` must have a lang attribute
+  ID:        `html-has-lang`
+  Impact:    serious
+  WCAG:      3.1.1
+  Looks for: A page with no language
+
+  Rule:      lang attribute must be a valid BCP 47 tag
+  ID:        `html-lang-valid`
+  Impact:    serious
+  WCAG:      3.1.1
+  Looks for: An invalid language tag
+
+  Rule:      lang attributes on page parts must be valid
+  ID:        `valid-lang`
+  Impact:    serious
+  WCAG:      3.1.2
+  Looks for: Invalid `lang` on passages in another language
+
+  Rule:      Text should be readable at lower-secondary level
+  ID:        `reading-level`
+  Impact:    minor
+  WCAG:      3.1.5
+  Looks for: Prose harder than lower-secondary level (Level AAA)
+
+  Rule:      Abbreviations should be expanded
+  ID:        `abbr-expansion`
+  Impact:    minor
+  WCAG:      3.1.4
+  Looks for: Abbreviations with no expansion (Level AAA)
+
+ARIA CORRECTNESS (24 RULES)
+===========================
+
+ARIA adds roles, states and names for assistive technology. Used wrongly, it
+silently breaks them.
+
+  Rule:      role attribute must contain a valid, non-abstract role
+  ID:        `aria-role-valid`
+  Impact:    critical
+  WCAG:      4.1.2
+  Looks for: Unknown or abstract roles, which browsers drop
+
+  Rule:      role must be allowed on the element it is placed on
+  ID:        `aria-allowed-role`
+  Impact:    moderate
+  WCAG:      4.1.2
+  Looks for: A role the element may not carry
+
+  Rule:      ARIA attributes must be spelled correctly
+  ID:        `aria-attr-valid`
+  Impact:    critical
+  WCAG:      4.1.2
+  Looks for: Misspelt `aria-*` attributes, such as `aria-labeledby`
+
+  Rule:      ARIA attribute values must be valid
+  ID:        `aria-attr-value-valid`
+  Impact:    critical
+  WCAG:      4.1.2
+  Looks for: Out-of-range tokens, non-numbers and broken ID references
+
+  Rule:      ARIA attributes must be allowed on the element's role
+  ID:        `aria-allowed-attr`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: States and properties the role does not support
+
+  Rule:      Roles must carry their required ARIA attributes
+  ID:        `aria-required-attr`
+  Impact:    critical
+  WCAG:      4.1.2
+  Looks for: For example `role="checkbox"` with no `aria-checked`
+
+  Rule:      Composite roles must own the right child roles
+  ID:        `aria-required-children`
+  Impact:    critical
+  WCAG:      1.3.1, 4.1.2
+  Looks for: For example a `tablist` that does not own `tab` elements
+
+  Rule:      Roles must sit inside their required parent role
+  ID:        `aria-required-parent`
+  Impact:    critical
+  WCAG:      1.3.1, 4.1.2
+  Looks for: For example an `option` outside a `listbox`
+
+  Rule:      aria-hidden elements must not contain focusable content
+  ID:        `aria-hidden-focus`
+  Impact:    serious
+  WCAG:      1.3.1, 4.1.2
+  Looks for: Focusable elements inside `aria-hidden`
+
+  Rule:      aria-hidden must not be on `<body>`
+  ID:        `aria-hidden-body`
+  Impact:    critical
+  WCAG:      4.1.2
+  Looks for: The whole page hidden from assistive technology
+
+  Rule:      Naming attributes must not be used on roles that prohibit names
+  ID:        `aria-prohibited-attr`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: `aria-label` on roles such as generic, paragraph or code
+
+  Rule:      Deprecated ARIA attributes should be removed
+  ID:        `aria-deprecated-attr`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: ARIA drag-and-drop attributes, which nothing supports
+
+  Rule:      Dialogs must have an accessible name
+  ID:        `aria-dialog-name`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: Dialogs announced only as "dialog"
+
+  Rule:      ARIA commands must have an accessible name
+  ID:        `aria-command-name`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: Elements with a widget role and no name
+
+  Rule:      ARIA input fields must have an accessible name
+  ID:        `aria-input-field-name`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: Custom input widgets with no name
+
+  Rule:      Meters and progress bars must have an accessible name
+  ID:        `aria-meter-progress-name`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: Meters and progress bars announced as a bare number
+
+  Rule:      Tooltips must have an accessible name
+  ID:        `aria-tooltip-name`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: Empty tooltips
+
+  Rule:      role=presentation must not be combined with ARIA or focus
+  ID:        `presentation-role-conflict`
+  Impact:    moderate
+  WCAG:      4.1.2
+  Looks for: Presentational elements that are focusable or carry global ARIA
+
+  Rule:      ARIA ID references must resolve
+  ID:        `aria-reference-valid`
+  Impact:    serious
+  WCAG:      1.3.1, 4.1.2
+  Looks for: `aria-labelledby` and similar pointing at missing IDs
+
+  Rule:      Status messages must be exposed to assistive technology
+  ID:        `status-messages`
+  Impact:    moderate
+  WCAG:      4.1.3
+  Looks for: Toasts, cart counts or errors that appear with no live region
+
+  Rule:      Live regions must be configured correctly
+  ID:        `aria-live-valid`
+  Impact:    moderate
+  WCAG:      4.1.3
+  Looks for: Misconfigured or over-assertive live regions
+
+  Rule:      Conditional ARIA state must match the element's native state
+  ID:        `aria-conditional-attr`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: An `aria-checked` that disagrees with a native checkbox
+
+  Rule:      aria-roledescription must be on an element with a semantic role
+  ID:        `aria-roledescription`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: `aria-roledescription` on an element with no role
+
+  Rule:      role="text" must not contain focusable descendants
+  ID:        `aria-text`
+  Impact:    serious
+  WCAG:      4.1.2
+  Looks for: Links or fields inside `role="text"`, which disappear from the
+             tree
+
+LANDMARKS & REGIONS (6 RULES)
+=============================
+
+Landmarks let people jump straight to the main content, the navigation or the
+footer.
+
+  Rule:      Page must have exactly one main landmark
+  ID:        `landmark-one-main`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: No `<main>`, or more than one
+
+  Rule:      banner and contentinfo landmarks must be unique
+  ID:        `landmark-no-duplicate`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: More than one top-level header or footer landmark
+
+  Rule:      Landmarks of the same type must have distinct names
+  ID:        `landmark-unique`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: Two `<nav>` landmarks both announced as "navigation"
+
+  Rule:      Top-level landmarks must not be nested inside another landmark
+  ID:        `landmark-top-level`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: A banner, main or contentinfo landmark inside another landmark
+
+  Rule:      All page content should be inside a landmark
+  ID:        `region`
+  Impact:    moderate
+  WCAG:      Best practice
+  Looks for: Content outside every landmark
+
+  Rule:      Form landmarks should be named
+  ID:        `form-landmark-name`
+  Impact:    minor
+  WCAG:      Best practice
+  Looks for: Several unnamed form landmarks
+
+ARIA WIDGET PATTERNS
+====================
+
+In addition to the 126 rules, the Widgets view checks eight composite widget
+patterns: Tabs, Disclosure / Accordion, Combobox, Dialog (modal), Menu /
+Menubar, Tree view, Slider and Carousel. Its findings are reported under the
+category ARIA widget patterns and count in the score like any other rule. When
+a widget finding repeats a rule that has already failed (for example an
+unnamed dialog), it is reported once, not twice.
+
+WCAG CRITERIA THE ENGINE KNOWS
+==============================
+
+The Conformance view lists 60 WCAG success criteria. Eleven of them are never
+checked by any rule, because software cannot judge them. They always appear as
+untested and need a person:
+
+  Criterion | Name                             | Level
+  ----------+----------------------------------+------
+  1.3.2     | Meaningful Sequence              | A
+  1.3.3     | Sensory Characteristics          | A
+  1.4.5     | Images of Text                   | AA
+  2.1.2     | No Keyboard Trap                 | A
+  2.3.1     | Three Flashes or Below Threshold | A
+  2.5.2     | Pointer Cancellation             | A
+  2.5.4     | Motion Actuation                 | A
+  3.2.1     | On Focus                         | A
+  3.2.3     | Consistent Navigation            | AA
+  3.2.4     | Consistent Identification        | AA
+  3.3.7     | Redundant Entry                  | A
+
+A criterion can also show as untested on a particular page when none of its
+rules found anything to check, for example the captions criteria on a page
+with no video.
+
+The other 49 criteria are covered by at least one rule: 1.1.1, 1.2.1, 1.2.2,
+1.2.3, 1.2.5, 1.3.1, 1.3.4, 1.3.5, 1.4.1, 1.4.2, 1.4.3, 1.4.4, 1.4.6, 1.4.10,
+1.4.11, 1.4.12, 1.4.13, 2.1.1, 2.1.4, 2.2.1, 2.2.2, 2.3.3, 2.4.1, 2.4.2,
+2.4.3, 2.4.4, 2.4.5, 2.4.6, 2.4.7, 2.4.9, 2.4.11, 2.4.13, 2.5.1, 2.5.3, 2.5.5,
+2.5.7, 2.5.8, 3.1.1, 3.1.2, 3.1.4, 3.1.5, 3.2.2, 3.2.6, 3.3.1, 3.3.2, 3.3.3,
+3.3.8, 4.1.2 and 4.1.3.
+
+To check the untested criteria yourself, work through the Accessibility
+Checklist [../../accessibility-checklist/README.txt].

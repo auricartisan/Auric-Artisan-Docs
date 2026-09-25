@@ -1,0 +1,132 @@
+==============================================================================
+EXPORT YOUR RESULTS
+==============================================================================
+Use the Export tab to print your findings, copy them as Markdown for an issue
+tracker, or clear your work.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+Open the Export tab. Its heading is "Turn the flags into a report".
+
+WHAT THE TAB SHOWS
+==================
+
+  - What the report will contain — four tiles with your current counts:
+    Flagged, Passed, Not applicable and Untouched (which starts at 50).
+  - Decided, by level — a bar for each of A (out of 22), AA (out of 13), AAA
+    (out of 2) and Practice (out of 13). Here "decided" means Passed or
+    Flagged; N/A does not count.
+  - Evidence — "No screenshots attached", or how many screenshots are attached
+    across how many checks.
+  - Preview — the first lines, as they will read — the first lines of the
+    Markdown export, exactly as it will be copied.
+  - Three ways out — the three buttons below.
+  - A privacy note: "Your work stays on this device."
+  - Before you send it — how many checks are untouched, and a reminder that "A
+    worked checklist is evidence of a process, not a conformance claim."
+
+COPY AS MARKDOWN
+================
+
+"Straight into the tracker." Best for Jira, Linear, GitHub and similar tools.
+
+  1. Select Copy as Markdown.
+  2. The page says "The findings are on your clipboard, as Markdown."
+  3. Paste into your tracker.
+
+The Markdown always covers all 50 checks, whatever filter is on. It has this
+shape:
+
+    # Accessibility review
+    
+    Worked 24 September 2026 · WCAG 2.2 · 15 of 50 checks decided
+    
+    - Flagged: 3
+    - Passed: 10
+    - Not applicable: 2
+    - Never checked: 35
+    
+    Source: https://auricartisan.com/resources/accessibility-checklist/
+    
+    ## Flagged (3)
+    
+    ### 2.4.7 Focus is always visible, and never removed without a replacement
+    Level AA · Keyboard & focus · 2 screenshots attached
+    outline: none with nothing in its place is the single most common accessibility bug in the wild.
+    > (the "What it means" paragraph)
+    
+    ## Never checked (35)
+    These were not looked at. They are not passes.
+    - 1.3.1 Landmarks wrap every region of the page
+    
+    A worked checklist is evidence of a process, not a conformance claim.
+
+Details worth knowing:
+
+  - Each flagged check has its criterion and title as a heading, then its
+    level (or "Practice"), area and screenshot count, its one-line summary,
+    and its "What it means" paragraph as a quote. Practice checks have no
+    criterion number.
+  - Passed and not-applicable checks appear only as counts.
+  - Screenshots are never included; only their number.
+  - "Worked" is the date you copy, not the date you did the work.
+  - The "checks decided" count includes N/A.
+  - If nothing is flagged, the lists are left out and the Markdown says either
+    that nothing is flagged but some checks were never looked at, or simply
+    "Nothing is flagged."
+
+If the browser refuses the clipboard, the page says "Could not reach the
+clipboard — the browser refused it."
+
+EXPORT THE REPORT (PRINT)
+=========================
+
+The button is described as "One printable document". In the current version it
+opens your browser's print dialog for the checklist; it does not download a
+file. To get a PDF, choose Save as PDF in the print dialog.
+
+When you press it, the page announces how many findings it is printing, or
+"Nothing is flagged — printing the list as it stands."
+
+The printout contains the list of checks:
+
+  - Flagged checks with their full explanation and a heavy left border;
+  - Untouched checks collapsed to their title, tags and summary;
+  - up to four small thumbnails of the marked-up screenshots per check.
+
+Passed and N/A checks are left out of the printout, and the tab rail, meter,
+index and pane are not printed. There is no summary of counts on paper; use
+Copy as Markdown for those.
+
+  | Tip: Select All 50 and switch off Open only before printing, so that a filter
+  | does not limit what prints. Pressing `Ctrl` + `P` gives the same printout as
+  | the button.
+
+RESET
+=====
+
+"Clear this device." This removes every mark and every screenshot from every
+check.
+
+  | Important: Although the button's description says it asks first, in the
+  | current version Reset clears everything immediately, with no confirmation and
+  | no undo. There is no server copy to fall back on. Copy your Markdown or print
+  | first if you might need your work.
+
+After a reset the page says "Cleared — marks and screenshots." Filters and
+folded areas are not changed.
+
+WHAT IS NOT AVAILABLE
+=====================
+
+  - No CSV, JSON or file download.
+  - No import or restore, so progress cannot be moved to another browser or
+    device.
+  - No notes field: only marks and screenshots are kept.
+
+THE "WHAT A CLAIM ACTUALLY NEEDS" LINK
+======================================
+
+The link at the foot of the Export tab, What a claim actually needs →, is
+meant to take you to the Reference tab. If it does not switch tabs, select
+Reference in the tab rail. See Laws by jurisdiction
+[laws-by-jurisdiction.txt].

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started — Auric Artisan Docs</title>
+<meta name="description" content="Get an API key from your dashboard, make a first request, and read the response and its usage headers.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started</a></li>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Getting started</h1>
+<p class="lede">Get an API key from your dashboard, make a first request, and read the response and its usage headers.</p>
+<p>This page takes you from no key to a working request.</p>
+<h2 id="1-check-your-plan">1. Check your plan</h2>
+<p>The API is a paid feature, included from the <strong>Specialist</strong> plan upward:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Plan</th><th>API access</th></tr></thead>
+<tbody>
+<tr><td>Apprentice (free)</td><td>Not included</td></tr>
+<tr><td>Artisan</td><td>Not included</td></tr>
+<tr><td>Specialist</td><td>Included</td></tr>
+<tr><td>Industrial Pro</td><td>Included</td></tr>
+</tbody></table></div>
+<p>A key created on a plan without API access authenticates, but metered endpoints refuse it with <code>402 PLAN_UPGRADE_REQUIRED</code>, and the response names the upgrade path. In the dashboard, key creation says &quot;Available from the Specialist plan&quot; until you upgrade.</p>
+<p>You can still explore without a key. These discovery endpoints are open to everyone: <code>GET /v1</code>, <code>GET /v1/catalog</code>, <code>GET /v1/openapi.yaml</code>, <code>GET /v1/docs</code>, <code>GET /v1/tiers</code> and <code>GET /v1/health</code>.</p>
+<h2 id="2-create-a-key">2. Create a key</h2>
+<ol>
+<li>Sign in and open your dashboard at <a href="https://auricartisan.com/auth/dashboard/" rel="noopener">https://auricartisan.com/auth/dashboard/</a>. The API documentation calls this <strong>Dashboard › API Keys</strong>.</li>
+<li>Under <strong>Your API Keys</strong>, choose <strong>Create your first key</strong> (or <strong>Create key</strong> if you already have one).</li>
+<li>Type a name in <strong>Key name (e.g. &quot;CI pipeline&quot;)</strong> and choose <strong>Create</strong>.</li>
+<li>Copy the key and store it somewhere safe, such as a password manager or your deployment&#39;s secret store. &quot;This is the only time the full key is shown.&quot;</li>
+</ol>
+<p>Keys start with <code>aa_</code>. You can hold up to 10 active keys, and <strong>Revoke</strong> any of them instantly.</p>
+<h2 id="3-make-a-first-request">3. Make a first request</h2>
+<p>Send the key in the <code>x-api-key</code> header:</p>
+<pre class="code" data-lang="bash"><code># Convert a color to OKLCH
+curl -X POST https://api.auricartisan.com/v1/color/convert \
+  -H &quot;x-api-key: aa_YOUR_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;color&quot;: &quot;#d3af37&quot;, &quot;to&quot;: &quot;oklch&quot;}'</code></pre>
+<p>The response is JSON:</p>
+<pre class="code" data-lang="json"><code>{&quot;input&quot;:{&quot;rgb&quot;:[211,175,55],&quot;hex&quot;:&quot;#d3af37&quot;},&quot;to&quot;:&quot;oklch&quot;,
+ &quot;value&quot;:[0.7655,0.1384,91.55]}</code></pre>
+<p>Tool endpoints accept JSON through <code>POST</code> and reply in JSON. Collection and discovery endpoints use <code>GET</code> with query parameters.</p>
+<h2 id="4-read-the-headers">4. Read the headers</h2>
+<p>Every response carries your live consumption, so a client can throttle itself:</p>
+<pre class="code" data-lang="text"><code>x-ratelimit-limit: 300            # requests allowed per minute
+x-ratelimit-remaining: 297
+x-ratelimit-reset: 1783502302     # unix seconds
+x-quota-limit: 1000000            # included credits this month
+x-quota-used: 412
+x-quota-remaining: 999588
+x-quota-reset: 1785091200         # unix seconds
+x-credits-cost: 10                # what this call consumed</code></pre>
+<p>See <a href="plans-credits-and-quotas.html">Plans, credits and quotas</a> for what each one means.</p>
+<h2 id="5-check-your-usage">5. Check your usage</h2>
+<pre class="code" data-lang="bash"><code>curl https://api.auricartisan.com/v1/usage/me -H &quot;x-api-key: aa_YOUR_KEY&quot;</code></pre>
+<pre class="code" data-lang="json"><code>{&quot;tier&quot;:&quot;pro&quot;,&quot;plan&quot;:&quot;specialist&quot;,&quot;auth_type&quot;:&quot;api_key&quot;,
+ &quot;limits&quot;:{&quot;rate_per_minute&quot;:300,&quot;monthly_quota&quot;:1000000},
+ &quot;this_month&quot;:{&quot;slot&quot;:&quot;2026-08&quot;,&quot;used&quot;:412}}</code></pre>
+<p><code>used</code> counts credits, not calls.</p>
+<h2 id="6-explore">6. Explore</h2>
+<ul>
+<li><code>GET /v1</code> lists every endpoint with the current version.</li>
+<li><code>GET /v1/catalog</code> returns every endpoint with its parameters and examples, as JSON.</li>
+<li><code>GET /v1/docs</code> is the interactive reference; <code>GET /v1/openapi.yaml</code> is the OpenAPI 3.1 document.</li>
+<li><code>GET /v1/methods/:tool</code> lists the algorithms a tool supports, for example <code>/v1/methods/harmony</code>.</li>
+<li><code>GET /v1/formats</code> lists every export format.</li>
+</ul>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="endpoints/README.html">Endpoints</a> by group</li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="errors.html">Errors</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Public API documentation</a><a href="authentication.html"><span>Next</span>Authentication</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#1-check-your-plan">1. Check your plan</a></li><li><a href="#2-create-a-key">2. Create a key</a></li><li><a href="#3-make-a-first-request">3. Make a first request</a></li><li><a href="#4-read-the-headers">4. Read the headers</a></li><li><a href="#5-check-your-usage">5. Check your usage</a></li><li><a href="#6-explore">6. Explore</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

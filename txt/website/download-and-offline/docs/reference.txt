@@ -1,0 +1,184 @@
+==============================================================================
+DOWNLOAD AND OFFLINE REFERENCE
+==============================================================================
+Every control, check, metric, profile, app property and message of the
+Download page and offline system.
+Area: Website › Download and offline   Updated: 2026-09-25
+
+Page: https://auricartisan.com/download/
+
+HEAD ACTIONS
+============
+
+  Control: Install app
+  Shown:   When the browser offers installation
+  Action:  Opens the browser's install dialog
+
+  Control: Update app
+  Shown:   When an update is waiting
+  Action:  Applies the update and reloads
+
+  Control: Prepare offline version
+  Shown:   Always
+  Action:  Downloads the profile in effect
+
+  Control: Download full offline
+  Shown:   Always
+  Action:  Downloads the Full profile
+
+  Control: Open in browser
+  Shown:   Always
+  Action:  Opens the homepage
+
+  Control: Status line and progress bar
+  Shown:   Always
+  Action:  What is happening now
+
+READINESS SECTION
+=================
+
+  Control         | Action
+  ----------------+---------------------------------------------------------------------------
+  Badge           | Checking, Preparing, Shell ready, Offline ready
+  Checks          | Shell, Full cache, Persistent storage, Local capabilities, Install, Update
+  Check readiness | Refreshes the checks
+  Audit cache     | Compares the store with the profile
+  Repair cache    | Fetches missing files of the profile
+  Reset cache     | Deletes the offline store and rebuilds the shell
+
+METRICS SECTION
+===============
+
+Cache entries, Storage used, Local CPU, Graphics, Offline profile, Cache
+target, Missing assets, PWA version; Browser capabilities (Ready or Limited):
+Service worker, Cache API, Persistent storage, IndexedDB, File access,
+Clipboard, Share, Camera input, EyeDropper, Workers, Graphics, Offline
+privacy; Check local hardware.
+
+PROFILE SECTION
+===============
+
+  Control: Profile
+  Values:  Auto, Lite, Balanced, Full
+  Default: Auto
+
+  Control: Limit background cache work on low-power hardware
+  Values:  On, off
+  Default: Off
+
+  Control: Summary
+  Values:  Selected, Effective profile, Install action, Update action
+  Default: —
+
+  Control: Configure profile
+  Values:  Scrolls to the profile section
+  Default: —
+
+  Profile       | Keeps
+  --------------+------------------------------------------------------
+  Lite          | App shell (main pages, styles, scripts, offline page)
+  Balanced      | Shell, library data, core tools and colour libraries
+  Full          | Every file listed for offline use
+  Any, in Hindi | Plus the Hindi text (about 11 MB)
+
+THE INSTALLED APP
+=================
+
+  Property: Name / short name
+  Value:    Auric Artisan / Auric
+
+  Property: Display
+  Value:    Standalone window (falls back to minimal or browser display)
+
+  Property: Start page
+  Value:    The homepage
+
+  Property: Shortcuts
+  Value:    Palette Library, Gradient Library, Basic Tools, Workspace,
+            Analyzer, Browser PWA
+
+  Property: Opens files
+  Value:    `.json`, `.css`, `.csv`, `.txt`, `.md`, `.png`, `.jpg`, `.jpeg`,
+            `.svg`
+
+  Property: Share target
+  Value:    Links and text shared to the app open in the Workspace
+
+  Property: Link types
+  Value:    `web+auric:`, `web+palette:`
+
+  Property: Categories
+  Value:    Design, education, productivity, utilities
+
+MESSAGES
+========
+
+  Message: Ready to prepare the offline version in this browser.
+  When:    The page has loaded
+
+  Message: Checking offline readiness...
+  When:    Checks are running
+
+  Message: Browser PWA is active. Prepare offline version to cache the full
+           toolset.
+  When:    Shell stored, profile not complete
+
+  Message: Offline version is prepared for this browser.
+  When:    Profile complete
+
+  Message: Downloading the NAME offline profile into this browser...
+  When:    Prepare started
+
+  Message: Downloading the full offline app into this browser...
+  When:    Download full offline started
+
+  Message: Full profile selected. Downloading the full offline cache...
+  When:    Full chosen in Profile
+
+  Message: Preparing offline version: A/B checked, C cached, D failed.
+  When:    During a download
+
+  Message: NAME offline download finished: A/B assets ready.
+  When:    Download finished
+
+  Message: Offline version ready with N cached assets.
+  When:    Background download finished
+
+  Message: Offline download could not start yet. Check service worker
+           readiness and try again.
+  When:    The offline system was not ready
+
+  Message: Updated offline hardware profile. / Updated hardware limit setting.
+  When:    Profile or switch changed
+
+  Message: Cache audit passed. Offline profile is complete.
+  When:    Audit found nothing missing
+
+  Message: Cache audit found missing assets. Repair cache can retry them.
+  When:    Audit found gaps
+
+  Message: Cache repair finished: A/B assets ready.
+  When:    Repair finished
+
+  Message: PWA caches reset. Shell cache rebuilt.
+  When:    Reset finished
+
+  Message: Offline now. Cached Auric Artisan tools remain available in this
+           browser.
+  When:    Connection lost while on the page
+
+  Message: Back online. Checking browser PWA status...
+  When:    Connection returned
+
+  Message: PWA runtime is still loading. Refresh the page if this does not
+           clear.
+  When:    The page's offline controls are not ready
+
+  Message: Saving for offline — N% / Full offline app ready
+  When:    Site-wide progress messages
+
+  Message: Offline mode / Back online
+  When:    Site-wide connection messages
+
+  Message: Update ready — Refresh to use the newest offline cache.
+  When:    An update is waiting

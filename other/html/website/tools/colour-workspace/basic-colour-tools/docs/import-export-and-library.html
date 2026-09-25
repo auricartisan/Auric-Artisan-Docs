@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Import, export and the Library — Auric Artisan Docs</title>
+<meta name="description" content="Every way to bring colours and images into Basic Color Tools, every copy and download format, the palette share link, and saving to and reopening from your Library.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Basic Color Tools</a>
+<h2>Basic Color Tools documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Basic Color Tools</a></li>
+<li><a href="import-export-and-library.html" aria-current="page">Import, export and the Library</a></li>
+<li><a href="workspace-and-panels.html">Workspace and panels</a></li>
+<li><a href="reference.html">Basic Color Tools reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Basic Color Tools</a></li>
+<li><a href="faq.html">Basic Color Tools FAQ</a></li>
+<li><a href="colour-tools/README.html">Colour Tools workbench &rsaquo;</a></li>
+<li><a href="panel-tools/README.html">Panel tools &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Basic Color Tools</a> &rsaquo; <a href="README.html">Basic Color Tools documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Import, export and the Library</h1>
+<p class="lede">Every way to bring colours and images into Basic Color Tools, every copy and download format, the palette share link, and saving to and reopening from your Library.</p>
+<p>Open panels in Basic Color Tools are not kept when you reload or leave the page. To keep your work, copy it, download it, or save it to your Auric Artisan Library. This guide lists every way in and out.</p>
+<h2 id="bringing-colours-and-images-in">Bringing colours and images in</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Into</th><th>How</th><th>Accepts</th></tr></thead>
+<tbody>
+<tr><td>Palette Studio</td><td><strong>From Image</strong></td><td>Any image file your browser can open. Colours are extracted on your device.</td></tr>
+<tr><td>Palette Studio</td><td>Select a HEX label on a strip</td><td>Any colour, through the site colour picker.</td></tr>
+<tr><td>Palette Remix</td><td><strong>Seed colors</strong> box</td><td>HEX, <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, <code>hsla()</code>, <code>hsv()</code>, <code>oklch()</code>, separated by lines, spaces, commas, semicolons or vertical bars.</td></tr>
+<tr><td>Color Battle</td><td><strong>Team A</strong> and <strong>Team B</strong> boxes</td><td>Same as Palette Remix, up to nine colours per team.</td></tr>
+<tr><td>Gradient Maker</td><td>Stop HEX boxes and colour wells</td><td>Three- or six-digit HEX, or the browser&#39;s picker.</td></tr>
+<tr><td>Color Picker</td><td>HEX box, colour well, <strong>Pick</strong> eyedropper</td><td>HEX; any pixel on screen where the eyedropper is supported.</td></tr>
+<tr><td>Quick Converter</td><td>Input box, colour well</td><td>HEX, <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, <code>hsla()</code>, <code>hsv()</code>, <code>oklch()</code>.</td></tr>
+<tr><td>Collage Maker</td><td><strong>+ Add Images</strong>, or select a cell</td><td>Image files from your device.</td></tr>
+<tr><td>Any tool</td><td>Your Library</td><td>Saved palettes, gradients and colours reopen in the matching tool. See below.</td></tr>
+</tbody></table></div>
+<p>Colours you type in any of the text boxes are converted to sRGB HEX codes. Values outside the sRGB range are clipped.</p>
+<h2 id="copy-and-download-formats">Copy and download formats</h2>
+<h3 id="palette-studio">Palette Studio</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Kind</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Share</strong></td><td>Copy</td><td>A link with the HEX codes after <code>#palette=</code></td></tr>
+<tr><td><strong>CSS</strong></td><td>Copy</td><td>CSS custom properties <code>--color-1</code> …</td></tr>
+<tr><td><strong>SCSS</strong></td><td>Copy</td><td>Sass variables <code>$color-1</code> …</td></tr>
+<tr><td><strong>TW</strong></td><td>Copy</td><td>Tailwind <code>extend.colors</code> snippet with <code>palette-1</code> …</td></tr>
+<tr><td><strong>JSON</strong></td><td>Copy</td><td>Array of colour objects with metrics</td></tr>
+<tr><td><strong>SVG</strong></td><td>Download</td><td><code>palette.svg</code>, 1200 × 240</td></tr>
+<tr><td><strong>PNG</strong></td><td>Download</td><td><code>palette.png</code>, 1200 × 240</td></tr>
+<tr><td><strong>ASE</strong></td><td>Copy</td><td>Tab-separated text lines</td></tr>
+</tbody></table></div>
+<p>Examples:</p>
+<pre class="code" data-lang="css"><code>:root {
+  --color-1: #D3AF37;
+  --color-2: #1A1A2E;
+}</code></pre>
+<pre class="code" data-lang="scss"><code>$color-1: #D3AF37;
+$color-2: #1A1A2E;</code></pre>
+<pre class="code" data-lang="text"><code>extend: { colors: {
+    &quot;palette-1&quot;: &quot;#D3AF37&quot;,
+    &quot;palette-2&quot;: &quot;#1A1A2E&quot;
+} }</code></pre>
+<pre class="code" data-lang="json"><code>[
+  {
+    &quot;hex&quot;: &quot;#D3AF37&quot;,
+    &quot;rgb&quot;: { &quot;r&quot;: 211, &quot;g&quot;: 175, &quot;b&quot;: 55 },
+    &quot;oklch&quot;: { &quot;L&quot;: 0.766, &quot;C&quot;: 0.138, &quot;H&quot;: 91.6 },
+    &quot;lab&quot;: { &quot;L&quot;: 72.75, &quot;a&quot;: 0.95, &quot;b&quot;: 62.79 },
+    &quot;luminance&quot;: 0.448,
+    &quot;bestText&quot;: { &quot;hex&quot;: &quot;#000000&quot;, &quot;ratio&quot;: 9.96, &quot;label&quot;: &quot;dark&quot;, &quot;passes&quot;: true },
+    &quot;locked&quot;: false
+  }
+]</code></pre>
+<p>For role palettes each object also has <code>role</code>, <code>token</code>, <code>pairWith</code>, <code>target</code> and <code>note</code>. The real output carries more decimal places than shown here.</p>
+<p>The <strong>ASE</strong> text looks like this, with tab characters between the parts:</p>
+<pre class="code" data-lang="text"><code>Color 1	#D3AF37	RGB(211, 175, 55)
+Color 2	#1A1A2E	RGB(26, 26, 46)</code></pre>
+<p>It is plain text, not a binary Adobe Swatch Exchange file.</p>
+<h3 id="palette-remix">Palette Remix</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Kind</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>CSS</strong></td><td>Copy</td><td>One <code>:root</code> block per set, <code>--remix-1-1</code> …</td></tr>
+<tr><td><strong>JSON</strong></td><td>Copy</td><td>Array of the four sets with <code>name</code>, <code>note</code>, <code>hexes</code></td></tr>
+<tr><td><strong>All HEX</strong></td><td>Copy</td><td>Every HEX code, one per line</td></tr>
+<tr><td><strong>Copy</strong> (card)</td><td>Copy</td><td>One set&#39;s HEX codes, space-separated</td></tr>
+<tr><td>Swatch</td><td>Copy</td><td>One HEX code</td></tr>
+</tbody></table></div>
+<h3 id="gradient-maker">Gradient Maker</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Kind</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy CSS</strong></td><td>Copy</td><td><code>background: linear-gradient(…);</code> (or radial or conic)</td></tr>
+<tr><td><strong>SVG</strong></td><td>Download</td><td><code>gradient.svg</code>, 800 × 400</td></tr>
+<tr><td><strong>1600px</strong></td><td>Download</td><td><code>gradient.png</code>, 1600 × 800</td></tr>
+<tr><td><strong>4K</strong></td><td>Download</td><td><code>gradient.png</code>, 3840 × 1920</td></tr>
+<tr><td><strong>JSON</strong></td><td>Copy</td><td>The JSON shown on the <strong>Export</strong> tab</td></tr>
+<tr><td><strong>Tailwind</strong></td><td>Copy</td><td><code>backgroundImage: { &#39;gradient&#39;: &#39;…&#39; }</code></td></tr>
+</tbody></table></div>
+<p>Open the <strong>Export</strong> tab after your last change before you copy JSON; see <a href="panel-tools/gradient-maker.html">Gradient Maker</a>.</p>
+<h3 id="color-picker-and-quick-converter">Color Picker and Quick Converter</h3>
+<p>Every row on the <strong>Formats</strong> tab (Color Picker) and the <strong>Convert</strong> tab (Quick Converter) has its own copy button. Quick Converter&#39;s <strong>CSS oklch()</strong>, <strong>CSS oklab()</strong> and <strong>CSS lab()</strong> rows are ready for stylesheets.</p>
+<h3 id="color-battle">Color Battle</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Kind</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy winner</strong></td><td>Copy</td><td>The winning team&#39;s HEX codes, one per line (Team A in a draw)</td></tr>
+<tr><td><strong>Copy report</strong></td><td>Copy</td><td>A short text report with the result and both scores</td></tr>
+<tr><td>Swatch</td><td>Copy</td><td>One HEX code</td></tr>
+</tbody></table></div>
+<h3 id="collage-maker">Collage Maker</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Kind</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Export PNG (4K)</strong></td><td>Download</td><td><code>collage.png</code>, 3,840 pixels wide when the preview is at least 800 pixels wide</td></tr>
+</tbody></table></div>
+<h3 id="what-copied-looks-like">What &quot;copied&quot; looks like</h3>
+<p>Every copy button shows a short message such as <strong>Copied</strong>, <strong>CSS copied</strong> or <strong>JSON copied</strong> near the bottom of the page. If your browser blocks clipboard access, nothing is copied; see <a href="troubleshooting.html">Troubleshooting</a>.</p>
+<h2 id="the-palette-share-link">The palette share link</h2>
+<p>Palette Studio&#39;s <strong>Share</strong> button copies a link like this:</p>
+<pre class="code" data-lang="text"><code>https://auricartisan.com/tool/basic-tools/#palette=D3AF37-1A1A2E-F5DEB3-0F172A-FFFFFF</code></pre>
+<p>The HEX codes are listed after <code>#palette=</code>, without <code>#</code> signs and separated by hyphens. Opening the link opens Basic Color Tools, but the page does not rebuild the palette from it automatically. Use the link as a compact record: copy the codes and paste them into Palette Remix, Color Battle or Quick Converter.</p>
+<p>The Catalogue&#39;s <strong>Copy link</strong> button copies the page address as it is in your browser.</p>
+<h2 id="save-to-library">Save to Library</h2>
+<p>The <strong>Save to Library</strong> button floats near the bottom-right corner of the page. On narrow screens it shows only its icon.</p>
+<ol>
+<li>Focus the panel you want to save by selecting it.</li>
+<li>Select <strong>Save to Library</strong>.</li>
+<li>A save window opens listing what will be saved. For each item you can edit the <strong>Name</strong> and <strong>Description</strong>. You can also choose a <strong>Collection</strong> (or leave it <strong>Unfiled</strong>) and add <strong>Tags (comma-separated)</strong> for all items.</li>
+<li>Select <strong>Save to Library</strong> in the window, or press <code>Ctrl</code> + <code>Enter</code> (<code>Cmd</code> + <code>Enter</code> on a Mac). Select <strong>Cancel</strong> to close without saving.</li>
+</ol>
+<p>Result: a message such as <strong>Saved &quot;Palette · 5 colors (analogous)&quot;</strong> appears, and the item is in your Library.</p>
+<p>What each tool saves:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Focused panel</th><th>Saved as</th></tr></thead>
+<tbody>
+<tr><td>Palette Studio</td><td>One palette, with the harmony mode and CVD preview setting.</td></tr>
+<tr><td>Palette Remix</td><td>Four palettes, one per remix set, named after the set.</td></tr>
+<tr><td>Gradient Maker</td><td>One gradient, with its CSS, stops, type, angle, interpolation and easing.</td></tr>
+<tr><td>Color Picker</td><td>One colour, with its formats and harmony colours.</td></tr>
+<tr><td>Color Battle</td><td>Two palettes, <strong>Team A</strong> and <strong>Team B</strong>, each remembering both teams and the result.</td></tr>
+<tr><td>Quick Converter</td><td>One colour, with every format.</td></tr>
+<tr><td>Collage Maker</td><td>Nothing from the collage. Export the PNG instead.</td></tr>
+<tr><td>No panel open, or only Collage Maker</td><td>A <strong>Basic Tools workspace</strong> bookmark that records your level setting.</td></tr>
+</tbody></table></div>
+<p>Save acts on the focused panel. Docked (minimised) panels are not saved. If there is nothing to save, a message says <strong>Nothing to save yet — try creating something first.</strong></p>
+<h2 id="reopening-saved-items">Reopening saved items</h2>
+<p>You can reopen items from your Library in Basic Color Tools. The item opens in a fresh panel of the tool that suits it, replacing any panel of that tool that is already open:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Saved item</th><th>Reopens in</th></tr></thead>
+<tbody>
+<tr><td>A palette saved from Palette Studio</td><td>Palette Studio (<strong>Loaded N colors from library</strong>)</td></tr>
+<tr><td>A remix set</td><td>Palette Remix, as seed colours (<strong>Loaded remix from library</strong>)</td></tr>
+<tr><td>A gradient</td><td>Gradient Maker (<strong>Loaded gradient from library</strong>)</td></tr>
+<tr><td>A colour saved from Color Picker</td><td>Color Picker (<strong>Loaded color from library</strong>)</td></tr>
+<tr><td>A colour saved from Quick Converter</td><td>Quick Converter (<strong>Loaded color from library</strong>)</td></tr>
+<tr><td>A Color Battle team</td><td>Color Battle, with both teams (<strong>Loaded teams from library</strong>)</td></tr>
+<tr><td>A palette, gradient or colour saved from another tool</td><td>Palette Studio, Gradient Maker or Color Picker, by type</td></tr>
+<tr><td>A saved analysis run from the URL Analyzer</td><td>Palette Studio, with the colours of the audited page</td></tr>
+</tbody></table></div>
+<p>Because a restore opens a fresh panel, any unsaved work in the replaced panel is lost.</p>
+<p>For how to browse, organise and send items from the Library, see the <a href="../../../../kits/library-kit/README.html">Library Kit</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../README.html">Basic Color Tools overview</a></li>
+<li><a href="panel-tools/README.html">Panel tools</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="../others/privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Basic Color Tools</a><a href="workspace-and-panels.html"><span>Next</span>Workspace and panels</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#bringing-colours-and-images-in">Bringing colours and images in</a></li><li><a href="#copy-and-download-formats">Copy and download formats</a></li><li><a href="#the-palette-share-link">The palette share link</a></li><li><a href="#save-to-library">Save to Library</a></li><li><a href="#reopening-saved-items">Reopening saved items</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

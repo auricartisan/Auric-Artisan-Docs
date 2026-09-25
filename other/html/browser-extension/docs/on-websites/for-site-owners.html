@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For site owners — Auric Artisan Docs</title>
+<meta name="description" content="How a website can keep its form controls native and keep the browser's right-click menu for visitors who use the Auric Artisan extension.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>On websites</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="browser-menu-items.html">Browser menu items</a></li>
+<li><a href="colour-picker-on-pages.html">Colour picker on pages</a></li>
+<li><a href="for-site-owners.html" aria-current="page">For site owners</a></li>
+<li><a href="right-click-menu.html">Right-click menu</a></li>
+<li><a href="website-pickers.html">Website pickers</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">On websites</a></nav>
+<p class="kicker">Browser extension › On websites</p>
+<h1>For site owners</h1>
+<p class="lede">How a website can keep its form controls native and keep the browser's right-click menu for visitors who use the Auric Artisan extension.</p>
+<p>Visitors who use Auric Artisan can turn on its website pickers and its right-click menu. Both are designed to leave designed sites alone, but you can also opt out explicitly with a few attributes. None of these affect visitors who do not have the extension.</p>
+<h2 id="keep-form-controls-native">Keep form controls native</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>What to add</th><th>Works</th></tr></thead>
+<tbody>
+<tr><td>On the control itself</td><td><code>data-aa-picker-skip</code></td><td>Always</td></tr>
+<tr><td>On an ancestor of the control</td><td><code>data-aa-picker-skip</code></td><td>While the visitor keeps <strong>Leave designed controls alone</strong> on (the default)</td></tr>
+<tr><td>On the control or an ancestor</td><td><code>data-native-control</code>, <code>data-aa-native</code> or <code>data-no-enhance</code></td><td>While <strong>Leave designed controls alone</strong> is on</td></tr>
+<tr><td>On a colour input</td><td><code>data-cp-skip</code></td><td>Always. Colour inputs follow their own rule; the attributes above do not apply to them.</td></tr>
+</tbody></table></div>
+<p>Example:</p>
+<pre class="code" data-lang="html"><code>&lt;select data-aa-picker-skip&gt;
+  &lt;option&gt;Keep the browser's list&lt;/option&gt;
+&lt;/select&gt;
+&lt;input type=&quot;color&quot; data-cp-skip&gt;</code></pre>
+<p>Controls you have restyled (for example with <code>appearance: none</code>) or hidden behind your own widget are already left alone while <strong>Leave designed controls alone</strong> is on. Hidden, disabled and read-only colour inputs are never replaced.</p>
+<h2 id="keep-the-browsers-right-click-menu">Keep the browser&#39;s right-click menu</h2>
+<p>For the whole page, add either attribute to the <code>&lt;html&gt;</code> element:</p>
+<pre class="code" data-lang="html"><code>&lt;html data-aa-no-ext-menu&gt;</code></pre>
+<pre class="code" data-lang="html"><code>&lt;html data-native-context-menu&gt;</code></pre>
+<p>or add a meta tag:</p>
+<pre class="code" data-lang="html"><code>&lt;meta name=&quot;auric-extension-menu&quot; content=&quot;off&quot;&gt;</code></pre>
+<p>For one area, mark the element or an ancestor:</p>
+<pre class="code" data-lang="html"><code>&lt;div data-aa-own-menu&gt;…&lt;/div&gt;</code></pre>
+<p>A page that shows its own right-click menu by cancelling the browser&#39;s (calling <code>preventDefault()</code> on the <code>contextmenu</code> event) is left alone automatically, while the visitor keeps <strong>Step aside for a site&#39;s own menu</strong> on (the default).</p>
+<h2 id="what-the-extension-never-does-on-your-site">What the extension never does on your site</h2>
+<ul>
+<li>It does not read or write your site&#39;s cookies, local storage or other storage.</li>
+<li>It does not send anything from your pages anywhere.</li>
+<li>Its pickers write values into your real controls through the normal <code>input</code> and <code>change</code> events, and the native controls stay in the page for form submission.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="website-pickers.html">Website pickers</a></li>
+<li><a href="right-click-menu.html">Right-click menu</a></li>
+<li><a href="../../others/privacy.html">Privacy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="colour-picker-on-pages.html"><span>Previous</span>Colour picker on pages</a><a href="right-click-menu.html"><span>Next</span>Right-click menu</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#keep-form-controls-native">Keep form controls native</a></li><li><a href="#keep-the-browsers-right-click-menu">Keep the browser's right-click menu</a></li><li><a href="#what-the-extension-never-does-on-your-site">What the extension never does on your site</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

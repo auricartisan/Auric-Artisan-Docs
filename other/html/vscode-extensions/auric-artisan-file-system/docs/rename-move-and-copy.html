@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rename, move and copy — Auric Artisan Docs</title>
+<meta name="description" content="Rename, move, copy and duplicate files one at a time or in batches, convert extensions, and review every change before it happens.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html" aria-current="page">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Rename, move and copy</h1>
+<p class="lede">Rename, move, copy and duplicate files one at a time or in batches, convert extensions, and review every change before it happens.</p>
+<p>These commands are in the <strong>Edit &amp; batch</strong> group of the workspace panel and the <strong>Auric Files</strong> › <strong>Edit and Batch</strong> submenu. They need a trusted workspace. VS Code&#39;s own <strong>Rename</strong> (<code>F2</code>) and drag-and-drop in the Explorer keep working as usual; the Auric versions add collision planning, protection, confirmations and undo.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Use it to</th></tr></thead>
+<tbody>
+<tr><td><strong>Rename…</strong></td><td>Rename the selected item</td></tr>
+<tr><td><strong>Rename Current File</strong></td><td>Rename the file open in the editor</td></tr>
+<tr><td><strong>Move…</strong> / <strong>Move Current File</strong></td><td>Move items, or the current file, to another folder</td></tr>
+<tr><td><strong>Copy To…</strong></td><td>Copy items to another folder</td></tr>
+<tr><td><strong>Duplicate</strong> / <strong>Duplicate Current File</strong></td><td>Make a copy beside the original</td></tr>
+<tr><td><strong>Batch Rename…</strong></td><td>Rename many files by a rule, with a preview</td></tr>
+<tr><td><strong>Batch Move…</strong></td><td>Move many items to one folder</td></tr>
+<tr><td><strong>Convert Extension…</strong></td><td>Change the extension of many files</td></tr>
+</tbody></table></div>
+<p><strong>Rename…</strong>, <strong>Move…</strong>, <strong>Copy To…</strong> and <strong>Duplicate</strong> act on the selection and run from the panel, the context menus or the shortcut deck; they are not listed in the Command Palette. The &quot;Current File&quot; versions act on the editor&#39;s file.</p>
+<h2 id="before-anything-changes">Before anything changes</h2>
+<p>Every operation is planned first:</p>
+<ul>
+<li><strong>Protected paths.</strong> Anything matching <code>auricFiles.safety.protectedPaths</code> cannot be renamed, moved or deleted. By default that covers <code>.git</code>, <code>node_modules</code>, <code>.env</code> files, <code>.pem</code> and <code>.key</code> files, and the npm, Yarn and pnpm lockfiles. A plan that touches one is blocked before any byte is written.</li>
+<li><strong>Collisions.</strong> A target that already exists is a conflict and is reported. Nothing is overwritten silently.</li>
+<li><strong>Case-only renames</strong> (<code>button.ts</code> to <code>Button.ts</code>) on a case-insensitive file system are applied as two renames, and the preview says so.</li>
+<li><strong>Git warnings.</strong> Moving or deleting a file tracked by Git (<code>auricFiles.safety.warnOnGitTracked</code>) or with uncommitted edits (<code>auricFiles.safety.warnOnUncommittedChanges</code>) shows a warning first.</li>
+<li><strong>Bulk confirmation.</strong> An operation touching at least <code>auricFiles.safety.confirmBulk</code> paths (default 5) asks first. Set it to <code>0</code> to be asked every time.</li>
+<li><strong>History.</strong> The operation is recorded so <strong>Undo Last File Operation</strong> can reverse it.</li>
+</ul>
+<h2 id="rename-one-file">Rename one file</h2>
+<ol>
+<li>Right-click the file and choose <strong>Auric Files</strong> › <strong>Edit and Batch</strong> › <strong>Rename Current File</strong>, or run <strong>Auric Files: Rename Current File</strong> with the file open.</li>
+<li>Type the new name.</li>
+<li>The file is renamed; tags, groups and other Auric metadata follow it.</li>
+</ol>
+<h2 id="batch-rename">Batch rename</h2>
+<ol>
+<li>Select the files in the Explorer (hold <code>Ctrl</code> or <code>Shift</code> while clicking).</li>
+<li>Run <strong>Auric Files: Batch Rename…</strong>.</li>
+<li>Answer <strong>How should <em>N</em> files be renamed?</strong>:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Mode</th><th>What it does</th><th>You then enter</th></tr></thead>
+<tbody>
+<tr><td><strong>Find and replace</strong></td><td>Replace literal text</td><td><strong>Find</strong>, then <strong>Replace with</strong></td></tr>
+<tr><td><strong>Regular expression</strong></td><td>Replace by pattern; use <code>$1</code>, <code>$2</code> for capture groups</td><td><strong>Find</strong> (a regular expression), then <strong>Replace with</strong></td></tr>
+<tr><td><strong>Pattern</strong></td><td>Build each name from tokens</td><td><strong>Pattern</strong>, for example <code>{parent}-{name}{ext}</code></td></tr>
+<tr><td><strong>Sequence</strong></td><td>Number the files</td><td>A pattern; the default is <code>{name}-{n}{ext}</code></td></tr>
+<tr><td><strong>Change case</strong></td><td>Change the letter case</td><td>A style: <code>kebab</code>, <code>camel</code>, <code>pascal</code>, <code>snake</code>, <code>upper</code>, <code>lower</code>, <code>title</code></td></tr>
+<tr><td><strong>Change extension</strong></td><td>Swap one extension for another</td><td>The extension to replace (blank for any), then the new one</td></tr>
+</tbody></table></div>
+<ol start="4">
+<li>Review <strong>Batch Rename — preview</strong>: <em>N</em> files would change, with any problems counted. Each row shows the old name and, with an arrow, the new one; rows with a problem show a warning and the reason.</li>
+<li>Choose <strong>Apply</strong> to rename, or press <code>Escape</code> to cancel.</li>
+</ol>
+<p>With <code>auricFiles.safety.previewBeforeApply</code> on (the default), the preview is always shown and needs your approval.</p>
+<h3 id="pattern-tokens">Pattern tokens</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Token</th><th>Replaced with</th></tr></thead>
+<tbody>
+<tr><td><code>{name}</code></td><td>The file name without its extension (compound extensions such as <code>.test.ts</code> count as one)</td></tr>
+<tr><td><code>{ext}</code></td><td>The extension, including the dot</td></tr>
+<tr><td><code>{n}</code></td><td>A running number, starting at 1</td></tr>
+<tr><td><code>{index}</code></td><td>The file&#39;s position in the selection, starting at 0</td></tr>
+<tr><td><code>{parent}</code></td><td>The parent folder&#39;s name</td></tr>
+<tr><td><code>{date}</code></td><td>Today&#39;s date as YYYY-MM-DD</td></tr>
+<tr><td><code>{rand}</code></td><td>Six random letters and digits</td></tr>
+</tbody></table></div>
+<h3 id="regular-expressions">Regular expressions</h3>
+<p>The preview updates as you type. A pattern that is too slow to preview stops the batch with <strong>Pattern is too slow to preview; simplify it.</strong> Patterns are limited to 512 characters.</p>
+<h2 id="move-or-copy">Move or copy</h2>
+<ol>
+<li>Select the items and run <strong>Move…</strong>, <strong>Batch Move…</strong> or <strong>Copy To…</strong> (or <strong>Move Current File</strong> for the editor&#39;s file).</li>
+<li><strong>Choose the destination</strong> from the folders in the workspace, or choose <strong>Browse…</strong> to pick a folder on disk.</li>
+<li>Confirm if asked.</li>
+</ol>
+<p>Moved items keep their tags, groups and other Auric metadata.</p>
+<h2 id="duplicate">Duplicate</h2>
+<p><strong>Duplicate</strong> (or <strong>Duplicate Current File</strong>) makes a copy beside the original under a name that does not clash with an existing file.</p>
+<h2 id="convert-extensions">Convert extensions</h2>
+<ol>
+<li>Select the files and run <strong>Auric Files: Convert Extension…</strong>.</li>
+<li><strong>Which extension should change?</strong> Choose one of the extensions in the selection, or <strong>Any extension</strong>.</li>
+<li>Type the <strong>New extension</strong>, for example <code>.ts</code>.</li>
+<li>Review the preview and choose <strong>Apply</strong>.</li>
+</ol>
+<p>Converting renames files only; it does not change their contents.</p>
+<h2 id="undo">Undo</h2>
+<p>Every rename, move, copy and duplicate made through Auric Files can be undone with <strong>Auric Files: Undo Last File Operation</strong>. See <a href="history-and-workspace-trash.html">History, undo and the workspace trash</a>.</p>
+<p>After a batch rename, the Explorer shows the new names, and <strong>Show Operation History</strong> lists the rename as one operation.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="related-files.html"><span>Previous</span>Related files</a><a href="search-filter-and-duplicates.html"><span>Next</span>Search, filters and duplicates</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-anything-changes">Before anything changes</a></li><li><a href="#rename-one-file">Rename one file</a></li><li><a href="#batch-rename">Batch rename</a></li><li><a href="#move-or-copy">Move or copy</a></li><li><a href="#duplicate">Duplicate</a></li><li><a href="#convert-extensions">Convert extensions</a></li><li><a href="#undo">Undo</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

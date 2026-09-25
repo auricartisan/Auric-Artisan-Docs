@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color Battle — Auric Artisan Docs</title>
+<meta name="description" content="Enter two palettes, score each for contrast, perceptual separation and colour-vision resilience, compare them in a cross-palette matrix, and copy the winner or a report.">
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../../index.html">Home</a><a href="../../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Basic Color Tools documentation</a>
+<h2>Panel tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="collage-maker.html">Collage Maker (panel)</a></li>
+<li><a href="colour-battle.html" aria-current="page">Color Battle</a></li>
+<li><a href="colour-picker.html">Color Picker</a></li>
+<li><a href="gradient-maker.html">Gradient Maker</a></li>
+<li><a href="palette-remix.html">Palette Remix</a></li>
+<li><a href="palette-studio.html">Palette Studio</a></li>
+<li><a href="quick-converter.html">Quick Converter</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../../README.html">The website</a> &rsaquo; <a href="../../../../README.html">Website tools</a> &rsaquo; <a href="../../../README.html">Colour workspace</a> &rsaquo; <a href="../../README.html">Basic Color Tools</a> &rsaquo; <a href="../README.html">Basic Color Tools documentation</a> &rsaquo; <a href="README.html">Panel tools</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Color Battle</h1>
+<p class="lede">Enter two palettes, score each for contrast, perceptual separation and colour-vision resilience, compare them in a cross-palette matrix, and copy the winner or a report.</p>
+<p>Color Battle compares two palettes, <strong>Team A</strong> and <strong>Team B</strong>, and gives each a score out of 100. The score rewards palettes whose colours contrast well with each other, look clearly different, and stay different for people with colour-vision deficiencies. It also shows a matrix of contrast between every colour in Team A and every colour in Team B, which helps when one palette will be used for text and the other for backgrounds.</p>
+<p>Use it to choose between two candidate palettes, to test a palette against a competitor&#39;s, or to see how much a change improves things.</p>
+<p>Color Battle is in the <strong>Pick</strong> category at the <strong>Advanced</strong> level.</p>
+<h2 id="open-it">Open it</h2>
+<p>In the Workspace view, select <strong>Color Battle</strong> in <strong>Open a tool</strong>. It opens with two five-colour teams already scored.</p>
+<h2 id="screen-tour">Screen tour</h2>
+<h3 id="sidebar">Sidebar</h3>
+<ul>
+<li><strong>Team A</strong>, with the hint <em>HEX/RGB/HSL/OKLCH, one per line.</em>, a dice button that fills the team with random colours, and a text box.</li>
+<li><strong>Team B</strong>, with the hint <em>Competing palette.</em>, its own dice button and text box.</li>
+<li><strong>Battle</strong> and <strong>Swap</strong>.</li>
+<li><strong>Copy winner</strong> and <strong>Copy report</strong>.</li>
+<li><strong>Result</strong>: <strong>Team A wins</strong>, <strong>Team B wins</strong> or <strong>Draw</strong>.</li>
+</ul>
+<h3 id="main-area-score-results">Main area: Score Results</h3>
+<ul>
+<li>Two score cards side by side (stacked on narrow panels), one per team.</li>
+<li>A <strong>Cross-palette contrast matrix</strong> card below them.</li>
+</ul>
+<h2 id="what-you-can-type">What you can type</h2>
+<p>Each team box accepts the same colour forms as Palette Remix: HEX (three or six digits, with or without <code>#</code>), <code>rgb()</code>/<code>rgba()</code>, <code>hsl()</code>/<code>hsla()</code>, <code>hsv()</code> and <code>oklch()</code>. Put one colour per line, or separate them with spaces, commas, semicolons or vertical bars. When the battle runs, each box is tidied into HEX codes, one per line, duplicates are removed, and only the first nine colours are kept. If a box has no valid colour, it falls back to its default team.</p>
+<h2 id="how-the-score-works">How the score works</h2>
+<p>For each team the tool looks at every pair of colours inside that team. A five-colour team has 10 pairs; a nine-colour team has 36. It then combines four measures:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Measure</th><th>Shown as</th><th>Weight</th><th>Full marks at</th></tr></thead>
+<tbody>
+<tr><td>Average WCAG contrast ratio of the pairs</td><td><strong>Avg contrast</strong></td><td>35 points</td><td>an average of 7:1 or more</td></tr>
+<tr><td>Share of pairs at 4.5:1 or more</td><td><strong>AA pairs</strong></td><td>30 points</td><td>100 % of pairs</td></tr>
+<tr><td>Average perceptual difference (ΔE2000) of the pairs</td><td><strong>Avg ΔE2000</strong></td><td>20 points</td><td>an average of 44 or more</td></tr>
+<tr><td>Average ΔE2000 after simulating deuteranopia, protanopia, tritanopia and achromatopsia</td><td><strong>CVD ΔE avg</strong></td><td>15 points</td><td>an average of 34 or more</td></tr>
+</tbody></table></div>
+<p>The total is rounded to a whole number from 0 to 100. The team with the higher total wins; equal totals are a <strong>Draw</strong>. A team with only one colour has no pairs and scores 0.</p>
+<p><strong>ΔE2000</strong> (delta E 2000) is a standard measure of how different two colours look. Around 1 is barely noticeable; values in the tens mean clearly different colours.</p>
+<h2 id="tasks">Tasks</h2>
+<h3 id="compare-two-candidate-palettes">Compare two candidate palettes</h3>
+<ol>
+<li>Replace the text in <strong>Team A</strong> with your first palette, one colour per line.</li>
+<li>Replace the text in <strong>Team B</strong> with your second palette.</li>
+<li>Select <strong>Battle</strong>. (Leaving a text box also runs the battle.)</li>
+<li>Read each score card: the large number is the <strong>battle score</strong>; under it are <strong>N internal pair tests</strong>, the swatches, the four measures and a bar showing the score.</li>
+<li>Read <strong>Result</strong> in the sidebar.</li>
+</ol>
+<p>Result: two scored palettes and a winner, with the measures that explain the difference.</p>
+<h3 id="check-one-palette-as-text-on-the-other">Check one palette as text on the other</h3>
+<ol>
+<li>Put your text colours in <strong>Team A</strong> and your background colours in <strong>Team B</strong>.</li>
+<li>Select <strong>Battle</strong>.</li>
+<li>Read the <strong>Cross-palette contrast matrix</strong>. Rows are Team A colours, columns are Team B colours (the corner reads <strong>A ↓ / B →</strong>). Each cell is the contrast ratio, tinted green at 4.5:1 or more, amber from 3:1, and red below 3:1.</li>
+</ol>
+<p>Result: you can see at a glance which text and background combinations are readable.</p>
+<h3 id="stress-test-with-random-teams">Stress-test with random teams</h3>
+<ol>
+<li>Select the dice button beside <strong>Team A</strong> or <strong>Team B</strong>. That team is replaced by five random colours spread around the hue circle, and the battle runs.</li>
+<li>Select <strong>Swap</strong> to exchange the two teams and run again.</li>
+</ol>
+<p>Result: quick comparisons against random palettes, useful for seeing what a good score looks like.</p>
+<h3 id="share-the-outcome">Share the outcome</h3>
+<ul>
+<li><strong>Copy winner</strong> copies the winning team&#39;s HEX codes, one per line. In a draw it copies Team A.</li>
+<li><strong>Copy report</strong> copies a short text report:</li>
+</ul>
+<pre class="code" data-lang="text"><code>Color Battle Report
+Team A wins
+
+Team A: 72/100
+#D3AF37 #0F172A #F8E7A1 #FFFFFF #1A1A2E
+
+Team B: 65/100
+#3B82F6 #111827 #93C5FD #F9FAFB #EF4444</code></pre>
+<p>The scores above are only an example.</p>
+<ul>
+<li>Select any swatch on a score card to copy its HEX code.</li>
+</ul>
+<h2 id="save-to-and-restore-from-the-library">Save to and restore from the Library</h2>
+<p>With Color Battle focused, <strong>Save to Library</strong> saves each team as a palette, named <strong>Team A — N colors</strong> and <strong>Team B — N colors</strong>, and records both teams and the result. Opening a saved team in Basic Color Tools reopens Color Battle with both teams and runs the battle; <strong>Loaded teams from library</strong> appears.</p>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Team A</strong> box</td><td>First palette.</td><td>Up to 9 colours kept</td><td>#D3AF37, #0F172A, #F8E7A1, #FFFFFF, #1A1A2E</td></tr>
+<tr><td><strong>Team B</strong> box</td><td>Second palette.</td><td>Up to 9 colours kept</td><td>#3B82F6, #111827, #93C5FD, #F9FAFB, #EF4444</td></tr>
+<tr><td>Dice (per team)</td><td>Five random colours for that team, then battle.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Battle</strong></td><td>Scores both teams.</td><td>—</td><td>Runs once on opening</td></tr>
+<tr><td><strong>Swap</strong></td><td>Exchanges the teams, then battles.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Copy winner</strong></td><td>Copies the winning team.</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Copy report</strong></td><td>Copies the text report.</td><td>—</td><td>—</td></tr>
+<tr><td>Swatch</td><td>Copies one HEX code.</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="accuracy-and-limits">Accuracy and limits</h2>
+<ul>
+<li>The score is a heuristic for comparing palettes, not a pass or fail test. A palette of colours meant to sit side by side (such as a chart palette) needs different things from a text-and-background palette, so read the measures, not only the total.</li>
+<li>Contrast uses the WCAG 2.x formula. The AA share counts pairs at 4.5:1, the normal-text threshold.</li>
+<li>Colour-vision simulation uses simple matrices and shows likely effects, not an exact view for any individual.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="README.html">Panel tools</a></li>
+<li><a href="palette-studio.html">Palette Studio</a></li>
+<li><a href="palette-remix.html">Palette Remix</a></li>
+<li><a href="../colour-tools/accessibility-lab.html">Accessibility Lab</a> in the Colour Tools workbench</li>
+<li><a href="../../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="collage-maker.html"><span>Previous</span>Collage Maker (panel)</a><a href="colour-picker.html"><span>Next</span>Color Picker</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#screen-tour">Screen tour</a></li><li><a href="#what-you-can-type">What you can type</a></li><li><a href="#how-the-score-works">How the score works</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#save-to-and-restore-from-the-library">Save to and restore from the Library</a></li><li><a href="#controls">Controls</a></li><li><a href="#accuracy-and-limits">Accuracy and limits</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

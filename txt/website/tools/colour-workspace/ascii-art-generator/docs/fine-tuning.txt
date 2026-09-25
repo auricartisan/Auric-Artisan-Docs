@@ -1,0 +1,224 @@
+==============================================================================
+FINE TUNING
+==============================================================================
+Every setting behind the Fine tuning button — character set and custom ramp,
+shape, tone, sampling and dithering, edges, type, filters and advanced
+options.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+Select Fine tuning at the bottom of the rail to open eight more groups. Each
+starts folded; select a group's heading to open it. Every change re-converts
+the art a moment later.
+
+Changing anything here clears the highlight on the Look buttons, since the art
+no longer matches a named look.
+
+CHARACTER SET
+=============
+
+A menu of seven sets, each listed light to dark:
+
+  Set      | Characters                                         | Count
+  ---------+----------------------------------------------------+------
+  Standard | space `.:-=+*#%@`                                  | 10
+  Detailed | space and 69 punctuation marks, letters and digits | 70
+  Blocks   | space `░▒▓█`                                       | 5
+  Minimal  | space `.:#@`                                       | 5
+  Symbols  | space `·•●◉⬤`                                      | 6
+  Lines    | space and box-drawing characters `─│┌┐└┘` and more | 23
+  Braille  | space and all 255 Braille patterns                 | 256
+
+Custom ramp lets you type your own characters, lightest first and darkest
+last, up to 200. It needs at least two characters; with fewer, the set chosen
+in the menu is used. Start with a space so the lightest areas stay empty, for
+example ` .oO@`.
+
+The Look strip in the rail always shows the set actually in use, custom ramp
+included.
+
+SHAPE
+=====
+
+Character cells are taller than they are wide, so without correction the art
+comes out stretched.
+
+  Control:      Match the output font
+  Range:        on or off
+  Default:      on
+  What it does: Measures the output font and sets Cell aspect to match it.
+
+  Control:      Cell aspect
+  Range:        0.2 to 1.2
+  Default:      set by the font
+  What it does: Width of a cell divided by its height. Lower values give fewer
+                rows.
+
+  Control:      Lock row count
+  Range:        on or off
+  Default:      off
+  What it does: Fixes the number of rows instead of working it out from the
+                picture.
+
+  Control:      Rows
+  Range:        10 to 300
+  Default:      50
+  What it does: The fixed row count, when locked.
+
+Moving Cell aspect by hand works best with Match the output font off; while it
+is on, choosing another output font measures it again.
+
+TONE
+====
+
+  Control:      Brightness model
+  Range:        Luminosity (Rec.601), Average, Lightness (HSL)
+  Default:      Luminosity
+  What it does: How a pixel's colour becomes a single brightness. Luminosity
+                weights green most, as the eye does.
+
+  Control:      Gamma
+  Range:        0.2 to 3.0
+  Default:      1.0
+  What it does: Above 1 lifts the mid-tones (lighter); below 1 deepens them.
+
+  Control:      Contrast
+  Range:        0 to 1
+  Default:      0
+  What it does: Stretches the picture's contrast before conversion.
+
+  Control:      Saturation
+  Range:        0 to 2
+  Default:      0
+  What it does: Boosts colour before conversion. Mainly affects From image
+                colour.
+
+SAMPLING
+========
+
+  Control:      Sampling method
+  Options:      Area average (SAT), Bilinear, Point / Nearest
+  Default:      Area average
+  What it does: How the pixels under each cell become one value. Area
+                averaging uses every pixel and is the most faithful; point
+                sampling is fastest but can shimmer on fine detail.
+
+  Control:      Dithering
+  Options:      None, Floyd-Steinberg, Ordered (Bayer)
+  Default:      None
+  What it does: Spreads the rounding error between neighbouring cells so
+                smooth gradients show as texture instead of bands.
+
+  Control:      Bayer matrix
+  Options:      Bayer 4×4, Bayer 8×8
+  Default:      8×8
+  What it does: The pattern size for ordered dithering.
+
+Floyd–Steinberg gives an organic, grainy texture; ordered dithering gives a
+regular cross-hatch.
+
+EDGES
+=====
+
+  Control:      Sobel glyph selection
+  Range:        on or off
+  Default:      on
+  What it does: Finds edges in the picture and, at strong edges, swaps in a
+                thin line character of similar brightness.
+
+  Control:      Edge weight
+  Range:        0 to 1
+  Default:      0.65
+  What it does: How strongly edges steer the choice of character.
+
+The line characters it can use are the backtick, `-`, `/`, `|` and the
+backslash, and only those present in the current set. So it has most effect
+with Detailed, a little with Standard (which has `-`), and none with Blocks,
+Minimal, Symbols, Lines or Braille. The character is chosen by brightness, not
+by the direction of the edge.
+
+The Sobel edge field chart in Analysis shows where the edges are.
+
+TYPE
+====
+
+  Control:      Output font
+  Range:        monospace, Courier New, Consolas, Monaco
+  Default:      monospace
+  What it does: Font of the HTML, Canvas and SVG renders and of downloads.
+
+  Control:      Size
+  Range:        6 to 32 pixels
+  Default:      12
+  What it does: Character size for the Canvas and SVG renders and downloads.
+
+  Control:      Line height
+  Range:        0.8 to 2.0
+  Default:      1.0
+  What it does: Row spacing.
+
+  Control:      Kerning
+  Range:        −2 to 4
+  Default:      0
+  What it does: Extra space between characters, in pixels.
+
+  Control:      Render mode
+  Range:        Text (plain), HTML (color spans), Canvas (rasterised), SVG
+                (vector)
+  Default:      Text
+  What it does: The same choice as the Render chips above the art.
+
+On screen, the Text and HTML renders are scaled to fit the stage whatever size
+you choose.
+
+FILTERS
+=======
+
+Eight check boxes, applied to the finished characters:
+
+  Filter     | Effect
+  -----------+------------------------------------------------------------------------
+  Flip X     | Mirrors left to right.
+  Flip Y     | Mirrors top to bottom.
+  Rotate 90° | Turns the art a quarter turn clockwise.
+  Border     | Surrounds the art with `#`.
+  Frame      | Surrounds the art with a double-line box.
+  Brighten   | Moves each Standard-set character one step towards `@`.
+  Darken     | Moves each Standard-set character one step towards a space.
+  Noise      | Replaces a share of the characters with random Standard-set characters.
+
+Noise amount (0 to 1, default 0.1) sets that share.
+
+Filters work on the characters, not the picture, so:
+
+  - Brighten, Darken and Noise use the Standard characters; with other sets,
+    Brighten and Darken leave characters they do not know unchanged, and Noise
+    mixes Standard characters in;
+  - the HTML render does not show filters at all, although Copy and the TXT
+    download include them;
+  - with From image colour, shape-changing filters (Rotate 90°, Border, Frame)
+    make the Canvas and SVG renders fall back to one colour, and the flips can
+    leave colours in their original places.
+
+ADVANCED
+========
+
+  Control:      Thin out
+  Range:        0 to 0.95
+  Default:      0
+  What it does: Drops characters from runs of the same character. Lines become
+                shorter, so the picture skews; use it for effect, not to save
+                space.
+
+  Control:      Seed
+  Range:        a whole number
+  Default:      2654435769
+  What it does: Fixes the random choices of Noise and the position of the
+                ordered-dither pattern, so the same seed gives the same
+                result.
+
+RELATED
+=======
+
+  - Looks, colour and detail [looks-colour-and-detail.txt]
+  - Charts, benchmark and Compare [charts-and-compare.txt]
+  - Reference [reference.txt]

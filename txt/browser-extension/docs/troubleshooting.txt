@@ -1,0 +1,229 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for the Auric Artisan browser extension — page
+tools, the eyedropper, pickers, the right-click menu, shortcuts, audits and
+data.
+Area: Browser extension   Updated: 2026-09-25
+
+Find your symptom, read why it happens, and try the fix. If nothing here
+helps, reload the page, then reload the extension from your browser's
+extensions page.
+
+PAGE TOOLS
+==========
+
+  Symptom:    The site chip says No page, or a page tool does nothing
+  Why:        Browsers do not let extensions run on their own pages (settings,
+              new tab, `chrome://`, `about:`) or on the web stores
+  What to do: Open an ordinary web page
+
+  Symptom:    Page tools do nothing on a local file
+  Why:        Extensions cannot reach `file://` pages by default
+  What to do: In a Chromium browser: extensions page › Auric Artisan › Details
+              › Allow access to file URLs
+
+  Symptom:    A tool worked on other tabs but not on one opened before you
+              installed
+  Why:        The page was loaded before the extension existed
+  What to do: Reload the tab. The extension also tries to start itself there
+              when you use a tool.
+
+  Symptom:    "Could not scan this page" or "No active tab"
+  Why:        The page is protected, still loading, or no normal tab is active
+  What to do: Wait for the page to load, click into it, and try again
+
+  Symptom:    Nothing is found inside an embedded frame
+  Why:        The extension runs in the top page only
+  What to do: Open the frame's own address in a tab
+
+  Symptom:    You limited the extension's site access
+  Why:        Page tools work only on sites you allowed
+  What to do: Allow the site from the extension's toolbar menu or details page
+
+EYEDROPPER AND COLOURS
+======================
+
+  Symptom:    Pick from page shows "This browser has no screen eyedropper"
+  Why:        Firefox, and some other browsers, do not offer the eyedropper
+              feature
+  What to do: Use Page palette, which reads every colour the page uses
+
+  Symptom:    The right-click menu says "Eyedropper needs Chromium"
+  Why:        Same reason
+  What to do: As above
+
+  Symptom:    The picked colour is slightly different from the design file
+  Why:        The screen eyedropper reads rendered pixels, after colour
+              management, scaling and anti-aliasing
+  What to do: Pick from a flat area, or read the CSS value with the inspector
+              or Page palette
+
+  Symptom:    Image says "Could not read this image (cross-origin protected)"
+  Why:        The image's site does not allow its pixels to be read
+  What to do: Save the image and drop the file in, or use Capture the visible
+              tab
+
+  Symptom:    "Can't capture this tab"
+  Why:        The tab is a browser page or cannot be captured
+  What to do: Try an ordinary page
+
+WEBSITE PICKERS
+===============
+
+  Symptom:    Pickers do not appear
+  Why:        The master switch, the type, or the site list stops them
+  What to do: In Settings › Pickers, check the master switch, the type's chip
+              and Never on; then reload the page
+
+  Symptom:    Pickers never appear on auricartisan.com
+  Why:        By design: the site has its own pickers
+  What to do: —
+
+  Symptom:    A dropdown still looks like the site's own
+  Why:        It is probably a custom widget, not a real form control, or the
+              site designed it
+  What to do: Pickers only enhance real controls. To override designed
+              controls, turn off Leave designed controls alone.
+
+  Symptom:    A site's form behaves oddly with pickers on
+  Why:        A rare conflict with the site's own scripts
+  What to do: Add the site to Never on in Settings › Pickers
+
+RIGHT-CLICK MENU
+================
+
+  Symptom:    The custom menu does not appear
+  Why:        It is off, or the permission prompt was declined
+  What to do: Turn on Settings › Right-click › Custom right-click menu and
+              accept the prompt
+
+  Symptom:    It does not appear on one site
+  Why:        The site is under Never on, opts out, or shows its own menu
+  What to do: With Step aside on, a site's own menu wins where it has one.
+              Remove the site from Never on if you added it.
+
+  Symptom:    It replaced a site's own menu
+  Why:        Step aside for a site's own menu is off
+  What to do: Turn it on, or add the site to Never on
+
+  Symptom:    You need spellcheck or the dictionary
+  Why:        Only the browser's menu has them
+  What to do: Shift + right-click, or choose Browser's own menu and
+              right-click again
+
+  Symptom:    Paste, Save or Reopen closed tab shows Allow
+  Why:        The optional permission is not granted
+  What to do: Settings › Right-click › Permissions › Allow
+
+  Symptom:    "Clipboard blocked — press Ctrl+V to paste."
+  Why:        The browser refused clipboard access for this page
+  What to do: Press `Ctrl` + `V`
+
+  Symptom:    Open link in private window fails
+  Why:        The extension is not allowed in private browsing
+  What to do: Allow it in private or incognito windows on the extension's
+              details page
+
+  Symptom:    Items are missing from the browser's own menu
+  Why:        Items in the browser's menu is off
+  What to do: Turn it on in Settings › Right-click
+
+SHORTCUTS
+=========
+
+  Symptom:    A shortcut does nothing
+  Why:        Another extension or the browser uses the same keys
+  What to do: Reassign it: Settings › Shortcuts › Change them in the browser
+
+  Symptom:    Inspect or full-audit shortcuts do nothing
+  Why:        They have no key by default
+  What to do: Assign one on the browser's shortcuts page
+
+  Symptom:    A shortcut opened the wrong thing much later
+  Why:        It cannot: queued commands are dropped after 30 seconds
+  What to do: —
+
+  Symptom:    `Alt` + `Shift` + `C` or `E` did not open the popup
+  Why:        Some browsers do not let an extension open its popup by itself
+  What to do: Open the popup within 30 seconds; it goes straight to the tool
+
+INSPECTOR
+=========
+
+  Symptom:    The inspector closed when I clicked
+  Why:        You went to another page, pressed Back or Forward, or the site
+              changed route
+  What to do: Start it again. Before 1.0.2 it also closed on sites that
+              rewrite their address on each click; update.
+
+  Symptom:    The card lost its element
+  Why:        The page removed the element
+  What to do: Pin another element
+
+  Symptom:    The ratio has "≈" in front
+  Why:        The text sits on an image or gradient
+  What to do: Check the lightest area under the text by eye
+
+  Symptom:    Live CSS changes stay on the page
+  Why:        Previews last until you reset
+  What to do: Choose Reset or Stop, or reload the page
+
+AUDIT
+=====
+
+  Symptom:    Few results on a large page
+  Why:        Scan limits were reached
+  What to do: Turn on Settings › Tools › Deep page audit
+
+  Symptom:    Some text is never checked
+  Why:        Text in frames, images or canvas cannot be measured, and some
+              modern colour functions are skipped
+  What to do: Check those areas with Contrast and the inspector
+
+  Symptom:    Findings disappeared
+  Why:        Results live only while the extension is open
+  What to do: Export JSON or CSV before closing
+
+  Symptom:    Outlines vanished
+  Why:        They clear after 15 seconds
+  What to do: Choose Outline on page again
+
+DATA AND APPEARANCE
+===================
+
+  Symptom:    The popup is too small or too big
+  Why:        Popup size setting, or the browser's popup limits
+  What to do: Settings › Appearance › Popup size, or use the side panel
+
+  Symptom:    Something broke after changing settings
+  Why:        A setting combination you do not want
+  What to do: Settings › Data › Reset all settings. History, library and
+              snippets are kept.
+
+  Symptom:    "Restore failed — invalid file"
+  Why:        The file is not an Auric Artisan backup, or it is damaged
+  What to do: Choose a file made by Download a backup
+
+  Symptom:    "Import failed"
+  Why:        The pasted text is not valid settings JSON
+  What to do: Copy the settings again with Copy settings
+
+  Symptom:    My colours are gone after reinstalling
+  Why:        Uninstalling deletes everything the extension stored
+  What to do: Restore from a backup if you made one
+
+  Symptom:    The toolbar badge shows a number
+  Why:        It counts the colours in your library
+  What to do: Remove colours from the library, or ignore it
+
+  Symptom:    The side panel button does nothing
+  Why:        Some browsers open side panels only from their own controls
+  What to do: Open it from the browser's side panel or sidebar menu
+
+RELATED PAGES
+=============
+
+  - FAQ [faq.txt]
+  - Permissions [permissions.txt]
+  - Limits and accuracy [../others/limits-and-accuracy.txt]

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Query many illuminants at once — Auric Artisan Docs</title>
+<meta name="description" content="Use the Console tab's query language to tabulate, sort, plot and export readings for many illuminants.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Illuminants</a>
+<h2>Illuminants documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Illuminants</a></li>
+<li><a href="adapt-between-white-points.html">Adapt colours between white points</a></li>
+<li><a href="compare-light-sources.html">Compare two light sources</a></li>
+<li><a href="estimate-uncertainty.html">Estimate measurement uncertainty</a></li>
+<li><a href="query-console.html" aria-current="page">Query many illuminants at once</a></li>
+<li><a href="reference.html">Illuminants reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Illuminants</a></li>
+<li><a href="faq.html">Illuminants FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Illuminants</a> &rsaquo; <a href="README.html">Illuminants documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Query many illuminants at once</h1>
+<p class="lede">Use the Console tab's query language to tabulate, sort, plot and export readings for many illuminants.</p>
+<p>The <strong>Console</strong> tab answers questions such as &quot;which of these lights is furthest from the Planckian locus?&quot; in one table. You type a short query; the lab computes every requested column with the same engine the other tabs use, so a console row and a Lab reading cannot disagree. The query is parsed, never run as code.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Open the <strong>Console</strong> tab. The <strong>Query</strong> box already holds an example.</li>
+<li>Edit the query, or select one of the <strong>Recipes</strong> to load a ready-made one.</li>
+<li>Select <strong>Run</strong>, or press <code>Ctrl</code> + <code>Enter</code> in the query box.</li>
+<li>Read the <strong>Results</strong> table. Its heading shows the number of rows. The status line beside the buttons shows rows, time taken and the interval and interpolation used.</li>
+<li>Under <strong>Any two columns, plotted</strong>, choose a <strong>Horizontal axis</strong> and a <strong>Vertical axis</strong>. The scatter plot labels each point with the illuminant name.</li>
+<li>Select <strong>CSV</strong> or <strong>JSON</strong> to download the results.</li>
+</ol>
+<h2 id="the-grammar">The grammar</h2>
+<p>A query is a few lines, each starting with a keyword. Anything after <code>//</code> on a line is a comment.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Line</th><th>What it does</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><code>select</code></td><td>The illuminants to include, separated by commas or spaces. Names are case-insensitive. A range such as <code>F1..F12</code> expands to every name in between.</td><td><code>select A, D50, D65, F1..F12</code></td></tr>
+<tr><td><code>with</code></td><td>Pipeline settings as <code>name=value</code> pairs.</td><td><code>with interval=1nm, interpolation=sprague</code></td></tr>
+<tr><td><code>report</code></td><td>The columns to show, in order.</td><td><code>report x, y, CCT, Duv</code></td></tr>
+<tr><td><code>order by</code></td><td>Sort by one reported column, <code>asc</code> (default) or <code>desc</code>.</td><td><code>order by Duv desc</code></td></tr>
+<tr><td><code>limit</code></td><td>Keep only the first n rows after sorting.</td><td><code>limit 8</code></td></tr>
+</tbody></table></div>
+<h3 id="names-you-can-select">Names you can select</h3>
+<p>A, D50, D55, D65, D75, E and F1 to F12.</p>
+<h3 id="settings-for-with">Settings for <code>with</code></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Values</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><code>interval</code></td><td><code>1nm</code>, <code>5nm</code>, <code>10nm</code></td><td>Any other value falls back to the interval set on the Methods tab.</td></tr>
+<tr><td><code>interpolation</code></td><td><code>linear</code>, <code>sprague</code>, <code>pchip</code></td><td>Any other value falls back to the Methods tab setting.</td></tr>
+<tr><td><code>observer</code></td><td><code>2deg</code></td><td>Accepted for readability. Only the CIE 1931 2° observer is held.</td></tr>
+</tbody></table></div>
+<h3 id="columns-for-report">Columns for <code>report</code></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Shown as</th><th>Meaning</th><th>Decimals</th></tr></thead>
+<tbody>
+<tr><td><code>x</code>, <code>y</code></td><td>x, y</td><td>CIE 1931 chromaticity</td><td>5</td></tr>
+<tr><td><code>u</code>, <code>v</code></td><td>u′, v′</td><td>CIE 1976 chromaticity</td><td>5</td></tr>
+<tr><td><code>cct</code></td><td>CCT</td><td>Correlated colour temperature (Ohno); blank when not valid</td><td>0</td></tr>
+<tr><td><code>duv</code> (also <code>d_uv</code>)</td><td>Duv</td><td>Signed distance from the Planckian locus</td><td>5</td></tr>
+<tr><td><code>efficacy</code> (also <code>eff</code>)</td><td>lm/W</td><td>Luminous efficacy of radiation</td><td>1</td></tr>
+<tr><td><code>entropy</code></td><td>Entropy</td><td>A measure of how spread out the spectrum is</td><td>3</td></tr>
+<tr><td><code>peak</code></td><td>Peak nm</td><td>Wavelength of the highest power</td><td>0</td></tr>
+</tbody></table></div>
+<p>If you leave out <code>report</code>, the table shows x, y, CCT and Duv.</p>
+<h2 id="the-recipes">The recipes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Recipe</th><th>What it asks</th></tr></thead>
+<tbody>
+<tr><td><strong>The whole catalogue by CCT</strong></td><td>All 18 illuminants at 5 nm: x, y, CCT, Duv and efficacy, sorted by CCT</td></tr>
+<tr><td><strong>Which sources are furthest off the locus</strong></td><td>CCT, Duv and entropy, sorted by Duv descending, top 8</td></tr>
+<tr><td><strong>Luminous efficacy against spectral spread</strong></td><td>Efficacy, entropy and peak, sorted by efficacy descending</td></tr>
+<tr><td><strong>The D series at 1 nm</strong></td><td>D50, D55, D65 and D75 at 1 nm with Sprague interpolation</td></tr>
+</tbody></table></div>
+<h2 id="stand-in-rows">Stand-in rows</h2>
+<p>Fluorescent illuminants F1 to F12 are built from stand-in spectra, not the CIE tables. Their rows carry a <strong>stand-in</strong> tag in the table, &quot;(stand-in)&quot; after the name in the CSV, and <code>&quot;synthetic&quot;: true</code> in the JSON. Do not quote them as CIE values.</p>
+<h2 id="the-export-files">The export files</h2>
+<ul>
+<li><strong>CSV</strong> downloads <code>illuminants.csv</code>. The first line is a comment recording the observer, interval and interpolation; then a header row (<code>source</code> and your columns) and one row per illuminant.</li>
+<li><strong>JSON</strong> downloads <code>illuminants.json</code> with the generation time, the pipeline settings, the column list and one entry per row (name, synthetic flag and values).</li>
+</ul>
+<p>The buttons do nothing until a query has returned rows.</p>
+<h2 id="result">Result</h2>
+<p>You have a sorted table of readings for the lights you chose, a scatter plot of any two columns, and a file you can open in a spreadsheet.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="estimate-uncertainty.html"><span>Previous</span>Estimate measurement uncertainty</a><a href="reference.html"><span>Next</span>Illuminants reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#steps">Steps</a></li><li><a href="#the-grammar">The grammar</a></li><li><a href="#the-recipes">The recipes</a></li><li><a href="#stand-in-rows">Stand-in rows</a></li><li><a href="#the-export-files">The export files</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

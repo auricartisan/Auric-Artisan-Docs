@@ -1,0 +1,196 @@
+==============================================================================
+LIMITS AND ACCURACY
+==============================================================================
+What the Studio's colour, contrast, accessibility and code-health checks
+measure, how they were checked for accuracy, and what they cannot tell you.
+Area: VS Code extensions › Auric Artisan Studio   Updated: 2026-09-25
+
+The Studio is a static analyser: it reads your source text and does not run
+your code or render your pages. That makes it fast, private and repeatable,
+and it also sets clear limits. This page explains both.
+
+WHAT THE SCORES ARE AND ARE NOT
+===============================
+
+  - Scores are a prioritisation and progress measure, not a certification. A
+    score of 100 means the static checks found nothing, not that the product
+    is accessible or secure.
+  - Automated testing covers only part of WCAG. Many success criteria need a
+    person: alt-text quality, focus order in practice, screen-reader
+    announcements, media alternatives, error recovery and more. The knowledge
+    database's manual checks [../accessibility/docs/manual-evidence.txt] cover
+    these.
+  - Excluded, skipped and unscanned files neither help nor hurt a score.
+
+COLOUR SCIENCE
+==============
+
+The colour engine is shared by hovers, pickers, the Studio, scans and the
+command-line scanner, so every surface gives the same numbers.
+
+  - Parsing. Hex (3, 4, 6 and 8 digits), `rgb()`, `hsl()` and `hwb()` with
+    angle units and `none`, `lab()` and `lch()` (with CSS's D50 white point),
+    `oklab()`, `oklch()`, `color()` in `srgb`, `srgb-linear`, `display-p3`,
+    `a98-rgb`, `prophoto-rgb`, `rec2020` and `xyz`, `color-mix()`, relative
+    colour syntax, the 148 CSS named colours and `transparent`. Invalid values
+    such as `#12345g` are rejected.
+  - Wide-gamut colours outside sRGB are brought into sRGB with CSS Color 4
+    gamut mapping. Their contrast is measured as a standard screen shows them,
+    and the hover says so.
+  - Writing colours back keeps the token's own syntax and uses the fewest
+    decimals that parse back to exactly the same colour, so editing never
+    drifts a colour.
+  - Contrast uses the WCAG 2.x formula. APCA uses APCA-W3 version 0.0.98G and
+    matches that algorithm's published test values.
+  - Colour difference uses ΔE76 and CIEDE2000; CIEDE2000 matches all 34 of the
+    published Sharma test pairs.
+  - Colour-vision simulation uses the Brettel 1997 method in linear light,
+    with partial forms (anomalous trichromacy) by severity. Achromatopsia
+    keeps relative luminance.
+  - Translucent colours are blended with 8-bit alpha, as browsers do, so a
+    blended pixel matches what Chromium draws.
+  - Verdicts use the exact ratio. A ratio just under a threshold is never
+    displayed as the threshold: 4.497 shows as 4.49, not 4.50.
+  - Fixes use the nearest passing colour of the same hue, found by adjusting
+    lightness only. For example, `#888888` on white becomes `#767676`
+    (4.54:1).
+
+CONTRAST CHECKS
+===============
+
+What the scanner handles:
+
+  - It reads stylesheets as a tree of rules, including nesting, `@media`,
+    `@supports` and `@layer`. Each rule's own declarations are graded; nested
+    rules never leak into their parent, and two different rules are never
+    paired. Rules with the same selector in the same context are combined,
+    with the later declaration winning. Comments are ignored.
+  - A text colour is graded against its own background, otherwise its parent
+    rule's (CSS nesting, styled-components) or its ancestor element's (inline
+    styles), otherwise an explicit page background on exactly `body`, `html`
+    or `:root`.
+  - Large text (24 px, or 18.66 px and bold, from `font-size`, `font-weight`,
+    the `font` shorthand or the default sizes of `h1` to `h3`) is graded at
+    3:1, or 4.5:1 at the AAA threshold.
+  - Translucent text and backgrounds and `opacity` are blended.
+    `-webkit-text-fill-color` counts as the text colour.
+  - Custom properties resolve by scope: the rule's own definitions, then
+    enclosing rules', then the light theme's root values, then any other
+    scope. Fallbacks may nest. A cycle between tokens makes each invalid, so
+    the `var()` fallback applies. A token that is not a colour is not graded.
+  - Dark themes are graded as themselves: definitions under
+    `prefers-color-scheme: dark` or a dark marker such as `.dark` or
+    `[data-theme=dark]` form a dark theme, and every pair they change is
+    graded again and reported in the dark theme. `light-dark()` grades each
+    side in its own theme.
+  - A colour value is graded when the whole value is one colour, one `var()`,
+    `light-dark()`, `color-mix()` or a relative colour. Anything else, such as
+    a JavaScript expression, is left alone rather than guessed.
+
+What it does not grade:
+
+  - text over an image or gradient, transparent (gradient-clipped) text and
+    `currentColor` backgrounds;
+  - styles for print or forced-colours modes;
+  - disabled controls, which WCAG exempts;
+  - code samples in Markdown.
+
+What it cannot see:
+
+  - colours set by JavaScript at runtime, or class-driven styles applied to
+    markup in another file;
+  - which of two different selectors wins in the cascade, inherited and
+    computed values, component state and pseudo-elements;
+  - the real rendered font size, so a verdict names the check ("fails WCAG AA
+    for normal text") rather than a pixel size.
+
+Measured accuracy. On the audit set used in development, the scanner's
+verdicts agree with Chromium's rendering in 62 of 68 cases; the remaining six
+are cases it deliberately skips.
+
+One-click fixes rewrite a value only when the whole value is one colour or one
+side of `light-dark()`. Mixes, relative colours, faded text and dark-theme
+pairs that share their text with the light theme open the Contrast Studio
+instead, so a fix never corrupts source.
+
+ACCESSIBILITY (WCAG) CHECKS
+===========================
+
+  - 70+ static rules mapped to WCAG success criteria; see the rule catalogue
+    [../accessibility/docs/rules.txt].
+  - Markup rules read every tag with one shared reader that understands quoted
+    values and JSX braces, so an arrow function or a Vue expression cannot cut
+    a tag short. Attribute names are matched whole (`data-role` is not
+    `role`).
+  - In JSX, TSX, Vue, Svelte and Astro, capitalised, dotted or namespaced tags
+    (`<Input>`, `<Form.Label>`) are components, not native elements. A file
+    without `<html>` or `<body>` is treated as a component or partial, not a
+    whole page.
+  - Comments, `<script>` and `<style>` contents, PHP blocks and strings that
+    only look like markup are not scanned.
+  - Values supplied at runtime (`{{id}}`, `${id}`, `:attr`, `[attr.x]`,
+    `attr={…}`) are treated as absent, not wrong.
+  - Text inside `aria-hidden` does not count towards a name; template output
+    such as `<%= %>`, `v-text` and `[innerHTML]` does.
+  - Measured accuracy. Checked against axe-core on rendered HTML: on a
+    regression suite of 264 cases, false positives went from 132 to 0 and
+    false negatives from 21 to 0; 80 of 83 rendered cases agree with axe, and
+    the three that differ are contested or best-practice cases.
+  - Rules that need judgement (alt-text quality, link purpose, dialog naming,
+    authentication) suggest fixes rather than applying them.
+
+CODE-HEALTH CHECKS
+==================
+
+  - A high-signal heuristic linter, not a full static application security
+    testing (SAST) tool or a history-scanning secret scanner. Use it alongside
+    dedicated tools where compliance requires them.
+  - It reads source text with a small per-language lexer, so task markers must
+    be in comments and debug, risk and security rules ignore commented-out or
+    quoted code. It does not build a syntax tree and does not read Git
+    history.
+  - It is argument-aware: a call with a constant argument is downgraded or
+    ignored, and a call with a dynamic value is reported with high confidence.
+  - Secrets are scanned everywhere, including comments, and are always
+    redacted.
+  - Measured accuracy. On a labelled set of examples, including a held-out
+    set, precision is 1.00 in every category, and recall is 1.00 in every
+    category except secrets, at 0.96.
+  - Limits. At most 300 findings per file; lines over 240 characters are
+    reported (lines that start with a URL are not); files over 800 lines are
+    reported as large; worst-case inputs such as a 200 KB minified line scan
+    in milliseconds.
+
+SIZE AND SCALE LIMITS
+=====================
+
+  Limit: Largest file analysed in the editor and in project scans
+  Value: 1 MB
+
+  Limit: Largest file read by the command-line scanner
+  Value: 1.5 MB
+
+  Limit: Files per project scan
+  Value: `scan.maxFiles`, default 4000
+
+  Limit: Files per command-line scan
+  Value: `--max-files`, default 20000
+
+  Limit: Live re-grade
+  Value: Up to 1,500 files and about 12 MB of text
+
+  Limit: Issues in `health.json` and SARIF
+  Value: `health.maxIssues`, default 5000
+
+  Limit: History entries
+  Value: `health.historyLimit`, default 200
+
+  Limit: Recent colours kept
+  Value: 12 (8 shown in the Command Center)
+
+RELATED
+=======
+
+  - Scores and grades [../docs/scores-and-grades.txt]
+  - Scanning [../docs/scanning.txt]
+  - Privacy [privacy.txt]

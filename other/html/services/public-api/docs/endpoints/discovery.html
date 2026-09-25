@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discovery endpoints — Auric Artisan Docs</title>
+<meta name="description" content="The public endpoints that describe the API itself — index, health, readiness, methods, formats, tiers, status, metrics, catalogue and documentation.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html" aria-current="page">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Discovery endpoints</h1>
+<p class="lede">The public endpoints that describe the API itself — index, health, readiness, methods, formats, tiers, status, metrics, catalogue and documentation.</p>
+<p>These endpoints describe the API. All but one are public and unmetered, so you can evaluate the API before buying.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Auth</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/v1</code></td><td>None</td><td>Index of every endpoint, with the current version</td></tr>
+<tr><td>GET</td><td><code>/v1/health</code></td><td>None</td><td>Liveness probe; always cheap, never touches storage</td></tr>
+<tr><td>GET</td><td><code>/v1/ready</code></td><td>None</td><td>Readiness probe: whether each backing store is bound</td></tr>
+<tr><td>GET</td><td><code>/v1/methods/:tool</code></td><td>Key</td><td>The algorithms a given tool supports</td></tr>
+<tr><td>GET</td><td><code>/v1/formats</code></td><td>None</td><td>Every export format, across every exportable resource</td></tr>
+<tr><td>GET</td><td><code>/v1/tiers</code></td><td>None</td><td>Rate limit and monthly quota for each tier</td></tr>
+<tr><td>GET</td><td><code>/v1/metrics</code></td><td>None</td><td>Process-level counters in Prometheus format</td></tr>
+<tr><td>GET</td><td><code>/v1/status</code></td><td>None</td><td>Human-readable status page</td></tr>
+<tr><td>GET</td><td><code>/v1/catalog</code></td><td>None</td><td>Every endpoint with its parameters and examples, as JSON</td></tr>
+<tr><td>GET</td><td><code>/v1/docs</code></td><td>None</td><td>Interactive reference (Redoc)</td></tr>
+<tr><td>GET</td><td><code>/v1/openapi.yaml</code></td><td>None</td><td>The OpenAPI 3.1 document</td></tr>
+</tbody></table></div>
+<h2 id="get-v1">GET /v1</h2>
+<p>Returns <code>version</code> (string) and <code>endpoints</code> (string array).</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1&quot;</code></pre>
+<h2 id="get-v1health">GET /v1/health</h2>
+<p>Returns <code>ok</code> (boolean) and <code>time</code> (ISO 8601).</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/health&quot;</code></pre>
+<h2 id="get-v1ready">GET /v1/ready</h2>
+<p>Returns <code>ready</code> (boolean) and <code>checks</code> (object). Use it in a deployment gate: <code>/v1/health</code> says the service is up, while <code>/v1/ready</code> says it can actually serve.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/ready&quot;</code></pre>
+<h2 id="get-v1methodstool">GET /v1/methods/:tool</h2>
+<p>The algorithms a tool supports. Use it to find valid <code>method</code> values, for example for <code>/v1/palette/generate</code> or <code>/v1/harmony/generate</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>In</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>tool</code></td><td>path</td><td>Yes</td><td>For example <code>palette</code>, <code>harmony</code> or <code>vision</code></td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/methods/harmony&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h2 id="get-v1formats">GET /v1/formats</h2>
+<p>Every export format for every exportable resource. The export endpoints refer to it for valid <code>format</code> values.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/formats&quot;</code></pre>
+<h2 id="get-v1tiers">GET /v1/tiers</h2>
+<p>The machine-readable plan table: rate limit and monthly quota for each tier. See <a href="../plans-credits-and-quotas.html">Plans, credits and quotas</a>.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/tiers&quot;</code></pre>
+<h2 id="get-v1catalog">GET /v1/catalog</h2>
+<p>The catalogue as JSON: every endpoint with its parameters and examples. It is generated from the same source as the OpenAPI document, so a client can build its own reference or check its coverage.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/catalog&quot;</code></pre>
+<h2 id="get-v1docs-and-get-v1openapiyaml">GET /v1/docs and GET /v1/openapi.yaml</h2>
+<p><code>/v1/docs</code> is the interactive reference in the browser. <code>/v1/openapi.yaml</code> is the OpenAPI 3.1 document, for generating clients or importing into API tools.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/openapi.yaml&quot;</code></pre>
+<h2 id="get-v1status-and-get-v1metrics">GET /v1/status and GET /v1/metrics</h2>
+<p><code>/v1/status</code> is a human-readable status page. <code>/v1/metrics</code> exposes process-level counters in Prometheus format.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../reference.html">Reference</a></li>
+<li><a href="../getting-started.html">Getting started</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="colour-and-science.html"><span>Previous</span>Colour and colour science</a><a href="palettes-harmonies-gradients-shades.html"><span>Next</span>Palettes, harmonies, gradients and shades</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#get-v1">GET /v1</a></li><li><a href="#get-v1health">GET /v1/health</a></li><li><a href="#get-v1ready">GET /v1/ready</a></li><li><a href="#get-v1methodstool">GET /v1/methods/:tool</a></li><li><a href="#get-v1formats">GET /v1/formats</a></li><li><a href="#get-v1tiers">GET /v1/tiers</a></li><li><a href="#get-v1catalog">GET /v1/catalog</a></li><li><a href="#get-v1docs-and-get-v1openapiyaml">GET /v1/docs and GET /v1/openapi.yaml</a></li><li><a href="#get-v1status-and-get-v1metrics">GET /v1/status and GET /v1/metrics</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

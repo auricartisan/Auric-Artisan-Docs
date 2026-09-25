@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check a palette and export — Auric Artisan Docs</title>
+<meta name="description" content="Run a list of hex colours through the active simulation, find colours that become indistinguishable, and export CSV, clipboard text, the frame, the settings and links.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and Vision</a>
+<h2>Using Perception and Vision</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Perception and Vision</a></li>
+<li><a href="check-a-palette-and-export.html" aria-current="page">Check a palette and export</a></li>
+<li><a href="read-the-checks.html">Read the checks</a></li>
+<li><a href="simulate-a-design.html">Simulate a design or image</a></li>
+<li><a href="reference.html">Perception and Vision reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Perception and Vision</a></li>
+<li><a href="faq.html">Perception and Vision FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Perception and Vision</a> &rsaquo; <a href="README.html">Using Perception and Vision</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Perception and Vision</p>
+<h1>Check a palette and export</h1>
+<p class="lede">Run a list of hex colours through the active simulation, find colours that become indistinguishable, and export CSV, clipboard text, the frame, the settings and links.</p>
+<p>Nothing leaves the page until you press one of the buttons described here.</p>
+<h2 id="check-a-palette">Check a palette</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, set up the simulation you want to test, for example <strong>Colour vision</strong>, <strong>Deutan</strong>, <strong>Severity</strong> 1.00.</li>
+<li>Open the <strong>Export</strong> tab.</li>
+<li>In <strong>Colours</strong>, enter your hex colours, one per line. Commas and semicolons also separate entries; three- and six-digit forms work, with or without <code>#</code>; anything else is ignored. Include a grey.</li>
+<li>The table updates as you type; <strong>Run them</strong> redraws it.</li>
+</ol>
+<p>The default list is <code>#E03131</code>, <code>#2F9E44</code>, <code>#1971C2</code>, <code>#F59F00</code> and <code>#808080</code>. The caption names the simulation, for example <strong>The colours, through colour vision (protan) at severity 1.00</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Input</strong></td><td>Your colour, as a swatch and hex</td></tr>
+<tr><td><strong>Simulated</strong></td><td>The colour after the simulation, as a swatch and hex</td></tr>
+<tr><td><strong>L</strong>, <strong>M</strong>, <strong>S</strong></td><td>The cone signals of the input colour, four decimals</td></tr>
+<tr><td><strong>ΔE00</strong></td><td>The CIEDE2000 colour difference between input and simulated colour, one decimal</td></tr>
+<tr><td><strong>In sRGB</strong></td><td><strong>yes</strong>, or <strong>clamped</strong> when the simulated colour fell outside sRGB and was clipped</td></tr>
+</tbody></table></div>
+<p>How to read it:</p>
+<ul>
+<li><strong>Two rows with the same or nearly the same Simulated hex</strong> are two colours the simulated viewer cannot tell apart. Change one of them.</li>
+<li><strong>The grey row</strong> should read ΔE00 0.0 and an identical simulated hex under Colour vision; a dichromacy projection leaves greys alone.</li>
+<li><strong>ΔE00</strong> measures how far each colour moved. A large value means the colour looks very different to the simulated viewer, not necessarily that it is confused with another; compare the simulated hexes for that.</li>
+<li><strong>clamped</strong> means the hex you would paste is not exactly what the simulation produced.</li>
+</ul>
+<p>The colour list uses the per-colour part of the simulation, including the illuminant under <strong>Before the eye</strong>. Central loss and Acuity depend on position, so colours pass through them unchanged; Cataract applies only its colour cast and contrast loss.</p>
+<p><strong>ΔE00</strong> (CIEDE2000) is the CIE&#39;s current formula for how different two colours look. Around 1 is the smallest difference most people notice side by side; differences of 10 or more are obvious.</p>
+<h2 id="download-or-copy-the-table">Download or copy the table</h2>
+<ul>
+<li><strong>Download the CSV</strong> saves a file named after the simulation and severity, for example <code>perception-cvd-100.csv</code>. It starts with comment lines naming the simulation, the chain, the matrix, the illuminant and adaptation, the renderer and whether the renderers agreed, and the line &quot;educational approximation, not a clinical measurement&quot;. The columns are <code>Input,Simulated,L,M,S,RG,BY,DeltaE00,InSRGB</code>, where <code>RG</code> is L − M and <code>BY</code> is S − (L+M)/2 of the input.</li>
+<li><strong>Copy to clipboard</strong> copies a tab-separated table with a header row: <code>Input</code>, <code>Simulated</code>, <code>L</code>, <code>M</code>, <code>S</code>, <code>DeltaE00</code>, <code>InSRGB</code>.</li>
+</ul>
+<p>If the list is empty the page says <strong>No colours to write</strong> or <strong>No colours to copy</strong>.</p>
+<h2 id="save-the-frame">Save the frame</h2>
+<p><strong>Save the frame</strong> (Lab tab) downloads the frame as a PNG, for example <code>perception-scotopic-70.png</code>, including the divider and fixation cross if they are showing. In the Export tab, <strong>What to take</strong> › <strong>The frame</strong> does the same.</p>
+<h2 id="download-and-load-settings">Download and load settings</h2>
+<p><strong>Download the settings</strong> saves <code>perception-vision-settings.json</code>. The Export tab shows the current content under <strong>The settings file, and what it carries</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>tool</code></td><td><code>perception-vision</code></td></tr>
+<tr><td><code>simulation</code>, <code>label</code>, <code>type</code>, <code>severity</code></td><td>The simulation, its name, the colour vision type (or <code>null</code>) and the severity</td></tr>
+<tr><td><code>space</code></td><td>The chain used, for example <code>sRGB → linear → XYZ → LMS (HPE) → project → XYZ → linear → sRGB</code></td></tr>
+<tr><td><code>matrix</code></td><td>The published matrix or the tool&#39;s own model used</td></tr>
+<tr><td><code>illuminant</code>, <code>adaptation</code></td><td>The illuminant and the Bradford strength, or &quot;none (source white)&quot;</td></tr>
+<tr><td><code>source</code>, <code>compare</code></td><td>The source and comparison mode</td></tr>
+<tr><td><code>adjustments</code></td><td><code>contrast</code>, <code>gamma</code>, <code>blur</code>, <code>noise</code> and <code>bloom</code> (glare)</td></tr>
+<tr><td><code>renderer</code></td><td><code>gpu</code> or <code>cpu</code></td></tr>
+<tr><td><code>agrees_with_cpu</code>, <code>agreement_worst_code_values</code></td><td>The renderer check result, or <code>null</code> when it could not run</td></tr>
+<tr><td><code>clinical</code></td><td>Always <code>false</code></td></tr>
+</tbody></table></div>
+<p><strong>Load settings</strong> opens a settings file and applies its simulation, type, severity, illuminant, source, comparison mode and adjustments. It does not load an image: if the file&#39;s source is <strong>Uploaded image</strong>, choose the file again. The message <strong>Settings imported</strong> confirms it; <strong>Import failed:</strong> followed by a reason means the file was not valid JSON.</p>
+<h2 id="copy-a-link-to-the-view">Copy a link to the view</h2>
+<p><strong>Copy a link to this view</strong> copies an address that reopens the tool with the same simulation, type, severity, simulation settings, adjustments, illuminant and strength, comparison mode, source and renderer. The link does not include the divider position, the daltonise and fixation-cross checkboxes, or an uploaded image.</p>
+<h2 id="the-what-to-take-buttons">The What to take buttons</h2>
+<p><strong>A list of colours</strong> keeps you on the list; <strong>The frame</strong> saves the PNG; <strong>The settings</strong> downloads the JSON; <strong>A link to this view</strong> copies the link.</p>
+<p>You should now have a table showing which of your colours survive the simulation, and a file that records exactly how it was produced.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Perception and Vision</a><a href="read-the-checks.html"><span>Next</span>Read the checks</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#check-a-palette">Check a palette</a></li><li><a href="#download-or-copy-the-table">Download or copy the table</a></li><li><a href="#save-the-frame">Save the frame</a></li><li><a href="#download-and-load-settings">Download and load settings</a></li><li><a href="#copy-a-link-to-the-view">Copy a link to the view</a></li><li><a href="#the-what-to-take-buttons">The What to take buttons</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

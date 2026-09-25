@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUT Lab FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about LUT Lab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with LUT Lab</a></li>
+<li><a href="apply-a-look.html">Apply a look</a></li>
+<li><a href="load-a-cube-file.html">Load a .cube file</a></li>
+<li><a href="lut-concepts.html">LUT concepts</a></li>
+<li><a href="read-what-it-moved.html">Read what a transform moved</a></li>
+<li><a href="write-a-cube-file.html">Write a .cube file</a></li>
+<li><a href="reference.html">LUT Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting LUT Lab</a></li>
+<li><a href="faq.html" aria-current="page">LUT Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>LUT Lab FAQ</h1>
+<p class="lede">Short answers to common questions about LUT Lab.</p>
+<h2 id="are-my-files-uploaded">Are my files uploaded?</h2>
+<p>No. Your <code>.cube</code> and your picture are read in the page and never sent anywhere. See <a href="../others/privacy.html">Privacy</a>.</p>
+<h2 id="which-lut-formats-can-i-use">Which LUT formats can I use?</h2>
+<p>Only <code>.cube</code>, 1D or 3D, as defined in the Adobe / IRIDAS Cube LUT Specification 1.0. Convert other formats first.</p>
+<h2 id="will-a-cube-from-lut-lab-work-in-my-editing-program">Will a .cube from LUT Lab work in my editing program?</h2>
+<p>It is written to the <code>.cube</code> specification: <code>TITLE</code>, <code>LUT_3D_SIZE</code> or <code>LUT_1D_SIZE</code>, <code>DOMAIN_MIN</code> and <code>DOMAIN_MAX</code>, and rows with red changing fastest. Programs that read standard <code>.cube</code> files should read it. The looks are designed for ordinary sRGB images, not log camera footage.</p>
+<h2 id="what-size-should-i-choose">What size should I choose?</h2>
+<p>33 is a common default. 17 is smaller and coarser, 65 larger and more faithful to curved looks. Sizes 2, 4, 6, 16, 18 and 52 put every grid point exactly on an 8-bit value.</p>
+<h2 id="why-does-the-file-say-it-is-8-bit-when-it-has-six-decimals">Why does the file say it is 8-bit when it has six decimals?</h2>
+<p>The tool reads and writes pixels at 8 bits, so every value it can produce is one of 256 levels. Six decimals is simply how the format writes numbers. The header says this because the format has no other way to record precision.</p>
+<h2 id="can-i-make-a-lut-with-more-precision-than-8-bits">Can I make a LUT with more precision than 8 bits?</h2>
+<p>Not in LUT Lab. A 32-bit float export was withdrawn because the tool has no floating-point path to fill it.</p>
+<h2 id="why-is-there-no-acescct-or-log-conversion">Why is there no ACEScct or log conversion?</h2>
+<p>Such conversions need values far above the 0 to 1 range an 8-bit canvas holds. The ACEScct look was withdrawn for that reason; the <strong>Looks</strong> tab shows why.</p>
+<h2 id="is-bleach-bypass-a-real-film-process-simulation">Is &quot;Bleach bypass&quot; a real film process simulation?</h2>
+<p>No. It is a stylisation named after the process, not a simulation of it. All five stylisations are hand-tuned curves; only the Reinhard tone-map is a defined transform.</p>
+<h2 id="what-does-clipped-count">What does &quot;clipped&quot; count?</h2>
+<p>Pixels where the transform drove a channel to 0 or 255 that was not already there. Pixels that were already pure black, white or fully saturated and stayed that way are not counted.</p>
+<h2 id="can-i-adjust-the-strength-of-a-loaded-cube">Can I adjust the strength of a loaded .cube?</h2>
+<p>No. <strong>Strength</strong> applies to the built-in looks. A loaded file is applied at full strength.</p>
+<h2 id="can-i-use-lut-lab-to-convert-a-3d-lut-to-a-different-size">Can I use LUT Lab to convert a 3D LUT to a different size?</h2>
+<p>Yes. Load the file, then export at the size you want. The new table is resampled with interpolation and rounded to 8 bits, so keep the original. Exporting a 3D file as a 1D curve keeps only what it does to greys.</p>
+<h2 id="does-the-tool-show-the-lut-as-a-3d-cube">Does the tool show the LUT as a 3D cube?</h2>
+<p>No. It shows the effect on a scene, on 18 test colours on the <strong>Looks</strong> tab, and on a ring of 72 test colours.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting LUT Lab</a><a href="../others/README.html"><span>Next</span>LUT Lab background material</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#are-my-files-uploaded">Are my files uploaded?</a></li><li><a href="#which-lut-formats-can-i-use">Which LUT formats can I use?</a></li><li><a href="#will-a-cube-from-lut-lab-work-in-my-editing-program">Will a .cube from LUT Lab work in my editing program?</a></li><li><a href="#what-size-should-i-choose">What size should I choose?</a></li><li><a href="#why-does-the-file-say-it-is-8-bit-when-it-has-six-decimals">Why does the file say it is 8-bit when it has six decimals?</a></li><li><a href="#can-i-make-a-lut-with-more-precision-than-8-bits">Can I make a LUT with more precision than 8 bits?</a></li><li><a href="#why-is-there-no-acescct-or-log-conversion">Why is there no ACEScct or log conversion?</a></li><li><a href="#is-bleach-bypass-a-real-film-process-simulation">Is &quot;Bleach bypass&quot; a real film process simulation?</a></li><li><a href="#what-does-clipped-count">What does &quot;clipped&quot; count?</a></li><li><a href="#can-i-adjust-the-strength-of-a-loaded-cube">Can I adjust the strength of a loaded .cube?</a></li><li><a href="#can-i-use-lut-lab-to-convert-a-3d-lut-to-a-different-size">Can I use LUT Lab to convert a 3D LUT to a different size?</a></li><li><a href="#does-the-tool-show-the-lut-as-a-3d-cube">Does the tool show the LUT as a 3D cube?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

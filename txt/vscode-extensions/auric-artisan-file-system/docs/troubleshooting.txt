@@ -1,0 +1,197 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for common Auric Artisan File System problems.
+Area: VS Code extensions › Auric Artisan File System   Updated: 2026-09-25
+
+For anything not listed, set `auricFiles.logLevel` to `debug`, repeat the
+action, run Auric Files: Show Log, and see Get support
+[../../install-and-setup/docs/get-support.txt].
+
+ACTIONS DO NOTHING OR ARE REFUSED
+=================================
+
+Create, rename, move and delete are unavailable
+-----------------------------------------------
+
+  - Why: the workspace is not trusted. In Restricted Mode, browsing, search,
+    filtering and related-file navigation work, but nothing that changes
+    files.
+  - Fix: run Workspaces: Manage Workspace Trust and trust the folder.
+
+"Choose a resource inside the open workspace first."
+----------------------------------------------------
+
+  - Why: the action needs a file or folder as its target, and none is
+    selected, or the selected item is outside the workspace.
+  - Fix: select an item in the Explorer or open a file, or use Choose… in the
+    panel.
+
+"Choose a file or subfolder for this action. Use the native Explorer to create directly in the workspace root."
+------------------------------------------------------------------------------
+
+  - Why: the panel's target actions need a file or subfolder; the workspace
+    root itself is not a valid target for them.
+  - Fix: use VS Code's own New File or New Folder for the root, or choose a
+    subfolder.
+
+"This resource is outside the workspace."
+-----------------------------------------
+
+  - Why: you are inspecting a file that is not in any open workspace folder.
+  - Fix: Properties still work. Open the file's folder as a workspace to use
+    file actions on it.
+
+An operation is blocked
+-----------------------
+
+  - Why: it touches a path in `auricFiles.safety.protectedPaths` (for example
+    `.env`, lockfiles or `node_modules`).
+  - Fix: do it with VS Code's own Explorer if you really mean it, or remove
+    the pattern from the setting.
+
+Properties opens a picker instead of the file
+---------------------------------------------
+
+  - Why: some keyboard routes do not tell the extension which Explorer item is
+    focused.
+  - Fix: pick the file in the list, or right-click the file and choose File
+    Properties.
+
+SHORTCUTS
+=========
+
+Most shortcuts do nothing
+-------------------------
+
+  - Why: the full shortcut deck is off by default, so it does not take over
+    `Ctrl` + `Alt` combinations.
+  - Fix: turn on `auricFiles.keyboard.enableDefaultShortcuts`.
+
+`Ctrl` + `N` in the Explorer opens Auric's New File
+---------------------------------------------------
+
+  - Why: with the Explorer focused, `Ctrl` + `N`, `Ctrl` + `Shift` + `N`,
+    `Alt` + `Enter`, `Ctrl` + `Shift` + `M`, `Alt` + `S` and `Ctrl` + `Alt` +
+    `B` run Auric commands.
+  - Fix: remove those bindings in Preferences: Open Keyboard Shortcuts (search
+    for `auricFiles`) if you prefer VS Code's defaults.
+
+A deck shortcut conflicts with another extension
+------------------------------------------------
+
+  - Fix: open Preferences: Open Keyboard Shortcuts, search for the keys, and
+    rebind one of them.
+
+CREATION
+========
+
+"expands to more than 1000 paths" or "Stopped after 2000 paths"
+---------------------------------------------------------------
+
+  - Why: the brace or range expression produces too many paths.
+  - Fix: split it into smaller batches.
+
+Braces were created literally
+-----------------------------
+
+  - Why: `auricFiles.create.expandBraces` is off, a brace was escaped with a
+    backslash, or the braces are neither a list nor a range (such as `{png}`).
+  - Fix: turn the setting on and write a list (`{a,b}`) or a range (`{1..3}`).
+
+A template does not appear in the list
+--------------------------------------
+
+  - Why: the template file is not in a template folder, its id is invalid, it
+    uses an unknown filter, a block is not closed, or the workspace is
+    untrusted.
+  - Fix: check `auricFiles.templates.directories`, trust the workspace, and
+    look in the log for Ignored template with the reason.
+
+Generated files use the wrong framework
+---------------------------------------
+
+  - Why: automatic preset detection picked a different framework.
+  - Fix: set `auricFiles.create.preset` explicitly.
+
+RELATED FILES, SEARCH AND PROPERTIES
+====================================
+
+"Not indexed yet" in Properties, or related files are missing
+-------------------------------------------------------------
+
+  - Why: the workspace index has not been built, or the file is excluded from
+    it.
+  - Fix: run Auric Files: Refresh. Check `auricFiles.explorer.excludePatterns`
+    and whether `.gitignore` excludes the file
+    (`auricFiles.explorer.respectGitignore`).
+
+Search results stop early
+-------------------------
+
+  - Why: a search keeps at most `auricFiles.search.maxResults` matches, and
+    the index holds at most `auricFiles.explorer.maxNodes` entries.
+  - Fix: raise the limits, or narrow the search with a filter.
+
+Git status looks out of date
+----------------------------
+
+  - Why: Properties shows Git state from the last index and labels it so.
+  - Fix: run Auric Files: Refresh.
+
+Owner or creation date says Unavailable
+---------------------------------------
+
+  - Why: the file system does not report them through VS Code. Auric Files
+    never invents a value.
+  - Fix: none; check in your operating system if you need them.
+
+The index is slow on a network drive
+------------------------------------
+
+  - Fix: lower `auricFiles.performance.scanConcurrency`, turn off
+    `auricFiles.performance.watchWorkspace`, and refresh by hand.
+
+DUPLICATES, TRASH AND HISTORY
+=============================
+
+Duplicate review compares by size
+---------------------------------
+
+  - Why: content hashing is not available in this environment (for example a
+    virtual workspace).
+  - Fix: none needed; review the groups carefully before trashing.
+
+A deleted file is not in the workspace trash
+--------------------------------------------
+
+  - Why: it was deleted with Delete Permanently, with VS Code's own Explorer,
+    or while `auricFiles.safety.useWorkspaceTrash` was off; or it expired
+    after `auricFiles.safety.trashRetentionDays`, or was purged to stay under
+    `auricFiles.safety.trashMaxBytes`.
+  - Fix: restore from version control or a backup.
+
+Undo did not reverse my change
+------------------------------
+
+  - Why: the history only records Auric operations, not editor edits or native
+    Explorer actions.
+  - Fix: use the editor's undo or VS Code's Explorer undo for those changes.
+
+The merge editor does not open
+------------------------------
+
+  - Why: your VS Code-based editor does not provide the merge editor, or you
+    selected fewer than two or more than three files.
+  - Fix: select two files, or a base and two inputs, in VS Code itself.
+
+ICON TOOLS
+==========
+
+"No compatible theme active"
+----------------------------
+
+  - Why: the icon tools need the Auric Artisan File Icons Facet or Playful
+    icon theme to be active.
+  - Fix: install Auric Artisan File Icons and choose one of those themes with
+    Preferences: File Icon Theme, or ignore the section.

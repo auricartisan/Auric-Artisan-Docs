@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Picker FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the Image Picker.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="extract-a-palette.html">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html">Image Picker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html" aria-current="page">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Image Picker FAQ</h1>
+<p class="lede">Short answers to common questions about the Image Picker.</p>
+<h2 id="is-my-picture-uploaded">Is my picture uploaded?</h2>
+<p>No. A picture you load from a file is read in the page and never leaves the tab. When you use <strong>Load URL</strong>, your browser fetches the image from that address, as it would for any web page. See <a href="../others/privacy.html">Privacy</a>.</p>
+<h2 id="why-do-i-get-different-colours-each-time-i-extract">Why do I get different colours each time I extract?</h2>
+<p>The k-means++ method starts from randomly chosen colours, so two runs on the same picture can settle on slightly different averages. Flat artwork with few colours is not affected, because its exact colours are used.</p>
+<h2 id="why-is-a-colour-i-can-see-not-in-the-palette">Why is a colour I can see not in the palette?</h2>
+<p>The palette holds the colours that cover the most of the picture. A small detail may not make up enough pixels to become a cluster. Raise <strong>Clusters</strong> or <strong>Quality</strong>, or pin the colour with the eyedropper.</p>
+<h2 id="are-the-swatches-real-pixel-colours">Are the swatches real pixel colours?</h2>
+<p>For flat artwork with no more distinct colours than the cluster count, yes. For photographs, each swatch is the average of a cluster of similar pixels, and may not match any single pixel exactly. Pins are always exact pixels of the working copy.</p>
+<h2 id="how-many-colours-can-i-extract">How many colours can I extract?</h2>
+<p>The slider goes from 2 to 12. When the page first opens it uses 16 until you move the slider.</p>
+<h2 id="does-the-contrast-check-mean-the-pairs-are-accessible">Does the contrast check mean the pairs are accessible?</h2>
+<p>It gives the WCAG 2 contrast ratio and rating for the strongest eight pairs, as a first pass. Test the exact text and background pair you plan to use, at its real size, in a dedicated contrast tool.</p>
+<h2 id="what-colour-space-are-the-lab-and-lch-values-in">What colour space are the Lab and LCH values in?</h2>
+<p>CIELAB and its LCH form, calculated from sRGB with a D65 white.</p>
+<h2 id="can-i-compare-palettes-from-two-pictures">Can I compare palettes from two pictures?</h2>
+<p>The <strong>History</strong> count keeps track of how many extractions you have run, but the page does not show a side-by-side comparison. Export the JSON of each picture and compare the files.</p>
+<h2 id="can-i-share-my-palette-with-a-link">Can I share my palette with a link?</h2>
+<p><strong>Copy page link</strong> copies the page address only. Share the CSS, JSON or SVG instead.</p>
+<h2 id="is-there-an-api-for-this">Is there an API for this?</h2>
+<p>Yes. The line under the page heading gives the REST endpoint, <code>POST /v1/palette/from-image</code>, and its cost in API credits, with a link to its documentation. API credits are separate from tool tokens. See <a href="../../../../../services/public-api/README.html">Public API</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting the Image Picker</a><a href="../others/README.html"><span>Next</span>Image Picker background material</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#is-my-picture-uploaded">Is my picture uploaded?</a></li><li><a href="#why-do-i-get-different-colours-each-time-i-extract">Why do I get different colours each time I extract?</a></li><li><a href="#why-is-a-colour-i-can-see-not-in-the-palette">Why is a colour I can see not in the palette?</a></li><li><a href="#are-the-swatches-real-pixel-colours">Are the swatches real pixel colours?</a></li><li><a href="#how-many-colours-can-i-extract">How many colours can I extract?</a></li><li><a href="#does-the-contrast-check-mean-the-pairs-are-accessible">Does the contrast check mean the pairs are accessible?</a></li><li><a href="#what-colour-space-are-the-lab-and-lch-values-in">What colour space are the Lab and LCH values in?</a></li><li><a href="#can-i-compare-palettes-from-two-pictures">Can I compare palettes from two pictures?</a></li><li><a href="#can-i-share-my-palette-with-a-link">Can I share my palette with a link?</a></li><li><a href="#is-there-an-api-for-this">Is there an API for this?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

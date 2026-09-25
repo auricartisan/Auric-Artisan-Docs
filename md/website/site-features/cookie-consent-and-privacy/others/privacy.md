@@ -1,0 +1,29 @@
+---
+title: Cookie consent and privacy — Privacy
+description: What the site measures with and without your consent, and how browser privacy signals are respected.
+product: Website › Site features › Cookie consent and privacy
+updated: 2026-09-25
+---
+
+# What the site measures
+
+## With Analytics consent
+
+The site's own, first-party analytics may record usage events: the name of an event (such as a feature being used), the page's path, and a few small details. It does not record what you type into fields, email addresses, or the query part of addresses. No third-party analytics scripts are used for this.
+
+With the same consent, the site also measures whether a visit behaves like a person rather than an automated script, from how pointer and keyboard input vary during the visit. It does not record what you clicked, what you typed, where you came from or who you are.
+
+## Without Analytics consent
+
+- No usage events are recorded.
+- The site still counts that a page was viewed: the page's path and the site's host name, with nothing about how you used the page and no identifier stored on your device.
+
+## Browser privacy signals
+
+If your browser sends **Do Not Track** or **Global Privacy Control**, the site's analytics stays off and page views are not counted at all, whatever your cookie choice.
+
+## Your preferences
+
+Settings you choose (theme, language, accent colour, comfort options and similar) are kept in your browser's local storage so that the features work. They are not sent to Auric Artisan.
+
+The full, binding descriptions are in the Privacy Policy at https://auricartisan.com/legal/privacy/ and the Cookie Policy at https://auricartisan.com/legal/cookies/.

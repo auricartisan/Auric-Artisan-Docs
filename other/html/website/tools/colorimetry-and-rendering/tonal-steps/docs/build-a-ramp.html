@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build a ramp — Auric Artisan Docs</title>
+<meta name="description" content="Choose a ramp engine, step count and easing, and judge how even the ramp is.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tonal Steps</a>
+<h2>Tonal Steps documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tonal Steps</a></li>
+<li><a href="build-a-ramp.html" aria-current="page">Build a ramp</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="tints-shades-tones.html">Make tints, shades, tones and key sets</a></li>
+<li><a href="reference.html">Tonal Steps reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tonal Steps</a></li>
+<li><a href="faq.html">Tonal Steps FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tonal Steps</a> &rsaquo; <a href="README.html">Tonal Steps documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Build a ramp</h1>
+<p class="lede">Choose a ramp engine, step count and easing, and judge how even the ramp is.</p>
+<h2 id="the-engines">The engines</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Engine</th><th>How it builds the steps</th><th>Holds even</th><th>Easing γ</th></tr></thead>
+<tbody>
+<tr><td><strong>HSL lightness</strong></td><td>Keeps your colour&#39;s HSL hue and saturation and steps HSL lightness evenly from 100 (white) to 0 (black)</td><td>HSL L, a coordinate rather than a perceptual quantity</td><td>Not used</td></tr>
+<tr><td><strong>Equal luminance</strong></td><td>For each step, finds the HSL lightness (at your colour&#39;s hue and saturation) that gives a target relative luminance Y = (1 − t)^γ, from 1 (white) to 0 (black)</td><td>Relative luminance Y, the quantity WCAG contrast is built on (at γ = 1)</td><td>Bends the targets</td></tr>
+</tbody></table></div>
+<p>A third engine, <strong>Equal contrast</strong> (equal steps in WCAG ratio against black), is not offered on the Lab tab because it produces the same ramp as Equal luminance: equal steps in WCAG ratio are equal steps in luminance. The Ramps tab shows it with a &quot;same ramp as equal luminance&quot; badge, and it can still be reached with the <code>3</code> key or a saved link.</p>
+<p>Both engines start at white and end at black. The <strong>Mix in</strong> setting does not affect the main ramp; it affects tints, shades, tones and key sets.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, enter the <strong>Base colour</strong> as a six-digit HEX (or use the picker, or <strong>Random base</strong>).</li>
+<li>Choose <strong>HSL lightness</strong> or <strong>Equal luminance</strong> under <strong>Ramp engine</strong>.</li>
+<li>Set <strong>Steps</strong> from 3 to 21 (default 11).</li>
+<li>For Equal luminance, set <strong>Easing γ</strong> from 0.4 to 2.6 (default 1.0). At 1.00 the steps are evenly spaced in luminance. Higher values move steps towards the dark end, which usually looks more even; lower values crowd them towards white.</li>
+<li>Read the step rows and the <strong>Where the steps fall</strong> chart.</li>
+<li>Read the statistics:<ul>
+<li><strong>Base OKLab L</strong> — your colour&#39;s perceptual lightness;</li>
+<li><strong>Largest step</strong> and <strong>Smallest step</strong> — the biggest and smallest OKLab L gaps between neighbouring steps;</li>
+<li><strong>Evenness</strong> — how far the step sizes stray from their average, as ±%. Smaller is more even.</li>
+</ul>
+</li>
+</ol>
+<p>The note under the statistics gives the ratio of the largest to the smallest step.</p>
+<h2 id="compare-the-engines">Compare the engines</h2>
+<ol>
+<li>Open the <strong>Ramps</strong> tab.</li>
+<li>Under <strong>Compare</strong>, keep <strong>Every engine</strong> to see all three, or choose <strong>One at a time</strong> for the Lab&#39;s engine only.</li>
+<li>Under <strong>Measure evenness in</strong>, choose <strong>OKLab L</strong> (default), <strong>CIELAB L*</strong> or <strong>Relative Y</strong>. A ramp even in one is rarely even in another.</li>
+<li>Under <strong>Endpoints</strong>, choose <strong>Include black</strong> (default) or <strong>Interior only</strong>. The last step into pure black usually dominates the figure; the interior figure drops the first and last gaps. Both figures are shown, and the one you choose is emphasised.</li>
+<li>Read each engine&#39;s row: its name, what it holds constant, its strip, and its evenness figures.</li>
+<li>Read <strong>Step sizes, as the chosen measure sees them</strong> for a chart of the gaps, and <strong>Where the ramp sits in chroma</strong> for the ramp (with tints, shades and tones) plotted on the OKLab a–b plane. A ramp that only changes lightness traces a line there; one mixed towards white and black in a non-linear space does not.</li>
+</ol>
+<p>The comparison uses the same base, step count, easing and mixing space as the Lab.</p>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>The equal-luminance engine is, perhaps surprisingly, the least even in OKLab L at γ = 1: equal steps in luminance are very unequal in perceived lightness, with the biggest jump at the dark end. The Ramps footer says so.</li>
+<li>For a ramp whose steps line up with WCAG thresholds, use Equal luminance and check the <a href="check-contrast.html">Contrast</a> tab.</li>
+<li>Press <code>1</code> or <code>2</code> to switch engines, and <code>R</code> for a random base, when the focus is not in a field.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>You have a ramp built by the engine you chose, with its step sizes measured, and a side-by-side view of how the engines differ.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Tonal Steps</a><a href="check-contrast.html"><span>Next</span>Check contrast</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-engines">The engines</a></li><li><a href="#steps">Steps</a></li><li><a href="#compare-the-engines">Compare the engines</a></li><li><a href="#tips">Tips</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+---
+title: Advanced Kit — Glossary
+description: Terms used in the Advanced Kit guides.
+product: Website › Kits › Advanced Kit
+updated: 2026-09-25
+---
+
+# Advanced Kit glossary
+
+**Tool visibility mode** — The site-wide setting that decides which tools are listed: Basic, Advanced, Everything or Custom. Sometimes called complexity mode.
+
+**Basic mode** — Shows everyday, beginner-friendly tools and hides the scientific ones. The default.
+
+**Advanced mode** — Shows scientific, diagnostic and power-user tools and hides the simplest ones.
+
+**Everything mode** — Shows every tool, including collection cards that were hidden earlier.
+
+**Custom mode** — Shows every tool except the ones you untick in the checklist.
+
+**Basic, advanced and both tools** — The level each tool is given. Both tools show in every mode.
+
+**Custom checklist** — The **Choose your tools** list of tick boxes shown in Custom mode.
+
+**Quick cards** — The three example tool links at the bottom of the kit.
+
+**Mode summary** — The illustrated panel under **Current mode** that describes the active mode and offers switch buttons.
+
+**UX Kit** — The changelog's name for the part of the site that changes page wording when the mode changes. It has no panel of its own.
+
+**Colorimetry** — The measurement of colour as numbers, such as chromaticity and colour spaces.
+
+**Gamut** — The range of colours a device or colour space can show.
+
+**Spectral** — To do with light broken into its wavelengths.
+
+**Psychophysics** — The study of how physical stimuli, such as light, relate to what people perceive.

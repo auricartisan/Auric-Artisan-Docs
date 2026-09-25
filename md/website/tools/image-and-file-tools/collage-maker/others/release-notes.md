@@ -1,0 +1,28 @@
+---
+title: Collage Maker — Release notes
+description: User-facing history of the Collage Maker.
+product: Website › Tools › Image and file tools › Collage Maker
+updated: 2026-09-25
+---
+
+# Release notes
+
+## Current version — the measured studio
+
+The tool was rebuilt as the Collage Studio workbench, with six tabs: **Studio**, **Layout**, **Measure**, **Data**, **Export** and **Reference**. The developer reference that describes this version in the site's documentation library is dated 5 June 2026.
+
+What changed for you:
+
+- **Undo reaches the start.** Every step records the state before the change, so undoing takes you all the way back. A removed picture, or a cleared canvas, comes back with the step that removed it.
+- **Exports contain only the collage.** Guides, the selection outline, corner handles and the transparency chequerboard are drawn only on screen. A PNG saved with **Transparent background** ticked is transparent.
+- **Coverage is measured.** The single coverage figure, which added up picture areas, is replaced by **canvas covered** and **overlapping** read from pixels, and **outside the canvas** computed from positions. The old figure stays on screen as **the old readout said** for comparison.
+- **The Layout tab** lays out and measures every grid arrangement before you apply one, and marks a winner only when one truly covers more.
+- **Two features were withdrawn:** a "95% confidence interval" for coverage and a batch table of hypothetical layouts. Neither measured the collage on the canvas. The question the batch table was aiming at, which grid gives these pictures the most canvas, is now the **Layout** tab.
+- **Export sizes are measured.** The **Export** tab shows the real size of the PNG, JPEG and session file for your collage.
+- **The reading.** A small JSON file records what was measured, to keep with the image.
+
+Some features described in the earlier user guide of 25 May 2026 are not part of the current tool, including a background colour picker, a snap step setting, per-layer lock and rename, and a full-screen preview.
+
+## 25 May 2026 — earlier version
+
+The Collage Maker Lab user guide was published in the site's documentation library. It describes the earlier version of the tool.

@@ -1,0 +1,100 @@
+==============================================================================
+FAQ
+==============================================================================
+Short answers to common questions about Auric Artisan Live.
+Area: VS Code extensions › Auric Artisan Live   Updated: 2026-09-25
+
+IS AURIC LIVE A PRODUCTION WEB SERVER?
+======================================
+
+No. It is a development server for your own machine. Do not use it to host a
+public site.
+
+DOES IT NEED NODE.JS OR OTHER SOFTWARE?
+=======================================
+
+Serving static files needs nothing extra. Running a backend needs that
+backend's runtime (PHP, Python, Node.js and so on) and the project's
+dependencies, installed by you. The extension itself has no runtime npm
+dependencies.
+
+WHAT IS THE DEFAULT ADDRESS?
+============================
+
+`http://localhost:5500`, or the next free port. Change it with
+`auricLive.port`.
+
+CAN OTHER PEOPLE ON MY NETWORK SEE MY SITE?
+===========================================
+
+In a trusted workspace the default host `0.0.0.0` lets devices on your local
+network reach the server, subject to your firewall. Set `auricLive.host` to
+`127.0.0.1` to keep it on your machine, or turn on `auricLive.auth.enabled` to
+require a password.
+
+WHY DOES THE PAGE NOT RELOAD FOR FILES MY BUILD TOOL WRITES?
+============================================================
+
+The default trigger reacts only to saves in VS Code, so generated and
+synchronised files cannot keep refreshing the page. Set
+`auricLive.liveReload.reloadOnSave` to `change` for build tools.
+
+CAN I USE IT WITH VITE, NEXT.JS, ANGULAR OR ANOTHER FRAMEWORK?
+==============================================================
+
+Yes. Choose the framework's dev server as the run target. Auric Live starts
+it, forwards to it and keeps the framework's own hot reload in charge, while
+still adding its dashboard.
+
+CAN I RUN PHP?
+==============
+
+Yes, through `php-cgi` or the PHP built-in server, with PHP installed. See Run
+PHP sites [php-and-cgi.txt].
+
+CAN I SERVE SEVERAL PROJECTS AT ONCE?
+=====================================
+
+Yes. Each folder of a multi-root workspace gets its own server and port. Use
+Select Active Server to choose which one the panel shows.
+
+DOES IT WORK IN AN UNTRUSTED FOLDER?
+====================================
+
+Partly. Static serving, live reload and request inspection work on this
+machine only. Running commands, PHP, proxying, file-backed mocks, custom
+certificates and network access need trust.
+
+DOES IT WORK OVER REMOTE SSH, IN CONTAINERS OR IN VIRTUAL WORKSPACES?
+=====================================================================
+
+It needs a real file system and a port. Virtual workspaces are not supported.
+In remote setups it runs next to the files; forward the port to reach it from
+your computer.
+
+DOES HTTPS REMOVE THE BROWSER WARNING?
+======================================
+
+Only if the browser trusts the certificate. The generated certificate is
+self-signed, so each browser or device warns until you trust it. A certificate
+your devices already trust removes the warning.
+
+IS MY REQUEST DATA SENT ANYWHERE?
+=================================
+
+No. Requests are recorded locally, credentials are masked, and HAR exports
+leave out bodies by default. There is no telemetry.
+
+CAN I USE IT IN HINDI?
+======================
+
+Yes. Choose हिन्दी in the control panel header, or set
+`auricLive.interfaceLanguage` to `hi`. The browser dashboard and your website
+are not translated.
+
+HOW IS IT DIFFERENT FROM OTHER LIVE SERVERS?
+============================================
+
+Besides live reload, it runs and waits for backends, proxies and mocks APIs,
+serves a REST API from a JSON file, inspects and replays requests, simulates
+slow networks for every client, and adds an in-page dashboard.

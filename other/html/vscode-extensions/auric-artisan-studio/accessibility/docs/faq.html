@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Accessibility FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers about Auric Accessibility.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Accessibility — WCAG 2.2 Linter</a>
+<h2>Auric Accessibility docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Accessibility</a></li>
+<li><a href="audit-profiles-and-contrast.html">Audit profiles and contrast standards</a></li>
+<li><a href="check-space.html">The Check space: Findings and Preview</a></li>
+<li><a href="editor-linting.html">Editor linting</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="manual-evidence.html">Manual evidence</a></li>
+<li><a href="project-issues-view.html">The Project Issues view</a></li>
+<li><a href="project-scans.html">Project scans</a></li>
+<li><a href="rules.html">Rules</a></li>
+<li><a href="reference.html">Auric Accessibility reference</a></li>
+<li><a href="troubleshooting.html">Auric Accessibility troubleshooting</a></li>
+<li><a href="faq.html" aria-current="page">Auric Accessibility FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Accessibility — WCAG 2.2 Linter</a> &rsaquo; <a href="README.html">Auric Accessibility docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Accessibility</p>
+<h1>Auric Accessibility FAQ</h1>
+<p class="lede">Short answers about Auric Accessibility.</p>
+<h3 id="how-many-rules-are-there">How many rules are there?</h3>
+<p>70+: the current package runs 72 static rules across 29 WCAG success criteria, plus the contrast checks. The Marketplace description gives the figure as 70 rules across 28 criteria. See <a href="rules.html">Rules</a>.</p>
+<h3 id="will-a-clean-result-make-my-site-wcag-compliant">Will a clean result make my site WCAG compliant?</h3>
+<p>No. Static checks cover only part of WCAG, and many criteria need a person to test with a keyboard, a screen reader, zoom and real content. Use the <a href="manual-evidence.html">manual checks</a> for the rest. The score is for prioritising and tracking progress, not a certification.</p>
+<h3 id="which-wcag-version-does-it-check">Which WCAG version does it check?</h3>
+<p>WCAG 2.2 by default. You can choose 2.0, 2.1 or the 3.0 draft (which adds APCA). See <a href="audit-profiles-and-contrast.html">Audit profiles and contrast</a>.</p>
+<h3 id="does-it-work-with-react-vue-svelte-and-astro">Does it work with React, Vue, Svelte and Astro?</h3>
+<p>Yes. It reads JSX and TSX, Vue, Svelte and Astro files, understands framework attribute syntax and bound values, and does not judge components such as <code>&lt;Button&gt;</code> as native elements. It cannot see markup produced by JavaScript at runtime.</p>
+<h3 id="does-it-check-plain-javascript-files">Does it check plain JavaScript files?</h3>
+<p>Plain <code>.js</code> and <code>.ts</code> files get contrast checks for CSS-in-JS, not the markup rules; put JSX in <code>.jsx</code> or <code>.tsx</code> files to get both. Inspect works in all four.</p>
+<h3 id="why-was-a-finding-shown-as-a-hint-best-practice">Why was a finding shown as a hint &quot;Best practice&quot;?</h3>
+<p>Six rules (<code>accesskey</code>, <code>autofocus</code>, <code>heading-skip</code>, <code>positive-tabindex</code>, <code>tiny-font</code>, <code>text-spacing-important</code>) and unreferenced duplicate IDs flag patterns worth fixing that do not by themselves fail WCAG. They are shown as hints and weigh half in the score.</p>
+<h3 id="can-it-fix-problems-automatically">Can it fix problems automatically?</h3>
+<p>Only where a rewrite is safe and deterministic, for 13 rules such as adding <code>lang=&quot;en&quot;</code> or removing <code>accesskey</code>. Judgement calls such as alt-text quality are only suggested. See <a href="editor-linting.html#apply-fix">Apply fix</a>.</p>
+<h3 id="how-do-i-ignore-a-false-positive">How do I ignore a false positive?</h3>
+<p>Use <strong>Ignore here</strong> in the hover, the <strong>Ignore this WCAG … finding here</strong> quick fix, or an <code>auric-disable-next-line &lt;rule-id&gt;</code> comment. See <a href="../../docs/suppression-and-branding.html">Suppression and branding</a>.</p>
+<h3 id="can-i-mark-a-brand-colour-so-it-does-not-hurt-the-score">Can I mark a brand colour so it does not hurt the score?</h3>
+<p>Yes, with <code>auric-brand-line</code> or <strong>Mark Line as Intentional Branding (Toggle)</strong>. Only colour findings can be classified; structural findings always count.</p>
+<h3 id="does-it-use-axe-core">Does it use axe-core?</h3>
+<p>No. It has its own engine. During development its results were checked against axe-core on rendered HTML; see <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h3 id="can-i-run-the-same-checks-in-ci">Can I run the same checks in CI?</h3>
+<p>Yes, with the bundled <code>auric-artisan</code> command-line scanner. See <a href="../../docs/ci-gate.html">The CI gate</a>.</p>
+<h3 id="does-it-send-my-code-anywhere">Does it send my code anywhere?</h3>
+<p>No. See <a href="../others/privacy.html">Privacy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Auric Accessibility troubleshooting</a><a href="../others/README.html"><span>Next</span>Auric Accessibility: other resources</a></nav>
+</main>
+<aside class="toc"></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

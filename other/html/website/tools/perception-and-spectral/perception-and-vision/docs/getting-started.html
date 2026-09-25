@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Perception and Vision — Auric Artisan Docs</title>
+<meta name="description" content="Open Perception Vision, learn the layout of the Lab tab and run a first colour vision simulation over the test card and your own image.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and Vision</a>
+<h2>Using Perception and Vision</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Perception and Vision</a></li>
+<li><a href="check-a-palette-and-export.html">Check a palette and export</a></li>
+<li><a href="read-the-checks.html">Read the checks</a></li>
+<li><a href="simulate-a-design.html">Simulate a design or image</a></li>
+<li><a href="reference.html">Perception and Vision reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Perception and Vision</a></li>
+<li><a href="faq.html">Perception and Vision FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Perception and Vision</a> &rsaquo; <a href="README.html">Using Perception and Vision</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Perception and Vision</p>
+<h1>Getting started with Perception and Vision</h1>
+<p class="lede">Open Perception Vision, learn the layout of the Lab tab and run a first colour vision simulation over the test card and your own image.</p>
+<h2 id="open-the-tool">Open the tool</h2>
+<p>Go to <a href="https://auricartisan.com/tool/general/perception-and-neuroscience/perception-vision/" rel="noopener">https://auricartisan.com/tool/general/perception-and-neuroscience/perception-vision/</a>. The page opens on the <strong>Lab</strong> tab in its default state: the built-in test card, the <strong>Colour vision</strong> simulation at <strong>Protan</strong>, <strong>Severity</strong> 1.00, a <strong>Split</strong> comparison with the divider in the middle, illuminant D65 (the scene as authored) and the <strong>GPU</strong> renderer.</p>
+<p>A note strip above the tabs, which cannot be closed, states the check this page is built around: a colour-blind viewer sees white as white. Its <strong>Data</strong> link opens the register that explains the method.</p>
+<h2 id="the-six-tabs">The six tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>The workbench: controls on the left, the simulated frame on the right, the grey-ramp check and the readouts below</td></tr>
+<tr><td><strong>Simulation</strong></td><td>One colour&#39;s route through the colour vision simulation, the matrices, and a table of test colours</td></tr>
+<tr><td><strong>Modes</strong></td><td>Every simulation side by side over the same source</td></tr>
+<tr><td><strong>Data</strong></td><td>The register of every dataset and transform the tool rests on, with a status for each</td></tr>
+<tr><td><strong>Export</strong></td><td>A list of colours through the simulation, and the download, copy, load and link buttons</td></tr>
+<tr><td><strong>Reference</strong></td><td>Standards, formulas, citations and research notes, with a search box</td></tr>
+</tbody></table></div>
+<h2 id="a-tour-of-the-lab-tab">A tour of the Lab tab</h2>
+<p><strong>The rail (left)</strong>, from top to bottom:</p>
+<ul>
+<li><strong>Source</strong> — test card, grey ramp, Snellen chart, your image, or camera.</li>
+<li><strong>Simulation</strong> — nine buttons: the eight simulations and <strong>None</strong>.</li>
+<li>Settings for the chosen simulation. For <strong>Colour vision</strong> these are <strong>Type</strong> (<strong>Protan</strong>, <strong>Deutan</strong>, <strong>Tritan</strong>), <strong>Daltonise instead of simulate</strong> and <strong>Severity</strong>. Other simulations show their own slider (adaptation level, age, scotoma radius, cataract or acuity) under <strong>Severity</strong>.</li>
+<li><strong>Compare</strong> — <strong>Split</strong>, <strong>Simulated only</strong> or <strong>Difference</strong>, and the <strong>Divider</strong> position for a split.</li>
+<li><strong>Renderer</strong> — <strong>GPU</strong> or <strong>CPU</strong>, and <strong>Fixation cross</strong>.</li>
+<li><strong>Before the eye</strong> — the illuminant and its <strong>Adaptation</strong> strength.</li>
+<li><strong>Adjustments</strong> — contrast, gamma, blur, glare and noise.</li>
+<li><strong>Presets</strong> and <strong>Reset</strong>.</li>
+</ul>
+<p><strong>The stage (right)</strong>:</p>
+<ul>
+<li>A caption naming what is shown (for example <strong>Colour vision, protanopia at severity 1.00</strong>) and, on the right, a coloured dot, the renderer in use and the frame size (for example <strong>GPU · 800 × 600</strong>).</li>
+<li>The frame. In a split, the left half is labelled <strong>Original</strong> and the right half with the simulation&#39;s name. The line under the frame names the method&#39;s source.</li>
+<li><strong>The grey ramp, which is the test that needs no reference</strong>: nine grey steps with a number under each, the channel spread the simulation adds to that step.</li>
+<li>Two rows of readouts: <strong>Neutral drift</strong>, <strong>Colours merged</strong>, <strong>Out of sRGB</strong>, <strong>GPU and CPU agree</strong>, then <strong>Distinct colours left</strong>, <strong>Largest channel shift</strong>, <strong>Frame luminance, mean</strong>, and <strong>min and max</strong>.</li>
+<li>Two buttons: <strong>Save the frame</strong> and <strong>Copy a link to this view</strong>.</li>
+</ul>
+<h2 id="your-first-simulation">Your first simulation</h2>
+<ol>
+<li>Look at the test card. Its top band has eight colour patches, the middle band a nine-step grey ramp, and the bottom three single-channel ramps (red, green and blue). The line printed on the card reads &quot;a simulation that tints the ramp below is wrong&quot;.</li>
+<li>With <strong>Colour vision</strong> and <strong>Protan</strong> selected, compare the halves. Red and green patches move towards similar yellowish browns; the grey ramp stays grey.</li>
+<li>Check the numbers under the grey-ramp strip below the frame: all nine should be <code>0</code>, and <strong>Neutral drift</strong> should read <code>0</code>.</li>
+<li>Read <strong>Colours merged</strong>: the share of the card&#39;s colours that the simulation mapped onto the same colour as another.</li>
+<li>Select <strong>Deutan</strong>, then <strong>Tritan</strong>, and watch the patches and the merged figure change.</li>
+<li>Under <strong>Source</strong>, choose <strong>Uploaded image</strong>, select <strong>Choose a file</strong> and open an image. It appears in the frame, scaled to fit within 1200 × 900 pixels.</li>
+<li>Drag across the frame to move the divider over the part you care about.</li>
+<li>Select <strong>Save the frame</strong> to download the view.</li>
+</ol>
+<p>You should now have a PNG of your image, half original and half as a protanope would see it, and a figure for how many of its colours merged.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="simulate-a-design.html">Simulate a design or image</a> covers every simulation and control.</li>
+<li><a href="read-the-checks.html">Read the checks</a> explains the grey ramp and the readouts.</li>
+<li><a href="check-a-palette-and-export.html">Check a palette and export</a> shows how to test a list of brand colours.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Using Perception and Vision</a><a href="check-a-palette-and-export.html"><span>Next</span>Check a palette and export</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-tool">Open the tool</a></li><li><a href="#the-six-tabs">The six tabs</a></li><li><a href="#a-tour-of-the-lab-tab">A tour of the Lab tab</a></li><li><a href="#your-first-simulation">Your first simulation</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feature Kit troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Fixes for Feature Kit problems, and what every calculator error message means.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Feature Kit</a>
+<h2>Feature Kit guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Feature Kit</a></li>
+<li><a href="calculator-functions.html">Calculator functions</a></li>
+<li><a href="calculator.html">Use the calculator</a></li>
+<li><a href="date-and-time.html">Work with dates and times</a></li>
+<li><a href="developer-tools.html">Use the developer tools</a></li>
+<li><a href="feedback.html">Send feedback</a></li>
+<li><a href="graphing.html">Plot a function</a></li>
+<li><a href="notes.html">Keep notes</a></li>
+<li><a href="unit-converter.html">Convert units</a></li>
+<li><a href="reference.html">Feature Kit reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Feature Kit troubleshooting</a></li>
+<li><a href="faq.html">Feature Kit FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Kits</a> &rsaquo; <a href="../README.html">Feature Kit</a> &rsaquo; <a href="README.html">Feature Kit guides</a></nav>
+<p class="kicker">Website › Kits › Feature Kit</p>
+<h1>Feature Kit troubleshooting</h1>
+<p class="lede">Fixes for Feature Kit problems, and what every calculator error message means.</p>
+<p>For problems shared by every kit, such as a missing launcher or a panel in the wrong place, see <a href="../../docs/troubleshooting.html">Troubleshooting kits</a>.</p>
+<h2 id="the-page-goes-dark-and-i-cannot-click-it">The page goes dark and I cannot click it</h2>
+<p><strong>Why:</strong> With Focus mode off, the Feature Kit dims the page and keeps keyboard focus inside the kit.</p>
+<p><strong>What to do:</strong> Click the dimmed page to close the kit, or select <strong>Focus mode</strong> in the kit&#39;s title bar to keep it open without dimming.</p>
+<h2 id="the-feature-launcher-does-not-close-the-kit">The Feature launcher does not close the kit</h2>
+<p><strong>Why:</strong> With Focus mode on, the launcher and <code>Ctrl</code> + <code>Shift</code> + <code>K</code> move focus into the kit instead of closing it.</p>
+<p><strong>What to do:</strong> Select <strong>Close</strong> in the title bar, or press <code>Esc</code> twice (once to leave a tool, once to close).</p>
+<h2 id="typing-numbers-does-nothing-on-the-calculator">Typing numbers does nothing on the calculator</h2>
+<p><strong>Why:</strong> Keyboard typing reaches the keypad only while the Scientific Calculator is open and the cursor is not in a text box. If the cursor is in the expression bar, the <strong>y =</strong> box or a page field, your keys go there instead.</p>
+<p><strong>What to do:</strong> Click an empty part of the calculator, or the display, then type. Or type into the expression bar and press <code>Enter</code>.</p>
+<h2 id="the-scientific-or-programmer-tab-is-missing">The Scientific or Programmer tab is missing</h2>
+<p><strong>Why:</strong> The site&#39;s tool visibility mode is <strong>Basic</strong>, which shows only the <strong>Basic</strong> keypad. In <strong>Advanced</strong> mode, the <strong>Basic</strong> keypad is hidden instead.</p>
+<p><strong>What to do:</strong> Open the <a href="../../advanced-kit/README.html">Advanced Kit</a> and choose <strong>Everything</strong> to see all three tabs.</p>
+<h2 id="my-variables-and-functions-disappeared">My variables and functions disappeared</h2>
+<p><strong>Why:</strong> Variables, your own functions and the memory value last only while the page is open. Moving to another page or reloading clears them.</p>
+<p><strong>What to do:</strong> Keep definitions you reuse in <a href="notes.html">Notes</a> and paste them into the expression bar. Calculations themselves stay in the history.</p>
+<h2 id="the-result-of-232-is-8-not-10">The result of 2+3×2 is 8, not 10</h2>
+<p><strong>Why:</strong> After a result, typing an operator adds to the end of the previous expression rather than to the result, and multiplication comes before addition.</p>
+<p><strong>What to do:</strong> Start the next step with <strong>Ans</strong>: <code>Ans×2</code>.</p>
+<h2 id="does-not-give-a-percentage">% does not give a percentage</h2>
+<p><strong>Why:</strong> <code>%</code> is the remainder operator: <code>10 % 3</code> is <code>1</code>.</p>
+<p><strong>What to do:</strong> Work out percentages with multiplication and division: <code>80*15/100</code>.</p>
+<h2 id="a-derivative-shows-120000000001-instead-of-12">A derivative shows 12.0000000001 instead of 12</h2>
+<p><strong>Why:</strong> <code>diff</code> and <code>diff2</code> estimate derivatives numerically. The last digits can carry tiny rounding noise.</p>
+<p><strong>What to do:</strong> Round the result with <code>roundto(diff(x^3, 2), 6)</code>. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="calculator-error-messages">Calculator error messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Cause</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td><code>Division by zero</code></td><td>You divided by 0</td><td>Change the divisor</td></tr>
+<tr><td><code>Unknown variable: name</code></td><td>The name is not a variable or constant. Also happens for <code>sin 30</code> (read as <code>sin30</code>)</td><td>Define it with <code>name = value</code>, check the spelling and case, or add brackets: <code>sin(30)</code></td></tr>
+<tr><td><code>Unknown function: name</code></td><td>No built-in or defined function has that name</td><td>Check spelling and case, or define it: <code>name(x) = ...</code></td></tr>
+<tr><td><code>Unexpected token after expression</code></td><td>Two values sit next to each other with no operator, such as <code>2pi</code></td><td>Add the operator: <code>2*pi</code></td></tr>
+<tr><td><code>Unexpected character: =</code></td><td>An <code>=</code> where it cannot go, such as <code>pi = 3</code></td><td>Choose a name that is not a constant</td></tr>
+<tr><td><code>Unexpected character: ...</code></td><td>A character the calculator does not understand</td><td>Remove it</td></tr>
+<tr><td><code>Unexpected end of expression</code></td><td>The expression stops too early, for example <code>2+</code></td><td>Finish the expression</td></tr>
+<tr><td><code>Expected )</code></td><td>A bracket is not closed</td><td>Add the <code>)</code></td></tr>
+<tr><td><code>Invalid numeric literal</code></td><td>A malformed number, such as <code>2e</code> or <code>1.2.3</code></td><td>Fix the number; write <code>2*e</code> for two times e</td></tr>
+<tr><td><code>Invalid hexadecimal literal</code>, <code>Invalid binary literal</code></td><td><code>0x</code> or <code>0b</code> with no digits after it</td><td>Add digits</td></tr>
+<tr><td><code>sin expects 1 argument</code> (and similar)</td><td>Wrong number of values in a function call</td><td>Check the function in <a href="calculator-functions.html">Calculator functions</a></td></tr>
+<tr><td><code>Cannot redefine sin</code> (and similar)</td><td>You tried to define a function with a built-in name</td><td>Use another name</td></tr>
+<tr><td><code>Recursion too deep</code></td><td>One of your functions calls itself without end</td><td>Rewrite the function</td></tr>
+<tr><td><code>Expression too complex</code></td><td>The expression needs too many steps, for example huge nested sums</td><td>Simplify it or use smaller ranges</td></tr>
+<tr><td><code>solve: no convergence (try lo, hi bounds)</code></td><td>No root was found near your guess</td><td>Try another guess, or give a range: <code>solve(expr, low, high)</code></td></tr>
+<tr><td><code>sum: too many terms</code>, <code>product: too many terms</code></td><td>The range spans more than 1,000,000 steps</td><td>Use a smaller range</td></tr>
+<tr><td><code>diff(expr, [var,] at)</code> and similar</td><td>A calculus function has the wrong number of arguments</td><td>See <a href="calculator-functions.html">Calculator functions</a></td></tr>
+<tr><td><code>Unclosed diff(...)</code> and similar</td><td>A calculus function&#39;s bracket is not closed</td><td>Add the <code>)</code></td></tr>
+<tr><td><code>Need more values</code></td><td>A sample statistic was given too few values</td><td>Give at least 2 values</td></tr>
+<tr><td><code>Factorial of negative</code>, <code>fib of negative</code></td><td>A negative number where it is not allowed</td><td>Use zero or a positive number</td></tr>
+<tr><td><code>nextprime: too large</code></td><td>The number is beyond the range the calculator can check</td><td>Use a smaller number</td></tr>
+<tr><td><code>NaN</code></td><td>The answer is undefined, for example <code>sqrt(-1)</code> or <code>7 % 0</code></td><td>Check the inputs</td></tr>
+<tr><td><code>∞</code></td><td>The answer is too large or infinite, for example <code>1e400</code> or <code>fact(171)</code></td><td>See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a></td></tr>
+</tbody></table></div>
+<h2 id="the-graph-is-empty">The graph is empty</h2>
+<p><strong>Why:</strong> The <strong>y =</strong> expression has a mistake, uses something other than <code>x</code> as its variable, or is undefined across the visible range.</p>
+<p><strong>What to do:</strong> Test the expression in the expression bar first, with a value for <code>x</code>, for example <code>x = 2</code> then your expression. Select the graph&#39;s reset button to return to the starting view.</p>
+<h2 id="the-unit-converter-says-units-could-not-be-loaded">The Unit Converter says &quot;Units could not be loaded&quot;</h2>
+<p><strong>Why:</strong> The unit list is downloaded the first time you open the converter on a page, and the download failed.</p>
+<p><strong>What to do:</strong> Check your connection and select <strong>Try again</strong>.</p>
+<h2 id="a-conversion-shows-a-strange-number">A conversion shows a strange number</h2>
+<p><strong>Why:</strong> The value box reads a number from the start of what you type. A comma is not a decimal separator, so <code>1,5</code> is read as <code>1</code>.</p>
+<p><strong>What to do:</strong> Use a dot for decimals: <code>1.5</code>.</p>
+<h2 id="i-cannot-find-a-unit-in-the-search-results">I cannot find a unit in the search results</h2>
+<p><strong>Why:</strong> The search narrows the category pills; it does not pick the unit.</p>
+<p><strong>What to do:</strong> Select the category pill it shows, then choose the unit from the <strong>From</strong> or <strong>To</strong> list.</p>
+<h2 id="a-note-disappeared">A note disappeared</h2>
+<p><strong>Why:</strong> <strong>Delete</strong> removes a note immediately, without asking. Notes are also lost if you clear the site&#39;s data in your browser, and they do not move between browsers or devices.</p>
+<p><strong>What to do:</strong> There is no undo. Use <strong>Export</strong> regularly for notes you want to keep.</p>
+<h2 id="copy-does-not-work">Copy does not work</h2>
+<p><strong>Why:</strong> Your browser blocked clipboard access, which can happen outside a secure connection or with strict permissions.</p>
+<p><strong>What to do:</strong> Allow clipboard access for the site, or select the text and copy it with <code>Ctrl</code> + <code>C</code>.</p>
+<h2 id="a-tool-card-shows-failed-to-load">A tool card shows &quot;failed to load&quot;</h2>
+<p><strong>Why:</strong> Notes, Date &amp; Time and Developer Tools download the first time you open them on a page. The download failed.</p>
+<p><strong>What to do:</strong> Check your connection and reload the page.</p>
+<h2 id="the-feedback-form-keeps-saying-could-not-send-yet">The feedback form keeps saying &quot;Could not send yet&quot;</h2>
+<p>See the message table in <a href="feedback.html">Feedback</a>. Your feedback is usually saved on your device and sent automatically once the connection is back.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Feature Kit reference</a><a href="faq.html"><span>Next</span>Feature Kit FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-page-goes-dark-and-i-cannot-click-it">The page goes dark and I cannot click it</a></li><li><a href="#the-feature-launcher-does-not-close-the-kit">The Feature launcher does not close the kit</a></li><li><a href="#typing-numbers-does-nothing-on-the-calculator">Typing numbers does nothing on the calculator</a></li><li><a href="#the-scientific-or-programmer-tab-is-missing">The Scientific or Programmer tab is missing</a></li><li><a href="#my-variables-and-functions-disappeared">My variables and functions disappeared</a></li><li><a href="#the-result-of-232-is-8-not-10">The result of 2+3×2 is 8, not 10</a></li><li><a href="#does-not-give-a-percentage">% does not give a percentage</a></li><li><a href="#a-derivative-shows-120000000001-instead-of-12">A derivative shows 12.0000000001 instead of 12</a></li><li><a href="#calculator-error-messages">Calculator error messages</a></li><li><a href="#the-graph-is-empty">The graph is empty</a></li><li><a href="#the-unit-converter-says-units-could-not-be-loaded">The Unit Converter says &quot;Units could not be loaded&quot;</a></li><li><a href="#a-conversion-shows-a-strange-number">A conversion shows a strange number</a></li><li><a href="#i-cannot-find-a-unit-in-the-search-results">I cannot find a unit in the search results</a></li><li><a href="#a-note-disappeared">A note disappeared</a></li><li><a href="#copy-does-not-work">Copy does not work</a></li><li><a href="#a-tool-card-shows-failed-to-load">A tool card shows &quot;failed to load&quot;</a></li><li><a href="#the-feedback-form-keeps-saying-could-not-send-yet">The feedback form keeps saying &quot;Could not send yet&quot;</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

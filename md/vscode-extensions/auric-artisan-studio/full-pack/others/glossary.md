@@ -1,0 +1,24 @@
+---
+title: Full Pack — Glossary
+description: Terms used in the Full Pack documentation.
+product: VS Code extensions › Auric Artisan Studio › Full Pack
+updated: 2026-09-25
+---
+
+# Full Pack glossary
+
+**Extension pack.** A VS Code extension that installs a list of other extensions and adds nothing of its own.
+
+**Member.** One of the extensions an extension pack installs. The Full Pack's members are Auric Color, Auric Accessibility and Auric Code Health.
+
+**Workstation.** Two or three Studio extensions installed together and presented as one product, with one sidebar, one Command Center and one Studio.
+
+**Host.** The member that presents the shared Workstation: Auric Accessibility when installed, otherwise Auric Color, otherwise Auric Code Health.
+
+**Suppressed extension.** A member that is not the host; it hides its own views but keeps doing the work it owns.
+
+**Capability.** One member's area of work: colour, accessibility or code health.
+
+**Disable (Workspace).** A VS Code option that turns an extension off for the current workspace only.
+
+For every other term, see the [Studio glossary](../../others/glossary.md).

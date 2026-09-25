@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference — Auric Artisan Docs</title>
+<meta name="description" content="Every command, keybinding, view, menu entry, setting, theme colour and workspace file contributed by the four Studio extensions, in one place.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html" aria-current="page">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Reference</h1>
+<p class="lede">Every command, keybinding, view, menu entry, setting, theme colour and workspace file contributed by the four Studio extensions, in one place.</p>
+<p>This page lists everything the Studio extensions add to VS Code, across all four extensions. Each extension&#39;s own reference page describes its commands and settings in more detail:</p>
+<ul>
+<li><a href="../color/docs/reference.html">Auric Color reference</a></li>
+<li><a href="../accessibility/docs/reference.html">Auric Accessibility reference</a></li>
+<li><a href="../code-health/docs/reference.html">Auric Code Health reference</a></li>
+<li><a href="../full-pack/docs/reference.html">Full Pack reference</a></li>
+</ul>
+<p>The facts on this page are for version 0.1.0.</p>
+<h2 id="extensions">Extensions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Display name</th><th>ID</th><th>Settings prefix</th><th>Categories</th></tr></thead>
+<tbody>
+<tr><td>Auric Color — Picker, Palettes &amp; Contrast</td><td><code>auric-artisan.auric-color</code></td><td><code>auricColor.</code></td><td>Visualization, Programming Languages, Other</td></tr>
+<tr><td>Auric Accessibility — WCAG 2.2 Linter</td><td><code>auric-artisan.auric-a11y</code></td><td><code>auricA11y.</code></td><td>Linters, Programming Languages, Other</td></tr>
+<tr><td>Auric Code Health — Secrets, TODOs &amp; Risk</td><td><code>auric-artisan.auric-codehealth</code></td><td><code>auricCodeHealth.</code></td><td>Linters, Other</td></tr>
+<tr><td>Auric Artisan Studio — Full Pack</td><td><code>auric-artisan.auric-artisan</code></td><td>none</td><td>Extension Packs, Linters, Visualization, Other</td></tr>
+</tbody></table></div>
+<p>All need VS Code 1.74 or newer. The three code extensions start when VS Code finishes loading.</p>
+<h2 id="keybindings">Keybindings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys (Windows, Linux)</th><th>Keys (macOS)</th><th>Command</th><th>Extensions</th><th>Active when</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>.</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>.</code></td><td>Workstation: Command Center</td><td>All three</td><td>The extension is not suppressed by a Workstation host</td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>C</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>C</code></td><td>Pick / edit color</td><td>Auric Color</td><td>The editor has focus</td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>A</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>A</code></td><td>Inspect Accessibility of Element</td><td>Auric Accessibility</td><td>The editor has focus</td></tr>
+</tbody></table></div>
+<p>To rebind them, open <strong>File › Preferences › Keyboard Shortcuts</strong> and search for the command title.</p>
+<h2 id="commands">Commands</h2>
+<p>Every command appears in the Command Palette under the <strong>Auric Artisan</strong> category, so its full palette title starts with <code>Auric Artisan:</code>. The command ID&#39;s prefix depends on the extension: <code>auricColor.</code>, <code>auricA11y.</code> or <code>auricCodeHealth.</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Palette title (after <code>Auric Artisan:</code>)</th><th>ID suffix</th><th>Color</th><th>A11y</th><th>Code Health</th></tr></thead>
+<tbody>
+<tr><td>Workstation: Command Center</td><td><code>commandCenter</code></td><td>yes</td><td>yes</td><td>yes</td></tr>
+<tr><td>Open Color Studio</td><td><code>openStudio</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Open Accessibility Studio</td><td><code>openStudio</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td>Open Code Health Studio</td><td><code>openStudio</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td>Open Rulebook &amp; Knowledge Database</td><td><code>openKnowledgeBase</code></td><td>yes</td><td>yes</td><td>yes</td></tr>
+<tr><td>Build Workspace Knowledge Database (JSON + Markdown)</td><td><code>writeKnowledgeDatabase</code></td><td>yes</td><td>yes</td><td>yes</td></tr>
+<tr><td>Open Unified Icon Studio</td><td><code>openIconStudio</code></td><td>yes</td><td>yes</td><td>yes</td></tr>
+<tr><td>Pick / edit color</td><td><code>pickColor</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Generate Accessible Palette</td><td><code>generatePalette</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Check Contrast of Selection</td><td><code>checkContrast</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td>Fix All Contrast Issues in File</td><td><code>fixAllContrast</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Choose Color Picker Mode</td><td><code>chooseColorPickerMode</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Disable native color picker (use Auric Artisan)</td><td><code>disableNativeColorPicker</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Restore native color picker (use VS Code&#39;s)</td><td><code>restoreNativeColorPicker</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Refresh Contrast Diagnostics</td><td><code>refreshDiagnostics</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Change Accent Color (Theme the Studio)</td><td><code>chooseAccent</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td>Mark Line as Intentional Branding (Toggle)</td><td><code>markBranding</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td>Inspect Accessibility of Element</td><td><code>inspectAccessibility</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td>Scan Project for Accessibility (Use Cache)</td><td><code>scanProject</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td>Force Rescan Project and Refresh Cache</td><td><code>rescanProject</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td>Generate Agent-Ready Remediation Plan</td><td><code>generateAiPlan</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td>Clear Workspace Scan Cache</td><td><code>clearScanCache</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td>Search Accessibility Issues</td><td><code>searchIssues</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td>Group Accessibility Issues (Type / File / Severity)</td><td><code>groupIssues</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td>Clear Accessibility Issue Search</td><td><code>clearIssueSearch</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td>Open WCAG Documentation</td><td><code>openIssueDocs</code></td><td></td><td>row action only</td><td></td></tr>
+<tr><td>Open Issue in Contrast Studio</td><td><code>openIssueInStudio</code></td><td></td><td>row action only</td><td></td></tr>
+<tr><td>Generate Project Health Report (Color, A11y &amp; Code Health)</td><td><code>projectHealthReport</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td>Write Health Record (health.json + SARIF)</td><td><code>writeHealthReport</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td>Open Workspace Data Folder</td><td><code>openDataFolder</code></td><td></td><td></td><td>yes</td></tr>
+</tbody></table></div>
+<p>Auric Color contributes 15 commands, Auric Accessibility 17 and Auric Code Health 10. <strong>Open WCAG Documentation</strong> and <strong>Open Issue in Contrast Studio</strong> are hidden from the Command Palette; they appear as buttons on rows of the Project Issues view.</p>
+<p>What each command does:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Workstation: Command Center</td><td>Opens the Command Center list. See <a href="command-center.html">The Command Center</a>.</td></tr>
+<tr><td>Open … Studio</td><td>Opens the Studio tab, or the Workstation host&#39;s Studio. See <a href="studio.html">The Studio</a>.</td></tr>
+<tr><td>Open Rulebook &amp; Knowledge Database</td><td>Searches the local knowledge database.</td></tr>
+<tr><td>Build Workspace Knowledge Database (JSON + Markdown)</td><td>Writes <code>knowledge.json</code>, <code>rulebook.md</code> and an overrides template.</td></tr>
+<tr><td>Open Unified Icon Studio</td><td>Opens the combined Auric icon library.</td></tr>
+<tr><td>Pick / edit color</td><td>Opens the colour picker on the colour under the cursor, or inserts a new colour.</td></tr>
+<tr><td>Generate Accessible Palette</td><td>Opens Studio › Color › Palette seeded with the selected colour.</td></tr>
+<tr><td>Check Contrast of Selection</td><td>Opens the Contrast Studio with the selected colour as the text colour.</td></tr>
+<tr><td>Fix All Contrast Issues in File</td><td>Previews and applies a fix for every failing pair in the file, as one undoable edit.</td></tr>
+<tr><td>Choose Color Picker Mode</td><td>Chooses between the Auric picker and VS Code&#39;s native picker.</td></tr>
+<tr><td>Disable native color picker (use Auric Artisan)</td><td>Switches to the Auric picker and turns VS Code&#39;s colour decorators off.</td></tr>
+<tr><td>Restore native color picker (use VS Code&#39;s)</td><td>Hands colour picking back to VS Code&#39;s native picker.</td></tr>
+<tr><td>Refresh Contrast Diagnostics</td><td>Re-checks every open file.</td></tr>
+<tr><td>Change Accent Color (Theme the Studio)</td><td>Picks the Studio&#39;s accent colour.</td></tr>
+<tr><td>Mark Line as Intentional Branding (Toggle)</td><td>Adds or removes an <code>auric-brand-line</code> comment on the current lines.</td></tr>
+<tr><td>Inspect Accessibility of Element</td><td>Shows the Inspect card for the element or CSS rule at the cursor.</td></tr>
+<tr><td>Scan Project for Accessibility (Use Cache)</td><td>Scans the workspace, reusing a fresh cache.</td></tr>
+<tr><td>Force Rescan Project and Refresh Cache</td><td>Scans the workspace from disk and rewrites the cache.</td></tr>
+<tr><td>Generate Agent-Ready Remediation Plan</td><td>Writes the local, deterministic remediation plan.</td></tr>
+<tr><td>Clear Workspace Scan Cache</td><td>Deletes <code>scan-cache.json</code>.</td></tr>
+<tr><td>Search Accessibility Issues</td><td>Filters the Project Issues view by text.</td></tr>
+<tr><td>Group Accessibility Issues (Type / File / Severity)</td><td>Changes how the Project Issues view is grouped.</td></tr>
+<tr><td>Clear Accessibility Issue Search</td><td>Removes the Project Issues filter.</td></tr>
+<tr><td>Open WCAG Documentation</td><td>Opens the W3C Understanding page for a finding&#39;s success criterion.</td></tr>
+<tr><td>Open Issue in Contrast Studio</td><td>Opens a contrast or colour-vision finding in the Contrast Studio, linked to its line.</td></tr>
+<tr><td>Generate Project Health Report (Color, A11y &amp; Code Health)</td><td>Writes the Markdown, JSON and HTML project health report.</td></tr>
+<tr><td>Write Health Record (health.json + SARIF)</td><td>Writes <code>health.json</code>, SARIF and history.</td></tr>
+<tr><td>Open Workspace Data Folder</td><td>Shows the <code>.auric-artisan</code> folder in your file manager.</td></tr>
+</tbody></table></div>
+<h2 id="views">Views</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>View</th><th>View ID</th><th>Extension</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Overview</td><td><code>auricColorHome</code></td><td>Auric Color</td><td>Activity Bar container <strong>Auric Color</strong></td></tr>
+<tr><td>Color Picker</td><td><code>auricColorPickerView</code></td><td>Auric Color</td><td>Collapsed by default</td></tr>
+<tr><td>Overview</td><td><code>auricA11yHome</code></td><td>Auric Accessibility</td><td>Activity Bar container <strong>Auric Accessibility</strong></td></tr>
+<tr><td>Project Issues</td><td><code>auricA11yIssues</code></td><td>Auric Accessibility</td><td>Tree view with a badge count</td></tr>
+<tr><td>Color Picker</td><td><code>auricA11yPickerView</code></td><td>Auric Accessibility</td><td>Shown only when Auric Color is installed; collapsed by default</td></tr>
+<tr><td>Overview</td><td><code>auricCodeHealthHome</code></td><td>Auric Code Health</td><td>Activity Bar container <strong>Auric Code Health</strong></td></tr>
+</tbody></table></div>
+<p>Views of a suppressed extension are hidden while another extension hosts the Workstation. VS Code also creates a focus command for each view, for example <code>auricA11yIssues.focus</code>, which you can bind to a key.</p>
+<h2 id="menus">Menus</h2>
+<h3 id="editor-right-click-menu">Editor right-click menu</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Entry</th><th>Extension</th><th>Shown when</th></tr></thead>
+<tbody>
+<tr><td>Inspect Accessibility of Element</td><td>Auric Accessibility</td><td>HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JS, TS, JSX, TSX and CSS-family files</td></tr>
+<tr><td>Pick / edit color</td><td>Auric Color</td><td>Always</td></tr>
+<tr><td>Generate Accessible Palette</td><td>Auric Color</td><td>Text is selected</td></tr>
+<tr><td>Check Contrast of Selection</td><td>Auric Color, Auric Accessibility</td><td>Text is selected</td></tr>
+<tr><td>Choose Color Picker Mode</td><td>Auric Color</td><td>Always</td></tr>
+<tr><td>Mark Line as Intentional Branding (Toggle)</td><td>Auric Color, Auric Accessibility</td><td>The Inspect languages above, plus Markdown</td></tr>
+</tbody></table></div>
+<h3 id="project-issues-view-title-bar">Project Issues view title bar</h3>
+<p><strong>Search Accessibility Issues</strong>, <strong>Group Accessibility Issues</strong>, <strong>Scan Project for Accessibility</strong>, <strong>Open Accessibility Studio</strong> and <strong>Collapse All</strong>, with <strong>Generate Agent-Ready Remediation Plan</strong> in the <strong>…</strong> menu.</p>
+<h3 id="project-issues-rows">Project Issues rows</h3>
+<p><strong>Open WCAG Documentation</strong> on WCAG rows; <strong>Open Issue in Contrast Studio</strong> on contrast and colour-vision rows.</p>
+<h2 id="settings">Settings</h2>
+<p>The table lists each setting&#39;s key after its prefix, and which extensions declare it. Give the full key in <code>settings.json</code>, for example <code>auricA11y.contrast.threshold</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Default</th><th>Color</th><th>A11y</th><th>Code Health</th></tr></thead>
+<tbody>
+<tr><td><code>appearance.accent</code></td><td>string</td><td><code>gold</code></td><td>yes</td><td>yes</td><td>yes</td></tr>
+<tr><td><code>hover.enabled</code></td><td>boolean</td><td><code>true</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td><code>colorPicker.mode</code></td><td><code>auric</code> or <code>decorators</code></td><td><code>auric</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td><code>colorPicker.nativeHoverPicker</code></td><td>boolean</td><td><code>false</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td><code>colorPicker.swatches</code></td><td>boolean</td><td><code>true</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td><code>colorPicker.clickAction</code></td><td><code>inlinePicker</code>, <code>fullEditor</code>, <code>off</code></td><td><code>inlinePicker</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td><code>colorPicker.autoOpen</code></td><td>boolean</td><td><code>false</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td><code>colorPicker.inlineSwatches</code></td><td>boolean</td><td><code>false</code></td><td>yes</td><td></td><td></td></tr>
+<tr><td><code>inspect.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td><code>inspect.onHover</code></td><td>boolean</td><td><code>true</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td><code>contrast.enabled</code></td><td>boolean</td><td><code>true</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td><code>contrast.standard</code></td><td><code>wcag2</code>, <code>apca</code>, <code>both</code></td><td><code>wcag2</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td><code>contrast.threshold</code></td><td>number, 1–21</td><td><code>4.5</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td><code>contrast.apcaThreshold</code></td><td>number, 15–106</td><td><code>60</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td><code>contrast.severity</code></td><td><code>error</code>, <code>warning</code>, <code>information</code>, <code>hint</code></td><td><code>warning</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td><code>contrast.flagCvdRisk</code></td><td>boolean</td><td><code>true</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td><code>contrast.checkPageBackground</code></td><td>boolean</td><td><code>true</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td><code>branding.enabled</code></td><td>boolean</td><td><code>true</code></td><td>yes</td><td>yes</td><td></td></tr>
+<tr><td><code>a11y.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td><code>a11y.profile</code></td><td><code>2.0</code>, <code>2.1</code>, <code>2.2</code>, <code>3.0-draft</code></td><td><code>2.2</code></td><td></td><td>yes</td><td></td></tr>
+<tr><td><code>codeHealth.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.diagnostics</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.todo</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.debug</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.secret</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.conflict</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.risk</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.security</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.customSecretPatterns</code></td><td>array of strings</td><td><code>[]</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>codeHealth.size</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>health.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>health.writeOnScan</code></td><td>boolean</td><td><code>true</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>health.formats</code></td><td>array of <code>json</code>, <code>sarif</code>, <code>history</code></td><td>all three</td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>health.fileName</code></td><td>string</td><td><code>health.json</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>health.maxIssues</code></td><td>number, 100–100000</td><td><code>5000</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>health.historyLimit</code></td><td>number, 10–5000</td><td><code>200</code></td><td></td><td></td><td>yes</td></tr>
+<tr><td><code>data.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>data.folderName</code></td><td>string</td><td><code>.auric-artisan</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.cache.enabled</code></td><td>boolean</td><td><code>true</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.cache.maxAgeMinutes</code></td><td>number, 0 or more</td><td><code>1440</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.live</code></td><td>boolean</td><td><code>true</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.liveDelayMs</code></td><td>number, 200–5000</td><td><code>700</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.autoScan</code></td><td>boolean</td><td><code>false</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.autoScanOnStartup</code></td><td>boolean</td><td><code>false</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.autoScanDelayMs</code></td><td>number, 250–60000</td><td><code>1800</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.maxFiles</code></td><td>number</td><td><code>4000</code></td><td></td><td>yes</td><td>yes</td></tr>
+<tr><td><code>scan.exclude</code></td><td>glob string</td><td>see below</td><td></td><td>yes</td><td>yes</td></tr>
+</tbody></table></div>
+<p>The default of <code>scan.exclude</code> is <code>**/{node_modules,dist,build,out,.git,vendor,coverage,.auric-artisan}/**</code>. The default of <code>health.formats</code> is <code>[&quot;json&quot;,&quot;sarif&quot;,&quot;history&quot;]</code>.</p>
+<p>Auric Color declares 16 settings, Auric Accessibility 24 and Auric Code Health 28.</p>
+<h3 id="shared-settings">Shared settings</h3>
+<p>The installed extensions share one <code>.auric-artisan</code> folder, so settings that shape it must mean the same thing to every extension. For these keys, each extension reads the first value it finds set (in any scope: user, workspace or folder), looking first under <code>auricCodeHealth.</code>, then <code>auricA11y.</code>, then <code>auricColor.</code>:</p>
+<ul>
+<li><code>data.enabled</code>, <code>data.folderName</code></li>
+<li><code>scan.cache.enabled</code>, <code>scan.cache.maxAgeMinutes</code>, <code>scan.autoScan</code>, <code>scan.autoScanOnStartup</code>, <code>scan.autoScanDelayMs</code>, <code>scan.maxFiles</code>, <code>scan.exclude</code>, <code>scan.live</code></li>
+<li>every <code>codeHealth.</code> key</li>
+<li><code>health.formats</code>, <code>health.fileName</code>, <code>health.historyLimit</code>, <code>health.writeOnScan</code></li>
+</ul>
+<p>The simplest approach is to set each of these once, under one prefix. The Studio&#39;s <strong>Settings</strong> space writes a shared key to wherever its current value is set, so its edits always take effect.</p>
+<p>The other settings are read by the extension that owns the feature: colour picker and hover settings by Auric Color; Inspect and profile settings by Auric Accessibility; contrast settings by Auric Accessibility when it is installed, otherwise by Auric Color; and the accent by the extension that hosts the Studio.</p>
+<p>In a multi-root workspace, scan and data settings can be set per workspace folder; the accent is always stored in your user settings.</p>
+<h2 id="theme-colours">Theme colours</h2>
+<p>Both Auric Color and Auric Accessibility contribute four colours for the Branding group. Override them in <code>workbench.colorCustomizations</code>, for example <code>&quot;auricA11y.branding.icon&quot;: &quot;#FF4FA0&quot;</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Colour ID suffix</th><th>Used for</th><th>Dark</th><th>Light</th><th>High contrast</th><th>High contrast light</th></tr></thead>
+<tbody>
+<tr><td><code>branding.foreground</code></td><td>Foreground of Branding findings</td><td><code>#F06595</code></td><td><code>#C2255C</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+<tr><td><code>branding.background</code></td><td>Soft wash behind Branding rows and badges</td><td><code>#F0659522</code></td><td><code>#C2255C1A</code></td><td>transparent</td><td>transparent</td></tr>
+<tr><td><code>branding.border</code></td><td>Border or underline for Branding findings</td><td><code>#F0659580</code></td><td><code>#C2255C80</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+<tr><td><code>branding.icon</code></td><td>Icon tint of the Branding group in the Issues view</td><td><code>#F06595</code></td><td><code>#C2255C</code></td><td><code>#FF80AB</code></td><td><code>#A61E4D</code></td></tr>
+</tbody></table></div>
+<p>The full IDs are <code>auricColor.branding.foreground</code> and so on, and <code>auricA11y.branding.foreground</code> and so on.</p>
+<h2 id="status-bar-items">Status-bar items</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Shown</th><th>Select to</th></tr></thead>
+<tbody>
+<tr><td>Score, for example <code>A11y 82 B</code> (or <code>Health 90 A</code> for Auric Code Health alone)</td><td>Always, by one extension</td><td>Open the Studio</td></tr>
+<tr><td><strong>Auric: N in this file</strong></td><td>When the active file has contrast or accessibility findings</td><td>Open the Project Issues view, or the Contrast Studio without Auric Accessibility</td></tr>
+</tbody></table></div>
+<h2 id="diagnostics">Diagnostics</h2>
+<p>All findings in the Problems panel have the source <code>auric-artisan</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Finding</th><th>Problems severity</th><th>Code shown</th></tr></thead>
+<tbody>
+<tr><td>Low contrast</td><td><code>contrast.severity</code> (warning by default); information when the background was assumed</td><td><code>low-contrast</code></td></tr>
+<tr><td>Low APCA contrast</td><td>Same as low contrast</td><td><code>apca-low</code></td></tr>
+<tr><td>Colour-vision risk</td><td>Hint</td><td><code>cvd-risk</code></td></tr>
+<tr><td>Branding</td><td>Information</td><td><code>branding:contrast</code>, <code>branding:apca</code> or <code>branding:cvd</code></td></tr>
+<tr><td>WCAG, critical or serious</td><td>Warning</td><td><code>WCAG 1.1.1</code> (linked to the Understanding page)</td></tr>
+<tr><td>WCAG, moderate</td><td>Information</td><td>Same</td></tr>
+<tr><td>WCAG, minor, and best-practice hints</td><td>Hint</td><td>Same</td></tr>
+<tr><td>Code health</td><td>By category: merge markers error; secrets, security and risky APIs warning; debug information; task markers and oversized hint</td><td><code>code-health:secret</code> and so on</td></tr>
+</tbody></table></div>
+<h2 id="workspace-files">Workspace files</h2>
+<p>See <a href="scanning.html#the-auric-artisan-folder">The .auric-artisan folder</a> for every file the Studio writes, and <a href="exports-and-records.html">Exports and health records</a> for their formats.</p>
+<h2 id="command-line-scanner">Command-line scanner</h2>
+<p>See <a href="ci-gate.html">The CI gate</a> for every option and exit code of <code>auric-artisan</code>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="workstation.html"><span>Previous</span>The Workstation</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#extensions">Extensions</a></li><li><a href="#keybindings">Keybindings</a></li><li><a href="#commands">Commands</a></li><li><a href="#views">Views</a></li><li><a href="#menus">Menus</a></li><li><a href="#settings">Settings</a></li><li><a href="#theme-colours">Theme colours</a></li><li><a href="#status-bar-items">Status-bar items</a></li><li><a href="#diagnostics">Diagnostics</a></li><li><a href="#workspace-files">Workspace files</a></li><li><a href="#command-line-scanner">Command-line scanner</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

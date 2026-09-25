@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart detection — Auric Artisan Docs</title>
+<meta name="description" content="Content-aware badges, colours and explanations in the Explorer, the built-in rules, custom rules and workspace scans.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File Icons</a>
+<h2>Auric Artisan File Icons guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan File Icons</a></li>
+<li><a href="assign-icons.html">Assign icons to files and folders</a></li>
+<li><a href="choose-a-style.html">Choose a style</a></li>
+<li><a href="customise-the-explorer.html">Customise the Explorer</a></li>
+<li><a href="insert-icons-into-code.html">Insert icons into code</a></li>
+<li><a href="modern-and-legacy.html">Modern and older Playful settings</a></li>
+<li><a href="profiles.html">Profiles</a></li>
+<li><a href="smart-detection.html" aria-current="page">Smart detection</a></li>
+<li><a href="reference.html">Auric Artisan File Icons reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File Icons</a> &rsaquo; <a href="README.html">Auric Artisan File Icons guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File Icons</p>
+<h1>Smart detection</h1>
+<p class="lede">Content-aware badges, colours and explanations in the Explorer, the built-in rules, custom rules and workspace scans.</p>
+<p>Smart detection looks at a folder&#39;s direct contents, its package dependencies, or the start of a small text file, and adds an Explorer <strong>decoration</strong>: a badge of up to two characters, a category colour and a hover explanation. For example, a folder containing <code>Cargo.toml</code> gets the badge <strong>RS</strong> and the explanation &quot;Rust project&quot;.</p>
+<p>Decorations sit on top of the base icon; they do not replace its SVG. They run only while one of the Auric Artisan File Icons themes is active.</p>
+<h2 id="turn-it-on-or-off">Turn it on or off</h2>
+<ul>
+<li>On the <strong>Workspace</strong> tab, tick or clear <strong>Enable smart detection</strong>.</li>
+<li>Run <strong>Auric Artisan File Icons: Toggle Smart Icon Detection</strong>. VS Code confirms &quot;Smart icon detection enabled&quot; or &quot;disabled&quot;.</li>
+<li>Set <code>auricFileIcons.smart.enabled</code>.</li>
+</ul>
+<p>Folder detection and file detection can be switched separately with <code>auricFileIcons.smart.folders</code> and <code>auricFileIcons.smart.files</code>.</p>
+<h2 id="choose-how-matches-appear">Choose how matches appear</h2>
+<p>Run <strong>Auric Artisan File Icons: Configure Smart Icon Detection</strong> (or <strong>Configure</strong> on the Workspace tab). The menu offers:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><strong>Enable / Disable smart detection</strong></td><td>Toggles detection for this workspace.</td></tr>
+<tr><td><strong>Badge and color</strong></td><td>Badge plus category colour (default).</td></tr>
+<tr><td><strong>Badge only</strong></td><td>Badge without colour.</td></tr>
+<tr><td><strong>Color only</strong></td><td>Category colour without a badge.</td></tr>
+<tr><td><strong>Tooltip only</strong></td><td>Only the hover explanation.</td></tr>
+<tr><td><strong>Refresh smart matches</strong></td><td>Clears cached results.</td></tr>
+<tr><td><strong>Edit custom rules</strong></td><td>Opens <code>settings.json</code> at <code>auricFileIcons.smart.rules</code>.</td></tr>
+</tbody></table></div>
+<p>Choices made in this menu are saved in the workspace settings.</p>
+<h2 id="explain-refresh-and-apply">Explain, refresh and apply</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>How</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Explain a match</td><td>Right-click › <strong>Auric File Icons</strong> › <strong>Explain Smart Icon Match</strong>, or the command</td><td>A message naming the rule that matched.</td></tr>
+<tr><td>Refresh</td><td><strong>Refresh Smart Icon Matches</strong>, or <strong>Refresh</strong> on the Workspace tab</td><td>Clears the cache: &quot;Smart icon matches refreshed.&quot;</td></tr>
+<tr><td>Apply a detected icon</td><td>Right-click a folder › <strong>Apply Detected Folder Icon</strong></td><td>Saves the matching folder icon as an association.</td></tr>
+</tbody></table></div>
+<h2 id="built-in-folder-rules">Built-in folder rules</h2>
+<p>Checked highest priority first. A folder matches when it contains one of the listed names, or when its <code>package.json</code> lists one of the dependencies.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Badge</th><th>Explanation</th><th>Recognised by</th></tr></thead>
+<tbody>
+<tr><td>AL</td><td>Auric Live project</td><td><code>.auric-live</code>, <code>auric.live.json</code>, <code>.auricignore-live</code></td></tr>
+<tr><td>AS</td><td>Auric Studio project</td><td><code>.auric-artisan</code></td></tr>
+<tr><td>AF</td><td>Auric Formatter project</td><td><code>.auricformatrc*</code>, <code>.auricformatignore</code>, <code>auric.format.json</code></td></tr>
+<tr><td>AU</td><td>Auric workspace</td><td><code>.auric</code>, <code>.auricignore</code></td></tr>
+<tr><td>NG</td><td>Angular project</td><td><code>angular.json</code> or <code>@angular/core</code></td></tr>
+<tr><td>NX</td><td>Next.js project</td><td><code>next.config.*</code> or <code>next</code></td></tr>
+<tr><td>NU</td><td>Nuxt project</td><td><code>nuxt.config.*</code> or <code>nuxt</code></td></tr>
+<tr><td>SV</td><td>Svelte project</td><td><code>svelte.config.*</code>, <code>svelte</code> or <code>@sveltejs/kit</code></td></tr>
+<tr><td>VU</td><td>Vue project</td><td><code>vue</code></td></tr>
+<tr><td>RE</td><td>React project</td><td><code>react</code> or <code>react-dom</code></td></tr>
+<tr><td>NS</td><td>NestJS project</td><td><code>@nestjs/core</code></td></tr>
+<tr><td>VT</td><td>Vite project</td><td><code>vite.config.*</code> or <code>vite</code></td></tr>
+<tr><td>RM</td><td>Remix project</td><td><code>remix.config.*</code> or <code>@remix-run/*</code></td></tr>
+<tr><td>QW</td><td>Qwik project</td><td><code>qwik.config.*</code> or <code>@builder.io/qwik</code></td></tr>
+<tr><td>SO</td><td>SolidJS project</td><td><code>solid-js</code> or <code>@solidjs/start</code></td></tr>
+<tr><td>DN</td><td>Deno project</td><td><code>deno.json</code>, <code>deno.jsonc</code>, <code>deno.lock</code></td></tr>
+<tr><td>BN</td><td>Bun project</td><td><code>bun.lock</code>, <code>bun.lockb</code>, <code>bunfig.toml</code></td></tr>
+<tr><td>NT</td><td>.NET project</td><td><code>*.sln</code>, <code>*.csproj</code>, <code>*.fsproj</code>, <code>*.vbproj</code></td></tr>
+<tr><td>FL</td><td>Flutter or Dart project</td><td><code>pubspec.yaml</code>, <code>pubspec.yml</code></td></tr>
+<tr><td>RS</td><td>Rust project</td><td><code>Cargo.toml</code></td></tr>
+<tr><td>GO</td><td>Go project</td><td><code>go.mod</code></td></tr>
+<tr><td>PY</td><td>Python project</td><td><code>pyproject.toml</code>, <code>requirements*.txt</code>, <code>setup.py</code>, <code>Pipfile</code></td></tr>
+<tr><td>JV</td><td>Java or JVM project</td><td><code>pom.xml</code>, <code>build.gradle</code>, <code>build.gradle.kts</code>, <code>settings.gradle</code>, <code>settings.gradle.kts</code></td></tr>
+<tr><td>BZ</td><td>Bazel workspace</td><td><code>WORKSPACE</code>, <code>WORKSPACE.bazel</code>, <code>MODULE.bazel</code>, <code>BUILD.bazel</code></td></tr>
+<tr><td>PM</td><td>Pulumi project</td><td><code>Pulumi.yaml</code></td></tr>
+<tr><td>SS</td><td>Serverless project</td><td><code>serverless.yml</code>, <code>serverless.yaml</code></td></tr>
+<tr><td>DC</td><td>Dev Container workspace</td><td><code>.devcontainer</code>, <code>devcontainer.json</code>, <code>.devcontainer.json</code></td></tr>
+<tr><td>PR</td><td>Prisma data project</td><td><code>prisma</code>, or <code>prisma</code> or <code>@prisma/client</code></td></tr>
+<tr><td>DZ</td><td>Drizzle data project</td><td><code>drizzle</code>, or <code>drizzle-orm</code> or <code>drizzle-kit</code></td></tr>
+<tr><td>SB</td><td>Supabase project</td><td><code>supabase</code> or <code>@supabase/*</code></td></tr>
+<tr><td>TW</td><td>Tailwind CSS project</td><td><code>tailwind.config.*</code> or <code>tailwindcss</code></td></tr>
+<tr><td>MR</td><td>Monorepo workspace</td><td><code>pnpm-workspace.yaml</code>, <code>lerna.json</code>, <code>nx.json</code>, <code>turbo.json</code></td></tr>
+<tr><td>TS</td><td>TypeScript project</td><td><code>tsconfig.json</code></td></tr>
+<tr><td>ND</td><td>JavaScript or Node project</td><td><code>package.json</code></td></tr>
+<tr><td>HM</td><td>Helm chart</td><td><code>Chart.yaml</code></td></tr>
+<tr><td>TF</td><td>Terraform project</td><td><code>*.tf</code></td></tr>
+<tr><td>DK</td><td>Container project</td><td><code>Dockerfile</code>, <code>docker-compose.*</code>, <code>compose.yml</code>, <code>compose.yaml</code></td></tr>
+<tr><td>T</td><td>Test workspace</td><td><code>jest.config.*</code>, <code>vitest.config.*</code>, <code>playwright.config.*</code>, <code>pytest.ini</code></td></tr>
+<tr><td>DC</td><td>Documentation workspace</td><td><code>README*</code> together with <code>mkdocs.yml</code>, <code>docusaurus.config.*</code> or <code>docs</code></td></tr>
+<tr><td>DB</td><td>Database workspace</td><td><code>prisma</code>, <code>migrations</code>, <code>schema.sql</code></td></tr>
+</tbody></table></div>
+<h2 id="built-in-file-rules">Built-in file rules</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Badge</th><th>Explanation</th><th>Recognised by</th></tr></thead>
+<tbody>
+<tr><td>!</td><td>Sensitive key material</td><td>A private key header in the content</td></tr>
+<tr><td>G</td><td>Generated file</td><td><code>@generated</code>, <code>DO NOT EDIT</code> or <code>generated by</code> in the content</td></tr>
+<tr><td>NG</td><td>Angular component</td><td><code>@Component(</code> or <code>@NgModule(</code></td></tr>
+<tr><td>VU</td><td>Vue component</td><td>A <code>.vue</code> file with <code>&lt;template</code> or <code>defineComponent(</code></td></tr>
+<tr><td>RE</td><td>React module</td><td>An import from <code>react</code>, <code>React.createElement(</code> or <code>use client</code></td></tr>
+<tr><td>T</td><td>Test source</td><td><code>*.test.*</code>, <code>*.spec.*</code>, <code>test_*</code>, <code>*_test.*</code></td></tr>
+<tr><td>SC</td><td>Schema-bearing document</td><td>A <code>&quot;$schema&quot;</code> key</td></tr>
+<tr><td>OA</td><td>OpenAPI document</td><td><code>openapi</code> or <code>swagger</code> keys</td></tr>
+<tr><td>MG</td><td>Database migration</td><td>A <code>.sql</code> file with <code>CREATE TABLE</code>, <code>ALTER TABLE</code> or <code>CREATE INDEX</code></td></tr>
+<tr><td>IN</td><td>Localization resource</td><td><code>&quot;translations&quot;</code>, <code>&quot;locale&quot;</code>, <code>msgid</code> or <code>msgstr</code></td></tr>
+<tr><td>#!</td><td>Executable script</td><td>Content starting with <code>#!</code></td></tr>
+</tbody></table></div>
+<h2 id="category-colours">Category colours</h2>
+<p>Each rule has a category colour. You can change them in <code>workbench.colorCustomizations</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Colour ID</th><th>Category</th><th>Dark default</th><th>Light default</th></tr></thead>
+<tbody>
+<tr><td><code>auricFileIcons.smart.auric</code></td><td>Auric projects</td><td><code>#F0C15A</code></td><td><code>#946414</code></td></tr>
+<tr><td><code>auricFileIcons.smart.framework</code></td><td>Frameworks</td><td><code>#70C7FF</code></td><td><code>#176E9F</code></td></tr>
+<tr><td><code>auricFileIcons.smart.language</code></td><td>Languages</td><td><code>#B097FF</code></td><td><code>#6245B2</code></td></tr>
+<tr><td><code>auricFileIcons.smart.infrastructure</code></td><td>Infrastructure</td><td><code>#63D8C4</code></td><td><code>#217B70</code></td></tr>
+<tr><td><code>auricFileIcons.smart.test</code></td><td>Tests</td><td><code>#7DD58A</code></td><td><code>#2F7838</code></td></tr>
+<tr><td><code>auricFileIcons.smart.docs</code></td><td>Documentation</td><td><code>#E28EE8</code></td><td><code>#873C95</code></td></tr>
+<tr><td><code>auricFileIcons.smart.data</code></td><td>Data</td><td><code>#F2A665</code></td><td><code>#99521C</code></td></tr>
+<tr><td><code>auricFileIcons.smart.generated</code></td><td>Generated files</td><td><code>#A9B4C2</code></td><td><code>#586473</code></td></tr>
+<tr><td><code>auricFileIcons.smart.security</code></td><td>Security</td><td><code>#F2768D</code></td><td><code>#A3243E</code></td></tr>
+<tr><td><code>auricFileIcons.smart.custom</code></td><td>Custom rules (default)</td><td><code>#F0C15A</code></td><td><code>#946414</code></td></tr>
+</tbody></table></div>
+<p>High-contrast themes use lighter variants of each.</p>
+<h2 id="custom-rules">Custom rules</h2>
+<p>Custom rules run before the built-in ones, highest priority first. Add them to <code>auricFileIcons.smart.rules</code>:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;auricFileIcons.smart.rules&quot;: [
+    {
+      &quot;id&quot;: &quot;design-system&quot;,
+      &quot;label&quot;: &quot;Design system package&quot;,
+      &quot;target&quot;: &quot;folder&quot;,
+      &quot;badge&quot;: &quot;DS&quot;,
+      &quot;color&quot;: &quot;custom&quot;,
+      &quot;priority&quot;: 950,
+      &quot;whenAll&quot;: [&quot;package.json&quot;, &quot;tokens&quot;],
+      &quot;dependenciesAny&quot;: [&quot;storybook&quot;, &quot;@storybook/*&quot;]
+    }
+  ]
+}</code></pre>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>badge</code></td><td>Required. At most two characters (a VS Code limit).</td></tr>
+<tr><td><code>id</code>, <code>label</code></td><td>Identify the rule; the label is shown in explanations.</td></tr>
+<tr><td><code>target</code></td><td><code>folder</code> (default) or <code>file</code>.</td></tr>
+<tr><td><code>color</code></td><td><code>auric</code>, <code>framework</code>, <code>language</code>, <code>infrastructure</code>, <code>test</code>, <code>docs</code>, <code>data</code>, <code>generated</code>, <code>security</code> or <code>custom</code>.</td></tr>
+<tr><td><code>priority</code></td><td>Higher runs first.</td></tr>
+<tr><td><code>whenAll</code>, <code>whenAny</code></td><td>Child names that must all, or any, be present (folders).</td></tr>
+<tr><td><code>dependenciesAny</code></td><td>Package dependencies, any of which match (folders).</td></tr>
+<tr><td><code>fileNames</code>, <code>contentAny</code>, <code>contentAll</code>, <code>contentPrefix</code></td><td>Name patterns and content checks (files).</td></tr>
+</tbody></table></div>
+<p>Patterns support <code>*</code> and <code>?</code> only, never regular expressions.</p>
+<h2 id="scan-the-workspace-for-folder-icons">Scan the workspace for folder icons</h2>
+<ol>
+<li>Run <strong>Auric Artisan File Icons: Scan Workspace for Folder Icons</strong>, or <strong>Scan folders…</strong> on the Workspace tab.</li>
+<li>A progress notification (&quot;Scanning project folders for Facet icons&quot;) inspects first-level folders, up to <code>auricFileIcons.smart.scanLimit</code> (80 by default). You can cancel it.</li>
+<li>Detected folders get icon associations in the workspace settings. Existing manual associations are preserved. The result reads, for example, &quot;Applied 4 detected folder icon(s); preserved 2 existing assignment(s).&quot;</li>
+</ol>
+<h2 id="bounds-and-exclusions">Bounds and exclusions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Range</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>auricFileIcons.smart.maxFileSize</code></td><td>65536 bytes (64 KiB)</td><td>1,024 to 262,144</td><td>Largest text file inspected.</td></tr>
+<tr><td><code>auricFileIcons.smart.maxFolderEntries</code></td><td>250</td><td>25 to 2,000</td><td>Direct child names considered per folder.</td></tr>
+<tr><td><code>auricFileIcons.smart.cacheSeconds</code></td><td>15</td><td>1 to 3,600</td><td>How long a match is cached.</td></tr>
+<tr><td><code>auricFileIcons.smart.scanLimit</code></td><td>80</td><td>1 to 250</td><td>Folders inspected by the workspace scan.</td></tr>
+<tr><td><code>auricFileIcons.smart.exclusions</code></td><td>See below</td><td>List</td><td>Folder names or simple wildcards never inspected.</td></tr>
+<tr><td><code>auricFileIcons.smart.propagate</code></td><td>false</td><td>On or off</td><td>Show child decorations on parent folders.</td></tr>
+<tr><td><code>auricFileIcons.smart.watch</code></td><td>true</td><td>On or off</td><td>Watch project marker files and refresh matching folders.</td></tr>
+</tbody></table></div>
+<p>Default exclusions: <code>.git</code>, <code>node_modules</code>, <code>vendor</code>, <code>dist</code>, <code>build</code>, <code>out</code>, <code>coverage</code>, <code>.next</code>, <code>.nuxt</code>, <code>.cache</code>, <code>.turbo</code>, <code>target</code>, <code>__pycache__</code>. Binary, oversized and unavailable files are skipped.</p>
+<p>Inspection uses VS Code&#39;s file system access, so it works in local, remote and virtual workspaces where the provider allows reading. It never runs project code.</p>
+<h2 id="result">Result</h2>
+<p>Recognised folders and files carry badges, colours and explanations, and you can make any detected folder type a permanent icon.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="profiles.html"><span>Previous</span>Profiles</a><a href="reference.html"><span>Next</span>Auric Artisan File Icons reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#turn-it-on-or-off">Turn it on or off</a></li><li><a href="#choose-how-matches-appear">Choose how matches appear</a></li><li><a href="#explain-refresh-and-apply">Explain, refresh and apply</a></li><li><a href="#built-in-folder-rules">Built-in folder rules</a></li><li><a href="#built-in-file-rules">Built-in file rules</a></li><li><a href="#category-colours">Category colours</a></li><li><a href="#custom-rules">Custom rules</a></li><li><a href="#scan-the-workspace-for-folder-icons">Scan the workspace for folder icons</a></li><li><a href="#bounds-and-exclusions">Bounds and exclusions</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

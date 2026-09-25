@@ -1,0 +1,55 @@
+---
+title: Personalization Generator — Presets
+description: The seventeen starting points in the Personalization Generator and what loading one changes.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Presets
+
+The **Presets** tab holds seventeen starting points. Each has a name, five colours, two style chips and a use case.
+
+## Load a preset
+
+1. Open **Presets**.
+2. Select a preset card. A message confirms it, for example **Creator SaaS loaded**.
+3. Select **Generate**.
+
+Loading a preset:
+
+- replaces your pool with the preset's five colours, then builds the pool up to your **Pool target** with variations of them;
+- replaces your style chips with the preset's two;
+- sets **Use case** to the preset's use case.
+
+It does not change your brief, the engine settings, the weights or the filters, and it does not start a sweep.
+
+Loading a preset discards your current pool. If you want to keep your own colours, note them first, or add them back with **Add** afterwards.
+
+## The presets
+
+| Preset | Styles | Use case |
+| --- | --- | --- |
+| Creator SaaS | Tech, Minimal | Ui |
+| Premium Studio | Luxe, Editorial | Brand |
+| Festival Poster | Neon, Playful | Poster |
+| Earth Brand | Earthy, Heritage | Brand |
+| Calm Editorial | Calm, Editorial | Editorial |
+| Data Console | Tech, Calm | Dashboard |
+| Pastel Atlas | Pastel, Calm | Brand |
+| Cyber Console | Cyber, Tech | Ui |
+| Vintage Press | Heritage, Editorial | Editorial |
+| Monochrome Lab | Monochrome, Minimal | Ui |
+| Botanical Brand | Botanical, Earthy | Brand |
+| Nordic Calm | Nordic, Minimal | Ui |
+| Sunset Studio | Sunset, Playful | Poster |
+| Midnight Tech | Midnight, Tech | Ui |
+| Coastal Brand | Coastal, Calm | Brand |
+| Editorial Plum | Editorial, Luxe | Editorial |
+| Solstice Type | Sun, Editorial | Poster |
+
+Each card shows the preset's five colours as a strip.
+
+## Related
+
+- [Build your colour pool](build-the-pool.md)
+- [Tune the sweep](tune-the-sweep.md)

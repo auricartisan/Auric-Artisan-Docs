@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browse, search and filter — Auric Artisan Docs</title>
+<meta name="description" content="Scroll five million palettes, jump to a palette by id, search, filter and sort, and read the counter that says how far a scan went.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Palette Library</a>
+<h2>Palette Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="analyse-the-collection.html">Analyse the collection</a></li>
+<li><a href="browse-search-and-filter.html" aria-current="page">Browse, search and filter</a></li>
+<li><a href="copy-export-and-share.html">Copy, export and share</a></li>
+<li><a href="inspect-a-palette.html">Inspect a palette</a></li>
+<li><a href="save-palettes.html">Save palettes</a></li>
+<li><a href="reference.html">Palette Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Palette Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Palette Library</a> &rsaquo; <a href="README.html">Palette Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Palette Library</p>
+<h1>Browse, search and filter</h1>
+<p class="lede">Scroll five million palettes, jump to a palette by id, search, filter and sort, and read the counter that says how far a scan went.</p>
+<h2 id="how-the-collection-works">How the collection works</h2>
+<p>Each palette has a number from 0 to 4,999,999, and an id made from that number: <code>pal_</code> followed by the number written in base 36 (digits 0–9 then letters a–z). Palette 0 is <code>pal_0</code>, palette 10 is <code>pal_a</code>, palette 13,368 is <code>pal_abc</code>. The five colours of a palette are worked out from its number every time you need them, so they never change.</p>
+<p>Because every palette can be reached by its number, the unfiltered grid can show any part of the collection instantly. A filtered grid cannot: the only way to find the hundredth blue palette is to look through every palette before it. So the page scans forward in chunks as you scroll, and the counter under the grid tells you how far it has looked.</p>
+<h2 id="scroll-the-whole-collection">Scroll the whole collection</h2>
+<p>With no search or filter:</p>
+<ul>
+<li>The grid starts at <code>pal_0</code> and scrolls continuously.</li>
+<li>The counter reads, for example, <strong>1–48 of 5,000,000 palettes</strong>.</li>
+<li>A browser cannot make a page tall enough to scroll through five million palettes, so the scrollbar stops before the end. When it does, the counter adds <strong>scroll reaches N; search an id for the rest</strong>. Every palette beyond that point can still be opened by searching for its id.</li>
+<li><strong>Back to top</strong> returns to <code>pal_0</code>.</li>
+</ul>
+<h2 id="jump-to-a-palette-by-id">Jump to a palette by id</h2>
+<ol>
+<li>Type an id into <strong>Search by id or hex…</strong>, for example <code>pal_abc</code>, or type the palette&#39;s number, for example <code>13368</code>.</li>
+<li>The grid shows only that palette, and the counter reads <strong>1 palette, by id</strong>.</li>
+<li>If the id is outside the collection, the counter reads <strong>No palette with that id</strong>.</li>
+</ol>
+<p>An id or number anywhere in either search box takes priority over everything else: filters are ignored while an id is shown.</p>
+<h2 id="search-by-hex-or-method">Search by hex or method</h2>
+<p>Type anything that is not an id, for example <code>#3a</code> or <code>analogous</code>. A palette matches when every word you type is found in:</p>
+<ul>
+<li>its id; or</li>
+<li>its generation method; or</li>
+<li>the hex code of any of its five colours (with or without <code>#</code>).</li>
+</ul>
+<p>The <strong>Filter inside results</strong> box works the same way; words in both boxes are combined. <strong>Clear</strong> empties only the second box.</p>
+<p>Searching counts as a filter, so it starts a scan (see below).</p>
+<h2 id="filters">Filters</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Filter</th><th>Options</th><th>What it tests</th></tr></thead>
+<tbody>
+<tr><td><strong>Dominant hue</strong></td><td><strong>All hues</strong>, <strong>Red</strong>, <strong>Orange</strong>, <strong>Yellow</strong>, <strong>Green</strong>, <strong>Cyan</strong>, <strong>Blue</strong>, <strong>Purple</strong>, <strong>Pink</strong></td><td>The palette&#39;s overall hue: the average of its five OKLCH hues, weighted so that more colourful colours count more.</td></tr>
+<tr><td><strong>Chroma</strong></td><td><strong>Any chroma</strong>, <strong>Muted (&lt; 0.07)**, **Balanced**, **Vivid (&gt; 0.15)</strong></td><td>The average OKLCH chroma of the five colours. <strong>Balanced</strong> is 0.07 to 0.15.</td></tr>
+<tr><td><strong>Lightness</strong></td><td><strong>Any lightness</strong>, <strong>Dark</strong>, <strong>Mid</strong>, <strong>Light</strong></td><td>The average OKLCH lightness: <strong>Dark</strong> below 0.40, <strong>Mid</strong> 0.40 to 0.70, <strong>Light</strong> above 0.70.</td></tr>
+<tr><td><strong>Method</strong></td><td><strong>All methods</strong>, <code>complementary</code>, <code>triadic</code>, <code>analogous</code>, <code>tetradic</code>, <code>golden_ratio</code>, <code>random</code>, <code>monochromatic</code></td><td>The generation method the palette is labelled with.</td></tr>
+</tbody></table></div>
+<p>All filters and searches combine: a palette must pass every one.</p>
+<h2 id="read-the-counter-while-filtering">Read the counter while filtering</h2>
+<p>With any filter or search active, the counter reads, for example:</p>
+<ul>
+<li><strong>96 matches from 1,500 derived</strong> — the page has worked out 1,500 palettes so far and 96 of them match.</li>
+<li><strong>4,210 matches from 5,000,000 derived · all five million looked at</strong> — the scan has reached the end of the collection.</li>
+</ul>
+<p>Scroll down to make the scan continue; each step works out another stretch of palettes. A rare filter combination may need to look through many palettes before the first match. Until then the grid shows <strong>Nothing matched yet</strong> with the advice <strong>Scroll to keep looking, or widen the filter — a rare one can go a long way into five million before the first hit.</strong></p>
+<h2 id="sort">Sort</h2>
+<p><strong>Sort by</strong> has these options:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>Order</th></tr></thead>
+<tbody>
+<tr><td><strong>Sort: original</strong></td><td>By palette number (default).</td></tr>
+<tr><td><strong>Lightness ↑</strong></td><td>Darkest palettes first (average OKLCH lightness).</td></tr>
+<tr><td><strong>Lightness ↓</strong></td><td>Lightest first.</td></tr>
+<tr><td><strong>Chroma ↑</strong></td><td>Least colourful first (average chroma).</td></tr>
+<tr><td><strong>Chroma ↓</strong></td><td>Most colourful first.</td></tr>
+<tr><td><strong>Hue (rainbow)</strong></td><td>By dominant hue, from 0°.</td></tr>
+<tr><td><strong>Random</strong></td><td>Shuffled.</td></tr>
+</tbody></table></div>
+<p>Five million palettes cannot be put in order in a browser. Any sort other than <strong>Sort: original</strong> therefore works on a bounded first stretch of the collection — the first 1,500 palettes the page works out, or the matches among them when a filter is on — and orders those. With a filter on, the counter says so, for example <strong>96 matches, ordered within the first 1,500 derived</strong>. The sorted grid does not grow as you scroll.</p>
+<blockquote class="callout callout-tip">
+<p><strong>Tip:</strong> To see, say, the most colourful palettes of one method, choose the method first and then <strong>Chroma ↓</strong>. You are ordering the matches the page has found, not the whole collection.</p>
+</blockquote>
+<h2 id="shuffle-random-reset">Shuffle, random, reset</h2>
+<ul>
+<li><strong>Shuffle</strong> sets <strong>Sort by</strong> to <strong>Random</strong>. Like any sort, it shuffles the first stretch of the collection.</li>
+<li><strong>Open a random palette</strong> picks a palette from anywhere in the five million and opens it on <strong>Inspect</strong>.</li>
+<li><strong>Reset</strong> empties both search boxes, sets every filter back to &quot;All&quot; or &quot;Any&quot;, and sets the sort back to <strong>Sort: original</strong>.</li>
+<li><strong>Export visible</strong> opens the <strong>Export</strong> tab.</li>
+</ul>
+<h2 id="cards">Cards</h2>
+<p>Each card shows:</p>
+<ul>
+<li>five swatches, each labelled with its hex code — select a swatch to copy that hex code (the page confirms, for example, <strong>#3A5F8C copied</strong>);</li>
+<li>the palette id and its method;</li>
+<li><strong>Inspect</strong> — opens the palette on the <strong>Inspect</strong> tab (selecting the card anywhere outside the buttons and swatches does the same);</li>
+<li><strong>Copy</strong> — copies all five hex codes, separated by commas (<strong>Palette hexes copied</strong>);</li>
+<li><strong>Save</strong> or <strong>Saved</strong> — saves or unsaves the palette.</li>
+</ul>
+<p>With the keyboard, <code>Tab</code> moves between swatches; <code>Enter</code> or <code>Space</code> on a swatch opens its palette on <strong>Inspect</strong>.</p>
+<h2 id="result">Result</h2>
+<p>You can reach any of the five million palettes directly by id, or scan for palettes with the hue, chroma, lightness or method you need, and the counter always tells you how much of the collection the answer is based on.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="analyse-the-collection.html"><span>Previous</span>Analyse the collection</a><a href="copy-export-and-share.html"><span>Next</span>Copy, export and share</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-the-collection-works">How the collection works</a></li><li><a href="#scroll-the-whole-collection">Scroll the whole collection</a></li><li><a href="#jump-to-a-palette-by-id">Jump to a palette by id</a></li><li><a href="#search-by-hex-or-method">Search by hex or method</a></li><li><a href="#filters">Filters</a></li><li><a href="#read-the-counter-while-filtering">Read the counter while filtering</a></li><li><a href="#sort">Sort</a></li><li><a href="#shuffle-random-reset">Shuffle, random, reset</a></li><li><a href="#cards">Cards</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

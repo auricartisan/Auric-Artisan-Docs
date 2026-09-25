@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run an analysis — Auric Artisan Docs</title>
+<meta name="description" content="What happens when you select Analyze, which addresses are accepted, how the page is reached, and what the progress card tells you.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html" aria-current="page">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Run an analysis</h1>
+<p class="lede">What happens when you select Analyze, which addresses are accepted, how the page is reached, and what the progress card tells you.</p>
+<p>This guide explains a single-page audit from the moment you select <strong>Analyze</strong> to the moment results appear. For a whole-site crawl, see <a href="scan-a-whole-site.html">Scan a whole site</a>.</p>
+<h2 id="start-a-run">Start a run</h2>
+<ol>
+<li>Type or paste an address into the URL field.</li>
+<li>Select <strong>Analyze</strong>, or press <code>Enter</code> in the field.</li>
+<li>To stop a run part-way, select <strong>Cancel</strong>. The Overview panel then says &quot;Analysis cancelled&quot;.</li>
+</ol>
+<p>There are three other ways to start a run:</p>
+<ul>
+<li>Open a link of the form <code>https://auricartisan.com/tool/analyzer/?url=&lt;address&gt;</code>. The Analyzer fills the field and starts at once.</li>
+<li>Open a link someone made with <strong>Share</strong>. It re-runs the audit on the same address.</li>
+<li>Select <strong>Re-analyze</strong> next to a past run in the <strong>Workspace</strong> panel, or <strong>Recheck</strong> on an issue card.</li>
+</ul>
+<h2 id="which-addresses-are-accepted">Which addresses are accepted</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>You type</th><th>What the Analyzer uses</th></tr></thead>
+<tbody>
+<tr><td><code>https://example.com/page</code></td><td>Exactly that address</td></tr>
+<tr><td><code>example.com</code> or <code>example.com/page</code></td><td>The same with <code>https://</code> added in front</td></tr>
+<tr><td><code>/tool/contrast-checker/</code></td><td>That path on auricartisan.com</td></tr>
+<tr><td>Nothing at all</td><td>The Analyzer&#39;s own page</td></tr>
+<tr><td><code>ftp:</code>, <code>mailto:</code>, <code>tel:</code>, <code>javascript:</code> or a malformed address</td><td>Refused with &quot;That URL doesn&#39;t look valid&quot; and a hint to try a full address such as <code>https://example.com</code></td></tr>
+</tbody></table></div>
+<p>When the Analyzer tidies what you typed, it writes the tidied address back into the field so you can see what was actually audited.</p>
+<h2 id="how-the-page-is-reached">How the page is reached</h2>
+<p>A web page can only be measured once the Analyzer has a copy of it. The Analyzer tries several ways, in order, and uses the first that works. The live line in the progress card tells you which one it is on.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Order</th><th>Live line</th><th>When it is used</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>&quot;Rendering the page on our servers…&quot;</td><td>You are signed in. The page is rendered in a real browser on Auric Artisan&#39;s servers.</td></tr>
+<tr><td>2</td><td>&quot;Loading the page in a frame…&quot;</td><td>The page loads in a hidden frame in your browser. Works for auricartisan.com pages.</td></tr>
+<tr><td>3</td><td>&quot;The page would not embed — reading its HTML instead…&quot;</td><td>Your browser reads the page&#39;s HTML; needs the site&#39;s permission or <strong>Public proxy</strong>.</td></tr>
+<tr><td>4</td><td>&quot;Using the copy saved from a previous run…&quot;</td><td>Everything else failed, and this browser holds a copy of the page from a run in the last seven days.</td></tr>
+</tbody></table></div>
+<p>In step 1 the rendered page comes back to your browser for the rest of the analysis. Before step 2 the Analyzer checks the page&#39;s headers and skips the frame at once if they refuse embedding. Step 3 only works when the other site allows cross-origin requests, or when you have turned on <strong>Public proxy</strong> in the site scan settings.</p>
+<p>If the server render in step 1 is refused, for example because this month&#39;s analyses are used up, the Analyzer still tries steps 2 to 4. Pages on auricartisan.com therefore still work.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> When a page is read from its HTML (step 3 or 4), its scripts are removed before it is displayed, apart from JSON-LD structured data. Anything the page builds with JavaScript may then be missing from the audit. The <strong>Deep</strong> panel compares raw HTML with the rendered page so you can see how much that matters.</p>
+</blockquote>
+<h3 id="when-you-are-not-signed-in">When you are not signed in</h3>
+<p>Auditing another website without an account ends with a panel headed <strong>Sign in to scan another site</strong>, with <strong>Sign in</strong> and <strong>See plans</strong> buttons. It explains that analysing an auricartisan.com page needs no account, and that scanning another site runs on Auric Artisan&#39;s servers, which the account meters. It is not an error in the Analyzer.</p>
+<p>Two related panels appear for signed-in accounts:</p>
+<ul>
+<li><strong>Scanning another site needs a plan</strong> — your plan does not include URL analysis. Select <strong>See plans</strong>.</li>
+<li><strong>You have used this month&#39;s scans</strong> — your monthly allowance of URL analyses is spent. Select <strong>See plans</strong>, or wait for the next month.</li>
+</ul>
+<h2 id="the-progress-card">The progress card</h2>
+<p>While a run is working, the Overview panel shows a card headed <strong>Auditing</strong>. It has:</p>
+<ul>
+<li>a live line saying what is happening now;</li>
+<li>a bar that fills as steps finish;</li>
+<li>a numbered list of the steps this run will take, in the order they really happen. Each step is marked waiting, active or done.</li>
+</ul>
+<p>The steps are named after the checks you chose:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Step</th><th>Check</th></tr></thead>
+<tbody>
+<tr><td>Reading the page</td><td>Page structure (always runs)</td></tr>
+<tr><td>Building the project model</td><td>Project model</td></tr>
+<tr><td>Measuring contrast</td><td>Colour contrast</td></tr>
+<tr><td>Previewing the fixes</td><td>Before / After</td></tr>
+<tr><td>Running the accessibility rules</td><td>Accessibility</td></tr>
+<tr><td>Extracting the palette</td><td>Palette</td></tr>
+<tr><td>Simulating colour vision</td><td>Vision simulation</td></tr>
+<tr><td>Checking metadata</td><td>SEO and metadata</td></tr>
+<tr><td>Listing media</td><td>Media</td></tr>
+<tr><td>Measuring performance</td><td>Performance</td></tr>
+<tr><td>Checking responsive behaviour</td><td>Responsive behaviour</td></tr>
+<tr><td>Comparing rendered and raw HTML</td><td>Deep DOM and framework</td></tr>
+<tr><td>Checking headers and links</td><td>Security and reliability</td></tr>
+<tr><td>Discovering the site map</td><td>Site map</td></tr>
+</tbody></table></div>
+<p>If you switched some checks off, a line under the list says how many, for example &quot;3 checks switched off for this run.&quot;</p>
+<p>Two steps take noticeably longer than the rest:</p>
+<ul>
+<li><strong>Measuring performance</strong> loads the page a second time and waits for it to settle (&quot;Measuring how fast the page loads…&quot;).</li>
+<li><strong>Running the accessibility rules</strong> runs 126 rules over the whole page (&quot;Checking the page against the accessibility rules…&quot;).</li>
+</ul>
+<p>The site map step keeps working after the results appear, because it reads robots.txt and every sitemap. The <strong>Site Map</strong> and <strong>SEO</strong> panels fill in when it finishes.</p>
+<p>The checks for a run are fixed when you select <strong>Analyze</strong>. Ticking or unticking a check part-way through does not change what that run measures.</p>
+<h2 id="when-the-run-finishes">When the run finishes</h2>
+<ul>
+<li>The progress rail moves to <strong>2 Issues</strong>.</li>
+<li>The workspace opens the section of every check that ran and that your mode can show. The <strong>Devices</strong> section is the exception: it never opens by itself, because opening it on a page that blocks embedding can start paid screenshot captures.</li>
+<li>The run is filed in your browser&#39;s library as a new version of that site, and added to the history and monitoring lists in the <strong>Workspace</strong> panel. See <a href="save-reopen-and-compare.html">Save, reopen and compare</a>.</li>
+<li>The tab badges update with finding counts: <strong>Contrast</strong>, <strong>SEO</strong>, <strong>A11y+</strong> and <strong>Fixes</strong>.</li>
+</ul>
+<h2 id="pages-that-cannot-be-scored">Pages that cannot be scored</h2>
+<p>The Analyzer refuses to give a number when the page it received is not the real page:</p>
+<ul>
+<li><strong>A bot-challenge page.</strong> If the page title looks like a challenge (&quot;Just a moment&quot;, &quot;Attention required&quot;, &quot;Access denied&quot;, &quot;Checking your browser&quot;, &quot;Verify you are human&quot;, a captcha and similar), the report says the host answered with a bot-challenge page instead of the real content, and the score is left empty.</li>
+<li><strong>An almost empty page.</strong> If the page has under 40 characters of text and under 10 elements, the report says it returned almost no content, which is likely an error page, a redirect stub or a challenge.</li>
+</ul>
+<h2 id="rate-limits-on-the-target-site">Rate limits on the target site</h2>
+<p>If the site you are auditing answers &quot;too many requests&quot; (HTTP 429), the Analyzer waits and retries by itself. The live line reads &quot;Target rate-limited (HTTP 429) — waiting N s then retrying…&quot;. If it keeps happening, the run ends with a panel headed <strong>Rate-limited by target (HTTP 429)</strong> and advice to wait 30–60 seconds, lower the scan workers, or analyse one URL at a time.</p>
+<h2 id="re-running">Re-running</h2>
+<p>Select <strong>Analyze</strong> again with the same address. The progress rail returns to <strong>1 Analyze</strong> for the length of the run. Every re-run of the same address becomes another version of the same saved project, so you can compare them later.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="read-the-overview-and-scores.html"><span>Previous</span>Read the Overview and scores</a><a href="save-reopen-and-compare.html"><span>Next</span>Save, reopen and compare</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#start-a-run">Start a run</a></li><li><a href="#which-addresses-are-accepted">Which addresses are accepted</a></li><li><a href="#how-the-page-is-reached">How the page is reached</a></li><li><a href="#the-progress-card">The progress card</a></li><li><a href="#when-the-run-finishes">When the run finishes</a></li><li><a href="#pages-that-cannot-be-scored">Pages that cannot be scored</a></li><li><a href="#rate-limits-on-the-target-site">Rate limits on the target site</a></li><li><a href="#re-running">Re-running</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

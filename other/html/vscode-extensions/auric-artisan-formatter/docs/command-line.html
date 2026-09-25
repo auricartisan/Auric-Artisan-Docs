@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command line and CI — Auric Artisan Docs</title>
+<meta name="description" content="Run the same Auric formatting engine from a terminal with auric-format, check formatting in CI, and use its flags and exit codes.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html" aria-current="page">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Command line and CI</h1>
+<p class="lede">Run the same Auric formatting engine from a terminal with auric-format, check formatting in CI, and use its flags and exit codes.</p>
+<p><code>auric-format</code> runs the same engine, options, configuration files and safety gate as the extension, from a terminal. Use it to check formatting in continuous integration (CI) or to format many files in a script.</p>
+<h2 id="where-it-is">Where it is</h2>
+<p>The command line ships inside the installed extension as the script <code>bin/auric-format.js</code>. It needs Node.js 16 or newer. It is not published as a separate npm package at the time of writing.</p>
+<p>VS Code installs extensions in a folder named after the extension and version, for example:</p>
+<pre class="code" data-lang="text"><code>~/.vscode/extensions/auric-artisan.auric-artisan-formatter-0.1.0/bin/auric-format.js</code></pre>
+<p>On Windows, <code>~</code> is your user folder (<code>%USERPROFILE%</code>). Run it with Node:</p>
+<pre class="code" data-lang="text"><code>node ~/.vscode/extensions/auric-artisan.auric-artisan-formatter-0.1.0/bin/auric-format.js --check .</code></pre>
+<p>The examples below write <code>auric-format</code> for short. To use the bare name, create a shell alias or a small wrapper script that runs the command above. A CI machine needs the extension&#39;s files available in the same way; the engine itself has no runtime dependencies beyond Node.js.</p>
+<h2 id="common-tasks">Common tasks</h2>
+<pre class="code" data-lang="text"><code>auric-format --write src              # rewrite files in place
+auric-format --check .                # exit 1 if anything is unformatted
+auric-format --preset prettier -w .   # start from a preset
+cat a.css | auric-format --stdin-filepath a.css
+auric-format --explain src/weird.scss # why did it do that?</code></pre>
+<h2 id="flags">Flags</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Flag</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>-w</code>, <code>--write</code></td><td>Rewrite each file in place</td></tr>
+<tr><td><code>-c</code>, <code>--check</code></td><td>Report which files need formatting, change nothing, exit non-zero if any do</td></tr>
+<tr><td><code>-l</code>, <code>--list-different</code></td><td>Print the names of files that differ from the formatted output</td></tr>
+<tr><td><code>--stdin-filepath &lt;path&gt;</code></td><td>Treat standard input as this path, to pick a language and find configuration</td></tr>
+<tr><td><code>--config &lt;path&gt;</code></td><td>Use this configuration file instead of searching</td></tr>
+<tr><td><code>--no-config</code></td><td>Do not look for a configuration file</td></tr>
+<tr><td><code>--ignore-path &lt;path&gt;</code></td><td>Use this ignore file instead of <code>.auricformatignore</code></td></tr>
+<tr><td><code>--no-ignore</code></td><td>Do not read any ignore file</td></tr>
+<tr><td><code>--no-editorconfig</code></td><td>Do not read <code>.editorconfig</code></td></tr>
+<tr><td><code>--preset &lt;name&gt;</code></td><td>Start from a named preset</td></tr>
+<tr><td><code>--parser &lt;name&gt;</code></td><td>Force a parser instead of inferring one</td></tr>
+<tr><td><code>--explain</code></td><td>Explain the formatting decisions for each file instead of formatting</td></tr>
+<tr><td><code>--support-info</code></td><td>Print the languages, parsers and options this build supports, as JSON</td></tr>
+<tr><td><code>--list-languages</code></td><td>Print every supported language with its tier and extensions</td></tr>
+<tr><td><code>--list-presets</code></td><td>Print every preset with its description</td></tr>
+<tr><td><code>--find-config</code></td><td>Print the configuration file that would be used for the given path</td></tr>
+<tr><td><code>--loglevel &lt;level&gt;</code></td><td><code>silent</code>, <code>error</code>, <code>warn</code>, <code>log</code> or <code>debug</code> (default <code>log</code>)</td></tr>
+<tr><td><code>--concurrency &lt;n&gt;</code></td><td>How many files to format at once (default: the number of processors)</td></tr>
+<tr><td><code>-v</code>, <code>--version</code></td><td>Print the version</td></tr>
+<tr><td><code>-h</code>, <code>--help</code></td><td>Print help</td></tr>
+</tbody></table></div>
+<p><code>--check</code>, <code>--write</code>, <code>--list-different</code>, <code>--stdin-filepath</code>, <code>--config</code>, <code>--ignore-path</code> and <code>--no-config</code> behave as they do in Prettier&#39;s command line.</p>
+<h3 id="formatting-options-as-flags">Formatting options as flags</h3>
+<p>Every one of the 391 options is also a flag, written in kebab case: <code>printWidth</code> is <code>--print-width</code>. Booleans take a <code>--no-</code> form to switch them off. For example:</p>
+<pre class="code" data-lang="text"><code>auric-format --print-width 100 --single-quote --trailing-comma es5 --no-semi -w src</code></pre>
+<p>A mistyped flag suggests the one you probably meant. See the <a href="options-reference.html">options reference</a> for every option.</p>
+<h2 id="exit-codes">Exit codes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>0</code></td><td>Every file is formatted (or was formatted successfully)</td></tr>
+<tr><td><code>1</code></td><td>Files need formatting, or one failed</td></tr>
+<tr><td><code>2</code></td><td>A usage error, such as an unknown flag</td></tr>
+</tbody></table></div>
+<h2 id="use-it-in-ci">Use it in CI</h2>
+<p>Add a step that runs the check and fails the build when anything is unformatted:</p>
+<pre class="code" data-lang="text"><code>node path/to/auric-format.js --check .</code></pre>
+<p>Output is deterministic: no clock, no randomness and no locale-dependent ordering, so the same input and configuration always give the same result on every machine.</p>
+<p>Inside VS Code, <strong>Auric Formatter: Check Formatting Without Writing (CI Mode)</strong> runs the same check and lists the results in the Problems panel.</p>
+<p>When the check passes, the command exits with code <code>0</code> and reports nothing to fix.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Auric Artisan Formatter</a><a href="configuration.html"><span>Next</span>Configuration</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#where-it-is">Where it is</a></li><li><a href="#common-tasks">Common tasks</a></li><li><a href="#flags">Flags</a></li><li><a href="#exit-codes">Exit codes</a></li><li><a href="#use-it-in-ci">Use it in CI</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

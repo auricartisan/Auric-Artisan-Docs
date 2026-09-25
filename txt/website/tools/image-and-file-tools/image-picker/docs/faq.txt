@@ -1,0 +1,73 @@
+==============================================================================
+IMAGE PICKER FAQ
+==============================================================================
+Short answers to common questions about the Image Picker.
+Area: Website › Tools › Image and file tools › Image Picker   Updated: 2026-09-25
+
+IS MY PICTURE UPLOADED?
+=======================
+
+No. A picture you load from a file is read in the page and never leaves the
+tab. When you use Load URL, your browser fetches the image from that address,
+as it would for any web page. See Privacy [../others/privacy.txt].
+
+WHY DO I GET DIFFERENT COLOURS EACH TIME I EXTRACT?
+===================================================
+
+The k-means++ method starts from randomly chosen colours, so two runs on the
+same picture can settle on slightly different averages. Flat artwork with few
+colours is not affected, because its exact colours are used.
+
+WHY IS A COLOUR I CAN SEE NOT IN THE PALETTE?
+=============================================
+
+The palette holds the colours that cover the most of the picture. A small
+detail may not make up enough pixels to become a cluster. Raise Clusters or
+Quality, or pin the colour with the eyedropper.
+
+ARE THE SWATCHES REAL PIXEL COLOURS?
+====================================
+
+For flat artwork with no more distinct colours than the cluster count, yes.
+For photographs, each swatch is the average of a cluster of similar pixels,
+and may not match any single pixel exactly. Pins are always exact pixels of
+the working copy.
+
+HOW MANY COLOURS CAN I EXTRACT?
+===============================
+
+The slider goes from 2 to 12. When the page first opens it uses 16 until you
+move the slider.
+
+DOES THE CONTRAST CHECK MEAN THE PAIRS ARE ACCESSIBLE?
+======================================================
+
+It gives the WCAG 2 contrast ratio and rating for the strongest eight pairs,
+as a first pass. Test the exact text and background pair you plan to use, at
+its real size, in a dedicated contrast tool.
+
+WHAT COLOUR SPACE ARE THE LAB AND LCH VALUES IN?
+================================================
+
+CIELAB and its LCH form, calculated from sRGB with a D65 white.
+
+CAN I COMPARE PALETTES FROM TWO PICTURES?
+=========================================
+
+The History count keeps track of how many extractions you have run, but the
+page does not show a side-by-side comparison. Export the JSON of each picture
+and compare the files.
+
+CAN I SHARE MY PALETTE WITH A LINK?
+===================================
+
+Copy page link copies the page address only. Share the CSS, JSON or SVG
+instead.
+
+IS THERE AN API FOR THIS?
+=========================
+
+Yes. The line under the page heading gives the REST endpoint, `POST
+/v1/palette/from-image`, and its cost in API credits, with a link to its
+documentation. API credits are separate from tool tokens. See Public API
+[../../../../../services/public-api/README.txt].

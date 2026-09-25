@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulate a slow network — Auric Artisan Docs</title>
+<meta name="description" content="Slow down every client of the Auric Live server, including a phone, to test how your site behaves on slow connections.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html" aria-current="page">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Simulate a slow network</h1>
+<p class="lede">Slow down every client of the Auric Live server, including a phone, to test how your site behaves on slow connections.</p>
+<p><em>Network shaping</em> makes the server answer as if the connection were slower: it adds latency (a delay before each response) and limits bandwidth (how fast bytes flow). Because it happens in the server, it applies to every client, including a phone on your network where browser developer tools are not available.</p>
+<h2 id="choose-a-profile">Choose a profile</h2>
+<ol>
+<li>Run <strong>Auric Live: Simulate Network Profile…</strong>, choose <strong>Simulate a network profile</strong> in the Auric Live menu, or use <strong>Network shaping</strong> in the control panel&#39;s <strong>Overview</strong>.</li>
+<li>Pick a profile. The current one is ticked.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Profile</th><th>Latency</th><th>Download</th><th>Upload</th></tr></thead>
+<tbody>
+<tr><td><code>off</code></td><td>none</td><td>unlimited</td><td>unlimited</td></tr>
+<tr><td><code>slow-3g</code></td><td>400 ms</td><td>400 kbps</td><td>400 kbps</td></tr>
+<tr><td><code>3g</code></td><td>150 ms</td><td>1600 kbps</td><td>750 kbps</td></tr>
+<tr><td><code>4g</code></td><td>40 ms</td><td>9000 kbps</td><td>3000 kbps</td></tr>
+<tr><td><code>cable</code></td><td>8 ms</td><td>30000 kbps</td><td>10000 kbps</td></tr>
+<tr><td><code>custom</code></td><td>your value</td><td>your value</td><td>your value</td></tr>
+</tbody></table></div>
+<p>Rates are in kilobits per second. The choice lasts for the session. To keep it, set <code>auricLive.throttle.profile</code> in settings or <code>throttle.profile</code> in <code>auric.live.json</code>.</p>
+<h2 id="a-custom-profile">A custom profile</h2>
+<p>Set the profile to <code>custom</code> and choose the numbers:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Range</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.throttle.latencyMs</code></td><td>0</td><td>0–60000</td><td>Delay added before each response</td></tr>
+<tr><td><code>auricLive.throttle.downloadKbps</code></td><td>0</td><td>0 or more</td><td>Download ceiling; <code>0</code> means unlimited</td></tr>
+<tr><td><code>auricLive.throttle.uploadKbps</code></td><td>0</td><td>0–1000000</td><td>Upload ceiling; <code>0</code> means unlimited</td></tr>
+</tbody></table></div>
+<p>In the project file:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;throttle&quot;: {
+    &quot;profile&quot;: &quot;custom&quot;,
+    &quot;latencyMs&quot;: 150,
+    &quot;downloadKbps&quot;: 1600,
+    &quot;uploadKbps&quot;: 750
+  }
+}</code></pre>
+<h2 id="what-is-shaped">What is shaped</h2>
+<ul>
+<li>Static files, proxied responses, injected HTML, mock endpoints and REST responses are slowed down.</li>
+<li>Uploads (request bodies) are paced as well as downloads.</li>
+<li>Auric Live&#39;s own dashboard and status requests stay responsive.</li>
+</ul>
+<h2 id="what-it-is-not">What it is not</h2>
+<ul>
+<li>It shapes each transfer separately. It is not a shared bandwidth budget across all connections.</li>
+<li>It does not drop packets and is not a packet-level network emulator.</li>
+<li>WebSocket messages are not bandwidth-shaped.</li>
+<li>The time a request spends in simulated latency does not count towards the request-body timeout (<code>auricLive.requestBodyTimeoutMs</code>).</li>
+</ul>
+<p>When a profile is active, pages load visibly slower, the status bar tooltip lists the throttle, and the dashboard&#39;s <strong>Server</strong> tab shows the profile.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="inspect-requests.html"><span>Previous</span>Inspect requests</a><a href="php-and-cgi.html"><span>Next</span>Run PHP sites</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#choose-a-profile">Choose a profile</a></li><li><a href="#a-custom-profile">A custom profile</a></li><li><a href="#what-is-shaped">What is shaped</a></li><li><a href="#what-it-is-not">What it is not</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

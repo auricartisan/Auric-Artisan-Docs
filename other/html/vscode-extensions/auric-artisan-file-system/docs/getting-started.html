@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with Auric Artisan File System — Auric Artisan Docs</title>
+<meta name="description" content="Install Auric Artisan File System, learn where its controls live, and complete a first task.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan File System</a>
+<h2>Auric Artisan File System guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with Auric Artisan File System</a></li>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+<li><a href="organise-tags-groups-profiles.html">Tags, groups and profiles</a></li>
+<li><a href="properties-compare-export.html">Properties, compare and export</a></li>
+<li><a href="related-files.html">Related files</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="search-filter-and-duplicates.html">Search, filters and duplicates</a></li>
+<li><a href="templates-and-generators.html">Templates and generators</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan File System</a> &rsaquo; <a href="README.html">Auric Artisan File System guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan File System</p>
+<h1>Getting started with Auric Artisan File System</h1>
+<p class="lede">Install Auric Artisan File System, learn where its controls live, and complete a first task.</p>
+<h2 id="install">Install</h2>
+<ol>
+<li><p>Check that VS Code is version 1.95 or newer (<strong>Help</strong> › <strong>About</strong>).</p>
+</li>
+<li><p>In the Extensions view (<code>Ctrl</code> + <code>Shift</code> + <code>X</code>), search for <code>@id:auric-artisan.auric-artisan-file-system</code> and select <strong>Install</strong>. Or run:</p>
+<pre class="code" data-lang="text"><code>code --install-extension auric-artisan.auric-artisan-file-system</code></pre>
+</li>
+<li><p>Open a workspace folder. File operations need a trusted workspace; in Restricted Mode you can browse, search, filter and navigate, but not create, rename, move, duplicate or delete.</p>
+</li>
+</ol>
+<h2 id="the-screen-tour">The screen tour</h2>
+<h3 id="the-auric-files-section-in-the-explorer">The Auric Files section in the Explorer</h3>
+<p>In the Explorer, below your file tree, expand <strong>Auric Files</strong>. It is a compact companion to the native Explorer, not a second file tree. It shows the same tools as the full workspace panel in a narrow layout. Its title bar has an <strong>Open File Workspace</strong> button for the larger panel.</p>
+<h3 id="the-workspace-panel">The workspace panel</h3>
+<p>Run <strong>Auric Files: Open File Workspace</strong>, select <strong>Open workspace ↗</strong> in the sidebar, or use the button in the Explorer title bar. The panel opens as an editor tab called <strong>Auric Files</strong>. From top to bottom:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Area</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Header</td><td>The Auric Artisan mark and a link to auricartisan.com</td></tr>
+<tr><td><strong>Active workspace</strong></td><td>The workspace name, whether it is trusted and whether the index is ready, with <strong>Open Explorer →</strong> and <strong>Open workspace ↗</strong></td></tr>
+<tr><td>Summary</td><td><strong>Indexed files</strong>, <strong>Folders</strong>, <strong>Saved tags</strong> and <strong>Operations</strong> (Auric operations recorded)</td></tr>
+<tr><td>Sections</td><td><strong>01 Actions</strong> and <strong>02 Properties</strong></td></tr>
+<tr><td><strong>Selected resource</strong></td><td>The file or folder the actions will use, with its path, and <strong>Choose…</strong> to pick another</td></tr>
+<tr><td>Status line</td><td>Messages about the last action</td></tr>
+</tbody></table></div>
+<p>The selected resource follows the file you open in the editor. When you open the panel from the Explorer with several files selected, the whole selection is kept for batch actions.</p>
+<h4 id="01-actions">01 Actions</h4>
+<ul>
+<li><strong>Find an action</strong> — type to filter every action across the groups (for example <code>rename</code>, <code>tags</code> or <code>trash</code>). <code>Escape</code> clears the search.</li>
+<li>The seven groups, each a collapsible section. Opening one closes the others unless you are searching. <strong>Collapse all</strong> closes every group.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Covers</th></tr></thead>
+<tbody>
+<tr><td><strong>Create</strong></td><td>Files, folders and complete structures</td></tr>
+<tr><td><strong>Inspect &amp; navigate</strong></td><td>Properties, comparisons and companion files</td></tr>
+<tr><td><strong>Edit &amp; batch</strong></td><td>Rename, duplicate and transform a selection</td></tr>
+<tr><td><strong>Organise</strong></td><td>Tags, groups and personal workspace views</td></tr>
+<tr><td><strong>Find &amp; filter</strong></td><td>Search, duplicates and a quieter Explorer</td></tr>
+<tr><td><strong>History &amp; recovery</strong></td><td>Review operations and recover workspace trash</td></tr>
+<tr><td><strong>Workspace</strong></td><td>Native Explorer and extension preferences</td></tr>
+</tbody></table></div>
+<p>Actions that change or delete files are marked as such. An action that needs a target shows <strong>Choose a resource inside the open workspace first</strong> if there is none.</p>
+<ul>
+<li><strong>Icon tools</strong> — when the active file icon theme is <strong>Auric Artisan File Icons: Facet</strong> or <strong>Playful</strong>, this section offers <strong>Explain smart match</strong>, <strong>Set icon…</strong> and <strong>Clear custom icon</strong> for the selected resource, handled by that icon theme. With another icon theme it says <strong>No compatible theme active</strong>. The icon themes are a separate, optional extension.</li>
+</ul>
+<h4 id="02-properties">02 Properties</h4>
+<p>The file-system facts and Auric organisation data for the selected resource, with <strong>Refresh</strong>, <strong>Copy path</strong>, <strong>Edit tags…</strong> and <strong>Add to group…</strong>. See <a href="properties-compare-export.html">Properties, compare and export</a>.</p>
+<h3 id="context-menus">Context menus</h3>
+<ul>
+<li><strong>Explorer:</strong> right-click any file or folder for <strong>File Properties</strong> at the top, and an <strong>Auric Files</strong> submenu with <strong>File Properties</strong>, six sub-menus (<strong>Create</strong>, <strong>Edit and Batch</strong>, <strong>Navigate and Paths</strong>, <strong>Organize</strong>, <strong>Safety and History</strong>, <strong>Sort</strong>), <strong>Open File Workspace</strong> and <strong>Open Settings</strong>.</li>
+<li><strong>Editor and editor tab:</strong> the same <strong>Auric Files</strong> submenu.</li>
+</ul>
+<h3 id="explorer-title-bar">Explorer title bar</h3>
+<p>The native Explorer&#39;s title bar gains <strong>Batch Structure…</strong>, a <strong>Sort</strong> menu (name, type, date modified, ascending, descending) and <strong>Open File Workspace</strong>. Its <strong>…</strong> menu has <strong>Quick Actions…</strong>.</p>
+<h3 id="quick-actions">Quick Actions</h3>
+<p><strong>Auric Files: Quick Actions…</strong> opens a keyboard-first list of the most used actions, grouped under <strong>VS Code Explorer</strong>, <strong>Create</strong>, <strong>Find and transform</strong>, <strong>Organise</strong> and more. Use it if you prefer the keyboard to the panel.</p>
+<h3 id="explorer-badges-and-hovers">Explorer badges and hovers</h3>
+<p>Items you mark show a small badge in the Explorer: <strong>★</strong> favourite, <strong>P</strong> pinned, <strong>●</strong> highlighted, <strong>H</strong> hidden, the first two letters of a tag, or <strong>W</strong> for a member of a group. Hovering an item shows a compact summary (name and size, and a pointer to Properties). <strong>Auric Files: Toggle File Metadata</strong> (<code>Ctrl</code> + <code>Shift</code> + <code>M</code> with the Explorer focused) switches these summaries off and on.</p>
+<h2 id="a-first-task-create-a-component-with-its-companions">A first task: create a component with its companions</h2>
+<ol>
+<li><p>Right-click the <code>src</code> folder and choose <strong>Auric Files</strong> › <strong>Create</strong> › <strong>Batch Create Files…</strong>.</p>
+</li>
+<li><p>Confirm or change the destination folder.</p>
+</li>
+<li><p>Type:</p>
+<pre class="code" data-lang="text"><code>components/{Button,Card}/{index.ts,styles.css}</code></pre>
+</li>
+<li><p>Choose the content for the new files: <strong>Empty files</strong>, your configured default template, or a template from the list.</p>
+</li>
+<li><p>Review the preview: <strong>4 items planned · 0 conflicts</strong>, with every path ticked. Untick anything you want to skip and press <code>Enter</code>.</p>
+</li>
+<li><p>Confirm if asked (bulk operations ask once they reach <code>auricFiles.safety.confirmBulk</code> paths, 5 by default). Auric Files creates the folders and files and opens the first one.</p>
+</li>
+<li><p>Open <code>components/Button/index.ts</code> and run <strong>Auric Files: Go to Related File…</strong> to move between companions.</p>
+</li>
+<li><p>If you made a mistake, run <strong>Auric Files: Undo Last File Operation</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>Z</code> once you enable the shortcut deck).</p>
+</li>
+</ol>
+<p>You now have a nested structure created in one step, recorded in the operation history.</p>
+<h2 id="keyboard-shortcuts-at-a-glance">Keyboard shortcuts at a glance</h2>
+<p>These work when the Explorer has focus:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys</th><th>Command</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>N</code></td><td><strong>New File…</strong> (Auric&#39;s version)</td></tr>
+<tr><td><code>Ctrl</code> + <code>Shift</code> + <code>N</code></td><td><strong>New Folder…</strong></td></tr>
+<tr><td><code>Alt</code> + <code>Enter</code></td><td><strong>File Properties</strong></td></tr>
+<tr><td><code>Ctrl</code> + <code>Shift</code> + <code>M</code></td><td><strong>Toggle File Metadata</strong></td></tr>
+<tr><td><code>Alt</code> + <code>S</code></td><td><strong>Sort</strong> (cycle name, type, date modified)</td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>B</code></td><td><strong>Batch Structure…</strong></td></tr>
+</tbody></table></div>
+<p>About 60 more shortcuts are available once you turn on <code>auricFiles.keyboard.enableDefaultShortcuts</code>. See <a href="../others/shortcuts.html">Shortcuts</a>.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="create-files-and-structures.html">Create files and structures</a></li>
+<li><a href="rename-move-and-copy.html">Rename, move and copy</a></li>
+<li><a href="history-and-workspace-trash.html">History, undo and the workspace trash</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Auric Artisan File System guides</a><a href="create-files-and-structures.html"><span>Next</span>Create files and structures</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#install">Install</a></li><li><a href="#the-screen-tour">The screen tour</a></li><li><a href="#a-first-task-create-a-component-with-its-companions">A first task: create a component with its companions</a></li><li><a href="#keyboard-shortcuts-at-a-glance">Keyboard shortcuts at a glance</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

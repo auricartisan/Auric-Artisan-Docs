@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Picker reference — Auric Artisan Docs</title>
+<meta name="description" content="Every tab, control, readout, export format and keyboard key in the Image Picker, with ranges and starting values.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="extract-a-palette.html">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html" aria-current="page">Image Picker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Image Picker reference</h1>
+<p class="lede">Every tab, control, readout, export format and keyboard key in the Image Picker, with ranges and starting values.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/tools/image-picker/" rel="noopener">https://auricartisan.com/tool/general/tools/image-picker/</a></p>
+<h2 id="above-the-tabs">Above the tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Read the API reference →</strong></td><td>Opens the site&#39;s API documentation</td></tr>
+<tr><td><strong>Automate this</strong> line</td><td>The REST endpoint and its cost in API credits; <strong>API docs</strong> opens its documentation; <strong>×</strong> hides the line</td></tr>
+</tbody></table></div>
+<h2 id="tabs">Tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Workbench</strong></td><td>Loading, extraction settings, preview and eyedropper, palette, tone bands, contrast pairs, harmony, pins, quick exports</td></tr>
+<tr><td><strong>Analysis</strong></td><td>Four charts of the current palette; the label shows <strong>4</strong></td></tr>
+<tr><td><strong>Actions</strong></td><td>JSON and CSV downloads, <strong>Copy page link</strong>, batch colour analysis</td></tr>
+</tbody></table></div>
+<h2 id="workbench-the-image">Workbench — The image</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Accepts</th></tr></thead>
+<tbody>
+<tr><td>Drop area (middle panel, before loading)</td><td>Loads a dropped image, or opens a file chooser when selected</td><td>Any image type; PNG, JPEG, WEBP, GIF, BMP named</td></tr>
+<tr><td><strong>Replace</strong></td><td>Opens a file chooser to load a different picture</td><td>As above</td></tr>
+<tr><td>Address field</td><td>The web address of an image</td><td><code>https://…</code></td></tr>
+<tr><td><strong>Load URL</strong></td><td>Loads the address in the field; <code>Enter</code> in the field does the same</td><td>Images whose server allows cross-origin reading</td></tr>
+<tr><td>File name and size line</td><td>The name, and original size → working size</td><td>—</td></tr>
+</tbody></table></div>
+<p>Pictures are scaled down to fit 800 × 500 pixels, never up.</p>
+<h2 id="workbench-extraction">Workbench — Extraction</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Starting value</th></tr></thead>
+<tbody>
+<tr><td><strong>Clusters</strong></td><td>2 to 12 on the slider</td><td>16 when the page opens</td></tr>
+<tr><td><strong>Quality</strong></td><td>Fast (every 10th pixel), Quick (6th), Balanced (4th), Detailed (2nd), Max detail (every pixel)</td><td>Detailed</td></tr>
+<tr><td><strong>Merge threshold</strong></td><td>0 to 100, RGB distance</td><td>0</td></tr>
+<tr><td><strong>Ignore dark</strong></td><td>Skips pixels with relative luminance below 0.03</td><td>Off</td></tr>
+<tr><td><strong>Ignore light</strong></td><td>Skips pixels with relative luminance above 0.97</td><td>Off</td></tr>
+</tbody></table></div>
+<p>Sampling is capped at about 50,000 pixels by widening the grid. Pixels that are nearly transparent are skipped. Each change re-runs the extraction when the slider is released or the switch changes.</p>
+<h2 id="workbench-run-and-history">Workbench — Run and history</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Key</th></tr></thead>
+<tbody>
+<tr><td><strong>Re-extract</strong></td><td>Runs the extraction again</td><td><code>E</code></td></tr>
+<tr><td><strong>Reset</strong></td><td>Clears the picture, palette and pins, and shows the drop area again; settings are kept</td><td><code>R</code></td></tr>
+<tr><td><strong>Extractions</strong></td><td>The number of extractions in this session</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="workbench-preview-and-palette">Workbench — Preview and palette</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>What it shows or does</th></tr></thead>
+<tbody>
+<tr><td><strong>Preview</strong></td><td>The working copy of the picture. Hover to read a pixel; click to pin it</td></tr>
+<tr><td>Eyedropper readout</td><td>Hex, RGB, HSL, relative luminance and pixel position under the pointer</td></tr>
+<tr><td><strong>Pin</strong></td><td>Pins the colour under the pointer, if there is one</td></tr>
+<tr><td><strong>Extracted palette</strong></td><td>Swatches largest share first: share, hex, HSL, relative luminance. Select to copy the hex</td></tr>
+<tr><td>Palette heading</td><td>Number of clusters and number of samples</td></tr>
+<tr><td><strong>Tone bands</strong></td><td><strong>Shadows</strong> (below 0.18), <strong>Midtones</strong> (below 0.65), <strong>Highlights</strong> (0.65 and above)</td></tr>
+</tbody></table></div>
+<h2 id="workbench-readouts">Workbench — Readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Panel</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Keyboard</strong> (before loading)</td><td><code>E</code> Re-extract, <code>H</code> Copy hex list, <code>J</code> Copy JSON, <code>R</code> Reset</td></tr>
+<tr><td><strong>Pairs that carry text</strong></td><td>The eight highest-contrast pairs: swatches, ratio, rating (AAA, AA, AA-lg, Fail), hex values</td></tr>
+<tr><td><strong>Harmony</strong></td><td>Up to 12 pairs at classic hue angles: Analogous, Tetradic, Triadic, Split-Complementary, Complementary</td></tr>
+<tr><td><strong>Pinned</strong></td><td>Up to 24 pinned colours; select one to copy its hex</td></tr>
+<tr><td><strong>Take it with you</strong></td><td><strong>Hex</strong>, <strong>CSS</strong>, <strong>JSON</strong> (copy) and <strong>SVG</strong> (download)</td></tr>
+</tbody></table></div>
+<h3 id="contrast-ratings">Contrast ratings</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Rating</th><th>Contrast ratio</th></tr></thead>
+<tbody>
+<tr><td>AAA</td><td>7:1 or more</td></tr>
+<tr><td>AA</td><td>4.5:1 or more</td></tr>
+<tr><td>AA-lg</td><td>3:1 or more</td></tr>
+<tr><td>Fail</td><td>Below 3:1</td></tr>
+</tbody></table></div>
+<h3 id="harmony-angles">Harmony angles</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Relationship</th><th>HSL hue difference</th></tr></thead>
+<tbody>
+<tr><td>Analogous</td><td>25° to 45°</td></tr>
+<tr><td>Tetradic</td><td>80° to 100°</td></tr>
+<tr><td>Triadic</td><td>110° to 130°</td></tr>
+<tr><td>Split-Complementary</td><td>140° to 165°</td></tr>
+<tr><td>Complementary</td><td>165° to 180°</td></tr>
+</tbody></table></div>
+<h2 id="analysis-tab">Analysis tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Charting</strong> panel</td><td>File name, working size and pixel count</td></tr>
+<tr><td><strong>Cluster population</strong></td><td>Bar chart of each cluster&#39;s share</td></tr>
+<tr><td><strong>Colour distribution</strong></td><td>Ring chart of shares, leading share in the middle</td></tr>
+<tr><td><strong>Hue vs saturation</strong></td><td>Scatter of hue (0° to 360°) against saturation (0% to 100%)</td></tr>
+<tr><td><strong>Relative luminance</strong></td><td>Bars from darkest to lightest, 0 to 1</td></tr>
+<tr><td><strong>⛶</strong> button or double-click</td><td>Opens the chart full screen; close with <strong>×</strong>, <code>Escape</code> or a click outside</td></tr>
+</tbody></table></div>
+<h2 id="actions-tab">Actions tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>JSON</strong></td><td>Downloads <code>palette-analysis.json</code></td></tr>
+<tr><td><strong>CSV</strong></td><td>Downloads <code>palette.csv</code></td></tr>
+<tr><td><strong>Copy page link</strong></td><td>Copies the page address; no picture or palette is included</td></tr>
+<tr><td>Hex box</td><td>One hex colour per line, or separated by commas, semicolons or spaces</td></tr>
+<tr><td><strong>Run batch</strong></td><td>Analyses the colours in the box</td></tr>
+</tbody></table></div>
+<h2 id="export-formats">Export formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Export</th><th>File or clipboard</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td><strong>Hex</strong></td><td>Clipboard</td><td><code>#RRGGBB</code> values, comma and space separated</td></tr>
+<tr><td><strong>CSS</strong></td><td>Clipboard</td><td><code>:root { --palette-01: #RRGGBB; … }</code></td></tr>
+<tr><td><strong>JSON</strong></td><td>Clipboard, or <code>palette-analysis.json</code></td><td><code>image</code>, <code>settings</code>, <code>sampleCount</code>, <code>palette</code>, <code>picks</code>, <code>exportedAt</code></td></tr>
+<tr><td><strong>SVG</strong></td><td><code>palette.svg</code></td><td>60 × 60 swatches, 4 px apart, hex labels underneath</td></tr>
+<tr><td><strong>CSV</strong></td><td><code>palette.csv</code></td><td><code>#,Hex,R,G,B,H,S,L,Luminance,Population%,Count</code></td></tr>
+</tbody></table></div>
+<p>Hex values are written in capitals. Pins appear only in the JSON. For field details, see <a href="export-and-share.html">Export and share</a>.</p>
+<h2 id="batch-results">Batch results</h2>
+<p>Columns: <strong>#</strong>, <strong>Swatch</strong>, <strong>Hex</strong>, <strong>RGB</strong>, <strong>HSL</strong>, <strong>Lab</strong>, <strong>LCH</strong>, <strong>Lum</strong>, <strong>Tone</strong>. CIELAB is calculated for a D65 white. See <a href="batch-analysis.html">Analyse a list of hex colours</a>.</p>
+<h2 id="keyboard">Keyboard</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><code>E</code></td><td>Re-extract</td></tr>
+<tr><td><code>H</code></td><td>Copy the hex list</td></tr>
+<tr><td><code>J</code></td><td>Copy the JSON</td></tr>
+<tr><td><code>R</code></td><td>Reset</td></tr>
+<tr><td><code>Escape</code></td><td>Close a full-screen chart</td></tr>
+</tbody></table></div>
+<p>The letter keys work when focus is not in a text field, slider, switch or menu.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="read-contrast-and-harmony.html"><span>Previous</span>Read contrast pairs, tone bands and harmony</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting the Image Picker</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#above-the-tabs">Above the tabs</a></li><li><a href="#tabs">Tabs</a></li><li><a href="#workbench-the-image">Workbench — The image</a></li><li><a href="#workbench-extraction">Workbench — Extraction</a></li><li><a href="#workbench-run-and-history">Workbench — Run and history</a></li><li><a href="#workbench-preview-and-palette">Workbench — Preview and palette</a></li><li><a href="#workbench-readouts">Workbench — Readouts</a></li><li><a href="#analysis-tab">Analysis tab</a></li><li><a href="#actions-tab">Actions tab</a></li><li><a href="#export-formats">Export formats</a></li><li><a href="#batch-results">Batch results</a></li><li><a href="#keyboard">Keyboard</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

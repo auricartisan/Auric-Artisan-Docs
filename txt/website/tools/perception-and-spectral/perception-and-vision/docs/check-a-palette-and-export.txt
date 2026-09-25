@@ -1,0 +1,137 @@
+==============================================================================
+CHECK A PALETTE AND EXPORT
+==============================================================================
+Run a list of hex colours through the active simulation, find colours that
+become indistinguishable, and export CSV, clipboard text, the frame, the
+settings and links.
+Area: Website › Tools › Perception and spectral › Perception and Vision   Updated: 2026-09-25
+
+Nothing leaves the page until you press one of the buttons described here.
+
+CHECK A PALETTE
+===============
+
+  1. On the Lab tab, set up the simulation you want to test, for example
+     Colour vision, Deutan, Severity 1.00.
+  2. Open the Export tab.
+  3. In Colours, enter your hex colours, one per line. Commas and semicolons
+     also separate entries; three- and six-digit forms work, with or without
+     `#`; anything else is ignored. Include a grey.
+  4. The table updates as you type; Run them redraws it.
+
+The default list is `#E03131`, `#2F9E44`, `#1971C2`, `#F59F00` and `#808080`.
+The caption names the simulation, for example The colours, through colour
+vision (protan) at severity 1.00.
+
+  Column    | Meaning
+  ----------+--------------------------------------------------------------------------------
+  Input     | Your colour, as a swatch and hex
+  Simulated | The colour after the simulation, as a swatch and hex
+  L, M, S   | The cone signals of the input colour, four decimals
+  ΔE00      | The CIEDE2000 colour difference between input and simulated colour, one decimal
+  In sRGB   | yes, or clamped when the simulated colour fell outside sRGB and was clipped
+
+How to read it:
+
+  - Two rows with the same or nearly the same Simulated hex are two colours
+    the simulated viewer cannot tell apart. Change one of them.
+  - The grey row should read ΔE00 0.0 and an identical simulated hex under
+    Colour vision; a dichromacy projection leaves greys alone.
+  - ΔE00 measures how far each colour moved. A large value means the colour
+    looks very different to the simulated viewer, not necessarily that it is
+    confused with another; compare the simulated hexes for that.
+  - clamped means the hex you would paste is not exactly what the simulation
+    produced.
+
+The colour list uses the per-colour part of the simulation, including the
+illuminant under Before the eye. Central loss and Acuity depend on position,
+so colours pass through them unchanged; Cataract applies only its colour cast
+and contrast loss.
+
+ΔE00 (CIEDE2000) is the CIE's current formula for how different two colours
+look. Around 1 is the smallest difference most people notice side by side;
+differences of 10 or more are obvious.
+
+DOWNLOAD OR COPY THE TABLE
+==========================
+
+  - Download the CSV saves a file named after the simulation and severity, for
+    example `perception-cvd-100.csv`. It starts with comment lines naming the
+    simulation, the chain, the matrix, the illuminant and adaptation, the
+    renderer and whether the renderers agreed, and the line "educational
+    approximation, not a clinical measurement". The columns are
+    `Input,Simulated,L,M,S,RG,BY,DeltaE00,InSRGB`, where `RG` is L − M and
+    `BY` is S − (L+M)/2 of the input.
+  - Copy to clipboard copies a tab-separated table with a header row: `Input`,
+    `Simulated`, `L`, `M`, `S`, `DeltaE00`, `InSRGB`.
+
+If the list is empty the page says No colours to write or No colours to copy.
+
+SAVE THE FRAME
+==============
+
+Save the frame (Lab tab) downloads the frame as a PNG, for example
+`perception-scotopic-70.png`, including the divider and fixation cross if they
+are showing. In the Export tab, What to take › The frame does the same.
+
+DOWNLOAD AND LOAD SETTINGS
+==========================
+
+Download the settings saves `perception-vision-settings.json`. The Export tab
+shows the current content under The settings file, and what it carries:
+
+  Field:   `tool`
+  Meaning: `perception-vision`
+
+  Field:   `simulation`, `label`, `type`, `severity`
+  Meaning: The simulation, its name, the colour vision type (or `null`) and
+           the severity
+
+  Field:   `space`
+  Meaning: The chain used, for example `sRGB → linear → XYZ → LMS (HPE) →
+           project → XYZ → linear → sRGB`
+
+  Field:   `matrix`
+  Meaning: The published matrix or the tool's own model used
+
+  Field:   `illuminant`, `adaptation`
+  Meaning: The illuminant and the Bradford strength, or "none (source white)"
+
+  Field:   `source`, `compare`
+  Meaning: The source and comparison mode
+
+  Field:   `adjustments`
+  Meaning: `contrast`, `gamma`, `blur`, `noise` and `bloom` (glare)
+
+  Field:   `renderer`
+  Meaning: `gpu` or `cpu`
+
+  Field:   `agrees_with_cpu`, `agreement_worst_code_values`
+  Meaning: The renderer check result, or `null` when it could not run
+
+  Field:   `clinical`
+  Meaning: Always `false`
+
+Load settings opens a settings file and applies its simulation, type,
+severity, illuminant, source, comparison mode and adjustments. It does not
+load an image: if the file's source is Uploaded image, choose the file again.
+The message Settings imported confirms it; Import failed: followed by a reason
+means the file was not valid JSON.
+
+COPY A LINK TO THE VIEW
+=======================
+
+Copy a link to this view copies an address that reopens the tool with the same
+simulation, type, severity, simulation settings, adjustments, illuminant and
+strength, comparison mode, source and renderer. The link does not include the
+divider position, the daltonise and fixation-cross checkboxes, or an uploaded
+image.
+
+THE WHAT TO TAKE BUTTONS
+========================
+
+A list of colours keeps you on the list; The frame saves the PNG; The settings
+downloads the JSON; A link to this view copies the link.
+
+You should now have a table showing which of your colours survive the
+simulation, and a file that records exactly how it was produced.

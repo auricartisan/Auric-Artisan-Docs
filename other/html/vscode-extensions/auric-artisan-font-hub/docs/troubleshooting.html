@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common Auric Artisan Font Hub problems.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Font Hub</a>
+<h2>Auric Artisan Font Hub guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Font Hub</a></li>
+<li><a href="add-fonts-to-code.html">Add a font to your code</a></li>
+<li><a href="cdn-and-browser-delivery.html">Check CDN and browser delivery</a></li>
+<li><a href="find-and-compare-fonts.html">Find and compare fonts</a></li>
+<li><a href="font-details.html">Font details</a></li>
+<li><a href="moving-from-font-library.html">Moving from Font Library</a></li>
+<li><a href="offline-cache-and-network.html">Offline use, cache and network</a></li>
+<li><a href="self-hosting-kit.html">Export a self-hosting kit</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Font Hub</a> &rsaquo; <a href="README.html">Auric Artisan Font Hub guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Font Hub</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common Auric Artisan Font Hub problems.</p>
+<p>For anything not listed, run <strong>Auric Font Hub: Show Logs</strong> and see <a href="../../install-and-setup/docs/get-support.html">Get support</a>. Include your extension version, the file language and the error message with anything private removed.</p>
+<h2 id="fonts-are-not-visible-on-your-website">Fonts are not visible on your website</h2>
+<ul>
+<li><strong>Why:</strong> the stylesheet is not loaded, the font file is blocked (often by CORS or a Content Security Policy), or the class is not applied.</li>
+<li><strong>Fix:</strong> run <strong>Check Font CDN and Browser CORS</strong>, then check the browser&#39;s Network tab for both the stylesheet and the font file. A successful stylesheet response alone is not enough. See <a href="cdn-and-browser-delivery.html">Check CDN and browser delivery</a>.</li>
+</ul>
+<h2 id="an-embed-is-present-but-the-text-has-not-changed">An embed is present but the text has not changed</h2>
+<ul>
+<li><strong>Why:</strong> the setup only defines the <code>.auric-font-&lt;id&gt;</code> class.</li>
+<li><strong>Fix:</strong> add the class to your markup, or use the family&#39;s <code>font-family</code> value in your own selector.</li>
+</ul>
+<h2 id="nothing-changed-after-inserting">Nothing changed after inserting</h2>
+<ul>
+<li><strong>Why:</strong> the setup was already in the file (<strong>… is already configured in this document.</strong>), or the file type needs manual placement and the embed was copied to the clipboard instead.</li>
+<li><strong>Fix:</strong> read the notification, then paste the embed where it belongs if it was copied.</li>
+</ul>
+<h2 id="no-html-head-found">&quot;No HTML head found.&quot;</h2>
+<ul>
+<li><strong>Why:</strong> the HTML file has no <code>&lt;head&gt;</code> element, for example a partial or a component template.</li>
+<li><strong>Fix:</strong> paste the copied embed into your page&#39;s head or your framework&#39;s layout.</li>
+</ul>
+<h2 id="the-document-changed-preview-the-font-insertion-again-before-applying">&quot;The document changed. Preview the font insertion again before applying.&quot;</h2>
+<ul>
+<li><strong>Why:</strong> the file was edited after the preview opened, so the preview is out of date.</li>
+<li><strong>Fix:</strong> run <strong>Preview</strong> again and apply the new preview.</li>
+</ul>
+<h2 id="smart-insertion-supports-documents-up-to-2-mib">&quot;Smart insertion supports documents up to 2 MiB.&quot;</h2>
+<ul>
+<li><strong>Why:</strong> the file is larger than automatic insertion handles.</li>
+<li><strong>Fix:</strong> copy an embed and place it by hand.</li>
+</ul>
+<h2 id="this-is-a-local-system-font">&quot;This is a local system font.&quot;</h2>
+<ul>
+<li><strong>Why:</strong> system fonts are not on the CDN, so there is nothing to link to.</li>
+<li><strong>Fix:</strong> copy its family name and rely on it being installed, or choose a library font.</li>
+</ul>
+<h2 id="previews-are-missing-or-say-preview-unavailable">Previews are missing or say &quot;Preview unavailable&quot;</h2>
+<ul>
+<li><strong>Why:</strong> you are offline, <code>auricFontLib.network.enabled</code> is off, the font is not cached yet, or the file could not be fetched.</li>
+<li><strong>Fix:</strong> connect, turn the network setting on, or wait and retry. Details, styles and licences still work from the bundled catalogue.</li>
+</ul>
+<h2 id="the-catalogue-refresh-was-rejected">The catalogue refresh was rejected</h2>
+<ul>
+<li><strong>Why:</strong> the network failed, or the refreshed data did not pass validation.</li>
+<li><strong>Fix:</strong> nothing is lost: <strong>Auric Font Hub kept cached data</strong> and the bundled snapshot stays available. New families may need an extension update.</li>
+</ul>
+<h2 id="self-hosting-kit-blocked">&quot;Self-hosting kit blocked.&quot;</h2>
+<ul>
+<li><strong>Why:</strong> a family&#39;s licence does not allow redistribution, permission could not be established, a required licence notice could not be loaded, or the family is a system font.</li>
+<li><strong>Fix:</strong> remove the families named in the message and try again.</li>
+</ul>
+<h2 id="choose-at-most-n-families-for-one-kit-or-the-250-mb-limit">&quot;Choose at most <em>N</em> families for one kit.&quot; or the 250 MB limit</h2>
+<ul>
+<li><strong>Why:</strong> the kit is limited by <code>auricFontLib.download.maxFamilies</code> (6 by default, up to 12) and to 250 MB in total.</li>
+<li><strong>Fix:</strong> split the selection into several kits, or raise the setting.</li>
+</ul>
+<h2 id="select-at-least-two-font-families-to-compare">&quot;Select at least two font families to compare.&quot;</h2>
+<ul>
+<li><strong>Fix:</strong> select two to four families with the select button on each card, then <strong>Compare</strong>.</li>
+</ul>
+<h2 id="duplicate-commands-or-views">Duplicate commands or views</h2>
+<ul>
+<li><strong>Why:</strong> the older Font Library extension is still enabled.</li>
+<li><strong>Fix:</strong> disable or uninstall it. See <a href="moving-from-font-library.html">Moving from Font Library</a>.</li>
+</ul>
+<h2 id="enable-network-access-in-font-hub-settings-to-run-cdn-checks">&quot;Enable network access in Font Hub settings to run CDN checks.&quot;</h2>
+<ul>
+<li><strong>Fix:</strong> set <code>auricFontLib.network.enabled</code> to <code>true</code>.</li>
+</ul>
+<h2 id="a-preview-became-stale">A preview became stale</h2>
+<ul>
+<li><strong>Why:</strong> you edited the source file after opening the diff.</li>
+<li><strong>Fix:</strong> reopen <strong>Preview</strong> after editing.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Reference: commands, keys and settings</a><a href="faq.html"><span>Next</span>FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#fonts-are-not-visible-on-your-website">Fonts are not visible on your website</a></li><li><a href="#an-embed-is-present-but-the-text-has-not-changed">An embed is present but the text has not changed</a></li><li><a href="#nothing-changed-after-inserting">Nothing changed after inserting</a></li><li><a href="#no-html-head-found">&quot;No HTML head found.&quot;</a></li><li><a href="#the-document-changed-preview-the-font-insertion-again-before-applying">&quot;The document changed. Preview the font insertion again before applying.&quot;</a></li><li><a href="#smart-insertion-supports-documents-up-to-2-mib">&quot;Smart insertion supports documents up to 2 MiB.&quot;</a></li><li><a href="#this-is-a-local-system-font">&quot;This is a local system font.&quot;</a></li><li><a href="#previews-are-missing-or-say-preview-unavailable">Previews are missing or say &quot;Preview unavailable&quot;</a></li><li><a href="#the-catalogue-refresh-was-rejected">The catalogue refresh was rejected</a></li><li><a href="#self-hosting-kit-blocked">&quot;Self-hosting kit blocked.&quot;</a></li><li><a href="#choose-at-most-n-families-for-one-kit-or-the-250-mb-limit">&quot;Choose at most N families for one kit.&quot; or the 250 MB limit</a></li><li><a href="#select-at-least-two-font-families-to-compare">&quot;Select at least two font families to compare.&quot;</a></li><li><a href="#duplicate-commands-or-views">Duplicate commands or views</a></li><li><a href="#enable-network-access-in-font-hub-settings-to-run-cdn-checks">&quot;Enable network access in Font Hub settings to run CDN checks.&quot;</a></li><li><a href="#a-preview-became-stale">A preview became stale</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

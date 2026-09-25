@@ -1,0 +1,64 @@
+==============================================================================
+COLOUR PICKER ON PAGES
+==============================================================================
+The compact Auric colour picker that replaces a website's colour inputs — its
+layout, formats, the five panes, opacity and theme.
+Area: Browser extension › On websites   Updated: 2026-09-25
+
+With the website pickers on and the Colour type switched on, every colour
+input on a page opens the Auric colour picker, the same picker
+auricartisan.com uses, in a compact 296 px popover. The page keeps a small
+swatch in place of its colour input; everything else lives in an isolated
+panel that the site's styles cannot affect.
+
+LAYOUT
+======
+
+From top to bottom:
+
+  1. The spectrum and the Hue slider, plus an Opacity slider when the page's
+     input asks for one.
+  2. The value field, with a Colour format menu. The menu lists the twelve
+     formats (HEX, RGB, HSL, HSV, HWB, CMYK, LAB, LCH, OKLAB, OKLCH, XYZ and
+     P3) and searches as you type: type "ok" for OKLAB and OKLCH.
+  3. Five toggles: Shades, Harmony, Contrast, Vision and Page (or Recent).
+
+THE FIVE PANES
+==============
+
+At most one pane is open at a time.
+
+  - Shades: An 11-step OKLCH scale from 50 to 950 around the colour
+  - Harmony: Partner colours, rotated in HSL or OKLCH
+  - Contrast: How readable the colour is as text on white, black or the page's
+    own background, with the closest passing colour when it fails AA
+  - Vision: The colour as people with the four main colour-vision deficiencies
+    see it
+  - Page / Recent: Colours the page uses, or colours you picked recently in
+    the extension
+
+The pane you last opened comes back on every colour picker on that page, until
+you leave the page.
+
+BEHAVIOUR
+=========
+
+  - Near the bottom of the window the picker opens upward, and it stays
+    anchored when a pane opens.
+  - `Esc` closes it.
+  - The page receives the new value through its normal events, as if you had
+    used the browser's picker.
+  - The picker never writes to the website's storage. Recent colours are kept
+    by the extension, not by the site.
+
+THEME
+=====
+
+On Dark or Light the picker uses that theme. On System it matches the page
+behind it. Your accent colour tints it.
+
+RELATED PAGES
+=============
+
+  - Website pickers [website-pickers.txt]
+  - Picker [../colour/picker.txt], the full version inside the extension

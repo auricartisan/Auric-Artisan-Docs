@@ -1,0 +1,68 @@
+---
+title: Palette Library — Getting started
+description: Open the Palette Library, learn what each part of the screen does, and find, inspect and export a first palette.
+product: Website › Library › Colour libraries › Palette Library
+updated: 2026-09-25
+---
+
+# Getting started
+
+## Open the page
+
+1. Go to https://auricartisan.com/library/palette/, or open the **Learn** menu in the site header and select **Palette Library** under **Libraries**.
+2. While the page prepares, the grid area shows **Loading palette database…**. This takes a moment only: the page downloads a tiny description of the collection, not the palettes themselves.
+3. When it is ready, the grid fills with palettes and the counter under the grid reads, for example, **1–48 of 5,000,000 palettes**.
+
+If loading fails you see **Could not load palette database** with the reason. See [Troubleshooting](troubleshooting.md).
+
+## A tour of the screen
+
+### The heading
+
+The kicker reads **Auric Artisan · Palette** and the headline **Five million palettes, and a 660-byte file.** A short paragraph explains that the collection is worked out as you scroll rather than stored. The line under it shows **Collection 5,000,000**, **Five colours each** and **Derived, not stored**, with a link, **Read the API guide →**, to the Palette Library's API guide.
+
+A note starting **Automate this** may appear under the heading. It says the same job can be done through the site's REST API — **3 API credits per call to GET /v1/palette/library** — and links to **API docs**. It also points out that API credits are a separate balance from your tool tokens. Select × to dismiss it; it stays hidden in this browser.
+
+### Browse the collection
+
+- A search box, **Search by id or hex…**.
+- **Shuffle** — puts the grid in a random order.
+- **Open a random palette** — picks any palette from all five million and opens it on the **Inspect** tab.
+- A second row, **Filter inside results**, with its own box (**id, hex, method…**) and a **Clear** button.
+
+### The tabs
+
+| Tab | What it shows |
+| --- | --- |
+| **Library** | Filters, sort and the palette grid. Its badge shows the size of the collection, **5M**. |
+| **Inspect** | Everything about the palette you last opened. |
+| **Harmony** | How methods, hues and harmony types are distributed in a sample. |
+| **Accessibility** | Which palettes contain colours that can carry text on each other. |
+| **Stats** | Histograms of lightness, chroma, hue spread and best-pair contrast. |
+| **Export** | Copy and download buttons for the open palette and for a sample of palettes. |
+| **Saved** | The palettes you have saved. Its badge shows how many. |
+
+### The Library tab
+
+- Filters: **Dominant hue**, **Chroma**, **Lightness**, **Method** and **Sort by**, then **Reset** and **Export visible**.
+- The grid. Each card is a strip of five colours with their hex codes, the palette id (such as `pal_0`), its generation method, and three buttons: **Inspect**, **Copy** and **Save**.
+- Under the grid, the counter and a **Back to top** button.
+
+## Your first task: find a calm, dark palette and use it in CSS
+
+1. Under **Lightness**, choose **Dark**.
+2. Under **Chroma**, choose **Muted (< 0.07)**.
+3. Watch the counter under the grid. It reads, for example, **96 matches from 1,500 derived**: the page has worked out 1,500 palettes and 96 of them are dark and muted. Scroll down and it keeps looking.
+4. Select any colour in a card to copy its hex code, or select **Copy** to copy all five.
+5. Select **Inspect** on the palette you like best.
+6. On the **Inspect** tab, read the colour names across the top strip (for example "deep muted blue") and the **Palette summary**.
+7. Under **Quick export**, select **Copy CSS vars**. The page confirms **CSS variables copied**.
+8. Paste into your stylesheet. You get five custom properties named after the palette id, for example `--pal_2f-1` to `--pal_2f-5`.
+
+**Result:** a dark, muted five-colour palette in your stylesheet, with its id noted so you can find it again.
+
+## Next steps
+
+- [Browse, search and filter](browse-search-and-filter.md) explains why filtering scans and how to read the counter.
+- [Inspect a palette](inspect-a-palette.md) explains every number on the **Inspect** tab.
+- [Copy, export and share](copy-export-and-share.md) covers design tokens, ASE files and share links.

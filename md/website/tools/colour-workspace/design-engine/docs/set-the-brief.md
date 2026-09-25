@@ -1,0 +1,167 @@
+---
+title: Design System Generator — Set the brief
+description: What every input in the brief rail does: industry, style, contrast target, density, seed, harmony, colour mode, corner style, type ratio, ramp shape and token naming.
+product: Website › Tools › Colour workspace
+updated: 2026-09-25
+---
+
+# Set the brief
+
+**The brief** is the left-hand column. It holds every input the system is built from. Each section shows a short note on the right that says what the choice resolved to, for example *auto → analogous* or *4.5:1 body text*. Any change regenerates the whole system immediately, and the audit shows what the change did.
+
+The first three inputs (industry, style and contrast target) decide most of the system. The rest are overrides.
+
+## Industry
+
+Industry sets the brand hue and how much colour (chroma) the system uses, plus a mood and a set of tags used to pick the font pairing and icon family. A coloured dot beside the list shows the industry's hue.
+
+| Industry | Hue | Mood |
+| --- | --- | --- |
+| **Auto** (default) | 250° | No vertical assumed; your seed decides. |
+| **Fintech** | 258° | trustworthy, precise, secure |
+| **Healthcare** | 192° | calm, clean, reassuring |
+| **SaaS / B2B** | 264° | efficient, modern, focused |
+| **E-commerce** | 22° | energetic, inviting, urgent |
+| **Education** | 234° | approachable, clear, friendly |
+| **Creative / Agency** | 320° | expressive, bold, original |
+| **Gaming** | 282° | high-energy, immersive, sharp |
+| **Luxury** | 44° | refined, exclusive, timeless |
+| **Food & Drink** | 18° | warm, appetizing, organic |
+| **Travel** | 200° | open, adventurous, fresh |
+| **Real Estate** | 168° | stable, premium, grounded |
+| **Non-profit** | 148° | hopeful, human, honest |
+| **Crypto / Web3** | 270° | futuristic, bold, technical |
+| **Wellness** | 138° | serene, natural, balanced |
+
+**Auto** gives a balanced hue and a neutral tag set, so the font and icon choice is not nudged towards any vertical. When you set a seed colour, the seed decides the hue and chroma whichever industry you choose; the industry then only influences the font and icon choice.
+
+## Style
+
+Style multiplies the industry's saturation and sets the shape and movement of the system.
+
+| Style | Saturation | Corners | Shadows | Heading weight | Type ratio | Motion |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Modern** (default) | × 1.00 | Soft | Balanced | 700 | 1.25 | Smooth |
+| **Minimal** | × 0.62 | Sharp | Subtle | 600 | 1.2 | Subtle |
+| **Classic** | × 0.82 | Soft | Balanced | 700 | 1.25 | Smooth |
+| **Bold** | × 1.28 | Rounded | Deep | 800 | 1.333 | Snappy |
+| **Playful** | × 1.22 | Rounded | Deep | 800 | 1.333 | Bouncy |
+| **Elegant** | × 0.72 | Soft | Subtle | 600 | 1.414 | Smooth |
+| **Corporate** | × 0.88 | Soft | Balanced | 700 | 1.2 | Subtle |
+| **Brutalist** | × 1.15 | Sharp | Hard | 900 | 1.5 | Snappy |
+| **Organic** | × 0.90 | Rounded | Soft | 700 | 1.25 | Smooth |
+| **Futuristic** | × 1.20 | Soft | Glow | 700 | 1.333 | Snappy |
+
+The note beside **Style** shows the corner, shadow and motion character it applies.
+
+## Contrast target
+
+The minimum contrast that text colours are chosen to meet. It changes which colour steps become text and fills; it is not a check applied afterwards.
+
+| Option | Body text must reach | Effect |
+| --- | --- | --- |
+| **AA Large** | 3:1 | Lightest text tiers, most brand colour kept. |
+| **AA** | 4.5:1 | The usual production choice. |
+| **AAA** (default) | 7:1 | Darkest text; safest, least colourful. |
+
+Whatever you choose, the primary fill is always picked so that a black or white button label reaches at least 4.5:1 on it.
+
+## Density
+
+| Option | Body size | Spacing unit | Spacing multiplier |
+| --- | --- | --- | --- |
+| **Compact** | 15 px | 4 px | × 0.9 |
+| **Comfort** (default) | 16 px | 4 px | × 1.0 |
+| **Spacious** | 17 px | 5 px | × 1.15 |
+
+## Seed
+
+The seed is the brand colour the whole palette is built around.
+
+- The colour chip shows the current seed.
+- The colour well and the HEX box set a seed. The well regenerates as you pick; the HEX box applies when you press `Enter` or leave it.
+- **Auto** returns to a seed derived from the industry (the HEX box then reads *auto*).
+- Twelve hue buttons under the seed set a seed at 0°, 30°, 60° and so on round the hue circle, at the current system's chroma.
+
+The note reads *from the industry* or *overridden*. A seed's chroma is kept within a workable range, so a near-grey or an extremely vivid colour is adjusted to something a ramp can be built from.
+
+## Harmony
+
+Where the secondary and accent hues sit relative to the primary.
+
+| Option | Secondary | Accent |
+| --- | --- | --- |
+| **Auto** (default) | Chosen by the style (see below) | |
+| **Complementary** | + 180° | + 150° |
+| **Analogous** | + 32° | − 32° |
+| **Triadic** | + 120° | + 240° |
+| **Split-complementary** | + 150° | + 210° |
+| **Tetradic** | + 90° | + 180° |
+| **Monochrome** | same hue, less chroma | same hue |
+
+With **Auto**: Minimal uses monochrome; Bold and Brutalist use complementary; Playful uses triadic; Futuristic uses split-complementary; Modern, Classic, Elegant, Corporate and Organic use analogous. The note shows the result, for example *auto → analogous*; a chosen harmony shows *locked*.
+
+## Colour mode
+
+**Light**, **Dark** or **Both** (default). With **Both**, dark roles are generated alongside the light ones (*two blocks*). With **Light**, the dark role tokens are left out of the tokens and exports and the playground offers only a light theme; with **Dark**, the playground offers only a dark theme.
+
+## Corner style
+
+**Auto** (default, from the style), **Sharp**, **Soft**, **Rounded** or **Pill**. It replaces the whole radius family:
+
+| Corner style | sm | md | lg | xl | 2xl | 3xl |
+| --- | --- | --- | --- | --- | --- | --- |
+| Sharp | 1 | 2 | 3 | 4 | 6 | 8 |
+| Soft | 3 | 6 | 8 | 12 | 16 | 22 |
+| Rounded | 6 | 10 | 14 | 20 | 28 | 36 |
+| Pill | 8 | 14 | 22 | 32 | full | full |
+
+Values are pixels. Every family also has **none** (0) and **pill** (fully round).
+
+## Type ratio
+
+The ratio between neighbouring font sizes. **Auto** (default) uses the style's ratio. The options are **1.125 · minor second**, **1.2 · minor third**, **1.25 · major third**, **1.333 · perfect fourth**, **1.414 · augmented fourth**, **1.5 · perfect fifth** and **1.618 · golden ratio**.
+
+## Ramp shape
+
+Two rows of three buttons that reshape the primary, secondary and accent ramps. The semantic colours (success, warning, danger, info) ignore them on purpose.
+
+- **Span**: **Tight**, **Even** (default) or **Wide**: how far each ramp travels from light to dark.
+- **Peak**: **Flat**, **Natural** (default) or **Vivid**: whether chroma stays level across the ramp or bulges in the middle steps.
+
+## Token naming
+
+Renames every token in every export, so the file matches your codebase.
+
+- **Prefix**: free text, for example `brand`, which turns `--color-primary-500` into `--brand-color-primary-500`. It applies after a short pause in typing.
+- **Case**: **kebab** (default), **camel**, **snake** or **Pascal**.
+- A line under the controls shows two real token names in your chosen style, for example `--brandColorPrimary500  ·  --brandSpace4`.
+
+## Compare every style
+
+The button at the bottom of the brief, **Compare every style →**, opens the Compare view. See [Compare styles and industries](compare.md).
+
+## Tasks
+
+### Build a system around your brand colour
+
+1. Type your brand HEX code in the **Seed** box and press `Enter`.
+2. Choose the **Industry** that best fits your product, so the font and icon choice suits it.
+3. Choose a **Style** and a **Contrast target**.
+4. If the brand colour must appear as the primary button, check the **Colour** tab's **Surfaces & roles** card: the primary fill is the ramp step that passes contrast, which may be lighter or darker than your seed.
+
+Result: ramps, roles and every scale built around your colour.
+
+### Match your codebase's naming
+
+1. Type your prefix under **Token naming**, for example `acme`.
+2. Choose the case your code uses.
+3. Check the example line, then export.
+
+Result: exported tokens that need no renaming.
+
+## Related
+
+- [Read the system](read-the-system.md)
+- [Check contrast with the audit](contrast-audit.md)
+- [Reference](reference.md)

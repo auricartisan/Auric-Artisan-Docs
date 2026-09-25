@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The CI gate — Auric Artisan Docs</title>
+<meta name="description" content="Run the bundled auric-artisan command-line scanner, freeze a baseline, fail pull requests only on new issues, and upload SARIF to code scanning.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html" aria-current="page">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>The CI gate</h1>
+<p class="lede">Run the bundled auric-artisan command-line scanner, freeze a baseline, fail pull requests only on new issues, and upload SARIF to code scanning.</p>
+<p>The Studio extensions include a command-line scanner, <code>auric-artisan</code>, that runs the same colour, accessibility and code-health engine as the editor, without VS Code and without any network access. Use it to fail a pull request when it introduces new problems, and to send findings to your code-scanning dashboard as SARIF.</p>
+<p><strong>CI</strong> (continuous integration) is the automated build and test run on every pull request. A <strong>baseline</strong> is a saved record of the findings a project already has, so a gate can fail only on findings that are new.</p>
+<h2 id="get-the-scanner">Get the scanner</h2>
+<p>The scanner is the file <code>bin/auric-artisan.js</code> inside each installed Studio extension (Auric Color, Auric Accessibility and Auric Code Health). It is not published as a separate npm package. It needs Node.js; the GitHub Actions example below uses Node 20.</p>
+<p>VS Code installs extensions in the <code>extensions</code> folder of your user profile&#39;s <code>.vscode</code> folder, in a folder named after the extension and its version, for example:</p>
+<pre class="code" data-lang="text"><code>~/.vscode/extensions/auric-artisan.auric-codehealth-0.1.0/bin/auric-artisan.js</code></pre>
+<p>On Windows this is <code>%USERPROFILE%\.vscode\extensions\auric-artisan.auric-codehealth-0.1.0\bin\auric-artisan.js</code>.</p>
+<p>Run it with Node:</p>
+<pre class="code" data-lang="text"><code>node ~/.vscode/extensions/auric-artisan.auric-codehealth-0.1.0/bin/auric-artisan.js scan .</code></pre>
+<p>The examples on this page write <code>auric-artisan</code> for short. To make that work, create a shell alias or a small script on your path that runs the file with Node. The Studio&#39;s <strong>Home › CI gate</strong> card shows the same short form.</p>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> The Auric Artisan Free Use Licence 2.0 allows you to install and run the extensions on machines you own or control, but does not allow you to redistribute their files, including publishing them to a public repository. Do not commit the scanner&#39;s files to a public repository. In CI, download the extension from the Visual Studio Marketplace during the job, as shown below.</p>
+</blockquote>
+<h2 id="usage">Usage</h2>
+<pre class="code" data-lang="text"><code>auric-artisan scan [dir] [options]</code></pre>
+<p><code>dir</code> is the folder to scan; it defaults to the current folder.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Option</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>--json &lt;file&gt;</code></td><td>Write the <code>health.json</code> record to a file</td></tr>
+<tr><td><code>--sarif &lt;file&gt;</code></td><td>Write SARIF 2.1.0 to a file, for GitHub code scanning</td></tr>
+<tr><td><code>--baseline &lt;file&gt;</code></td><td>Compare with a saved record and report only new issues</td></tr>
+<tr><td><code>--write-baseline &lt;file&gt;</code></td><td>Save the current record as a baseline, then exit</td></tr>
+<tr><td><code>--fail-on &lt;severity&gt;</code></td><td>Exit with code 1 if any issue is at or above <code>high</code>, <code>medium</code> or <code>low</code> (<code>critical</code> and <code>info</code> also work)</td></tr>
+<tr><td><code>--max-new &lt;n&gt;</code></td><td>Exit with code 1 if there are more than <code>n</code> new issues; needs <code>--baseline</code></td></tr>
+<tr><td><code>--min-score &lt;n&gt;</code></td><td>Exit with code 1 if the overall score is below <code>n</code> (0–100)</td></tr>
+<tr><td><code>--profile &lt;profile&gt;</code></td><td>WCAG profile: <code>2.0</code>, <code>2.1</code>, <code>2.2</code> (default) or <code>3.0-draft</code></td></tr>
+<tr><td><code>--threshold &lt;ratio&gt;</code></td><td>WCAG contrast ratio target (default 4.5)</td></tr>
+<tr><td><code>--no-code-health</code></td><td>Skip the code-health checks</td></tr>
+<tr><td><code>--max-files &lt;n&gt;</code></td><td>Most files to scan (default 20000)</td></tr>
+<tr><td><code>--quiet</code></td><td>Do not print the console summary</td></tr>
+<tr><td><code>--version</code></td><td>Print the version</td></tr>
+<tr><td><code>--help</code></td><td>Print the usage</td></tr>
+</tbody></table></div>
+<p>With <code>--baseline</code>, <code>--fail-on</code> counts only new issues.</p>
+<h3 id="exit-codes">Exit codes</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>0</code></td><td>Passed, or no policy was set</td></tr>
+<tr><td><code>1</code></td><td>A policy failed (<code>--fail-on</code>, <code>--max-new</code> or <code>--min-score</code>)</td></tr>
+<tr><td><code>2</code></td><td>A usage or runtime error: no command, an unknown command, a missing folder, no scannable files, or a baseline that cannot be read</td></tr>
+</tbody></table></div>
+<p>Running the scanner with no command, or with <code>--help</code> alone, prints the usage and exits with code 2. <code>auric-artisan help</code> exits with 0.</p>
+<h2 id="what-it-scans">What it scans</h2>
+<ul>
+<li>Files with any extension the editor scan reads (see <a href="scanning.html#what-is-read">Scanning</a>), plus <code>.xhtml</code>, <code>.svg</code> (as XML) and <code>.tf</code> (Terraform, code health only). A file named <code>.env</code> is read too.</li>
+<li>It skips folders named <code>node_modules</code>, <code>.git</code>, <code>.hg</code>, <code>.svn</code>, <code>dist</code>, <code>build</code>, <code>out</code>, <code>.next</code>, <code>.nuxt</code>, <code>.svelte-kit</code>, <code>coverage</code>, <code>vendor</code>, <code>.auric-artisan</code>, <code>.cache</code>, <code>__pycache__</code>, <code>.venv</code>, <code>venv</code>, <code>.idea</code> and <code>.vscode-test</code>, and every folder whose name starts with a dot.</li>
+<li>It reads the <code>.auricignore</code> file at the root of the scanned folder.</li>
+<li>It skips files larger than 1.5 MB.</li>
+<li>When <code>--max-files</code> stops the scan early, it prints <code>⚠ Scanned N of M+ files (capped — raise --max-files).</code> so a partial scan is never mistaken for a clean one.</li>
+</ul>
+<p>The scanner does not read your VS Code settings. It uses its own options: contrast target 4.5 unless you pass <code>--threshold</code>, profile 2.2 unless you pass <code>--profile</code>, all code-health categories and no custom secret patterns. It always grades rules that set only a text colour against the page background, as the editor does with <code>contrast.checkPageBackground</code> on.</p>
+<h2 id="console-output">Console output</h2>
+<p>Without <code>--quiet</code>, the scanner prints a summary:</p>
+<pre class="code" data-lang="text"><code>Auric Artisan — scanned 4 files
+  score 72/100  C   a11y 3  contrast 2  cvd 0  code-health 3
+  1 critical  4 high  1 medium  1 low  1 info   (8 total)
+  1 new  0 fixed  7 pre-existing (vs baseline)
+
+  high   contrast  src/a.css:3
+         #AAAAAA|#FFFFFF
+
+✗ FAILED: 1 new issue(s) &gt; --max-new 0</code></pre>
+<p>It lists up to 50 issues, worst first (only the new ones when you compare with a baseline), then <code>… and N more</code>. When every policy passes, it prints <code>✓ PASSED policy checks.</code></p>
+<h2 id="adopt-it-on-an-existing-codebase">Adopt it on an existing codebase</h2>
+<p>A project that already has findings would fail a strict gate immediately. Freeze the current findings once, then fail only on new ones.</p>
+<p><strong>Step 1.</strong> Create the baseline and commit it:</p>
+<pre class="code" data-lang="text"><code>auric-artisan scan . --write-baseline .auric/baseline.json</code></pre>
+<p>The scanner prints <code>Wrote baseline (N issues) → .auric/baseline.json</code>. Keep the baseline in a folder whose name starts with a dot, such as <code>.auric/</code>, so the scanner does not read the baseline itself as a source file.</p>
+<p><strong>Step 2.</strong> In CI, compare every run with the baseline:</p>
+<pre class="code" data-lang="text"><code>auric-artisan scan . --baseline .auric/baseline.json --max-new 0 --sarif auric.sarif</code></pre>
+<p><strong>Step 3.</strong> When you fix old findings, regenerate the baseline so they cannot quietly return.</p>
+<p>Issues are matched by fingerprint, which includes the line number. A finding that moves to another line counts as new once; regenerate the baseline after large refactors. See <a href="exports-and-records.html#fingerprints">Fingerprints</a>.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Code-health findings are fingerprinted by detector version 1.2.0 in the current package. A baseline written by an earlier detector may list some existing code-health findings as new once; regenerate it.</p>
+</blockquote>
+<h2 id="github-actions">GitHub Actions</h2>
+<p>This workflow downloads Auric Code Health from the Marketplace during the job, scans the pull request, uploads SARIF to GitHub code scanning and fails the check when a new issue appears.</p>
+<pre class="code" data-lang="yaml"><code>name: Auric Artisan
+on: [pull_request]
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Download Auric Code Health from the Marketplace
+        run: |
+          curl -sSL --compressed -o auric.vsix \
+            &quot;https://marketplace.visualstudio.com/_apis/public/gallery/publishers/auric-artisan/vsextensions/auric-codehealth/0.1.0/vspackage&quot;
+          unzip -q auric.vsix -d &quot;$RUNNER_TEMP/auric&quot;
+      - name: Scan
+        run: &gt;
+          node &quot;$RUNNER_TEMP/auric/extension/bin/auric-artisan.js&quot; scan .
+          --baseline .auric/baseline.json --max-new 0
+          --sarif auric.sarif --min-score 70
+      - if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: auric.sarif</code></pre>
+<ul>
+<li>The package is a ZIP file; <code>--compressed</code> is needed because the Marketplace sends it compressed.</li>
+<li>Replace <code>0.1.0</code> with the version you want. Pinning a version keeps results reproducible.</li>
+<li><code>security-events: write</code> lets the job upload SARIF. Findings then appear in the repository&#39;s Security tab and inline on the pull request&#39;s diff.</li>
+</ul>
+<h2 id="pre-commit-hook">Pre-commit hook</h2>
+<p>On your own machine, where the extension is installed, a Git pre-commit hook can block commits with high-severity issues:</p>
+<pre class="code" data-lang="text"><code>auric-artisan scan src --fail-on high --quiet</code></pre>
+<h2 id="same-engine-same-findings">Same engine, same findings</h2>
+<p>The scanner, project scans in the editor and live diagnostics share one engine, so the same file with the same settings produces the same findings and fingerprints everywhere. Differences come only from settings: the editor uses your VS Code settings, the scanner uses its options.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="exports-and-records.html">Exports and health records</a> for the <code>health.json</code> and SARIF formats.</li>
+<li><a href="scanning.html">Scanning</a> and <code>.auricignore</code>.</li>
+<li><a href="scores-and-grades.html">Scores and grades</a> for <code>--min-score</code>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="choosing-an-install.html"><span>Previous</span>Choose what to install</a><a href="command-center.html"><span>Next</span>The Command Center</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#get-the-scanner">Get the scanner</a></li><li><a href="#usage">Usage</a></li><li><a href="#what-it-scans">What it scans</a></li><li><a href="#console-output">Console output</a></li><li><a href="#adopt-it-on-an-existing-codebase">Adopt it on an existing codebase</a></li><li><a href="#github-actions">GitHub Actions</a></li><li><a href="#pre-commit-hook">Pre-commit hook</a></li><li><a href="#same-engine-same-findings">Same engine, same findings</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

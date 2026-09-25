@@ -1,0 +1,42 @@
+---
+title: Auric Artisan Studio — The Icon Studio bridge
+description: Open the combined Auric icon library from any Studio extension, and understand which icon extension it opens.
+product: VS Code extensions › Auric Artisan Studio
+updated: 2026-09-25
+---
+
+# The Icon Studio bridge
+
+Every Studio extension has a shortcut to the **Icon Studio**, the combined icon library provided by Auric Artisan's icon extensions. The Studio itself contains no icons. It finds a compatible icon extension you have installed and opens that extension's library, which brings the Modern, Drawn and Playful collections together in one place.
+
+## Open the Icon Studio
+
+- **Auric Artisan: Open Unified Icon Studio** in the Command Palette.
+- **Icon Studio** in the Overview's navigation.
+- **Icons** at the foot of the Studio's rail.
+- **Open unified Icon Studio** in the Command Center. Its description tells you how many icon collections are installed and through which extension, or says **install an Auric Icons provider to enable the combined library**.
+
+## What you need
+
+At least one Auric icon extension that provides the library, for example:
+
+- [Auric Icons Modern](../../auric-icons-modern/README.md)
+- [Auric Icons Drawn](../../auric-icons-drawn/README.md)
+- [Auric Icons Playful](../../auric-icons-playful/README.md)
+
+See also the [Auric Artisan Icon Studio](../../auric-artisan-icon-studio/README.md) documentation for the library itself.
+
+If none is installed, the command shows **No compatible Auric Icons provider is installed.**
+
+## Which extension opens
+
+Icon extensions describe themselves to the Studio in their manifest. When several are installed, the Studio chooses the one with the newest icon library version (ties are broken by extension ID), starts only that one, and opens its library. That library then shows every compatible collection you have installed.
+
+If the chosen extension cannot start or open its library, the Studio tries the next one in the same order. If none succeeds, you see **Auric Icon Studio could not be opened from the installed icon providers.**
+
+The bridge only asks VS Code to start an icon extension and run its public command. It never reads another extension's files.
+
+## Related
+
+- [The Studio](studio.md)
+- [The Command Center](command-center.md)

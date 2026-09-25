@@ -1,0 +1,405 @@
+==============================================================================
+COLOR LIBRARY REFERENCE
+==============================================================================
+Every control, filter, sort order, tab, output, file name and message in the
+Color Library.
+Area: Website › Library › Colour libraries › Color Library   Updated: 2026-09-25
+
+This page lists everything on https://auricartisan.com/library/color/. For
+step-by-step help, see the task guides in this folder.
+
+HEADING
+=======
+
+  Item:                  Kicker
+  What it shows or does: Auric Artisan · Colour
+
+  Item:                  Headline
+  What it shows or does: Eight thousand colours, measured.
+
+  Item:                  Atlas
+  What it shows or does: The number of colours: 8,192.
+
+  Item:                  Spaces
+  What it shows or does: 7 (HEX, RGB, HSL, CIE L*a*b*, OKLab, OKLCH, CMYK).
+
+  Item:                  Every figure precomputed
+  What it shows or does: The figures come stored with each colour.
+
+  Item:                  Read the API reference →
+  What it shows or does: Opens the site's API documentation at
+                         https://auricartisan.com/library/documentation/api/.
+
+  Item:                  Automate this note
+  What it shows or does: Names the API call for the same job and its credit
+                         cost; links to API docs; can be dismissed.
+
+START FROM A COLOUR YOU ALREADY HAVE
+====================================
+
+  Control:      Colour field
+  What it does: Takes a colour in any CSS format; results update as you type.
+  Values:       Hex (3, 4, 6, 8 digits), `rgb()`, `hsl()`, `hwb()`, `lab()`,
+                `lch()`, `oklab()`, `oklch()`, `color()` (`srgb`,
+                `srgb-linear`, `display-p3`), 148 CSS names, three bare
+                numbers
+  Default:      `#D3AF37`
+
+  Control:      Swatch
+  What it does: Shows the colour the field was read as.
+  Values:       —
+  Default:      —
+
+  Control:      Find its neighbours
+  What it does: Runs the match now.
+  Values:       —
+  Default:      —
+
+  Control:      Result cells
+  What it does: Your colour, then the five nearest atlas colours with ΔE and
+                contrast. Select a neighbour to open it.
+  Values:       —
+  Default:      —
+
+  Control:      Neighbourhood sentence
+  What it does: One of three verdicts on whether nearby colours carry text.
+  Values:       —
+  Default:      —
+
+ΔE words
+--------
+
+  ΔE (CIE76)     | Word
+  ---------------+-------------------
+  Under 2.3      | indistinguishable
+  2.3 to under 5 | a close match
+  5 to under 10  | visibly different
+  10 or more     | a different colour
+
+OR FROM WHAT IT HAS TO DO
+=========================
+
+  Chip              | Test                            | Count alone
+  ------------------+---------------------------------+------------
+  Readable on white | Contrast on white 4.5:1 or more | 2,998
+  Readable on black | Contrast on black 4.5:1 or more | 5,344
+  Vivid             | OKLCH chroma 0.18 or more       | 2,707
+  Muted             | OKLCH chroma below 0.06         | 695
+  Calm              | Emotion label `calm`            | 843
+  For typography    | Design usage `typography`       | 819
+  As an accent      | Design tag `accent`             | 822
+
+Chips combine with AND. Each chip's number is what would remain if you toggled
+it. The line under the chips reports the matching count and its percentage of
+8,192.
+
+BROWSE THE ATLAS
+================
+
+  Control:      Search by hex (#a6e223) or id…
+  What it does: Every word must match the hex, id, emotion, art movement, mood
+                or design usage. Part-words match.
+  Default:      Empty
+
+  Control:      Shuffle
+  What it does: Sets the sort to Random.
+  Default:      —
+
+  Control:      Open a random colour
+  What it does: Opens any colour from the whole atlas.
+  Default:      —
+
+  Control:      Filter inside results box
+  What it does: A second search, combined with the first.
+  Default:      Empty
+
+  Control:      Clear
+  What it does: Empties the Filter inside results box.
+  Default:      —
+
+TABS
+====
+
+  Tab        | Badge                      | Contents
+  -----------+----------------------------+-----------------------------------------
+  Library    | Number of matching colours | Filters, sort, grid.
+  The colour | —                          | The open colour's full record.
+  Stats      | —                          | Four histograms of the matching colours.
+  Export     | —                          | Selection and visible-set exports.
+  Saved      | Number of saved colours    | Your saved colours.
+
+FILTERS (LIBRARY TAB)
+=====================
+
+  Filter:  Hue
+  Options: All hues
+  Test:    No test.
+
+  Filter:  -
+  Options: Red
+  Test:    HSL hue 340° to under 20°
+
+  Filter:  -
+  Options: Orange
+  Test:    20° to under 50°
+
+  Filter:  -
+  Options: Yellow
+  Test:    50° to under 80°
+
+  Filter:  -
+  Options: Green
+  Test:    80° to under 160°
+
+  Filter:  -
+  Options: Cyan
+  Test:    160° to under 200°
+
+  Filter:  -
+  Options: Blue
+  Test:    200° to under 260°
+
+  Filter:  -
+  Options: Purple
+  Test:    260° to under 300°
+
+  Filter:  -
+  Options: Pink
+  Test:    300° to under 340°
+
+  Filter:  -
+  Options: Neutral / Gray
+  Test:    OKLCH chroma below 0.04 (the hue options above need 0.04 or more)
+
+  Filter:  Lightness
+  Options: Any lightness, Dark (L < 35)**, **Mid (35–70)**, **Light (> 70)
+  Test:    CIE L*
+
+  Filter:  Chroma
+  Options: Any chroma, Muted (below 0.07), Balanced (0.07 to 0.15), Vivid
+           (above 0.15)
+  Test:    OKLCH chroma
+
+  Filter:  Emotion
+  Options: All emotions, calm, cheerful, cool, elegant, energetic, melancholy,
+           mysterious, playful, romantic, warm
+  Test:    Emotion label
+
+  Filter:  Art movement
+  Options: All movements, Art Deco, Bauhaus, De Stijl, Fauvism, Impressionism,
+           Minimalism, Pop Art, Romanticism
+  Test:    Art movement label
+
+  Filter:  AI mood
+  Options: All moods, dark, dreamy, futuristic, industrial, intense, joyful,
+           luxurious, nostalgic, organic, serene
+  Test:    Mood label
+
+  Filter:  Design usage
+  Options: All usages, data-viz, gradient-end, gradient-start, icon-fill,
+           illustration, packaging, shadow, typography, ui-surface, web-hero
+  Test:    Design usage label
+
+  Filter:  WCAG
+  Options: Any WCAG, AA on white, AAA on white, AA on black, AAA on black
+  Test:    AA: 4.5:1 or more; AAA: 7:1 or more
+
+The design tag (CTA, accent, background, earth-tone, jewel-tone, muted,
+neutral, pastel, primary, vibrant) has no filter of its own; the As an accent
+chip tests one of its values.
+
+SORT BY
+=======
+
+  Option         | Order
+  ---------------+-----------------------------------
+  Sort: original | By atlas id (default).
+  Hue (rainbow)  | By HSL hue, ascending.
+  Lightness ↑    | By OKLCH lightness, darkest first.
+  Lightness ↓    | Lightest first.
+  Chroma ↓       | Highest chroma first.
+  Luminance ↓    | Highest relative luminance first.
+  Random         | Shuffled.
+
+LIBRARY TAB BUTTONS AND GRID
+============================
+
+  Control:      Reset
+  What it does: Empties both searches, resets every filter and sets Sort:
+                original. Chips are kept.
+
+  Control:      Export visible
+  What it does: Opens the Export tab.
+
+  Control:      Tile
+  What it does: Shows the colour and hex; select it, or press `Enter` or
+                `Space` on it, to open the colour.
+
+  Control:      Tile footer
+  What it does: Hex code, emotion label, save star (☆ to save, ★ to unsave).
+
+  Control:      Range line
+  What it does: For example 1–48 of 8,192 colours; Nothing to show when empty.
+
+  Control:      Back to top
+  What it does: Scrolls the grid to its first colour.
+
+THE COLOUR TAB
+==============
+
+  Block:    Identity
+  Contents: Swatch, hex, Atlas id and labels; Copy and Save buttons.
+
+  Block:    What it can carry
+  Contents: Text specimens on white and black with ratios; a one-sentence
+            verdict.
+
+  Block:    Under other eyes
+  Contents: Normal vision, Protanopia (red-blind), Deuteranopia (green-blind),
+            Tritanopia (blue-blind), each with a hex code.
+
+  Block:    Every space, and the metrics
+  Contents: RGB, HSL, CIE L*a*b*, OKLab, OKLCH, CMYK, Relative luminance,
+            Chroma, Vividness, Perceptual uniformity.
+
+  Block:    Nearest in the atlas
+  Contents: Five nearest colours with ΔE and a word.
+
+STATS TAB
+=========
+
+  Card               | Range       | Bands
+  -------------------+-------------+------
+  Hue (HSL)          | 0° to 360°  | 12
+  Lightness (Lab L*) | 0 to 100    | 10
+  Chroma             | 0 to 0.40   | 10
+  Contrast on white  | 1:1 to 21:1 | 10
+
+Select a card's heading to fold or unfold it.
+
+EXPORT TAB
+==========
+
+Selection
+---------
+
+  Group:  Copy formats
+  Button: HEX
+  Output: `#76CDF6` style
+
+  Group:  -
+  Button: RGB
+  Output: `rgb(118, 205, 246)` style
+
+  Group:  -
+  Button: HSL
+  Output: `hsl(199 88% 71%)` style
+
+  Group:  -
+  Button: Lab
+  Output: `lab(78.56% -15.21 -28.22)` style
+
+  Group:  -
+  Button: OKLCH
+  Output: `oklch(80.89% 0.102 230.17)` style
+
+  Group:  -
+  Button: CSS variables
+  Output: `:root` block with `--color-hex`, `--color-rgb`, `--color-hsl`,
+          `--color-oklch`
+
+  Group:  Download
+  Button: JSON (full metadata)
+  Output: `<hex>.json`
+
+  Group:  -
+  Button: SVG
+  Output: `<hex>.svg`, 480 × 280
+
+  Group:  -
+  Button: PNG
+  Output: `<hex>.png`, 800 × 480
+
+Visible set
+-----------
+
+  Group:  Bulk download
+  Button: JSON (all metadata)
+  File:   `color-library-<count>-<date>.json`
+
+  Group:  -
+  Button: JSON (compact: id + hex)
+  File:   `color-library-<count>-<date>.json`
+
+  Group:  -
+  Button: CSV (flat)
+  File:   `color-library-<count>-<date>.csv`
+
+  Group:  -
+  Button: .txt (one hex per line)
+  File:   `color-library-<count>-<date>.txt`
+
+  Group:  Style formats
+  Button: CSS variables
+  File:   `color-library-<count>-<date>.css` (`--color-<id>`)
+
+  Group:  -
+  Button: SCSS variables
+  File:   `color-library-<count>-<date>.scss` (`$color-<id>`)
+
+  Group:  -
+  Button: tailwind.config.js fragment
+  File:   `color-library-<count>-<date>.js` (`c<id>`)
+
+MESSAGES
+========
+
+  Message: Loading color atlas…
+  When:    While the atlas loads.
+
+  Message: Could not load color atlas
+  When:    The atlas failed to load; the reason follows.
+
+  Message: No colors match these filters
+  When:    Nothing matches; with the hint Try clearing the search or selecting
+           "Any" on filters.
+
+  Message: Not a colour this reads.
+  When:    The colour field could not read your text.
+
+  Message: No colour open
+  When:    The colour tab before any colour is opened.
+
+  Message: No color selected.
+  When:    Export before any colour is opened.
+
+  Message: No colors
+  When:    Stats with nothing matching.
+
+  Message: No saved colors yet
+  When:    Saved with nothing saved.
+
+  Message: HEX copied, RGB copied, HSL copied, Lab copied, OKLCH copied, CSS
+           variables copied
+  When:    After a copy.
+
+  Message: Downloaded and a file name
+  When:    After a bulk download.
+
+  Message: PNG downloaded
+  When:    After a PNG download.
+
+  Message: Could not encode PNG
+  When:    The browser could not make the PNG.
+
+  Message: Nothing to export
+  When:    A bulk export with no matching colours.
+
+KEYBOARD
+========
+
+  Key                | Action
+  -------------------+--------------------------------------------------------
+  `/`                | Focus the main search box (when not typing in a field).
+  `Enter` or `Space` | Open the focused tile.
+  `Tab`              | Move between controls and tiles.

@@ -1,0 +1,13 @@
+---
+title: Learn — Release notes
+description: User-facing history of the Learn library.
+product: Website › Library › Learn
+updated: 2026-09-25
+---
+
+# Release notes
+
+- **4 May 2026** — Article 1, "What Color Is and How Humans See It", the course's cornerstone explainer.
+- **0.9.9, 5 June 2026** — the release added Learn content alongside documentation and blog content (see the [Changelog](../../changelog/README.md)).
+- **May to August 2026** — articles were published in course order, one a day for much of the period, reaching 113 articles; the most recent is dated 31 August 2026.
+- **The current Learn page** presents the articles as a course in reading order, with categories, search, reading times, progress ticks and a resume link, and each article ends with personalised **Continue your journey** suggestions.

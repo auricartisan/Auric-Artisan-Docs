@@ -1,0 +1,68 @@
+---
+title: Library Kit — Share, export and import
+description: Share a saved item as a link, download items as files, back up the whole library and import it again.
+product: Website › Kits › Library Kit
+updated: 2026-09-25
+---
+
+# Share, export and import
+
+## Share an item as a link
+
+1. Hover over the tile and select **Share**, or right-click it and choose **Share a link…**.
+2. The **Share link** dialog opens with the item's name as its title and the note "Anyone with this link can open a copy. State is encoded in the URL — no account needed."
+3. Select **Copy** (it briefly reads **Copied!**), or **Share via…** to use your device's share sheet where available, or **Open in new tab** to try the link yourself.
+4. Select **Close** when you are done.
+
+The item itself is packed into the link, so the recipient does not need an account and nothing is uploaded. The link opens the tool that can show the item. Under the address, the dialog shows the link's length in characters and the size limit, with the note "safe to paste into chat, docs, or email."
+
+### Too large to share
+
+Links are limited to 6 KB of packed data. Palettes, gradients and small presets fit easily; large items such as audits and images often do not. When an item is too large, the dialog is titled **Too large to share** and reads "Encoded payload is" followed by its size and "over the 6 KB share limit", with a bar showing how far over it is. Export the item as a file instead.
+
+## Download one item
+
+- In list view, select the download icon on the row (**Export JSON**), or
+- right-click the tile and choose **Export JSON**.
+
+Most items download as a JSON file named after the item. Image and plate items download as the image itself (PNG or JPEG), or as SVG if that is all they hold.
+
+For other formats (NDJSON, CSV, XML, HTML, Markdown, text, PNG, SVG) use the item's details; see [Restore and reuse](restore-and-reuse.md).
+
+## Download several items
+
+Turn on multi-select, select the items and choose **Export** in the bulk bar, or right-click one of them and choose **Export all**. Each item downloads as its own file. Your browser may ask you to allow several downloads.
+
+## Back up the whole library
+
+Select **Export** in the footer, or right-click empty space and choose **Export all**, or type `>` and choose **Export library snapshot**. A file named `auric-library-backup.json` downloads, containing every item, collection, draft and library setting. A message confirms **Library snapshot downloaded**.
+
+The Settings tab's **Storage** section has the same action, **Export library**.
+
+## Import a library file
+
+Import merges a previously exported library file into the library you have.
+
+- Select **Import** in the footer, or type `>` and choose **Import library file**, and pick a `.json` file; or
+- drag a library `.json` file onto the Library Kit panel. While you drag, the panel shows "Drop a library .json file to import".
+
+A message confirms **Imported** and the file name, or says "That file could not be imported." if the file is not a library export.
+
+### Merge or replace
+
+The **Import library** button in the Settings tab's **Storage** section asks first: "Merge the imported file with your current library, or replace everything?" Choose **Merge** to keep your existing items, or **Replace** to remove them and keep only the imported ones. Replacing cannot be undone. The footer button and drag and drop always merge.
+
+## Reports
+
+To download a report of the whole library in JSON, NDJSON, CSV, XML, HTML, Markdown or text, use the Settings tab's **Generate reports** section. See [Settings, sync and reports](settings-sync-and-reports.md).
+
+## Move a library to another browser or device
+
+1. In the old browser, select **Export** in the footer.
+2. Copy `auric-library-backup.json` to the new device.
+3. In the new browser, open the Library Kit and drag the file onto it, or select **Import**.
+
+## Related
+
+- [Privacy](../others/privacy.md) — what a share link contains
+- [Limits and accuracy](../others/limits-and-accuracy.md)

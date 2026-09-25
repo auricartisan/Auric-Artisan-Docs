@@ -1,0 +1,189 @@
+==============================================================================
+GETTING STARTED WITH AURIC ARTISAN LIVE
+==============================================================================
+Install Auric Artisan Live, learn where each control lives, and run a first
+live-reload session.
+Area: VS Code extensions › Auric Artisan Live   Updated: 2026-09-25
+
+This guide installs the extension, tours every surface it adds to VS Code, and
+ends with a page that updates when you save.
+
+INSTALL
+=======
+
+  1. Check that VS Code is version 1.95 or newer (Help › About).
+  2. In the Extensions view (`Ctrl` + `Shift` + `X`), search for
+     `@id:auric-artisan.auric-artisan-live` and select Install. Or run:
+         code --install-extension auric-artisan.auric-artisan-live
+  3. Open the folder that contains your website with File › Open Folder….
+     Auric Live serves folders; with no folder open, its view shows an Open
+     Folder button instead.
+
+Backend runtimes (PHP, Python, Node.js and so on) are not included. Install
+the ones your project needs separately.
+
+THE SCREEN TOUR
+===============
+
+Status bar
+----------
+
+On the right of the status bar:
+
+  - Go Live (broadcast icon) when nothing is running. Select it to start a
+    server.
+  - The port number (radio-tower icon) while a server runs, with `+1`, `+2`
+    and so on when several workspace folders are live. Hover for a summary:
+    run target, served root, live reload and connected pages, proxy rules and
+    upstream state, mock routes, network profile and request count. Select it
+    to open the Auric Live menu.
+  - A spinning icon with a warning background when the server is up but a
+    proxied backend is not answering yet.
+
+Hide the item with `auricLive.showStatusBar`.
+
+The Auric Live sidebar
+----------------------
+
+Select the Auric Live icon in the Activity Bar. It has three views.
+
+Servers — one entry per workspace folder, showing its address or state. Expand
+a running server to see:
+
+  Row:           Root
+  What it shows: The folder being served
+  Select it to:  —
+
+  Row:           Run target
+  What it shows: Static files, a detected runtime or your own command
+  Select it to:  Change the run target
+
+  Row:           Dev server
+  What it shows: A supervised process, its state, port and restart count
+  Select it to:  Show its output
+
+  Row:           Upstream ready / not answering
+  What it shows: Each proxied backend's state
+  Select it to:  Find it (when not answering)
+
+  Row:           Local
+  What it shows: The `localhost` address
+  Select it to:  Open it in your browser
+
+  Row:           Network
+  What it shows: Up to three addresses other devices can use
+  Select it to:  Show the phone QR code
+
+  Row:           Live reload
+  What it shows: How many pages are connected, or off
+  Select it to:  —
+
+  Row:           Requests
+  What it shows: Handled and failed counts
+  Select it to:  Open the request inspector
+
+  Row:           Certificate
+  What it shows: generated or provided (HTTPS only)
+  Select it to:  Reveal the certificate
+
+  Row:           Config file
+  What it shows: The project configuration file, if one exists
+  Select it to:  Open it
+
+The view's title bar has Go Live, Select Run Target…, Stop All Servers and
+Open Control Panel, and its … menu has Refresh, Open Settings and Show Log.
+Hover a running server for inline Open in Default Browser and Stop Server
+buttons; right-click it for Restart Server, Open Preview Beside, Copy Local
+URL, Copy Network URL and Show Phone QR Code.
+
+Requests — the most recent requests, each shown as method and path with
+status, which handler answered and the time taken. Select one for its details;
+right-click for Replay Request, Copy Request as curl and Copy Request as
+fetch. The title bar has Clear Request Log and Export Requests as HAR.
+
+Routes and Mocks — every proxy rule (`/api →` target), active mock route
+(method, path, status and hit count), REST collection (address and record
+count) and CGI handler (`*.php` › `php-cgi`). The title bar has Add API Proxy
+Route…, Add Mock API Route… and Find a Running Backend; its … menu has Open
+Mock Database, Open Project Config File, Restart Framework Dev Server and Show
+Dev Server Output.
+
+The control panel
+-----------------
+
+Run Auric Live: Open Control Panel (`Ctrl` + `Alt` + `Shift` + `I`). It opens
+as an editor tab with five sections:
+
+  Section:   01 / Overview
+  Use it to: Start, stop or restart; choose the active workspace; open in the
+             browser or preview beside; copy addresses; show the phone QR
+             code; control reload and network shaping
+
+  Section:   02 / Requests
+  Use it to: Search, filter and sort captured requests, pause the display,
+             open details, copy curl or fetch, replay, export HAR
+
+  Section:   03 / Runtime
+  Use it to: Choose a detected or custom run target, check readiness and
+             prerequisites, see its output, connect to an existing backend
+
+  Section:   04 / Routing
+  Use it to: See and add proxy rules, mock endpoints, REST collections and CGI
+             handlers
+
+  Section:   05 / Settings
+  Use it to: Change session settings, open the project configuration or VS
+             Code settings, import an HTTPS certificate
+
+The header has the language switch (Auto, English, हिन्दी) and a link to
+auricartisan.com. The panel follows your light, dark or high-contrast theme
+and adapts to narrow editor splits. Its drop-down menus work with the
+keyboard: arrow keys, type-ahead and `Escape`.
+
+Changes you make in the panel are session overrides: they apply until you
+close or reload the VS Code window, and they do not rewrite your settings or
+project file. To keep a choice, put it in `auric.live.json` or VS Code
+settings. See Project configuration [project-configuration.txt].
+
+The Auric Live menu
+-------------------
+
+Select the port number in the status bar, run Auric Live: Open Live Menu, or
+press `Ctrl` + `Alt` + `Shift` + `K`. It lists every common action with its
+current state, such as the network profile, whether HTTPS and live reload are
+on, the port and the served folder.
+
+Editor and Explorer entry points
+--------------------------------
+
+  - Right-click a folder in the Explorer for Serve This Folder and the Auric
+    Live submenu.
+  - Right-click an `.html`, `.htm`, `.xhtml`, `.php` or `.md` file in the
+    Explorer for Open with Auric Live. For HTML, XHTML and PHP files the same
+    entry is on the editor's context menu and the editor tab's context menu.
+  - The editor title bar's Run menu has an Auric Live submenu: Go Live, Select
+    Run Target…, Add Custom Run Command…, Open Preview Beside, Open in Default
+    Browser, Show Phone QR Code, Restart Framework Dev Server, Stop Server and
+    Open Live Menu.
+
+YOUR FIRST LIVE-RELOAD SESSION
+==============================
+
+  1. Open a folder with an `index.html` that links a stylesheet.
+  2. Press `Ctrl` + `Alt` + `L` (or run Auric Live: Go Live). If you have
+     several workspace folders, choose which one to serve.
+  3. Your browser opens at `http://localhost:5500`. A notification says Auric
+     Live is serving the folder and offers Open, Preview and Phone QR.
+  4. If the project turns out to be a framework with its own dev server (such
+     as Vite or Next.js) or a PHP site, Auric Live offers to set that up once.
+     See Run a backend or framework dev server [run-targets-and-backends.txt].
+  5. Change a colour in the stylesheet and save. The page updates without a
+     reload, keeping its scroll position.
+  6. Change the HTML and save. The page reloads and returns to the same scroll
+     position.
+  7. Press `Alt` + `Shift` + `D` in the browser to open the developer
+     dashboard over the page.
+
+You now have a served page that follows your saves. Next, read Serve a folder
+with live reload [serve-and-live-reload.txt] for every option, or Preview,
+devices and phone testing [preview-and-devices.txt].

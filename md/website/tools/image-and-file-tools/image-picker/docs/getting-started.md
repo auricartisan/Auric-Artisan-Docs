@@ -1,0 +1,56 @@
+---
+title: Image Picker — Getting started
+description: Open the Image Picker, find your way around its three tabs, and take a first palette from a picture.
+product: Website › Tools › Image and file tools › Image Picker
+updated: 2026-09-25
+---
+
+# Getting started with the Image Picker
+
+## Open the tool
+
+Go to https://auricartisan.com/tool/general/tools/image-picker/. The page opens on the **Workbench** tab with a large empty panel that reads **Drop an image anywhere in here**.
+
+Under the page heading there may be a short line that begins **Automate this**. It says the same job is available through the site's REST API, what one call costs in API credits, and links to the API documentation. You can close it with **×**; it stays closed in that browser. You do not need the API to use the tool.
+
+## The screen at a glance
+
+| Tab | What it is for |
+|---|---|
+| **Workbench** | Load a picture, set the extraction, see the preview, the palette, the tone bands and the readouts |
+| **Analysis** | Four charts of the current palette; the tab label shows **4** |
+| **Actions** | Download JSON or CSV, copy the page link, and analyse a list of hex colours |
+
+### The Workbench tab
+
+The **Workbench** has three columns.
+
+- **Left:** **The image** (file name, size, and the **Replace** and **Load URL** buttons with a web address field), **Extraction** (the **Clusters**, **Quality** and **Merge threshold** sliders and the **Ignore dark** and **Ignore light** switches), **Run** (**Re-extract** and **Reset**), and **History** (how many extractions you have run).
+- **Middle:** before a picture is loaded, the drop area. After, the **Preview** with the eyedropper readout and **Pin** button, the **Extracted palette** swatches, and the **Tone bands**.
+- **Right:** before a picture is loaded, the keyboard keys and a note of what comes back. After, **Pairs that carry text**, **Harmony**, **Pinned** and **Take it with you**.
+
+## Take a first palette
+
+1. Drop an image onto the middle panel, or select the panel to choose a file. PNG, JPEG, WEBP, GIF and BMP are all accepted.
+2. The picture appears under **Preview**, and the file name and sizes appear on the left, for example `4032 × 3024 → 667 × 500 | harbour.jpg`. Large pictures are shrunk to fit an 800 × 500 working area; the first size is the original.
+3. Under **Extracted palette**, the swatches appear largest share first. Each shows its share of the picture, its hex value, its HSL values and its relative luminance. The heading says how many clusters and samples were used.
+4. Move **Clusters** to 6 and release it. The palette is extracted again with six colours.
+5. Hover the preview. The readout under it shows the colour under the pointer. Click to pin that exact colour; it appears under **Pinned** on the right.
+6. Under **Take it with you**, select **CSS**. The palette is copied as CSS custom properties. Paste it into your stylesheet:
+
+```css
+:root {
+  --palette-01: #2E4A5C;
+  --palette-02: #D9C7A8;
+  --palette-03: #8A6A4F;
+}
+```
+
+The values above are an example; you get the colours of your picture.
+
+## Next steps
+
+- To tune the palette, see [Extract a palette](extract-a-palette.md).
+- To keep exact pixels, see [Pick exact colours](pick-exact-colours.md).
+- To check which colours work together as text and background, see [Read contrast pairs, tone bands and harmony](read-contrast-and-harmony.md).
+- For every export, see [Export and share](export-and-share.md).

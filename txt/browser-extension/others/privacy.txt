@@ -1,0 +1,145 @@
+==============================================================================
+PRIVACY
+==============================================================================
+What the Auric Artisan browser extension keeps, where, for how long, what uses
+the network, and how to delete it.
+Area: Browser extension   Updated: 2026-09-25
+
+The extension collects nothing and sends nothing. There are no accounts, no
+analytics and no network requests of its own. Everything it keeps stays in
+your browser. The only traffic it causes is a page you choose to open.
+
+The full policy is at https://auricartisan.com/legal/extension-privacy/.
+
+PROMISES
+========
+
+  1. No network requests. No analytics, tracking, crash reporting, remote
+     settings or remote code.
+  2. No accounts. Nothing to sign in to, and no identifiers.
+  3. Nothing leaves your device unless you click. Links, web searches and
+     translations open only when you choose them.
+  4. Nothing is written to websites' storage. On a page, the extension does
+     not read or write the site's cookies, local storage or databases.
+  5. Page-changing features are opt-in. The website pickers and the custom
+     right-click menu stay off until you turn them on.
+
+The Firefox package declares to Mozilla, in its manifest, that it collects no
+data.
+
+WHAT IS KEPT, AND WHERE
+=======================
+
+Everything below lives in your browser profile. None of it is synced or sent.
+
+  Data:                   Settings
+  Contains page content?: No
+  Kept until:             You reset them or uninstall
+
+  Data:                   Colour history (50)
+  Contains page content?: Colours only
+  Kept until:             You clear it
+
+  Data:                   Library colours (500) and palettes
+  Contains page content?: Colours only
+  Kept until:             You delete them
+
+  Data:                   Snippets (200)
+  Contains page content?: Yes: the code you saved, and the address and site of
+                          the page it came from
+  Kept until:             You delete them
+
+  Data:                   Last inspected element
+  Contains page content?: Yes: its selector, styles, colours, accessibility
+                          details and up to 12 KB of its markup
+  Kept until:             The next inspection replaces it
+
+  Data:                   Right-click menu preferences (quick bar, layout, row
+                          height)
+  Contains page content?: No
+  Kept until:             You reset them
+
+  Data:                   Picker preferences, the language, and the last tool
+                          in each space
+  Contains page content?: No
+  Kept until:             You uninstall
+
+  Data:                   A queued shortcut or menu command
+  Contains page content?: No
+  Kept until:             Read once; dropped after 30 seconds
+
+  Data:                   Audit results, page palettes, tokens, findings
+  Contains page content?: Yes
+  Kept until:             The popup or side panel closes
+
+The last inspected element is capped in size, so a page cannot fill your
+extension storage.
+
+WHAT USES THE NETWORK
+=====================
+
+Each of these is an ordinary page visit that you start. The extension itself
+sends nothing.
+
+  When:                    You install the extension
+  Opens:                   auricartisan.com, once, marked as an install visit
+  What the address contains:Nothing about you or your pages
+
+  When:                    You follow a link to auricartisan.com (wordmark,
+                           Home, On the web, search results)
+  Opens:                   That page
+  What the address contains:The page's address only
+
+  When:                    Page palette › Open
+  Opens:                   auricartisan.com's palette library
+  What the address contains:The palette's hex colours
+
+  When:                    Right-click menu › Search the web
+  Opens:                   Google, Bing, DuckDuckGo, Wikipedia, YouTube or
+                           Google Images
+  What the address contains:The text you selected
+
+  When:                    Right-click menu › Translate
+  Opens:                   Google Translate
+  What the address contains:The text you selected
+
+  When:                    Right-click menu › Translate page
+  Opens:                   Google Translate
+  What the address contains:The page's address
+
+QR codes, screenshots, colour maths, audits, vision simulations and image
+palettes are all made on your device. Images you drop into Image are never
+uploaded.
+
+BACKUPS
+=======
+
+Download a backup saves a file you control. It contains your settings,
+history, library and snippets, and snippets include the addresses of the pages
+they came from. Nothing is uploaded.
+
+DELETE YOUR DATA
+================
+
+  To delete           | Do this
+  --------------------+------------------------------------------
+  History and library | Settings › Data › Clear history & library
+  All snippets        | Code › Snippets › Clear all
+  Settings            | Settings › Data › Reset all settings
+  Everything          | Uninstall the extension
+
+SAFETY MEASURES
+===============
+
+  - Addresses a page passes to the browser for downloading or opening must be
+    ordinary web, data or blob addresses; others are refused.
+  - Translations can never inject code into the extension's panels.
+  - Backups and pasted settings are checked and capped before they are saved.
+  - Live CSS changes only the element you inspect, and Reset or Stop restores
+    it.
+
+RELATED PAGES
+=============
+
+  - Permissions [../docs/permissions.txt]
+  - Data settings [../docs/settings/data.txt]

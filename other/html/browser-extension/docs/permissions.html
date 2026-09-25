@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Permissions — Auric Artisan Docs</title>
+<meta name="description" content="Every permission Auric Artisan asks for, when the browser asks, why each is needed, and how to review or revoke them.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan browser extension</a>
+<h2>Browser extension documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="hindi-interface.html">Hindi interface</a></li>
+<li><a href="permissions.html" aria-current="page">Permissions</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="check/README.html">Check tools &rsaquo;</a></li>
+<li><a href="code/README.html">Code tools &rsaquo;</a></li>
+<li><a href="colour/README.html">Colour tools &rsaquo;</a></li>
+<li><a href="install/README.html">Install the extension &rsaquo;</a></li>
+<li><a href="on-websites/README.html">On websites &rsaquo;</a></li>
+<li><a href="saved/README.html">Saved &rsaquo;</a></li>
+<li><a href="settings/README.html">Settings &rsaquo;</a></li>
+<li><a href="surfaces/README.html">Surfaces &rsaquo;</a></li>
+<li><a href="workflows/README.html">Workflows &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="README.html">Browser extension documentation</a></nav>
+<p class="kicker">Browser extension</p>
+<h1>Permissions</h1>
+<p class="lede">Every permission Auric Artisan asks for, when the browser asks, why each is needed, and how to review or revoke them.</p>
+<p>When you install Auric Artisan, the browser warns that it can &quot;read and change your data on all websites&quot;. This page explains exactly what the extension declares, when each permission is asked for, and what it is used for.</p>
+<h2 id="the-short-version">The short version</h2>
+<ul>
+<li>The tools work on whatever page you use them on, so the extension needs access to all sites.</li>
+<li>A small script loads on each page and waits. Until you start a tool, it only reads your settings and listens for your commands. It does not read your content or change the page.</li>
+<li>Everything that changes a page, the website pickers and the custom right-click menu, is off until you turn it on.</li>
+<li>Three extra permissions are asked for only if you turn on the custom right-click menu.</li>
+<li>Nothing is sent anywhere. See <a href="../others/privacy.html">Privacy</a>.</li>
+</ul>
+<h2 id="asked-for-at-install">Asked for at install</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Permission</th><th>What the browser calls it</th><th>Why it is needed</th></tr></thead>
+<tbody>
+<tr><td>Host access to all sites</td><td>Read and change your data on all websites</td><td>The page tools work on any page you choose; the optional pickers and menu must be ready before you use a page</td></tr>
+<tr><td><code>activeTab</code></td><td>—</td><td>Access to the tab you are on when you use the popup, a shortcut or a menu item</td></tr>
+<tr><td><code>scripting</code></td><td>—</td><td>Starts the page script in tabs opened before install, and runs the eyedropper in the page when needed</td></tr>
+<tr><td><code>storage</code></td><td>—</td><td>Keeps your settings, history, library, snippets and pinned tools in your browser</td></tr>
+<tr><td><code>clipboardWrite</code></td><td>—</td><td>The copy buttons: colour values, CSS, selectors and exports</td></tr>
+<tr><td><code>contextMenus</code></td><td>—</td><td>Adds the extension&#39;s entries to the browser&#39;s own right-click menu (you can turn them off in Settings › Right-click)</td></tr>
+<tr><td><code>sidePanel</code> (Chromium only)</td><td>—</td><td>Docks the workspace in the side panel</td></tr>
+</tbody></table></div>
+<p>Firefox gets the same list without <code>sidePanel</code>. Its sidebar needs no permission. The Firefox package also declares to Mozilla that it collects no data.</p>
+<h2 id="asked-for-only-when-you-turn-on-the-custom-right-click-menu">Asked for only when you turn on the custom right-click menu</h2>
+<p>When you turn on Settings › Right-click › <strong>Custom right-click menu</strong>, the browser asks for three optional permissions. If you decline, the menu stays off.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Permission</th><th>Only for</th><th>Without it</th></tr></thead>
+<tbody>
+<tr><td><code>clipboardRead</code> (read the clipboard)</td><td><strong>Paste</strong> in text fields</td><td>Paste shows an <strong>Allow</strong> chip</td></tr>
+<tr><td><code>downloads</code> (manage downloads)</td><td><strong>Save link as…</strong>, <strong>Save image as…</strong>, <strong>Save media as…</strong> and <strong>Save screenshot</strong></td><td>Those rows show an <strong>Allow</strong> chip</td></tr>
+<tr><td><code>sessions</code> (recently closed tabs)</td><td><strong>Reopen closed tab</strong></td><td>The row shows an <strong>Allow</strong> chip</td></tr>
+</tbody></table></div>
+<p><strong>Save page as…</strong> works without <code>downloads</code>: it then saves the page&#39;s current HTML as a file instead of using the browser&#39;s Save dialog.</p>
+<p>Nothing else in the extension asks for these. You can grant them one at a time in Settings › Right-click › <strong>Permissions</strong>.</p>
+<h2 id="where-the-page-script-does-not-run">Where the page script does not run</h2>
+<ul>
+<li>Browser pages (such as <code>chrome://</code> and <code>about:</code> pages) and the extension stores, where browsers forbid it.</li>
+<li>Frames inside a page: the script runs in the top page only.</li>
+<li><code>file://</code> pages, unless you allow file access for the extension in the browser.</li>
+</ul>
+<h2 id="review-or-revoke-permissions">Review or revoke permissions</h2>
+<ul>
+<li><strong>Chromium browsers:</strong> open the extensions page, choose <strong>Details</strong> on Auric Artisan, and review <strong>Site access</strong> and <strong>Permissions</strong>. You can limit site access, but the page tools then work only on the sites you allow.</li>
+<li><strong>Firefox:</strong> open <code>about:addons</code>, choose Auric Artisan, then the <strong>Permissions</strong> tab.</li>
+</ul>
+<p>Revoking an optional permission turns the matching right-click actions back to <strong>Allow</strong> chips.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../others/privacy.html">Privacy</a></li>
+<li><a href="settings/right-click.html">Right-click settings</a></li>
+<li>The extension privacy policy: <a href="https://auricartisan.com/legal/extension-privacy/" rel="noopener">https://auricartisan.com/legal/extension-privacy/</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="hindi-interface.html"><span>Previous</span>Hindi interface</a><a href="reference.html"><span>Next</span>Reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-short-version">The short version</a></li><li><a href="#asked-for-at-install">Asked for at install</a></li><li><a href="#asked-for-only-when-you-turn-on-the-custom-right-click-menu">Asked for only when you turn on the custom right-click menu</a></li><li><a href="#where-the-page-script-does-not-run">Where the page script does not run</a></li><li><a href="#review-or-revoke-permissions">Review or revoke permissions</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

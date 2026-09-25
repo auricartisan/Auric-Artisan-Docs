@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspect requests — Auric Artisan Docs</title>
+<meta name="description" content="See every request the Auric Live server handles, find slow or failing ones, and copy, replay or export them.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html" aria-current="page">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Inspect requests</h1>
+<p class="lede">See every request the Auric Live server handles, find slow or failing ones, and copy, replay or export them.</p>
+<p>The <em>request inspector</em> records each request the Auric Live server handles: method, path, status, which handler answered, time taken, size, and (by default) headers and bodies. Credentials are masked before anything is stored.</p>
+<p>You can inspect requests in three places:</p>
+<ul>
+<li>the <strong>Requests</strong> view in the Auric Live sidebar;</li>
+<li>the <strong>02 / Requests</strong> section of the control panel (<strong>Auric Live: Open Control Panel</strong> or <strong>Auric Live: Open Request Inspector</strong>);</li>
+<li>the <strong>Requests</strong> tab of the in-page browser dashboard.</li>
+</ul>
+<h2 id="the-requests-view">The Requests view</h2>
+<p>Each row reads <code>METHOD /path</code> with <code>status · handler · time</code> beside it, for example <code>GET /api/users</code> — <code>200 · proxy · 34ms</code>. Select a row to open <strong>Show Request Detail</strong>. Right-click a row for:</p>
+<ul>
+<li><strong>Replay Request</strong></li>
+<li><strong>Copy Request as curl</strong></li>
+<li><strong>Copy Request as fetch</strong></li>
+</ul>
+<p>The title bar has <strong>Clear Request Log</strong> and <strong>Export Requests as HAR</strong>.</p>
+<h2 id="the-control-panels-requests-section">The control panel&#39;s Requests section</h2>
+<p>The section searches the latest 200 captured requests.</p>
+<h3 id="filter-and-sort">Filter and sort</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Options</th></tr></thead>
+<tbody>
+<tr><td>Search</td><td>Type part of a path, method, status or handler. <code>Ctrl</code> + <code>F</code> (<code>Cmd</code> + <code>F</code> on macOS) focuses it</td></tr>
+<tr><td><strong>Status</strong></td><td><strong>All statuses</strong>, <strong>2xx</strong>, <strong>3xx</strong>, <strong>4xx</strong>, <strong>5xx</strong></td></tr>
+<tr><td><strong>Method</strong></td><td><strong>All methods</strong>, <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code>, <code>HEAD</code>, <code>OPTIONS</code></td></tr>
+<tr><td><strong>Handler</strong></td><td><strong>All handlers</strong>, <code>static</code>, <code>proxy</code>, <code>mock</code>, <code>rest</code>, <code>cgi</code>, <code>listing</code>, <code>redirect</code>, <code>error</code>, <code>client</code>, <code>live-reload</code></td></tr>
+<tr><td><strong>Sort</strong></td><td><strong>Newest first</strong>, <strong>Slowest first</strong>, <strong>Largest first</strong></td></tr>
+</tbody></table></div>
+<p>Filters combine. Results are paged with <strong>Previous</strong> and <strong>Next</strong>. <strong>Reset filters</strong> clears them. The filters and your place in the list are kept while new requests arrive, and they survive switching the panel&#39;s language.</p>
+<h3 id="pause-the-display">Pause the display</h3>
+<p><strong>Pause feed</strong> freezes the list so you can read it; the server keeps capturing in the background. <strong>Resume feed</strong> catches up.</p>
+<h3 id="totals">Totals</h3>
+<p>The section shows <strong>Captured requests</strong>, <strong>Failed responses</strong>, <strong>Response bytes recorded</strong> and a <strong>p95 latency</strong>. The p95 is the time within which 95 per cent of the <em>recent</em> requests shown were answered. It is a sample of the latest requests, not a figure for the whole session.</p>
+<h3 id="request-details">Request details</h3>
+<p>Open a path to see:</p>
+<ul>
+<li>the method, address, status, handler and timing;</li>
+<li><strong>Request headers</strong>, <strong>Request body</strong>, <strong>Response headers</strong> and <strong>Response body</strong>, as far as they were captured;</li>
+<li><strong>Copy curl</strong> and <strong>Copy fetch</strong>;</li>
+<li><strong>Replay request</strong>.</li>
+</ul>
+<p><code>Escape</code> closes the details and returns focus to the list. Details load on demand, so a request that has since dropped out of the inspector shows <strong>This request has expired or was cleared. Select a newer request.</strong></p>
+<h2 id="copy-as-curl-or-fetch">Copy as curl or fetch</h2>
+<p><strong>Copy curl</strong> gives a command you can paste into a terminal; <strong>Copy fetch</strong> gives a JavaScript <code>fetch()</code> call you can paste into a browser console or code. Values that were redacted or not captured are missing from the copy; fill them in yourself.</p>
+<h2 id="replay-a-request">Replay a request</h2>
+<p><strong>Replay request</strong> sends the captured request to the server again.</p>
+<ul>
+<li>Methods other than <code>GET</code> and <code>HEAD</code> ask for confirmation first.</li>
+<li>A capture whose data was redacted, truncated, omitted or binary cannot be replayed safely. Auric Live refuses with <strong>This capture was redacted, truncated, or contains a binary body. Copy as fetch or curl and supply the missing values before sending it.</strong></li>
+</ul>
+<h2 id="export-har">Export HAR</h2>
+<p>A <em>HAR file</em> (HTTP Archive) is a standard JSON format for a list of requests and responses that browsers and many tools can open.</p>
+<ol>
+<li>Run <strong>Auric Live: Export Requests as HAR</strong>, or select <strong>Export HAR</strong>.</li>
+<li>Choose where to save the file.</li>
+<li>Auric Live reports <strong>Exported <em>N</em> requests.</strong> and offers <strong>Open</strong>.</li>
+</ol>
+<p>HAR exports leave out request and response bodies unless you turn on <code>auricLive.inspector.harIncludeBodies</code>, because bodies often hold personal or application data. Review a HAR file before sharing it.</p>
+<h2 id="privacy-and-limits">Privacy and limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Safeguard</th><th>Default</th><th>Setting</th></tr></thead>
+<tbody>
+<tr><td>Requests kept</td><td>500; the panel shows the newest 200</td><td><code>auricLive.inspector.maxEntries</code></td></tr>
+<tr><td>Bodies captured</td><td>On, up to 256 KiB per body</td><td><code>auricLive.inspector.captureBodies</code>, <code>auricLive.inspector.maxBodyBytes</code></td></tr>
+<tr><td>Credential headers</td><td>Always masked (<code>Authorization</code>, <code>Cookie</code>, <code>Set-Cookie</code> and similar)</td><td>—</td></tr>
+<tr><td>Sensitive query and body fields</td><td>Redacted</td><td><code>auricLive.inspector.redactSensitive</code></td></tr>
+<tr><td>Extra field names to redact</td><td>None</td><td><code>auricLive.inspector.sensitiveFields</code> (case insensitive)</td></tr>
+<tr><td>Bodies in HAR</td><td>Off</td><td><code>auricLive.inspector.harIncludeBodies</code></td></tr>
+<tr><td>Recording</td><td>On</td><td><code>auricLive.inspector.enabled</code></td></tr>
+</tbody></table></div>
+<p>Incomplete JSON is left out rather than risk exposing part of a credential. Redaction is not a general personal-data detector: names, addresses and free text can still be sensitive.</p>
+<p>Traffic is kept separate per workspace folder. With several servers running, <strong>Auric Live: Select Active Server</strong> chooses which one the inspector shows.</p>
+<p><strong>Auric Live: Clear Request Log</strong> (or <strong>Clear history</strong> in the panel) empties the inspector.</p>
+<h2 id="output-channel-logging">Output channel logging</h2>
+<p>Separately from the inspector, <code>auricLive.requestLogging</code> writes one line per request to the <strong>Auric Artisan Live</strong> output channel (at debug level for successes, higher for failures). <code>auricLive.logLevel</code> sets how much reaches the channel: <code>off</code>, <code>error</code>, <code>warn</code>, <code>info</code> (default) or <code>debug</code>. Credential-like values are masked and paths are written relative to the served root.</p>
+<p>When you load a page with the inspector open, its requests appear within a moment, each labelled with the handler that answered it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="https-and-certificates.html"><span>Previous</span>Serve over HTTPS</a><a href="network-simulation.html"><span>Next</span>Simulate a slow network</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-requests-view">The Requests view</a></li><li><a href="#the-control-panels-requests-section">The control panel's Requests section</a></li><li><a href="#copy-as-curl-or-fetch">Copy as curl or fetch</a></li><li><a href="#replay-a-request">Replay a request</a></li><li><a href="#export-har">Export HAR</a></li><li><a href="#privacy-and-limits">Privacy and limits</a></li><li><a href="#output-channel-logging">Output channel logging</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

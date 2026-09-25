@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Look up and browse the index — Auric Artisan Docs</title>
+<meta name="description" content="Look up any of five million scored colour pairs by record id, read its WCAG, APCA and Auric SD scores, and browse pairs that pass.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Accessibility Library</a>
+<h2>Accessibility Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="check-your-own-colours.html">Check your own colours</a></li>
+<li><a href="look-up-and-browse-the-index.html" aria-current="page">Look up and browse the index</a></li>
+<li><a href="read-the-contrast-map.html">Read the contrast map</a></li>
+<li><a href="use-the-picks.html">Use the picks</a></li>
+<li><a href="reference.html">Accessibility Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Accessibility Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Accessibility Library</a> &rsaquo; <a href="README.html">Accessibility Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Accessibility Library</p>
+<h1>Look up and browse the index</h1>
+<p class="lede">Look up any of five million scored colour pairs by record id, read its WCAG, APCA and Auric SD scores, and browse pairs that pass.</p>
+<p><strong>The index</strong> is a set of five million foreground and background pairs, each scored. As the page explains, it is &quot;defined by a seed rather than stored&quot;: any record is a function of the seed (9001) and its number, so a record cited in an audit can be recomputed by anyone who reads it.</p>
+<h2 id="look-up-a-record">Look up a record</h2>
+<ol>
+<li>Scroll to <strong>The index</strong>.</li>
+<li>Type a record id such as <code>acc_91</code>, or a plain number such as <code>325</code>, into the box (<strong>A record id like acc_91, or an index like 325</strong>).</li>
+<li>Select <strong>Look up</strong>, or press <code>Enter</code>.</li>
+</ol>
+<p>Record ids are <code>acc_</code> followed by the record&#39;s number in base 36; <code>acc_91</code> is record 325.</p>
+<p>The result shows a specimen of the pair and:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fact</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Pair</strong></td><td>Foreground on background, for example <strong>#4E1229 on #D86062</strong>.</td></tr>
+<tr><td><strong>Contrast</strong></td><td>The WCAG 2 contrast ratio, for example <strong>4.00:1</strong>.</td></tr>
+<tr><td><strong>APCA</strong></td><td>The APCA Lc value, rounded, for example <strong>35</strong>.</td></tr>
+<tr><td><strong>Auric SD</strong></td><td>Auric Artisan&#39;s combined score from 0 to 100 and its grade, for example <strong>43.6 · F</strong>.</td></tr>
+<tr><td><strong>Recommended for</strong></td><td>The strongest use the pair supports, for example <strong>large-text</strong>.</td></tr>
+</tbody></table></div>
+<p>The examples are the real values of <code>acc_91</code>. A note underneath gives the seed, the index and the batch it belongs to — &quot;Anyone with the same three numbers recomputes the same pair, which is what makes this citable.&quot;</p>
+<p>Messages: <strong>Not a record id. They look like acc_91 — or paste an index.</strong> for unreadable input, and <strong>Out of range. The corpus holds 5,000,000 records.</strong> for a number that is too large.</p>
+<h3 id="the-auric-sd-score">The Auric SD score</h3>
+<p>A single score from 0 to 100 that weighs five things: WCAG contrast (30%), APCA contrast (30%), how distinct the pair stays under simulated vision conditions (20%), the gap in OKLCH lightness (10%), and the hue difference weighted by colourfulness (10%). Grades: <strong>S</strong> (90 or more), <strong>A</strong> (80 or more), <strong>B</strong> (70 or more), <strong>C</strong> (60 or more), <strong>D</strong> (50 or more), <strong>F</strong> (below 50).</p>
+<h3 id="recommended-for">Recommended for</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>body-text-strict</code></td><td>Passes a strict body-text test: score 85 or more, 7:1 or more, APCA 75 or more, and good separation under every simulated vision condition.</td></tr>
+<tr><td><code>body-text-WCAG3</code></td><td>APCA 75 or more (body text in the draft WCAG 3 approach).</td></tr>
+<tr><td><code>body-text-AA</code></td><td>WCAG 2 contrast 4.5:1 or more.</td></tr>
+<tr><td><code>large-text</code></td><td>3:1 or more.</td></tr>
+<tr><td><code>ui-only</code></td><td>APCA 45 or more.</td></tr>
+<tr><td><code>spot-text</code></td><td>APCA 30 or more.</td></tr>
+<tr><td><code>non-text</code></td><td>APCA 15 or more.</td></tr>
+<tr><td><code>decorative</code></td><td>None of the above.</td></tr>
+</tbody></table></div>
+<p>The list is checked from the top, so a pair gets the first value it qualifies for.</p>
+<h2 id="browse-the-index">Browse the index</h2>
+<p>Under the lookup, a grid of pair cards scrolls through the corpus.</p>
+<ul>
+<li><strong>Pairs that pass</strong> (the default) shows only pairs that clear the current target.</li>
+<li><strong>Everything</strong> shows every pair, most of which fail.</li>
+</ul>
+<p>The line beside the switch counts <strong>N shown · scanned M of 5,000,000</strong>. A note under the grid explains what you are seeing — with <strong>Pairs that pass</strong>, roughly what percentage of scanned pairs clear the target — and that you can keep scrolling without the page slowing down, because only what is on screen is drawn. At the very end it says <strong>That is the end of the corpus.</strong></p>
+<p>Each card shows <strong>Readable</strong> and a sample sentence in the pair, its ratio, &quot;foreground on background&quot; and its record id. Hover for the id and ratio.</p>
+<p>Select a card to load that pair into the map: its background becomes the ground, the caret moves to its foreground, and the page scrolls up to the map.</p>
+<p>Changing the target while <strong>Pairs that pass</strong> is on restarts the browse from the beginning with the new target.</p>
+<h2 id="api">API</h2>
+<p>The section <strong>All of this from your own code</strong> shows an example call to the site&#39;s public API and links to <strong>Read the guide</strong>, <strong>Endpoint reference</strong> and <strong>Get a key</strong>. See <a href="../../../../../services/public-api/README.html">Public API</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="check-your-own-colours.html"><span>Previous</span>Check your own colours</a><a href="read-the-contrast-map.html"><span>Next</span>Read the contrast map</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#look-up-a-record">Look up a record</a></li><li><a href="#browse-the-index">Browse the index</a></li><li><a href="#api">API</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

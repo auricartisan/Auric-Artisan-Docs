@@ -1,0 +1,17 @@
+---
+title: Screen recorder — Limits and accuracy
+description: Limits on recording length, storage, formats and quality.
+product: Website › Site features › Screen recorder
+updated: 2026-09-25
+---
+
+# Screen recorder limits and accuracy
+
+- **Length.** A recording stops at 30 minutes.
+- **Storage.** Recordings use your browser's storage for this site, which the browser limits. A minute of high-resolution video can take several megabytes to tens of megabytes. The list shows how much is used and free.
+- **Video length metadata.** Browsers do not always write a length into recorded files. Some players may show an unknown length or seek slowly in a downloaded WebM file; the recorder's own player and exports account for this.
+- **GIF.** Up to 300 frames at 10 per second and 640 pixels wide, with at most 255 colours. Long recordings are sampled, not played frame by frame, and subtle gradients can band.
+- **Frames.** Up to 120 PNG images, five per second, up to 1,280 pixels wide. It is a sampling of the recording, not every frame.
+- **Trim.** Runs in real time and makes a new file; the quality matches the original recording's format.
+- **Region crop.** Where the browser can crop the shared tab itself, it does so; otherwise the recorder crops each frame, which uses more processing power.
+- **Browser support.** Screen capture depends on the browser. Most mobile browsers cannot capture the screen.

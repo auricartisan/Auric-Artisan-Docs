@@ -1,0 +1,502 @@
+==============================================================================
+SEARCH REFERENCE
+==============================================================================
+Every control, operator, status line, message and limit on the Auric Artisan
+search page and in the Search Console.
+Area: Website › Search   Updated: 2026-09-25
+
+SEARCH PAGE CONTROLS
+====================
+
+  Control:         Search field
+  What it does:    Takes your query. Results start at two characters.
+  Values or range: Any text
+  Default:         Empty
+
+  Control:         Clear button
+  What it does:    Empties the field and returns to the start screen. Appears
+                   once you type.
+  Values or range: —
+  Default:         Hidden
+
+  Control:         Globe button (Web search)
+  What it does:    Switches between site search and web search.
+  Values or range: On, off
+  Default:         Off
+
+  Control:         Mode label
+  What it does:    Shows which index you are searching.
+  Values or range: LOCAL, GLOBAL
+  Default:         LOCAL
+
+  Control:         Suggestions list
+  What it does:    Pages and tags that match what you typed (site search), or
+                   words from the web index (web search).
+  Values or range: Up to 8
+  Default:         —
+
+  Control:         Section tabs
+  What it does:    Filter site-search results by kind of page, with a count on
+                   each.
+  Values or range: All, Tools, Learn, Docs, Blog, Portfolios, Pages
+  Default:         All
+
+  Control:         Tools menu
+  What it does:    Opens sorting and ranking options.
+  Values or range: —
+  Default:         Closed
+
+  Control:         Sort by
+  What it does:    Orders site-search results. Shown with two or more results.
+  Values or range: Relevance, Newest, A–Z
+  Default:         Relevance
+
+  Control:         Ranking
+  What it does:    Shows the field weights and tuning values.
+  Values or range: —
+  Default:         —
+
+  Control:         Show the score on every result
+  What it does:    Adds a score bar, number and matched fields to each result.
+                   Remembered in this browser.
+  Values or range: On, off
+  Default:         Off
+
+  Control:         Query chips
+  What it does:    Show how the query was read: filters, colours, phrases,
+                   words, exclusions and related words (dashed).
+  Values or range: —
+  Default:         —
+
+  Control:         did you mean
+  What it does:    Runs the corrected query.
+  Values or range: —
+  Default:         —
+
+  Control:         More results
+  What it does:    Loads the next 20 web results, with how many are left.
+  Values or range: —
+  Default:         —
+
+  Control:         Search the web instead
+  What it does:    On the no-results screen: turns the globe on and runs the
+                   query.
+  Values or range: —
+  Default:         —
+
+  Control:         Recent chips
+  What it does:    Run a recent search again.
+  Values or range: Up to 6
+  Default:         —
+
+  Control:         Clear (recent)
+  What it does:    Empties the recent searches list.
+  Values or range: —
+  Default:         —
+
+SECTION TABS
+============
+
+  Tab        | Contents                                        | Result label
+  -----------+-------------------------------------------------+-------------
+  Tools      | Tool pages and Collections                      | Tool
+  Learn      | Learn articles                                  | Learn
+  Docs       | Documentation and changelog                     | Docs
+  Blog       | Blog posts                                      | Blog
+  Portfolios | Portfolio Index entries and the index page      | Portfolio
+  Pages      | Everything else, including the colour libraries | Page
+
+FIELD WEIGHTS
+=============
+
+  Field       | Weight
+  ------------+----------
+  Title       | ×6
+  Tags        | ×4
+  Description | ×3
+  Category    | ×2
+  URL         | ×1.5
+  Content     | ×1
+  k1 / b      | 1.2 / 0.4
+
+OPERATORS
+=========
+
+  Operator                  | Site search | Web search
+  --------------------------+-------------+-----------
+  `"a phrase"`              | Yes         | Yes
+  `-word`                   | Yes         | Yes
+  `type:`                   | Yes         | No
+  `tag:`                    | Yes         | No
+  `title:`                  | Yes         | No
+  `desc:`, `description:`   | Yes         | No
+  `path:`                   | Yes         | No
+  `category:`               | Yes         | No
+  `site:`, `host:`          | No          | Yes
+  `intitle:`                | No          | Yes
+  Hex code or two hex codes | Answer card | No
+
+Details and examples: Query syntax [query-syntax.txt].
+
+START SCREEN
+============
+
+  Element:      Privacy line
+  What it does: Indexed on this device — nothing you type leaves the browser
+
+  Element:      Paste a hex card
+  What it does: Runs the query `#D3AF37`.
+
+  Element:      Give it two card
+  What it does: Runs the query `#D3AF37 #0D0D0D`.
+
+  Element:      Narrow by section card
+  What it does: Runs `type:learn contrast` and shows its first two results and
+                count.
+
+  Element:      Section ribbon
+  What it does: The largest sections with their page counts, each linking to
+                its section; and the total pages in the index.
+
+  Element:      More ways to ask
+  What it does: Puts `type:learn`, `"a phrase"`, `-word` or `tag:oklch` in the
+                field.
+
+  Element:      Put your site in it
+  What it does: Opens the Search Console.
+
+ANSWER CARDS
+============
+
+  Card:         Colour
+  Appears when: The query holds one hex code.
+  Buttons:      Check it against a background, Palettes with it
+
+  Card:         Contrast pair
+  Appears when: The query holds two or more hex codes.
+  Buttons:      Open the checker, Swap them
+
+  Card:         Tool
+  Appears when: The whole query is `contrast`, `contrast checker`, `palette`,
+                `gradient`, `image picker` or `analyzer`.
+  Buttons:      Open the tool
+
+Grades and thresholds: Instant answers [instant-answers.txt].
+
+STATUS LINES
+============
+
+  Status line: Index ready — N items indexed in N ms
+  When:        The page has loaded its index.
+
+  Status line: Search index is empty. Try refreshing the page.
+  When:        The index did not load.
+
+  Status line: About N results (N ms)
+  When:        Site-search results. Adds in a section when a tab is chosen.
+
+  Status line: No results for your query
+  When:        Nothing matched in site search.
+
+  Status line: All N shown
+  When:        Every site-search result is on screen.
+
+  Status line: Searching the web for your query
+  When:        Web search is running.
+
+  Status line: N results from the crawled index for your query
+  When:        Web results from the index.
+
+  Status line: about N results
+  When:        The web count is an estimate.
+
+  Status line: answered without a word, exact matches first
+  When:        The web search was relaxed.
+
+  Status line: showing results for a word; search instead for your word
+  When:        The web search corrected your spelling.
+
+  Status line: N global results from N sources
+  When:        Live web results, used when the index had none.
+
+  Status line: No global results for your query
+  When:        The live web search found nothing.
+
+  Status line: Global search failed for your query
+  When:        The live web search failed.
+
+PAGE ADDRESS PARAMETERS
+=======================
+
+  Parameter:    `q`
+  What it does: Runs a site search for the value.
+  Example:      `/search/?q=oklch`
+
+  Parameter:    `scope`
+  What it does: Opens a section tab: `all`, `tools`, `learn`, `docs`, `blog`,
+                `portfolios` or `pages`.
+  Example:      `/search/?q=oklch&scope=learn`
+
+LIMITS
+======
+
+  Item                       | Limit
+  ---------------------------+-----------------------------------
+  Shortest query             | 2 characters
+  Site-search results listed | Up to 100
+  First site-search page     | 20 results, then 12 more at a time
+  Web results per page       | 20
+  Suggestions                | Up to 8
+  Recent searches            | 6
+
+SEARCH CONSOLE: LAYOUT
+======================
+
+  Control:      Site switcher
+  What it does: Chooses the site every section shows. Appears with two or more
+                sites.
+  Values:       Your sites
+  Default:      The site needing attention, else the first
+
+  Control:      Period
+  What it does: Sets the period for every dated figure.
+  Values:       7d, 28d, 90d
+  Default:      28d
+
+  Control:      Header line
+  What it does: Last crawl and queue, for example Crawled 3 hours ago • 42
+                queued for the next pass.
+  Values:       —
+  Default:      —
+
+  Control:      Side rail
+  What it does: Opens a section. Arrow keys, `Home` and `End` move between
+                sections.
+  Values:       Overview, Performance, Coverage, Pages, Links, Submit, Your
+                sites, Portfolios
+  Default:      Overview
+
+SEARCH CONSOLE: VERIFICATION
+============================
+
+  Method:      File on the site
+  Label:       Quickest
+  What to add: A text file at `/auric-site-verification-TOKEN.txt` containing
+               the token
+  Notes:       Easiest on a static site.
+
+  Method:      Meta tag
+  Label:       No deploy
+  What to add: `<meta name="auric-site-verification" content="TOKEN">` in the
+               home page head
+  Notes:       Removing it later un-verifies the site.
+
+  Method:      DNS TXT record
+  Label:       Strongest
+  What to add: A TXT record with the value shown
+  Notes:       Covers every subdomain; can take an hour to appear.
+
+Check now tries all three. The report for each shows ✓ or ✕, where it looked,
+the detail, expected and found instead.
+
+SEARCH CONSOLE: PERFORMANCE
+===========================
+
+  Control or figure: Impressions
+  Meaning:           Times your site appeared in a web-search result.
+
+  Control or figure: Clicks
+  Meaning:           Times someone opened it.
+
+  Control or figure: Click-through, CTR
+  Meaning:           Clicks divided by impressions.
+
+  Control or figure: Average position, Position
+  Meaning:           Where it appeared in the list; lower is better.
+
+  Control or figure: By search, By page, By day, By country, By device
+  Meaning:           How the table is grouped. Default By search.
+
+  Control or figure: Change badges
+  Meaning:           Percentage change against the previous period, or no
+                     change.
+
+  Control or figure: Name or topic bar
+  Meaning:           Impressions from searches for your name against searches
+                     for a topic. By search only.
+
+SEARCH CONSOLE: COVERAGE TOTALS
+===============================
+
+  Total         | Meaning
+  --------------+---------------------------------------------------------
+  On its way    | Fetched and kept. Searchable after the next index build.
+  Needs you     | Only you can change these.
+  Nothing to do | Real, counted, and working as intended.
+
+COVERAGE REASONS
+================
+
+  Label:        Indexed
+  Yours to fix: —
+  Meaning:      Fetched, kept and searchable.
+  What to do:   Nothing.
+
+  Label:        Discovered, not yet crawled
+  Yours to fix: No
+  Meaning:      Known and queued; crawling is paced per site.
+  What to do:   Nothing, or submit it to move it up.
+
+  Label:        Crawled, waiting for the next index build
+  Yours to fix: No
+  Meaning:      Fetched and kept; searchable after the next build.
+  What to do:   Nothing.
+
+  Label:        Blocked by robots.txt
+  Yours to fix: Yes
+  Meaning:      Your robots.txt tells crawlers not to fetch it.
+  What to do:   Allow the path in robots.txt.
+
+  Label:        Excluded by noindex
+  Yours to fix: Yes
+  Meaning:      The page asks not to be indexed.
+  What to do:   Remove the noindex tag or header.
+
+  Label:        Too little content
+  Yours to fix: Yes
+  Meaning:      Almost no text once navigation is stripped.
+  What to do:   Serve real text; the crawler does not run JavaScript.
+
+  Label:        Not found
+  Yours to fix: Yes
+  Meaning:      The server answered 404, but something links to it.
+  What to do:   Restore, redirect or remove the links.
+
+  Label:        Timed out
+  Yours to fix: Yes
+  Meaning:      The server did not answer in time.
+  What to do:   Speed up the page; it is retried.
+
+  Label:        Could not be fetched
+  Yours to fix: Yes
+  Meaning:      The request failed. It is retried.
+  What to do:   Check the page is reachable from outside your network.
+
+  Label:        Duplicate of another page
+  Yours to fix: No
+  Meaning:      Near-identical to an indexed page.
+  What to do:   Nothing, or set `rel=canonical`.
+
+  Label:        Redirected
+  Yours to fix: No
+  Meaning:      Forwards elsewhere; the destination is indexed.
+  What to do:   Nothing, unless the destination is wrong.
+
+  Label:        A sitemap, read for its links
+  Yours to fix: No
+  Meaning:      A sitemap; its addresses were queued.
+  What to do:   Nothing.
+
+  Label:        Not a web page
+  Yours to fix: No
+  Meaning:      Not HTML, such as a PDF or image.
+  What to do:   Nothing, unless you expected a page.
+
+SEARCH CONSOLE: PAGES
+=====================
+
+  Control:      Find a path
+  What it does: Filters addresses as you type.
+  Default:      Empty
+
+  Control:      State chips
+  What it does: Everything, Indexed, Waiting, Excluded, Errored, with counts.
+  Default:      Everything
+
+  Control:      By folder, Flat list
+  What it does: Groups addresses by folder, or lists them.
+  Default:      By folder
+
+  Control:      Inspect
+  What it does: Opens the inspection panel for one address.
+  Default:      —
+
+SEARCH CONSOLE: INSPECTION
+==========================
+
+  Field or button: Verdict
+  Meaning:         The state in words, with To fix: or Note:.
+
+  Field or button: Status
+  Meaning:         The HTTP status at the last crawl.
+
+  Field or button: Canonical
+  Meaning:         The canonical address the page gave.
+
+  Field or button: First seen, Last indexed
+  Meaning:         When the crawler first met it, and when it last entered the
+                   index.
+
+  Field or button: Indexed title
+  Meaning:         The title held in the index.
+
+  Field or button: Static rank
+  Meaning:         The page's weight, out of 255.
+
+  Field or button: In the queue, Last error
+  Meaning:         Where a queued address came from, its priority and
+                   attempts, and its last error.
+
+  Field or button: Fetch the page now, Test live
+  Meaning:         Fetch the live page and show Outcome, Redirects to,
+                   Canonical, Robots meta and X-Robots-Tag.
+
+  Field or button: Still noindex
+  Meaning:         The live page still asks not to be indexed.
+
+  Field or button: Title has changed
+  Meaning:         The live title differs from the indexed one.
+
+  Field or button: Searches it appears for
+  Meaning:         Searches, impressions and position for this address.
+
+  Field or button: Ask for a crawl
+  Meaning:         Queues the address.
+
+SEARCH CONSOLE: SUBMIT
+======================
+
+  Item:    Add a page or a sitemap
+  Meaning: The address to crawl. Submit or `Enter` sends it.
+
+  Item:    Queue sources
+  Meaning: from your sitemaps, you asked for, sitemaps to re-read, found by
+           following links, due a re-crawl
+
+  Item:    Sitemap tags
+  Meaning: You added, Detected, Found while crawling
+
+SEARCH CONSOLE: MESSAGES
+========================
+
+  Message: Sign in to use the Search Console.
+  Meaning: You are signed out.
+
+  Message: Type a domain or a URL prefix first.
+  Meaning: Add was selected with an empty field.
+
+  Message: You have already added that property.
+  Meaning: The site is already on your account.
+
+  Message: A property is a domain like example.com or a URL prefix like
+           https://example.com/docs/.
+  Meaning: The value was not a valid domain.
+
+  Message: Verify a property first.
+  Meaning: The section needs a verified site.
+
+  Message: Which URL?
+  Meaning: Submit was selected with an empty field.
+
+  Message: The search service did not answer.
+  Meaning: The console could not reach its service. Try again later.

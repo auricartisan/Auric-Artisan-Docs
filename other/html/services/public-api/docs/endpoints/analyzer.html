@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyzer — Auric Artisan Docs</title>
+<meta name="description" content="Audit web pages from their markup through the API — stages and scope, what page source can and cannot answer, why there is no overall score, rendering reports, errors, recipes and costs.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html" aria-current="page">Analyzer</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Analyzer</h1>
+<p class="lede">Audit web pages from their markup through the API — stages and scope, what page source can and cannot answer, why there is no overall score, rendering reports, errors, recipes and costs.</p>
+<p>Three endpoints put the URL Analyzer behind a REST call: ask what it can check, run the checks you want against one page, and turn the result into a document. The full guide is at <a href="https://auricartisan.com/library/documentation/api/analyzer/" rel="noopener">https://auricartisan.com/library/documentation/api/analyzer/</a>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Credits</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/v1/analyzer/stages</code></td><td>1</td><td>What the analyzer can check, and how much of it markup alone can answer</td></tr>
+<tr><td>POST</td><td><code>/v1/analyzer/inspect</code></td><td>12</td><td>Audit one page from its markup. No browser, no rendering.</td></tr>
+<tr><td>POST</td><td><code>/v1/analyzer/render</code></td><td>10</td><td>Turn a report into an HTML or PDF document</td></tr>
+</tbody></table></div>
+<h2 id="when-to-use-the-api-and-when-to-use-the-tool">When to use the API, and when to use the tool</h2>
+<p>The analyzer on the website and this API differ in one way that decides which you want: the API reads a page&#39;s <strong>source</strong>; the tool runs the page in a real browser.</p>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>The tool</th><th>This API</th></tr></thead>
+<tbody>
+<tr><td>Runs the page</td><td>Yes, in your browser</td><td>No: it reads the source</td></tr>
+<tr><td>Contrast, accessibility engine, deep DOM</td><td>Yes</td><td>Refused, with a reason</td></tr>
+<tr><td>SEO, metadata, security headers, sitemap, responsive signals</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Good for</td><td>One page, looked at closely</td><td>Many pages, on a schedule</td></tr>
+<tr><td>Paid with</td><td>Tool tokens</td><td>API credits</td></tr>
+</tbody></table></div>
+<p>Use the API to watch many pages for what a crawler can see: a title that went missing after a deploy, a canonical pointing at staging, a weakened Content-Security-Policy, an image that returns 404. Use the tool when you need answers that exist only once a page has been laid out and painted. API credits and tool tokens are separate balances, and neither pays for the other.</p>
+<h2 id="quick-start">Quick start</h2>
+<p>Audit one page for search-engine metadata:</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/analyzer/inspect&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{ &quot;url&quot;: &quot;https://example.com/&quot;, &quot;scope&quot;: [&quot;seo&quot;] }'</code></pre>
+<p>Ask what else it can check:</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/analyzer/stages&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<p>Turn a result into a PDF:</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/analyzer/render&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d &quot;{ \&quot;report\&quot;: $REPORT, \&quot;format\&quot;: \&quot;pdf\&quot; }&quot; \
+  --output audit.pdf</code></pre>
+<h2 id="stages-and-scope">Stages and scope</h2>
+<p>A full audit has fourteen <strong>stages</strong>. <code>scope</code> is the list of stage ids you want, and it is how you ask for less: send <code>[&quot;palette&quot;]</code> and you get the colours, not an audit with the colours in it.</p>
+<pre class="code" data-lang="json"><code>{ &quot;url&quot;: &quot;https://example.com/&quot;, &quot;scope&quot;: [&quot;seo&quot;, &quot;security&quot;] }</code></pre>
+<ul>
+<li>Omit <code>scope</code> to get everything page source can answer.</li>
+<li>Send <code>[]</code> and the request is refused (<code>EMPTY_SCOPE</code>); an empty list is not treated as &quot;everything&quot;.</li>
+<li><code>structure</code>, reading the page at all, is always on. Stages a request depends on are added and echoed back:</li>
+</ul>
+<pre class="code" data-lang="json"><code>&quot;scope&quot;: {
+  &quot;requested&quot;: [&quot;palette&quot;],
+  &quot;effective&quot;: [&quot;structure&quot;, &quot;palette&quot;],
+  &quot;added_by_dependency&quot;: [&quot;structure&quot;]
+}</code></pre>
+<h3 id="sections-narrow-the-response-not-the-work">Sections narrow the response, not the work</h3>
+<p>The response groups the report into <strong>sections</strong>, such as <code>core</code>, <code>seo</code>, <code>palette</code> and <code>security</code>. <code>sections</code> in the request narrows what comes back; <code>core</code> is always included. It does not make a run cheaper: use <code>scope</code> to do less, and <code>sections</code> to receive less.</p>
+<pre class="code" data-lang="json"><code>{ &quot;url&quot;: &quot;https://example.com/&quot;, &quot;scope&quot;: [&quot;seo&quot;], &quot;sections&quot;: [&quot;seo&quot;] }</code></pre>
+<h2 id="what-page-source-can-and-cannot-answer">What page source can and cannot answer</h2>
+<p>Every stage carries a <code>markup</code> value:</p>
+<div class="table-wrap"><table>
+<thead><tr><th><code>markup</code></th><th>Meaning</th><th>Stages</th></tr></thead>
+<tbody>
+<tr><td><code>full</code></td><td>Answered completely from the source</td><td><code>structure</code>, <code>project</code>, <code>seo</code>, <code>security</code>, <code>sitemap</code>, <code>responsive</code></td></tr>
+<tr><td><code>partial</code></td><td>A real but narrower answer, stated in <code>incomplete[]</code></td><td><code>palette</code>, <code>media</code></td></tr>
+<tr><td><code>none</code></td><td>Refused with <code>RENDER_REQUIRED</code>; never returned empty or guessed</td><td><code>contrast</code>, <code>a11y</code>, <code>deep</code>, <code>performance</code>, <code>beforeafter</code>, <code>simulation</code></td></tr>
+</tbody></table></div>
+<p>Contrast needs the colour a browser computed for each element after the whole cascade. Reading colours out of stylesheet text would pair colours that may never appear together on screen, which is a confident, wrong report. The same applies to the accessibility engine (which uses layout and visibility), target sizes (measured boxes), performance (a real page load) and the rendered-versus-raw comparison.</p>
+<p>For the <code>partial</code> stages:</p>
+<ul>
+<li><strong>palette</strong> returns every colour the stylesheets declare, which is not the same as the colours covering the most pixels;</li>
+<li><strong>media</strong> returns every image, video and audio file in the markup, with its real size fetched; anything JavaScript inserts is invisible.</li>
+</ul>
+<pre class="code" data-lang="json"><code>&quot;incomplete&quot;: [
+  {
+    &quot;stage&quot;: &quot;palette&quot;,
+    &quot;reason&quot;: &quot;Declared colours only. The dominant palette is sampled from rendered pixels, which needs a browser.&quot;
+  }
+]</code></pre>
+<p>If <code>incomplete</code> is empty, nothing was narrowed.</p>
+<h2 id="why-there-is-no-overall-score">Why there is no overall score</h2>
+<p><code>/v1/analyzer/inspect</code> always returns <code>score: null</code>. An overall score averages categories, and a markup-only run does not measure some of them; leaving them out makes the score incomparable, and filling them in makes it partly fiction. Instead you get the categories that were measured and a list of those that were not:</p>
+<pre class="code" data-lang="json"><code>&quot;score&quot;: null,
+&quot;category_scores&quot;: { &quot;metadata&quot;: 84, &quot;seo&quot;: 85, &quot;a11y&quot;: 68 },
+&quot;unscored_categories&quot;: [
+  &quot;accessibility&quot;, &quot;a11yPlus&quot;, &quot;contrast&quot;, &quot;performance&quot;,
+  &quot;reliability&quot;, &quot;security&quot;, &quot;media&quot;, &quot;visual&quot;, &quot;deep&quot;, &quot;responsive&quot;
+],
+&quot;scoreCoverage&quot;: { &quot;measured&quot;: 3, &quot;of&quot;: 13, &quot;unmeasured&quot;: [&quot;accessibility&quot;, &quot;…&quot;] }</code></pre>
+<p>If you want one number, compute it from <code>category_scores</code> with weights you choose. For a comparable overall score, run the audit in the tool.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> The <code>a11y</code> category is the markup-level accessibility count: heading order, alt text, form labels, landmarks and <code>lang</code>. It is not the analyzer&#39;s 112-rule accessibility engine, which is <code>accessibility</code> and <code>a11yPlus</code>, always unscored here.</p>
+</blockquote>
+<h2 id="get-v1analyzerstages">GET /v1/analyzer/stages</h2>
+<p>The vocabulary, generated from the analyzer&#39;s own stage table. Call it once, cache it, and build scopes from it. 1 credit, no body.</p>
+<p>Returns <code>checks_per_token</code>, <code>always_on</code>, <code>stage_ids</code>, <code>stages</code>, <code>sections</code> and <code>notes</code>. Each stage has <code>id</code>, <code>name</code>, <code>does</code>, <code>section</code>, <code>needs_render</code>, <code>markup</code>, <code>endpoint</code>, <code>caveat</code> and <code>why_unavailable</code>. Filtering on <code>markup</code> not equal to <code>&quot;none&quot;</code> gives every stage <code>/inspect</code> accepts.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;id&quot;: &quot;seo&quot;,
+  &quot;name&quot;: &quot;SEO and metadata&quot;,
+  &quot;does&quot;: &quot;Title, description, headings, schema, robots, canonical, keyword density.&quot;,
+  &quot;section&quot;: &quot;seo&quot;,
+  &quot;needs_render&quot;: false,
+  &quot;markup&quot;: &quot;full&quot;,
+  &quot;endpoint&quot;: &quot;/v1/analyzer/inspect&quot;,
+  &quot;caveat&quot;: null,
+  &quot;why_unavailable&quot;: null
+}</code></pre>
+<h2 id="post-v1analyzerinspect">POST /v1/analyzer/inspect</h2>
+<p>12 credits, one page per call.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>url</code></td><td>string</td><td>Yes</td><td>Absolute <code>http</code> or <code>https</code>. Private and reserved addresses are refused.</td></tr>
+<tr><td><code>scope</code></td><td>string array</td><td>No</td><td>Stage ids. Omit for everything markup can answer; <code>[]</code> is refused.</td></tr>
+<tr><td><code>sections</code></td><td>string array</td><td>No</td><td>Narrows the response only; <code>core</code> is always included</td></tr>
+</tbody></table></div>
+<p>The response includes <code>url</code>, <code>final_url</code>, <code>audit_version</code>, <code>scope</code>, <code>score</code> (always <code>null</code>), <code>unscored_categories</code>, <code>category_scores</code>, <code>timing</code>, <code>section_index</code>, <code>sections</code> and <code>incomplete</code>. <code>section_index</code> summarises each section&#39;s findings count and size, so you can log it without keeping the whole report.</p>
+<p>Only what was measured comes back. A stage outside your scope contributes nothing: asking for <code>[&quot;seo&quot;]</code> returns no security section, and no run returns contrast pairs, the accessibility engine&#39;s audit or the deep analysis.</p>
+<h2 id="post-v1analyzerrender">POST /v1/analyzer/render</h2>
+<p>10 credits. Takes a report, one <code>/inspect</code> returned or one you stored, and renders it. No page is fetched, so it works on an old report.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>report</code></td><td>object</td><td>Yes</td><td>An analyzer report</td></tr>
+<tr><td><code>format</code></td><td>string</td><td>No</td><td><code>html</code> (default) or <code>pdf</code></td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th><code>format</code></th><th>Content type</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><code>html</code></td><td><code>text/html</code></td><td>A self-contained document, around 14 KB for a small page</td></tr>
+<tr><td><code>pdf</code></td><td><code>application/pdf</code></td><td>Laid out on the server, around 7 KB for the same page. Text and rules only, no screenshots.</td></tr>
+</tbody></table></div>
+<p>The PDF uses the standard PDF fonts, which cover Latin characters; content in other scripts will not appear. Use <code>html</code> for pages not in a Latin script. Markdown reports are not offered through the API; the tool still writes them from a saved audit.</p>
+<h2 id="errors">Errors</h2>
+<p>These are decided before your page is fetched, so a rejected request does no work.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Status</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><code>UNKNOWN_STAGE</code></td><td>400</td><td>A stage id that does not exist; the response lists the fourteen real ones</td></tr>
+<tr><td><code>EMPTY_SCOPE</code></td><td>400</td><td><code>scope: []</code>. Omit the field for everything, or name what you want.</td></tr>
+<tr><td><code>RENDER_REQUIRED</code></td><td>400</td><td>A stage that needs a browser; names the offenders and what is available</td></tr>
+<tr><td><code>INVALID_INPUT</code></td><td>400</td><td>A missing or unusable <code>url</code></td></tr>
+<tr><td><code>UNKNOWN_FORMAT</code></td><td>400</td><td><code>/render</code> with a format other than <code>html</code> or <code>pdf</code></td></tr>
+<tr><td><code>FETCH_FAILED</code></td><td>502</td><td>Your page could not be read: DNS, TLS, a timeout, or a private address</td></tr>
+<tr><td><code>ANALYZER_UNAVAILABLE</code></td><td>503</td><td>The analyzer backend is unavailable; <code>/v1/analyzer/stages</code> still works</td></tr>
+</tbody></table></div>
+<pre class="code" data-lang="json"><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;RENDER_REQUIRED&quot;,
+    &quot;message&quot;: &quot;contrast needs a rendered page, which this endpoint does not do. GET /v1/analyzer/stages lists what markup alone can answer.&quot;,
+    &quot;details&quot;: {
+      &quot;needs_render&quot;: [&quot;contrast&quot;],
+      &quot;available&quot;: [&quot;structure&quot;, &quot;project&quot;, &quot;palette&quot;, &quot;seo&quot;, &quot;media&quot;, &quot;responsive&quot;, &quot;security&quot;, &quot;sitemap&quot;]
+    }
+  },
+  &quot;request_id&quot;: &quot;7140da9b-0ddf-417d-9c8b-9775a5056a01&quot;
+}</code></pre>
+<p>The shared 401, 403, 404, 405, 413 and 429 responses are on <a href="../errors.html">Errors</a>.</p>
+<h2 id="recipes">Recipes</h2>
+<h3 id="watch-a-page-for-metadata-regressions">Watch a page for metadata regressions</h3>
+<pre class="code" data-lang="js"><code>const res = await fetch(&quot;https://api.auricartisan.com/v1/analyzer/inspect&quot;, {
+  method: &quot;POST&quot;,
+  headers: { &quot;x-api-key&quot;: process.env.AURIC_API_KEY, &quot;content-type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({ url, scope: [&quot;seo&quot;], sections: [&quot;seo&quot;] }),
+});
+const { sections, category_scores } = await res.json();
+const meta = sections.seo.metadataAudit;
+if (category_scores.seo &lt; 80) {
+  console.error(`${url}: SEO fell to ${category_scores.seo}`);
+  for (const finding of sections.seo.seoAudit.findings) console.error(`  ${finding.title}`);
+  process.exitCode = 1;
+}</code></pre>
+<h3 id="audit-every-page-in-a-sitemap">Audit every page in a sitemap</h3>
+<p>One call per page, paced against your rate limit: 300 requests a minute on Specialist, 3,000 on Industrial Pro.</p>
+<pre class="code" data-lang="js"><code>for (const url of urls) {
+  const res = await fetch(endpoint, { method: &quot;POST&quot;, headers, body: JSON.stringify({ url, scope: [&quot;seo&quot;, &quot;security&quot;] }) });
+  if (res.status === 429) {                       // slow down and retry this one
+    await new Promise((r) =&gt; setTimeout(r, Number(res.headers.get(&quot;retry-after&quot;) || 5) * 1000));
+    continue;
+  }
+  const audit = await res.json();
+  results.push({ url, scores: audit.category_scores, findings: audit.sections });
+}</code></pre>
+<p><code>x-quota-remaining</code> comes back on every response, so you can stop before you run out.</p>
+<h3 id="just-the-colours">Just the colours</h3>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/analyzer/inspect&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; -H &quot;content-type: application/json&quot; \
+  -d '{ &quot;url&quot;: &quot;https://example.com/&quot;, &quot;scope&quot;: [&quot;palette&quot;], &quot;sections&quot;: [&quot;palette&quot;] }'</code></pre>
+<p>This returns <code>sections.palette.colors</code> (the declared colours, grouped by where they are used) and <code>sections.palette.colorAudit</code>, with the &quot;declared, not sampled&quot; caveat in <code>incomplete</code>.</p>
+<h3 id="a-pdf-for-a-client-from-a-stored-audit">A PDF for a client, from a stored audit</h3>
+<pre class="code" data-lang="js"><code>const audit  = await inspect(url, [&quot;seo&quot;, &quot;security&quot;, &quot;responsive&quot;]);
+const report = Object.assign({}, ...Object.values(audit.sections));
+const pdf = await fetch(&quot;https://api.auricartisan.com/v1/analyzer/render&quot;, {
+  method: &quot;POST&quot;,
+  headers: { &quot;x-api-key&quot;: key, &quot;content-type&quot;: &quot;application/json&quot; },
+  body: JSON.stringify({ report, format: &quot;pdf&quot; }),
+});
+await writeFile(&quot;audit.pdf&quot;, Buffer.from(await pdf.arrayBuffer()));</code></pre>
+<p><code>/render</code> takes the whole report, so merge the sections back together before sending it.</p>
+<h2 id="what-is-not-here-yet">What is not here yet</h2>
+<ul>
+<li><strong>A rendered scan.</strong> Contrast, the accessibility engine and the deep DOM comparison need a real browser. Until the API is connected to one, those stages are refused here and available in the tool.</li>
+<li><strong>A crawl.</strong> Auditing a whole site takes minutes, which needs a job you start and poll. Until then, fetch a sitemap yourself and call <code>/inspect</code> per page.</li>
+</ul>
+<h2 id="credits">Credits</h2>
+<p>The price is per call, not per stage. A scope of one stage and a scope of eight cost the same 12 credits. Narrowing the scope makes a run faster and the response smaller, not cheaper; if you want the whole picture, ask for it in one call.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li>The website&#39;s Analyzer tool: <a href="../../../../website/tools/accessibility-and-vision/analyzer/README.html">Analyzer docs</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="accessibility.html"><span>Previous</span>Accessibility</a><a href="collections.html"><span>Next</span>Collections</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#when-to-use-the-api-and-when-to-use-the-tool">When to use the API, and when to use the tool</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#stages-and-scope">Stages and scope</a></li><li><a href="#what-page-source-can-and-cannot-answer">What page source can and cannot answer</a></li><li><a href="#why-there-is-no-overall-score">Why there is no overall score</a></li><li><a href="#get-v1analyzerstages">GET /v1/analyzer/stages</a></li><li><a href="#post-v1analyzerinspect">POST /v1/analyzer/inspect</a></li><li><a href="#post-v1analyzerrender">POST /v1/analyzer/render</a></li><li><a href="#errors">Errors</a></li><li><a href="#recipes">Recipes</a></li><li><a href="#what-is-not-here-yet">What is not here yet</a></li><li><a href="#credits">Credits</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

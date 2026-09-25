@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with the Analyzer — Auric Artisan Docs</title>
+<meta name="description" content="Open the Analyzer, learn what each part of the screen does, and run your first audit.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html" aria-current="page">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Getting started with the Analyzer</h1>
+<p class="lede">Open the Analyzer, learn what each part of the screen does, and run your first audit.</p>
+<p>This guide takes you from opening the Analyzer to reading your first result. It takes about five minutes.</p>
+<h2 id="open-the-analyzer">Open the Analyzer</h2>
+<p>Go to <a href="https://auricartisan.com/tool/analyzer/" rel="noopener">https://auricartisan.com/tool/analyzer/</a>, or open the <strong>Tools</strong> menu in the site header and select <strong>Analyze URLs</strong>.</p>
+<p>You do not need an account to audit a page on auricartisan.com. To audit another website you need to be signed in, because that page is rendered on Auric Artisan&#39;s servers. See <a href="run-an-analysis.html">Run an analysis</a> for the details.</p>
+<h2 id="the-screen-top-to-bottom">The screen, top to bottom</h2>
+<h3 id="the-masthead">The masthead</h3>
+<p>The top of the page names the tool: the kicker &quot;Auric Artisan · Analyzer&quot;, the headline &quot;One URL, audited seven ways.&quot;, and a line explaining that accessibility, metadata, palette, contrast, performance, reliability and security are all checked against the page&#39;s own markup. Under it, a thin rail lists <strong>WCAG 2.1 / 2.2</strong> and <strong>LCP · CLS · INP</strong>, with a link, <strong>Read the API reference</strong>, to the public API documentation.</p>
+<h3 id="the-api-hint">The API hint</h3>
+<p>A one-line note may appear under the masthead: &quot;Automate this — 12 API credits per call to <code>POST /v1/analyzer/inspect</code>.&quot; It tells developers that the same kind of audit is available from the REST API, and that API credits are a separate balance from your tool tokens. Select <strong>API docs</strong> to open that endpoint&#39;s documentation, or the <strong>×</strong> button to dismiss the note. Dismissing it hides the hint on every tool page in this browser.</p>
+<h3 id="the-strip">The strip</h3>
+<p>The dark strip is where you work. From left to right:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>URL field</td><td>Where you type or paste the address to audit. The placeholder reads &quot;Enter a URL to analyze…&quot; in Simple mode.</td></tr>
+<tr><td><strong>Analyze</strong></td><td>Starts the audit. Pressing <code>Enter</code> in the URL field does the same.</td></tr>
+<tr><td><strong>Cancel</strong></td><td>Appears only while an audit or site scan is running. Stops it.</td></tr>
+<tr><td><strong>Share</strong></td><td>Copies a link that opens the Analyzer on the same URL and re-runs the audit.</td></tr>
+<tr><td><strong>Sections</strong> and <strong>Layouts</strong></td><td>Advanced mode only. Open the section picker and the saved-layout menu.</td></tr>
+<tr><td><strong>Simple</strong> / <strong>Advanced</strong></td><td>Switches mode. Your choice is remembered in this browser.</td></tr>
+</tbody></table></div>
+<p>In Advanced mode two folding rows appear under the strip: <strong>What to scan</strong>, which lets you choose the checks and shows their cost, and <strong>Site scan settings</strong>, which holds the whole-site scan controls.</p>
+<h3 id="the-run-line">The run line</h3>
+<p>Under the strip is one line that shows where the run is and what it costs:</p>
+<ul>
+<li>The <strong>progress rail</strong> has five steps: <strong>1 Analyze</strong>, <strong>2 Issues</strong>, <strong>3 Fix</strong>, <strong>4 Preview</strong> and <strong>5 Export</strong>. It lights up as a run moves on. Each step is also a button: <strong>Fix</strong> shows the Fixes section, <strong>Preview</strong> shows Before / After, <strong>Export</strong> shows Report, and <strong>Analyze</strong> and <strong>Issues</strong> show the Overview.</li>
+<li>The <strong>token meter</strong> shows <strong>This run</strong> (the cost of the next run in tokens) and <strong>Remaining</strong> (your balance). When you are signed out it says &quot;Sign in to claim 100 free tokens.&quot; with a <strong>Sign in · 100 free tokens</strong> button. Select the meter to open a sheet that explains the price. See <a href="choose-what-to-scan.html">Choose what to scan</a>.</li>
+</ul>
+<h3 id="the-search-bar">The search bar</h3>
+<p>After the first run, a <strong>Search results</strong> bar appears with the placeholder &quot;Filter issues, fixes, files, media, rules…&quot;. Typing filters the cards and rows in the open sections. <strong>Clear</strong> empties it.</p>
+<h3 id="the-workspace">The workspace</h3>
+<p>Below everything is the workspace: a grid of panels, one per section of the report. Before your first run it holds only the <strong>Overview</strong> panel, which lists what a run will give you:</p>
+<ul>
+<li>Accessibility, against WCAG 2.1 and 2.2, with the rule each finding breaks</li>
+<li>Every text pair that fails contrast, and a passing colour to replace it</li>
+<li>How the page looks with colour-vision and low-vision filters on</li>
+<li>The palette, the type, and every image, video and audio file</li>
+<li>Rendered DOM against raw HTML: framework, SEO signals, what JavaScript wrote</li>
+<li>Core Web Vitals, security headers, broken links, and a report you can export</li>
+</ul>
+<p>Each panel has a title bar with a grip (drag it to move the panel) and four buttons: <strong>Width</strong>, <strong>Focus</strong>, <strong>Collapse</strong> and <strong>Close</strong>. See <a href="arrange-the-workspace.html">Arrange the workspace</a>.</p>
+<h2 id="simple-or-advanced">Simple or Advanced?</h2>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>Simple</th><th>Advanced</th></tr></thead>
+<tbody>
+<tr><td>Sections you can open</td><td>8: Overview, Project, Insights, Site Map, Contrast, Fixes, Compare, Report</td><td>All 22</td></tr>
+<tr><td>Checks that run</td><td>A fixed set (see below)</td><td>Your choice of 13, from the <strong>What to scan</strong> picker</td></tr>
+<tr><td>Opening more sections</td><td><code>Ctrl</code> + <code>P</code>, or the progress-rail steps</td><td>The <strong>Sections</strong> button, or <code>Ctrl</code> + <code>P</code></td></tr>
+<tr><td>Saved layouts</td><td>No menu (your arrangement is still remembered)</td><td><strong>Layouts</strong> menu with ready-made and named layouts</td></tr>
+<tr><td>Whole-site scan</td><td>Not available</td><td><strong>Site scan settings</strong></td></tr>
+<tr><td>Custom rules, Playground, CSP Setup</td><td>Not available</td><td>Available</td></tr>
+</tbody></table></div>
+<p>Simple runs these checks: page structure (always), Project model, Colour contrast, SEO and metadata, Site map, Accessibility and Responsive behaviour. Some of these feed the score without having a section in Simple mode.</p>
+<p>Switching mode does not re-run anything. Each mode remembers its own panel arrangement.</p>
+<h2 id="run-your-first-audit">Run your first audit</h2>
+<ol>
+<li>Select <strong>Simple</strong> in the strip if it is not already selected.</li>
+<li>Select the URL field and type <code>https://auricartisan.com/tool/contrast-checker/</code>. Any auricartisan.com page works without an account.</li>
+<li>Select <strong>Analyze</strong>.</li>
+<li>Watch the Overview panel. A card titled <strong>Auditing</strong> shows a live line (&quot;Opening the page…&quot;, &quot;Reading the page…&quot;, &quot;Checking the page against the accessibility rules…&quot;) and a list of the steps this run is doing, each ticked off as it finishes.</li>
+<li>When the run ends, the progress rail moves to <strong>2 Issues</strong> and the workspace opens the sections your checks filled. In Simple mode that is <strong>Overview</strong> across the full width, then <strong>Project</strong>, <strong>Contrast</strong> and <strong>Site Map</strong>.</li>
+<li>In the Overview panel, read the large score and the <strong>Overall Audit Score</strong> grade.</li>
+<li>Open <strong>Why this score?</strong> under the score to see which categories cost points.</li>
+<li>Scroll to <strong>Top 3 Things To Improve Score</strong>. Each card gives the estimated points it is worth, why it matters, and the fix.</li>
+<li>Press <code>Ctrl</code> + <code>P</code>, select <strong>Fixes</strong>, and read the <strong>Fix This First</strong> list.</li>
+</ol>
+<p>The result: you have a score, a ranked list of what to fix, and the code for each fix. The run is also filed in your browser, so it appears in <strong>Compare</strong> and in the library the next time you open the Analyzer.</p>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a> to understand the numbers.</li>
+<li><a href="accessibility-engine.html">The accessibility engine</a> to work through accessibility findings in Advanced mode.</li>
+<li><a href="export-and-share.html">Export and share</a> to keep a copy or send the result to someone.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Analyzer documentation</a><a href="accessibility-engine.html"><span>Next</span>The accessibility engine (A11y+)</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-the-analyzer">Open the Analyzer</a></li><li><a href="#the-screen-top-to-bottom">The screen, top to bottom</a></li><li><a href="#simple-or-advanced">Simple or Advanced?</a></li><li><a href="#run-your-first-audit">Run your first audit</a></li><li><a href="#where-to-go-next">Where to go next</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

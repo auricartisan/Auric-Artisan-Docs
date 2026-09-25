@@ -1,0 +1,47 @@
+---
+title: Accessibility statement — summary
+description: A plain-language summary of Auric Artisan's Accessibility Statement — its commitment, what it aims to support, its stated limits and how to report a barrier.
+product: Website › Company and legal
+updated: 2026-09-25
+---
+
+# Accessibility statement
+
+Official page: https://auricartisan.com/company/accessibility/ (last updated 23 May 2026). The official page is authoritative; this is a summary. For practical help using the site with assistive technology or comfort settings, see [Accessibility of the site](../../../help/accessibility.md).
+
+## The commitment
+
+The goal, in the statement's words: "Everyone should be able to use Auric Artisan effectively, regardless of ability, device, or interaction method." Accessibility is treated as part of design and development. Because the platform has complex visual, analytical and experimental tools, the statement says full accessibility across every feature "may not always be achievable", and improvements are made where technically feasible.
+
+## What it aims to support
+
+Where possible, the platform aims to support:
+
+- **Semantic HTML** — proper heading hierarchy and landmarks;
+- **Keyboard navigation** — all core functionality from the keyboard;
+- **Readable text** — contrast-aware design, scalable layouts and legible type;
+- **Assistive technology** — compatibility with modern browsers and screen readers;
+- **ARIA attributes** — added meaning for dynamic content and widgets;
+- **Focus management** — visible focus indicators and a logical tab order.
+
+It encourages you to adjust your device, browser or assistive tools as well.
+
+## Stated limits
+
+- Some tools and simulation interfaces may have limitations because of their technical nature, real-time rendering, colour-dependent output or experimental design.
+- Auric Artisan does not guarantee that all content will meet every accessibility standard at all times.
+- Spectral visualisations, the Ishihara-style generator and real-time rendering experiments may not be fully accessible to all users; alternative text and data views are provided where possible.
+- The Ishihara-style generator and vision simulations are exploratory and do not replace medical-grade testing.
+
+## Standard it reviews against
+
+The statement says Auric Artisan aims to review important user-facing areas against WCAG 2.1 Level AA guidance where practical, and to prioritise the fixes with the greatest impact.
+
+## Reporting a barrier
+
+The statement asks you to report accessibility barriers through the official support channels: email developer@auricartisan.com or use the contact form at https://auricartisan.com/company/contact/. It says reasonable efforts may be made to address concerns within the platform's technical scope. How to write a useful report: [Contact and support](../../../help/contact-and-support.md).
+
+## Related
+
+- [Accessibility of the site](../../../help/accessibility.md)
+- [About Auric Artisan](about.md)

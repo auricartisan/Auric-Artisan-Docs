@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design an experiment — Auric Artisan Docs</title>
+<meta name="description" content="Choose a task, build the stimulus, state the viewing geometry, pick a staircase procedure and set its parameters and the timing.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Psychophysical Experiment Engine</a>
+<h2>Using the Psychophysics Bench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Psychophysics Bench</a></li>
+<li><a href="design-an-experiment.html" aria-current="page">Design an experiment</a></li>
+<li><a href="export-your-data.html">Export your data</a></li>
+<li><a href="read-the-results.html">Read the results</a></li>
+<li><a href="run-a-session.html">Run a session</a></li>
+<li><a href="reference.html">Psychophysics Bench reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Psychophysics Bench</a></li>
+<li><a href="faq.html">Psychophysics Bench FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Psychophysical Experiment Engine</a> &rsaquo; <a href="README.html">Using the Psychophysics Bench</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Psychophysical Experiment Engine</p>
+<h1>Design an experiment</h1>
+<p class="lede">Choose a task, build the stimulus, state the viewing geometry, pick a staircase procedure and set its parameters and the timing.</p>
+<p>Every setting in this guide is on the <strong>Lab</strong> rail. Settings take effect at the next <strong>Run</strong> or <strong>Practice</strong>; the stage preview updates as you change them.</p>
+<h2 id="what-a-threshold-is">What a threshold is</h2>
+<p><strong>Psychophysics</strong> measures the relationship between a physical stimulus and what a person reports. A <strong>detection threshold</strong> is the stimulus strength at which an observer reports the stimulus a stated proportion of the time. The proportion matters: &quot;your threshold is 0.01&quot; means nothing until it says &quot;at 70.7% correct&quot; or &quot;at 79.4% correct&quot;, because the chance of a correct answer rises smoothly with contrast. That rising curve is the <strong>psychometric function</strong>. This bench always reports a threshold together with the percentage it belongs to, and says when a procedure has no stated percentage.</p>
+<h2 id="1-choose-the-task">1. Choose the task</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Task</th><th>What happens on a trial</th><th>Chance level</th></tr></thead>
+<tbody>
+<tr><td><strong>Two-interval forced choice</strong> (default)</td><td>Two intervals are shown one after the other, marked <strong>Interval 1</strong> and <strong>Interval 2</strong>. The patch is in exactly one, chosen at random. You say which.</td><td>50%</td></tr>
+<tr><td><strong>Yes / no detection</strong></td><td>One interval. The patch is present on a random half of trials and absent on the rest. You say whether you saw it.</td><td>No guess rate of this kind; your answers depend on how willing you are to say yes</td></tr>
+</tbody></table></div>
+<p><strong>Forced choice</strong> is the usual method for thresholds because guessing is built in: you must answer, and the known chance level (50%) lets the analysis separate seeing from guessing. <strong>Yes/no</strong> is the task that has stimulus-absent trials, so it is the only one that can separate sensitivity from willingness to say yes (signal detection theory). In yes/no, a correct &quot;no&quot; on a blank trial counts as correct and moves the staircase just as a correct &quot;yes&quot; does.</p>
+<p>Three more tasks from an earlier version (m-alternative forced choice, same/different and odd-one-out) are withdrawn because they could never score a trial correct; the <strong>Paradigms</strong> tab explains each.</p>
+<h2 id="2-build-the-stimulus">2. Build the stimulus</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>What it sets</th></tr></thead>
+<tbody>
+<tr><td>Stimulus type</td><td><strong>Gabor</strong>, <strong>Grating in an aperture</strong></td><td>Gabor</td><td>A <strong>Gabor</strong> is a sine-wave grating that fades out under a Gaussian envelope; a grating in an aperture has the same stripes inside a hard-edged circle</td></tr>
+<tr><td><strong>Spatial frequency</strong></td><td>0.25–20 c/deg, step 0.25</td><td>4.0 c/deg</td><td>How fine the stripes are</td></tr>
+<tr><td><strong>Orientation</strong></td><td>0–179°, step 1</td><td>45°</td><td>The angle of the stripes</td></tr>
+<tr><td><strong>Envelope σ</strong></td><td>0.10–2.00°, step 0.05</td><td>0.50°</td><td>The size of the Gabor&#39;s Gaussian envelope, in degrees of visual angle (used by the Gabor only)</td></tr>
+<tr><td><strong>Background</strong></td><td>Code 40–220, step 1</td><td>Code 128</td><td>The grey the contrast swings about, as an 8-bit screen value</td></tr>
+</tbody></table></div>
+<p>Human contrast sensitivity is highest at a few cycles per degree, so thresholds are lowest near the default 4 c/deg.</p>
+<h3 id="how-contrast-is-defined">How contrast is defined</h3>
+<p><strong>Michelson contrast</strong> is (Lmax − Lmin) ÷ (Lmax + Lmin), where L is luminance. The bench converts the <strong>Background</strong> code value to relative luminance through the sRGB transfer curve, places the stripes&#39; peaks and troughs symmetrically around that luminance, and only then converts back to code values. So a contrast of 0.02 on this page is 0.02 in light, not in screen numbers.</p>
+<p>The background limits how much contrast fits. A trough cannot be darker than black and a peak cannot be brighter than white, so the largest contrast possible about a background of relative luminance L is 1 ÷ L − 1, capped at 1. Around the default code 128 (relative luminance about 0.216) the full range up to 1.0 fits; around code 200 (about 0.578) the most is about 0.73, and around code 220 (about 0.716) about 0.40. When a staircase asks for more than fits, the bench shows the largest contrast that fits, reports <strong>Delivered / asked</strong> below 1.00, and shows the note <strong>The contrast asked for does not fit about this background.</strong> It never clips one side of the stripes, because that would be a different stimulus.</p>
+<h2 id="3-state-the-viewing-geometry">3. State the viewing geometry</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Viewing distance</strong></td><td>20–200 cm, step 1</td><td>57 cm</td></tr>
+<tr><td><strong>Pixel pitch</strong></td><td>0.05–0.6 mm, step 0.001</td><td>0.248 mm</td></tr>
+</tbody></table></div>
+<p>Cycles per degree and an envelope in degrees are undefined without these. At 57 cm one degree covers very nearly 1 cm of screen. Your pixel pitch is your screen&#39;s visible width in millimetres divided by its horizontal resolution.</p>
+<p>The readouts <strong>Degrees per pixel</strong> (0.0249° at the defaults) and <strong>Nyquist limit of the grid</strong> (20.1 c/deg at the defaults) update as you change them. The Nyquist limit is the finest frequency the pixel grid can show: half a cycle per pixel. Above it the note <strong>Above the pixel grid&#39;s Nyquist limit</strong> appears, because what reaches your eye would be an alias at a different frequency and contrast. Lower the frequency, or check the geometry: the limit rises as you sit further away and as pixels get smaller.</p>
+<h2 id="4-choose-the-procedure">4. Choose the procedure</h2>
+<p>An <strong>adaptive staircase</strong> chooses each trial&#39;s contrast from your previous answers, lowering it after correct answers and raising it after errors, so trials cluster near your threshold instead of being wasted where the patch is obviously visible or invisible. A <strong>reversal</strong> is a trial where the staircase changes direction.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Procedure</th><th>How it moves</th><th>Converges at</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td><strong>1-up / 2-down — 70.7%</strong> (default)</td><td>Down one step after two correct in a row, up one step after any error</td><td>70.7% correct (the p at which p² = 0.5)</td><td>Levitt 1971</td></tr>
+<tr><td><strong>3-down / 1-up — 79.4%</strong></td><td>Down after three correct in a row, up after any error</td><td>79.4% correct (p³ = 0.5)</td><td>Levitt 1971</td></tr>
+<tr><td><strong>Bayesian tracker — this tool&#39;s own</strong></td><td>Updates a probability distribution over the threshold after every trial and tests at its mean</td><td>About 80.3% correct in two-interval, 61.9% in yes/no</td><td>The tool&#39;s own</td></tr>
+<tr><td><strong>Accelerated — this tool&#39;s own</strong></td><td>Moves every trial; halves the step at each reversal and doubles it after three moves in the same direction</td><td>No stated percentage</td><td>The tool&#39;s own</td></tr>
+<tr><td><strong>Constant stimuli — no adaptation</strong></td><td>Every trial at the starting contrast</td><td>Not a threshold procedure here</td><td>—</td></tr>
+</tbody></table></div>
+<h3 id="staircase-parameters">Staircase parameters</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>Applies to</th></tr></thead>
+<tbody>
+<tr><td><strong>Step</strong></td><td>0.5–12 dB, step 0.5</td><td>2.0 dB</td><td>1-up / 2-down, 3-down / 1-up, Accelerated</td></tr>
+<tr><td><strong>Starting contrast</strong></td><td>0.01–1, step 0.01</td><td>0.300</td><td>All</td></tr>
+<tr><td><strong>Stop after</strong></td><td>4–24 reversals, step 2</td><td>12 reversals</td><td>1-up / 2-down, 3-down / 1-up, Accelerated</td></tr>
+<tr><td><strong>Trial ceiling</strong></td><td>20–400 trials, step 10</td><td>120</td><td>All</td></tr>
+</tbody></table></div>
+<p><strong>Step</strong> is a ratio in decibels of contrast: each step multiplies or divides the contrast by 10^(dB ÷ 20), so 2 dB is a factor of about 1.26 at any contrast. A ratio step resolves a threshold of 0.005 as finely as one of 0.5, which a fixed step cannot. For the two up-down staircases the step halves after the second reversal and halves again after the fourth. The accelerated staircase starts at the set step, halves it at each reversal (down to one eighth) and doubles it after three moves in one direction (up to four times the set step). Contrast is kept between 0.0001 and 1.</p>
+<p><strong>The Bayesian tracker</strong> keeps a probability for 240 candidate thresholds spread evenly on a logarithmic scale from 0.0001 to 1. It starts from a Gaussian prior centred on a quarter of the starting contrast with a width of one decade (1 dex), assumes a Weibull psychometric function with a slope of 3.5, a lapse rate of 0.02 and the task&#39;s guess rate, and after each answer tests at the mean of the updated distribution. Its slope, lapse rate and prior are the tool&#39;s choices, not estimated from your data, which is why it is not called QUEST.</p>
+<p><strong>Constant stimuli</strong> here shows every trial at the starting contrast, so it measures your proportion correct at one contrast. The classical method of constant stimuli uses several fixed levels in random order; the bench does not do that.</p>
+<h2 id="5-set-the-timing">5. Set the timing</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range</th><th>Default</th><th>What it sets</th></tr></thead>
+<tbody>
+<tr><td><strong>Stimulus</strong></td><td>20–1000 ms, step 10</td><td>200 ms</td><td>How long each interval shows the patch or blank</td></tr>
+<tr><td><strong>Between trials</strong></td><td>100–2000 ms, step 50</td><td>600 ms</td><td>The pause after your answer before the next trial</td></tr>
+</tbody></table></div>
+<p>A fixation cross shows for 240 ms before each trial, and in the two-interval task the intervals are separated by a 300 ms blank. There is no time limit on answering. Browser timing follows your screen&#39;s refresh, so very short durations are rounded to whole frames by the display.</p>
+<h2 id="6-save-your-design">6. Save your design</h2>
+<p>When the <strong>Export</strong> tab opens, <strong>Copy a link to this setup</strong> copies every rail setting as a link. Until then, see <a href="export-your-data.html">Export your data</a> for how to build that link by hand.</p>
+<p>You should now have a stimulus, geometry and procedure that match the question you want to answer.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Psychophysics Bench</a><a href="export-your-data.html"><span>Next</span>Export your data</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-a-threshold-is">What a threshold is</a></li><li><a href="#1-choose-the-task">1. Choose the task</a></li><li><a href="#2-build-the-stimulus">2. Build the stimulus</a></li><li><a href="#3-state-the-viewing-geometry">3. State the viewing geometry</a></li><li><a href="#4-choose-the-procedure">4. Choose the procedure</a></li><li><a href="#5-set-the-timing">5. Set the timing</a></li><li><a href="#6-save-your-design">6. Save your design</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

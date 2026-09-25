@@ -1,0 +1,100 @@
+==============================================================================
+PROFILES
+==============================================================================
+Apply a built-in icon profile, save your own, and move profiles between
+machines as JSON.
+Area: VS Code extensions › Auric Artisan File Icons   Updated: 2026-09-25
+
+A profile is a named, portable set of appearance settings, associations and
+smart detection settings.
+
+APPLY A PROFILE
+===============
+
+  1. Run Auric Artisan File Icons: Apply Icon Profile, or Apply profile… on
+     the Workspace tab.
+  2. Choose a profile. Built-in profiles are marked Built-in; your saved
+     profiles follow.
+  3. Select Reload when asked.
+
+  Built-in profile: Classic Facet
+  Description:      Balanced original colours and full smart decorations.
+  Key values:       Default colours, 1 / 1 / 1, badge and colour
+
+  Built-in profile: Vivid Studio
+  Description:      Brighter, richer colour for large project explorers.
+  Key values:       Saturation 1.35, brightness 1.08
+
+  Built-in profile: Focused Explorer
+  Description:      Blue folders, softer files, hidden arrows and badge-only
+                    smart matches.
+  Key values:       Files `#718096`, folders `#4AA3DF`, opacity 0.88
+
+  Built-in profile: Graphite Mono
+  Description:      Near-monochrome files and folders with semantic smart
+                    colours.
+  Key values:       `#7B8796`, saturation 0.18, colour only
+
+  Built-in profile: High Visibility
+  Description:      Maximum opacity, extra brightness and propagated badges.
+  Key values:       Folders `#E0A82E`, saturation 1.2, brightness 1.18
+
+  Built-in profile: Minimal
+  Description:      Muted monochrome artwork with tooltip-only smart
+                    explanations.
+  Key values:       `#8993A1`, saturation 0, opacity 0.72, arrows hidden
+
+Built-in profiles keep your custom associations and smart rules. Applying a
+saved or imported profile replaces them with the profile's own.
+
+SAVE YOUR CURRENT SET-UP
+========================
+
+  1. Run Save Current Icon Profile, or Save current… on the Workspace tab.
+  2. Enter a name (up to 80 characters).
+  3. VS Code confirms "Saved icon profile "…"."
+
+The Workspace tab's Profiles panel shows how many profiles are available and
+their names.
+
+DELETE A SAVED PROFILE
+======================
+
+Run Delete Saved Icon Profile (or Delete saved…), choose the profile and
+confirm with Delete. Built-in profiles cannot be deleted.
+
+EXPORT AND IMPORT
+=================
+
+  - Export Icon Profile to Clipboard (or Export) copies your current settings
+    as profile JSON. VS Code confirms "Current icon profile copied to the
+    clipboard."
+  - Import Icon Profile from Clipboard (or Import…) reads profile JSON from
+    the clipboard, then asks "Import "…"?" with Apply or Apply and Save.
+
+Imports are checked first:
+
+  Message: The clipboard does not contain an icon profile.
+  Meaning: The clipboard is empty.
+
+  Message: The clipboard profile is larger than the 256 KiB safety limit.
+  Meaning: Profiles must be under 256 KiB.
+
+  Message: The clipboard does not contain valid JSON.
+  Meaning: The text is not JSON.
+
+  Message: Unsupported icon profile schema: …
+  Meaning: The profile came from an unknown source.
+
+  Message: Invalid icon profile: …
+  Meaning: A value failed validation.
+
+Profiles exported from the older standalone Playful extension can be imported.
+Values are bounded and sanitised before they are written, and icon IDs that do
+not exist are dropped.
+
+RESULT
+======
+
+You can switch between complete Explorer looks in two steps and carry them to
+other machines.

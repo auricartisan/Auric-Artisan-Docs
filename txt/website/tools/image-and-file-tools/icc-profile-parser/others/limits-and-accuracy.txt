@@ -1,0 +1,110 @@
+==============================================================================
+LIMITS AND ACCURACY
+==============================================================================
+What the ICC Profile Parser can and cannot read, how precise its figures are,
+and what it is not.
+Area: Website › Tools › Image and file tools › ICC Profile Parser   Updated: 2026-09-25
+
+WHAT IT READS
+=============
+
+  - Standalone profile files of ICC version 2 and version 4, at the byte
+    positions ICC.1:2010 (ISO 15076-1:2010) gives.
+  - The whole header, the full tag table, and the tag types listed in the
+    Reference [../docs/reference.txt]: text, descriptions, multi-language
+    text, XYZ values, tone curves in every form, the `chad` matrix,
+    signatures, and lut8 and lut16 tables.
+  - A tag that cannot be decoded is reported as a finding, and the rest of the
+    profile is still read.
+
+WHAT IT CANNOT READ
+===================
+
+  Item:         Profiles embedded in images or PDFs
+  What happens: Not read. Save the profile out as its own file first
+
+  Item:         Version 4 `mAB `, `mBA ` tables
+  What happens: Listed in the tag table but not decoded; no gamut hull is
+                drawn from them
+
+  Item:         `mpet` (multi-process elements)
+  What happens: Its structure is read; the pipeline is not run, so its
+                behaviour is not measured
+
+  Item:         `ncl2` named colours
+  What happens: Not resolved to colours and not listed on the page
+
+  Item:         Private tags such as `vcgt`
+  What happens: Listed with their type, not decoded
+
+  Item:         Description and copyright text
+  What happens: Read, but not printed on the page or in the reading
+
+HOW THE FIGURES ARE FOUND, AND HOW PRECISE THEY ARE
+===================================================
+
+  Figure: Header fields
+  Method: Read directly at the published offsets
+  Notes:  Exact
+
+  Figure: Profile ID match
+  Method: MD5 recomputed with the flags, intent and ID fields zeroed
+  Notes:  Exact
+
+  Figure: Primaries
+  Method: Colorants un-adapted with the profile's `chad` tag, or with Bradford
+          from an assumed white
+  Notes:  Exact with `chad`; an estimate without, and the caption says so
+
+  Figure: Primaries Δu′v′
+  Method: Largest per-primary distance in CIE 1976 u′v′, after adapting the
+          reference into the PCS
+  Notes:  Two adaptation methods tried; the closer is reported
+
+  Figure: Curve fit
+  Method: Peak difference from the reference transfer function over 257
+          samples
+  Notes:  Uses the red curve, or the grey curve for greyscale
+
+  Figure: area, u′v′ and area, xy
+  Method: Triangle area ratios
+  Notes:  Area, not coverage
+
+  Figure: covers of it
+  Method: Polygon intersection in u′v′
+  Notes:  At most 100%
+
+  Figure: CIELAB hull
+  Method: Every grid point of the A2B1 (or A2B0) table converted to CIELAB,
+          then its outline
+  Notes:  Up to 200,000 grid points
+
+  Figure: Spectral locus
+  Method: CIE 1931 2° observer, 380 to 700 nm at 5 nm
+  Notes:  Taken from CIE 015:2018 data
+
+CHOICES THE TOOL MAKES
+======================
+
+These are listed as Stand-in on the Data tab.
+
+  - The six reference spaces. Identification means closest among sRGB, Rec.
+    709, Display P3, Adobe RGB (1998), Rec. 2020 and ProPhoto RGB. Each
+    definition is taken from its own publication; the choice of list is the
+    tool's.
+  - Severity. The grade of each rule (error, warning or note) is the tool's
+    judgement. Each rule states its clause so you can apply your own.
+
+WHAT IT IS NOT
+==============
+
+  - Not a device measurement. Everything on the page is a reading of a file.
+    Whether the display, printer or press still behaves as the profile says is
+    a question for a measuring instrument and the device. A profile that is
+    internally perfect can describe a monitor that has drifted since
+    calibration.
+  - Not an official validator. The conformance check cites the specification
+    clause by clause, but it is not the International Color Consortium's own
+    validation tool.
+  - Not a profile editor or converter. It does not change profiles or convert
+    colours through them.

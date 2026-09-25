@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make tints, shades, tones and key sets — Auric Artisan Docs</title>
+<meta name="description" content="Build tints, shades, tones, a neutral ladder and 50–950 or 50–900 key sets, and choose the space they are mixed in.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Tonal Steps</a>
+<h2>Tonal Steps documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Tonal Steps</a></li>
+<li><a href="build-a-ramp.html">Build a ramp</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="tints-shades-tones.html" aria-current="page">Make tints, shades, tones and key sets</a></li>
+<li><a href="reference.html">Tonal Steps reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Tonal Steps</a></li>
+<li><a href="faq.html">Tonal Steps FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Tonal Steps</a> &rsaquo; <a href="README.html">Tonal Steps documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Make tints, shades, tones and key sets</h1>
+<p class="lede">Build tints, shades, tones, a neutral ladder and 50–950 or 50–900 key sets, and choose the space they are mixed in.</p>
+<h2 id="the-sets">The sets</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Set</th><th>How it is made</th><th>Number of swatches</th></tr></thead>
+<tbody>
+<tr><td><strong>Tints — toward white</strong></td><td>Your colour mixed with white in equal steps, from 0% (your colour) to 100% (white)</td><td>Steps + 1</td></tr>
+<tr><td><strong>Shades — toward black</strong></td><td>Your colour mixed with black, from your colour to black</td><td>Steps + 1</td></tr>
+<tr><td><strong>Tones — toward grey</strong></td><td>Your colour mixed with mid grey (#808080), from your colour to that grey</td><td>Steps + 1</td></tr>
+<tr><td><strong>Neutral ladder</strong></td><td>Greys from black to white; each value is (i ÷ (steps − 1))^γ</td><td>Steps</td></tr>
+<tr><td>Key set 50–950</td><td>Keys 50, 100 … 900, 950. Below 500 your colour is mixed towards white by (1 − key ÷ 500); 500 is your colour; above 500 it is mixed towards black by ((key − 500) ÷ 500)</td><td>11</td></tr>
+<tr><td>Key set 50–900</td><td>The same ladder with keys 50 to 900</td><td>10</td></tr>
+</tbody></table></div>
+<p>The key sets borrow the Tailwind and Material key names only. They are not the Tailwind or Material palettes: Tailwind&#39;s colours are hand-tuned per hue, and Material&#39;s tonal palettes are specified in HCT at fixed tones.</p>
+<h2 id="mixing-spaces">Mixing spaces</h2>
+<p>The <strong>Mix in</strong> setting chooses the space in which tints, shades, tones and key sets are interpolated. It changes the middle of a mix, not its ends.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><strong>OKLab</strong> (default)</td><td>Perceptually even mixes; hues stay steady</td></tr>
+<tr><td><strong>CIELAB</strong></td><td>Mixes in CIE L*a*b* against D65</td></tr>
+<tr><td><strong>HSL</strong></td><td>Mixes in hue, saturation and lightness</td></tr>
+<tr><td><strong>sRGB linear</strong></td><td>In the current version this produces the same mixes as OKLab</td></tr>
+</tbody></table></div>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, set the base colour, <strong>Steps</strong> and <strong>Mix in</strong>.</li>
+<li>Under <strong>Also show</strong>, tick any of <strong>Tints — toward white</strong>, <strong>Shades — toward black</strong>, <strong>Tones — toward grey</strong> and <strong>Neutral ladder</strong>. <strong>Full ramp</strong> is on by default.</li>
+<li>Read <strong>The other sets</strong>. Each set is titled with its swatch count. Each tile shows its HEX and, beneath it, its contrast ratio against black; hovering shows the HEX, luminance Y and that ratio.</li>
+<li>For a key set, open the <strong>Ramps</strong> tab and choose <strong>50–950</strong> or <strong>50–900</strong> under <strong>Key sets</strong>. <strong>Design-scale key sets</strong> lists the ladder.</li>
+<li>To export a key set, open <strong>Export</strong> and choose <strong>The key set</strong> (<a href="export-tokens.html">Export tokens</a>).</li>
+</ol>
+<h2 id="result">Result</h2>
+<p>You have tints, shades, tones, greys and a keyed ladder built from one colour, mixed in the space you chose.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-tokens.html"><span>Previous</span>Export tokens</a><a href="reference.html"><span>Next</span>Tonal Steps reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-sets">The sets</a></li><li><a href="#mixing-spaces">Mixing spaces</a></li><li><a href="#steps">Steps</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

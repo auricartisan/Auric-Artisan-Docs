@@ -1,0 +1,238 @@
+==============================================================================
+EXPORT AND SHARE
+==============================================================================
+Every way to take a result out of the Analyzer — reports, data files,
+stylesheets and share links — with formats and file names.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+This guide lists every export the Analyzer offers, what each file contains,
+and the ways to share a result. Most exports are in the Report section; others
+live in the section they come from.
+
+THE REPORT SECTION
+==================
+
+Report opens with Full Analysis Report, the date it was generated and the
+audited address, the score and the issue count. Then comes the Export row.
+
+  Button:       Export JSON
+  What you get: The full report data, for automation, regression checks and
+                comparing fields over time
+  File:         `analysis.json`
+
+  Button:       Export HTML
+  What you get: A self-contained HTML report that opens in any browser and can
+                be printed
+  File:         `auric-analyzer-report.html`
+
+  Button:       Export PDF
+  What you get: A PDF of the report (paid plans; see below)
+  File:         `auric-report-<number>.pdf`, or your browser's print dialog
+
+  Button:       Export Fix CSS
+  What you get: One clean stylesheet of the generated fixes
+  File:         `auric-analyzer-fixes.css`
+
+  Button:       Developer Report
+  What you get: A Markdown report written for developers
+  File:         `auric-developer-report.md`
+
+  Button:       Client Report
+  What you get: A Markdown report written for clients and stakeholders
+  File:         `auric-client-report.md`
+
+  Button:       Copy Report
+  What you get: The developer report, copied to the clipboard as Markdown
+  File:         —
+
+  Button:       Share Link
+  What you get: A link to re-run this audit (see below)
+  File:         —
+
+Export PDF
+----------
+
+PDF is a Pro export format, included with paid plans. On the free plan,
+selecting it opens an upgrade prompt that explains the audit stays free and
+that Export HTML, Export JSON, the fix CSS and both Markdown reports carry the
+same data.
+
+When you are entitled, the button shows its progress ("Building PDF…"). If a
+server PDF cannot be built, the Analyzer opens the HTML report in a new window
+with your browser's print dialog ("Opening print view…"): choose Save as PDF
+there. If your browser blocks that window, the HTML report is downloaded
+instead, with a message telling you to open it and print it to PDF.
+
+Copy Report
+-----------
+
+When the copy works, a message says "Report copied to the clipboard as
+Markdown." If the browser refuses clipboard access, the message says nothing
+was copied and suggests Developer Report to download the same Markdown
+instead.
+
+What the Report section shows
+-----------------------------
+
+Below the buttons, Details repeats the whole audit in one long page:
+
+  - Category Scores, with a button per category;
+  - Narrative Insights (human summary, confidence, estimated score after top
+    fixes, recommended next steps);
+  - Score Weighting Transparency;
+  - Meta & SEO, Accessibility, Contrast, Color Palette, Fonts, DOM Structure,
+    Performance, Metadata Intelligence, Responsive Devices, Security &
+    Reliability and Custom Rules summaries;
+  - All Issues, each with its fix;
+  - How Your Score Was Calculated, a table of Category, Score, Weight,
+    Contribution and Points lost, with the final score. Excluded categories
+    show why, for example "excluded (13% unused — no value produced)". The
+    button How this score is combined, and what it cannot tell you explains
+    the method;
+  - a footer naming the engine version, the rule sets used ("WCAG 2.1 AA + 2.2
+    + WCAG 3 (preview) + Core Web Vitals 2024 + HTTP Archive 2024"), the data
+    sources, the run time, and the limitations ("Cross-origin pages cannot be
+    deeply inspected; some metrics are lab estimates and not real-user data
+    (RUM).").
+
+EXPORTS IN OTHER SECTIONS
+=========================
+
+  Section: A11y+ › Export
+  Button:  Results JSON (axe format)
+  File:    `a11y-<site>.json`
+
+  Section: A11y+ › Export
+  Button:  Issues CSV
+  File:    `a11y-<site>-issues.csv`
+
+  Section: A11y+ › Export
+  Button:  Remediation brief (Markdown)
+  File:    `a11y-<site>-remediation.md`
+
+  Section: A11y+ › Export
+  Button:  Contrast fix CSS
+  File:    `a11y-<site>-contrast.css`
+
+  Section: A11y+ › Export
+  Button:  Conformance report CSV (Specialist plan)
+  File:    `a11y-<site>-conformance-report.csv`
+
+  Section: A11y+ › Fixes
+  Button:  Copy the whole stylesheet
+  File:    Clipboard
+
+  Section: Fixes
+  Button:  Export Fix CSS
+  File:    `auric-analyzer-fixes.css`
+
+  Section: Fixes
+  Button:  Copy Batch CSS
+  File:    Clipboard
+
+  Section: Palette
+  Button:  Export as CSS / Export as JSON
+  File:    `palette.css` / `palette.json`
+
+  Section: Project
+  Button:  Export project model JSON
+  File:    `project-model-<date>.json`
+
+  Section: Site Map
+  Button:  Export map JSON
+  File:    `site-map-<date>.json`
+
+  Section: Playground
+  Button:  Export CSS Fixes / Export Palette
+  File:    `accessibility-fixes.css` / `fixed-palette.css`
+
+  Section: Playground › Design Lab
+  Button:  Download .css, Theme tokens (JSON), Runtime JS, Palette JSON
+  File:    `auric-design-lab.css`, `auric-design-tokens.json`,
+           `auric-design-lab.js`, `auric-palette.json`
+
+  Section: Devices
+  Button:  Live custom CSS Export
+  File:    `device-custom.css`
+
+  Section: Rules
+  Button:  Export rules
+  File:    `analyzer-custom-rules.json`
+
+  Section: Workspace
+  Button:  Export Workspace
+  File:    `workspace.json`
+
+  Section: Compare
+  Button:  Download it
+  File:    `<host>-<date>.json`
+
+In these names, `<site>` is a short form of the audited address and `<date>`
+is the date in year-month-day form.
+
+SHARE A RESULT
+==============
+
+There are four ways to share, and none of them sends the full report. Each
+link makes the recipient's Analyzer run the audit again on the same address,
+so they see the page as it is when they open the link.
+
+  Where:                   Strip
+  Control:                 Share
+  What the recipient gets: A link that re-runs the audit on the same URL; the
+                           original score travels as context only
+
+  Where:                   Report
+  Control:                 Share Link
+  What the recipient gets: A copied link carrying the score, issue count and
+                           URL; the scanned pages stay on your machine
+
+  Where:                   Insights
+  Control:                 Copy share link
+  What the recipient gets: A link that re-runs the audit on the same address
+
+  Where:                   Insights
+  Control:                 Email
+  What the recipient gets: Opens your email app with a message titled "Auric
+                           Artisan audit:" and the URL, containing the score
+                           and the headlines
+
+The strip's Share opens the site-wide share dialog. The Report's Share Link
+copies its link straight away and shows it in a Share this report sheet with
+Copy again and Done.
+
+You can also build a link by hand:
+`https://auricartisan.com/tool/analyzer/?url=https://example.com` opens the
+Analyzer and starts an audit of that address.
+
+  | Note: Because a shared link re-runs the audit, the recipient needs whatever
+  | the audit needs. Auditing another website requires them to be signed in, and
+  | the run uses their own tokens and monthly allowance.
+
+For the site-wide share dialog, see Shareable links
+[../../../../site-features/shareable-links/README.txt].
+
+WHICH FORMAT SHOULD I USE?
+==========================
+
+  You want to: Hand results to a developer
+  Use:         Developer Report, or the A11y+ Remediation brief and Issues CSV
+
+  You want to: Send a summary to a client or manager
+  Use:         Client Report, or Export HTML
+
+  You want to: Keep a record for an audit trail
+  Use:         Export HTML or Export PDF, plus Export JSON
+
+  You want to: Feed a pipeline or compare runs programmatically
+  Use:         Export JSON, or the A11y+ Results JSON (axe format)
+
+  You want to: Paste fixes straight into a stylesheet
+  Use:         Export Fix CSS, or the A11y+ Contrast fix CSS
+
+  You want to: Support a procurement or VPAT request
+  Use:         The A11y+ Conformance report CSV (Specialist), reviewed by a
+               person
+
+  You want to: Show a colleague the live result
+  Use:         Share

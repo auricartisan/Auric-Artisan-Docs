@@ -1,0 +1,295 @@
+==============================================================================
+REFERENCE: COMMANDS, KEYS AND SETTINGS
+==============================================================================
+Every Auric Artisan Formatter command, keyboard shortcut, menu entry, status
+bar state, file and editor setting.
+Area: VS Code extensions › Auric Artisan Formatter   Updated: 2026-09-25
+
+This page covers Auric Artisan Formatter 0.1.0: 21 commands, 3 keyboard
+shortcuts, one Explorer view, a setup walkthrough, 11 editor settings and 391
+formatting options (listed in the options reference [options-reference.txt]).
+Commands appear in the Command Palette with the Auric Formatter: prefix.
+
+COMMANDS
+========
+
+  Command:      Format Document
+  ID:           `auricFormatter.formatDocument`
+  Keys:         —
+  What it does: Format the active file with Auric
+
+  Command:      Format Selection
+  ID:           `auricFormatter.formatSelection`
+  Keys:         —
+  What it does: Format the selected code (shown only with a selection)
+
+  Command:      Format Every File in the Workspace
+  ID:           `auricFormatter.formatWorkspace`
+  Keys:         —
+  What it does: Write every file the scan found would change (asks first)
+
+  Command:      Format Every File That Needs It
+  ID:           `auricFormatter.formatAll`
+  Keys:         —
+  What it does: The same, from the scan results (asks first)
+
+  Command:      Scan the Workspace Without Writing
+  ID:           `auricFormatter.scanWorkspace`
+  Keys:         —
+  What it does: Format every file in memory and report; offers Review them or
+                Format them all
+
+  Command:      Show Files That Need Formatting
+  ID:           `auricFormatter.showPending`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `U`
+  What it does: Open Formatter Studio on the Workspace tab
+
+  Command:      Check Formatting Without Writing (CI Mode)
+  ID:           `auricFormatter.checkWorkspace`
+  Keys:         —
+  What it does: Scan and list unformatted files in the Problems panel
+
+  Command:      Open Formatter Studio
+  ID:           `auricFormatter.openPlayground`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `P`
+  What it does: Open Formatter Studio
+
+  Command:      Preview Formatting as a Diff
+  ID:           `auricFormatter.previewDiff`
+  Keys:         `Ctrl` + `Alt` + `Shift` + `F` (editor focused)
+  What it does: Open a read-only formatted copy beside the source
+
+  Command:      Apply Formatting Preview
+  ID:           `auricFormatter.applyPreview`
+  Keys:         —
+  What it does: Apply the open preview to its source, after confirmation
+
+  Command:      Discard Formatting Preview
+  ID:           `auricFormatter.discardPreview`
+  Keys:         —
+  What it does: Close the preview without changes
+
+  Command:      Refresh Formatting Preview
+  ID:           `auricFormatter.refreshPreview`
+  Keys:         —
+  What it does: Format the source again and update the preview
+
+  Command:      Compare Formatting Changes
+  ID:           `auricFormatter.comparePreview`
+  Keys:         —
+  What it does: Open the diff between source and preview
+
+  Command:      Explain Formatting Decisions for This File
+  ID:           `auricFormatter.explainFormatting`
+  Keys:         —
+  What it does: Open a report of language, parser, tier, option sources and
+                warnings
+
+  Command:      Switch Formatting Preset
+  ID:           `auricFormatter.selectPreset`
+  Keys:         —
+  What it does: Choose one of the 13 presets
+
+  Command:      Generate a Configuration File
+  ID:           `auricFormatter.generateConfig`
+  Keys:         —
+  What it does: Write `.auricformatrc` with your preset and settings
+
+  Command:      Import Settings From Prettier
+  ID:           `auricFormatter.migrateFromPrettier`
+  Keys:         —
+  What it does: Convert a Prettier configuration into an unsaved Auric one
+
+  Command:      Toggle Format on Save
+  ID:           `auricFormatter.toggleFormatOnSave`
+  Keys:         —
+  What it does: Turn format on save on (and make Auric the default formatter)
+                or off
+
+  Command:      Show the Formatter Log
+  ID:           `auricFormatter.showOutput`
+  Keys:         —
+  What it does: Open the Auric Artisan Formatter output channel
+
+  Command:      Report a Formatting Problem
+  ID:           `auricFormatter.reportIssue`
+  Keys:         —
+  What it does: Open a Markdown template with version, language, tier and
+                explanation
+
+  Command:      Clear the Configuration Cache
+  ID:           `auricFormatter.clearCache`
+  Keys:         —
+  What it does: Forget cached configuration so files are re-read
+
+On macOS, `Cmd` replaces `Ctrl` in the three shortcuts. Format Every File That
+Needs It and Format Every File in the Workspace have no shortcut on purpose.
+
+WHERE COMMANDS APPEAR
+=====================
+
+  - Editor title bar: Preview Formatting as a Diff (supported files)
+  - Editor title bar, in a preview: Apply Formatting Preview, Compare
+    Formatting Changes, Refresh Formatting Preview, Discard Formatting Preview
+  - Preview CodeLens: Apply formatting (or No formatting changes, or Source
+    changed — refresh preview), Compare changes, Discard preview, Full file ·
+    refresh preview / Selection preview · refresh from source
+  - Editor context menu: Format Selection with a selection; Preview Formatting
+    as a Diff without
+  - Explorer context menu, on a folder: Format Every File in the Workspace
+  - Explorer: The Auric Formatter view
+  - Welcome page: The walkthrough Set up Auric Artisan Formatter
+
+STATUS BAR
+==========
+
+  Text:    Auric (brush icon)
+  Meaning: Ready for this language
+
+  Text:    Auric with a tick
+  Meaning: Formatted, or already formatted; the tooltip names the tier and the
+           time
+
+  Text:    Auric with a shield
+  Meaning: The safety gate kept your original text
+
+  Text:    Auric with a slash
+  Meaning: Skipped, with the reason in the tooltip
+
+  Text:    Auric with an error
+  Meaning: Formatting failed
+
+  Text:    Auric scanned/total (spinning)
+  Meaning: Scanning in memory
+
+  Text:    Auric writing…
+  Meaning: Writing formatted files
+
+  Text:    N unformatted
+  Meaning: Files the scan found would change; select to review
+
+  Text:    Auric with a double tick
+  Meaning: Every scanned file is formatted
+
+The first four open the log when selected.
+
+EDITOR SETTINGS
+===============
+
+  Setting:         `auricFormatter.preset`
+  Type:            string
+  Default:         `auric`
+  Values or range: 13 presets (see Presets [presets.txt])
+  What it does:    The preset to start from; your own options and a
+                   configuration file's `preset` win
+
+  Setting:         `auricFormatter.formatOnType`
+  Type:            boolean
+  Default:         `false`
+  Values or range: —
+  What it does:    Reformat the line and block as you type closing
+                   punctuation; needs `editor.formatOnType`
+
+  Setting:         `auricFormatter.formatOnSaveMode`
+  Type:            string
+  Default:         `file`
+  Values or range: `file`, `modifications`
+  What it does:    Format the whole file on save, or only lines changed since
+                   the last commit
+
+  Setting:         `auricFormatter.showStatusBar`
+  Type:            boolean
+  Default:         `true`
+  Values or range: —
+  What it does:    Show the status bar item for the tier and safety result
+
+  Setting:         `auricFormatter.logLevel`
+  Type:            string
+  Default:         `warn`
+  Values or range: `silent`, `error`, `warn`, `log`, `debug`
+  What it does:    How much reaches the output channel
+
+  Setting:         `auricFormatter.enabledLanguages`
+  Type:            array
+  Default:         `[]`
+  Values or range: Language ids
+  What it does:    Format only these languages; empty means all
+
+  Setting:         `auricFormatter.disabledLanguages`
+  Type:            array
+  Default:         `[]`
+  Values or range: Language ids
+  What it does:    Never format these languages
+
+  Setting:         `auricFormatter.scanOnStartup`
+  Type:            boolean
+  Default:         `true`
+  Values or range: —
+  What it does:    Scan the workspace in memory when the window opens
+
+  Setting:         `auricFormatter.scanExclude`
+  Type:            array
+  Default:         `[]`
+  Values or range: Globs
+  What it does:    Globs the scan skips; empty uses the built-in list
+
+  Setting:         `auricFormatter.scanMaxFiles`
+  Type:            integer
+  Default:         `4000`
+  Values or range: 1 or more
+  What it does:    Stop the scan after this many files
+
+  Setting:         `auricFormatter.confirmBeforeFormattingAll`
+  Type:            boolean
+  Default:         `true`
+  Values or range: —
+  What it does:    Ask before writing more than one file
+
+All settings, including the 391 options, have resource scope: they can be set
+for the user, the workspace or a single folder.
+
+FILES
+=====
+
+  File: `.auricformatrc` and its variants, `auric.format.json`, `package.json`
+        (`auricFormatter` key)
+  Role: Configuration; see Configuration [configuration.txt]
+
+  File: `.prettierrc` and variants, `package.json` (`prettier` key)
+  Role: Read for compatibility
+
+  File: `.editorconfig`
+  Role: Read for indentation, line endings, line length and final newline
+
+  File: `.auricformatignore`, `.prettierignore`
+  Role: Files not to format
+
+Written by the extension:
+
+  What: `.auricformatrc`
+  When: Generate a Configuration File
+
+  What: `editor.defaultFormatter`, `editor.formatOnSave`
+  When: Toggle Format on Save (workspace settings, or user settings with no
+        folder open)
+
+  What: `auricFormatter.preset`
+  When: Switch Formatting Preset
+
+  What: Your source files
+  When: Format commands, Apply, format on save, Format selected / Format all
+        files
+
+WORKSPACE TRUST AND VIRTUAL WORKSPACES
+======================================
+
+  - In an untrusted workspace, configuration files are read but JavaScript
+    configuration files and formatter plugins are not run.
+  - Virtual workspaces are supported.
+
+SETUP WALKTHROUGH
+=================
+
+Set up Auric Artisan Formatter on the Welcome page has five steps: Choose a
+preset, Try the Playground, See what the whole repository would do, Turn on
+format on save and Understand the safety gate.

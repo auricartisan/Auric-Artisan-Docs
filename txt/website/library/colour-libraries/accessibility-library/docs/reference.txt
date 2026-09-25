@@ -1,0 +1,189 @@
+==============================================================================
+ACCESSIBILITY LIBRARY REFERENCE
+==============================================================================
+Every control, output and message in the Accessibility Color Pair Library.
+Area: Website › Library › Colour libraries › Accessibility Library   Updated: 2026-09-25
+
+Everything on https://auricartisan.com/library/accessibility/.
+
+HEADING
+=======
+
+  Item:    Kicker
+  Content: Auric Artisan · Accessibility
+
+  Item:    Headline
+  Content: What may I write on this?
+
+  Item:    Facts
+  Content: Corpus 5,000,000, Seed 9001, Every figure computed in your browser
+
+  Item:    Read the API guide →
+  Content: The accessibility corpus API guide.
+
+  Item:    Automate this note
+  Content: 8 API credits per call to POST /v1/accessibility/map; API docs; ×
+           dismisses.
+
+CONTROL BAR
+===========
+
+  Control:      Ground swatches
+  What it does: Set the background.
+  Values:       `#0D0D0D`, `#1D2A3E`, `#FFFCF7`, `#1B4D3E`
+  Default:      `#1D2A3E`
+
+  Control:      Colour picker
+  What it does: Any other ground.
+  Values:       Any colour
+  Default:      —
+
+  Control:      Swap
+  What it does: Puts the current foreground on the ground and moves the caret
+                to the old ground.
+  Values:       —
+  Default:      —
+
+  Control:      Target
+  What it does: The contrast threshold.
+  Values:       3:1, 4.5:1, 7:1
+  Default:      4.5:1
+
+  Control:      Territory
+  What it does: Share of the map that clears the target.
+  Values:       0% to 100%
+  Default:      —
+
+THE MAP
+=======
+
+  Element: Horizontal axis
+  Meaning: Hue: 0° red, 60° yellow, 120° green, 180° cyan, 240° blue, 300°
+           magenta, 360°.
+
+  Element: Vertical axis
+  Meaning: OKLCH lightness, 0 to 1.0.
+
+  Element: Colour at each point
+  Meaning: The most colourful sRGB colour at that hue and lightness.
+
+  Element: Lines
+  Meaning: 3:1 (dashed amber), 4.5:1 body (solid green), 7:1 AAA (dashed pale
+           blue).
+
+  Element: Dimmed area
+  Meaning: Fails the current target.
+
+  Element: Caret
+  Meaning: The current foreground. Starts at hue 190°, lightness 0.78.
+
+  Element: Pins
+  Meaning: Your pasted colours; failures have a line to the target.
+
+  Input            | Effect
+  -----------------+-------------------------------------------
+  Press and drag   | Moves the caret.
+  `Left` / `Right` | Hue −5° / +5° (×5 with `Shift`).
+  `Up` / `Down`    | Lightness +0.02 / −0.02 (×5 with `Shift`).
+  `Home` / `End`   | Lightness 1 / 0.
+
+READOUT
+=======
+
+  Item:    Specimen
+  Meaning: "Readable at a glance" and a paragraph in the foreground on the
+           ground.
+
+  Item:    Ratio
+  Meaning: WCAG 2 contrast, two decimals.
+
+  Item:    Verdict
+  Meaning: clears AAA for body text (≥ 7), clears AA for body text (≥ 4.5),
+           large text and UI only (≥ 3), fails every text threshold.
+
+  Item:    Foreground, Ground
+  Meaning: Hex codes.
+
+  Item:    Lightness
+  Meaning: Foreground OKLCH lightness.
+
+  Item:    Hue
+  Meaning: Foreground hue in degrees.
+
+  Item:    APCA
+  Meaning: Lc, rounded.
+
+  Item:    Vision margin
+  Meaning: Worst-case separation under ten simulated conditions, 0 to 1.
+
+  Item:    To the line
+  Meaning: Lightness distance to the target line, or unreachable at this hue.
+
+  Item:    Advice
+  Meaning: Inside / outside / unreachable sentence.
+
+PICKS
+=====
+
+  Control:      Heading
+  What it does: N that work on this ground, with the target and ground named.
+
+  Control:      Pick card
+  What it does: Specimen, ratio and hex. Select to move the caret to it.
+
+  Control:      Copy as CSS
+  What it does: Copies a `:root` block with `--ground` and `--fg-01` …
+                `--fg-12`; shows Copied or Copy failed.
+
+Up to 12 picks, one per 30° of hue, each 10% of lightness inside the line.
+
+OR BRING YOUR OWN
+=================
+
+  Element   | Meaning
+  ----------+--------------------------------------------------------------------------
+  Paste box | Hex codes starting with `#`, 3 to 6 digits; up to 24; duplicates removed.
+  Colour    | Swatch and hex.
+  Here      | Contrast on the ground.
+  Lightness | OKLCH lightness as a percentage.
+  Needs     | nothing, +N% lightness, or unreachable.
+
+ALL OF THIS FROM YOUR OWN CODE
+==============================
+
+An example `curl` call to
+`https://api.auricartisan.com/v1/accessibility/corpus/stats` with an API key,
+and links Read the guide, Endpoint reference, Get a key.
+
+THE INDEX
+=========
+
+  Control:      Lookup box
+  What it does: A record id (`acc_…`) or a number.
+
+  Control:      Look up / `Enter`
+  What it does: Shows the record.
+
+  Control:      Record
+  What it does: Specimen; Pair, Contrast, APCA, Auric SD, Recommended for;
+                seed, index and batch.
+
+  Control:      Pairs that pass / Everything
+  What it does: Browse filter. Default: Pairs that pass.
+
+  Control:      Count
+  What it does: N shown · scanned M of 5,000,000.
+
+  Control:      Pair card
+  What it does: Select to load the pair into the map.
+
+MESSAGES
+========
+
+  Message                                                     | When
+  ------------------------------------------------------------+------------------------
+  Paste hexes above to see them placed against this ground.   | Nothing pasted.
+  Not a record id. They look like acc_91 — or paste an index. | Unreadable lookup.
+  Out of range. The corpus holds 5,000,000 records.           | Number too large.
+  That is the end of the corpus.                              | Browse reached the end.
+  Copied, Copy failed                                         | After Copy as CSS.

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Why a Font CDN family might not appear or look right, and what to do.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font CDN</a>
+<h2>Font CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="embed-a-family.html">Embed a family</a></li>
+<li><a href="find-a-family.html">Find a family</a></li>
+<li><a href="self-host-a-family.html">Self-host a family</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Font CDN</a> &rsaquo; <a href="README.html">Font CDN documentation</a></nav>
+<p class="kicker">Services › Font CDN</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Why a Font CDN family might not appear or look right, and what to do.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The text stays in the fallback font</td><td>The stylesheet URL is wrong, so it returns a &quot;not found&quot; page</td><td>Open the stylesheet URL: it should start with a comment naming the family. Copy it from <strong>Use &amp; Embed</strong>.</td></tr>
+<tr><td>The text stays in the fallback font, and the URL is right</td><td>The CSS names the family differently</td><td>Use the exact name in the stylesheet&#39;s <code>font-family</code>, in quotes, for example <code>&#39;Roboto Slab&#39;</code></td></tr>
+<tr><td>The fallback shows briefly, then the font</td><td>Normal: stylesheets use <code>font-display: swap</code></td><td>Preload or use <code>AuricFonts.load()</code> and wait for it before showing text that must not change</td></tr>
+<tr><td>Bold looks smeared or too heavy</td><td>The family has no bold file, so the browser synthesises one</td><td>Pick a weight the family has; the <strong>Styles</strong> tab lists them</td></tr>
+<tr><td>A weight has no effect on a static family</td><td>Only the weights the family has can be shown</td><td>Choose another weight or a variable family</td></tr>
+<tr><td>Italic looks slanted rather than true italic</td><td>The family has no italic style</td><td>Check the <strong>Styles</strong> tab, or choose a family with italics</td></tr>
+<tr><td><code>data-families</code> loads nothing</td><td>A family name is misspelt, or the names are not separated by a vertical bar</td><td>Use the exact family names; check the browser&#39;s network panel for a failed <code>/css/</code> request</td></tr>
+<tr><td><code>AuricFonts</code> is undefined</td><td>Your code ran before the script loaded</td><td>Put your code after the script tag, or wait for the page&#39;s <code>load</code> event</td></tr>
+<tr><td><code>get()</code> returns <code>null</code></td><td>No family has that id or name</td><td>Check the spelling, or use <code>search()</code></td></tr>
+<tr><td><code>list()</code> or <code>search()</code> is slow the first time</td><td>The catalogue index is downloaded on first use</td><td>Call it once and reuse the result</td></tr>
+<tr><td><strong>Download kit</strong> reads <strong>Installed only</strong></td><td>The family is a system font the library does not serve</td><td>Choose another family, or license the font from its maker</td></tr>
+<tr><td>The kit has <code>DOWNLOAD_NOTES.txt</code></td><td>One or more files could not be fetched</td><td>Try again later; the note lists what is missing</td></tr>
+<tr><td>A licence shows as <strong>Unspecified</strong></td><td>The library found no licence text for the family</td><td>Check with the foundry before using it; the <strong>License</strong> tab says &quot;No bundled license text was found for this family&quot;</td></tr>
+<tr><td>Characters show as boxes or in another font</td><td>The family does not cover that script</td><td>Check the <strong>Charset</strong> tab and add a fallback font that covers it</td></tr>
+<tr><td>A strict Content-Security-Policy blocks the font</td><td>Your policy does not allow the CDN</td><td>Allow the CDN in <code>style-src</code> and <code>font-src</code> (and <code>script-src</code> for the loader), or self-host</td></tr>
+</tbody></table></div>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="embed-a-family.html">Embed a family</a></li>
+<li><a href="self-host-a-family.html">Self-host a family</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Reference</a><a href="faq.html"><span>Next</span>FAQ</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

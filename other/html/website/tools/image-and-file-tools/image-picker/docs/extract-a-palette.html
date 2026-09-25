@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extract a palette — Auric Artisan Docs</title>
+<meta name="description" content="Load a picture from a file or a web address, and use every extraction setting to get the palette you want.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="extract-a-palette.html" aria-current="page">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html">Image Picker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Extract a palette</h1>
+<p class="lede">Load a picture from a file or a web address, and use every extraction setting to get the palette you want.</p>
+<h2 id="load-a-picture">Load a picture</h2>
+<h3 id="from-a-file">From a file</h3>
+<ol>
+<li>On the <strong>Workbench</strong> tab, drop an image onto the middle panel, or select the panel to open a file chooser.</li>
+<li>To load a different picture later, select <strong>Replace</strong> under <strong>The image</strong> and choose a file.</li>
+</ol>
+<p>The drop area is only there until a picture is loaded. After that, use <strong>Replace</strong>, or select <strong>Reset</strong> (or press <code>R</code>) to bring the drop area back.</p>
+<p>Accepted: any image your browser can open. The drop area names PNG, JPEG, WEBP, GIF and BMP. A file that is not an image is ignored.</p>
+<h3 id="from-a-web-address">From a web address</h3>
+<ol>
+<li>Type or paste the image&#39;s address into the field under <strong>The image</strong>, for example <code>https://example.com/image.jpg</code>.</li>
+<li>Select <strong>Load URL</strong>, or press <code>Enter</code> in the field.</li>
+</ol>
+<p>This only works when the server hosting the image allows other websites to read its pixels (known as cross-origin access, or CORS). Many sites do not. If nothing appears, download the image and load it as a file instead.</p>
+<h3 id="what-happens-on-loading">What happens on loading</h3>
+<ul>
+<li>The picture is shrunk, if necessary, to fit a working area of 800 × 500 pixels, keeping its proportions. It is never enlarged.</li>
+<li>The line under the file name shows the original size, the working size and the name, for example <code>4032 × 3024 → 667 × 500 | harbour.jpg</code>.</li>
+<li>The palette is extracted straight away with the current settings.</li>
+</ul>
+<h2 id="how-the-palette-is-made">How the palette is made</h2>
+<ol>
+<li><strong>Sampling.</strong> The tool reads pixels on a regular grid across the whole picture. The <strong>Quality</strong> setting decides how far apart the grid points are. To keep the work fast, the grid is widened when needed so no more than about 50,000 pixels are sampled; they are still spread across the whole picture.</li>
+<li><strong>Filtering.</strong> Nearly transparent pixels are skipped. <strong>Ignore dark</strong> and <strong>Ignore light</strong> skip pixels at the extremes.</li>
+<li><strong>Exact colours or clusters.</strong> If the sampled pixels contain no more distinct colours than the number of clusters you asked for, those exact colours are the palette. This is typical of logos, icons and flat illustrations. Otherwise the tool groups the pixels into clusters with k-means++, a method that picks well-spread starting colours and then moves each cluster to the average of the pixels nearest it.</li>
+<li><strong>Merging.</strong> Clusters closer together than the <strong>Merge threshold</strong> are combined, weighted by how many pixels each holds.</li>
+<li><strong>Ordering.</strong> The palette is sorted by share of the sampled pixels, largest first.</li>
+</ol>
+<p>Because k-means++ picks its starting colours at random, extracting the same picture twice can give slightly different palettes. Select <strong>Re-extract</strong> to try again.</p>
+<h2 id="the-extraction-settings">The extraction settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>What it does</th><th>Range</th><th>When the page opens</th></tr></thead>
+<tbody>
+<tr><td><strong>Clusters</strong></td><td>The largest number of colours to find</td><td>2 to 12 on the slider</td><td>16</td></tr>
+<tr><td><strong>Quality</strong></td><td>How densely pixels are sampled</td><td>Fast, Quick, Balanced, Detailed, Max detail</td><td>Detailed</td></tr>
+<tr><td><strong>Merge threshold</strong></td><td>Combines clusters closer than this distance</td><td>0 to 100</td><td>0 (off)</td></tr>
+<tr><td><strong>Ignore dark</strong></td><td>Skips pixels with relative luminance below 0.03</td><td>On or off</td><td>Off</td></tr>
+<tr><td><strong>Ignore light</strong></td><td>Skips pixels with relative luminance above 0.97</td><td>On or off</td><td>Off</td></tr>
+</tbody></table></div>
+<p>When the page opens, the tool asks for 16 clusters: the label beside <strong>Clusters</strong> reads 16 and the slider sits at its right-hand end. As soon as you move the slider, it sets a value from 2 to 12.</p>
+<h3 id="clusters">Clusters</h3>
+<p>Fewer clusters give a short summary palette; more give a detailed study. The palette can have fewer colours than you ask for when merging combines some, or when the picture has fewer distinct colours.</p>
+<h3 id="quality">Quality</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Level</th><th>Samples every</th></tr></thead>
+<tbody>
+<tr><td>Fast</td><td>10th pixel across and down</td></tr>
+<tr><td>Quick</td><td>6th pixel</td></tr>
+<tr><td>Balanced</td><td>4th pixel</td></tr>
+<tr><td>Detailed</td><td>2nd pixel</td></tr>
+<tr><td>Max detail</td><td>Every pixel, subject to the 50,000-sample cap</td></tr>
+</tbody></table></div>
+<p>Higher quality catches small areas of colour at the cost of a little time.</p>
+<h3 id="merge-threshold">Merge threshold</h3>
+<p>The distance is measured in RGB values from 0 to 255 per channel. At 0, nothing merges. Raise it when the palette shows several near-identical shades of the same colour. At high values, quite different colours start to merge.</p>
+<h3 id="ignore-dark-and-ignore-light">Ignore dark and Ignore light</h3>
+<p>Relative luminance is a measure of how bright a colour is, from 0 for black to 1 for white, as used by WCAG. <strong>Ignore dark</strong> leaves out near-black pixels, for example a black border or deep shadows. <strong>Ignore light</strong> leaves out near-white pixels, for example a white background or a blown-out sky.</p>
+<h2 id="re-extract-reset-and-history">Re-extract, reset and history</h2>
+<ul>
+<li>Every setting re-runs the extraction when you release the slider or change the switch.</li>
+<li><strong>Re-extract</strong> (or <code>E</code>) runs it again with the same settings.</li>
+<li><strong>Reset</strong> (or <code>R</code>) clears the picture, the palette and the pins, and brings back the drop area. It does not change the settings or the history count.</li>
+<li><strong>History</strong> counts the extractions you have run in this session.</li>
+</ul>
+<h2 id="what-you-should-see">What you should see</h2>
+<p>After loading and adjusting, the <strong>Extracted palette</strong> shows the colours you want, each labelled with its share of the picture, and the readouts on the right describe the same palette.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-and-share.html"><span>Previous</span>Export and share</a><a href="pick-exact-colours.html"><span>Next</span>Pick exact colours</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#load-a-picture">Load a picture</a></li><li><a href="#how-the-palette-is-made">How the palette is made</a></li><li><a href="#the-extraction-settings">The extraction settings</a></li><li><a href="#re-extract-reset-and-history">Re-extract, reset and history</a></li><li><a href="#what-you-should-see">What you should see</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

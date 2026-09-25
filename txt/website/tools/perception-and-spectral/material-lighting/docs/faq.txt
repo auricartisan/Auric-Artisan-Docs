@@ -1,0 +1,74 @@
+==============================================================================
+MATERIAL UNDER LIGHT FAQ
+==============================================================================
+Short answers to common questions about Material Under Light.
+Area: Website › Tools › Perception and spectral › Material Lighting   Updated: 2026-09-25
+
+ARE THE MATERIALS MEASURED?
+===========================
+
+No. All twenty presets are invented curves (a flat level plus bell-shaped
+bumps) and are marked synthesised everywhere. Load a measured file on the Data
+tab to use real data.
+
+WHY IS THERE NO CRI OR TM-30 SCORE?
+===================================
+
+Both need specified sets of measured test colours and specific colour spaces
+that the tool does not hold. The figures an earlier version printed were wrong
+in ways the Metrics tab demonstrates, so they are withdrawn.
+
+SO WHAT DOES THE ΔE₀₀ UNDER THE SWATCHES MEAN?
+==============================================
+
+How far this one material's colour moves between your light and the CIE
+reference light for its colour temperature, each taken against its own light's
+white. It describes the material in that light, not the light in general.
+
+WHY DOES THE SWATCH LOOK WARM UNDER TUNGSTEN WHEN L*A*B* BARELY CHANGES?
+========================================================================
+
+The swatch is un-adapted: it shows the light that actually leaves the surface,
+as a camera would record it. L*a*b* is taken against the light's own white, so
+it measures the material relative to the light.
+
+IS THE RENDERING PHYSICALLY ACCURATE?
+=====================================
+
+The spectral pipeline, observer, daylights, colour difference and the five
+lobes follow their published forms. The materials are invented, the scene is a
+single light and a single surface with no inter-reflection, and the sphere is
+a simple shaded preview. It is a teaching and exploration tool, not a renderer
+for production images.
+
+CAN IT SHOW METAMERISM?
+=======================
+
+It shows one material at a time. Because it is spectral, you can compare two
+materials (for example a preset and a measured file) under two lights one
+after the other and see whether a match holds; it has no side-by-side
+metamerism index.
+
+WHAT DOES JZ ADD?
+=================
+
+The lightness of JzAzBz, a colour space designed for high-dynamic-range and
+wide-gamut signals, as a second view of lightness beside CIE L*.
+
+WHY DOES A METAL GO BLACK WITH OREN-NAYAR?
+==========================================
+
+Oren-Nayar is a diffuse-only model and a conductor has no diffuse reflection.
+Choose a specular lobe for metals.
+
+HOW ACCURATE IS THE MEASURED COLOUR TEMPERATURE?
+================================================
+
+Within about ±11 to ±18 K below 7000 K, and much less accurate above; the
+readout shows the band. See Compare with the reference light
+[compare-with-the-reference.txt].
+
+IS MY REFLECTANCE FILE UPLOADED?
+================================
+
+No. It is read and used in the page only. See Privacy [../others/privacy.txt].

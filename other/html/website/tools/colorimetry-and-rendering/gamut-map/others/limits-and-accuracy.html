@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamut Mapping limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What the Gamut Mapping lab computes exactly, what it approximates and what it does not do.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Mapping</a>
+<h2>Gamut Mapping: supporting pages</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Gamut Mapping shortcuts</a></li>
+<li><a href="glossary.html">Gamut Mapping glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Gamut Mapping limits and accuracy</a></li>
+<li><a href="privacy.html">Gamut Mapping privacy</a></li>
+<li><a href="release-notes.html">Gamut Mapping release notes</a></li>
+<li><a href="related.html">Related to Gamut Mapping</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Mapping</a> &rsaquo; <a href="README.html">Gamut Mapping: supporting pages</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Gamut Mapping limits and accuracy</h1>
+<p class="lede">What the Gamut Mapping lab computes exactly, what it approximates and what it does not do.</p>
+<p>The lab is a visual and numerical explorer that runs in your browser. It is not an ICC colour-management engine and does not reproduce any vendor&#39;s conversion.</p>
+<h2 id="exact">Exact</h2>
+<ul>
+<li><strong>Primaries and white points</strong> of the five spaces are published values, held verbatim.</li>
+<li><strong>Transfer curves</strong> are each space&#39;s own: the sRGB curve (sRGB and Display P3), the BT.2020 curve, Adobe RGB&#39;s 563/256 power law and ProPhoto&#39;s ROMM curve with its linear toe.</li>
+<li><strong>Boundaries</strong> are traced by 24 bisection steps along 360 hue directions, accurate to about 0.00001 in chroma — far below what the plot can show.</li>
+<li><strong>ΔE formulas</strong> follow CIE definitions; ΔE₀₀ follows the Sharma, Wu and Dalal implementation notes.</li>
+</ul>
+<h2 id="estimated">Estimated</h2>
+<ul>
+<li><strong>Gamut volume</strong> is a Monte Carlo estimate with a standard error. It changes slightly each run and narrows as you raise the sample count.</li>
+<li><strong>Out-of-gamut tests</strong> allow a tiny tolerance so that colours on the boundary count as inside.</li>
+</ul>
+<h2 id="not-done">Not done</h2>
+<ul>
+<li><strong>ICC perceptual and saturation intents</strong> — these are profile lookup tables, not algorithms, and no profile is loaded.</li>
+<li><strong>Ranking methods</strong> — there is no published reference set of correct mappings, so the lab reports what each method does.</li>
+<li><strong>Loading profiles or tables</strong> — the Data tab&#39;s install area is not active.</li>
+<li><strong>Showing wide-gamut colours as they really are</strong> — all painting is in sRGB.</li>
+</ul>
+<h2 id="current-version-caveats">Current-version caveats</h2>
+<ul>
+<li>The <strong>Mapped to Target</strong> slice always uses chroma compression to the boundary; the other mapping outputs follow your method and strength.</li>
+<li><strong>Adaptive edge refinement</strong>, <strong>Axes &amp; labels</strong> and the ΔE formula menu do not change the output.</li>
+<li>The slices show a* and b* from −128 to +128; ProPhoto RGB&#39;s chroma can exceed that range, so its outer boundary may run off the slice.</li>
+<li><strong>Output</strong> HEX values in the batch list are sRGB display values, clipped to sRGB.</li>
+<li>The JSON export records settings, not results.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Gamut Mapping glossary</a><a href="privacy.html"><span>Next</span>Gamut Mapping privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#exact">Exact</a></li><li><a href="#estimated">Estimated</a></li><li><a href="#not-done">Not done</a></li><li><a href="#current-version-caveats">Current-version caveats</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+---
+title: HDR Gamut Plot — Related tools and articles
+description: Tools and Learn articles that go well with the HDR Gamut Plot.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Related to the HDR Gamut Plot
+
+## Tools
+
+| Tool | Why |
+| --- | --- |
+| [Tone Mapping](../../tone-mapping/README.md) | Apply and compare tone-mapping operators |
+| [Gamut Lab](../../gamut-lab/README.md) | 13 RGB spaces, including Rec. 2100 PQ and HLG, with transfer curves and volumes |
+| [Gamut Mapping](../../gamut-map/README.md) | What happens to colours outside a smaller gamut |
+| [LUT Lab](../../../image-and-file-tools/lut-lab/README.md) | Build and preview lookup tables for grading |
+
+## Learn articles
+
+- HDR, Wide Gamut, PQ, HLG, and Modern Displays — https://auricartisan.com/library/learn/articles/2026-05-25-hdr-wide-gamut-pq-hlg-modern-displays
+- ΔE Metrics from CIE76 to CIEDE2000 and ΔEITP — https://auricartisan.com/library/learn/articles/2026-05-26-delta-e-metrics-cie76-ciede2000-itp
+- Chromaticity Diagrams Without the Intimidation — https://auricartisan.com/library/learn/articles/2026-05-24-chromaticity-diagrams
+- Gamut Volume: How Much Color a Wide Gamut Actually Adds — https://auricartisan.com/library/learn/articles/2026-08-26-gamut-volume-how-much-color
+- Color in Real-Time 3D: Albedo, PBR, and Tone Mapping — https://auricartisan.com/library/learn/articles/2026-08-02-color-in-real-time-3d-albedo-pbr-tone-mapping
+
+## Documentation on the site
+
+The site's Documentation library (https://auricartisan.com/library/documentation/) has an earlier **HDR Gamut Plot User Guide**. This documentation follows the current page.

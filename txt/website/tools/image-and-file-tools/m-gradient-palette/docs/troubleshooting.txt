@@ -1,0 +1,98 @@
+==============================================================================
+TROUBLESHOOTING THE M-GRADIENT PALETTE
+==============================================================================
+Symptoms you may meet in the M-Gradient Palette, why they happen, and what to
+do.
+Area: Website › Tools › Image and file tools › M-Gradient Palette   Updated: 2026-09-25
+
+BUILDING THE RAMP
+=================
+
+  Symptom:    That is not a colour. and the hex box reverts
+  Why:        The value is not three or six hex digits
+  What to do: Type a value such as `F2B134` or `#abc`; eight-digit hex with
+              alpha is not accepted
+
+  Symptom:    Some steps have a gold underline
+  Why:        Their chroma was reduced to fit sRGB
+  What to do: Expected with saturated ends in OKLCH. Choose less saturated
+              ends, or accept the boundary colours
+
+  Symptom:    Neighbouring steps are identical
+  Why:        The step easing has only five positions
+  What to do: Choose another easing, or five steps
+
+  Symptom:    The middle of the ramp is grey or muddy
+  Why:        sRGB and linear RGB pass near grey between very different hues
+  What to do: Use OKLCH, short hue; see the Spaces tab
+
+  Symptom:    The ramp passes through unexpected hues
+  Why:        A long hue route, or HSL, goes round the colour wheel
+  What to do: Use a short hue route
+
+  Symptom:    One bar is much taller than the rest
+  Why:        A visible jump at that step
+  What to do: Try another route or easing; check largest jump
+
+  Symptom:    A preset gave a poor ramp
+  Why:        Presets make no claim to be good ramps
+  What to do: Adjust the ends, route or easing
+
+THE SPACES TAB
+==============
+
+  Symptom:    No row is marked the evenest
+  Why:        Two or more rows tie
+  What to do: Choose any of the tied rows
+
+  Symptom:    Choosing a row does nothing
+  Why:        The table is a comparison, not a control
+  What to do: Select that route and easing on the Ramp tab
+
+CONTRAST
+========
+
+  Symptom:    APCA Lc is negative
+  Why:        The text is lighter than the step
+  What to do: Expected: the sign shows polarity; the Good for column uses the
+              size
+
+  Symptom:    WCAG passes but APCA says not for text, or the reverse
+  Why:        The two measure different things
+  What to do: Treat both as evidence; choose steps that satisfy the standard
+              you work to
+
+  Symptom:    The simulation changed the colours but not the contrast figures
+  Why:        Figures always use the true colours
+  What to do: Expected
+
+EXPORTS
+=======
+
+  Symptom:    The CSS gradient looks different from the ramp
+  Why:        It carries only the two ends and the space, not steps or easing
+  What to do: Use the custom properties for exact steps
+
+  Symptom:    The CSS gradient looks like an sRGB blend in one browser
+  Why:        That browser does not support interpolation in a named space
+  What to do: Use the custom properties, or an SVG
+
+  Symptom:    The SVG's middle differs from the ramp
+  Why:        Between stops, the program showing the SVG blends in its own
+              space
+  What to do: Add more steps so the stops are closer
+
+  Symptom:    The browser refused the clipboard.
+  Why:        Clipboard access was blocked
+  What to do: Allow clipboard access for the site, or use Save the SVG and
+              Save the reading
+
+  Symptom:    This browser will not take text from the clipboard.
+  Why:        The browser cannot copy text
+  What to do: Use a current browser, or the save buttons
+
+  Symptom:    Pasted custom properties have no effect
+  Why:        They were pasted outside a CSS rule
+  What to do: Put them inside a rule such as `:root { … }`
+
+For help with the site in general, see Help [../../../../../help/README.txt].

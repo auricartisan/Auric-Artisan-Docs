@@ -1,0 +1,64 @@
+==============================================================================
+ISHIHARA PLATE GENERATOR FAQ
+==============================================================================
+Short answers to common questions about the Ishihara Plate Generator.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+CAN I USE THESE PLATES TO TEST SOMEONE'S COLOUR VISION?
+=======================================================
+
+No. The page says: "Not a colour-vision test. These plates are illustrative. A
+screen is not colour-calibrated and a real Ishihara examination is printed,
+lit and administered under controlled conditions. For diagnosis, see an
+eye-care professional."
+
+IS IT FREE? DO I NEED AN ACCOUNT?
+=================================
+
+It is free and needs no account. Plates are generated in your browser.
+Generating plates from code through the REST API costs 3 API credits per call.
+
+WHAT DOES THE QUALITY SCORE MEAN?
+=================================
+
+It combines four measurements: dot density, figure ratio, separation for
+typical vision, and concealment through the simulated deficiencies. A plate
+passes when it is visible to typical vision and hidden from the deficiency it
+targets. See Read the diagnostics [read-the-diagnostics.txt].
+
+WHICH COLOUR-VISION DEFICIENCIES ARE SIMULATED?
+===============================================
+
+Protanopia, deuteranopia and tritanopia, using the Brettel, Viénot and Mollon
+(1997) model.
+
+WHY CAN I NOT KEEP MY PLATES AFTER CLOSING THE PAGE?
+====================================================
+
+Plates are not stored between visits. Export them, or keep their seeds.
+
+CAN I MAKE A PLATE WITH MY OWN NUMBER OR WORD?
+==============================================
+
+Use Custom and type a number, a letter, or one of the listed symbol or shape
+names. See Generate plates [generate-plates.txt].
+
+WHAT IS A SEED?
+===============
+
+A number that fixes every random choice in a plate. The same seed with the
+same settings produces the same plate, dot for dot, on any machine.
+
+WHICH FORMAT SHOULD I EXPORT?
+=============================
+
+PNG for slides and documents; SVG for printing at any size, since every dot is
+a separate circle; the ZIP for everything at once, with a JSON description of
+each plate.
+
+WHAT IS THE STANDARD 38?
+========================
+
+A fixed set of 38 plates (24 numbers, 6 letters, 4 symbols, 2 shapes and 2
+paths), built from seed 42 so it is the same every time. See Build the
+standard 38 [build-the-standard-38.txt].

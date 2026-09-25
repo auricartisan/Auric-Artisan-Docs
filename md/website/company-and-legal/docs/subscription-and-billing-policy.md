@@ -1,0 +1,50 @@
+---
+title: Subscription and Billing Policy — summary
+description: A plain-language summary of Auric Artisan's Subscription and Billing Policy — what is on sale, why nothing renews, tax, API credits, overage, spend caps, ceilings, expiry and downgrades.
+product: Website › Company and legal
+updated: 2026-09-25
+---
+
+# Subscription and Billing Policy
+
+Official page: https://auricartisan.com/legal/subscription-billing/ — version 2.4, effective and last updated 16 August 2026. **The official policy is authoritative.** The practical guides are in [Account and billing](../../account-and-billing/README.md).
+
+## Key points
+
+- One-time plan passes are sold through Razorpay checkout (cards, UPI, netbanking). Token packs are defined but not on sale — tokens arrive with a plan.
+- Recurring subscriptions are not offered: a purchase grants a fixed period, never auto-renews, and leaves nothing to cancel; to stop early, ask for a refund.
+- An account is required before any payment.
+- No one is charged unless an official checkout clearly shows the final terms.
+- Every tool is free on every tier; paid plans add conveniences and higher quotas.
+- API usage is metered in credits against a published allowance — 1,000,000 on Specialist, 10,000,000 on Industrial Pro.
+- API credits and tokens are separate balances.
+- API overage is opt-in, off by default and strictly prepaid: no API usage is ever invoiced after the fact.
+- Industrial Pro subscriptions started before 12 August 2026 keep their unlimited API allowance.
+
+## Section by section
+
+1. **Current billing status** — Account registration and checkout for one-time plan passes and prepaid API credit packs. Recurring billing is not enabled. Changes to what or when you are charged are announced in the policy before they take effect.
+2. **Pricing pages and preview information** — Prices and plan tables on the site are not purchase offers unless a live checkout presents final terms. Preview prices, names and features may change.
+3. **Payments, renewals and cancellation** — What is live: one-time passes and prepaid API credit packs through Razorpay on auricartisan.com. No automatic renewal, no mandate, no stored card. An account is required. No cancellation flow exists because no recurring charge exists; ending early is a refund. Stripe is not enabled; every live payment goes through Razorpay.
+4. **Paid services** — A single charge for one month or twelve. Plan scope, price, term and refund rules are shown before payment. **The price you see is the total you pay**: no GST or other tax is added or collected, because Auric Artisan is not currently registered for GST; receipts are payment receipts, not GST invoices, and cannot be used for input tax credit. If you need a GST invoice, wait until registration is in place. When a term ends the account returns to Apprentice. To stop earlier, a refund is unconditional within 7 days and case by case after; the dashboard carries a **Request a refund** button. If recurring billing is introduced later, the renewal date and amount will be shown before payment, with a working cancel control, and the policy updated first.
+5. **API usage credits, overage and spend caps**
+   - *5.1 Measurement* — One credit per standard request, weighted up for heavier endpoints (weightings in the API documentation). Counted per account, not per key. Allowances: 1,000,000 on Specialist, 10,000,000 on Industrial Pro, refreshing each billing month; none on plans without API access.
+   - *5.2 Overage* — When the allowance is used up, requests are refused and nothing is charged. Optional overage (off by default) spends prepaid credits at $1.00 (about ₹85) per 100,000; if the balance does not cover a request, it is refused. No usage is invoiced afterwards and no debt is created.
+   - *5.3 Spend caps* — A monthly cap in money, up to $10,000, limiting overage only.
+   - *5.4 Hard ceilings* — Ten times the included allowance per month, whatever the settings; support can raise it.
+   - *5.5 Expiry* — Included credits and tokens expire at the end of their period. Purchased credits and tokens do not expire at period boundaries while the account is open. The Apprentice starter grant is one-time and non-renewing.
+   - *5.6 Plans ending and downgrades* — The included API allowance ends with the plan. Purchased credits are kept and become spendable again on a plan with API access. Check your plan can spend credits before buying: a balance bought on Apprentice or Artisan is recorded and does not expire, but cannot be spent there.
+   - *5.7 Previously sold unlimited access* — Industrial Pro purchases before 12 August 2026 are metered at 1,000,000,000 credits a billing month.
+   - *5.8 Changes* — Weightings, allowances and the overage rate may change; credits already bought keep their number.
+6. **Advertisements** — Paid plans include an ad-free option. Ads shown to free users are limited and consent-gated; private data is not used for advertising profiles.
+7. **Mistaken or unauthorised charges** — Contact Auric Artisan with the date, amount, provider and any reference; it is checked against checkout and provider records.
+8. **Service availability and development** — Features may change. Web analysis is for sites you own or may analyse. Simulations and Ishihara-style generators are exploratory.
+9. **Changes** — The policy may be updated as the checkout, pricing or service model changes.
+
+> **Note:** The policy calls the refund button part of the dashboard's "Billing tab". In the current dashboard it is in the **Plan & Usage** section; the old Billing address still leads there.
+
+## Related
+
+- [Plans and pricing](../../account-and-billing/docs/plans-and-pricing.md)
+- [API credits and spend controls](../../account-and-billing/docs/api-credits-and-spend.md)
+- [Refund Policy](refund-policy.md)

@@ -1,0 +1,92 @@
+==============================================================================
+SHAREABLE LINKS REFERENCE
+==============================================================================
+Exactly what is and is not saved in a page's address, and how it is restored.
+Area: Website › Site features › Shareable links   Updated: 2026-09-25
+
+SAVED AFTER `#P=`
+=================
+
+  Item:   Scroll position
+  Detail: Vertical and horizontal; not saved when within 4 pixels of the
+          top-left
+
+  Item:   Text, number and other input fields
+  Detail: Their values, in the page's main content and in the Settings panel
+
+  Item:   Drop-down lists and text areas
+  Detail: Their values
+
+  Item:   Checkboxes and radio buttons
+  Detail: On or off
+
+  Item:   Tabs, toggles and pressed buttons
+  Detail: Which are selected
+
+  Item:   Editable text areas
+  Detail: Their text
+
+  Item:   Open panels
+  Detail: Settings panel, Feature Kit, Menu Kit, Advanced Kit, Status Kit
+
+  Item:   Appearance settings
+  Detail: Only those that differ from their defaults: accent, theme mode, text
+          size, comfort switches, eye rest, screen saver, clock format,
+          seconds, date and date format
+
+  Item:   Tool state
+  Detail: On tools that save their own extra state
+
+Only controls that have an identity on the page (an id or a name) can be
+saved.
+
+NOT SAVED
+=========
+
+  Item                                                    | Why
+  --------------------------------------------------------+------------------------------
+  Passwords                                               | Never recorded
+  File choosers                                           | Files cannot be put in a link
+  Search boxes                                            | Excluded
+  Hidden fields and buttons                               | Not user input
+  Disabled controls                                       | Not in use
+  Areas a page marks as private                           | Excluded by the page
+  Controls outside the main content (other than Settings) | Out of scope
+  Language                                                | Use `?lang=` instead
+
+TIMING AND SIZE
+===============
+
+  Behaviour: Update delay
+  Value:     About 0.34 seconds after a change
+
+  Behaviour: History
+  Value:     Replaces the current entry; adds no Back steps
+
+  Behaviour: Maximum length
+  Value:     About 3,600 characters; beyond that only scroll position and open
+             panels are kept
+
+  Behaviour: Restore retries
+  Value:     For a few seconds, for parts that load late
+
+WHEN IT DOES NOT WRITE
+======================
+
+  - When the address already has another `#` part (a section anchor, the
+    Vision Simulation state, a shared library item). The site still restores
+    its own `#p=` if present.
+  - On pages that turn the feature off.
+  - Inside split view panes, each pane keeps its own state, which is included
+    in the `#split=` address.
+
+OTHER PARAMETERS
+================
+
+  Parameter                       | Effect
+  --------------------------------+----------------------------------------------------
+  `?lang=hi` / `?lang=en`         | Opens the page in Hindi or English and remembers it
+  `?color=`, `?colour=`, `?hex=`  | Opens the colour inspector with that colour
+  `on=`, `bg=`, `against=`, `vs=` | Background colour for the inspector
+  `#split=`                       | Restores split view
+  `/search/?q=`                   | Opens the search page with a query

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map a colour into a smaller gamut — Auric Artisan Docs</title>
+<meta name="description" content="Check whether a colour fits a target space, choose a mapping method and strength, and read the result.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Mapping</a>
+<h2>Gamut Mapping documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Gamut Mapping</a></li>
+<li><a href="compare-spaces-and-methods.html">Compare spaces and methods</a></li>
+<li><a href="map-a-colour-list.html">Map a list of colours</a></li>
+<li><a href="map-a-colour.html" aria-current="page">Map a colour into a smaller gamut</a></li>
+<li><a href="reference.html">Gamut Mapping reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Gamut Mapping</a></li>
+<li><a href="faq.html">Gamut Mapping FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Mapping</a> &rsaquo; <a href="README.html">Gamut Mapping documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Map a colour into a smaller gamut</h1>
+<p class="lede">Check whether a colour fits a target space, choose a mapping method and strength, and read the result.</p>
+<h2 id="the-four-methods">The four methods</h2>
+<p>All four are this tool&#39;s own methods. None is an ICC rendering intent.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>What it does</th><th>Keeps</th><th>Gives up</th></tr></thead>
+<tbody>
+<tr><td><strong>Chroma compression</strong></td><td>Holds L* and hue, and reduces chroma until the colour fits (found by bisection). <strong>Compression Strength</strong> sets how far: 1 lands exactly on the boundary, 0 keeps the original chroma and leaves the final clip to deal with it</td><td>Lightness and hue</td><td>Vividness</td></tr>
+<tr><td><strong>Clip in target RGB</strong></td><td>Converts to the target&#39;s linear RGB and clamps each channel to 0–1</td><td>Everything already inside the gamut</td><td>Detail and hue near the boundary; different out-of-gamut colours can collapse onto one</td></tr>
+<tr><td><strong>Uniform RGB scale</strong></td><td>Divides all three channels by the largest, so the brightest channel becomes 1; if a channel is negative it falls back to clipping</td><td>The ratio between channels</td><td>Lightness: everything darkens together</td></tr>
+<tr><td><strong>Adapt white, then clip</strong></td><td>Adapts from the source white to the target white with the Bradford transform, then clips. This is the shape of ICC relative colorimetric</td><td>The relationship to each space&#39;s white</td><td>Accuracy of out-of-gamut colours, which are clipped</td></tr>
+</tbody></table></div>
+<p>The last method only differs from <strong>Clip in target RGB</strong> when the two spaces have different white points. Of the five spaces, ProPhoto RGB uses D50; the others use D65.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, enter your colour under <strong>Base Colour</strong>: use the colour picker or type a HEX value such as <code>#00C853</code> in the field. <strong>Random</strong> picks a random colour.</li>
+<li>Under <strong>Colour Spaces</strong>, set <strong>Source</strong> to the space the colour is defined in and <strong>Target</strong> to where it must go. The HEX value is interpreted in the source space, decoded with that space&#39;s own transfer curve.</li>
+<li>Read <strong>Base Colour Info</strong>: L*, a*, b*, C* and h°, then whether the colour is inside the source space and inside the target space, each shown as <strong>Yes</strong> or <strong>OOG</strong>.</li>
+<li>Set <strong>Lightness Slice L*</strong> to the colour&#39;s L* (shown in Base Colour Info) so the white ring marking the base colour sits on the slice you are looking at.</li>
+<li>Choose a <strong>Method</strong>.</li>
+<li>For <strong>Chroma compression</strong>, set <strong>Compression Strength</strong> (0 to 1, default 0.90). An in-gamut colour is never changed, whatever the strength.</li>
+<li>Read the effect in <strong>Before / After (12 Test Colours)</strong>: each row shows a vivid test colour on the left and its mapped result on the right.</li>
+<li>To get exact numbers for your colour, open <strong>Methods</strong>, choose <strong>The base colour</strong> under <strong>Compare on</strong>, and read mean ΔE₀₀, max ΔE₀₀ and whether it was out of gamut for each method. Or add the colour to the batch list on the <strong>Export</strong> tab (<a href="map-a-colour-list.html">Map a list of colours</a>).</li>
+</ol>
+<h2 id="about-the-mapped-to-target-slice">About the Mapped to Target slice</h2>
+<p>In the current version the <strong>Mapped to Target</strong> slice is always drawn with chroma compression all the way to the boundary, whichever method and strength you choose. The <strong>Before / After</strong> strip, the batch list and the <strong>Methods</strong> tab use your chosen method and strength. Use those to judge the method; use the slice to see the shape of the target gamut.</p>
+<h2 id="reading-e00">Reading ΔE₀₀</h2>
+<p>ΔE₀₀ (CIEDE2000) measures how different the mapped colour is from the original. As a rough guide, which the lab also uses in its playground: below 1 imperceptible, 1–2 barely perceptible, 2–3.5 noticeable, 3.5–5 significant, and above 5 very different.</p>
+<h2 id="result">Result</h2>
+<p>You know whether the colour fits the target, what each method turns it into, and how large the change is.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="map-a-colour-list.html"><span>Previous</span>Map a list of colours</a><a href="reference.html"><span>Next</span>Gamut Mapping reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-four-methods">The four methods</a></li><li><a href="#steps">Steps</a></li><li><a href="#about-the-mapped-to-target-slice">About the Mapped to Target slice</a></li><li><a href="#reading-e00">Reading ΔE₀₀</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

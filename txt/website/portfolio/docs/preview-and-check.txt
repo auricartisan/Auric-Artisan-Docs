@@ -1,0 +1,125 @@
+==============================================================================
+PREVIEW AND CHECK
+==============================================================================
+Preview your portfolio at different widths and full screen, and use the Check
+pane to fix accessibility problems before publishing.
+Area: Website › Portfolio   Updated: 2026-09-25
+
+PREVIEW WIDTHS
+==============
+
+The Live preview bar has four width buttons:
+
+  Button        | Width                                         | Use
+  --------------+-----------------------------------------------+-----------------------------
+  Fit (default) | The width of the preview column, at full size | Writing and editing.
+  Desktop       | 1160 px                                       | Checking the desktop layout.
+  Tablet        | 800 px                                        | Checking a tablet layout.
+  Mobile        | 390 px                                        | Checking a phone layout.
+
+The bar shows the current width (for example Desktop · 1160px) and the number
+of sections. Desktop, Tablet and Mobile may be scaled down to fit the column;
+Fit is the width to write at. The builder remembers your choice in this
+browser.
+
+Fullscreen preview (the button at the right of the bar) enlarges the preview
+to fill the screen; select it again, or press `Escape`, to leave.
+
+FULL PREVIEW IN A NEW TAB
+=========================
+
+Select Preview in the top bar (or the command Open a full preview). The
+finished page opens in a new tab, exactly as an exported HTML file would look.
+If nothing opens, the builder says Allow pop-ups to preview. — allow pop-ups
+for auricartisan.com.
+
+THE CHECK PANE
+==============
+
+Open Check. It audits the page as it is actually rendered — the colours, sizes
+and text a visitor will get — against WCAG 2.2 AA.
+
+What it checks
+--------------
+
+  Finding:             Text below AA
+  Severity:            Blocking when well below; otherwise a warning
+  What it means:       Normal text is under 4.5:1 against its background.
+  The fix it suggests: "Take a darker step from the same palette in Style, or
+                       change the paper."
+
+  Finding:             Large text below AA
+  Severity:            Blocking when well below; otherwise a warning
+  What it means:       Large text (24 px, or about 19 px bold) is under 3:1.
+  The fix it suggests: "Deepen this colour, or set the text larger so the 3:1
+                       threshold applies."
+
+  Finding:             A link with no text
+  Severity:            Blocking
+  What it means:       A link with nothing readable inside it.
+  The fix it suggests: "Give it text, or an aria-label if it is deliberately
+                       an icon."
+
+  Finding:             A link that does not say where it goes
+  Severity:            Blocking
+  What it means:       Link text such as "click here", "here", "read more",
+                       "more", "link", "this", "learn more" or "see more".
+  The fix it suggests: "Name the destination in the link itself."
+
+  Finding:             An image with no alt text
+  Severity:            Blocking
+  What it means:       An image with no description for screen readers.
+  The fix it suggests: "Describe what the image shows, or set alt="" if it is
+                       decoration."
+
+  Finding:             Heading jumps from hN to hM
+  Severity:            Warning
+  What it means:       A heading level is skipped, for example h2 to h4.
+  The fix it suggests: "Make this an h3, or add the level it skipped."
+
+  Finding:             A target smaller than 24px
+  Severity:            Warning
+  What it means:       A link or button smaller than 24 × 24 pixels.
+  The fix it suggests: "Give it padding, or set a minimum height."
+
+  Finding:             A colour this check could not read
+  Severity:            Warning
+  What it means:       Text in a colour format the check does not measure (for
+                       example from Raw HTML).
+  The fix it suggests: "Pick this colour from the Style pane, which works in
+                       sRGB and is graded."
+
+Each finding explains why it matters and names the section it is in. Contrast
+findings show the colour pair and ratio, for example "#9A8F7B on #FBFAF7 is
+3.05:1".
+
+Using the pane
+--------------
+
+  1. Read the summary: how many faults, in how many places, and how many would
+     stop the page going online — or "None of them blocks publishing."
+  2. When there are several kinds, use the filter chips All, Blocking and
+     Contrast.
+  3. Select a finding. The preview scrolls to it and outlines the element.
+  4. Fix it in the section card, the preview, or Style. The pane updates.
+
+When everything passes, it says the pairs checked "against WCAG 2.2 AA.
+Nothing to fix." If the preview has not rendered yet, it says The preview has
+not rendered yet.
+
+Blocking findings stop publishing
+---------------------------------
+
+While any Blocking finding remains, the Publish button is disabled and its
+tooltip says, for example, "2 things to fix in Check before this can go
+online". Warnings do not block publishing. Saving and exporting are never
+blocked.
+
+While you work in Content, a dot on the Check tab tells you there is something
+to look at.
+
+RESULT
+======
+
+You have seen the page at every width, and it goes online without contrast,
+link, alt-text or heading problems.

@@ -1,0 +1,93 @@
+==============================================================================
+LIBRARY
+==============================================================================
+Save colours and palettes to the extension's library, reuse them, remove them
+and export them as JSON.
+Area: Browser extension › Saved   Updated: 2026-09-25
+
+The Library keeps the colours and palettes you choose to save. It is stored in
+your browser's extension storage and is not synced between devices.
+
+ADD TO THE LIBRARY
+==================
+
+  From:   Picker
+  Button: Save to library (the bookmark)
+  Adds:   The current colour. If it is already there, the extension says so.
+
+  From:   Page palette
+  Button: Save
+  Adds:   The whole palette
+
+  From:   Image
+  Button: Save palette
+  Adds:   The image's colours
+
+  From:   Harmony
+  Button: Save
+  Adds:   The harmony, labelled with its scheme
+
+The toolbar icon's badge shows how many colours are in the library.
+
+USE THE LIBRARY
+===============
+
+Open Saved › Library. It has two sections.
+
+Colours
+-------
+
+  - Click a colour to copy it in the format set in Settings › Tools › Copy
+    colours as.
+  - Right-click a colour, or focus it and press `Delete` or `Backspace`, to
+    remove it.
+
+"Nothing saved yet." appears while the section is empty.
+
+Palettes
+--------
+
+  - Click a palette to open it in Page palette, where every export is
+    available.
+  - Choose its ✕ to delete it.
+
+"No saved palettes." appears while the section is empty.
+
+EXPORT
+======
+
+Export copies the whole library as JSON, with a `colors` list and a `palettes`
+list:
+
+    {
+      "colors": ["#d3af37"],
+      "palettes": [{ "id": 1790000000000, "colors": ["#d3af37", "#1a73e8"], "label": "triadic" }]
+    }
+
+To keep the library with your settings, history and snippets in one file, use
+Settings › Data › Download a backup.
+
+LIMITS
+======
+
+  What:  Colours
+  Limit: 500
+
+  What:  Palettes
+  Limit: The newest 30 are kept when you save; a restored backup can hold up
+         to 100
+
+  What:  Colours in a palette
+  Limit: 64 in a restored backup
+
+CLEAR IT
+========
+
+Settings › Data › Clear history & library removes all colours, palettes and
+your history, after you confirm. Snippets are kept.
+
+RELATED PAGES
+=============
+
+  - History [history.txt]
+  - Data settings [../settings/data.txt]

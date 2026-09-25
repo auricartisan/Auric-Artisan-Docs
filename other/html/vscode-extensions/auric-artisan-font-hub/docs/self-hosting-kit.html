@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export a self-hosting kit — Auric Artisan Docs</title>
+<meta name="description" content="Download fonts from Font Hub as a ZIP kit with CSS, a demo page and licence notices, for hosting on your own server.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Font Hub</a>
+<h2>Auric Artisan Font Hub guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Font Hub</a></li>
+<li><a href="add-fonts-to-code.html">Add a font to your code</a></li>
+<li><a href="cdn-and-browser-delivery.html">Check CDN and browser delivery</a></li>
+<li><a href="find-and-compare-fonts.html">Find and compare fonts</a></li>
+<li><a href="font-details.html">Font details</a></li>
+<li><a href="moving-from-font-library.html">Moving from Font Library</a></li>
+<li><a href="offline-cache-and-network.html">Offline use, cache and network</a></li>
+<li><a href="self-hosting-kit.html" aria-current="page">Export a self-hosting kit</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Font Hub</a> &rsaquo; <a href="README.html">Auric Artisan Font Hub guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Font Hub</p>
+<h1>Export a self-hosting kit</h1>
+<p class="lede">Download fonts from Font Hub as a ZIP kit with CSS, a demo page and licence notices, for hosting on your own server.</p>
+<p><em>Self-hosting</em> means serving font files from your own website instead of the CDN. Font Hub can package families into a ZIP <em>kit</em> ready to copy into a project.</p>
+<h2 id="download-a-kit">Download a kit</h2>
+<p>Use any of these:</p>
+<ul>
+<li><strong>Download kit</strong> in a family&#39;s <strong>Styles</strong> or <strong>Use &amp; Embed</strong> tab;</li>
+<li><strong>Download</strong> in the <strong>Selected</strong> tray, for every selected family;</li>
+<li><strong>Download self-hosting kit</strong> in <strong>Quick Pick Font</strong>;</li>
+<li><strong>Auric Artisan Font Hub: Download Self-hosting Font Kit</strong>, which lets you tick families in a list (<strong>Choose font families</strong>).</li>
+</ul>
+<p>Then:</p>
+<ol>
+<li>Font Hub checks each family&#39;s licence (see below).</li>
+<li>Choose where to save the ZIP. The default name is <code>&lt;family&gt;-font-kit.zip</code> for one family or <code>auric-font-selection-kit.zip</code> for several.</li>
+<li>A progress notification, <strong>Preparing Auric font kit</strong>, shows each family as its files are fetched.</li>
+<li><strong>Saved self-hosting kit for <em>N</em> families.</strong></li>
+</ol>
+<p>Saving is always an explicit action; nothing is written into your project unless you save it there.</p>
+<h2 id="what-the-kit-contains">What the kit contains</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Path</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>fonts/&lt;family&gt;/</code></td><td>The font files for every style</td></tr>
+<tr><td><code>css/&lt;family-id&gt;.css</code></td><td><code>@font-face</code> rules pointing at those files, with <code>font-display: swap</code> and variable weight ranges kept</td></tr>
+<tr><td><code>licenses/&lt;family&gt;.txt</code></td><td>The family&#39;s licence text, when there is one</td></tr>
+<tr><td><code>README-&lt;family&gt;.md</code></td><td>Notes for each family</td></tr>
+<tr><td><code>index.html</code></td><td>A demo page showing the families</td></tr>
+<tr><td><code>README.md</code></td><td>Instructions: review every licence before redistribution, load the CSS and keep the relative font paths intact</td></tr>
+</tbody></table></div>
+<p>Load a family by linking its CSS file from your page, keeping the <code>css/</code> and <code>fonts/</code> folders in the same relative positions.</p>
+<h2 id="licence-checks">Licence checks</h2>
+<p>A kit is only created when every family can be redistributed:</p>
+<ul>
+<li>Families whose licence does not allow redistribution, or where permission cannot be established, are refused.</li>
+<li>Families whose licence requires a notice are refused if the notice cannot be loaded.</li>
+<li>System fonts are never exported.</li>
+</ul>
+<p>When a family is refused, the whole kit is blocked with <strong>Self-hosting kit blocked.</strong> and the reason for each family. Remove those families and try again.</p>
+<p>Each font keeps its own licence. The extension&#39;s own licence does not grant rights to any font. Review the files in <code>licenses/</code> before you redistribute anything.</p>
+<h2 id="limits">Limits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Limit</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Families per kit</td><td><code>auricFontLib.download.maxFamilies</code>, 6 by default (1–12)</td></tr>
+<tr><td>One font file</td><td>40 MB</td></tr>
+<tr><td>Whole kit</td><td>250 MB; larger selections stop with <strong>Selected font files exceed the 250 MB kit limit.</strong></td></tr>
+</tbody></table></div>
+<p>Downloading needs the network and <code>auricFontLib.network.enabled</code>. Files already in the cache are reused.</p>
+<p>When the kit is saved, opening its <code>index.html</code> in a browser shows each family rendered from the local files.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="offline-cache-and-network.html"><span>Previous</span>Offline use, cache and network</a><a href="reference.html"><span>Next</span>Reference: commands, keys and settings</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#download-a-kit">Download a kit</a></li><li><a href="#what-the-kit-contains">What the kit contains</a></li><li><a href="#licence-checks">Licence checks</a></li><li><a href="#limits">Limits</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

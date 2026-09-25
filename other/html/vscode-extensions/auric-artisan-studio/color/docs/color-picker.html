@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The colour pickers — Auric Artisan Docs</title>
+<meta name="description" content="Use Auric Color's three pickers (inline in the hover, the full panel beside the editor, and the docked sidebar view) to edit colours in your code.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html" aria-current="page">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html">Palettes and shades</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="reference.html">Auric Color reference</a></li>
+<li><a href="troubleshooting.html">Auric Color troubleshooting</a></li>
+<li><a href="faq.html">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>The colour pickers</h1>
+<p class="lede">Use Auric Color's three pickers (inline in the hover, the full panel beside the editor, and the docked sidebar view) to edit colours in your code.</p>
+<p>Auric Color gives you three ways to edit a colour in your code. All three write the change straight into the file, in the colour&#39;s own format, as an edit you can undo.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Picker</th><th>Where</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>Inline hover picker</td><td>Inside the colour hover</td><td>Quick changes without leaving the code</td></tr>
+<tr><td>Picker panel</td><td>A tab beside the editor</td><td>Precise editing, contrast checks, generating sets, rewriting every match</td></tr>
+<tr><td>Color Picker view</td><td>Docked in the sidebar</td><td>Keeping a picker open while you move between colours</td></tr>
+</tbody></table></div>
+<h2 id="the-inline-hover-picker">The inline hover picker</h2>
+<p>Point at a colour (or click it) and use the <strong>Spectrum</strong>, <strong>Hue</strong>, <strong>Alpha</strong>, <strong>Shades</strong>, <strong>Fix</strong>, <strong>Brand</strong> and <strong>Recent</strong> rows at the top of the hover. Each tile applies its colour and the hover reopens on the new value. <strong>Type exact…</strong> takes a typed value. See <a href="hover-and-swatches.html#picker-rows">Hover and swatches</a>.</p>
+<h2 id="open-the-picker-panel">Open the picker panel</h2>
+<ul>
+<li>Put the cursor on a colour (or select one) and press <code>Ctrl</code> + <code>Alt</code> + <code>C</code> (<code>Cmd</code> + <code>Alt</code> + <code>C</code> on macOS), or run <strong>Auric Artisan: Pick / edit color</strong>. It is also on the editor&#39;s right-click menu.</li>
+<li>Select <strong>Spectrum picker</strong> in a colour hover.</li>
+<li>Click a colour literal when <code>auricColor.colorPicker.clickAction</code> is <code>fullEditor</code>, or when the colour hover is turned off.</li>
+<li>Select <strong>Open the color picker</strong> on the Overview, or <strong>Open full</strong> in the docked view.</li>
+<li>Select a colour in the Command Center&#39;s <strong>Recent colors</strong>.</li>
+</ul>
+<p>The panel opens beside your editor, titled <strong>Auric Artisan — Color Picker</strong>, with the heading <strong>Color picker</strong> and the line <strong>Edit, convert, test contrast, and generate accessible color systems.</strong></p>
+<p>If the cursor is not on a colour, the picker starts from Auric gold, <code>#D3AF37</code>, and the colour you apply is inserted at the cursor.</p>
+<p>The first time you pick a colour while VS Code&#39;s own colour decorators are still on, Auric Color may ask <strong>Auric Artisan can replace VS Code&#39;s native color picker with its own. Turn off the native color decorators?</strong> with <strong>Use Auric Artisan picker</strong>, <strong>Keep native</strong> and <strong>Don&#39;t ask again</strong>. See <a href="picker-modes.html">Picker modes</a>.</p>
+<h2 id="the-docked-color-picker-view">The docked Color Picker view</h2>
+<p>Expand <strong>Color Picker</strong> in the sidebar (collapsed by default). It is the same picker in a narrower layout. While it is visible and no picker panel is open:</p>
+<ul>
+<li><strong>Pick / edit color</strong> and clicking a colour load that colour into the docked picker instead of opening a panel;</li>
+<li>applying a colour writes to that token, or inserts at the cursor if no colour was targeted.</li>
+</ul>
+<p>The <strong>↗</strong> button at the top and <strong>Open full</strong> at the bottom open the picker panel.</p>
+<h2 id="picker-controls">Picker controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Spectrum</td><td>Drag, or use the arrow keys, to set saturation (across) and brightness (down)</td></tr>
+<tr><td>Hue bar</td><td>Drag or use the arrow keys to set the hue</td></tr>
+<tr><td>Opacity bar</td><td>Drag or use the arrow keys to set transparency</td></tr>
+<tr><td>Preview</td><td>The current colour</td></tr>
+<tr><td><strong>⊙</strong> eyedropper</td><td>Picks a colour from anywhere on screen, where the system supports it; otherwise shows <strong>Eyedropper unavailable here</strong></td></tr>
+<tr><td>Format tabs</td><td><code>hex</code>, <code>rgb</code>, <code>hsl</code>, <code>hsv</code>, <code>oklch</code>, <code>lch</code>: the input fields and the written format</td></tr>
+<tr><td><strong>Copy</strong></td><td>Copies the current value</td></tr>
+<tr><td>Value fields</td><td>Type values in the chosen format; the colour updates as you type</td></tr>
+<tr><td><strong>Apply to all N matches in file</strong></td><td>Appears when the colour occurs more than once in the file; when ticked, every literal of the same colour is rewritten, each in its own format</td></tr>
+<tr><td><strong>Best text</strong></td><td>Sets the colour to black or white, whichever reads better on it</td></tr>
+<tr><td><strong>Done</strong> (panel) or <strong>Open full</strong> (docked view)</td><td>Closes the panel, or opens the full panel</td></tr>
+</tbody></table></div>
+<p>The picker starts in the token&#39;s own format when it is one of the six. <strong>HSV</strong> is not a CSS format, so choosing it writes hex.</p>
+<h3 id="contrast-section">Contrast section</h3>
+<p>Check the colour against a background:</p>
+<ul>
+<li>choose white or black with the chips, or type any background colour;</li>
+<li>read the ratio and APCA Lc, and the <strong>AA</strong>, <strong>Large</strong> and <strong>AAA</strong> badges (✓ or ✕);</li>
+<li><strong>Fix → AA</strong> and <strong>Fix → AAA</strong> adjust the colour&#39;s lightness until it reaches 4.5:1 or 7:1 on that background, keeping its hue. A toast says <strong>Nudged to passing</strong>, or <strong>Couldn&#39;t reach target</strong> when no shade of that hue can get there.</li>
+</ul>
+<h3 id="generate-section">Generate section</h3>
+<p>Choose <strong>Shade ramp</strong> or a harmony (<strong>Complementary</strong>, <strong>Split complement</strong>, <strong>Analogous</strong>, <strong>Triadic</strong>, <strong>Tetradic</strong>, <strong>Square</strong>, <strong>Double split</strong>, <strong>Monochromatic</strong>) to see a set of colours based on the current one. Select a tile to apply it. <strong>Copy</strong> copies the set as CSS custom properties, for example <code>--shade-500: #4581FF;</code> or <code>--triadic-2: …;</code>, and <strong>Insert</strong> types them at the editor cursor.</p>
+<h3 id="accessibility-section">Accessibility section</h3>
+<p>Titled with the nearest colour name, for example <strong>Accessibility · royalblue</strong>. It shows the contrast on white and on black (coloured as pass, large-text pass or fail), APCA Lc on white and on black, relative luminance, and the colour difference to the named colour (<strong>ΔE→name</strong>).</p>
+<h3 id="brand-and-recent-section">Brand and recent section</h3>
+<p>A search box (<strong>Search 140+ named colors or a hex…</strong>) that shows up to 28 matching CSS colour names, or the colour you typed; the nine brand swatches; and your recent picks in this picker (up to 14). Select any swatch to apply it.</p>
+<p>Each section can be collapsed with its heading; the picker remembers which you collapsed.</p>
+<h2 id="when-changes-are-written">When changes are written</h2>
+<ul>
+<li>Dragging writes when you release the pointer.</li>
+<li>Selecting a swatch, a tab or a fix writes immediately.</li>
+<li>Typing in a value field writes as the value becomes valid.</li>
+<li>Keyboard changes on the bars and spectrum write after a short pause (about 0.6 seconds).</li>
+</ul>
+<p>Each write is a separate edit you can undo with <code>Ctrl</code> + <code>Z</code>. The picker never writes to a file outside your workspace or a file that is not open.</p>
+<h2 id="pickers-inside-the-studio">Pickers inside the Studio</h2>
+<p>Colour fields in the Studio (for example the Contrast Studio&#39;s <strong>Text</strong> and <strong>Background</strong>, or the Palette&#39;s <strong>Seed</strong>) have their own swatch button that opens a pop-up version of the picker: spectrum, hue and opacity bars, eyedropper, formats, copy, accessibility figures, brand and recent swatches, <strong>Best text</strong> and <strong>Done</strong>. It edits the Studio field, not your code.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="reference.html">Reference</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="brand-audit.html"><span>Previous</span>The brand audit</a><a href="colour-vision.html"><span>Next</span>Colour vision</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-inline-hover-picker">The inline hover picker</a></li><li><a href="#open-the-picker-panel">Open the picker panel</a></li><li><a href="#the-docked-color-picker-view">The docked Color Picker view</a></li><li><a href="#picker-controls">Picker controls</a></li><li><a href="#when-changes-are-written">When changes are written</a></li><li><a href="#pickers-inside-the-studio">Pickers inside the Studio</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

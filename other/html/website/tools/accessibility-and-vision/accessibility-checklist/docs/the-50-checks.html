@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 50 checks — Auric Artisan Docs</title>
+<meta name="description" content="Every check in the Accessibility Checklist, area by area, with its WCAG criterion, level and how much the Analyzer can decide.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Accessibility Checklist</a>
+<h2>Accessibility Checklist documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Accessibility Checklist</a></li>
+<li><a href="attach-evidence.html">Attach evidence</a></li>
+<li><a href="export-your-results.html">Export your results</a></li>
+<li><a href="laws-by-jurisdiction.html">Laws by jurisdiction</a></li>
+<li><a href="the-50-checks.html" aria-current="page">The 50 checks</a></li>
+<li><a href="work-through-the-checklist.html">Work through the checklist</a></li>
+<li><a href="reference.html">Accessibility Checklist reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Accessibility Checklist</a></li>
+<li><a href="faq.html">Accessibility Checklist FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Accessibility Checklist</a> &rsaquo; <a href="README.html">Accessibility Checklist documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>The 50 checks</h1>
+<p class="lede">Every check in the Accessibility Checklist, area by area, with its WCAG criterion, level and how much the Analyzer can decide.</p>
+<p>The checklist has 50 checks in nine areas. This page lists them all, with the one-line summary the page shows for each (a few are slightly shortened to fit the table). Open a check on the page for its full explanation, test and fix.</p>
+<h2 id="how-to-read-the-tables">How to read the tables</h2>
+<ul>
+<li><strong>ID</strong> is the check&#39;s identifier. Open it directly with <code>#check-</code> plus the ID, for example <code>https://auricartisan.com/resources/accessibility-checklist/#check-k2</code>.</li>
+<li><strong>Tag</strong> is the level and WCAG success criterion, as the page shows it. <strong>Practice</strong> means good practice with no criterion of its own.</li>
+<li>Checks at Level A or AA are <strong>Required</strong>; AAA and Practice checks are optional.</li>
+<li><strong>Decided by</strong> says how much the Analyzer can do:<ul>
+<li><strong>AUTO</strong> — &quot;The analyzer decides this one on its own&quot;</li>
+<li><strong>PARTLY</strong> — &quot;The analyzer narrows this down; a person confirms it&quot;</li>
+<li><strong>BY HAND</strong> — &quot;Only a person can decide this one&quot;</li>
+</ul>
+</li>
+</ul>
+<p>The checklist itself does not import Analyzer results. Run the <a href="../../analyzer/README.html">Analyzer</a> and mark the checks yourself.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Totals</th><th>Count</th></tr></thead>
+<tbody>
+<tr><td>Level A</td><td>22</td></tr>
+<tr><td>Level AA</td><td>13</td></tr>
+<tr><td>Level AAA</td><td>2</td></tr>
+<tr><td>Practice</td><td>13</td></tr>
+<tr><td>Required (A and AA)</td><td>35</td></tr>
+<tr><td>AUTO / PARTLY / BY HAND</td><td>11 / 23 / 16</td></tr>
+</tbody></table></div>
+<h2 id="01-semantics-structure">01 Semantics &amp; structure</h2>
+<p>&quot;What a screen reader builds its map from. Nothing below works if this is wrong.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>d1</td><td>Landmarks wrap every region of the page</td><td>A 1.3.1</td><td>PARTLY</td><td>header, nav, main, footer — one main per page, and any repeated nav named.</td></tr>
+<tr><td>d2</td><td>Headings describe structure, not size</td><td>A 1.3.1</td><td>AUTO</td><td>One h1, no skipped levels. Style with CSS; never pick a heading level to get a font size.</td></tr>
+<tr><td>d3</td><td>html lang is set, and switches on foreign passages</td><td>A 3.1.1</td><td>AUTO</td><td>It picks the speech synthesiser. A French quote inside English needs its own lang.</td></tr>
+<tr><td>d4</td><td>Every route has a unique, front-loaded title</td><td>A 2.4.2</td><td>PARTLY</td><td>In a SPA the title is yours to set on navigation — the browser will not do it.</td></tr>
+<tr><td>d5</td><td>Lists, tables and figures use real elements</td><td>A 1.3.1</td><td>PARTLY</td><td>A table needs th with scope and a caption. A div grid announces nothing.</td></tr>
+<tr><td>d6</td><td>The reading order matches the visual order</td><td>Practice</td><td>BY HAND</td><td>CSS order, grid placement and absolute positioning all move the eye without moving the DOM.</td></tr>
+</tbody></table></div>
+<h2 id="02-keyboard-focus">02 Keyboard &amp; focus</h2>
+<p>&quot;The whole product, without a mouse. This is where most single-page apps fail.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>k1</td><td>Every interactive element is reachable and operable by keyboard</td><td>A 2.1.1</td><td>PARTLY</td><td>A div with onClick is not. Use a button, or add role, tabindex and both key handlers.</td></tr>
+<tr><td>k2</td><td>No keyboard trap — focus can always get back out</td><td>A 2.1.2</td><td>BY HAND</td><td>Modals, embedded players and custom editors are the usual offenders.</td></tr>
+<tr><td>k3</td><td>Focus is always visible, and never removed without a replacement</td><td>AA 2.4.7</td><td>PARTLY</td><td>outline: none with nothing in its place is the most common accessibility bug in the wild.</td></tr>
+<tr><td>k4</td><td>Focus order follows meaning</td><td>A 2.4.3</td><td>PARTLY</td><td>No positive tabindex. tabindex=&quot;-1&quot; for programmatic targets, &quot;0&quot; to add to the order.</td></tr>
+<tr><td>k5</td><td>Focus is managed across route changes and dialogs</td><td>Practice</td><td>BY HAND</td><td>On open, move focus in; on close, return it to the trigger. On navigation, move it to the new h1.</td></tr>
+<tr><td>k6</td><td>A skip link comes first and actually moves focus</td><td>A 2.4.1</td><td>PARTLY</td><td>It must be the first tabbable thing, visible on focus, and target a focusable container.</td></tr>
+<tr><td>k7</td><td>Pointer targets are at least 24x24 CSS pixels</td><td>AA 2.5.8</td><td>AUTO</td><td>New in WCAG 2.2. Spacing counts toward it — small icons need room around them.</td></tr>
+</tbody></table></div>
+<h2 id="03-forms-errors">03 Forms &amp; errors</h2>
+<p>&quot;Where an inaccessible product stops being annoying and starts costing money.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>f1</td><td>Every control has a programmatic label</td><td>A 3.3.2</td><td>AUTO</td><td>A placeholder is not a label. It vanishes on input and many screen readers skip it.</td></tr>
+<tr><td>f2</td><td>Errors are identified in text and tied to the field</td><td>A 3.3.1</td><td>PARTLY</td><td>aria-describedby links the message; aria-invalid marks the state. Colour alone says nothing.</td></tr>
+<tr><td>f3</td><td>Common fields declare autocomplete</td><td>AA 1.3.5</td><td>AUTO</td><td>name, email, tel, address — it is a requirement, and it halves the typing for everyone.</td></tr>
+<tr><td>f4</td><td>Related controls are grouped with fieldset and legend</td><td>A 1.3.1</td><td>PARTLY</td><td>Radio sets and checkbox groups are meaningless read one at a time.</td></tr>
+<tr><td>f5</td><td>Validation is announced, not just painted</td><td>Practice</td><td>BY HAND</td><td>A live region or a focus move — otherwise a screen reader user submits into silence.</td></tr>
+<tr><td>f6</td><td>Legal and financial submissions are reversible or confirmed</td><td>A 3.3.4</td><td>BY HAND</td><td>Reversible, checked, or confirmed. Pick one before taking the payment.</td></tr>
+</tbody></table></div>
+<h2 id="04-images-media">04 Images &amp; media</h2>
+<p>&quot;Alt text is a decision, not a field to fill in.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>m1</td><td>Every image is either described or explicitly decorative</td><td>A 1.1.1</td><td>PARTLY</td><td>alt=&quot;&quot; and aria-hidden for decoration. A filename in the alt is worse than nothing.</td></tr>
+<tr><td>m2</td><td>Text in an image is repeated in real text</td><td>A 1.4.5</td><td>BY HAND</td><td>It cannot be resized, restyled, translated or searched — screenshots of code are the worst case.</td></tr>
+<tr><td>m3</td><td>Video has captions; audio has a transcript</td><td>A 1.2.2</td><td>BY HAND</td><td>Auto-captions are a draft. Someone reads them before they ship.</td></tr>
+<tr><td>m4</td><td>Video has audio description where it carries visual information</td><td>AA 1.2.5</td><td>BY HAND</td><td>If the picture says something the soundtrack does not, it needs describing.</td></tr>
+<tr><td>m5</td><td>Nothing plays automatically for more than three seconds</td><td>A 1.4.2</td><td>PARTLY</td><td>Or there is a control to stop it, reachable before everything else.</td></tr>
+<tr><td>m6</td><td>Icons carry an accessible name or are hidden</td><td>Practice</td><td>PARTLY</td><td>An icon-only button needs aria-label; an icon beside a label needs aria-hidden.</td></tr>
+</tbody></table></div>
+<h2 id="05-colour-contrast">05 Colour &amp; contrast</h2>
+<p>&quot;The part an automated tool can genuinely finish for you.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>c1</td><td>Body text reaches 4.5:1, large text 3:1</td><td>AA 1.4.3</td><td>AUTO</td><td>Against the composited background — the colour after every translucent layer, not the token.</td></tr>
+<tr><td>c2</td><td>Controls and meaningful graphics reach 3:1</td><td>AA 1.4.11</td><td>AUTO</td><td>Input borders, toggles, chart series, focus rings.</td></tr>
+<tr><td>c3</td><td>Colour is never the only carrier of meaning</td><td>A 1.4.1</td><td>PARTLY</td><td>Links underlined, errors iconned, chart series labelled or patterned.</td></tr>
+<tr><td>c4</td><td>Hover, focus, active and selected states all pass too</td><td>AA 1.4.11</td><td>PARTLY</td><td>A rule that wins at rest can lose on hover — measure the state, not the resting colour.</td></tr>
+<tr><td>c5</td><td>Dark mode and forced-colors are checked separately</td><td>Practice</td><td>PARTLY</td><td>An inverted palette almost never passes, and Windows High Contrast drops your backgrounds.</td></tr>
+<tr><td>c6</td><td>Simulated for protanopia, deuteranopia and tritanopia</td><td>Practice</td><td>AUTO</td><td>On real screens, not only on the swatch sheet.</td></tr>
+</tbody></table></div>
+<h2 id="06-motion-preferences">06 Motion &amp; preferences</h2>
+<p>&quot;The settings the operating system already knows about.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>p1</td><td>prefers-reduced-motion is honoured</td><td>AAA 2.3.3</td><td>PARTLY</td><td>Not only decorative animation — parallax, autoplaying carousels and scroll-jacking.</td></tr>
+<tr><td>p2</td><td>Nothing flashes more than three times a second</td><td>A 2.3.1</td><td>BY HAND</td><td>This one can cause seizures. It is not a preference.</td></tr>
+<tr><td>p3</td><td>Moving or auto-updating content can be paused</td><td>A 2.2.2</td><td>PARTLY</td><td>Carousels, tickers, live feeds — pause, stop or hide.</td></tr>
+<tr><td>p4</td><td>Timeouts are announced, or there are none</td><td>AAA 2.2.6</td><td>BY HAND</td><td>A session that dies silently loses the form someone spent twenty minutes on.</td></tr>
+</tbody></table></div>
+<h2 id="07-aria-custom-widgets">07 ARIA &amp; custom widgets</h2>
+<p>&quot;No ARIA beats bad ARIA. Reach for a native element first, every time.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>a1</td><td>Custom widgets expose name, role and value</td><td>A 4.1.2</td><td>PARTLY</td><td>And keep them in sync as state changes. A silent aria-expanded is a broken disclosure.</td></tr>
+<tr><td>a2</td><td>The widget follows its APG keyboard pattern</td><td>Practice</td><td>BY HAND</td><td>Tabs, menus, comboboxes and trees each have an expected key map. Users know it already.</td></tr>
+<tr><td>a3</td><td>Status messages reach a live region</td><td>AA 4.1.3</td><td>PARTLY</td><td>polite for confirmations, assertive only for genuine interruptions. Never both.</td></tr>
+<tr><td>a4</td><td>No aria-hidden on a focusable element</td><td>Practice</td><td>AUTO</td><td>It creates a control a screen reader cannot see but can still land on.</td></tr>
+<tr><td>a5</td><td>Link text makes sense out of context</td><td>A 2.4.4</td><td>PARTLY</td><td>&quot;Read more&quot; repeated eleven times is a list of eleven identical links.</td></tr>
+</tbody></table></div>
+<h2 id="08-zoom-reflow-spacing">08 Zoom, reflow &amp; spacing</h2>
+<p>&quot;The same page in the conditions people actually browse it.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>z1</td><td>No horizontal scroll at 320 CSS pixels wide</td><td>AA 1.4.10</td><td>AUTO</td><td>Equivalent to 400% zoom on a desktop. Two-dimensional scrolling is the failure.</td></tr>
+<tr><td>z2</td><td>Text resizes to 200% without loss</td><td>AA 1.4.4</td><td>PARTLY</td><td>Fixed-height containers with overflow: hidden are where the text goes.</td></tr>
+<tr><td>z3</td><td>User text-spacing overrides do not break the layout</td><td>AA 1.4.12</td><td>PARTLY</td><td>Line height 1.5, paragraph 2em, letter 0.12em, word 0.16em — nothing may be clipped.</td></tr>
+<tr><td>z4</td><td>Both orientations work</td><td>AA 1.3.4</td><td>PARTLY</td><td>No locking to portrait unless the content genuinely requires it.</td></tr>
+<tr><td>z5</td><td>Focused elements are not hidden behind sticky chrome</td><td>AA 2.4.11</td><td>BY HAND</td><td>New in 2.2, and a sticky header plus scroll-into-view is exactly how it happens.</td></tr>
+</tbody></table></div>
+<h2 id="09-testing-proof">09 Testing &amp; proof</h2>
+<p>&quot;How it stays fixed after the sprint that fixed it.&quot; All five are Practice checks, and each links to the W3C&#39;s guidance on evaluation.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Check</th><th>Tag</th><th>Decided by</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>x1</td><td>An automated pass runs in CI on every pull request</td><td>Practice</td><td>AUTO</td><td>It catches about a third. That third should never reach a human reviewer again.</td></tr>
+<tr><td>x2</td><td>A keyboard-only pass is part of review</td><td>Practice</td><td>BY HAND</td><td>Unplug the mouse and do the primary task. Ten minutes, most of the remaining bugs.</td></tr>
+<tr><td>x3</td><td>A screen reader pass on one real combination</td><td>Practice</td><td>BY HAND</td><td>NVDA with Firefox, or VoiceOver with Safari. Not the browser plugin that reads the DOM.</td></tr>
+<tr><td>x4</td><td>Findings carry evidence and a criterion</td><td>Practice</td><td>BY HAND</td><td>A screenshot and a number turn &quot;this feels wrong&quot; into something a developer can close.</td></tr>
+<tr><td>x5</td><td>People with disabilities are in the testing loop</td><td>Practice</td><td>BY HAND</td><td>Every checklist including this one is a proxy for that, never a replacement.</td></tr>
+</tbody></table></div>
+<h2 id="links-inside-the-checks">Links inside the checks</h2>
+<p>Every check links to the W3C Understanding document for its criterion (&quot;Understanding 1.3.1&quot; and so on); area 09 links to &quot;W3C on evaluation&quot;. Some checks add a tool link:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Check</th><th>Link</th><th>Opens</th></tr></thead>
+<tbody>
+<tr><td>d1</td><td>Check the landmarks</td><td>The Analyzer</td></tr>
+<tr><td>k3</td><td>Check the focus ring</td><td>The Analyzer</td></tr>
+<tr><td>c1</td><td>Check a pair</td><td>The tools collection page</td></tr>
+<tr><td>c2</td><td>Audit the page</td><td>The Analyzer</td></tr>
+<tr><td>c3</td><td>Simulate it</td><td>The Vision Lab</td></tr>
+<tr><td>c6</td><td>Run the simulator</td><td>The Vision Lab</td></tr>
+<tr><td>x1</td><td>Automate with the API</td><td>The API documentation</td></tr>
+</tbody></table></div>
+<p>To check a single colour pair for c1, use the <a href="../../contrast-checker/README.html">Contrast Checker</a>.</p>
+<p>Checks with no <strong>What the fix looks like</strong> block: d6, f6, m2, m3, m4, m5, c2, c3, c4, c6, p2, p3, p4, a2, z1, z4, x2, x3, x4 and x5.</p>
+<p>For notes on the level tags of m2 and f6, see <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="laws-by-jurisdiction.html"><span>Previous</span>Laws by jurisdiction</a><a href="work-through-the-checklist.html"><span>Next</span>Work through the checklist</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-to-read-the-tables">How to read the tables</a></li><li><a href="#01-semantics-structure">01 Semantics &amp; structure</a></li><li><a href="#02-keyboard-focus">02 Keyboard &amp; focus</a></li><li><a href="#03-forms-errors">03 Forms &amp; errors</a></li><li><a href="#04-images-media">04 Images &amp; media</a></li><li><a href="#05-colour-contrast">05 Colour &amp; contrast</a></li><li><a href="#06-motion-preferences">06 Motion &amp; preferences</a></li><li><a href="#07-aria-custom-widgets">07 ARIA &amp; custom widgets</a></li><li><a href="#08-zoom-reflow-spacing">08 Zoom, reflow &amp; spacing</a></li><li><a href="#09-testing-proof">09 Testing &amp; proof</a></li><li><a href="#links-inside-the-checks">Links inside the checks</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

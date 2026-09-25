@@ -1,0 +1,78 @@
+---
+title: Collage Maker — Arrange pictures in a grid
+description: Use the Layout tab to compare every grid arrangement for your pictures and apply the one you want.
+product: Website › Tools › Image and file tools › Collage Maker
+updated: 2026-09-25
+---
+
+# Arrange pictures in a grid
+
+The **Layout** tab answers one question: which grid gives these pictures the most canvas? Every arrangement is laid out on the real canvas and measured, rather than estimated from the size of the cells, because a cell is only filled by a picture that shares its shape.
+
+## How a grid is built
+
+A grid is a set of equal cells, filled row by row in the order the pictures are painted (the bottom of the stack goes in the first cell). Two settings from the **Studio** tab decide the size of the cells:
+
+- **Padding** is the margin between the canvas edge and the block of cells.
+- **Gap** is the space between neighbouring cells.
+
+Both come out of the same canvas. The cell width is the canvas width, minus padding on both sides, minus one gap between each pair of columns, divided by the number of columns; the height works the same way. With a large gap on a small canvas this can come out as zero or less. The tool then refuses that arrangement and says why, rather than drawing it inside out.
+
+Only visible pictures are arranged. Hidden pictures keep their place and are not counted.
+
+## Choose how a picture fits its cell
+
+The **Fitting** group on the left of the **Layout** tab has two buttons and a switch.
+
+| Control | What it does |
+|---|---|
+| **Fit inside the cell** (default) | Scales each picture so all of it sits inside its cell; a different shape leaves part of the cell empty |
+| **Fill the cell, crop** | Scales each picture so it covers its whole cell; the excess is not cut away (see below) |
+| **Enlarge a small picture to fill its cell** | Off by default. Allows scaling above 100% of a picture's own pixels |
+
+With **Fill the cell, crop**, the part of a picture beyond its cell is not trimmed off. It overlaps the neighbouring pictures or hangs off the canvas, and the **Overlap** and **Off-canvas** columns of the table show how much.
+
+With enlarging off, a picture smaller than its cell stays at its own resolution and leaves the cell short. That keeps small pictures sharp. It is a preference, not a rule; switch it on when you would rather fill the frame than keep every pixel crisp.
+
+## Read the arrangement table
+
+The table under **Which arrangement gives these pictures the most canvas** has one row for every number of columns, from one column up to one column per picture.
+
+| Column | Meaning |
+|---|---|
+| **Arrangement** | Columns × rows, for example `3 × 2` |
+| **Cell** | The size of each cell in pixels |
+| **Covered** | The share of the canvas the pictures cover in this arrangement |
+| **Overlap** | The share of the canvas where pictures sit on top of one another (only possible with **Fill the cell, crop**) |
+| **Off-canvas** | The share of picture area outside the canvas (only possible with **Fill the cell, crop**) |
+| **What happened** | **the most canvas of these**, a count of cells left empty, or the reason a row was refused |
+
+A refused row shows **refused** in the **Covered** column. A grid with spare cells says so in the last column, for example **1 cell left empty**.
+
+A row is only marked as the winner when it truly covers more than every other row. If every arrangement covers the same amount, no row is marked, and the note under the table explains why: none of the pictures is larger than its cell, so each keeps its own size wherever it goes. Switch on enlarging, or use larger pictures, and the rows separate.
+
+Under the table, **The grid, and what it leaves** draws the three best arrangements with their coverage and the number of cells used, for example **cells used 4 of 6**.
+
+## Apply an arrangement
+
+1. Open the **Layout** tab.
+2. Choose **Fit inside the cell** or **Fill the cell, crop**, and set **Enlarge a small picture to fill its cell** as you want it.
+3. Under **Apply**, select the button for the arrangement you want, for example **3 × 2**. Only arrangements that fit are offered.
+4. A message confirms: **Arranged. Undo puts every picture back.**
+
+Every visible picture is moved to the centre of its cell, scaled as the fitting choice says, and turned back to 0° rotation. The whole arrangement is one history step, so one **Undo** returns every picture to where it was.
+
+To let the tool choose for you, select **Arrange in a grid** on the **Studio** tab instead. It applies the arrangement with the highest coverage; where several tie, it takes the one with the fewest columns.
+
+## Tips
+
+- If every arrangement shows the same coverage, your pictures are all smaller than their cells. Reduce **Padding** or **Gap**, switch on enlarging, or accept the tie.
+- If an arrangement is refused, the message gives the padding, gap, grid and canvas that caused it. Reduce the padding or gap and look again.
+- Mixed portrait and landscape pictures rarely fill a grid well with **Fit inside the cell**. Compare the rows, or use **Fill the cell, crop** and check the **Overlap** column.
+- The arrangement only sets position, scale and rotation. You can still move and resize any picture afterwards on the **Studio** tab.
+
+## What you should see
+
+After you apply an arrangement, the **Studio** canvas shows the pictures in their cells, and the **canvas covered** card is close to the **Covered** figure the table gave for that row. The two are measured differently: the table works from where the pictures are placed, while the card reads the pixels. A picture with transparent areas, such as a PNG cut-out, therefore covers less on the card than in the table.
+
+The **Covered** column shows a dash when three or more pictures overlap at one point, because the placement arithmetic cannot then give an exact figure. The card on the **Studio** tab is still exact in that case.

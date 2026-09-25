@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M-Gradient Palette — Auric Artisan Docs</title>
+<meta name="description" content="What the M-Gradient Palette does, who it is for, where to find it and how to build a first ramp.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image and file tools</a>
+<h2>M-Gradient Palette</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">M-Gradient Palette documentation &rsaquo;</a></li>
+<li><a href="others/README.html">M-Gradient Palette background material &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Image and file tools</a> &rsaquo; <a href="README.html">M-Gradient Palette</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › M-Gradient Palette</p>
+<h1>M-Gradient Palette</h1>
+<p class="lede">What the M-Gradient Palette does, who it is for, where to find it and how to build a first ramp.</p>
+<p>The M-Gradient Palette (the page is titled <strong>Gradient Ramp</strong>) builds a colour ramp: a row of evenly spaced steps between two colours, of the kind used for data-visualisation scales, tint and shade series, and design tokens. You choose the two ends, the number of steps, and the space the colours are blended in: OKLCH, sRGB, linear RGB or HSL, with a short or long way round the hue circle for the two polar spaces.</p>
+<p>The tool then measures the ramp. It gives the CIEDE2000 colour difference between every pair of neighbouring steps, their average, and how even they are, and counts the steps whose colourfulness had to be reduced to fit sRGB. A second tab builds all thirty combinations of route and easing between your two colours and marks the evenest. A third checks every step as a background for a text colour you choose, with both the WCAG 2.2 ratio and the APCA lightness contrast, and the whole ramp can be viewed as people with protanopia, deuteranopia or tritanopia see it.</p>
+<p>You can copy the ramp as a CSS gradient, as CSS custom properties, as a list of hex values or as SVG, and save a JSON reading of what was measured. Everything runs in your browser.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Designers building tint and shade scales, and tokens for a design system.</li>
+<li>Data-visualisation designers who need sequential scales with even, visible steps.</li>
+<li>Front-end developers choosing between <code>linear-gradient</code> in sRGB and in OKLCH.</li>
+<li>Accessibility specialists checking which steps of a scale can carry text.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<p>Open <a href="https://auricartisan.com/tool/general/tools/m-gradient-palette/" rel="noopener">https://auricartisan.com/tool/general/tools/m-gradient-palette/</a> in a current browser. It is listed as <strong>M-Gradient Palette</strong> on the Collections page at <a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>. Nothing needs installing.</p>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open the tool. The <strong>Ramp</strong> tab shows a 12-step ramp from <code>#0B3D5C</code> to <code>#F2B134</code>, blended in <strong>OKLCH, short hue</strong>.</li>
+<li>Set the two ends with the swatches or the hex boxes under <strong>The two ends</strong>, or choose a pair from <strong>A starting point</strong>.</li>
+<li>Set <strong>Steps</strong>, and choose a route under <strong>Interpolate in</strong>.</li>
+<li>Read <strong>mean ΔE₀₀</strong> and <strong>evenness</strong> under <strong>What the ramp measures</strong>; flatter bars mean more even steps.</li>
+<li>Open the <strong>Contrast</strong> tab, choose a <strong>Text colour</strong>, and see which steps can carry text.</li>
+<li>Open the <strong>Export</strong> tab and select <strong>Copy the custom properties</strong> to copy the steps as CSS.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Blend between two colours in four spaces by six routes, at 2 to 32 steps, with five easing curves.</li>
+<li>Start from 25 named preset pairs, and swap the ends.</li>
+<li>Measure the CIEDE2000 difference between every pair of neighbouring steps, their mean, spread and largest jump.</li>
+<li>See which steps were brought inside sRGB, and where the ramp travels in OKLCH hue and chroma.</li>
+<li>Compare all 30 route and easing combinations, built and measured, with the evenest marked.</li>
+<li>Check every step against a text colour with WCAG 2.2 and APCA, side by side.</li>
+<li>View the ramp as seen with protanopia, deuteranopia or tritanopia.</li>
+<li>Copy a CSS gradient, custom properties, a hex list or SVG; save SVG and a JSON reading.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the tool.<ul>
+<li><a href="docs/getting-started.html">Getting started</a> — open it, the screen tour, a first ramp.</li>
+<li><a href="docs/interpolation-and-gamut.html">Interpolation and gamut</a> — OKLab, OKLCH, sRGB, linear RGB and HSL; hue routes; easing; gamut mapping.</li>
+<li><a href="docs/build-a-ramp.html">Build a ramp</a> — ends, presets, routes, steps, easing and the measurements.</li>
+<li><a href="docs/compare-routes.html">Compare routes and easings</a> — the Spaces tab.</li>
+<li><a href="docs/check-contrast-and-colour-vision.html">Check contrast and colour vision</a> — WCAG 2.2, APCA and the colour-vision views.</li>
+<li><a href="docs/export-a-ramp.html">Export a ramp</a> — every copy and save format.</li>
+<li><a href="docs/reference.html">Reference</a> — every control, value, readout and format.</li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a> — symptoms, causes and fixes.</li>
+<li><a href="docs/faq.html">FAQ</a> — short answers to common questions.</li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background material.<ul>
+<li><a href="others/glossary.html">Glossary</a> — terms used in this tool.</li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a> — what is measured, how precisely, and what is not held.</li>
+<li><a href="others/related.html">Related</a> — related tools and Learn articles.</li>
+<li><a href="others/release-notes.html">Release notes</a> — user-facing history.</li>
+<li><a href="others/privacy.html">Privacy</a> — what stays in your browser.</li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../lut-lab/others/related.html"><span>Previous</span>Related tools and reading</a><a href="docs/README.html"><span>Next</span>M-Gradient Palette documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

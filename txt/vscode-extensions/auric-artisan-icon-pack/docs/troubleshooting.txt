@@ -1,0 +1,52 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+What to do when a pack member did not install, or when using alternative
+marketplaces or local builds.
+Area: VS Code extensions › Auric Artisan Icon Pack   Updated: 2026-09-25
+
+  Symptom:        An included extension did not install.
+  Why it happens: A network problem, an organisation policy, or an older VS
+                  Code version blocked it.
+  What to do:     Open the pack's Extension Pack section, find the missing
+                  member and check its installation error. Verify marketplace
+                  access and that VS Code is 1.85 or later.
+
+  Symptom:        I installed the pack VSIX offline and the members are
+                  missing.
+  Why it happens: A pack VSIX is not an offline bundle; it only lists the
+                  members.
+  What to do:     Connect to the marketplace, or install each member's own
+                  VSIX.
+
+  Symptom:        I use an alternative marketplace and members are missing.
+  Why it happens: Each member must be published there under the same ID.
+  What to do:     Check whether each member is available in your marketplace.
+                  Installing the pack does not move extensions between
+                  registries.
+
+  Symptom:        I installed local development builds and the pack reinstalls
+                  members.
+  Why it happens: VS Code identifies extensions by publisher and name, not
+                  folder name.
+  What to do:     Confirm your builds use the exact IDs listed in the
+                  reference [reference.txt].
+
+  Symptom:        I only see one icon library view, not three.
+  Why it happens: Modern, Drawn and Playful merge into one library when
+                  co-installed.
+  What to do:     This is expected. Use the Library filter to pick a
+                  collection.
+
+  Symptom:        An icon library view disappeared after installing Icon
+                  Studio.
+  Why it happens: Icon Studio hosts the Auric collections by default.
+  What to do:     Set `auricIconStudio.hostFamilyLibraries` to `false` to show
+                  their views.
+
+  Symptom:        I want to remove one member.
+  Why it happens: Members are ordinary extensions.
+  What to do:     Uninstall or disable it in the Extensions view.
+
+For problems inside a member extension, see that extension's troubleshooting
+page.

@@ -1,0 +1,302 @@
+==============================================================================
+AURIC COLOR REFERENCE
+==============================================================================
+Every command, keybinding, setting, view, menu entry and theme colour Auric
+Color contributes.
+Area: VS Code extensions › Auric Artisan Studio › Auric Color   Updated: 2026-09-25
+
+Facts for Auric Color 0.1.0 (`auric-artisan.auric-color`). It needs VS Code
+1.74 or newer and starts when VS Code finishes loading. Categories:
+Visualization, Programming Languages, Other.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows, Linux): `Ctrl` + `Alt` + `.`
+  Keys (macOS):          `Cmd` + `Alt` + `.`
+  Command:               Workstation: Command Center
+  Active when:           Auric Color is not suppressed by a Workstation host
+
+  Keys (Windows, Linux): `Ctrl` + `Alt` + `C`
+  Keys (macOS):          `Cmd` + `Alt` + `C`
+  Command:               Pick / edit color
+  Active when:           The editor has focus
+
+COMMANDS
+========
+
+All titles appear in the Command Palette after `Auric Artisan:`.
+
+  Title:        Open Color Studio
+  Command ID:   `auricColor.openStudio`
+  What it does: Opens the Studio on Color › Palette, or the Workstation host's
+                Studio
+
+  Title:        Workstation: Command Center
+  Command ID:   `auricColor.commandCenter`
+  What it does: Opens the Command Center list
+
+  Title:        Open Rulebook & Knowledge Database
+  Command ID:   `auricColor.openKnowledgeBase`
+  What it does: Searches the brand rulebook, policies, articles, glossary and
+                sources
+
+  Title:        Build Workspace Knowledge Database (JSON + Markdown)
+  Command ID:   `auricColor.writeKnowledgeDatabase`
+  What it does: Writes `knowledge.json`, `rulebook.md` and an overrides
+                template
+
+  Title:        Open Unified Icon Studio
+  Command ID:   `auricColor.openIconStudio`
+  What it does: Opens the combined Auric icon library
+
+  Title:        Generate Accessible Palette
+  Command ID:   `auricColor.generatePalette`
+  What it does: Opens the Palette tool seeded with the selected colour (or
+                `#2563EB`)
+
+  Title:        Check Contrast of Selection
+  Command ID:   `auricColor.checkContrast`
+  What it does: Opens the Contrast Studio with the selected colour as text (or
+                `#1A1A1A`)
+
+  Title:        Fix All Contrast Issues in File
+  Command ID:   `auricColor.fixAllContrast`
+  What it does: Previews and applies fixes for every fixable failing pair, as
+                one edit
+
+  Title:        Pick / edit color
+  Command ID:   `auricColor.pickColor`
+  What it does: Opens the picker on the colour at the cursor, or to insert a
+                new one
+
+  Title:        Choose Color Picker Mode
+  Command ID:   `auricColor.chooseColorPickerMode`
+  What it does: Chooses Auric picker or VS Code native picker
+
+  Title:        Disable native color picker (use Auric Artisan)
+  Command ID:   `auricColor.disableNativeColorPicker`
+  What it does: Auric picker on, VS Code's decorators and hover sliders off
+
+  Title:        Restore native color picker (use VS Code's)
+  Command ID:   `auricColor.restoreNativeColorPicker`
+  What it does: VS Code's picker and decorators back on
+
+  Title:        Refresh Contrast Diagnostics
+  Command ID:   `auricColor.refreshDiagnostics`
+  What it does: Re-checks every open file
+
+  Title:        Change Accent Color (Theme the Studio)
+  Command ID:   `auricColor.chooseAccent`
+  What it does: Chooses the Studio's accent colour
+
+  Title:        Mark Line as Intentional Branding (Toggle)
+  Command ID:   `auricColor.markBranding`
+  What it does: Adds or removes `auric-brand-line` on the current lines
+
+See Picker modes [picker-modes.txt], Contrast diagnostics
+[contrast-diagnostics.txt] and Appearance [../../docs/appearance.txt] for
+details.
+
+VIEWS
+=====
+
+  View:  Overview
+  ID:    `auricColorHome`
+  Notes: In the Auric Color Activity Bar container; the colour workbench
+         layout
+
+  View:  Color Picker
+  ID:    `auricColorPickerView`
+  Notes: Collapsed by default; the docked picker
+
+Both are hidden while another Studio extension hosts the Workstation.
+
+EDITOR RIGHT-CLICK MENU
+=======================
+
+  Entry:      Pick / edit color
+  Shown when: Always
+
+  Entry:      Generate Accessible Palette
+  Shown when: Text is selected
+
+  Entry:      Check Contrast of Selection
+  Shown when: Text is selected
+
+  Entry:      Choose Color Picker Mode
+  Shown when: Always
+
+  Entry:      Mark Line as Intentional Branding (Toggle)
+  Shown when: HTML, Vue, Svelte, Astro, PHP, XML, Handlebars, JavaScript,
+              TypeScript, JSX, TSX, CSS, SCSS, Less, Sass, PostCSS, Stylus and
+              Markdown files
+
+SETTINGS
+========
+
+Auric Color has 16 settings. Change them in File › Preferences › Settings
+(search `auricColor`), in `settings.json`, or for some of them in Studio ›
+Settings.
+
+  Setting:      `auricColor.appearance.accent`
+  Type:         string
+  Default:      `gold`
+  What it does: The Studio's accent: a preset ID or a hex such as `#2563EB`
+                (see below). Stored in user settings.
+
+  Setting:      `auricColor.hover.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Shows the colour hover (values, contrast, colour-vision
+                preview, inline picker).
+
+  Setting:      `auricColor.colorPicker.mode`
+  Type:         `auric` or `decorators`
+  Default:      `auric`
+  What it does: Auric's hover-first picker, or VS Code's native picker with
+                Auric's tools on top.
+
+  Setting:      `auricColor.colorPicker.nativeHoverPicker`
+  Type:         boolean
+  Default:      `false`
+  What it does: In Auric mode, shows VS Code's draggable picker inside the
+                hover, with Auric's content beneath. VS Code's decorators stay
+                on.
+
+  Setting:      `auricColor.colorPicker.swatches`
+  Type:         boolean
+  Default:      `true`
+  What it does: Draws Auric's swatch before every colour literal (when VS
+                Code's decorators are off).
+
+  Setting:      `auricColor.colorPicker.clickAction`
+  Type:         `inlinePicker`, `fullEditor`, `off`
+  Default:      `inlinePicker`
+  What it does: What clicking a colour literal does in Auric mode.
+
+  Setting:      `auricColor.colorPicker.autoOpen`
+  Type:         boolean
+  Default:      `false`
+  What it does: Legacy: when `true` and `clickAction` has never been set,
+                clicking opens the picker panel.
+
+  Setting:      `auricColor.colorPicker.inlineSwatches`
+  Type:         boolean
+  Default:      `false`
+  What it does: Contributes VS Code's native inline swatches and picker for
+                colour literals. Set together with `mode` by Choose Color
+                Picker Mode.
+
+  Setting:      `auricColor.contrast.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Flags text and background pairs below the target.
+
+  Setting:      `auricColor.contrast.standard`
+  Type:         `wcag2`, `apca`, `both`
+  Default:      `wcag2`
+  What it does: The contrast model for diagnostics.
+
+  Setting:      `auricColor.contrast.apcaThreshold`
+  Type:         number, 15–106
+  Default:      `60`
+  What it does: Minimum APCA Lc when APCA is used (90 ≈ AAA, 75 body, 60 large
+                or medium, 45 large bold, 30 non-text UI).
+
+  Setting:      `auricColor.contrast.threshold`
+  Type:         number, 1–21
+  Default:      `4.5`
+  What it does: Minimum WCAG 2.x ratio (4.5 AA body, 7 AAA, 3 AA large and
+                UI).
+
+  Setting:      `auricColor.contrast.severity`
+  Type:         `error`, `warning`, `information`, `hint`
+  Default:      `warning`
+  What it does: Problems severity for failing contrast.
+
+  Setting:      `auricColor.contrast.flagCvdRisk`
+  Type:         boolean
+  Default:      `true`
+  What it does: Adds a hint when a passing pair relies on hue and weakens
+                under colour-vision deficiency.
+
+  Setting:      `auricColor.contrast.checkPageBackground`
+  Type:         boolean
+  Default:      `true`
+  What it does: Grades colour-only rules against the page background, as
+                softer "verify the real background" hints.
+
+  Setting:      `auricColor.branding.enabled`
+  Type:         boolean
+  Default:      `true`
+  What it does: Honours `auric-brand-…` marks in the editor, moving marked
+                colour findings to the Branding group.
+
+Accent presets: `gold`, `champagne`, `rose-gold`, `silver`, `platinum`,
+`bronze`, `copper`, `espresso`, `maroon`, `rose`, `emerald`, `sapphire`,
+`amethyst`. See Appearance [../../docs/appearance.txt]. The page background
+for `contrast.checkPageBackground` is the one declared on `body`, `html` or
+`:root` in the same file.
+
+When Auric Accessibility is installed, it owns contrast diagnostics and the
+Studio's contrast settings, and reads its own `auricA11y.contrast.*` keys
+instead of these.
+
+THEME COLOURS
+=============
+
+  Colour ID:           `auricColor.branding.foreground`
+  Dark:                `#F06595`
+  Light:               `#C2255C`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+  Colour ID:           `auricColor.branding.background`
+  Dark:                `#F0659522`
+  Light:               `#C2255C1A`
+  High contrast:       transparent
+  High contrast light: transparent
+
+  Colour ID:           `auricColor.branding.border`
+  Dark:                `#F0659580`
+  Light:               `#C2255C80`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+  Colour ID:           `auricColor.branding.icon`
+  Dark:                `#F06595`
+  Light:               `#C2255C`
+  High contrast:       `#FF80AB`
+  High contrast light: `#A61E4D`
+
+STUDIO SPACES
+=============
+
+When Auric Color is the host or runs alone: Color (Palette, Shades, Vision),
+Check (Contrast), Brand and Settings (Appearance, Contrast, Color picker).
+
+DIAGNOSTICS
+===========
+
+  Code                                                 | Meaning
+  -----------------------------------------------------+-----------------------------------
+  `low-contrast`                                       | WCAG 2.x contrast below target
+  `apca-low`                                           | APCA below target
+  `cvd-risk`                                           | Colour-vision risk
+  `branding:contrast`, `branding:apca`, `branding:cvd` | Classified as intentional branding
+
+EXPORT FILES
+============
+
+  File                                                 | From
+  -----------------------------------------------------+-------------
+  `palette.css`, `palette.json`, `palette.tailwind.js` | Palette tool
+  `shades.css`, `shades.tailwind.js`                   | Shades tool
+  `brand-tokens.css`, `brand-tokens.json`              | Brand tool
+
+RELATED
+=======
+
+  - Studio reference [../../docs/reference.txt], including shared settings.
+  - Shortcuts [../others/shortcuts.txt]

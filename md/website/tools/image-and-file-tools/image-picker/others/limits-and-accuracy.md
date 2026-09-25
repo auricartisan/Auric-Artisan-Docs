@@ -1,0 +1,45 @@
+---
+title: Image Picker — Limits and accuracy
+description: How the Image Picker makes a palette, how precise its figures are, and what it is not.
+product: Website › Tools › Image and file tools › Image Picker
+updated: 2026-09-25
+---
+
+# Limits and accuracy
+
+## How the palette is made
+
+| Step | Detail |
+|---|---|
+| Working copy | The picture is shrunk to fit 800 × 500 pixels; it is never enlarged |
+| Sampling | A regular grid set by **Quality**, widened so that no more than about 50,000 pixels are sampled |
+| Skipped pixels | Nearly transparent pixels; with the switches on, relative luminance below 0.03 or above 0.97 |
+| Exact colours | Used when the samples hold no more distinct colours than the cluster count |
+| Clustering | k-means++ in RGB, up to 20 refinement rounds, stopping early once fewer than 1 in 2,000 samples change cluster |
+| Merging | Clusters closer than the merge threshold in RGB are combined, weighted by size |
+| Shares | Each cluster's sample count divided by all samples |
+
+## Precision
+
+- **Swatch colours** are averages of their clusters, rounded to whole RGB values. The same picture can give slightly different averages on different runs, because k-means++ starts from random colours.
+- **Shares** are shares of the sampled pixels, not of every pixel in the original picture. With widely spaced sampling, very small areas may not be sampled at all.
+- **The eyedropper and pins** read the working copy. On a large photograph each working pixel stands for a block of original pixels, so a pin is exact to the working copy, not to a single original pixel.
+- **Relative luminance and contrast ratios** follow the WCAG 2 definitions exactly, from the sRGB values.
+- **CIELAB and LCH** are calculated from sRGB with a D65 white.
+- **Clusters are formed in RGB.** RGB distance does not match perceived difference evenly, so two swatches can look closer or further apart than their separation suggests.
+
+## Limits
+
+- One picture at a time.
+- Images from other websites load only if their server allows cross-origin reading.
+- The slider sets 2 to 12 clusters; 16 is used only before it is first moved.
+- Up to 24 pins.
+- Harmony uses HSL hue and fixed angle ranges. Greys have no meaningful hue.
+- Contrast pairs cover the eight highest-contrast pairs of palette colours; pins are not included.
+- Batch analysis reads three- and six-digit hex correctly; values with an alpha part are not.
+- The page does not compare palettes side by side, even though it counts extractions.
+- The page shows no confirmation messages.
+
+## What it is not
+
+The palette describes which colours occupy the picture and how much of it. It is not a judgement of which colours are important to the picture's meaning, and the harmony readout is a convention, not a measure of quality. The contrast ratings are a first pass; confirm text and background pairs in a dedicated contrast tool.

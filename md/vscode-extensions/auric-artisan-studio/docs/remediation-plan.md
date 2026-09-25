@@ -1,0 +1,113 @@
+---
+title: Auric Artisan Studio — The remediation plan
+description: Generate the agent-ready remediation plan, understand every part of it, and use it with a coding agent you already have.
+product: VS Code extensions › Auric Artisan Studio
+updated: 2026-09-25
+---
+
+# The remediation plan
+
+**Generate Agent-Ready Remediation Plan** turns your last scan into a structured backlog of fixes: exact contrast repairs with computed colours, WCAG tasks, security and secret tasks, repeated patterns worth fixing once, a draft design-token system, a validation checklist and a prompt you can hand to a coding agent.
+
+It is **100% deterministic and local**. The plan is computed from your scan by fixed rules. No AI model is called, nothing is sent over the network, and the same scan always produces the same plan. The only part intended for AI is the prompt text in the plan, a fixed template written for an external coding agent that you choose to use (for example Claude Code, Copilot or Cursor).
+
+The command is provided by Auric Accessibility and Auric Code Health.
+
+## Generate the plan
+
+1. Open a workspace folder.
+2. Start the command in any of these ways:
+   - **Auric Artisan: Generate Agent-Ready Remediation Plan** in the Command Palette;
+   - **Fix plan** in the Overview's navigation;
+   - **Fix plan for an agent** in the Studio's Home, Findings or Health space;
+   - the **…** menu of the Project Issues view;
+   - **Generate AI remediation plan** in the Command Center;
+   - **Draft tokens** on the suggestion **N color values repeat 4+ times**.
+3. The Studio uses a fresh scan cache if there is one, or scans first.
+4. It writes `.auric-artisan/ai-remediation-plan.md` and `.auric-artisan/ai-remediation-plan.json`, and opens the Markdown file.
+5. A message confirms, for example **Auric Artisan: agent-ready remediation plan created with 37 task(s) — generated locally from the scan, nothing sent to any external service.**, with **Open JSON**, **Open Data Folder** and **Open Studio**.
+
+Generating again overwrites both files. They are excluded from source control by the folder's `.gitignore`.
+
+## What the Markdown plan contains
+
+| Section | Contents |
+| --- | --- |
+| **Auric Artisan AI Remediation Plan** | The heading and the time it was generated |
+| **Scan Summary** | Score and grade, files scanned, failing contrast pairs, WCAG findings, code-health findings, colour-vision risk pairs, unique colours |
+| **AI Prompt** | The prompt text for an external coding agent |
+| **Phases** | Five phases, each with a goal and actions |
+| **Backlog** | A table of tasks: ID, priority, type, task, location and suggested fix |
+| **Design Token Draft** | A summary and a CSS block of suggested tokens |
+| **Validation Checklist** | Checks to tick off before calling the work done |
+| **Automation Notes** | Which task IDs are low-risk to attempt automatically, which need review, and a warning |
+
+### The phases
+
+1. **Baseline and guardrails**: freeze the current report as the baseline before edits; work in small commits grouped by contrast, WCAG semantics and token migration.
+2. **Automated contrast pass**: resolve the failing contrast pairs with the computed candidates, preferring component or token fixes when a colour repeats.
+3. **Semantic WCAG pass**: fix labels, accessible names, keyboard handlers and ARIA relationships with product context, without inventing misleading alt text or labels.
+4. **Design-system extraction**: turn repeated colours into accessible roles and shade scales.
+5. **Verification loop**: rescan after each batch, run your tests, visual checks and manual keyboard and zoom checks, and stop if the score regresses.
+
+### The backlog
+
+The backlog holds up to 80 tasks, at most 40 of each kind, sorted by priority (critical, high, medium, low).
+
+| Task ID | Type | Created from | Priority | Suggested fix |
+| --- | --- | --- | --- | --- |
+| `AA-CONTRAST-001`… | contrast | Each failing contrast pair | critical below 3:1, otherwise high | Replace the colour with a computed candidate of the same hue, with its expected ratio and APCA value |
+| `AA-WCAG-001`… | wcag | Each WCAG finding | From the finding's impact | A source edit following the rule's fix |
+| `AA-CODEHEALTH-001`… | codehealth | Each secret, security or risky-API finding | Secrets critical (high if low confidence); security high; risky APIs high or medium | Secret remediation or a security review |
+| `AA-PATTERN-001`… | pattern | A WCAG rule that fires three or more times (up to eight patterns) | high when any instance is critical or serious, otherwise medium | Fix once at the component or template level |
+
+Task markers, debug leftovers and oversized-code findings are not turned into tasks; they stay in the health record and the project health report.
+
+Each task in the JSON file also carries evidence, acceptance criteria and an automation assessment. For example, a contrast task is marked safe to attempt with low risk ("The scanner has the exact foreground token location and a deterministic contrast repair candidate."), while tasks for labels, names, alt text, language, titles, keyboard handlers and accessible authentication are marked medium risk because the meaning needs review. Secret tasks are never marked safe to automate.
+
+### The design-token draft
+
+The draft picks roles from your project's most used colours and makes sure the text roles pass your contrast target:
+
+```css
+:root {
+  --aa-color-bg: …;
+  --aa-color-surface: …;
+  --aa-color-text: …;
+  --aa-color-text-muted: …;
+  --aa-color-primary: …;
+  --aa-color-on-primary: …;
+  --aa-color-link: …;
+  --aa-color-border: …;
+  --aa-color-focus: …;
+  --aa-primary-50: …;
+  /* … through --aa-primary-950 */
+}
+```
+
+The primary shade stops run from 50 to 950. The plan advises using these as a starting point, reviewing names against your own vocabulary, introducing tokens in one global place, replacing repeated raw colours with role tokens before tuning components, and rescanning after each batch.
+
+### The validation checklist
+
+- Auric Artisan force rescan shows fewer failing contrast pairs.
+- WCAG finding count drops or every remaining finding is documented.
+- Secret, security and risky-API findings are resolved or explicitly reviewed; exposed credentials are rotated.
+- Project tests and build still pass.
+- Keyboard navigation, visible focus, 200% zoom and screen-reader names are manually spot checked.
+- No broad token migration changed brand meaning without design review.
+
+## The prompt for your agent
+
+The **AI Prompt** section is a fixed template. It tells an agent to treat the scan and plan as its source of truth, and sets rules such as: start with critical and high tasks; prefer shared component or token fixes; use a contrast candidate only if it still fits the visual role; never add generic alt text, labels or ARIA just to silence the scanner; never print or invent credentials; add a regression test around security fixes; rescan after each batch; and keep edits scoped. It ends with the current score, the number of files and the backlog size.
+
+To use it, open the plan in your agent's workspace and ask the agent to follow the **AI Prompt** section, or paste that section into your agent's chat. The Studio does not connect to any agent itself.
+
+## The JSON plan
+
+`ai-remediation-plan.json` holds the same plan in machine-readable form, with `"schema": "auric-artisan.ai-remediation-plan"` and `"version": 1`, and the fields `generatedAt`, `scan`, `goals`, `phases`, `backlog`, `automation`, `designSystem`, `validationChecklist` and `prompt`.
+
+## Related
+
+- [The Command Center](command-center.md)
+- [Exports and health records](exports-and-records.md)
+- [Limits and accuracy](../others/limits-and-accuracy.md)

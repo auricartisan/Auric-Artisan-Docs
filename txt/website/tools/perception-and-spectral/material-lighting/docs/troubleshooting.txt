@@ -1,0 +1,121 @@
+==============================================================================
+TROUBLESHOOTING MATERIAL UNDER LIGHT
+==============================================================================
+Symptoms, causes and fixes for Material Under Light: black samples, disabled
+controls, clipping, refused files and links.
+Area: Website › Tools › Perception and spectral › Material Lighting   Updated: 2026-09-25
+
+THE SPHERE AND SWATCH ARE BLACK
+===============================
+
+Why: you chose Conductor with the Oren-Nayar lobe. A conductor has no diffuse
+term, and Oren-Nayar has no specular term, so nothing is reflected.
+
+What to do: choose Dielectric, or a specular lobe such as GGX, Beckmann, Ward
+or Ashikhmin-Shirley.
+
+THE TEMPERATURE SLIDER DOES NOTHING OR IS GREYED OUT
+====================================================
+
+Why: it is used only by Blackbody at a temperature you choose and Daylight at
+a temperature you choose. Every other light has its own fixed definition.
+
+What to do: choose one of those two options.
+
+I SET A DAYLIGHT BELOW 4000 K BUT THE READOUT SAYS 4000 K
+=========================================================
+
+Why: the CIE daylight model is defined from 4000 K upwards, so lower values
+are raised to 4000 K. The exports record this.
+
+What to do: use Blackbody at a temperature you choose for warmer sources.
+
+"MEASURED TEMPERATURE" IS HIGHLIGHTED AND MENTIONS MCCAMY
+=========================================================
+
+Why: above 7000 K the colour-temperature formula is outside its accurate
+range; the error band grows to ±139 K and beyond.
+
+What to do: nothing; the reference chosen above 5000 K is a daylight either
+way. Treat the temperature as approximate.
+
+"CLIPPED TO SRGB" APPEARS, OR "INSIDE SRGB" READS "NO" OR "THE HIGHLIGHT IS NOT"
+==============================================================================
+
+Why: the material's colour, or its highlight, is outside what sRGB can show;
+the swatch and sphere show the nearest displayable colour. Saturated materials
+such as the default gold, and bright highlights on shiny surfaces, often do
+this.
+
+What to do: nothing is wrong; the L*a*b* values are computed before clipping.
+Raise Roughness or change the angles to dim the highlight.
+
+MOVING "SEEN FROM" OR "BETWEEN THEM" DOES NOT CHANGE THE SPHERE
+===============================================================
+
+Why: the sphere is always drawn seen head-on, lit from Light from. The view
+angles set the geometry of the single point the readouts and swatches
+describe.
+
+What to do: read the swatch and the readouts, which do change.
+
+THE REFRACTIVE INDEX SLIDER IS GREYED OUT
+=========================================
+
+Why: it applies only to dielectrics.
+
+What to do: select Dielectric.
+
+EVERY MATERIAL LOOKS SIMILAR UNDER E OR A HIGH-TEMPERATURE LIGHT
+================================================================
+
+Why: the presets are smooth invented curves, and the lobe mixes in a
+colourless highlight on dielectrics.
+
+What to do: compare L*a*b* values rather than swatches, or load a measured
+reflectance.
+
+MY REFLECTANCE FILE IS REFUSED
+==============================
+
+  Message: No two-column numeric rows in that file
+  Fix:     Make sure each data line has two numbers: wavelength and
+           reflectance
+
+  Message: Not installed: fewer than eight rows
+  Fix:     Supply at least eight rows
+
+  Message: Not installed: covers X to Y nm; at least 420 to 680 is needed …
+  Fix:     Extend the data to cover 420–680 nm
+
+A file in percent is converted automatically. A file mixing fractions and
+percentages is read as percent throughout.
+
+THE MATERIAL MENU SHOWS ONLY MY FILE
+====================================
+
+Why: a loaded reflectance replaces the twenty presets until you remove it.
+
+What to do: select Go back to the presets on the Data tab.
+
+A FILE CHOOSER OPENS WHEN I CLICK THE SPECTRUM
+==============================================
+
+Why: the plot is also a drop zone for reflectance files; clicking it opens a
+chooser.
+
+What to do: cancel it if you did not mean to load a file.
+
+THE SWEEP RESULT IS OUT OF DATE
+===============================
+
+Why: the sweep is not rerun when the scene changes.
+
+What to do: select Run the sweep again on the Metrics tab before exporting.
+
+A LINK DID NOT RESTORE MY MEASURED MATERIAL
+===========================================
+
+Why: links carry the light, preset material, surface, lobe and angles only.
+
+What to do: load the file again after opening the link.

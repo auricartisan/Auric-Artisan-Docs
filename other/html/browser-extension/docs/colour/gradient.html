@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gradient — Auric Artisan Docs</title>
+<meta name="description" content="Build a linear, radial or conic CSS gradient from two or more stops, choose the interpolation space, and copy or save the CSS.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Colour tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="convert.html">Convert</a></li>
+<li><a href="gradient.html" aria-current="page">Gradient</a></li>
+<li><a href="harmony.html">Harmony</a></li>
+<li><a href="image.html">Image</a></li>
+<li><a href="mix.html">Mix</a></li>
+<li><a href="page-palette.html">Page palette</a></li>
+<li><a href="picker.html">Picker</a></li>
+<li><a href="scale.html">Scale</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Colour tools</a></nav>
+<p class="kicker">Browser extension › Colour</p>
+<h1>Gradient</h1>
+<p class="lede">Build a linear, radial or conic CSS gradient from two or more stops, choose the interpolation space, and copy or save the CSS.</p>
+<p>Gradient builds a CSS background gradient and writes the declaration for you.</p>
+<h2 id="build-a-gradient">Build a gradient</h2>
+<ol>
+<li>Open Colour › <strong>Gradient</strong>. It starts with two stops: gold at 0% and near-black at 100%.</li>
+<li>For each stop, set its colour and its position with the slider or the number field (0 to 100%).</li>
+<li>Choose <strong>+ Stop</strong> to add a stop between the last two. Choose a stop&#39;s <strong>✕</strong> button to remove it; a gradient keeps at least two stops.</li>
+<li>Choose the type: <strong>Linear</strong>, <strong>Radial</strong> or <strong>Conic</strong>.</li>
+<li>Set the angle in degrees (0 to 360). It sets the direction of a linear gradient and the starting angle of a conic one.</li>
+<li>Choose the interpolation space: <strong>sRGB</strong>, <strong>OKLCH</strong> or <strong>HSL</strong>.</li>
+</ol>
+<p>The preview and a colour track update as you change anything, and the CSS appears below them.</p>
+<h2 id="interpolation-spaces">Interpolation spaces</h2>
+<ul>
+<li><strong>sRGB</strong> uses your stops as they are; the browser blends between them. Blends between very different hues can look grey in the middle.</li>
+<li><strong>OKLCH</strong> and <strong>HSL</strong> write out 13 evenly spaced stops calculated in that space, so the middle of the gradient stays vivid.</li>
+</ul>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> The OKLCH option currently mixes in OKLab, the rectangular form of the same colour space. Results are close to OKLCH but hue paths between distant hues can differ.</p>
+</blockquote>
+<h2 id="the-css">The CSS</h2>
+<p>The output is a <code>background:</code> declaration, for example:</p>
+<pre class="code" data-lang="css"><code>background: linear-gradient(90deg, #d3af37 0%, #0d080b 100%);</code></pre>
+<p>Radial gradients are written as <code>radial-gradient(circle, …)</code> and conic ones as <code>conic-gradient(from 90deg, …)</code>.</p>
+<h2 id="buttons">Buttons</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Copy</strong></td><td>Copies the declaration</td></tr>
+<tr><td><strong>Save snippet</strong></td><td>Saves the declaration to Code › Snippets, titled by its type (for example &quot;linear gradient&quot;)</td></tr>
+<tr><td><strong>Random</strong></td><td>Makes a new gradient of 2 to 4 random stops at a random angle</td></tr>
+<tr><td><strong>Reverse</strong></td><td>Reverses the order and positions of the stops</td></tr>
+</tbody></table></div>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../code/snippets.html">Snippets</a></li>
+<li><a href="mix.html">Mix</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="convert.html"><span>Previous</span>Convert</a><a href="harmony.html"><span>Next</span>Harmony</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#build-a-gradient">Build a gradient</a></li><li><a href="#interpolation-spaces">Interpolation spaces</a></li><li><a href="#the-css">The CSS</a></li><li><a href="#buttons">Buttons</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

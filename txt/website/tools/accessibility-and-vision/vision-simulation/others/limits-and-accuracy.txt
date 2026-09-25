@@ -1,0 +1,68 @@
+==============================================================================
+LIMITS AND ACCURACY
+==============================================================================
+How the Vision Lab's simulations are made, how far to trust them, and what the
+lab is not.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+WHAT THE SIMULATIONS ARE
+========================
+
+  - Educational visualisations. The page states they are "not a medical
+    simulation, a diagnostic tool, or a substitute for professional eye care".
+    They show how a typical case of a condition might affect what you see, to
+    help design and teaching.
+  - Per-colour conditions use published colour-vision models, calculated in
+    linear light (colours are converted from screen values to values
+    proportional to light before any maths):
+    - Brettel (1997) projects colours onto the plane a dichromat can see, in
+      LMS cone space.
+    - Viénot (1999) is a simplified, single-plane version of the same idea.
+    - Machado (2009) models reduced cone sensitivity, which suits the milder
+      "-anomaly" forms and partial severities. The floating panels label their
+      version "Machado-like". The models agree on the broad picture and differ
+      in detail. Try more than one.
+  - Field conditions are illustrative effects (blur, dimming, lost regions,
+    glare, distortion) drawn over the image. They show the kind of loss, not a
+    measured map of any real patient's field.
+  - Severity is a dial on the model, not a milder diagnosis. The severity
+    score (1 to 10) is an estimated visual-impact score that orders the
+    collection; it is not a clinical grade.
+
+WHAT CHANGES THE RESULT YOU SEE
+===============================
+
+  - Your screen. Screen colours are not calibrated. Brightness, colour
+    profile, night modes and panel type all change what you see.
+  - The room. Ambient light changes how colours look.
+  - Your own vision. If you have a colour-vision deficiency yourself, a
+    simulation of another deficiency is filtered through your own.
+  - Real people vary. Two people with the same diagnosis can see differently.
+
+MEASUREMENTS
+============
+
+  - ΔE76 and ΔE2000 are calculated between the original and simulated colours.
+    ΔE2000 follows perception more closely.
+  - Collapse in the Workbench and Compare means a reference pair that was at
+    least 12 apart (ΔE2000) falls within 8. Palette audit uses your chosen
+    threshold, 5 by default.
+  - Button label / fill and CTA figures are WCAG contrast ratios, calculated
+    on the simulated colours of the mock-up.
+  - Palette audit covers the 17 per-colour conditions only; field conditions
+    are not colour transforms.
+
+IMAGES
+======
+
+  - Images are processed at a working size set by Quality (1024, 1600 or 4096
+    pixels), not always at full resolution.
+  - Very large images take longer at the higher quality settings.
+
+WHAT THE LAB IS NOT
+===================
+
+  - Not a vision test or a diagnosis.
+  - Not a guarantee that a design is accessible. Pair it with contrast checks
+    and with testing by people who have these conditions.
+  - Not a substitute for professional eye care.

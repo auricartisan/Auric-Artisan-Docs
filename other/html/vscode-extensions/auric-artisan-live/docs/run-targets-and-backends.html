@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run a backend or framework dev server — Auric Artisan Docs</title>
+<meta name="description" content="Let Auric Live run your project's backend or framework dev server (PHP, Python, Ruby, Go, Java, Node.js and more), or connect to one already running, and serve it through one address.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html" aria-current="page">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Run a backend or framework dev server</h1>
+<p class="lede">Let Auric Live run your project's backend or framework dev server (PHP, Python, Ruby, Go, Java, Node.js and more), or connect to one already running, and serve it through one address.</p>
+<p>A <em>run target</em> is what actually serves your site. By default it is <strong>Static files</strong>: Auric Live serves the folder itself. For a project with a backend or a framework dev server, you can choose a different run target. Auric Live then starts that process, waits for it to be ready, and forwards requests to it, so you still use one address with the dashboard, request inspector, network simulation and phone QR code.</p>
+<p>Auric Live does not install runtimes or packages. PHP, Python, Ruby, Go, Java, Node.js and the rest must already be installed and on your <code>PATH</code>, and the project&#39;s dependencies must already be installed.</p>
+<p>Running a command needs a trusted workspace. In Restricted Mode only static files are served.</p>
+<h2 id="choose-a-run-target">Choose a run target</h2>
+<ol>
+<li><p>Run <strong>Auric Live: Select Run Target…</strong> (<code>Ctrl</code> + <code>Alt</code> + <code>J</code>), select the <strong>Run target</strong> row in the <strong>Servers</strong> view, or use the control panel&#39;s <strong>03 / Runtime</strong> section.</p>
+</li>
+<li><p>The list, titled <strong>Run target — <em>folder name</em></strong>, shows in this order:</p>
+<ul>
+<li>your saved commands (from <code>auricLive.runProfiles</code>);</li>
+<li>the detected framework dev server, if any;</li>
+<li>detected language runtimes;</li>
+<li><strong>Static files</strong>, which is always available.</li>
+</ul>
+<p>Each entry shows its command and why it was detected, for example <code>manage.py is present</code>. The current target has a tick.</p>
+</li>
+<li><p>The list also offers <strong>Add a custom command…</strong>, <strong>Edit saved commands…</strong> and <strong>Find a running backend…</strong>.</p>
+</li>
+<li><p>Pick a target. If the server was not running, it starts.</p>
+</li>
+</ol>
+<p>What happens next depends on the kind of target:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Kind</th><th>What Auric Live does</th></tr></thead>
+<tbody>
+<tr><td><strong>Static files</strong></td><td>Serves the folder itself, with Auric live reload</td></tr>
+<tr><td><strong>A server command</strong></td><td>Starts the command, forwards <code>/</code> to its port and waits while it starts</td></tr>
+<tr><td><strong>PHP through CGI</strong></td><td>Runs <code>.php</code> files per request with <code>php-cgi</code>. See <a href="php-and-cgi.html">Run PHP sites</a></td></tr>
+<tr><td><strong>An existing server (URL only)</strong></td><td>Forwards to a server you already run, without starting or stopping it</td></tr>
+</tbody></table></div>
+<p>With a server command, Auric live reload is switched off for that session so it does not compete with the framework&#39;s hot reload, and the developer dashboard is still added to pages.</p>
+<p><strong>Auric Live: Show Detected Run Targets</strong> writes every target it can offer for the folder, with the reason for each, to the output channel.</p>
+<h2 id="what-is-detected">What is detected</h2>
+<p>Detection is based on evidence in the folder: a file that exists, a dependency that is declared, an entry point that is present. It suggests a target; it does not guarantee every framework configuration works.</p>
+<h3 id="javascript-framework-dev-servers">JavaScript framework dev servers</h3>
+<p>Detected from <code>package.json</code> dependencies. The command uses your package manager, chosen from the lockfile: <code>pnpm run</code>, <code>yarn</code>, <code>bun run</code> or <code>npm run</code>. Auric Live prefers the script the project declares (<code>dev</code>, <code>start</code> or <code>serve</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Framework</th><th>Usual script</th><th>Usual port</th></tr></thead>
+<tbody>
+<tr><td>Next.js</td><td><code>dev</code></td><td>3000</td></tr>
+<tr><td>Nuxt</td><td><code>dev</code></td><td>3000</td></tr>
+<tr><td>SvelteKit</td><td><code>dev</code></td><td>5173</td></tr>
+<tr><td>Astro</td><td><code>dev</code></td><td>4321</td></tr>
+<tr><td>Remix</td><td><code>dev</code></td><td>3000</td></tr>
+<tr><td>Angular</td><td><code>start</code></td><td>4200</td></tr>
+<tr><td>Gatsby</td><td><code>develop</code></td><td>8000</td></tr>
+<tr><td>Create React App</td><td><code>start</code></td><td>3000</td></tr>
+<tr><td>Vue CLI</td><td><code>serve</code></td><td>8080</td></tr>
+<tr><td>Eleventy</td><td><code>start</code></td><td>8080</td></tr>
+<tr><td>Vite</td><td><code>dev</code></td><td>5173</td></tr>
+<tr><td>Express</td><td><code>start</code></td><td>3000</td></tr>
+<tr><td>Any project with a <code>dev</code>, <code>start</code> or <code>serve</code> script</td><td>that script</td><td>3000</td></tr>
+</tbody></table></div>
+<h3 id="language-runtimes">Language runtimes</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Language</th><th>Target</th><th>Detected when</th><th>Command</th><th>Port</th></tr></thead>
+<tbody>
+<tr><td>PHP</td><td>Laravel</td><td><code>artisan</code> is present</td><td><code>php artisan serve --port=&lt;port&gt;</code></td><td>8000</td></tr>
+<tr><td>PHP</td><td>Symfony</td><td><code>symfony.lock</code> is present</td><td><code>symfony server:start --port=&lt;port&gt; --no-tls</code></td><td>8000</td></tr>
+<tr><td>PHP</td><td>PHP built-in server</td><td><code>composer.json</code>, <code>index.php</code> or any <code>.php</code> file</td><td><code>php -S 127.0.0.1:&lt;port&gt; -t &lt;docroot&gt;</code> (docroot <code>public</code> when <code>public/index.php</code> exists)</td><td>8000</td></tr>
+<tr><td>PHP</td><td>PHP through CGI</td><td>the folder contains <code>.php</code> files</td><td>runs per request</td><td>—</td></tr>
+<tr><td>Python</td><td>Django</td><td><code>manage.py</code> is present</td><td><code>python manage.py runserver &lt;port&gt;</code></td><td>8000</td></tr>
+<tr><td>Python</td><td>FastAPI</td><td><code>fastapi</code> in <code>requirements.txt</code> or <code>pyproject.toml</code>, or <code>main.py</code> creates a FastAPI app</td><td><code>uvicorn main:app --reload --port &lt;port&gt;</code></td><td>8000</td></tr>
+<tr><td>Python</td><td>Flask</td><td><code>flask</code> declared, or <code>app.py</code> or <code>wsgi.py</code> creates a Flask app</td><td><code>flask run --port &lt;port&gt;</code></td><td>5000</td></tr>
+<tr><td>Python</td><td>Python http.server</td><td>the folder contains <code>.py</code> files</td><td><code>python -m http.server &lt;port&gt;</code></td><td>8000</td></tr>
+<tr><td>Ruby</td><td>Ruby on Rails</td><td><code>bin/rails</code> is present</td><td><code>ruby bin/rails server -p &lt;port&gt;</code></td><td>3000</td></tr>
+<tr><td>Ruby</td><td>Jekyll</td><td><code>_config.yml</code> is present</td><td><code>bundle exec jekyll serve --port &lt;port&gt;</code></td><td>4000</td></tr>
+<tr><td>Ruby</td><td>Sinatra</td><td><code>sinatra</code> in the <code>Gemfile</code></td><td><code>ruby app.rb -p &lt;port&gt;</code></td><td>4567</td></tr>
+<tr><td>TypeScript</td><td>Deno</td><td><code>deno.json</code> or <code>deno.jsonc</code></td><td><code>deno task start</code></td><td>8000</td></tr>
+<tr><td>TypeScript</td><td>Bun</td><td>a Bun lockfile</td><td><code>bun run dev</code></td><td>3000</td></tr>
+<tr><td>JavaScript</td><td>Node entry point</td><td><code>package.json</code> <code>main</code>, or <code>server.js</code>, <code>app.js</code>, <code>index.js</code>, <code>main.js</code>, <code>src/server.js</code>, <code>src/index.js</code></td><td><code>node &lt;entry&gt;</code></td><td>3000</td></tr>
+<tr><td>C#</td><td>ASP.NET Core</td><td>a <code>.csproj</code> or <code>.sln</code> file</td><td><code>dotnet watch run --urls http://localhost:&lt;port&gt;</code></td><td>5000</td></tr>
+<tr><td>Java</td><td>Spring Boot (Maven)</td><td><code>pom.xml</code> declares Spring Boot</td><td><code>mvnw spring-boot:run</code> (or <code>mvn</code>)</td><td>8080</td></tr>
+<tr><td>Java</td><td>Spring Boot (Gradle)</td><td>the Gradle build declares Spring Boot</td><td><code>gradlew bootRun</code> (or <code>gradle</code>)</td><td>8080</td></tr>
+<tr><td>Go</td><td>Go</td><td><code>go.mod</code> is present</td><td><code>go run .</code></td><td>8080</td></tr>
+<tr><td>Rust</td><td>Rust</td><td><code>Cargo.toml</code> is present</td><td><code>cargo run</code></td><td>8080</td></tr>
+<tr><td>Elixir</td><td>Phoenix</td><td><code>mix.exs</code> declares Phoenix</td><td><code>mix phx.server</code></td><td>4000</td></tr>
+<tr><td>Go</td><td>Hugo</td><td><code>hugo.toml</code>, <code>hugo.yaml</code> or <code>config.toml</code></td><td><code>hugo server --port &lt;port&gt;</code></td><td>1313</td></tr>
+</tbody></table></div>
+<p>Only one generic fallback is offered per language: a Django project is not also offered <code>python -m http.server</code>. For Maven and Gradle, the project&#39;s wrapper script (<code>mvnw</code>, <code>gradlew</code>) is used when it exists.</p>
+<h2 id="the-first-run-suggestion">The first-run suggestion</h2>
+<p>The first time you go live in a folder that is clearly not a plain static site, Auric Live says so once:</p>
+<ul>
+<li>For a framework: <strong>This looks like a <em>Vite</em> project, which has its own dev server on port <em>5173</em>.</strong> Choose <strong>Start it and proxy</strong>, <strong>Write config</strong> (saves a suggested setup to <code>auric.live.json</code>) or <strong>Not now</strong>.</li>
+<li>For PHP: <strong>This looks like a PHP project.</strong> Choose <strong>Enable PHP</strong> or <strong>Not now</strong>.</li>
+</ul>
+<p>Serving a Vite or Next.js project as plain files shows an unbuilt page full of module errors; this prompt prevents that. Turn it off with <code>auricLive.suggestFrameworkSetup</code>. To skip the question and always start the detected dev server, set <code>auricLive.devServer.autoStart</code> to <code>true</code>.</p>
+<h2 id="framework-dev-server-commands">Framework dev server commands</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric Live: Start Framework Dev Server…</strong></td><td>Detect the framework, confirm the command (<strong>Run: <em>command</em></strong>), start it and forward to it</td></tr>
+<tr><td><strong>Auric Live: Stop Framework Dev Server</strong></td><td>Stop it, and remove the forwarding it added</td></tr>
+<tr><td><strong>Auric Live: Restart Framework Dev Server</strong></td><td>Restart it</td></tr>
+<tr><td><strong>Auric Live: Show Dev Server Output</strong></td><td>Show its output (the <strong>Auric Live: Run Target</strong> output channel)</td></tr>
+</tbody></table></div>
+<p>When it starts: <strong>Auric Live started <em>Next.js</em> and is forwarding to it. Requests wait while it compiles, and pages reload when it restarts.</strong></p>
+<h3 id="supervision">Supervision</h3>
+<p>By default the dev server runs as a supervised process, which gives you three things:</p>
+<ul>
+<li><strong>Port adoption.</strong> If the framework moves to another port because yours was taken, Auric Live reads the port it prints and forwards there (<code>auricLive.upstream.autoDetectPort</code>).</li>
+<li><strong>Restart on crash.</strong> If it exits unexpectedly, it restarts with a growing delay (<code>auricLive.devServer.autoRestart</code>), up to <code>auricLive.devServer.maxRestarts</code> times (default 5). A clean exit is not restarted. After repeated failures you see <strong>keeps failing</strong> with <strong>Show output</strong> and <strong>Try again</strong>.</li>
+<li><strong>Reload on recovery.</strong> Pages reload when the backend comes back (<code>auricLive.upstream.reloadOnRecover</code>).</li>
+</ul>
+<p>If your command needs typed input, set <code>auricLive.devServer.useTerminal</code> to run it in a VS Code terminal instead. You lose port adoption, restart supervision and reload on recovery.</p>
+<p>To override the detected command, set <code>auricLive.devServer.command</code>, for example <code>npm run dev -- --host</code>.</p>
+<h2 id="add-your-own-command">Add your own command</h2>
+<ol>
+<li><p>Run <strong>Auric Live: Add Custom Run Command…</strong>, or choose <strong>Add a custom command…</strong> in the run-target list.</p>
+</li>
+<li><p><strong>Run command (1 of 3):</strong> paste the command that starts your site, exactly as you would type it. Environment variables written in front of it are read and applied to the process, in any of these shell styles:</p>
+<pre class="code" data-lang="text"><code>$env:API_MODE=mock; node server.js
+API_MODE=mock node server.js
+set API_MODE=mock &amp;&amp; node server.js</code></pre>
+<p>So a command copied from a PowerShell prompt also works when VS Code uses bash, and the other way round. A line that contains only assignments adds those variables to the currently selected run target.</p>
+</li>
+<li><p><strong>Run command (2 of 3):</strong> give it a name.</p>
+</li>
+<li><p><strong>Run command (3 of 3):</strong> enter the port it listens on, or leave it empty to read the port from the command&#39;s output when it starts.</p>
+</li>
+<li><p>Choose <strong>Run it now</strong> or <strong>Not yet</strong>.</p>
+</li>
+</ol>
+<p>The command is saved to <code>auricLive.runProfiles</code> in your workspace settings (per folder in a multi-root workspace), so it survives a restart. <strong>Auric Live: Edit Saved Run Commands</strong> opens that setting.</p>
+<h3 id="run-profile-fields">Run profile fields</h3>
+<p>You can also write profiles by hand, in settings or in <code>auric.live.json</code>. A profile can be just a command string, or an object:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>label</code></td><td>Name shown in the list</td></tr>
+<tr><td><code>id</code></td><td>Stable identifier; derived from the label if omitted</td></tr>
+<tr><td><code>description</code></td><td>Extra text shown in the list</td></tr>
+<tr><td><code>command</code></td><td>The command line; leading environment assignments are read</td></tr>
+<tr><td><code>env</code></td><td>Environment variables as name–value pairs</td></tr>
+<tr><td><code>cwd</code></td><td>Working directory, relative to the served root</td></tr>
+<tr><td><code>port</code></td><td>Port the process listens on; <code>0</code> or omitted reads it from the output</td></tr>
+<tr><td><code>url</code></td><td>An existing server to forward to (<code>http://</code> or <code>https://</code>, no embedded credentials). Without <code>command</code>, nothing is started</td></tr>
+<tr><td><code>kind</code></td><td><code>server</code>, <code>static</code> or <code>cgi</code></td></tr>
+<tr><td><code>mount</code></td><td>Path the target is forwarded under; default <code>/</code></td></tr>
+<tr><td><code>healthPath</code></td><td>An absolute path that must answer 200–399 before the target counts as ready</td></tr>
+<tr><td><code>autoStart</code></td><td><code>true</code> to apply this profile automatically on <strong>Go Live</strong></td></tr>
+<tr><td><code>adoptPort</code></td><td><code>false</code> to stop Auric Live following the port the process prints</td></tr>
+<tr><td><code>shell</code></td><td>A specific shell executable to run the command with</td></tr>
+</tbody></table></div>
+<h3 id="connect-to-a-backend-you-already-run">Connect to a backend you already run</h3>
+<p>A <em>URL-only</em> profile forwards to a server you started elsewhere. Auric Live never starts or stops it.</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;runProfiles&quot;: [
+    {
+      &quot;id&quot;: &quot;existing-api&quot;,
+      &quot;label&quot;: &quot;Existing API&quot;,
+      &quot;url&quot;: &quot;http://localhost:8000&quot;,
+      &quot;mount&quot;: &quot;/api&quot;,
+      &quot;healthPath&quot;: &quot;/health&quot;,
+      &quot;autoStart&quot;: true
+    }
+  ]
+}</code></pre>
+<h2 id="find-a-running-backend">Find a running backend</h2>
+<p><strong>Auric Live: Find a Running Backend</strong> scans the ports these tools usually use (or <code>auricLive.upstream.candidatePorts</code> if you set it), skipping Auric Live&#39;s own port.</p>
+<ul>
+<li>If something answers: <strong>Something is listening on port <em>N</em>. Forward / to it?</strong> Choose <strong>Forward it</strong>.</li>
+<li>If nothing answers: <strong>Auric Live checked <em>N</em> common ports and nothing was listening.</strong> Choose <strong>Start the dev server</strong> or <strong>Show ports</strong>.</li>
+</ul>
+<p>The <strong>Upstream not answering</strong> row in the <strong>Servers</strong> view runs the same scan.</p>
+<h2 id="waiting-for-a-backend">Waiting for a backend</h2>
+<p>When a proxied backend refuses the connection, it is usually still compiling. With <code>auricLive.upstream.wait</code> on (the default), a request waits up to <code>auricLive.upstream.waitTimeoutMs</code> (default 25 seconds) instead of failing with 502. After that, the page shows a waiting screen that reloads itself until the backend answers. Auric Live checks a silent backend every <code>auricLive.upstream.pollIntervalMs</code> (default 400 ms), then less often once it is up.</p>
+<p>Readiness is a TCP connection by default. Give a profile or proxy rule a <code>healthPath</code> to require an HTTP answer from 200 to 399 instead. Readiness checks do not follow redirects.</p>
+<h2 id="check-prerequisites">Check prerequisites</h2>
+<p><strong>Auric Live: Diagnose Project and Runtime</strong> opens a local report of the configuration, the run targets and whether each command&#39;s executable (and any configured shell) is found on your <code>PATH</code> or in the project. Credential fields are redacted. It inspects; it never runs or installs anything. The control panel&#39;s <strong>03 / Runtime</strong> section has <strong>Run diagnostics</strong> and shows the same readiness information.</p>
+<p>When a run target is working, the <strong>Servers</strong> view shows <strong>Dev server: <em>name</em></strong> as running with its port, <strong>Upstream ready</strong>, and the status bar shows the port without a warning background.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="project-configuration.html"><span>Previous</span>Project configuration</a><a href="serve-and-live-reload.html"><span>Next</span>Serve a folder with live reload</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#choose-a-run-target">Choose a run target</a></li><li><a href="#what-is-detected">What is detected</a></li><li><a href="#the-first-run-suggestion">The first-run suggestion</a></li><li><a href="#framework-dev-server-commands">Framework dev server commands</a></li><li><a href="#add-your-own-command">Add your own command</a></li><li><a href="#find-a-running-backend">Find a running backend</a></li><li><a href="#waiting-for-a-backend">Waiting for a backend</a></li><li><a href="#check-prerequisites">Check prerequisites</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+---
+title: Browser extension — Data settings
+description: See how much the extension stores, back up and restore everything, move settings through the clipboard, and clear or reset data.
+product: Browser extension › Settings
+updated: 2026-09-25
+---
+
+# Data settings
+
+Settings › **Data** shows what the extension keeps in your browser and lets you back it up, move it or clear it. Everything stays on your device.
+
+## Stored in this browser
+
+- A storage meter: "N used of M (P%)". The bar turns to a warning colour at 80% of the browser's allowance for extension storage.
+- Counts of **History**, **Colors**, **Palettes** and **Snippets**.
+- **Refresh storage usage** (the circular arrow) recounts.
+
+## Backup
+
+"Settings, history, library and snippets in one file. Nothing leaves your device."
+
+| Button | What it does |
+|---|---|
+| **Download a backup** | Saves `auric-artisan-backup-YYYY-MM-DD.json` |
+| **Restore from a file** | Opens a file chooser for a backup `.json`, then restores it |
+
+### What a backup contains
+
+```json
+{
+  "app": "Auric Artisan",
+  "kind": "aa-backup",
+  "schema": 1,
+  "exportedAt": "2026-09-23T10:00:00.000Z",
+  "settings": { "themeMode": "dark", "accentColor": "#d3af37" },
+  "history": ["#D3AF37", "#1A73E8"],
+  "libColors": ["#D3AF37"],
+  "libPalettes": [{ "id": 1790000000000, "colors": ["#D3AF37", "#1A73E8"], "label": "triadic" }],
+  "snippets": [{ "type": "css", "title": "…", "code": "…", "url": "…", "host": "…" }]
+}
+```
+
+Snippets carry the address of the page they were saved from, so a backup contains those addresses. Keep it private if that matters.
+
+### What restoring does
+
+- Everything in the file replaces what is stored now: settings, history, library colours, palettes and snippets, each where present.
+- Values are checked and cleaned first: unknown settings are ignored, colours must be valid hex values, and every list is capped at its limit (history 50, colours 500, palettes 100 of up to 64 colours, snippets 200 of up to 20 000 characters).
+- A file of another kind, or a newer backup format, is refused with "Restore failed — invalid file".
+- A file holding only a settings object is accepted too.
+
+## Settings only
+
+| Button | What it does |
+|---|---|
+| **Copy settings** | Copies your settings as JSON |
+| **Paste settings** | Asks you to paste settings JSON, then applies it. Invalid text says "Import failed". |
+
+Use these to copy your theme, accent and switches to another browser without moving your colours.
+
+## Start over
+
+- **Clear history & library**: After you confirm, removes your colour history, library colours and palettes. Snippets stay.
+- **Reset all settings**: After you confirm, returns every setting to its default. History, library and snippets stay, and the tour does not reappear.
+
+To remove everything, uninstall the extension; see [Update and remove](../install/update-and-remove.md).
+
+## Related pages
+
+- [Back up and move your data](../workflows/back-up-and-move-your-data.md)
+- [Privacy](../../others/privacy.md)

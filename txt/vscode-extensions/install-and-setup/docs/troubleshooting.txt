@@ -1,0 +1,168 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Fix common problems when finding, installing, updating, configuring or
+removing an Auric Artisan VS Code extension.
+Area: VS Code extensions › Install and setup   Updated: 2026-09-25
+
+Each entry gives the symptom, the likely cause and what to do.
+
+FINDING AND INSTALLING
+======================
+
+The search finds nothing
+------------------------
+
+  - Cause: a filter such as `@installed`, `@disabled` or `@recommended` is
+    still in the search box, or the ID is misspelt.
+  - Fix: clear the search box and type `@id:` followed by the exact ID from
+    the reference [reference.txt]. Watch the IDs that are easy to get wrong:
+    the Full Pack is `auric-artisan.auric-artisan`, Icon Hub is
+    `auric-artisan.auric-artisan-icon-lib`, File Icons is
+    `auric-artisan.auric-artisan-file-icon`.
+
+The search finds nothing in Cursor, Windsurf or VSCodium
+--------------------------------------------------------
+
+  - Cause: the editor searches Open VSX, and the Auric Artisan extensions are
+    only on the Visual Studio Marketplace.
+  - Fix: install from a VSIX file. See Cursor, Windsurf, VSCodium and other
+    editors [forks-and-other-editors.txt].
+
+"Not compatible" or "requires a newer version of VS Code"
+---------------------------------------------------------
+
+  - Cause: your editor is older than the extension's minimum version. Live and
+    File System need 1.95; Font Hub, the icon libraries, File Icons, Emoji,
+    Icon Studio, Icon Hub and the Icon Pack need 1.85; Theme needs 1.75;
+    Color, Accessibility, Code Health, the Full Pack and Formatter need 1.74.
+  - Fix: update VS Code (Help › Check for Updates on Windows and Linux, Code ›
+    Check for Updates on macOS). In a fork, update the fork.
+
+`code` is not recognised in the terminal
+----------------------------------------
+
+  - Cause: the launcher is not on your `PATH`, or the terminal was opened
+    before VS Code was installed.
+  - Fix: open a new terminal. On macOS, run Shell Command: Install 'code'
+    command in PATH from the Command Palette. On Windows, reinstall VS Code
+    with the option to add it to `PATH`, or use the full path to `code.cmd` in
+    the VS Code `bin` folder.
+
+The install fails with a network error
+--------------------------------------
+
+  - Cause: no connection to the Marketplace, or a proxy or firewall blocks it.
+  - Fix: check VS Code's `http.proxy` setting and your network. If the machine
+    cannot reach the Marketplace, download the VSIX on another machine and
+    install from the file.
+
+A downloaded file will not install
+----------------------------------
+
+  - Cause: the file was saved without the `.vsix` extension, or the download
+    was incomplete.
+  - Fix: rename the file to end in `.vsix` and try again. If it still fails,
+    download it again.
+
+Installed with the command line, but the extension is missing
+-------------------------------------------------------------
+
+  - Cause: the window uses a different VS Code profile, or the window has not
+    refreshed.
+  - Fix: run Developer: Reload Window. Check the active profile and install
+    with `--profile "<name>"` if needed.
+
+PACKS
+=====
+
+A pack installed but its members did not
+----------------------------------------
+
+  - Cause: the pack was installed from a VSIX in an editor that cannot reach
+    the Marketplace, so the members could not be fetched.
+  - Fix: install each member's VSIX. Members are listed in The two extension
+    packs [extension-packs.txt].
+
+An extension I uninstalled came back
+------------------------------------
+
+  - Cause: it is a member of a pack that was reinstalled or updated.
+  - Fix: disable the member instead of uninstalling it, or uninstall the pack
+    and install only the members you want.
+
+AFTER INSTALLING
+================
+
+No commands appear in the Command Palette
+-----------------------------------------
+
+  - Cause: the extension is disabled, the window needs a reload, or the
+    command only appears in certain situations (for example with a folder open
+    or an editor focused).
+  - Fix: check the extension is enabled in the Extensions view, reload the
+    window, open a folder, and type the command prefix from Getting started
+    [getting-started.txt].
+
+Duplicate Font Hub commands and views
+-------------------------------------
+
+  - Cause: the older Font Library extension is still installed alongside Font
+    Hub.
+  - Fix: disable or uninstall Font Library, then reload. Existing
+    `auricFontLib.*` settings keep working in Font Hub.
+
+Some features are missing or greyed out in a folder
+---------------------------------------------------
+
+  - Cause: VS Code is in Restricted Mode because the folder is not trusted.
+  - Fix: run Workspaces: Manage Workspace Trust and trust the folder if you
+    trust its authors. See Settings, sync and workspace trust
+    [settings-and-sync.txt] for what each extension limits.
+
+A keyboard shortcut does nothing
+--------------------------------
+
+  - Cause: another extension, your editor or your operating system uses the
+    same keys, or the shortcut is off by default (File System's full shortcut
+    deck needs `auricFiles.keyboard.enableDefaultShortcuts`).
+  - Fix: open Preferences: Open Keyboard Shortcuts, search for the command and
+    check for conflicts. Assign different keys if needed.
+
+SETTINGS
+========
+
+A setting I changed has no effect
+---------------------------------
+
+  - Cause: a more specific level overrides it. A workspace setting beats a
+    user setting, and a project file such as `auric.live.json` or
+    `.auricformatrc` beats both for that project.
+  - Fix: check the Workspace tab and the project files. The Settings editor
+    marks a setting that is modified elsewhere.
+
+A setting will not save in workspace settings
+---------------------------------------------
+
+  - Cause: it has application scope (for example Theme settings or
+    `auricEmoji.interfaceLanguage`), so it can only be set in user settings.
+  - Fix: set it on the User tab.
+
+Favourites or history did not follow me to another machine
+----------------------------------------------------------
+
+  - Cause: Settings Sync copies settings and the list of extensions, not the
+    data an extension keeps in its own storage.
+  - Fix: none needed; this data is kept per machine by design. See Settings,
+    sync and workspace trust [settings-and-sync.txt].
+
+The panel is still in English after choosing Hindi
+--------------------------------------------------
+
+  - Cause: only Live, Theme and Emoji include Hindi, and some content
+    (technical details, the Live browser dashboard) stays in English. An open
+    Live preview tab keeps the language it opened with.
+  - Fix: see Use an extension in Hindi [display-language-hindi.txt]. Reopen
+    the Live preview tab.
+
+If none of these helps, see Get support [get-support.txt].

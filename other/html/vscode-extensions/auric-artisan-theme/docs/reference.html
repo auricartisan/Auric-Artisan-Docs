@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auric Artisan Theme reference — Auric Artisan Docs</title>
+<meta name="description" content="Every command, keybinding, setting, theme, look, accent, palette, colour slot and Theme Studio control in Auric Artisan Theme 0.2.0.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Theme</a>
+<h2>Auric Artisan Theme guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Theme</a></li>
+<li><a href="check-contrast.html">Check contrast</a></li>
+<li><a href="choose-a-theme.html">Choose a theme</a></li>
+<li><a href="compare-and-preview.html">Compare and preview</a></li>
+<li><a href="edit-colours.html">Edit individual colours</a></li>
+<li><a href="interface-language.html">Interface language (English and हिन्दी)</a></li>
+<li><a href="looks-and-dials.html">Looks and dials</a></li>
+<li><a href="save-share-and-export.html">Save, share and export</a></li>
+<li><a href="theme-sidebar.html">The Theme sidebar</a></li>
+<li><a href="reference.html" aria-current="page">Auric Artisan Theme reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Theme</a> &rsaquo; <a href="README.html">Auric Artisan Theme guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Theme</p>
+<h1>Auric Artisan Theme reference</h1>
+<p class="lede">Every command, keybinding, setting, theme, look, accent, palette, colour slot and Theme Studio control in Auric Artisan Theme 0.2.0.</p>
+<p>This reference describes version 0.2.0 as published on the Visual Studio Marketplace.</p>
+<h2 id="commands">Commands</h2>
+<p>All commands appear in the Command Palette under the category <strong>Auric Theme</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Open Theme Studio</td><td><code>auricTheme.openStudio</code></td><td>Opens (or reveals) the Auric Theme Studio editor tab.</td></tr>
+<tr><td>Switch Variant…</td><td><code>auricTheme.selectTheme</code></td><td>Quick Pick of all 54 themes with polarity and canvas colour; sets VS Code&#39;s colour theme.</td></tr>
+<tr><td>Cycle Variant</td><td><code>auricTheme.cycleVariant</code></td><td>Switches to the next of the 54 variants.</td></tr>
+<tr><td>Choose Accent Colour…</td><td><code>auricTheme.pickAccent</code></td><td>Quick Pick of the 17 named accents; sets <code>auricTheme.accent.preset</code>.</td></tr>
+<tr><td>Choose Look…</td><td><code>auricTheme.pickLook</code></td><td>Quick Pick of the 11 looks; applies the look.</td></tr>
+<tr><td>Choose Syntax Palette…</td><td><code>auricTheme.pickPalette</code></td><td>Quick Pick of the 9 syntax palettes; sets <code>auricTheme.syntax.palette</code>.</td></tr>
+<tr><td>Choose Interface Language…</td><td><code>auricTheme.chooseInterfaceLanguage</code></td><td>Auto (VS Code), English or Hindi for the Studio and sidebar.</td></tr>
+<tr><td>Toggle Italics</td><td><code>auricTheme.toggleItalics</code></td><td>Switches <code>auricTheme.syntax.italics</code> between <code>off</code> and <code>standard</code>.</td></tr>
+<tr><td>Surprise Me</td><td><code>auricTheme.randomize</code></td><td>Clears your dials and applies a random curated accent, palette, warmth, separation, bracket and tab style.</td></tr>
+<tr><td>Reset Everything</td><td><code>auricTheme.resetAll</code></td><td>After a confirmation dialog, clears every dial and the active variant&#39;s colour overrides.</td></tr>
+<tr><td>Show Contrast Report</td><td><code>auricTheme.showAudit</code></td><td>Opens the read-only &quot;Auric contrast report&quot; text document.</td></tr>
+<tr><td>Copy Customisation to Clipboard</td><td><code>auricTheme.copyCustomization</code></td><td>Copies the customisation JSON.</td></tr>
+<tr><td>Apply Customisation from Clipboard</td><td><code>auricTheme.pasteCustomization</code></td><td>Imports customisation JSON from the clipboard.</td></tr>
+<tr><td>Export as Theme File…</td><td><code>auricTheme.exportThemeFile</code></td><td>Saves a standalone colour theme JSON file. Needs an Auric theme active.</td></tr>
+<tr><td>Save Current as Preset…</td><td><code>auricTheme.savePreset</code></td><td>Asks for a name and saves a preset.</td></tr>
+<tr><td>Load Preset…</td><td><code>auricTheme.loadPreset</code></td><td>Quick Pick of saved presets; loads the chosen one.</td></tr>
+<tr><td>Apply Now</td><td><code>auricTheme.applyNow</code></td><td>Re-applies the customisation immediately. Hidden from the Command Palette; you can bind it to a key.</td></tr>
+</tbody></table></div>
+<p>Commands that change the theme only work while an Auric theme is active. Otherwise VS Code shows &quot;Auric Theme customisations apply to the Auric Artisan themes. Pick one first.&quot; with a <strong>Choose theme</strong> button.</p>
+<h2 id="keybindings">Keybindings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys (Windows and Linux)</th><th>Keys (macOS)</th><th>Command</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>;</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>;</code></td><td>Open Theme Studio</td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>&#39;</code></td><td><code>Cmd</code> + <code>Alt</code> + <code>&#39;</code></td><td>Cycle Variant</td></tr>
+</tbody></table></div>
+<p>Both work anywhere in VS Code. Change them in <strong>Keyboard Shortcuts</strong> (<code>Ctrl</code> + <code>K</code>, <code>Ctrl</code> + <code>S</code>).</p>
+<h3 id="keys-inside-theme-studio">Keys inside Theme Studio</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Key</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><code>1</code> to <code>6</code></td><td>Select Looks, Dials, Colours, Audit, Share or Preview.</td></tr>
+<tr><td>Arrow keys, <code>Home</code>, <code>End</code></td><td>Move between tabs when a tab has focus.</td></tr>
+<tr><td><code>/</code></td><td>Go to the Colours tab and focus the colour filter.</td></tr>
+<tr><td><code>Escape</code></td><td>Close an open dropdown or picker; in the colour filter, clear the filter.</td></tr>
+<tr><td><code>Enter</code></td><td>In the preset name box, save the preset.</td></tr>
+</tbody></table></div>
+<p>Number keys and <code>/</code> are ignored while you type in a field or while a dropdown or picker is open.</p>
+<h3 id="keys-in-controls">Keys in controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Keys</th></tr></thead>
+<tbody>
+<tr><td>Dropdowns</td><td>Arrow keys, typeahead, <code>Enter</code> to choose, <code>Escape</code> or a click outside to close. Long lists have a search box.</td></tr>
+<tr><td>Sliders</td><td>Arrow keys; <code>Shift</code> for larger steps; <code>Page Up</code>, <code>Page Down</code>, <code>Home</code>, <code>End</code>; double-click resets.</td></tr>
+<tr><td>Colour picker plane</td><td>Arrow keys adjust saturation and brightness; <code>Shift</code> for larger steps.</td></tr>
+<tr><td>Swatch grids</td><td>Arrow keys move between swatches.</td></tr>
+</tbody></table></div>
+<h2 id="settings">Settings</h2>
+<p>All settings are application-wide (they apply to every window). Dials are written to your user settings.</p>
+<h3 id="general">General</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Values</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricTheme.interfaceLanguage</code></td><td>string</td><td><code>auto</code>, <code>en</code>, <code>hi</code></td><td><code>auto</code></td><td>Language of Theme Studio and the sidebar.</td></tr>
+</tbody></table></div>
+<h3 id="theme-dials">Theme dials</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Values or range</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricTheme.look</code></td><td>string</td><td><code>signature</code>, <code>gallery</code>, <code>atelier</code>, <code>foundry</code>, <code>bullion</code>, <code>nocturne</code>, <code>vitrine</code>, <code>clarity</code>, <code>patina</code>, <code>ember</code>, <code>sapphire</code></td><td><code>signature</code></td><td>Named starting point; other dials layer on top.</td></tr>
+<tr><td><code>auricTheme.accent.preset</code></td><td>string</td><td><code>inherit</code>, 17 accents (see below), <code>custom</code></td><td><code>inherit</code></td><td>Accent colour the theme is re-keyed onto.</td></tr>
+<tr><td><code>auricTheme.accent.custom</code></td><td>string</td><td>Hex colour</td><td>empty</td><td>Used only when the accent is <code>custom</code>.</td></tr>
+<tr><td><code>auricTheme.accent.intensity</code></td><td>number</td><td>0 to 200, step 5</td><td>100</td><td>Scales accent-tinted washes, borders and selections.</td></tr>
+<tr><td><code>auricTheme.accent.applyToChrome</code></td><td>string</td><td><code>off</code>, <code>statusBar</code>, <code>activityBar</code>, <code>both</code>, <code>full</code></td><td><code>off</code></td><td>Fills workbench bars with the accent. <code>full</code> adds the title bar.</td></tr>
+<tr><td><code>auricTheme.surface.depth</code></td><td>number</td><td>−4 to 4, step 1</td><td>0</td><td>Sinks or lifts every surface.</td></tr>
+<tr><td><code>auricTheme.surface.warmth</code></td><td>number</td><td>−100 to 100, step 5</td><td>0</td><td>Tints neutral surfaces towards amber or slate.</td></tr>
+<tr><td><code>auricTheme.surface.separation</code></td><td>string</td><td><code>flat</code>, <code>subtle</code>, <code>standard</code>, <code>layered</code></td><td><code>standard</code></td><td>Tonal distance between editor, sidebar, panel and bars.</td></tr>
+<tr><td><code>auricTheme.surface.borders</code></td><td>string</td><td><code>none</code>, <code>hairline</code>, <code>visible</code>, <code>strong</code>, <code>gold</code></td><td><code>hairline</code></td><td>Divider strength; <code>gold</code> uses accent-tinted dividers.</td></tr>
+<tr><td><code>auricTheme.text.contrast</code></td><td>string</td><td><code>soft</code>, <code>standard</code>, <code>high</code>, <code>maximum</code></td><td><code>standard</code></td><td>Moves the whole foreground ramp.</td></tr>
+<tr><td><code>auricTheme.text.comments</code></td><td>string</td><td><code>whisper</code>, <code>muted</code>, <code>standard</code>, <code>prominent</code></td><td><code>standard</code></td><td>Comment emphasis.</td></tr>
+<tr><td><code>auricTheme.syntax.palette</code></td><td>string</td><td><code>jewel</code>, <code>vivid</code>, <code>pastel</code>, <code>mono</code>, <code>bullion</code>, <code>classic</code>, <code>warm</code>, <code>cool</code>, <code>duotone</code></td><td><code>jewel</code></td><td>Token hue assignment.</td></tr>
+<tr><td><code>auricTheme.syntax.saturation</code></td><td>number</td><td>0 to 200, step 5</td><td>100</td><td>Token saturation; 0 is greyscale.</td></tr>
+<tr><td><code>auricTheme.syntax.italics</code></td><td>string</td><td><code>off</code>, <code>comments</code>, <code>standard</code>, <code>expressive</code></td><td><code>standard</code></td><td>How much code is italic.</td></tr>
+<tr><td><code>auricTheme.syntax.bold</code></td><td>string</td><td><code>off</code>, <code>declarations</code>, <code>standard</code>, <code>expressive</code></td><td><code>standard</code></td><td>How much code is bold.</td></tr>
+<tr><td><code>auricTheme.editor.cursor</code></td><td>string</td><td><code>accent</code>, <code>contrast</code>, <code>syntax</code>, <code>custom</code></td><td><code>accent</code></td><td>Caret, multi-cursor and terminal cursor colour.</td></tr>
+<tr><td><code>auricTheme.editor.cursorColor</code></td><td>string</td><td>Hex colour</td><td>empty</td><td>Used only when Cursor is <code>custom</code>.</td></tr>
+<tr><td><code>auricTheme.editor.selection</code></td><td>number</td><td>20 to 200, step 5</td><td>100</td><td>Scales selection, occurrence, word and find highlights together.</td></tr>
+<tr><td><code>auricTheme.editor.currentLine</code></td><td>string</td><td><code>off</code>, <code>subtle</code>, <code>standard</code>, <code>bordered</code>, <code>accent</code></td><td><code>standard</code></td><td>How the caret&#39;s line is marked.</td></tr>
+<tr><td><code>auricTheme.editor.bracketPairs</code></td><td>string</td><td><code>off</code>, <code>subtle</code>, <code>accent</code>, <code>rainbow</code>, <code>vivid</code></td><td><code>rainbow</code></td><td>Six bracket colour levels and their guides.</td></tr>
+<tr><td><code>auricTheme.editor.indentGuides</code></td><td>string</td><td><code>off</code>, <code>subtle</code>, <code>standard</code>, <code>rainbow</code></td><td><code>rainbow</code></td><td>Indent guide colours.</td></tr>
+<tr><td><code>auricTheme.editor.whitespace</code></td><td>string</td><td><code>faint</code>, <code>subtle</code>, <code>visible</code></td><td><code>subtle</code></td><td>Whitespace marks (when <code>editor.renderWhitespace</code> is on).</td></tr>
+<tr><td><code>auricTheme.editor.inlayHints</code></td><td>string</td><td><code>ghost</code>, <code>subtle</code>, <code>chip</code></td><td><code>chip</code></td><td>Inlay hint backdrop.</td></tr>
+<tr><td><code>auricTheme.editor.stickyScroll</code></td><td>string</td><td><code>flush</code>, <code>raised</code>, <code>bordered</code></td><td><code>raised</code></td><td>Sticky headers in editor, panel, sidebar and terminal.</td></tr>
+<tr><td><code>auricTheme.chrome.tabStyle</code></td><td>string</td><td><code>underline</code>, <code>overline</code>, <code>block</code>, <code>accent-block</code>, <code>minimal</code></td><td><code>overline</code></td><td>How the active editor tab is marked.</td></tr>
+<tr><td><code>auricTheme.chrome.statusBar</code></td><td>string</td><td><code>chrome</code>, <code>deep</code>, <code>accent</code>, <code>transparent</code></td><td><code>chrome</code></td><td>Status bar fill.</td></tr>
+<tr><td><code>auricTheme.chrome.activityBar</code></td><td>string</td><td><code>deep</code>, <code>chrome</code>, <code>accent</code>, <code>transparent</code></td><td><code>deep</code></td><td>Activity bar fill.</td></tr>
+<tr><td><code>auricTheme.chrome.titleBar</code></td><td>string</td><td><code>deep</code>, <code>chrome</code>, <code>accent</code></td><td><code>deep</code></td><td>Title bar fill (custom title bar style only).</td></tr>
+<tr><td><code>auricTheme.chrome.sidebar</code></td><td>string</td><td><code>raised</code>, <code>flush</code>, <code>deep</code></td><td><code>raised</code></td><td>Side bar fill.</td></tr>
+<tr><td><code>auricTheme.chrome.dimInactive</code></td><td>boolean</td><td><code>true</code>, <code>false</code></td><td><code>false</code></td><td>Pushes unfocused tabs, editors and selections back.</td></tr>
+<tr><td><code>auricTheme.terminal.palette</code></td><td>string</td><td><code>auric</code>, <code>classic</code>, <code>vivid</code>, <code>muted</code>, <code>monochrome</code></td><td><code>auric</code></td><td>ANSI terminal palette.</td></tr>
+<tr><td><code>auricTheme.terminal.background</code></td><td>string</td><td><code>editor</code>, <code>panel</code>, <code>deep</code></td><td><code>editor</code></td><td>Terminal backdrop.</td></tr>
+<tr><td><code>auricTheme.effects.shadows</code></td><td>string</td><td><code>off</code>, <code>subtle</code>, <code>standard</code>, <code>deep</code></td><td><code>standard</code></td><td>Shadows under widgets and overlays.</td></tr>
+<tr><td><code>auricTheme.effects.focusRing</code></td><td>string</td><td><code>subtle</code>, <code>standard</code>, <code>strong</code></td><td><code>standard</code></td><td>Keyboard focus ring strength.</td></tr>
+<tr><td><code>auricTheme.a11y.enforceContrast</code></td><td>boolean</td><td><code>true</code>, <code>false</code></td><td><code>true</code></td><td>Contrast guard on or off.</td></tr>
+<tr><td><code>auricTheme.a11y.minContrast</code></td><td>number</td><td>3 to 7, step 0.5</td><td>4.5</td><td>Minimum ratio for text and syntax.</td></tr>
+<tr><td><code>auricTheme.a11y.auditOnApply</code></td><td>boolean</td><td><code>true</code>, <code>false</code></td><td><code>true</code></td><td>Audit and warn on every apply.</td></tr>
+</tbody></table></div>
+<h3 id="option-meanings">Option meanings</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Option</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Separation</td><td><code>flat</code> / <code>subtle</code> / <code>standard</code> / <code>layered</code></td><td>One value for all panes / barely-there steps / shipped hierarchy / exaggerated steps.</td></tr>
+<tr><td>Borders</td><td><code>none</code> / <code>hairline</code> / <code>visible</code> / <code>strong</code> / <code>gold</code></td><td>No dividers / shipped 8% divider / clearly drawn / hard edges / accent-tinted.</td></tr>
+<tr><td>Text contrast</td><td><code>soft</code> / <code>standard</code> / <code>high</code> / <code>maximum</code></td><td>Lower (still AA) / shipped / pushes body and muted apart / every foreground to the edge.</td></tr>
+<tr><td>Comment emphasis</td><td><code>whisper</code> / <code>muted</code> / <code>standard</code> / <code>prominent</code></td><td>As quiet as the floor permits / quieter / shipped / first-class text.</td></tr>
+<tr><td>Italics</td><td><code>off</code> / <code>comments</code> / <code>standard</code> / <code>expressive</code></td><td>None / comments and doc comments / plus parameters, interfaces, decorators, attributes and <code>this</code> / plus keywords, storage modifiers and types.</td></tr>
+<tr><td>Bold</td><td><code>off</code> / <code>declarations</code> / <code>standard</code> / <code>expressive</code></td><td>None / definition sites only / declarations, headings and invalid tokens / plus keywords and types.</td></tr>
+<tr><td>Cursor</td><td><code>accent</code> / <code>contrast</code> / <code>syntax</code> / <code>custom</code></td><td>Accent colour / white or black, whichever reads harder / the function-name colour / Cursor colour.</td></tr>
+<tr><td>Current line</td><td><code>off</code> / <code>subtle</code> / <code>standard</code> / <code>bordered</code> / <code>accent</code></td><td>None / faint fill / shipped fill and edge / edge only / accent-tinted fill.</td></tr>
+<tr><td>Bracket pairs</td><td><code>off</code> / <code>subtle</code> / <code>accent</code> / <code>rainbow</code> / <code>vivid</code></td><td>Punctuation colour / low chroma / stepped along the accent / shipped six colours / maximum separation.</td></tr>
+<tr><td>Indent guides</td><td><code>off</code> / <code>subtle</code> / <code>standard</code> / <code>rainbow</code></td><td>None / one neutral / neutral with accent active guide / shipped six levels.</td></tr>
+<tr><td>Whitespace marks</td><td><code>faint</code> / <code>subtle</code> / <code>visible</code></td><td>Barely visible / shipped / clearly readable.</td></tr>
+<tr><td>Inlay hints</td><td><code>ghost</code> / <code>subtle</code> / <code>chip</code></td><td>Text only / faint backdrop / shipped tinted chip.</td></tr>
+<tr><td>Sticky scroll</td><td><code>flush</code> / <code>raised</code> / <code>bordered</code></td><td>Canvas colour / slightly lifted / lifted with a hard bottom edge.</td></tr>
+<tr><td>Active tab</td><td><code>underline</code> / <code>overline</code> / <code>block</code> / <code>accent-block</code> / <code>minimal</code></td><td>Accent rule at bottom / at top (shipped) / tone only / accent fill / foreground only.</td></tr>
+<tr><td>Status bar</td><td><code>chrome</code> / <code>deep</code> / <code>accent</code> / <code>transparent</code></td><td>Shipped neutral / matches activity bar / accent fill / canvas colour.</td></tr>
+<tr><td>Activity bar</td><td><code>deep</code> / <code>chrome</code> / <code>accent</code> / <code>transparent</code></td><td>Shipped darkest / matches status bar / accent fill / merges into sidebar.</td></tr>
+<tr><td>Title bar</td><td><code>deep</code> / <code>chrome</code> / <code>accent</code></td><td>Shipped darkest / matches status bar / accent fill.</td></tr>
+<tr><td>Side bar</td><td><code>raised</code> / <code>flush</code> / <code>deep</code></td><td>Shipped, lifted / same as editor / matches activity bar.</td></tr>
+<tr><td>Terminal background</td><td><code>editor</code> / <code>panel</code> / <code>deep</code></td><td>Shipped / merges into panel / darker than editor.</td></tr>
+<tr><td>Shadows</td><td><code>off</code> / <code>subtle</code> / <code>standard</code> / <code>deep</code></td><td>None / barely there / shipped / heavy.</td></tr>
+<tr><td>Focus ring</td><td><code>subtle</code> / <code>standard</code> / <code>strong</code></td><td>Quieter but visible / accent at full strength / maximum contrast.</td></tr>
+</tbody></table></div>
+<h2 id="looks">Looks</h2>
+<p><code>signature</code> Signature, <code>gallery</code> Gallery, <code>atelier</code> Atelier, <code>foundry</code> Foundry, <code>bullion</code> Bullion, <code>nocturne</code> Nocturne, <code>vitrine</code> Vitrine, <code>clarity</code> Clarity, <code>patina</code> Patina, <code>ember</code> Ember, <code>sapphire</code> Sapphire. See <a href="looks-and-dials.html#apply-a-look">Looks and dials</a> for descriptions.</p>
+<h2 id="accents">Accents</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Name</th><th>Hex</th><th>Hint</th></tr></thead>
+<tbody>
+<tr><td><code>gold</code></td><td>Auric Gold</td><td><code>#D3AF37</code></td><td>The brand. Warm, metallic, the default.</td></tr>
+<tr><td><code>champagne</code></td><td>Champagne</td><td><code>#E4CE8F</code></td><td>Gold, lifted and softened.</td></tr>
+<tr><td><code>brass</code></td><td>Brass</td><td><code>#C9A227</code></td><td>Deeper and greener than the brand gold.</td></tr>
+<tr><td><code>bronze</code></td><td>Bronze</td><td><code>#C08A4A</code></td><td>Warm metal, less yellow.</td></tr>
+<tr><td><code>copper</code></td><td>Copper</td><td><code>#CA7A4E</code></td><td>Orange-forward metal.</td></tr>
+<tr><td><code>ember</code></td><td>Ember</td><td><code>#E0764A</code></td><td>Hot orange.</td></tr>
+<tr><td><code>rose</code></td><td>Rose</td><td><code>#E08AA0</code></td><td>Soft pink-red.</td></tr>
+<tr><td><code>crimson</code></td><td>Crimson</td><td><code>#E06A6A</code></td><td>Red without the alarm.</td></tr>
+<tr><td><code>amethyst</code></td><td>Amethyst</td><td><code>#B48AE6</code></td><td>Violet jewel tone.</td></tr>
+<tr><td><code>iris</code></td><td>Iris</td><td><code>#8E9BF0</code></td><td>Blue-violet.</td></tr>
+<tr><td><code>sapphire</code></td><td>Sapphire</td><td><code>#6BA3E8</code></td><td>Classic editor blue.</td></tr>
+<tr><td><code>azure</code></td><td>Azure</td><td><code>#4FB6E0</code></td><td>Bright cyan-blue.</td></tr>
+<tr><td><code>patina</code></td><td>Patina</td><td><code>#5CC9B4</code></td><td>Aged copper. Cool and calm.</td></tr>
+<tr><td><code>emerald</code></td><td>Emerald</td><td><code>#5CC489</code></td><td>Green jewel tone.</td></tr>
+<tr><td><code>moss</code></td><td>Moss</td><td><code>#A3C46A</code></td><td>Yellow-green.</td></tr>
+<tr><td><code>platinum</code></td><td>Platinum</td><td><code>#C5C8CE</code></td><td>Cool neutral metal.</td></tr>
+<tr><td><code>graphite</code></td><td>Graphite</td><td><code>#9A9A9A</code></td><td>No hue at all. Fully monochrome UI.</td></tr>
+</tbody></table></div>
+<p>The listed hex values are the accent keys. On light themes the accent is darkened automatically until it clears your minimum contrast.</p>
+<h2 id="syntax-palettes">Syntax palettes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Name</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>jewel</code></td><td>Jewel</td><td>The shipped palette: gold and champagne callables, amber constants, orchid keywords, patina types, sage strings.</td></tr>
+<tr><td><code>vivid</code></td><td>Vivid</td><td>The same hues pushed to the edge of the gamut.</td></tr>
+<tr><td><code>pastel</code></td><td>Pastel</td><td>Low chroma, lifted lightness.</td></tr>
+<tr><td><code>mono</code></td><td>Monochrome</td><td>Almost no hue; lightness carries meaning.</td></tr>
+<tr><td><code>bullion</code></td><td>Bullion</td><td>Every token on the accent hue, separated by lightness and chroma.</td></tr>
+<tr><td><code>classic</code></td><td>Classic</td><td>Blue keywords, green strings, teal types.</td></tr>
+<tr><td><code>warm</code></td><td>Warm</td><td>Gold, amber, copper and rose; no cool tokens.</td></tr>
+<tr><td><code>cool</code></td><td>Cool</td><td>Patina, sapphire and amethyst; gold only in the chrome.</td></tr>
+<tr><td><code>duotone</code></td><td>Duotone</td><td>The accent and its complement only.</td></tr>
+</tbody></table></div>
+<h2 id="terminal-palettes">Terminal palettes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Name</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>auric</code></td><td>Auric</td><td>Matches the syntax palette; yellow is the accent.</td></tr>
+<tr><td><code>classic</code></td><td>Classic</td><td>Conventional ANSI hues, tuned for the canvas.</td></tr>
+<tr><td><code>vivid</code></td><td>Vivid</td><td>Higher chroma across all sixteen.</td></tr>
+<tr><td><code>muted</code></td><td>Muted</td><td>Lower chroma.</td></tr>
+<tr><td><code>monochrome</code></td><td>Monochrome</td><td>Greyscale, separated by lightness only.</td></tr>
+</tbody></table></div>
+<h2 id="all-54-themes">All 54 themes</h2>
+<p>The theme ID is what VS Code stores in <code>workbench.colorTheme</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Family</th><th>Theme IDs (display name: Auric Artisan — Family Accent)</th></tr></thead>
+<tbody>
+<tr><td>Obsidian</td><td><code>obsidian-gold</code>, <code>obsidian-sapphire</code>, <code>obsidian-rose</code>, <code>obsidian-amethyst</code>, <code>obsidian-patina</code></td></tr>
+<tr><td>Obsidian (cont.)</td><td><code>obsidian-emerald</code>, <code>obsidian-ember</code>, <code>obsidian-crimson</code>, <code>obsidian-iris</code>, <code>obsidian-graphite</code></td></tr>
+<tr><td>Midnight</td><td><code>midnight-gold</code>, <code>midnight-sapphire</code>, <code>midnight-rose</code>, <code>midnight-iris</code>, <code>midnight-amethyst</code></td></tr>
+<tr><td>Midnight (cont.)</td><td><code>midnight-patina</code>, <code>midnight-emerald</code>, <code>midnight-ember</code>, <code>midnight-crimson</code>, <code>midnight-graphite</code></td></tr>
+<tr><td>Parchment</td><td><code>parchment-gold</code>, <code>parchment-rose</code>, <code>parchment-ember</code>, <code>parchment-emerald</code>, <code>parchment-sapphire</code></td></tr>
+<tr><td>Parchment (cont.)</td><td><code>parchment-amethyst</code>, <code>parchment-patina</code>, <code>parchment-crimson</code>, <code>parchment-iris</code>, <code>parchment-graphite</code></td></tr>
+<tr><td>Porcelain</td><td><code>porcelain-sapphire</code>, <code>porcelain-amethyst</code>, <code>porcelain-patina</code>, <code>porcelain-rose</code>, <code>porcelain-iris</code></td></tr>
+<tr><td>Porcelain (cont.)</td><td><code>porcelain-graphite</code>, <code>porcelain-gold</code>, <code>porcelain-emerald</code>, <code>porcelain-ember</code>, <code>porcelain-crimson</code></td></tr>
+<tr><td>Dusk</td><td><code>dusk-gold</code>, <code>dusk-sapphire</code>, <code>dusk-rose</code>, <code>dusk-amethyst</code>, <code>dusk-iris</code>, <code>dusk-graphite</code></td></tr>
+<tr><td>Forest</td><td><code>forest-gold</code>, <code>forest-patina</code>, <code>forest-emerald</code>, <code>forest-ember</code>, <code>forest-rose</code>, <code>forest-graphite</code></td></tr>
+<tr><td>High contrast</td><td><code>obsidian-gold-high-contrast</code> (dark), <code>porcelain-gold-high-contrast</code> (light)</td></tr>
+</tbody></table></div>
+<p>The order in this table is the order used by <strong>Cycle Variant</strong>. Obsidian, Midnight, Dusk and Forest are dark; Parchment and Porcelain are light.</p>
+<h2 id="colour-slots">Colour slots</h2>
+<p>107 slots in 12 groups. Kind: <strong>solid</strong> (no transparency), <strong>alpha</strong> (transparency allowed) or <strong>either</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>Slots (path — label)</th></tr></thead>
+<tbody>
+<tr><td>Surfaces (solid)</td><td><code>bg.deepest</code> Deepest, <code>bg.base</code> Canvas, <code>bg.raised</code> Raised, <code>bg.chrome</code> Chrome</td></tr>
+<tr><td>Surfaces (cont.)</td><td><code>bg.overlay</code> Overlay, <code>bg.overlayRaised</code> Overlay raised, <code>bg.inset</code> Inset, <code>bg.tint</code> Warm tint</td></tr>
+<tr><td>Text (solid)</td><td><code>fg.default</code> Body, <code>fg.muted</code> Muted, <code>fg.subtle</code> Subtle, <code>fg.faint</code> Faint, <code>fg.onAccent</code> On accent</td></tr>
+<tr><td>Text (cont.)</td><td><code>fg.inverse</code> Inverse</td></tr>
+<tr><td>Lines</td><td><code>line.subtle</code> Hairline, <code>line.default</code> Divider, <code>line.strong</code> Strong, <code>line.control</code> Control edge (either)</td></tr>
+<tr><td>Lines (cont.)</td><td><code>line.gold</code> Gold hairline, <code>line.goldStrong</code> Gold edge (alpha); <code>line.focus</code> Focus ring (solid)</td></tr>
+<tr><td>Accent</td><td><code>accent.base</code> Accent, <code>accent.bright</code> Emphasis, <code>accent.deep</code> Deep, <code>accent.onAccent</code> On accent (solid)</td></tr>
+<tr><td>Accent (cont.)</td><td><code>accent.soft</code> Soft wash, <code>accent.softer</code> Softer wash, <code>accent.wash</code> Faintest wash (alpha)</td></tr>
+<tr><td>States (alpha)</td><td><code>state.hover</code> Hover, <code>state.active</code> Active, <code>state.selected</code> Selected</td></tr>
+<tr><td>States (cont.)</td><td><code>state.selectedInactive</code> Selected (blurred), <code>state.drop</code> Drop target</td></tr>
+<tr><td>Selection (alpha)</td><td><code>sel.text</code> Selection, <code>sel.textInactive</code> Selection (blurred), <code>sel.highlight</code> Occurrences</td></tr>
+<tr><td>Selection (cont.)</td><td><code>sel.word</code> Word (read), <code>sel.wordWrite</code> Word (write), <code>sel.find</code> Find match, <code>sel.findOther</code> Find others</td></tr>
+<tr><td>Selection (cont.)</td><td><code>sel.range</code> Range, <code>sel.line</code> Current line, <code>sel.lineBorder</code> Current line edge</td></tr>
+<tr><td>Semantics (solid)</td><td><code>sem.error</code> Error, <code>sem.errorStrong</code> Error (loud), <code>sem.warn</code> Warning, <code>sem.warnStrong</code> Warning (loud)</td></tr>
+<tr><td>Semantics (cont.)</td><td><code>sem.info</code> Info, <code>sem.infoStrong</code> Info (loud), <code>sem.ok</code> Success, <code>sem.okStrong</code> Success (loud)</td></tr>
+<tr><td>Semantic washes (alpha)</td><td><code>soft.error</code> Error wash, <code>soft.warn</code> Warning wash, <code>soft.info</code> Info wash, <code>soft.ok</code> Success wash</td></tr>
+<tr><td>Terminal (solid)</td><td><code>ansi.black</code>, <code>ansi.red</code>, <code>ansi.green</code>, <code>ansi.yellow</code>, <code>ansi.blue</code>, <code>ansi.magenta</code>, <code>ansi.cyan</code>, <code>ansi.white</code></td></tr>
+<tr><td>Terminal (cont.)</td><td><code>ansi.brightBlack</code> to <code>ansi.brightWhite</code>: the eight bright versions of the colours above</td></tr>
+<tr><td>Source control (solid)</td><td><code>git.added</code> Added, <code>git.modified</code> Modified, <code>git.deleted</code> Deleted, <code>git.untracked</code> Untracked</td></tr>
+<tr><td>Source control (cont.)</td><td><code>git.ignored</code> Ignored, <code>git.conflict</code> Conflicting, <code>git.submodule</code> Submodule</td></tr>
+<tr><td>Source control (cont.)</td><td><code>git.stageDeleted</code> Staged delete, <code>git.stageModified</code> Staged modify</td></tr>
+<tr><td>Syntax (solid)</td><td><code>syntax.comment</code> Comment, <code>syntax.punctuation</code> Punctuation, <code>syntax.operator</code> Operator</td></tr>
+<tr><td>Syntax (cont.)</td><td><code>syntax.variable</code> Variable, <code>syntax.property</code> Property, <code>syntax.parameter</code> Parameter</td></tr>
+<tr><td>Syntax (cont.)</td><td><code>syntax.string</code> String, <code>syntax.stringAlt</code> String (alt), <code>syntax.escape</code> Escape, <code>syntax.number</code> Number</td></tr>
+<tr><td>Syntax (cont.)</td><td><code>syntax.constant</code> Constant, <code>syntax.keyword</code> Keyword, <code>syntax.control</code> Control flow, <code>syntax.storage</code> Storage</td></tr>
+<tr><td>Syntax (cont.)</td><td><code>syntax.fn</code> Function, <code>syntax.method</code> Method, <code>syntax.type</code> Type, <code>syntax.interface</code> Interface</td></tr>
+<tr><td>Syntax (cont.)</td><td><code>syntax.tag</code> Tag, <code>syntax.attribute</code> Attribute, <code>syntax.regexp</code> Regexp, <code>syntax.invalid</code> Invalid</td></tr>
+<tr><td>Syntax (cont.)</td><td><code>syntax.deprecated</code> Deprecated, <code>syntax.heading</code> Heading, <code>syntax.link</code> Link, <code>syntax.quote</code> Quote</td></tr>
+<tr><td>Effects (alpha)</td><td><code>shadow</code> Shadow</td></tr>
+</tbody></table></div>
+<p>Lines <code>line.subtle</code>, <code>line.default</code>, <code>line.strong</code> and <code>line.control</code> accept either kind.</p>
+<h2 id="theme-studio-controls-by-tab">Theme Studio controls by tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Controls</th></tr></thead>
+<tbody>
+<tr><td>Looks</td><td><strong>The set</strong>: 11 look swatches with a count. Selecting a look applies it; selecting the active look again restarts from it.</td></tr>
+<tr><td>Dials</td><td><strong>Search dials by name or setting…</strong>, <strong>Dial visibility</strong> (<strong>All dials</strong>, <strong>Modified only</strong>), match count, ten group cards with group reset, per-dial modified dot and reset.</td></tr>
+<tr><td>Colours</td><td><strong>Filter by name or path</strong>, 12 collapsible groups with counts, a colour field per slot, <strong>Shipped</strong> comparison and revert per overridden slot.</td></tr>
+<tr><td>Audit</td><td>Worst-pair card with <strong>All clear</strong> or &quot;{n} failing&quot;, <strong>Measured pairs</strong> table (Pair, Ratio, APCA, Minimum, Result), <strong>How to read this</strong>.</td></tr>
+<tr><td>Share</td><td><strong>Export</strong> (JSON, <strong>Copy</strong>, <strong>Refresh</strong>), <strong>Import</strong> (paste box, <strong>Import</strong>, <strong>Clear</strong>), <strong>Presets</strong> (name box, <strong>Save</strong>, <strong>Saved</strong> list with <strong>Load</strong> and delete).</td></tr>
+<tr><td>Preview</td><td><strong>Comparison view</strong> (<strong>Side by side</strong>, <strong>As shipped</strong>, <strong>Your palette</strong>), <strong>Copy palette as CSS</strong>, specimens and changed-slot count.</td></tr>
+</tbody></table></div>
+<p>Studio-wide: language switch, <strong>Explore colours →</strong>, metrics, <strong>Reset all</strong> (asks <strong>Reset everything?</strong>, confirm within four seconds), <strong>Randomize</strong>, <strong>Settings</strong>.</p>
+<h2 id="other-surfaces">Other surfaces</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Surface</th><th>Details</th></tr></thead>
+<tbody>
+<tr><td>Status bar item</td><td>Right side. Paint-can icon and short theme name; <code>*</code> when customised. Tooltip shows dials and colours changed. Opens Theme Studio. Hidden when a non-Auric theme is active.</td></tr>
+<tr><td>Activity Bar view</td><td><strong>Auric Theme</strong> container with the <strong>Theme</strong> view. See <a href="theme-sidebar.html">The Theme sidebar</a>.</td></tr>
+<tr><td>Contrast report</td><td>Read-only text document &quot;Auric contrast report&quot;.</td></tr>
+<tr><td>Walkthrough</td><td><strong>Make it yours</strong>: <strong>Pick a variant</strong>, <strong>Change the gold</strong>, <strong>Open the Studio</strong>, <strong>Keep it readable</strong>.</td></tr>
+</tbody></table></div>
+<h2 id="messages-you-may-see">Messages you may see</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Auric Theme customisations apply to the Auric Artisan themes. Pick one first.</td><td>A non-Auric theme is active. Select <strong>Choose theme</strong>.</td></tr>
+<tr><td>Auric Theme: {n} colour pairs no longer meet your contrast minimum.</td><td>Audit on apply found failures. Select <strong>Show report</strong>.</td></tr>
+<tr><td>Reset every Auric Theme dial and colour override?</td><td>Confirmation for <strong>Reset Everything</strong>. Select <strong>Reset</strong>.</td></tr>
+<tr><td>Auric Theme: could not save auricTheme.… — …</td><td>VS Code refused to write a setting, for example because <code>settings.json</code> has a syntax error.</td></tr>
+<tr><td>VS Code rejected a settings key: …</td><td>VS Code refused a colour customisation key.</td></tr>
+<tr><td>Bad hex colour: …</td><td>A colour value is not valid hex.</td></tr>
+<tr><td>Auric Theme: no saved presets yet.</td><td><strong>Load Preset…</strong> found no presets.</td></tr>
+<tr><td>Auric Theme: switch to an Auric Artisan theme first.</td><td><strong>Export as Theme File…</strong> needs an Auric theme active.</td></tr>
+</tbody></table></div>
+<h2 id="files-and-formats">Files and formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td>Customisation</td><td>JSON with <code>$schema</code>, <code>version</code>, <code>generator</code>, <code>name</code>, <code>theme</code>, <code>knobs</code> and <code>overrides</code>.</td></tr>
+<tr><td>Theme file</td><td>VS Code colour theme JSON; default name <code>&lt;theme-id&gt;-custom-color-theme.json</code>.</td></tr>
+<tr><td>CSS palette</td><td>A <code>:root</code> block of <code>--auric-&lt;slot-path&gt;</code> custom properties.</td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="theme-sidebar.html"><span>Previous</span>The Theme sidebar</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#commands">Commands</a></li><li><a href="#keybindings">Keybindings</a></li><li><a href="#settings">Settings</a></li><li><a href="#looks">Looks</a></li><li><a href="#accents">Accents</a></li><li><a href="#syntax-palettes">Syntax palettes</a></li><li><a href="#terminal-palettes">Terminal palettes</a></li><li><a href="#all-54-themes">All 54 themes</a></li><li><a href="#colour-slots">Colour slots</a></li><li><a href="#theme-studio-controls-by-tab">Theme Studio controls by tab</a></li><li><a href="#other-surfaces">Other surfaces</a></li><li><a href="#messages-you-may-see">Messages you may see</a></li><li><a href="#files-and-formats">Files and formats</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+---
+title: Accessibility Library — Limits and accuracy
+description: What the Accessibility Library measures, how precisely, and what it is not.
+product: Website › Library › Colour libraries › Accessibility Library
+updated: 2026-09-25
+---
+
+# Limits and accuracy
+
+## The map
+
+- The map is drawn at 72 hue columns (one every 5°), and the lines are found for each column. Between columns the line is drawn straight, so a pick or pin near a sharp bend can sit very slightly on the other side. The ratio in the readout is always exact for the colour under the caret.
+- Each point shows the most colourful colour sRGB allows at that hue and lightness. Less colourful versions of the same hue and lightness have slightly different luminance, so their contrast can differ a little from the map's.
+- **Territory** is the share of this drawn slice that passes; it is a comparison between grounds, not a count of all possible colours.
+
+## The figures
+
+- **Contrast ratio** uses the WCAG 2 formula exactly.
+- **APCA** is computed by the page's own implementation of the APCA method. APCA is part of draft work towards WCAG 3 and is not yet a formal requirement; use it as a second opinion.
+- **Vision margin** is based on standard simulation matrices for eight colour vision deficiencies plus simple models of cataracts and low vision. Simulations are a design aid, not a diagnosis, and real people vary.
+- The **Auric SD** score and the **Recommended for** labels are Auric Artisan's own combinations of these measures. They are guidance, not a conformance claim.
+
+## The index
+
+The five million pairs are random foreground and background colours derived from a seed. Most fail AA; they are a reproducible reference set for citing and testing, not a curated palette.
+
+## What it is not
+
+- It is not an accessibility audit of a page. Real text sits on real backgrounds, at particular sizes, sometimes over images or transparency; test the finished design too.
+- Passing contrast does not guarantee readability for everyone. Font, size, weight, spacing and context still matter.

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare with the reference light — Auric Artisan Docs</title>
+<meta name="description" content="Read the measured colour temperature and its error band, understand how the reference light is chosen, and interpret the colour difference between a material under its source and under that reference.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Material Lighting (Material Under Light)</a>
+<h2>Using Material Under Light</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Material Under Light</a></li>
+<li><a href="compare-with-the-reference.html" aria-current="page">Compare with the reference light</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="run-a-sensitivity-sweep.html">Run a sensitivity sweep</a></li>
+<li><a href="set-up-a-scene.html">Set up a scene</a></li>
+<li><a href="use-a-measured-reflectance.html">Use a measured reflectance</a></li>
+<li><a href="reference.html">Material Under Light reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Material Under Light</a></li>
+<li><a href="faq.html">Material Under Light FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Material Lighting (Material Under Light)</a> &rsaquo; <a href="README.html">Using Material Under Light</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Material Lighting</p>
+<h1>Compare with the reference light</h1>
+<p class="lede">Read the measured colour temperature and its error band, understand how the reference light is chosen, and interpret the colour difference between a material under its source and under that reference.</p>
+<h2 id="colour-temperature">Colour temperature</h2>
+<p>The <strong>correlated colour temperature</strong> (CCT) of a light is the temperature of the blackbody whose colour is closest to it, in kelvin. Low values (2700 K) are warm and orange; high values (6500 K and above) are cool and bluish.</p>
+<p><strong>Measured temperature</strong> gives the CCT the page computes back from the illuminant spectrum you chose, using McCamy&#39;s formula, rounded to 10 K, with its error band. The error bands were measured against blackbodies of known temperature:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Temperature</th><th>Worst measured error</th></tr></thead>
+<tbody>
+<tr><td>1800–2500 K</td><td>±18 K</td></tr>
+<tr><td>2500–4000 K</td><td>±13 K</td></tr>
+<tr><td>4000–7000 K</td><td>±11 K</td></tr>
+<tr><td>7000–10000 K</td><td>±139 K</td></tr>
+<tr><td>10000–15000 K</td><td>±1069 K</td></tr>
+</tbody></table></div>
+<p>Above 7000 K the readout is highlighted and adds <strong>McCamy&#39;s fit is out of its range up here</strong>. The reference chosen is a daylight either way.</p>
+<h2 id="the-reference-rule">The reference rule</h2>
+<p>To judge how a light renders colours, the CIE compares it with a reference light of the same CCT (CIE 13.3, section 5.1):</p>
+<ul>
+<li>below 5000 K, a <strong>blackbody</strong> at that temperature;</li>
+<li>at or above 5000 K, a <strong>CIE daylight</strong> at that temperature.</li>
+</ul>
+<p><strong>Reference for it</strong> shows the choice (for example <strong>daylight 6500 K</strong> or <strong>blackbody 2860 K</strong>), and the note above the swatches gives the reason, for example <strong>below 5000 K the reference is a Planckian radiator</strong>. A light that is its own reference, such as D65 or a blackbody, compares with itself.</p>
+<h2 id="the-colour-difference">The colour difference</h2>
+<p><strong>Against the reference the standard names</strong> shows the material twice: <strong>Under your source</strong> (captioned with your illuminant) and <strong>Under its reference</strong> (captioned <strong>D</strong> or <strong>BB</strong> and the temperature). Between them is <strong>ΔE₀₀</strong>, the CIEDE2000 colour difference.</p>
+<p>Each colour is taken against its own light&#39;s white, so what remains is how the <strong>material</strong> moved, not the fact that the two lights differ. That is why a source that is its own reference reads about zero: D65 about 0.01, a 2700 K blackbody about 0.002, illuminant A about 0.05. The small remainders come from the error in measuring the temperature.</p>
+<p>Some examples with the preset materials and default surface:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Scene</th><th>Reference</th><th>ΔE₀₀</th></tr></thead>
+<tbody>
+<tr><td>Gold under D65</td><td>Daylight 6500 K</td><td>About 0.01</td></tr>
+<tr><td>Gold under E</td><td>Daylight 5460 K</td><td>About 2.0</td></tr>
+<tr><td>Gold under a 10000 K blackbody</td><td>Daylight 9860 K</td><td>About 3.1</td></tr>
+<tr><td>Skin under 4000 K daylight</td><td>Blackbody 4010 K</td><td>About 1.6</td></tr>
+<tr><td>Leaf under illuminant A</td><td>Blackbody 2860 K</td><td>About 0.05</td></tr>
+</tbody></table></div>
+<p>This is a colour difference for <strong>this one material</strong>. It is not a rendering index and does not characterise the lamp: a rendering index needs a specified set of many measured samples, which the tool does not hold. The line under the swatches says so, and adds, for a synthesised material, that the difference is a property of the model rather than of a real pigment.</p>
+<h2 id="two-white-points">Two white points</h2>
+<p>The page uses two white points on purpose, and the <strong>Method</strong> tab&#39;s <strong>Two white points</strong> view explains them:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>White point</th><th>Question it answers</th></tr></thead>
+<tbody>
+<tr><td>The swatch and its hex</td><td>None: un-adapted</td><td>What does this material look like under this light?</td></tr>
+<tr><td>L*, a*, b* and every ΔE</td><td>The illuminant&#39;s own</td><td>How far did the material move?</td></tr>
+</tbody></table></div>
+<h2 id="metamerism">Metamerism</h2>
+<p>Two materials with different reflectance spectra can produce the same colour under one light and different colours under another. This is <strong>metamerism</strong>, and it is why a spectral tool is needed to predict it: RGB values alone cannot tell you whether a match will hold. The tool shows one material at a time; to explore metamerism, note a material&#39;s L*a*b* under two lights, then compare with another material (for example a measured file) under the same two lights.</p>
+<h2 id="the-method-tabs-reference-view">The Method tab&#39;s reference view</h2>
+<p><strong>Method</strong> › <strong>Choosing the reference</strong> shows the rule as a table of D65, D50, illuminant A and a 2700 K blackbody against the reference each should get, the published and computed chromaticities of D50, D55, D65 and D75, and the colour-temperature error bands.</p>
+<p>You should now be able to say how far a material&#39;s colour moves between a light and its reference, and what that number does and does not mean.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Material Under Light</a><a href="export-and-share.html"><span>Next</span>Export and share</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#colour-temperature">Colour temperature</a></li><li><a href="#the-reference-rule">The reference rule</a></li><li><a href="#the-colour-difference">The colour difference</a></li><li><a href="#two-white-points">Two white points</a></li><li><a href="#metamerism">Metamerism</a></li><li><a href="#the-method-tabs-reference-view">The Method tab's reference view</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

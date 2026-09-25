@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspect transfer functions — Auric Artisan Docs</title>
+<meta name="description" content="Read each space's transfer curve, understand EOTF and OETF, and check which curves are exact to their standard.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gamut Lab</a>
+<h2>Gamut Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Gamut Lab</a></li>
+<li><a href="compare-colour-spaces.html">Compare colour spaces</a></li>
+<li><a href="define-a-custom-space.html">Define a custom colour space</a></li>
+<li><a href="inspect-transfer-functions.html" aria-current="page">Inspect transfer functions</a></li>
+<li><a href="reference.html">Gamut Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Gamut Lab</a></li>
+<li><a href="faq.html">Gamut Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Gamut Lab</a> &rsaquo; <a href="README.html">Gamut Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Inspect transfer functions</h1>
+<p class="lede">Read each space's transfer curve, understand EOTF and OETF, and check which curves are exact to their standard.</p>
+<h2 id="key-ideas">Key ideas</h2>
+<ul>
+<li>A <strong>transfer function</strong> links stored values to light. The <strong>OETF</strong> (opto-electronic) encodes light into a signal; the <strong>EOTF</strong> (electro-optical) turns a signal back into light on a display.</li>
+<li>Most spaces use a <strong>relative</strong> curve: signal 0 to 1 becomes light 0 to 1 of the display&#39;s peak. <strong>PQ</strong> (SMPTE ST 2084) is <strong>absolute</strong>: a signal value means a specific luminance in cd/m² (nits), up to 10,000.</li>
+<li><strong>HLG</strong> (hybrid log-gamma) is a relative HDR curve. Its full EOTF needs a display peak luminance and a surround; this lab draws the inverse OETF only, and marks it <strong>Partial</strong>.</li>
+</ul>
+<h2 id="the-ten-distinct-curves">The ten distinct curves</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Curve</th><th>Used by</th><th>Fidelity</th></tr></thead>
+<tbody>
+<tr><td>IEC 61966-2-1 (sRGB piecewise)</td><td>sRGB, Display P3, Custom</td><td>Exact</td></tr>
+<tr><td>ITU-R BT.2020-2</td><td>Rec. 2020</td><td>Exact (corrected)</td></tr>
+<tr><td>ROMM / ISO 22028-2, γ 1.8 plus toe</td><td>ProPhoto RGB</td><td>Exact (corrected)</td></tr>
+<tr><td>Adobe RGB (1998), γ 563/256</td><td>Adobe RGB</td><td>Exact (corrected)</td></tr>
+<tr><td>SMPTE ST 2084 (PQ)</td><td>Rec. 2100 PQ</td><td>Exact</td></tr>
+<tr><td>ARIB STD-B67 — inverse OETF</td><td>Rec. 2100 HLG</td><td>Partial</td></tr>
+<tr><td>Linear</td><td>ACES 2065-1 (AP0), ACEScg (AP1)</td><td>Exact</td></tr>
+<tr><td>Gamma 2.6</td><td>DCI-P3</td><td>Exact</td></tr>
+<tr><td>Gamma 2.2</td><td>Adobe Wide Gamut, NTSC 1953</td><td>Exact</td></tr>
+<tr><td>Gamma 2.8</td><td>PAL/SECAM</td><td>Exact</td></tr>
+</tbody></table></div>
+<p>&quot;Corrected&quot; marks a curve that an earlier version of the page did not run as its standard defines.</p>
+<h2 id="the-transfer-tab">The Transfer tab</h2>
+<ol>
+<li>Open the <strong>Transfer</strong> tab. The note gives the number of distinct curves across the spaces.</li>
+<li>Under <strong>Plot</strong>, choose <strong>Relative, 0 to 1</strong> for the display-relative curves or <strong>Absolute, cd/m²</strong> for PQ, which has its own log-scale axis from 1 to 10,000 cd/m².</li>
+<li>Under <strong>Fidelity</strong>, filter the rows: <strong>All</strong>, <strong>Exact</strong>, <strong>Partial</strong> or <strong>Corrected</strong> (each chip shows its count).</li>
+<li>Read the legend under the plot; a dashed line is the linear reference.</li>
+<li>Open a row to see the defining document, what the curve used to be (for corrected rows) and, for HLG, why it is partial.</li>
+</ol>
+<h2 id="the-lab-tabs-transfer-panel">The Lab tab&#39;s transfer panel</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, find <strong>Transfer function</strong>.</li>
+<li>Choose a preset: <strong>sRGB</strong>, <strong>Display P3</strong>, <strong>Rec. 2020</strong>, <strong>PQ (ST 2084)</strong>, <strong>HLG</strong>, <strong>Adobe RGB (γ 563/256)</strong> or <strong>ProPhoto (ROMM)</strong>.</li>
+<li>The <strong>EOTF / OETF curve</strong> canvas plots it, the summary names the defining document, and an equation box shows the formula for the sRGB, PQ, HLG and linear curves. For the other presets the equation box shows a simplified power-law form; the Transfer tab and Reference › Formulas give the exact definitions.</li>
+</ol>
+<h2 id="result">Result</h2>
+<p>You know which curve each space uses, whether it is relative or absolute, and whether the lab runs it exactly as its standard defines.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="define-a-custom-space.html"><span>Previous</span>Define a custom colour space</a><a href="reference.html"><span>Next</span>Gamut Lab reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#key-ideas">Key ideas</a></li><li><a href="#the-ten-distinct-curves">The ten distinct curves</a></li><li><a href="#the-transfer-tab">The Transfer tab</a></li><li><a href="#the-lab-tabs-transfer-panel">The Lab tab's transfer panel</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

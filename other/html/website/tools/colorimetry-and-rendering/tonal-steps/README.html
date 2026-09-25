@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tonal Steps — Auric Artisan Docs</title>
+<meta name="description" content="What the Tonal Steps, Tints and Shades tool does, who it is for, where to find it and how to build your first ramp.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Colorimetry and rendering tools</a>
+<h2>Tonal Steps</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Tonal Steps documentation &rsaquo;</a></li>
+<li><a href="others/README.html">Tonal Steps: supporting pages &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="README.html">Tonal Steps</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Tonal Steps</h1>
+<p class="lede">What the Tonal Steps, Tints and Shades tool does, who it is for, where to find it and how to build your first ramp.</p>
+<p>Tonal Steps builds a lightness <strong>ramp</strong> from one colour: a sequence of steps running from white, through versions of your colour, to black. Alongside it the tool builds <strong>tints</strong> (your colour mixed towards white), <strong>shades</strong> (towards black), <strong>tones</strong> (towards grey), a <strong>neutral ladder</strong> of greys, and a 50–950 or 50–900 <strong>key set</strong> of the kind design systems use.</p>
+<p>Two ramp engines are offered. <strong>HSL lightness</strong> spaces the steps evenly in HSL lightness. <strong>Equal luminance</strong> spaces them evenly in relative luminance, the quantity WCAG contrast is built on, with an easing exponent to bunch steps where you want them. Tints, shades, tones and key sets are mixed in the space you choose: CIELAB, OKLab, HSL or linear sRGB.</p>
+<p>Every step is measured: OKLab lightness, WCAG 2.2 contrast ratio and APCA-W3 0.1.9 Lc against white, black or your base colour. A Ramps view compares the engines and reports how even each ramp is in three measures. Exports give CSS custom properties, an SCSS map, JSON or CSV, each with a header recording how the ramp was made.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Designers building colour scales for a design system or brand.</li>
+<li>Front-end developers who need ramp tokens with known contrast against white and black.</li>
+<li>Accessibility specialists checking which steps meet WCAG AA or AAA, or an APCA Lc level.</li>
+<li>Students comparing HSL, CIELAB and OKLab mixing.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<ul>
+<li>Address: <a href="https://auricartisan.com/tool/general/gamut-and-rendering/tonal-steps-tints-shades/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/tonal-steps-tints-shades/</a></li>
+<li>In the tool collection (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) under <strong>Gamut &amp; Rendering</strong>, as <strong>Tonal Steps, Tints &amp; Shades</strong>.</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open <a href="https://auricartisan.com/tool/general/gamut-and-rendering/tonal-steps-tints-shades/" rel="noopener">https://auricartisan.com/tool/general/gamut-and-rendering/tonal-steps-tints-shades/</a>.</li>
+<li>Type your colour in <strong>Base colour</strong>, for example <code>#D3AF37</code>, or use the picker.</li>
+<li>Choose a <strong>Ramp engine</strong>: <strong>HSL lightness</strong> or <strong>Equal luminance</strong>.</li>
+<li>Set <strong>Steps</strong> (3 to 21; default 11).</li>
+<li>Read each step&#39;s HEX, OKLab L and contrast against white.</li>
+<li>Under <strong>Also show</strong>, tick <strong>Tints — toward white</strong> and <strong>Shades — toward black</strong>.</li>
+<li>Open <strong>Contrast</strong> to see every step&#39;s WCAG rating and APCA Lc.</li>
+<li>Open <strong>Export</strong>, choose <strong>The ramp</strong> as <strong>CSS</strong>, and select the download button.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Build an HSL-lightness or equal-luminance ramp of 3 to 21 steps, with easing.</li>
+<li>Build tints, shades, tones and a neutral ladder, mixed in CIELAB, OKLab, HSL or linear sRGB.</li>
+<li>Read each step&#39;s OKLab L and WCAG ratio, and the base colour&#39;s HEX, RGB, HSL, CIELAB, LCh, OKLab L and luminance.</li>
+<li>Compare the engines side by side and measure evenness in OKLab L, CIELAB L* or relative luminance.</li>
+<li>Build 50–950 and 50–900 key sets.</li>
+<li>Check every step&#39;s WCAG 2.2 ratio and rating and APCA-W3 Lc against white, black or the base.</li>
+<li>Export CSS, SCSS, JSON, CSV or a link; analyse a list of colours.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the tool<ul>
+<li><a href="docs/getting-started.html">Getting started</a></li>
+<li><a href="docs/build-a-ramp.html">Build a ramp</a></li>
+<li><a href="docs/tints-shades-tones.html">Make tints, shades, tones and key sets</a></li>
+<li><a href="docs/check-contrast.html">Check contrast</a></li>
+<li><a href="docs/export-tokens.html">Export tokens</a></li>
+<li><a href="docs/reference.html">Reference</a></li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+<li><a href="docs/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background and supporting pages<ul>
+<li><a href="others/glossary.html">Glossary</a></li>
+<li><a href="others/shortcuts.html">Shortcuts</a></li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="others/related.html">Related tools</a></li>
+<li><a href="others/release-notes.html">Release notes</a></li>
+<li><a href="others/privacy.html">Privacy</a></li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../illuminants/others/related.html"><span>Previous</span>Related to Illuminants</a><a href="docs/README.html"><span>Next</span>Tonal Steps documentation</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

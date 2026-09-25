@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run PHP sites — Auric Artisan Docs</title>
+<meta name="description" content="Run .php pages in Auric Live through php-cgi or the PHP built-in server, and run other CGI scripts.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Live</a>
+<h2>Auric Artisan Live guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Live</a></li>
+<li><a href="api-proxy-and-mocks.html">Proxy an API, mock endpoints and a REST database</a></li>
+<li><a href="browser-dashboard.html">Use the in-page browser dashboard</a></li>
+<li><a href="https-and-certificates.html">Serve over HTTPS</a></li>
+<li><a href="inspect-requests.html">Inspect requests</a></li>
+<li><a href="network-simulation.html">Simulate a slow network</a></li>
+<li><a href="php-and-cgi.html" aria-current="page">Run PHP sites</a></li>
+<li><a href="preview-and-devices.html">Preview, devices and phone testing</a></li>
+<li><a href="project-configuration.html">Project configuration</a></li>
+<li><a href="run-targets-and-backends.html">Run a backend or framework dev server</a></li>
+<li><a href="serve-and-live-reload.html">Serve a folder with live reload</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Live</a> &rsaquo; <a href="README.html">Auric Artisan Live guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Live</p>
+<h1>Run PHP sites</h1>
+<p class="lede">Run .php pages in Auric Live through php-cgi or the PHP built-in server, and run other CGI scripts.</p>
+<p>A plain static server sends a <code>.php</code> file to the browser as a download. Auric Live can run it instead, in one of two ways.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Way</th><th>How it works</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td><strong>PHP through CGI</strong></td><td>Auric Live runs each <code>.php</code> request through <code>php-cgi</code> and serves the result itself</td><td>Classic PHP sites made of <code>.php</code> pages, with live reload and the dashboard</td></tr>
+<tr><td><strong>PHP built-in server, Laravel or Symfony</strong></td><td>Auric Live starts PHP&#39;s own server (or <code>php artisan serve</code>, or <code>symfony server:start</code>) and forwards to it</td><td>Front-controller applications and frameworks</td></tr>
+</tbody></table></div>
+<p><em>CGI</em> (Common Gateway Interface) is a standard way for a web server to run a program for each request and send back what it prints. With <code>php-cgi</code>, <code>$_GET</code>, <code>$_POST</code>, headers, cookies, sessions and <code>header()</code> calls all work.</p>
+<p>Both ways need PHP installed on your computer, and both need a trusted workspace.</p>
+<h2 id="run-php-through-cgi">Run PHP through CGI</h2>
+<ol>
+<li><p>Install PHP so that <code>php-cgi</code> is on your <code>PATH</code>, or note its full path.</p>
+</li>
+<li><p>Open the folder and run <strong>Auric Live: Go Live</strong>. The first time, Auric Live notices the PHP files and offers <strong>Enable PHP</strong>. Choose it.</p>
+<p>Or choose <strong>PHP through CGI</strong> in <strong>Auric Live: Select Run Target…</strong>, or set <code>auricLive.cgi.enabled</code> to <code>true</code>.</p>
+</li>
+<li><p>Open a <code>.php</code> page. It runs, and its output is served.</p>
+</li>
+</ol>
+<p>When you choose <strong>Enable PHP</strong>, the index list becomes <code>index.php</code>, then <code>index.html</code>, so a folder opens its <code>index.php</code>.</p>
+<h3 id="cgi-settings">CGI settings</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricLive.cgi.enabled</code></td><td><code>false</code></td><td>Run matching files through a handler instead of serving them</td></tr>
+<tr><td><code>auricLive.cgi.handlers</code></td><td><code>{ &quot;.php&quot;: &quot;php-cgi&quot; }</code></td><td>The command for each file extension, for example <code>{ &quot;.php&quot;: &quot;php-cgi&quot;, &quot;.cgi&quot;: &quot;perl&quot; }</code></td></tr>
+<tr><td><code>auricLive.cgi.indexes</code></td><td><code>[&quot;index.php&quot;]</code></td><td>Extra index file names tried for a folder when CGI is on</td></tr>
+</tbody></table></div>
+<p>The handler must be on your <code>PATH</code> or given as a full path, such as <code>C:\php\php-cgi.exe</code>. In the project file you can also set <code>cgi.timeoutMs</code> (default 30000) for how long a script may run before the request fails.</p>
+<p>The <strong>Routes and Mocks</strong> view lists each handler, for example <code>*.php</code> › <code>php-cgi</code>. If a script fails, the page shows an error overlay (<code>auricLive.liveReload.overlay</code>) and the output channel has the details.</p>
+<h2 id="run-the-php-built-in-server-or-a-framework">Run the PHP built-in server or a framework</h2>
+<p>In <strong>Auric Live: Select Run Target…</strong>, choose:</p>
+<ul>
+<li><strong>Laravel</strong> when <code>artisan</code> is present: runs <code>php artisan serve --port=8000</code>.</li>
+<li><strong>Symfony</strong> when <code>symfony.lock</code> is present: runs <code>symfony server:start --port=8000 --no-tls</code>.</li>
+<li><strong>PHP built-in server</strong> when the folder has <code>composer.json</code>, <code>index.php</code> or <code>.php</code> files: runs <code>php -S 127.0.0.1:8000 -t &lt;docroot&gt;</code>, where the document root is <code>public</code> if <code>public/index.php</code> exists.</li>
+</ul>
+<p>Auric Live starts the process, waits for it, and forwards requests to it. See <a href="run-targets-and-backends.html">Run a backend or framework dev server</a> for supervision, port adoption and restarts.</p>
+<h2 id="in-an-untrusted-workspace">In an untrusted workspace</h2>
+<p>CGI settings (<code>auricLive.cgi.enabled</code>, <code>auricLive.cgi.handlers</code>, <code>auricLive.cgi.indexes</code>) are ignored until you trust the folder, even when a project file sets them. Choosing a PHP run target shows <strong>Trust this workspace before running CGI, commands, or proxy profiles.</strong></p>
+<p>When PHP is running, opening a <code>.php</code> page shows the rendered page, not its source, and the <strong>Requests</strong> view shows <code>cgi</code> as the handler.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="network-simulation.html"><span>Previous</span>Simulate a slow network</a><a href="preview-and-devices.html"><span>Next</span>Preview, devices and phone testing</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#run-php-through-cgi">Run PHP through CGI</a></li><li><a href="#run-the-php-built-in-server-or-a-framework">Run the PHP built-in server or a framework</a></li><li><a href="#in-an-untrusted-workspace">In an untrusted workspace</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

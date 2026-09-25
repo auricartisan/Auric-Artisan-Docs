@@ -1,0 +1,70 @@
+---
+title: How to read Auric Artisan's policies
+description: Find a policy, read its effective date and version, navigate its sections, and use the plain-language summaries in these docs.
+product: Website › Company and legal
+updated: 2026-09-25
+---
+
+# How to read the policies
+
+## Find a policy
+
+1. Open https://auricartisan.com/legal/ (**Legal & Policies**).
+2. Each card names a document and describes it in one line. Select one to open it.
+
+The same index links to the Platform FAQ. Company pages — About, Timeline, Pricing, Accessibility, FAQ and Contact — are in the **Company** menu in the site header.
+
+## The parts of a policy page
+
+| Part | What it tells you |
+| --- | --- |
+| **Auric Artisan · Legal** and the title | Which document you are reading |
+| **Effective** | The date the document took effect |
+| **Last updated** | The date of the latest change |
+| **Version** | The document's version number |
+| **Reading time** | An estimate |
+| **← All Policies** | Back to the index |
+| **Key Points** | The document in a few bullets |
+| **On this page** | Links to each numbered section |
+| Numbered sections | Select a heading to expand or collapse it |
+| **Plain language:**, **Current status:**, **Important:** notes | Short explanations inside a section |
+| **Related Policies** | Links to connected documents |
+
+## Versions these summaries were written from
+
+Written on the date at the top of this page. If a policy's **Last updated** date is newer than the one below, read the official page for the changes.
+
+| Document | Effective | Last updated | Version |
+| --- | --- | --- | --- |
+| Terms of Service | 27 April 2026 | 12 August 2026 | 2.4 |
+| Privacy Policy | 27 April 2026 | 27 July 2026 | 2.3 |
+| Cookie Policy | 27 April 2026 | 23 May 2026 | 1.2 |
+| Acceptable Use Policy | 27 April 2026 | 23 May 2026 | 2.2 |
+| Content and Intellectual Property Policy | 27 April 2026 | 23 May 2026 | 2.2 |
+| Data Retention and Deletion Policy | 27 April 2026 | 23 May 2026 | 2.2 |
+| Browser Extension Privacy Policy | 27 July 2026 | 27 July 2026 | 1.0 |
+| License Agreement | 27 April 2026 | 23 May 2026 | 2.2 |
+| Refund Policy | 16 August 2026 | 16 August 2026 | 4.0 |
+| Security Policy | 27 April 2026 | 23 May 2026 | 2.2 |
+| Subscription and Billing Policy | 16 August 2026 | 16 August 2026 | 2.4 |
+| Transparency and Ethics Policy | 27 April 2026 | 23 May 2026 | 2.2 |
+
+Company pages carry a **Last updated** date too: About and FAQ (27 July 2026), Accessibility statement (23 May 2026), Security page (23 May 2026, version 2.1).
+
+## Things that apply to every policy
+
+- **Governing law.** The Terms of Service are governed by the laws of India.
+- **Changes.** Each policy says it may be updated, and that continuing to use the platform after an update means accepting it. Check the **Last updated** date.
+- **One agreement.** The Terms say they, together with the Privacy Policy, Acceptable Use Policy, Content and IP Policy and the other referenced policies, form the agreement between you and Auric Artisan.
+- **Current status notes.** Several older policies describe features "where enabled" or "if introduced". The newer billing, refund and terms documents describe what is actually live: accounts, and one-time purchases through Razorpay.
+
+## How to use the summaries
+
+- Read the summary to understand what a document covers and where to look.
+- Read the official section before relying on a detail, especially for money, refunds or legal rights.
+- Where two official pages say different things, the summary says so and names both. The more specific or more recent page is usually the one to follow; if in doubt, ask through the contact page.
+
+## Related
+
+- [Legal index](legal-index.md)
+- [Glossary of policy terms](../others/glossary.md)

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyse a list of hex colours — Auric Artisan Docs</title>
+<meta name="description" content="Use batch colour analysis on the Actions tab to get RGB, HSL, CIELAB, LCH, luminance and tone band for a list of hex colours.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Image Picker</a>
+<h2>Image Picker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Image Picker</a></li>
+<li><a href="batch-analysis.html" aria-current="page">Analyse a list of hex colours</a></li>
+<li><a href="chart-the-palette.html">Chart the palette</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="extract-a-palette.html">Extract a palette</a></li>
+<li><a href="pick-exact-colours.html">Pick exact colours</a></li>
+<li><a href="read-contrast-and-harmony.html">Read contrast pairs, tone bands and harmony</a></li>
+<li><a href="reference.html">Image Picker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Image Picker</a></li>
+<li><a href="faq.html">Image Picker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">Image Picker</a> &rsaquo; <a href="README.html">Image Picker documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › Image Picker</p>
+<h1>Analyse a list of hex colours</h1>
+<p class="lede">Use batch colour analysis on the Actions tab to get RGB, HSL, CIELAB, LCH, luminance and tone band for a list of hex colours.</p>
+<p><strong>Batch colour analysis</strong> gives the same figures the palette uses for any list of colours you type or paste. No picture is needed.</p>
+<h2 id="run-a-batch">Run a batch</h2>
+<ol>
+<li>Open the <strong>Actions</strong> tab.</li>
+<li>In the box under <strong>Batch colour analysis</strong>, type or paste hex colours. Separate them with new lines, commas, semicolons or spaces. The <code>#</code> is optional.</li>
+</ol>
+<pre class="code" data-lang="text"><code>#D3AF37
+#735244
+#4A90D9
+#E84855
+#3BB273</code></pre>
+<ol start="3">
+<li>Select <strong>Run batch</strong>.</li>
+<li>A table appears under the box, one row per colour.</li>
+</ol>
+<h2 id="the-results-table">The results table</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong>#</strong></td><td>Position in your list</td><td>1</td></tr>
+<tr><td><strong>Swatch</strong></td><td>The colour</td><td>—</td></tr>
+<tr><td><strong>Hex</strong></td><td>The colour as six-digit hex, in capitals</td><td>#D3AF37</td></tr>
+<tr><td><strong>RGB</strong></td><td>Red, green, blue, 0 to 255</td><td>211,175,55</td></tr>
+<tr><td><strong>HSL</strong></td><td>Hue, saturation, lightness</td><td>46° 64% 52%</td></tr>
+<tr><td><strong>Lab</strong></td><td>CIELAB lightness, a*, b*, for a D65 white</td><td>72.8,0.9,62.8</td></tr>
+<tr><td><strong>LCH</strong></td><td>CIELAB lightness, chroma, hue angle</td><td>72.8,62.8,89°</td></tr>
+<tr><td><strong>Lum</strong></td><td>WCAG relative luminance, 0 to 1</td><td>0.4478</td></tr>
+<tr><td><strong>Tone</strong></td><td>Shadow, Midtone or Highlight</td><td>Midtone</td></tr>
+</tbody></table></div>
+<p>The example column shows the row for <code>#D3AF37</code>. The tone bands use the same limits as the <strong>Workbench</strong>: below 0.18 is a Shadow, below 0.65 a Midtone, and 0.65 or above a Highlight.</p>
+<h2 id="input-rules">Input rules</h2>
+<ul>
+<li>Three-digit hex values such as <code>#abc</code> are expanded to six digits (<code>#AABBCC</code>).</li>
+<li>Entries that are not hex values are skipped.</li>
+<li>Use three- or six-digit hex. The box accepts four- and eight-digit values (with an alpha part), but they are not read as the colour you mean, so remove the alpha digits first.</li>
+</ul>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><strong>Click Run batch to analyse colours.</strong></td><td>Before the first run</td></tr>
+<tr><td><strong>Enter hex colours above.</strong></td><td>The box is empty</td></tr>
+<tr><td><strong>No valid hex colours found.</strong></td><td>Nothing in the box is a hex value</td></tr>
+</tbody></table></div>
+<h2 id="uses">Uses</h2>
+<ul>
+<li>Check a brand palette&#39;s luminance and tone spread without an image.</li>
+<li>Get CIELAB and LCH values for a list of colours to paste into a specification.</li>
+<li>Compare colours you pinned from a picture: copy the JSON, take the <code>picks</code>, and paste their hex values here.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Image Picker</a><a href="chart-the-palette.html"><span>Next</span>Chart the palette</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#run-a-batch">Run a batch</a></li><li><a href="#the-results-table">The results table</a></li><li><a href="#input-rules">Input rules</a></li><li><a href="#messages">Messages</a></li><li><a href="#uses">Uses</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference — Auric Artisan Docs</title>
+<meta name="description" content="Every customer endpoint of the Auric Artisan REST API with its method, authentication, credit cost and purpose, plus the headers, input formats, plans and limits.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Public API documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="examples.html">Request examples</a></li>
+<li><a href="plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+<li><a href="sdks-and-tooling.html">SDKs and tooling</a></li>
+<li><a href="reference.html" aria-current="page">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="endpoints/README.html">Endpoints &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Public API documentation</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Reference</h1>
+<p class="lede">Every customer endpoint of the Auric Artisan REST API with its method, authentication, credit cost and purpose, plus the headers, input formats, plans and limits.</p>
+<h2 id="essentials">Essentials</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Base URL</td><td><a href="https://api.auricartisan.com" rel="noopener">https://api.auricartisan.com</a></td></tr>
+<tr><td>Version prefix</td><td><code>/v1</code></td></tr>
+<tr><td>Format</td><td>JSON over HTTPS</td></tr>
+<tr><td>Authentication</td><td><code>x-api-key</code> header (or <code>?key=</code> query), or <code>Authorization: Bearer</code> from the CLI</td></tr>
+<tr><td>Key prefix</td><td><code>aa_</code></td></tr>
+<tr><td>Keys per account</td><td>Up to 10 active</td></tr>
+<tr><td>Revocation</td><td>Takes effect within a minute</td></tr>
+<tr><td>Specification</td><td><code>GET /v1/openapi.yaml</code> (OpenAPI 3.1); <code>GET /v1/catalog</code> (JSON)</td></tr>
+<tr><td>Interactive reference</td><td><code>GET /v1/docs</code></td></tr>
+</tbody></table></div>
+<h2 id="colour-input">Colour input</h2>
+<p>Unless a field says otherwise, a colour can be sent as <code>#rrggbb</code>, <code>#rgb</code>, <code>rgb(r,g,b)</code>, an array <code>[r,g,b]</code> or an object <code>{r,g,b}</code>. Image fields take Base64 or a data URL.</p>
+<h2 id="endpoints">Endpoints</h2>
+<p>Auth &quot;None&quot; means public and unmetered; &quot;Key&quot; needs an API key or bearer token. Credits are per call; see <a href="plans-credits-and-quotas.html">Plans, credits and quotas</a>. The documentation gives some costs as ranges (2–4, 10–12); the exact cost of every call is returned in <code>x-credits-cost</code>. Endpoints the documentation does not weight separately bill as standard work, 1 credit.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Auth</th><th>Credits</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/v1</code></td><td>None</td><td>—</td><td>Index of every endpoint, with the current version</td></tr>
+<tr><td>GET</td><td><code>/v1/health</code></td><td>None</td><td>—</td><td>Liveness probe; always cheap, never touches storage</td></tr>
+<tr><td>GET</td><td><code>/v1/ready</code></td><td>None</td><td>—</td><td>Readiness probe: whether each backing store is bound</td></tr>
+<tr><td>GET</td><td><code>/v1/methods/:tool</code></td><td>Key</td><td>1</td><td>The algorithms a given tool supports</td></tr>
+<tr><td>GET</td><td><code>/v1/formats</code></td><td>None</td><td>—</td><td>Every export format, across every exportable resource</td></tr>
+<tr><td>GET</td><td><code>/v1/tiers</code></td><td>None</td><td>—</td><td>Rate limit and monthly quota for each tier</td></tr>
+<tr><td>GET</td><td><code>/v1/metrics</code></td><td>None</td><td>—</td><td>Process-level counters in Prometheus format</td></tr>
+<tr><td>GET</td><td><code>/v1/status</code></td><td>None</td><td>—</td><td>Human-readable status page</td></tr>
+<tr><td>GET</td><td><code>/v1/catalog</code></td><td>None</td><td>—</td><td>Every endpoint with its parameters and examples, as JSON</td></tr>
+<tr><td>GET</td><td><code>/v1/docs</code></td><td>None</td><td>—</td><td>Interactive reference (Redoc)</td></tr>
+<tr><td>GET</td><td><code>/v1/openapi.yaml</code></td><td>None</td><td>—</td><td>The OpenAPI 3.1 document</td></tr>
+<tr><td>GET</td><td><code>/v1/graphql</code></td><td>None</td><td>—</td><td>GraphQL playground</td></tr>
+<tr><td>POST</td><td><code>/v1/graphql</code></td><td>Key</td><td>2–4</td><td>Run a GraphQL query against the same resolvers as the REST endpoints</td></tr>
+<tr><td>POST</td><td><code>/v1/color/convert</code></td><td>Key</td><td>1</td><td>Convert one colour between the common spaces</td></tr>
+<tr><td>GET</td><td><code>/v1/color/atlas</code></td><td>Key</td><td>1</td><td>Browse the 8,192-colour atlas under a filter</td></tr>
+<tr><td>GET</td><td><code>/v1/color/atlas/stats</code></td><td>Key</td><td>1</td><td>What the atlas actually contains</td></tr>
+<tr><td>GET</td><td><code>/v1/color/atlas/:id</code></td><td>Key</td><td>1</td><td>Resolve one sample, whole</td></tr>
+<tr><td>POST</td><td><code>/v1/color/nearest</code></td><td>Key</td><td>1</td><td>The catalogued colours closest to one you already have</td></tr>
+<tr><td>POST</td><td><code>/v1/color/contrast</code></td><td>Key</td><td>1</td><td>WCAG contrast ratio between two colours, with pass or fail at each level</td></tr>
+<tr><td>GET</td><td><code>/v1/science/spaces</code></td><td>Key</td><td>1</td><td>Every colour space the platform knows, with provenance</td></tr>
+<tr><td>GET</td><td><code>/v1/science/spaces/:key</code></td><td>Key</td><td>1</td><td>One colour space in full, including its conversion matrices</td></tr>
+<tr><td>POST</td><td><code>/v1/science/convert</code></td><td>Key</td><td>1</td><td>Convert a colour into any registry space, or several at once</td></tr>
+<tr><td>POST</td><td><code>/v1/science/dossier</code></td><td>Key</td><td>5</td><td>One colour in every space at once, plus its colour temperature</td></tr>
+<tr><td>POST</td><td><code>/v1/science/delta-e</code></td><td>Key</td><td>2–4</td><td>Perceptual difference between two colours</td></tr>
+<tr><td>POST</td><td><code>/v1/science/temperature</code></td><td>Key</td><td>2–4</td><td>Correlated colour temperature from a colour, or the colour of a temperature</td></tr>
+<tr><td>GET</td><td><code>/v1/science/illuminants</code></td><td>Key</td><td>1</td><td>Standard reference illuminants with their chromaticities</td></tr>
+<tr><td>GET</td><td><code>/v1/science/metrics</code></td><td>Key</td><td>1</td><td>The difference formulae, their options, and when to use each</td></tr>
+<tr><td>POST</td><td><code>/v1/palette/generate</code></td><td>Key</td><td>2–4</td><td>Generate a palette from a seed colour</td></tr>
+<tr><td>POST</td><td><code>/v1/palette/evaluate</code></td><td>Key</td><td>1</td><td>Score a palette for harmony, contrast and accessibility</td></tr>
+<tr><td>POST</td><td><code>/v1/palette/export</code></td><td>Key</td><td>1</td><td>Render a palette into a file format</td></tr>
+<tr><td>POST</td><td><code>/v1/palette/from-image</code></td><td>Key</td><td>10–12</td><td>Extract a palette from an uploaded image</td></tr>
+<tr><td>POST</td><td><code>/v1/palette/png</code></td><td>Key</td><td>10–12</td><td>Render a palette as a PNG swatch sheet</td></tr>
+<tr><td>POST</td><td><code>/v1/harmony/generate</code></td><td>Key</td><td>2–4</td><td>Build a harmony set from a base colour</td></tr>
+<tr><td>POST</td><td><code>/v1/harmony/classify</code></td><td>Key</td><td>1</td><td>Identify which harmony an existing set of colours follows</td></tr>
+<tr><td>POST</td><td><code>/v1/harmony/export</code></td><td>Key</td><td>1</td><td>Export a harmony set</td></tr>
+<tr><td>POST</td><td><code>/v1/gradient/generate</code></td><td>Key</td><td>2–4</td><td>Interpolate a gradient between stops, in a chosen space</td></tr>
+<tr><td>GET</td><td><code>/v1/shade/library</code></td><td>Key</td><td>1</td><td>Browse 8,192 measured shade scales under a filter</td></tr>
+<tr><td>GET</td><td><code>/v1/shade/library/stats</code></td><td>Key</td><td>1</td><td>What the shade collection contains</td></tr>
+<tr><td>GET</td><td><code>/v1/shade/library/:id</code></td><td>Key</td><td>1</td><td>One scale, whole, with every measurement</td></tr>
+<tr><td>POST</td><td><code>/v1/shade/evaluate</code></td><td>Key</td><td>1</td><td>Measure a scale you already have: does it work as a token ramp?</td></tr>
+<tr><td>GET</td><td><code>/v1/palette/library</code></td><td>Key</td><td>1</td><td>Browse five million generated palettes under a filter</td></tr>
+<tr><td>GET</td><td><code>/v1/palette/library/stats</code></td><td>Key</td><td>1</td><td>What the palette collection looks like, measured on a stated sample</td></tr>
+<tr><td>GET</td><td><code>/v1/palette/library/:id</code></td><td>Key</td><td>1</td><td>One palette, whole, with the derivation that reproduces it</td></tr>
+<tr><td>GET</td><td><code>/v1/harmony/library</code></td><td>Key</td><td>1</td><td>Browse the 8,192-harmony collection under a filter</td></tr>
+<tr><td>GET</td><td><code>/v1/harmony/library/stats</code></td><td>Key</td><td>1</td><td>What the harmony collection contains</td></tr>
+<tr><td>GET</td><td><code>/v1/harmony/library/:id</code></td><td>Key</td><td>1</td><td>One harmony, whole, with the derivation that reproduces it</td></tr>
+<tr><td>POST</td><td><code>/v1/harmony/identify</code></td><td>Key</td><td>1</td><td>Name the scheme your colours form</td></tr>
+<tr><td>GET</td><td><code>/v1/gradient/library</code></td><td>Key</td><td>1</td><td>Browse the 8,192-gradient collection under a filter</td></tr>
+<tr><td>GET</td><td><code>/v1/gradient/library/stats</code></td><td>Key</td><td>1</td><td>What the gradient collection contains</td></tr>
+<tr><td>GET</td><td><code>/v1/gradient/library/:id</code></td><td>Key</td><td>1</td><td>One gradient, whole</td></tr>
+<tr><td>POST</td><td><code>/v1/gradient/analyse</code></td><td>Key</td><td>1</td><td>Measure a gradient you already have: will it band, and where?</td></tr>
+<tr><td>POST</td><td><code>/v1/gradient/export</code></td><td>Key</td><td>1</td><td>Export a gradient as CSS, SVG or a design-tool format</td></tr>
+<tr><td>POST</td><td><code>/v1/gradient/png</code></td><td>Key</td><td>10–12</td><td>Render a gradient as a PNG</td></tr>
+<tr><td>POST</td><td><code>/v1/shade/scale</code></td><td>Key</td><td>2–4</td><td>Build a tint and shade scale from one colour</td></tr>
+<tr><td>POST</td><td><code>/v1/shade/export</code></td><td>Key</td><td>1</td><td>Export a shade scale</td></tr>
+<tr><td>POST</td><td><code>/v1/tokens/generate</code></td><td>Key</td><td>2–4</td><td>Turn one seed colour into a complete, contrast-checked token system</td></tr>
+<tr><td>POST</td><td><code>/v1/tokens/export</code></td><td>Key</td><td>1</td><td>Render a token deck for a specific platform</td></tr>
+<tr><td>GET</td><td><code>/v1/tokens/formats</code></td><td>Key</td><td>1</td><td>The ten token export targets</td></tr>
+<tr><td>GET</td><td><code>/v1/personalize/vocabulary</code></td><td>Key</td><td>1</td><td>Everything a brief may name, with the ranges the engine applies</td></tr>
+<tr><td>GET</td><td><code>/v1/personalize/presets</code></td><td>Key</td><td>1</td><td>The 17 briefs the tool ships, in request shape</td></tr>
+<tr><td>POST</td><td><code>/v1/personalize/pool</code></td><td>Key</td><td>1</td><td>Grow a working set of colours from seeds and a brief</td></tr>
+<tr><td>POST</td><td><code>/v1/personalize/score</code></td><td>Key</td><td>1</td><td>Rank a palette you already have on the search&#39;s six scores</td></tr>
+<tr><td>POST</td><td><code>/v1/personalize/palettes</code></td><td>Key</td><td>1</td><td>Search: N candidates in, the best K out, each with its breakdown</td></tr>
+<tr><td>POST</td><td><code>/v1/personalize/system</code></td><td>Key</td><td>1</td><td>One brief in, an entire design system out</td></tr>
+<tr><td>POST</td><td><code>/v1/accessibility/check</code></td><td>Key</td><td>1</td><td>Check a foreground and background pair against WCAG 2.2 and APCA</td></tr>
+<tr><td>POST</td><td><code>/v1/accessibility/recommend</code></td><td>Key</td><td>1</td><td>Suggest the nearest accessible alternative to a failing pair</td></tr>
+<tr><td>POST</td><td><code>/v1/accessibility/from-image</code></td><td>Key</td><td>10–12</td><td>Audit the colour contrast present in an image</td></tr>
+<tr><td>POST</td><td><code>/v1/accessibility/map</code></td><td>Key</td><td>1</td><td>The whole territory of foreground colour a background leaves you</td></tr>
+<tr><td>POST</td><td><code>/v1/accessibility/picks</code></td><td>Key</td><td>1</td><td>A ready set of foregrounds that clear a target on one background</td></tr>
+<tr><td>POST</td><td><code>/v1/accessibility/audit</code></td><td>Key</td><td>1</td><td>Audit a palette against one background, with a fix for each failure</td></tr>
+<tr><td>GET</td><td><code>/v1/accessibility/corpus</code></td><td>Key</td><td>1</td><td>Browse the five-million-pair corpus under a filter, with a cursor</td></tr>
+<tr><td>GET</td><td><code>/v1/accessibility/corpus/stats</code></td><td>Key</td><td>1</td><td>The measured distribution of contrast across the corpus</td></tr>
+<tr><td>GET</td><td><code>/v1/accessibility/corpus/:record_id</code></td><td>Key</td><td>1</td><td>Resolve one record by id or index</td></tr>
+<tr><td>GET</td><td><code>/v1/analyzer/stages</code></td><td>Key</td><td>1</td><td>What the analyzer can check, and how much markup alone can answer</td></tr>
+<tr><td>POST</td><td><code>/v1/analyzer/inspect</code></td><td>Key</td><td>12</td><td>Audit one page from its markup; no browser, no rendering</td></tr>
+<tr><td>POST</td><td><code>/v1/analyzer/render</code></td><td>Key</td><td>10</td><td>Turn a report into an HTML or PDF document</td></tr>
+<tr><td>GET</td><td><code>/v1/vision/models</code></td><td>Key</td><td>1</td><td>The colour-vision deficiency models available</td></tr>
+<tr><td>POST</td><td><code>/v1/vision/simulate</code></td><td>Key</td><td>1</td><td>Simulate how a colour appears under a vision deficiency</td></tr>
+<tr><td>GET</td><td><code>/v1/vision/conditions</code></td><td>Key</td><td>1</td><td>Every documented vision condition, and what can simulate it</td></tr>
+<tr><td>GET</td><td><code>/v1/vision/conditions/:slug</code></td><td>Key</td><td>1</td><td>One condition, with its severity, prevalence and a worked example</td></tr>
+<tr><td>GET</td><td><code>/v1/vision/matrices</code></td><td>Key</td><td>1</td><td>The CVD matrices, for applying the transform yourself</td></tr>
+<tr><td>POST</td><td><code>/v1/vision/palette</code></td><td>Key</td><td>1</td><td>Run a whole palette through many conditions in one call</td></tr>
+<tr><td>POST</td><td><code>/v1/vision/audit</code></td><td>Key</td><td>1</td><td>Find which pairs in a palette stop being distinguishable</td></tr>
+<tr><td>POST</td><td><code>/v1/vision/simulate-image</code></td><td>Key</td><td>10–12</td><td>Simulate a vision deficiency across a whole image</td></tr>
+<tr><td>POST</td><td><code>/v1/ishihara/plate</code></td><td>Key</td><td>1</td><td>Generate an Ishihara test plate as structured data</td></tr>
+<tr><td>POST</td><td><code>/v1/ishihara/png</code></td><td>Key</td><td>10–12</td><td>Render an Ishihara plate as a PNG</td></tr>
+<tr><td>GET</td><td><code>/v1/usage</code></td><td>Key</td><td>1</td><td>Per-day, per-endpoint usage history</td></tr>
+<tr><td>GET</td><td><code>/v1/usage/me</code></td><td>Key</td><td>1</td><td>Your tier, limits and month-to-date consumption</td></tr>
+<tr><td>GET</td><td><code>/v1/usage/live</code></td><td>Key</td><td>1</td><td>The last 100 calls, with rolling latency and error stats</td></tr>
+<tr><td>GET</td><td><code>/v1/usage/stream</code></td><td>Key</td><td>5</td><td>The same live feed over Server-Sent Events (charged once per stream)</td></tr>
+<tr><td>GET</td><td><code>/v1/jobs</code></td><td>Key</td><td>1</td><td>The async job types available</td></tr>
+<tr><td>POST</td><td><code>/v1/jobs/:type</code></td><td>Key</td><td>25</td><td>Queue a long-running job and get an id back immediately</td></tr>
+<tr><td>GET</td><td><code>/v1/jobs/id/:id</code></td><td>Key</td><td>1</td><td>Poll one job</td></tr>
+<tr><td>GET</td><td><code>/v1/jobs/id/:id/stream</code></td><td>Key</td><td>1</td><td>Follow a job to completion over SSE</td></tr>
+<tr><td>GET</td><td><code>/v1/webhooks/events</code></td><td>None</td><td>—</td><td>Event types you can subscribe to</td></tr>
+<tr><td>GET</td><td><code>/v1/webhooks</code></td><td>Key</td><td>1</td><td>List your webhook subscriptions</td></tr>
+<tr><td>POST</td><td><code>/v1/webhooks</code></td><td>Key</td><td>1</td><td>Subscribe a URL to one or more events</td></tr>
+<tr><td>GET</td><td><code>/v1/webhooks/:id</code></td><td>Key</td><td>1</td><td>Fetch one subscription</td></tr>
+<tr><td>DELETE</td><td><code>/v1/webhooks/:id</code></td><td>Key</td><td>1</td><td>Revoke a subscription</td></tr>
+</tbody></table></div>
+<p>The groups are explained, with parameters and examples, in <a href="endpoints/README.html">Endpoints</a>.</p>
+<h2 id="response-headers">Response headers</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Header</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>x-ratelimit-limit</code></td><td>Requests allowed per minute</td></tr>
+<tr><td><code>x-ratelimit-remaining</code></td><td>Requests left this minute</td></tr>
+<tr><td><code>x-ratelimit-reset</code></td><td>Minute reset, in Unix seconds</td></tr>
+<tr><td><code>x-quota-limit</code></td><td>Included credits this month</td></tr>
+<tr><td><code>x-quota-used</code></td><td>Credits used this month</td></tr>
+<tr><td><code>x-quota-remaining</code></td><td>Included credits left</td></tr>
+<tr><td><code>x-quota-reset</code></td><td>Monthly reset, in Unix seconds</td></tr>
+<tr><td><code>x-credits-cost</code></td><td>Credits this call consumed</td></tr>
+<tr><td><code>x-credits-overage</code></td><td>Overage credits this call used (only when paid from the prepaid balance)</td></tr>
+<tr><td><code>x-overage-cost-usd</code></td><td>1.00 when the call opened a new 100,000-credit block, otherwise 0.00</td></tr>
+<tr><td><code>x-credits-ceiling</code></td><td>The account&#39;s hard ceiling</td></tr>
+<tr><td><code>Retry-After</code></td><td>With 429: when to retry</td></tr>
+<tr><td><code>Allow</code></td><td>With 405: the accepted methods</td></tr>
+</tbody></table></div>
+<h2 id="plans">Plans</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Plan</th><th>API</th><th>Requests per minute</th><th>Credits per month</th><th>Hard ceiling</th><th>Max keys</th></tr></thead>
+<tbody>
+<tr><td>Apprentice (free)</td><td>Not included</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Artisan</td><td>Not included</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Specialist</td><td>Included</td><td>300</td><td>1,000,000</td><td>10,000,000</td><td>10</td></tr>
+<tr><td>Industrial Pro</td><td>Included</td><td>3,000</td><td>10,000,000</td><td>100,000,000</td><td>10</td></tr>
+</tbody></table></div>
+<p>Overage is opt-in and prepaid at $1.00 (₹85) per 100,000 credits, with a monthly spend cap of up to $10,000.</p>
+<h2 id="limits-stated-in-the-documentation">Limits stated in the documentation</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Limit</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Request body for image endpoints</td><td>4 MB</td></tr>
+<tr><td><code>/v1/usage/live</code></td><td>The last 100 calls; <code>limit</code> 1–100</td></tr>
+<tr><td><code>/v1/usage/stream</code></td><td>Heartbeat every 15 s; connections capped at 10 minutes</td></tr>
+<tr><td><code>/v1/palette/generate</code></td><td>1–64 colours</td></tr>
+<tr><td>Vision palette and audit</td><td>Up to 64 colours</td></tr>
+<tr><td>Accessibility audit</td><td>1–64 colours</td></tr>
+<tr><td>Ishihara plate</td><td>64–1024 px; 50–5000 dots</td></tr>
+<tr><td>Collection page size</td><td>Up to 200 (atlas, corpus) or 100 (libraries)</td></tr>
+<tr><td>Corpus scan budget</td><td><code>max_scan</code> up to 1,000,000</td></tr>
+<tr><td>Palette library scan budget</td><td><code>max_scan</code> 1,000–500,000</td></tr>
+</tbody></table></div>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="errors.html">Errors</a></li>
+<li><a href="endpoints/README.html">Endpoints</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="sdks-and-tooling.html"><span>Previous</span>SDKs and tooling</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#essentials">Essentials</a></li><li><a href="#colour-input">Colour input</a></li><li><a href="#endpoints">Endpoints</a></li><li><a href="#response-headers">Response headers</a></li><li><a href="#plans">Plans</a></li><li><a href="#limits-stated-in-the-documentation">Limits stated in the documentation</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

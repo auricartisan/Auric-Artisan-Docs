@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Develop and embed — Auric Artisan Docs</title>
+<meta name="description" content="Copy a font stack, CSS variables, Tailwind, SCSS, design tokens or a modular type scale from the Develop tab, and embed code from the Use &amp; Embed tab.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Font Library</a>
+<h2>Font Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Font Library</a></li>
+<li><a href="browse-and-filter.html">Browse, search and filter</a></li>
+<li><a href="collections-and-recommender.html">Collections and the recommender</a></li>
+<li><a href="develop-and-embed.html" aria-current="page">Develop and embed</a></li>
+<li><a href="family-details.html">Family details</a></li>
+<li><a href="kit-compare-and-download.html">Your kit, compare and download</a></li>
+<li><a href="specimen-panel.html">The specimen panel</a></li>
+<li><a href="reference.html">Font Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Font Library</a> &rsaquo; <a href="README.html">Font Library documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Develop and embed</h1>
+<p class="lede">Copy a font stack, CSS variables, Tailwind, SCSS, design tokens or a modular type scale from the Develop tab, and embed code from the Use &amp; Embed tab.</p>
+<p>Two tabs in the family panel give you code. <strong>Develop</strong> is for your stylesheets and design system; <strong>Use &amp; Embed</strong> is for loading the font on a page. For how the Font CDN serves these files, and for self-hosting, see the <a href="../../../../../services/font-cdn/README.html">Font CDN</a> documentation.</p>
+<h2 id="develop">Develop</h2>
+<h3 id="font-family-stack">Font-family stack</h3>
+<p>A <code>font-family</code> line with the family first and safe fallbacks for its category, for example for a serif:</p>
+<pre class="code" data-lang="css"><code>font-family: 'Lora', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;</code></pre>
+<p><strong>Copy</strong> copies it; the message reads <strong>Copied stack</strong>.</p>
+<h3 id="export">Export</h3>
+<p>Five formats, each with <strong>Copy</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>What you get</th></tr></thead>
+<tbody>
+<tr><td><strong>CSS variables</strong></td><td>A <code>:root</code> variable such as <code>--font-serif</code> and a <code>body</code> rule using it</td></tr>
+<tr><td><strong>Tailwind</strong></td><td>A <code>tailwind.config.js</code> fragment that adds the stack to <code>fontFamily</code></td></tr>
+<tr><td><strong>SCSS</strong></td><td>A <code>$font-…</code> variable and a <code>body</code> rule</td></tr>
+<tr><td><strong>Design tokens</strong></td><td>A JSON token such as <code>font.family.serif</code> with type <code>fontFamily</code></td></tr>
+<tr><td><strong>CSS @import</strong></td><td>An <code>@import</code> of the family&#39;s CDN stylesheet and the variable</td></tr>
+</tbody></table></div>
+<p>The variable and token names use <strong>mono</strong> for monospace families, <strong>serif</strong> for serif families and <strong>sans</strong> for everything else.</p>
+<h3 id="modular-type-scale">Modular type scale</h3>
+<p>A scale of nine sizes, <strong>xs</strong>, <strong>sm</strong>, <strong>base</strong>, <strong>md</strong>, <strong>lg</strong>, <strong>xl</strong>, <strong>2xl</strong>, <strong>3xl</strong> and <strong>4xl</strong>, each shown in the family with its size in pixels and rem.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Options</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Base</strong></td><td>10 to 24 px</td><td>16</td></tr>
+<tr><td><strong>Ratio</strong></td><td>1.125 Major Second, 1.200 Minor Third, 1.250 Major Third, 1.333 Perfect Fourth, 1.414 Augmented Fourth, 1.500 Perfect Fifth, 1.618 Golden Ratio</td><td>1.200 Minor Third</td></tr>
+</tbody></table></div>
+<p><strong>base</strong> is the base size; each step up multiplies by the ratio and each step down divides by it. <strong>Copy CSS</strong> copies a <code>:root</code> block of <code>--text-xs</code> to <code>--text-4xl</code> in rem (16 pixels = 1 rem). The preview caps very large steps at 60 pixels so they fit.</p>
+<h2 id="use-embed">Use &amp; Embed</h2>
+<h3 id="snippets">Snippets</h3>
+<p>Six tabs of code for this family, with <strong>Copy</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td><strong>Link</strong></td><td>A <code>&lt;link&gt;</code> to the family&#39;s stylesheet on the Font CDN</td></tr>
+<tr><td><strong>Import</strong></td><td>The same stylesheet as a CSS <code>@import</code></td></tr>
+<tr><td><strong>Script</strong></td><td>The Font CDN loader script with a <code>data-families</code> attribute naming the family</td></tr>
+<tr><td><strong>JS</strong></td><td>A call that loads the family from JavaScript and then applies it</td></tr>
+<tr><td><strong>@font-face</strong></td><td><code>@font-face</code> rules for up to the first four font files</td></tr>
+<tr><td><strong>Usage</strong></td><td>A CSS rule applying the family, with its weight range for variable fonts</td></tr>
+</tbody></table></div>
+<p>A note under the code says the files are self-hosted, with no third-party request, and names the family&#39;s licence.</p>
+<p>The <strong>Selected weights</strong> chips above the tabs can be switched on and off, but they do not change the code: every snippet always covers the whole family. To load fewer weights, edit the <code>@font-face</code> rules or self-host only the files you need.</p>
+<h3 id="families-that-are-listed-but-not-served">Families that are listed but not served</h3>
+<p>Families marked <strong>Installed</strong> exist only as fonts installed on a computer. Their code refers to the font by its local name, so it works only on devices where that font is installed. See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+<h2 id="embed-several-families-at-once">Embed several families at once</h2>
+<p>To get one block of code for several families, select them and use <strong>Embed</strong> in <strong>Your kit</strong>. See <a href="kit-compare-and-download.html">Your kit, compare and download</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../../../../../services/font-cdn/docs/embed-a-family.html">Font CDN: embed a family</a></li>
+<li><a href="../../../../../services/font-cdn/docs/use-the-loader.html">Font CDN: use the loader</a></li>
+<li><a href="family-details.html">Family details</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="collections-and-recommender.html"><span>Previous</span>Collections and the recommender</a><a href="family-details.html"><span>Next</span>Family details</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#develop">Develop</a></li><li><a href="#use-embed">Use &amp; Embed</a></li><li><a href="#embed-several-families-at-once">Embed several families at once</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

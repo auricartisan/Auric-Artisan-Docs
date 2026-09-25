@@ -1,0 +1,118 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for common problems with Auric Artisan Theme and
+Theme Studio.
+Area: VS Code extensions › Auric Artisan Theme   Updated: 2026-09-25
+
+  Symptom:        Dials and colour changes have no effect.
+  Why it happens: A non-Auric colour theme is active. Customisations are
+                  scoped to the Auric theme names.
+  What to do:     Run Auric Theme: Switch Variant… and pick an Auric theme.
+
+  Symptom:        A message says "customisations apply to the Auric Artisan
+                  themes. Pick one first."
+  Why it happens: Same as above.
+  What to do:     Select Choose theme in the message.
+
+  Symptom:        The status bar item is missing.
+  Why it happens: It only shows while an Auric theme is active.
+  What to do:     Switch to an Auric theme.
+
+  Symptom:        My colour override is not exactly the colour I typed.
+  Why it happens: The contrast guard adjusted it to meet your minimum
+                  contrast.
+  What to do:     Lower Minimum contrast or turn off Enforce contrast in the
+                  Accessibility dials. Check the Audit tab afterwards.
+
+  Symptom:        Overrides disappeared after switching theme.
+  Why it happens: Colour overrides are stored per variant.
+  What to do:     Switch back to the variant where you made them, or save a
+                  preset and load it on the new variant.
+
+  Symptom:        A warning keeps saying colour pairs no longer meet the
+                  minimum.
+  Why it happens: Audit on apply reports failures after each change.
+  What to do:     Fix the failing pairs (see the Audit tab), or turn off Audit
+                  on apply.
+
+  Symptom:        "Auric Theme: could not save auricTheme.…"
+  Why it happens: VS Code could not write your user settings, often because
+                  `settings.json` has a syntax error or is read-only.
+  What to do:     Open Preferences: Open User Settings (JSON), fix any error,
+                  then try again.
+
+  Symptom:        Import fails with "That is not valid JSON".
+  Why it happens: The pasted text is incomplete or not JSON.
+  What to do:     Copy the whole block again, including the braces.
+
+  Symptom:        Import says the customisation "came from" another tool.
+  Why it happens: The JSON was not produced by Auric Artisan Theme.
+  What to do:     Only import files exported by this extension.
+
+  Symptom:        Import says a newer version is needed.
+  Why it happens: The JSON uses a newer format.
+  What to do:     Update the extension.
+
+  Symptom:        The sidebar's Export button seems to do nothing.
+  Why it happens: It prepares customisation JSON for the Studio's Share tab;
+                  it does not open a save dialog.
+  What to do:     Use Export as Theme File… from the sidebar's … menu, or Copy
+                  Customisation to Clipboard.
+
+  Symptom:        Italics look slanted and blurry.
+  Why it happens: Your editor font has no true italic, so it is synthesised.
+  What to do:     Set Italics to Off, or run Auric Theme: Toggle Italics.
+
+  Symptom:        Whitespace marks setting has no visible effect.
+  Why it happens: Marks only show when VS Code draws whitespace.
+  What to do:     Turn on `editor.renderWhitespace`.
+
+  Symptom:        Title bar dial has no visible effect.
+  Why it happens: The title bar colour only applies with VS Code's custom
+                  title bar style.
+  What to do:     Set `window.titleBarStyle` to `custom`.
+
+  Symptom:        A preset I saved in an older version is missing.
+  Why it happens: In versions before 0.2.0, presets with distinct Hindi or
+                  punctuation-only names could overwrite each other.
+  What to do:     This was fixed in 0.2.0, but presets already overwritten
+                  cannot be recovered.
+
+  Symptom:        Recent colours in the picker are gone.
+  Why it happens: Recent colours last only for the current panel session.
+  What to do:     Note important colours as presets or overrides.
+
+  Symptom:        The Preview tab does not look like my editor.
+  Why it happens: Preview is an illustrative specimen of the palette, not a
+                  full editor.
+  What to do:     Look at a real file to judge the result; edits are already
+                  live.
+
+  Symptom:        The Studio shows a banner listing problems.
+  Why it happens: The theme engine reported something it could not apply.
+  What to do:     Read the listed problem; resetting the affected dial or slot
+                  usually clears it.
+
+  Symptom:        Hindi labels do not appear in the Command Palette.
+  Why it happens: Command titles follow VS Code's display language, not the
+                  Studio switch.
+  What to do:     Run Configure Display Language and choose Hindi, or keep the
+                  Studio switch for the panels only.
+
+START AGAIN FROM THE SHIPPED THEME
+==================================
+
+  1. Run Auric Theme: Reset Everything and confirm with Reset, or
+  2. In Theme Studio, select Reset all, then Reset everything? within four
+     seconds.
+
+This clears every dial and the active variant's colour overrides. Presets are
+not deleted.
+
+STILL STUCK
+===========
+
+Collect your VS Code version, the extension version (0.2.0), the active theme
+and the steps that reproduce the problem, then contact support at
+https://auricartisan.com/company/contact/.

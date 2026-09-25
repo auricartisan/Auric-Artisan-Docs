@@ -1,0 +1,143 @@
+==============================================================================
+FAQ
+==============================================================================
+Short answers to common questions about the Auric Artisan browser extension.
+Area: Browser extension   Updated: 2026-09-25
+
+GETTING IT
+==========
+
+Where do I install it from?
+---------------------------
+
+The Chrome Web Store for Chrome, Edge, Opera, Brave, Vivaldi and Arc, and
+Firefox Add-ons for Firefox. Links are on https://auricartisan.com/extension
+and in Install [install/README.txt].
+
+Is it free?
+-----------
+
+Yes. Every tool ships in the one install. There is no paid edition and no
+account.
+
+Do I need an Auric Artisan account?
+-----------------------------------
+
+No. There is no sign-in anywhere in the extension, and it does not talk to
+auricartisan.com or anything else.
+
+What is the difference between the Chrome, Edge and Opera ZIPs?
+---------------------------------------------------------------
+
+Nothing: they are identical copies of the same Chromium package, named for
+their stores. Any of them works in any Chromium browser. The Firefox package
+is a separate build.
+
+Does it work in Safari?
+-----------------------
+
+It is not published for Safari. On a Mac you can convert the Chromium package
+with Apple's tools yourself, without a side panel. See Safari
+[install/safari.txt].
+
+Does it survive a Firefox restart?
+----------------------------------
+
+From Firefox Add-ons, yes. A copy loaded with Load Temporary Add-on is removed
+when Firefox quits, because Firefox keeps only signed add-ons.
+
+PRIVACY AND PERMISSIONS
+=======================
+
+Why does it need access to all websites?
+----------------------------------------
+
+The tools work on whatever page you are looking at, and the extension cannot
+know in advance which pages those will be. A small script loads on each page
+and waits until you start a tool; everything that changes a page is off until
+you turn it on. See Permissions [permissions.txt].
+
+Does it send anything to a server?
+----------------------------------
+
+No. There are no analytics, accounts or remote calls. Everything stays in your
+browser's extension storage. Links, web searches and translations open only
+when you choose them. See Privacy [../others/privacy.txt].
+
+Does it change the websites I visit?
+------------------------------------
+
+Only if you ask. The inspector, vision filters and audit outlines appear when
+you start them. The website pickers and the custom right-click menu stay off
+until you turn them on in Settings.
+
+Does it slow pages down?
+------------------------
+
+The page script only registers a listener and reads your settings until you
+use a tool. The audit is the heavy part, and it runs only when you start it,
+in small slices so the page stays responsive.
+
+USING IT
+========
+
+Why does Pick from page not work in Firefox?
+--------------------------------------------
+
+Firefox does not offer the screen eyedropper that extensions use. Use Page
+palette instead, which reads every colour the page uses.
+
+How do I keep the extension open while I click around the page?
+---------------------------------------------------------------
+
+Open the side panel: Open the side panel in the header, or the browser's own
+side panel menu. Or use Open in its own window.
+
+The audit says 80 rules, but only 78 ran. Why?
+----------------------------------------------
+
+The engine has 80 rules. The audit checks WCAG 2.2 levels A and AA, so the two
+AAA-level rules are not run.
+
+Does a clean audit mean my page is accessible?
+----------------------------------------------
+
+No. An automated audit finds many problems but cannot judge everything, such
+as whether alt text is accurate or whether content makes sense. Test with real
+assistive technology and people too.
+
+Where do my audit results go when I close the popup?
+----------------------------------------------------
+
+They are not kept. Use Export JSON or Export CSV before closing.
+
+Can I change the keyboard shortcuts?
+------------------------------------
+
+Yes, in the browser: Settings › Shortcuts › Change them in the browser. You
+can also give keys to Inspect and the full audit, which have none by default.
+
+How do I get the browser's own right-click menu back?
+-----------------------------------------------------
+
+Shift + right-click always opens it. To stop the custom menu altogether, turn
+off Settings › Right-click › Custom right-click menu.
+
+How do I move my colours and snippets to another computer?
+----------------------------------------------------------
+
+Settings › Data › Download a backup, then Restore from a file on the other
+computer. See Back up and move your data
+[workflows/back-up-and-move-your-data.txt].
+
+Can I use it in Hindi?
+----------------------
+
+Yes. Settings › Appearance › Language › हिन्दी. See Hindi interface
+[hindi-interface.txt].
+
+Is there a VS Code version?
+---------------------------
+
+Auric Artisan has separate VS Code extensions. See the VS Code extensions
+section of these docs.

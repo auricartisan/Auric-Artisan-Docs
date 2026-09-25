@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculator functions — Auric Artisan Docs</title>
+<meta name="description" content="The complete expression language of the Feature Kit calculator: operators, numbers, functions, constants, variables, your own functions, calculus, statistics and programmer features.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Feature Kit</a>
+<h2>Feature Kit guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Feature Kit</a></li>
+<li><a href="calculator-functions.html" aria-current="page">Calculator functions</a></li>
+<li><a href="calculator.html">Use the calculator</a></li>
+<li><a href="date-and-time.html">Work with dates and times</a></li>
+<li><a href="developer-tools.html">Use the developer tools</a></li>
+<li><a href="feedback.html">Send feedback</a></li>
+<li><a href="graphing.html">Plot a function</a></li>
+<li><a href="notes.html">Keep notes</a></li>
+<li><a href="unit-converter.html">Convert units</a></li>
+<li><a href="reference.html">Feature Kit reference</a></li>
+<li><a href="troubleshooting.html">Feature Kit troubleshooting</a></li>
+<li><a href="faq.html">Feature Kit FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Kits</a> &rsaquo; <a href="../README.html">Feature Kit</a> &rsaquo; <a href="README.html">Feature Kit guides</a></nav>
+<p class="kicker">Website › Kits › Feature Kit</p>
+<h1>Calculator functions</h1>
+<p class="lede">The complete expression language of the Feature Kit calculator: operators, numbers, functions, constants, variables, your own functions, calculus, statistics and programmer features.</p>
+<p>This page lists everything you can type into the calculator&#39;s expression bar. The keypad uses the same rules; it simply types the symbols for you.</p>
+<h2 id="how-expressions-are-read">How expressions are read</h2>
+<ul>
+<li><strong>Spaces are ignored.</strong> <code>2 + 3</code> and <code>2+3</code> are the same. This also means <code>sin 30</code> is read as the unknown name <code>sin30</code>; always use brackets: <code>sin(30)</code>.</li>
+<li><strong>Multiplication must be written.</strong> Type <code>2*pi</code>, not <code>2pi</code>. A missing operator gives <code>Unexpected token after expression</code>.</li>
+<li><strong>Names are case-sensitive.</strong> <code>sin</code> works, <code>SIN</code> does not; <code>NA</code> is Avogadro&#39;s number, <code>na</code> is not defined.</li>
+<li><strong>Brackets must balance.</strong> A missing <code>)</code> gives <code>Expected )</code>.</li>
+</ul>
+<h3 id="operators">Operators</h3>
+<p>From the loosest to the tightest binding:</p>
+<ol>
+<li><code>|</code> bitwise OR</li>
+<li><code>xor( )</code> bitwise exclusive OR, written after a value: <code>5 xor(3)</code></li>
+<li><code>&amp;</code> bitwise AND</li>
+<li><code>&lt;&lt;</code> and <code>&gt;&gt;</code> bit shifts</li>
+<li><code>+</code> and <code>-</code> (the keypad&#39;s <code>−</code> is the same as <code>-</code>)</li>
+<li><code>*</code> or <code>×</code>, <code>/</code> or <code>÷</code>, and <code>%</code></li>
+<li>A leading <code>-</code> or <code>+</code> sign</li>
+<li><code>^</code> power, which groups from the right</li>
+<li><code>!</code> factorial</li>
+</ol>
+<p>Things that follow from this order:</p>
+<ul>
+<li><code>-2^2</code> is <code>-4</code>, because the power is worked out before the sign.</li>
+<li><code>2^3^2</code> is <code>2^9</code>, which is <code>512</code>.</li>
+<li><code>2^-1</code> is <code>0.5</code>.</li>
+<li><code>%</code> is the <strong>remainder</strong>, not a percentage: <code>10 % 3</code> is <code>1</code>. To take 15% of 80, type <code>80*15/100</code>.</li>
+<li>Dividing by zero gives the error <code>Division by zero</code>. A remainder by zero gives <code>NaN</code>.</li>
+</ul>
+<h3 id="numbers">Numbers</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>You type</th><th>Meaning</th><th>Example result</th></tr></thead>
+<tbody>
+<tr><td><code>42</code>, <code>3.14</code>, <code>.5</code></td><td>Decimal numbers</td><td><code>.5</code> is <code>0.5</code></td></tr>
+<tr><td><code>2e3</code>, <code>1.5E-4</code></td><td>Scientific notation</td><td><code>2000</code>, <code>0.00015</code></td></tr>
+<tr><td><code>0xFF</code></td><td>Hexadecimal (digits 0 to 9 and A to F)</td><td><code>255</code></td></tr>
+<tr><td><code>0b1010</code></td><td>Binary (digits 0 and 1)</td><td><code>10</code></td></tr>
+</tbody></table></div>
+<p>Because <code>e</code> is also a constant, a number cannot end in a bare <code>e</code>: <code>2e</code> gives <code>Invalid numeric literal</code>. Write <code>2*e</code> for two times e.</p>
+<h2 id="functions">Functions</h2>
+<p>Call a function with brackets and separate arguments with commas: <code>atan2(1, 1)</code>. Calling with the wrong number of arguments gives a message such as <code>sin expects 1 argument</code> or <code>stdev expects at least 2 arguments</code>.</p>
+<h3 id="trigonometry">Trigonometry</h3>
+<p>Angles follow the <strong>RAD</strong> or <strong>DEG</strong> setting on the display.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Function</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>sin(a)</code>, <code>cos(a)</code>, <code>tan(a)</code></td><td>Sine, cosine, tangent of angle <code>a</code></td></tr>
+<tr><td><code>asin(v)</code>, <code>acos(v)</code>, <code>atan(v)</code></td><td>Inverse sine, cosine, tangent, as an angle</td></tr>
+<tr><td><code>atan2(y, x)</code></td><td>The angle of the point (x, y), as an angle</td></tr>
+<tr><td><code>sinh(v)</code>, <code>cosh(v)</code>, <code>tanh(v)</code></td><td>Hyperbolic sine, cosine, tangent (not affected by RAD or DEG)</td></tr>
+<tr><td><code>asinh(v)</code>, <code>acosh(v)</code>, <code>atanh(v)</code></td><td>Inverse hyperbolic functions (not affected by RAD or DEG)</td></tr>
+<tr><td><code>deg(r)</code></td><td>Converts radians to degrees: <code>deg(pi)</code> is <code>180</code></td></tr>
+<tr><td><code>rad(d)</code></td><td>Converts degrees to radians: <code>rad(180)</code> is <code>3.14159265359</code></td></tr>
+</tbody></table></div>
+<h3 id="powers-roots-and-logarithms">Powers, roots and logarithms</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Function</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>sqrt(v)</code></td><td>Square root. <code>sqrt(-1)</code> gives <code>NaN</code></td></tr>
+<tr><td><code>cbrt(v)</code></td><td>Cube root</td></tr>
+<tr><td><code>nthroot(v, n)</code></td><td>The nth root. An odd root of a negative number is negative: <code>nthroot(-27, 3)</code> is <code>-3</code></td></tr>
+<tr><td><code>pow(a, b)</code></td><td><code>a</code> to the power <code>b</code>, the same as <code>a^b</code></td></tr>
+<tr><td><code>exp(v)</code></td><td>e to the power <code>v</code></td></tr>
+<tr><td><code>ln(v)</code></td><td>Natural logarithm</td></tr>
+<tr><td><code>log(v)</code></td><td>Base-10 logarithm: <code>log(1000)</code> is <code>3</code></td></tr>
+<tr><td><code>log2(v)</code></td><td>Base-2 logarithm</td></tr>
+<tr><td><code>logb(v, base)</code></td><td>Logarithm in any base: <code>logb(8, 2)</code> is <code>3</code></td></tr>
+</tbody></table></div>
+<h3 id="rounding-and-sizes">Rounding and sizes</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Function</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>abs(v)</code></td><td>Absolute value</td></tr>
+<tr><td><code>round(v)</code></td><td>Nearest whole number</td></tr>
+<tr><td><code>roundto(v, digits)</code></td><td>Rounded to that many decimal places. Negative digits round to tens, hundreds and so on: <code>roundto(1234.5, -2)</code> is <code>1200</code></td></tr>
+<tr><td><code>floor(v)</code>, <code>ceil(v)</code></td><td>Round down, round up</td></tr>
+<tr><td><code>trunc(v)</code></td><td>Drop the fractional part</td></tr>
+<tr><td><code>sign(v)</code></td><td><code>-1</code>, <code>0</code> or <code>1</code></td></tr>
+<tr><td><code>mod(a, b)</code></td><td>Remainder of <code>a</code> divided by <code>b</code>, the same as <code>a % b</code></td></tr>
+<tr><td><code>max(a, b, ...)</code>, <code>min(a, b, ...)</code></td><td>Largest, smallest of any number of values</td></tr>
+<tr><td><code>clamp(v, low, high)</code></td><td><code>v</code> limited to the range: <code>clamp(15, 0, 10)</code> is <code>10</code></td></tr>
+<tr><td><code>hypot(a, b, ...)</code></td><td>Square root of the sum of squares: <code>hypot(3, 4)</code> is <code>5</code></td></tr>
+</tbody></table></div>
+<h3 id="factorials-and-counting">Factorials and counting</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Function</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>n!</code> or <code>fact(n)</code></td><td>Factorial. Works for non-whole numbers too, through the gamma function: <code>0.5!</code> is <code>0.886226925453</code></td></tr>
+<tr><td><code>gamma(v)</code></td><td>The gamma function: <code>gamma(5)</code> is <code>24</code></td></tr>
+<tr><td><code>nPr(n, r)</code> or <code>npr(n, r)</code></td><td>Permutations: ordered choices of <code>r</code> from <code>n</code></td></tr>
+<tr><td><code>nCr(n, r)</code> or <code>ncr(n, r)</code></td><td>Combinations: unordered choices of <code>r</code> from <code>n</code></td></tr>
+</tbody></table></div>
+<h3 id="number-theory">Number theory</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Function</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>gcd(a, b, ...)</code></td><td>Greatest common divisor of any number of values (rounded to whole numbers first)</td></tr>
+<tr><td><code>lcm(a, b, ...)</code></td><td>Least common multiple of any number of values</td></tr>
+<tr><td><code>isprime(n)</code></td><td><code>1</code> if <code>n</code> is prime, otherwise <code>0</code></td></tr>
+<tr><td><code>nextprime(n)</code></td><td>The first prime greater than <code>n</code></td></tr>
+<tr><td><code>fib(n)</code></td><td>The nth Fibonacci number: <code>fib(10)</code> is <code>55</code></td></tr>
+</tbody></table></div>
+<h3 id="statistics">Statistics</h3>
+<p>Each takes any number of values: <code>mean(4, 8, 15, 16, 23, 42)</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Function</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>mean(...)</code> or <code>avg(...)</code></td><td>Arithmetic mean</td></tr>
+<tr><td><code>median(...)</code></td><td>Middle value (mean of the two middle values for an even count)</td></tr>
+<tr><td><code>stdev(...)</code></td><td>Sample standard deviation. Needs at least 2 values</td></tr>
+<tr><td><code>stdevp(...)</code></td><td>Population standard deviation</td></tr>
+<tr><td><code>variance(...)</code></td><td>Sample variance. Needs at least 2 values</td></tr>
+<tr><td><code>varp(...)</code></td><td>Population variance</td></tr>
+<tr><td><code>geomean(...)</code></td><td>Geometric mean</td></tr>
+<tr><td><code>rms(...)</code></td><td>Root mean square</td></tr>
+<tr><td><code>total(...)</code></td><td>Sum of the values</td></tr>
+</tbody></table></div>
+<h3 id="random-numbers">Random numbers</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Function</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>rand()</code></td><td>A random number from 0 up to, but not including, 1</td></tr>
+<tr><td><code>randint(a, b)</code></td><td>A random whole number from <code>a</code> to <code>b</code>, both included</td></tr>
+</tbody></table></div>
+<h3 id="bitwise-programmer-functions">Bitwise (programmer) functions</h3>
+<p>These work on whole numbers as 32-bit values. Results show in decimal.</p>
+<ul>
+<li><code>a &amp; b</code> — bits set in both.</li>
+<li><code>a | b</code> — bits set in either.</li>
+<li><code>xor(a, b)</code>, or <code>a xor(b)</code> — bits set in one but not both: <code>xor(5, 3)</code> is <code>6</code>.</li>
+<li><code>not(a)</code> — every bit flipped: <code>not(0)</code> is <code>4294967295</code>.</li>
+<li><code>a &lt;&lt; n</code> and <code>a &gt;&gt; n</code> — shift left or right by <code>n</code> bits: <code>1 &lt;&lt; 4</code> is <code>16</code>.</li>
+</ul>
+<h2 id="constants">Constants</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Name</th><th>Value</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>pi</code> or <code>π</code></td><td>3.14159…</td><td>Pi</td></tr>
+<tr><td><code>e</code></td><td>2.71828…</td><td>Euler&#39;s number</td></tr>
+<tr><td><code>phi</code> or <code>φ</code></td><td>1.61803…</td><td>The golden ratio</td></tr>
+<tr><td><code>tau</code></td><td>6.28318…</td><td>Two pi</td></tr>
+<tr><td><code>inf</code></td><td>∞</td><td>Infinity</td></tr>
+<tr><td><code>c</code></td><td>299792458</td><td>Speed of light, m/s</td></tr>
+<tr><td><code>G</code></td><td>6.6743e-11</td><td>Gravitational constant, SI units</td></tr>
+<tr><td><code>g0</code></td><td>9.80665</td><td>Standard gravity, m/s²</td></tr>
+<tr><td><code>NA</code></td><td>6.02214076e23</td><td>Avogadro constant, per mole</td></tr>
+<tr><td><code>kB</code></td><td>1.380649e-23</td><td>Boltzmann constant, J/K</td></tr>
+<tr><td><code>qe</code></td><td>1.602176634e-19</td><td>Elementary charge, C</td></tr>
+<tr><td><code>me</code></td><td>9.1093837015e-31</td><td>Electron mass, kg</td></tr>
+<tr><td><code>mp</code></td><td>1.67262192369e-27</td><td>Proton mass, kg</td></tr>
+<tr><td><code>eps0</code></td><td>8.8541878128e-12</td><td>Vacuum permittivity, F/m</td></tr>
+<tr><td><code>mu0</code></td><td>1.25663706212e-6</td><td>Vacuum permeability, N/A²</td></tr>
+<tr><td><code>ans</code></td><td>Your last result</td><td>Updated after each calculation</td></tr>
+</tbody></table></div>
+<p>You cannot assign a new value to a constant&#39;s name: <code>pi = 3</code> gives an error.</p>
+<h2 id="variables">Variables</h2>
+<p>Store a value with <code>name = expression</code>:</p>
+<ol>
+<li>Type <code>r = 4</code> and press <code>Enter</code>. The display shows <code>4</code>, and a chip <strong>r = 4</strong> appears under the expression bar.</li>
+<li>Type <code>pi*r^2</code> and press <code>Enter</code>. The display shows <code>50.2654824574</code>.</li>
+</ol>
+<ul>
+<li>A name starts with a letter or an underscore and can continue with letters, digits and underscores.</li>
+<li>Assigning to an existing name replaces its value.</li>
+<li>Using a name that has no value gives <code>Unknown variable: name</code>.</li>
+<li>Variables last until you leave or reload the page, or until you select <strong>Clear</strong> in the variables strip.</li>
+</ul>
+<h2 id="your-own-functions">Your own functions</h2>
+<p>Define a function with <code>name(parameters) = expression</code>:</p>
+<ol>
+<li>Type <code>f(x) = x^2 + 1</code> and press <code>Enter</code>. The display shows <code>ƒ f(x) defined</code>, and a chip <strong>ƒ f(x)</strong> appears.</li>
+<li>Type <code>f(3)</code> and press <code>Enter</code>. The display shows <code>10</code>.</li>
+</ol>
+<ul>
+<li>Functions can take several parameters: <code>area(w, h) = w*h</code>, then <code>area(3, 4)</code>.</li>
+<li>The body can use constants, built-in functions, variables and your other functions.</li>
+<li>Variables in the body are read when you call the function. With <code>h(x) = a*x</code>, changing <code>a</code> changes what <code>h(5)</code> returns.</li>
+<li>Calling with the wrong number of values gives a message such as <code>f expects 1 argument</code>.</li>
+<li>You cannot reuse the name of a built-in function or constant: <code>sin(x) = 2</code> gives <code>Cannot redefine sin</code>. Defining a function you already made replaces it.</li>
+<li>A function that calls itself stops with <code>Recursion too deep</code> after 128 levels.</li>
+<li>Your functions also work in the graph and inside calculus functions.</li>
+<li>Functions last until you leave or reload the page, or until you select <strong>Clear</strong>.</li>
+</ul>
+<h2 id="calculus-and-series">Calculus and series</h2>
+<p>These functions take an expression as their first argument and work it out many times with a changing variable. By default the variable is <code>x</code>. You can name a different variable as an extra argument.</p>
+<h3 id="derivatives">Derivatives</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>You type</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>diff(expr, at)</code></td><td>The slope (first derivative) of <code>expr</code> with respect to <code>x</code>, at <code>x = at</code></td></tr>
+<tr><td><code>diff(expr, var, at)</code></td><td>The same, with respect to the variable <code>var</code></td></tr>
+<tr><td><code>derivative(...)</code></td><td>Another name for <code>diff</code></td></tr>
+<tr><td><code>diff2(expr, at)</code> or <code>diff2(expr, var, at)</code></td><td>The second derivative</td></tr>
+</tbody></table></div>
+<p>Examples: <code>diff(x^3, 2)</code> shows <code>12.0000000001</code> (exactly 12 in theory); <code>diff(sin(x), 0)</code> shows <code>1</code>. Derivatives are estimated numerically, so the last digits can show tiny rounding noise, more so for <code>diff2</code>.</p>
+<h3 id="integrals">Integrals</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>You type</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>integral(expr, a, b)</code></td><td>The area under <code>expr</code> from <code>x = a</code> to <code>x = b</code></td></tr>
+<tr><td><code>integral(expr, var, a, b)</code></td><td>The same, integrating over <code>var</code></td></tr>
+<tr><td><code>integrate(...)</code></td><td>Another name for <code>integral</code></td></tr>
+</tbody></table></div>
+<p>Examples: <code>integral(sin(x), 0, pi)</code> is <code>2</code>; <code>integral(t^2, t, 0, 3)</code> is <code>9</code>; <code>integral(1/x, 1, e)</code> is <code>1</code>. When <code>a</code> equals <code>b</code> the result is <code>0</code>; when <code>a</code> is greater than <code>b</code> the result changes sign.</p>
+<h3 id="solving-equations">Solving equations</h3>
+<p><code>solve</code> finds a value of the variable that makes the expression equal to zero.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>You type</th><th>How it searches</th></tr></thead>
+<tbody>
+<tr><td><code>solve(expr, guess)</code></td><td>Starts at <code>guess</code> and homes in on a nearby root</td></tr>
+<tr><td><code>solve(expr, low, high)</code></td><td>Searches between <code>low</code> and <code>high</code>. Best when the expression changes sign in that range</td></tr>
+<tr><td><code>solve(expr, var, guess)</code> or <code>solve(expr, var, low, high)</code></td><td>The same, for a variable other than <code>x</code></td></tr>
+<tr><td><code>root(...)</code></td><td>Another name for <code>solve</code></td></tr>
+</tbody></table></div>
+<p>Examples: <code>solve(x^2 - 9, 1)</code> is <code>3</code>; <code>solve(cos(x) - x, 0, 1)</code> is <code>0.739085133215</code>.</p>
+<ul>
+<li>To solve <code>f(x) = 5</code>, move everything to one side: <code>solve(f(x) - 5, 1)</code>.</li>
+<li>If there is no nearby root, you see <code>solve: no convergence (try lo, hi bounds)</code>. Try a different guess, or give a range that brackets the root. Some expressions, such as <code>x^2 + 1</code>, have no real root at all.</li>
+<li>If the range you give does not change sign, <code>solve</code> starts from its middle and searches as if you had given a guess.</li>
+<li>A result within a hair of a whole number is shown as that whole number.</li>
+</ul>
+<h3 id="sums-and-products">Sums and products</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>You type</th><th>Returns</th></tr></thead>
+<tbody>
+<tr><td><code>sum(expr, var, from, to)</code></td><td><code>expr</code> added up for <code>var</code> = <code>from</code>, <code>from + 1</code>, and so on to <code>to</code></td></tr>
+<tr><td><code>product(expr, var, from, to)</code></td><td><code>expr</code> multiplied together over the same range</td></tr>
+</tbody></table></div>
+<p>Examples: <code>sum(k^2, k, 1, 10)</code> is <code>385</code>; <code>product(k, k, 1, 5)</code> is <code>120</code>; <code>sum(1/2^n, n, 0, 50)</code> is <code>2</code>.</p>
+<ul>
+<li><code>from</code> and <code>to</code> are rounded to whole numbers, and swapped if <code>from</code> is larger.</li>
+<li>A range of more than 1,000,000 steps gives <code>sum: too many terms</code> (or <code>product: too many terms</code>).</li>
+</ul>
+<h3 id="rules-shared-by-calculus-functions">Rules shared by calculus functions</h3>
+<ul>
+<li>The variable you name can reuse a constant&#39;s name inside the function: <code>sum(e, e, 1, 3)</code> is <code>6</code>.</li>
+<li>They can be nested: <code>integral(diff(x^2, x), 0, 1)</code> is <code>1</code>.</li>
+<li>Very heavy expressions stop with <code>Expression too complex</code> instead of freezing the page.</li>
+</ul>
+<h2 id="how-results-are-shown">How results are shown</h2>
+<ul>
+<li>Whole numbers under 10^15 show in full.</li>
+<li>Other results show up to 12 significant digits, with trailing zeros removed.</li>
+<li>Very small (under 10^-10) or very large (over 10^15) results show in scientific notation, for example <code>1.2345678901e+17</code>.</li>
+<li>Results are rounded to 14 significant digits internally, so <code>0.1+0.2</code> shows <code>0.3</code>.</li>
+<li>Infinite results show as <code>∞</code> or <code>-∞</code>; undefined results show as <code>NaN</code>.</li>
+<li>In the expression bar, a result with a small exact fraction also shows the fraction, such as <code>0.875 = 7/8</code>.</li>
+</ul>
+<p>See <a href="../others/limits-and-accuracy.html">Limits and accuracy</a> for the ranges each function can handle.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the Feature Kit</a><a href="calculator.html"><span>Next</span>Use the calculator</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-expressions-are-read">How expressions are read</a></li><li><a href="#functions">Functions</a></li><li><a href="#constants">Constants</a></li><li><a href="#variables">Variables</a></li><li><a href="#your-own-functions">Your own functions</a></li><li><a href="#calculus-and-series">Calculus and series</a></li><li><a href="#how-results-are-shown">How results are shown</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

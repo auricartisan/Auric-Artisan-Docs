@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adapt an image to a new light — Auric Artisan Docs</title>
+<meta name="description" content="Load a photo, adapt it between two illuminants with a chosen transform and degree of adaptation, and export the frame.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Chromatic Adaptation</a>
+<h2>Chromatic Adaptation documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Chromatic Adaptation</a></li>
+<li><a href="adapt-a-colour-list.html">Adapt a list of colours</a></li>
+<li><a href="adapt-an-image.html" aria-current="page">Adapt an image to a new light</a></li>
+<li><a href="compare-transforms-and-copy-matrices.html">Compare transforms and copy a matrix</a></li>
+<li><a href="explore-the-time-course.html">Explore the adaptation time course</a></li>
+<li><a href="reference.html">Chromatic Adaptation reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Chromatic Adaptation</a></li>
+<li><a href="faq.html">Chromatic Adaptation FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Chromatic Adaptation</a> &rsaquo; <a href="README.html">Chromatic Adaptation documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Adapt an image to a new light</h1>
+<p class="lede">Load a photo, adapt it between two illuminants with a chosen transform and degree of adaptation, and export the frame.</p>
+<p>Use this to see how the colours of a picture shift when it is re-expressed for a different light: for example a D65 photo prepared for a D50 print booth, or a daylight scene shown as it would appear once the eye has adapted to tungsten.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Open the <strong>Lab</strong> tab.</li>
+<li>Under <strong>Image Source</strong>, select <strong>Choose image</strong> and pick a PNG, JPEG or other image file your browser can open. The file name appears beside the button. Large images are scaled down to fit 480 × 320 pixels for processing; small images are not enlarged. The status chip shows the size used, for example &quot;Image loaded (480×320)&quot;.</li>
+<li>Under <strong>Illuminants</strong>, set <strong>Source illuminant</strong> to the light the picture was taken or balanced for. Most camera and web images are D65.</li>
+<li>Set <strong>Destination illuminant</strong> to the light you want to adapt to. Use <strong>Swap</strong> to exchange the two.</li>
+<li>Choose a <strong>CAT Method</strong>. Bradford is the common choice in colour management; CAT16 is the most recent model.</li>
+<li>Set <strong>Degree of adaptation D</strong>. 1.00 means complete adaptation; lower values leave part of the source cast in place, as happens when the eye does not fully adapt.</li>
+<li>Set the moment in time with <strong>Time (scrubber)</strong> (0 to 5 s), or select <strong>Animate</strong> to play it.</li>
+<li>If bright colours clip harshly after a large shift (for example D65 to A), tick <strong>HDR Tonemap</strong>. It compresses values above white with a Reinhard curve (c ÷ (1 + c) on each channel in linear light) before the image is clipped to the display range.</li>
+<li>With <strong>Live</strong> ticked, every change re-renders immediately. If you untick Live, select <strong>Run</strong> after each change.</li>
+<li>Open <strong>Export</strong> and select <strong>Export Frame (PNG)</strong> to download the adapted image.</li>
+</ol>
+<h2 id="what-each-result-shows">What each result shows</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Result</th><th>Read it as</th></tr></thead>
+<tbody>
+<tr><td><strong>Adapted Image</strong></td><td>The picture with the adaptation at the current time applied</td></tr>
+<tr><td><strong>RGB Histogram (Adapted)</strong></td><td>How the red, green and blue values of the adapted image are distributed</td></tr>
+<tr><td><strong>Adaptation Curve A(t)</strong></td><td>The applied adaptation over 0–5 s, with the current time and value marked</td></tr>
+<tr><td><strong>Per-Pixel Adaptation State Map</strong></td><td>A grey strip whose brightness is the adaptation in use (white = fully adapted)</td></tr>
+<tr><td><strong>LMS Cone-Channel Analysis</strong></td><td>The L, M and S response to the source white (light bars) and the destination white (dark bars), with the scale factor under each</td></tr>
+<tr><td><strong>SPD Spectral Overlay</strong></td><td>The spectra of the two illuminants, with a line saying how each was obtained</td></tr>
+</tbody></table></div>
+<p>For B, C, F2, F7 and F11 the lab holds the white point but not the spectrum. The overlay then says &quot;No spectrum held for …&quot; and explains that the adaptation is unaffected, because only the white point is needed to adapt.</p>
+<h2 id="choosing-d-and-time">Choosing D and time</h2>
+<ul>
+<li>The adaptation applied at time t starts from an initial state of 0.1 and moves towards your D along the measured time course. After 5 s it has covered about 55% of that distance.</li>
+<li>To see the fully adapted result, you would need a later time than the Lab timeline offers. Use the <strong>Dynamics</strong> tab to read when adaptation reaches 50% and 90%, and use the <a href="compare-transforms-and-copy-matrices.html">Matrix tab</a>, which shows the matrix at the D you set.</li>
+</ul>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>The share link on the <strong>Export</strong> tab stores the illuminants, method, D and time, but not the image. Send the image separately.</li>
+<li><strong>Copy Link</strong> copies the page&#39;s current address, which only includes settings if the page was opened from a share link.</li>
+<li>Keyboard: <code>Space</code> plays or pauses and <code>R</code> resets the time, when the focus is not in a text field. See <a href="../others/shortcuts.html">Shortcuts</a>.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>You have an adapted version of your image at a chosen moment of adaptation, plus a PNG of it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="adapt-a-colour-list.html"><span>Previous</span>Adapt a list of colours</a><a href="compare-transforms-and-copy-matrices.html"><span>Next</span>Compare transforms and copy a matrix</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#steps">Steps</a></li><li><a href="#what-each-result-shows">What each result shows</a></li><li><a href="#choosing-d-and-time">Choosing D and time</a></li><li><a href="#tips">Tips</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

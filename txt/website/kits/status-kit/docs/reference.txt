@@ -1,0 +1,179 @@
+==============================================================================
+STATUS KIT REFERENCE
+==============================================================================
+Every control, reading, filter and message in the Status Kit.
+Area: Website › Kits › Status Kit   Updated: 2026-09-25
+
+LAUNCHER
+========
+
+  Control:      Status launcher (tick-in-circle icon)
+  What it does: Opens or closes the kit. Announces itself as Open status kit
+                or Close status kit
+  Default:      Closed
+
+  Control:      Tooltip
+  What it does: "View the current page status and scan page status entries."
+  Default:      —
+
+There is no keyboard shortcut to open the Status Kit.
+
+TITLE BAR
+=========
+
+  Control:      Status Kit title
+  What it does: Drag the title bar to move the kit
+  Values:       —
+  Default:      Bottom-left corner
+
+  Control:      Focus mode
+  What it does: Opens the kit again on the next page you load. Does not keep
+                it open when another kit opens
+  Values:       On or off; remembered
+  Default:      Off
+
+  Control:      Theme
+  What it does: Switches the kit between light and dark
+  Values:       Light or dark; remembered
+  Default:      Follows the site
+
+  Control:      Resize
+  What it does: Normal (560 px wide) or expanded (up to 760 px wide)
+  Values:       Remembered
+  Default:      Normal
+
+  Control:      Minimize
+  What it does: Collapses the kit to its title bar
+  Values:       —
+  Default:      —
+
+  Control:      Close
+  What it does: Closes the kit ("Close Status Kit.")
+  Values:       —
+  Default:      —
+
+THIS PAGE CARD
+==============
+
+  Element:       This page
+  What it shows: Label
+
+  Element:       Status badge
+  What it shows: The current page's status; tooltip "Current page status:
+                 [status]." Shows Unknown until worked out
+
+  Element:       Title link
+  What it shows: The page's title; opens the page in a new tab
+
+SYSTEM STATUS PANEL
+===================
+
+  Control                                          | What it does                 | Default
+  -------------------------------------------------+------------------------------+---------
+  System status heading and chevron                | Collapse or expand the panel | Expanded
+  Online / Offline pill                            | Your connection state        | —
+  Network, Hardware, Memory, Display, Runtime tabs | Switch page                  | Network
+
+Readings, by tab:
+
+  Tab      | Readings
+  ---------+------------------------------------------------------------------------------
+  Network  | Connection, Speed, Latency, Data Saver
+  Hardware | Battery, Device memory, CPU threads
+  Memory   | JS heap, Storage, Caches
+  Display  | Resolution, Viewport, Pixel ratio, Color
+  Runtime  | Frame rate, Page load, Service worker, App mode, Language, Time zone, Cookies
+
+Readings refresh every 2 seconds while the kit is open. See System status
+[system-status.txt].
+
+SCANNER
+=======
+
+  Control:      Path box (placeholder `https://auricartisan.com`)
+  What it does: The path or address to scan
+
+  Control:      Scan
+  What it does: Runs the scan (also `Enter` in the path box)
+
+  Control:      Search pages...
+  What it does: Filters results by title; appears after a scan
+
+  Control:      Recent scans
+  What it does: Your last 8 scans; select one to re-run it
+
+  Control:      Summary cards
+  What it does: Pages, Tools, Stable, Beta, Issues
+
+  Control:      Filter chips
+  What it does: All, one per status found, Issues; each with a count
+
+  Control:      Result count
+  What it does: N pages or Showing N of M pages
+
+  Control:      Target summary
+  What it does: For a page matching the path exactly: URL, Category,
+                Collection, Status
+
+  Control:      Category groups
+  What it does: Tools, Color Lab, Vision, Library, Company, Trust, Other;
+                collapsible and remembered
+
+  Control:      Result row
+  What it does: Thumbnail, title (tooltip shows the path), status badge; opens
+                the page in a new tab
+
+STATUSES
+========
+
+Stable, Beta, Alpha, Experimental, In development, Under testing, Maintenance,
+Research, Archived, Deprecated, Unknown. Issues counts Alpha, Deprecated and
+Archived.
+
+MESSAGES
+========
+
+  Message: Scan a path for page statuses — "Enter a URL or path (for example
+           /tool/) and press Scan to list every page and its status."
+  When:    Before a scan, or after scanning an empty box
+
+  Message: Scanning pages with a count such as `12 / 48`
+  When:    A scan is running
+
+  Message: No pages found — "Nothing matched … Try a broader path like /tool/
+           or /library/."
+  When:    No page starts with the path
+
+  Message: Couldn’t complete the scan
+  When:    The site map could not be read
+
+  Message: Nothing matches
+  When:    A filter or search hides every result
+
+KEYBOARD
+========
+
+  Key:          `/`
+  Where:        Kit open, cursor not in a text box
+  What it does: Puts the cursor in the path box, or in Search pages... after a
+                scan
+
+  Key:          `Enter`
+  Where:        Path box
+  What it does: Runs the scan
+
+  Key:          `Down arrow`
+  Where:        Path box or results search
+  What it does: Moves into the results
+
+  Key:          `Up arrow`, `Down arrow`, `Home`, `End`
+  Where:        Results
+  What it does: Move between the target summary, category headings and rows
+
+  Key:          `Enter` or `Space`
+  Where:        System status heading
+  What it does: Collapses or expands it
+
+  Key:          `Esc`
+  Where:        Kit open
+  What it does: Closes the kit

@@ -1,0 +1,91 @@
+---
+title: Accessibility Library — Read the contrast map
+description: Choose a ground and a target, explore the contrast map by pointer or keyboard, and read the ratio, APCA value, vision margin and distance to the line.
+product: Website › Library › Colour libraries › Accessibility Library
+updated: 2026-09-25
+---
+
+# Read the contrast map
+
+## What the map shows
+
+- **Across:** hue, from 0° (red) through 60° (yellow), 120° (green), 180° (cyan), 240° (blue) and 300° (magenta) to 360°.
+- **Up:** OKLCH lightness, from 0 (black) at the bottom to 1.0 (white) at the top.
+- **Each point:** the most colourful colour your screen's sRGB range can show at that hue and lightness.
+- **Three lines:** where contrast against the ground reaches **3:1** (dashed amber), **4.5:1 body** (solid green) and **7:1 AAA** (dashed pale blue).
+- **Dimmed area:** the part of the map that fails your chosen target.
+
+On a dark ground the passing region is above the line (lighter colours); on a light ground it is below (darker colours). Notice that the line is not flat: yellows and greens pass at lower lightness than blues and purples, because they carry more luminance.
+
+## Choose a ground
+
+A **ground** is the background your text will sit on.
+
+1. Select one of the preset swatches: `#0D0D0D` (near-black), `#1D2A3E` (dark navy, the default), `#FFFCF7` (warm off-white) or `#1B4D3E` (dark green).
+2. Or use the colour picker beside them to choose any ground.
+
+The lines, the dimmed area, **Territory** and the picks all update for the new ground.
+
+## Choose a target
+
+| Target | Meaning |
+| --- | --- |
+| **3:1** | Large text and user-interface components such as icons and borders (WCAG AA). |
+| **4.5:1** | Body text (WCAG AA). The default. |
+| **7:1** | Body text at WCAG AAA. |
+
+**Territory** shows what share of the map clears the chosen target on this ground — a quick measure of how much freedom the ground leaves you. Near-black leaves most of the colour space usable; a mid-tone leaves a sliver.
+
+## Explore
+
+- **Pointer:** press and drag anywhere on the map. The caret follows, and the readout updates.
+- **Keyboard:** select the map (or tab to it) and use the arrow keys:
+
+| Key | Effect |
+| --- | --- |
+| `Left` / `Right` | Hue down or up by 5°. |
+| `Up` / `Down` | Lightness up or down by 0.02. |
+| `Shift` with an arrow | Five times the step (25° or 0.10). |
+| `Home` | Lightness to 1 (white end). |
+| `End` | Lightness to 0 (black end). |
+
+Screen readers announce the current foreground, ground, ratio and whether it passes.
+
+## The readout
+
+The specimen shows "Readable at a glance" and a paragraph in your foreground on the ground.
+
+Under it, the ratio, for example **7.84:1**, and a verdict:
+
+| Ratio | Verdict |
+| --- | --- |
+| 7:1 or more | **clears AAA for body text** |
+| 4.5:1 to 7:1 | **clears AA for body text** |
+| 3:1 to 4.5:1 | **large text and UI only** |
+| Below 3:1 | **fails every text threshold** |
+
+Then the figures:
+
+| Row | Meaning |
+| --- | --- |
+| **Foreground** | The colour under the caret, in hex. |
+| **Ground** | The background, in hex. |
+| **Lightness** | The foreground's OKLCH lightness, three decimals. |
+| **Hue** | The foreground's hue in degrees. |
+| **APCA** | The APCA lightness contrast value (Lc), rounded. Negative values mean light text on a dark ground. |
+| **Vision margin** | How far apart the two colours stay under ten simulated conditions (eight colour vision deficiencies, cataracts and low vision), taking the worst case, on a scale from 0 (identical) to 1. |
+| **To the line** | How far the caret is from your target's line at this hue, as a percentage of lightness: positive inside the passing region, negative outside, or **unreachable at this hue**. |
+
+Finally, a sentence of advice:
+
+- Inside: **Inside the territory with N% of lightness to spare — room for a later tweak before it drops out.**
+- Outside: **Outside by N% of lightness. The line sits above/below you at this hue, so moving straight up/down the column is the shortest way in.**
+- No passing lightness at this hue: **No lightness at this hue reaches the target against this ground. Either the ground has to move or the hue does.**
+
+## Swap foreground and ground
+
+Select **Swap** to put the current foreground on the ground and move the caret to the old ground colour. Use it to ask the question the other way round — for example, "what backgrounds can hold this brand colour as text?"
+
+## Result
+
+You know which foreground colours pass on your ground at your target, how close any colour is to the line, and which way to move it.

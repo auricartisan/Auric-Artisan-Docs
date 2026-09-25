@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embed an icon — Auric Artisan Docs</title>
+<meta name="description" content="Every way to put an Icon CDN icon on a page — loader placeholders, inline SVG, a React component, a data-URI image, direct SVG files and the Material and Remix webfonts.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Icon CDN</a>
+<h2>Icon CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="embed-an-icon.html" aria-current="page">Embed an icon</a></li>
+<li><a href="export-and-self-host.html">Export and self-host</a></li>
+<li><a href="style-size-and-colour.html">Style, size and colour</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Icon CDN</a> &rsaquo; <a href="README.html">Icon CDN documentation</a></nav>
+<p class="kicker">Services › Icon CDN</p>
+<h1>Embed an icon</h1>
+<p class="lede">Every way to put an Icon CDN icon on a page — loader placeholders, inline SVG, a React component, a data-URI image, direct SVG files and the Material and Remix webfonts.</p>
+<p>The Icon Library at <a href="https://auricartisan.com/tool/icon/" rel="noopener">https://auricartisan.com/tool/icon/</a> gives every icon ready-made code. Open an icon, set its style, size and colour, then choose a copy button or copy a block from the code panel. This page explains each option.</p>
+<h2 id="cdn-tag-the-loader">CDN tag (the loader)</h2>
+<p><strong>Copy CDN tag</strong> gives a placeholder and the loader script:</p>
+<pre class="code" data-lang="html"><code>&lt;i data-icon=&quot;phosphor:heart&quot; data-style=&quot;fill&quot;&gt;&lt;/i&gt;
+&lt;script src=&quot;https://icons.auricartisan.com/icon-cdn.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p><code>data-style</code> appears only when you chose a style other than the set&#39;s default. Include the script once per page, and use as many placeholders as you like. The loader replaces each placeholder&#39;s contents with inline SVG when the page loads; see <a href="use-the-loader.html">Use the loader</a>.</p>
+<p>Best for: plain HTML pages, prototypes, content managed in a CMS.</p>
+<h2 id="inline-svg">Inline SVG</h2>
+<p><strong>Copy SVG</strong> gives the icon&#39;s SVG markup, with your chosen colour and stroke applied. Paste it straight into your HTML. Nothing needs to load from the CDN afterwards.</p>
+<pre class="code" data-lang="html"><code>&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;polyline points=&quot;22 12 18 12 15 21 9 3 6 12 2 12&quot;/&gt;&lt;/svg&gt;</code></pre>
+<p>Give it a size with <code>width</code> and <code>height</code> attributes or CSS.</p>
+<p>Best for: a handful of icons you want in your own markup, with no script.</p>
+<h2 id="jsx-react">JSX / React</h2>
+<p><strong>Copy JSX</strong> gives a React component. Attribute names are converted to React&#39;s camelCase, and your props are spread onto the <code>&lt;svg&gt;</code>:</p>
+<pre class="code" data-lang="jsx"><code>export const Activity = (props) =&gt; (
+  &lt;svg {...props} viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; strokeWidth=&quot;2&quot; strokeLinecap=&quot;round&quot; strokeLinejoin=&quot;round&quot;&gt;&lt;polyline points=&quot;22 12 18 12 15 21 9 3 6 12 2 12&quot;/&gt;&lt;/svg&gt;
+);</code></pre>
+<p>Use it as <code>&lt;Activity width={24} height={24} /&gt;</code>.</p>
+<h2 id="image-with-a-data-uri">Image with a data URI</h2>
+<p><strong>Copy data-URI</strong> gives an <code>&lt;img&gt;</code> whose source is the SVG itself, encoded into the address, with your chosen size and the icon&#39;s name as its <code>alt</code> text:</p>
+<pre class="code" data-lang="html"><code>&lt;img src=&quot;data:image/svg+xml,…&quot; width=&quot;48&quot; height=&quot;48&quot; alt=&quot;Activity&quot;&gt;</code></pre>
+<p>An image cannot inherit the page&#39;s text colour, so choose the colour before you copy. Change the <code>alt</code> text to describe what the icon means in your page, or use <code>alt=&quot;&quot;</code> if the icon is decorative.</p>
+<h2 id="direct-svg-files">Direct SVG files</h2>
+<p>Every SVG icon is also served as a file you can link:</p>
+<pre class="code" data-lang="html"><code>&lt;img src=&quot;https://icons.auricartisan.com/icon/feather/activity.svg&quot; width=&quot;24&quot; height=&quot;24&quot; alt=&quot;Activity&quot;&gt;</code></pre>
+<p>Paths follow each set&#39;s own folders:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Set</th><th>Example path</th></tr></thead>
+<tbody>
+<tr><td>Feather</td><td><code>/icon/feather/activity.svg</code></td></tr>
+<tr><td>Lucide</td><td><code>/icon/lucide/house.svg</code></td></tr>
+<tr><td>Tabler</td><td><code>/icon/tabler/outline/home.svg</code>, <code>/icon/tabler/filled/home.svg</code></td></tr>
+<tr><td>Phosphor</td><td><code>/icon/phosphor/regular/heart.svg</code>, <code>/icon/phosphor/fill/heart-fill.svg</code></td></tr>
+<tr><td>Heroicons</td><td><code>/icon/heroicons/24/outline/home.svg</code></td></tr>
+<tr><td>Remix</td><td><code>/icon/remix/Buildings/home-line.svg</code></td></tr>
+</tbody></table></div>
+<p>As with a data URI, a linked file does not take the page&#39;s text colour.</p>
+<p><strong>Download .svg</strong> in the Icon Library saves the icon, in your chosen colour and stroke, as <code>&lt;id&gt;-&lt;style&gt;.svg</code>.</p>
+<h2 id="webfonts">Webfonts</h2>
+<h3 id="material">Material</h3>
+<p>Material icons are glyphs in a webfont. The Icon Library&#39;s code panel for a Material icon offers <strong>HTML (CDN)</strong>, which uses the loader:</p>
+<pre class="code" data-lang="html"><code>&lt;i data-icon=&quot;material:home&quot; data-style=&quot;outlined&quot;&gt;&lt;/i&gt;
+&lt;script src=&quot;https://icons.auricartisan.com/icon-cdn.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>and <strong>Webfont @font-face</strong>, which declares the font from the CDN and shows the icon&#39;s character code, so you can use the font directly. <strong>Copy glyph</strong> copies the character entity.</p>
+<h3 id="remix">Remix</h3>
+<p>Remix Icon&#39;s own webfont stylesheet is served at <code>https://icons.auricartisan.com/icon/remix/fonts/remixicon.css</code>. It uses Remix&#39;s <code>ri-*</code> classes, as documented by the Remix Icon project.</p>
+<h2 id="accessibility">Accessibility</h2>
+<ul>
+<li>An icon next to visible text is usually decorative: hide it from assistive technology, for example with <code>aria-hidden=&quot;true&quot;</code> on the placeholder.</li>
+<li>An icon on its own, such as an icon-only button, needs an accessible name, for example <code>aria-label</code> on the button.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="style-size-and-colour.html">Style, size and colour</a></li>
+<li><a href="export-and-self-host.html">Export and self-host</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="collections.html"><span>Previous</span>Collections</a><a href="export-and-self-host.html"><span>Next</span>Export and self-host</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#cdn-tag-the-loader">CDN tag (the loader)</a></li><li><a href="#inline-svg">Inline SVG</a></li><li><a href="#jsx-react">JSX / React</a></li><li><a href="#image-with-a-data-uri">Image with a data URI</a></li><li><a href="#direct-svg-files">Direct SVG files</a></li><li><a href="#webfonts">Webfonts</a></li><li><a href="#accessibility">Accessibility</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

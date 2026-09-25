@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find a colour's nearest neighbours — Auric Artisan Docs</title>
+<meta name="description" content="Paste a colour in any CSS format and read the five catalogued colours closest to it, with their distance and contrast.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Color Library</a>
+<h2>Color Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="choose-by-requirement.html">Choose colours by requirement</a></li>
+<li><a href="copy-and-export.html">Copy and export</a></li>
+<li><a href="find-nearest-colours.html" aria-current="page">Find a colour's nearest neighbours</a></li>
+<li><a href="read-a-colour.html">Read a colour</a></li>
+<li><a href="read-the-statistics.html">Read the statistics</a></li>
+<li><a href="save-colours.html">Save colours</a></li>
+<li><a href="reference.html">Color Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Color Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Color Library</a> &rsaquo; <a href="README.html">Color Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Color Library</p>
+<h1>Find a colour&#39;s nearest neighbours</h1>
+<p class="lede">Paste a colour in any CSS format and read the five catalogued colours closest to it, with their distance and contrast.</p>
+<p>The <strong>Start from a colour you already have</strong> section answers the question most people arrive with: &quot;I have this colour — what is it, and what can it do?&quot; It finds the five atlas colours closest to yours and shows what each of them carries.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Select the field under <strong>Start from a colour you already have</strong>. It starts with <code>#D3AF37</code>.</li>
+<li>Replace the value with your colour. You can type or paste it in any of these forms:<ul>
+<li>hex, with or without <code>#</code>, in 3, 4, 6 or 8 digits: <code>#76cdf6</code>, <code>76cdf6</code>, <code>#abc</code>;</li>
+<li><code>rgb()</code> or <code>rgba()</code>: <code>rgb(118 205 246)</code>, <code>rgb(118, 205, 246)</code>;</li>
+<li><code>hsl()</code> or <code>hsla()</code>: <code>hsl(199 88% 71%)</code>;</li>
+<li><code>hwb()</code>: <code>hwb(199 46% 4%)</code>;</li>
+<li><code>lab()</code> and <code>lch()</code>: <code>lab(78.6 -15.2 -28.2)</code>, <code>lch(78.6 32 241)</code>;</li>
+<li><code>oklab()</code> and <code>oklch()</code>: <code>oklab(0.81 -0.07 -0.08)</code>, <code>oklch(0.81 0.1 230)</code>;</li>
+<li><code>color()</code> in the <code>srgb</code>, <code>srgb-linear</code> or <code>display-p3</code> space: <code>color(display-p3 0.5 0.8 0.95)</code>;</li>
+<li>any of the 148 CSS colour names, such as <code>rebeccapurple</code>;</li>
+<li>three bare numbers read as RGB: <code>118 205 246</code>.</li>
+</ul>
+</li>
+<li>Select <strong>Find its neighbours</strong>, or stop typing for a moment. The swatch beside the field changes to your colour and the results update.</li>
+<li>Read the results (described below).</li>
+<li>To learn more about one of the matches, select its cell. The <strong>The colour</strong> tab opens with that colour&#39;s full record.</li>
+</ol>
+<p><strong>Result:</strong> six cells in a row — your colour first, then the five nearest atlas colours in order of distance — and a sentence about the neighbourhood.</p>
+<h2 id="reading-the-results">Reading the results</h2>
+<h3 id="the-heading-line">The heading line</h3>
+<p><strong>Nearest in the atlas</strong> is followed by a note such as <strong>Read as oklch. Distance is ΔE in CIE Lab; under 2.3 is a difference most eyes will not see.</strong></p>
+<ul>
+<li><strong>Read as</strong> names the format the page recognised: <code>hex</code>, <code>named</code>, <code>rgb</code>, <code>hsl</code>, <code>hwb</code>, <code>lab</code>, <code>lch</code>, <code>oklab</code>, <code>oklch</code>, <code>color(srgb)</code>, <code>color(srgb-linear)</code> or <code>display-p3</code>. Check it if the result surprises you.</li>
+<li>If your colour lies outside the sRGB range a screen can show (for example a very saturated <code>oklch()</code> or <code>display-p3</code> value), the note adds <strong>outside sRGB, brought to the edge of it</strong>. The page moved your colour to the nearest displayable colour before matching, and it tells you so rather than doing it silently.</li>
+</ul>
+<h3 id="the-cells">The cells</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Cell</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>First cell</td><td>Your colour&#39;s hex code, the note <strong>your colour</strong>, and its contrast <strong>On white</strong> and <strong>On black</strong></td></tr>
+<tr><td>Next five cells</td><td>An atlas colour&#39;s hex code, its distance from yours (for example <strong>ΔE 3.41 — a close match</strong>), and its contrast <strong>On white</strong> and <strong>On black</strong></td></tr>
+</tbody></table></div>
+<p>Contrast ratios of 4.5:1 or more are marked as passing; lower values are marked as failing. 4.5:1 is the WCAG AA threshold for normal-size text.</p>
+<p>The word after each ΔE value describes the size of the difference:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ΔE</th><th>Word shown</th></tr></thead>
+<tbody>
+<tr><td>Under 2.3</td><td><strong>indistinguishable</strong></td></tr>
+<tr><td>2.3 to under 5</td><td><strong>a close match</strong></td></tr>
+<tr><td>5 to under 10</td><td><strong>visibly different</strong></td></tr>
+<tr><td>10 or more</td><td><strong>a different colour</strong></td></tr>
+</tbody></table></div>
+<p>ΔE is the straight-line distance between two colours in CIE Lab (the CIE76 formula). A value around 2.3 is often quoted as a just-noticeable difference.</p>
+<h3 id="the-sentence-under-the-cells">The sentence under the cells</h3>
+<p>The page averages the five neighbours&#39; contrast and writes one of three sentences:</p>
+<ul>
+<li><strong>Colours around this one average N:1 on white — it is a colour you can write in on a light page.</strong> The neighbourhood averages at least 4.5:1 on white.</li>
+<li><strong>Colours around this one average N:1 on white and N:1 on black. This is a colour to draw with on a light page, and to write in on a dark one.</strong> It fails on white but averages at least 4.5:1 on black.</li>
+<li><strong>Colours around this one clear neither white nor black as body text. It is decoration wherever it lands.</strong></li>
+</ul>
+<h2 id="if-the-field-does-not-accept-your-colour">If the field does not accept your colour</h2>
+<p>When the text is not a colour the page can read, the results are replaced by: <strong>Not a colour this reads. It takes #76cdf6, rgb(118 205 246), hsl(199 88% 71%), hwb(199 46% 4%), lab(78.6 -15.2 -28.2), lch(78.6 32 241) and the rest of the CSS colour formats.</strong> An empty field shows nothing.</p>
+<p>Common causes are a missing closing bracket, a <code>color()</code> space other than the three listed above, or a CSS variable such as <code>var(--brand)</code>. See <a href="troubleshooting.html">Troubleshooting</a>.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Transparency is ignored. A colour with an alpha value, such as <code>#76cdf680</code> or <code>rgb(118 205 246 / 50%)</code>, is matched as the solid colour.</p>
+</blockquote>
+<blockquote class="callout callout-tip">
+<p><strong>Tip:</strong> Hues in <code>hsl()</code>, <code>hwb()</code>, <code>lch()</code> and <code>oklch()</code> can be written in degrees, <code>rad</code>, <code>grad</code> or <code>turn</code>. Percentages work wherever CSS allows them.</p>
+</blockquote>
+
+<nav class="pager" aria-label="Previous and next"><a href="copy-and-export.html"><span>Previous</span>Copy and export</a><a href="read-a-colour.html"><span>Next</span>Read a colour</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#steps">Steps</a></li><li><a href="#reading-the-results">Reading the results</a></li><li><a href="#if-the-field-does-not-accept-your-colour">If the field does not accept your colour</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set up the Search Console — Auric Artisan Docs</title>
+<meta name="description" content="How to sign in to the Auric Artisan Search Console, add your site and prove you own it with a file, a meta tag or a DNS record.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Search and the Search Console</a>
+<h2>Search documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with search</a></li>
+<li><a href="console-reports.html">Read the console reports</a></li>
+<li><a href="instant-answers.html">Instant answers</a></li>
+<li><a href="manage-your-sites.html">Manage your sites</a></li>
+<li><a href="query-syntax.html">Query syntax</a></li>
+<li><a href="request-a-crawl.html">Request a crawl</a></li>
+<li><a href="search-console.html" aria-current="page">Set up the Search Console</a></li>
+<li><a href="search-the-web.html">Search the web</a></li>
+<li><a href="search-this-site.html">Search this site</a></li>
+<li><a href="understand-the-ranking.html">Understand the ranking</a></li>
+<li><a href="reference.html">Search reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Search FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Search and the Search Console</a> &rsaquo; <a href="README.html">Search documentation</a></nav>
+<p class="kicker">Website › Search</p>
+<h1>Set up the Search Console</h1>
+<p class="lede">How to sign in to the Auric Artisan Search Console, add your site and prove you own it with a file, a meta tag or a DNS record.</p>
+<p>The Search Console at <a href="https://auricartisan.com/search/console/" rel="noopener">https://auricartisan.com/search/console/</a> shows what Auric Artisan&#39;s crawler found on a site you own, which searches put it in front of people, and, for every page that is not indexed, the reason why. It is free, for any site you own.</p>
+<p>The console covers Auric Artisan&#39;s own web index only. What you do here changes what this index knows about your site. It has no effect on how you appear in Google, Bing or anywhere else.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li>You need an Auric Artisan account. The account is needed only so that a site stays yours.</li>
+<li>You need to be able to change one of these for your site: a file on the web server, the home page&#39;s HTML, or the domain&#39;s DNS records.</li>
+</ul>
+<h2 id="sign-in">Sign in</h2>
+<ol>
+<li>Open <a href="https://auricartisan.com/search/console/" rel="noopener">https://auricartisan.com/search/console/</a>.</li>
+<li>If you are signed out, the page explains the console under <strong>Your site, in the index</strong>. Select <strong>Sign in to start</strong>, sign in, and come back.</li>
+</ol>
+<h2 id="add-your-site">Add your site</h2>
+<ol>
+<li>Open <strong>Your sites</strong> in the console&#39;s side rail. With no sites yet, the page says <strong>No properties yet. Add one below, then prove you own it.</strong></li>
+<li>Under <strong>Add another site</strong>, type your domain in <strong>Domain or URL prefix</strong>, for example <code>example.com</code>.</li>
+<li>Select <strong>Add</strong> or press <code>Enter</code>. The page says <strong>Added. Prove you own it and the crawler will start.</strong></li>
+</ol>
+<p>A domain covers every page on it, including subdomains. There is no limit on how many sites you keep.</p>
+<p>The field also accepts a full address such as <code>https://example.com/docs/</code>. Check the name shown in the list after adding it: at present the console registers the whole domain, <code>example.com</code>.</p>
+<p>Until you prove ownership, the site shows as pending, the other sections of the console are unavailable, and nothing is crawled.</p>
+<h2 id="prove-you-own-it">Prove you own it</h2>
+<p>The console opens a panel headed <strong>Prove you own</strong> your site. Choose one of three methods. Any one is enough.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Label</th><th>What you do</th></tr></thead>
+<tbody>
+<tr><td><strong>File on the site</strong></td><td>Quickest</td><td>Serve a text file at the address shown, containing the token. Easiest on a static site.</td></tr>
+<tr><td><strong>Meta tag</strong></td><td>No deploy</td><td>Add the meta tag shown to the head of your home page.</td></tr>
+<tr><td><strong>DNS TXT record</strong></td><td>Strongest</td><td>Add a TXT record on your domain with the value shown. Covers every subdomain and survives a redeploy.</td></tr>
+</tbody></table></div>
+<p>Each method shows exactly what to add, with a <strong>Copy</strong> button:</p>
+<ul>
+<li>File: an address of the form <code>https://example.com/auric-site-verification-TOKEN.txt</code>. The file must contain the token.</li>
+<li>Meta tag: a line of the form <code>&lt;meta name=&quot;auric-site-verification&quot; content=&quot;TOKEN&quot;&gt;</code>, to go in the head of <code>https://example.com/</code>.</li>
+<li>DNS: a TXT record whose value begins <code>auric-site-verification=</code>.</li>
+</ul>
+<p>Then:</p>
+<ol>
+<li>Add the file, tag or record to your site.</li>
+<li>Select <strong>Check now</strong>. All three methods are tried, in order, whichever one you set up.</li>
+<li>If one works, the page says <strong>Verified by</strong> that method, and the console opens.</li>
+<li>If none works yet, the page says <strong>Not verified yet — here is what each check found.</strong> Each method is listed with ✓ or ✕, where it looked, what went wrong, what it <strong>expected</strong> and what it <strong>found instead</strong>. Fix what it names and select <strong>Check now</strong> again.</li>
+</ol>
+<p>A new DNS record can take an hour to become visible. If the DNS check fails straight after you add the record, wait and try again.</p>
+<h2 id="after-verification">After verification</h2>
+<ul>
+<li>A green line reads <strong>Ownership proven</strong> by your method and date. Ownership is re-checked periodically, and you are told if the proof disappears.</li>
+<li>Keep the file, tag or record in place. Removing a meta tag later un-verifies the site.</li>
+<li>Your home page is queued for crawling straight away.</li>
+<li>The header shows when the site was last crawled and how many addresses are queued, for example <strong>Crawled 3 hours ago • 42 queued for the next pass</strong>.</li>
+</ul>
+<h2 id="the-console-at-a-glance">The console at a glance</h2>
+<p>The side rail has these sections. All but <strong>Your sites</strong> and <strong>Portfolios</strong> need a verified site.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Overview</strong></td><td>Indexed pages, impressions, clicks, average position, and why pages are not indexed.</td></tr>
+<tr><td><strong>Performance</strong></td><td>Searches, pages, days, countries and devices, with impressions, clicks, click-through and position.</td></tr>
+<tr><td><strong>Coverage</strong></td><td>Every address the crawler knows, grouped by what you can do about it.</td></tr>
+<tr><td><strong>Pages</strong></td><td>Every address, by folder or as a list, with inspection.</td></tr>
+<tr><td><strong>Links</strong></td><td>The site&#39;s rank; link reports are not collected yet.</td></tr>
+<tr><td><strong>Submit</strong></td><td>Ask for a page or a sitemap to be crawled; the queue and your sitemaps.</td></tr>
+<tr><td><strong>Your sites</strong></td><td>Every site on your account; adding and removing sites.</td></tr>
+<tr><td><strong>Portfolios</strong></td><td>Your entries in the Portfolio Index.</td></tr>
+</tbody></table></div>
+<p>With more than one site, choose which one the console shows from the switcher in the header. Every section then shows that site.</p>
+<p>At the top, <strong>7d</strong>, <strong>28d</strong> and <strong>90d</strong> set the period for every dated figure. The default is <strong>28d</strong>.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="console-reports.html">Read the console reports</a></li>
+<li><a href="request-a-crawl.html">Request a crawl</a></li>
+<li><a href="manage-your-sites.html">Manage your sites</a></li>
+<li>Listing a portfolio from the <strong>Portfolios</strong> section is covered in the Portfolio documentation: <a href="../../portfolio/docs/list-your-portfolio.html">List your portfolio</a>.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="request-a-crawl.html"><span>Previous</span>Request a crawl</a><a href="search-the-web.html"><span>Next</span>Search the web</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-you-start">Before you start</a></li><li><a href="#sign-in">Sign in</a></li><li><a href="#add-your-site">Add your site</a></li><li><a href="#prove-you-own-it">Prove you own it</a></li><li><a href="#after-verification">After verification</a></li><li><a href="#the-console-at-a-glance">The console at a glance</a></li><li><a href="#next-steps">Next steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

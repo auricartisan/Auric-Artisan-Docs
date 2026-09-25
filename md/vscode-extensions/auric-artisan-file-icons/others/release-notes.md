@@ -1,0 +1,50 @@
+---
+title: Auric Artisan File Icons — Release notes
+description: User-facing history of Auric Artisan File Icons.
+product: VS Code extensions › Auric Artisan File Icons
+updated: 2026-09-25
+---
+
+# Release notes
+
+## 0.1.1 — 22 September 2026
+
+The current Marketplace version.
+
+### Modern joins File Icon Studio
+
+- Modern added as a third Explorer style, keeping its theme ID, its 464 SVG assets, light alternatives and four framework packs.
+- 219 Modern file designs and 114 folder pairs in the Studio, sidebar, search, code inspector and hover insertion.
+- Shared appearance controls now cover Modern, including three-digit hex colours.
+- A confirmed, scope-preserving import of Modern's file settings that does not change its general library.
+
+### Usability
+
+- A new README with a quick start, style comparison, screenshots, insertion guides, migration steps and troubleshooting.
+- The Explorer activation button now shows **Modern** when Modern artwork is selected.
+
+## 0.1.0 — 19 September 2026
+
+The unified File Icon Studio, starting a new version series.
+
+- The separate Playful project joined this extension, keeping the Facet and Playful theme IDs and all 500 Playful SVGs.
+- Shared appearance settings, associations, smart decorations and profile tools across styles.
+- A confirmed, non-overwriting import of old Playful settings and exported Playful profiles.
+- Matching editor-tab and sidebar workspaces with **Library**, **Appearance** and **Workspace** sections, file and folder filters, open-folder previews and progressive loading.
+- Card actions, a source inspector, clipboard export and multi-cursor insertion as SVG, JSX, HTML image and CSS background.
+- Code hover actions for complete `:icon-file-…:` and `:icon-folder-…:` tokens.
+- Explorer actions grouped in one **Auric File Icons** submenu, a native quick insert and a website link.
+
+## Earlier Facet releases
+
+### Facet 1.1.0 — 2 August 2026
+
+- Facet expanded to 500 SVGs: 200 file icons and 150 folder pairs.
+- Coverage for 270 extensions, 453 filenames, 84 language IDs and 356 folder aliases.
+- Independent file and folder tinting and brightness.
+- Six built-in profiles and saved personal profiles, with clipboard export and import.
+- One-command detected folder icons, a cancellable workspace scan, diagnostics and more smart classifiers.
+
+### Facet 1.0.0 — 1 August 2026
+
+- The original Facet artwork (361 SVGs), workspace-root icons, dedicated Auric Artisan workspace mappings, live filename previews, associations, folder tint, saturation, opacity, arrows and cached smart decorations with custom rules.

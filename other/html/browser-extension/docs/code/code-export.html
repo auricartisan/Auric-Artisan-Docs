@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code export formats — Auric Artisan Docs</title>
+<meta name="description" content="Every format the extension can copy or download, which tool produces it, and what the output looks like.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Code tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="code-export.html" aria-current="page">Code export formats</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="snippets.html">Snippets</a></li>
+<li><a href="tokens.html">Tokens</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Code tools</a></nav>
+<p class="kicker">Browser extension › Code</p>
+<h1>Code export formats</h1>
+<p class="lede">Every format the extension can copy or download, which tool produces it, and what the output looks like.</p>
+<p>This page collects every format the extension exports, so you can find the tool that gives you the code you need. Unless a row says &quot;downloaded&quot;, the output is copied to the clipboard.</p>
+<h2 id="one-colour">One colour</h2>
+<p>From the Picker&#39;s <strong>Code</strong> pane. Values below are for Auric gold, <code>#d3af37</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td>CSS</td><td><code>--brand: #d3af37;</code></td></tr>
+<tr><td>CSS · wide gamut</td><td><code>--brand: oklch(…);</code></td></tr>
+<tr><td>Tailwind v4</td><td><code>@theme { --color-brand: oklch(…); }</code></td></tr>
+<tr><td>SwiftUI</td><td><code>Color(red: 0.827, green: 0.686, blue: 0.216)</code></td></tr>
+<tr><td>Jetpack Compose</td><td><code>Color(0xFFD3AF37)</code></td></tr>
+<tr><td>Android XML</td><td><code>&lt;color name=&quot;brand&quot;&gt;#FFD3AF37&lt;/color&gt;</code></td></tr>
+</tbody></table></div>
+<p>Transparent colours carry their opacity: SwiftUI adds <code>opacity:</code>, and Compose and Android put the alpha first.</p>
+<p>The Picker&#39;s value field copies the colour as a CSS value in any of its twelve formats. History and Library chips copy in the format set in Settings › Tools › <strong>Copy colours as</strong>: HEX, RGB, HSL or OKLCH.</p>
+<h2 id="a-palette">A palette</h2>
+<p>From <strong>Page palette</strong> (and anything sent to it: Image, Harmony).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td>HEX</td><td>One <code>#RRGGBB</code> per line</td></tr>
+<tr><td>CSS</td><td><code>:root { --color-1: #…; --color-2: #…; }</code></td></tr>
+<tr><td>oklch()</td><td>The same <code>:root</code> block with <code>oklch()</code> values</td></tr>
+<tr><td>JSON</td><td><code>[&quot;#…&quot;, &quot;#…&quot;]</code></td></tr>
+<tr><td>ASE</td><td>An Adobe Swatch Exchange file, downloaded</td></tr>
+<tr><td>Tailwind</td><td><code>module.exports = { theme: { extend: { colors: { &quot;color-1&quot;: &quot;#…&quot; } } } };</code></td></tr>
+<tr><td>@theme</td><td><code>@theme { --color-1: #…; }</code></td></tr>
+<tr><td>SCSS</td><td><code>$color-1: #…;</code></td></tr>
+<tr><td>Tokens</td><td>W3C design tokens JSON</td></tr>
+<tr><td>SVG</td><td>An SVG strip of swatches, as text</td></tr>
+<tr><td>PNG</td><td>A PNG strip of swatches, downloaded</td></tr>
+</tbody></table></div>
+<p>Harmony&#39;s <strong>Copy</strong> gives a comma-separated HEX list, and Image&#39;s <strong>Copy HEX</strong> one HEX per line.</p>
+<h2 id="a-scale">A scale</h2>
+<p>From <strong>Scale</strong>, named after the <strong>Scale name</strong> you type (for example <code>brand</code>):</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td>CSS</td><td>CSS variables for each step</td></tr>
+<tr><td>SCSS</td><td>SCSS variables for each step</td></tr>
+<tr><td>oklch()</td><td>CSS variables with <code>oklch()</code> values</td></tr>
+<tr><td>JSON</td><td>The steps as JSON</td></tr>
+<tr><td>Tailwind</td><td>A Tailwind colour object</td></tr>
+<tr><td>@theme</td><td>A Tailwind v4 <code>@theme</code> block</td></tr>
+<tr><td>Tokens</td><td>W3C design tokens JSON</td></tr>
+<tr><td>SVG</td><td>An SVG of the scale with labels, as text</td></tr>
+<tr><td>PNG</td><td>A PNG of the scale with labels</td></tr>
+</tbody></table></div>
+<h2 id="a-gradient">A gradient</h2>
+<p>From <strong>Gradient</strong>: a <code>background:</code> declaration using <code>linear-gradient</code>, <code>radial-gradient(circle, …)</code> or <code>conic-gradient(from …deg, …)</code>.</p>
+<h2 id="a-pages-tokens">A page&#39;s tokens</h2>
+<p>From <strong>Tokens</strong>: a <code>:root</code> block of CSS variables, W3C design tokens JSON (grouped into colour, dimension and other), a Tailwind v4 <code>@theme</code> block, or the raw scan as JSON.</p>
+<h2 id="an-element">An element</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>From</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td>Inspector card, <code>C</code> key or <strong>Copy CSS</strong></td><td>A CSS block for the element</td></tr>
+<tr><td>Inspector, <code>S</code> key or <strong>Selector</strong></td><td>A CSS selector</td></tr>
+<tr><td>Inspector, <code>J</code> key or <strong>JSON</strong></td><td>The element&#39;s snapshot as JSON</td></tr>
+<tr><td>Code › Inspect › DOM › <strong>Copy locator</strong></td><td>CSS selector, <code>document.querySelector(…)</code> or <code>page.locator(…)</code></td></tr>
+<tr><td>Code › Inspect › DOM › <strong>Copy HTML</strong></td><td>The element&#39;s markup (up to 12 KB)</td></tr>
+<tr><td>Right-click menu › <strong>Copy selector</strong></td><td>CSS, JavaScript (<code>document.querySelector(…)</code>), Playwright (<code>page.locator(…)</code>) or XPath</td></tr>
+<tr><td>Right-click menu › <strong>Copy computed styles</strong></td><td>The element&#39;s computed styles as text</td></tr>
+</tbody></table></div>
+<h2 id="checks-and-audits">Checks and audits</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>From</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td>Contrast › <strong>Copy report</strong></td><td>A plain-text contrast report</td></tr>
+<tr><td>Audit › <strong>Export JSON</strong></td><td>The full audit as JSON</td></tr>
+<tr><td>Audit › <strong>Export CSV</strong></td><td>The contrast findings as CSV</td></tr>
+<tr><td>Vision › <strong>Capture</strong></td><td>A PNG of the filtered tab, downloaded</td></tr>
+</tbody></table></div>
+<h2 id="saved-data">Saved data</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>From</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td>Library › <strong>Export</strong></td><td>Your colours and palettes as JSON</td></tr>
+<tr><td>Snippets › <strong>Export file</strong></td><td>Every snippet in a <code>.txt</code> file, downloaded</td></tr>
+<tr><td>Settings › Data › <strong>Download a backup</strong></td><td>A <code>.json</code> backup of settings, history, library and snippets, downloaded</td></tr>
+<tr><td>Settings › Data › <strong>Copy settings</strong></td><td>Your settings as JSON</td></tr>
+</tbody></table></div>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../reference.html">Reference</a></li>
+<li><a href="../../others/glossary.html">Glossary</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="README.html"><span>Previous</span>Code tools</a><a href="inspect.html"><span>Next</span>Inspect</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#one-colour">One colour</a></li><li><a href="#a-palette">A palette</a></li><li><a href="#a-scale">A scale</a></li><li><a href="#a-gradient">A gradient</a></li><li><a href="#a-pages-tokens">A page's tokens</a></li><li><a href="#an-element">An element</a></li><li><a href="#checks-and-audits">Checks and audits</a></li><li><a href="#saved-data">Saved data</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

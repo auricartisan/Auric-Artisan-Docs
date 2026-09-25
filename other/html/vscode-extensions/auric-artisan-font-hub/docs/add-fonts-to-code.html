@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a font to your code — Auric Artisan Docs</title>
+<meta name="description" content="Add fonts from the Auric font CDN to HTML, CSS and JavaScript files with a reviewable diff, insert explicit embed formats, and add several families at once.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Font Hub</a>
+<h2>Auric Artisan Font Hub guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Font Hub</a></li>
+<li><a href="add-fonts-to-code.html" aria-current="page">Add a font to your code</a></li>
+<li><a href="cdn-and-browser-delivery.html">Check CDN and browser delivery</a></li>
+<li><a href="find-and-compare-fonts.html">Find and compare fonts</a></li>
+<li><a href="font-details.html">Font details</a></li>
+<li><a href="moving-from-font-library.html">Moving from Font Library</a></li>
+<li><a href="offline-cache-and-network.html">Offline use, cache and network</a></li>
+<li><a href="self-hosting-kit.html">Export a self-hosting kit</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Font Hub</a> &rsaquo; <a href="README.html">Auric Artisan Font Hub guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Font Hub</p>
+<h1>Add a font to your code</h1>
+<p class="lede">Add fonts from the Auric font CDN to HTML, CSS and JavaScript files with a reviewable diff, insert explicit embed formats, and add several families at once.</p>
+<p>Font Hub adds fonts from the Auric font CDN. Every embed points to a stylesheet at:</p>
+<pre class="code" data-lang="text"><code>https://fonts.auricartisan.com/css/&lt;family-id&gt;.css</code></pre>
+<p>For example, Inter is <code>https://fonts.auricartisan.com/css/inter.css</code>. Font Hub never substitutes another font service.</p>
+<h2 id="automatic-insertion">Automatic insertion</h2>
+<p><strong>Add to code</strong> (on a font card) and <strong>Auric Artisan Font Hub: Add Font to Code</strong> use <em>Automatic</em> mode by default. Automatic mode adds two things: the CDN stylesheet, and a reusable class named <code>.auric-font-&lt;family-id&gt;</code> that applies the font. It never replaces selected text, never changes your existing rules and never applies the font to the whole page. You decide where to use the class.</p>
+<p>What it adds depends on the active file:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Active file</th><th>What Automatic mode does</th></tr></thead>
+<tbody>
+<tr><td>HTML with a <code>&lt;head&gt;</code></td><td>Adds <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;…&quot;&gt;</code> and a small <code>&lt;style&gt;</code> rule for the class just before <code>&lt;/head&gt;</code></td></tr>
+<tr><td>CSS, SCSS, Less, PostCSS</td><td>Adds <code>@import url(&#39;…&#39;);</code> before your normal rules (after any <code>@charset</code>, <code>@use</code> or <code>@forward</code>) and appends the class rule</td></tr>
+<tr><td>JavaScript, TypeScript</td><td>Appends a small guarded block that adds the stylesheet and class to the page when it runs in a browser, and does nothing on the server</td></tr>
+<tr><td>JSX, TSX, Vue, Svelte, Astro, data files and other languages</td><td>Copies an HTML embed to the clipboard for you to place in your layout or global stylesheet</td></tr>
+<tr><td>No editor open</td><td>Copies the CDN embed to the clipboard</td></tr>
+</tbody></table></div>
+<p>For example, after adding Inter to a page, use:</p>
+<pre class="code" data-lang="html"><code>&lt;p class=&quot;auric-font-inter&quot;&gt;A considered choice of type.&lt;/p&gt;</code></pre>
+<p>Running it again does not duplicate the setup: if the link and class are already present, Font Hub says the family is already configured. An HTML file without a <code>&lt;head&gt;</code> is not changed; you get <strong>No HTML head found. Copy the embed into your page head or framework layout.</strong> and the embed is copied.</p>
+<p>Automatic insertion works on files up to 2 MiB. It is deliberately cautious and is not a full HTML, CSS or JavaScript parser.</p>
+<h2 id="preview-before-applying">Preview before applying</h2>
+<ol>
+<li>Open the file you want to change.</li>
+<li>Choose <strong>Preview</strong> on a font card, run <strong>Auric Artisan Font Hub: Preview Font Insertion</strong>, or choose <strong>Preview CDN insertion</strong> in <strong>Quick Pick Font</strong>.</li>
+<li>VS Code&#39;s diff editor opens with your file on the left and the proposed file on the right, titled <strong>Font Hub: <em>family</em> — proposed changes</strong>.</li>
+<li>A notification asks <strong>Add CDN setup to <em>file</em>? Existing content stays unchanged.</strong> Choose <strong>Apply</strong> or <strong>Cancel</strong>.</li>
+<li><strong>Apply</strong> checks that your file has not changed since the preview, then makes the edit. The file is left unsaved, and one undo removes the change.</li>
+</ol>
+<p>If you edited the file after opening the preview: <strong>The document changed. Preview the font insertion again before applying.</strong> Open the preview again.</p>
+<h2 id="explicit-formats">Explicit formats</h2>
+<p>To insert a specific format instead of the automatic setup:</p>
+<ul>
+<li>In the details panel, open <strong>Use &amp; Embed</strong> or <strong>Develop</strong>, choose a format and select <strong>Insert</strong>. The snippet is inserted at the cursor, or replaces each selection.</li>
+<li>Or set <code>auricFontLib.defaultFormat</code> to a format, and <strong>Add Font to Code</strong> inserts that format at the cursor.</li>
+</ul>
+<p>Explicit formats insert text where you are. They do not merge anything into framework configuration files such as <code>tailwind.config.js</code>; you paste the entry where it belongs.</p>
+<p>If no editor can be written to, the snippet is copied to the clipboard instead, and a message says why.</p>
+<h2 id="copy-an-embed">Copy an embed</h2>
+<ul>
+<li><strong>Auric Artisan Font Hub: Copy Font Embed As…</strong> — choose a family, then <strong>Choose a snippet format</strong>: HTML stylesheet link, CSS @import, CSS font-family, @font-face, AuricFonts loader, Tailwind config, SCSS variable, Design tokens JSON or Family name.</li>
+<li><strong>Copy</strong> in the details panel copies the current format.</li>
+<li><strong>Save</strong> writes the current format to a new file you name.</li>
+</ul>
+<h2 id="several-families-at-once">Several families at once</h2>
+<ol>
+<li>Select up to 12 families (the select button on each card).</li>
+<li>Open the <strong>Selected</strong> tray.</li>
+<li>Choose <strong>Insert</strong> to add every family&#39;s setup to the active file, each with its own class, or <strong>Copy embed</strong> to copy one combined embed.</li>
+</ol>
+<p>After inserting, Font Hub reminds you to <em><em>Apply the generated .auric-font-</em> classes in your markup. File left unsaved.</em>* A system font in the selection stops the insertion: <strong>Remove system fonts from the CDN selection first.</strong></p>
+<h2 id="from-the-editors-context-menu">From the editor&#39;s context menu</h2>
+<p>Right-click in an editor for the <strong>Auric Fonts</strong> submenu: <strong>Quick Pick Font</strong>, <strong>Add Font to Code</strong>, <strong>Preview Font Insertion</strong>, <strong>Copy Font Embed As…</strong> and <strong>Open Font Hub</strong>.</p>
+<h2 id="using-the-font-in-your-css">Using the font in your CSS</h2>
+<p>To use the family in your own selectors instead of the generated class, copy its <code>font-family</code> value (<strong>Copy family</strong> in the specimen, or the <strong>CSS font-family</strong> format) and use it in your stylesheet. The stylesheet link or <code>@import</code> must still be present, or the browser has nothing to load.</p>
+<p>If the font does not appear in the browser, see <a href="cdn-and-browser-delivery.html">Check CDN and browser delivery</a>.</p>
+<p>When this works, the file contains the CDN setup, the element with the class shows the new font in a browser, and <strong>Recent</strong> in Font Hub lists the family.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Auric Artisan Font Hub</a><a href="cdn-and-browser-delivery.html"><span>Next</span>Check CDN and browser delivery</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#automatic-insertion">Automatic insertion</a></li><li><a href="#preview-before-applying">Preview before applying</a></li><li><a href="#explicit-formats">Explicit formats</a></li><li><a href="#copy-an-embed">Copy an embed</a></li><li><a href="#several-families-at-once">Several families at once</a></li><li><a href="#from-the-editors-context-menu">From the editor's context menu</a></li><li><a href="#using-the-font-in-your-css">Using the font in your CSS</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

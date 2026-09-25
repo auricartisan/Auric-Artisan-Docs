@@ -1,0 +1,42 @@
+---
+title: Browser extension — Side panel
+description: Dock the Auric Artisan workspace beside the page in the Chromium side panel or the Firefox sidebar, and what changes there.
+product: Browser extension › Surfaces
+updated: 2026-09-25
+---
+
+# Side panel
+
+The side panel (Chromium browsers) or sidebar (Firefox) holds the same workspace as the popup, docked beside the page. Unlike the popup, it stays open while you click on the page, switch tabs and browse, so it suits longer sessions such as auditing several pages or inspecting a layout.
+
+## Open it
+
+- In the popup, choose **Open the side panel** in the header. The popup closes and the panel opens in the current window.
+- Or use the browser's own side panel or sidebar menu and choose Auric Artisan. In Firefox the sidebar is titled **Auric Artisan workspace**.
+
+Safari has no side panel. If **Open the side panel** does nothing, open the panel from the browser's own menu instead; some browsers only allow it from their own controls.
+
+## What is different in the panel
+
+The panel is the same page as the popup, laid out for a tall, narrow column:
+
+- **It fills the panel.** There is no fixed size; widen the panel to give tools more room.
+- **The header wraps.** The search field takes its own full-width row, and the **Open the side panel** button is hidden.
+- **The Picker is one column.** The colour field, sliders, value field and actions come first, followed by its sections one below another, including **On this page** (the page's own colours) and **Recent**. In the popup, the Picker is split: the colour core on the left and tabbed details on the right.
+- **It acts on the current tab.** The site chip updates when you switch tabs or when the page finishes loading, and page tools act on whichever tab is active in that window.
+
+Everything else, including Settings, search, the spaces and every tool, works exactly as in the popup.
+
+## Open in a separate window instead
+
+**Open in its own window** in the header opens the workspace in a resizable 620 × 700 window with the same fluid layout as the side panel. Use it when your browser has no side panel, or when you want the workspace on another screen. The button is hidden at the Compact popup size.
+
+## Close it
+
+Close the panel with the browser's side panel close button, or by choosing another side panel. In Firefox, close the sidebar as you would any other.
+
+## Related pages
+
+- [The popup](popup.md)
+- [Picker](../colour/picker.md)
+- [Install on Firefox](../install/firefox.md)

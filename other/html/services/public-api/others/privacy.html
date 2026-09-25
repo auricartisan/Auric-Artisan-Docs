@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Auric Artisan Docs</title>
+<meta name="description" content="What the Auric Artisan API keeps about your keys and usage, and what analyzer requests fetch, as its documentation describes.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan REST API</a>
+<h2>Other material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html">Limits and accuracy</a></li>
+<li><a href="privacy.html" aria-current="page">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Auric Artisan REST API</a> &rsaquo; <a href="README.html">Other material</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Privacy</h1>
+<p class="lede">What the Auric Artisan API keeps about your keys and usage, and what analyzer requests fetch, as its documentation describes.</p>
+<p>This page covers what the API&#39;s documentation says about data. The site&#39;s privacy policy, <a href="https://auricartisan.com/legal/privacy/" rel="noopener">https://auricartisan.com/legal/privacy/</a>, covers your account as a whole.</p>
+<h2 id="keys">Keys</h2>
+<ul>
+<li>The full key is shown once, when you create it, and stored only as a SHA-256 hash. Nobody can recover it later.</li>
+<li>Each successful request updates the key&#39;s &quot;last used&quot; time, visible in your dashboard.</li>
+</ul>
+<h2 id="usage-records">Usage records</h2>
+<p>The API keeps a record of your use so it can meter and report it:</p>
+<ul>
+<li>per-day, per-endpoint history, available through <code>GET /v1/usage</code>;</li>
+<li>the last 100 individual calls with latency and errors, through <code>GET /v1/usage/live</code> and the stream;</li>
+<li>your month-to-date credits, through <code>GET /v1/usage/me</code>.</li>
+</ul>
+<p>Error responses carry a <code>request_id</code> so a specific call can be traced when you ask for support.</p>
+<h2 id="what-you-send">What you send</h2>
+<p>The API processes the colours, palettes, images, reports and other values you send in order to answer the request. Do not send personal data you do not need to.</p>
+<h2 id="analyzer-requests">Analyzer requests</h2>
+<p><code>POST /v1/analyzer/inspect</code> fetches the public URL you name and reads its source. Private and reserved addresses are refused. <code>POST /v1/analyzer/render</code> fetches nothing: it renders the report you send.</p>
+<h2 id="webhooks">Webhooks</h2>
+<p>Webhook deliveries go only to the HTTPS URLs you register, and are signed so you can verify they came from the API.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../docs/authentication.html">Authentication</a></li>
+<li><a href="../docs/plans-credits-and-quotas.html">Plans, credits and quotas</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="limits-and-accuracy.html"><span>Previous</span>Limits and accuracy</a><a href="release-notes.html"><span>Next</span>Release notes</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#keys">Keys</a></li><li><a href="#usage-records">Usage records</a></li><li><a href="#what-you-send">What you send</a></li><li><a href="#analyzer-requests">Analyzer requests</a></li><li><a href="#webhooks">Webhooks</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

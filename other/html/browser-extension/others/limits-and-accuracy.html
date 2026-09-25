@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limits and accuracy — Auric Artisan Docs</title>
+<meta name="description" content="What each of the extension's checks measures, how precisely, where it can be wrong, and what it is not a substitute for.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../index.html">Home</a><a href="../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan browser extension</a>
+<h2>Other material</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="shortcuts.html">Keyboard shortcuts</a></li>
+<li><a href="glossary.html">Glossary</a></li>
+<li><a href="limits-and-accuracy.html" aria-current="page">Limits and accuracy</a></li>
+<li><a href="privacy.html">Privacy</a></li>
+<li><a href="release-notes.html">Release notes</a></li>
+<li><a href="related.html">Related tools</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../README.html">Docs</a> &rsaquo; <a href="../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="README.html">Other material</a></nav>
+<p class="kicker">Browser extension</p>
+<h1>Limits and accuracy</h1>
+<p class="lede">What each of the extension's checks measures, how precisely, where it can be wrong, and what it is not a substitute for.</p>
+<p>The extension&#39;s tools are practical checks for everyday design and development. This page explains what they measure and where their answers need your judgement.</p>
+<h2 id="contrast">Contrast</h2>
+<ul>
+<li><strong>WCAG ratios</strong> follow the WCAG 2.x formula for relative luminance and are exact for the colours given.</li>
+<li><strong>Large text</strong> is 24 px or more, or 18.66 px or more when bold, as WCAG defines it.</li>
+<li><strong>APCA</strong> uses a simplified version of the APCA calculation, accurate enough for design feedback but not a certified result. APCA is still a draft method for WCAG 3; its thresholds may change.</li>
+<li><strong>The background behind text</strong> is found by walking up through the element&#39;s parents to the first mostly solid background, combining translucent layers on the way. It cannot see backgrounds drawn by images, gradients, canvas or other elements positioned behind the text. Such text is flagged for review or marked as an estimate (&quot;≈&quot;) rather than passed or failed.</li>
+<li><strong>Text coloured with some modern colour functions</strong> that browsers report in forms the check does not read is skipped. It is not reported as passing; it is simply absent from the results.</li>
+<li><strong>The contrast report</strong> copied from Contrast labels its thresholds &quot;WCAG 2.1&quot;; the numbers are the same in WCAG 2.2.</li>
+</ul>
+<h2 id="the-accessibility-audit">The accessibility audit</h2>
+<ul>
+<li>The audit runs 78 rules for WCAG 2.2 levels A and AA. It covers 32 success criteria; WCAG 2.2 has 86. Many criteria need human judgement that no automated tool can make.</li>
+<li>Rule results are based on the page as it is at that moment. Content that appears later, on scroll or after interaction, is not checked until you run the audit again.</li>
+<li>Each rule stops after 25 000 elements or 250 issues, and the whole audit after 30 seconds. The JSON export records whether a limit was reached.</li>
+<li>The contrast scan checks up to 3 500 elements (1 800 without <strong>Deep page audit</strong>).</li>
+<li>Embedded frames are not checked.</li>
+<li><strong>A clean audit does not prove a page accessible.</strong> Test with keyboards, screen readers and real users as well.</li>
+</ul>
+<h2 id="vision-simulations">Vision simulations</h2>
+<ul>
+<li>The colour-vision filters use standard simulation matrices; the Picker&#39;s Vision pane uses the Machado 2009 model. They show the kind of confusion people may have, not exactly what any individual sees.</li>
+<li>Strength blends between normal vision and the full simulation; it is not a clinical measure of severity.</li>
+<li>The low-vision simulations (cataracts, low vision, glaucoma, AMD) are illustrative blur, dimming and vignette effects, not medical models.</li>
+</ul>
+<h2 id="colour-values">Colour values</h2>
+<ul>
+<li><strong>The screen eyedropper</strong> samples rendered pixels, after your screen&#39;s colour management, scaling and anti-aliasing. Read CSS values with the inspector or Page palette when you need the exact authored colour.</li>
+<li><strong>Page palette</strong> reads computed colours and colour variables written as hex or <code>rgb()</code>. It merges near-duplicates, so very similar shades may appear as one.</li>
+<li><strong>Image</strong> scales the picture down and merges similar colours, so small details may not appear.</li>
+<li><strong>CMYK</strong> is a simple conversion from RGB, not a print-profile conversion.</li>
+<li><strong>Colour names</strong> are the nearest CSS colour name, a convenience label rather than an exact match.</li>
+<li><strong>Colour names set to XKCD</strong> currently give the same names as CSS names.</li>
+</ul>
+<h2 id="gradients">Gradients</h2>
+<p>The <strong>OKLCH</strong> interpolation option currently mixes in OKLab, the rectangular form of the same space. For most gradients the difference is small; between distant hues the path can differ from a true OKLCH gradient.</p>
+<h2 id="tokens">Tokens</h2>
+<p>The token scan reads stylesheets the browser lets the page read. Stylesheets from other sites that do not allow it are skipped, so a site&#39;s full token set may not be visible from one page.</p>
+<h2 id="what-the-extension-is-not">What the extension is not</h2>
+<ul>
+<li>It is not a certified accessibility conformance report.</li>
+<li>It is not a colour-managed proofing tool for print.</li>
+<li>It is not a medical or diagnostic tool for vision conditions.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="../docs/check/audit.html">Audit</a></li>
+<li><a href="../docs/check/contrast.html">Contrast</a></li>
+<li><a href="../docs/check/vision.html">Vision</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="glossary.html"><span>Previous</span>Glossary</a><a href="privacy.html"><span>Next</span>Privacy</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#contrast">Contrast</a></li><li><a href="#the-accessibility-audit">The accessibility audit</a></li><li><a href="#vision-simulations">Vision simulations</a></li><li><a href="#colour-values">Colour values</a></li><li><a href="#gradients">Gradients</a></li><li><a href="#tokens">Tokens</a></li><li><a href="#what-the-extension-is-not">What the extension is not</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supported languages — Auric Artisan Docs</title>
+<meta name="description" content="Every language Auric Artisan Formatter formats, grouped by how much it can change.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html" aria-current="page">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Supported languages</h1>
+<p class="lede">Every language Auric Artisan Formatter formats, grouped by how much it can change.</p>
+<p>The formatter recognises 253 languages by file extension, exact file name, shebang line and VS Code language id. What it does with each depends on its tier; see <a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tier</th><th>Languages</th><th>What changes</th></tr></thead>
+<tbody>
+<tr><td>Native</td><td>33 registry entries; 31 verified native modes</td><td>Anything layout-related: the file is rebuilt from a real parse</td></tr>
+<tr><td>Universal: reindent and spacing</td><td>104</td><td>Indentation and spacing</td></tr>
+<tr><td>Universal: spacing only</td><td>60</td><td>Spacing between tokens; indentation untouched</td></tr>
+<tr><td>Universal: whitespace only</td><td>60</td><td>Trailing whitespace, blank lines, line endings, final newline</td></tr>
+</tbody></table></div>
+<p>The two native entries that are not yet verified are JavaScript React (<code>jsx</code>) and TypeScript React (<code>tsx</code>): a file containing JSX elements falls back to the universal tier in version 0.1.0.</p>
+<p>To see the list yourself, run <code>auric-format --list-languages</code> (see <a href="command-line.html">Command line and CI</a>). Formatter Studio&#39;s <strong>Lang</strong> drop-down groups languages into <strong>Native printers</strong> and <strong>Universal engine</strong>.</p>
+<h2 id="native-tier">Native tier</h2>
+<p>The &quot;Formatter id&quot; is the name used in the formatter&#39;s <code>languages</code> configuration.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Language</th><th>Formatter id</th><th>File extensions or names</th></tr></thead>
+<tbody>
+<tr><td>JavaScript</td><td><code>javascript</code></td><td><code>.js</code> <code>.cjs</code> <code>.mjs</code> <code>.es</code> <code>.es6</code> <code>.pac</code> and more</td></tr>
+<tr><td>JavaScript React</td><td><code>jsx</code></td><td><code>.jsx</code></td></tr>
+<tr><td>TypeScript</td><td><code>typescript</code></td><td><code>.ts</code> <code>.mts</code> <code>.cts</code> <code>.d.ts</code> <code>.d.mts</code> <code>.d.cts</code></td></tr>
+<tr><td>TypeScript React</td><td><code>tsx</code></td><td><code>.tsx</code> <code>.mtsx</code></td></tr>
+<tr><td>JSON</td><td><code>json</code></td><td><code>.json</code> <code>.geojson</code> <code>.topojson</code> <code>.jsonld</code> <code>.importmap</code> <code>.har</code> and more</td></tr>
+<tr><td>JSON5</td><td><code>json5</code></td><td><code>.json5</code></td></tr>
+<tr><td>JSON with Comments</td><td><code>jsonc</code></td><td><code>.jsonc</code></td></tr>
+<tr><td>JSON.stringify</td><td><code>json-stringify</code></td><td><code>package.json</code> <code>package-lock.json</code> <code>bower.json</code> <code>.babelrc.json</code></td></tr>
+<tr><td>CSS</td><td><code>css</code></td><td><code>.css</code> <code>.wxss</code></td></tr>
+<tr><td>SCSS</td><td><code>scss</code></td><td><code>.scss</code></td></tr>
+<tr><td>Less</td><td><code>less</code></td><td><code>.less</code></td></tr>
+<tr><td>PostCSS</td><td><code>postcss</code></td><td><code>.pcss</code> <code>.postcss</code> <code>.sss</code></td></tr>
+<tr><td>HTML</td><td><code>html</code></td><td><code>.html</code> <code>.htm</code> <code>.xhtml</code> <code>.xht</code> <code>.shtml</code> <code>.html.hl</code> and more</td></tr>
+<tr><td>Vue</td><td><code>vue</code></td><td><code>.vue</code></td></tr>
+<tr><td>Svelte</td><td><code>svelte</code></td><td><code>.svelte</code></td></tr>
+<tr><td>Astro</td><td><code>astro</code></td><td><code>.astro</code></td></tr>
+<tr><td>XML</td><td><code>xml</code></td><td><code>.xml</code> <code>.xsd</code> <code>.xsl</code> <code>.xslt</code> <code>.rss</code> <code>.atom</code> and more</td></tr>
+<tr><td>SVG</td><td><code>svg</code></td><td><code>.svg</code> <code>.svgz</code></td></tr>
+<tr><td>Markdown</td><td><code>markdown</code></td><td><code>.md</code> <code>.markdown</code> <code>.mdown</code> <code>.mkd</code> <code>.mkdn</code> <code>.mdwn</code> and more</td></tr>
+<tr><td>MDX</td><td><code>mdx</code></td><td><code>.mdx</code></td></tr>
+<tr><td>Handlebars</td><td><code>handlebars</code></td><td><code>.handlebars</code> <code>.hbs</code> <code>.hbs.html</code></td></tr>
+<tr><td>YAML</td><td><code>yaml</code></td><td><code>.yaml</code> <code>.yml</code> <code>.yaml.tmpl</code> <code>.mir</code> <code>.reek</code> <code>.rviz</code> and more</td></tr>
+<tr><td>TOML</td><td><code>toml</code></td><td><code>.toml</code> <code>.tml</code></td></tr>
+<tr><td>GraphQL</td><td><code>graphql</code></td><td><code>.graphql</code> <code>.gql</code></td></tr>
+<tr><td>GraphQL SDL</td><td><code>graphql-schema</code></td><td><code>.graphqls</code> <code>.gqls</code> <code>.sdl</code></td></tr>
+<tr><td>OpenAPI</td><td><code>openapi</code></td><td><code>openapi.yaml</code> <code>openapi.yml</code> <code>openapi.json</code> <code>api.yaml</code></td></tr>
+<tr><td>AsyncAPI</td><td><code>asyncapi</code></td><td><code>asyncapi.yaml</code> <code>asyncapi.yml</code> <code>asyncapi.json</code></td></tr>
+<tr><td>Swagger 2.0</td><td><code>swagger</code></td><td><code>swagger.yaml</code> <code>swagger.yml</code> <code>swagger.json</code></td></tr>
+<tr><td>RAML</td><td><code>raml</code></td><td><code>.raml</code></td></tr>
+<tr><td>Docker Compose</td><td><code>docker-compose</code></td><td><code>docker-compose.yml</code> <code>docker-compose.yaml</code> <code>docker-compose.override.yml</code> <code>docker-compose.override.yaml</code></td></tr>
+<tr><td>Pulumi</td><td><code>pulumi</code></td><td><code>Pulumi.yaml</code> <code>Pulumi.yml</code></td></tr>
+<tr><td>Ansible</td><td><code>ansible</code></td><td><code>playbook.yml</code> <code>playbook.yaml</code> <code>site.yml</code> <code>site.yaml</code></td></tr>
+<tr><td>Kubernetes manifest</td><td><code>kubernetes</code></td><td><code>kustomization.yaml</code> <code>kustomization.yml</code> <code>kubeconfig</code></td></tr>
+</tbody></table></div>
+<h3 id="files-identified-by-name">Files identified by name</h3>
+<p>Some formats share an extension with another, and a few files are recognised by name. For example, <code>docker-compose.yml</code>, <code>compose.yaml</code>, <code>openapi.yaml</code>, <code>swagger.json</code>, <code>asyncapi.yaml</code>, <code>Pulumi.yaml</code>, <code>playbook.yml</code> and <code>kustomization.yaml</code> get their own native handling. Ambiguous extensions are resolved to one language by default: <code>.h</code> is C, <code>.m</code> is Objective-C, <code>.pl</code> is Perl, <code>.sql</code> is SQL and <code>.ts</code> is TypeScript. Set <code>auricFormatter.parser</code> or a <code>languages</code> entry if you need a different interpretation.</p>
+<h2 id="universal-tier-reindent-and-spacing-104">Universal tier: reindent and spacing (104)</h2>
+<p>Indentation and spacing are normalised. JavaScript, TypeScript and their React variants appear here because this is where they fall back when a native parse is not possible.</p>
+<p>ABAP, Ada, Alloy, ANTLR, Apache Avro IDL, Apache config, Apache Thrift, Apex, AppleScript, ASN.1, AWK, Bash, BASIC, Bicep, C, C#, C++, Caddyfile, Cairo, Cap&#39;n Proto, CMake, Crystal, CUDA, CUE, D, Dart, Delphi, Elixir, Fish, FlatBuffers, Fortran, Gleam, GLSL, GNU Octave, gnuplot, Go, Gradle, Graphviz DOT, Groovy, Hack, Haxe, HCL, Hjson, HLSL, Java, JavaScript, JavaScript React, jq, Jsonnet, Julia, KDL, Kotlin, Lex / Flex, Lua, M4, MATLAB, Metal Shading Language, Move, nginx, Nix, Nushell, Objective-C, Objective-C++, Odin, OpenCL, Pascal, Perl, PHP, PowerShell, Protocol Buffers, Puppet, R, Raku, Reason, ReScript, REXX, Ruby, Rust, Rusty Object Notation, Scala, Shell script, Smalltalk, Solidity, Stan, Stata, Swift, SystemVerilog, Tcl, Terraform, TypeScript, TypeScript React, TypoScript, V, Vala, Verilog, VHDL, Vim script, Visual Basic, Web IDL, WGSL, XQuery, Yacc / Bison, Zig, Zsh.</p>
+<h2 id="universal-tier-spacing-only-60">Universal tier: spacing only (60)</h2>
+<p>Indentation is left exactly as written, because it carries meaning or the layout is sensitive; spacing between tokens is normalised.</p>
+<p>Agda, AutoHotkey, Batch file, Bazel, Clojure, ClojureScript, CoffeeScript, Common Lisp, Coq / Rocq, Cypher, Cython, Dhall, EDN, Elm, Emacs Lisp, Erlang, F#, Fennel, GDScript, Haml, Haskell, HiveQL, Idris, Isabelle, Jade, Janet, Lean, LiveScript, Mercury, Meson, Michelson, MySQL, Nim, OCaml, PL/SQL, PostgreSQL, Prolog, Pug, PureScript, Python, Racket, SAS, Sass (indented), Scheme, Slim, SMT-LIB, Spark SQL, SPARQL, SPSS, SQL, SQLite SQL, Standard ML, Starlark, Stylus, T-SQL, TLA+, Vyper, WebAssembly, WebAssembly Text, Wolfram Mathematica.</p>
+<h2 id="universal-tier-whitespace-only-60">Universal tier: whitespace only (60)</h2>
+<p>Only trailing whitespace, blank-line runs, line endings and the final newline change, because leading whitespace is data in these formats.</p>
+<p>Apache Ant, AsciiDoc, ASP.NET Web Forms, Assembly, BibTeX, Blade, COBOL, ColdFusion Markup, Containerfile, Creole, CSV, Diff / patch, Dockerfile, Document Type Definition, Dotenv, EditorConfig, EJS, ERB, Forth, FreeMarker, Gherkin, Git attributes, Git commit message, Git config, Git ignore, Git rebase todo, Go module, Helm chart, INI, Java Properties, JavaServer Pages, Jinja, JSON Lines, Just, LaTeX, Liquid, LLVM IR, Makefile, MediaWiki, Mermaid, Mustache, Ninja, Nunjucks, Org Mode, PlantUML, Razor, reStructuredText, Robot Framework, RPG (IBM i), sed, Smarty, systemd unit, Texinfo, Textile, Thymeleaf, TSV, Turtle / RDF, Twig, Velocity, XAML.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="safety-gate-and-tiers.html"><span>Previous</span>The safety gate and formatting tiers</a><a href="workspace-scan.html"><span>Next</span>Scan the workspace</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#native-tier">Native tier</a></li><li><a href="#universal-tier-reindent-and-spacing-104">Universal tier: reindent and spacing (104)</a></li><li><a href="#universal-tier-spacing-only-60">Universal tier: spacing only (60)</a></li><li><a href="#universal-tier-whitespace-only-60">Universal tier: whitespace only (60)</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

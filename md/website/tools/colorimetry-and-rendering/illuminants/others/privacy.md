@@ -1,0 +1,16 @@
+---
+title: Illuminants — Privacy
+description: What the Standard Illuminants lab keeps on your device and what, if anything, leaves it.
+product: Website › Tools › Colorimetry and rendering
+updated: 2026-09-25
+---
+
+# Illuminants privacy
+
+- **All calculations run in your browser.** Spectra, readings, uncertainty runs and console queries are computed on your device. The lab does not send them anywhere.
+- **Nothing you type is uploaded.** Budget values and console queries stay in the page and are gone when you close it.
+- **Downloads are made on your device.** CSV, JSON and PNG exports are generated in the browser and saved through your browser's normal download.
+- **Clipboard.** **Copy white HEX** and the share **Copy** button write to your clipboard only when you select them. Your browser may ask for permission.
+- **Share links** contain only the settings listed in the [reference](../docs/reference.md#export-tab) (mode, illuminant or CCT, and adaptation settings). Anyone you send the link to sees those settings.
+- **Save to Library** stores a preset in your Auric Artisan Library. See the Library documentation for where that is kept.
+- The page itself loads the site's shared features in the same way as every other page on auricartisan.com. See the site's privacy policy for those.

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check contrast with the audit — Auric Artisan Docs</title>
+<meta name="description" content="Read the always-visible audit rail, understand the score, open the full audit for both themes, and use the suggested fixes.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Design System Generator</a>
+<h2>Design System Generator documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Design System Generator</a></li>
+<li><a href="compare.html">Compare styles and industries</a></li>
+<li><a href="component-playground.html">Use the component playground</a></li>
+<li><a href="contrast-audit.html" aria-current="page">Check contrast with the audit</a></li>
+<li><a href="export-tokens.html">Export tokens</a></li>
+<li><a href="read-the-system.html">Read the system</a></li>
+<li><a href="set-the-brief.html">Set the brief</a></li>
+<li><a href="share-save-and-connect.html">Share, save and connect</a></li>
+<li><a href="reference.html">Design System Generator reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Design System Generator</a></li>
+<li><a href="faq.html">Design System Generator FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colour workspace</a> &rsaquo; <a href="../README.html">Design System Generator</a> &rsaquo; <a href="README.html">Design System Generator documentation</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Check contrast with the audit</h1>
+<p class="lede">Read the always-visible audit rail, understand the score, open the full audit for both themes, and use the suggested fixes.</p>
+<p>The audit is the evidence that a generated system meets its contrast target. It re-runs on every change, it covers both the light and the dark roles, and it reports two measures:</p>
+<ul>
+<li>the <strong>WCAG 2.1 contrast ratio</strong>, from 1:1 to 21:1, the measure most accessibility requirements use;</li>
+<li>the <strong>APCA Lc</strong> value, the Accessible Perceptual Contrast Algorithm proposed for WCAG 3, which handles light-on-dark and mid-tone pairs better. The tool shows its size (without a sign) as context, not as a pass or fail gate.</li>
+</ul>
+<h2 id="the-audit-rail">The audit rail</h2>
+<p>The right-hand column, <strong>The audit</strong> (<em>live</em>), has four sections.</p>
+<ol>
+<li><strong>The score</strong>: a large number out of 100, <em>out of 100</em>, a line saying how the last change moved it (<em>first run</em>, <em>no change</em> or, for example, <em>+3 on that change</em>), and a pill: <strong>all 12 pass</strong> or <strong>N failing</strong>. Select the score to open the full audit. A line underneath says how many tokens changed on the last change, for example <em>14 of 177 tokens moved on that change.</em></li>
+<li><strong>Where the points went</strong>: the four parts of the score as bars, and a sentence naming the weakest part.</li>
+<li><strong>Light</strong> (<em>wcag · apca</em>): the twelve pairings for the light roles. Each row shows a sample, the pairing, the kind of content and its requirement (<em>normal text · needs 7</em>), the ratio (green for pass, red for fail) and the Lc value.</li>
+<li><strong>Dark</strong>: <em>clean</em> or <em>N failing</em> for the dark roles, and <strong>See the whole audit →</strong>.</li>
+</ol>
+<h2 id="the-twelve-pairings">The twelve pairings</h2>
+<p>Each pairing is held to the requirement that fits its content, not one number for everything.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Pairing</th><th>Requirement</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Body text (on <code>bg</code>)</td><td>Your target</td><td>Normal text</td></tr>
+<tr><td>Muted text (on <code>bg</code>)</td><td>4.5:1</td><td>Still body copy, held to AA</td></tr>
+<tr><td>Subtle text (on <code>bg</code>)</td><td>3:1</td><td>Large or secondary text</td></tr>
+<tr><td>Text on surface</td><td>Your target</td><td>Normal text on a card</td></tr>
+<tr><td>Text on muted bg</td><td>Your target</td><td>Normal text on a wash</td></tr>
+<tr><td>On-primary label</td><td>4.5:1</td><td>Button label</td></tr>
+<tr><td>Primary vs bg</td><td>3:1</td><td>A user-interface element</td></tr>
+<tr><td>Strong border (on <code>bg</code>)</td><td>1.4:1</td><td>Decorative; it only has to be seen</td></tr>
+<tr><td>Success solid</td><td>3:1</td><td>Labelled component</td></tr>
+<tr><td>Warning solid</td><td>3:1</td><td>Labelled component</td></tr>
+<tr><td>Danger solid</td><td>3:1</td><td>Labelled component</td></tr>
+<tr><td>Info solid</td><td>3:1</td><td>Labelled component</td></tr>
+</tbody></table></div>
+<p>For the semantic solids the pairing is the solid colour with its automatic black or white label. Translucent tokens (the dark theme&#39;s borders, for example) are blended over the surface beneath them before they are measured, and the full audit marks them <strong>composited</strong>.</p>
+<h2 id="the-score">The score</h2>
+<p>The score is a weighted total, kept between 40 and 100:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Part</th><th>Up to</th><th>What it rewards</th></tr></thead>
+<tbody>
+<tr><td><strong>Accessibility</strong></td><td>55</td><td>The share of the twelve light pairings that pass.</td></tr>
+<tr><td><strong>Vibrancy</strong></td><td>18</td><td>How much colour (OKLCH chroma) the primary step 500 kept after gamut mapping.</td></tr>
+<tr><td><strong>Headroom</strong></td><td>15</td><td>How far body text clears your target.</td></tr>
+<tr><td><strong>Hierarchy</strong></td><td>12</td><td>Full marks when body, muted and subtle text are three distinct tiers; 5 otherwise.</td></tr>
+</tbody></table></div>
+<p>The rail colours the score green from 85, amber from 70, red below. The Overview ring uses green from 85 and amber from 65.</p>
+<p>Things to know about the score:</p>
+<ul>
+<li>It is computed from the light roles. The dark theme is audited, but it does not change the score.</li>
+<li>Loosening the contrast target rarely raises it: lighter text tiers are more likely to collide, and the headroom shrinks. For a higher score, try a more saturated style or a seed with more chroma.</li>
+<li>It measures contrast, colour and hierarchy, not taste. Two very different systems can score the same.</li>
+</ul>
+<h2 id="the-full-audit">The full audit</h2>
+<p>Select the score, or <strong>See the whole audit →</strong>, to open <strong>The audit</strong> view. <strong>← Back to the system</strong> returns to the tab you were on.</p>
+<ul>
+<li><strong>Theme audited</strong>: <strong>Light</strong> or <strong>Dark</strong>, with a pill for each theme&#39;s result.</li>
+<li><strong>The engine&#39;s own requirements</strong>: the twelve pairings for the chosen theme, each with ratio, Lc, requirement and a <strong>PASS</strong> or <strong>CHECK</strong> badge.</li>
+<li><strong>What would fix it</strong> (only when something fails): for each failing pairing, the nearest step in the generated ramp that would clear the requirement, with its token name and new ratio. If nothing in the ramp can reach it, it says that the seed hue or the requirement has to move.</li>
+<li><strong>Every foreground on every surface</strong>: a matrix of <code>text</code>, <code>text-muted</code>, <code>text-subtle</code>, <code>primary</code>, <code>border-strong</code> and the four semantic solids against <code>bg</code>, <code>bg-subtle</code>, <code>bg-muted</code>, <code>surface</code> and <code>elevated</code>. Gold meets your body-text target, green is 4.5:1 and above, amber is 3:1 and above (large text and UI only), red is below 3:1.</li>
+<li><strong>Color-vision preview</strong>: primary, secondary, accent, success, warning and danger drawn four times: <strong>Normal</strong>, <strong>Deuteranopia</strong>, <strong>Protanopia</strong> and <strong>Tritanopia</strong>. Look for colours that stay distinct in the first row but merge in another.</li>
+</ul>
+<h2 id="tasks">Tasks</h2>
+<h3 id="get-to-all-twelve-passing">Get to all twelve passing</h3>
+<ol>
+<li>Look for red ratios in the rail, or open the full audit.</li>
+<li>Read <strong>What would fix it</strong>. Often the fastest fixes are: raise or lower the <strong>Contrast target</strong> by one step, choose a less saturated <strong>Style</strong>, or try another <strong>Seed</strong>.</li>
+<li>Watch the pill turn to <strong>all 12 pass</strong>.</li>
+</ol>
+<p>Result: a system whose defined pairings all meet their requirements.</p>
+<h3 id="check-the-dark-theme">Check the dark theme</h3>
+<ol>
+<li>Open the full audit and select <strong>Dark</strong> under <strong>Theme audited</strong>.</li>
+<li>Read the pairings and the matrix.</li>
+</ol>
+<p>Result: the same checks for the dark roles.</p>
+<h2 id="what-the-audit-does-not-cover">What the audit does not cover</h2>
+<ul>
+<li>Your layout: text over images, disabled states, focus rings on coloured buttons and hover states.</li>
+<li>Font size and weight, which change what a ratio means in practice.</li>
+<li>Other accessibility requirements such as focus order, target size, motion preferences and semantics.</li>
+</ul>
+<p>For those, see the <a href="../../../accessibility-and-vision/README.html">Accessibility and vision tools</a>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="set-the-brief.html">Set the brief</a></li>
+<li><a href="component-playground.html">Component playground</a></li>
+<li><a href="../others/limits-and-accuracy.html">Limits and accuracy</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="component-playground.html"><span>Previous</span>Use the component playground</a><a href="export-tokens.html"><span>Next</span>Export tokens</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-audit-rail">The audit rail</a></li><li><a href="#the-twelve-pairings">The twelve pairings</a></li><li><a href="#the-score">The score</a></li><li><a href="#the-full-audit">The full audit</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#what-the-audit-does-not-cover">What the audit does not cover</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

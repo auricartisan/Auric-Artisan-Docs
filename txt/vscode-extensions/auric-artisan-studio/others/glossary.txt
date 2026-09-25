@@ -1,0 +1,209 @@
+==============================================================================
+GLOSSARY
+==============================================================================
+Plain-language definitions of every term used in the Auric Artisan Studio
+documentation.
+Area: VS Code extensions › Auric Artisan Studio   Updated: 2026-09-25
+
+Accessible name. The text assistive technology announces for an element, such
+as a button's label or an image's alt text. It can come from visible text,
+`aria-label`, `aria-labelledby`, `alt`, `title` or a `<label>`.
+
+ACT (Accessibility Conformance Testing). A W3C format for writing
+accessibility test rules consistently. The Studio's knowledge entries are
+ACT-aligned: they follow the format's structure but make no claim of ACT
+conformance.
+
+Activity Bar. The vertical bar of icons at the far left of VS Code. The Studio
+adds an Auric icon there.
+
+Alt text. The text alternative for an image, given with the `alt` attribute.
+
+APCA (Accessible Perceptual Contrast Algorithm). A contrast model proposed for
+the WCAG 3 working draft. It reports lightness contrast as Lc, roughly 0 to
+106 in either polarity, and takes into account which colour is the text. The
+Studio offers it as an experimental option; an APCA result is not a WCAG 3
+conformance claim.
+
+ARIA (Accessible Rich Internet Applications). W3C attributes such as `role`
+and `aria-label` that describe elements to assistive technology. The Studio
+checks them against WAI-ARIA 1.2.
+
+Assisted (automation). A finding the engine detects but a person should
+confirm, such as a placeholder used as a label. Assisted findings weigh less
+in the score.
+
+Assumed background. When a CSS rule sets only a text colour, the Studio can
+grade it against the page background declared on `body`, `html` or `:root`.
+Such pairs are marked as possible findings and weigh half in the score.
+
+Audit profile. The WCAG version the accessibility checks target: 2.0, 2.1, 2.2
+or the 3.0 draft.
+
+Baseline. A saved health record of the findings a project already has, used by
+the CI gate to fail only on new findings.
+
+Best-practice hint. A rule that flags a pattern worth fixing that does not by
+itself fail a WCAG success criterion, such as a positive `tabindex`. Shown as
+a hint and weighted at half.
+
+Branding classification. Marking a colour finding as intentional brand
+identity with an `auric-brand-…` comment. The finding stays visible but leaves
+the score. Structural findings can never be classified as branding.
+
+Capability. One extension's area of work: colour, accessibility or code
+health.
+
+CI (continuous integration). The automated build and tests run for every
+change or pull request.
+
+CIEDE2000 (ΔE00). A standard formula for how different two colours look.
+Around 1 is barely noticeable; larger numbers are bigger differences. The
+Studio uses it to rank colour suggestions and to name colours.
+
+Code health. Hygiene and security checks on source code: secrets, security
+footguns, risky APIs, debug leftovers, task markers, merge markers and
+oversized code.
+
+Colour-vision deficiency (CVD). Reduced ability to tell some colours apart,
+often called colour blindness. The Studio simulates protanopia and protanomaly
+(red), deuteranopia and deuteranomaly (green), tritanopia and tritanomaly
+(blue), and achromatopsia and achromatomaly (little or no colour).
+
+Command Center. The Studio's searchable list of suggestions, actions, recent
+colours, findings and files, opened with `Ctrl` + `Alt` + `.`.
+
+Confidence. How sure a detector is that a finding is real: high, medium or low
+(and contextual for some risky-API rules). Reported separately from severity.
+
+Confusable hues. Two project colours that look clearly different to typical
+vision but become hard to tell apart under colour-vision deficiency.
+
+Contrast ratio. WCAG 2.x's measure of the brightness difference between two
+colours, from 1:1 to 21:1. WCAG asks for 4.5:1 for normal text, 3:1 for large
+text and UI parts, and 7:1 for level AAA.
+
+Contrast Studio. The Studio tool for tuning one text and background pair and
+writing the fix back to your code.
+
+Custom property. A CSS variable such as `--brand-ink`, used with
+`var(--brand-ink)`. Often called a design token.
+
+Design token. A named value in a design system, such as a colour role. In CSS,
+usually a custom property.
+
+Detector version. The version of the checking engine that produced a finding.
+Findings are fingerprinted with it.
+
+Diagnostic. A problem VS Code shows as an underline in the editor and a row in
+the Problems panel.
+
+Directive. A special comment the Studio reads, such as
+`auric-disable-next-line` or `auric-brand-line`.
+
+Display-P3. A colour space with a wider range of colours than standard sRGB,
+used by many modern screens.
+
+Extension pack. A VS Code extension that only installs other extensions. The
+Full Pack is one.
+
+Fingerprint. A short identifier calculated from a finding's source, rule,
+file, line and key detail, used to match findings between runs.
+
+Gamut mapping. Bringing a colour that a screen cannot show (outside its gamut)
+to the nearest colour it can show. The Studio uses the CSS Color 4 method.
+
+Grade. The letter for a score: A+ (95+), A (90+), B (80+), C (70+), D (55+), F
+(below 55).
+
+Health record. The `health.json` file: a versioned, fingerprinted list of
+every issue with scores and a summary.
+
+Host. In a Workstation, the one installed extension that presents the shared
+sidebar, Command Center and Studio.
+
+Hue-preserving fix. A contrast fix that changes only a colour's lightness,
+keeping its hue and chroma, so it still looks like the same colour family.
+
+Impact. How much a WCAG finding affects users: critical, serious, moderate or
+minor.
+
+Inspect. The Auric Accessibility hover card that shows an element's or CSS
+rule's name, role, colours, contrast and WCAG findings.
+
+Knowledge database. The local, searchable collection of rules, requirements,
+manual checks, policies, articles, glossary entries and sources.
+
+Large text. Text of at least 24 CSS pixels, or at least 18.66 pixels and bold.
+WCAG lets it use a lower contrast target.
+
+Lc. APCA's lightness contrast value. The Studio's default APCA target is Lc
+60.
+
+Live re-grade. Updating the project score as you type, from files held in
+memory, without a scan.
+
+Manual check. A step-by-step test a person carries out, for what automation
+cannot decide.
+
+OKLCH. A colour model with lightness (L), chroma (C, colourfulness) and hue
+(H) designed so equal steps look equally different. The Studio uses it for
+shade scales.
+
+Overview. The Studio's home view in the sidebar.
+
+Priority. A 0–100 number in issue hovers that ranks how soon to act on a
+finding, from fix now to low urgency.
+
+Project scan. Reading and grading every matching file in the workspace.
+
+Quick fix. A VS Code code action offered with `Ctrl` + `.` on an underline,
+such as Fix contrast.
+
+Redaction. Replacing a detected secret with a placeholder such as `[redacted
+secret; 40 characters]` so the secret itself is never stored.
+
+Remediation plan. The agent-ready backlog of fixes written by Generate
+Agent-Ready Remediation Plan.
+
+Rulebook. A structured collection of rules and guidance in the knowledge
+database, such as the Accessibility engineering rulebook.
+
+SARIF (Static Analysis Results Interchange Format). A standard JSON format for
+analysis results, read by GitHub code scanning and other tools.
+
+Scan cache. The saved result of the last project scan, `scan-cache.json`.
+
+Score. A 0–100 number where 100 means nothing was found.
+
+Severity. How serious a finding is in a record or report: critical, high,
+medium, low or info.
+
+Signature. One specific code-health detector, such as
+`ch-secret-github-token`.
+
+Space. A section of the Studio tab listed on its rail, such as Home, Color or
+Check.
+
+sRGB. The standard colour space of the web and most screens.
+
+Static analysis. Checking code by reading its text, without running it.
+
+Studio. The editor tab with the Studio's larger tools, organised in spaces.
+
+Success criterion. A single testable requirement in WCAG, such as 1.4.3
+Contrast (Minimum). Each has a level: A, AA or AAA.
+
+Suppression. Removing a finding with an `auric-disable-…` comment.
+
+Suppressed extension. In a Workstation, an installed extension that is not the
+host and hides its own views.
+
+Swatch. A small square of colour. The Studio draws one before each colour
+literal and shows rows of them in pickers.
+
+WCAG (Web Content Accessibility Guidelines). The W3C's accessibility standard.
+Versions 2.0, 2.1 and 2.2 are recommendations; WCAG 3 is a working draft.
+
+Workstation. Two or three Studio extensions installed together and presented
+as one product.

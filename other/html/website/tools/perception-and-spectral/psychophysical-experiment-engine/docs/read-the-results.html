@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read the results — Auric Artisan Docs</title>
+<meta name="description" content="Understand the threshold readouts, the staircase trace and the explanation tabs of the Psychophysics Bench.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Psychophysical Experiment Engine</a>
+<h2>Using the Psychophysics Bench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Psychophysics Bench</a></li>
+<li><a href="design-an-experiment.html">Design an experiment</a></li>
+<li><a href="export-your-data.html">Export your data</a></li>
+<li><a href="read-the-results.html" aria-current="page">Read the results</a></li>
+<li><a href="run-a-session.html">Run a session</a></li>
+<li><a href="reference.html">Psychophysics Bench reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Psychophysics Bench</a></li>
+<li><a href="faq.html">Psychophysics Bench FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Psychophysical Experiment Engine</a> &rsaquo; <a href="README.html">Using the Psychophysics Bench</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Psychophysical Experiment Engine</p>
+<h1>Read the results</h1>
+<p class="lede">Understand the threshold readouts, the staircase trace and the explanation tabs of the Psychophysics Bench.</p>
+<h2 id="the-readouts">The readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>What it tells you</th></tr></thead>
+<tbody>
+<tr><td><strong>Threshold, Michelson</strong></td><td>Your threshold contrast, four decimals; highlighted when there is not yet an estimate</td></tr>
+<tr><td><strong>At what percentage</strong></td><td>The proportion correct the threshold belongs to</td></tr>
+<tr><td><strong>Reversals used</strong></td><td>How many reversals went into the estimate, out of how many occurred</td></tr>
+<tr><td><strong>Delivered / asked</strong></td><td>The contrast the screen could show divided by the contrast the staircase asked for; 1.00 means nothing was capped</td></tr>
+<tr><td><strong>Trials run</strong></td><td>Trials completed and scored</td></tr>
+<tr><td><strong>Proportion correct</strong></td><td>Correct trials divided by trials run, three decimals</td></tr>
+<tr><td><strong>Degrees per pixel</strong></td><td>The angle one pixel covers at your geometry</td></tr>
+<tr><td><strong>Nyquist limit of the grid</strong></td><td>The finest frequency your screen can show at your geometry; highlighted when the stimulus is above it</td></tr>
+</tbody></table></div>
+<h3 id="how-the-threshold-is-worked-out">How the threshold is worked out</h3>
+<p><strong>1-up / 2-down, 3-down / 1-up and Accelerated.</strong> The first two reversals are a warm-up and are discarded. Of the rest, an even number is used (if an odd number remain, the earliest is dropped too), because up-runs and down-runs of a transformed staircase are not symmetric around the threshold. The threshold is the <strong>geometric mean</strong> of those reversal contrasts, because the staircase steps by ratios. <strong>Reversals used</strong> reads, for example, <strong>10 of 12</strong>; before there are two usable reversals it reads <strong>fewer than two reversals after the warm-up</strong> and the threshold shows <strong>—</strong>.</p>
+<p><strong>Bayesian tracker.</strong> The threshold is the tracker&#39;s current estimate (the mean of its distribution on a log scale), and <strong>Reversals used</strong> reads, for example, <strong>80 trials, posterior mean</strong>.</p>
+<p><strong>Constant stimuli.</strong> There is no threshold estimate; <strong>Threshold, Michelson</strong> and <strong>Reversals used</strong> show <strong>—</strong>. Read <strong>Proportion correct</strong>: it is your score at the starting contrast.</p>
+<h3 id="what-the-percentage-means">What the percentage means</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Procedure</th><th><strong>At what percentage</strong></th></tr></thead>
+<tbody>
+<tr><td><strong>1-up / 2-down</strong></td><td>70.7%</td></tr>
+<tr><td><strong>3-down / 1-up</strong></td><td>79.4%</td></tr>
+<tr><td><strong>Bayesian tracker</strong></td><td>80.3% (two-interval) or 61.9% (yes/no)</td></tr>
+<tr><td><strong>Accelerated</strong>, <strong>Constant stimuli</strong></td><td><strong>not defined for this ladder</strong></td></tr>
+</tbody></table></div>
+<p>A threshold from the accelerated staircase is a contrast near your threshold, but not a threshold at a stated percentage, and should not be compared directly with one.</p>
+<h3 id="what-is-a-normal-value">What is a normal value?</h3>
+<p>For a Gabor at about 4 c/deg in a dim room, detection thresholds typically fall roughly between 0.005 and 0.02 Michelson contrast on a well-behaved display. A bright room, an uncalibrated screen, glare or inattention all raise it. At such low contrasts the stripes differ from the background by only a few screen code values, so screen quality matters.</p>
+<h2 id="the-staircase-trace">The staircase trace</h2>
+<p><strong>The staircase</strong> plots the contrast on every trial (horizontal axis: trial number; vertical axis: contrast on a logarithmic scale, labelled on the left). The note above it names the procedure.</p>
+<ul>
+<li><strong>Grey dots</strong> — the first two reversals, the warm-up, discarded.</li>
+<li><strong>Red dots</strong> — the reversals the estimate uses.</li>
+<li><strong>Dashed gold line</strong> — the threshold, with its value on the right.</li>
+</ul>
+<p>A good run falls from the starting contrast, then zig-zags in a narrowing band. The trace is drawn for the three staircases that have reversals (<strong>1-up / 2-down</strong>, <strong>3-down / 1-up</strong>, <strong>Accelerated</strong>). For the <strong>Bayesian tracker</strong> and <strong>Constant stimuli</strong> it stays empty with the text <strong>The trace appears here once the run starts</strong>; read the numbers instead.</p>
+<p>Double-click the trace or the stimulus to see it enlarged; press <code>Esc</code> to close.</p>
+<h2 id="warnings-under-the-readouts">Warnings under the readouts</h2>
+<ul>
+<li><strong>Above the pixel grid&#39;s Nyquist limit.</strong> — the frequency is too fine for your screen at your geometry; what you see is an alias.</li>
+<li><strong>The contrast asked for does not fit about this background.</strong> — the staircase asked for more contrast than fits; <strong>Delivered / asked</strong> is below 1.00. A threshold measured while this shows is a threshold for a different stimulus. Choose a darker background.</li>
+</ul>
+<h2 id="what-the-page-does-not-show">What the page does not show</h2>
+<p>The bench computes more than it displays. A psychometric function fit (a logistic with the task&#39;s guess rate and a fitted lapse rate), d′ and criterion for yes/no sessions, and a bootstrap interval are described in the <strong>Data</strong> register, but no readout on the page shows them in the current version. The session file records every trial, so you can fit them in your own analysis software.</p>
+<h2 id="the-explanation-tabs">The explanation tabs</h2>
+<p>When the tabs open (see <a href="troubleshooting.html">Troubleshooting</a>), they hold the following.</p>
+<p><strong>Method</strong> has three views:</p>
+<ul>
+<li><strong>The contrast chain</strong> — the steps from <strong>Contrast asked</strong> through <strong>Mean luminance</strong>, <strong>L × (1 ± m)</strong> and the <strong>sRGB OETF</strong> to <strong>Code values</strong>, and a table of what an earlier version delivered for contrasts of 0.02 to 1 (<strong>Contrast asked</strong>, <strong>Codes sent</strong>, <strong>Luminance reached</strong>, <strong>Contrast delivered</strong>, <strong>Error</strong>).</li>
+<li><strong>The frequency axis</strong> — a table of your current viewing distance, pixel pitch, degrees per pixel, cycles per pixel at your frequency, and the Nyquist limit, with where each comes from.</li>
+<li><strong>What each ladder estimates</strong> — each procedure and the percentage it converges at, and notes on the multiplicative step, the even reversal count and why the fit carries a guess rate.</li>
+</ul>
+<p><strong>Paradigms</strong> lists the five tasks the menu once offered: the two that score (tagged <strong>Scores</strong>) and three withdrawn ones (tagged <strong>Never correct</strong>), each with what it would take to bring back.</p>
+<p><strong>Data</strong> lists 13 entries with a status each: <strong>Verbatim</strong> (3: sRGB transfer, Levitt&#39;s rules, the 1/2N extreme-proportion correction), <strong>Computed</strong> (5: Michelson contrast in luminance, viewing geometry, signal-detection formulae, inverse normal, bootstrap), <strong>Stand-in</strong> (3: Bayesian tracker, psychometric fit, accelerated staircase) and <strong>Absent</strong> (2: Weibull fit, ROC curve). Its <strong>Calibrate the display</strong> area (<strong>Drop a measured gamma table</strong>) is not active in the current version.</p>
+<p><strong>Reference</strong> lists eleven sources, from Levitt (1971) to Abramowitz and Stegun (1964), each with what it is used for and a tag: <strong>Runs</strong>, <strong>Stand-in</strong> or <strong>Withdrawn</strong>.</p>
+<p>You should now be able to say what your threshold is a threshold of, and how much to trust it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="export-your-data.html"><span>Previous</span>Export your data</a><a href="run-a-session.html"><span>Next</span>Run a session</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-readouts">The readouts</a></li><li><a href="#the-staircase-trace">The staircase trace</a></li><li><a href="#warnings-under-the-readouts">Warnings under the readouts</a></li><li><a href="#what-the-page-does-not-show">What the page does not show</a></li><li><a href="#the-explanation-tabs">The explanation tabs</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

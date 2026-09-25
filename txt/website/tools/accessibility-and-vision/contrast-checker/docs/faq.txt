@@ -1,0 +1,71 @@
+==============================================================================
+CONTRAST CHECKER FAQ
+==============================================================================
+Short answers to common questions about the Contrast Checker and colour
+contrast.
+Area: Website › Tools › Accessibility and vision   Updated: 2026-09-25
+
+WHAT CONTRAST RATIO DO I ACTUALLY NEED?
+=======================================
+
+4.5:1 for body text and 3:1 for large text is WCAG 2.1 Level AA, the level
+most laws and contracts reference. AAA asks for 7:1 and 4.5:1. Interface
+components and meaningful graphics need 3:1 against what sits next to them.
+
+WHAT COUNTS AS LARGE TEXT?
+==========================
+
+At least 18.66 pixels in bold, or 24 pixels otherwise. A large heading in a
+light weight can still fall under the body-text requirement.
+
+DOES PASSING THE RATIO MEAN THE TEXT IS READABLE?
+=================================================
+
+No. The WCAG 2.1 formula ignores font weight, size beyond the large-text
+threshold, and the way light text on dark backgrounds appears to spread. A
+pass is a floor, not a verdict. Check the preview as well as the number.
+
+DO DISABLED CONTROLS AND LOGOS HAVE TO PASS?
+============================================
+
+No. WCAG 2.1 exempts inactive controls, pure decoration, text that is part of
+a logo, and text in a picture of something else. Everything a person has to
+read or operate is in scope.
+
+DOES THE CHECKER SHOW APCA?
+===========================
+
+No. The page's title mentions APCA, but the tool itself calculates only the
+WCAG 2.1 ratio. For APCA Lc values beside the ratio, audit a page with the
+Analyzer [../../analyzer/README.txt]; its A11y+ panel shows them. The REST API
+endpoint named in the page's API hint also covers APCA.
+
+CAN I CHECK A COLOUR WITH TRANSPARENCY?
+=======================================
+
+Not directly. Work out the solid colour it shows over its background and test
+that.
+
+CAN I CHECK MANY PAIRS AT ONCE?
+===============================
+
+Not here. It checks one pair at a time. The Analyzer
+[../../analyzer/README.txt] checks every pair on a live page.
+
+IS ANYTHING UPLOADED OR SAVED?
+==============================
+
+No. The maths runs in your browser and nothing is stored. The pair lives only
+in the page address.
+
+DO I NEED AN ACCOUNT?
+=====================
+
+No. The tool is free and needs no sign-in.
+
+CAN I USE IT WITH A KEYBOARD AND A SCREEN READER?
+=================================================
+
+Yes. Every control is reachable with `Tab`, the ratio is announced when it
+changes, and the result of each button is announced too. See the Reference
+[reference.txt].

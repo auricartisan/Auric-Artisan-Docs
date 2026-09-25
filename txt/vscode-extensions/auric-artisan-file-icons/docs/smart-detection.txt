@@ -1,0 +1,413 @@
+==============================================================================
+SMART DETECTION
+==============================================================================
+Content-aware badges, colours and explanations in the Explorer, the built-in
+rules, custom rules and workspace scans.
+Area: VS Code extensions › Auric Artisan File Icons   Updated: 2026-09-25
+
+Smart detection looks at a folder's direct contents, its package dependencies,
+or the start of a small text file, and adds an Explorer decoration: a badge of
+up to two characters, a category colour and a hover explanation. For example,
+a folder containing `Cargo.toml` gets the badge RS and the explanation "Rust
+project".
+
+Decorations sit on top of the base icon; they do not replace its SVG. They run
+only while one of the Auric Artisan File Icons themes is active.
+
+TURN IT ON OR OFF
+=================
+
+  - On the Workspace tab, tick or clear Enable smart detection.
+  - Run Auric Artisan File Icons: Toggle Smart Icon Detection. VS Code
+    confirms "Smart icon detection enabled" or "disabled".
+  - Set `auricFileIcons.smart.enabled`.
+
+Folder detection and file detection can be switched separately with
+`auricFileIcons.smart.folders` and `auricFileIcons.smart.files`.
+
+CHOOSE HOW MATCHES APPEAR
+=========================
+
+Run Auric Artisan File Icons: Configure Smart Icon Detection (or Configure on
+the Workspace tab). The menu offers:
+
+  Item                             | Effect
+  ---------------------------------+-------------------------------------------------------
+  Enable / Disable smart detection | Toggles detection for this workspace.
+  Badge and color                  | Badge plus category colour (default).
+  Badge only                       | Badge without colour.
+  Color only                       | Category colour without a badge.
+  Tooltip only                     | Only the hover explanation.
+  Refresh smart matches            | Clears cached results.
+  Edit custom rules                | Opens `settings.json` at `auricFileIcons.smart.rules`.
+
+Choices made in this menu are saved in the workspace settings.
+
+EXPLAIN, REFRESH AND APPLY
+==========================
+
+  Action: Explain a match
+  How:    Right-click › Auric File Icons › Explain Smart Icon Match, or the
+          command
+  Result: A message naming the rule that matched.
+
+  Action: Refresh
+  How:    Refresh Smart Icon Matches, or Refresh on the Workspace tab
+  Result: Clears the cache: "Smart icon matches refreshed."
+
+  Action: Apply a detected icon
+  How:    Right-click a folder › Apply Detected Folder Icon
+  Result: Saves the matching folder icon as an association.
+
+BUILT-IN FOLDER RULES
+=====================
+
+Checked highest priority first. A folder matches when it contains one of the
+listed names, or when its `package.json` lists one of the dependencies.
+
+  Badge:         AL
+  Explanation:   Auric Live project
+  Recognised by: `.auric-live`, `auric.live.json`, `.auricignore-live`
+
+  Badge:         AS
+  Explanation:   Auric Studio project
+  Recognised by: `.auric-artisan`
+
+  Badge:         AF
+  Explanation:   Auric Formatter project
+  Recognised by: `.auricformatrc*`, `.auricformatignore`, `auric.format.json`
+
+  Badge:         AU
+  Explanation:   Auric workspace
+  Recognised by: `.auric`, `.auricignore`
+
+  Badge:         NG
+  Explanation:   Angular project
+  Recognised by: `angular.json` or `@angular/core`
+
+  Badge:         NX
+  Explanation:   Next.js project
+  Recognised by: `next.config.*` or `next`
+
+  Badge:         NU
+  Explanation:   Nuxt project
+  Recognised by: `nuxt.config.*` or `nuxt`
+
+  Badge:         SV
+  Explanation:   Svelte project
+  Recognised by: `svelte.config.*`, `svelte` or `@sveltejs/kit`
+
+  Badge:         VU
+  Explanation:   Vue project
+  Recognised by: `vue`
+
+  Badge:         RE
+  Explanation:   React project
+  Recognised by: `react` or `react-dom`
+
+  Badge:         NS
+  Explanation:   NestJS project
+  Recognised by: `@nestjs/core`
+
+  Badge:         VT
+  Explanation:   Vite project
+  Recognised by: `vite.config.*` or `vite`
+
+  Badge:         RM
+  Explanation:   Remix project
+  Recognised by: `remix.config.*` or `@remix-run/*`
+
+  Badge:         QW
+  Explanation:   Qwik project
+  Recognised by: `qwik.config.*` or `@builder.io/qwik`
+
+  Badge:         SO
+  Explanation:   SolidJS project
+  Recognised by: `solid-js` or `@solidjs/start`
+
+  Badge:         DN
+  Explanation:   Deno project
+  Recognised by: `deno.json`, `deno.jsonc`, `deno.lock`
+
+  Badge:         BN
+  Explanation:   Bun project
+  Recognised by: `bun.lock`, `bun.lockb`, `bunfig.toml`
+
+  Badge:         NT
+  Explanation:   .NET project
+  Recognised by: `*.sln`, `*.csproj`, `*.fsproj`, `*.vbproj`
+
+  Badge:         FL
+  Explanation:   Flutter or Dart project
+  Recognised by: `pubspec.yaml`, `pubspec.yml`
+
+  Badge:         RS
+  Explanation:   Rust project
+  Recognised by: `Cargo.toml`
+
+  Badge:         GO
+  Explanation:   Go project
+  Recognised by: `go.mod`
+
+  Badge:         PY
+  Explanation:   Python project
+  Recognised by: `pyproject.toml`, `requirements*.txt`, `setup.py`, `Pipfile`
+
+  Badge:         JV
+  Explanation:   Java or JVM project
+  Recognised by: `pom.xml`, `build.gradle`, `build.gradle.kts`,
+                 `settings.gradle`, `settings.gradle.kts`
+
+  Badge:         BZ
+  Explanation:   Bazel workspace
+  Recognised by: `WORKSPACE`, `WORKSPACE.bazel`, `MODULE.bazel`, `BUILD.bazel`
+
+  Badge:         PM
+  Explanation:   Pulumi project
+  Recognised by: `Pulumi.yaml`
+
+  Badge:         SS
+  Explanation:   Serverless project
+  Recognised by: `serverless.yml`, `serverless.yaml`
+
+  Badge:         DC
+  Explanation:   Dev Container workspace
+  Recognised by: `.devcontainer`, `devcontainer.json`, `.devcontainer.json`
+
+  Badge:         PR
+  Explanation:   Prisma data project
+  Recognised by: `prisma`, or `prisma` or `@prisma/client`
+
+  Badge:         DZ
+  Explanation:   Drizzle data project
+  Recognised by: `drizzle`, or `drizzle-orm` or `drizzle-kit`
+
+  Badge:         SB
+  Explanation:   Supabase project
+  Recognised by: `supabase` or `@supabase/*`
+
+  Badge:         TW
+  Explanation:   Tailwind CSS project
+  Recognised by: `tailwind.config.*` or `tailwindcss`
+
+  Badge:         MR
+  Explanation:   Monorepo workspace
+  Recognised by: `pnpm-workspace.yaml`, `lerna.json`, `nx.json`, `turbo.json`
+
+  Badge:         TS
+  Explanation:   TypeScript project
+  Recognised by: `tsconfig.json`
+
+  Badge:         ND
+  Explanation:   JavaScript or Node project
+  Recognised by: `package.json`
+
+  Badge:         HM
+  Explanation:   Helm chart
+  Recognised by: `Chart.yaml`
+
+  Badge:         TF
+  Explanation:   Terraform project
+  Recognised by: `*.tf`
+
+  Badge:         DK
+  Explanation:   Container project
+  Recognised by: `Dockerfile`, `docker-compose.*`, `compose.yml`,
+                 `compose.yaml`
+
+  Badge:         T
+  Explanation:   Test workspace
+  Recognised by: `jest.config.*`, `vitest.config.*`, `playwright.config.*`,
+                 `pytest.ini`
+
+  Badge:         DC
+  Explanation:   Documentation workspace
+  Recognised by: `README*` together with `mkdocs.yml`, `docusaurus.config.*`
+                 or `docs`
+
+  Badge:         DB
+  Explanation:   Database workspace
+  Recognised by: `prisma`, `migrations`, `schema.sql`
+
+BUILT-IN FILE RULES
+===================
+
+  Badge:         !
+  Explanation:   Sensitive key material
+  Recognised by: A private key header in the content
+
+  Badge:         G
+  Explanation:   Generated file
+  Recognised by: `@generated`, `DO NOT EDIT` or `generated by` in the content
+
+  Badge:         NG
+  Explanation:   Angular component
+  Recognised by: `@Component(` or `@NgModule(`
+
+  Badge:         VU
+  Explanation:   Vue component
+  Recognised by: A `.vue` file with `<template` or `defineComponent(`
+
+  Badge:         RE
+  Explanation:   React module
+  Recognised by: An import from `react`, `React.createElement(` or `use
+                 client`
+
+  Badge:         T
+  Explanation:   Test source
+  Recognised by: `*.test.*`, `*.spec.*`, `test_*`, `*_test.*`
+
+  Badge:         SC
+  Explanation:   Schema-bearing document
+  Recognised by: A `"$schema"` key
+
+  Badge:         OA
+  Explanation:   OpenAPI document
+  Recognised by: `openapi` or `swagger` keys
+
+  Badge:         MG
+  Explanation:   Database migration
+  Recognised by: A `.sql` file with `CREATE TABLE`, `ALTER TABLE` or `CREATE
+                 INDEX`
+
+  Badge:         IN
+  Explanation:   Localization resource
+  Recognised by: `"translations"`, `"locale"`, `msgid` or `msgstr`
+
+  Badge:         #!
+  Explanation:   Executable script
+  Recognised by: Content starting with `#!`
+
+CATEGORY COLOURS
+================
+
+Each rule has a category colour. You can change them in
+`workbench.colorCustomizations`.
+
+  Colour ID                             | Category               | Dark default | Light default
+  --------------------------------------+------------------------+--------------+--------------
+  `auricFileIcons.smart.auric`          | Auric projects         | `#F0C15A`    | `#946414`
+  `auricFileIcons.smart.framework`      | Frameworks             | `#70C7FF`    | `#176E9F`
+  `auricFileIcons.smart.language`       | Languages              | `#B097FF`    | `#6245B2`
+  `auricFileIcons.smart.infrastructure` | Infrastructure         | `#63D8C4`    | `#217B70`
+  `auricFileIcons.smart.test`           | Tests                  | `#7DD58A`    | `#2F7838`
+  `auricFileIcons.smart.docs`           | Documentation          | `#E28EE8`    | `#873C95`
+  `auricFileIcons.smart.data`           | Data                   | `#F2A665`    | `#99521C`
+  `auricFileIcons.smart.generated`      | Generated files        | `#A9B4C2`    | `#586473`
+  `auricFileIcons.smart.security`       | Security               | `#F2768D`    | `#A3243E`
+  `auricFileIcons.smart.custom`         | Custom rules (default) | `#F0C15A`    | `#946414`
+
+High-contrast themes use lighter variants of each.
+
+CUSTOM RULES
+============
+
+Custom rules run before the built-in ones, highest priority first. Add them to
+`auricFileIcons.smart.rules`:
+
+    {
+      "auricFileIcons.smart.rules": [
+        {
+          "id": "design-system",
+          "label": "Design system package",
+          "target": "folder",
+          "badge": "DS",
+          "color": "custom",
+          "priority": 950,
+          "whenAll": ["package.json", "tokens"],
+          "dependenciesAny": ["storybook", "@storybook/*"]
+        }
+      ]
+    }
+
+  Field:   `badge`
+  Meaning: Required. At most two characters (a VS Code limit).
+
+  Field:   `id`, `label`
+  Meaning: Identify the rule; the label is shown in explanations.
+
+  Field:   `target`
+  Meaning: `folder` (default) or `file`.
+
+  Field:   `color`
+  Meaning: `auric`, `framework`, `language`, `infrastructure`, `test`, `docs`,
+           `data`, `generated`, `security` or `custom`.
+
+  Field:   `priority`
+  Meaning: Higher runs first.
+
+  Field:   `whenAll`, `whenAny`
+  Meaning: Child names that must all, or any, be present (folders).
+
+  Field:   `dependenciesAny`
+  Meaning: Package dependencies, any of which match (folders).
+
+  Field:   `fileNames`, `contentAny`, `contentAll`, `contentPrefix`
+  Meaning: Name patterns and content checks (files).
+
+Patterns support `*` and `?` only, never regular expressions.
+
+SCAN THE WORKSPACE FOR FOLDER ICONS
+===================================
+
+  1. Run Auric Artisan File Icons: Scan Workspace for Folder Icons, or Scan
+     folders… on the Workspace tab.
+  2. A progress notification ("Scanning project folders for Facet icons")
+     inspects first-level folders, up to `auricFileIcons.smart.scanLimit` (80
+     by default). You can cancel it.
+  3. Detected folders get icon associations in the workspace settings.
+     Existing manual associations are preserved. The result reads, for
+     example, "Applied 4 detected folder icon(s); preserved 2 existing
+     assignment(s)."
+
+BOUNDS AND EXCLUSIONS
+=====================
+
+  Setting: `auricFileIcons.smart.maxFileSize`
+  Default: 65536 bytes (64 KiB)
+  Range:   1,024 to 262,144
+  Meaning: Largest text file inspected.
+
+  Setting: `auricFileIcons.smart.maxFolderEntries`
+  Default: 250
+  Range:   25 to 2,000
+  Meaning: Direct child names considered per folder.
+
+  Setting: `auricFileIcons.smart.cacheSeconds`
+  Default: 15
+  Range:   1 to 3,600
+  Meaning: How long a match is cached.
+
+  Setting: `auricFileIcons.smart.scanLimit`
+  Default: 80
+  Range:   1 to 250
+  Meaning: Folders inspected by the workspace scan.
+
+  Setting: `auricFileIcons.smart.exclusions`
+  Default: See below
+  Range:   List
+  Meaning: Folder names or simple wildcards never inspected.
+
+  Setting: `auricFileIcons.smart.propagate`
+  Default: false
+  Range:   On or off
+  Meaning: Show child decorations on parent folders.
+
+  Setting: `auricFileIcons.smart.watch`
+  Default: true
+  Range:   On or off
+  Meaning: Watch project marker files and refresh matching folders.
+
+Default exclusions: `.git`, `node_modules`, `vendor`, `dist`, `build`, `out`,
+`coverage`, `.next`, `.nuxt`, `.cache`, `.turbo`, `target`, `__pycache__`.
+Binary, oversized and unavailable files are skipped.
+
+Inspection uses VS Code's file system access, so it works in local, remote and
+virtual workspaces where the provider allows reading. It never runs project
+code.
+
+RESULT
+======
+
+Recognised folders and files carry badges, colours and explanations, and you
+can make any detected folder type a permanent icon.

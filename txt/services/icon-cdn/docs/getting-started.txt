@@ -1,0 +1,85 @@
+==============================================================================
+GETTING STARTED
+==============================================================================
+How the Icon CDN is organised, how icons are named, and how to put a first
+icon on a page.
+Area: Services › Icon CDN   Updated: 2026-09-25
+
+HOW THE CDN IS ORGANISED
+========================
+
+Everything is served from https://icons.auricartisan.com:
+
+  Path:       `/icon-cdn.js`
+  What it is: The loader script
+
+  Path:       `/icon/<set>/…`
+  What it is: The original SVG files, and the Material and Remix webfonts
+
+  Path:       `/data/sets.json`
+  What it is: The seven sets: styles, licence, grid and counts
+
+  Path:       `/data/index.json`
+  What it is: One record per icon, used for names and search
+
+  Path:       `/data/bodies/<set>.<style>.json`
+  What it is: The icon markup for one set and style, loaded by the loader as
+              needed
+
+  Path:       `/data/material.json`
+  What it is: The code points for the Material webfont
+
+  Path:       `/LICENSE.md`
+  What it is: The licence reference for every set
+
+ICON NAMES
+==========
+
+An icon is named by its set and its name, joined by a colon: `lucide:house`,
+`tabler:home`, `phosphor:heart`. The loader also accepts:
+
+  Form:    `set:name`
+  Example: `tabler:home`
+  Meaning: This icon from this set
+
+  Form:    `set-name`
+  Example: `tabler-home`
+  Meaning: The same
+
+  Form:    `name`
+  Example: `home`
+  Meaning: The first set with this name: Lucide, Phosphor, Tabler, Remix,
+           Heroicons, Feather, then Material
+
+Names are the set's own icon names in lower case with hyphens. Different sets
+name things differently: Lucide calls it `house`, Tabler calls it `home`. The
+Icon Library shows every icon's name and gives you the exact tag with Copy CDN
+tag.
+
+YOUR FIRST ICON
+===============
+
+  1. Add the loader once, anywhere in the page:
+         <script src="https://icons.auricartisan.com/icon-cdn.js"></script>
+  2. Add a placeholder where the icon should go:
+         <button><i data-icon="lucide:house"></i> Home</button>
+  3. Load the page. When the page has loaded, the loader replaces the contents
+     of every `data-icon` element with the icon's SVG.
+
+The icon uses `currentColor`, so it takes the button's text colour.
+
+  | Important: The SVG markup the CDN serves has a `viewBox` but no width or
+  | height of its own. Without a size, browsers draw it at their default size for
+  | SVG, which is usually far too large. Always give icons a size, either with
+  | `data-size` or with CSS such as the rule below.
+
+    [data-icon] svg { width: 1em; height: 1em; }
+
+See Style, size and colour [style-size-and-colour.txt].
+
+NEXT STEPS
+==========
+
+  - Collections [collections.txt], to choose a set and a style.
+  - Embed an icon [embed-an-icon.txt], for ways that do not use the loader.
+  - Use the loader [use-the-loader.txt], for icons added after the page loads.

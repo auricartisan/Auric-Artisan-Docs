@@ -1,0 +1,59 @@
+==============================================================================
+USE A MEASURED REFLECTANCE
+==============================================================================
+Load a spectrophotometer reflectance file in place of the synthesised presets,
+and go back to the presets.
+Area: Website › Tools › Perception and spectral › Material Lighting   Updated: 2026-09-25
+
+The twenty presets are invented curves. If you have a measured reflectance
+spectrum, from a spectrophotometer or a published dataset, you can render it
+instead.
+
+PREPARE THE FILE
+================
+
+  - A plain-text file: `.csv`, `.tsv` or `.txt`.
+  - Two columns per line: wavelength in nm and reflectance. Columns may be
+    separated by commas, semicolons, tabs or spaces. Lines that are not two
+    numbers are skipped.
+  - Reflectance from 0 to 1. A file in percent is detected automatically: if
+    any value is above 1, every value is divided by 100. Values outside 0–1
+    after that are clipped.
+  - At least eight rows, covering at least 420 to 680 nm.
+
+LOAD IT
+=======
+
+  1. Drop the file on the spectrum plot on the Lab tab, or on Drop a
+     reflectance file under Measure the material on the Data tab. You can also
+     click either area (or press `Enter` or `Space` on the Data tab's area) to
+     choose the file.
+  2. Read the message: for example 41 rows accepted, read as percent — the
+     register now says verbatim, or Not installed: with a reason.
+
+WHAT CHANGES
+============
+
+  - The file is resampled onto the 5 nm grid from 380 to 780 nm by
+    straight-line interpolation between your rows; beyond the ends of your
+    file, the first and last values are held flat.
+  - The material menu now holds a single entry, named after your file with —
+    measured, and it is selected. The twenty presets are hidden.
+  - Reflectance on the Lab tab reads measured — and your file name, and the
+    plot legend names your file.
+  - On the Data tab, The twenty pigment reflectances entry becomes Verbatim,
+    with your file name, the number of rows and the wavelength span.
+  - Exports mark the reflectance as MEASURED, from your file.
+  - Go back to the presets appears on the Data tab.
+
+Every other control, including dielectric or conductor, roughness, lobe and
+geometry, applies as before.
+
+GO BACK
+=======
+
+Select Go back to the presets on the Data tab. The message Back to the twenty
+synthesised presets confirms it. The loaded curve is also lost when you reload
+the page; links do not carry it.
+
+You should now see your own material rendered under any light and lobe.

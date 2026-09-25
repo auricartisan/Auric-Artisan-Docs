@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palettes and shades — Auric Artisan Docs</title>
+<meta name="description" content="Generate harmony palettes that meet a contrast target and perceptually even OKLCH shade scales, preview them, and export them as CSS, JSON or Tailwind.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Color — Picker, Palettes &amp; Contrast</a>
+<h2>Auric Color docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Color</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="contrast-diagnostics.html">Contrast diagnostics</a></li>
+<li><a href="hover-and-swatches.html">Hover and swatches</a></li>
+<li><a href="palettes-and-shades.html" aria-current="page">Palettes and shades</a></li>
+<li><a href="picker-modes.html">Picker modes</a></li>
+<li><a href="reference.html">Auric Color reference</a></li>
+<li><a href="troubleshooting.html">Auric Color troubleshooting</a></li>
+<li><a href="faq.html">Auric Color FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">VS Code extensions</a> &rsaquo; <a href="../../README.html">Auric Artisan Studio</a> &rsaquo; <a href="../README.html">Auric Color — Picker, Palettes &amp; Contrast</a> &rsaquo; <a href="README.html">Auric Color docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio › Auric Color</p>
+<h1>Palettes and shades</h1>
+<p class="lede">Generate harmony palettes that meet a contrast target and perceptually even OKLCH shade scales, preview them, and export them as CSS, JSON or Tailwind.</p>
+<p>The Studio&#39;s <strong>Color</strong> space has two generators: <strong>Palette</strong>, for sets of related colours that all meet a contrast target, and <strong>Shades</strong>, for a tonal scale of one colour. Both are in Auric Color.</p>
+<h2 id="the-palette-tool">The Palette tool</h2>
+<h3 id="open-it">Open it</h3>
+<ul>
+<li>Select a colour in the editor and run <strong>Auric Artisan: Generate Accessible Palette</strong> (also on the right-click menu when text is selected). The selection becomes the seed; if it is not a colour, the seed is <code>#2563EB</code>.</li>
+<li>Select <strong>Palette</strong> in a colour hover&#39;s <strong>Open in Studio</strong> row, or on the Overview.</li>
+<li>Open the Studio and choose <strong>Color › Palette</strong>, or <strong>Open Studio: Palette</strong> in the Command Center.</li>
+</ul>
+<h3 id="controls">Controls</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Seed</strong></td><td>Any colour</td><td>The starting colour</td></tr>
+<tr><td><strong>Background</strong></td><td>Any colour (default white)</td><td>The surface every swatch must read on</td></tr>
+<tr><td><strong>Harmony</strong></td><td>Complementary, Split complement, Analogous, Triadic, Tetradic, Square, Double split, Monochromatic</td><td>How the other colours relate to the seed on the colour wheel</td></tr>
+<tr><td><strong>Min contrast</strong></td><td>3:1 · UI / large, 4.5:1 · AA body, 7:1 · AAA body</td><td>The ratio every swatch must reach on the background</td></tr>
+<tr><td><strong>Preview as</strong></td><td>Typical vision, Protanopia · no red, Deuteranopia · no green, Tritanopia · no blue, Achromatopsia · no color</td><td>Shows the swatches as seen with that colour-vision deficiency</td></tr>
+</tbody></table></div>
+<p>Each colour field has a swatch button that opens the Studio&#39;s pop-up picker, a text box and a copy button.</p>
+<h3 id="how-the-palette-is-built">How the palette is built</h3>
+<ol>
+<li>The harmony gives a set of hues from the seed:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Harmony</th><th>Colours</th><th>Hue offsets from the seed</th></tr></thead>
+<tbody>
+<tr><td>Complementary</td><td>2</td><td>0°, 180°</td></tr>
+<tr><td>Split complement</td><td>3</td><td>0°, 150°, 210°</td></tr>
+<tr><td>Analogous</td><td>5</td><td>−30°, −15°, 0°, 15°, 30°</td></tr>
+<tr><td>Triadic</td><td>3</td><td>0°, 120°, 240°</td></tr>
+<tr><td>Tetradic</td><td>4</td><td>0°, 60°, 180°, 240°</td></tr>
+<tr><td>Square</td><td>4</td><td>0°, 90°, 180°, 270°</td></tr>
+<tr><td>Double split</td><td>5</td><td>0°, 30°, −30°, 150°, 210°</td></tr>
+<tr><td>Monochromatic</td><td>5</td><td>Same hue, five lightness steps</td></tr>
+</tbody></table></div>
+<ol start="2">
+<li>Each colour that does not reach the minimum contrast on the background has its lightness adjusted until it does, keeping its hue and chroma.</li>
+</ol>
+<p>The strip shows each swatch&#39;s hex and ratio. A <strong>✎</strong> marks a swatch that was adjusted; hover it to see the original colour. Select a swatch to copy its hex (in a colour-vision preview, the real hex is copied, not the simulated one).</p>
+<h3 id="export-and-share">Export and share</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Export CSS</strong></td><td><code>palette.css</code>: a <code>:root</code> block with <code>--brand-100</code>, <code>--brand-200</code> and so on, each with its ratio as a comment</td></tr>
+<tr><td><strong>Export JSON</strong></td><td><code>palette.json</code>: the harmony, background, minimum contrast, and each colour&#39;s hex, ratio and level</td></tr>
+<tr><td><strong>Export Tailwind</strong></td><td><code>palette.tailwind.js</code>: a Tailwind config that extends <code>colors</code> with a <code>brand</code> scale (<code>&#39;100&#39;</code>, <code>&#39;200&#39;</code> …)</td></tr>
+<tr><td><strong>Copy hex list</strong></td><td>All hex values, comma-separated</td></tr>
+<tr><td><strong>Audit as brand →</strong></td><td>Sends the seed and background to the <a href="brand-audit.html">Brand</a> tool, with a readable text colour for the seed</td></tr>
+</tbody></table></div>
+<p>Exports open a save dialog in your first workspace folder, then open the saved file.</p>
+<h2 id="the-shades-tool">The Shades tool</h2>
+<h3 id="open-it-1">Open it</h3>
+<ul>
+<li>Select <strong>Shades</strong> in a colour hover&#39;s <strong>Open in Studio</strong> row or on the Overview.</li>
+<li>Open the Studio and choose <strong>Color › Shades</strong>, or <strong>Open Studio: Shades</strong> in the Command Center.</li>
+</ul>
+<h3 id="what-it-shows">What it shows</h3>
+<p>Enter a <strong>Base color</strong>. The tool builds an 11-step scale, 50, 100, 200 … 900 and 950, like Tailwind&#39;s naming. Each step has a fixed lightness in OKLCH, so the steps look evenly spaced, with the base colour&#39;s hue. Chroma is reduced towards the lightest and darkest steps so they do not look neon or muddy, and every step is kept inside the sRGB range.</p>
+<p>Each cell shows the step and hex; hover it for its contrast on white. Select a cell to copy it.</p>
+<p><strong>Role legibility</strong> shows six common pairings and their ratios, green when they reach 4.5:1:</p>
+<ul>
+<li>700 on 50</li>
+<li>600 on 100</li>
+<li>white on 600</li>
+<li>900 on 100</li>
+<li>white on 700</li>
+<li>50 on 900</li>
+</ul>
+<h3 id="export">Export</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>Export CSS</strong></td><td><code>shades.css</code>: a <code>:root</code> block with <code>--shade-50</code> to <code>--shade-950</code></td></tr>
+<tr><td><strong>Export Tailwind</strong></td><td><code>shades.tailwind.js</code>: a Tailwind config that extends <code>colors</code> with a <code>shade</code> scale</td></tr>
+<tr><td><strong>Copy hex list</strong></td><td>All 11 hex values</td></tr>
+</tbody></table></div>
+<p>The same scale appears in the colour hover&#39;s <strong>Shades</strong> row and in the picker&#39;s <strong>Generate › Shade ramp</strong>.</p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="colour-vision.html">Colour vision</a></li>
+<li><a href="brand-audit.html">The brand audit</a></li>
+<li><a href="color-picker.html">The colour pickers</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="hover-and-swatches.html"><span>Previous</span>Hover and swatches</a><a href="picker-modes.html"><span>Next</span>Picker modes</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-palette-tool">The Palette tool</a></li><li><a href="#the-shades-tool">The Shades tool</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

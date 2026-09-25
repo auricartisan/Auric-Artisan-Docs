@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export and share — Auric Artisan Docs</title>
+<meta name="description" content="Every way to take a result out of the Analyzer — reports, data files, stylesheets and share links — with formats and file names.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Analyzer</a>
+<h2>Analyzer documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Analyzer</a></li>
+<li><a href="accessibility-engine.html">The accessibility engine (A11y+)</a></li>
+<li><a href="accessibility-rules.html">Accessibility rules</a></li>
+<li><a href="arrange-the-workspace.html">Arrange the workspace</a></li>
+<li><a href="choose-what-to-scan.html">Choose what to scan</a></li>
+<li><a href="colour-contrast-and-vision.html">Colour, contrast and vision</a></li>
+<li><a href="export-and-share.html" aria-current="page">Export and share</a></li>
+<li><a href="fix-and-preview.html">Fix and preview</a></li>
+<li><a href="performance-seo-and-page-health.html">Performance, SEO and page health</a></li>
+<li><a href="read-the-overview-and-scores.html">Read the Overview and scores</a></li>
+<li><a href="run-an-analysis.html">Run an analysis</a></li>
+<li><a href="save-reopen-and-compare.html">Save, reopen and compare</a></li>
+<li><a href="scan-a-whole-site.html">Scan a whole site</a></li>
+<li><a href="reference.html">Analyzer reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Analyzer</a></li>
+<li><a href="faq.html">Analyzer FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Analyzer</a> &rsaquo; <a href="README.html">Analyzer documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Export and share</h1>
+<p class="lede">Every way to take a result out of the Analyzer — reports, data files, stylesheets and share links — with formats and file names.</p>
+<p>This guide lists every export the Analyzer offers, what each file contains, and the ways to share a result. Most exports are in the <strong>Report</strong> section; others live in the section they come from.</p>
+<h2 id="the-report-section">The Report section</h2>
+<p><strong>Report</strong> opens with <strong>Full Analysis Report</strong>, the date it was generated and the audited address, the score and the issue count. Then comes the <strong>Export</strong> row.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What you get</th><th>File</th></tr></thead>
+<tbody>
+<tr><td><strong>Export JSON</strong></td><td>The full report data, for automation, regression checks and comparing fields over time</td><td><code>analysis.json</code></td></tr>
+<tr><td><strong>Export HTML</strong></td><td>A self-contained HTML report that opens in any browser and can be printed</td><td><code>auric-analyzer-report.html</code></td></tr>
+<tr><td><strong>Export PDF</strong></td><td>A PDF of the report (paid plans; see below)</td><td><code>auric-report-&lt;number&gt;.pdf</code>, or your browser&#39;s print dialog</td></tr>
+<tr><td><strong>Export Fix CSS</strong></td><td>One clean stylesheet of the generated fixes</td><td><code>auric-analyzer-fixes.css</code></td></tr>
+<tr><td><strong>Developer Report</strong></td><td>A Markdown report written for developers</td><td><code>auric-developer-report.md</code></td></tr>
+<tr><td><strong>Client Report</strong></td><td>A Markdown report written for clients and stakeholders</td><td><code>auric-client-report.md</code></td></tr>
+<tr><td><strong>Copy Report</strong></td><td>The developer report, copied to the clipboard as Markdown</td><td>—</td></tr>
+<tr><td><strong>Share Link</strong></td><td>A link to re-run this audit (see below)</td><td>—</td></tr>
+</tbody></table></div>
+<h3 id="export-pdf">Export PDF</h3>
+<p>PDF is a Pro export format, included with paid plans. On the free plan, selecting it opens an upgrade prompt that explains the audit stays free and that <strong>Export HTML</strong>, <strong>Export JSON</strong>, the fix CSS and both Markdown reports carry the same data.</p>
+<p>When you are entitled, the button shows its progress (&quot;Building PDF…&quot;). If a server PDF cannot be built, the Analyzer opens the HTML report in a new window with your browser&#39;s print dialog (&quot;Opening print view…&quot;): choose <strong>Save as PDF</strong> there. If your browser blocks that window, the HTML report is downloaded instead, with a message telling you to open it and print it to PDF.</p>
+<h3 id="copy-report">Copy Report</h3>
+<p>When the copy works, a message says &quot;Report copied to the clipboard as Markdown.&quot; If the browser refuses clipboard access, the message says nothing was copied and suggests <strong>Developer Report</strong> to download the same Markdown instead.</p>
+<h3 id="what-the-report-section-shows">What the Report section shows</h3>
+<p>Below the buttons, <strong>Details</strong> repeats the whole audit in one long page:</p>
+<ul>
+<li><strong>Category Scores</strong>, with a button per category;</li>
+<li><strong>Narrative Insights</strong> (human summary, confidence, estimated score after top fixes, recommended next steps);</li>
+<li><strong>Score Weighting Transparency</strong>;</li>
+<li><strong>Meta &amp; SEO</strong>, <strong>Accessibility</strong>, <strong>Contrast</strong>, <strong>Color Palette</strong>, <strong>Fonts</strong>, <strong>DOM Structure</strong>, <strong>Performance</strong>, <strong>Metadata Intelligence</strong>, <strong>Responsive Devices</strong>, <strong>Security &amp; Reliability</strong> and <strong>Custom Rules</strong> summaries;</li>
+<li><strong>All Issues</strong>, each with its fix;</li>
+<li><strong>How Your Score Was Calculated</strong>, a table of <strong>Category</strong>, <strong>Score</strong>, <strong>Weight</strong>, <strong>Contribution</strong> and <strong>Points lost</strong>, with the final score. Excluded categories show why, for example &quot;excluded (13% unused — no value produced)&quot;. The button <strong>How this score is combined, and what it cannot tell you</strong> explains the method;</li>
+<li>a footer naming the engine version, the rule sets used (&quot;WCAG 2.1 AA + 2.2 + WCAG 3 (preview) + Core Web Vitals 2024 + HTTP Archive 2024&quot;), the data sources, the run time, and the limitations (&quot;Cross-origin pages cannot be deeply inspected; some metrics are lab estimates and not real-user data (RUM).&quot;).</li>
+</ul>
+<h2 id="exports-in-other-sections">Exports in other sections</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Button</th><th>File</th></tr></thead>
+<tbody>
+<tr><td>A11y+ › Export</td><td><strong>Results JSON (axe format)</strong></td><td><code>a11y-&lt;site&gt;.json</code></td></tr>
+<tr><td>A11y+ › Export</td><td><strong>Issues CSV</strong></td><td><code>a11y-&lt;site&gt;-issues.csv</code></td></tr>
+<tr><td>A11y+ › Export</td><td><strong>Remediation brief (Markdown)</strong></td><td><code>a11y-&lt;site&gt;-remediation.md</code></td></tr>
+<tr><td>A11y+ › Export</td><td><strong>Contrast fix CSS</strong></td><td><code>a11y-&lt;site&gt;-contrast.css</code></td></tr>
+<tr><td>A11y+ › Export</td><td><strong>Conformance report CSV</strong> (Specialist plan)</td><td><code>a11y-&lt;site&gt;-conformance-report.csv</code></td></tr>
+<tr><td>A11y+ › Fixes</td><td><strong>Copy the whole stylesheet</strong></td><td>Clipboard</td></tr>
+<tr><td>Fixes</td><td><strong>Export Fix CSS</strong></td><td><code>auric-analyzer-fixes.css</code></td></tr>
+<tr><td>Fixes</td><td><strong>Copy Batch CSS</strong></td><td>Clipboard</td></tr>
+<tr><td>Palette</td><td><strong>Export as CSS</strong> / <strong>Export as JSON</strong></td><td><code>palette.css</code> / <code>palette.json</code></td></tr>
+<tr><td>Project</td><td><strong>Export project model JSON</strong></td><td><code>project-model-&lt;date&gt;.json</code></td></tr>
+<tr><td>Site Map</td><td><strong>Export map JSON</strong></td><td><code>site-map-&lt;date&gt;.json</code></td></tr>
+<tr><td>Playground</td><td><strong>Export CSS Fixes</strong> / <strong>Export Palette</strong></td><td><code>accessibility-fixes.css</code> / <code>fixed-palette.css</code></td></tr>
+<tr><td>Playground › Design Lab</td><td><strong>Download .css</strong>, <strong>Theme tokens (JSON)</strong>, <strong>Runtime JS</strong>, <strong>Palette JSON</strong></td><td><code>auric-design-lab.css</code>, <code>auric-design-tokens.json</code>, <code>auric-design-lab.js</code>, <code>auric-palette.json</code></td></tr>
+<tr><td>Devices</td><td>Live custom CSS <strong>Export</strong></td><td><code>device-custom.css</code></td></tr>
+<tr><td>Rules</td><td><strong>Export rules</strong></td><td><code>analyzer-custom-rules.json</code></td></tr>
+<tr><td>Workspace</td><td><strong>Export Workspace</strong></td><td><code>workspace.json</code></td></tr>
+<tr><td>Compare</td><td><strong>Download it</strong></td><td><code>&lt;host&gt;-&lt;date&gt;.json</code></td></tr>
+</tbody></table></div>
+<p>In these names, <code>&lt;site&gt;</code> is a short form of the audited address and <code>&lt;date&gt;</code> is the date in year-month-day form.</p>
+<h2 id="share-a-result">Share a result</h2>
+<p>There are four ways to share, and none of them sends the full report. Each link makes the recipient&#39;s Analyzer run the audit again on the same address, so they see the page as it is when they open the link.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>Control</th><th>What the recipient gets</th></tr></thead>
+<tbody>
+<tr><td>Strip</td><td><strong>Share</strong></td><td>A link that re-runs the audit on the same URL; the original score travels as context only</td></tr>
+<tr><td>Report</td><td><strong>Share Link</strong></td><td>A copied link carrying the score, issue count and URL; the scanned pages stay on your machine</td></tr>
+<tr><td>Insights</td><td><strong>Copy share link</strong></td><td>A link that re-runs the audit on the same address</td></tr>
+<tr><td>Insights</td><td><strong>Email</strong></td><td>Opens your email app with a message titled &quot;Auric Artisan audit:&quot; and the URL, containing the score and the headlines</td></tr>
+</tbody></table></div>
+<p>The strip&#39;s <strong>Share</strong> opens the site-wide share dialog. The Report&#39;s <strong>Share Link</strong> copies its link straight away and shows it in a <strong>Share this report</strong> sheet with <strong>Copy again</strong> and <strong>Done</strong>.</p>
+<p>You can also build a link by hand: <code>https://auricartisan.com/tool/analyzer/?url=https://example.com</code> opens the Analyzer and starts an audit of that address.</p>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> Because a shared link re-runs the audit, the recipient needs whatever the audit needs. Auditing another website requires them to be signed in, and the run uses their own tokens and monthly allowance.</p>
+</blockquote>
+<p>For the site-wide share dialog, see <a href="../../../../site-features/shareable-links/README.html">Shareable links</a>.</p>
+<h2 id="which-format-should-i-use">Which format should I use?</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>You want to</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td>Hand results to a developer</td><td><strong>Developer Report</strong>, or the A11y+ <strong>Remediation brief</strong> and <strong>Issues CSV</strong></td></tr>
+<tr><td>Send a summary to a client or manager</td><td><strong>Client Report</strong>, or <strong>Export HTML</strong></td></tr>
+<tr><td>Keep a record for an audit trail</td><td><strong>Export HTML</strong> or <strong>Export PDF</strong>, plus <strong>Export JSON</strong></td></tr>
+<tr><td>Feed a pipeline or compare runs programmatically</td><td><strong>Export JSON</strong>, or the A11y+ <strong>Results JSON (axe format)</strong></td></tr>
+<tr><td>Paste fixes straight into a stylesheet</td><td><strong>Export Fix CSS</strong>, or the A11y+ <strong>Contrast fix CSS</strong></td></tr>
+<tr><td>Support a procurement or VPAT request</td><td>The A11y+ <strong>Conformance report CSV</strong> (Specialist), reviewed by a person</td></tr>
+<tr><td>Show a colleague the live result</td><td><strong>Share</strong></td></tr>
+</tbody></table></div>
+
+<nav class="pager" aria-label="Previous and next"><a href="colour-contrast-and-vision.html"><span>Previous</span>Colour, contrast and vision</a><a href="fix-and-preview.html"><span>Next</span>Fix and preview</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-report-section">The Report section</a></li><li><a href="#exports-in-other-sections">Exports in other sections</a></li><li><a href="#share-a-result">Share a result</a></li><li><a href="#which-format-should-i-use">Which format should I use?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

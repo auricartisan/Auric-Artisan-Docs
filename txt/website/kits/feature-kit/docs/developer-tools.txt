@@ -1,0 +1,293 @@
+==============================================================================
+USE THE DEVELOPER TOOLS
+==============================================================================
+Use the eleven developer utilities in the Feature Kit: JSON, Base64, URL,
+Hash, UUID, JWT, Epoch, Regex, Cron, Text and HTML.
+Area: Website › Kits › Feature Kit   Updated: 2026-09-25
+
+Developer Tools gathers eleven small utilities behind one row of tabs.
+Everything runs in your browser: nothing you paste is sent anywhere or kept
+after you leave the page.
+
+Open it with the Developer Tools card on the Feature Kit menu, or press `6` on
+the menu. It opens on JSON. Select a tab to switch tool.
+
+Most tools share one layout: an input box, a row of buttons, and an output
+box. Copy copies the output box. It briefly reads Copied, or Copy failed if
+your browser blocked the clipboard. Errors show in the output box in a warning
+colour.
+
+JSON
+====
+
+Paste JSON into the box (the placeholder shows `{ "hello": "world", "n": 1
+}`), then choose:
+
+  Button: Format
+  Output: The JSON indented with two spaces
+
+  Button: Minify
+  Output: The JSON on one line with no spaces
+
+  Button: Sort keys
+  Output: Indented, with every object's keys sorted alphabetically, at every
+          depth
+
+  Button: → TypeScript
+  Output: A TypeScript `interface Root` (or `type Root` for arrays and plain
+          values) describing the data
+
+  Button: Stats
+  Output: Size in bytes, number of keys, objects, arrays, and the deepest
+          nesting level
+
+  Button: Escape
+  Output: Your input as a quoted JSON string, ready to embed
+
+  Button: Copy
+  Output: Copies the output
+
+If the input is not valid JSON, the output reads `Invalid JSON:` with the
+browser's message and, where the browser gives a position, the line and
+column: `→ line 3, column 7`. An empty box is treated as `null`.
+
+BASE64
+======
+
+  Button: Encode
+  Output: Standard Base64 of the text (UTF-8, so accented letters and symbols
+          work)
+
+  Button: URL-safe
+  Output: Base64 with `-` and `_` instead of `+` and `/`, and no `=` padding
+
+  Button: Decode
+  Output: The text inside a Base64 string. Accepts standard and URL-safe
+          forms, with or without padding
+
+  Button: → Hex
+  Output: Each UTF-8 byte of the text in hexadecimal, and the byte count
+
+  Button: Copy
+  Output: Copies the output
+
+A string that cannot be decoded shows `Not valid Base64`.
+
+URL
+===
+
+Paste a URL or text (placeholder `https://example.com/path?q=a b&x=1#top`).
+
+  Button: Parse
+  Output: The protocol, host, port (`(default)` if none), path and hash, then
+          each query parameter as `name = value`. A URL without a scheme is
+          treated as `https://`
+
+  Button: Encode
+  Output: The text percent-encoded for use inside a URL
+
+  Button: Decode
+  Output: Percent-encoding turned back into text; `+` is read as a space
+
+  Button: Copy
+  Output: Copies the output
+
+Errors: `Enter a URL.`, `Could not parse URL`, `Malformed URI sequence`.
+
+HASH
+====
+
+Type or paste the text to hash. The second box, HMAC key, is only used by the
+HMAC button.
+
+  Button      | Output
+  ------------+---------------------------------------------------------------------------
+  Hash all    | SHA-1, SHA-256, SHA-384 and SHA-512 of the text in hexadecimal, plus CRC32
+  HMAC-SHA256 | The HMAC-SHA256 signature of the text with your key, in hexadecimal
+  Copy        | Copies the output
+
+Without a key, HMAC-SHA256 says `Enter an HMAC key first.` Hashes are computed
+on the text's UTF-8 bytes by your browser's built-in cryptography. SHA-1 and
+CRC32 are shown for checking against older systems; do not use them for
+security.
+
+UUID
+====
+
+A UUID is a 128-bit identifier written as 36 characters in five groups
+separated by hyphens. The tool shows one new version 4 UUID when it opens.
+
+  Button: v4
+  Output: One random UUID
+
+  Button: v4 ×10
+  Output: Ten random UUIDs, one per line
+
+  Button: v7
+  Output: One time-ordered UUID (version 7), which starts with the current
+          time so values sort by creation
+
+  Button: v7 ×10
+  Output: Ten version 7 UUIDs
+
+  Button: NIL
+  Output: The all-zero UUID
+
+  Button: Copy
+  Output: Copies the output
+
+To inspect a UUID, paste it into Paste a UUID to inspect…. The output shows
+its version and variant (RFC 4122, Microsoft or NCS), and for version 7 the
+timestamp it carries, with how long ago that was. Anything that is not a UUID
+shows `Not a valid UUID`.
+
+JWT
+===
+
+A JWT (JSON Web Token) is a signed token in three dot-separated parts. Paste
+one into the box. It decodes as you paste, or select Decode.
+
+The output shows:
+
+  - HEADER — the decoded header JSON;
+  - PAYLOAD — the decoded payload JSON;
+  - TIMES — the `exp` (expires), `iat` (issued at) and `nbf` (not before)
+    claims, if present, as dates with how far away they are;
+  - Signature — its length, marked "not verified — decoding only".
+
+  | Important: The tool does not check the signature. A token that decodes is not
+  | proven genuine. Pasting a live token into any web page is a risk; this tool
+  | keeps it in your browser, but clear the box when you are done.
+
+Errors: `Not a JWT (need header.payload.signature)`, `Could not decode JWT
+segments`.
+
+EPOCH
+=====
+
+Converts between Unix timestamps and dates. It shows the current time when it
+opens.
+
+  1. Type a value in Unix seconds/millis or ISO date….
+  2. Press `Enter` or select Convert.
+
+How the value is read:
+
+  - 1 to 10 digits: Unix seconds.
+  - Exactly 13 digits: Unix milliseconds.
+  - Anything else: a date your browser can read, such as
+    `2026-09-24T09:30:00Z`.
+
+The output lists Unix (s), Unix (ms), ISO, UTC, Local, Relative and Day
+(weekday and day of the year, DOY). Now shows the current time. Convert with
+an empty box also shows the current time. A value that cannot be read shows
+`Could not parse date/timestamp`.
+
+REGEX
+=====
+
+Tests a JavaScript regular expression against sample text, live.
+
+  1. Type the pattern between the two slashes.
+  2. Type flags in the small box after the second slash (it starts with `g`).
+     Common flags: `g` all matches, `i` ignore case, `m` multi-line, `s` dot
+     matches new lines, `u` Unicode, `y` sticky.
+  3. Type or paste the text to search in Test string….
+  4. Optionally type a replacement in `Replacement (optional — $1, $<name>)…`.
+
+As you type:
+
+  - the highlight box shows the test text with each match marked (an empty
+    match shows as ∅);
+  - the output box shows the number of matches, then each one with its
+    position (`#1 @4: text`), its numbered groups and its named groups;
+  - with a replacement, the output ends with REPLACED and the text after
+    replacement.
+
+Test re-runs it and Copy copies the output. The list shows the first 200
+matches. An invalid pattern shows `Invalid regex:` and the browser's reason.
+Without a pattern the output reads `Enter a pattern.`; with no matches it
+reads `No matches.`
+
+CRON
+====
+
+Explains a standard five-field cron schedule and lists its next five run times
+in your local time.
+
+  1. Type an expression: minute, hour, day of month, month, day of week. The
+     box starts with `*/15 9-17 * * MON-FRI`.
+  2. Press `Enter` or select Explain.
+
+The output starts with a plain-language summary, such as "Runs every 15
+minutes during hour 9-17, on MON-FRI", then Next runs (local time): with five
+dates and how far away each is.
+
+Preset buttons fill in and explain common schedules. Each button is labelled
+with its expression:
+
+  Button            | Schedule
+  ------------------+----------------------------------
+  `0 * * * *`       | At the start of every hour
+  `*/5 * * * *`     | Every five minutes
+  `0 9 * * MON-FRI` | 09:00 on weekdays
+  `0 0 1 * *`       | Midnight on the 1st of each month
+
+What the fields accept:
+
+  - `*`, single values, ranges (`9-17`), lists (`1,15`) and steps (`*/15`,
+    `10-50/10`).
+  - Month names `JAN` to `DEC` and day names `SUN` to `SAT`. Day of week `7`
+    also means Sunday.
+  - When both day of month and day of week are restricted, a day matching
+    either one runs, as in standard cron.
+  - Times that do not exist because of a daylight-saving change are skipped.
+
+Errors: `Expected 5 fields: minute hour day-of-month month day-of-week`, `Bad
+field`, `Out of range`. The Cron tool has no Copy button.
+
+TEXT
+====
+
+Type or paste text. A line under the box counts characters, words, lines and
+bytes as you type. Buttons put the transformed text in the output box:
+
+  Button       | Result for "hello big world"
+  -------------+-----------------------------------------------------------------------------
+  camelCase    | helloBigWorld
+  PascalCase   | HelloBigWorld
+  snake_case   | hello_big_world
+  kebab-case   | hello-big-world
+  slug         | hello-big-world (lower case, accents removed, anything else becomes hyphens)
+  Title Case   | Hello Big World
+  UPPER        | HELLO BIG WORLD
+  lower        | hello big world
+  reverse      | dlrow gib olleh
+  sort lines   | Lines sorted alphabetically
+  dedupe lines | Repeated lines removed, first copy kept
+  trim lines   | Spaces removed from the start and end of every line
+  Copy         | Copies the output
+
+The case buttons also split words at capital letters, underscores, hyphens,
+dots and slashes, so `myVariable_name` becomes `my_variable_name` with
+snake_case.
+
+HTML
+====
+
+  Button     | Output
+  -----------+-------------------------------------------------------------------------
+  Encode     | `&`, `<`, `>`, `"` and `'` replaced with HTML entities
+  Decode     | Entities turned back into characters. Real tags in the input are dropped
+  Strip tags | Only the text, with tags removed and runs of blank lines reduced
+  Copy       | Copies the output
+
+The placeholder shows an example: `<a href="/">Fish & Chips</a>`. Decoding and
+stripping read the input as HTML without running any scripts in it.
+
+RELATED
+=======
+
+  - Date & Time [date-and-time.txt] for calendar-based date work
+  - Reference [reference.txt]
+  - Privacy [../others/privacy.txt]

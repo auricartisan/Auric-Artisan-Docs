@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Load a .cube file — Auric Artisan Docs</title>
+<meta name="description" content="Load a 1D or 3D .cube file, read what the tool reports about it, and switch between the file and the built-in looks.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; LUT Lab</a>
+<h2>LUT Lab documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with LUT Lab</a></li>
+<li><a href="apply-a-look.html">Apply a look</a></li>
+<li><a href="load-a-cube-file.html" aria-current="page">Load a .cube file</a></li>
+<li><a href="lut-concepts.html">LUT concepts</a></li>
+<li><a href="read-what-it-moved.html">Read what a transform moved</a></li>
+<li><a href="write-a-cube-file.html">Write a .cube file</a></li>
+<li><a href="reference.html">LUT Lab reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting LUT Lab</a></li>
+<li><a href="faq.html">LUT Lab FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">LUT Lab</a> &rsaquo; <a href="README.html">LUT Lab documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › LUT Lab</p>
+<h1>Load a .cube file</h1>
+<p class="lede">Load a 1D or 3D .cube file, read what the tool reports about it, and switch between the file and the built-in looks.</p>
+<h2 id="load-the-file">Load the file</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, drop a <code>.cube</code> file on <strong>Drop a .cube</strong>, or select the box to choose one. The chooser offers <code>.cube</code> and plain-text files.</li>
+<li>A message confirms <strong>Loaded</strong> followed by the file name, and says how many notes there are if the tool found any.</li>
+<li>The before and after pair now shows your file applied to the current scene. The label above the pair shows the file&#39;s title, or its name if it has none.</li>
+</ol>
+<p>While a file is shown, the look menu and <strong>Strength</strong> are greyed out and the note under them reads <strong>The pair is showing the loaded file. The looks are paused.</strong> A loaded file is always applied at full strength.</p>
+<h2 id="the-file-card">The file card</h2>
+<p>A card under the drop box describes the file.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Line</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Heading</td><td>The <code>TITLE</code> in the file, or the file name</td><td>Warm Film</td></tr>
+<tr><td><strong>kind</strong></td><td>1D or 3D</td><td>3D</td></tr>
+<tr><td><strong>size</strong></td><td>For 3D, N³ and the number of rows; for 1D, the number of rows</td><td>33³ (35937 rows)</td></tr>
+<tr><td><strong>domain</strong></td><td>The declared input range for red, green and blue</td><td>[0.000, 0.000, 0.000] – [1.000, 1.000, 1.000]</td></tr>
+<tr><td><strong>reachable</strong></td><td>The share of the table that an 8-bit sRGB input can reach</td><td>100.0%</td></tr>
+</tbody></table></div>
+<p>Under these lines is a list of notes. When there is nothing to report it reads <strong>no discrepancies between the header and the body</strong>.</p>
+<h2 id="what-the-reader-accepts">What the reader accepts</h2>
+<p>LUT Lab reads the <code>.cube</code> format as defined in the Adobe / IRIDAS Cube LUT Specification 1.0.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Handling</th></tr></thead>
+<tbody>
+<tr><td><code>TITLE &quot;…&quot;</code></td><td>Read and shown as the file&#39;s name</td></tr>
+<tr><td><code>LUT_3D_SIZE N</code></td><td>A 3D table of N × N × N rows, red index changing fastest</td></tr>
+<tr><td><code>LUT_1D_SIZE N</code></td><td>A 1D table of N rows</td></tr>
+<tr><td><code>DOMAIN_MIN r g b</code>, <code>DOMAIN_MAX r g b</code></td><td>The input range; 0 to 1 when absent</td></tr>
+<tr><td>Lines starting with <code>#</code></td><td>Comments, ignored</td></tr>
+<tr><td>Blank lines</td><td>Ignored</td></tr>
+<tr><td>Rows of three numbers</td><td>Table data</td></tr>
+<tr><td>Any other keyword</td><td>Ignored</td></tr>
+</tbody></table></div>
+<p>Only <code>.cube</code> is supported. Other LUT formats, such as <code>.3dl</code>, need converting to <code>.cube</code> in another program first.</p>
+<h2 id="notes-the-tool-may-add">Notes the tool may add</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Note</th><th>Meaning</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td>The file carries N rows beyond the ones the header declares</td><td>Extra data rows</td><td>The extra rows are ignored</td></tr>
+<tr><td>No <code>LUT_3D_SIZE</code> in the file, but the row count is a whole cube</td><td>The size keyword is missing</td><td>The file is read as a 3D table of that size</td></tr>
+<tr><td>No size keyword, and the row count is not a cube</td><td>The size keyword is missing</td><td>The file is read as a 1D table with one row per line</td></tr>
+<tr><td>The declared domain is wider than 0 to 1</td><td>Part of the table is for inputs above 1 or below 0</td><td>The reachable share is given; only that part can affect an 8-bit picture</td></tr>
+</tbody></table></div>
+<p>The specification requires a size keyword, so a file that needed a guess is worth fixing at its source.</p>
+<h2 id="files-that-cannot-be-read">Files that cannot be read</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>empty file</td><td>The file has no content</td></tr>
+<tr><td><code>LUT_3D_SIZE</code> N needs M rows; the file has K</td><td>The file is shorter than its header says</td></tr>
+<tr><td><code>LUT_1D_SIZE</code> N needs N rows; the file has K</td><td>As above, for a 1D file</td></tr>
+<tr><td>no <code>LUT_1D_SIZE</code> or <code>LUT_3D_SIZE</code> keyword and no usable sample rows</td><td>Nothing in the file looks like a table</td></tr>
+</tbody></table></div>
+<p>When a file cannot be read, the card shows <strong>status: not loaded</strong> with the reason, and the pair keeps showing the look.</p>
+<h2 id="how-the-file-is-applied">How the file is applied</h2>
+<p>Each pixel of the scene is taken as 8-bit sRGB values, scaled to 0 to 1, placed within the file&#39;s domain, and looked up: with trilinear interpolation for a 3D table, or straight-line interpolation per channel for a 1D table. The result is rounded back to 8 bits. See <a href="lut-concepts.html">LUT concepts</a>.</p>
+<h2 id="switch-between-the-file-and-the-looks">Switch between the file and the looks</h2>
+<ul>
+<li><strong>Back to the looks</strong> (shown while a file is applied) returns the pair to the built-in look and keeps the file loaded.</li>
+<li>Choosing a look from the menu, or <strong>Show it on the pair</strong> on the <strong>Looks</strong> tab, also switches back to the looks.</li>
+<li><strong>Clear the file</strong> removes the file entirely and returns to the looks. The message reads <strong>Cleared the loaded file</strong>.</li>
+</ul>
+<p>To apply the file again after going back to the looks, drop it again.</p>
+<h2 id="resample-or-convert-the-file">Resample or convert the file</h2>
+<p>While a file is applied, the <strong>Export</strong> tab writes that file&#39;s transform. You can use this to save the same LUT at a different size, or as a 1D curve. See <a href="write-a-cube-file.html">Write a .cube file</a> for what changes when you do.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="apply-a-look.html"><span>Previous</span>Apply a look</a><a href="lut-concepts.html"><span>Next</span>LUT concepts</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#load-the-file">Load the file</a></li><li><a href="#the-file-card">The file card</a></li><li><a href="#what-the-reader-accepts">What the reader accepts</a></li><li><a href="#notes-the-tool-may-add">Notes the tool may add</a></li><li><a href="#files-that-cannot-be-read">Files that cannot be read</a></li><li><a href="#how-the-file-is-applied">How the file is applied</a></li><li><a href="#switch-between-the-file-and-the-looks">Switch between the file and the looks</a></li><li><a href="#resample-or-convert-the-file">Resample or convert the file</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

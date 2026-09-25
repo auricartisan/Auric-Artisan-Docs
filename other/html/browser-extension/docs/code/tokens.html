@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokens — Auric Artisan Docs</title>
+<meta name="description" content="Read a web page's design tokens — CSS custom properties, font families and type scale — and export them as CSS, W3C tokens, a Tailwind @theme block or JSON.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Code tools</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="code-export.html">Code export formats</a></li>
+<li><a href="inspect.html">Inspect</a></li>
+<li><a href="snippets.html">Snippets</a></li>
+<li><a href="tokens.html" aria-current="page">Tokens</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Code tools</a></nav>
+<p class="kicker">Browser extension › Code</p>
+<h1>Tokens</h1>
+<p class="lede">Read a web page's design tokens — CSS custom properties, font families and type scale — and export them as CSS, W3C tokens, a Tailwind @theme block or JSON.</p>
+<p>Tokens (Design Tokens) reads the design decisions a site has written down as CSS: its custom properties (CSS variables), the font families it uses and its type scale. Use it to learn a design system, to start a theme from an existing site, or to check that a site uses its tokens consistently.</p>
+<h2 id="read-the-tokens">Read the tokens</h2>
+<ol>
+<li>Open the page, then Code › <strong>Tokens</strong>.</li>
+<li>Choose <strong>Read the tokens</strong>.</li>
+</ol>
+<p>A summary line appears, such as &quot;86 CSS variables · 3 font families · 9 sizes&quot;. If the page defines no variables, a message says &quot;No CSS variables found on this page&quot;. Some pages cannot be read, such as browser pages; the tool then says &quot;Could not scan this page&quot;.</p>
+<p>After a scan, the button is labelled <strong>Scan design tokens</strong>; choose it to read the page again.</p>
+<h2 id="what-it-finds">What it finds</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>What it lists</th><th>Limit</th></tr></thead>
+<tbody>
+<tr><td><strong>CSS variables</strong></td><td>Every custom property the page&#39;s readable stylesheets define, with its value. Colour values get a swatch.</td><td>240</td></tr>
+<tr><td><strong>Fonts</strong></td><td>The font families used by elements with text, most used first, each shown in its own font with a use count</td><td>8</td></tr>
+<tr><td><strong>Type scale</strong></td><td>The font sizes used by elements with text, smallest first</td><td>16</td></tr>
+</tbody></table></div>
+<p>Fonts and sizes are counted across up to 4 000 elements. Stylesheets from another site that the browser does not let the page read are skipped.</p>
+<h2 id="copy-one-token">Copy one token</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>On</th><th>Click</th><th>Shift-click</th></tr></thead>
+<tbody>
+<tr><td>A CSS variable</td><td>Copies <code>var(--name)</code></td><td>Copies its value</td></tr>
+<tr><td>A font</td><td>Copies the full font-family list</td><td>—</td></tr>
+<tr><td>A size</td><td>Copies the size</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="export">Export</h2>
+<p>The export buttons appear when the page has CSS variables. Each copies to the clipboard.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Output</th></tr></thead>
+<tbody>
+<tr><td><strong>CSS vars</strong></td><td>A <code>:root { … }</code> block with every variable</td></tr>
+<tr><td><strong>W3C tokens</strong></td><td>W3C design tokens JSON, grouped into <code>color</code>, <code>dimension</code> and <code>other</code>. Colours are resolved to HEX where possible.</td></tr>
+<tr><td><strong>Tailwind @theme</strong></td><td>A Tailwind v4 <code>@theme { … }</code> block with every variable</td></tr>
+<tr><td><strong>JSON</strong></td><td>Everything found: page title and address, variables, fonts and sizes</td></tr>
+<tr><td><strong>Save snippet</strong></td><td>Saves the CSS variables to Snippets</td></tr>
+</tbody></table></div>
+<p>Example of the <strong>W3C tokens</strong> output:</p>
+<pre class="code" data-lang="json"><code>{
+  &quot;color&quot;: {
+    &quot;brand&quot;: { &quot;$value&quot;: &quot;#d3af37&quot;, &quot;$type&quot;: &quot;color&quot; }
+  },
+  &quot;dimension&quot;: {
+    &quot;radius-md&quot;: { &quot;$value&quot;: &quot;8px&quot;, &quot;$type&quot;: &quot;dimension&quot; }
+  }
+}</code></pre>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="snippets.html">Snippets</a></li>
+<li><a href="code-export.html">Code export formats</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="snippets.html"><span>Previous</span>Snippets</a><a href="../colour/README.html"><span>Next</span>Colour tools</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#read-the-tokens">Read the tokens</a></li><li><a href="#what-it-finds">What it finds</a></li><li><a href="#copy-one-token">Copy one token</a></li><li><a href="#export">Export</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

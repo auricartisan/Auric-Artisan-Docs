@@ -1,0 +1,102 @@
+---
+title: Search — Instant answers
+description: The colour, contrast-pair and tool cards that lead the Auric Artisan search results, what each value means and how to use them.
+product: Website › Search
+updated: 2026-09-25
+---
+
+# Instant answers
+
+For some queries the search page answers the question itself, in a card above the results. There are three kinds. Answer cards appear in site search only, not in web search.
+
+## The colour card
+
+Type one hex code, for example `#d3af37`. Hex codes work with or without `#`, in three-digit or six-digit form.
+
+The card is headed **Colour** and **read from your query · sRGB**. It shows:
+
+- A large swatch of the colour, labelled with its OKLCH value.
+- **On black** — the colour as text on black, with the contrast ratio and a grade.
+- **On white** — the same on white.
+- **Hex**, **RGB** and **OKLCH** values.
+
+Two buttons follow:
+
+- **Check it against a background** opens the Contrast Checker with this colour as the text colour.
+- **Palettes with it** opens the Palette Library. The library opens at its usual view; to find palettes that contain the colour, type the hex code into the library's search field.
+
+### Example
+
+`#d3af37` gives:
+
+| Value | Result |
+| --- | --- |
+| Hex | #D3AF37 |
+| RGB | rgb(211 175 55) |
+| OKLCH | oklch(76.6% 0.138 91.6) |
+| On black | 9.96:1, AAA |
+| On white | 2.11:1, FAILS |
+
+### Grades
+
+The grade is for body text at that ratio, following WCAG 2.1:
+
+| Grade | Ratio |
+| --- | --- |
+| AAA | 7:1 or more |
+| AA | 4.5:1 or more |
+| AA LARGE | 3:1 or more; enough for large text only |
+| FAILS | Below 3:1 |
+
+## The contrast-pair card
+
+Type two hex codes separated by a space, text colour first, then background: `#d3af37 #0d0d0d`. If you type more than two, the first two are used.
+
+The card is headed **Contrast pair** and **WCAG 2.1 · relative luminance**. It shows:
+
+- A sample sentence in the text colour on the background, at the 16 px body size the ratio is judged at, and the same pair reversed. Reversing a pair does not change its ratio.
+- The contrast ratio, for example **9.22:1**, and a sentence saying what it means.
+- A table of results, described below.
+- **ΔL** — the difference in OKLCH lightness between the two colours, in percentage points. It is negative when the text is darker than the background.
+- **Foreground** and **Background** rows, each with a swatch, the hex code and the OKLCH value.
+
+The table has a row for each WCAG level and a column for body and large text. Each cell shows the threshold and is marked ✓ when the pair reaches it and ✕ when it does not:
+
+| Level | Body | Large |
+| --- | --- | --- |
+| AA | 4.5 | 3.0 |
+| AAA | 7.0 | 4.5 |
+
+Buttons:
+
+- **Open the checker** opens the Contrast Checker with both colours.
+- **Swap them** runs the search again with the colours the other way round.
+
+### The sentences
+
+| Ratio | Sentence |
+| --- | --- |
+| 7 or more | Clears every WCAG threshold, including AAA for body text at 7:1. |
+| 4.5 to 7 | Passes AA at any size and AAA for large text, but not AAA for body copy. |
+| 3 to 4.5 | Large text only — body copy at this ratio does not reach AA. |
+| Below 3 | Below every WCAG threshold, at every text size. |
+
+The results use the exact ratio, not the rounded one. For example, `#777777 #ffffff` shows **4.48:1** and fails AA for body text, even though it looks close to 4.5.
+
+## The tool card
+
+When the whole query is the name of one of these tools, a **Tool** card marked **ready to use** leads the page, with a description and **Open the tool**:
+
+| Query | Tool |
+| --- | --- |
+| `contrast` or `contrast checker` | Contrast Checker |
+| `palette` | Palette Library |
+| `gradient` | Gradient Library |
+| `image picker` | Image Picker |
+| `analyzer` | URL Analyzer |
+
+The card appears only for the exact query. `contrast in charts`, or any query with a filter, phrase or exclusion, shows ordinary results instead.
+
+## Accuracy
+
+The ratios use the WCAG 2.1 relative luminance formula on sRGB values. They agree with the standard reference values: white on black is 21:1, and `#767676` on white is 4.54:1. See [Limits and accuracy](../others/limits-and-accuracy.md).

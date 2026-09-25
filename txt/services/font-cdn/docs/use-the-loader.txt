@@ -1,0 +1,163 @@
+==============================================================================
+USE THE LOADER
+==============================================================================
+Load Font CDN families with the font-cdn.js script tag or its AuricFonts
+JavaScript API, and configure where it loads from.
+Area: Services › Font CDN   Updated: 2026-09-25
+
+`font-cdn.js` is a small script with no dependencies. It adds family
+stylesheets to your page, waits until fonts are ready, registers single font
+faces, and lets you search the catalogue. It creates a global object,
+`AuricFonts` (also available as `AuricFontLoader`).
+
+DECLARATIVE: ONE SCRIPT TAG
+===========================
+
+    <script src="https://fonts.auricartisan.com/font-cdn.js"
+            data-families="Alegreya|Roboto Slab|Open Sans:wght@400;700"></script>
+
+  Attribute:    `data-families`
+  What it does: The families to load, separated by a vertical bar; each can
+                carry a weight list (see Family specs)
+
+  Attribute:    `data-fonts`
+  What it does: Another name for `data-families`
+
+  Attribute:    `data-display`
+  What it does: The `font-display` value for faces added with
+                `AuricFonts.face()`. Default `swap`.
+
+  Attribute:    `data-base`
+  What it does: Load stylesheets and data from another address; see Where it
+                loads from
+
+For each family, the loader adds a `<link rel="stylesheet">` for its CDN
+stylesheet to the page's `<head>`, once.
+
+PROGRAMMATIC: AURICFONTS
+========================
+
+Include the script without `data-families`, then call the API:
+
+    <script src="https://fonts.auricartisan.com/font-cdn.js"></script>
+    <script>
+      AuricFonts.load('Alegreya').then(() => {
+        document.body.style.fontFamily = "'Alegreya', serif";
+      });
+    </script>
+
+Load families
+-------------
+
+    await AuricFonts.load('Alegreya');                 // one family
+    await AuricFonts.load(['Inter:400,700', 'Lora']);  // several at once
+
+`load()` adds the family's stylesheet and resolves, with `{ id, family }` (an
+array of them for several), once the browser reports the requested weights are
+ready. Use it to avoid a flash of the fallback font before you measure or draw
+text.
+
+Register one face from any file
+-------------------------------
+
+    AuricFonts.face({ family: 'Demo', url: 'https://example.com/Foo.ttf', weight: 400 });
+
+  Option    | Default                    | Meaning
+  ----------+----------------------------+-------------------------------------------
+  `family`  | —                          | The family name to register
+  `url`     | —                          | The font file's URL
+  `local`   | —                          | A locally installed font name to try first
+  `weight`  | `400`                      | The weight
+  `style`   | `normal`                   | `normal` or `italic`
+  `display` | `swap` (or `data-display`) | The `font-display` value
+  `stretch` | —                          | The `font-stretch` value
+
+It resolves with the family name, and does not reject if the file fails to
+load.
+
+Other methods
+-------------
+
+  Method:  `AuricFonts.cssUrl(spec)` or `AuricFonts.css(spec)`
+  Returns: The stylesheet URL for a family
+  Use:     Build your own link or `@import`
+
+  Method:  `AuricFonts.injectCss(cssText, id)`
+  Returns: The added `<style>` element
+  Use:     Add raw `@font-face` or `@import` CSS
+
+  Method:  `AuricFonts.whenReady(family, weights)`
+  Returns: A promise
+  Use:     Wait for a family you added another way
+
+  Method:  `AuricFonts.list()`
+  Returns: A promise of every family record
+  Use:     Build your own picker
+
+  Method:  `AuricFonts.search(query)`
+  Returns: A promise of matching family records
+  Use:     Match on name, designer or category
+
+  Method:  `AuricFonts.get(idOrName)`
+  Returns: A promise of the family's full metadata, or `null`
+  Use:     Read styles, axes, licence and more
+
+  Method:  `AuricFonts.slugify(name)`
+  Returns: The family id
+  Use:     Turn a name into its id
+
+  Method:  `AuricFonts.base`
+  Returns: The address it loads from
+  Use:     Read or change it
+
+  Method:  `AuricFonts.index`
+  Returns: The catalogue, once loaded
+  Use:     Inspect what `list()` fetched
+
+    const mono = await AuricFonts.search('mono');
+    const meta = await AuricFonts.get('alegreya');
+
+`list()`, `search()` and `get()` download catalogue data from the CDN the
+first time you call them: the index is large, so call them only when you need
+them.
+
+FAMILY SPECS
+============
+
+Anywhere the loader takes a family, you can write:
+
+  Spec:    `Alegreya`
+  Meaning: The whole family
+
+  Spec:    `Open Sans:wght@400;700`
+  Meaning: The family, waiting for weights 400 and 700
+
+  Spec:    `Roboto:400,700i`
+  Meaning: Weights 400 and 700; the `i` marks italics
+
+  Spec:    `{ family: 'Inter', weights: [400, 700] }`
+  Meaning: The same as an object; `id` can be given instead of `family`
+
+The weights tell the loader what to wait for. The stylesheet it adds always
+declares the whole family.
+
+WHERE IT LOADS FROM
+===================
+
+By default the loader loads stylesheets and data from the address it was
+itself loaded from. To point it elsewhere, for example at a self-hosted copy,
+set one of these (the first found wins):
+
+  1. `data-base` on the script tag;
+  2. `window.AURIC_FONT_BASE` (or `window.AURIC_FONT_ASSET_BASE`), set before
+     the script loads;
+  3. `<meta name="auric-font-base" content="…">` in the page.
+
+You can also set `AuricFonts.base` from JavaScript before calling `load()`.
+
+RELATED PAGES
+=============
+
+  - Embed a family [embed-a-family.txt]
+  - Reference [reference.txt]
+  - Privacy [../others/privacy.txt]

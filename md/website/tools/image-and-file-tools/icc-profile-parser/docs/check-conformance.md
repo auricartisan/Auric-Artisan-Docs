@@ -1,0 +1,107 @@
+---
+title: ICC Profile Parser — Check conformance
+description: Read the conformance verdict and findings, understand error, warning and note, and use the Conformance tab to see every rule and the clause it enforces.
+product: Website › Tools › Image and file tools › ICC Profile Parser
+updated: 2026-09-25
+---
+
+# Check conformance
+
+Every profile you load is checked against 23 rules. Each rule either holds or raises a finding. Every rule cites the clause of ICC.1:2010 it enforces, except two that are marked as house preferences because the specification does not require them.
+
+## Read the result
+
+1. Load a profile on the **Lab** tab.
+2. Look at the **conformance** card under the diagrams:
+   - **clean** — no rule raised anything;
+   - **no errors** — only warnings or notes were raised; the profile is still conformant;
+   - **1 error**, **2 errors** and so on — the profile breaks that many rules graded as errors. The card turns red.
+3. Read the last sentence of the verdict. It says either "It is conformant: N of 23 rules pass", adding how many findings are below the level of an error, or how many rules the profile should satisfy do not hold.
+4. Scroll to **Findings**. When every rule holds you see a single **Pass** line, **All 23 rules hold**. Otherwise there is one row per finding.
+
+A profile is **conformant** when no rule graded as an error is broken. There is no score out of 100: a profile is conformant or it is not, and where it is not the clause says why.
+
+## Read a finding
+
+Each finding row shows:
+
+| Part | Example | Meaning |
+|---|---|---|
+| Severity | **warning** | **error**, **warning** or **note** |
+| Title | **The profile ID matches the bytes** | The rule that did not hold |
+| Clause | **§ 7.2.18** | The clause of ICC.1:2010 it enforces, or **house preference** |
+| Detail | "stored 0f3e…, recomputed 8a21…" | What the tool found in your file |
+
+### What the severities mean
+
+| Severity | Meaning |
+|---|---|
+| **error** | The specification says this shall not happen. Software may refuse the profile or misread it |
+| **warning** | Something the specification requires or expects is missing or wrong, but the profile can usually still be used |
+| **note** | A detail worth knowing, such as a creation date that is not a real date |
+
+The grade given to each rule is the tool's own judgement; the specification says what shall be true but does not grade consequences. Because every finding names its clause, you can check it and disagree with the grade without disagreeing with the finding.
+
+## The rules
+
+| Rule | Severity | Clause |
+|---|---|---|
+| Profile file signature (bytes 36 to 39 read `acsp`) | error | 7.2.5 |
+| Declared size matches the file | error | 7.2.2 |
+| Major version is one this reader knows (2 or 4) | warning | 7.2.4 |
+| Version reserved bytes are zero | note | 7.2.4 |
+| Device class is one the specification defines | error | 7.2.5 |
+| PCS is XYZ or Lab (DeviceLink profiles are exempt) | error | 7.2.7 |
+| PCS illuminant is D50 | warning | 7.2.16 |
+| Rendering intent is 0-3 | error | 7.2.15 |
+| Creation date is a real date | note | 7.2.8 |
+| Every tag payload lies inside the file | error | 7.3.1 |
+| Tag payloads begin on a 4-byte boundary | warning | 7.3.1 |
+| No tag payload partly overlaps another | error | 7.3.4 |
+| Tag table fits in the file | error | 7.3.1 |
+| No tag signature appears twice | error | 7.3.1 |
+| Required tags for this device class are present | error | 8.2 |
+| A v4 profile carries a profile ID | warning | 7.2.18 |
+| The profile ID matches the bytes | warning | 7.2.18 |
+| An RGB matrix profile carries all three colorants and curves | warning | 8.3 |
+| Media white point is the PCS white (display profiles) | warning | 9.2.36 |
+| Colorants sum to the media white point | note | house preference |
+| Every tag payload could be decoded | warning | 7.3.1 |
+| A LUT tag holds the grid its header declares | error | 10.11 |
+| Padding between elements is zero | note | house preference |
+
+In total: 11 errors, 8 warnings and 4 notes.
+
+### The required tags
+
+The **Required tags for this device class are present** rule checks these tags:
+
+| Profile class | Required tags |
+|---|---|
+| Display or ColorSpace, Grayscale data | `desc`, `cprt`, `wtpt`, `kTRC` |
+| Display or ColorSpace, any other data space | `desc`, `cprt`, `wtpt` |
+| Output or Input | `desc`, `cprt`, `wtpt` |
+| DeviceLink | `desc`, `cprt`, `pseq`, `A2B0` |
+| NamedColor | `desc`, `cprt`, `ncl2`, and `wtpt` in version 4 |
+| Abstract | `desc`, `cprt`, and `wtpt` in version 4 |
+
+### Shared tags are not an error
+
+Two tags pointing at the same offset with the same size are sharing one data element, which clause 7.3.4 allows. The tag table marks them **shares this element with** followed by the other tag. Only a block that partly overlaps another, without being the same block, is an error.
+
+### Tables that are too short
+
+A truncated file can leave a lookup table with fewer values than its header promises. Rather than failing, the tool reads what is there, raises **A LUT tag holds the grid its header declares** with how many values are missing, and reads the rest of the profile as normal. A tag it cannot decode at all raises **Every tag payload could be decoded**.
+
+## The Conformance tab
+
+The **Conformance** tab lists the rules independently of any loaded profile.
+
+- The **Rules** buttons filter by severity: **All**, **Errors**, **Warnings** and **Notes**, each with its count. The note under them says how many rules are shown and how many cite no clause.
+- **What counts as a defect** explains two checks that are no longer made, because they fired on correct files: one that reported every profile's version as unusual, and one that treated shared tag data as corrupt.
+- **The rules that stayed, and what each cites** lists every rule with its severity and clause.
+- **What the old validator got right** lists the checks kept unchanged: the tag table walk, alignment and bounds; the required-tag table; the declared size against the file; and the classification as matrix/TRC, LUT or both.
+
+## What a pass means
+
+A clean result means the file is well formed and says what the specification requires. It does not mean the device the profile describes still behaves that way. See [Limits and accuracy](../others/limits-and-accuracy.md).

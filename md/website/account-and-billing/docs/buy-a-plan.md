@@ -1,0 +1,96 @@
+---
+title: Buy a plan
+description: Buy an Auric Artisan plan pass from the pricing page through Razorpay checkout, pay in dollars or rupees, and read the confirmation page.
+product: Website › Account and billing
+updated: 2026-09-25
+---
+
+# Buy a plan
+
+A paid plan is a one-time purchase of a pass for one month or twelve months, paid through Razorpay's checkout on https://auricartisan.com. This page walks through the purchase and every screen you can see afterwards. Today the plan on sale is **Artisan**; Specialist and Industrial Pro are marked **Coming soon**.
+
+## Before you start
+
+- **Sign in.** An account is required before any payment, so the pass belongs to you rather than to one browser.
+- **Verify your email.** Billing is locked until your email address is verified. See [Verify your email](verify-email.md).
+- **Know what you are buying.** Read [Plans and pricing](plans-and-pricing.md). Every tool is already free; a plan adds conveniences.
+
+## Buy a plan pass
+
+1. Open https://auricartisan.com/company/pricing/.
+2. Choose **Monthly** or **Annual** with the switch above the plan cards. Annual costs ten times the monthly price for twelve months.
+3. Choose **USD $** or **INR ₹**. You are charged in the currency shown.
+4. On the Artisan card, select **Get Artisan**.
+5. If you are not signed in, a note appears under the button instead of a checkout: "Sign in first — a plan is attached to your account, not to this browser." Select **Sign in or create a free account**. You come straight back to the pricing page afterwards, and "Nothing is charged until you confirm."
+6. The button changes to **Redirecting…** and the Razorpay checkout opens over the page, showing Auric Artisan and a description such as "Artisan plan — monthly (one-time)".
+7. Pay with any method Razorpay offers you: cards, UPI, netbanking or wallets.
+8. After you pay, the page shows "Verifying payment…", then the button reads **Paid — plan activated!** (with a tick mark).
+9. The confirmation page opens.
+
+Result: the **Payment confirmed** page shows your plan as "Now active on your account", with the date it is active until. The plan is on your account at once, and the header, dashboard and pricing page show it as your current plan.
+
+## The amount you pay
+
+- The price is set by Auric Artisan's own catalogue when the order is created, not by the page, so the amount cannot be changed by anything in your browser.
+- The Subscription and Billing Policy states that "The price you see is the total you pay". No GST or other tax is added at checkout, because Auric Artisan is not currently registered for GST.
+- Your bank may add its own foreign-transaction fee if you pay in a currency that is foreign to your card.
+
+## Paying from outside India
+
+The pricing page is candid about this: accepting non-Indian cards is a permission on Auric Artisan's Razorpay account, and American Express is a separate opt-in that may not go through. If your card is declined at the last step, nothing is charged. The pricing page asks you to tell Auric Artisan through the contact page, because it is usually "a permission on our side rather than a problem with your card", and they would rather arrange the payment with you.
+
+## The confirmation page
+
+The confirmation page is https://auricartisan.com/checkout/success/, opened with your order reference. It shows one of five states.
+
+### Payment confirmed
+
+- **Payment confirmed** — your plan name and "Now active on your account".
+- "Active until" a date, or "Access is active on your account", with "A one-time purchase, not a subscription — nothing renews and nothing is charged again."
+- A list of what the plan includes.
+- **Open your dashboard** and **Start using the tools**.
+- A **Receipt** block: **Paid on**, **Method**, **Payment** reference, **Order** reference and **Total paid**. The copy buttons beside the two references copy them.
+- **View invoice →** and **Billing history →**.
+- "Your plan activates within a few seconds of payment. If anything looks wrong, quote the order reference above."
+
+### Confirming your payment
+
+Shown while Razorpay confirms the payment, usually a few seconds. Three steps tick off: **Payment authorised by your bank**, **Verifying the signature**, **Activating your plan**. "Nothing is charged twice if you refresh." If it takes longer than usual, the page says the order will be updated shortly and offers **Open billing history** and **Contact support**.
+
+### Payment not completed
+
+"This order was not paid, so nothing has been charged. Any hold your bank placed is released automatically." The usual reason: "The payment was declined or abandoned before it completed. A different card or UPI usually goes through." Select **Try this payment again** to return to the pricing page. If money left your account anyway, contact support with the order reference.
+
+### This order was refunded
+
+"The payment for this order has been refunded in full. It can take a few working days to appear on your statement." Anything the order activated has been removed.
+
+### No order to show
+
+You opened the page without an order reference. Your receipt is in your billing history; the page links to **Billing history**, **Your dashboard** and **Plans and pricing**.
+
+## If something goes wrong during checkout
+
+| What you see | What it means |
+| --- | --- |
+| "Checkout cancelled." | You closed the checkout. Nothing was charged. |
+| "Payment failed:" followed by a reason | The payment did not go through. Try another method. |
+| "Checkout is briefly unavailable, so nothing was charged." | The checkout could not start. Try again in a moment, or contact Auric Artisan to set it up. |
+| "Could not read the plan price. Please refresh and try again." | The page did not finish loading. Refresh it. |
+| "Payment could not be verified." | Check your billing history before paying again, and contact support with the order reference if needed. |
+
+More in [Troubleshooting](troubleshooting.md#payments-and-checkout).
+
+## Stay safe
+
+Pay only through the Razorpay checkout presented on auricartisan.com. The Terms of Service ask you never to pay anyone claiming to represent Auric Artisan through any other channel, and to report such requests. Auric Artisan never sees or stores your card, UPI or bank details.
+
+## Buying API credits
+
+Prepaid API credits are bought from the dashboard, not the pricing page, and only on plans that include the API. See [API credits and spend controls](api-credits-and-spend.md#buy-prepaid-credits).
+
+## Related
+
+- [Invoices and receipts](invoices-and-receipts.md)
+- [Plan terms, renewal and cancelling](plan-terms-and-cancelling.md)
+- [Refunds](refunds.md)

@@ -1,0 +1,44 @@
+==============================================================================
+RELEASE NOTES
+==============================================================================
+User-facing history of the M-Gradient Palette.
+Area: Website › Tools › Image and file tools › M-Gradient Palette   Updated: 2026-09-25
+
+CURRENT VERSION — GRADIENT RAMP
+===============================
+
+The tool was rebuilt as the Gradient Ramp workbench, with six tabs: Ramp,
+Spaces, Contrast, Data, Export and Reference. The developer reference that
+describes this version in the site's documentation library is dated 6 June
+2026.
+
+What changed for you:
+
+  - APCA figures are now correct. The earlier contrast readout used the wrong
+    scale and left out two parts of the APCA algorithm, so it reported
+    contrast about 1.4 times too high: 161.80 for black on white, where APCA
+    gives 106.04. Across 2,704 grey-on-grey pairs, 520 cleared its Lc 60 line
+    that real APCA fails. If you chose text colours with the earlier version,
+    check them again.
+  - Both contrast figures side by side. Each step shows the WCAG 2.2 ratio and
+    the APCA Lc together, and the old figure for comparison.
+  - The colour-vision simulation is correctly attributed to Machado, Oliveira
+    and Fernandes (2009); the simulation itself is unchanged.
+  - "Six spaces" is now four spaces and six routes. Short and long hue are
+    routes in the same space.
+  - The hue plot is a circle. A ramp crossing 0° no longer draws a line across
+    the whole plot.
+  - The route table marks the measured evenest row, and none when rows tie,
+    instead of starring every row under a fixed threshold.
+  - Steps brought inside sRGB are counted and marked.
+  - The reading records the ramp, its measurements and both contrast figures,
+    naming the APCA version.
+
+WCAG 2 contrast, CIEDE2000, OKLab and the route comparison were already
+correct and are unchanged.
+
+25 MAY 2026 — EARLIER VERSION
+=============================
+
+The M-Gradient Palette user guide was published in the site's documentation
+library. It describes the earlier version of the tool.

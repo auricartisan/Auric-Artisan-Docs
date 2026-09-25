@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare transforms and copy a matrix — Auric Artisan Docs</title>
+<meta name="description" content="Read the adaptation matrix, check its round trip, copy it as code, and compare all eight transforms on your illuminant pair.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Chromatic Adaptation</a>
+<h2>Chromatic Adaptation documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Chromatic Adaptation</a></li>
+<li><a href="adapt-a-colour-list.html">Adapt a list of colours</a></li>
+<li><a href="adapt-an-image.html">Adapt an image to a new light</a></li>
+<li><a href="compare-transforms-and-copy-matrices.html" aria-current="page">Compare transforms and copy a matrix</a></li>
+<li><a href="explore-the-time-course.html">Explore the adaptation time course</a></li>
+<li><a href="reference.html">Chromatic Adaptation reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Chromatic Adaptation</a></li>
+<li><a href="faq.html">Chromatic Adaptation FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Chromatic Adaptation</a> &rsaquo; <a href="README.html">Chromatic Adaptation documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Compare transforms and copy a matrix</h1>
+<p class="lede">Read the adaptation matrix, check its round trip, copy it as code, and compare all eight transforms on your illuminant pair.</p>
+<h2 id="the-maths-in-one-line">The maths in one line</h2>
+<p>Every transform in the lab has the same shape:</p>
+<pre class="code" data-lang="text"><code>X′ = M⁻¹ · diag(d) · M · X
+d = 1 + D × (ρ_destination ÷ ρ_source − 1)   for each of L, M, S</code></pre>
+<p>M converts XYZ into a cone-like space. diag(d) scales each cone channel by the ratio of the destination white to the source white, softened by the degree of adaptation D. M⁻¹ converts back. The transforms differ only in M.</p>
+<h2 id="the-eight-transforms">The eight transforms</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Transform</th><th>Source of the matrix</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Bradford</td><td>Lam 1985</td><td>The usual choice in ICC colour management; the reference the comparison is measured against</td></tr>
+<tr><td>Von Kries</td><td>Hunt–Pointer–Estévez (Estévez 1979), normalised to D65</td><td>Reads the same as HPE, because normalising rows cancels out in the formula</td></tr>
+<tr><td>CAT02</td><td>CIE 159:2004 (CIECAM02)</td><td>—</td></tr>
+<tr><td>CAT16</td><td>Li et al. 2017 (CAM16)</td><td>—</td></tr>
+<tr><td>Sharp</td><td>Finlayson and Süsstrunk 2000</td><td>A spectrally sharpened matrix</td></tr>
+<tr><td>CMCCAT2000</td><td>Li, Luo, Rigg and Hunt 2002</td><td>—</td></tr>
+<tr><td>HPE</td><td>Hunt–Pointer–Estévez</td><td>—</td></tr>
+<tr><td>XYZ scaling</td><td>Identity matrix</td><td>The null case: scales X, Y and Z directly</td></tr>
+</tbody></table></div>
+<h2 id="read-and-copy-the-matrix">Read and copy the matrix</h2>
+<ol>
+<li>Choose the illuminants and transform on the <strong>Lab</strong> tab, and set <strong>Degree of adaptation D</strong>.</li>
+<li>Open the <strong>Matrix</strong> tab. The title names the transform, the pair and the D, for example &quot;Bradford, D65 → D50 at D = 1.00&quot;.</li>
+<li>Read the three blocks:<ul>
+<li><strong>M — XYZ to cone-like</strong>: the transform&#39;s own matrix;</li>
+<li><strong>diag(d)</strong>: the three cone gains, with the formula beneath;</li>
+<li><strong>Full adaptation matrix</strong>: the single 3 × 3 matrix that takes XYZ under the source white to XYZ under the destination white.</li>
+</ul>
+</li>
+<li>Under <strong>Decimals</strong>, choose <strong>4</strong>, <strong>6</strong> (default) or <strong>9</strong>. Published matrices carry four to six figures; nine shows the round-off residue, which is useful when checking an inverse.</li>
+<li>Check <strong>Round trip</strong>: the largest error of M⁻¹ × M against the identity matrix, recomputed every time.</li>
+<li>Under <strong>Copy as</strong>, choose <strong>NumPy</strong>, <strong>JSON</strong>, <strong>CSS matrix3d</strong> or <strong>GLSL mat3</strong>. The transform&#39;s M matrix is copied to your clipboard in that form.</li>
+</ol>
+<p>What each format contains:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Format</th><th>Content</th></tr></thead>
+<tbody>
+<tr><td>NumPy</td><td><code>import numpy as np</code> and <code>M = np.array([...])</code> with the three rows</td></tr>
+<tr><td>JSON</td><td>An object with the transform name, its citation and M as three rows</td></tr>
+<tr><td>CSS matrix3d</td><td>A <code>matrix3d(...)</code> value with M in the upper-left 3 × 3 and the rest of a 4 × 4 identity</td></tr>
+<tr><td>GLSL mat3</td><td><code>const mat3 M = mat3(...)</code> in column-major order, as GLSL expects</td></tr>
+</tbody></table></div>
+<p>The copy buttons copy M, not the full adaptation matrix. The full matrix for the current moment is in the JSON export on the <strong>Export</strong> tab.</p>
+<h2 id="compare-all-eight-on-your-pair">Compare all eight on your pair</h2>
+<p>The <strong>All eight on this pair</strong> list on the Matrix tab shows what each transform does, not which is more accurate. For each transform:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Transform</td><td>The name; the one selected in the Lab is highlighted</td></tr>
+<tr><td>ΔE vs Bradford</td><td>Mean CIEDE2000 difference between this transform&#39;s result and Bradford&#39;s over a fixed 12-colour probe</td></tr>
+<tr><td>cond(M)</td><td>The matrix&#39;s condition number: how much it can stretch a difference. A description, not a quality score</td></tr>
+<tr><td>Source</td><td>The paper the matrix comes from</td></tr>
+<tr><td>Status</td><td><strong>Published</strong>, or <strong>Null case</strong> for XYZ scaling</td></tr>
+</tbody></table></div>
+<p>Rows are sorted by ΔE vs Bradford, smallest first. Ranking transforms by accuracy would need the published corresponding-colour data sets, which the lab does not hold (see the Data tab).</p>
+<h2 id="the-compare-all-methods-panel">The Compare All Methods panel</h2>
+<p>On the <strong>Export</strong> tab, <strong>Compare All Methods</strong> runs all eight transforms at the current moment of the Lab timeline over eight test colours (#735244, #C29682, #627A9D, #D3AF37, #FF6347, #3BB273, #FFFFFF and #000000). For each it reports the <strong>Mean ΔE₀₀</strong>, <strong>Median</strong>, <strong>Min</strong> and <strong>Max</strong> colour shift between the colour under the source white and the adapted colour under the destination white, plus <strong>det(M)</strong> and <strong>‖M‖F</strong> of the full adaptation matrix. A bar chart shows the means, and a star marks the transform with the smallest mean shift. That is the smallest change on these eight colours, not proof of the most accurate transform.</p>
+<h2 id="result">Result</h2>
+<p>You have the exact matrix for your adaptation, verified by its round trip, in the code format you need, and a picture of how the eight transforms differ on your pair.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="adapt-an-image.html"><span>Previous</span>Adapt an image to a new light</a><a href="explore-the-time-course.html"><span>Next</span>Explore the adaptation time course</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-maths-in-one-line">The maths in one line</a></li><li><a href="#the-eight-transforms">The eight transforms</a></li><li><a href="#read-and-copy-the-matrix">Read and copy the matrix</a></li><li><a href="#compare-all-eight-on-your-pair">Compare all eight on your pair</a></li><li><a href="#the-compare-all-methods-panel">The Compare All Methods panel</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check your own gradient — Auric Artisan Docs</title>
+<meta name="description" content="Enter your gradient's stops in &quot;Will your gradient band?&quot;, read the verdict, find the worst step and fix it.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Gradient Library</a>
+<h2>Gradient Library documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="browse-search-and-filter.html">Browse, search and filter</a></li>
+<li><a href="check-your-gradient.html" aria-current="page">Check your own gradient</a></li>
+<li><a href="copy-export-and-share.html">Copy, export and share</a></li>
+<li><a href="inspect-a-gradient.html">Inspect a gradient</a></li>
+<li><a href="save-gradients.html">Save gradients</a></li>
+<li><a href="tags-and-statistics.html">Tags and statistics</a></li>
+<li><a href="test-vision-contrast-and-text.html">Test vision, contrast and text</a></li>
+<li><a href="reference.html">Gradient Library reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">Gradient Library FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Library</a> &rsaquo; <a href="../../README.html">Colour libraries</a> &rsaquo; <a href="../README.html">Gradient Library</a> &rsaquo; <a href="README.html">Gradient Library documentation</a></nav>
+<p class="kicker">Website › Library › Colour libraries › Gradient Library</p>
+<h1>Check your own gradient</h1>
+<p class="lede">Enter your gradient's stops in &quot;Will your gradient band?&quot;, read the verdict, find the worst step and fix it.</p>
+<p><strong>Will your gradient band?</strong> applies the collection&#39;s own banding measurement to stops you give it.</p>
+<h2 id="what-banding-is">What banding is</h2>
+<p>A gradient bands when part of it changes colour much faster than the rest, so the eye sees a step or an edge instead of a smooth flow. It is common at the dark end of a ramp: standard sRGB spends few of its values on the darkest shades, so a black-to-colour blend often lurches just after black.</p>
+<h2 id="how-the-check-measures">How the check measures</h2>
+<ol>
+<li>The page paints your stops the way a browser paints a plain CSS <code>linear-gradient</code>: evenly spaced, blended straight between neighbouring stops in sRGB.</li>
+<li>It takes 96 samples along the ramp.</li>
+<li>It measures the colour difference between each pair of neighbouring samples in OKLab, a colour space where equal distances look like roughly equal differences.</li>
+<li>It divides the largest step by the average step. This <strong>step ratio</strong> is the verdict&#39;s basis. A perfectly even ramp has a ratio of 1.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Step ratio</th><th>Verdict</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Below 3.2</td><td><strong>Smooth</strong></td><td>No transition is large enough to read as a step.</td></tr>
+<tr><td>3.2 to below 5.5</td><td><strong>Some compression</strong></td><td>One part of the ramp is noticeably faster than the rest.</td></tr>
+<tr><td>5.5 or more</td><td><strong>It will step</strong></td><td>Expect a visible step.</td></tr>
+</tbody></table></div>
+<p>The page explains the thresholds: across 3,000 gradients the collection had already labelled, the ratio&#39;s median was 1.55 for smooth ones and 5.09 for step risks, and 3.2 and 5.5 are where those groups separate.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Scroll to <strong>Will your gradient band?</strong>. It starts with three stops: <code>#000000</code>, <code>#0B3D91</code> and <code>#FFFFFF</code>.</li>
+<li>For each stop, either click the swatch and pick a colour, or type into the text field. The field accepts any CSS colour: hex, <code>rgb()</code>, <code>hsl()</code>, <code>hwb()</code>, <code>lab()</code>, <code>lch()</code>, <code>oklab()</code>, <code>oklch()</code>, <code>color()</code> or a colour name.</li>
+<li>To add a stop, select <strong>Add a stop</strong>. The new stop is added at the end, coloured halfway between the last two stops. You can have up to 12 stops.</li>
+<li>To remove a stop, select × on it. A gradient keeps at least two stops, so × disappears when only two are left.</li>
+<li>The verdict updates as you type. <strong>Measure it</strong> measures again on demand.</li>
+<li>Read the result (below).</li>
+</ol>
+<p><strong>Result:</strong> a verdict, the step ratio, and the position of the worst step, marked on a preview of your ramp.</p>
+<h2 id="reading-the-result">Reading the result</h2>
+<ul>
+<li><strong>The preview strip</strong> shows your stops, evenly spaced, with a marker above the worst transition.</li>
+<li><strong>The verdict word</strong> — <strong>Smooth</strong>, <strong>Some compression</strong> or <strong>It will step</strong> — with <strong>step ratio</strong> and the ratio to two decimals.</li>
+<li><strong>A note</strong> that says what to do:<ul>
+<li><strong>No transition is large enough to read as a step.</strong></li>
+<li>If the worst step is at the very start: <strong>The largest step is at the dark end. sRGB compresses its darkest values, so even a plain black-to-white ramp steps there — interpolate in OKLCH, or start from a lifted black rather than #000.</strong></li>
+<li>Otherwise: <strong>The largest step is at N% along the ramp. Adding a stop near there, or interpolating in OKLCH, is usually the fix.</strong></li>
+</ul>
+</li>
+<li><strong>The numbers:</strong></li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Mean step</strong></td><td>The average OKLab distance between neighbouring samples.</td></tr>
+<tr><td><strong>Largest step</strong></td><td>The biggest one.</td></tr>
+<tr><td><strong>Worst transition at</strong></td><td>Where the biggest step is, as a percentage along the ramp.</td></tr>
+<tr><td><strong>Sampled</strong></td><td><strong>96 steps, sRGB</strong>.</td></tr>
+</tbody></table></div>
+<h2 id="while-you-are-typing">While you are typing</h2>
+<p>A half-typed colour, such as <code>#12</code>, is not yet a colour. The stop keeps its last valid colour, is marked as invalid, and a warning says, for example, <strong>Stop 2 is not a colour yet — still measuring with its last one.</strong> When you leave the field without finishing, the field is put back to the colour being measured.</p>
+<h2 id="fixing-a-gradient-that-steps">Fixing a gradient that steps</h2>
+<ol>
+<li>Note <strong>Worst transition at</strong>.</li>
+<li>Add a stop close to that position with an in-between colour, or replace a pure black <code>#000000</code> start with a slightly lifted dark colour.</li>
+<li>Measure again.</li>
+<li>If the verdict is still <strong>It will step</strong>, consider blending in OKLCH in your CSS (for example <code>linear-gradient(in oklch, …)</code> in browsers that support it) and compare with gradients in the library that use <strong>Oklch Short</strong> or <strong>Oklab</strong> interpolation.</li>
+</ol>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> The check always measures plain sRGB blending with evenly spaced stops, because that is how a basic CSS gradient is painted. It does not know about stop positions or interpolation settings you might add in your own CSS.</p>
+</blockquote>
+
+<nav class="pager" aria-label="Previous and next"><a href="browse-search-and-filter.html"><span>Previous</span>Browse, search and filter</a><a href="copy-export-and-share.html"><span>Next</span>Copy, export and share</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-banding-is">What banding is</a></li><li><a href="#how-the-check-measures">How the check measures</a></li><li><a href="#steps">Steps</a></li><li><a href="#reading-the-result">Reading the result</a></li><li><a href="#while-you-are-typing">While you are typing</a></li><li><a href="#fixing-a-gradient-that-steps">Fixing a gradient that steps</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

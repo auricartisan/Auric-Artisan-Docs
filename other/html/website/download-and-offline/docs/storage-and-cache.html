@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storage and cache — Auric Artisan Docs</title>
+<meta name="description" content="Read the readiness checks and live metrics, and audit, repair or reset the offline copy.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Download and offline</a>
+<h2>Download and offline guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Get started with the app and offline use</a></li>
+<li><a href="install-the-app.html">Install the app</a></li>
+<li><a href="installed-app-features.html">Installed app features</a></li>
+<li><a href="prepare-offline.html">Prepare the offline version</a></li>
+<li><a href="storage-and-cache.html" aria-current="page">Storage and cache</a></li>
+<li><a href="uninstall.html">Uninstall and remove data</a></li>
+<li><a href="updates.html">Updates</a></li>
+<li><a href="what-works-offline.html">What works offline</a></li>
+<li><a href="reference.html">Download and offline reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the app and offline use</a></li>
+<li><a href="faq.html">Download and offline FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Download and offline</a> &rsaquo; <a href="README.html">Download and offline guides</a></nav>
+<p class="kicker">Website › Download and offline</p>
+<h1>Storage and cache</h1>
+<p class="lede">Read the readiness checks and live metrics, and audit, repair or reset the offline copy.</p>
+<p>The Download page reads its figures from your browser itself: the offline store, the storage estimate and the browser&#39;s capabilities. Open it on the device you care about.</p>
+<h2 id="readiness-checks">Readiness checks</h2>
+<p>Select <strong>Check readiness</strong> to refresh them.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Check</th><th>Possible states</th></tr></thead>
+<tbody>
+<tr><td><strong>Shell</strong></td><td>&quot;Service worker shell is preparing.&quot; / &quot;Service worker shell is ready for cached navigation.&quot;</td></tr>
+<tr><td><strong>Full cache</strong></td><td>&quot;Full offline cache is not warmed yet.&quot; / &quot;Run prepare offline version to warm every core route.&quot; / &quot;Offline cache has warmed this device profile.&quot;</td></tr>
+<tr><td><strong>Persistent storage</strong></td><td>&quot;Persistent storage is active for this browser.&quot; / &quot;Storage is best-effort until the browser grants persistence.&quot;</td></tr>
+<tr><td><strong>Local capabilities</strong></td><td>The number of CPU threads available for local work</td></tr>
+<tr><td><strong>Install</strong></td><td>Checking / available / not offered by this browser yet / installed and running standalone / accepted / dismissed / could not be opened</td></tr>
+<tr><td><strong>Update</strong></td><td>See <a href="updates.html">Updates</a></td></tr>
+</tbody></table></div>
+<p>The badge sums it up: <strong>Checking</strong>, <strong>Preparing</strong>, <strong>Shell ready</strong> (the core is stored) or <strong>Offline ready</strong> (your profile is complete).</p>
+<h2 id="live-metrics">Live metrics</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Cache entries</strong></td><td>How many files are stored</td></tr>
+<tr><td><strong>Storage used</strong></td><td>Space used by the site, and the browser&#39;s quota for it (persistent or best effort)</td></tr>
+<tr><td><strong>Local CPU</strong></td><td>Processor threads, and approximate device memory where reported</td></tr>
+<tr><td><strong>Graphics</strong></td><td>WebGL 2, WebGL 1 or Canvas, and the graphics processor where reported</td></tr>
+<tr><td><strong>Offline profile</strong></td><td>The profile in effect, for example &quot;Auto selected Full for this device.&quot;</td></tr>
+<tr><td><strong>Cache target</strong></td><td>How many files the profile holds</td></tr>
+<tr><td><strong>Missing assets</strong></td><td>Files of the profile not yet stored (after an audit)</td></tr>
+<tr><td><strong>PWA version</strong></td><td>The version of the site in your browser</td></tr>
+</tbody></table></div>
+<p><strong>Browser capabilities</strong> lists each feature as <strong>Ready</strong> or <strong>Limited</strong>: Service worker, Cache API, Persistent storage, IndexedDB, File access, Clipboard, Share, Camera input, EyeDropper, Workers, Graphics and Offline privacy (a secure connection). Select <strong>Check local hardware</strong> to refresh them.</p>
+<h2 id="audit-the-offline-copy">Audit the offline copy</h2>
+<p>Select <strong>Audit cache</strong>. The site compares your store with the profile (&quot;Auditing Balanced cache coverage...&quot;) and reports:</p>
+<ul>
+<li>&quot;Cache audit passed. Offline profile is complete.&quot; with <strong>Missing assets</strong> at 0; or</li>
+<li>&quot;Cache audit found missing assets. Repair cache can retry them.&quot; with the count and the first missing file.</li>
+</ul>
+<h2 id="repair-it">Repair it</h2>
+<p>Select <strong>Repair cache</strong>. The site fetches any missing files of the profile (&quot;Repairing the Balanced cache profile...&quot;), then reports &quot;Cache repair finished: A/B assets ready.&quot; and re-runs the audit. You need to be online.</p>
+<h2 id="reset-it">Reset it</h2>
+<p>Select <strong>Reset cache</strong> to delete the site&#39;s offline store and rebuild the app shell: &quot;Resetting browser PWA caches and rebuilding the shell...&quot; then &quot;PWA caches reset. Shell cache rebuilt.&quot; Use it if the offline copy seems out of date or damaged. Prepare the offline version again afterwards.</p>
+<p>Reset cache does not delete your library, settings or recordings, which are kept separately in your browser.</p>
+<h2 id="how-much-space-it-takes">How much space it takes</h2>
+<p>Storage depends on your profile. Lite is small; Balanced and Full can take from tens to more than a hundred megabytes. <strong>Storage used</strong> shows the real figure on your device.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="prepare-offline.html"><span>Previous</span>Prepare the offline version</a><a href="uninstall.html"><span>Next</span>Uninstall and remove data</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#readiness-checks">Readiness checks</a></li><li><a href="#live-metrics">Live metrics</a></li><li><a href="#audit-the-offline-copy">Audit the offline copy</a></li><li><a href="#repair-it">Repair it</a></li><li><a href="#reset-it">Reset it</a></li><li><a href="#how-much-space-it-takes">How much space it takes</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

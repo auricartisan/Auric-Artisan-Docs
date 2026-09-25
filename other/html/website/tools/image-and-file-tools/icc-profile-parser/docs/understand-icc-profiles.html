@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Understand ICC profiles — Auric Artisan Docs</title>
+<meta name="description" content="The concepts you need to read an ICC profile: classes, colour spaces, the connection space, tags, versions, intents, colorants, curves and tables.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; ICC Profile Parser</a>
+<h2>ICC Profile Parser documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the ICC Profile Parser</a></li>
+<li><a href="check-conformance.html">Check conformance</a></li>
+<li><a href="export-a-reading.html">Export a reading</a></li>
+<li><a href="identify-and-gamut.html">Identify a profile and read its gamut</a></li>
+<li><a href="understand-icc-profiles.html" aria-current="page">Understand ICC profiles</a></li>
+<li><a href="reference.html">ICC Profile Parser reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the ICC Profile Parser</a></li>
+<li><a href="faq.html">ICC Profile Parser FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Image and file tools</a> &rsaquo; <a href="../README.html">ICC Profile Parser</a> &rsaquo; <a href="README.html">ICC Profile Parser documentation</a></nav>
+<p class="kicker">Website › Tools › Image and file tools › ICC Profile Parser</p>
+<h1>Understand ICC profiles</h1>
+<p class="lede">The concepts you need to read an ICC profile: classes, colour spaces, the connection space, tags, versions, intents, colorants, curves and tables.</p>
+<p>This page explains the parts of an ICC profile that the ICC Profile Parser shows you. It is a short primer, not a replacement for the specification, ICC.1:2010 (also published as ISO 15076-1:2010).</p>
+<h2 id="what-a-profile-is-for">What a profile is for</h2>
+<p>A colour management system converts colours from one device to another, for example from a camera to a monitor, or from a monitor to a printing press. It does this in two halves. Each device has a profile that converts between the device&#39;s own colour values and a shared, device-independent space called the <strong>profile connection space</strong> (PCS). Converting from device A to device B means going from A into the PCS with A&#39;s profile, then out of the PCS with B&#39;s profile.</p>
+<p>An ICC profile is the file that holds one of those halves. It has three parts:</p>
+<ol>
+<li>a 128-byte <strong>header</strong> that says what kind of profile it is;</li>
+<li>a <strong>tag table</strong> that lists the pieces of data inside;</li>
+<li>the <strong>tag data</strong> itself: curves, matrices, tables and text.</li>
+</ol>
+<h2 id="the-profile-connection-space">The profile connection space</h2>
+<p>The PCS is either CIE XYZ or CIELAB, always relative to the D50 illuminant, a standard daylight white at about 5000 K. The header&#39;s <strong>PCS</strong> field says which. D50 is fixed by the specification, which is why the tool checks that the header&#39;s PCS illuminant is D50 and that a display profile&#39;s media white point is the PCS white.</p>
+<h2 id="device-classes">Device classes</h2>
+<p>The header&#39;s class field says what the profile describes. The tool shows the four-character code and its name.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Class</th><th>What it describes</th></tr></thead>
+<tbody>
+<tr><td><code>scnr</code></td><td>Input</td><td>A capture device such as a scanner or camera</td></tr>
+<tr><td><code>mntr</code></td><td>Display</td><td>A monitor or other display</td></tr>
+<tr><td><code>prtr</code></td><td>Output</td><td>A printer or press</td></tr>
+<tr><td><code>link</code></td><td>DeviceLink</td><td>A direct conversion from one device to another, with no PCS in between</td></tr>
+<tr><td><code>spac</code></td><td>ColorSpace</td><td>Conversion between the PCS and a standard colour space</td></tr>
+<tr><td><code>abst</code></td><td>Abstract</td><td>An effect applied within the PCS, such as a look</td></tr>
+<tr><td><code>nmcl</code></td><td>NamedColor</td><td>A list of named colours, such as a spot-colour book</td></tr>
+</tbody></table></div>
+<h2 id="data-colour-space-and-channels">Data colour space and channels</h2>
+<p>The <strong>data space</strong> is the colour space of the device values: RGB, CMYK, Grayscale, CIELAB, or a multi-ink space such as <code>6CLR</code> (six colours). The tool shows the channel count beside it, for example <strong>RGB · 3 ch</strong> or <strong>CMYK · 4 ch</strong>.</p>
+<h2 id="versions">Versions</h2>
+<p>Two major versions are in use: version 2 (for example 2.1.0 or 2.4.0) and version 4 (for example 4.3.0). The version is stored in bytes 8 and 9 of the header: byte 8 is the major version, and byte 9 holds the minor version and the bug-fix level. The tool shows it as major.minor.bug-fix. In version 4, every profile must carry the media white point tag and should carry a profile ID. In version 2, the white point is required for most classes but not all, and the profile ID is optional.</p>
+<h2 id="rendering-intents">Rendering intents</h2>
+<p>A rendering intent is the strategy for handling colours one device can show and another cannot. The header records one of these four values.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>Intent</th><th>In short</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>Perceptual</td><td>Compresses the whole gamut so relationships between colours are kept</td></tr>
+<tr><td>1</td><td>Media-relative colorimetric</td><td>Keeps in-gamut colours exact relative to the paper or display white; clips the rest</td></tr>
+<tr><td>2</td><td>Saturation</td><td>Keeps colours vivid, for charts and graphics</td></tr>
+<tr><td>3</td><td>ICC-absolute colorimetric</td><td>Keeps in-gamut colours exact, including the white of the medium</td></tr>
+</tbody></table></div>
+<h2 id="tags">Tags</h2>
+<p>Every piece of data in a profile is a <strong>tag</strong>: a four-character signature, such as <code>wtpt</code> or <code>rTRC</code>, that points to a block of data at an offset in the file. The block starts with its own four-character <strong>type</strong>, such as <code>XYZ </code> or <code>curv</code>, which says how to read it. The tool&#39;s tag table shows the signature, type, offset and size of every tag.</p>
+<p>The specification allows two tags to point to the same block of data. Press profiles use this to store an identical table once, for example when the perceptual and saturation tables are the same. The tool reports this as sharing, not as a fault. What is a fault is a block that partly overlaps another without being the same block.</p>
+<h3 id="tags-you-will-often-see">Tags you will often see</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Signature</th><th>Name</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td><code>desc</code></td><td>Profile description</td><td>The profile&#39;s name as software shows it</td></tr>
+<tr><td><code>cprt</code></td><td>Copyright</td><td>Copyright text</td></tr>
+<tr><td><code>wtpt</code></td><td>Media white point</td><td>The white of the medium, as XYZ</td></tr>
+<tr><td><code>rXYZ</code>, <code>gXYZ</code>, <code>bXYZ</code></td><td>Red, green, blue colorants</td><td>The XYZ of each primary, adapted to D50</td></tr>
+<tr><td><code>rTRC</code>, <code>gTRC</code>, <code>bTRC</code></td><td>Red, green, blue tone curves</td><td>How each channel&#39;s values map to light</td></tr>
+<tr><td><code>kTRC</code></td><td>Grey tone curve</td><td>The tone curve of a greyscale profile</td></tr>
+<tr><td><code>chad</code></td><td>Chromatic adaptation</td><td>The 3×3 matrix used to adapt the colorants to D50</td></tr>
+<tr><td><code>A2B0</code>, <code>A2B1</code>, <code>A2B2</code></td><td>Device-to-PCS tables</td><td>Perceptual, colorimetric and saturation conversions into the PCS</td></tr>
+<tr><td><code>B2A0</code>, <code>B2A1</code>, <code>B2A2</code></td><td>PCS-to-device tables</td><td>The same three intents, out of the PCS</td></tr>
+<tr><td><code>gamt</code></td><td>Gamut</td><td>A table that says whether a PCS colour is in the device gamut</td></tr>
+<tr><td><code>pseq</code></td><td>Profile sequence</td><td>For a DeviceLink, the profiles it was built from</td></tr>
+<tr><td><code>ncl2</code></td><td>Named colour</td><td>The named colours of a NamedColor profile</td></tr>
+</tbody></table></div>
+<p>Many display profiles made by calibration software also carry <code>vcgt</code>, a private tag that is not part of ICC.1:2010. The tool lists it in the tag table but does not read it.</p>
+<h2 id="two-ways-to-describe-a-device">Two ways to describe a device</h2>
+<p><strong>Matrix/TRC profiles</strong> describe an RGB device with three colorants and three tone response curves (TRCs). Most display and RGB working-space profiles, including sRGB, are built this way. The tool&#39;s verdict calls these &quot;matrix/TRC&quot;.</p>
+<p><strong>LUT-based profiles</strong> describe a device with lookup tables in the <code>A2B</code> and <code>B2A</code> tags. Every CMYK press profile is built this way, and some RGB profiles are too. The tool&#39;s verdict calls an RGB profile without colorants &quot;LUT&quot;.</p>
+<h2 id="colorants-are-not-primaries">Colorants are not primaries</h2>
+<p>The colorants in <code>rXYZ</code>, <code>gXYZ</code> and <code>bXYZ</code> are stored after adaptation to the D50 connection space. They are therefore not the chromaticities of the colour space&#39;s primaries. For sRGB, the stored green colorant sits about 0.021 away in the CIE 1931 xy diagram from sRGB&#39;s published green primary.</p>
+<p>To recover the real primaries, the tool reverses the adaptation. When the profile carries a <code>chad</code> tag, the tool uses the inverse of that matrix, which recovers them exactly. When it does not, the tool assumes the adaptation was the Bradford transform from the white of the space being compared, and says so. Bradford is the chromatic adaptation method the <code>chad</code> tag conventionally carries; some older profiles instead scale XYZ directly, and the tool tests both and reports which fits better.</p>
+<h2 id="tone-response-curves">Tone response curves</h2>
+<p>A TRC maps a channel&#39;s device value (0 to 1) to linear light (0 to 1). The specification allows several forms, all of which the tool reads:</p>
+<ul>
+<li><strong>Identity</strong>: output equals input.</li>
+<li><strong>Gamma</strong>: a single power, for example 2.2.</li>
+<li><strong>Table</strong>: a list of sampled values, read with straight-line interpolation between them.</li>
+<li><strong>Parametric</strong>: one of five formulas with up to seven parameters, which can express a gamma with a linear segment near black, as sRGB uses.</li>
+</ul>
+<h2 id="the-profile-id">The profile ID</h2>
+<p>Bytes 84 to 99 of the header may hold a profile ID: an MD5 checksum of the whole file, calculated with the flags, rendering intent and ID fields set to zero. If the ID is present and matches, the file has not been changed since the ID was written. Version 4 profiles should carry one; in version 2 the field is usually all zeros, which the tool reports as <strong>not carried</strong>.</p>
+<h2 id="what-a-profile-cannot-tell-you">What a profile cannot tell you</h2>
+<p>A profile describes a device as it was when the profile was made. It is not the device. A perfectly formed profile can describe a monitor that has drifted since it was calibrated. Checking the device itself needs a measuring instrument; see <a href="../others/limits-and-accuracy.html">Limits and accuracy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="identify-and-gamut.html"><span>Previous</span>Identify a profile and read its gamut</a><a href="reference.html"><span>Next</span>ICC Profile Parser reference</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-a-profile-is-for">What a profile is for</a></li><li><a href="#the-profile-connection-space">The profile connection space</a></li><li><a href="#device-classes">Device classes</a></li><li><a href="#data-colour-space-and-channels">Data colour space and channels</a></li><li><a href="#versions">Versions</a></li><li><a href="#rendering-intents">Rendering intents</a></li><li><a href="#tags">Tags</a></li><li><a href="#two-ways-to-describe-a-device">Two ways to describe a device</a></li><li><a href="#colorants-are-not-primaries">Colorants are not primaries</a></li><li><a href="#tone-response-curves">Tone response curves</a></li><li><a href="#the-profile-id">The profile ID</a></li><li><a href="#what-a-profile-cannot-tell-you">What a profile cannot tell you</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

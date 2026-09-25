@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prepare the offline version — Auric Artisan Docs</title>
+<meta name="description" content="Choose an offline profile and download the site into your browser so it works without a connection.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Download and offline</a>
+<h2>Download and offline guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Get started with the app and offline use</a></li>
+<li><a href="install-the-app.html">Install the app</a></li>
+<li><a href="installed-app-features.html">Installed app features</a></li>
+<li><a href="prepare-offline.html" aria-current="page">Prepare the offline version</a></li>
+<li><a href="storage-and-cache.html">Storage and cache</a></li>
+<li><a href="uninstall.html">Uninstall and remove data</a></li>
+<li><a href="updates.html">Updates</a></li>
+<li><a href="what-works-offline.html">What works offline</a></li>
+<li><a href="reference.html">Download and offline reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the app and offline use</a></li>
+<li><a href="faq.html">Download and offline FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Download and offline</a> &rsaquo; <a href="README.html">Download and offline guides</a></nav>
+<p class="kicker">Website › Download and offline</p>
+<h1>Prepare the offline version</h1>
+<p class="lede">Choose an offline profile and download the site into your browser so it works without a connection.</p>
+<h2 id="what-is-stored-automatically">What is stored automatically</h2>
+<p>On your first visit, your browser keeps a small core of the site, called the <strong>app shell</strong>: the main pages (such as the homepage, Download, the tools index, Basic Tools, the Colour Science Lab, the Personalization Generator, the colour libraries, Search and Security), the site&#39;s styles and scripts, and the offline page. That is enough for an offline visit to show something useful, but not the whole site.</p>
+<p>Everything beyond the shell is downloaded only when you ask for it.</p>
+<h2 id="choose-a-profile">Choose a profile</h2>
+<p>On the Download page, under <strong>Profile — How much to keep</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Profile</th><th>Description on screen</th><th>What it keeps</th><th>Suits</th></tr></thead>
+<tbody>
+<tr><td><strong>Auto</strong> (default)</td><td>Device-aware cache choice</td><td>Chooses Lite, Balanced or Full from what the device reports</td><td>Almost everyone</td></tr>
+<tr><td><strong>Lite</strong></td><td>Smallest offline footprint</td><td>The app shell and the core tools, and little else</td><td>Phones, tight storage, metered connections</td></tr>
+<tr><td><strong>Balanced</strong></td><td>Core tools plus active libraries</td><td>Shell, core tools and the colour libraries and their data</td><td>A laptop you also use for other things</td></tr>
+<tr><td><strong>Full</strong></td><td>Download the widest local cache</td><td>Every file the site lists for offline use</td><td>A desktop that will be offline for a while</td></tr>
+</tbody></table></div>
+<p>Selecting <strong>Lite</strong>, <strong>Balanced</strong> or <strong>Auto</strong> only sets the profile (&quot;Updated offline hardware profile.&quot;). Selecting <strong>Full</strong> sets it <strong>and starts downloading</strong> at once: &quot;Full profile selected. Downloading the full offline cache...&quot;.</p>
+<h3 id="how-auto-chooses">How Auto chooses</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Condition</th><th>Auto picks</th></tr></thead>
+<tbody>
+<tr><td><strong>Limit background cache work on low-power hardware</strong> is on, the browser reports Data Saver, or the connection is 2G</td><td>Lite</td></tr>
+<tr><td>4 or fewer processor threads, 4 GB or less memory, or less than about 650 MB of storage available to the site</td><td>Balanced</td></tr>
+<tr><td>Otherwise</td><td>Full</td></tr>
+</tbody></table></div>
+<p>The <strong>Offline profile</strong> metric and the summary (<strong>Selected</strong>, <strong>Effective profile</strong>) show the result, for example &quot;Auto selected Balanced for this device.&quot;</p>
+<h3 id="limit-background-work">Limit background work</h3>
+<p>The switch <strong>Limit background cache work on low-power hardware</strong> makes Auto choose <strong>Lite</strong>. Use it on older or battery-powered devices.</p>
+<h2 id="download">Download</h2>
+<ul>
+<li><strong>Prepare offline version</strong> downloads the profile in effect (your choice, or Auto&#39;s).</li>
+<li><strong>Download full offline</strong> downloads the <strong>Full</strong> profile regardless of your choice.</li>
+</ul>
+<p>While downloading:</p>
+<ul>
+<li>the status line reads, for example, &quot;Downloading the Balanced offline profile into this browser...&quot; and then &quot;Preparing offline version: A/B checked, C cached, D failed.&quot; (with real numbers);</li>
+<li>a message at the edge of the screen reads &quot;Saving for offline — N%&quot;;</li>
+<li>you can keep using the site, and it is best to keep the tab open until it finishes.</li>
+</ul>
+<p>When it finishes:</p>
+<ul>
+<li>the status reads, for example, &quot;Balanced offline download finished: A/B assets ready.&quot; (with &quot;N failed&quot; if some files could not be fetched);</li>
+<li>a message reads &quot;Full offline app ready&quot;;</li>
+<li>the readiness badge reads <strong>Offline ready</strong> and the cache audit runs.</li>
+</ul>
+<p>If files failed, select <strong>Repair cache</strong> to try them again (see <a href="storage-and-cache.html">Storage and cache</a>).</p>
+<h2 id="hindi-offline">Hindi offline</h2>
+<p>If the site is in Hindi when you prepare the offline version, the Hindi text is downloaded as well (about 11 MB). If you switch to Hindi later, prepare the offline version again to include it.</p>
+<h2 id="persistent-storage">Persistent storage</h2>
+<p>When you prepare the offline version, the site asks the browser to keep its storage <strong>persistent</strong>, so that the browser does not clear it when the device runs low on space. Some browsers grant this automatically, some ask you, and some decide from how often you use the site. The <strong>Persistent storage</strong> check shows the result: &quot;Persistent storage is active for this browser.&quot; or &quot;Storage is best-effort until the browser grants persistence.&quot;</p>
+<h2 id="if-the-connection-drops">If the connection drops</h2>
+<p>If a download you started is interrupted, browsers that support background sync (such as Chrome and Edge) finish it when you are next online. Otherwise, select <strong>Prepare offline version</strong> again; files already stored are kept.</p>
+<h2 id="data-use">Data use</h2>
+<p>The Full profile is the whole site and can be large (more than 100 MB). On a metered or slow connection, choose <strong>Lite</strong> or <strong>Balanced</strong>, or wait for Wi-Fi.</p>
+<p>The site does not start a large download until you have asked for an offline copy at least once. After that, in browsers that support background sync, it refreshes your offline copy in the background when a new version of the site is released, so that you are not left with an old copy.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="installed-app-features.html"><span>Previous</span>Installed app features</a><a href="storage-and-cache.html"><span>Next</span>Storage and cache</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-is-stored-automatically">What is stored automatically</a></li><li><a href="#choose-a-profile">Choose a profile</a></li><li><a href="#download">Download</a></li><li><a href="#hindi-offline">Hindi offline</a></li><li><a href="#persistent-storage">Persistent storage</a></li><li><a href="#if-the-connection-drops">If the connection drops</a></li><li><a href="#data-use">Data use</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,367 @@
+==============================================================================
+GAMUT LAB REFERENCE
+==============================================================================
+Every control, readout, option and export in the Gamut Lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+Address: https://auricartisan.com/tool/general/gamut-and-rendering/gamut/
+
+THE 13 STANDARD SPACES
+======================
+
+  Space:        sRGB / BT.709
+  Red (x, y):   0.64, 0.33
+  Green (x, y): 0.30, 0.60
+  Blue (x, y):  0.15, 0.06
+  White (x, y): 0.3127, 0.329
+  Transfer:     sRGB
+
+  Space:        Display P3
+  Red (x, y):   0.68, 0.32
+  Green (x, y): 0.265, 0.69
+  Blue (x, y):  0.15, 0.06
+  White (x, y): 0.3127, 0.329
+  Transfer:     sRGB
+
+  Space:        DCI-P3
+  Red (x, y):   0.68, 0.32
+  Green (x, y): 0.265, 0.69
+  Blue (x, y):  0.15, 0.06
+  White (x, y): 0.314, 0.351
+  Transfer:     Gamma 2.6
+
+  Space:        Rec. 2020
+  Red (x, y):   0.708, 0.292
+  Green (x, y): 0.17, 0.797
+  Blue (x, y):  0.131, 0.046
+  White (x, y): 0.3127, 0.329
+  Transfer:     BT.2020
+
+  Space:        Rec. 2100 PQ
+  Red (x, y):   as Rec. 2020
+  Green (x, y): as Rec. 2020
+  Blue (x, y):  as Rec. 2020
+  White (x, y): 0.3127, 0.329
+  Transfer:     PQ
+
+  Space:        Rec. 2100 HLG
+  Red (x, y):   as Rec. 2020
+  Green (x, y): as Rec. 2020
+  Blue (x, y):  as Rec. 2020
+  White (x, y): 0.3127, 0.329
+  Transfer:     HLG (inverse OETF)
+
+  Space:        Adobe RGB
+  Red (x, y):   0.64, 0.33
+  Green (x, y): 0.21, 0.71
+  Blue (x, y):  0.15, 0.06
+  White (x, y): 0.3127, 0.329
+  Transfer:     γ 563/256
+
+  Space:        ProPhoto RGB
+  Red (x, y):   0.7347, 0.2653
+  Green (x, y): 0.1596, 0.8404
+  Blue (x, y):  0.0366, 0.0001
+  White (x, y): 0.3457, 0.3585
+  Transfer:     ROMM
+
+  Space:        Adobe Wide Gamut
+  Red (x, y):   0.7347, 0.2653
+  Green (x, y): 0.1152, 0.8264
+  Blue (x, y):  0.1566, 0.0177
+  White (x, y): 0.3457, 0.3585
+  Transfer:     Gamma 2.2
+
+  Space:        ACES 2065-1 (AP0)
+  Red (x, y):   0.7347, 0.2653
+  Green (x, y): 0.0, 1.0
+  Blue (x, y):  0.0001, −0.077
+  White (x, y): 0.32168, 0.33767
+  Transfer:     Linear
+
+  Space:        ACEScg (AP1)
+  Red (x, y):   0.713, 0.293
+  Green (x, y): 0.165, 0.83
+  Blue (x, y):  0.128, 0.044
+  White (x, y): 0.32168, 0.33767
+  Transfer:     Linear
+
+  Space:        NTSC 1953
+  Red (x, y):   0.67, 0.33
+  Green (x, y): 0.21, 0.71
+  Blue (x, y):  0.14, 0.08
+  White (x, y): 0.31, 0.316
+  Transfer:     Gamma 2.2
+
+  Space:        PAL/SECAM
+  Red (x, y):   0.64, 0.33
+  Green (x, y): 0.29, 0.60
+  Blue (x, y):  0.15, 0.06
+  White (x, y): 0.3127, 0.329
+  Transfer:     Gamma 2.8
+
+Custom is a 14th option whose primaries you enter.
+
+LAB TAB
+=======
+
+Controls
+--------
+
+  Control:      Working color space
+  What it does: Chooses the space shown in the panel and adds it to the
+                diagram (up to five drawn)
+  Values:       The 13 spaces and Custom
+  Default:      sRGB / BT.709
+
+  Control:      Diagram mode
+  What it does: How the main canvas draws
+  Values:       CIE 1931 xy; CIE 1976 u′v′; 3-D Wireframe (Lab)
+  Default:      CIE 1931 xy
+
+  Control:      Standard observer
+  What it does: Shown with two options, but only the CIE 1931 2° observer is
+                used
+  Values:       CIE 1931 2°; CIE 1964 10°
+  Default:      CIE 1931 2°
+
+  Control:      Spectral locus
+  What it does: Draws the locus
+  Values:       On or off
+  Default:      On
+
+  Control:      Grid
+  What it does: Draws the grid
+  Values:       On or off
+  Default:      On
+
+  Control:      MacAdam ellipses
+  What it does: Draws 24 illustrative ellipses (a stand-in, see Limits)
+  Values:       On or off
+  Default:      Off
+
+  Control:      λ labels
+  What it does: Labels wavelengths on the locus
+  Values:       On or off
+  Default:      On
+
+  Control:      Show all library spaces
+  What it does: Draws every space, including imported ones
+  Values:       On or off
+  Default:      Off
+
+  Control:      WebGL chromaticity fill
+  What it does: Fills the locus with approximate colours using WebGL 2
+  Values:       On or off
+  Default:      Off
+
+  Control:      Reset view
+  What it does: Returns to CIE 1931 xy, default overlays, no probe
+  Values:       Button
+  Default:      —
+
+  Control:      Export PNG
+  What it does: Downloads the diagram as `gamut-<mode>.png`
+  Values:       Button
+  Default:      —
+
+  Control:      Export SVG
+  What it does: Downloads the diagram as `gamut-<mode>.svg`
+  Values:       Button
+  Default:      —
+
+  Control:      Primaries (xy) R, G, B, W
+  What it does: The working space's primaries and white; editable for Custom
+  Values:       Numbers, 4 decimals
+  Default:      From the space
+
+  Control:      White point XYZ
+  What it does: The white as X, Y, Z with Y = 1
+  Values:       —
+  Default:      From the space
+
+  Control:      Solve from primaries
+  What it does: Builds the Custom space from the fields and derives its
+                matrices
+  Values:       Button
+  Default:      —
+
+  Control:      Transfer function
+  What it does: Curve shown on the EOTF / OETF canvas
+  Values:       sRGB, Display P3, Rec. 2020, PQ (ST 2084), HLG, Adobe RGB (γ
+                563/256), ProPhoto (ROMM)
+  Default:      sRGB
+
+  Control:      Volume comparison first list
+  What it does: Reference space
+  Values:       sRGB, Display P3, Rec. 2020, ACEScg
+  Default:      sRGB
+
+  Control:      Volume comparison second list
+  What it does: Space to compare
+  Values:       Active space, sRGB, Display P3, Rec. 2020, ACEScg
+  Default:      Active space
+
+  Control:      Compute volume
+  What it does: Measures both volumes and their overlap
+  Values:       Button
+  Default:      —
+
+  Control:      Gamut slice mode
+  What it does: Slice space
+  Values:       Constant L* (CIELAB); Constant L (OKLab)
+  Default:      Constant L*
+
+  Control:      Level
+  What it does: Slice lightness
+  Values:       0 to 100
+  Default:      50
+
+Readouts
+--------
+
+  Readout:       Chromaticity diagram
+  What it shows: Drawn spaces as triangles, the locus, overlays and the probe
+                 marker with its coordinates. Click or drag to probe
+
+  Readout:       Vertex readout
+  What it shows: x, y, Y, a chip with sRGB HEX, CIELAB (L*, a*, b*) and a tick
+                 or cross per drawn space
+
+  Readout:       RGB ↔ XYZ matrices
+  What it shows: RGB → XYZ, XYZ → RGB, Area (xy) and Area % sRGB
+
+  Readout:       EOTF / OETF curve
+  What it shows: The chosen transfer curve, its defining document and an
+                 equation
+
+  Readout:       Volume metrics
+  What it shows: Both volumes (Lab³) with spread and box, overlap of A and of
+                 B in u′v′, and Jaccard
+
+  Readout:       Gamut slice — Lab / OKLab
+  What it shows: Up to five drawn spaces outlined at the slice level
+
+  Readout:       3-D gamut wireframe
+  What it shows: Wireframes of the drawn spaces in CIELAB, at a fixed viewing
+                 angle
+
+TRANSFER TAB
+============
+
+  Control:      Plot
+  What it does: Which curves and axis
+  Values:       Relative, 0 to 1; Absolute, cd/m² (PQ, log scale 1 to 10,000)
+  Default:      Relative
+
+  Control:      Fidelity
+  What it does: Filters the rows
+  Values:       All, Exact, Partial, Corrected (with counts)
+  Default:      All
+
+Rows give each distinct curve, the spaces that use it, a fidelity tag, the
+defining document and, where relevant, what it used to be or why it is
+partial.
+
+COMPARE TAB
+===========
+
+  Control          | What it does             | Values                        | Default
+  -----------------+--------------------------+-------------------------------+-----------
+  Measure in       | The share column's plane | u′v′ share; xy share (legacy) | u′v′ share
+  Samples (n)      | Halton samples per space | 5,000 to 200,000, step 5,000  | 40k
+  Measure them all | Measures every space     | Button                        | —
+
+Table columns: Space, White, Lab volume ± spread, vs sRGB, share.
+
+DATA TAB
+========
+
+  Dataset                                | Status
+  ---------------------------------------+------------------------------------------
+  Primaries and white points, 13 spaces  | Verbatim
+  Transfer functions, 10 distinct curves | Computed
+  HLG opto-electronic transfer           | Synthesised (stand-in): inverse OETF only
+  Colour matching functions, 2°          | Verbatim
+  Spectral locus                         | Computed, 380–715 nm
+  RGB ↔ XYZ matrices                     | Computed
+  Gamut volume in CIELAB                 | Computed, Halton sampling
+  MacAdam ellipses                       | Synthesised (stand-in)
+
+Status chips filter the list. Install a table ("Drop a CSV or JSON") does not
+load files in the current version.
+
+EXPORT TAB
+==========
+
+  Control:      What to take
+  What it does: This space, Every space, The comparison, The diagram, A link
+                to this view
+
+  Control:      As
+  What it does: Formats that fit the choice: JSON; JSON; CSV or JSON; SVG or
+                PNG; Link
+
+  Control:      Download (names the file) or Copy the link
+  What it does: Saves the file, or copies the link
+
+  Control:      Copy to clipboard
+  What it does: Copies text payloads (hidden for PNG and link)
+
+  Control:      Exactly what you will get
+  What it does: Previews the payload and its size
+
+  Control:      Bring one in, Add to the library
+  What it does: Imports a space from JSON
+
+  Control:      Library table
+  What it does: Name, Type (Standard or Custom), White, Transfer, and Load /
+                Del
+
+  Choice: This space, JSON
+  File:   `gamut-lab-<space>.json`
+
+  Choice: Every space, JSON
+  File:   `gamut-lab-spaces.json`
+
+  Choice: The comparison, CSV
+  File:   `gamut-comparison.csv` with Name, Area (xy), Area % sRGB, Volume
+          (Lab³), Transfer, White Point
+
+  Choice: The comparison, JSON
+  File:   `gamut-comparison.json` with area, area %, volume, spread, box, u′v′
+          share, transfer and white per drawn space
+
+  Choice: The diagram, SVG
+  File:   `gamut-diagram.svg`
+
+  Choice: The diagram, PNG
+  File:   `gamut-diagram.png`, at the canvas size
+
+  Choice: A link to this view
+  File:   A URL encoding the drawn spaces, diagram mode, overlays and other
+          view settings
+
+The comparison covers only the spaces currently drawn on the diagram, not the
+whole library. A link longer than about 1,800 characters shows a warning that
+some clients truncate long links.
+
+REFERENCE TAB
+=============
+
+  Control                                        | What it does
+  -----------------------------------------------+-----------------------------------
+  Standards, Formulas, Citations, Research notes | Switch sections
+  Filter                                         | Searches all four; `Esc` clears it
+
+Standards are grouped as display and broadcast, cinema and VFX, photography
+and print, legacy, and colorimetry foundations. Formulas cover xy and u′v′,
+matrix derivation, the sRGB, PQ and HLG curves, shoelace area, CIELAB volume
+and overlap. Citations list 22 references. Research notes include a computed
+table of each space's area in xy and u′v′, % of sRGB and % of the locus.
+
+SAVE TO LIBRARY
+===============
+
+The floating Save to Library button stores a snapshot of the diagram in your
+Auric Artisan Library.

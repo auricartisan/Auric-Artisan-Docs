@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export and self-host — Auric Artisan Docs</title>
+<meta name="description" content="Export icons from the Icon Library as a ZIP of SVG files or an SVG sprite, download single icons, and host icons or the loader yourself.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Icon CDN</a>
+<h2>Icon CDN documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="embed-an-icon.html">Embed an icon</a></li>
+<li><a href="export-and-self-host.html" aria-current="page">Export and self-host</a></li>
+<li><a href="style-size-and-colour.html">Style, size and colour</a></li>
+<li><a href="use-the-loader.html">Use the loader</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Services</a> &rsaquo; <a href="../README.html">Icon CDN</a> &rsaquo; <a href="README.html">Icon CDN documentation</a></nav>
+<p class="kicker">Services › Icon CDN</p>
+<h1>Export and self-host</h1>
+<p class="lede">Export icons from the Icon Library as a ZIP of SVG files or an SVG sprite, download single icons, and host icons or the loader yourself.</p>
+<p>You do not have to load icons from icons.auricartisan.com at run time. The Icon Library can export them for your own project.</p>
+<h2 id="collect-icons-in-your-kit">Collect icons in your kit</h2>
+<ol>
+<li>In the Icon Library at <a href="https://auricartisan.com/tool/icon/" rel="noopener">https://auricartisan.com/tool/icon/</a>, open an icon and choose <strong>＋ Select</strong>.</li>
+<li>Selected icons collect in the <strong>Your kit</strong> tray, with a count. The tray notes that it is &quot;Kept in this browser&quot;.</li>
+<li>Choose <strong>Hide</strong> to put the tray away, and <strong>Clear</strong> to empty it.</li>
+</ol>
+<h2 id="download-a-zip">Download a ZIP</h2>
+<p>Choose <strong>Download ZIP</strong> in the tray. The file <code>auric-icons.zip</code> contains:</p>
+<ul>
+<li>one SVG per icon, in a folder per set, named <code>&lt;name&gt;-&lt;style&gt;.svg</code>;</li>
+<li>a <code>README.txt</code> noting the number of icons and that each uses <code>currentColor</code>;</li>
+<li>for Material icons, a text file per icon with its webfont character code instead of an SVG.</li>
+</ul>
+<h2 id="copy-an-svg-sprite">Copy an SVG sprite</h2>
+<p>Choose <strong>Copy sprite</strong> in the tray. The Icon Library copies one hidden <code>&lt;svg&gt;</code> containing a <code>&lt;symbol&gt;</code> for each selected icon, with the icon&#39;s id as its <code>id</code>:</p>
+<pre class="code" data-lang="html"><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; style=&quot;display:none&quot;&gt;
+  &lt;symbol id=&quot;lucide-house&quot; viewBox=&quot;0 0 24 24&quot;&gt;…&lt;/symbol&gt;
+&lt;/svg&gt;
+&lt;!-- use: &lt;svg&gt;&lt;use href=&quot;#ID&quot;/&gt;&lt;/svg&gt; --&gt;</code></pre>
+<p>Paste it once near the top of your page, then use any icon with:</p>
+<pre class="code" data-lang="html"><code>&lt;svg width=&quot;24&quot; height=&quot;24&quot;&gt;&lt;use href=&quot;#lucide-house&quot;/&gt;&lt;/svg&gt;</code></pre>
+<p>A sprite needs no script and no further requests, and icons in it still take <code>currentColor</code>.</p>
+<h2 id="download-one-icon">Download one icon</h2>
+<p>Open an icon and choose <strong>Download .svg</strong>. The file is named <code>&lt;id&gt;-&lt;style&gt;.svg</code> and uses your chosen colour and stroke.</p>
+<h2 id="link-files-directly">Link files directly</h2>
+<p>Every SVG icon is also served as a file under <code>https://icons.auricartisan.com/icon/&lt;set&gt;/…</code>; see <a href="embed-an-icon.html#direct-svg-files">Embed an icon</a>. You can download files from these addresses to host them yourself.</p>
+<h2 id="host-the-loader-yourself">Host the loader yourself</h2>
+<p>The loader works from any address. To serve it from your own site:</p>
+<ol>
+<li>Copy <code>icon-cdn.js</code> and the <code>data/</code> files it uses (<code>sets.json</code>, <code>index.json</code>, the <code>bodies/</code> files for the sets and styles you need, and <code>material.json</code> with the Material fonts if you use Material) to a folder on your site, keeping the same layout.</li>
+<li>Load the script from there. It finds its data next to itself, or set <code>data-base</code> on the script tag to point elsewhere.</li>
+</ol>
+<p>See <a href="use-the-loader.html#where-it-loads-from">Use the loader</a>.</p>
+<h2 id="keep-the-licences">Keep the licences</h2>
+<p>When you ship icons, keep each set&#39;s licence notice where its licence asks for it. See <a href="../others/licences.html">Licences</a>.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="embed-an-icon.html">Embed an icon</a></li>
+<li><a href="../others/licences.html">Licences</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="embed-an-icon.html"><span>Previous</span>Embed an icon</a><a href="style-size-and-colour.html"><span>Next</span>Style, size and colour</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#collect-icons-in-your-kit">Collect icons in your kit</a></li><li><a href="#download-a-zip">Download a ZIP</a></li><li><a href="#copy-an-svg-sprite">Copy an SVG sprite</a></li><li><a href="#download-one-icon">Download one icon</a></li><li><a href="#link-files-directly">Link files directly</a></li><li><a href="#host-the-loader-yourself">Host the loader yourself</a></li><li><a href="#keep-the-licences">Keep the licences</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exports and health records — Auric Artisan Docs</title>
+<meta name="description" content="Generate the project health report, write health.json, SARIF and trend history, and export Markdown summaries from the Studio.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Studio</a>
+<h2>Auric Artisan Studio docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started</a></li>
+<li><a href="appearance.html">Appearance</a></li>
+<li><a href="choosing-an-install.html">Choose what to install</a></li>
+<li><a href="ci-gate.html">The CI gate</a></li>
+<li><a href="command-center.html">The Command Center</a></li>
+<li><a href="contrast-studio.html">The Contrast Studio</a></li>
+<li><a href="exports-and-records.html" aria-current="page">Exports and health records</a></li>
+<li><a href="icon-studio-bridge.html">The Icon Studio bridge</a></li>
+<li><a href="overview-view.html">The Overview view</a></li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="rulebook-and-knowledge.html">Rulebook and knowledge database</a></li>
+<li><a href="scanning.html">Scanning</a></li>
+<li><a href="scores-and-grades.html">Scores and grades</a></li>
+<li><a href="studio-accessibility.html">Accessibility of the Studio</a></li>
+<li><a href="studio.html">The Studio</a></li>
+<li><a href="suppression-and-branding.html">Suppression and branding</a></li>
+<li><a href="workstation.html">The Workstation</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Studio</a> &rsaquo; <a href="README.html">Auric Artisan Studio docs</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Studio</p>
+<h1>Exports and health records</h1>
+<p class="lede">Generate the project health report, write health.json, SARIF and trend history, and export Markdown summaries from the Studio.</p>
+<p>The Studio can turn a scan into files you can read, print, share or feed to other tools. All of them are generated on your machine and written to your workspace; nothing is uploaded.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Output</th><th>Made by</th><th>Format</th><th>Written to</th></tr></thead>
+<tbody>
+<tr><td>Project health report</td><td><strong>Generate Project Health Report (Color, A11y &amp; Code Health)</strong></td><td>Markdown, JSON, HTML</td><td><code>.auric-artisan/project-health.*</code></td></tr>
+<tr><td>Health record</td><td><strong>Write Health Record (health.json + SARIF)</strong>, or automatically after each scan</td><td>JSON</td><td><code>.auric-artisan/health.json</code></td></tr>
+<tr><td>SARIF export</td><td>Same as the health record</td><td>SARIF 2.1.0 (JSON)</td><td><code>.auric-artisan/health.sarif</code></td></tr>
+<tr><td>Trend history</td><td>Same as the health record</td><td>JSON</td><td><code>.auric-artisan/health-history.json</code></td></tr>
+<tr><td>Accessibility summary</td><td>Studio › Home › <strong>Report</strong> (without Auric Code Health)</td><td>Markdown</td><td>Where you choose</td></tr>
+<tr><td>WCAG summary</td><td>Studio › Check › Findings › <strong>Export WCAG</strong></td><td>Markdown</td><td>Where you choose</td></tr>
+<tr><td>Remediation plan</td><td><strong>Generate Agent-Ready Remediation Plan</strong></td><td>Markdown, JSON</td><td><code>.auric-artisan/ai-remediation-plan.*</code></td></tr>
+<tr><td>Palette, shade and brand token exports</td><td>Studio › Color and Brand tools</td><td>CSS, JSON, Tailwind config</td><td>Where you choose</td></tr>
+</tbody></table></div>
+<p>The two commands that make the project health report and the health record come with Auric Code Health. The health record files are also written automatically after every project scan, whichever Studio extension ran it (see <code>health.writeOnScan</code> below). All outputs that go to <code>.auric-artisan</code> need a workspace folder to be open; without one you see, for example, <strong>Auric Artisan: open a workspace folder before generating a Project Health report.</strong></p>
+<h2 id="the-project-health-report">The project health report</h2>
+<h3 id="generate-it">Generate it</h3>
+<ol>
+<li>Run <strong>Auric Artisan: Generate Project Health Report (Color, A11y &amp; Code Health)</strong>, or select <strong>Report</strong> on the Overview, in the Studio&#39;s Home or Health space, or <strong>Project health report</strong> in the Command Center.</li>
+<li>The Studio uses a fresh scan cache if there is one, or scans first.</li>
+<li>It writes three files to <code>.auric-artisan</code> and opens the Markdown one.</li>
+<li>A message confirms, for example <strong>Auric Artisan: Project Health report ready — grade B, 14 code-health finding(s). Generated locally.</strong>, with three buttons:<ul>
+<li><strong>Open in Browser</strong> opens <code>project-health.html</code> in your default browser. The file is local; nothing is fetched.</li>
+<li><strong>Open JSON</strong> opens <code>project-health.json</code>.</li>
+<li><strong>Open Data Folder</strong> shows the folder in your file manager.</li>
+</ul>
+</li>
+</ol>
+<p>Although the command comes with Auric Code Health, the report covers colour, accessibility and code health even when Code Health is the only Studio extension installed.</p>
+<h3 id="project-healthmd">project-health.md</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td>Heading</td><td><strong>Auric Artisan — Project Health Report</strong>, the date and time, the WCAG profile, and <strong>all analysis ran locally</strong></td></tr>
+<tr><td><strong>Overview</strong></td><td>Overall grade and score, files and languages, unique colours, contrast pairs, accessibility score and issues, code-health score and findings</td></tr>
+<tr><td><strong>Languages</strong></td><td>Up to 20 languages with their file counts</td></tr>
+<tr><td><strong>Code Health</strong></td><td>Counts per category and the top 20 findings with file and line</td></tr>
+<tr><td><strong>Accessibility (WCAG 2.2)</strong></td><td>Counts by impact and the top 15 findings with criterion, impact, message and location</td></tr>
+<tr><td><strong>Worst contrast pairs</strong></td><td>Up to 15 pairs: foreground, background, ratio, ratio needed, location; large text and dark theme are marked</td></tr>
+<tr><td><strong>Recommendations</strong></td><td>Up to 8 recommendations from the scan</td></tr>
+</tbody></table></div>
+<h3 id="project-healthjson">project-health.json</h3>
+<p>A JSON file with <code>&quot;schema&quot;: &quot;auric-artisan.project-health&quot;</code>, the time it was generated and the full scan result. Long lists are capped: up to 600 failing pairs, 300 colour-vision risks, 600 WCAG findings, 800 code-health findings, 600 branding findings, 96 colours and 20 file hotspots.</p>
+<h3 id="project-healthhtml">project-health.html</h3>
+<p>A printable page styled like the Studio&#39;s paper theme. It is self-contained: the fonts are embedded, there are no scripts, and it loads nothing from the network, so it looks the same opened from disk, attached to an email or printed. It contains:</p>
+<ul>
+<li>the workspace name, scan date, number of files, WCAG profile and contrast target;</li>
+<li>score cards for <strong>Overall</strong>, <strong>Accessibility</strong>, <strong>Contrast</strong> and <strong>Code health</strong>;</li>
+<li><strong>Fix these first</strong>: up to five recommendations with their priority;</li>
+<li><strong>Contrast pairs below 4.5:1</strong> (your target): up to 12 pairs with a sample, the pair, its location, its ratio and the <strong>nearest passing, same hue</strong> colour with its ratio;</li>
+<li><strong>Accessibility by criterion</strong>: up to 12 success criteria with counts;</li>
+<li><strong>Code health by kind</strong>: counts per category, with secrets highlighted;</li>
+<li><strong>Files to fix first</strong>: up to eight files with contrast, WCAG and colour-vision counts;</li>
+<li>a footer: <strong>Nothing in this report left the machine it was made on.</strong></li>
+</ul>
+<h2 id="the-health-record">The health record</h2>
+<p>The health record is a stable, versioned, machine-readable record of every issue in the project, for CI dashboards, code scanning and trend tracking.</p>
+<h3 id="write-it">Write it</h3>
+<ul>
+<li>Run <strong>Auric Artisan: Write Health Record (health.json + SARIF)</strong>, or select <strong>SARIF</strong> (Overview), <strong>health.json + SARIF</strong> (Overview or Studio › Health) or <strong>Write health.json + SARIF</strong> (Studio › Home › CI gate).</li>
+<li>The Studio uses a fresh scan cache or scans first, writes the formats listed in <code>health.formats</code>, and opens <code>health.json</code>.</li>
+<li>A message lists what was written, for example <strong>Auric Artisan: wrote health.json, health.sarif, health-history.json — grade B, 14 code-health + 3 contrast + 21 a11y issues. Generated locally.</strong>, with <strong>Open SARIF</strong> and <strong>Open Data Folder</strong>.</li>
+</ul>
+<p>With <code>health.writeOnScan</code> on (the default), the record is also rewritten after every project scan, including automatic scans. Live re-grades never write files. If <code>health.enabled</code> is off, the command says <strong>Auric Artisan: health report is disabled (auricCodeHealth.health.enabled).</strong></p>
+<h3 id="settings">Settings</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Default</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>auricCodeHealth.health.enabled</code></td><td><code>true</code></td><td>Maintain the record at all</td></tr>
+<tr><td><code>auricCodeHealth.health.writeOnScan</code></td><td><code>true</code></td><td>Rewrite it after each project scan</td></tr>
+<tr><td><code>auricCodeHealth.health.formats</code></td><td><code>[&quot;json&quot;,&quot;sarif&quot;,&quot;history&quot;]</code></td><td>Which files to write</td></tr>
+<tr><td><code>auricCodeHealth.health.fileName</code></td><td><code>health.json</code></td><td>Name of the JSON file; the SARIF and history names follow it</td></tr>
+<tr><td><code>auricCodeHealth.health.maxIssues</code></td><td><code>5000</code></td><td>Most issues recorded, worst first (100–100000)</td></tr>
+<tr><td><code>auricCodeHealth.health.historyLimit</code></td><td><code>200</code></td><td>Most history entries kept (10–5000)</td></tr>
+</tbody></table></div>
+<p>For example, with <code>health.fileName</code> set to <code>quality.json</code>, the files are <code>quality.json</code>, <code>quality.sarif</code> and <code>quality-history.json</code>.</p>
+<h3 id="healthjson">health.json</h3>
+<p>The top-level fields:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>$schema</code>, <code>schemaVersion</code>, <code>kind</code></td><td><code>https://auricartisan.com/schema/health-v1.json</code>, <code>1</code>, <code>auric-artisan.health</code></td></tr>
+<tr><td><code>tool</code></td><td>Name, version and website of the tool</td></tr>
+<tr><td><code>knowledge</code></td><td>Version, content hash and domains of the knowledge database used, and <code>actConformant: false</code></td></tr>
+<tr><td><code>generatedAt</code>, <code>workspace</code></td><td>When the scan ran, and the workspace name</td></tr>
+<tr><td><code>git</code></td><td>The branch and commit, read from the <code>.git</code> folder when there is one</td></tr>
+<tr><td><code>profile</code>, <code>thresholds</code></td><td>The WCAG profile, the contrast ratio target and the APCA target</td></tr>
+<tr><td><code>scores</code></td><td><code>overall</code>, <code>grade</code>, <code>contrast</code>, <code>accessibility</code>, <code>codeHealth</code></td></tr>
+<tr><td><code>summary</code></td><td>Files, languages, colours, pairs, total issues, counts by source and severity, branding, categories, WCAG impacts</td></tr>
+<tr><td><code>languages</code>, <code>colors</code></td><td>Files per language, and up to 64 colours with their use and file counts</td></tr>
+<tr><td><code>issues</code></td><td>Every issue, worst first, up to <code>health.maxIssues</code></td></tr>
+</tbody></table></div>
+<p>Each issue has:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>id</code></td><td>An 8-character fingerprint that identifies the issue across runs</td></tr>
+<tr><td><code>source</code></td><td><code>accessibility</code>, <code>contrast</code>, <code>color-vision</code>, <code>branding</code> or <code>code-health</code></td></tr>
+<tr><td><code>ruleId</code></td><td>For example <code>img-alt</code>, <code>low-contrast</code>, <code>low-contrast-inherited</code>, <code>cvd-risk</code>, <code>branding-contrast</code>, <code>ch-secret-jwt</code></td></tr>
+<tr><td><code>severity</code></td><td><code>critical</code>, <code>high</code>, <code>medium</code>, <code>low</code> or <code>info</code></td></tr>
+<tr><td><code>file</code>, <code>line</code>, <code>col</code></td><td>Workspace-relative path with forward slashes, and position</td></tr>
+<tr><td><code>message</code>, <code>fix</code></td><td>What is wrong and how to fix it</td></tr>
+<tr><td>Other fields</td><td><code>wcag</code>, <code>knowledgeRuleId</code>, <code>detectorVersion</code>, <code>confidence</code>, <code>automation</code>, <code>category</code>, <code>data</code>, <code>excludedFromScore</code>, <code>redacted</code></td></tr>
+</tbody></table></div>
+<p><code>wcag</code> holds the criterion, title, level and version. <code>data</code> holds the colours and ratios of a colour issue. <code>excludedFromScore</code> marks branding. <code>redacted</code> marks secrets.</p>
+<p>How severities are assigned:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Finding</th><th>Severity</th></tr></thead>
+<tbody>
+<tr><td>WCAG critical, serious, moderate, minor</td><td>critical, high, medium, low</td></tr>
+<tr><td>Contrast failure</td><td>high (low when the background was assumed from the page)</td></tr>
+<tr><td>Colour-vision risk</td><td>medium</td></tr>
+<tr><td>Branding</td><td>info</td></tr>
+<tr><td>Code health: merge markers</td><td>high</td></tr>
+<tr><td>Code health: secrets, security, risky APIs</td><td>medium</td></tr>
+<tr><td>Code health: debug leftovers</td><td>low</td></tr>
+<tr><td>Code health: task markers, oversized</td><td>info</td></tr>
+</tbody></table></div>
+<p>Secrets are never written: their evidence is replaced by a note such as <code>[redacted secret; 40 characters]</code>. See <a href="../code-health/docs/secrets-and-redaction.html">Secrets and redaction</a>.</p>
+<h3 id="fingerprints">Fingerprints</h3>
+<p>The fingerprint is calculated from the issue&#39;s source, rule, file, line and a key detail (the colour pair for colour issues, the message or evidence otherwise). It stays the same from run to run while those stay the same, which is what makes baselines work. If a finding moves to another line, for example because you added lines above it, it gets a new fingerprint and counts as new against a baseline.</p>
+<h3 id="healthsarif">health.sarif</h3>
+<p>SARIF (Static Analysis Results Interchange Format) 2.1.0 is the format GitHub code scanning and many CI tools read. The file has one run whose tool is <strong>Auric Artisan</strong>, with:</p>
+<ul>
+<li>a <strong>rules</strong> list: each rule&#39;s ID, a short description (for WCAG, the criterion and its title), a help link (the W3C Understanding page for WCAG rules, auricartisan.com otherwise) and a default level;</li>
+<li>a <strong>result</strong> per issue: rule, level, message with the fix, file and position, a <code>partialFingerprints.auricArtisanId</code> fingerprint, and properties such as source, severity, confidence and whether evidence was redacted;</li>
+<li>the commit and branch, when known.</li>
+</ul>
+<p>Levels: critical and high issues are <code>error</code>, medium issues are <code>warning</code>, low and info issues are <code>note</code>.</p>
+<h3 id="health-historyjson">health-history.json</h3>
+<p>An append-only trend log. Each recorded scan adds one entry with its time, commit and branch, grade, scores, number of files, total issues and counts by source and severity. When the log exceeds <code>health.historyLimit</code> entries, the oldest are dropped. The bundled <code>.gitignore</code> excludes it; remove that line if you want to commit the history.</p>
+<h2 id="studio-markdown-exports">Studio Markdown exports</h2>
+<p>Both open a save dialog in your first workspace folder, then open the saved file.</p>
+<h3 id="accessibility-summary-accessibility-reportmd">Accessibility summary (accessibility-report.md)</h3>
+<p>From Studio › Home › <strong>Report</strong> when Auric Code Health is not installed. It contains the score and grade, files scanned, unique colours, contrast pair counts and harmony, the contrast distribution, the recommendations, up to 20 file hotspots, up to 500 failing pairs and up to 200 colour-vision risk pairs.</p>
+<h3 id="wcag-summary-wcag-reportmd">WCAG summary (wcag-report.md)</h3>
+<p>From Studio › Check › Findings › <strong>Export WCAG</strong>. It contains the accessibility sub-score and overall score, issue counts by level, impact and WCAG version, a table by success criterion, and every WCAG finding with criterion, impact, message and location. It ends with <strong>Automated checks cover only part of WCAG; manual testing is still required.</strong></p>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="ci-gate.html">The CI gate</a>, which writes the same <code>health.json</code> and SARIF from the command line.</li>
+<li><a href="remediation-plan.html">The remediation plan</a></li>
+<li><a href="../color/docs/palettes-and-shades.html">Palettes and shades</a> and <a href="../color/docs/brand-audit.html">The brand audit</a> for the colour exports.</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="contrast-studio.html"><span>Previous</span>The Contrast Studio</a><a href="icon-studio-bridge.html"><span>Next</span>The Icon Studio bridge</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-project-health-report">The project health report</a></li><li><a href="#the-health-record">The health record</a></li><li><a href="#studio-markdown-exports">Studio Markdown exports</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

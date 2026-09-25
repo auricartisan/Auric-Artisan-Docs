@@ -1,0 +1,324 @@
+==============================================================================
+LUT LAB REFERENCE
+==============================================================================
+Every tab, control, readout, .cube keyword, export format, link parameter and
+message in LUT Lab.
+Area: Website › Tools › Image and file tools › LUT Lab   Updated: 2026-09-25
+
+Address: https://auricartisan.com/tool/general/tools/lut-lab/
+
+TABS
+====
+
+  Tab:      Lab
+  Contents: Scene, look, .cube file, overlay switch, share link; the before
+            and after pair and what the transform moved
+
+  Tab:      Method
+  Contents: Five explanations: Sample order, Interpolation, Clipping, Round
+            trip, Linear light
+
+  Tab:      Looks
+  Contents: A card per look with a test strip and figures; the two withdrawn
+            features
+
+  Tab:      Data
+  Contents: The 17 entries every figure rests on, filterable by status
+
+  Tab:      Export
+  Contents: Kind, size, file details, save and copy buttons, the file preview
+
+  Tab:      Reference
+  Contents: The ten sources, filterable by whether they run
+
+LAB TAB — THE SCENE
+===================
+
+  Control:      Neutral wedge
+  What it does: 16-step grey ramp over red, green and blue ramps, 320 × 180
+  Default:      Selected
+
+  Control:      Colour patches
+  What it does: 24 flat patches, six hues at four lightness levels
+  Default:      —
+
+  Control:      Skin tones
+  What it does: Six skin-like tones on a mid-grey surround
+  Default:      —
+
+  Control:      Saturation field
+  What it does: Hue across, chroma from none at the bottom to strong at the
+                top
+  Default:      —
+
+  Control:      Drop an image
+  What it does: Loads your picture, scaled to fit 480 × 270, as the scene
+  Default:      —
+
+  Control:      Back to the drawn scenes
+  What it does: Removes your picture and returns to the drawn scenes
+  Default:      Shown with your picture
+
+LAB TAB — THE LOOK
+==================
+
+  Control: Look menu
+  Values:  None, Teal and orange, Bleach bypass, Film soft, Mono contrast,
+           Log-ish lift, Reinhard tone-map
+  Default: Teal and orange
+
+  Control: Strength
+  Values:  0% to 100%, step 1%
+  Default: 100%
+
+  Control: Tone-map exposure
+  Values:  0.25× to 8×, step 0.05; active only for Reinhard tone-map
+  Default: 2.00×
+
+  Control: Note
+  Values:  The pair is showing a look this page computes. or The pair is
+           showing the loaded file. The looks are paused.
+  Default: —
+
+The look menu and Strength are disabled while a loaded file is shown.
+
+LAB TAB — A .CUBE FILE
+======================
+
+  Control:      Drop a .cube
+  What it does: Loads a dropped `.cube`, or opens a chooser (`.cube`, plain
+                text) when selected or on `Enter` or `Space`
+
+  Control:      File card
+  What it does: Title, kind, size, domain, reachable, and notes or errors
+
+  Control:      Back to the looks
+  What it does: Shows the look again, keeping the file loaded; visible while
+                the file is shown
+
+  Control:      Clear the file
+  What it does: Removes the file and shows the look
+
+LAB TAB — SHOW
+==============
+
+  Control:      What the transform crushed
+  What it does: Hatches clipped pixels on the After image: pink for driven to
+                white, blue for driven to black
+  Default:      On
+
+  Control:      Copy a link to this setting
+  What it does: Copies an address that restores the settings
+  Default:      —
+
+LAB TAB — READOUTS
+==================
+
+  Readout: Label above the pair
+  Meaning: The transform shown
+
+  Readout: Before caption
+  Meaning: Pixel count of the scene
+
+  Readout: After caption
+  Meaning: Share of pixels clipped
+
+  Readout: mean ΔE₀₀
+  Meaning: Average CIEDE2000 difference, before to after
+
+  Readout: 95th percentile
+  Meaning: Difference that 95% of pixels are at or below
+
+  Readout: largest
+  Meaning: Largest difference on any pixel
+
+  Readout: clipped
+  Meaning: Share of pixels with a channel driven to 0 or 255; red above 1%
+
+  Readout: the old test said
+  Meaning: Share of output pixels with any channel at 0 or 255
+
+  Readout: Hue circle
+  Meaning: 72 test colours at L* 60, C* 40: hollow before, filled after, pink
+           ring if clipped
+
+  Readout: largest hue shift
+  Meaning: Largest hue turn, degrees, signed
+
+  Readout: mean hue shift
+  Meaning: Average absolute hue turn, degrees
+
+  Readout: largest L shift*
+  Meaning: Largest lightness change, signed
+
+  Readout: clipped on the circle
+  Meaning: Test colours clipped, out of 72
+
+  Readout: Caption count
+  Meaning: Test colours pulled inside sRGB before the test: 13 of 72
+
+ΔE figures have two decimal places, percentages two, hue and lightness shifts
+one.
+
+LOOKS TAB
+=========
+
+Each card: name, Stylisation or Transform badge, an 18-colour before and after
+strip, a description, mean ΔE₀₀, max hue and clipped on the hue ring, and Show
+it on the pair.
+
+  Look              | Kind        | mean ΔE₀₀ on the ring | max hue | clipped
+  ------------------+-------------+-----------------------+---------+--------
+  Teal and orange   | Stylisation | 1.2                   | +3.5°   | 0/72
+  Bleach bypass     | Stylisation | 7.9                   | −12.9°  | 0/72
+  Film soft         | Stylisation | 1.9                   | −7.7°   | 0/72
+  Mono contrast     | Stylisation | 22.6                  | +177.8° | 0/72
+  Log-ish lift      | Stylisation | 16.9                  | −25.2°  | 0/72
+  Reinhard tone-map | Transform   | 6.6                   | −25.1°  | 0/72
+
+These are the figures at full strength, and for the tone-map at the default
+exposure of 2×. Mono contrast removes colour entirely, so its hue figure has
+no useful meaning.
+
+Withdrawn: ACEScct to ACEScg and Export 32-bit float samples, each with why
+and what it would take, and a table of the ACEScct decode for nine input
+codes.
+
+METHOD TAB
+==========
+
+  Section:  Sample order
+  Contents: The index order, and the eight rows of a 2 × 2 × 2 identity
+
+  Section:  Interpolation
+  Contents: The seven blends of trilinear interpolation; worst identity error
+            at sizes 2, 5, 9, 17, 33 and 65
+
+  Section:  Clipping
+  Contents: Seven test pixels judged by the old test and the clip test
+
+  Section:  Round trip
+  Contents: Write-and-read-back difference at 17 and 33 of the current
+            transform; identity accuracy at 16, 17, 18, 33, 52 and 65
+
+  Section:  Linear light
+  Contents: The tone-map at six input codes, in linear light and in the old
+            placement
+
+DATA TAB
+========
+
+Status buttons: All (17), Verbatim (5), Computed (5), Stand-in (4), Absent
+(3). Select an entry to expand it.
+
+  Status:  Verbatim
+  Entries: The .cube format, sRGB, CIE 1931 observer and CIELAB, CIEDE2000,
+           Reinhard tone reproduction
+
+  Status:  Computed
+  Entries: Trilinear interpolation, clipping detection, the hue sweep, what a
+           transform moves, the export round trip
+
+  Status:  Stand-in
+  Entries: The five stylisations, the 8-bit path, the tone-map exposure, the
+           drawn scenes
+
+  Status:  Absent
+  Entries: ACEScct to ACEScg, 32-bit float export, PQ, BT.2020 and the ACES
+           primaries
+
+Loading your own picture changes the scenes entry to Verbatim, naming your
+file.
+
+EXPORT TAB
+==========
+
+  Control        | Values                                             | Default
+  ---------------+----------------------------------------------------+--------
+  Kind           | 3D cube, 1D curve                                  | 3D cube
+  Size           | 2 to 65, step 1                                    | 33
+  rows           | Size³ for 3D, size for 1D                          | 35937
+  file size      | Size of the text, in KB                            | —
+  file name      | `auric-`name`-`size`.cube`, with `-1d` for a curve | —
+  Grid note      | Whether grid points land on 8-bit values           | —
+  Save the .cube | Downloads the file                                 | —
+  Copy it        | Copies the file text                               | —
+  Hue sweep, CSV | Downloads `auric-lut-lab-hue-sweep.csv`            | —
+  Report, JSON   | Downloads `auric-lut-lab-report.json`              | —
+
+.CUBE KEYWORDS
+==============
+
+  Keyword        | Read               | Written
+  ---------------+--------------------+-----------------------------
+  `TITLE`        | Yes                | `"Auric Artisan — ` name `"`
+  `LUT_3D_SIZE`  | Yes                | For 3D
+  `LUT_1D_SIZE`  | Yes                | For 1D
+  `DOMAIN_MIN`   | Yes; default 0 0 0 | `0.0 0.0 0.0`
+  `DOMAIN_MAX`   | Yes; default 1 1 1 | `1.0 1.0 1.0`
+  `#` comments   | Ignored            | Header of about 12 lines
+  Other keywords | Ignored            | —
+
+Data rows are written with six decimal places, red index changing fastest.
+
+SHARE LINK PARAMETERS
+=====================
+
+  Parameter: `scene`
+  Meaning:   Drawn scene
+  Values:    `wedge`, `patches`, `skin`, `sweep`
+
+  Parameter: `look`
+  Meaning:   Look
+  Values:    `none`, `teal-orange`, `bleach-bypass`, `film-soft`,
+             `mono-contrast`, `log-lift`, `reinhard`
+
+  Parameter: `s`
+  Meaning:   Strength
+  Values:    0 to 1
+
+  Parameter: `e`
+  Meaning:   Tone-map exposure
+  Values:    0.25 to 8
+
+  Parameter: `n`
+  Meaning:   Export size
+  Values:    2 to 65
+
+  Parameter: `k`
+  Meaning:   Export kind
+  Values:    `3D`, `1D`
+
+REFERENCE TAB
+=============
+
+Status buttons: All (10), Runs (6), Partly (1), Not held (3).
+
+  Source                                                 | Status
+  -------------------------------------------------------+---------
+  Adobe / IRIDAS Cube LUT Specification 1.0              | Runs
+  IEC 61966-2-1:1999 (sRGB)                              | Runs
+  CIE 015:2018, Colorimetry                              | Runs
+  CIE 142-2001 (CIEDE2000)                               | Runs
+  Sharma, Wu and Dalal (2005), CIEDE2000 test data       | Runs
+  Reinhard et al. (2002), photographic tone reproduction | Runs
+  ACES S-2016-001, ACEScct                               | Partly
+  SMPTE ST 2084 (PQ) and ITU-R BT.2100                   | Not held
+  ITU-R BT.2020-2                                        | Not held
+  SMPTE ST 2065-1 (ACES AP0)                             | Not held
+
+MESSAGES
+========
+
+  Message                                | When
+  ---------------------------------------+---------------------------------
+  Loaded name, with a note count if any  | A `.cube` was read
+  Loaded name at width×height            | Your picture was loaded
+  That image could not be read           | The picture could not be decoded
+  A reading error, such as empty file    | The `.cube` could not be read
+  Cleared the loaded file                | Clear the file was selected
+  Back to the drawn scenes               | Your picture was removed
+  Saved file name                        | A `.cube` was saved
+  Copied the .cube / Link copied         | A copy succeeded
+  The clipboard refused                  | Clipboard access was blocked
+  Saved the hue sweep / Saved the report | A CSV or JSON was saved

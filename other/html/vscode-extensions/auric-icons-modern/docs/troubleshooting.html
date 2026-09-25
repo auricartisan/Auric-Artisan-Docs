@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Auric Artisan Docs</title>
+<meta name="description" content="Symptoms, causes and fixes for common problems with the Modern file icon theme and Icon Library.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Icons: Modern</a>
+<h2>Auric Icons: Modern guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Icons: Modern</a></li>
+<li><a href="file-icon-theme.html">Use the file icon theme</a></li>
+<li><a href="icon-library.html">Browse the Icon Library</a></li>
+<li><a href="insert-copy-and-save.html">Insert, copy and save icons</a></li>
+<li><a href="merged-icon-studio.html">The merged Icon Studio</a></li>
+<li><a href="reference.html">Auric Icons: Modern reference</a></li>
+<li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a></li>
+<li><a href="faq.html">Frequently asked questions</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Icons: Modern</a> &rsaquo; <a href="README.html">Auric Icons: Modern guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Icons: Modern</p>
+<h1>Troubleshooting</h1>
+<p class="lede">Symptoms, causes and fixes for common problems with the Modern file icon theme and Icon Library.</p>
+<h2 id="file-icon-theme">File icon theme</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>A setting change does not show in the Explorer.</td><td>VS Code caches icon themes until the window reloads.</td><td>Select <strong>Reload Window</strong> in the prompt, or run <strong>Developer: Reload Window</strong>.</td></tr>
+<tr><td>No reload prompt appears.</td><td>The prompt only appears when Modern is the active file icon theme.</td><td>Activate the theme first with <strong>Activate Icon Theme</strong>.</td></tr>
+<tr><td>&quot;could not apply customisation — … The default icons remain active.&quot;</td><td>A value could not be applied, for example an invalid colour.</td><td>Check the value in Settings; folder colour must be <code>default</code> or a three- or six-digit hex colour.</td></tr>
+<tr><td>A custom association shows a blank icon.</td><td>The value is not one of the theme&#39;s icon IDs.</td><td>Use an ID from the <a href="reference.html#icon-ids-for-associations">reference</a>.</td></tr>
+<tr><td>A workspace setting does not seem to apply.</td><td>The extension&#39;s own commands write user-level settings; a workspace value may override them.</td><td>Check the workspace <code>settings.json</code> for <code>auricIcons.*</code> values.</td></tr>
+<tr><td>The file icon theme picker lists two Modern entries.</td><td>Auric Artisan File Icons also contributes a Modern style (<strong>Auric Artisan File Icons: Modern</strong>) with the same theme ID.</td><td>Choose one extension to manage Modern and use its settings. See the note below.</td></tr>
+<tr><td>The workspace detection offer never appears.</td><td>It only checks local folders, asks once per workspace, and does not ask when Modern is already active or <code>auricIcons.autoDetect</code> is off.</td><td>Run <strong>Detect Auric Artisan Workspace</strong>, or activate the theme directly.</td></tr>
+</tbody></table></div>
+<blockquote class="callout callout-note">
+<p><strong>Note:</strong> With both Auric Icons: Modern and Auric Artisan File Icons installed, use either <code>auricIcons.*</code> settings (this extension) or File Icon Studio (<code>auricFileIcons.*</code>) consistently. If icons look inconsistent, disable one of the two sources of the Modern theme. See <a href="../../auric-artisan-file-icons/docs/modern-and-legacy.html">Modern and older Playful settings</a>.</p>
+</blockquote>
+<h2 id="icon-library">Icon Library</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Why it happens</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>The <strong>Auric Icons: Modern</strong> Activity Bar view is missing.</td><td>Another extension hosts the shared library: Auric Artisan Icon Studio, or a sibling collection.</td><td>Use the host&#39;s view, or set <code>auricIconStudio.hostFamilyLibraries</code> to <code>false</code> if Icon Studio is the host. See <a href="merged-icon-studio.html">The merged Icon Studio</a>.</td></tr>
+<tr><td>Modern commands are missing from the Command Palette.</td><td>Same as above: they hide while another extension hosts.</td><td>Use the host&#39;s commands; keybindings still work.</td></tr>
+<tr><td><code>Ctrl</code> + <code>Alt</code> + <code>I</code> does nothing.</td><td>The editor is not focused, another extension hosts the library, or the keys are bound elsewhere.</td><td>Focus a text editor and check <strong>Keyboard Shortcuts</strong>.</td></tr>
+<tr><td>&quot;Open a text editor before inserting an SVG.&quot;</td><td>No text editor was available.</td><td>Open a file, click into it, then insert again.</td></tr>
+<tr><td>The inserted format is not what I expected.</td><td>Smart insert chose a format for the file&#39;s language.</td><td>Use <strong>Copy Icon As…</strong> for an explicit format, or turn off <code>auricIcons.library.smartInsert</code>.</td></tr>
+<tr><td>Likes from the retired &quot;Auric Artisan Drawing Icon&quot; extension are missing.</td><td>Each extension keeps its own storage; history does not move between different extensions.</td><td>Like the icons again in Modern.</td></tr>
+<tr><td>A command error mentions that another extension owns the same command.</td><td>The retired &quot;Auric Artisan Drawing Icon&quot; or &quot;Auric Artisan Icons&quot; extension is still installed.</td><td>Uninstall the retired extensions; Modern supersedes them.</td></tr>
+<tr><td>The library says the icon catalog is not bundled.</td><td>The installed files are incomplete.</td><td>Reinstall the extension from the Marketplace.</td></tr>
+</tbody></table></div>
+<h2 id="still-stuck">Still stuck</h2>
+<p>Note your VS Code version, the extension version (0.12.1), which Auric icon extensions are installed, and the steps that reproduce the problem, then contact support at <a href="https://auricartisan.com/company/contact/" rel="noopener">https://auricartisan.com/company/contact/</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="reference.html"><span>Previous</span>Auric Icons: Modern reference</a><a href="faq.html"><span>Next</span>Frequently asked questions</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#file-icon-theme">File icon theme</a></li><li><a href="#icon-library">Icon Library</a></li><li><a href="#still-stuck">Still stuck</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,756 @@
+==============================================================================
+REFERENCE
+==============================================================================
+Every customer endpoint of the Auric Artisan REST API with its method,
+authentication, credit cost and purpose, plus the headers, input formats,
+plans and limits.
+Area: Services › Public API   Updated: 2026-09-25
+
+ESSENTIALS
+==========
+
+  Item:  Base URL
+  Value: https://api.auricartisan.com
+
+  Item:  Version prefix
+  Value: `/v1`
+
+  Item:  Format
+  Value: JSON over HTTPS
+
+  Item:  Authentication
+  Value: `x-api-key` header (or `?key=` query), or `Authorization: Bearer`
+         from the CLI
+
+  Item:  Key prefix
+  Value: `aa_`
+
+  Item:  Keys per account
+  Value: Up to 10 active
+
+  Item:  Revocation
+  Value: Takes effect within a minute
+
+  Item:  Specification
+  Value: `GET /v1/openapi.yaml` (OpenAPI 3.1); `GET /v1/catalog` (JSON)
+
+  Item:  Interactive reference
+  Value: `GET /v1/docs`
+
+COLOUR INPUT
+============
+
+Unless a field says otherwise, a colour can be sent as `#rrggbb`, `#rgb`,
+`rgb(r,g,b)`, an array `[r,g,b]` or an object `{r,g,b}`. Image fields take
+Base64 or a data URL.
+
+ENDPOINTS
+=========
+
+Auth "None" means public and unmetered; "Key" needs an API key or bearer
+token. Credits are per call; see Plans, credits and quotas
+[plans-credits-and-quotas.txt]. The documentation gives some costs as ranges
+(2–4, 10–12); the exact cost of every call is returned in `x-credits-cost`.
+Endpoints the documentation does not weight separately bill as standard work,
+1 credit.
+
+  Method:  GET
+  Path:    `/v1`
+  Auth:    None
+  Credits: —
+  Summary: Index of every endpoint, with the current version
+
+  Method:  GET
+  Path:    `/v1/health`
+  Auth:    None
+  Credits: —
+  Summary: Liveness probe; always cheap, never touches storage
+
+  Method:  GET
+  Path:    `/v1/ready`
+  Auth:    None
+  Credits: —
+  Summary: Readiness probe: whether each backing store is bound
+
+  Method:  GET
+  Path:    `/v1/methods/:tool`
+  Auth:    Key
+  Credits: 1
+  Summary: The algorithms a given tool supports
+
+  Method:  GET
+  Path:    `/v1/formats`
+  Auth:    None
+  Credits: —
+  Summary: Every export format, across every exportable resource
+
+  Method:  GET
+  Path:    `/v1/tiers`
+  Auth:    None
+  Credits: —
+  Summary: Rate limit and monthly quota for each tier
+
+  Method:  GET
+  Path:    `/v1/metrics`
+  Auth:    None
+  Credits: —
+  Summary: Process-level counters in Prometheus format
+
+  Method:  GET
+  Path:    `/v1/status`
+  Auth:    None
+  Credits: —
+  Summary: Human-readable status page
+
+  Method:  GET
+  Path:    `/v1/catalog`
+  Auth:    None
+  Credits: —
+  Summary: Every endpoint with its parameters and examples, as JSON
+
+  Method:  GET
+  Path:    `/v1/docs`
+  Auth:    None
+  Credits: —
+  Summary: Interactive reference (Redoc)
+
+  Method:  GET
+  Path:    `/v1/openapi.yaml`
+  Auth:    None
+  Credits: —
+  Summary: The OpenAPI 3.1 document
+
+  Method:  GET
+  Path:    `/v1/graphql`
+  Auth:    None
+  Credits: —
+  Summary: GraphQL playground
+
+  Method:  POST
+  Path:    `/v1/graphql`
+  Auth:    Key
+  Credits: 2–4
+  Summary: Run a GraphQL query against the same resolvers as the REST
+           endpoints
+
+  Method:  POST
+  Path:    `/v1/color/convert`
+  Auth:    Key
+  Credits: 1
+  Summary: Convert one colour between the common spaces
+
+  Method:  GET
+  Path:    `/v1/color/atlas`
+  Auth:    Key
+  Credits: 1
+  Summary: Browse the 8,192-colour atlas under a filter
+
+  Method:  GET
+  Path:    `/v1/color/atlas/stats`
+  Auth:    Key
+  Credits: 1
+  Summary: What the atlas actually contains
+
+  Method:  GET
+  Path:    `/v1/color/atlas/:id`
+  Auth:    Key
+  Credits: 1
+  Summary: Resolve one sample, whole
+
+  Method:  POST
+  Path:    `/v1/color/nearest`
+  Auth:    Key
+  Credits: 1
+  Summary: The catalogued colours closest to one you already have
+
+  Method:  POST
+  Path:    `/v1/color/contrast`
+  Auth:    Key
+  Credits: 1
+  Summary: WCAG contrast ratio between two colours, with pass or fail at each
+           level
+
+  Method:  GET
+  Path:    `/v1/science/spaces`
+  Auth:    Key
+  Credits: 1
+  Summary: Every colour space the platform knows, with provenance
+
+  Method:  GET
+  Path:    `/v1/science/spaces/:key`
+  Auth:    Key
+  Credits: 1
+  Summary: One colour space in full, including its conversion matrices
+
+  Method:  POST
+  Path:    `/v1/science/convert`
+  Auth:    Key
+  Credits: 1
+  Summary: Convert a colour into any registry space, or several at once
+
+  Method:  POST
+  Path:    `/v1/science/dossier`
+  Auth:    Key
+  Credits: 5
+  Summary: One colour in every space at once, plus its colour temperature
+
+  Method:  POST
+  Path:    `/v1/science/delta-e`
+  Auth:    Key
+  Credits: 2–4
+  Summary: Perceptual difference between two colours
+
+  Method:  POST
+  Path:    `/v1/science/temperature`
+  Auth:    Key
+  Credits: 2–4
+  Summary: Correlated colour temperature from a colour, or the colour of a
+           temperature
+
+  Method:  GET
+  Path:    `/v1/science/illuminants`
+  Auth:    Key
+  Credits: 1
+  Summary: Standard reference illuminants with their chromaticities
+
+  Method:  GET
+  Path:    `/v1/science/metrics`
+  Auth:    Key
+  Credits: 1
+  Summary: The difference formulae, their options, and when to use each
+
+  Method:  POST
+  Path:    `/v1/palette/generate`
+  Auth:    Key
+  Credits: 2–4
+  Summary: Generate a palette from a seed colour
+
+  Method:  POST
+  Path:    `/v1/palette/evaluate`
+  Auth:    Key
+  Credits: 1
+  Summary: Score a palette for harmony, contrast and accessibility
+
+  Method:  POST
+  Path:    `/v1/palette/export`
+  Auth:    Key
+  Credits: 1
+  Summary: Render a palette into a file format
+
+  Method:  POST
+  Path:    `/v1/palette/from-image`
+  Auth:    Key
+  Credits: 10–12
+  Summary: Extract a palette from an uploaded image
+
+  Method:  POST
+  Path:    `/v1/palette/png`
+  Auth:    Key
+  Credits: 10–12
+  Summary: Render a palette as a PNG swatch sheet
+
+  Method:  POST
+  Path:    `/v1/harmony/generate`
+  Auth:    Key
+  Credits: 2–4
+  Summary: Build a harmony set from a base colour
+
+  Method:  POST
+  Path:    `/v1/harmony/classify`
+  Auth:    Key
+  Credits: 1
+  Summary: Identify which harmony an existing set of colours follows
+
+  Method:  POST
+  Path:    `/v1/harmony/export`
+  Auth:    Key
+  Credits: 1
+  Summary: Export a harmony set
+
+  Method:  POST
+  Path:    `/v1/gradient/generate`
+  Auth:    Key
+  Credits: 2–4
+  Summary: Interpolate a gradient between stops, in a chosen space
+
+  Method:  GET
+  Path:    `/v1/shade/library`
+  Auth:    Key
+  Credits: 1
+  Summary: Browse 8,192 measured shade scales under a filter
+
+  Method:  GET
+  Path:    `/v1/shade/library/stats`
+  Auth:    Key
+  Credits: 1
+  Summary: What the shade collection contains
+
+  Method:  GET
+  Path:    `/v1/shade/library/:id`
+  Auth:    Key
+  Credits: 1
+  Summary: One scale, whole, with every measurement
+
+  Method:  POST
+  Path:    `/v1/shade/evaluate`
+  Auth:    Key
+  Credits: 1
+  Summary: Measure a scale you already have: does it work as a token ramp?
+
+  Method:  GET
+  Path:    `/v1/palette/library`
+  Auth:    Key
+  Credits: 1
+  Summary: Browse five million generated palettes under a filter
+
+  Method:  GET
+  Path:    `/v1/palette/library/stats`
+  Auth:    Key
+  Credits: 1
+  Summary: What the palette collection looks like, measured on a stated sample
+
+  Method:  GET
+  Path:    `/v1/palette/library/:id`
+  Auth:    Key
+  Credits: 1
+  Summary: One palette, whole, with the derivation that reproduces it
+
+  Method:  GET
+  Path:    `/v1/harmony/library`
+  Auth:    Key
+  Credits: 1
+  Summary: Browse the 8,192-harmony collection under a filter
+
+  Method:  GET
+  Path:    `/v1/harmony/library/stats`
+  Auth:    Key
+  Credits: 1
+  Summary: What the harmony collection contains
+
+  Method:  GET
+  Path:    `/v1/harmony/library/:id`
+  Auth:    Key
+  Credits: 1
+  Summary: One harmony, whole, with the derivation that reproduces it
+
+  Method:  POST
+  Path:    `/v1/harmony/identify`
+  Auth:    Key
+  Credits: 1
+  Summary: Name the scheme your colours form
+
+  Method:  GET
+  Path:    `/v1/gradient/library`
+  Auth:    Key
+  Credits: 1
+  Summary: Browse the 8,192-gradient collection under a filter
+
+  Method:  GET
+  Path:    `/v1/gradient/library/stats`
+  Auth:    Key
+  Credits: 1
+  Summary: What the gradient collection contains
+
+  Method:  GET
+  Path:    `/v1/gradient/library/:id`
+  Auth:    Key
+  Credits: 1
+  Summary: One gradient, whole
+
+  Method:  POST
+  Path:    `/v1/gradient/analyse`
+  Auth:    Key
+  Credits: 1
+  Summary: Measure a gradient you already have: will it band, and where?
+
+  Method:  POST
+  Path:    `/v1/gradient/export`
+  Auth:    Key
+  Credits: 1
+  Summary: Export a gradient as CSS, SVG or a design-tool format
+
+  Method:  POST
+  Path:    `/v1/gradient/png`
+  Auth:    Key
+  Credits: 10–12
+  Summary: Render a gradient as a PNG
+
+  Method:  POST
+  Path:    `/v1/shade/scale`
+  Auth:    Key
+  Credits: 2–4
+  Summary: Build a tint and shade scale from one colour
+
+  Method:  POST
+  Path:    `/v1/shade/export`
+  Auth:    Key
+  Credits: 1
+  Summary: Export a shade scale
+
+  Method:  POST
+  Path:    `/v1/tokens/generate`
+  Auth:    Key
+  Credits: 2–4
+  Summary: Turn one seed colour into a complete, contrast-checked token system
+
+  Method:  POST
+  Path:    `/v1/tokens/export`
+  Auth:    Key
+  Credits: 1
+  Summary: Render a token deck for a specific platform
+
+  Method:  GET
+  Path:    `/v1/tokens/formats`
+  Auth:    Key
+  Credits: 1
+  Summary: The ten token export targets
+
+  Method:  GET
+  Path:    `/v1/personalize/vocabulary`
+  Auth:    Key
+  Credits: 1
+  Summary: Everything a brief may name, with the ranges the engine applies
+
+  Method:  GET
+  Path:    `/v1/personalize/presets`
+  Auth:    Key
+  Credits: 1
+  Summary: The 17 briefs the tool ships, in request shape
+
+  Method:  POST
+  Path:    `/v1/personalize/pool`
+  Auth:    Key
+  Credits: 1
+  Summary: Grow a working set of colours from seeds and a brief
+
+  Method:  POST
+  Path:    `/v1/personalize/score`
+  Auth:    Key
+  Credits: 1
+  Summary: Rank a palette you already have on the search's six scores
+
+  Method:  POST
+  Path:    `/v1/personalize/palettes`
+  Auth:    Key
+  Credits: 1
+  Summary: Search: N candidates in, the best K out, each with its breakdown
+
+  Method:  POST
+  Path:    `/v1/personalize/system`
+  Auth:    Key
+  Credits: 1
+  Summary: One brief in, an entire design system out
+
+  Method:  POST
+  Path:    `/v1/accessibility/check`
+  Auth:    Key
+  Credits: 1
+  Summary: Check a foreground and background pair against WCAG 2.2 and APCA
+
+  Method:  POST
+  Path:    `/v1/accessibility/recommend`
+  Auth:    Key
+  Credits: 1
+  Summary: Suggest the nearest accessible alternative to a failing pair
+
+  Method:  POST
+  Path:    `/v1/accessibility/from-image`
+  Auth:    Key
+  Credits: 10–12
+  Summary: Audit the colour contrast present in an image
+
+  Method:  POST
+  Path:    `/v1/accessibility/map`
+  Auth:    Key
+  Credits: 1
+  Summary: The whole territory of foreground colour a background leaves you
+
+  Method:  POST
+  Path:    `/v1/accessibility/picks`
+  Auth:    Key
+  Credits: 1
+  Summary: A ready set of foregrounds that clear a target on one background
+
+  Method:  POST
+  Path:    `/v1/accessibility/audit`
+  Auth:    Key
+  Credits: 1
+  Summary: Audit a palette against one background, with a fix for each failure
+
+  Method:  GET
+  Path:    `/v1/accessibility/corpus`
+  Auth:    Key
+  Credits: 1
+  Summary: Browse the five-million-pair corpus under a filter, with a cursor
+
+  Method:  GET
+  Path:    `/v1/accessibility/corpus/stats`
+  Auth:    Key
+  Credits: 1
+  Summary: The measured distribution of contrast across the corpus
+
+  Method:  GET
+  Path:    `/v1/accessibility/corpus/:record_id`
+  Auth:    Key
+  Credits: 1
+  Summary: Resolve one record by id or index
+
+  Method:  GET
+  Path:    `/v1/analyzer/stages`
+  Auth:    Key
+  Credits: 1
+  Summary: What the analyzer can check, and how much markup alone can answer
+
+  Method:  POST
+  Path:    `/v1/analyzer/inspect`
+  Auth:    Key
+  Credits: 12
+  Summary: Audit one page from its markup; no browser, no rendering
+
+  Method:  POST
+  Path:    `/v1/analyzer/render`
+  Auth:    Key
+  Credits: 10
+  Summary: Turn a report into an HTML or PDF document
+
+  Method:  GET
+  Path:    `/v1/vision/models`
+  Auth:    Key
+  Credits: 1
+  Summary: The colour-vision deficiency models available
+
+  Method:  POST
+  Path:    `/v1/vision/simulate`
+  Auth:    Key
+  Credits: 1
+  Summary: Simulate how a colour appears under a vision deficiency
+
+  Method:  GET
+  Path:    `/v1/vision/conditions`
+  Auth:    Key
+  Credits: 1
+  Summary: Every documented vision condition, and what can simulate it
+
+  Method:  GET
+  Path:    `/v1/vision/conditions/:slug`
+  Auth:    Key
+  Credits: 1
+  Summary: One condition, with its severity, prevalence and a worked example
+
+  Method:  GET
+  Path:    `/v1/vision/matrices`
+  Auth:    Key
+  Credits: 1
+  Summary: The CVD matrices, for applying the transform yourself
+
+  Method:  POST
+  Path:    `/v1/vision/palette`
+  Auth:    Key
+  Credits: 1
+  Summary: Run a whole palette through many conditions in one call
+
+  Method:  POST
+  Path:    `/v1/vision/audit`
+  Auth:    Key
+  Credits: 1
+  Summary: Find which pairs in a palette stop being distinguishable
+
+  Method:  POST
+  Path:    `/v1/vision/simulate-image`
+  Auth:    Key
+  Credits: 10–12
+  Summary: Simulate a vision deficiency across a whole image
+
+  Method:  POST
+  Path:    `/v1/ishihara/plate`
+  Auth:    Key
+  Credits: 1
+  Summary: Generate an Ishihara test plate as structured data
+
+  Method:  POST
+  Path:    `/v1/ishihara/png`
+  Auth:    Key
+  Credits: 10–12
+  Summary: Render an Ishihara plate as a PNG
+
+  Method:  GET
+  Path:    `/v1/usage`
+  Auth:    Key
+  Credits: 1
+  Summary: Per-day, per-endpoint usage history
+
+  Method:  GET
+  Path:    `/v1/usage/me`
+  Auth:    Key
+  Credits: 1
+  Summary: Your tier, limits and month-to-date consumption
+
+  Method:  GET
+  Path:    `/v1/usage/live`
+  Auth:    Key
+  Credits: 1
+  Summary: The last 100 calls, with rolling latency and error stats
+
+  Method:  GET
+  Path:    `/v1/usage/stream`
+  Auth:    Key
+  Credits: 5
+  Summary: The same live feed over Server-Sent Events (charged once per
+           stream)
+
+  Method:  GET
+  Path:    `/v1/jobs`
+  Auth:    Key
+  Credits: 1
+  Summary: The async job types available
+
+  Method:  POST
+  Path:    `/v1/jobs/:type`
+  Auth:    Key
+  Credits: 25
+  Summary: Queue a long-running job and get an id back immediately
+
+  Method:  GET
+  Path:    `/v1/jobs/id/:id`
+  Auth:    Key
+  Credits: 1
+  Summary: Poll one job
+
+  Method:  GET
+  Path:    `/v1/jobs/id/:id/stream`
+  Auth:    Key
+  Credits: 1
+  Summary: Follow a job to completion over SSE
+
+  Method:  GET
+  Path:    `/v1/webhooks/events`
+  Auth:    None
+  Credits: —
+  Summary: Event types you can subscribe to
+
+  Method:  GET
+  Path:    `/v1/webhooks`
+  Auth:    Key
+  Credits: 1
+  Summary: List your webhook subscriptions
+
+  Method:  POST
+  Path:    `/v1/webhooks`
+  Auth:    Key
+  Credits: 1
+  Summary: Subscribe a URL to one or more events
+
+  Method:  GET
+  Path:    `/v1/webhooks/:id`
+  Auth:    Key
+  Credits: 1
+  Summary: Fetch one subscription
+
+  Method:  DELETE
+  Path:    `/v1/webhooks/:id`
+  Auth:    Key
+  Credits: 1
+  Summary: Revoke a subscription
+
+The groups are explained, with parameters and examples, in Endpoints
+[endpoints/README.txt].
+
+RESPONSE HEADERS
+================
+
+  Header:  `x-ratelimit-limit`
+  Meaning: Requests allowed per minute
+
+  Header:  `x-ratelimit-remaining`
+  Meaning: Requests left this minute
+
+  Header:  `x-ratelimit-reset`
+  Meaning: Minute reset, in Unix seconds
+
+  Header:  `x-quota-limit`
+  Meaning: Included credits this month
+
+  Header:  `x-quota-used`
+  Meaning: Credits used this month
+
+  Header:  `x-quota-remaining`
+  Meaning: Included credits left
+
+  Header:  `x-quota-reset`
+  Meaning: Monthly reset, in Unix seconds
+
+  Header:  `x-credits-cost`
+  Meaning: Credits this call consumed
+
+  Header:  `x-credits-overage`
+  Meaning: Overage credits this call used (only when paid from the prepaid
+           balance)
+
+  Header:  `x-overage-cost-usd`
+  Meaning: 1.00 when the call opened a new 100,000-credit block, otherwise
+           0.00
+
+  Header:  `x-credits-ceiling`
+  Meaning: The account's hard ceiling
+
+  Header:  `Retry-After`
+  Meaning: With 429: when to retry
+
+  Header:  `Allow`
+  Meaning: With 405: the accepted methods
+
+PLANS
+=====
+
+  Plan:                Apprentice (free)
+  API:                 Not included
+  Requests per minute: —
+  Credits per month:   —
+  Hard ceiling:        —
+  Max keys:            —
+
+  Plan:                Artisan
+  API:                 Not included
+  Requests per minute: —
+  Credits per month:   —
+  Hard ceiling:        —
+  Max keys:            —
+
+  Plan:                Specialist
+  API:                 Included
+  Requests per minute: 300
+  Credits per month:   1,000,000
+  Hard ceiling:        10,000,000
+  Max keys:            10
+
+  Plan:                Industrial Pro
+  API:                 Included
+  Requests per minute: 3,000
+  Credits per month:   10,000,000
+  Hard ceiling:        100,000,000
+  Max keys:            10
+
+Overage is opt-in and prepaid at $1.00 (₹85) per 100,000 credits, with a
+monthly spend cap of up to $10,000.
+
+LIMITS STATED IN THE DOCUMENTATION
+==================================
+
+  Limit                            | Value
+  ---------------------------------+-------------------------------------------------------
+  Request body for image endpoints | 4 MB
+  `/v1/usage/live`                 | The last 100 calls; `limit` 1–100
+  `/v1/usage/stream`               | Heartbeat every 15 s; connections capped at 10 minutes
+  `/v1/palette/generate`           | 1–64 colours
+  Vision palette and audit         | Up to 64 colours
+  Accessibility audit              | 1–64 colours
+  Ishihara plate                   | 64–1024 px; 50–5000 dots
+  Collection page size             | Up to 200 (atlas, corpus) or 100 (libraries)
+  Corpus scan budget               | `max_scan` up to 1,000,000
+  Palette library scan budget      | `max_scan` 1,000–500,000
+
+RELATED PAGES
+=============
+
+  - Errors [errors.txt]
+  - Endpoints [endpoints/README.txt]

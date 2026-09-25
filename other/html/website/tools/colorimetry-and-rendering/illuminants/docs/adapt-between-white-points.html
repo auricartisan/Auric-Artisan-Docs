@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adapt colours between white points — Auric Artisan Docs</title>
+<meta name="description" content="Use the chromatic adaptation panel to move a 24-colour chart from one white point to another and read the transform matrix.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Illuminants</a>
+<h2>Illuminants documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Illuminants</a></li>
+<li><a href="adapt-between-white-points.html" aria-current="page">Adapt colours between white points</a></li>
+<li><a href="compare-light-sources.html">Compare two light sources</a></li>
+<li><a href="estimate-uncertainty.html">Estimate measurement uncertainty</a></li>
+<li><a href="query-console.html">Query many illuminants at once</a></li>
+<li><a href="reference.html">Illuminants reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Illuminants</a></li>
+<li><a href="faq.html">Illuminants FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Illuminants</a> &rsaquo; <a href="README.html">Illuminants documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Adapt colours between white points</h1>
+<p class="lede">Use the chromatic adaptation panel to move a 24-colour chart from one white point to another and read the transform matrix.</p>
+<p>Colour-managed work often needs a colour expressed under one white point to be re-expressed under another. The classic case is ICC colour management, whose profile connection space uses D50, while sRGB and most screens use D65. A <strong>chromatic adaptation transform (CAT)</strong> does this by imitating how the eye rebalances its cone sensitivities to a new light.</p>
+<h2 id="how-a-cat-works-briefly">How a CAT works, briefly</h2>
+<ol>
+<li>Convert the colour&#39;s XYZ values into a cone-like space (L, M, S) with a 3 × 3 matrix M.</li>
+<li>Scale each of L, M and S by the ratio of the destination white to the source white. This is the <strong>von Kries</strong> idea: each cone type adjusts its gain independently.</li>
+<li>Convert back to XYZ with the inverse of M.</li>
+</ol>
+<p>The transforms differ only in the matrix M. The lab offers:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Choice</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td><strong>Bradford</strong></td><td>The matrix from Lam (1985), the usual choice in ICC workflows. Default.</td></tr>
+<tr><td><strong>CAT16</strong></td><td>The matrix from the CAM16 colour appearance model (Li et al., 2017).</td></tr>
+<tr><td><strong>CAT02</strong></td><td>The matrix from CIECAM02 (CIE 159:2004).</td></tr>
+<tr><td><strong>Von Kries</strong></td><td>The Hunt–Pointer–Estévez cone matrix, normalised to D65.</td></tr>
+<tr><td><strong>Sharp</strong></td><td>A spectrally sharpened matrix (Finlayson and Süsstrunk, 2000).</td></tr>
+<tr><td><strong>XYZ scaling</strong></td><td>Scales X, Y and Z directly. Kept as the simplest case to compare against; it is not a model of the eye.</td></tr>
+<tr><td><strong>None</strong></td><td>No adaptation. The control turned off, so you can see the unadapted colours.</td></tr>
+</tbody></table></div>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Open the <strong>Lab</strong> tab and find <strong>Chromatic adaptation</strong> in the left rail.</li>
+<li>Under <strong>Adapt from</strong>, choose the white point the colours are currently expressed in. The choices are D65, D50, D55, D75, A and E. The default is D65.</li>
+<li>Under <strong>Adapt to</strong>, choose the destination white point. The default is D50.</li>
+<li>Select a transform chip: <strong>Bradford</strong>, <strong>CAT16</strong>, <strong>CAT02</strong>, <strong>Von Kries</strong>, <strong>Sharp</strong>, <strong>XYZ scaling</strong> or <strong>None</strong>.</li>
+<li>Look at <strong>Chromatic adaptation preview (24 patches)</strong>. Each column has the original colour on top and the adapted colour below. The caption names the source, destination and method.</li>
+<li>Read <strong>Adaptation matrix details</strong>:<ul>
+<li>the transform&#39;s <strong>M matrix</strong>;</li>
+<li><strong>LMS scaling (dst/src)</strong> — the three gains applied to L, M and S;</li>
+<li><strong>Source white LMS</strong> and <strong>Dest white LMS</strong> — the two whites in the cone-like space.</li>
+</ul>
+</li>
+<li>To reverse the direction, select <strong>Swap</strong> between the two lists.</li>
+</ol>
+<h2 id="reading-the-result">Reading the result</h2>
+<ul>
+<li>Adapting D65 to D50 makes colours look slightly warmer on a D65 screen, because the preview is still displayed as sRGB. That is expected: the preview shows the adapted values, not what an adapted eye would see.</li>
+<li>Choosing A as the destination produces a strong orange cast for the same reason.</li>
+<li>If you choose <strong>None</strong>, the matrix panel says that no adaptation is applied, and the bottom row matches the top row.</li>
+<li>The 24 patches are a fixed set of 18 chromatic colours and a six-step grey scale, similar to a colour-checker chart. They are defined as sRGB values.</li>
+</ul>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>For ICC work, D65 to D50 with Bradford matches common practice.</li>
+<li>To see how much the choice of transform matters for a real image, use the <a href="../../chromatic-adaptation/README.html">Chromatic Adaptation</a> lab, which applies eight transforms to a photograph and compares them.</li>
+<li>The adaptation settings (from, to and method) are saved in the share link on the <strong>Export</strong> tab.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>You have a chart of 24 colours re-expressed from one white point to another, and the exact matrix and gains that did it.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with Illuminants</a><a href="compare-light-sources.html"><span>Next</span>Compare two light sources</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#how-a-cat-works-briefly">How a CAT works, briefly</a></li><li><a href="#steps">Steps</a></li><li><a href="#reading-the-result">Reading the result</a></li><li><a href="#tips">Tips</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

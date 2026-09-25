@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make a pair pass — Auric Artisan Docs</title>
+<meta name="description" content="Use Make it pass AA to find a passing text colour, understand how it chooses, and keep your brand hue.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Contrast Checker</a>
+<h2>Contrast Checker documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Contrast Checker</a></li>
+<li><a href="check-a-colour-pair.html">Check a colour pair</a></li>
+<li><a href="make-a-pair-pass.html" aria-current="page">Make a pair pass</a></li>
+<li><a href="share-a-pair.html">Share a pair</a></li>
+<li><a href="reference.html">Contrast Checker reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Contrast Checker</a></li>
+<li><a href="faq.html">Contrast Checker FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Accessibility and vision tools</a> &rsaquo; <a href="../README.html">Contrast Checker</a> &rsaquo; <a href="README.html">Contrast Checker documentation</a></nav>
+<p class="kicker">Website › Tools › Accessibility and vision</p>
+<h1>Make a pair pass</h1>
+<p class="lede">Use Make it pass AA to find a passing text colour, understand how it chooses, and keep your brand hue.</p>
+<p><strong>Make it pass AA</strong> is the main button in the result area. It only appears while the pair fails body text AA (under 4.5:1), so seeing it is itself a signal that body text is failing.</p>
+<h2 id="use-it">Use it</h2>
+<ol>
+<li>Enter a failing pair, for example text <code>#D3AF37</code> on background <code>#F7F3E6</code> (1.90:1).</li>
+<li>Select <strong>Make it pass AA</strong>.</li>
+<li>Read the status line. For this pair it says &quot;Adjusted text to #836C22 (4.58:1).&quot;</li>
+</ol>
+<p>The result: the new colour is in the <strong>Text colour</strong> field and swatch, the pair is re-graded, the button disappears, and the address updates a moment later with the new pair.</p>
+<h2 id="how-it-chooses">How it chooses</h2>
+<ol>
+<li>It looks at the background. If the background&#39;s relative luminance is above 0.5 it moves the text towards black; otherwise towards white.</li>
+<li>It walks the text colour along a straight line towards that end, in about fifty small steps, checking the ratio at each step.</li>
+<li>It stops at the first step that reaches 4.5:1. If none does, it uses pure black or pure white.</li>
+</ol>
+<h2 id="what-it-will-not-do">What it will not do</h2>
+<ul>
+<li><strong>It only aims at 4.5:1.</strong> There is no option for 3:1 or 7:1. For AAA, use the button first, then keep darkening (or lightening) by hand while you watch the ratio.</li>
+<li><strong>It never changes the background.</strong> Only the text colour moves. If the background is the colour you are allowed to change, select the swap button, use the fix, then swap back.</li>
+<li><strong>It does not keep your hue or saturation.</strong> The path is a straight line towards black or white, so the result is usually a greyer relative of your colour. Treat it as a target, not a colour to ship.</li>
+<li><strong>It is close to minimal, not exactly minimal.</strong> It takes the first of about fifty samples that passes.</li>
+</ul>
+<h2 id="the-mid-grey-surprise">The mid-grey surprise</h2>
+<p>The direction is chosen by relative luminance, not by how light a colour looks. Mid grey <code>#808080</code> has a relative luminance of about 0.22, which counts as dark, so text on it is pushed towards white even though the grey looks like the middle of the range. That is correct WCAG behaviour. If you wanted the other direction, move the text colour towards black yourself and watch the ratio.</p>
+<h2 id="keep-your-brand-colour">Keep your brand colour</h2>
+<ol>
+<li>Select <strong>Make it pass AA</strong> to see how far the pair has to move, and note the colour and ratio it reports.</li>
+<li>Go back to your original colour.</li>
+<li>Change it a few digits at a time towards the suggested colour, keeping the hue, and watch the ratio.</li>
+<li>Stop as soon as <strong>Body text · AA</strong> reads <strong>Pass</strong>, and leave some margin.</li>
+</ol>
+<p>You end up with a colour that is still yours and that passes.</p>
+<p>For suggestions that keep the hue automatically across a whole page, the <a href="../../analyzer/README.html">Analyzer</a> offers a replacement for every failing pair that adjusts only lightness.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="check-a-colour-pair.html"><span>Previous</span>Check a colour pair</a><a href="share-a-pair.html"><span>Next</span>Share a pair</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#use-it">Use it</a></li><li><a href="#how-it-chooses">How it chooses</a></li><li><a href="#what-it-will-not-do">What it will not do</a></li><li><a href="#the-mid-grey-surprise">The mid-grey surprise</a></li><li><a href="#keep-your-brand-colour">Keep your brand colour</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

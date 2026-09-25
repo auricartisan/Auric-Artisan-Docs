@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference: commands, keys and settings — Auric Artisan Docs</title>
+<meta name="description" content="Every Auric Artisan Formatter command, keyboard shortcut, menu entry, status bar state, file and editor setting.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Auric Artisan Formatter</a>
+<h2>Auric Artisan Formatter guides</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Auric Artisan Formatter</a></li>
+<li><a href="command-line.html">Command line and CI</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="format-and-format-on-save.html">Format files and format on save</a></li>
+<li><a href="formatter-studio.html">Formatter Studio</a></li>
+<li><a href="options-reference.html">Options reference</a></li>
+<li><a href="presets.html">Presets</a></li>
+<li><a href="preview-diff.html">Preview formatting as a diff</a></li>
+<li><a href="safety-gate-and-tiers.html">The safety gate and formatting tiers</a></li>
+<li><a href="supported-languages.html">Supported languages</a></li>
+<li><a href="workspace-scan.html">Scan the workspace</a></li>
+<li><a href="reference.html" aria-current="page">Reference: commands, keys and settings</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">VS Code extensions</a> &rsaquo; <a href="../README.html">Auric Artisan Formatter</a> &rsaquo; <a href="README.html">Auric Artisan Formatter guides</a></nav>
+<p class="kicker">VS Code extensions › Auric Artisan Formatter</p>
+<h1>Reference: commands, keys and settings</h1>
+<p class="lede">Every Auric Artisan Formatter command, keyboard shortcut, menu entry, status bar state, file and editor setting.</p>
+<p>This page covers Auric Artisan Formatter 0.1.0: 21 commands, 3 keyboard shortcuts, one Explorer view, a setup walkthrough, 11 editor settings and 391 formatting options (listed in the <a href="options-reference.html">options reference</a>). Commands appear in the Command Palette with the <strong>Auric Formatter:</strong> prefix.</p>
+<h2 id="commands">Commands</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>ID</th><th>Keys</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Format Document</strong></td><td><code>auricFormatter.formatDocument</code></td><td>—</td><td>Format the active file with Auric</td></tr>
+<tr><td><strong>Format Selection</strong></td><td><code>auricFormatter.formatSelection</code></td><td>—</td><td>Format the selected code (shown only with a selection)</td></tr>
+<tr><td><strong>Format Every File in the Workspace</strong></td><td><code>auricFormatter.formatWorkspace</code></td><td>—</td><td>Write every file the scan found would change (asks first)</td></tr>
+<tr><td><strong>Format Every File That Needs It</strong></td><td><code>auricFormatter.formatAll</code></td><td>—</td><td>The same, from the scan results (asks first)</td></tr>
+<tr><td><strong>Scan the Workspace Without Writing</strong></td><td><code>auricFormatter.scanWorkspace</code></td><td>—</td><td>Format every file in memory and report; offers <strong>Review them</strong> or <strong>Format them all</strong></td></tr>
+<tr><td><strong>Show Files That Need Formatting</strong></td><td><code>auricFormatter.showPending</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>U</code></td><td>Open Formatter Studio on the <strong>Workspace</strong> tab</td></tr>
+<tr><td><strong>Check Formatting Without Writing (CI Mode)</strong></td><td><code>auricFormatter.checkWorkspace</code></td><td>—</td><td>Scan and list unformatted files in the Problems panel</td></tr>
+<tr><td><strong>Open Formatter Studio</strong></td><td><code>auricFormatter.openPlayground</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>P</code></td><td>Open Formatter Studio</td></tr>
+<tr><td><strong>Preview Formatting as a Diff</strong></td><td><code>auricFormatter.previewDiff</code></td><td><code>Ctrl</code> + <code>Alt</code> + <code>Shift</code> + <code>F</code> (editor focused)</td><td>Open a read-only formatted copy beside the source</td></tr>
+<tr><td><strong>Apply Formatting Preview</strong></td><td><code>auricFormatter.applyPreview</code></td><td>—</td><td>Apply the open preview to its source, after confirmation</td></tr>
+<tr><td><strong>Discard Formatting Preview</strong></td><td><code>auricFormatter.discardPreview</code></td><td>—</td><td>Close the preview without changes</td></tr>
+<tr><td><strong>Refresh Formatting Preview</strong></td><td><code>auricFormatter.refreshPreview</code></td><td>—</td><td>Format the source again and update the preview</td></tr>
+<tr><td><strong>Compare Formatting Changes</strong></td><td><code>auricFormatter.comparePreview</code></td><td>—</td><td>Open the diff between source and preview</td></tr>
+<tr><td><strong>Explain Formatting Decisions for This File</strong></td><td><code>auricFormatter.explainFormatting</code></td><td>—</td><td>Open a report of language, parser, tier, option sources and warnings</td></tr>
+<tr><td><strong>Switch Formatting Preset</strong></td><td><code>auricFormatter.selectPreset</code></td><td>—</td><td>Choose one of the 13 presets</td></tr>
+<tr><td><strong>Generate a Configuration File</strong></td><td><code>auricFormatter.generateConfig</code></td><td>—</td><td>Write <code>.auricformatrc</code> with your preset and settings</td></tr>
+<tr><td><strong>Import Settings From Prettier</strong></td><td><code>auricFormatter.migrateFromPrettier</code></td><td>—</td><td>Convert a Prettier configuration into an unsaved Auric one</td></tr>
+<tr><td><strong>Toggle Format on Save</strong></td><td><code>auricFormatter.toggleFormatOnSave</code></td><td>—</td><td>Turn format on save on (and make Auric the default formatter) or off</td></tr>
+<tr><td><strong>Show the Formatter Log</strong></td><td><code>auricFormatter.showOutput</code></td><td>—</td><td>Open the <strong>Auric Artisan Formatter</strong> output channel</td></tr>
+<tr><td><strong>Report a Formatting Problem</strong></td><td><code>auricFormatter.reportIssue</code></td><td>—</td><td>Open a Markdown template with version, language, tier and explanation</td></tr>
+<tr><td><strong>Clear the Configuration Cache</strong></td><td><code>auricFormatter.clearCache</code></td><td>—</td><td>Forget cached configuration so files are re-read</td></tr>
+</tbody></table></div>
+<p>On macOS, <code>Cmd</code> replaces <code>Ctrl</code> in the three shortcuts. <strong>Format Every File That Needs It</strong> and <strong>Format Every File in the Workspace</strong> have no shortcut on purpose.</p>
+<h2 id="where-commands-appear">Where commands appear</h2>
+<ul>
+<li>Editor title bar: <strong>Preview Formatting as a Diff</strong> (supported files)</li>
+<li>Editor title bar, in a preview: <strong>Apply Formatting Preview</strong>, <strong>Compare Formatting Changes</strong>, <strong>Refresh Formatting Preview</strong>, <strong>Discard Formatting Preview</strong></li>
+<li>Preview CodeLens: <strong>Apply formatting</strong> (or <strong>No formatting changes</strong>, or <strong>Source changed — refresh preview</strong>), <strong>Compare changes</strong>, <strong>Discard preview</strong>, <strong>Full file · refresh preview</strong> / <strong>Selection preview · refresh from source</strong></li>
+<li>Editor context menu: <strong>Format Selection</strong> with a selection; <strong>Preview Formatting as a Diff</strong> without</li>
+<li>Explorer context menu, on a folder: <strong>Format Every File in the Workspace</strong></li>
+<li>Explorer: The <strong>Auric Formatter</strong> view</li>
+<li>Welcome page: The walkthrough <strong>Set up Auric Artisan Formatter</strong></li>
+</ul>
+<h2 id="status-bar">Status bar</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Text</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Auric</strong> (brush icon)</td><td>Ready for this language</td></tr>
+<tr><td><strong>Auric</strong> with a tick</td><td>Formatted, or already formatted; the tooltip names the tier and the time</td></tr>
+<tr><td><strong>Auric</strong> with a shield</td><td>The safety gate kept your original text</td></tr>
+<tr><td><strong>Auric</strong> with a slash</td><td>Skipped, with the reason in the tooltip</td></tr>
+<tr><td><strong>Auric</strong> with an error</td><td>Formatting failed</td></tr>
+<tr><td><strong>Auric <em>scanned</em>/<em>total</em></strong> (spinning)</td><td>Scanning in memory</td></tr>
+<tr><td><strong>Auric writing…</strong></td><td>Writing formatted files</td></tr>
+<tr><td><strong><em>N</em> unformatted</strong></td><td>Files the scan found would change; select to review</td></tr>
+<tr><td><strong>Auric</strong> with a double tick</td><td>Every scanned file is formatted</td></tr>
+</tbody></table></div>
+<p>The first four open the log when selected.</p>
+<h2 id="editor-settings">Editor settings</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Type</th><th>Default</th><th>Values or range</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>auricFormatter.preset</code></td><td>string</td><td><code>auric</code></td><td>13 presets (see <a href="presets.html">Presets</a>)</td><td>The preset to start from; your own options and a configuration file&#39;s <code>preset</code> win</td></tr>
+<tr><td><code>auricFormatter.formatOnType</code></td><td>boolean</td><td><code>false</code></td><td>—</td><td>Reformat the line and block as you type closing punctuation; needs <code>editor.formatOnType</code></td></tr>
+<tr><td><code>auricFormatter.formatOnSaveMode</code></td><td>string</td><td><code>file</code></td><td><code>file</code>, <code>modifications</code></td><td>Format the whole file on save, or only lines changed since the last commit</td></tr>
+<tr><td><code>auricFormatter.showStatusBar</code></td><td>boolean</td><td><code>true</code></td><td>—</td><td>Show the status bar item for the tier and safety result</td></tr>
+<tr><td><code>auricFormatter.logLevel</code></td><td>string</td><td><code>warn</code></td><td><code>silent</code>, <code>error</code>, <code>warn</code>, <code>log</code>, <code>debug</code></td><td>How much reaches the output channel</td></tr>
+<tr><td><code>auricFormatter.enabledLanguages</code></td><td>array</td><td><code>[]</code></td><td>Language ids</td><td>Format only these languages; empty means all</td></tr>
+<tr><td><code>auricFormatter.disabledLanguages</code></td><td>array</td><td><code>[]</code></td><td>Language ids</td><td>Never format these languages</td></tr>
+<tr><td><code>auricFormatter.scanOnStartup</code></td><td>boolean</td><td><code>true</code></td><td>—</td><td>Scan the workspace in memory when the window opens</td></tr>
+<tr><td><code>auricFormatter.scanExclude</code></td><td>array</td><td><code>[]</code></td><td>Globs</td><td>Globs the scan skips; empty uses the built-in list</td></tr>
+<tr><td><code>auricFormatter.scanMaxFiles</code></td><td>integer</td><td><code>4000</code></td><td>1 or more</td><td>Stop the scan after this many files</td></tr>
+<tr><td><code>auricFormatter.confirmBeforeFormattingAll</code></td><td>boolean</td><td><code>true</code></td><td>—</td><td>Ask before writing more than one file</td></tr>
+</tbody></table></div>
+<p>All settings, including the 391 options, have resource scope: they can be set for the user, the workspace or a single folder.</p>
+<h2 id="files">Files</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Role</th></tr></thead>
+<tbody>
+<tr><td><code>.auricformatrc</code> and its variants, <code>auric.format.json</code>, <code>package.json</code> (<code>auricFormatter</code> key)</td><td>Configuration; see <a href="configuration.html">Configuration</a></td></tr>
+<tr><td><code>.prettierrc</code> and variants, <code>package.json</code> (<code>prettier</code> key)</td><td>Read for compatibility</td></tr>
+<tr><td><code>.editorconfig</code></td><td>Read for indentation, line endings, line length and final newline</td></tr>
+<tr><td><code>.auricformatignore</code>, <code>.prettierignore</code></td><td>Files not to format</td></tr>
+</tbody></table></div>
+<p>Written by the extension:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>What</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><code>.auricformatrc</code></td><td><strong>Generate a Configuration File</strong></td></tr>
+<tr><td><code>editor.defaultFormatter</code>, <code>editor.formatOnSave</code></td><td><strong>Toggle Format on Save</strong> (workspace settings, or user settings with no folder open)</td></tr>
+<tr><td><code>auricFormatter.preset</code></td><td><strong>Switch Formatting Preset</strong></td></tr>
+<tr><td>Your source files</td><td>Format commands, <strong>Apply</strong>, format on save, <strong>Format selected</strong> / <strong>Format all files</strong></td></tr>
+</tbody></table></div>
+<h2 id="workspace-trust-and-virtual-workspaces">Workspace trust and virtual workspaces</h2>
+<ul>
+<li>In an untrusted workspace, configuration files are read but JavaScript configuration files and formatter plugins are not run.</li>
+<li>Virtual workspaces are supported.</li>
+</ul>
+<h2 id="setup-walkthrough">Setup walkthrough</h2>
+<p><strong>Set up Auric Artisan Formatter</strong> on the Welcome page has five steps: <strong>Choose a preset</strong>, <strong>Try the Playground</strong>, <strong>See what the whole repository would do</strong>, <strong>Turn on format on save</strong> and <strong>Understand the safety gate</strong>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="workspace-scan.html"><span>Previous</span>Scan the workspace</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#commands">Commands</a></li><li><a href="#where-commands-appear">Where commands appear</a></li><li><a href="#status-bar">Status bar</a></li><li><a href="#editor-settings">Editor settings</a></li><li><a href="#files">Files</a></li><li><a href="#workspace-trust-and-virtual-workspaces">Workspace trust and virtual workspaces</a></li><li><a href="#setup-walkthrough">Setup walkthrough</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

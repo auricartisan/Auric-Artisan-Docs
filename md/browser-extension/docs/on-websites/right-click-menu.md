@@ -1,0 +1,168 @@
+---
+title: Browser extension — Right-click menu
+description: The extension's optional right-click menu for websites — turning it on, scenes and their actions, the header, quick bar, filter, submenus, pinning, the gear, keys, and stepping aside.
+product: Browser extension › On websites
+updated: 2026-09-25
+---
+
+# Right-click menu
+
+The custom right-click menu replaces the browser's menu on websites with one built around what you clicked. It puts that thing's own actions first, spelled out, and folds everything else into a few rows that open submenus, so the menu fits on one screen. It adds actions browsers bury or lack: QR codes, screenshots, read aloud, searching a selection on six engines, copying as Markdown, reopening a closed tab, and the extension's own tools.
+
+It is **off** by default.
+
+## Turn it on
+
+1. Open **Settings** › **Right-click**.
+2. Turn on **Custom right-click menu**.
+3. The browser asks for three optional permissions: reading the clipboard (for **Paste**), downloads (for **Save as**) and sessions (for **Reopen closed tab**). Accept to finish.
+
+If you decline, the switch turns itself off again and the message says "Permission declined — custom menu stays off". You can grant a single permission later from Settings › Right-click › **Permissions**.
+
+**Shift** + right-click always opens the browser's own menu, even with the custom menu on.
+
+## Anatomy
+
+From top to bottom:
+
+1. **The header** names what you right-clicked, with the detail that matters.
+2. **The quick bar**: one-click buttons you choose.
+3. **The filter field** ("Type to filter N actions"). It has focus when the menu opens.
+4. **The context section**: the clicked thing's own actions, spelled out.
+5. **One row per other group**, each opening a submenu: **Auric tools**, **Page**, **Tab & window** and **View**.
+6. **Browser's own menu**, the last row.
+7. **The footer**: key hints, confirmations and the gear.
+
+## Scenes
+
+What you right-click decides the header and the context section. Each scene below lists what the header shows and the actions in the context section.
+
+### An element
+
+- **Header:** its tag and size, such as `div.card · 1180 × 64`.
+- **Actions (Auric tools):** Inspect element; Copy selector (CSS, JavaScript, Playwright or XPath, each previewed); Copy computed styles; Pick colour; Check contrast on page; Simulate colour vision.
+
+### Selected text
+
+- **Header:** the text, with its word and character count.
+- **Actions:** Copy; Copy as plain text; Search the web; Translate; Read aloud; QR code; Share… (where the browser supports sharing).
+
+### A selected colour value
+
+When the selection is a colour such as `#1a73e8`:
+
+- **Header:** the colour, a swatch and its `rgb()` value.
+- **Actions:** Copy HEX, Copy RGB, Copy HSL and Copy OKLCH (each value shown); Copy; Search the web.
+
+### A link
+
+- **Header:** its address, and **This site** or **Another site**.
+- **Actions:** Open link in new tab; Open link in new window; Open link in private window; Copy link address; Copy link text; Copy link as Markdown; QR code for link; Save link as….
+
+### An image
+
+- **Header:** its file name, pixel size and file type.
+- **Actions:** Open image in new tab; Copy image; Copy image address; Copy alt text (shown, or "None"); Copy its palette (four swatches shown, when the image allows it); Pick colour from image; QR code for image; Save image as….
+- An image inside a link also offers Open link in new tab and Copy link address.
+
+### A video or audio
+
+- **Header:** **Video** or **Audio**, and its length.
+- **Actions:** Play or Pause; Mute or Unmute; Loop; Playback speed (0.5×, 1× (normal), 1.25×, 1.5×, 2×); Picture-in-picture (videos); Full screen; Copy media address; Save media as… (not for streams).
+
+### A text field
+
+- **Header:** its name or label, and its type.
+- **Actions:** Undo; Redo; Cut; Copy; Paste; Delete; Select all; Clear field.
+
+### The page itself
+
+- **Header:** the page title and site.
+- **Actions (Page):** Copy page URL; Copy page title; Copy as Markdown link; QR code for this page; View page source; Save page as…; Print…; Translate page.
+
+## The groups
+
+- **Auric tools**: As in the element scene above, when it is not already the context
+- **Page**: As in the page scene above
+- **Tab & window**: New tab; Duplicate tab; Pin or unpin tab; Mute or unmute tab; Save screenshot; Copy screenshot; Reopen closed tab; Close tab
+- **View**: Scroll to top; Scroll to bottom; Zoom in; Zoom out; Actual size; Full screen; Read page aloud (Stop reading while it reads); Hard reload
+
+Rows show the matching browser keyboard shortcut where there is one, such as `Ctrl` + `U` for View page source.
+
+### Submenus inside submenus
+
+Some rows inside a group open their own submenu:
+
+- **Copy selector** previews each form: the CSS selector, `querySelector(…)`, `locator(…)` and the XPath.
+- **Search the web** lists Google, Bing, DuckDuckGo, Wikipedia, YouTube and Google Images. Press `1` to `6` to choose one.
+- **Simulate colour vision** lists **Colour blindness** (protanopia, deuteranopia, tritanopia, achromatopsia) and **Weaker forms** (the four anomalies), each with a preview of how four everyday colours look to someone with it. **Side by side** filters half the page, and **Reset simulation** clears it.
+
+## The quick bar
+
+The quick bar holds up to six one-click actions. It starts with **Back**, **Forward**, **Reload**, **Copy page URL** and **Capture** (Copy screenshot).
+
+To pin any action:
+
+1. Point at its row and choose its star, or press `Right` to reach the star and then `Enter`.
+2. The footer confirms "Pinned to the quick bar". Do the same again to unpin it.
+
+If the bar is full, the footer says "The quick bar holds 6: unpin one first".
+
+## Filter
+
+Start typing as soon as the menu opens. The list shows every matching action, including the ones inside groups, with the group's name beside each result. `Enter` runs the first result. `Esc` clears the filter.
+
+## The gear
+
+The gear in the footer opens the menu's own settings:
+
+- **Quick bar**: the pinned actions, each removable, and **Reset**.
+- **Layout**: **Focused** (the default) shows what you clicked, then one row per group; **Everything** opens every group in one list.
+- **Row height**: **Standard** or **Compact**.
+
+Choose **Done** to go back. The same settings, and more, are in Settings › Right-click.
+
+## Keys
+
+| Key | What it does |
+|---|---|
+| Type | Filter the actions |
+| `Up` / `Down` | Move between the quick bar and the rows |
+| `Right` | Open a group, or reach a row's star |
+| `Left` | Close a group, or go back from the star |
+| `Enter` | Run the row (in the field: the first result) |
+| `1` to `6` | Choose a search engine in its submenu |
+| `Esc` | Clear the filter, then close a submenu, then close the menu |
+
+While the menu has focus, the site's own keyboard shortcuts do not fire.
+
+## Actions that need a permission
+
+**Paste**, the **Save** actions and **Reopen closed tab** need the three optional permissions. Until one is granted, its rows show an **Allow** chip. Grant it in Settings › Right-click › **Permissions**.
+
+## When the browser's menu appears instead
+
+- **Shift** + right-click, always.
+- **Browser's own menu**: the next right-click goes to the browser, for spellcheck, the dictionary and writing direction. The footer says "Right-click again for the browser's menu".
+- **Sites with their own menu.** With **Step aside for a site's own menu** on (the default), a page that shows its own right-click menu, such as Figma or Google Docs, keeps it. The extension's menu still opens everywhere else on that page. Turn the setting off to take every right-click.
+- **Sites on the Never on list** in Settings › Right-click (up to 100; subdomains included).
+- **auricartisan.com**, always, and sites that opt out; see [For site owners](for-site-owners.md).
+
+## Messages you may see
+
+| Message | Meaning |
+|---|---|
+| "Clipboard blocked — press Ctrl+V to paste." | The browser refused to let the page read the clipboard |
+| "Cross-origin image — copied its URL instead" | The image's site does not allow copying its pixels |
+| "Screenshot needs a permitted, visible tab" | The tab cannot be captured |
+| "Enable "Allow in Incognito" for the extension" | Opening a private window needs the extension allowed in private browsing |
+| "That text is too long for a QR code" | The text exceeds what a QR code can hold |
+| "Eyedropper needs Chromium — use the toolbar picker instead." | Pick colour in Firefox |
+
+QR codes open in a small panel with **Download**, **Copy** and **Close**.
+
+## Related pages
+
+- [Right-click settings](../settings/right-click.md)
+- [Browser menu items](browser-menu-items.md)
+- [Permissions](../permissions.md)

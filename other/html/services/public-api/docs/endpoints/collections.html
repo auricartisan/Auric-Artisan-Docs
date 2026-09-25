@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collections — Auric Artisan Docs</title>
+<meta name="description" content="Browse the colour atlas, find the nearest catalogued colour, and filter the palette, harmony, gradient and shade-scale collections.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Public API documentation</a>
+<h2>Endpoints</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+<li><a href="analyzer.html">Analyzer</a></li>
+<li><a href="collections.html" aria-current="page">Collections</a></li>
+<li><a href="colour-and-science.html">Colour and colour science</a></li>
+<li><a href="discovery.html">Discovery endpoints</a></li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+<li><a href="tokens-and-personalisation.html">Design tokens and personalisation</a></li>
+<li><a href="usage-jobs-webhooks-graphql.html">Usage, jobs, webhooks and GraphQL</a></li>
+<li><a href="vision-and-ishihara.html">Vision and Ishihara</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">Services</a> &rsaquo; <a href="../../README.html">Auric Artisan REST API</a> &rsaquo; <a href="../README.html">Public API documentation</a> &rsaquo; <a href="README.html">Endpoints</a></nav>
+<p class="kicker">Services › Public API</p>
+<h1>Collections</h1>
+<p class="lede">Browse the colour atlas, find the nearest catalogued colour, and filter the palette, harmony, gradient and shade-scale collections.</p>
+<p>The API exposes large, measured collections you can filter and cite. Two kinds exist:</p>
+<ul>
+<li><strong>Finite catalogues</strong> of 8,192 records (the colour atlas and the harmony, gradient and shade libraries). A filtered browse reports <code>matched</code>, a real total, and pages with <code>offset</code> and <code>next_offset</code>.</li>
+<li><strong>Scanned collections</strong> too large to count in one request (five million palettes, and the five-million-pair accessibility corpus described in <a href="accessibility.html">Accessibility</a>). A filtered browse scans a budget of records and reports <code>scanned</code>, <code>hit_rate</code>, <code>next_cursor</code>, <code>exhausted</code> and <code>truncated</code>.</li>
+</ul>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> In a scanned collection, <code>truncated: true</code> means the scan budget ran out before the page filled, not that nothing matches. Follow <code>next_cursor</code>, or raise <code>max_scan</code>, before concluding a filter is empty. <code>exhausted: true</code> means the collection really ended.</p>
+</blockquote>
+<p>Records in the libraries are derived from a published seed and their index rather than stored, so an id such as <code>pal_1z</code> or <code>har_5k</code> is citable: anyone can recompute the same record.</p>
+<h2 id="colour-atlas">Colour atlas</h2>
+<h3 id="get-v1coloratlas">GET /v1/color/atlas</h3>
+<p>Browse the 8,192-colour atlas under a filter. Hue ranges wrap, so <code>hue_from=340&amp;hue_to=20</code> gives the reds.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>hue_from</code>, <code>hue_to</code></td><td>Hue range, 0–360; wraps past 360</td></tr>
+<tr><td><code>min_lightness</code>, <code>max_lightness</code></td><td>OKLCH lightness bounds, 0–1</td></tr>
+<tr><td><code>min_chroma</code></td><td>Chroma floor, 0–1</td></tr>
+<tr><td><code>min_contrast_on_white</code>, <code>min_contrast_on_black</code></td><td>Keep only colours readable on white or black at this ratio</td></tr>
+<tr><td><code>emotion</code>, <code>art_movement</code>, <code>ai_mood</code>, <code>ai_design_usage</code>, <code>design_tag</code></td><td>Label filters, for example <code>calm</code>, <code>Fauvism</code>, <code>serene</code>, <code>data-viz</code>, <code>pastel</code>; see the stats</td></tr>
+<tr><td><code>sort</code></td><td><code>id</code> (default), <code>hue</code>, <code>lightness</code>, <code>chroma</code> or <code>contrast_on_white</code></td></tr>
+<tr><td><code>order</code></td><td><code>asc</code> (default) or <code>desc</code></td></tr>
+<tr><td><code>limit</code></td><td>Colours per page, 1–200. Default 24.</td></tr>
+<tr><td><code>offset</code></td><td>Where to start; use <code>next_offset</code></td></tr>
+<tr><td><code>full</code></td><td><code>true</code> adds the vision simulations and labels</td></tr>
+</tbody></table></div>
+<p>Returns <code>matched</code>, <code>share_of_atlas</code>, <code>next_offset</code> and <code>colors</code>.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/color/atlas?min_contrast_on_white=4.5&amp;sort=chroma&amp;order=desc&amp;limit=5&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h3 id="get-v1coloratlasstats">GET /v1/color/atlas/stats</h3>
+<p>What the atlas contains: hue occupancy, the lightness spread, the label vocabulary, and how much of it works as text on white or black. Returns <code>readable_as_text</code>, <code>hue_distribution</code>, <code>lightness_distribution</code> and <code>labels</code>.</p>
+<h3 id="get-v1coloratlasid">GET /v1/color/atlas/:id</h3>
+<p>One sample, whole. <code>:id</code> is an id from 0 to 8191, or a hex the atlas contains (URL-encoded, such as <code>%2376cdf6</code>). An unknown id or hex returns <code>VALIDATION_ERROR</code>. Returns <code>color</code>.</p>
+<h3 id="post-v1colornearest">POST /v1/color/nearest</h3>
+<p>The catalogued colours closest to one you have. Distance is CIE76 in Lab, and the response names the metric.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>colour</td><td>Yes</td><td>The colour to match</td></tr>
+<tr><td><code>count</code></td><td>number</td><td>No</td><td>How many matches, 1–50. Default 5.</td></tr>
+<tr><td><code>full</code></td><td>boolean</td><td>No</td><td><code>true</code> for the complete record on each match</td></tr>
+</tbody></table></div>
+<p>Returns <code>metric</code> and <code>matches</code>.</p>
+<pre class="code" data-lang="bash"><code>curl -X POST &quot;https://api.auricartisan.com/v1/color/nearest&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d '{&quot;color&quot;:&quot;#D3AF37&quot;,&quot;count&quot;:5}'</code></pre>
+<h2 id="palette-library-five-million-palettes">Palette library (five million palettes)</h2>
+<h3 id="get-v1palettelibrary">GET /v1/palette/library</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>method</code></td><td><code>complementary</code>, <code>triadic</code>, <code>analogous</code>, <code>tetradic</code>, <code>golden_ratio</code>, <code>monochromatic</code> or <code>random</code></td></tr>
+<tr><td><code>character</code></td><td>Measured character: <code>neutral</code>, <code>monochrome</code>, <code>analogous</code>, <code>triadic</code> or <code>diverse</code></td></tr>
+<tr><td><code>hue</code></td><td>First colour&#39;s hue band, red through pink</td></tr>
+<tr><td><code>min_contrast</code>, <code>max_contrast</code></td><td>Bounds on the worst pair&#39;s contrast, 1–21</td></tr>
+<tr><td><code>min_lightness</code>, <code>max_lightness</code></td><td>Mean OKLCH lightness bounds, 0–1</td></tr>
+<tr><td><code>min_chroma</code></td><td>Mean OKLCH chroma floor, 0–0.5</td></tr>
+<tr><td><code>carries_body_text</code></td><td><code>true</code> for palettes with a pair at 4.5:1 or better</td></tr>
+<tr><td><code>sort</code></td><td><code>id</code> (default), <code>contrast</code>, <code>spread</code>, <code>lightness</code> or <code>chroma</code>; other than <code>id</code>, sorting is within the scan</td></tr>
+<tr><td><code>order</code></td><td><code>asc</code> (default) or <code>desc</code></td></tr>
+<tr><td><code>limit</code></td><td>Per page, 1–100. Default 24.</td></tr>
+<tr><td><code>cursor</code></td><td>Where to resume; use <code>next_cursor</code></td></tr>
+<tr><td><code>max_scan</code></td><td>Scan budget, 1,000–500,000. Default 20,000. Raise it for a rare filter.</td></tr>
+<tr><td><code>full</code></td><td><code>true</code> for per-colour RGB and OKLCH and the palette metrics</td></tr>
+</tbody></table></div>
+<p>Returns <code>scanned</code>, <code>hit_rate</code>, <code>next_cursor</code>, <code>exhausted</code>, <code>truncated</code> and <code>palettes</code>.</p>
+<pre class="code" data-lang="bash"><code>curl &quot;https://api.auricartisan.com/v1/palette/library?carries_body_text=true&amp;limit=5&quot; \
+  -H &quot;x-api-key: $AURIC_API_KEY&quot;</code></pre>
+<h3 id="get-v1palettelibrarystats">GET /v1/palette/library/stats</h3>
+<p>Measured on a stated sample (70 runs of 600 consecutive palettes). Returns <code>measured_on</code>, <code>with_an_aa_pair</code>, <code>method</code> and <code>character</code>. About 55% of the palettes contain a pair that carries body text.</p>
+<h3 id="get-v1palettelibraryid">GET /v1/palette/library/:id</h3>
+<p>One palette, whole, with the seed and batch that recompute it. <code>:id</code> is a palette id (<code>pal_1z</code>) or a number from 0 to 4999999.</p>
+<h2 id="harmony-library-8192-harmonies">Harmony library (8,192 harmonies)</h2>
+<h3 id="get-v1harmonylibrary">GET /v1/harmony/library</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>method</code></td><td>One of the 23 methods, for example <code>triadic</code>; see the stats</td></tr>
+<tr><td><code>family</code></td><td><code>complementary</code>, <code>analogous</code>, <code>polyadic</code>, <code>monochromatic</code> or <code>compound</code></td></tr>
+<tr><td><code>hue</code></td><td>Base hue band: red, orange, yellow, green, cyan, blue, purple, pink</td></tr>
+<tr><td><code>colors</code></td><td>How many members, 2–7</td></tr>
+<tr><td><code>min_contrast</code></td><td>The worst pair must clear this ratio, 1–21</td></tr>
+<tr><td><code>min_adherence</code></td><td>How closely it holds its canonical angles, 0–1</td></tr>
+<tr><td><code>sort</code></td><td><code>id</code> (default), <code>contrast</code>, <code>spread</code>, <code>adherence</code> or <code>colors</code></td></tr>
+<tr><td><code>order</code>, <code>limit</code>, <code>offset</code>, <code>full</code></td><td>As in the other catalogues; <code>limit</code> 1–100, default 24</td></tr>
+</tbody></table></div>
+<p>Returns <code>matched</code>, <code>share_of_collection</code>, <code>next_offset</code> and <code>harmonies</code>. Only about a quarter of the collection contains a pair that carries body text, so <code>min_contrast</code> is the filter worth using.</p>
+<h3 id="get-v1harmonylibrarystats">GET /v1/harmony/library/stats</h3>
+<p>Returns <code>with_an_aa_pair</code>, <code>method</code>, <code>family</code> and <code>color_count</code>.</p>
+<h3 id="get-v1harmonylibraryid">GET /v1/harmony/library/:id</h3>
+<p>One harmony, whole, with its derivation. <code>:id</code> is a harmony id (<code>har_5k</code>) or a number from 0 to 8191.</p>
+<h2 id="gradient-library-8192-gradients">Gradient library (8,192 gradients)</h2>
+<h3 id="get-v1gradientlibrary">GET /v1/gradient/library</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>scheme</code></td><td>For example <code>Aurora</code>, <code>Spectral</code>, <code>Terrain</code>; see the stats</td></tr>
+<tr><td><code>complexity</code></td><td><code>simple</code>, <code>detailed</code> or <code>extreme</code></td></tr>
+<tr><td><code>banding</code></td><td><code>smooth</code>, <code>subtle-compression</code> or <code>visible-step-risk</code></td></tr>
+<tr><td><code>type</code></td><td><code>linear</code>, <code>radial</code> or <code>conic</code></td></tr>
+<tr><td><code>min_score</code></td><td>Quality floor, 0–1</td></tr>
+<tr><td><code>min_stops</code>, <code>max_stops</code></td><td>Bounds on the number of colour stops</td></tr>
+<tr><td><code>sort</code></td><td><code>id</code> (default), <code>score</code> or <code>stops</code></td></tr>
+<tr><td><code>order</code>, <code>limit</code>, <code>offset</code>, <code>full</code></td><td><code>limit</code> 1–100, default 24; <code>full</code> adds interpolation space, easing and metrics</td></tr>
+</tbody></table></div>
+<p>Returns <code>matched</code>, <code>share_of_collection</code>, <code>next_offset</code> and <code>gradients</code>. About one gradient in five steps visibly somewhere; <code>banding</code> is the filter worth using.</p>
+<h3 id="get-v1gradientlibrarystats">GET /v1/gradient/library/stats</h3>
+<p>Returns the <code>banding</code>, <code>scheme</code> and <code>interpolation_space</code> tallies.</p>
+<h3 id="get-v1gradientlibraryid">GET /v1/gradient/library/:id</h3>
+<p>One gradient, whole. <code>:id</code> is a row number from 0 to 8191.</p>
+<h2 id="shade-library-8192-scales">Shade library (8,192 scales)</h2>
+<h3 id="get-v1shadelibrary">GET /v1/shade/library</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>method</code></td><td>One of ten, for example <code>tailwind-like</code>, <code>oklch-ramp</code>, <code>ink-paper</code></td></tr>
+<tr><td><code>evenness</code></td><td><code>even</code>, <code>slightly-uneven</code> or <code>lumpy</code></td></tr>
+<tr><td><code>hue</code></td><td>Base hue band, red through pink</td></tr>
+<tr><td><code>steps</code></td><td>Exactly this many steps, 2–64</td></tr>
+<tr><td><code>min_span</code></td><td>Contrast between the extremes, 1–21</td></tr>
+<tr><td><code>min_score</code></td><td>Quality floor, 0–1</td></tr>
+<tr><td><code>monotonic</code></td><td><code>true</code> for scales that never turn round</td></tr>
+<tr><td><code>carries_body_text</code></td><td><code>true</code> for scales with a pair at 4.5:1 or better</td></tr>
+<tr><td><code>sort</code></td><td><code>id</code> (default), <code>score</code>, <code>steps</code>, <code>span</code> or <code>evenness</code></td></tr>
+<tr><td><code>order</code>, <code>limit</code>, <code>offset</code>, <code>full</code></td><td><code>limit</code> 1–100, default 24</td></tr>
+</tbody></table></div>
+<p>Returns <code>matched</code>, <code>share_of_collection</code>, <code>next_offset</code> and <code>scales</code>. Every scale is monotonic and can carry text; evenness is what separates them, and only 8.2% are clean.</p>
+<h3 id="get-v1shadelibrarystats">GET /v1/shade/library/stats</h3>
+<p>Returns <code>evenness</code>, <code>monotonic</code>, <code>carries_body_text</code> and <code>method</code>.</p>
+<h3 id="get-v1shadelibraryid">GET /v1/shade/library/:id</h3>
+<p>One scale with every measurement. <code>:id</code> is a shade id (<code>shade_000000</code>) or a row number from 0 to 8191.</p>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="accessibility.html">Accessibility</a>, for the contrast corpus</li>
+<li><a href="palettes-harmonies-gradients-shades.html">Palettes, harmonies, gradients and shades</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="analyzer.html"><span>Previous</span>Analyzer</a><a href="colour-and-science.html"><span>Next</span>Colour and colour science</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#colour-atlas">Colour atlas</a></li><li><a href="#palette-library-five-million-palettes">Palette library (five million palettes)</a></li><li><a href="#harmony-library-8192-harmonies">Harmony library (8,192 harmonies)</a></li><li><a href="#gradient-library-8192-gradients">Gradient library (8,192 gradients)</a></li><li><a href="#shade-library-8192-scales">Shade library (8,192 scales)</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

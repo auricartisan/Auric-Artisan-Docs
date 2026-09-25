@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material Lighting (Material Under Light) — Auric Artisan Docs</title>
+<meta name="description" content="What the Material Under Light tool does, who it is for, where to find it and how to render a first material under a chosen light.">
+<link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../index.html">Home</a><a href="../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Perception and spectral tools</a>
+<h2>Material Lighting (Material Under Light)</h2><ul>
+<li><a href="README.html" aria-current="page">Overview</a></li>
+<li><a href="docs/README.html">Using Material Under Light &rsaquo;</a></li>
+<li><a href="others/README.html">Material Under Light background &rsaquo;</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../README.html">Docs</a> &rsaquo; <a href="../../../README.html">The website</a> &rsaquo; <a href="../../README.html">Website tools</a> &rsaquo; <a href="../README.html">Perception and spectral tools</a> &rsaquo; <a href="README.html">Material Lighting (Material Under Light)</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Material Lighting</p>
+<h1>Material Lighting (Material Under Light)</h1>
+<p class="lede">What the Material Under Light tool does, who it is for, where to find it and how to render a first material under a chosen light.</p>
+<p>The Material Lighting tool, whose page is titled <strong>Material under light</strong>, computes the colour of a surface the way light actually produces it: one wavelength at a time. It multiplies three things at each of 81 wavelengths from 380 to 780 nm: the power of a light source (the illuminant), the share of that light the material reflects (its reflectance spectrum), and how much of the reflected light travels towards your eye at the angles you set (the reflectance lobe). It then turns the result into a colour with the CIE 1931 standard observer and shows it as a shaded sphere, a swatch and a set of numbers.</p>
+<p>Because the calculation is spectral, the tool can show things a three-channel RGB renderer cannot: why the same material looks different under daylight and tungsten, and why two materials that match under one light can part under another (metamerism). It also compares your material under your chosen light with the same material under the reference light the CIE rule names for that light&#39;s colour temperature, and reports the difference as a CIEDE2000 colour difference.</p>
+<p>The twenty material presets are the tool&#39;s own curves, built from a flat level plus bell-shaped bumps; none is a measurement. You can load a measured reflectance file instead. The two colour rendering scores an earlier version printed (CRI and TM-30) are withdrawn, and the <strong>Metrics</strong> tab explains why. Everything runs in your browser.</p>
+<h2 id="who-it-is-for">Who it is for</h2>
+<ul>
+<li>Designers, 3D artists and lighting designers who want to see how a light source changes a material&#39;s colour.</li>
+<li>Students of colour science learning spectral power distributions, reflectance, colour temperature and reference illuminants.</li>
+<li>Anyone curious why gold, skin or a leaf look different under a warm lamp.</li>
+</ul>
+<h2 id="where-to-find-it">Where to find it</h2>
+<p>Open <a href="https://auricartisan.com/tool/general/spectral-tools/material-lighting/" rel="noopener">https://auricartisan.com/tool/general/spectral-tools/material-lighting/</a> in a current browser. It is listed as <strong>Material Lighting</strong> on the Collections page (<a href="https://auricartisan.com/collections/" rel="noopener">https://auricartisan.com/collections/</a>) and in the site menu.</p>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Open the tool. The scene is <strong>Gold</strong> under <strong>D65 — daylight, 6504 K</strong>, with the <strong>GGX</strong> lobe, roughness 0.40, light from 30° and view from 20°.</li>
+<li>Look at the spectrum plot: the illuminant (dashed), the reflectance, and the light leaving the surface (filled).</li>
+<li>Switch <strong>The light</strong> to <strong>A — a blackbody at 2856 K</strong> and watch the sphere and swatch warm up.</li>
+<li>Read <strong>Measured temperature</strong> and <strong>Reference for it</strong>, and the ΔE₀₀ between <strong>Under your source</strong> and <strong>Under its reference</strong>.</li>
+<li>Choose <strong>Skin</strong> under <strong>The material</strong>, then select <strong>Conductor</strong> and back to <strong>Dielectric</strong>.</li>
+<li>Pick a different lobe card, such as <strong>Oren-Nayar</strong>, and move <strong>Roughness</strong>.</li>
+<li>Select <strong>Save the spectrum</strong> to download the 81-row CSV.</li>
+</ol>
+<h2 id="what-you-can-do">What you can do</h2>
+<ul>
+<li>Light a material with D65, D50, D55, D75, A, E, or a blackbody or daylight at a temperature you choose.</li>
+<li>Choose from twenty materials, or load a measured reflectance file.</li>
+<li>Set the surface as a dielectric with a refractive index, or a conductor (metal), and its roughness.</li>
+<li>Choose one of five published reflectance lobes: GGX, Beckmann, Ward, Ashikhmin-Shirley or Oren-Nayar.</li>
+<li>Set the light angle, the view angle and the azimuth between them.</li>
+<li>Read the colour as sRGB, CIE L*a*b* and Jz, with the gamut flag.</li>
+<li>Read the source&#39;s measured colour temperature with its error band, and compare the material with its CIE reference light.</li>
+<li>Run a sensitivity sweep that perturbs the reflectance curve.</li>
+<li>Export the spectrum as CSV, the whole scene as JSON, or a link.</li>
+</ul>
+<h2 id="in-this-folder">In this folder</h2>
+<ul>
+<li><a href="docs/README.html">docs/</a> — how to use the tool.<ul>
+<li><a href="docs/getting-started.html">Getting started</a> — open it, the screen tour, the first scene.</li>
+<li><a href="docs/set-up-a-scene.html">Set up a scene</a> — the light, the material, the surface, the lobes and the geometry.</li>
+<li><a href="docs/compare-with-the-reference.html">Compare with the reference light</a> — colour temperature, the reference rule, the colour difference and the two white points.</li>
+<li><a href="docs/run-a-sensitivity-sweep.html">Run a sensitivity sweep</a> — the Metrics tab and the withdrawn rendering indices.</li>
+<li><a href="docs/use-a-measured-reflectance.html">Use a measured reflectance</a> — load your own reflectance file.</li>
+<li><a href="docs/export-and-share.html">Export and share</a> — the spectrum CSV, the scene JSON and links.</li>
+<li><a href="docs/reference.html">Reference</a> — every control, readout, tab and file format.</li>
+<li><a href="docs/troubleshooting.html">Troubleshooting</a> — symptoms, causes and fixes.</li>
+<li><a href="docs/faq.html">FAQ</a> — short answers to common questions.</li>
+</ul>
+</li>
+<li><a href="others/README.html">others/</a> — background material.<ul>
+<li><a href="others/glossary.html">Glossary</a> — terms used in this tool.</li>
+<li><a href="others/shortcuts.html">Shortcuts</a> — keyboard and pointer actions.</li>
+<li><a href="others/limits-and-accuracy.html">Limits and accuracy</a> — what is published, what is the tool&#39;s own, what is not held.</li>
+<li><a href="others/related.html">Related</a> — related tools and Learn articles.</li>
+<li><a href="others/release-notes.html">Release notes</a> — user-facing history.</li>
+<li><a href="others/privacy.html">Privacy</a> — what stays in your browser.</li>
+</ul>
+</li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="../industrial-dye-chemistry/others/related.html"><span>Previous</span>Related tools and articles</a><a href="docs/README.html"><span>Next</span>Using Material Under Light</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#who-it-is-for">Who it is for</a></li><li><a href="#where-to-find-it">Where to find it</a></li><li><a href="#quick-start">Quick start</a></li><li><a href="#what-you-can-do">What you can do</a></li><li><a href="#in-this-folder">In this folder</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

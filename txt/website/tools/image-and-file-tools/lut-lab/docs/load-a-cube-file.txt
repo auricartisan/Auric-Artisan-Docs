@@ -1,0 +1,151 @@
+==============================================================================
+LOAD A .CUBE FILE
+==============================================================================
+Load a 1D or 3D .cube file, read what the tool reports about it, and switch
+between the file and the built-in looks.
+Area: Website › Tools › Image and file tools › LUT Lab   Updated: 2026-09-25
+
+LOAD THE FILE
+=============
+
+  1. On the Lab tab, drop a `.cube` file on Drop a .cube, or select the box to
+     choose one. The chooser offers `.cube` and plain-text files.
+  2. A message confirms Loaded followed by the file name, and says how many
+     notes there are if the tool found any.
+  3. The before and after pair now shows your file applied to the current
+     scene. The label above the pair shows the file's title, or its name if it
+     has none.
+
+While a file is shown, the look menu and Strength are greyed out and the note
+under them reads The pair is showing the loaded file. The looks are paused. A
+loaded file is always applied at full strength.
+
+THE FILE CARD
+=============
+
+A card under the drop box describes the file.
+
+  Line:    Heading
+  Meaning: The `TITLE` in the file, or the file name
+  Example: Warm Film
+
+  Line:    kind
+  Meaning: 1D or 3D
+  Example: 3D
+
+  Line:    size
+  Meaning: For 3D, N³ and the number of rows; for 1D, the number of rows
+  Example: 33³ (35937 rows)
+
+  Line:    domain
+  Meaning: The declared input range for red, green and blue
+  Example: [0.000, 0.000, 0.000] – [1.000, 1.000, 1.000]
+
+  Line:    reachable
+  Meaning: The share of the table that an 8-bit sRGB input can reach
+  Example: 100.0%
+
+Under these lines is a list of notes. When there is nothing to report it reads
+no discrepancies between the header and the body.
+
+WHAT THE READER ACCEPTS
+=======================
+
+LUT Lab reads the `.cube` format as defined in the Adobe / IRIDAS Cube LUT
+Specification 1.0.
+
+  Item:     `TITLE "…"`
+  Handling: Read and shown as the file's name
+
+  Item:     `LUT_3D_SIZE N`
+  Handling: A 3D table of N × N × N rows, red index changing fastest
+
+  Item:     `LUT_1D_SIZE N`
+  Handling: A 1D table of N rows
+
+  Item:     `DOMAIN_MIN r g b`, `DOMAIN_MAX r g b`
+  Handling: The input range; 0 to 1 when absent
+
+  Item:     Lines starting with `#`
+  Handling: Comments, ignored
+
+  Item:     Blank lines
+  Handling: Ignored
+
+  Item:     Rows of three numbers
+  Handling: Table data
+
+  Item:     Any other keyword
+  Handling: Ignored
+
+Only `.cube` is supported. Other LUT formats, such as `.3dl`, need converting
+to `.cube` in another program first.
+
+NOTES THE TOOL MAY ADD
+======================
+
+  Note:         The file carries N rows beyond the ones the header declares
+  Meaning:      Extra data rows
+  What happens: The extra rows are ignored
+
+  Note:         No `LUT_3D_SIZE` in the file, but the row count is a whole
+                cube
+  Meaning:      The size keyword is missing
+  What happens: The file is read as a 3D table of that size
+
+  Note:         No size keyword, and the row count is not a cube
+  Meaning:      The size keyword is missing
+  What happens: The file is read as a 1D table with one row per line
+
+  Note:         The declared domain is wider than 0 to 1
+  Meaning:      Part of the table is for inputs above 1 or below 0
+  What happens: The reachable share is given; only that part can affect an
+                8-bit picture
+
+The specification requires a size keyword, so a file that needed a guess is
+worth fixing at its source.
+
+FILES THAT CANNOT BE READ
+=========================
+
+  Message: empty file
+  Why:     The file has no content
+
+  Message: `LUT_3D_SIZE` N needs M rows; the file has K
+  Why:     The file is shorter than its header says
+
+  Message: `LUT_1D_SIZE` N needs N rows; the file has K
+  Why:     As above, for a 1D file
+
+  Message: no `LUT_1D_SIZE` or `LUT_3D_SIZE` keyword and no usable sample rows
+  Why:     Nothing in the file looks like a table
+
+When a file cannot be read, the card shows status: not loaded with the reason,
+and the pair keeps showing the look.
+
+HOW THE FILE IS APPLIED
+=======================
+
+Each pixel of the scene is taken as 8-bit sRGB values, scaled to 0 to 1,
+placed within the file's domain, and looked up: with trilinear interpolation
+for a 3D table, or straight-line interpolation per channel for a 1D table. The
+result is rounded back to 8 bits. See LUT concepts [lut-concepts.txt].
+
+SWITCH BETWEEN THE FILE AND THE LOOKS
+=====================================
+
+  - Back to the looks (shown while a file is applied) returns the pair to the
+    built-in look and keeps the file loaded.
+  - Choosing a look from the menu, or Show it on the pair on the Looks tab,
+    also switches back to the looks.
+  - Clear the file removes the file entirely and returns to the looks. The
+    message reads Cleared the loaded file.
+
+To apply the file again after going back to the looks, drop it again.
+
+RESAMPLE OR CONVERT THE FILE
+============================
+
+While a file is applied, the Export tab writes that file's transform. You can
+use this to save the same LUT at a different size, or as a 1D curve. See Write
+a .cube file [write-a-cube-file.txt] for what changes when you do.

@@ -1,0 +1,281 @@
+==============================================================================
+ASCII ART GENERATOR REFERENCE
+==============================================================================
+Every control, range, default, file and message in the ASCII Art Generator in
+one place.
+Area: Website › Tools › Colour workspace   Updated: 2026-09-25
+
+ADDRESS
+=======
+
+  - https://auricartisan.com/tool/ascii/
+  - https://auricartisan.com/ascii opens the same page.
+
+TABS
+====
+
+  Tab      | Purpose
+  ---------+---------------------------------------------------------
+  Lab      | Source, look, colour, detail, fine tuning, and the art.
+  Analysis | Readouts, benchmark and six charts.
+  Compare  | Ink measurements for all seven character sets.
+  Export   | Seven download formats, Export all, and batch rendering.
+
+SOURCE
+======
+
+  Control: Source
+  Values:  Image, Text, Webcam
+  Default: Image
+
+  Control: Image file
+  Values:  PNG, JPEG, GIF, WebP, BMP, SVG, TIFF; up to 20 MB
+  Default: none
+
+  Control: Large images
+  Values:  Scaled to at most 4,000 px a side and 12 megapixels
+  Default: always
+
+  Control: Text
+  Values:  any text
+  Default: ASCII
+
+  Control: Text font
+  Values:  monospace, Courier New, Consolas, Monaco, Fira Code, Source Code
+           Pro
+  Default: monospace
+
+  Control: Text size
+  Values:  8 to 128 px
+  Default: 48
+
+  Control: Text weight
+  Values:  Normal, Bold, Black
+  Default: Bold
+
+  Control: White on black
+  Values:  on or off
+  Default: off
+
+  Control: Keep converting every frame
+  Values:  on or off
+  Default: off
+
+  Control: Smooth between frames
+  Values:  on or off
+  Default: off
+
+LOOK, COLOUR AND DETAIL
+=======================
+
+  Control               | Values                                | Default
+  ----------------------+---------------------------------------+--------------------
+  Look                  | Classic, Blocks, Fine, Bold, Line art | Classic highlighted
+  Colour                | Mono, From image                      | Mono
+  Ink                   | any colour                            | #f0f0f0
+  Paper                 | any colour                            | #0f0e0c
+  Detail                | 20 to 300 columns                     | 100
+  Invert for dark paper | on or off                             | follows the paper
+
+FINE TUNING
+===========
+
+  Group:   Character set
+  Control: Set
+  Values:  Standard, Detailed, Blocks, Minimal, Symbols, Lines, Braille
+  Default: Standard
+
+  Group:   Character set
+  Control: Custom ramp
+  Values:  2 to 200 characters, light to dark
+  Default: off
+
+  Group:   Shape
+  Control: Match the output font
+  Values:  on or off
+  Default: on
+
+  Group:   Shape
+  Control: Cell aspect
+  Values:  0.2 to 1.2
+  Default: set by the font
+
+  Group:   Shape
+  Control: Lock row count
+  Values:  on or off, 10 to 300 rows
+  Default: off, 50
+
+  Group:   Tone
+  Control: Brightness model
+  Values:  Luminosity (Rec.601), Average, Lightness (HSL)
+  Default: Luminosity
+
+  Group:   Tone
+  Control: Gamma
+  Values:  0.2 to 3.0
+  Default: 1.0
+
+  Group:   Tone
+  Control: Contrast
+  Values:  0 to 1
+  Default: 0
+
+  Group:   Tone
+  Control: Saturation
+  Values:  0 to 2
+  Default: 0
+
+  Group:   Sampling
+  Control: Method
+  Values:  Area average (SAT), Bilinear, Point / Nearest
+  Default: Area average
+
+  Group:   Sampling
+  Control: Dithering
+  Values:  None, Floyd-Steinberg, Ordered (Bayer)
+  Default: None
+
+  Group:   Sampling
+  Control: Bayer matrix
+  Values:  4×4, 8×8
+  Default: 8×8
+
+  Group:   Edges
+  Control: Sobel glyph selection
+  Values:  on or off
+  Default: on
+
+  Group:   Edges
+  Control: Edge weight
+  Values:  0 to 1
+  Default: 0.65
+
+  Group:   Type
+  Control: Output font
+  Values:  monospace, Courier New, Consolas, Monaco
+  Default: monospace
+
+  Group:   Type
+  Control: Size
+  Values:  6 to 32 px
+  Default: 12
+
+  Group:   Type
+  Control: Line height
+  Values:  0.8 to 2.0
+  Default: 1.0
+
+  Group:   Type
+  Control: Kerning
+  Values:  −2 to 4 px
+  Default: 0
+
+  Group:   Type
+  Control: Render mode
+  Values:  Text, HTML, Canvas, SVG
+  Default: Text
+
+  Group:   Filters
+  Control: Check boxes
+  Values:  Flip X, Flip Y, Rotate 90°, Border, Frame, Brighten, Darken, Noise
+  Default: all off
+
+  Group:   Filters
+  Control: Noise amount
+  Values:  0 to 1
+  Default: 0.1
+
+  Group:   Advanced
+  Control: Thin out
+  Values:  0 to 0.95
+  Default: 0
+
+  Group:   Advanced
+  Control: Seed
+  Values:  whole number
+  Default: 2654435769
+
+CHARACTER SETS
+==============
+
+  Set      | Characters (light to dark)             | Count
+  ---------+----------------------------------------+------
+  Standard | space `.:-=+*#%@`                      | 10
+  Detailed | space and 69 marks, letters and digits | 70
+  Blocks   | space `░▒▓█`                           | 5
+  Minimal  | space `.:#@`                           | 5
+  Symbols  | space `·•●◉⬤`                          | 6
+  Lines    | space and box-drawing characters       | 23
+  Braille  | space and 255 Braille patterns         | 256
+
+STAGE
+=====
+
+  Item         | What it does
+  -------------+------------------------------------
+  Render chips | Text, HTML, Canvas, SVG
+  Grid         | Columns × rows
+  Chars        | Number of characters
+  Render       | Time of the last conversion
+  Copy         | Copies the plain characters
+  Full screen  | Shows the art over the whole window
+
+FILES
+=====
+
+  File                | From
+  --------------------+---------------------------
+  ascii-art.txt       | Download .txt, Export all
+  ascii-art.png       | Download .png, Export all
+  ascii-art.svg       | Download .svg, Export all
+  ascii-art.html      | Download .html
+  ascii-research.json | Download .json, Export all
+  ascii-analysis.csv  | Download .csv, Export all
+  ascii-art.ans       | Download .ans
+
+MESSAGES
+========
+
+  Message: Rendering…
+  Meaning: A conversion is in progress.
+
+  Message: Unsupported file type: …
+  Meaning: The file is not one of the accepted image types.
+
+  Message: File too large (… MB). Max 20 MB.
+  Meaning: The file is over 20 MB.
+
+  Message: Failed to load image
+  Meaning: The browser could not read the file.
+
+  Message: Downscaled from … to …
+  Meaning: A large picture was scaled down before conversion.
+
+  Message: Copied!
+  Meaning: The art is on the clipboard.
+
+  Message: Nothing to copy
+  Meaning: Nothing has been converted yet.
+
+  Message: Nothing to export
+  Meaning: Nothing has been converted yet.
+
+  Message: Turn colour on first — ANSI carries the image's colours
+  Meaning: ANSI download needs From image.
+
+  Message: Load an image first
+  Meaning: The benchmark needs a picture.
+
+  Message: No inputs
+  Meaning: The batch box is empty.
+
+  Message: Camera permission denied. …
+  Meaning: The camera could not start. See Troubleshooting
+           [troubleshooting.txt].
+
+RELATED
+=======
+
+  - Fine tuning [fine-tuning.txt]
+  - Glossary [../others/glossary.txt]
+  - Shortcuts [../others/shortcuts.txt]

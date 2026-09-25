@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API keys — Auric Artisan Docs</title>
+<meta name="description" content="Create, view, copy and revoke Auric Artisan API keys in the dashboard, and understand key limits, plans and what happens after a downgrade.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Account and billing</a>
+<h2>Account and billing docs</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the dashboard</a></li>
+<li><a href="api-credits-and-spend.html">API credits and spend controls</a></li>
+<li><a href="api-keys.html" aria-current="page">API keys</a></li>
+<li><a href="buy-a-plan.html">Buy a plan</a></li>
+<li><a href="dashboard-overview.html">Overview section</a></li>
+<li><a href="delete-your-account.html">Delete your account</a></li>
+<li><a href="device-sign-in.html">Device sign-in</a></li>
+<li><a href="emails-and-messages.html">Emails and messages</a></li>
+<li><a href="export-your-data.html">Export your data</a></li>
+<li><a href="invoices-and-receipts.html">Invoices and receipts</a></li>
+<li><a href="passwords.html">Passwords</a></li>
+<li><a href="plan-and-usage.html">Plan &amp; Usage section</a></li>
+<li><a href="plan-terms-and-cancelling.html">Plan terms, renewal and cancelling</a></li>
+<li><a href="plans-and-pricing.html">Plans and pricing</a></li>
+<li><a href="profile.html">Profile section</a></li>
+<li><a href="refunds.html">Refunds</a></li>
+<li><a href="security-and-privacy.html">Security &amp; Privacy section</a></li>
+<li><a href="sign-in.html">Sign in and sign out</a></li>
+<li><a href="sign-up.html">Sign up</a></li>
+<li><a href="tokens.html">Tokens</a></li>
+<li><a href="two-step-verification.html">Two-step verification</a></li>
+<li><a href="verify-email.html">Verify your email</a></li>
+<li><a href="reference.html">Reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">The website</a> &rsaquo; <a href="../README.html">Account and billing</a> &rsaquo; <a href="README.html">Account and billing docs</a></nav>
+<p class="kicker">Website › Account and billing</p>
+<h1>API keys</h1>
+<p class="lede">Create, view, copy and revoke Auric Artisan API keys in the dashboard, and understand key limits, plans and what happens after a downgrade.</p>
+<p>An API key lets your own code call the Auric Artisan REST API as your account. Keys are created and revoked in the dashboard, under <strong>Plan &amp; Usage</strong> › <strong>Your API Keys</strong>. How to use a key in a request, and every endpoint, is documented in <a href="../../../services/public-api/README.html">Public API</a> and on <a href="https://auricartisan.com/library/documentation/api/" rel="noopener">https://auricartisan.com/library/documentation/api/</a>.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li><strong>Plan.</strong> API access is included from the <strong>Specialist</strong> plan upward. On Apprentice and Artisan the create button is withdrawn, because a key there would authenticate but be refused on every metered call. Specialist is marked <strong>Coming soon</strong> on the pricing page today.</li>
+<li><strong>Verified email.</strong> API keys are locked until your email address is verified.</li>
+<li><strong>Limit.</strong> An account can hold up to 10 active keys.</li>
+<li><strong>One meter per account.</strong> Every key on the account draws on the same monthly credit allowance and the same prepaid balance. Credits are counted per account, not per key.</li>
+</ul>
+<h2 id="create-a-key">Create a key</h2>
+<ol>
+<li>Open the dashboard and select <strong>Plan &amp; Usage</strong>.</li>
+<li>In <strong>Your API Keys</strong>, select <strong>Create your first key</strong> (or <strong>Create key</strong> if you already have some).</li>
+<li>Type a name that says where the key is used, for example &quot;CI pipeline&quot;. Names can be up to 64 characters.</li>
+<li>Select <strong>Create</strong>. (Select <strong>Cancel</strong> to stop.)</li>
+<li>A panel appears: &#39;&quot;CI pipeline&quot; created — copy it now.&#39; and &quot;This is the only time the full key is shown. We store just a fingerprint.&quot;</li>
+<li>Select <strong>Copy</strong> (it changes to <strong>Copied!</strong>), or select the text in the field and copy it yourself.</li>
+<li>Store the key somewhere safe, such as a password manager or your deployment&#39;s secret settings.</li>
+<li>Select <strong>Done</strong>.</li>
+</ol>
+<p>Result: the key appears in the list. Keys begin with <code>aa_live_</code>.</p>
+<blockquote class="callout callout-important">
+<p><strong>Important:</strong> The full key is never shown again. Auric Artisan keeps only a one-way hash of each key and a short prefix, so it cannot recover a lost key. If you lose one, create a new key and revoke the old one.</p>
+</blockquote>
+<h2 id="the-key-list">The key list</h2>
+<p>Each row shows:</p>
+<ul>
+<li>the key&#39;s <strong>name</strong>;</li>
+<li>its <strong>prefix</strong> — the first characters followed by &quot;…&quot;, so you can tell keys apart;</li>
+<li>when it was <strong>created</strong>, and when it was last <strong>used</strong>, or &quot;never used&quot;;</li>
+<li>a <strong>Revoke</strong> button.</li>
+</ul>
+<p>The number of keys also appears in the <strong>Active Keys</strong> figure and on the <strong>Plan &amp; Usage</strong> tab badge.</p>
+<h2 id="revoke-a-key">Revoke a key</h2>
+<ol>
+<li>Find the key in <strong>Your API Keys</strong>.</li>
+<li>Select <strong>Revoke</strong>.</li>
+</ol>
+<p>Result: the key is removed from the list and stops working. Any code still using it gets an authentication error. Revoking cannot be undone; create a new key if you need one.</p>
+<p>Revoke a key straight away if it may have leaked — for example if it was committed to a public repository.</p>
+<h2 id="after-a-downgrade">After a downgrade</h2>
+<p>A key outlives the plan that created it. If your account moves to a plan without API access while it still has keys:</p>
+<ul>
+<li><strong>Plan &amp; Usage</strong> still shows the API console, so you can see and revoke those keys.</li>
+<li>A notice reads &quot;The API is not included on&quot; your plan, and explains: &quot;Keys can still be viewed and revoked here, but calls to metered endpoints return 402 PLAN_UPGRADE_REQUIRED. Full API access is included from Specialist upward.&quot; It offers <strong>Compare plans</strong> and <strong>Read the API docs</strong>.</li>
+<li>You cannot create new keys until the account is on a plan with API access again.</li>
+</ul>
+<h2 id="keys-and-the-live-usage-panel">Keys and the live usage panel</h2>
+<p>The usage figures in the dashboard come from the API itself, which is reached with an API key. To see them, paste one of your keys into <strong>Live usage</strong> › <strong>API key</strong> and select <strong>Watch traffic</strong>. The key is kept in that browser tab only and is forgotten when the tab closes. See <a href="api-credits-and-spend.html#live-usage">API credits and spend controls</a>.</p>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>&quot;Give the key a name.&quot;</td><td>Type a name before selecting <strong>Create</strong>.</td></tr>
+<tr><td>&quot;You can hold at most 10 active keys.&quot;</td><td>Revoke a key you no longer use, then create the new one.</td></tr>
+<tr><td>&quot;No API keys yet. Key creation is available from the Specialist plan.&quot;</td><td>Your plan does not include the API.</td></tr>
+<tr><td>&quot;Could not load API keys.&quot;</td><td>Refresh the page. If it persists, sign in again.</td></tr>
+<tr><td>&quot;Could not revoke key.&quot;</td><td>Try again; check your connection.</td></tr>
+</tbody></table></div>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="api-credits-and-spend.html">API credits and spend controls</a></li>
+<li><a href="plan-and-usage.html">Plan &amp; Usage section</a></li>
+<li><a href="device-sign-in.html">Device sign-in</a> — the command-line tool signs in without a key</li>
+<li><a href="../../../services/public-api/README.html">Public API</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="api-credits-and-spend.html"><span>Previous</span>API credits and spend controls</a><a href="buy-a-plan.html"><span>Next</span>Buy a plan</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#before-you-start">Before you start</a></li><li><a href="#create-a-key">Create a key</a></li><li><a href="#the-key-list">The key list</a></li><li><a href="#revoke-a-key">Revoke a key</a></li><li><a href="#after-a-downgrade">After a downgrade</a></li><li><a href="#keys-and-the-live-usage-panel">Keys and the live usage panel</a></li><li><a href="#messages">Messages</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare broadcast gamuts — Auric Artisan Docs</title>
+<meta name="description" content="Compare Rec.709/sRGB, Display P3 and Rec.2020 by area and share of the spectral locus, and measure how much of each an image occupies.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; HDR Gamut Plot</a>
+<h2>HDR Gamut Plot documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the HDR Gamut Plot</a></li>
+<li><a href="compare-broadcast-gamuts.html" aria-current="page">Compare broadcast gamuts</a></li>
+<li><a href="explore-perceptual-planes.html">Explore ICtCp and Jzazbz planes</a></li>
+<li><a href="read-hdr-curves.html">Read HDR transfer curves</a></li>
+<li><a href="reference.html">HDR Gamut Plot reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the HDR Gamut Plot</a></li>
+<li><a href="faq.html">HDR Gamut Plot FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">HDR Gamut Plot</a> &rsaquo; <a href="README.html">HDR Gamut Plot documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Compare broadcast gamuts</h1>
+<p class="lede">Compare Rec.709/sRGB, Display P3 and Rec.2020 by area and share of the spectral locus, and measure how much of each an image occupies.</p>
+<h2 id="the-three-spaces">The three spaces</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Space</th><th>Red (x, y)</th><th>Green (x, y)</th><th>Blue (x, y)</th><th>White</th></tr></thead>
+<tbody>
+<tr><td>Rec.709 / sRGB</td><td>0.640, 0.330</td><td>0.300, 0.600</td><td>0.150, 0.060</td><td>D65</td></tr>
+<tr><td>Display-P3</td><td>0.680, 0.320</td><td>0.265, 0.690</td><td>0.150, 0.060</td><td>D65</td></tr>
+<tr><td>Rec.2020</td><td>0.708, 0.292</td><td>0.170, 0.797</td><td>0.131, 0.046</td><td>D65</td></tr>
+</tbody></table></div>
+<p>All three share the D65 white. The P3 here is Display P3, not the DCI cinema version with its greener white.</p>
+<h2 id="read-the-share-of-the-locus">Read the share of the locus</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, read <strong>Gamut metrics</strong>.</li>
+<li><strong>Share of locus</strong> is each triangle&#39;s area divided by the area of the spectral locus in the same plane. In CIE 1931 xy the tool measures 33.6% for Rec.709, 45.6% for Display-P3 and 63.6% for Rec.2020.</li>
+<li>Press <code>A</code> or change <strong>Chromaticity axes</strong> to <strong>CIE 1976 u′v′</strong>. The shares change because u′v′ spaces colours more evenly; the u′v′ figures are the fairer comparison.</li>
+</ol>
+<p>The often-quoted 35.9%, 53.6% and 75.8% are against a smaller locus area than the one the tool draws. Neither set is wrong; the tool divides by the locus it shows. Its locus is the CIE 1931 2° observer&#39;s, tabulated at 65 points from 380 to 700 nm.</p>
+<h2 id="measure-an-images-colours">Measure an image&#39;s colours</h2>
+<ol>
+<li>Under <strong>Plot an image on it</strong>, select <strong>Drop a PNG or JPEG</strong> and choose an image. Images larger than 1,024 pixels on a side are reduced for analysis.</li>
+<li>Read the results under the button:<ul>
+<li><strong>Pixels on the diagram</strong> — the analysed size, how many pixels were sampled and how many distinct chromaticities they contain;</li>
+<li><strong>How much of each gamut it occupies</strong> — for each space, the area of its triangle covered by the image&#39;s chromaticities (measured in xy, in cells 0.002 wide), as a percentage.</li>
+</ul>
+</li>
+<li>A note explains the result. For an ordinary untagged image every pixel falls inside all three gamuts, because such a file is read as sRGB and sRGB sits inside the other two.</li>
+</ol>
+<p><strong>Occupancy</strong> answers &quot;how much of this gamut does the image use?&quot;. A grey ramp occupies 0%; a full sweep of the sRGB cube occupies about 99.9% of sRGB, 75.0% of P3 and 53.8% of Rec.2020.</p>
+<p>The tool reports no luminance for the image. An 8-bit PNG or JPEG does not record what light its values stood for.</p>
+<h2 id="compare-side-by-side">Compare side by side</h2>
+<p>Open <strong>Export</strong>. Under <strong>The three spaces, side by side</strong>, a bar chart and table list each space&#39;s <strong>Area</strong>, <strong>Share of locus</strong> and <strong>White</strong> in the plane currently on the Lab tab.</p>
+<h2 id="result">Result</h2>
+<p>You can state how much of the visible chromaticity range each broadcast gamut covers, in the plane you choose, and how much of each an image actually uses.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="getting-started.html"><span>Previous</span>Getting started with the HDR Gamut Plot</a><a href="explore-perceptual-planes.html"><span>Next</span>Explore ICtCp and Jzazbz planes</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-three-spaces">The three spaces</a></li><li><a href="#read-the-share-of-the-locus">Read the share of the locus</a></li><li><a href="#measure-an-images-colours">Measure an image's colours</a></li><li><a href="#compare-side-by-side">Compare side by side</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

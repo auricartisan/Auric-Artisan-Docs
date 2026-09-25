@@ -1,0 +1,72 @@
+==============================================================================
+CHROMATIC ADAPTATION FAQ
+==============================================================================
+Short answers to common questions about the Chromatic Adaptation lab.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+WHICH TRANSFORM SHOULD I USE?
+=============================
+
+For ICC colour management and D65 ↔ D50 conversions, Bradford is the common
+convention. CAT16 is the transform of the most recent CIE-lineage appearance
+model (CAM16). The lab does not rank them for accuracy, because that needs
+corresponding-colour data sets it does not hold; it shows what each one does
+on your pair.
+
+WHY DO VON KRIES AND HPE GIVE THE SAME RESULT?
+==============================================
+
+The lab's Von Kries matrix is the Hunt–Pointer–Estévez matrix normalised to
+D65. Normalising scales each row, and that scaling cancels out in M⁻¹ ·
+diag(d) · M, so the two produce identical adaptations.
+
+WHAT IS XYZ SCALING FOR?
+========================
+
+It is the simplest possible adaptation, scaling X, Y and Z directly. It is not
+a model of the eye and is kept as a baseline to compare the others against.
+
+WHAT DOES "DEGREE OF ADAPTATION" MEAN?
+======================================
+
+How complete the adaptation is. At D = 1 the source white maps exactly onto
+the destination white. Real viewers often adapt incompletely, especially in
+dim or complex scenes, so values below 1 are realistic in some situations.
+
+HOW LONG DOES ADAPTATION REALLY TAKE?
+=====================================
+
+The lab uses Fairchild and Reniff's (1995) measurements: about half the
+adaptation within a second or so, and the rest with a half-life of about 30
+seconds. With the default settings, 90% adaptation takes about 70 seconds. The
+Dynamics tab computes the exact times.
+
+WHY DOES THE TIME-COURSE PROSE IN REFERENCE QUOTE DIFFERENT TIME CONSTANTS?
+===========================================================================
+
+Some background text in the Reference section predates the current model. The
+time course the lab actually uses is the one on the Dynamics tab.
+
+IS MY IMAGE UPLOADED?
+=====================
+
+No. The image is read and processed in your browser, and the exported PNG is
+created there too.
+
+CAN I ADAPT A VIDEO?
+====================
+
+No. The lab adapts one still image (or the sample sweep) at a time.
+
+CAN I GET THE FULL ADAPTATION MATRIX AS NUMBERS?
+================================================
+
+Yes. The Matrix tab shows it at the D you set, and Export JSON includes it for
+the current moment of the timeline. The Copy as buttons copy the transform's
+cone matrix M.
+
+DOES THE LAB MODEL COLOUR APPEARANCE (CIECAM02 OR CAM16)?
+=========================================================
+
+No. It applies the chromatic adaptation step only. The Reference notes explain
+how CIECAM02 would compute D from the adapting luminance and surround.

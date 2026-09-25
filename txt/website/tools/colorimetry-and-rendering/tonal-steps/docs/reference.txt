@@ -1,0 +1,222 @@
+==============================================================================
+TONAL STEPS REFERENCE
+==============================================================================
+Every control, readout, option and export in Tonal Steps, Tints and Shades.
+Area: Website › Tools › Colorimetry and rendering   Updated: 2026-09-25
+
+Address:
+https://auricartisan.com/tool/general/gamut-and-rendering/tonal-steps-tints-shades/
+
+LAB TAB
+=======
+
+Controls
+--------
+
+  Control:         Base colour field and picker
+  What it does:    The colour every step is built from
+  Values or range: Six-digit HEX
+  Default:         #2563EB
+
+  Control:         Random base
+  What it does:    Picks a random base colour
+  Values or range: Button
+  Default:         —
+
+  Control:         Ramp engine
+  What it does:    How the main ramp is built
+  Values or range: HSL lightness; Equal luminance
+  Default:         HSL lightness
+
+  Control:         Mix in
+  What it does:    Space for tints, shades, tones and key sets
+  Values or range: sRGB linear; CIELAB; OKLab; HSL
+  Default:         OKLab
+
+  Control:         Steps
+  What it does:    Number of ramp steps
+  Values or range: 3 to 21
+  Default:         11
+
+  Control:         Easing γ
+  What it does:    Bends the Equal luminance targets and the neutral ladder
+  Values or range: 0.4 to 2.6, step 0.05
+  Default:         1.0
+
+  Control:         Full ramp
+  What it does:    Adds the ramp to The other sets
+  Values or range: On or off
+  Default:         On
+
+  Control:         Tints — toward white
+  What it does:    Shows tints
+  Values or range: On or off
+  Default:         Off
+
+  Control:         Shades — toward black
+  What it does:    Shows shades
+  Values or range: On or off
+  Default:         Off
+
+  Control:         Tones — toward grey
+  What it does:    Shows tones
+  Values or range: On or off
+  Default:         Off
+
+  Control:         Neutral ladder
+  What it does:    Shows greys
+  Values or range: On or off
+  Default:         Off
+
+In the current version, sRGB linear mixes the same way as OKLab.
+
+Readouts
+--------
+
+  Readout:       Caption
+  What it shows: Steps, engine and mixing space
+
+  Readout:       Base note
+  What it shows: The base HEX, whether it is one of the steps ("step n" or
+                 "not a step") and γ
+
+  Readout:       Strip and step rows
+  What it shows: Each step's swatch, HEX, OKLab L and contrast against white
+
+  Readout:       Base OKLab L, Largest step, Smallest step, Evenness
+  What it shows: Lightness and step-size statistics in OKLab L; evenness as ±%
+
+  Readout:       Where the steps fall
+  What it shows: OKLab L of each step
+
+  Readout:       Base colour
+  What it shows: HEX, RGB, HSL, L*a*b*, LCh, OKLab L, Y (luminance), vs white
+                 and vs black with ratings
+
+  Readout:       The other sets
+  What it shows: The sets ticked under Also show, each titled with its count;
+                 tiles show HEX and contrast against black
+
+RAMPS TAB
+=========
+
+  Control:      Compare
+  What it does: Which engines to show
+  Values:       Every engine; One at a time
+  Default:      Every engine
+
+  Control:      Measure evenness in
+  What it does: Measure for the evenness figure and step-size chart
+  Values:       OKLab L; CIELAB L*; Relative Y
+  Default:      OKLab L
+
+  Control:      Endpoints
+  What it does: Which evenness figure leads
+  Values:       Include black; Interior only
+  Default:      Include black
+
+  Control:      Key sets
+  What it does: The key list for the design-scale ladder
+  Values:       50–950; 50–900
+  Default:      50–950
+
+  Readout:       Engine rows
+  What it shows: Name, what it holds even, a "same ramp as" badge where two
+                 engines produce the same colours, the strip, evenness with
+                 and without the end steps
+
+  Readout:       Step sizes, as the chosen measure sees them
+  What it shows: Chart and statistics of the gaps between steps
+
+  Readout:       Where the ramp sits in chroma
+  What it shows: The ramp, tints, shades and tones on the OKLab a–b plane
+
+  Readout:       Design-scale key sets
+  What it shows: The ladder for the chosen key list
+
+CONTRAST TAB
+============
+
+  Control:      Against
+  What it does: The colour every step is measured against
+  Values:       White; Black; The base
+  Default:      White
+
+  Control:      Metric
+  What it does: Shown, but the table always lists both measures in the current
+                version
+  Values:       WCAG 2.2; APCA
+  Default:      WCAG 2.2
+
+  Control:      Superseded APCA
+  What it does: Adds the former approximate figure and the difference
+  Values:       Show the difference; Hide
+  Default:      Hide
+
+  Readout:       Caption and note
+  What it shows: "Every step against …" and "WCAG 2.2 ratio · APCA-W3 0.1.9 Lc
+                 · n steps"
+
+  Readout:       Table
+  What it shows: Step, WCAG, Rating (AAA, AA, AA large, Fail), APCA Lc, and
+                 optionally Superseded and Difference
+
+  Readout:       The ladder
+  What it shows: A chart of the steps' contrast
+
+DATA TAB
+========
+
+  Dataset                                          | Status
+  -------------------------------------------------+--------------------------
+  sRGB transfer and primaries (IEC 61966-2-1:1999) | Verbatim
+  WCAG 2.2 contrast                                | Verbatim
+  OKLab matrices (Ottosson 2020)                   | Verbatim
+  OKLab lightness                                  | Computed from linear sRGB
+  CIELAB (CIE 015:2018, D65)                       | Computed
+  Ramp engines (two distinct)                      | Computed
+  APCA Lc (APCA-W3 0.1.9)                          | Computed
+  Tailwind and Material palettes                   | Absent: key names only
+
+Status chips filter the list. Install a table ("Drop a CSV or JSON") does not
+load files in the current version.
+
+EXPORT TAB
+==========
+
+  Control                   | What it does
+  --------------------------+--------------------------------------------------------------------
+  What to take              | The ramp; The key set; The contrast table; A link to this view
+  As                        | CSS, SCSS, JSON, CSV or URL, as fits the choice
+  Download button           | Names and saves the file; for a link, Copy the link
+  Copy to clipboard         | Copies the payload
+  Link field                | Read-only; always shows the current link
+  Analyse a list, Analyse   | Table of Hex, L*, a*, b*, OKL, Y, Tints, Shades
+  Download the result       | Copies the analysis as CSV to the clipboard
+  Exactly what you will get | Preview, size in bytes and a footer explaining the provenance lines
+
+Link parameters: `hex`, `engine` (`hsl`, `luminance`, or `contrast`), `steps`,
+`gamma`, `mode` (`srgb`, `lab`, `oklab`, `hsl`).
+
+REFERENCE TAB
+=============
+
+  Control                                        | What it does
+  -----------------------------------------------+------------------
+  Standards, Formulas, Citations, Research notes | Switch sections
+  Filter                                         | Searches all four
+
+Standards include IEC 61966-2-1:1999, ITU-R BT.709-6, CIE 015:2018, WCAG 2.2,
+APCA-W3 0.1.9, the WCAG 3.0 working draft, the Design Tokens Format Module and
+Ottosson (2020). Formulas list 11 formulas as written, from the sRGB curve to
+the evenness measure. Citations list 14 references, tagged runs, context or
+names only, with corrected ones marked. Research notes describe six fixes.
+Where these colours sit on the 1931 diagram plots the ramp on the CIE 1931
+chromaticity diagram.
+
+SAVE TO LIBRARY
+===============
+
+The floating Save to Library button saves the colours shown on the page as a
+palette in your Auric Artisan Library. A palette or colour sent back from the
+Library to this tool sets the base colour.

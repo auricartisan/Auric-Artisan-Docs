@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material Under Light reference — Auric Artisan Docs</title>
+<meta name="description" content="Every tab, control, readout, message and file format in Material Under Light, with ranges and defaults.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Material Lighting (Material Under Light)</a>
+<h2>Using Material Under Light</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Material Under Light</a></li>
+<li><a href="compare-with-the-reference.html">Compare with the reference light</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="run-a-sensitivity-sweep.html">Run a sensitivity sweep</a></li>
+<li><a href="set-up-a-scene.html">Set up a scene</a></li>
+<li><a href="use-a-measured-reflectance.html">Use a measured reflectance</a></li>
+<li><a href="reference.html" aria-current="page">Material Under Light reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Material Under Light</a></li>
+<li><a href="faq.html">Material Under Light FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Material Lighting (Material Under Light)</a> &rsaquo; <a href="README.html">Using Material Under Light</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Material Lighting</p>
+<h1>Material Under Light reference</h1>
+<p class="lede">Every tab, control, readout, message and file format in Material Under Light, with ranges and defaults.</p>
+<p>Address: <a href="https://auricartisan.com/tool/general/spectral-tools/material-lighting/" rel="noopener">https://auricartisan.com/tool/general/spectral-tools/material-lighting/</a></p>
+<h2 id="tabs">Tabs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><strong>Lab</strong></td><td>Light, material, surface and geometry controls; the spectrum plot; the sample sphere and lobe cards; readouts; the reference comparison</td></tr>
+<tr><td><strong>Method</strong></td><td>Four explanation views</td></tr>
+<tr><td><strong>Metrics</strong></td><td>The sensitivity sweep and the two withdrawn rendering indices</td></tr>
+<tr><td><strong>Data</strong></td><td>The register of 17 tables and formulas, filterable by status; the tab label shows the count; reflectance loader</td></tr>
+<tr><td><strong>Export</strong></td><td>Spectrum CSV, scene JSON and link</td></tr>
+<tr><td><strong>Reference</strong></td><td>Fourteen sources, filterable</td></tr>
+</tbody></table></div>
+<p>Links in the page text (for example <strong>Metrics</strong> or <strong>Data</strong>) switch to that tab.</p>
+<h2 id="lab-tab-the-light">Lab tab — The light</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Illuminant</td><td><strong>D65 — daylight, 6504 K</strong>, <strong>D50 — daylight, 5003 K</strong>, <strong>D55 — daylight, 5503 K</strong>, <strong>D75 — daylight, 7504 K</strong>, <strong>A — a blackbody at 2856 K</strong>, <strong>E — equal energy</strong>, <strong>Blackbody at a temperature you choose</strong>, <strong>Daylight at a temperature you choose</strong></td><td>D65</td></tr>
+<tr><td><strong>Temperature</strong></td><td>1800–10000 K, step 50; enabled only for the last two options; daylight is raised to at least 4000 K</td><td>2700 K</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-the-material-and-surface">Lab tab — The material and surface</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>Material</td><td><strong>White</strong>, <strong>Gray</strong>, <strong>Black</strong>, <strong>Red</strong>, <strong>Green</strong>, <strong>Blue</strong>, <strong>Yellow</strong>, <strong>Cyan</strong>, <strong>Magenta</strong>, <strong>Skin</strong>, <strong>Leaf</strong>, <strong>Ocean</strong>, <strong>Concrete</strong>, <strong>Wood</strong>, <strong>Sky</strong>, <strong>Gold</strong>, <strong>Copper</strong>, <strong>Silver</strong>, <strong>Ceramic</strong>, <strong>Rubber</strong>; or one measured file</td><td>Gold</td></tr>
+<tr><td><strong>Dielectric</strong> / <strong>Conductor</strong></td><td>Surface type</td><td>Dielectric</td></tr>
+<tr><td><strong>Refractive index</strong></td><td>1.00–3.00, step 0.01; disabled for Conductor</td><td>1.50</td></tr>
+<tr><td><strong>Roughness</strong></td><td>0.02–1.00, step 0.01</td><td>0.40</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-the-geometry">Lab tab — The geometry</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range and step</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Light from</strong></td><td>0–89°, step 1</td><td>30°</td></tr>
+<tr><td><strong>Seen from</strong></td><td>0–89°, step 1</td><td>20°</td></tr>
+<tr><td><strong>Between them</strong></td><td>0–180°, step 1</td><td>0°</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-buttons">Lab tab — Buttons</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Save the spectrum</strong></td><td>Saves <code>material-under-light-spectrum.csv</code></td></tr>
+<tr><td><strong>Reset the scene</strong></td><td>Restores D65, 2700 K, Gold (if the presets are loaded), Dielectric, 1.50, GGX, 0.40, 30°, 20°, 0°, and clears the sweep</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-lobe-cards">Lab tab — Lobe cards</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Card</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td><strong>GGX</strong> (default)</td><td>Walter et al. 2007</td></tr>
+<tr><td><strong>Beckmann</strong></td><td>Beckmann &amp; Spizzichino 1963</td></tr>
+<tr><td><strong>Ward</strong></td><td>Ward 1992</td></tr>
+<tr><td><strong>Ashikhmin-Shirley</strong></td><td>Ashikhmin &amp; Shirley 2000</td></tr>
+<tr><td><strong>Oren-Nayar</strong></td><td>Oren &amp; Nayar 1994</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-spectrum-and-sample">Lab tab — Spectrum and sample</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Spectrum plot</td><td><strong>Illuminant</strong> (dashed), <strong>Reflectance</strong> and <strong>What leaves the surface</strong> (filled), each scaled to its own maximum, 380–780 nm</td></tr>
+<tr><td>Legend</td><td>The illuminant&#39;s name; the material with &quot;synthesised&quot; or the file name with &quot;measured&quot;; &quot;their product, times the lobe&quot;</td></tr>
+<tr><td>Sample</td><td>A 232 × 232 sphere, seen head-on, lit from the <strong>Light from</strong> angle</td></tr>
+<tr><td>Exposure note</td><td><strong>scaled so a white card here would read Y = 1</strong></td></tr>
+<tr><td><strong>clipped to sRGB</strong></td><td>Shown when the swatch or the sphere had to be clipped</td></tr>
+<tr><td>Drop and click</td><td>Drop a reflectance file on the plot, or click it to choose one</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-readouts">Lab tab — Readouts</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Readout</th><th>Meaning</th><th>Format</th></tr></thead>
+<tbody>
+<tr><td><strong>sRGB</strong></td><td>Un-adapted colour at the chosen geometry</td><td>Hex</td></tr>
+<tr><td><strong>CIE L*</strong></td><td>Lightness against the light&#39;s own white</td><td>One decimal</td></tr>
+<tr><td><strong>a*, b*</strong></td><td>Opponent coordinates against the light&#39;s own white</td><td>One decimal each</td></tr>
+<tr><td><strong>Jz</strong></td><td>JzAzBz lightness</td><td>Four decimals</td></tr>
+<tr><td><strong>Measured temperature</strong></td><td>CCT of the illuminant with its error band; highlighted above 7000 K</td><td>Nearest 10 K</td></tr>
+<tr><td><strong>Reference for it</strong></td><td><strong>daylight N K</strong> or <strong>blackbody N K</strong></td><td>Nearest 10 K</td></tr>
+<tr><td><strong>Reflectance</strong></td><td><strong>synthesised</strong> (highlighted) or <strong>measured —</strong> and the file name</td><td>—</td></tr>
+<tr><td><strong>Inside sRGB</strong></td><td><strong>yes</strong>, <strong>no</strong> or <strong>the highlight is not</strong> (last two highlighted)</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="lab-tab-against-the-reference-the-standard-names">Lab tab — Against the reference the standard names</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Element</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Under your source</strong></td><td>Swatch, captioned with the illuminant</td></tr>
+<tr><td>ΔE₀₀</td><td>CIEDE2000 difference between the two, two decimals</td></tr>
+<tr><td><strong>Under its reference</strong></td><td>Swatch, captioned <strong>D</strong> or <strong>BB</strong> and the temperature</td></tr>
+<tr><td>Note</td><td>The reason for the reference choice</td></tr>
+</tbody></table></div>
+<h2 id="method-tab">Method tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Method</strong></td><td><strong>From spectrum to colour</strong>, <strong>Choosing the reference</strong>, <strong>The five lobes</strong>, <strong>Two white points</strong></td><td>From spectrum to colour</td></tr>
+</tbody></table></div>
+<h2 id="metrics-tab">Metrics tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Range and step</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Perturbation</strong></td><td>±0.005–0.1, step 0.005</td><td>±0.02</td></tr>
+<tr><td><strong>Correlation length</strong></td><td>0–120 nm, step 5 (0 is <strong>independent</strong>)</td><td>40 nm</td></tr>
+<tr><td><strong>Draws</strong></td><td>100–2000, step 100</td><td>500</td></tr>
+<tr><td><strong>Run the sweep</strong></td><td>Shows <strong>Median</strong>, <strong>95th percentile</strong> and <strong>Worst draw</strong> in ΔE₀₀</td><td>—</td></tr>
+</tbody></table></div>
+<p>Below: <strong>CIE colour rendering index</strong> and <strong>TM-30 Rf and Rg</strong>, each marked <strong>Withdrawn</strong>, with tables and <strong>What it would take</strong>.</p>
+<h2 id="data-tab">Data tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Status</strong></td><td><strong>All</strong> (17), <strong>Verbatim</strong> (8), <strong>Computed</strong> (5), <strong>Stand-in</strong> (2), <strong>Absent</strong> (2)</td></tr>
+<tr><td>Register row</td><td>Select, or press <code>Enter</code> or <code>Space</code>, to expand its note and <strong>what it would take</strong></td></tr>
+<tr><td><strong>Drop a reflectance file</strong></td><td>Loads a measured reflectance; click or <code>Enter</code>/<code>Space</code> opens a file chooser</td></tr>
+<tr><td><strong>Go back to the presets</strong></td><td>Shown after loading; restores the twenty presets</td></tr>
+</tbody></table></div>
+<p>Entries: <strong>CIE 1931 2° standard observer</strong>, <strong>CIE D-series eigenvector basis</strong>, <strong>sRGB primaries and transfer curve</strong>, <strong>CIEDE2000 colour difference</strong>, <strong>JzAzBz</strong>, <strong>Planck&#39;s radiation law</strong>, <strong>GGX / Trowbridge-Reitz microfacet distribution</strong>, <strong>The other four reflectance lobes</strong> (Verbatim); <strong>Correlated colour temperature</strong>, <strong>The reference illuminant for a source</strong>, <strong>Rendering shift</strong>, <strong>Exposure normalisation</strong>, <strong>Illumination and view geometry</strong> (Computed); <strong>The twenty pigment reflectances</strong>, <strong>The sensitivity sweep</strong> (Stand-in); <strong>CIE colour rendering index (Ra)</strong>, <strong>IES TM-30 fidelity and gamut (Rf, Rg)</strong> (Absent).</p>
+<h2 id="export-tab">Export tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>What to take</strong></td><td>Preview <strong>The spectrum</strong>, <strong>The whole scene</strong> or <strong>A link to this</strong></td></tr>
+<tr><td><strong>Download the spectrum</strong></td><td>Saves <code>material-under-light-spectrum.csv</code> (81 rows)</td></tr>
+<tr><td><strong>Download the scene</strong></td><td>Saves <code>material-under-light-scene.json</code></td></tr>
+<tr><td><strong>Copy a link to this scene</strong></td><td>Copies a link</td></tr>
+</tbody></table></div>
+<h2 id="reference-tab">Reference tab</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><strong>Reference</strong></td><td><strong>All</strong> (14), <strong>Colorimetry</strong> (6), <strong>Reflectance</strong> (6), <strong>Not held</strong> (2)</td></tr>
+</tbody></table></div>
+<h2 id="messages">Messages</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>Scene reset</strong></td><td>Defaults restored</td></tr>
+<tr><td><strong>Swept N perturbations in M ms</strong></td><td>The sweep finished</td></tr>
+<tr><td><strong>N rows accepted — the register now says verbatim</strong> (with <strong>, read as percent</strong> when applicable)</td><td>A reflectance file was loaded</td></tr>
+<tr><td><strong>No two-column numeric rows in that file</strong></td><td>The file had no usable rows</td></tr>
+<tr><td><strong>Not installed: fewer than eight rows</strong> / <strong>fewer than eight usable rows</strong></td><td>Too few rows</td></tr>
+<tr><td><strong>Not installed: covers X to Y nm; at least 420 to 680 is needed …</strong></td><td>The file does not span 420–680 nm</td></tr>
+<tr><td><strong>Back to the twenty synthesised presets</strong></td><td>The loaded file was removed</td></tr>
+<tr><td><strong>Link copied</strong></td><td>The link is on the clipboard</td></tr>
+</tbody></table></div>
+<h2 id="file-formats">File formats</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Format</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>material-under-light-spectrum.csv</code></td><td>CSV with <code>#</code> header lines</td><td><code>wavelength_nm,illuminant_relative,reflectance,radiance_relative,observer_xbar,observer_ybar,observer_zbar</code></td></tr>
+<tr><td><code>material-under-light-scene.json</code></td><td>JSON</td><td>See <a href="export-and-share.html">Export and share</a></td></tr>
+<tr><td>Reflectance (input)</td><td><code>.csv</code>, <code>.tsv</code> or <code>.txt</code></td><td>Two columns: wavelength (nm), reflectance (0–1 or percent); at least 8 rows spanning 420–680 nm</td></tr>
+</tbody></table></div>
+<h2 id="link-parameters">Link parameters</h2>
+<p><code>illuminant</code>, <code>cct</code>, <code>material</code>, <code>ior</code>, <code>roughness</code>, <code>thetaL</code>, <code>thetaV</code>, <code>phi</code>, <code>lobe</code>, <code>metal</code>. Values are listed in <a href="export-and-share.html">Export and share</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="use-a-measured-reflectance.html"><span>Previous</span>Use a measured reflectance</a><a href="troubleshooting.html"><span>Next</span>Troubleshooting Material Under Light</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#tabs">Tabs</a></li><li><a href="#lab-tab-the-light">Lab tab — The light</a></li><li><a href="#lab-tab-the-material-and-surface">Lab tab — The material and surface</a></li><li><a href="#lab-tab-the-geometry">Lab tab — The geometry</a></li><li><a href="#lab-tab-buttons">Lab tab — Buttons</a></li><li><a href="#lab-tab-lobe-cards">Lab tab — Lobe cards</a></li><li><a href="#lab-tab-spectrum-and-sample">Lab tab — Spectrum and sample</a></li><li><a href="#lab-tab-readouts">Lab tab — Readouts</a></li><li><a href="#lab-tab-against-the-reference-the-standard-names">Lab tab — Against the reference the standard names</a></li><li><a href="#method-tab">Method tab</a></li><li><a href="#metrics-tab">Metrics tab</a></li><li><a href="#data-tab">Data tab</a></li><li><a href="#export-tab">Export tab</a></li><li><a href="#reference-tab">Reference tab</a></li><li><a href="#messages">Messages</a></li><li><a href="#file-formats">File formats</a></li><li><a href="#link-parameters">Link parameters</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

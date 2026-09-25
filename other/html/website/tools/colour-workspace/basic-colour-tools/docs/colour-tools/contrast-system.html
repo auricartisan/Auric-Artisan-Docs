@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrast System — Auric Artisan Docs</title>
+<meta name="description" content="Check up to five foreground colours on one background under WCAG 2.x, APCA and ISO 9241-3, read an APCA font-size table, sweep lightness on a contrast curve, fix colours to AA or AAA, and preview them in a realistic interface.">
+<link rel="stylesheet" href="../../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../../index.html">Home</a><a href="../../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Basic Color Tools documentation</a>
+<h2>Colour Tools workbench</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="accessibility-lab.html">Accessibility Lab</a></li>
+<li><a href="animation-contrast.html">Animation Contrast</a></li>
+<li><a href="cmyk-soft-proof.html">CMYK Soft-Proof</a></li>
+<li><a href="colour-formulation.html">Color Formulation</a></li>
+<li><a href="colour-inspector.html">Color Inspector</a></li>
+<li><a href="colour-library.html">Color Library</a></li>
+<li><a href="colour-name-finder.html">Color Name Finder</a></li>
+<li><a href="colour-psychology.html">Color Psychology</a></li>
+<li><a href="colour-space-converter.html">Color Space Converter</a></li>
+<li><a href="contrast-system.html" aria-current="page">Contrast System</a></li>
+<li><a href="gradient-library.html">Gradient Library</a></li>
+<li><a href="harmony-studio.html">Harmony Studio</a></li>
+<li><a href="launcher-and-panels.html">Open the Colour Tools and manage their panels</a></li>
+<li><a href="pantone-and-named-lookup.html">Pantone &amp; Named Lookup</a></li>
+<li><a href="type-readability-sim.html">Type Readability Sim</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../../README.html">The website</a> &rsaquo; <a href="../../../../README.html">Website tools</a> &rsaquo; <a href="../../../README.html">Colour workspace</a> &rsaquo; <a href="../../README.html">Basic Color Tools</a> &rsaquo; <a href="../README.html">Basic Color Tools documentation</a> &rsaquo; <a href="README.html">Colour Tools workbench</a></nav>
+<p class="kicker">Website › Tools › Colour workspace</p>
+<h1>Contrast System</h1>
+<p class="lede">Check up to five foreground colours on one background under WCAG 2.x, APCA and ISO 9241-3, read an APCA font-size table, sweep lightness on a contrast curve, fix colours to AA or AAA, and preview them in a realistic interface.</p>
+<p>Contrast System is the workbench&#39;s in-depth contrast tool. You set one background and up to five foreground colours. For each pair it reports three measures side by side, suggests the nearest colour that passes, shows which font sizes and weights the pair can carry under APCA, and draws the pair in a realistic interface sample.</p>
+<p>The three measures:</p>
+<ul>
+<li><strong>WCAG 2.x contrast ratio</strong>: the luminance ratio used by WCAG 2.0, 2.1 and 2.2, from 1:1 to 21:1. 4.5:1 is AA for normal text, 7:1 is AAA, 3:1 is AA for large text.</li>
+<li><strong>APCA Lc</strong> (shown as <strong>WCAG 3 APCA</strong>): the Accessible Perceptual Contrast Algorithm, proposed for WCAG 3. <strong>Lc</strong> (lightness contrast) runs from about −108 to +106. A negative value means light text on a dark background, a positive value dark text on a light background. Readability depends on its size and on the font&#39;s size and weight.</li>
+<li><strong>ISO 9241-3 modulation (M)</strong>: (Lmax − Lmin) / (Lmax + Lmin), from 0 to 1, from the ergonomics standard for display text.</li>
+</ul>
+<p>Contrast System is in the launcher&#39;s <strong>Essentials</strong> group.</p>
+<h2 id="open-it">Open it</h2>
+<p>Open the launcher and select <strong>Contrast System</strong>, pick it from the right-click menu&#39;s <strong>Colour tools</strong> group, or right-click a colour value and select <strong>Check its contrast</strong>. See <a href="launcher-and-panels.html">Open the Colour Tools</a>. It starts with a dark navy background (#0F172A) and one foreground: the colour you opened it with, or gold (#D3AF37).</p>
+<h2 id="screen-tour">Screen tour</h2>
+<h3 id="sidebar">Sidebar</h3>
+<ul>
+<li><strong>Background</strong>: one colour field.</li>
+<li><strong>Foreground colors</strong>: one colour field per foreground, labelled <strong>FG 1</strong>, <strong>FG 2</strong> and so on, with <strong>+ Add</strong>, <strong>− Remove</strong> and <strong>Swap BG↔FG1</strong>.</li>
+<li><strong>Text size</strong>: <strong>Normal</strong>, <strong>Large</strong> or <strong>Small</strong>. Changes the scale of the <strong>Preview</strong> tab.</li>
+<li><strong>Preview filter</strong>: a vision filter for the <strong>Preview</strong> tab.</li>
+<li><strong>Quick presets</strong>: five background-and-foreground sets.</li>
+<li>A summary with one line per foreground: its WCAG ratio (coloured green, amber or red) and its APCA Lc.</li>
+</ul>
+<h3 id="main-area-tabs">Main area tabs</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><strong>Analysis</strong></td><td>One card per foreground with all three measures and fix buttons.</td></tr>
+<tr><td><strong>APCA Guide</strong></td><td>The Lc value for one pair, a plain-language verdict, and a font size and weight table.</td></tr>
+<tr><td><strong>Curve</strong></td><td>How the contrast ratio changes as the foreground gets lighter or darker, with suggested alternatives and the nearest AA and AAA colours.</td></tr>
+<tr><td><strong>Preview</strong></td><td>A realistic interface drawn in your colours, with a stats card per foreground.</td></tr>
+</tbody></table></div>
+<h2 id="the-analysis-tab">The Analysis tab</h2>
+<p>Each card shows:</p>
+<ul>
+<li>A header with the background swatch, a small <strong>Aa — FG 1 on BG</strong> sample, both HEX codes and the foreground swatch.</li>
+<li><strong>WCAG 2.x</strong>: a bar, the ratio (for example <code>7.21:1</code>) and two level pills, <strong>norm</strong> and <strong>large</strong>.</li>
+<li><strong>WCAG 3 APCA</strong>: a bar, the Lc value with its sign (for example <code>Lc −86.4</code>) and two level pills, <strong>body</strong> and <strong>large</strong>.</li>
+<li><strong>ISO 9241</strong>: a bar, the modulation (for example <code>M 0.912</code>) and a level pill.</li>
+<li>Four buttons: copy the foreground HEX code, <strong>→ Fix to AA</strong>, <strong>→ Fix to AAA</strong> and <strong>Curve</strong>.</li>
+</ul>
+<p>Pills are green for a pass, amber for a borderline result and red for a fail. The levels:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Measure</th><th>Levels</th></tr></thead>
+<tbody>
+<tr><td>WCAG 2.x, normal</td><td><strong>AAA</strong> 7:1, <strong>AA</strong> 4.5:1, else <strong>Fail</strong></td></tr>
+<tr><td>WCAG 2.x, large</td><td><strong>AAA</strong> 4.5:1, <strong>AA</strong> 3:1, else <strong>Fail</strong></td></tr>
+<tr><td>APCA, body</td><td><strong>AAA</strong> Lc 90, <strong>AA</strong> Lc 75, <strong>Body</strong> Lc 60, else <strong>Fail</strong></td></tr>
+<tr><td>APCA, large</td><td><strong>AAA</strong> Lc 75, <strong>AA</strong> Lc 60, <strong>Body</strong> Lc 45, else <strong>Fail</strong></td></tr>
+<tr><td>ISO 9241-3</td><td><strong>Excellent</strong> 0.7, <strong>Good</strong> 0.5, <strong>Marginal</strong> 0.3, else <strong>Poor</strong></td></tr>
+</tbody></table></div>
+<p>APCA levels use the size of Lc, whichever its sign.</p>
+<h2 id="tasks">Tasks</h2>
+<h3 id="check-your-text-colours-on-a-background">Check your text colours on a background</h3>
+<ol>
+<li>Set <strong>Background</strong> to your surface colour.</li>
+<li>Set <strong>FG 1</strong> to your body text colour. Select <strong>+ Add</strong> for headings, links and muted text (up to five foregrounds).</li>
+<li>Read each card on <strong>Analysis</strong>. Look at the <strong>norm</strong> pill for body text and the <strong>large</strong> pill for headings.</li>
+</ol>
+<p>Result: every text colour rated under three measures at once.</p>
+<h3 id="fix-a-colour-that-fails">Fix a colour that fails</h3>
+<ol>
+<li>On a failing card, select <strong>→ Fix to AA</strong> (4.5:1) or <strong>→ Fix to AAA</strong> (7:1).</li>
+<li>The foreground changes to the nearest passing colour and <strong>Fixed to AA</strong> or <strong>Fixed to AAA</strong> appears.</li>
+</ol>
+<p>The fix keeps the colour&#39;s hue and chroma and moves only its OKLCH lightness, in small steps: lighter on a dark background, darker on a light one. It stops at the first step that passes. If no lightness can reach the target (for example 7:1 on a mid-grey background), it stops at the lightest or darkest version it tried, which may still fail; the card shows the result.</p>
+<p>Result: a foreground that looks like the original but meets the ratio.</p>
+<h3 id="pick-a-size-and-weight-with-the-apca-guide">Pick a size and weight with the APCA guide</h3>
+<ol>
+<li>Open <strong>APCA Guide</strong>. Choose a pair with the <strong>FG</strong> buttons next to <strong>Pair:</strong>.</li>
+<li>Read the large Lc value and the verdict under it:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>Lc (absolute)</th><th>Verdict shown</th></tr></thead>
+<tbody>
+<tr><td>90 or more</td><td>AAA — suitable for all body text, small and large.</td></tr>
+<tr><td>75 to 90</td><td>AA — passes body text at regular weights and sizes.</td></tr>
+<tr><td>60 to 75</td><td>Fluent — readable for mid-size and larger text.</td></tr>
+<tr><td>45 to 60</td><td>Spot — suitable for short labels and larger UI text only.</td></tr>
+<tr><td>30 to 45</td><td>Non-text / large decorative elements only.</td></tr>
+<tr><td>Under 30</td><td>Insufficient — fails all text readability thresholds.</td></tr>
+</tbody></table></div>
+<ol start="3">
+<li>Read the table. Rows are font sizes (10, 12, 14, 16, 18, 24, 32 and 48 pixels); columns are font weights (100 to 900). Each cell shows:<ul>
+<li><strong>✓</strong>: passes with room to spare (or the combination needs no minimum);</li>
+<li><strong>✓~</strong>: passes with a small margin (less than 15 Lc above the minimum);</li>
+<li><strong>✗</strong>: fails; hover to see the Lc needed;</li>
+<li><strong>—</strong>: that size and weight is not usable at any contrast.</li>
+</ul>
+</li>
+</ol>
+<p>Result: you know the smallest and thinnest type the pair can support, for example &quot;16 px needs weight 400 or more&quot;.</p>
+<h3 id="explore-lighter-and-darker-alternatives">Explore lighter and darker alternatives</h3>
+<ol>
+<li>Open <strong>Curve</strong>, or select <strong>Curve</strong> on an analysis card. Choose a pair next to <strong>Pair:</strong>.</li>
+<li>Read the chart <strong>WCAG contrast ratio curve — FG lightness sweep</strong>. The line shows the contrast ratio (vertical axis, up to 21) for every OKLCH lightness of the foreground (horizontal axis, dark to light), keeping its hue and chroma. Dashed lines mark <strong>7:1 AAA</strong>, <strong>4.5:1 AA</strong> and <strong>3:1 Lg</strong>. A ringed dot marks the current foreground.</li>
+<li>Under the chart, read the three current figures (<strong>WCAG 2.x</strong>, <strong>APCA Lc</strong>, <strong>ISO mod</strong>) with their levels.</li>
+<li>Under <strong>Alternatives</strong>, eight chips show the foreground at eight lightness levels with their ratio and level. Select one to use it.</li>
+<li>Below, two cards show <strong>Nearest AA (4.5:1)</strong> and <strong>Nearest AAA (7:1)</strong>, each with a preview, its HEX code and ratio. Select <strong>Use this color</strong> to apply it.</li>
+</ol>
+<p>Result: the same colour family at a lightness that works, chosen by eye.</p>
+<h3 id="preview-the-pair-in-an-interface">Preview the pair in an interface</h3>
+<ol>
+<li>Open <strong>Preview</strong>.</li>
+<li>The sample draws a small product interface in the background colour, with <strong>FG 1</strong> as the text colour and <strong>FG 2</strong> as the accent: a header (<strong>Panel Preview</strong>, the active filter and the FG 1 ratio), a heading (<em>The quick brown fox</em>), body text, 11-pixel small print, <strong>Primary</strong> and <strong>Secondary</strong> buttons, an <strong>FG 2 link</strong>, a <strong>Badge</strong>, a dashboard card with APCA Lc and ISO figures, a form with an email field and a status list, a table of levels (<strong>Normal text</strong>, <strong>Large text</strong>, <strong>APCA body</strong>) and three alert states.</li>
+<li>A strip at the bottom shows <em>Aa</em> under <strong>Normal</strong>, <strong>Deuteranopia</strong>, <strong>Protanopia</strong>, <strong>Tritanopia</strong> and <strong>Achromatopsia</strong>.</li>
+<li>Change <strong>Text size</strong> to <strong>Small</strong> or <strong>Large</strong> to scale the sample, and <strong>Preview filter</strong> to see it through a vision filter.</li>
+<li>Under the sample, one stats card per foreground shows its ratio, APCA Lc and level, ISO modulation and level, and a WCAG pill.</li>
+</ol>
+<p>Result: you judge the colours in context, not only as numbers.</p>
+<h2 id="quick-presets">Quick presets</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Preset</th><th>Background</th><th>Foregrounds</th></tr></thead>
+<tbody>
+<tr><td><strong>Dark UI</strong></td><td>#0F172A</td><td>#FFFFFF, #D3AF37</td></tr>
+<tr><td><strong>Light UI</strong></td><td>#F9FAFB</td><td>#111827, #1D4ED8</td></tr>
+<tr><td><strong>High contrast</strong></td><td>#000000</td><td>#FFFFFF, #FFFF00</td></tr>
+<tr><td><strong>Brand gold</strong></td><td>#1A1A2E</td><td>#D3AF37, #E8E8E8</td></tr>
+<tr><td><strong>Alert red</strong></td><td>#FEF2F2</td><td>#991B1B, #B91C1C</td></tr>
+</tbody></table></div>
+<h2 id="controls">Controls</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>What it does</th><th>Values or range</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><strong>Background</strong></td><td>Background colour</td><td>HEX, colour well, dice</td><td>#0F172A</td></tr>
+<tr><td><strong>FG 1</strong> … <strong>FG 5</strong></td><td>Foreground colours</td><td>1 to 5</td><td>#D3AF37, or the colour you opened with</td></tr>
+<tr><td><strong>+ Add</strong></td><td>Adds a random foreground</td><td>Up to 5</td><td>—</td></tr>
+<tr><td><strong>− Remove</strong></td><td>Removes the last foreground</td><td>At least 1 remains</td><td>—</td></tr>
+<tr><td><strong>Swap BG↔FG1</strong></td><td>Exchanges the background and FG 1</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Text size</strong></td><td>Scale of the Preview sample</td><td>Normal, Large, Small</td><td>Normal</td></tr>
+<tr><td><strong>Preview filter</strong></td><td>Vision filter on the Preview sample</td><td>Normal vision, Deuteranopia, Protanopia, Tritanopia, Achromatopsia, Low vision</td><td>Normal vision</td></tr>
+<tr><td>Quick presets</td><td>Load a preset</td><td>5 presets</td><td>—</td></tr>
+<tr><td>Copy HEX (card)</td><td>Copies the foreground HEX</td><td>—</td><td>—</td></tr>
+<tr><td><strong>→ Fix to AA</strong> / <strong>→ Fix to AAA</strong></td><td>Adjusts lightness to 4.5:1 or 7:1</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Curve</strong> (card)</td><td>Opens the Curve tab for that pair</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Pair:</strong> buttons</td><td>Choose the foreground for APCA Guide and Curve</td><td>FG 1 to FG 5</td><td>FG 1</td></tr>
+<tr><td>Alternative chips</td><td>Apply one of eight lightness variants</td><td>OKLCH L 0.05 to 0.95</td><td>—</td></tr>
+<tr><td><strong>Use this color</strong></td><td>Apply the nearest AA or AAA colour</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h2 id="outputs-and-exports">Outputs and exports</h2>
+<ul>
+<li>Copy a foreground&#39;s HEX code from its analysis card.</li>
+<li>Fixed and suggested colours replace the foreground, so you can copy them from the colour field.</li>
+<li>There is no file export. For code output, open the colour in the <a href="colour-inspector.html">Color Inspector</a>.</li>
+</ul>
+<h2 id="accuracy-and-limits">Accuracy and limits</h2>
+<ul>
+<li>WCAG ratios use the standard sRGB relative-luminance formula.</li>
+<li>The APCA value follows a simplified form of the published algorithm, and the size and weight table is based on the APCA bridge guidance for WCAG 3. APCA is still a draft; treat its results as guidance.</li>
+<li>ISO 9241-3 modulation is computed from relative luminance, not measured on a screen.</li>
+<li>The fix and the curve change only OKLCH lightness. Colours outside the sRGB range are clipped, which can shift them slightly.</li>
+<li>Vision filters are simple simulations; see <a href="accessibility-lab.html">Accessibility Lab</a> for their limits.</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="README.html">Colour Tools documentation</a></li>
+<li><a href="accessibility-lab.html">Accessibility Lab</a> for a whole palette at once</li>
+<li><a href="type-readability-sim.html">Type Readability Sim</a></li>
+<li><a href="animation-contrast.html">Animation Contrast</a> for text over moving backgrounds</li>
+<li><a href="../../../../accessibility-and-vision/README.html">Contrast Checker and other accessibility tools</a></li>
+<li><a href="../../README.html">Basic Color Tools</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="colour-space-converter.html"><span>Previous</span>Color Space Converter</a><a href="gradient-library.html"><span>Next</span>Gradient Library</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#open-it">Open it</a></li><li><a href="#screen-tour">Screen tour</a></li><li><a href="#the-analysis-tab">The Analysis tab</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#quick-presets">Quick presets</a></li><li><a href="#controls">Controls</a></li><li><a href="#outputs-and-exports">Outputs and exports</a></li><li><a href="#accuracy-and-limits">Accuracy and limits</a></li><li><a href="#related">Related</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

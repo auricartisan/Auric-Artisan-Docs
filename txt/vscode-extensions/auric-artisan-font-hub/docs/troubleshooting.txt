@@ -1,0 +1,118 @@
+==============================================================================
+TROUBLESHOOTING
+==============================================================================
+Symptoms, causes and fixes for common Auric Artisan Font Hub problems.
+Area: VS Code extensions › Auric Artisan Font Hub   Updated: 2026-09-25
+
+For anything not listed, run Auric Font Hub: Show Logs and see Get support
+[../../install-and-setup/docs/get-support.txt]. Include your extension
+version, the file language and the error message with anything private
+removed.
+
+FONTS ARE NOT VISIBLE ON YOUR WEBSITE
+=====================================
+
+  - Why: the stylesheet is not loaded, the font file is blocked (often by CORS
+    or a Content Security Policy), or the class is not applied.
+  - Fix: run Check Font CDN and Browser CORS, then check the browser's Network
+    tab for both the stylesheet and the font file. A successful stylesheet
+    response alone is not enough. See Check CDN and browser delivery
+    [cdn-and-browser-delivery.txt].
+
+AN EMBED IS PRESENT BUT THE TEXT HAS NOT CHANGED
+================================================
+
+  - Why: the setup only defines the `.auric-font-<id>` class.
+  - Fix: add the class to your markup, or use the family's `font-family` value
+    in your own selector.
+
+NOTHING CHANGED AFTER INSERTING
+===============================
+
+  - Why: the setup was already in the file (… is already configured in this
+    document.), or the file type needs manual placement and the embed was
+    copied to the clipboard instead.
+  - Fix: read the notification, then paste the embed where it belongs if it
+    was copied.
+
+"NO HTML HEAD FOUND."
+=====================
+
+  - Why: the HTML file has no `<head>` element, for example a partial or a
+    component template.
+  - Fix: paste the copied embed into your page's head or your framework's
+    layout.
+
+"THE DOCUMENT CHANGED. PREVIEW THE FONT INSERTION AGAIN BEFORE APPLYING."
+=========================================================================
+
+  - Why: the file was edited after the preview opened, so the preview is out
+    of date.
+  - Fix: run Preview again and apply the new preview.
+
+"SMART INSERTION SUPPORTS DOCUMENTS UP TO 2 MIB."
+=================================================
+
+  - Why: the file is larger than automatic insertion handles.
+  - Fix: copy an embed and place it by hand.
+
+"THIS IS A LOCAL SYSTEM FONT."
+==============================
+
+  - Why: system fonts are not on the CDN, so there is nothing to link to.
+  - Fix: copy its family name and rely on it being installed, or choose a
+    library font.
+
+PREVIEWS ARE MISSING OR SAY "PREVIEW UNAVAILABLE"
+=================================================
+
+  - Why: you are offline, `auricFontLib.network.enabled` is off, the font is
+    not cached yet, or the file could not be fetched.
+  - Fix: connect, turn the network setting on, or wait and retry. Details,
+    styles and licences still work from the bundled catalogue.
+
+THE CATALOGUE REFRESH WAS REJECTED
+==================================
+
+  - Why: the network failed, or the refreshed data did not pass validation.
+  - Fix: nothing is lost: Auric Font Hub kept cached data and the bundled
+    snapshot stays available. New families may need an extension update.
+
+"SELF-HOSTING KIT BLOCKED."
+===========================
+
+  - Why: a family's licence does not allow redistribution, permission could
+    not be established, a required licence notice could not be loaded, or the
+    family is a system font.
+  - Fix: remove the families named in the message and try again.
+
+"CHOOSE AT MOST N FAMILIES FOR ONE KIT." OR THE 250 MB LIMIT
+============================================================
+
+  - Why: the kit is limited by `auricFontLib.download.maxFamilies` (6 by
+    default, up to 12) and to 250 MB in total.
+  - Fix: split the selection into several kits, or raise the setting.
+
+"SELECT AT LEAST TWO FONT FAMILIES TO COMPARE."
+===============================================
+
+  - Fix: select two to four families with the select button on each card, then
+    Compare.
+
+DUPLICATE COMMANDS OR VIEWS
+===========================
+
+  - Why: the older Font Library extension is still enabled.
+  - Fix: disable or uninstall it. See Moving from Font Library
+    [moving-from-font-library.txt].
+
+"ENABLE NETWORK ACCESS IN FONT HUB SETTINGS TO RUN CDN CHECKS."
+===============================================================
+
+  - Fix: set `auricFontLib.network.enabled` to `true`.
+
+A PREVIEW BECAME STALE
+======================
+
+  - Why: you edited the source file after opening the diff.
+  - Fix: reopen Preview after editing.

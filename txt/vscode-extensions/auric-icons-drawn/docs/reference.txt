@@ -1,0 +1,193 @@
+==============================================================================
+AURIC ICONS: DRAWN REFERENCE
+==============================================================================
+Every command, keybinding, setting, view, category and library control in
+Auric Icons: Drawn 0.12.1.
+Area: VS Code extensions › Auric Icons: Drawn   Updated: 2026-09-25
+
+This reference describes version 0.12.1 as published on the Visual Studio
+Marketplace.
+
+COMMANDS
+========
+
+Category in the Command Palette: Auric Icons: Drawn.
+
+  Command:      Open Icon Library
+  ID:           `auricIconsDrawn.library.openExplorer`
+  What it does: Opens the Icon Studio — Library editor tab.
+
+  Command:      Search Icons
+  ID:           `auricIconsDrawn.library.searchIcons`
+  What it does: Choose an icon, then an action.
+
+  Command:      Insert SVG at Cursor
+  ID:           `auricIconsDrawn.library.insertSvg`
+  What it does: Choose an icon and insert it.
+
+  Command:      Smart Insert Icon (matches active language)
+  ID:           `auricIconsDrawn.library.smartInsert`
+  What it does: Choose an icon and insert with language-aware output.
+
+  Command:      Copy Icon As… (JSX, CSS, Markdown, Data URI, Image tag)
+  ID:           `auricIconsDrawn.library.copyAs`
+  What it does: Choose an icon and one of nine formats.
+
+  Command:      Insert from Likes
+  ID:           `auricIconsDrawn.library.showFavorites`
+  What it does: Choose a liked icon and insert.
+
+  Command:      Insert from Recent
+  ID:           `auricIconsDrawn.library.showRecents`
+  What it does: Choose a recent icon and insert.
+
+  Command:      Toggle Like for an Icon
+  ID:           `auricIconsDrawn.library.toggleFavorite`
+  What it does: Like or unlike an icon.
+
+  Command:      Clear Likes, Recents and Learned Recommendations
+  ID:           `auricIconsDrawn.library.resetPersonalization`
+  What it does: Confirm, then reset personalisation.
+
+  Command:      Copy SVG
+  ID:           `auricIconsDrawn.library.copySvg`
+  What it does: Choose an icon and copy raw SVG.
+
+  Command:      Save SVG As…
+  ID:           `auricIconsDrawn.library.saveSvg`
+  What it does: Choose an icon and save it as a file.
+
+  Command:      Open SVG Source
+  ID:           `auricIconsDrawn.library.openSource`
+  What it does: Choose an icon and open its SVG.
+
+These commands are hidden from the Command Palette while another extension
+hosts the shared library; from keybindings they forward to the host.
+
+KEYBINDINGS
+===========
+
+  Keys (Windows and Linux):`Ctrl` + `Alt` + `I`
+  Keys (macOS):            `Cmd` + `Alt` + `I`
+  Command:                 Smart Insert Icon
+  When:                    Editor focused and Drawn hosts the library
+
+  Keys (Windows and Linux):`Ctrl` + `Alt` + `R`
+  Keys (macOS):            `Cmd` + `Alt` + `R`
+  Command:                 Insert from Recent
+  When:                    Editor focused and Drawn hosts the library
+
+In the view: `/` focuses search, `Escape` clears it or closes a dropdown,
+arrow keys move between dropdown options.
+
+SETTINGS
+========
+
+  Setting:         `auricIconsDrawn.library.defaultVariant`
+  Type:            string
+  Values or range: `auto`, `color`, `mono`, `outline`, `duotone`
+  Default:         `auto`
+  What it does:    Variant for Command Palette actions; `auto` follows the
+                   file.
+
+  Setting:         `auricIconsDrawn.library.pageSize`
+  Type:            number
+  Values or range: 24 to 240
+  Default:         72
+  What it does:    Cards streamed per batch.
+
+  Setting:         `auricIconsDrawn.library.smartInsert`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Language-aware output for Insert.
+
+  Setting:         `auricIconsDrawn.library.recommendations.enabled`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Recommendations for the file you are editing.
+
+  Setting:         `auricIconsDrawn.library.recommendations.limit`
+  Type:            number
+  Values or range: 4 to 24
+  Default:         12
+  What it does:    Icons in the recommendation rail.
+
+  Setting:         `auricIconsDrawn.library.showGuide`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Smart guide tips.
+
+  Setting:         `auricIconsDrawn.library.density`
+  Type:            string
+  Values or range: `comfortable`, `compact`
+  Default:         `comfortable`
+  What it does:    Card size.
+
+  Setting:         `auricIconsDrawn.library.hoverPreview`
+  Type:            boolean
+  Values or range: `true`, `false`
+  Default:         `true`
+  What it does:    Hover previews for icon IDs.
+
+VIEWS AND MENUS
+===============
+
+  Place:    Activity Bar
+  Contents: Auric Icons: Drawn container with the Icon Library view (hidden
+            while another extension hosts).
+
+  Place:    View title bar
+  Contents: Open Icon Library, Smart Insert Icon, Insert from Likes; … menu:
+            Clear Likes, Recents and Learned Recommendations.
+
+  Place:    Editor tab
+  Contents: Icon Studio — Library.
+
+Drawn contributes no file icon theme.
+
+LIBRARY CONTENTS
+================
+
+  Item       | Value
+  -----------+------------------------------------------------
+  Icons      | 480
+  Style      | Warm Drawn (shown as Drawn in the Style filter)
+  Variants   | Color, Mono, Outline, Duotone
+  Categories | 30
+
+Categories: Files and document types; Folders and organization; Coding and
+development; Artificial intelligence; Data and databases; Cloud and hosting;
+Cybersecurity; Communication; Social interaction; User accounts and profiles;
+Business and finance; E-commerce; Marketing; Analytics and reporting;
+Productivity; Project management; Calendar and scheduling; Education and
+learning; Science and laboratory; Healthcare and wellness; Food and cooking;
+Travel and transportation; Maps and navigation; Weather and environment;
+Nature and sustainability; Home and Furniture; Tools and Construction; Art and
+Design; Photography and Video; Music and Audio.
+
+LIBRARY CONTROLS
+================
+
+  Control         | Options
+  ----------------+--------------------------------------------------------------------
+  Search          | Free text, synonyms, fuzzy ranking.
+  Library         | All libraries or one collection (only when merged).
+  Category        | All categories or one of 30.
+  Style           | All styles or Drawn.
+  Variant         | Auto, Color, Mono, Outline, Duotone.
+  Preview surface | Auto, Light, Dark.
+  Chips           | All, ✦ For you, ♥ Likes, ↺ Recent.
+  Card buttons    | Artwork (open source), heart, Insert, Copy, Save, JSX, URI, Source.
+
+LIMITS
+======
+
+  Item               | Limit
+  -------------------+------------------------------------
+  Recent icons       | 60
+  Liked icons        | 500
+  Quick Pick results | 200 with a search term; 400 without
+  Smart guide tips   | Up to 4

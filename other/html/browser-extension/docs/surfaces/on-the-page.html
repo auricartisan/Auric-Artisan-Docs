@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On the page — Auric Artisan Docs</title>
+<meta name="description" content="Everything the extension can draw on a website, when it appears, how it is isolated from the site, and how to remove it.">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../index.html">Home</a><a href="../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Browser extension documentation</a>
+<h2>Surfaces</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="home.html">Home</a></li>
+<li><a href="inspector.html">Element inspector</a></li>
+<li><a href="on-the-page.html" aria-current="page">On the page</a></li>
+<li><a href="popup.html">The popup</a></li>
+<li><a href="search.html">Search</a></li>
+<li><a href="side-panel.html">Side panel</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../README.html">Docs</a> &rsaquo; <a href="../../README.html">Auric Artisan browser extension</a> &rsaquo; <a href="../README.html">Browser extension documentation</a> &rsaquo; <a href="README.html">Surfaces</a></nav>
+<p class="kicker">Browser extension › Surfaces</p>
+<h1>On the page</h1>
+<p class="lede">Everything the extension can draw on a website, when it appears, how it is isolated from the site, and how to remove it.</p>
+<p>Most of the extension lives in the popup and side panel. A few features appear on the website itself. This page lists each one, when it appears, and how to make it go away.</p>
+<h2 id="what-can-appear-on-a-page">What can appear on a page</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>What</th><th>Appears when</th><th>Goes away when</th></tr></thead>
+<tbody>
+<tr><td><strong>Element inspector</strong>: a highlight box, a card and a bar at the bottom</td><td>You start Inspect (Home, Code › Inspect, the right-click menu or a shortcut)</td><td>You press <code>Esc</code> (twice if a card is pinned), choose <strong>Stop</strong>, or go to another page</td></tr>
+<tr><td><strong>Vision filter</strong>: the page recoloured or blurred, with a small status strip</td><td>You choose a simulation in Check › Vision, the browser&#39;s right-click menu, or press <code>Alt</code> + <code>Shift</code> + <code>V</code></td><td>You choose <strong>Clear</strong>, <strong>Clear vision filter</strong>, press <code>Alt</code> + <code>Shift</code> + <code>V</code> again, or reload</td></tr>
+<tr><td><strong>Side-by-side comparison</strong>: half the page filtered</td><td>You choose <strong>Side-by-side</strong> in Check › Vision, or <strong>Side by side</strong> in the right-click menu</td><td>You clear the filter</td></tr>
+<tr><td><strong>Audit outlines</strong>: a red or amber outline and a label on each flagged piece of text</td><td><strong>Outline on page</strong>, <strong>Outline issues after an audit</strong>, or <strong>Audit contrast on page</strong> in the browser&#39;s menu</td><td>After 15 seconds, or when you run the outlines again</td></tr>
+<tr><td><strong>Live CSS preview</strong>: your CSS applied to one element</td><td>You choose <strong>Apply to page</strong> in Code › Inspect › Live CSS</td><td>You choose <strong>Reset</strong> or <strong>Stop</strong></td></tr>
+<tr><td><strong>Website pickers</strong></td><td>Settings › Pickers › <strong>Auric pickers on websites</strong> is on</td><td>You turn the setting off, or add the site to <strong>Never on</strong></td></tr>
+<tr><td><strong>Custom right-click menu</strong></td><td>Settings › Right-click › <strong>Custom right-click menu</strong> is on and you right-click</td><td>You press <code>Esc</code>, click away, or run an action</td></tr>
+<tr><td><strong>Screen eyedropper</strong></td><td>You choose <strong>Pick from page</strong> or <strong>Pick a colour</strong> (Chromium only)</td><td>You click a pixel or press <code>Esc</code></td></tr>
+</tbody></table></div>
+<h2 id="the-audit-outlines">The audit outlines</h2>
+<p>In this version, the outlines mark the page&#39;s own elements:</p>
+<ul>
+<li><strong>Red</strong> outlines mark text that fails its contrast threshold.</li>
+<li><strong>Amber</strong> outlines mark borderline text that passes but by less than 1.5.</li>
+<li>Each outline carries a label with the measured ratio and the one it needs, such as <code>3.12:1 needs 4.5:1</code>, and &quot;+ manual review&quot; where the text sits on an image, gradient or shadow.</li>
+</ul>
+<p>They clear themselves after 15 seconds. Running them again replaces the old set.</p>
+<h2 id="kept-apart-from-the-site">Kept apart from the site</h2>
+<p>The inspector card, the website pickers, the colour picker on pages and the right-click menu each live in their own isolated area of the page (a shadow root). The site&#39;s CSS cannot change how they look, and their styles cannot change the site&#39;s layout. They also follow your theme and accent colour.</p>
+<ul>
+<li>The extension never writes to a website&#39;s storage: it does not read or change the site&#39;s cookies, local storage or databases.</li>
+<li>The inspector&#39;s Live CSS changes only the element you inspect, and <strong>Reset</strong> or <strong>Stop</strong> restores it exactly.</li>
+<li>A page removing an element you pinned does not leave a stale card: the inspector lets go of it.</li>
+</ul>
+<h2 id="where-nothing-appears">Where nothing appears</h2>
+<ul>
+<li><strong>Browser pages and the web stores.</strong> Extensions cannot run there.</li>
+<li><strong>Frames inside a page.</strong> The extension&#39;s page script runs in the top page only, so content inside an embedded frame is not inspected, audited or given pickers.</li>
+<li><strong>auricartisan.com.</strong> The website pickers and the custom right-click menu stay off there, because the site has its own.</li>
+</ul>
+<h2 id="related-pages">Related pages</h2>
+<ul>
+<li><a href="inspector.html">Element inspector</a></li>
+<li><a href="../check/vision.html">Vision</a></li>
+<li><a href="../check/audit.html">Audit</a></li>
+<li><a href="../on-websites/README.html">On websites</a></li>
+</ul>
+
+<nav class="pager" aria-label="Previous and next"><a href="inspector.html"><span>Previous</span>Element inspector</a><a href="popup.html"><span>Next</span>The popup</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#what-can-appear-on-a-page">What can appear on a page</a></li><li><a href="#the-audit-outlines">The audit outlines</a></li><li><a href="#kept-apart-from-the-site">Kept apart from the site</a></li><li><a href="#where-nothing-appears">Where nothing appears</a></li><li><a href="#related-pages">Related pages</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

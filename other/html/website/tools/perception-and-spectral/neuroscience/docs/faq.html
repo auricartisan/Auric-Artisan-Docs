@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual Pathway FAQ — Auric Artisan Docs</title>
+<meta name="description" content="Short answers to common questions about the Visual Pathway.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Neuroscience (Visual Pathway)</a>
+<h2>Using the Visual Pathway</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with the Visual Pathway</a></li>
+<li><a href="cones-and-opponent-channels.html">Cones, opponent channels and the cone table</a></li>
+<li><a href="explore-the-stages.html">Explore the five stages</a></li>
+<li><a href="export-and-share.html">Export and share</a></li>
+<li><a href="reference.html">Visual Pathway reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting the Visual Pathway</a></li>
+<li><a href="faq.html" aria-current="page">Visual Pathway FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Perception and spectral tools</a> &rsaquo; <a href="../README.html">Neuroscience (Visual Pathway)</a> &rsaquo; <a href="README.html">Using the Visual Pathway</a></nav>
+<p class="kicker">Website › Tools › Perception and spectral › Neuroscience</p>
+<h1>Visual Pathway FAQ</h1>
+<p class="lede">Short answers to common questions about the Visual Pathway.</p>
+<h2 id="is-this-a-model-of-real-neurons">Is this a model of real neurons?</h2>
+<p>No. Each stage uses a standard form from the literature (a difference of Gaussians, a Gabor energy model, divisive normalisation, a projection in an opponent plane), but every constant is the tool&#39;s own and sizes are in pixels rather than degrees of retina. The maps show the shape of what each area does. The page marks itself &quot;Educational, not physiological&quot;.</p>
+<h2 id="why-are-the-tools-l-and-m-cone-curves-on-top-of-each-other">Why are the tool&#39;s L and M cone curves on top of each other?</h2>
+<p>The built-in spectral table is the tool&#39;s own and puts both peaks at 590 nm. It only draws the figure. The cone signals the stages use come from a published matrix (Hunt-Pointer-Estévez) applied to CIE XYZ. You can install a published table on the <strong>Data</strong> tab to fix the figure.</p>
+<h2 id="are-the-opponent-channels-the-dkl-space">Are the opponent channels the DKL space?</h2>
+<p>No. They are differences of absolute cone signals (L − M, S − (L+M)/2) and a luminance channel of L + M. DKL uses cone contrast against a stated white and scaled isoluminant axes. See <a href="cones-and-opponent-channels.html">Cones, opponent channels and the cone table</a>.</p>
+<h2 id="why-does-a-grey-not-read-exactly-zero-on-the-chromatic-channels">Why does a grey not read exactly zero on the chromatic channels?</h2>
+<p>It reads about 0.0002 at worst, because the published cone matrix is given to four decimals. That is the <strong>Neutral off-axis</strong> readout.</p>
+<h2 id="what-does-sensitivity-at-this-frequency-mean-is-it-the-chance-i-can-see-the-grating">What does &quot;Sensitivity at this frequency&quot; mean? Is it the chance I can see the grating?</h2>
+<p>It is a weighting curve that peaks at 1.0 at 4 c/deg and falls off either side. It is not a probability of detection; the page deliberately gives no detection figure. To measure your own threshold, use the <a href="../../psychophysical-experiment-engine/README.html">Psychophysical Experiment Engine</a>.</p>
+<h2 id="why-do-i-need-to-enter-a-viewing-distance-and-pixel-pitch">Why do I need to enter a viewing distance and pixel pitch?</h2>
+<p>Cycles per degree depends on both. Without them, the same image has a different spatial frequency at every distance. Defaults are 57 cm and 0.248 mm.</p>
+<h2 id="can-i-load-my-own-image">Can I load my own image?</h2>
+<p>No. The sources are the grating and the built-in test card. To run simulations over your own images, use <a href="../../perception-and-vision/README.html">Perception and Vision</a>.</p>
+<h2 id="can-i-simulate-a-milder-colour-vision-deficiency">Can I simulate a milder colour vision deficiency?</h2>
+<p>Not on this page: <strong>Colour vision</strong> applies full dichromacy. Perception and Vision has a <strong>Severity</strong> control.</p>
+<h2 id="does-the-pupil-control-do-anything">Does the pupil control do anything?</h2>
+<p>Not in the current version. It is shown on the rail, but no map or readout uses it.</p>
+<h2 id="is-there-a-spike-raster-or-firing-rate">Is there a spike raster or firing rate?</h2>
+<p>No. An earlier version drew a panel called a spike raster; it had no time axis and was withdrawn. Nothing on the page may be reported as a spike train or a firing rate.</p>
+<h2 id="does-anything-i-enter-leave-my-computer">Does anything I enter leave my computer?</h2>
+<p>No. All processing is in the page. Files and copies are only created when you press an export or copy button. See <a href="../others/privacy.html">Privacy</a>.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="troubleshooting.html"><span>Previous</span>Troubleshooting the Visual Pathway</a><a href="../others/README.html"><span>Next</span>Visual Pathway background</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#is-this-a-model-of-real-neurons">Is this a model of real neurons?</a></li><li><a href="#why-are-the-tools-l-and-m-cone-curves-on-top-of-each-other">Why are the tool's L and M cone curves on top of each other?</a></li><li><a href="#are-the-opponent-channels-the-dkl-space">Are the opponent channels the DKL space?</a></li><li><a href="#why-does-a-grey-not-read-exactly-zero-on-the-chromatic-channels">Why does a grey not read exactly zero on the chromatic channels?</a></li><li><a href="#what-does-sensitivity-at-this-frequency-mean-is-it-the-chance-i-can-see-the-grating">What does &quot;Sensitivity at this frequency&quot; mean? Is it the chance I can see the grating?</a></li><li><a href="#why-do-i-need-to-enter-a-viewing-distance-and-pixel-pitch">Why do I need to enter a viewing distance and pixel pitch?</a></li><li><a href="#can-i-load-my-own-image">Can I load my own image?</a></li><li><a href="#can-i-simulate-a-milder-colour-vision-deficiency">Can I simulate a milder colour vision deficiency?</a></li><li><a href="#does-the-pupil-control-do-anything">Does the pupil control do anything?</a></li><li><a href="#is-there-a-spike-raster-or-firing-rate">Is there a spike raster or firing rate?</a></li><li><a href="#does-anything-i-enter-leave-my-computer">Does anything I enter leave my computer?</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>

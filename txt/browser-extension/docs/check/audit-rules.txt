@@ -1,0 +1,493 @@
+==============================================================================
+AUDIT RULES
+==============================================================================
+Every rule in the extension's accessibility engine, grouped by category, with
+its impact, WCAG 2.2 success criteria and whether the audit runs it.
+Area: Browser extension › Check   Updated: 2026-09-25
+
+The accessibility engine behind Audit and Findings has 80 rules in eight
+categories, mapped to 32 WCAG 2.2 success criteria. The audit runs at level
+AA, so it applies the 78 rules that test levels A and AA. The two AAA rules,
+enhanced text contrast (1.4.6) and reduced motion (2.3.3), are part of the
+engine but are not run by the audit.
+
+The engine uses the WCAG 2.2 success criteria, the ARIA 1.2 role and attribute
+definitions and the HTML accessibility mappings bundled in the extension, so
+questions such as "is this attribute allowed on this role" are answered from
+the specifications rather than guessed. Accessible names are computed with the
+standard accessible-name algorithm, following `aria-labelledby`, labels,
+`title` and content.
+
+IMPACT
+======
+
+Each finding has an impact, the same scale most accessibility tools use:
+
+  Impact   | Meaning
+  ---------+-------------------------------------------------
+  critical | Blocks some people from using the content at all
+  serious  | A significant barrier; fix soon
+  moderate | Makes the content harder to use
+  minor    | A nuisance or a best-practice gap
+
+A finding is either a failure or a warning. A warning means a person must
+decide, for example contrast over an image.
+
+HOW THE SCORE IS CALCULATED
+===========================
+
+The score, from 0 to 100, counts distinct failing rules, not each failing
+element, so one unlabelled button repeated down a long table is one problem to
+fix. Each failing rule costs points by impact (critical 10, serious 6,
+moderate 3, minor 1), multiplied by 1 plus the base-10 logarithm of how many
+times it failed. For example, one critical rule failing on 10 elements costs
+10 × 2 = 20 points. Warnings never lower the score. The score appears in the
+JSON export.
+
+RULES
+=====
+
+The ID is how each rule appears in an exported JSON report. "Page" rules check
+the document once; the others check each matching element.
+
+ARIA (17)
+---------
+
+  ID:     `aria-role-unknown`
+  Rule:   Role must be a valid ARIA role (typos get a "did you mean"
+          suggestion)
+  Impact: serious
+  WCAG:   4.1.2
+
+  ID:     `aria-role-abstract`
+  Rule:   Abstract roles must not be used in markup
+  Impact: serious
+  WCAG:   4.1.2
+
+  ID:     `aria-role-deprecated`
+  Rule:   Deprecated ARIA role
+  Impact: minor
+  WCAG:   4.1.2
+
+  ID:     `aria-role-redundant`
+  Rule:   Explicit role duplicates the element's native role
+  Impact: minor
+  WCAG:   4.1.2
+
+  ID:     `aria-on-roleless-element`
+  Rule:   ARIA is not allowed on this element
+  Impact: moderate
+  WCAG:   4.1.2
+
+  ID:     `aria-attr-unknown`
+  Rule:   `aria-*` attribute is not in the specification
+  Impact: serious
+  WCAG:   4.1.2
+
+  ID:     `aria-attr-unsupported`
+  Rule:   `aria-*` attribute is not supported on this role
+  Impact: serious
+  WCAG:   4.1.2
+
+  ID:     `aria-attr-invalid-value`
+  Rule:   `aria-*` attribute has an invalid value
+  Impact: serious
+  WCAG:   4.1.2
+
+  ID:     `aria-attr-deprecated`
+  Rule:   Deprecated ARIA attribute
+  Impact: minor
+  WCAG:   4.1.2
+
+  ID:     `aria-required-attr`
+  Rule:   Role is missing a required attribute
+  Impact: critical
+  WCAG:   4.1.2
+
+  ID:     `aria-required-children`
+  Rule:   Role is missing its required child roles
+  Impact: critical
+  WCAG:   1.3.1
+
+  ID:     `aria-required-parent`
+  Rule:   Role is missing its required parent role
+  Impact: critical
+  WCAG:   1.3.1
+
+  ID:     `aria-idref-broken`
+  Rule:   ARIA reference points at an element that does not exist
+  Impact: serious
+  WCAG:   1.3.1, 4.1.2
+
+  ID:     `aria-hidden-focusable`
+  Rule:   `aria-hidden` element is still keyboard focusable
+  Impact: critical
+  WCAG:   1.3.1, 4.1.2
+
+  ID:     `aria-hidden-body`
+  Rule:   `aria-hidden` must not be applied to `<body>`
+  Impact: critical
+  WCAG:   4.1.2
+
+  ID:     `aria-prohibited-name`
+  Rule:   Role does not support an accessible name
+  Impact: moderate
+  WCAG:   4.1.2
+
+  ID:     `aria-presentation-focusable`
+  Rule:   Focusable element has a presentational role
+  Impact: serious
+  WCAG:   4.1.2
+
+Names (5)
+---------
+
+  ID:     `control-has-name`
+  Rule:   Interactive element has no accessible name
+  Impact: critical
+  WCAG:   4.1.2
+
+  ID:     `name-is-whitespace`
+  Rule:   Accessible name is only whitespace
+  Impact: serious
+  WCAG:   4.1.2
+
+  ID:     `label-in-name`
+  Rule:   Accessible name does not contain the visible label
+  Impact: serious
+  WCAG:   2.5.3
+
+  ID:     `link-name-descriptive`
+  Rule:   Link text is not descriptive ("click here", "read more")
+  Impact: moderate
+  WCAG:   2.4.4
+
+  ID:     `identical-links-differ` (page)
+  Rule:   Links with the same name point to different destinations
+  Impact: moderate
+  WCAG:   2.4.4
+
+Structure (12)
+--------------
+
+  ID:     `heading-order` (page)
+  Rule:   Heading levels skip a rank
+  Impact: moderate
+  WCAG:   1.3.1
+
+  ID:     `heading-empty`
+  Rule:   Heading has no text
+  Impact: serious
+  WCAG:   1.3.1, 2.4.6
+
+  ID:     `page-has-h1` (page)
+  Rule:   Page has no level-one heading
+  Impact: moderate
+  WCAG:   1.3.1, 2.4.6
+
+  ID:     `landmark-singleton` (page)
+  Rule:   Duplicate top-level landmark
+  Impact: moderate
+  WCAG:   1.3.1
+
+  ID:     `landmark-main-exists` (page)
+  Rule:   Page has no main landmark
+  Impact: moderate
+  WCAG:   1.3.1, 2.4.1
+
+  ID:     `landmark-duplicates-labelled` (page)
+  Rule:   Repeated landmarks need distinguishing labels
+  Impact: moderate
+  WCAG:   1.3.1
+
+  ID:     `list-structure`
+  Rule:   List contains elements other than list items
+  Impact: serious
+  WCAG:   1.3.1
+
+  ID:     `definition-list-structure`
+  Rule:   Definition list has invalid children
+  Impact: moderate
+  WCAG:   1.3.1
+
+  ID:     `table-has-headers`
+  Rule:   Data table has no header cells
+  Impact: serious
+  WCAG:   1.3.1
+
+  ID:     `th-has-text`
+  Rule:   Header cell is empty
+  Impact: moderate
+  WCAG:   1.3.1
+
+  ID:     `duplicate-id` (page)
+  Rule:   Duplicate id used by an ARIA reference or label
+  Impact: serious
+  WCAG:   1.3.1, 4.1.2
+
+  ID:     `content-outside-landmarks` (page)
+  Rule:   Content sits outside any landmark
+  Impact: minor
+  WCAG:   1.3.1
+
+Forms (10)
+----------
+
+  ID:     `form-field-has-label`
+  Rule:   Form field has no label
+  Impact: critical
+  WCAG:   1.3.1, 3.3.2, 4.1.2
+
+  ID:     `label-for-broken`
+  Rule:   `<label for>` points at no element
+  Impact: serious
+  WCAG:   1.3.1, 3.3.2
+
+  ID:     `label-orphaned`
+  Rule:   `<label>` wraps or targets no form control
+  Impact: moderate
+  WCAG:   1.3.1
+
+  ID:     `placeholder-as-label`
+  Rule:   Placeholder used instead of a label
+  Impact: serious
+  WCAG:   3.3.2
+
+  ID:     `autocomplete-valid`
+  Rule:   `autocomplete` value is not a valid autofill field name
+  Impact: serious
+  WCAG:   1.3.5 (AA)
+
+  ID:     `autocomplete-missing`
+  Rule:   Personal-data field has no `autocomplete` attribute
+  Impact: minor
+  WCAG:   1.3.5 (AA)
+
+  ID:     `radio-group-fieldset` (page)
+  Rule:   Radio group has no group label
+  Impact: moderate
+  WCAG:   1.3.1, 3.3.2
+
+  ID:     `required-field-indicated`
+  Rule:   Required field is not programmatically marked
+  Impact: moderate
+  WCAG:   3.3.2
+
+  ID:     `error-message-associated`
+  Rule:   Invalid field does not reference its error message
+  Impact: serious
+  WCAG:   3.3.1
+
+  ID:     `select-has-options`
+  Rule:   Select element has no options
+  Impact: moderate
+  WCAG:   4.1.2
+
+Media (13)
+----------
+
+  ID:     `image-has-alt`
+  Rule:   Image has no alt attribute
+  Impact: critical
+  WCAG:   1.1.1
+
+  ID:     `image-alt-meaningless`
+  Rule:   Image alt text is not descriptive
+  Impact: serious
+  WCAG:   1.1.1
+
+  ID:     `image-alt-redundant`
+  Rule:   Alt text repeats that this is an image
+  Impact: minor
+  WCAG:   1.1.1
+
+  ID:     `image-alt-duplicates-link`
+  Rule:   Linked image alt duplicates the link text
+  Impact: moderate
+  WCAG:   1.1.1, 2.4.4
+
+  ID:     `input-image-alt`
+  Rule:   Image button has no alt text
+  Impact: critical
+  WCAG:   1.1.1, 4.1.2
+
+  ID:     `area-has-alt`
+  Rule:   Image map area has no alt text
+  Impact: serious
+  WCAG:   1.1.1, 2.4.4
+
+  ID:     `svg-has-name`
+  Rule:   Meaningful SVG has no accessible name
+  Impact: serious
+  WCAG:   1.1.1
+
+  ID:     `svg-decorative-unhidden`
+  Rule:   Decorative SVG is not hidden from assistive technology
+  Impact: minor
+  WCAG:   1.1.1
+
+  ID:     `video-has-captions`
+  Rule:   Video has no captions track
+  Impact: critical
+  WCAG:   1.2.2
+
+  ID:     `video-has-audio-description`
+  Rule:   Video has no audio description track
+  Impact: serious
+  WCAG:   1.2.3, 1.2.5
+
+  ID:     `media-autoplay-audible`
+  Rule:   Media autoplays with sound
+  Impact: serious
+  WCAG:   1.4.2
+
+  ID:     `object-has-alt`
+  Rule:   Embedded object has no text alternative
+  Impact: serious
+  WCAG:   1.1.1
+
+  ID:     `iframe-has-title`
+  Rule:   Frame has no title
+  Impact: serious
+  WCAG:   2.4.1, 4.1.2
+
+Keyboard (8)
+------------
+
+  ID:     `tabindex-positive`
+  Rule:   Positive tabindex overrides the natural focus order
+  Impact: serious
+  WCAG:   2.4.3
+
+  ID:     `interactive-not-focusable`
+  Rule:   Element behaves as a control but cannot be focused
+  Impact: critical
+  WCAG:   2.1.1
+
+  ID:     `focus-outline-removed` (page)
+  Rule:   Focus indicator is removed by a stylesheet
+  Impact: serious
+  WCAG:   2.4.7 (AA)
+
+  ID:     `target-size-minimum` (page)
+  Rule:   Touch target is smaller than 24 × 24 px
+  Impact: serious
+  WCAG:   2.5.8 (AA)
+
+  ID:     `accesskey-duplicate` (page)
+  Rule:   `accesskey` value is used more than once
+  Impact: moderate
+  WCAG:   2.1.1
+
+  ID:     `focusable-hidden-offscreen`
+  Rule:   Off-screen element is still in the tab order
+  Impact: moderate
+  WCAG:   2.4.3, 2.4.7
+
+  ID:     `autofocus-used`
+  Rule:   `autofocus` moves focus on page load
+  Impact: minor
+  WCAG:   2.4.3
+
+  ID:     `nested-interactive`
+  Rule:   Interactive element nested inside another
+  Impact: serious
+  WCAG:   4.1.2
+
+`interactive-not-focusable` understands "roving tabindex": a composite widget
+such as a tab list passes when one of its items holds the Tab stop.
+`target-size-minimum` respects WCAG's spacing exception for small targets that
+are well separated.
+
+Contrast (4)
+------------
+
+  ID:     `color-contrast`
+  Rule:   Text contrast is below the AA threshold
+  Impact: serious
+  WCAG:   1.4.3 (AA)
+
+  ID:     `color-contrast-enhanced`
+  Rule:   Text contrast is below the AAA threshold (not run by the audit)
+  Impact: moderate
+  WCAG:   1.4.6 (AAA)
+
+  ID:     `non-text-contrast`
+  Rule:   Control boundary has insufficient contrast
+  Impact: serious
+  WCAG:   1.4.11 (AA)
+
+  ID:     `link-distinguishable`
+  Rule:   Link in text is identified by colour alone
+  Impact: serious
+  WCAG:   1.4.1
+
+Text over an image or gradient is reported as a warning for manual review, not
+a failure. Checkboxes and radio buttons drawn by the browser are exempt from
+`non-text-contrast`, as WCAG allows.
+
+Document (11)
+-------------
+
+  ID:     `html-has-lang` (page)
+  Rule:   Page has no `lang` attribute
+  Impact: serious
+  WCAG:   3.1.1
+
+  ID:     `html-lang-valid` (page)
+  Rule:   `lang` attribute is not a valid language tag
+  Impact: serious
+  WCAG:   3.1.1
+
+  ID:     `lang-parts-valid`
+  Rule:   Inline `lang` attribute is not a valid language tag
+  Impact: moderate
+  WCAG:   3.1.2 (AA)
+
+  ID:     `page-has-title` (page)
+  Rule:   Page has no title
+  Impact: serious
+  WCAG:   2.4.2
+
+  ID:     `page-title-descriptive` (page)
+  Rule:   Page title is not descriptive
+  Impact: minor
+  WCAG:   2.4.2
+
+  ID:     `viewport-scalable` (page)
+  Rule:   Viewport prevents zooming
+  Impact: critical
+  WCAG:   1.4.4, 1.4.10 (AA)
+
+  ID:     `skip-link-present` (page)
+  Rule:   No mechanism to skip repeated content
+  Impact: moderate
+  WCAG:   2.4.1
+
+  ID:     `text-spacing-overridable` (page)
+  Rule:   Text spacing is locked with `!important`
+  Impact: moderate
+  WCAG:   1.4.12 (AA)
+
+  ID:     `meta-refresh` (page)
+  Rule:   Page refreshes or redirects on a timer
+  Impact: serious
+  WCAG:   2.2.1, 2.2.4
+
+  ID:     `blink-marquee`
+  Rule:   Auto-moving or blinking content cannot be paused
+  Impact: serious
+  WCAG:   2.2.2
+
+  ID:     `reduced-motion-respected` (page)
+  Rule:   Long animation ignores `prefers-reduced-motion` (not run by the
+          audit)
+  Impact: minor
+  WCAG:   2.3.3 (AAA)
+
+RELATED PAGES
+=============
+
+  - Audit [audit.txt]
+  - Findings [all-findings.txt]
+  - Limits and accuracy [../../others/limits-and-accuracy.txt]

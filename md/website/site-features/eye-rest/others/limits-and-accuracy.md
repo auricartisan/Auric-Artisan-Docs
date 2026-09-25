@@ -1,0 +1,14 @@
+---
+title: Eye rest — Limits and accuracy
+description: What eye rest does, what it does not do, and how precise its timings are.
+product: Website › Site features › Eye rest
+updated: 2026-09-25
+---
+
+# Eye rest limits and accuracy
+
+- **Not medical advice.** Eye rest is a comfort reminder. It does not diagnose, treat or prevent any eye condition. If your eyes are uncomfortable, talk to an eye-care professional.
+- **Per page.** The countdown runs per page and restarts whenever a page loads. It does not track your total screen time, or time spent in other apps or other websites.
+- **Timings.** Reminders appear after the chosen interval measured from the page load or the previous reminder. Browsers may delay timers in background tabs, so a reminder in a background tab can arrive a little late.
+- **Where it appears.** Only on auricartisan.com, and only in the tab where the countdown ran. It is not a system notification.
+- **Rest length.** The **Rest for** choice is not saved and returns to 30 seconds on the next page load.

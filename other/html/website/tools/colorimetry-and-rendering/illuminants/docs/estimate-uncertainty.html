@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estimate measurement uncertainty — Auric Artisan Docs</title>
+<meta name="description" content="Propagate a spectroradiometer uncertainty budget into x, y, CCT and Duv with the Monte Carlo view.">
+<link rel="stylesheet" href="../../../../../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><a class="brand" href="../../../../../index.html">Auric Artisan <span>Docs</span></a><nav aria-label="Site"><a href="../../../../../index.html">Home</a><a href="../../../../../search.html">Search</a></nav></header>
+<div class="layout">
+<aside class="side"><nav aria-label="In this section">
+<a class="up" href="../README.html">&larr; Illuminants</a>
+<h2>Illuminants documentation</h2><ul>
+<li><a href="README.html">Overview</a></li>
+<li><a href="getting-started.html">Getting started with Illuminants</a></li>
+<li><a href="adapt-between-white-points.html">Adapt colours between white points</a></li>
+<li><a href="compare-light-sources.html">Compare two light sources</a></li>
+<li><a href="estimate-uncertainty.html" aria-current="page">Estimate measurement uncertainty</a></li>
+<li><a href="query-console.html">Query many illuminants at once</a></li>
+<li><a href="reference.html">Illuminants reference</a></li>
+<li><a href="troubleshooting.html">Troubleshooting Illuminants</a></li>
+<li><a href="faq.html">Illuminants FAQ</a></li>
+</ul>
+</nav></aside>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../../README.html">Docs</a> &rsaquo; <a href="../../../../README.html">The website</a> &rsaquo; <a href="../../../README.html">Website tools</a> &rsaquo; <a href="../../README.html">Colorimetry and rendering tools</a> &rsaquo; <a href="../README.html">Illuminants</a> &rsaquo; <a href="README.html">Illuminants documentation</a></nav>
+<p class="kicker">Website › Tools › Colorimetry and rendering</p>
+<h1>Estimate measurement uncertainty</h1>
+<p class="lede">Propagate a spectroradiometer uncertainty budget into x, y, CCT and Duv with the Monte Carlo view.</p>
+<p>A measured spectrum is never exact. The wavelength scale may be slightly off, the instrument&#39;s slit blurs sharp peaks, and the detector adds noise. The <strong>Uncertainty</strong> tab asks how much those errors move the numbers you would report: x, y, CCT and Duv.</p>
+<p>It uses the <strong>Monte Carlo method</strong> described in JCGM 101:2008 (Supplement 1 to the Guide to the Expression of Uncertainty in Measurement): it perturbs the spectrum thousands of times at random, according to the error sizes you give, and measures the spread of the results.</p>
+<h2 id="the-input-budget">The input budget</h2>
+<p>The budget is preset for a typical array spectroradiometer. It is a starting point, not your instrument: every value is editable. Hover over a label to see what the term models and whether it is treated as a normal or a rectangular distribution.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Unit</th><th>Preset</th><th>Distribution</th><th>What it models</th></tr></thead>
+<tbody>
+<tr><td>Wavelength scale</td><td>nm</td><td>0.20</td><td>Normal</td><td>A shift of the whole wavelength axis. Dominates on a spiky source.</td></tr>
+<tr><td>Bandwidth (FWHM)</td><td>nm</td><td>5.0</td><td>Rectangular</td><td>The finite slit width, modelled as a triangular blur.</td></tr>
+<tr><td>Stray light</td><td>relative</td><td>0.0001</td><td>Rectangular</td><td>A flat pedestal added across the range.</td></tr>
+<tr><td>Non-linearity</td><td>%</td><td>0.10</td><td>Rectangular</td><td>A gain error that depends on signal level.</td></tr>
+<tr><td>Detector noise</td><td>%</td><td>0.05</td><td>Normal</td><td>Independent noise at each wavelength.</td></tr>
+<tr><td>Reference lamp</td><td>%</td><td>0.80</td><td>Normal</td><td>The calibration scale. Largely cancels in chromaticity.</td></tr>
+</tbody></table></div>
+<p>For a normal term the value is one standard uncertainty. For a rectangular term the value is the half-width of the range, so its standard uncertainty is the value divided by √3.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>On the <strong>Lab</strong> tab, choose the illuminant you want to study. The Uncertainty tab always works on the light currently selected in the Lab.</li>
+<li>Open the <strong>Uncertainty</strong> tab.</li>
+<li>Edit any budget value. Negative or non-numeric entries are reset to 0.</li>
+<li>Under <strong>Trials</strong>, choose <strong>1k</strong>, <strong>4k</strong> (the default) or <strong>20k</strong>. More trials give a steadier estimate and take longer.</li>
+<li>Select <strong>Run the propagation</strong>. The button shows &quot;Running…&quot; and then returns.</li>
+<li>Read <strong>Expanded uncertainty, k = 2</strong>. For each of x, y, CCT and Duv the table shows:<ul>
+<li><strong>Value</strong> — the reading itself;</li>
+<li><strong>u</strong> — the standard uncertainty;</li>
+<li><strong>U (k=2)</strong> — the expanded uncertainty, twice u, which covers about 95% of cases for a normal distribution;</li>
+<li><strong>Relative</strong> — U as a percentage of the value. Figures over 5% are highlighted.</li>
+</ul>
+</li>
+<li>Read <strong>Contribution to u(CCT)</strong>. Each bar shows the share of the CCT uncertainty caused by one budget term. Bars above 40% are highlighted.</li>
+<li>Look at <strong>95% coverage region in u′v′</strong>. The solid ellipse is the region that holds 95% of the simulated chromaticities; the dashed ellipse is one standard deviation. The centre coordinates are printed in the corner.</li>
+<li>The line under the results records the number of trials, how long the run took, the observer and the interval.</li>
+</ol>
+<h2 id="reading-the-result">Reading the result</h2>
+<ul>
+<li>For a smooth source such as D65 or a blackbody, the wavelength and bandwidth terms usually matter little. For a spiky source they can dominate.</li>
+<li>The reference lamp term mostly changes absolute level, which cancels when you compute chromaticity, so its share of the CCT uncertainty is small.</li>
+<li>The inputs are treated as uncorrelated. The page says so under the results.</li>
+<li>The contribution bars come from a shorter run (about a sixth of the trials, never fewer than 200), so they can move slightly between runs.</li>
+</ul>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>The interval and interpolation set on the <strong>Methods</strong> tab also apply here.</li>
+<li>Monte Carlo results vary a little each time. If two runs differ more than you are comfortable with, use <strong>20k</strong> trials.</li>
+</ul>
+<h2 id="result">Result</h2>
+<p>You have expanded uncertainties for x, y, CCT and Duv, a ranking of which error source matters most, and a picture of the 95% region in u′v′.</p>
+
+<nav class="pager" aria-label="Previous and next"><a href="compare-light-sources.html"><span>Previous</span>Compare two light sources</a><a href="query-console.html"><span>Next</span>Query many illuminants at once</a></nav>
+</main>
+<aside class="toc"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a href="#the-input-budget">The input budget</a></li><li><a href="#steps">Steps</a></li><li><a href="#reading-the-result">Reading the result</a></li><li><a href="#tips">Tips</a></li><li><a href="#result">Result</a></li></ul></nav></aside>
+</div>
+<footer class="foot">Auric Artisan user documentation · updated 2026-09-25 · also in Markdown, plain text, PDF, EPUB and Word</footer>
+</body>
+</html>
