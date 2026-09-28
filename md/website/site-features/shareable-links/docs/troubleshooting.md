@@ -39,6 +39,6 @@ Scroll to the top and undo your changes before copying, or delete everything fro
 
 ## `?color=` did not open the inspector
 
-**Why:** the value is not a colour the site can read, or the `#` was not written as `%23`.
+**Why:** a `?color=` value the site cannot read still opens the inspector, which says so and offers colours to start from. If nothing opens at all, the `#` was probably written as it is: in an address, `#` starts the page fragment, so `?color=#d3af37` reaches the site with no colour.
 
 **What to do:** write the hex without `#` (`?color=d3af37`) or as `%23d3af37`.

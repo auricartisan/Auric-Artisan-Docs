@@ -1,97 +1,172 @@
 ---
-title: Color Name Finder — Find the nearest named colour
-description: Enter a colour and find the closest of more than a thousand named colours, with seventeen similar colours and ten copyable formats.
+title: Color Name Finder — Name any colour
+description: Name any colour with the nearest of 1,055 named colours by ΔE2000, see how it differs in words, its hue family, the next names and the 18 nearest neighbours, and copy it in 20 notations.
 product: Website › Tools › Colour workspace
-updated: 2026-09-25
+updated: 2026-09-27
 ---
 
 # Color Name Finder
 
-Color Name Finder answers "what is this colour called?". You give it one colour and it finds the nearest match in a built-in list of 1,058 named colours, shows seventeen more close matches, and lists the colour in ten copyable formats. It is the quickest tool in the workbench: one input, three result sections.
+Color Name Finder gives a colour a name. It measures your colour against a dictionary of 1,055 named colours, picks the nearest by ΔE2000, and says in words how close it is and how it differs: lighter or darker, more or less saturated, and which way the hue leans. It also files the colour in one of ten hue families, lists the next nearest names and the 18 nearest neighbours, and writes the colour in 20 notations.
 
-The names come from a general-purpose colour-name list grouped into 13 families: red, pink, orange, yellow, green, blue, purple, brown, gray, white, black, metallic and neon. For matches against formal systems such as Pantone, RAL or NCS, use [Pantone & Named Lookup](pantone-and-named-lookup.md).
+Selecting a name copies it and leaves your colour alone. **Inspect** is the only thing that changes the colour being named, and it always offers a way back.
 
-Color Name Finder is in the launcher's **Essentials** group.
+Color Name Finder is one of the six **Essentials** in the Colour Tools. It opens in a floating panel; for the panel, its footer and its links, see [Open the Colour Tools and work in their panels](launcher-and-panels.md).
 
 ## Open it
 
-Open the launcher and select **Color Name Finder**, pick it from the right-click menu's **Colour tools** group, or right-click a colour value and select **Find its name**. See [Open the Colour Tools](launcher-and-panels.md). It starts with the colour you opened it with, or gold (#D3AF37).
+- **Launcher:** press `Ctrl` + `Shift` + `C`, then select **Color Name Finder**, or type a colour in the search and choose **Find the name of …**.
+- **Right-click menu:** **Colour tools** › **Color Name Finder**, or right-click a colour value and choose **Find its name**.
+- **Dashboard:** the **Color Name Finder** card, which already shows the nearest name. See [Colour Tools dashboard](colour-tools-dashboard.md).
+- **From another tool:** the Color Library's card menu (**Find name**) and its **Open in another tool** menu.
+- **A link:** `?ctool=name&color=1E40AF`. The colour can also be a name from the dictionary, for example `?ctool=name&color=goldenrod`. See [Link keys](#link-keys).
+
+With no colour, it starts on the site's gold, `#D3AF37`. The dictionary downloads the first time you open the tool; until it arrives, the specimen says "loading 1,055 names…".
 
 ## Screen tour
 
-1. **Source**: the colour field (a colour well, a HEX box and a dice button for a random colour).
-2. **Nearest match** (with the note **ΔE2000**):
-   - two large chips side by side: your colour with its HEX code and hue family, and the nearest named colour with its name, HEX code, **ΔE** distance and name family;
-   - a small grid with **HSL**, **OKLCh**, **RGB** and **Hue family**.
-3. **Similar colors**: a grid of the next seventeen closest named colours, each with a swatch, its name, HEX code and ΔE.
-4. **Full color spaces** (with the note **Click to copy**): ten rows you can select to copy.
+### The specimen
 
-## Tasks
+The top of the panel is filled with your colour, and all its words are written in black or white, whichever reads better on it.
+
+- **The family chip**, for example "Blue family · OKLCH 266°", or "Neutral · chroma 0.000" for a colour with no hue.
+- **The colour field**, with a pen-shaped button that picks a colour from your screen (in browsers that support it) and a dice button for a random colour. It accepts a hex code, a CSS colour name or function, and any name from the dictionary, such as `Persian Blue` or `goldenrod`; spaces, hyphens and capitals do not matter.
+- **The name**: the nearest name, in large type.
+- **The line under it**: the hex code, the ΔE and how close that is, for example "#1E40AF · ΔE 2.9 · close to your colour", or "an exact match".
+
+On **Neighbours** and **Formats** the specimen folds to a strip with the name and a shorter line.
+
+### The tabs
+
+**Names**, **Neighbours** and **Formats**. While you are looking at a name you reached with **Inspect**, each tab starts with "You were naming #… before this." and **Back to #…**.
+
+## Names
+
+The opening sentences give the match and the difference in words, for example:
+
+- "Persian Blue is the nearest of 1,055 names, ΔE 2.9: close — the difference shows side by side."
+- "Persian Blue is slightly darker and more saturated, and its hue leans toward violet. Most of the difference is hue."
+
+For an exact match they say so ("#DAA520 is Goldenrod exactly, one of 1,055 names in the dictionary.") and give its family, OKLCH lightness, chroma and hue.
+
+**Best match · ΔE2000** shows your colour and the named colour side by side, the ΔE, and a pill: **Exact**, **Imperceptible**, **Very close**, **Close match**, **Noticeable** or **Distinct**. **Copy name** copies the name; **Inspect** makes the named colour the one being named (it is greyed out for an exact match). When other names in the dictionary have exactly the same value, a line lists them: "Same value, other names in the dictionary: Steel Gray."
+
+**Hue family · one OKLCH classification** gives the family in large type, the OKLCH lightness, chroma and hue, and a hue strip with the family bands (Red, Orange, Yellow, Green, Cyan, Blue, Violet, Pink) and a marker at your hue. A sentence says why the colour is in that family, for example "Hue 266° falls in the Blue band (225–285°), and chroma 0.181 clears the 0.035 neutral line." The same rule files every name in the Color Library, so a name's family agrees in both tools.
+
+**Next 8 names · tap to copy** lists the next eight names, each with its swatch, hex code, a bar for its ΔE on a 0 to 20 scale, and its word. Select a row to copy the name, or **Inspect** to name that colour instead. Other spellings of the best match are left out of this list.
+
+### How close is close
+
+| ΔE2000 | Word | What it means side by side |
+|---|---|---|
+| 0 | **Exact** | The same value. |
+| Under 1 | **Imperceptible** | Nobody could tell them apart. |
+| 1 to 2 | **Very close** | Only a trained eye sees it. |
+| 2 to 5 | **Close match** | The difference shows. |
+| 5 to 10 | **Noticeable** | Related, but clearly not the same colour. |
+| 10 or more | **Distinct** | The nearest name there is, but not a match. |
+
+## Neighbours
+
+The 18 names nearest your colour, placed by lightness.
+
+The opening sentences count them and point the way lighter and darker, for example "Of the 18 names nearest #1E40AF, 6 are lighter, 5 sit at its lightness (within ±0.03 OKLCH L) and 7 are darker. For a lighter version, the closest name is Cerulean Blue (#2A52BE, ΔE 5.8); for a darker one, Egyptian Blue (#1034A6, ΔE 3.6)."
+
+- **Where they sit** is a map with your colour as the ringed dot in the middle. Up is lighter and down is darker; sideways is OKLCH hue ("← toward cyan", "toward violet →"), or, for a colour with almost no hue, chroma ("← greyer", "more colourful →"). Each dot is painted in its own colour.
+- **Lighter**, **Same lightness** and **Darker** list the neighbours as cards, each with its swatch, name, hex code, ΔE and lightness difference, for example "+0.040 L". Select a card to copy its name, or **Inspect** to name it instead.
+
+## Formats
+
+Your colour in 20 notations (21 when its hex code has a 3-digit short form). The opening sentence says how many paste straight into CSS and reminds you that CSS `lab()` and `lch()` use a D50 white, so they read differently from the D65 CIELAB rows; both are correct.
+
+Filter the list with **All**, **CSS** or **Notation**, each with its count. Select a row to copy exactly what it shows.
+
+| Row | Marked | Notes |
+|---|---|---|
+| **HEX**, **HEX · 3 digit** | CSS | The short form only when every channel repeats a digit. |
+| **RGB**, **RGB %** | CSS | Modern space-separated `rgb()`. |
+| **RGBA**, **HSLA** | CSS | Legacy comma form. |
+| **HSL**, **HWB** | CSS | |
+| **HSV / HSB** | Notation | No CSS function. |
+| **CMYK** | Notation | A naive split with no press profile. |
+| **XYZ** | CSS | `color(xyz-d65 …)`. |
+| **CIELAB**, **CIELCh** | Notation | D65. |
+| **lab()**, **lch()** | CSS | D50, as CSS defines it. |
+| **OKLab**, **OKLCH** | CSS | |
+| **Linear sRGB** | CSS | No transfer curve. |
+| **CSS keyword** | CSS | The nearest real CSS colour name, "exact match" or with its ΔE. |
+| **Custom property** | CSS | `--colour-persian-blue: #1e40af;`, named after the nearest name. |
+| **Nearest name** | Notation | The name and its ΔE. |
+
+## Walkthroughs
 
 ### Name a colour
 
-1. Type a HEX code in the Source box, or use the colour well.
-2. Read the second chip under **Nearest match**. Its label is the colour's nearest name.
-3. Check the **ΔE** figure under it. Below about 2 the name is a close match; above about 5 it is only the nearest of the names available.
+1. Type or paste the colour into the specimen's field.
+2. Read the name and the first sentence on **Names**.
+3. Select **Copy name**.
 
-Result: a name you can use in conversation, a style guide or a token name.
+### Find a lighter or darker named version
 
-### Walk to a nearby named colour
+1. Open **Neighbours**.
+2. Read the second sentence for the closest lighter and darker names, or look under **Lighter** and **Darker**.
+3. Select **Inspect** on a card to name that colour instead. **Back to #…** returns to your colour.
 
-1. Under **Similar colors**, select any cell.
-2. The Source changes to that named colour and every section updates.
+### Give a colour a token name
 
-Result: you can step through related names until you find the one you want.
-
-### Copy a format
-
-Select a row under **Full color spaces**. The value is copied and a short **Copied** message appears. The rows are:
-
-| Row | Example for #D3AF37 |
-| --- | --- |
-| **HEX** | `#D3AF37` |
-| **HEX (short)** | `#D3AF37` (a three-digit form when one exists, such as `#FA0` for #FFAA00) |
-| **RGB** | `rgb(211, 175, 55)` |
-| **RGBA** | `rgba(211, 175, 55, 1)` |
-| **RGB %** | `rgb(82.7% 68.6% 21.6%)` |
-| **HSL** | `hsl(46.2, 63.9%, 52.2%)` |
-| **HSLA** | `hsla(46.2, 63.9%, 52.2%, 1)` |
-| **HSV** | `hsv(46.2, 73.9%, 82.7%)` |
-| **CMYK** | `cmyk(0%, 17.1%, 73.9%, 17.3%)` |
-| **CIE XYZ (D65)** | `xyz(0.4289, 0.4479, 0.1)` |
-
-## How matching works
-
-The tool converts your colour and every named colour to CIELAB and measures the difference with **ΔE2000**, the CIE's standard formula for how different two colours look. The list is sorted by that difference: the smallest is the nearest match, the next seventeen are the similar colours.
-
-The **Hue family** is a plain-language label worked out from the colour's HSL values: Black, White or Gray for very dark, very light or unsaturated colours, otherwise Red, Orange, Yellow, Lime, Green, Teal, Cyan, Blue, Purple, Magenta or Pink by hue.
+1. Open **Export** and choose **CSS custom property**.
+2. Paste it into your stylesheet: it keeps your exact colour and takes its name from the nearest name.
 
 ## Controls
 
-| Control | What it does | Values or range | Default |
-| --- | --- | --- | --- |
-| Colour well | Sets the source colour with your browser's picker | Any sRGB colour | #D3AF37, or the colour you opened with |
-| HEX box | Sets the source colour as you type | 3, 4, 6 or 8 hex digits, with or without `#` | Same |
-| Dice (**Random color**) | Picks a random colour | — | — |
-| Similar colour cell | Makes that named colour the source | 17 cells | — |
-| Format row | Copies that value | 10 rows | — |
+| Control | What it does | Default |
+|---|---|---|
+| Colour field | Sets the colour to name. Accepts hex, CSS colours and dictionary names. | The colour you opened with, or `#D3AF37` |
+| Pen button | Picks a colour from the screen (supported browsers only). | — |
+| Dice button | Picks a random colour of medium lightness and chroma. | — |
+| **Copy name** and name rows | Copy a name. | — |
+| **Inspect** | Names that colour instead. | — |
+| **Back to #…** | Returns to the colour you were naming. | — |
+| **All** / **CSS** / **Notation** (Formats) | Filters the notations. | **All** |
 
 ## Outputs and exports
 
-- Copy any of the ten formats from **Full color spaces**.
-- The tool has no file export. For code snippets and scales, open the colour in the [Color Inspector](colour-inspector.md).
+| Output | Format | What it contains |
+|---|---|---|
+| **Copy name** (gold button) | Text | The nearest name, for example `Persian Blue`. |
+| **Name and hex** | Text | `Persian Blue #1C39BB (nearest name to #1E40AF, ΔE2000 2.87)`, or just the name and hex for an exact match. |
+| **CSS custom property** | CSS | `--colour-persian-blue: #1e40af;` with a comment naming the nearest name, its hex and ΔE2000. |
+| **Markdown table · 9 nearest** | Markdown | Name, Hex, ΔE2000 and Match for the best match and the next eight. |
+| **CSV · 18 neighbours** | CSV | `name,hex,delta_e_2000,delta_l_oklch`, one row per neighbour. |
+| **JSON report** | JSON | The colour, its family, its OKLCH values, the nine nearest names with ΔE2000 and match word, and the dictionary counts. |
+| **Every format · plain text** | Text | All 20 notations, one per line. |
+| **Save colour** | A colour in your Library | Named with the nearest name and your hex code. |
+| **Share link** | URL | `?ctool=name&color=…`, with `ctab` unless you are on **Names**. |
+
+**Open in another tool** offers **Color Library** (the colour's family, nearest first), **Pantone & Named Lookup** (the nearest Pantone, RAL, NCS and Crayola chips), **Color Inspector** and **Harmony Studio**.
+
+## Link keys
+
+| Key | What it sets | Values |
+|---|---|---|
+| `color` (or `colour`) | The colour to name. | A hex code, a CSS colour, or a name from the dictionary, for example `goldenrod` |
+| `ctab` | The tab to open on. | `names` (default), `neighbours`, `formats` |
 
 ## Accuracy and limits
 
-- The name list is a general one. Names are descriptive, not standards; two lists can call the same colour different things.
-- ΔE2000 is computed from sRGB values with a D65 white point. It predicts differences seen side by side under good viewing conditions.
-- The nearest match is only as near as the list allows. Check the ΔE before relying on a name.
-- A colour's transparency is ignored.
+- **Terms.** *ΔE2000*: the CIEDE2000 colour difference, the standard measure of how different two colours look. *OKLCH*: a colour model whose lightness, chroma and hue change evenly to the eye.
+- **The dictionary.** The names file has 1,058 entries. Three are listed twice with the same name and value and are counted once, leaving 1,055 names. Many values carry more than one name, which the tool lists as other names for the same value.
+- **Names are names, not standards.** The dictionary gathers common colour names from several sources. For print and paint systems such as Pantone, RAL and NCS, use [Pantone & Named Lookup](pantone-and-named-lookup.md).
+- **The difference in words** splits ΔE2000 into its lightness, chroma and hue parts. It describes the named colour relative to yours.
+- **Families are one rule.** Chroma under 0.035 is **Neutral**; dark or dusty reds, oranges and yellows are **Brown**; pale, soft reds are **Pink**. A colour called "pink" in the dictionary can therefore sit in the **Red** family.
+- **CMYK is a naive split**, not a press conversion. Soft-proof print colour in [CMYK Soft-Proof](cmyk-soft-proof.md).
+- **Solid sRGB only.** Transparency is ignored.
 
 ## Related
 
 - [Colour Tools documentation](README.md)
-- [Pantone & Named Lookup](pantone-and-named-lookup.md) for Pantone, RAL, NCS, Crayola and CSS names
-- [Color Library](colour-library.md) to browse the same named colours by family
-- [Color Inspector](colour-inspector.md)
+- [Open the Colour Tools and work in their panels](launcher-and-panels.md)
+- [Color Library](colour-library.md) — browse the same 1,055 names by family
+- [Pantone & Named Lookup](pantone-and-named-lookup.md) — Pantone, RAL, NCS, Crayola and CSS names
+- [Color Inspector](colour-inspector.md) — everything about one colour
 - [Basic Color Tools](../../README.md)
