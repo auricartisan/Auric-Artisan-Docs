@@ -1,82 +1,56 @@
 # Auric Artisan Docs
 
-The complete user documentation for **Auric Artisan**: the website at https://auricartisan.com and every tool on it, the seventeen VS Code extensions, the browser extension, and the services — the Font CDN, the Icon CDN and the public API.
+User documentation for [Auric Artisan](https://auricartisan.com): the website and its tools, seventeen VS Code extensions, the browser extension, design-tool plugins, the Font CDN, the Icon CDN and the public API.
 
-It is written for the people who **use** the products — designers, developers, accessibility specialists, students — not for the people who build them. It explains every screen, control, command and setting, walks through real tasks step by step, states what each tool measures and how precisely, and says what to do when something does not behave as expected.
+The documentation explains screens, controls, settings and real workflows for designers, developers, accessibility specialists and students. The Markdown source contains **1,748 documents in 319 folders**.
 
-Updated 25 September 2026 · 1,747 documents · about 927,000 words · 319 folders.
+## Start reading
 
-## Three editions of the same content
+- New to Auric Artisan? Start with [Getting started](docs/getting-started/README.md).
+- Find a product in the [documentation contents](docs/README.md), [website tools](docs/website/tools/README.md) or [VS Code extensions](docs/vscode-extensions/README.md).
+- Get answers in [Help](docs/help/README.md).
+- Read offline by opening [exports/html/index.html](exports/html/index.html). Use [offline search](exports/html/search.html) to find a page.
+- Choose a printable, e-book, Word or text edition in [Exports](exports/README.md).
 
-| Folder | Format | Open it with |
-| --- | --- | --- |
-| [md/](md/README.md) | **Markdown** — the source edition. Renders on GitHub with working links. | GitHub, any Markdown viewer or editor |
-| [txt/](txt/README.md) | **Plain text** — 78 columns, no formatting, one `.txt` per document. | Any text editor, terminal or screen reader |
-| [other/](other/README.md) | **HTML, PDF, EPUB, Word, JSON and CSV**, all generated from `md/`. | See below |
+## Repository layout
 
-Inside [other/](other/README.md):
-
-| Folder | What you get |
+| Folder | Purpose |
 | --- | --- |
-| [other/html/](other/html/README.md) | A browsable offline website with navigation and search. Open `other/html/index.html` in any browser — no server or internet needed. Follows your light or dark setting. |
-| [other/pdf/](other/pdf/README.md) | A4 PDFs with a cover, clickable contents, bookmarks and page numbers — one per area, with the website split into its ten sections. |
-| [other/epub/](other/epub/README.md) | The whole documentation as one EPUB 3 e-book for phones, tablets and e-readers. |
-| [other/docx/](other/docx/README.md) | Editable Word documents, one per area. |
-| [other/json/](other/json/README.md) | Machine-readable indexes and the full text split by section, for search tools and assistants. |
-| [other/csv/](other/csv/README.md) | Spreadsheet lists of every document and folder. |
-
-The three editions mirror each other folder for folder, and **every folder in every edition has a `README.md`** that says what the folder covers and lists what is inside it.
-
-## What is covered
+| [docs/](docs/README.md) | Editable Markdown source, arranged by product and topic. |
+| [exports/](exports/README.md) | Published HTML, plain-text, PDF, EPUB and Word editions. |
+| [data/](data/README.md) | JSON and CSV catalogs generated from the current source. |
+| [scripts/](scripts/README.md) | Local link checks and catalog generation. |
 
 ```text
-md/
-├── getting-started/          What Auric Artisan is, where to start, accounts, privacy, language, offline use
-├── website/
-│   ├── site-features/        19 features on every page: settings, theme, language, right-click menu, search, …
-│   ├── tools/                31 tools in five groups
-│   │   ├── accessibility-and-vision/     Analyzer, Contrast Checker, Checklist, Vision Lab, Ishihara, …
-│   │   ├── colour-workspace/             Basic Color Tools, Color Science Lab, Design Engine, Font and Icon Library, …
-│   │   ├── colorimetry-and-rendering/    Illuminants, Chromatic Adaptation, Gamut Map, Gamut Lab, HDR, Tone Mapping, …
-│   │   ├── perception-and-spectral/      Visual Pathway, Perception, Psychophysics, Dye in Solution, Material Under Light
-│   │   └── image-and-file-tools/         Collage Maker, ICC Profile Parser, Image Picker, LUT Lab, M-Gradient, SVG Recolour
-│   ├── kits/                 Feature, Menu, Advanced, Status and Library kits, and website updates
-│   ├── library/              Six colour libraries, Collections, Learn (113 articles), documentation, blog, changelog
-│   ├── portfolio/            The Portfolio Builder and the public portfolio directory
-│   ├── search/               Web search and the Search Console
-│   ├── account-and-billing/  Accounts, dashboard, security, plans, tokens, payments, invoices, API keys, deletion
-│   ├── download-and-offline/ Installing the site as an app and using it offline
-│   ├── advertise/            Advertising on Auric Artisan
-│   └── company-and-legal/    Plain-language summaries of company pages and every legal policy
-├── vscode-extensions/        All 17 extensions, each with docs/ and others/
-│   ├── install-and-setup/
-│   ├── auric-artisan-studio/ Full Pack, Color, Accessibility (70+ WCAG rules), Code Health
-│   ├── auric-artisan-theme/  54 themes and the Theme Studio
-│   ├── …icons, emoji, Icon Studio, Icon Hub, File Icons…
-│   └── …Live, File System, Font Hub, Formatter
-├── browser-extension/        Install, surfaces, colour, contrast, vision, audit (80 rules), code, saved items, settings
-├── services/                 Font CDN, Icon CDN, public REST API
-├── design-tool-plugins/      Status of the design-tool and launcher plugins
-└── help/                     FAQ, glossary, troubleshooting, accessibility, privacy, support
+docs/
+|-- getting-started/
+|-- website/                Tools, site features, kits, library and account guides
+|-- vscode-extensions/
+|-- browser-extension/
+|-- services/
+|-- design-tool-plugins/
+`-- help/
+
+exports/                    html/, text/, pdf/, epub/, word/
+data/                       json/, csv/
+scripts/                    check_repository.py, rebuild_indexes.py
 ```
 
-Every product and tool folder follows the same pattern:
+Each product or tool has an overview in `README.md`, practical documentation in `guides/`, and supporting material in `resources/`. Every documentation folder has a `README.md` entry point. See [STRUCTURE.md](STRUCTURE.md) for the complete arrangement and the previous-to-current path map.
 
-- `README.md` — what it is, who it is for, where to find it, a quick start, what you can do.
-- `docs/` — getting started, one guide per task, a complete reference, troubleshooting, FAQ.
-- `others/` — glossary, shortcuts, limits and accuracy, related tools, release notes, privacy.
+## Maintain the documentation
 
-## How to read these docs
+Edit the source in `docs/`, add navigation in its folder's `README.md`, then refresh the catalogs and check local links:
 
-- **New to Auric Artisan?** Start at [md/getting-started/](md/getting-started/README.md).
-- **Looking for one tool?** The [tools catalogue](md/website/tools/README.md) and the [VS Code extensions list](md/vscode-extensions/README.md) link to every one.
-- **Offline or on paper?** Use the HTML site or the PDFs in [other/](other/README.md).
-- **Searching?** Open `other/html/search.html`, or search the repository on GitHub.
+```powershell
+python scripts/rebuild_indexes.py
+python scripts/check_repository.py
+```
 
-## Notes
+Both scripts use the Python standard library and require Python 3.10 or later. See [CONTRIBUTING.md](CONTRIBUTING.md) for naming, editing and publishing instructions.
 
-- The docs describe each product as users have it on the date above. Where a product's own screens disagree with each other, the docs describe what the product actually does and say so.
-- Legal summaries are there to help you understand the policies; the official pages on auricartisan.com are authoritative.
-- Questions or corrections: https://auricartisan.com/company/contact/
+Reading editions are published snapshots and may lag the Markdown source. Their product content and publication dates are preserved; text and HTML navigation uses the current folder structure. The catalogs describe the current source and link to editions that exist.
+
+Legal summaries help explain the policies; the official pages on auricartisan.com are authoritative. Questions and corrections: [Contact Auric Artisan](https://auricartisan.com/company/contact/).
 
 © 2026 Auric Artisan. All rights reserved.
